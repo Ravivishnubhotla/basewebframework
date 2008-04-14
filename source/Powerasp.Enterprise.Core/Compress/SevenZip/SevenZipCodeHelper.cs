@@ -6,6 +6,9 @@ using Encoder=Powerasp.Enterprise.Core.Compress.SevenZip.Compress.LZMA.Encoder;
 
 namespace Powerasp.Enterprise.Core.Compress.SevenZip
 {
+    /// <summary>
+    /// 7zip帮助类
+    /// </summary>
     public static class SevenZipCodeHelper
     {
 
