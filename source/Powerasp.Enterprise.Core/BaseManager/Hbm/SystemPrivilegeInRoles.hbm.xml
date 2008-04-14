@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemPrivilegeInRoles,Powerasp.Enterprise.Core" table="SystemPrivilegeInRoles"  lazy="true"    >
+
+
+		<id name="PrivilegeRoleID" column="PrivilegeRoleID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<many-to-one name="RoleID" column="Role_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemRole,Powerasp.Enterprise.Core" />		
+		<many-to-one name="PrivilegeID" column="Privilege_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemPrivilege,Powerasp.Enterprise.Core" />		
+		<property column="PrivilegeRoleValue" type="string" name="PrivilegeRoleValue"   not-null="true"  length="2000" />	
+		<property column="EnableType" type="string" name="EnableType"   not-null="true"  length="200" />	
+		<property column="CreateTime" type="DateTime" name="CreateTime"   not-null="true"  />	
+		<property column="UpdateTime" type="DateTime" name="UpdateTime"   not-null="true"  />	
+		<property column="ExpiryTime" type="DateTime" name="ExpiryTime"   not-null="true"  />	
+		<property column="EnableParameter" type="Boolean" name="EnableParameter"   not-null="true"  />	
+
+	</class>
+</hibernate-mapping>

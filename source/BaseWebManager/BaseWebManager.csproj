@@ -1,0 +1,512 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BaseWebManager</RootNamespace>
+    <AssemblyName>BaseWebManager</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=1.0.11119.20010, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DMS\FrameWork.web\bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Anthem, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TDDOWNLOAD\anthem-1.5.2\anthem\Anthem-2005\bin\Release\Anthem.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNetPager, Version=7.0.2.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\下载\AspNetPager702Src\bin\AspNetPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Facilities.AutomaticTransactionManagement, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.MicroKernel, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Services.Transaction, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="Castle.Windsor, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL" />
+    <Reference Include="ExtExtenders, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TDDOWNLOAD\ExtExtenders.dll</HintPath>
+    </Reference>
+    <Reference Include="InputDialog, Version=1.0.2867.29196, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TDDOWNLOAD\InputDialog.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\NHibernate\bin\net-2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MetaBuilders.WebControls, Version=0.9.4.26382, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\TDDOWNLOAD\MetaBuilders.WebControls v0.9.4\MetaBuilders.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Left.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Left.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Left.aspx.designer.cs">
+      <DependentUpon>Left.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\MessageBoxs.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>MessageBoxs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\MessageBoxs.aspx.designer.cs">
+      <DependentUpon>MessageBoxs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Right.aspx.cs">
+      <DependentUpon>Right.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Right.aspx.designer.cs">
+      <DependentUpon>Right.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage\PageTemplate.Master.cs">
+      <DependentUpon>PageTemplate.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage\PageTemplate.Master.designer.cs">
+      <DependentUpon>PageTemplate.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\AddPage.aspx.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\AddPage.aspx.designer.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\EditPage.aspx.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\EditPage.aspx.designer.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ViewPage.aspx.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ViewPage.aspx.designer.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\DepartmentManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\DepartmentManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\DictionaryManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\DictionaryManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\LogEventView\ListPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\LogEventView\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\MenuManage\AddPage.aspx.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\MenuManage\AddPage.aspx.designer.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\MenuManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\MenuManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\AddPage.aspx.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\AddPage.aspx.designer.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\EditPage.aspx.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\EditPage.aspx.designer.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\ViewPage.aspx.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\RoleManage\ViewPage.aspx.designer.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\AddPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\AddPage.aspx.designer.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ListPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ViewPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ViewPage.aspx.designer.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\AddPage.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\AddPage.aspx.designer.cs">
+      <DependentUpon>AddPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\EditPage.aspx.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\EditPage.aspx.designer.cs">
+      <DependentUpon>EditPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ListPage.aspx.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ListPage.aspx.designer.cs">
+      <DependentUpon>ListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ViewPage.aspx.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ViewPage.aspx.designer.cs">
+      <DependentUpon>ViewPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC\HeadMenuButtonItem.cs" />
+    <Compile Include="UC\UCMenuHead.ascx.cs">
+      <DependentUpon>UCMenuHead.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UC\UCMenuHead.ascx.designer.cs">
+      <DependentUpon>UCMenuHead.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Css\Menu1.css" />
+    <Content Include="Css\Site_Css.css" />
+    <Content Include="Css\Table\blue\css.css" />
+    <Content Include="Css\Table\blue\images\header_bg.gif" />
+    <Content Include="Css\Table\default\css.css" />
+    <Content Include="Css\Table\Green\css.css" />
+    <Content Include="Css\Table\red\css.css" />
+    <Content Include="images\about.gif" />
+    <Content Include="images\Button_On.GIF" />
+    <Content Include="images\Button_Over.GIF" />
+    <Content Include="images\controls4.gif" />
+    <Content Include="images\down01.gif" />
+    <Content Include="images\Help.gif" />
+    <Content Include="images\house.gif" />
+    <Content Include="images\ICON\1.gif" />
+    <Content Include="images\ICON\10.gif" />
+    <Content Include="images\ICON\2.gif" />
+    <Content Include="images\ICON\3.gif" />
+    <Content Include="images\ICON\4.gif" />
+    <Content Include="images\ICON\5.gif" />
+    <Content Include="images\ICON\6.gif" />
+    <Content Include="images\ICON\7.gif" />
+    <Content Include="images\ICON\8.gif" />
+    <Content Include="images\ICON\9.gif" />
+    <Content Include="images\ICON\a.gif" />
+    <Content Include="images\ICON\Area.png" />
+    <Content Include="images\ICON\b.gif" />
+    <Content Include="images\ICON\back.gif" />
+    <Content Include="images\ICON\Colume.png" />
+    <Content Include="images\ICON\default.gif" />
+    <Content Include="images\ICON\delete.gif" />
+    <Content Include="images\ICON\doc.gif" />
+    <Content Include="images\ICON\edit.gif" />
+    <Content Include="images\ICON\generic.gif" />
+    <Content Include="images\ICON\html2.gif" />
+    <Content Include="images\ICON\icon.gif" />
+    <Content Include="images\ICON\Line.png" />
+    <Content Include="images\ICON\list.gif" />
+    <Content Include="images\ICON\look.gif" />
+    <Content Include="images\ICON\move.gif" />
+    <Content Include="images\ICON\new.gif" />
+    <Content Include="images\ICON\office.gif" />
+    <Content Include="images\ICON\orderby.gif" />
+    <Content Include="images\ICON\paperclip.gif" />
+    <Content Include="images\ICON\ppt.gif" />
+    <Content Include="images\ICON\print.gif" />
+    <Content Include="images\ICON\print_icon.gif" />
+    <Content Include="images\ICON\select.gif" />
+    <Content Include="images\ICON\sound.gif" />
+    <Content Include="images\ICON\txt.gif" />
+    <Content Include="images\ICON\xls.gif" />
+    <Content Include="images\ICON\zip.gif" />
+    <Content Include="images\Index\menu1bg.gif" />
+    <Content Include="images\Index\menubg.jpg" />
+    <Content Include="images\Index\top-2-1.gif" />
+    <Content Include="images\Index\top-2-2.gif" />
+    <Content Include="images\Index\top-b-1.gif" />
+    <Content Include="images\Index\top-b-2-1-2.gif" />
+    <Content Include="images\Index\top-b-2-2.gif" />
+    <Content Include="images\Index\top-b-2.gif" />
+    <Content Include="images\Index\top-b-3-2.gif" />
+    <Content Include="images\Index\top-b-3.gif" />
+    <Content Include="images\Index\top-b4-1.gif" />
+    <Content Include="images\Index\top-b4-2.gif" />
+    <Content Include="images\Index\top-b4-b.gif" />
+    <Content Include="images\Index\top-b4-c.gif" />
+    <Content Include="images\Index\top-b4-yellow.gif" />
+    <Content Include="images\Logo.gif" />
+    <Content Include="images\logon\Logon_1.gif" />
+    <Content Include="images\logon\Logon_10.gif" />
+    <Content Include="images\logon\Logon_11.gif" />
+    <Content Include="images\logon\Logon_2.gif" />
+    <Content Include="images\logon\Logon_3.gif" />
+    <Content Include="images\logon\Logon_4.gif" />
+    <Content Include="images\logon\Logon_5.gif" />
+    <Content Include="images\logon\Logon_6.gif" />
+    <Content Include="images\logon\Logon_7.gif" />
+    <Content Include="images\logon\Logon_8.gif" />
+    <Content Include="images\logon\Logon_9.gif" />
+    <Content Include="images\logout.gif" />
+    <Content Include="images\Menu\arrow.gif" />
+    <Content Include="images\Menu\box_bg.gif" />
+    <Content Include="images\Menu\box_bottom.gif" />
+    <Content Include="images\Menu\box_topbg.gif" />
+    <Content Include="images\Menu\box_topleft.gif" />
+    <Content Include="images\Menu\box_topright.gif" />
+    <Content Include="images\Menu\close.gif" />
+    <Content Include="images\Menu\close_on.gif" />
+    <Content Include="images\Menu\Cshare.gif" />
+    <Content Include="images\Menu\Delphi.gif" />
+    <Content Include="images\Menu\folder_add.gif" />
+    <Content Include="images\Menu\folder_move.gif" />
+    <Content Include="images\Menu\open.gif" />
+    <Content Include="images\Menu\open_on.gif" />
+    <Content Include="images\Menu\Perl.gif" />
+    <Content Include="images\Menu\PHP.gif" />
+    <Content Include="images\Menu\tab_active_bg.gif" />
+    <Content Include="images\Menu\tab_active_left.gif" />
+    <Content Include="images\Menu\tab_active_right.gif" />
+    <Content Include="images\Menu\tab_bg.gif" />
+    <Content Include="images\Menu\tab_top_bg.gif" />
+    <Content Include="images\Menu\tab_unactive_bg.gif" />
+    <Content Include="images\Menu\tab_unactive_left.gif" />
+    <Content Include="images\Menu\tab_unactive_right.gif" />
+    <Content Include="images\Menu\twist.gif" />
+    <Content Include="images\MessageIcon\MessageAlert.gif" />
+    <Content Include="images\MessageIcon\MessageBody.gif" />
+    <Content Include="images\MessageIcon\MessageEnd.gif" />
+    <Content Include="images\MessageIcon\MessageError.gif" />
+    <Content Include="images\MessageIcon\MessageHead.gif" />
+    <Content Include="images\MessageIcon\MessageOk.gif" />
+    <Content Include="images\MinLogo.gif" />
+    <Content Include="images\NotImage.gif" />
+    <Content Include="images\right.gif" />
+    <Content Include="images\thead_bg.gif" />
+    <Content Include="images\top-gray.gif" />
+    <Content Include="images\TreeIcon\ftv2blank.gif" />
+    <Content Include="images\TreeIcon\ftv2doc.gif" />
+    <Content Include="images\TreeIcon\ftv2folderclosed.gif" />
+    <Content Include="images\TreeIcon\ftv2folderopen.gif" />
+    <Content Include="images\TreeIcon\ftv2lastnode.gif" />
+    <Content Include="images\TreeIcon\ftv2mlastnode.gif" />
+    <Content Include="images\TreeIcon\ftv2mnode.gif" />
+    <Content Include="images\TreeIcon\ftv2node.gif" />
+    <Content Include="images\TreeIcon\ftv2plastnode.gif" />
+    <Content Include="images\TreeIcon\ftv2pnode.gif" />
+    <Content Include="images\TreeIcon\ftv2vertline.gif" />
+    <Content Include="images\TreeIcon\refurbish.gif" />
+    <Content Include="images\up01.gif" />
+    <Content Include="images\userset.gif" />
+    <Content Include="images\wrong.gif" />
+    <Content Include="MasterPage\PageTemplate.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Standard\GridView.skin" />
+    <Content Include="App_Themes\Standard\AspNetPager.skin" />
+    <Content Include="App_Themes\Standard\DataList.skin" />
+    <None Include="images\logon\Thumbs.db" />
+    <None Include="images\Thumbs.db" />
+    <None Include="images\TreeIcon\Thumbs.db" />
+    <Content Include="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Login.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Configurations\components.xml" />
+    <Content Include="Configurations\facilities.xml" />
+    <Content Include="Css\treeStyle.css" />
+    <Content Include="Default.html" />
+    <Content Include="Global.asax" />
+    <Content Include="images\button_bg.gif" />
+    <Content Include="images\ICON\Asc.gif" />
+    <Content Include="images\ICON\depItem.ico" />
+    <Content Include="images\ICON\depRoot.ico" />
+    <Content Include="images\ICON\Desc.gif" />
+    <Content Include="images\Menu\control_panel.gif" />
+    <Content Include="images\Menu\folder.gif" />
+    <Content Include="images\Menu\folders.gif" />
+    <Content Include="images\SplitterBar\hsplitter.gif" />
+    <Content Include="images\SplitterBar\vsplitter.gif" />
+    <Content Include="js\common.js" />
+    <EmbeddedResource Include="js\TreeViewExtender.js" />
+    <Content Include="js\VwdCmsSplitterBar.js" />
+    <Content Include="MainPage\Default.aspx" />
+    <Content Include="MainPage\Left.aspx" />
+    <Content Include="MainPage\Login.aspx" />
+    <Content Include="MainPage\MessageBoxs.aspx" />
+    <Content Include="MainPage\Right.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\AddPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\EditPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ApplicationManage\ViewPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\DepartmentManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\DictionaryManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\LogEventView\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\MenuManage\AddPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\MenuManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\RoleManage\AddPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\RoleManage\EditPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\RoleManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\RoleManage\ViewPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\AddPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\ShortMessageManage\ViewPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\AddPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\EditPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ListPage.aspx" />
+    <Content Include="Module\FrameWork\SystemApplicationManage\UserGroupManage\ViewPage.aspx" />
+    <Content Include="UC\UCMenuHead.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Powerasp.Enterprise.Core\Powerasp.Enterprise.Core.csproj">
+      <Project>{F17857CE-2487-4727-8BC5-9DDFB3BC201F}</Project>
+      <Name>Powerasp.Enterprise.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="LogFile\" />
+    <Folder Include="Module\FrameWork\SystemApplicationManage\UserManage\" />
+    <Folder Include="Module\FrameWork\SystemMaintenance\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>28255</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

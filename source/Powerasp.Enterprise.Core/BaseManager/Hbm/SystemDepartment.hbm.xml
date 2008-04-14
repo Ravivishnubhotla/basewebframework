@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemDepartment,Powerasp.Enterprise.Core" table="SystemDepartment"  lazy="true"    >
+
+
+		<id name="DepartmentID" column="Department_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<many-to-one name="ParentDepartmentID" column="Parent_Department_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemDepartment,Powerasp.Enterprise.Core" />		
+		<property column="Department_NameCn" type="string" name="DepartmentNameCn"   not-null="true"  length="200" />	
+		<property column="Department_NameEn" type="string" name="DepartmentNameEn"   not-null="true"  length="200" />	
+		<property column="Department_Decription" type="string" name="DepartmentDecription"   length="2000" />	
+
+	</class>
+</hibernate-mapping>

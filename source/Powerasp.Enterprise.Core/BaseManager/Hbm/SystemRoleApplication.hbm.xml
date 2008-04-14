@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemRoleApplication,Powerasp.Enterprise.Core" table="SystemRoleApplication"  lazy="true"    >
+
+
+		<id name="SystemRoleApplicationID" column="SystemRoleApplication_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<many-to-one name="RoleID" column="Role_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemRole,Powerasp.Enterprise.Core" />		
+		<many-to-one name="ApplicationID" column="Application_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemApplication,Powerasp.Enterprise.Core" />		
+
+	</class>
+</hibernate-mapping>

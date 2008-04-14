@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemRole,Powerasp.Enterprise.Core" table="SystemRole"  lazy="true"    >
+
+
+		<id name="RoleID" column="Role_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="Role_Name" type="string" name="RoleName"   length="50" />	
+		<property column="Role_Description" type="string" name="RoleDescription"   length="2000" />	
+		<property column="Role_IsSystemRole" type="Boolean" name="RoleIsSystemRole"   />	
+
+	</class>
+</hibernate-mapping>

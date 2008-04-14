@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Codebehind="PageTemplate.master.cs"
+    Inherits="BaseWebManager.MasterPage.PageTemplate" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>无标题页</title>
+    <link rel="stylesheet" href="../css/Site_Css.css" type="text/css" />
+    <link rel="stylesheet" href="../css/treeStyle.css" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<link rel="stylesheet" id="AdminCssLink" runat="server" type="text/css" />
+<body bgcolor="#FFFFFF" leftmargin="10" topmargin="5" marginheight="0" marginwidth="0">
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="true">
+            <Scripts>
+                <asp:ScriptReference Path="~/js/VwdCmsSplitterBar.js" />
+                <asp:ScriptReference Path="~/js/common.js" />
+                <asp:ScriptReference Path="~/js/TreeViewExtender.js" />
+            </Scripts>
+        </asp:ScriptManager>
+        <asp:ContentPlaceHolder ID="PageBody" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
