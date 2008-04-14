@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemView,Powerasp.Enterprise.Core" table="SystemView"  lazy="true"    >
+
+
+		<id name="SystemViewID" column="SystemView_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="SystemView_NameCn" type="string" name="SystemViewNameCn"   length="10" />	
+		<property column="SystemView_NameEn" type="string" name="SystemViewNameEn"   length="10" />	
+		<many-to-one name="ApplicationID" column="Application_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemApplication,Powerasp.Enterprise.Core" />		
+		<property column="SystemView_Description" type="string" name="SystemViewDescription"   length="10" />	
+
+	</class>
+</hibernate-mapping>

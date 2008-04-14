@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemSetting,Powerasp.Enterprise.Core" table="SystemSetting"  lazy="true"    >
+
+
+		<id name="Id" column="ID" type="Int32"  unsaved-value="0" >
+			<generator class="assigned"/>
+		</id>
+
+
+		<property column="SystemName" type="string" name="SystemName"   not-null="true"  length="200" />	
+		<property column="SystemDescription" type="string" name="SystemDescription"   length="2000" />	
+		<property column="SystemUrl" type="string" name="SystemUrl"   length="200" />	
+		<property column="SystemVersion" type="string" name="SystemVersion"   not-null="true"  length="200" />	
+		<property column="SystemLisence" type="string" name="SystemLisence"   not-null="true"  length="2000" />	
+
+	</class>
+</hibernate-mapping>

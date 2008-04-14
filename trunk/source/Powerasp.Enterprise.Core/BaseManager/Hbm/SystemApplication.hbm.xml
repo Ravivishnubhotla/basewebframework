@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemApplication,Powerasp.Enterprise.Core" table="SystemApplication"  lazy="true"    >
+
+
+		<id name="SystemApplicationID" column="SystemApplication_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="SystemApplication_Name" type="string" name="SystemApplicationName"   not-null="true"  length="200" />	
+		<property column="SystemApplication_Description" type="string" name="SystemApplicationDescription"   length="2000" />	
+		<property column="SystemApplication_Url" type="string" name="SystemApplicationUrl"   length="200" />	
+
+	</class>
+</hibernate-mapping>

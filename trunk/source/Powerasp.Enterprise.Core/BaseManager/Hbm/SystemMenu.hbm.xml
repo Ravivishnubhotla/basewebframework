@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemMenu,Powerasp.Enterprise.Core" table="SystemMenu"  lazy="true"    >
+
+
+		<id name="MenuID" column="Menu_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="Menu_Name" type="string" name="MenuName"   not-null="true"  length="50" />	
+		<property column="Menu_Description" type="string" name="MenuDescription"   length="2000" />	
+		<property column="Menu_Url" type="string" name="MenuUrl"   length="200" />	
+		<property column="Menu_UrlTarget" type="string" name="MenuUrlTarget"   length="200" />	
+		<property column="Menu_IsCategory" type="Boolean" name="MenuIsCategory"   not-null="true"  />	
+		<many-to-one name="ParentMenuID" column="ParentMenu_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemMenu,Powerasp.Enterprise.Core" />		
+		<property column="Menu_Order" type="Int32" name="MenuOrder"   />	
+		<property column="Menu_Type" type="string" name="MenuType"   not-null="true"  length="50" />	
+		<property column="Menu_IsSystemMenu" type="Boolean" name="MenuIsSystemMenu"   />	
+		<property column="Menu_IsEnable" type="Boolean" name="MenuIsEnable"   />	
+		<many-to-one name="ApplicationID" column="ApplicationID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemApplication,Powerasp.Enterprise.Core" />		
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Powerasp.Enterprise.Core", "Powerasp.Enterprise.Core\Powerasp.Enterprise.Core.csproj", "{F17857CE-2487-4727-8BC5-9DDFB3BC201F}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseWebManager", "BaseWebManager\BaseWebManager.csproj", "{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Release|.NET = Release|.NET
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Release|.NET.ActiveCfg = Release|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F17857CE-2487-4727-8BC5-9DDFB3BC201F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Release|.NET.ActiveCfg = Release|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{FBD44B26-6704-45CC-8C5C-AB3B9B8B8B6A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemMoudleField,Powerasp.Enterprise.Core" table="SystemMoudleField"  lazy="true"    >
+
+
+		<id name="SystemMoudleFieldID" column="SystemMoudleField_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="SystemMoudleField_NameEn" type="string" name="SystemMoudleFieldNameEn"   length="200" />	
+		<property column="SystemMoudleField_NameCn" type="string" name="SystemMoudleFieldNameCn"   length="200" />	
+		<property column="SystemMoudleField_NameDb" type="string" name="SystemMoudleFieldNameDb"   length="200" />	
+		<property column="SystemMoudleField_Type" type="string" name="SystemMoudleFieldType"   length="200" />	
+		<property column="SystemMoudleField_IsRequired" type="Boolean" name="SystemMoudleFieldIsRequired"   />	
+		<property column="SystemMoudleField_DefaultValue" type="string" name="SystemMoudleFieldDefaultValue"   length="200" />	
+		<property column="SystemMoudleField_IsKeyField" type="Boolean" name="SystemMoudleFieldIsKeyField"   />	
+		<property column="SystemMoudleField_Size" type="Int32" name="SystemMoudleFieldSize"   />	
+		<property column="SystemMoudleField_Description" type="string" name="SystemMoudleFieldDescription"   length="2000" />	
+		<many-to-one name="SystemMoudleID" column="SystemMoudle_ID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemMoudle,Powerasp.Enterprise.Core" />		
+
+	</class>
+</hibernate-mapping>

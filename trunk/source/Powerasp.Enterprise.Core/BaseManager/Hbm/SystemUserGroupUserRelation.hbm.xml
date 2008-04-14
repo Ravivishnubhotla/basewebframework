@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemUserGroupUserRelation,Powerasp.Enterprise.Core" table="SystemUserGroupUserRelation"  lazy="true"    >
+
+
+		<id name="UserGroupUserID" column="UserGroupUserID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<many-to-one name="UserID" column="UserID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemUser,Powerasp.Enterprise.Core" />		
+		<many-to-one name="UserGroupID" column="UserGroupID" class="Powerasp.Enterprise.Core.BaseManager.Domain.SystemUserGroup,Powerasp.Enterprise.Core" />		
+
+	</class>
+</hibernate-mapping>

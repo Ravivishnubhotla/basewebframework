@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemShortMessage,Powerasp.Enterprise.Core" table="SystemShortMessage"  lazy="true"    >
+
+
+		<id name="ShortMessageID" column="ShortMessage_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="ShortMessage_Title" type="string" name="ShortMessageTitle"   not-null="true"  length="200" />	
+		<property column="ShortMessage_Category" type="string" name="ShortMessageCategory"   length="200" />	
+		<property column="ShortMessage_Content" type="string" name="ShortMessageContent"   length="8000" />	
+		<property column="ShortMessage_Sender" type="string" name="ShortMessageSender"   length="200" />	
+		<property column="ShortMessage_Send_Date" type="DateTime" name="ShortMessageSendDate"   not-null="true"  />	
+		<property column="ShortMessage_Receiver_ID" type="Int32" name="ShortMessageReceiverID"   not-null="true"  />	
+		<property column="ShortMessage_IsRead" type="Boolean" name="ShortMessageIsRead"   not-null="true"  />	
+
+	</class>
+</hibernate-mapping>

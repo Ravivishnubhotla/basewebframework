@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+	<class name="Powerasp.Enterprise.Core.BaseManager.Domain.SystemDictionary,Powerasp.Enterprise.Core" table="SystemDictionary"  lazy="true"    >
+
+
+		<id name="SystemDictionaryID" column="SystemDictionary_ID" type="Int32"  unsaved-value="0" >
+			<generator class="native"/>
+		</id>
+
+
+		<property column="SystemDictionary_CategoryID" type="string" name="SystemDictionaryCategoryID"   length="200" />	
+		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="200" />	
+		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="2000" />	
+		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="2000" />	
+		<property column="SystemDictionary_Order" type="Int32" name="SystemDictionaryOrder"   />	
+		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	
+
+	</class>
+</hibernate-mapping>

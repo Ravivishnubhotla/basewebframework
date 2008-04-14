@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+<components>
+  <!--加载数据层类开始-->
+  <component id="SystemApplicationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemApplicationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemDictionaryDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemDictionaryDao, Powerasp.Enterprise.Core" />
+  <component id="SystemLogDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemLogDao, Powerasp.Enterprise.Core" />
+  <component id="SystemMenuDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemMenuDao, Powerasp.Enterprise.Core" />
+  <component id="SystemMoudleDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemMoudleDao, Powerasp.Enterprise.Core" />
+  <component id="SystemMoudleFieldDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemMoudleFieldDao, Powerasp.Enterprise.Core" />
+  <component id="SystemOperationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemOperationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemPrivilegeDao, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeInRolesDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemPrivilegeInRolesDao, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeParameterDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemPrivilegeParameterDao, Powerasp.Enterprise.Core" />
+  <component id="SystemResourcesDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemResourcesDao, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemRoleDao, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleApplicationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemRoleApplicationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleMenuRelationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemRoleMenuRelationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemShortMessageDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemShortMessageDao, Powerasp.Enterprise.Core" />
+  <component id="SystemUserDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemUserDao, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemUserGroupDao, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupRoleRelationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemUserGroupRoleRelationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemUserRoleRelationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemUserRoleRelationDao, Powerasp.Enterprise.Core" />
+  <component id="SystemViewDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemViewDao, Powerasp.Enterprise.Core" />
+  <component id="SystemViewItemDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemViewItemDao, Powerasp.Enterprise.Core" />
+  <component id="SystemSettingDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemSettingDao, Powerasp.Enterprise.Core" />
+  <component id="SystemDepartmentDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemDepartmentDao, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupUserRelationDaoInstance" type="Powerasp.Enterprise.Core.BaseManager.Dao.SystemUserGroupUserRelationDao, Powerasp.Enterprise.Core" />
+  <!--加载数据层类结束-->
+  <!--加载服务层类开始-->
+  <component id="SystemApplicationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemApplicationService, Powerasp.Enterprise.Core" />
+  <component id="SystemDictionaryServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemDictionaryService, Powerasp.Enterprise.Core" />
+  <component id="SystemLogServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemLogService, Powerasp.Enterprise.Core" />
+  <component id="SystemMenuServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemMenuService, Powerasp.Enterprise.Core" />
+  <component id="SystemMoudleServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemMoudleService, Powerasp.Enterprise.Core" />
+  <component id="SystemMoudleFieldServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemMoudleFieldService, Powerasp.Enterprise.Core" />
+  <component id="SystemOperationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemOperationService, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemPrivilegeService, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeInRolesServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemPrivilegeInRolesService, Powerasp.Enterprise.Core" />
+  <component id="SystemPrivilegeParameterServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemPrivilegeParameterService, Powerasp.Enterprise.Core" />
+  <component id="SystemResourcesServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemResourcesService, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemRoleService, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleApplicationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemRoleApplicationService, Powerasp.Enterprise.Core" />
+  <component id="SystemRoleMenuRelationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemRoleMenuRelationService, Powerasp.Enterprise.Core" />
+  <component id="SystemShortMessageServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemShortMessageService, Powerasp.Enterprise.Core" />
+  <component id="SystemUserServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemUserService, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemUserGroupService, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupRoleRelationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemUserGroupRoleRelationService, Powerasp.Enterprise.Core" />
+  <component id="SystemUserRoleRelationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemUserRoleRelationService, Powerasp.Enterprise.Core" />
+  <component id="SystemViewServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemViewService, Powerasp.Enterprise.Core" />
+  <component id="SystemViewItemServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemViewItemService, Powerasp.Enterprise.Core" />
+  <component id="SystemSettingServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemSettingService, Powerasp.Enterprise.Core" />
+  <component id="SystemDepartmentServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemDepartmentService, Powerasp.Enterprise.Core" />
+  <component id="SystemUserGroupUserRelationServiceInstance" type="Powerasp.Enterprise.Core.BaseManager.Service.SystemUserGroupUserRelationService, Powerasp.Enterprise.Core" />
+  <!--加载服务层类结束-->
+</components>
+</configuration>

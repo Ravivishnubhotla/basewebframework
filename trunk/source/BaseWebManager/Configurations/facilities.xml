@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <facilities>
+    <!--加载自动事务组件-->
+    <facility id="transactions"
+                type="Castle.Facilities.AutomaticTransactionManagement.TransactionFacility, Castle.Facilities.AutomaticTransactionManagement" />
+    <!--加载NHibernateIntegration组件-->
+    <facility
+      id="nhibernatefacility"
+      type="Powerasp.Enterprise.Core.Castle.NHibernateIntergeration.NHibernateFacility, Powerasp.Enterprise.Core">
+
+      <factory id="sessionFactory1" isWeb="true" useReflectionOptimizer="true">
+        <settings>
+          <item key="hibernate.connection.provider">NHibernate.Connection.DriverConnectionProvider</item>
+          <item key="hibernate.connection.driver_class">NHibernate.Driver.SqlClientDriver</item>
+          <item key="hibernate.connection.connection_string">Data Source=.\SQLEXPRESS;Initial Catalog=WebSiteAdministratorDb;Integrated Security=SSPI</item>
+          <item key="hibernate.dialect">NHibernate.Dialect.MsSql2005Dialect</item>
+          <item key="hibernate.use_proxy_validator" >true</item>
+          <item key="hibernate.show_sql" >true</item>
+          <item key="hibernate.format_sql" >true</item>
+        </settings>
+        <!--加载配置文件-->
+        <assemblies>
+          <assembly>Powerasp.Enterprise.Core</assembly>
+        </assemblies>
+      </factory>
+
+    </facility>
+
+  </facilities>
+</configuration>
