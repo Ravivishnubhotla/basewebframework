@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Powerasp.Enterprise.Core.Test
 {
-    class Test
+    public class Test
     {
+
     }
 }
