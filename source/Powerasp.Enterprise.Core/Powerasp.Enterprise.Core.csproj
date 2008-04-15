@@ -544,7 +544,6 @@
     <Compile Include="Compress\SevenZip\ICoder.cs" />
     <Compile Include="Compress\SevenZip\SevenZipCodeHelper.cs" />
     <Compile Include="CustomException\DataValidationException.cs" />
-    <Compile Include="Test\Test.cs" />
     <Compile Include="Utility\FieldInfoCollection.cs" />
     <Compile Include="Castle\NHibernateIntergeration\Constants.cs" />
     <Compile Include="Castle\NHibernateIntergeration\IConnectionStringProvider.cs" />
