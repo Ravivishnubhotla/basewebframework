@@ -18,50 +18,32 @@ namespace BaseWebManager.Module.FrameWork.SystemApplicationManage.LogEventView {
     /// Auto-generated class.
     /// </remarks>
     public partial class ListPage {
-        
+              
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManagerProxy ScriptManagerProxy1;
-        
+        protected global::System.Web.UI.WebControls.GridView systemLogGridView;
+
         /// <summary>
-        /// UpdatePanel1 control.
+        /// Pager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
+        protected global::Wuqi.Webdiyer.AspNetPager Pager;
+
         /// <summary>
-        /// GridView1 control.
+        /// TabContainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// GridViewAddRowExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Powerasp.Enterprise.Core.Web.UI.WebControls.GridViewAddRowExtender GridViewAddRowExtender1;
+        protected global::AjaxControlToolkit.TabContainer tabList;
     }
 }
