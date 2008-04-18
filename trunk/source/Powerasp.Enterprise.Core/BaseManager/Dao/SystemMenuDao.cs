@@ -32,6 +32,7 @@ namespace Powerasp.Enterprise.Core.BaseManager.Dao
                 menuCriteria.Add(SystemMenuDao.PROPERTY_APPLICATIONID.IsNull());
             else
                 menuCriteria.Add(SystemMenuDao.PROPERTY_APPLICATIONID.Eq(app));
+
             if (parentMenu == null)
                 menuCriteria.Add(SystemMenuDao.PROPERTY_PARENTMENUID.IsNull());
             else
