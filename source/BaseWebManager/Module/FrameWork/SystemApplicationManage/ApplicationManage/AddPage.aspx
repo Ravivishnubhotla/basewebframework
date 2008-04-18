@@ -41,7 +41,7 @@
                                         应用程序名称:</td>
                                     <td class="table_none" colspan="3">
                                         <asp:TextBox ID="txtSystemApplicationName" ToolTip="输入应用程序名称" MaxLength='200' runat="server"
-                                            ValidationGroup="vgApplication"></asp:TextBox>&nbsp;</td>
+                                            ValidationGroup="vgApplication"></asp:TextBox>&nbsp;&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 15%;" class="table_body" align="left">
