@@ -128,7 +128,7 @@ namespace Powerasp.Enterprise.Core.Business
             return selfDao.FindAll(criterias, sortItems, firstRow, maxRows, out recordCount);
         }
 
-        public List<T> GetAll(string orderFieldName,bool isAsc,int firstRow, int maxRows, out int recordCount)
+        protected List<T> GetAll(string orderFieldName,bool isAsc,int firstRow, int maxRows, out int recordCount)
         {
             List<Order> orders = new List<Order>();
             orders.Add(new Order(orderFieldName, isAsc));
