@@ -1,0 +1,871 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDDD79A6-541A-487E-A2A6-8D49700761F2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PhotoAblum.Web</RootNamespace>
+    <AssemblyName>PhotoAblum.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNetPager, Version=7.3.0.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\AspNetPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.1, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Coolite.Ext.Web, Version=0.8.2.983, Culture=neutral, PublicKeyToken=f58c952e9aa5b80a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Coolite.Ext.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="coolite\coolite-core-debug.js" />
+    <Content Include="coolite\coolite-core.js" />
+    <Content Include="coolite\coolite-data-debug.js" />
+    <Content Include="coolite\coolite-data.js" />
+    <Content Include="coolite\core\ajax\Ajax.js" />
+    <Content Include="coolite\core\ajax\AjaxEvent.js" />
+    <Content Include="coolite\core\ajax\AjaxMethod.js" />
+    <Content Include="coolite\core\BoxComponent.js" />
+    <Content Include="coolite\core\buttons\Button.js" />
+    <Content Include="coolite\core\buttons\CycleButton.js" />
+    <Content Include="coolite\core\buttons\ImageButton.js" />
+    <Content Include="coolite\core\buttons\LinkButton.js" />
+    <Content Include="coolite\core\ColorPalette.js" />
+    <Content Include="coolite\core\Component.js" />
+    <Content Include="coolite\core\DatePicker.js" />
+    <Content Include="coolite\core\dd\DragSource.js" />
+    <Content Include="coolite\core\Editor.js" />
+    <Content Include="coolite\core\Element.js" />
+    <Content Include="coolite\core\form\BasicForm.js" />
+    <Content Include="coolite\core\form\Checkbox.js" />
+    <Content Include="coolite\core\form\ComboBox.js" />
+    <Content Include="coolite\core\form\DateField.js" />
+    <Content Include="coolite\core\form\Field.js" />
+    <Content Include="coolite\core\form\FileUploadField.js" />
+    <Content Include="coolite\core\form\FormPanel.js" />
+    <Content Include="coolite\core\form\Hidden.js" />
+    <Content Include="coolite\core\form\HtmlEditor.js" />
+    <Content Include="coolite\core\form\HyperLink.js" />
+    <Content Include="coolite\core\form\Image.js" />
+    <Content Include="coolite\core\form\Label.js" />
+    <Content Include="coolite\core\form\MultiField.js" />
+    <Content Include="coolite\core\form\NumberField.js" />
+    <Content Include="coolite\core\form\TextArea.js" />
+    <Content Include="coolite\core\form\TextField.js" />
+    <Content Include="coolite\core\form\TriggerComboBox.js" />
+    <Content Include="coolite\core\form\TriggerField.js" />
+    <Content Include="coolite\core\init\End.js" />
+    <Content Include="coolite\core\init\Start.js" />
+    <Content Include="coolite\core\layout\AnchorLayout.js" />
+    <Content Include="coolite\core\layout\CenterLayout.js" />
+    <Content Include="coolite\core\layout\ColumnLayout.js" />
+    <Content Include="coolite\core\layout\ContainerLayout.js" />
+    <Content Include="coolite\core\layout\FitLayout.js" />
+    <Content Include="coolite\core\layout\FormLayout.js" />
+    <Content Include="coolite\core\layout\RowLayout.js" />
+    <Content Include="coolite\core\menu\CheckItem.js" />
+    <Content Include="coolite\core\menu\ColorItem.js" />
+    <Content Include="coolite\core\menu\ColorMenu.js" />
+    <Content Include="coolite\core\menu\ComboMenuItem.js" />
+    <Content Include="coolite\core\menu\DateFieldMenuItem.js" />
+    <Content Include="coolite\core\menu\DateItem.js" />
+    <Content Include="coolite\core\menu\DateMenu.js" />
+    <Content Include="coolite\core\menu\EditMenuItem.js" />
+    <Content Include="coolite\core\menu\ElementMenuItem.js" />
+    <Content Include="coolite\core\menu\HtmlElement.js" />
+    <Content Include="coolite\core\menu\Menu.js" />
+    <Content Include="coolite\core\menu\MenuPanel.js" />
+    <Content Include="coolite\core\Panel.js" />
+    <Content Include="coolite\core\Slider.js" />
+    <Content Include="coolite\core\TabPanel.js" />
+    <Content Include="coolite\core\tips\ToolTip.js" />
+    <Content Include="coolite\core\toolbar\ToolbarItem.js" />
+    <Content Include="coolite\core\toolbar\ToolbarSpacer.js" />
+    <Content Include="coolite\core\toolbar\ToolbarTextItem.js" />
+    <Content Include="coolite\core\tree\AsyncTreeNode.js" />
+    <Content Include="coolite\core\tree\PageTreeLoader.js" />
+    <Content Include="coolite\core\tree\TreeLoader.js" />
+    <Content Include="coolite\core\tree\TreeNode.js" />
+    <Content Include="coolite\core\tree\TreeNodeUI.js" />
+    <Content Include="coolite\core\tree\TreePanel.js" />
+    <Content Include="coolite\core\tree\WebServiceTreeLoader.js" />
+    <Content Include="coolite\core\utils\History.js" />
+    <Content Include="coolite\core\utils\Mask.js" />
+    <Content Include="coolite\core\utils\Notification.js" />
+    <Content Include="coolite\core\utils\Observable.js" />
+    <Content Include="coolite\core\utils\TaskManager.js" />
+    <Content Include="coolite\core\utils\Utils.js" />
+    <Content Include="coolite\core\utils\VTypes.js" />
+    <Content Include="coolite\core\Viewport.js" />
+    <Content Include="coolite\core\Window.js" />
+    <Content Include="coolite\data\ArrayReader.js" />
+    <Content Include="coolite\data\CellCommands.js" />
+    <Content Include="coolite\data\CheckboxSelectionModel.js" />
+    <Content Include="coolite\data\CheckColumn.js" />
+    <Content Include="coolite\data\ColumnModel.js" />
+    <Content Include="coolite\data\CommandColumn.js" />
+    <Content Include="coolite\data\DataSourceProxy.js" />
+    <Content Include="coolite\data\GridEditor.js" />
+    <Content Include="coolite\data\GridPanel.js" />
+    <Content Include="coolite\data\GridView.js" />
+    <Content Include="coolite\data\GroupingStore.js" />
+    <Content Include="coolite\data\GroupingView.js" />
+    <Content Include="coolite\data\HttpProxy.js" />
+    <Content Include="coolite\data\HttpWriteProxy.js" />
+    <Content Include="coolite\data\ImageCommandColumn.js" />
+    <Content Include="coolite\data\init\End.js" />
+    <Content Include="coolite\data\init\Start.js" />
+    <Content Include="coolite\data\NumericPagingToolbar.js" />
+    <Content Include="coolite\data\PagingMemoryProxy.js" />
+    <Content Include="coolite\data\PagingStore.js" />
+    <Content Include="coolite\data\PagingToolbar.js" />
+    <Content Include="coolite\data\PropertyGrid.js" />
+    <Content Include="coolite\data\RowExpander.js" />
+    <Content Include="coolite\data\RowNumberer.js" />
+    <Content Include="coolite\data\RowSelectionModel.js" />
+    <Content Include="coolite\data\SaveMask.js" />
+    <Content Include="coolite\data\Store.js" />
+    <Content Include="coolite\data\TableGrid.js" />
+    <Content Include="coolite\intellisense.js" />
+    <Content Include="coolite\readme.txt" />
+    <Content Include="Default.aspx" />
+    <Content Include="extjs\adapter\ext\ext-base.js" />
+    <Content Include="extjs\adapter\jquery\ext-jquery-adapter.js" />
+    <Content Include="extjs\adapter\jquery\jquery.js" />
+    <Content Include="extjs\adapter\prototype\effects.js" />
+    <Content Include="extjs\adapter\prototype\ext-prototype-adapter.js" />
+    <Content Include="extjs\adapter\prototype\prototype.js" />
+    <Content Include="extjs\adapter\prototype\scriptaculous.js" />
+    <Content Include="extjs\adapter\yui\ext-yui-adapter.js" />
+    <Content Include="extjs\adapter\yui\yui-utilities.js" />
+    <Content Include="extjs\ext-all-debug.js" />
+    <Content Include="extjs\ext-all.js" />
+    <Content Include="extjs\ext-core-debug.js" />
+    <Content Include="extjs\ext-core.js" />
+    <Content Include="extjs\locale\ext-lang-af.js" />
+    <Content Include="extjs\locale\ext-lang-bg.js" />
+    <Content Include="extjs\locale\ext-lang-ca.js" />
+    <Content Include="extjs\locale\ext-lang-cs.js" />
+    <Content Include="extjs\locale\ext-lang-da.js" />
+    <Content Include="extjs\locale\ext-lang-de.js" />
+    <Content Include="extjs\locale\ext-lang-el-GR.js" />
+    <Content Include="extjs\locale\ext-lang-en-GB.js" />
+    <Content Include="extjs\locale\ext-lang-en.js" />
+    <Content Include="extjs\locale\ext-lang-es.js" />
+    <Content Include="extjs\locale\ext-lang-fa.js" />
+    <Content Include="extjs\locale\ext-lang-fi.js" />
+    <Content Include="extjs\locale\ext-lang-fr-CA.js" />
+    <Content Include="extjs\locale\ext-lang-fr.js" />
+    <Content Include="extjs\locale\ext-lang-gr.js" />
+    <Content Include="extjs\locale\ext-lang-he.js" />
+    <Content Include="extjs\locale\ext-lang-hr.js" />
+    <Content Include="extjs\locale\ext-lang-hu.js" />
+    <Content Include="extjs\locale\ext-lang-id.js" />
+    <Content Include="extjs\locale\ext-lang-it.js" />
+    <Content Include="extjs\locale\ext-lang-ja.js" />
+    <Content Include="extjs\locale\ext-lang-ko.js" />
+    <Content Include="extjs\locale\ext-lang-lt.js" />
+    <Content Include="extjs\locale\ext-lang-lv.js" />
+    <Content Include="extjs\locale\ext-lang-mk.js" />
+    <Content Include="extjs\locale\ext-lang-nl.js" />
+    <Content Include="extjs\locale\ext-lang-nn-NO.js" />
+    <Content Include="extjs\locale\ext-lang-no-NB.js" />
+    <Content Include="extjs\locale\ext-lang-no-NN.js" />
+    <Content Include="extjs\locale\ext-lang-no.js" />
+    <Content Include="extjs\locale\ext-lang-pl.js" />
+    <Content Include="extjs\locale\ext-lang-pt-BR.js" />
+    <Content Include="extjs\locale\ext-lang-pt-PT.js" />
+    <Content Include="extjs\locale\ext-lang-pt.js" />
+    <Content Include="extjs\locale\ext-lang-ro.js" />
+    <Content Include="extjs\locale\ext-lang-ru.js" />
+    <Content Include="extjs\locale\ext-lang-sk.js" />
+    <Content Include="extjs\locale\ext-lang-sl.js" />
+    <Content Include="extjs\locale\ext-lang-sr-Cyrl-CS.js" />
+    <Content Include="extjs\locale\ext-lang-sr-RS.js" />
+    <Content Include="extjs\locale\ext-lang-sr.js" />
+    <Content Include="extjs\locale\ext-lang-sv-SE.js" />
+    <Content Include="extjs\locale\ext-lang-th.js" />
+    <Content Include="extjs\locale\ext-lang-tr.js" />
+    <Content Include="extjs\locale\ext-lang-uk.js" />
+    <Content Include="extjs\locale\ext-lang-ukr.js" />
+    <Content Include="extjs\locale\ext-lang-vi.js" />
+    <Content Include="extjs\locale\ext-lang-vn.js" />
+    <Content Include="extjs\locale\ext-lang-zh-CN.js" />
+    <Content Include="extjs\locale\ext-lang-zh-TW.js" />
+    <Content Include="extjs\resources\css\ext-all-embedded.css" />
+    <Content Include="extjs\resources\css\ext-all.css" />
+    <Content Include="extjs\resources\css\xtheme-gray-embedded.css" />
+    <Content Include="extjs\resources\css\xtheme-gray.css" />
+    <Content Include="extjs\resources\css\xtheme-slate-embedded.css" />
+    <Content Include="extjs\resources\css\xtheme-slate.css" />
+    <Content Include="extjs\resources\images\default\box\corners-blue.gif" />
+    <Content Include="extjs\resources\images\default\box\corners.gif" />
+    <Content Include="extjs\resources\images\default\box\l-blue.gif" />
+    <Content Include="extjs\resources\images\default\box\l.gif" />
+    <Content Include="extjs\resources\images\default\box\r-blue.gif" />
+    <Content Include="extjs\resources\images\default\box\r.gif" />
+    <Content Include="extjs\resources\images\default\box\tb-blue.gif" />
+    <Content Include="extjs\resources\images\default\box\tb.gif" />
+    <Content Include="extjs\resources\images\default\button\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\default\button\btn-sprite.gif" />
+    <Content Include="extjs\resources\images\default\dd\drop-add.gif" />
+    <Content Include="extjs\resources\images\default\dd\drop-no.gif" />
+    <Content Include="extjs\resources\images\default\dd\drop-yes.gif" />
+    <Content Include="extjs\resources\images\default\editor\tb-sprite.gif" />
+    <Content Include="extjs\resources\images\default\form\checkbox.gif" />
+    <Content Include="extjs\resources\images\default\form\clear-trigger.gif" />
+    <Content Include="extjs\resources\images\default\form\date-trigger.gif" />
+    <Content Include="extjs\resources\images\default\form\error-tip-corners.gif" />
+    <Content Include="extjs\resources\images\default\form\exclamation.gif" />
+    <Content Include="extjs\resources\images\default\form\radio.gif" />
+    <Content Include="extjs\resources\images\default\form\search-trigger.gif" />
+    <Content Include="extjs\resources\images\default\form\text-bg.gif" />
+    <Content Include="extjs\resources\images\default\form\trigger-tpl.gif" />
+    <Content Include="extjs\resources\images\default\form\trigger.gif" />
+    <Content Include="extjs\resources\images\default\gradient-bg.gif" />
+    <Content Include="extjs\resources\images\default\grid\arrow-left-white.gif" />
+    <Content Include="extjs\resources\images\default\grid\arrow-right-white.gif" />
+    <Content Include="extjs\resources\images\default\grid\col-move-bottom.gif" />
+    <Content Include="extjs\resources\images\default\grid\col-move-top.gif" />
+    <Content Include="extjs\resources\images\default\grid\columns.gif" />
+    <Content Include="extjs\resources\images\default\grid\dirty.gif" />
+    <Content Include="extjs\resources\images\default\grid\done.gif" />
+    <Content Include="extjs\resources\images\default\grid\drop-no.gif" />
+    <Content Include="extjs\resources\images\default\grid\drop-yes.gif" />
+    <Content Include="extjs\resources\images\default\grid\footer-bg.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-blue-hd.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-blue-split.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-hrow.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-loading.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-split.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid-vista-hd.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid3-hd-btn.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid3-hrow-over.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid3-hrow.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid3-special-col-bg.gif" />
+    <Content Include="extjs\resources\images\default\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="extjs\resources\images\default\grid\group-by.gif" />
+    <Content Include="extjs\resources\images\default\grid\group-expand-sprite.gif" />
+    <Content Include="extjs\resources\images\default\grid\hd-pop.gif" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-asc.gif" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-desc.gif" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-lock.gif" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-lock.png" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-unlock.gif" />
+    <Content Include="extjs\resources\images\default\grid\hmenu-unlock.png" />
+    <Content Include="extjs\resources\images\default\grid\invalid_line.gif" />
+    <Content Include="extjs\resources\images\default\grid\loading.gif" />
+    <Content Include="extjs\resources\images\default\grid\mso-hd.gif" />
+    <Content Include="extjs\resources\images\default\grid\nowait.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-first-disabled.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-first.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-last-disabled.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-last.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-next-disabled.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-next.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-prev-disabled.gif" />
+    <Content Include="extjs\resources\images\default\grid\page-prev.gif" />
+    <Content Include="extjs\resources\images\default\grid\pick-button.gif" />
+    <Content Include="extjs\resources\images\default\grid\refresh.gif" />
+    <Content Include="extjs\resources\images\default\grid\row-check-sprite.gif" />
+    <Content Include="extjs\resources\images\default\grid\row-expand-sprite.gif" />
+    <Content Include="extjs\resources\images\default\grid\row-over.gif" />
+    <Content Include="extjs\resources\images\default\grid\row-sel.gif" />
+    <Content Include="extjs\resources\images\default\grid\sort_asc.gif" />
+    <Content Include="extjs\resources\images\default\grid\sort_desc.gif" />
+    <Content Include="extjs\resources\images\default\grid\wait.gif" />
+    <Content Include="extjs\resources\images\default\layout\collapse.gif" />
+    <Content Include="extjs\resources\images\default\layout\expand.gif" />
+    <Content Include="extjs\resources\images\default\layout\gradient-bg.gif" />
+    <Content Include="extjs\resources\images\default\layout\mini-bottom.gif" />
+    <Content Include="extjs\resources\images\default\layout\mini-left.gif" />
+    <Content Include="extjs\resources\images\default\layout\mini-right.gif" />
+    <Content Include="extjs\resources\images\default\layout\mini-top.gif" />
+    <Content Include="extjs\resources\images\default\layout\ns-collapse.gif" />
+    <Content Include="extjs\resources\images\default\layout\ns-expand.gif" />
+    <Content Include="extjs\resources\images\default\layout\panel-close.gif" />
+    <Content Include="extjs\resources\images\default\layout\panel-title-bg.gif" />
+    <Content Include="extjs\resources\images\default\layout\panel-title-light-bg.gif" />
+    <Content Include="extjs\resources\images\default\layout\stick.gif" />
+    <Content Include="extjs\resources\images\default\layout\stuck.gif" />
+    <Content Include="extjs\resources\images\default\layout\tab-close-on.gif" />
+    <Content Include="extjs\resources\images\default\layout\tab-close.gif" />
+    <Content Include="extjs\resources\images\default\menu\checked.gif" />
+    <Content Include="extjs\resources\images\default\menu\group-checked.gif" />
+    <Content Include="extjs\resources\images\default\menu\item-over.gif" />
+    <Content Include="extjs\resources\images\default\menu\menu-parent.gif" />
+    <Content Include="extjs\resources\images\default\menu\menu.gif" />
+    <Content Include="extjs\resources\images\default\menu\unchecked.gif" />
+    <Content Include="extjs\resources\images\default\panel\corners-sprite.gif" />
+    <Content Include="extjs\resources\images\default\panel\left-right.gif" />
+    <Content Include="extjs\resources\images\default\panel\light-hd.gif" />
+    <Content Include="extjs\resources\images\default\panel\tool-sprite-tpl.gif" />
+    <Content Include="extjs\resources\images\default\panel\tool-sprites.gif" />
+    <Content Include="extjs\resources\images\default\panel\tools-sprites-trans.gif" />
+    <Content Include="extjs\resources\images\default\panel\top-bottom.gif" />
+    <Content Include="extjs\resources\images\default\panel\top-bottom.png" />
+    <Content Include="extjs\resources\images\default\panel\white-corners-sprite.gif" />
+    <Content Include="extjs\resources\images\default\panel\white-left-right.gif" />
+    <Content Include="extjs\resources\images\default\panel\white-top-bottom.gif" />
+    <Content Include="extjs\resources\images\default\progress\progress-bg.gif" />
+    <Content Include="extjs\resources\images\default\qtip\bg.gif" />
+    <Content Include="extjs\resources\images\default\qtip\close.gif" />
+    <Content Include="extjs\resources\images\default\qtip\tip-sprite.gif" />
+    <Content Include="extjs\resources\images\default\s.gif" />
+    <Content Include="extjs\resources\images\default\shadow-c.png" />
+    <Content Include="extjs\resources\images\default\shadow-lr.png" />
+    <Content Include="extjs\resources\images\default\shadow.png" />
+    <Content Include="extjs\resources\images\default\shared\blue-loading.gif" />
+    <Content Include="extjs\resources\images\default\shared\calendar.gif" />
+    <Content Include="extjs\resources\images\default\shared\glass-bg.gif" />
+    <Content Include="extjs\resources\images\default\shared\hd-sprite.gif" />
+    <Content Include="extjs\resources\images\default\shared\large-loading.gif" />
+    <Content Include="extjs\resources\images\default\shared\left-btn.gif" />
+    <Content Include="extjs\resources\images\default\shared\loading-balls.gif" />
+    <Content Include="extjs\resources\images\default\shared\right-btn.gif" />
+    <Content Include="extjs\resources\images\default\shared\warning.gif" />
+    <Content Include="extjs\resources\images\default\sizer\e-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\e-handle.gif" />
+    <Content Include="extjs\resources\images\default\sizer\ne-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\ne-handle.gif" />
+    <Content Include="extjs\resources\images\default\sizer\nw-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\nw-handle.gif" />
+    <Content Include="extjs\resources\images\default\sizer\s-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\s-handle.gif" />
+    <Content Include="extjs\resources\images\default\sizer\se-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\se-handle.gif" />
+    <Content Include="extjs\resources\images\default\sizer\square.gif" />
+    <Content Include="extjs\resources\images\default\sizer\sw-handle-dark.gif" />
+    <Content Include="extjs\resources\images\default\sizer\sw-handle.gif" />
+    <Content Include="extjs\resources\images\default\slider\slider-bg.png" />
+    <Content Include="extjs\resources\images\default\slider\slider-thumb.png" />
+    <Content Include="extjs\resources\images\default\slider\slider-v-bg.png" />
+    <Content Include="extjs\resources\images\default\slider\slider-v-thumb.png" />
+    <Content Include="extjs\resources\images\default\tabs\scroll-left.gif" />
+    <Content Include="extjs\resources\images\default\tabs\scroll-right.gif" />
+    <Content Include="extjs\resources\images\default\tabs\scroller-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-btm-left-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-btm-right-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-close.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-strip-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tab-strip-bg.png" />
+    <Content Include="extjs\resources\images\default\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="extjs\resources\images\default\tabs\tabs-sprite.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\bg.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\btn-arrow-light.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\btn-over-bg.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\gray-bg.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\tb-bg.gif" />
+    <Content Include="extjs\resources\images\default\toolbar\tb-btn-sprite.gif" />
+    <Content Include="extjs\resources\images\default\tree\arrows.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-add.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-between.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-no.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-over.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-under.gif" />
+    <Content Include="extjs\resources\images\default\tree\drop-yes.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-end-minus-nl.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-end-minus.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-end-plus-nl.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-end-plus.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-end.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-line.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-minus-nl.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-minus.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-plus-nl.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow-plus.gif" />
+    <Content Include="extjs\resources\images\default\tree\elbow.gif" />
+    <Content Include="extjs\resources\images\default\tree\folder-open.gif" />
+    <Content Include="extjs\resources\images\default\tree\folder.gif" />
+    <Content Include="extjs\resources\images\default\tree\leaf.gif" />
+    <Content Include="extjs\resources\images\default\tree\loading.gif" />
+    <Content Include="extjs\resources\images\default\tree\s.gif" />
+    <Content Include="extjs\resources\images\default\window\icon-error.gif" />
+    <Content Include="extjs\resources\images\default\window\icon-info.gif" />
+    <Content Include="extjs\resources\images\default\window\icon-question.gif" />
+    <Content Include="extjs\resources\images\default\window\icon-warning.gif" />
+    <Content Include="extjs\resources\images\default\window\left-corners.png" />
+    <Content Include="extjs\resources\images\default\window\left-right.png" />
+    <Content Include="extjs\resources\images\default\window\right-corners.png" />
+    <Content Include="extjs\resources\images\default\window\top-bottom.png" />
+    <Content Include="extjs\resources\images\gray\button\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\gray\button\btn-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\gradient-bg.gif" />
+    <Content Include="extjs\resources\images\gray\panel\corners-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\panel\left-right.gif" />
+    <Content Include="extjs\resources\images\gray\panel\light-hd.gif" />
+    <Content Include="extjs\resources\images\gray\panel\tool-sprite-tpl.gif" />
+    <Content Include="extjs\resources\images\gray\panel\tool-sprites.gif" />
+    <Content Include="extjs\resources\images\gray\panel\tools-sprites-trans.gif" />
+    <Content Include="extjs\resources\images\gray\panel\top-bottom.gif" />
+    <Content Include="extjs\resources\images\gray\panel\top-bottom.png" />
+    <Content Include="extjs\resources\images\gray\panel\white-corners-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\panel\white-left-right.gif" />
+    <Content Include="extjs\resources\images\gray\panel\white-top-bottom.gif" />
+    <Content Include="extjs\resources\images\gray\qtip\bg.gif" />
+    <Content Include="extjs\resources\images\gray\qtip\close.gif" />
+    <Content Include="extjs\resources\images\gray\qtip\tip-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\s.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\scroll-left.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\scroll-right.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\scroller-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-btm-left-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-btm-right-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-close.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-strip-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-strip-bg.png" />
+    <Content Include="extjs\resources\images\gray\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="extjs\resources\images\gray\tabs\tabs-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\bg.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\btn-arrow-light.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\btn-over-bg.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\gray-bg.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\tb-bg.gif" />
+    <Content Include="extjs\resources\images\gray\toolbar\tb-btn-sprite.gif" />
+    <Content Include="extjs\resources\images\gray\window\icon-error.gif" />
+    <Content Include="extjs\resources\images\gray\window\icon-info.gif" />
+    <Content Include="extjs\resources\images\gray\window\icon-question.gif" />
+    <Content Include="extjs\resources\images\gray\window\icon-warning.gif" />
+    <Content Include="extjs\resources\images\gray\window\left-corners.png" />
+    <Content Include="extjs\resources\images\gray\window\left-right.png" />
+    <Content Include="extjs\resources\images\gray\window\right-corners.png" />
+    <Content Include="extjs\resources\images\gray\window\top-bottom.png" />
+    <Content Include="extjs\resources\images\slate\box\tb-blue.gif" />
+    <Content Include="extjs\resources\images\slate\button\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\slate\button\btn-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\editor\tb-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\form\checkbox.gif" />
+    <Content Include="extjs\resources\images\slate\form\clear-trigger.gif" />
+    <Content Include="extjs\resources\images\slate\form\date-trigger.gif" />
+    <Content Include="extjs\resources\images\slate\form\radio.gif" />
+    <Content Include="extjs\resources\images\slate\form\search-trigger.gif" />
+    <Content Include="extjs\resources\images\slate\form\trigger-tpl.gif" />
+    <Content Include="extjs\resources\images\slate\form\trigger.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid-split.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid3-hd-btn.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid3-hrow-over.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid3-hrow.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid3-special-col-bg.gif" />
+    <Content Include="extjs\resources\images\slate\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-first-disabled.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-first.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-last-disabled.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-last.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-next.gif" />
+    <Content Include="extjs\resources\images\slate\grid\page-prev.gif" />
+    <Content Include="extjs\resources\images\slate\grid\refresh.gif" />
+    <Content Include="extjs\resources\images\slate\grid\sort_asc.gif" />
+    <Content Include="extjs\resources\images\slate\grid\sort_desc.gif" />
+    <Content Include="extjs\resources\images\slate\menu\checked.gif" />
+    <Content Include="extjs\resources\images\slate\menu\group-checked.gif" />
+    <Content Include="extjs\resources\images\slate\menu\item-over.gif" />
+    <Content Include="extjs\resources\images\slate\menu\menu-parent.gif" />
+    <Content Include="extjs\resources\images\slate\menu\menu.gif" />
+    <Content Include="extjs\resources\images\slate\menu\unchecked.gif" />
+    <Content Include="extjs\resources\images\slate\panel\corners-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\panel\left-right.gif" />
+    <Content Include="extjs\resources\images\slate\panel\light-hd.gif" />
+    <Content Include="extjs\resources\images\slate\panel\tool-sprite-tpl.gif" />
+    <Content Include="extjs\resources\images\slate\panel\tool-sprites.gif" />
+    <Content Include="extjs\resources\images\slate\panel\top-bottom.gif" />
+    <Content Include="extjs\resources\images\slate\panel\top-bottom.png" />
+    <Content Include="extjs\resources\images\slate\panel\white-corners-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\panel\white-left-right.gif" />
+    <Content Include="extjs\resources\images\slate\panel\white-top-bottom.gif" />
+    <Content Include="extjs\resources\images\slate\progress\progress-bg.gif" />
+    <Content Include="extjs\resources\images\slate\qtip\bg.gif" />
+    <Content Include="extjs\resources\images\slate\qtip\close.gif" />
+    <Content Include="extjs\resources\images\slate\qtip\tip-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\s.gif" />
+    <Content Include="extjs\resources\images\slate\shared\glass-bg.gif" />
+    <Content Include="extjs\resources\images\slate\shared\hd-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\shared\left-btn.gif" />
+    <Content Include="extjs\resources\images\slate\shared\right-btn.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\e-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\e-handle.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\ne-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\ne-handle.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\nw-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\nw-handle.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\s-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\s-handle.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\se-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\se-handle.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\square.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\sw-handle-dark.gif" />
+    <Content Include="extjs\resources\images\slate\sizer\sw-handle.gif" />
+    <Content Include="extjs\resources\images\slate\slider\slider-bg.png" />
+    <Content Include="extjs\resources\images\slate\slider\slider-thumb.png" />
+    <Content Include="extjs\resources\images\slate\slider\slider-v-bg.png" />
+    <Content Include="extjs\resources\images\slate\slider\slider-v-thumb.png" />
+    <Content Include="extjs\resources\images\slate\tabs\scroll-left.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\scroll-right.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\scroller-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-btm-left-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-btm-right-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-close.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-strip-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="extjs\resources\images\slate\tabs\tabs-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\toolbar\bg.gif" />
+    <Content Include="extjs\resources\images\slate\toolbar\btn-arrow.gif" />
+    <Content Include="extjs\resources\images\slate\toolbar\btn-over-bg.gif" />
+    <Content Include="extjs\resources\images\slate\toolbar\tb-btn-sprite.gif" />
+    <Content Include="extjs\resources\images\slate\tree\arrows.gif" />
+    <Content Include="extjs\resources\images\slate\window\left-corners.png" />
+    <Content Include="extjs\resources\images\slate\window\left-right.png" />
+    <Content Include="extjs\resources\images\slate\window\right-corners.png" />
+    <Content Include="extjs\resources\images\slate\window\top-bottom.png" />
+    <Content Include="Licenses\Coolite.Toolkit.Professional.Edition.txt" />
+    <Content Include="Licenses\Coolite.Utilities.txt" />
+    <Content Include="Licenses\ExtJS.txt" />
+    <Content Include="Licenses\FamFamFam.txt" />
+    <Content Include="Licenses\Newtonsoft.Json.txt" />
+    <Content Include="ux\extensions\ddview\ddview.js" />
+    <Content Include="ux\extensions\desktop\credits.txt" />
+    <Content Include="ux\extensions\desktop\css\desktop-embedded.css" />
+    <Content Include="ux\extensions\desktop\css\desktop.css" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\item-over.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\scroll-left.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\scroll-right.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\start-menu-left-corners.png" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\start-menu-left-right.png" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\start-menu-right-corners.png" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\start-menu-right.png" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\start-menu-top-bottom.png" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\startbutton-icon.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\startbutton.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\taskbar-split-h.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\taskbar-start-panel-bg.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\taskbutton.gif" />
+    <Content Include="ux\extensions\desktop\images\taskbar\black\taskbuttons-panel-bg.gif" />
+    <Content Include="ux\extensions\desktop\js\Desktop.js" />
+    <Content Include="ux\extensions\fileuploadfield\css\file-upload-embedded.css" />
+    <Content Include="ux\extensions\fileuploadfield\css\file-upload.css" />
+    <Content Include="ux\extensions\formgroup\css\formgroup-embedded.css" />
+    <Content Include="ux\extensions\formgroup\css\formgroup.css" />
+    <Content Include="ux\extensions\formgroup\images\formcollapseicon.gif" />
+    <Content Include="ux\extensions\multiheader\css\multiheader-embedded.css" />
+    <Content Include="ux\extensions\multiheader\css\multiheader.css" />
+    <Content Include="ux\extensions\multiheader\images\grid3-hrow.gif" />
+    <Content Include="ux\extensions\multiselect\multiselect.js" />
+    <Content Include="ux\extensions\multiselect\resources\css\multiselect-embedded.css" />
+    <Content Include="ux\extensions\multiselect\resources\css\multiselect.css" />
+    <Content Include="ux\extensions\multiselect\resources\images\bottom2.gif" />
+    <Content Include="ux\extensions\multiselect\resources\images\down2.gif" />
+    <Content Include="ux\extensions\multiselect\resources\images\left2.gif" />
+    <Content Include="ux\extensions\multiselect\resources\images\right2.gif" />
+    <Content Include="ux\extensions\multiselect\resources\images\top2.gif" />
+    <Content Include="ux\extensions\multiselect\resources\images\up2.gif" />
+    <Content Include="ux\extensions\portal\css\portal-embedded.css" />
+    <Content Include="ux\extensions\portal\css\portal.css" />
+    <Content Include="ux\extensions\portal\portal.js" />
+    <Content Include="ux\extensions\spotlight\spotlight.js" />
+    <Content Include="ux\extensions\triggerfield\css\slate\triggerfield-embedded.css" />
+    <Content Include="ux\extensions\triggerfield\css\slate\triggerfield.css" />
+    <Content Include="ux\extensions\triggerfield\css\triggerfield-embedded.css" />
+    <Content Include="ux\extensions\triggerfield\css\triggerfield.css" />
+    <Content Include="ux\extensions\triggerfield\images\elp-trigger.gif" />
+    <Content Include="ux\extensions\triggerfield\images\slate\elp-trigger.gif" />
+    <Content Include="ux\extensions\triggerfield\images\slate\trigger-tpl.gif" />
+    <Content Include="ux\extensions\triggerfield\images\trigger-tpl.gif" />
+    <Content Include="ux\plugins\commandcolumn\commandcolumn-embedded.css" />
+    <Content Include="ux\plugins\commandcolumn\commandcolumn.css" />
+    <Content Include="ux\plugins\gridfilters\css\gridfilters-embedded.css" />
+    <Content Include="ux\plugins\gridfilters\css\gridfilters.css" />
+    <Content Include="ux\plugins\gridfilters\gridfilters.js" />
+    <Content Include="ux\plugins\gridfilters\images\equals.png" />
+    <Content Include="ux\plugins\gridfilters\images\find.png" />
+    <Content Include="ux\plugins\gridfilters\images\greater_then.png" />
+    <Content Include="ux\plugins\gridfilters\images\grid3-hd-btn.gif" />
+    <Content Include="ux\plugins\gridfilters\images\hd-btn.gif" />
+    <Content Include="ux\plugins\gridfilters\images\header_bg-over.gif" />
+    <Content Include="ux\plugins\gridfilters\images\header_bg.gif" />
+    <Content Include="ux\plugins\gridfilters\images\less_then.png" />
+    <Content Include="ux\plugins\gridfilters\images\sort_filtered_asc.gif" />
+    <Content Include="ux\plugins\gridfilters\images\sort_filtered_desc.gif" />
+    <Content Include="ux\plugins\gridpanelmaintainscrollpositiononrefresh\gridpanelmaintainscrollpositiononrefresh.js" />
+    <Content Include="ux\plugins\groupingsummary\groupingsummary.js" />
+    <Content Include="ux\plugins\keepactive\keepactive.js" />
+    <Content Include="ux\plugins\panelresizer\css\panelresizer-embedded.css" />
+    <Content Include="ux\plugins\panelresizer\css\panelresizer.css" />
+    <Content Include="ux\plugins\panelresizer\images\panelhandle.gif" />
+    <Content Include="ux\plugins\panelresizer\panelresizer.js" />
+    <Content Include="ux\plugins\slidertip\slidertip.js" />
+    <Content Include="ux\plugins\slidingpager\slidingpager.js" />
+    <Content Include="ux\plugins\tabclosemenu\tabclosemenu.js" />
+    <Content Include="ux\plugins\tabfx\tabfx.js" />
+    <Content Include="ux\plugins\validationstatus\css\validationstatus-embedded.css" />
+    <Content Include="ux\plugins\validationstatus\css\validationstatus.css" />
+    <Content Include="ux\plugins\validationstatus\images\accept.png" />
+    <Content Include="ux\plugins\validationstatus\images\exclamation.gif" />
+    <Content Include="ux\plugins\validationstatus\validationstatus.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\MainPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MainPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MainPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MainPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Masters\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Masters\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\AblumListPage.aspx.cs">
+      <DependentUpon>AblumListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\AblumListPage.aspx.designer.cs">
+      <DependentUpon>AblumListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCAblumAddControl.ascx.cs">
+      <DependentUpon>UCAblumAddControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCAblumAddControl.ascx.designer.cs">
+      <DependentUpon>UCAblumAddControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCAblumEditControl.ascx.cs">
+      <DependentUpon>UCAblumEditControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCAblumEditControl.ascx.designer.cs">
+      <DependentUpon>UCAblumEditControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoAdd.ascx.cs">
+      <DependentUpon>UCPhotoAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoAdd.ascx.designer.cs">
+      <DependentUpon>UCPhotoAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoEdit.ascx.cs">
+      <DependentUpon>UCPhotoEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoEdit.ascx.designer.cs">
+      <DependentUpon>UCPhotoEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoImport.ascx.cs">
+      <DependentUpon>UCPhotoImport.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\Ablums\UCPhotoImport.ascx.designer.cs">
+      <DependentUpon>UCPhotoImport.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\AlbumServiceProxy.cs" />
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\AlbumServiceProxy.Designer.cs">
+      <DependentUpon>AlbumServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
+      <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\PhotoServiceProxy.cs" />
+    <Compile Include="Codes\Bussiness\ServiceProxys\Tables\PhotoServiceProxy.Designer.cs">
+      <DependentUpon>PhotoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Bussiness\Wrappers\AlbumWrapper.cs" />
+    <Compile Include="Codes\Bussiness\Wrappers\AlbumWrapper.Designer.cs">
+      <DependentUpon>AlbumWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Bussiness\Wrappers\PhotoWrapper.cs" />
+    <Compile Include="Codes\Bussiness\Wrappers\PhotoWrapper.Designer.cs">
+      <DependentUpon>PhotoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Data\Tables\AlbumDataObject.cs" />
+    <Compile Include="Codes\Data\Tables\AlbumDataObject.Designer.cs">
+      <DependentUpon>AlbumDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Data\Tables\Container\DataObjectContainers.cs" />
+    <Compile Include="Codes\Data\Tables\Container\DataObjectContainers.Designer.cs">
+      <DependentUpon>DataObjectContainers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Data\Tables\PhotoDataObject.cs" />
+    <Compile Include="Codes\Data\Tables\PhotoDataObject.Designer.cs">
+      <DependentUpon>PhotoDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Entity\Tables\AlbumEntity.cs" />
+    <Compile Include="Codes\Entity\Tables\AlbumEntity.Designer.cs">
+      <DependentUpon>AlbumEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\Entity\Tables\PhotoEntity.cs" />
+    <Compile Include="Codes\Entity\Tables\PhotoEntity.Designer.cs">
+      <DependentUpon>PhotoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Codes\NavMenu.cs" />
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Images\no_image.gif" />
+    <Content Include="Admin\MainPage\Default.aspx" />
+    <Content Include="Admin\MainPage\Login.aspx" />
+    <Content Include="Admin\Masters\AdminMaster.Master" />
+    <Content Include="Admin\css\css.css" />
+    <Content Include="Admin\Moudles\Ablums\AblumListPage.aspx" />
+    <EmbeddedResource Include="Codes\Bussiness\ServiceProxys\Tables\Container\ServiceProxyContainerFile.xml" />
+    <Content Include="Admin\Moudles\Ablums\UCAblumAddControl.ascx" />
+    <Content Include="Admin\Moudles\Ablums\UCAblumEditControl.ascx" />
+    <Content Include="Admin\Moudles\Ablums\UCPhotoAdd.ascx" />
+    <Content Include="Admin\Moudles\Ablums\UCPhotoEdit.ascx" />
+    <Content Include="Admin\Moudles\Ablums\UCPhotoImport.ascx" />
+    <Content Include="Config\DataConfig.xml" />
+    <Content Include="Config\Log4Net.xml" />
+    <Content Include="Js\vswd-ext_2.0.2.js" />
+    <EmbeddedResource Include="Codes\Data\Tables\Container\DataObjectContainersFile.xml" />
+    <EmbeddedResource Include="Codes\Entity\Tables\MappingFiles\AlbumMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Codes\Entity\Tables\MappingFiles\PhotoMappingFile.hbm.xml" />
+    <None Include="coolite\build.bat" />
+    <None Include="coolite\coolite-core.jsb" />
+    <None Include="coolite\coolite-data.jsb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ImportPath\" />
+    <Folder Include="UploadFiles\Ablums\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3658</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
