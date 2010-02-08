@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+	<!-- Referenced by main application context configuration file -->
+	<description>
+		The Northwind object definitions for the Data Access Objects.
+	</description>
+
+   <db:provider id="DbProvider"
+					 provider="SqlServer-2.0"
+					 connectionString="Initial Catalog=a1013143610;server=119.84.4.159;uid=a1013143610;pwd=6085418;"/> 
+  
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
+		<property name="DbProvider" ref="DbProvider"/>
+		<property name="MappingAssemblies">
+			<list>
+				<value>PhotoAblum.Web</value>
+			</list>
+		</property>
+		<property name="HibernateProperties">
+			<dictionary>
+				<entry key="connection.provider"
+					   value="NHibernate.Connection.DriverConnectionProvider"/>
+				<entry key="dialect"
+					   value="NHibernate.Dialect.MsSql2005Dialect"/>
+				<entry key="connection.driver_class"
+					   value="NHibernate.Driver.SqlClientDriver"/>
+			</dictionary>
+		</property>
+		<property name="ExposeTransactionAwareSessionFactory" value="true" />
+	</object>
+	<object id="transactionManager"
+		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
+		<property name="DbProvider" ref="DbProvider"/>
+		<property name="SessionFactory" ref="NHibernateSessionFactory"/>
+	</object>
+	<object id="HibernateTemplate" type="Spring.Data.NHibernate.Generic.HibernateTemplate">
+		<property name="SessionFactory" ref="NHibernateSessionFactory" />
+		<property name="TemplateFlushMode" value="Auto" />
+		<property name="CacheQueries" value="true" />
+	</object>
+</objects>
