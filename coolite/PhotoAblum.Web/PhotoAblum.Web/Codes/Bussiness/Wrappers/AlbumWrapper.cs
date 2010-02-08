@@ -9,6 +9,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using PhotoAblum.Web.Codes.Entity.Tables;
 using PhotoAblum.Web.Codes.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Utility;
+using SevenZSharp;
 
 
 namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
@@ -165,7 +166,8 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
 
         public static string GenerateNewFileName(string ext)
         {
-            return string.Format("{0}{2}{1}", System.DateTime.Now.ToString("yyyyMMddHHmmss"), ext, StringUtil.GetRandNumber(6));
+            return string.Format("{0}{1}", Guid.NewGuid().ToString(), ext);
+            //return string.Format("{0}{2}{1}", System.DateTime.Now.ToString("yyyyMMddHHmmss"), ext, StringUtil.GetRandNumber(6));
         }
 
         protected string GetAlbumFileDirPath(string dirName)
@@ -326,6 +328,11 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
             return HttpContext.Current.Server.MapPath(this.AlbumFileDirPath + fileName);
         }
 
+        protected string GetPhotoFilePath(string fileName)
+        {
+            return HttpContext.Current.Server.MapPath(this.AlbumFilesDirPath + fileName);
+        }
+
 	    public string FullImageUrl
         {
             get
@@ -336,6 +343,7 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
                     return "~/Admin/Images/no_image.gif";
             }
         }
+
 
         public string SmallImageUrl
         {
@@ -359,6 +367,80 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
                 Directory.CreateDirectory(AlbumFileDirPhyPath);
             if (!Directory.Exists(AlbumFilesDirPhyPath))
                 Directory.CreateDirectory(AlbumFilesDirPhyPath);
+	    }
+
+	    public void ImportZipFile(string filePath)
+	    {
+	        string dir = Path.GetDirectoryName(filePath);
+
+	        string fileName = Path.GetFileNameWithoutExtension(filePath);
+
+            string decodePath = dir + "\\" + fileName + Path.GetExtension(filePath).Replace(".", "");
+
+	        CompressionEngine.Current.Decoder.DecodeIntoDirectory(filePath, decodePath);
+
+            List<string> imageFiles = new List<string>();
+
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpg"));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpeg"));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.png"));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.gif"));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.bmp"));
+
+            foreach (string imageFile in imageFiles)
+	        {
+	            AddPhoto(imageFile);
+	        }
+
+            Directory.Delete(decodePath, true);
+
+            File.Delete(filePath);
+	    }
+
+	    private void AddPhoto(string imageFile)
+	    {
+	        string fileExt = Path.GetExtension(imageFile);
+
+            string newFileName = GenerateNewFileName(fileExt);
+            
+            this.CreateDir();
+
+            Image img = Image.FromFile(imageFile);
+
+            double scale = (double)img.Height / (double)img.Width;
+
+            Image.GetThumbnailImageAbort myCallback = ThumbnailCallback;
+
+            string newMidFileName = GenerateNewFileName(fileExt);
+            string newMidfilePath = GetPhotoFilePath(newMidFileName);
+
+            Image midImg = img.GetThumbnailImage(200, Convert.ToInt32(200 * scale), myCallback, IntPtr.Zero);
+
+            midImg.Save(newMidfilePath);
+
+            string newSmallFileName = GenerateNewFileName(fileExt);
+            string newwSmallfilePath = GetPhotoFilePath(newSmallFileName);
+
+            Image smallImg = img.GetThumbnailImage(75, Convert.ToInt32(75 * scale), myCallback, IntPtr.Zero);
+
+            smallImg.Save(newwSmallfilePath);
+
+            img.Dispose();
+
+	        File.Move(imageFile, GetPhotoFilePath(newFileName));
+
+            PhotoEntity photoEntity = new PhotoEntity();
+
+	        photoEntity.IsShow = true;
+	        photoEntity.OrderIndex = PhotoWrapper.NewOrderIndex();
+
+            photoEntity.FullImage = newFileName;
+            photoEntity.MiddleImage = newMidFileName;
+            photoEntity.ThumbImage = newSmallFileName;
+	        photoEntity.AlbumID = this.entity.Id;
+
+            if (this.Id != 0)
+                PhotoWrapper.Save(new PhotoWrapper(photoEntity));
 	    }
     }
 }

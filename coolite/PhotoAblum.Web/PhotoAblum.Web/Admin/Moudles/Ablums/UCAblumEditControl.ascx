@@ -180,6 +180,11 @@
                                                         <Click Handler="Coolite.AjaxMethods.UCPhotoImport.Show(#{hidID}.value);" />
                                                     </Listeners>
                                                 </ext:ToolbarButton>
+                                                <ext:ToolbarButton ID='ToolbarButton4' runat="server" Text="清空相册" Icon="DatabaseDelete">
+                                                    <Listeners>
+                                                        <Click Handler="Coolite.AjaxMethods.UCAblumEditControl.EmptyPhotos();#{storePhotos}.reload();" />
+                                                    </Listeners>
+                                                </ext:ToolbarButton>
                                                 <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新" Icon="Reload">
                                                     <Listeners>
                                                         <Click Handler="#{storePhotos}.reload();" />

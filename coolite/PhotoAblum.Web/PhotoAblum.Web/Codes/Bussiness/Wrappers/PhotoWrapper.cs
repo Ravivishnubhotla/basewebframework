@@ -105,6 +105,11 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
 	    }
 
 
+        public static int NewOrderIndex()
+        {
+            return businessProxy.GeneretaNewOrderIndex();
+        }
+
         public int GeneretaNewOrderIndex()
         {
             return businessProxy.GeneretaNewOrderIndex();
@@ -117,7 +122,8 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
 
         public static string GenerateNewFileName(string ext)
         {
-            return string.Format("{0}{2}{1}", System.DateTime.Now.ToString("yyyyMMddHHmmss"), ext, StringUtil.GetRandNumber(6));
+            return string.Format("{0}{1}", Guid.NewGuid().ToString(), ext);
+            //return string.Format("{0}{2}{1}", System.DateTime.Now.ToString("yyyyMMddHHmmss"), ext, StringUtil.GetRandNumber(6));
         }
 
         protected string GetFilePath(string fileName)
