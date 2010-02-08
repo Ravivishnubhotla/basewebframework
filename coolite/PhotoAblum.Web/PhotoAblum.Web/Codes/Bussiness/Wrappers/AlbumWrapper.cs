@@ -381,11 +381,11 @@ namespace PhotoAblum.Web.Codes.Bussiness.Wrappers
 
             List<string> imageFiles = new List<string>();
 
-            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpg"));
-            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpeg"));
-            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.png"));
-            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.gif"));
-            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.bmp"));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpg",SearchOption.AllDirectories));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.jpeg", SearchOption.AllDirectories));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.png", SearchOption.AllDirectories));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.gif", SearchOption.AllDirectories));
+            imageFiles.AddRange(Directory.GetFiles(decodePath, "*.bmp", SearchOption.AllDirectories));
 
             foreach (string imageFile in imageFiles)
 	        {
