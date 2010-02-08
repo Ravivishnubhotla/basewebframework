@@ -811,11 +811,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\css\css.css" />
     <Content Include="Admin\Images\no_image.gif" />
     <Content Include="Admin\MainPage\Default.aspx" />
     <Content Include="Admin\MainPage\Login.aspx" />
     <Content Include="Admin\Masters\AdminMaster.Master" />
-    <Content Include="Admin\css\css.css" />
     <Content Include="Admin\Moudles\Ablums\AblumListPage.aspx" />
     <EmbeddedResource Include="Codes\Bussiness\ServiceProxys\Tables\Container\ServiceProxyContainerFile.xml" />
     <Content Include="Admin\Moudles\Ablums\UCAblumAddControl.ascx" />

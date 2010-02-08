@@ -6,14 +6,10 @@
 		The Northwind object definitions for the Data Access Objects.
 	</description>
 
-	<object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
-		<property name="ConfigSections" value="databaseSettings"/>
-	</object>
 
-
-	<db:provider id="DbProvider"
-					  provider="SqlServer-2.0"
-					  connectionString="Initial Catalog=photoshow;server=tgs-10;uid=sa;pwd=123456;"/>
+  <db:provider id="DbProvider"
+            provider="SqlServer-2.0"
+            connectionString="Initial Catalog=PhotoShow;server=atom\sqlexpress;uid=sa;pwd=1234;"/>
 
 	<object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
