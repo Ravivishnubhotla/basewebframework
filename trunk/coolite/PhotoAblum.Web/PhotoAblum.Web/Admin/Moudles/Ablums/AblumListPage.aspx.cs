@@ -19,6 +19,12 @@ namespace PhotoAblum.Web.Admin.Moudles.Ablums
 
         #endregion
 
+        protected override void OnInit(EventArgs e)
+        {
+            Server.ScriptTimeout = 1000;
+            base.OnInit(e);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)

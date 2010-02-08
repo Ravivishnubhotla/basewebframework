@@ -71,7 +71,7 @@ namespace PhotoAblum.Web.Admin.Moudles.Ablums
                 return;
             }
 
-            string aaa = "";
+
 
             int id = int.Parse(hidPhotoID.Text);
 
