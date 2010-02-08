@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架数据访问层容器配置文件
+  </description>
+  <!-- 数据访问类 -->
+ <object id="AlbumDataObjectIocID" type="PhotoAblum.Web.Codes.Data.Tables.AlbumDataObject, PhotoAblum.Web">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="PhotoDataObjectIocID" type="PhotoAblum.Web.Codes.Data.Tables.PhotoDataObject, PhotoAblum.Web">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+
+
+
+
+
+<object id="DataObjectContainersIocID" type="PhotoAblum.Web.Codes.Data.Tables.Container.DataObjectContainers, PhotoAblum.Web">
+    <property name="AlbumDataObjectInstance" ref="AlbumDataObjectIocID"/>
+    <property name="PhotoDataObjectInstance" ref="PhotoDataObjectIocID"/>
+ 
+
+
+</object>
+</objects>

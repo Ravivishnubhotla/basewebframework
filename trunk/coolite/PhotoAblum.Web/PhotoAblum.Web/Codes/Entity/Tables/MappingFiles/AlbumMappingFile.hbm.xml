@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="PhotoAblum.Web.Codes.Entity.Tables.AlbumEntity,PhotoAblum.Web" table="Album" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="ShortDescription" type="string" name="ShortDescription"   length="400" />	
+		<property column="FilePath" type="string" name="FilePath"   length="1000" />	
+		<property column="FullImage" type="string" name="FullImage"   length="1000" />	
+		<property column="MiddleImage" type="string" name="MiddleImage"   length="1000" />	
+		<property column="ThumbImage" type="string" name="ThumbImage"   length="1000" />	
+		<property column="DirName" type="string" name="DirName"   length="400" />	
+		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="ViewPassword" type="string" name="ViewPassword"   length="400" />	
+		<property column="IsShow" type="Boolean" name="IsShow"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
