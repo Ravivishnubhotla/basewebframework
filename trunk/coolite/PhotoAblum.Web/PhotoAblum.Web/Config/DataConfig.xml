@@ -6,11 +6,16 @@
 		The Northwind object definitions for the Data Access Objects.
 	</description>
 
-   <db:provider id="DbProvider"
-					 provider="SqlServer-2.0"
-					 connectionString="Initial Catalog=photoshow;server=tgs-10;uid=sa;pwd=123456;"/> 
-  
-  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
+	<object type="Spring.Objects.Factory.Config.PropertyPlaceholderConfigurer, Spring.Core">
+		<property name="ConfigSections" value="databaseSettings"/>
+	</object>
+
+
+	<db:provider id="DbProvider"
+					  provider="SqlServer-2.0"
+					  connectionString="Initial Catalog=photoshow;server=tgs-10;uid=sa;pwd=123456;"/>
+
+	<object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
 		<property name="MappingAssemblies">
 			<list>
@@ -25,18 +30,27 @@
 					   value="NHibernate.Dialect.MsSql2005Dialect"/>
 				<entry key="connection.driver_class"
 					   value="NHibernate.Driver.SqlClientDriver"/>
+				<entry key="hibernate.current_session_context_class"
+					   value="Spring.Data.NHibernate.SpringSessionContext, Spring.Data.NHibernate21"/>
+
 			</dictionary>
 		</property>
 		<property name="ExposeTransactionAwareSessionFactory" value="true" />
 	</object>
+
+
 	<object id="transactionManager"
 		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
 		<property name="SessionFactory" ref="NHibernateSessionFactory"/>
 	</object>
+
+
+
+
 	<object id="HibernateTemplate" type="Spring.Data.NHibernate.Generic.HibernateTemplate">
 		<property name="SessionFactory" ref="NHibernateSessionFactory" />
 		<property name="TemplateFlushMode" value="Auto" />
-		<property name="CacheQueries" value="true" />
+		<property name="CacheQueries" value="false" />
 	</object>
 </objects>
