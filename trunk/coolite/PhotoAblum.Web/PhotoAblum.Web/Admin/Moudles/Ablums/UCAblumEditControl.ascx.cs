@@ -48,6 +48,18 @@ namespace PhotoAblum.Web.Admin.Moudles.Ablums
             }
         }
 
+        [AjaxMethod]
+        public void EmptyPhotos()
+        {
+            int id = int.Parse(hidID.Text);
+            List<PhotoWrapper>  photos = PhotoWrapper.GetByAlbumID(id);
+
+            foreach (PhotoWrapper photo in photos)
+            {
+                PhotoWrapper.Delete(photo);
+            }
+        }
+
         protected void storePhotos_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             int id = int.Parse(hidID.Text);

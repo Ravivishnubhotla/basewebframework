@@ -62,15 +62,10 @@ namespace PhotoAblum.Web.Admin.MainPage
 
             NavMenu abMenu = new NavMenu();
 
-            abMenu.Name = "相册管理";
+            abMenu.Name = "系统管理";
             abMenu.Id = "M1";
 
-
-            abMenu.AddSubMenu("M2", "相册列表", "~/Admin/Moudles/Ablums/AblumsListPage2.aspx", "");
-
-            abMenu.AddSubMenu("M3", "相册列表2", "~/Admin/Moudles/Ablums/AblumsListPage.aspx", "");
-
-            abMenu.AddSubMenu("M5", "相册列表3", "~/Admin/Moudles/Ablums/AblumListPage.aspx", "");
+            abMenu.AddSubMenu("M2", "相册管理", "~/Admin/Moudles/Ablums/AblumListPage.aspx", "");
 
             rootMenu.AddSubMenu(abMenu);
 

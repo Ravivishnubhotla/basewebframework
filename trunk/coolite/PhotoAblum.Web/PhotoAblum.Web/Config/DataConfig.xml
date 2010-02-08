@@ -8,7 +8,7 @@
 
    <db:provider id="DbProvider"
 					 provider="SqlServer-2.0"
-					 connectionString="Initial Catalog=a1013143610;server=119.84.4.159;uid=a1013143610;pwd=6085418;"/> 
+					 connectionString="Initial Catalog=photoshow;server=tgs-10;uid=sa;pwd=123456;"/> 
   
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
