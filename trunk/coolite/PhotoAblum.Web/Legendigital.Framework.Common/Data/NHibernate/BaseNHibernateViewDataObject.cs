@@ -22,6 +22,12 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 {
     public abstract class BaseNHibernateViewDataObject<DomainType> : HibernateDaoSupport, IBaseNHibernateViewDataObject<DomainType>
     {
+        protected ISession GetCurrentSession()
+        {
+            return this.HibernateTemplate.SessionFactory.GetCurrentSession();
+        }
+
+
         #region 基本操作
 
        
@@ -34,7 +40,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DomainType obj = this.HibernateTemplate.Load<DomainType>(id);
+                DomainType obj = GetCurrentSession().Load<DomainType>(id);
 
                 if(obj.Equals(null))
                 {
@@ -66,7 +72,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                this.HibernateTemplate.Load(instance, id);
+                GetCurrentSession().Load(instance, id);
             }
             catch (Exception ex)
             {
@@ -84,7 +90,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                this.HibernateTemplate.Refresh(instance);
+                GetCurrentSession().Refresh(instance);
             }
             catch (Exception ex)
             {
@@ -178,90 +184,79 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual List<DomainType> FindAll(ICriterion[] criterias, Order[] sortItems, int firstRow, int maxRows,
                                                 string filterName, string cacheRegionName, out int recordCount)
         {
-            int outRecordCount = 0;
+            ISession session = GetCurrentSession();
 
             try
             {
 
-                IList<DomainType> list = HibernateTemplate.ExecuteFind<DomainType>(
-                               delegate(ISession session)
-                               {
-                                   //如果有filter打开
-                                   if (!string.IsNullOrEmpty(filterName))
-                                   {
-                                       session.EnableFilter(filterName);
-                                   }
+                //如果有filter打开
+                if (!string.IsNullOrEmpty(filterName))
+                {
+                    session.EnableFilter(filterName);
+                }
 
-                                   //查询l当前页记录的ICriteria
-                                   ICriteria criteria = session.CreateCriteria(typeof(DomainType));
-                                   //查询记录总数的ICriteria
-                                   ICriteria criteriaCount = session.CreateCriteria(typeof(DomainType));
+                //查询l当前页记录的ICriteria
+                ICriteria criteria = session.CreateCriteria(typeof(DomainType));
+                //查询记录总数的ICriteria
+                ICriteria criteriaCount = session.CreateCriteria(typeof(DomainType));
 
 
-                                   //加载查询条件
-                                   if (criterias != null)
-                                   {
-                                       foreach (ICriterion cond in criterias)
-                                       {
-                                           criteria.Add(cond);
-                                           criteriaCount.Add(cond);
-                                       }
-                                   }
+                //加载查询条件
+                if (criterias != null)
+                {
+                    foreach (ICriterion cond in criterias)
+                    {
+                        criteria.Add(cond);
+                        criteriaCount.Add(cond);
+                    }
+                }
 
-                                   //加载排序条件
-                                   if (sortItems != null)
-                                   {
-                                       foreach (Order order in sortItems)
-                                       {
-                                           //查询记录总数的ICriteria不需要加载排序条件
-                                           criteria.AddOrder(order);
-                                       }
-                                   }
+                //加载排序条件
+                if (sortItems != null)
+                {
+                    foreach (Order order in sortItems)
+                    {
+                        //查询记录总数的ICriteria不需要加载排序条件
+                        criteria.AddOrder(order);
+                    }
+                }
 
-                                   //打开缓存
-                                   if (!string.IsNullOrEmpty(cacheRegionName))
-                                   {
-                                       criteria.SetCacheable(true);
-                                       criteria.SetCacheRegion(cacheRegionName);
-                                   }
+                //打开缓存
+                if (!string.IsNullOrEmpty(cacheRegionName))
+                {
+                    criteria.SetCacheable(true);
+                    criteria.SetCacheRegion(cacheRegionName);
+                }
 
-                                   //投影查询获取记录总数
-                                   criteriaCount.SetProjection(Projections.RowCount());
-                                   outRecordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
+                //投影查询获取记录总数
+                criteriaCount.SetProjection(Projections.RowCount());
+                recordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
 
-                                   //设置分页查询
-                                   if (firstRow != int.MinValue) criteria.SetFirstResult(firstRow);
-                                   if (maxRows != int.MinValue) criteria.SetMaxResults(maxRows);
+                //设置分页查询
+                if (firstRow != int.MinValue) criteria.SetFirstResult(firstRow);
+                if (maxRows != int.MinValue) criteria.SetMaxResults(maxRows);
 
-                                   //获取当前页记录数
-                                   IList<DomainType> result = criteria.List<DomainType>();
+                //获取当前页记录数
+                IList<DomainType> result = criteria.List<DomainType>();
 
-                                   if (result.Count > outRecordCount)
-                                   {
-                                       throw new Exception("Query Count Error!");
-                                   }
+                if (result.Count > recordCount)
+                {
+                    throw new Exception("Query Count Error!");
+                }
 
-                                   //关闭缓存
-                                   if (!string.IsNullOrEmpty(cacheRegionName))
-                                   {
-                                       criteria.SetCacheable(false);
-                                   }
+                //关闭缓存
+                if (!string.IsNullOrEmpty(cacheRegionName))
+                {
+                    criteria.SetCacheable(false);
+                }
 
-                                   //如果有filter关闭
-                                   if (!string.IsNullOrEmpty(filterName))
-                                   {
-                                       session.DisableFilter(filterName);
-                                   }
+                //如果有filter关闭
+                if (!string.IsNullOrEmpty(filterName))
+                {
+                    session.DisableFilter(filterName);
+                }
 
-                                   return result;
-                               })
-                               ;
-
-
-
-                recordCount = outRecordCount;
-
-                return ConvertToTypedList(list);
+                return ConvertToTypedList(result);
 
             }
             catch (Exception ex)
@@ -297,30 +292,25 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (string.IsNullOrEmpty(queryString)) throw new ArgumentNullException("queryString");
 
-            IList<DomainType> list = null;
+            ISession session = GetCurrentSession();
 
             try
             {
-                list = HibernateTemplate.ExecuteFind<DomainType>(
-                    delegate(ISession session)
-                        {
-                            IQuery query = session.CreateQuery(queryString);
+                IQuery query = session.CreateQuery(queryString);
 
-                            if (nhibernateQueryParams != null && nhibernateQueryParams.Count > 0)
-                            {
-                                foreach (NhibernateParameter param in nhibernateQueryParams)
-                                {
-                                    query.SetParameter(param.ParameterName, param.Value, param.DbType);
-                                }
-                            }
+                if (nhibernateQueryParams != null && nhibernateQueryParams.Count > 0)
+                {
+                    foreach (NhibernateParameter param in nhibernateQueryParams)
+                    {
+                        query.SetParameter(param.ParameterName, param.Value, param.DbType);
+                    }
+                }
 
-                            if (firstRow != int.MinValue) query.SetFirstResult(firstRow);
+                if (firstRow != int.MinValue) query.SetFirstResult(firstRow);
 
-                            if (maxRows != int.MinValue) query.SetMaxResults(maxRows);
+                if (maxRows != int.MinValue) query.SetMaxResults(maxRows);
 
-                            return query.List<DomainType>();
-
-                        });
+                return ConvertToTypedList(query.List<DomainType>());
             }
             catch (Exception ex)
             {
@@ -328,7 +318,6 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                 throw new DataException("Could not perform FindAllWithCustomQuery for " + typeof(DomainType).Name, ex);
             }
 
-            return ConvertToTypedList(list);
         }
 
 
@@ -356,7 +345,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
             IList list = null;
 
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -411,7 +400,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual object FindScalarWithCustomQuery(string queryString,
                                                         NhibernateParameterCollection nhibernateQueryParams)
         {
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -441,7 +430,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (instance == null) throw new ArgumentNullException("instance");
 
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             foreach (object val in ReflectionUtil.GetPropertiesDictionary(instance).Values)
             {
@@ -490,7 +479,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (detachedCriteria == null) throw new ArgumentNullException("detachedCriteria");
 
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -510,7 +499,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (detachedCriteria == null) throw new ArgumentNullException("detachedCriteria");
 
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -548,7 +537,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public virtual System.Collections.IList ProjectionQuery(IProjection[] projections, ICriterion[] criterias, Order[] orders)
         {
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -589,7 +578,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual object ProjectionSingleLineQuery(IProjection[] projections, ICriterion[] criterias,
                                                         Order[] orders)
         {
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
             try
             {
                 ICriteria criteria = session.CreateCriteria(typeof(DomainType));
