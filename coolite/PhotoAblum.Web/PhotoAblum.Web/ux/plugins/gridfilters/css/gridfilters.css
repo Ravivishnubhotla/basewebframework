@@ -1,0 +1,55 @@
+.x-grid3-hd-row .ux-filtered-column {
+	border-left:  1px solid #C7E3B4;
+	border-right: 1px solid #C7E3B4;
+}
+
+.x-grid3-hd-row .ux-filtered-column .x-grid3-hd-inner {
+	background-image: url('../images/header_bg.gif');
+}
+
+.ux-filtered-column .x-grid3-hd-btn {
+	background-image: url('../images/hd-btn.gif');
+}
+
+.ux-filtered-column.sort-asc .x-grid3-sort-icon {
+	background-image: url('../images/sort_filtered_asc.gif');
+}
+
+.ux-filtered-column.sort-desc .x-grid3-sort-icon {
+	background-image: url('../images/sort_filtered_desc.gif');	
+}
+
+.ux-gridfilter-text-icon {
+	background-image: url('../images/find.png');
+	position:static !important;	
+}
+
+.x-grid3-hd-row .ux-filtered-column.x-grid3-hd-over .x-grid3-hd-inner, .x-grid3-hd-row .ux-filtered-column.x-grid3-hd-menu-open .x-grid3-hd-inner {
+	background-image: url('../images/header_bg-over.gif');
+}
+
+.x-grid3-hd-row .ux-filtered-column.x-grid3-hd-over .x-grid3-hd-inner .x-grid3-hd-btn, .x-grid3-hd-row .ux-filtered-column.x-grid3-hd-menu-open .x-grid3-hd-inner .x-grid3-hd-btn {
+	background:#c3daf9 url('../images/grid3-hd-btn.gif') no-repeat left center;
+}
+
+.x-grid3-hd-row .ux-filtered-column.x-grid3-hd-over .x-grid3-hd-inner a.x-grid3-hd-btn:hover {
+	background-position:-14px center;
+}
+
+/**
+ * RangeMenu.js Styles
+ **/
+.ux-rangemenu-gt {
+	background-image: url('../images/greater_then.png');	
+	position:static !important;
+}
+
+.ux-rangemenu-lt {
+	background-image: url('../images/less_then.png');	
+	position:static !important;
+}
+
+.ux-rangemenu-eq {
+	background-image: url('../images/equals.png');	
+	position:static !important;
+}

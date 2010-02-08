@@ -1,0 +1,2 @@
+.x-form-field-wrap .x-form-empty-trigger{background-image:url("<%=WebResource("Coolite.Ext.Web.Build.Resources.Coolite..images.slate.trigger-tpl.gif")%>");cursor:pointer;}
+.x-form-field-wrap .x-form-ellipsis-trigger{background-image:url("<%=WebResource("Coolite.Ext.Web.Build.Resources.Coolite..images.slate.elp-trigger.gif")%>");cursor:pointer;}
