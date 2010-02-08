@@ -5,6 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAblum.Web", "PhotoAblu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{116D0269-E0E4-47E5-BDDB-5899348B2080}"
 	ProjectSection(SolutionItems) = preProject
+		Dlls\7zSharp.dll = Dlls\7zSharp.dll
 		Dlls\AspNetPager.dll = Dlls\AspNetPager.dll
 		Dlls\Common.Logging.dll = Dlls\Common.Logging.dll
 		Dlls\Coolite.Ext.Web.dll = Dlls\Coolite.Ext.Web.dll

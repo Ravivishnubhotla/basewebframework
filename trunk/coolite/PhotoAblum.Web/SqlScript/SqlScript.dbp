@@ -14,6 +14,11 @@ Begin DataProject = "SqlScript"
          Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
          Colorizer = 6
       End
+      Begin DBRefNode = "tgs-10.PhotoShow.dbo"
+         ConnectStr = "Data Source=TGs-10;Initial Catalog=PhotoShow;Integrated Security=True"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
    End
    Begin Folder = "Queries"
    End
