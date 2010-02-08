@@ -20,13 +20,15 @@
                 </tr>
                 <tr>
                     <td align="center">
-                        <asp:Image ID="imgThumb" Width="120" Height="120" ImageUrl='<%# Eval("FullImageUrl") %>'
-                            runat="server" />
+                        <a href='<%# "AblumDetailPage.aspx?ID=" + Eval("ID") %>' target="_blank">
+                            <asp:Image ID="imgThumb" Width="120" Height="120" ImageUrl='<%# Eval("FullImageUrl") %>'
+                                runat="server" /></a>
                     </td>
                 </tr>
                 <tr>
                     <td align="center">
-                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                        <a href='<%# "AblumDetailPage.aspx?ID=" + Eval("ID") %>' target="_blank">
+                            <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>'></asp:Label></a>
                     </td>
                 </tr>
             </table>
