@@ -52,6 +52,7 @@
                         <ext:Column DataIndex="FileExt" Header="扩展名" Width="60px">
                         </ext:Column>
                         <ext:Column DataIndex="FileSize" Header="文件大小">
+                            <Renderer Format="FileSize" />
                         </ext:Column>
                     </Columns>
                 </ColumnModel>
