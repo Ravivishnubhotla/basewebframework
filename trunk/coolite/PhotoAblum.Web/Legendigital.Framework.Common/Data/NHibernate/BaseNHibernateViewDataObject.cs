@@ -457,7 +457,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                                                                                 " doest not exist for type "
                                                                                 + instance.GetType().ToString() + ".");
 
-            ISession session = DoGetSession(false);
+            ISession session = GetCurrentSession();
 
             object val = properties[propertyName];
 
@@ -686,12 +686,12 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public List<DomainType> FindListByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindList(DoGetSession(false));
+            return queryBuilder.FindList(GetCurrentSession());
         }
 
         public int CountQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.GetCount(DoGetSession(false));
+            return queryBuilder.GetCount(GetCurrentSession());
         }
 
 
@@ -701,28 +701,28 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
             queryBuilder.SetMaxResults(pageSize);
 
-            return queryBuilder.FindListByPage(DoGetSession(false), out recordCount);
+            return queryBuilder.FindListByPage(GetCurrentSession(), out recordCount);
         }
 
 
         public List<DomainType> FindDistinctList(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindList(DoGetSession(false),true);
+            return queryBuilder.FindList(GetCurrentSession(),true);
         }
 
         public List<DomainType> FindDistinctListByPage(NHibernateDynamicQueryGenerator<DomainType> queryBuilder, out int recordCount)
         {
-            return queryBuilder.FindDistinctListByPage(DoGetSession(false), out recordCount);
+            return queryBuilder.FindDistinctListByPage(GetCurrentSession(), out recordCount);
         }
 
         public List<DomainType> FindListByPageByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder, out int recordCount)
         {
-            return queryBuilder.FindListByPage(DoGetSession(false), out recordCount);
+            return queryBuilder.FindListByPage(GetCurrentSession(), out recordCount);
         }
 
         public DomainType FindSingleEntityByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindSingleEntity(DoGetSession(false));
+            return queryBuilder.FindSingleEntity(GetCurrentSession());
         }
 
         public List<DomainType> FindAllByOrderBy(string orderByColumn, bool isDesc, int firstRow, int maxRows, out int recordCount)
@@ -813,12 +813,12 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public List<CType> FindListByProjection<CType>(NHibernateDynamicQueryGenerator<DomainType> queryBuilder, IProjection projection)
         {
-            return queryBuilder.FindListByProjection<CType>(DoGetSession(false),projection);
+            return queryBuilder.FindListByProjection<CType>(GetCurrentSession(),projection);
         }
 
         public CType FindSingleByProjection<CType>(NHibernateDynamicQueryGenerator<DomainType> queryBuilder, IProjection projection)
         {
-            return queryBuilder.FindSingleByProjection<CType>(DoGetSession(false),projection);
+            return queryBuilder.FindSingleByProjection<CType>(GetCurrentSession(),projection);
         }
 
         public IProjection GetDistinctProperty(PropertyProjection projection)
