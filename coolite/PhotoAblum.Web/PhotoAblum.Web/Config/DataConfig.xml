@@ -6,10 +6,13 @@
 		The Northwind object definitions for the Data Access Objects.
 	</description>
 
-
-  <db:provider id="DbProvider"
+<db:provider id="DbProvider"
             provider="SqlServer-2.0"
-            connectionString="Initial Catalog=PhotoShow;server=(local);uid=sa;pwd=123456;"/>
+            connectionString="Initial Catalog=PhotoShow;server=atom\sqlexpress;uid=sa;pwd=1234;"/>
+  
+  <!--<db:provider id="DbProvider"
+            provider="SqlServer-2.0"
+            connectionString="Initial Catalog=PhotoShow;server=(local);uid=sa;pwd=123456;"/>-->
 
 	<object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>

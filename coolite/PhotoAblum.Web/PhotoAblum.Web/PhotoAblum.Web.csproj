@@ -767,6 +767,34 @@
     <Compile Include="Admin\Moudles\Ablums\UCPhotoImport.ascx.designer.cs">
       <DependentUpon>UCPhotoImport.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.cs">
+      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.designer.cs">
+      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.designer.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Codes\Bussiness\ServiceProxys\Tables\AlbumServiceProxy.cs" />
     <Compile Include="Codes\Bussiness\ServiceProxys\Tables\AlbumServiceProxy.Designer.cs">
       <DependentUpon>AlbumServiceProxy.cs</DependentUpon>
@@ -827,6 +855,8 @@
   <ItemGroup>
     <Content Include="AblumDetailPage.aspx" />
     <Content Include="Admin\css\css.css" />
+    <Content Include="Admin\Images\collapse-all.gif" />
+    <Content Include="Admin\Images\expand-all.gif" />
     <Content Include="Admin\Images\no_image.gif" />
     <Content Include="Admin\MainPage\Default.aspx" />
     <Content Include="Admin\MainPage\Login.aspx" />
@@ -838,6 +868,10 @@
     <Content Include="Admin\Moudles\Ablums\UCPhotoAdd.ascx" />
     <Content Include="Admin\Moudles\Ablums\UCPhotoEdit.ascx" />
     <Content Include="Admin\Moudles\Ablums\UCPhotoImport.ascx" />
+    <Content Include="Admin\Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
+    <Content Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
+    <Content Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
+    <Content Include="Admin\Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Config\DataConfig.xml" />
     <Content Include="Config\Log4Net.xml" />
     <Content Include="icons\accept.png" />
@@ -2575,6 +2609,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\NewFolder1\" />
     <Folder Include="App_Data\" />
     <Folder Include="ImportPath\" />
     <Folder Include="UploadFiles\Ablums\" />
