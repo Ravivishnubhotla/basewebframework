@@ -809,6 +809,13 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPage\Doctestrmanage.aspx.cs">
+      <DependentUpon>Doctestrmanage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\Doctestrmanage.aspx.designer.cs">
+      <DependentUpon>Doctestrmanage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\css\css.css" />
@@ -2542,6 +2549,7 @@
     <Content Include="icons\zoom_in.png" />
     <Content Include="icons\zoom_out.png" />
     <Content Include="Js\vswd-ext_2.0.2.js" />
+    <Content Include="TestPage\Doctestrmanage.aspx" />
     <EmbeddedResource Include="Codes\Data\Tables\Container\DataObjectContainersFile.xml" />
     <EmbeddedResource Include="Codes\Entity\Tables\MappingFiles\AlbumMappingFile.hbm.xml" />
     <EmbeddedResource Include="Codes\Entity\Tables\MappingFiles\PhotoMappingFile.hbm.xml" />
