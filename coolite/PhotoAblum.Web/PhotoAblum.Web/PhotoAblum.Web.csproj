@@ -788,6 +788,13 @@
     <Compile Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
       <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.designer.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
       <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -871,6 +878,7 @@
     <Content Include="Admin\Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
     <Content Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
     <Content Include="Admin\Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
+    <Content Include="Admin\Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
     <Content Include="Admin\Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Config\DataConfig.xml" />
     <Content Include="Config\Log4Net.xml" />

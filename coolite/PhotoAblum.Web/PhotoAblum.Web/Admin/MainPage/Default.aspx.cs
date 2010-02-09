@@ -76,7 +76,7 @@ namespace PhotoAblum.Web.Admin.MainPage
 
             abMenu1.AddSubMenu("M111", "应用管理", "~/Admin/Moudles/SystemManage/ApplicationManage/SystemApplicationListPage.aspx", "");
             abMenu1.AddSubMenu("M112", "菜单管理", "~/Admin/Moudles/SystemManage/MenuManage/SystemMenuListPage.aspx", "");
-            abMenu1.AddSubMenu("M113", "部门管理", "~/Admin/Moudles/SystemManage/DepartmentManage/AblumListPage.aspx", "");
+            abMenu1.AddSubMenu("M113", "部门管理", "~/Admin/Moudles/SystemManage/DepartmentManage/SystemDepartmentListPage.aspx", "");
             abMenu1.AddSubMenu("M114", "角色管理", "~/Admin/Moudles/SystemManage/RoleManage/AblumListPage.aspx", "");
             abMenu1.AddSubMenu("M115", "用户管理", "~/Admin/Moudles/SystemManage/UserManage/AblumListPage.aspx", "");
             abMenu1.AddSubMenu("M115", "用户组管理", "~/Admin/Moudles/SystemManage/UserGroupManage/AblumListPage.aspx", "");
