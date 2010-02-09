@@ -27,7 +27,8 @@
                 id: tabid,
                 title: tabname,
                 autoLoad: {
-                    showMask: true,
+                showMask: true,
+                    maskMsg: '加载中...',
                     scripts: true,
                     mode: "iframe",
                     url: taburl

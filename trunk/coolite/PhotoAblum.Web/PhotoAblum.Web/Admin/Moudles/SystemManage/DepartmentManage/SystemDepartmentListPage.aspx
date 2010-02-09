@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Masters/AdminMaster.Master"
-    AutoEventWireup="true" CodeBehind="SystemMenuListPage.aspx.cs" Inherits="PhotoAblum.Web.Admin.Moudles.SystemManage.MenuManage.SystemMenuListPage" %>
+    AutoEventWireup="true" CodeBehind="SystemDepartmentListPage.aspx.cs" Inherits="PhotoAblum.Web.Admin.Moudles.SystemManage.DepartmentManage.SystemDepartmentListPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -8,11 +8,11 @@
     </ext:ScriptManagerProxy>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="copyItems" runat="server" Text="添加节点" Icon="Add">
+            <ext:MenuItem ID="copyItems" runat="server" Text="添加新的子部门" Icon="Add">
             </ext:MenuItem>
             <ext:MenuItem ID="editItems" runat="server" Text="修改节点" Icon="Anchor">
             </ext:MenuItem>
-            <ext:MenuItem ID="moveItems" runat="server" Text="删除节点" Icon="Delete">
+            <ext:MenuItem ID="moveItems" runat="server" Text="删除部门" Icon="Delete">
             </ext:MenuItem>
         </Items>
     </ext:Menu>
@@ -20,23 +20,13 @@
         <Body>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <West MinWidth="300" MaxWidth="500" Split="true" Collapsible="true">
-                    <ext:Panel ID="WestPanel" runat="server" Title="系统菜单管理" Width="300">
+                    <ext:Panel ID="WestPanel" runat="server" Title="部门管理" Width="300">
                         <Body>
                             <ext:FitLayout ID="FitLayout1" runat="server">
                                 <ext:TreePanel ID="TreePanel1" runat="server" Header="false" AutoScroll="true">
                                     <TopBar>
                                         <ext:Toolbar ID="ToolBar1" runat="server">
                                             <Items>
-                                                <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="所属系统应用： " />
-                                                <ext:ComboBox ID="cbTheme" runat="server" EmptyText="选择系统应用" Width="100" Editable="false"  
-                                                    SelectedIndex="0" TypeAhead="true">
-                                                    <Items>
-                                                        <ext:ListItem Text="基础应用" Value="Default" />
-                                                        <ext:ListItem Text="相册应用" Value="Gray" />
-                                                        <ext:ListItem Text="CMS内容管理" Value="Slate" />
-                                                        <ext:ListItem Text="ECM电子商务" Value="Slate1" />
-                                                    </Items>
-                                                </ext:ComboBox>
                                                 <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                                 <ext:ToolbarButton ID="ToolbarButton1" runat="server" IconCls="icon-expand-all">
                                                     <Listeners>
@@ -58,7 +48,7 @@
                                         </ext:Toolbar>
                                     </TopBar>
                                     <Root>
-                                        <ext:TreeNode Text="系统菜单" Expanded="true">
+                                        <ext:TreeNode Text="公司架构" Expanded="true">
                                             <Nodes>
                                                 <ext:TreeNode Text="相册程序维护管理" Expanded="true">
                                                     <Nodes>
@@ -97,8 +87,7 @@
                                         <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
                                     </BottomBar>
                                     <Listeners>
-                                     <ContextMenu  Handler="#{cmenu}.showAt(e.getPoint());" />
-
+                                        <ContextMenu Handler="#{cmenu}.showAt(e.getPoint());" />
                                         <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '</b>', clear: true});" />
                                         <ExpandNode Handler="#{StatusBar1}.setStatus({text: 'Node Expanded: <b>' + node.text + '</b>', clear: true});"
                                             Delay="30" />
