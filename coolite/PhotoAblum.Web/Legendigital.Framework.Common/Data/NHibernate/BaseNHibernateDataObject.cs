@@ -27,8 +27,8 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual void Save(DomainType instance)
         {
             try
-            { 
-                DoGetSession(false).Save(instance);
+            {
+                GetCurrentSession().Save(instance);
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).Update(instance);
+                GetCurrentSession().Update(instance);
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).SaveOrUpdate(instance);
+                GetCurrentSession().SaveOrUpdate(instance);
             }
             catch (Exception ex)
             {
@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).SaveOrUpdateCopy(instance);
+                GetCurrentSession().SaveOrUpdateCopy(instance);
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).Delete(instance);
+                GetCurrentSession().Delete(instance);
             }
             catch (Exception ex)
             {
@@ -149,7 +149,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).Delete(String.Format("from {0}", typeof (DomainType).Name));
+                GetCurrentSession().Delete(String.Format("from {0}", typeof (DomainType).Name));
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).Evict(instance);
+                GetCurrentSession().Evict(instance);
             }
             catch (Exception ex)
             {
@@ -183,7 +183,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                DoGetSession(false).Lock(instance, lockMode);
+                GetCurrentSession().Lock(instance, lockMode);
             }
             catch (Exception ex)
             {
