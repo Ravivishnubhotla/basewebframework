@@ -697,6 +697,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AblumDetailPage.aspx.cs">
+      <DependentUpon>AblumDetailPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AblumDetailPage.aspx.designer.cs">
+      <DependentUpon>AblumDetailPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -818,6 +825,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AblumDetailPage.aspx" />
     <Content Include="Admin\css\css.css" />
     <Content Include="Admin\Images\no_image.gif" />
     <Content Include="Admin\MainPage\Default.aspx" />
