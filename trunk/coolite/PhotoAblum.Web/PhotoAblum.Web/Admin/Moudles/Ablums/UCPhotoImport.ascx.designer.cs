@@ -77,15 +77,6 @@ namespace PhotoAblum.Web.Admin.Moudles.Ablums {
         protected global::Coolite.Ext.Web.ToolbarButton tbtnImport;
         
         /// <summary>
-        /// ToolbarButton1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton1;
-        
-        /// <summary>
         /// ToolbarButton2 control.
         /// </summary>
         /// <remarks>
