@@ -853,6 +853,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\css\css.css" />
     <Content Include="Admin\Images\collapse-all.gif" />
     <Content Include="Admin\Images\expand-all.gif" />
     <Content Include="Admin\Images\no_image.gif" />
