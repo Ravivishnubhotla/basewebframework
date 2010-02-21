@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="App_TooManyMatching" xml:space="preserve">
+    <value>too many matching applications</value>
+  </data>
+  <data name="App_UnableToCheckExists" xml:space="preserve">
+    <value>unable to check if application exists</value>
+  </data>
+  <data name="App_UnableToCreateOrLoad" xml:space="preserve">
+    <value>unable to create or load the application</value>
+  </data>
+  <data name="App_UnableToGet" xml:space="preserve">
+    <value>unable to get application</value>
+  </data>
+  <data name="CurrentInfoNull" xml:space="preserve">
+    <value>Current info node is null.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found.</value>
+  </data>
+  <data name="InvaildArgumentsLength" xml:space="preserve">
+    <value>Invaild Arguments Length.</value>
+  </data>
+  <data name="InvaildKeyLength" xml:space="preserve">
+    <value>Invaild Key Length</value>
+  </data>
+  <data name="LoadFileNotFound" xml:space="preserve">
+    <value>cann't found load file.</value>
+  </data>
+  <data name="NotImplemented" xml:space="preserve">
+    <value>The special methods not Implemented now.</value>
+  </data>
+  <data name="NotSupported" xml:space="preserve">
+    <value>The special methods not supported the operate.</value>
+  </data>
+  <data name="Pwd_AnswerRequiredForReset" xml:space="preserve">
+    <value>password answer required for password reset</value>
+  </data>
+  <data name="Pwd_CannotRetrieveHashed" xml:space="preserve">
+    <value>cannot retrieve Hashed passwords</value>
+  </data>
+  <data name="Pwd_CannotUnencodeHashed" xml:space="preserve">
+    <value>cannot unencode a hashed password</value>
+  </data>
+  <data name="Pwd_ChangeCancelledDueToNewPassword" xml:space="preserve">
+    <value>change password cancelled due to New Password validation failure</value>
+  </data>
+  <data name="Pwd_IncorrectAnswer" xml:space="preserve">
+    <value>incorrect password answer</value>
+  </data>
+  <data name="Pwd_OpCancelledDueToAccountLocked" xml:space="preserve">
+    <value>user not found, or user is locked out; password not reset</value>
+  </data>
+  <data name="Pwd_ResetCancelledDueToNewPassword" xml:space="preserve">
+    <value>reset password cancelled due to New Password validation failure</value>
+  </data>
+  <data name="Pwd_ResetNotEnabled" xml:space="preserve">
+    <value>password reset is not enabled</value>
+  </data>
+  <data name="Pwd_RetrievalNotEnabled" xml:space="preserve">
+    <value>password retrieval is not enabled</value>
+  </data>
+  <data name="Pwd_UnableToChangeQandA" xml:space="preserve">
+    <value>unable to change the password question and answer</value>
+  </data>
+  <data name="Pwd_UnsupportedFormat" xml:space="preserve">
+    <value>unsupported password format</value>
+  </data>
+  <data name="Role_AlreadyExists" xml:space="preserve">
+    <value>role already exists</value>
+  </data>
+  <data name="Role_TooManyMatching" xml:space="preserve">
+    <value>too many matching roles</value>
+  </data>
+  <data name="Role_UnableToAddUsersToRoles" xml:space="preserve">
+    <value>unable to add users to roles</value>
+  </data>
+  <data name="Role_UnableToCheckIfExists" xml:space="preserve">
+    <value>unable to check if role exists</value>
+  </data>
+  <data name="Role_UnableToCreate" xml:space="preserve">
+    <value>unable to create role</value>
+  </data>
+  <data name="Role_UnableToDelete" xml:space="preserve">
+    <value>unable to delete role</value>
+  </data>
+  <data name="Role_UnableToFindUserInRole" xml:space="preserve">
+    <value>unable to find user in role</value>
+  </data>
+  <data name="Role_UnableToFindUsersInRole" xml:space="preserve">
+    <value>unable to find users in role</value>
+  </data>
+  <data name="Role_UnableToGet" xml:space="preserve">
+    <value>unable to get role</value>
+  </data>
+  <data name="Role_UnableToGetAllRoles" xml:space="preserve">
+    <value>unable to get all roles</value>
+  </data>
+  <data name="Role_UnableToGetRolesForUser" xml:space="preserve">
+    <value>unable to get roles for user</value>
+  </data>
+  <data name="Role_UnableToGetUsersInRole" xml:space="preserve">
+    <value>unable to get users in role</value>
+  </data>
+  <data name="Role_UnableToRemoveUsersFromRoles" xml:space="preserve">
+    <value>unable to remove users from roles</value>
+  </data>
+  <data name="Role_UserRoleParamsNotSameLength" xml:space="preserve">
+    <value>&lt;i&gt;usernames&lt;/i&gt; and &lt;i&gt;roleNames&lt;/i&gt; parameters are not of the same length</value>
+  </data>
+  <data name="SaveFileNotFound" xml:space="preserve">
+    <value>cann't found save file.</value>
+  </data>
+  <data name="SettingsReadOnly" xml:space="preserve">
+    <value>The special settings is readonly.</value>
+  </data>
+  <data name="TableReadOnly" xml:space="preserve">
+    <value>The special table is readonly.</value>
+  </data>
+  <data name="User_IsLockedOut" xml:space="preserve">
+    <value>the supplied user is locked out</value>
+  </data>
+  <data name="User_TooManyMatching" xml:space="preserve">
+    <value>too many matching users</value>
+  </data>
+  <data name="User_UnableToCheckIfExists" xml:space="preserve">
+    <value>unable to check if user exists</value>
+  </data>
+  <data name="User_UnableToCreate" xml:space="preserve">
+    <value>unable to create user</value>
+  </data>
+  <data name="User_UnableToDelete" xml:space="preserve">
+    <value>unable to delete user</value>
+  </data>
+  <data name="User_UnableToGet" xml:space="preserve">
+    <value>unable to get user</value>
+  </data>
+  <data name="User_UnableToGetAllUsers" xml:space="preserve">
+    <value>unable to get all users</value>
+  </data>
+  <data name="User_UnableToGetByEmail" xml:space="preserve">
+    <value>unable to get users by email</value>
+  </data>
+  <data name="User_UnableToGetByName" xml:space="preserve">
+    <value>unable to get users by name</value>
+  </data>
+  <data name="User_UnableToGetOnlineNumber" xml:space="preserve">
+    <value>unable to get number of users currently online</value>
+  </data>
+  <data name="User_UnableToUnlock" xml:space="preserve">
+    <value>unable to unlock user</value>
+  </data>
+  <data name="User_UnableToUpdate" xml:space="preserve">
+    <value>unable to update user</value>
+  </data>
+  <data name="User_UnableToUpdateFailureCount" xml:space="preserve">
+    <value>unable to update failure count and window start</value>
+  </data>
+  <data name="User_UnableToUpdateLastActivityDate" xml:space="preserve">
+    <value>unable to update last activity date</value>
+  </data>
+  <data name="User_UnableToUpdateLastLoginDate" xml:space="preserve">
+    <value>unable to update last login date</value>
+  </data>
+  <data name="ZeroKeyLength" xml:space="preserve">
+    <value>Zero Key Length.</value>
+  </data>
+</root>

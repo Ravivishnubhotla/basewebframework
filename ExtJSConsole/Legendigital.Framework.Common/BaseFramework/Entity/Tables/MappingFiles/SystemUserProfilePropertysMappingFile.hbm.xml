@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserProfilePropertysEntity,Legendigital.Framework.Common" table="SystemUserProfilePropertys" lazy="true"  >
+
+<id name="PropertyID" column="Property_ID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<property column="Property_Name" type="string" name="PropertyName"   not-null="true"  length="1000" />	
+		<property column="Property_Description" type="string" name="PropertyDescription"   length="4000" />	
+
+
+
+
+</class>
+</hibernate-mapping>
