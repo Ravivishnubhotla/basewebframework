@@ -134,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             foreach (SystemMenuWrapper gmenu in listmenu)
             {
-                if (gmenu.MenuIsCategory)
+                if (gmenu.ParentMenuID==null || gmenu.ParentMenuID.MenuID==0)
                 {
                     NavMenu groupMenu = new NavMenu();
                     groupMenu.Id = gmenu.MenuID.ToString();
@@ -146,7 +146,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
                     foreach (SystemMenuWrapper itemMenu in listmenu)
                     {
-                        if (!itemMenu.MenuIsCategory && itemMenu.ParentMenuID.MenuID == gmenu.MenuID)
+                        if (gmenu.ParentMenuID != null && itemMenu.ParentMenuID.MenuID == gmenu.MenuID)
                         {
                             NavMenu subMenu = new NavMenu();
                             subMenu.Id = itemMenu.MenuID.ToString();
