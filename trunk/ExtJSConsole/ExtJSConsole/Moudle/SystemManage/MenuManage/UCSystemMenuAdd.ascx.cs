@@ -21,6 +21,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         [AjaxMethod]
         public void Show(string applicationId, string parentID)
         {
+
             SystemApplicationWrapper application = SystemApplicationWrapper.FindById(int.Parse(applicationId));
 
             if(application!=null)
@@ -33,6 +34,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 {
                     this.lblParentMenuName.Text = "作为主菜单";
                     this.fsMenuIsCategory.Disabled = true;
+                    this.fsMenuIsCategory.CheckboxToggle = false;
+                }
+                else
+                {
+                    this.lblParentMenuName.Text =
+                        SystemMenuWrapper.FindById(int.Parse(parentID)).MenuName;
+                    this.hidPMenuID.Text = parentID;
+                    this.fsMenuIsCategory.Disabled = false;
+                    this.fsMenuIsCategory.CheckboxToggle = true;
                 }
 
                 this.txtMenuName.Text = "";
@@ -52,7 +62,37 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
             try
             {
-     
+                SystemMenuWrapper menuWrapper = new SystemMenuWrapper();
+                menuWrapper.MenuName = this.txtMenuName.Text.Trim();
+                menuWrapper.MenuDescription = this.txtMenuDescription.Text.Trim();
+                menuWrapper.ApplicationID = SystemApplicationWrapper.FindById(int.Parse(this.hidApplicationID.Text));
+                menuWrapper.MenuIsSystemMenu = true;
+                menuWrapper.MenuIsEnable = true;
+    
+                if (this.hidPMenuID.Text.Trim() != "")
+                {
+                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(int.Parse(this.hidPMenuID.Text.Trim()), int.Parse(this.hidApplicationID.Text));
+                    menuWrapper.ParentMenuID = SystemMenuWrapper.FindById(int.Parse(this.hidPMenuID.Text.Trim()));
+                }
+                else
+                {
+                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0,int.Parse(this.hidApplicationID.Text));
+                }
+
+                menuWrapper.MenuIsCategory = !this.fsMenuIsCategory.CheckboxToggle;
+
+                if (menuWrapper.MenuIsCategory)
+                {
+                    menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
+                    menuWrapper.MenuUrl = this.txtMenuUrl.Text.Trim();
+                    menuWrapper.MenuType = this.cmbMenuType.SelectedItem.Value;
+                    menuWrapper.MenuUrlTarget = this.cmbMenuUrlTarget.SelectedItem.Value;
+                }
+
+
+                SystemMenuWrapper.Save(menuWrapper);
+
+                winSystemMenuAdd.Hide();
 
             }
             catch (Exception ex)

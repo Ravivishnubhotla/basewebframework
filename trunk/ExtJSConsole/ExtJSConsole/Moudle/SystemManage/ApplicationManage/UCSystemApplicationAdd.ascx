@@ -32,7 +32,7 @@
         <ext:Button ID="btnSaveSystemApplication" runat="server" Text="添加" Icon="Add">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSystemApplicationAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSystemApplication_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了系统应用。',callback);function callback(id) { #{storeSystemApplication}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了系统应用。',callback);function callback(id) {#{formPanelSystemApplicationAdd}.getForm().reset();#{storeSystemApplication}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

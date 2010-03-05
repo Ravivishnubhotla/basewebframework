@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using ScriptManager=Coolite.Ext.Web.ScriptManager;
+using TreeNode=Coolite.Ext.Web.TreeNode;
 using TreeNodeCollection=Coolite.Ext.Web.TreeNodeCollection;
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
@@ -18,28 +20,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         {
             if (Ext.IsAjaxRequest)
                 return;
-
-            List<SystemApplicationWrapper> systemApplicationWrappers = SystemApplicationWrapper.FindAll();
-
-            storeSystemApplication.DataSource = systemApplicationWrappers;
-
-            storeSystemApplication.DataBind();
-
-            if (systemApplicationWrappers.Count>0)
-            {
-                cbApplication.SelectedIndex = 0;
-
-                List<NavMenu> menus = SystemMenuWrapper.GetNavMenuByApplication(systemApplicationWrappers[0]);
-
-                TreeNodeCollection treeNodeCollection = new TreeNodeCollection();
-
-            }
-
-
-
-
-
-
         }
 
         protected void storeSystemApplication_Refresh(object sender, StoreRefreshDataEventArgs e)
@@ -47,6 +27,28 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
             storeSystemApplication.DataSource = SystemApplicationWrapper.FindAll();
 
             storeSystemApplication.DataBind();
+
+        }
+
+
+        [AjaxMethod]
+        public void DeleteMenu(string smenuID)
+        {
+            
+            try
+            {
+                int menuID = int.Parse(smenuID);
+
+                SystemMenuWrapper.DeleteByID(menuID);
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(e.Message);
+                return;
+            }
 
         }
 
@@ -74,18 +76,41 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         {
             TreeNodeCollection nodes = new TreeNodeCollection();
 
-            Coolite.Ext.Web.TreeNode root = new Coolite.Ext.Web.TreeNode();
+            TreeNode root = new TreeNode();
             root.Text = rootName;
             root.Icon = Icon.Folder;
+    
             nodes.Add(root);
 
             if (menus == null || menus.Count ==0)
                 return nodes;
 
+            foreach (var menu in menus)
+            {
+                TreeNode mainNode =new TreeNode();
+                mainNode.Text = menu.Name;
+                mainNode.NodeID = menu.Id;
+                mainNode.Icon = Icon.Folder;
+                GenerateSubTreeNode(mainNode, menu);
+                root.Nodes.Add(mainNode);
+            }
+
             return nodes;
         }
 
-
-
+        private void GenerateSubTreeNode(TreeNode mainNode, NavMenu menu)
+        {
+            foreach (var sMenu in menu.SubMenus){
+                TreeNode subNode =new TreeNode();
+                subNode.Text = sMenu.Name;
+                subNode.NodeID = sMenu.Id;
+                if (sMenu.IsCategory)
+                    subNode.Icon = Icon.Folder;
+                else
+                    subNode.Icon = Icon.ApplicationForm;
+                GenerateSubTreeNode(subNode, sMenu);
+                mainNode.Nodes.Add(subNode);
+            }
+        }
     }
 }

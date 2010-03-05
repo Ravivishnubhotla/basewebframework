@@ -3,6 +3,83 @@
 
 <%@ Register Src="UCSystemMenuAdd.ascx" TagName="UCSystemMenuAdd" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+
+        function RefreshList(cmb, treepanel) {
+            Coolite.AjaxMethods.GetTreeNodes(
+                                                cmb.getValue(),
+                                                {
+                                                    failure: function(msg) {
+                                                        Ext.Msg.alert('操作失败', msg);
+                                                    },
+                                                    success: function(result) {
+                                                        var nodes = eval(result);
+                                                        treepanel.root.ui.remove();
+                                                        treepanel.initChildren(nodes);
+                                                        treepanel.root.render();
+                                                    },
+                                                    eventMask: {
+                                                        showMask: true,
+                                                        msg: '正在加载菜单......'
+                                                    }
+                                                }
+                                             );
+
+        }
+        
+        
+
+
+
+        var RefreshData = function(btn) {
+            RefreshList( <%= this.cbApplication.ClientID %>, <%= this.TreePanel1.ClientID %>);
+        };
+        
+        
+        
+        function RefreshTreeList1() {
+            RefreshList( <%= this.cbApplication.ClientID %>, <%= this.TreePanel1.ClientID %>);
+        }
+
+
+        function ShowAddForm(appID, parentmenuID) {
+            Coolite.AjaxMethods.UCSystemMenuAdd.Show(
+                                                        appID,
+                                                        parentmenuID,
+                                                        {
+                                                            failure: function(msg) {
+                                                                Ext.Msg.alert('操作失败', msg);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '加载中......'
+                                                            }
+                                                        });
+
+        }
+
+        function DeleteMenu(menuID) {
+            Coolite.AjaxMethods.DeleteMenu(
+                                                        menuID,
+                                                        {
+                                                            failure: function(msg) {
+                                                                Ext.Msg.alert('操作失败', msg);
+                                                            },
+                                                            success: function(result) {
+                                                                Ext.Msg.alert('操作成功', '成功删除系统菜单！', RefreshData);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '操作中......'
+                                                            }
+                                                        });
+
+        }    
+
+    
+    </script>
+
     <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" OnRefreshData="storeSystemApplication_Refresh">
         <Proxy>
             <ext:DataSourceProxy />
@@ -18,30 +95,38 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+            <Load Handler="#{cbApplication}.setValue(#{storeSystemApplication}.data.items[0].data.SystemApplicationID);RefreshList(#{cbApplication},#{TreePanel1});#{WestPanel}.setDisabled(false);" />
+        </Listeners>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSystemApplication}.reload();" />
+        </Listeners>
     </ext:ScriptManagerProxy>
-
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="copyItems" runat="server" Text="添加子节点" Icon="Add">
+            <ext:MenuItem ID="copyItems" runat="server" Text="添加子菜单" Icon="Add">
                 <Listeners>
-                    <Click Handler="#{winSystemMenuAdd}.show();"   />
+                    <Click Handler="ShowAddForm(#{cbApplication}.getValue(),#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="editItems" runat="server" Text="修改节点" Icon="Anchor">
+            <ext:MenuItem ID="editItems" runat="server" Text="编辑子菜单" Icon="Add">
             </ext:MenuItem>
-            <ext:MenuItem ID="moveItems" runat="server" Text="删除节点" Icon="Delete">
+            <ext:MenuItem ID="deleteItems" runat="server" Text="删除菜单" Icon="Delete">
+                <Listeners>
+                    <Click Handler="DeleteMenu(#{TreePanel1}.selModel.selNode.attributes.id);" />
+                </Listeners>
             </ext:MenuItem>
         </Items>
     </ext:Menu>
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
-                <West MinWidth="300" MaxWidth="500" Split="true" Collapsible="true">
-                    <ext:Panel ID="WestPanel" runat="server" Title="系统菜单管理" Width="300">
+                <Center>
+                    <ext:Panel ID="WestPanel" runat="server" Title="系统菜单管理" Width="300" Disabled=true>
                         <Body>
                             <ext:FitLayout ID="FitLayout1" runat="server">
                                 <ext:TreePanel ID="TreePanel1" runat="server" Header="false" RootVisible="false"
@@ -54,36 +139,31 @@
                                                     Editable="false" TypeAhead="true" StoreID="storeSystemApplication" DisplayField="SystemApplicationName"
                                                     ValueField="SystemApplicationID" ForceSelection="true" SelectOnFocus="true">
                                                     <Listeners>
-                                                        <Select Handler="Coolite.AjaxMethods.GetTreeNodes(
-                                                                                                            #{cbApplication}.getValue(), 
-                                                                                                            { 
-                                                                                                                success: function(result) { 
-                                                                                                                            var nodes = eval(result);
-                                                                                                                            #{TreePanel1}.root.ui.remove();
-                                                                                                                            #{TreePanel1}.initChildren(nodes);
-                                                                                                                            #{TreePanel1}.root.render();
-                                                                                                                            },
-                                                                                                                eventMask: {
-                                                                                                                            showMask: true,
-                                                                                                                            msg: '正在加载菜单......'
-                                                                                                                           }
-                                                                                                             }
-                                                                                                          );" />
+                                                        <Select Handler="RefreshList(#{cbApplication},#{TreePanel1});" />
                                                     </Listeners>
                                                 </ext:ComboBox>
-                                                <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
-                                                <ext:ToolbarButton ID="ToolbarButton1" runat="server" Icon="Add">
+                                                <ext:ToolbarButton ID="ToolbarButton1" runat="server" Icon="Add" Text="添加根菜单">
                                                     <Listeners>
-                                                        <Click Handler="Coolite.AjaxMethods.UCSystemMenuAdd.Show(#{cbApplication}.getValue(),'',
-                                                                                                                { 
-                                                                                                                eventMask: {
-                                                                                                                            showMask: true,
-                                                                                                                            msg: '加载中......'
-                                                                                                                           }
-                                                                                                                 }
-                                                                                                                                               
-                                                                                                                 );" />
+                                                        <Click Handler="ShowAddForm(#{cbApplication}.getValue(),'');" />
                                                     </Listeners>
+                                                </ext:ToolbarButton>
+                                                <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
+                                               <ext:ToolbarButton runat="server" IconCls="icon-expand-all">
+                                                    <Listeners>
+                                                        <Click Handler="#{TreePanel1}.root.expand(true);" />
+                                                    </Listeners>
+                                                    <ToolTips>
+                                                        <ext:ToolTip IDMode="Ignore" runat="server" Html="Expand All" />
+                                                    </ToolTips>
+                                                </ext:ToolbarButton>
+                                                
+                                                <ext:ToolbarButton runat="server" IconCls="icon-collapse-all">
+                                                    <Listeners>
+                                                        <Click Handler="#{TreePanel1}.root.collapse(true);" />
+                                                    </Listeners>
+                                                    <ToolTips>
+                                                        <ext:ToolTip IDMode="Ignore" runat="server" Html="Collapse All" />
+                                                    </ToolTips>
                                                 </ext:ToolbarButton>
                                             </Items>
                                         </ext:Toolbar>
@@ -96,51 +176,16 @@
                                         <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
                                     </BottomBar>
                                     <Listeners>
-                                        <ContextMenu Handler="#{cmenu}.showAt(e.getPoint());" />
-                                        <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '</b>', clear: true});#{FormPanel1}.show();" />
+                                        <ContextMenu Handler="e.preventDefault();node.select();#{cmenu}.showAt(e.getPoint());" />
+                                        <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '</b>', clear: true});" />
                                     </Listeners>
                                 </ext:TreePanel>
                             </ext:FitLayout>
                         </Body>
                     </ext:Panel>
-                </West>
-                <Center>
-                    <ext:FormPanel ID="FormPanel1" runat="server" Title="菜单设置" Frame="true" ButtonAlign="Right"
-                        Hidden="true">
-                        <Body>
-                            <ext:FormLayout ID="FormLayout1" runat="server">
-                                <ext:Anchor Horizontal="95%">
-                                    <ext:TextField ID="TextField1" DataIndex="pctChange" runat="server" FieldLabel="父菜单" />
-                                </ext:Anchor>
-                                <ext:Anchor Horizontal="95%">
-                                    <ext:TextField ID="CompanyField" DataIndex="company" runat="server" FieldLabel="菜单名" />
-                                </ext:Anchor>
-                                <ext:Anchor Horizontal="95%">
-                                    <ext:TextField ID="PriceField" DataIndex="price" runat="server" FieldLabel="菜单描述" />
-                                </ext:Anchor>
-                                <ext:Anchor Horizontal="95%">
-                                    <ext:TextField ID="ChangeField" DataIndex="change" runat="server" FieldLabel="菜单链接" />
-                                </ext:Anchor>
-                                <ext:Anchor Horizontal="95%">
-                                    <ext:TextField ID="PctChangeField" DataIndex="pctChange" runat="server" FieldLabel="菜单图标" />
-                                </ext:Anchor>
-                            </ext:FormLayout>
-                        </Body>
-                        <Buttons>
-                            <ext:Button ID="Button3" runat="server" Text="修改">
-                            </ext:Button>
-                            <ext:Button ID="Button6" runat="server" Text="删除">
-                            </ext:Button>
-                            <ext:Button ID="Button2" runat="server" Text="添加子菜单">
-                            </ext:Button>
-                            <ext:Button ID="Button1" runat="server" Text="子类手动排序">
-                            </ext:Button>
-                            <ext:Button ID="Button4" runat="server" Text="子类自动排序">
-                            </ext:Button>
-                        </Buttons>
-                    </ext:FormPanel>
                 </Center>
             </ext:BorderLayout>
         </Body>
-    </ext:ViewPort>    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
+    </ext:ViewPort>
+    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
 </asp:Content>

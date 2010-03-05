@@ -32,8 +32,6 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
                 SystemApplicationWrapper.DeleteByID(id);
 
                 ScriptManager.AjaxSuccess = true;
-
-                //Ext.Msg.Alert("操作成功", "成功删除系统应用", new JFunction { Fn = "RefreshData" }).Show();
             }
             catch (Exception ex)
             {
