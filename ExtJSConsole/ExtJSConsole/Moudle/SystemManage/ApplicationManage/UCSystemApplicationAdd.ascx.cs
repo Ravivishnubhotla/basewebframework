@@ -22,11 +22,6 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
         {
             try
             {
-                txtSystemApplicationName.Text = "";
-                txtSystemApplicationDescription.Text = "";
-                txtSystemApplicationUrl.Text = "";
-                chkSystemApplicationIsSystemApplication.Checked = false;
-
                 this.winSystemApplicationAdd.Show();
             }
             catch (Exception ex)

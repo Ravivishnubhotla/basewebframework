@@ -50,13 +50,13 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.FormLayout FormLayout2;
         
         /// <summary>
-        /// hidMenuID control.
+        /// hidPMenuID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidMenuID;
+        protected global::Coolite.Ext.Web.Hidden hidPMenuID;
         
         /// <summary>
         /// hidApplicationID control.
@@ -102,6 +102,24 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.TextArea txtMenuDescription;
+        
+        /// <summary>
+        /// chkMenuIsSystemMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkMenuIsSystemMenu;
+        
+        /// <summary>
+        /// chkMenuIsEnable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkMenuIsEnable;
         
         /// <summary>
         /// fsMenuIsCategory control.
@@ -156,24 +174,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ComboBox cmbMenuType;
-        
-        /// <summary>
-        /// chkMenuIsSystemMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkMenuIsSystemMenu;
-        
-        /// <summary>
-        /// chkMenuIsEnable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkMenuIsEnable;
         
         /// <summary>
         /// btnSaveSystemMenu control.
