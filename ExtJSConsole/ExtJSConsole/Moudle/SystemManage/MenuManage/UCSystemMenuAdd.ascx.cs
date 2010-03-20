@@ -24,13 +24,13 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
             SystemApplicationWrapper application = SystemApplicationWrapper.FindById(int.Parse(applicationId));
 
-            if(application!=null)
+            if (application != null)
             {
                 this.hidApplicationID.Text = application.SystemApplicationID.ToString();
                 this.lblApplicationName.Text = application.SystemApplicationName;
 
 
-                if(parentID == "")
+                if (parentID == "")
                 {
                     this.lblParentMenuName.Text = "作为主菜单";
                     this.fsMenuIsCategory.Disabled = true;
@@ -48,7 +48,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 this.txtMenuName.Text = "";
                 this.txtMenuDescription.Text = "";
 
-                
+
 
             }
 
@@ -66,9 +66,9 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 menuWrapper.MenuName = this.txtMenuName.Text.Trim();
                 menuWrapper.MenuDescription = this.txtMenuDescription.Text.Trim();
                 menuWrapper.ApplicationID = SystemApplicationWrapper.FindById(int.Parse(this.hidApplicationID.Text));
-                menuWrapper.MenuIsSystemMenu = true;
-                menuWrapper.MenuIsEnable = true;
-    
+                menuWrapper.MenuIsSystemMenu = this.chkMenuIsSystemMenu.Checked;
+                menuWrapper.MenuIsEnable = this.chkMenuIsEnable.Checked;
+
                 if (this.hidPMenuID.Text.Trim() != "")
                 {
                     menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(int.Parse(this.hidPMenuID.Text.Trim()), int.Parse(this.hidApplicationID.Text));
@@ -76,17 +76,24 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 }
                 else
                 {
-                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0,int.Parse(this.hidApplicationID.Text));
+                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0, int.Parse(this.hidApplicationID.Text));
                 }
 
                 menuWrapper.MenuIsCategory = this.fsMenuIsCategory.Collapsed;
 
-                if (menuWrapper.MenuIsCategory)
+                if (!menuWrapper.MenuIsCategory)
                 {
                     menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
                     menuWrapper.MenuUrl = this.txtMenuUrl.Text.Trim();
                     menuWrapper.MenuType = this.cmbMenuType.SelectedItem.Value;
                     menuWrapper.MenuUrlTarget = this.cmbMenuUrlTarget.SelectedItem.Value;
+                }
+                else
+                {
+                    menuWrapper.MenuIconUrl = "";
+                    menuWrapper.MenuUrl = "";
+                    menuWrapper.MenuType = "1";
+                    menuWrapper.MenuUrlTarget = "1";
                 }
 
 

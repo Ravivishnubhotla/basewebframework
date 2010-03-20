@@ -59,6 +59,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.Hidden hidPMenuID;
         
         /// <summary>
+        /// hidMenuID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidMenuID;
+        
+        /// <summary>
         /// hidApplicationID control.
         /// </summary>
         /// <remarks>
