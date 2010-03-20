@@ -22,6 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemMenuEntity> GetMenuByParentID(int parentMenuId);
         void PatchUpdate(List<SystemMenuWrapper> menus);
         List<string> GetRoleAssignedMenuIDs(SystemRoleEntity role);
+	    List<SystemMenuEntity> GetTopMenuByAppID(int appId);
     }
 
     public partial class SystemMenuServiceProxy : ISystemMenuServiceProxy
@@ -111,6 +112,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                 menuIDs.Add(entity.MenuID.ToString());
             }
             return menuIDs;
+        }
+
+        public List<SystemMenuEntity> GetTopMenuByAppID(int appId)
+        {
+            return this.SelfDataObj.GetTopMenuByAppID(this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(appId));
         }
     }
 }

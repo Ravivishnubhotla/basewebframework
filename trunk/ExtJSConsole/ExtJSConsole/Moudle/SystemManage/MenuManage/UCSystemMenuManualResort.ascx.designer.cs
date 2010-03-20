@@ -14,13 +14,13 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
     public partial class UCSystemMenuManualResort {
         
         /// <summary>
-        /// storeSubMenu control.
+        /// storeSubMenus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSubMenu;
+        protected global::Coolite.Ext.Web.Store storeSubMenus;
         
         /// <summary>
         /// winSystemMenuManualResort control.
@@ -32,58 +32,31 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.Window winSystemMenuManualResort;
         
         /// <summary>
-        /// fitLayoutMain control.
+        /// ColumnLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Coolite.Ext.Web.ColumnLayout ColumnLayout1;
         
         /// <summary>
-        /// formPanelSystemMenuManualResort control.
+        /// pnlSortItems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemMenuManualResort;
+        protected global::Coolite.Ext.Web.Panel pnlSortItems;
         
         /// <summary>
-        /// Panel1 control.
+        /// MultiSelect1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel Panel1;
-        
-        /// <summary>
-        /// FormLayout2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout2;
-        
-        /// <summary>
-        /// hidPMenuID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidPMenuID;
-        
-        /// <summary>
-        /// multiSelectResort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.MultiSelect multiSelectResort;
+        protected global::Coolite.Ext.Web.MultiSelect MultiSelect1;
         
         /// <summary>
         /// btnResortSystemMenu control.
