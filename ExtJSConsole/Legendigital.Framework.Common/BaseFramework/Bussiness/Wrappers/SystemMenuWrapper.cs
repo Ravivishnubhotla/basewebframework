@@ -277,5 +277,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.PatchUpdate(menus);
         }
 
+	    public static List<SystemMenuWrapper> GetTopMenuByAppID(int appID)
+	    {
+            return ConvertToWrapperList(businessProxy.GetTopMenuByAppID(appID));
+	    }
     }
 }

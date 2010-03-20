@@ -158,6 +158,51 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton1;
         
         /// <summary>
+        /// ToolbarButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton2;
+        
+        /// <summary>
+        /// ToolbarButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton3;
+        
+        /// <summary>
+        /// ToolTip1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolTip ToolTip1;
+        
+        /// <summary>
+        /// ToolbarButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton4;
+        
+        /// <summary>
+        /// ToolTip2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolTip ToolTip2;
+        
+        /// <summary>
         /// ToolbarFill1 control.
         /// </summary>
         /// <remarks>

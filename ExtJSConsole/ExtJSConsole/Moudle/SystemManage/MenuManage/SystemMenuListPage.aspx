@@ -32,11 +32,19 @@
         }
         
         
-               function showReorderForm(id) {
+               function showReorderForm(id,stores,appID) {
+               
+stores.autoLoad.params.ParentMenuID = id;
+
+stores.autoLoad.params.AppID = appID;
+               
                 Coolite.AjaxMethods.UCSystemMenuManualResort.Show(id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    success: function(result) {
+                                                                        stores.reload();
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -173,7 +181,7 @@
             </ext:MenuItem>
             <ext:MenuItem ID="MenuItem1" runat="server" Text="子菜单排序" Icon="SortAscending">
                 <Listeners>
-                    <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id);#{storeSubMenu}.reload();" />
+                    <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{storeSubMenus},#{cbApplication}.getValue());" />
                 </Listeners>
             </ext:MenuItem>
         </Items>
@@ -203,23 +211,28 @@
                                                         <Click Handler="ShowAddForm(#{cbApplication}.getValue(),'');" />
                                                     </Listeners>
                                                 </ext:ToolbarButton>
-                                                <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
-                                                <ext:ToolbarButton runat="server" IconCls="icon-expand-all">
+                                                <ext:ToolbarButton ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="根菜单排序">
+                                                    <Listeners>
+                                                        <Click Handler="showReorderForm(0,#{storeSubMenus},#{cbApplication}.getValue());" />
+                                                    </Listeners>
+                                                </ext:ToolbarButton>
+                                                <ext:ToolbarButton ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="全部展开">
                                                     <Listeners>
                                                         <Click Handler="#{TreePanel1}.root.expand(true);" />
                                                     </Listeners>
                                                     <ToolTips>
-                                                        <ext:ToolTip IDMode="Ignore" runat="server" Html="Expand All" />
+                                                        <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="Expand All" />
                                                     </ToolTips>
                                                 </ext:ToolbarButton>
-                                                <ext:ToolbarButton runat="server" IconCls="icon-collapse-all">
+                                                <ext:ToolbarButton ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="全部收起">
                                                     <Listeners>
                                                         <Click Handler="#{TreePanel1}.root.collapse(true);" />
                                                     </Listeners>
                                                     <ToolTips>
-                                                        <ext:ToolTip IDMode="Ignore" runat="server" Html="Collapse All" />
+                                                        <ext:ToolTip ID="ToolTip2" IDMode="Ignore" runat="server" Html="Collapse All" />
                                                     </ToolTips>
                                                 </ext:ToolbarButton>
+                                                <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                             </Items>
                                         </ext:Toolbar>
                                     </TopBar>
