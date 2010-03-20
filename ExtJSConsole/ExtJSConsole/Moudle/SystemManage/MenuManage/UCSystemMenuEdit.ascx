@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuEdit.ascx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuEdit" %>
 <ext:Window ID="winSystemMenuEdit" runat="server" Icon="ApplicationAdd" Title="编辑系统菜单"
-    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSystemMenuEdit" runat="server" Frame="true" Header="false"
