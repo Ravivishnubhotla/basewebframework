@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuAdd.ascx.cs"
     Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuAdd" %>
 <ext:Window ID="winSystemMenuAdd" runat="server" Icon="ApplicationAdd" Title="新建系统菜单"
-    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSystemMenuAdd" runat="server" Frame="true" Header="false"

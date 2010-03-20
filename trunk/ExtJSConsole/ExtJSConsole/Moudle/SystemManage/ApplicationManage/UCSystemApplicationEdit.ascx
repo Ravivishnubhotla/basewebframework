@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemApplicationEdit.ascx.cs"
     Inherits="ExtJSConsole.Moudle.SystemManage.ApplicationManage.UCSystemApplicationEdit" %>
 <ext:Window ID="winSystemApplicationEdit" runat="server" Icon="ApplicationEdit" Title="编辑系统应用"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSystemApplicationEdit" runat="server" Frame="true" Header="false"
