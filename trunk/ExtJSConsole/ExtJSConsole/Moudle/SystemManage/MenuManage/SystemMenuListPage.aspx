@@ -3,6 +3,8 @@
 
 <%@ Register Src="UCSystemMenuAdd.ascx" TagName="UCSystemMenuAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemMenuEdit.ascx" TagName="UCSystemMenuEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSystemMenuManualResort.ascx" TagName="UCSystemMenuManualResort"
+    TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
@@ -30,6 +32,21 @@
         }
         
         
+               function showReorderForm(id) {
+                Coolite.AjaxMethods.UCSystemMenuManualResort.Show(id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }); 
+                                                                  
+        
+        }
+        
 
 
 
@@ -49,6 +66,7 @@
             menu.items.items[0].setVisible((node.attributes.IsGroup=='1'));
             menu.items.items[1].setVisible(true);
             menu.items.items[2].setVisible((node.childNodes.length==0));
+            menu.items.items[3].setVisible((node.childNodes.length>0));
             menu.showAt(point);
         }
         
@@ -153,6 +171,11 @@
                     <Click Handler="DeleteMenu(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
+            <ext:MenuItem ID="MenuItem1" runat="server" Text="子菜单排序" Icon="SortAscending">
+                <Listeners>
+                    <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id);#{storeSubMenu}.reload();" />
+                </Listeners>
+            </ext:MenuItem>
         </Items>
     </ext:Menu>
     <ext:ViewPort ID="viewPortMain" runat="server">
@@ -219,6 +242,7 @@
             </ext:BorderLayout>
         </Body>
     </ext:ViewPort>
-    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />‘
-        <uc2:UCSystemMenuEdit ID="UCSystemMenuEdit1" runat="server" />
+    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
+    <uc2:UCSystemMenuEdit ID="UCSystemMenuEdit1" runat="server" />
+    <uc3:UCSystemMenuManualResort ID="UCSystemMenuManualResort1" runat="server" />
 </asp:Content>

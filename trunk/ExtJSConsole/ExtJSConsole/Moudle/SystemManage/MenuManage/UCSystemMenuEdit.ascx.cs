@@ -28,6 +28,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
                 if (menu != null)
                 {
+                    this.hidMenuID.Text = menu.MenuID.ToString();
                     this.hidApplicationID.Text = menu.ApplicationID.SystemApplicationID.ToString();
                     this.lblApplicationName.Text = menu.ApplicationID.SystemApplicationName;
 
@@ -47,6 +48,34 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                         this.fsMenuIsCategory.CheckboxToggle = true;
                     }
 
+                    this.txtMenuName.Text = menu.MenuName;
+                    this.txtMenuDescription.Text = menu.MenuDescription;
+                    this.chkMenuIsSystemMenu.Checked = (menu.MenuIsSystemMenu.HasValue ? menu.MenuIsSystemMenu.Value : false);
+                    this.chkMenuIsEnable.Checked = (menu.MenuIsEnable.HasValue ? menu.MenuIsSystemMenu.Value : false);
+
+                    this.fsMenuIsCategory.Collapsed = menu.MenuIsCategory;
+
+
+                    if (!menu.MenuIsCategory)
+                    {
+                        this.txtMenuIconUrl.Text = menu.MenuIconUrl;
+                        this.txtMenuUrl.Text = menu.MenuUrl;
+                        if (string.IsNullOrEmpty(menu.MenuType))
+                            this.cmbMenuType.SelectedIndex = 0;
+                        else
+                            this.cmbMenuType.SetValue(menu.MenuType);
+                        if (string.IsNullOrEmpty(menu.MenuUrlTarget))
+                            this.cmbMenuUrlTarget.SelectedIndex = 0;
+                        else
+                            this.cmbMenuUrlTarget.SetValue(menu.MenuUrlTarget);
+                    }
+                    else
+                    {
+                        this.txtMenuIconUrl.Text = "";
+                        this.txtMenuUrl.Text = "";
+                        this.cmbMenuType.SelectedIndex = 0;
+                        this.cmbMenuUrlTarget.SelectedIndex = 0;
+                    }
 
                     winSystemMenuEdit.Show();
 
@@ -71,12 +100,21 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
             try
             {
-                SystemMenuWrapper menuWrapper = new SystemMenuWrapper();
+                SystemMenuWrapper menuWrapper = SystemMenuWrapper.FindById(int.Parse(this.hidMenuID.Text));
+
+                if (menuWrapper == null)
+                {
+                    winSystemMenuEdit.Hide();
+                    Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                    Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    return;
+                }
+
                 menuWrapper.MenuName = this.txtMenuName.Text.Trim();
                 menuWrapper.MenuDescription = this.txtMenuDescription.Text.Trim();
                 menuWrapper.ApplicationID = SystemApplicationWrapper.FindById(int.Parse(this.hidApplicationID.Text));
-                menuWrapper.MenuIsSystemMenu = true;
-                menuWrapper.MenuIsEnable = true;
+                menuWrapper.MenuIsSystemMenu = this.chkMenuIsSystemMenu.Checked;
+                menuWrapper.MenuIsEnable = this.chkMenuIsEnable.Checked;
 
                 if (this.hidPMenuID.Text.Trim() != "")
                 {
@@ -88,18 +126,25 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                     menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0, int.Parse(this.hidApplicationID.Text));
                 }
 
-                menuWrapper.MenuIsCategory = !this.fsMenuIsCategory.CheckboxToggle;
+                menuWrapper.MenuIsCategory = this.fsMenuIsCategory.Collapsed;
 
-                if (menuWrapper.MenuIsCategory)
+                if (!menuWrapper.MenuIsCategory)
                 {
                     menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
                     menuWrapper.MenuUrl = this.txtMenuUrl.Text.Trim();
                     menuWrapper.MenuType = this.cmbMenuType.SelectedItem.Value;
                     menuWrapper.MenuUrlTarget = this.cmbMenuUrlTarget.SelectedItem.Value;
                 }
+                else
+                {
+                    menuWrapper.MenuIconUrl = "";
+                    menuWrapper.MenuUrl = "";
+                    menuWrapper.MenuType = "1";
+                    menuWrapper.MenuUrlTarget = "1";
+                }
 
 
-                SystemMenuWrapper.Save(menuWrapper);
+                SystemMenuWrapper.Update(menuWrapper);
 
                 winSystemMenuEdit.Hide();
 

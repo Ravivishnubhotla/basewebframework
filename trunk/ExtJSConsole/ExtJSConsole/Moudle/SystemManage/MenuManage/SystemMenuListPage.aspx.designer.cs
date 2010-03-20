@@ -68,6 +68,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.MenuItem deleteItems;
         
         /// <summary>
+        /// MenuItem1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MenuItem MenuItem1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
@@ -183,5 +192,14 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuEdit UCSystemMenuEdit1;
+        
+        /// <summary>
+        /// UCSystemMenuManualResort1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuManualResort UCSystemMenuManualResort1;
     }
 }

@@ -8,9 +8,9 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using ScriptManager=Coolite.Ext.Web.ScriptManager;
-using TreeNode=Coolite.Ext.Web.TreeNode;
-using TreeNodeCollection=Coolite.Ext.Web.TreeNodeCollection;
+using ScriptManager = Coolite.Ext.Web.ScriptManager;
+using TreeNode = Coolite.Ext.Web.TreeNode;
+using TreeNodeCollection = Coolite.Ext.Web.TreeNodeCollection;
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
@@ -34,7 +34,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         [AjaxMethod]
         public void DeleteMenu(string smenuID)
         {
-            
+
             try
             {
                 int menuID = int.Parse(smenuID);
@@ -72,22 +72,22 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         }
 
 
-        private TreeNodeCollection BuildTree(List<NavMenu> menus,string rootName)
+        private TreeNodeCollection BuildTree(List<NavMenu> menus, string rootName)
         {
             TreeNodeCollection nodes = new TreeNodeCollection();
 
             TreeNode root = new TreeNode();
             root.Text = rootName;
             root.Icon = Icon.Folder;
-    
+
             nodes.Add(root);
 
-            if (menus == null || menus.Count ==0)
+            if (menus == null || menus.Count == 0)
                 return nodes;
 
             foreach (var menu in menus)
             {
-                TreeNode mainNode =new TreeNode();
+                TreeNode mainNode = new TreeNode();
                 mainNode.Text = menu.Name;
                 mainNode.NodeID = menu.Id;
                 if (menu.IsCategory)
@@ -105,15 +105,16 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
         private void GenerateSubTreeNode(TreeNode mainNode, NavMenu menu)
         {
-            foreach (var sMenu in menu.SubMenus){
-                TreeNode subNode =new TreeNode();
+            foreach (var sMenu in menu.SubMenus)
+            {
+                TreeNode subNode = new TreeNode();
                 subNode.Text = sMenu.Name;
                 subNode.NodeID = sMenu.Id;
                 if (sMenu.IsCategory)
                     subNode.Icon = Icon.Folder;
                 else
                     subNode.Icon = Icon.ApplicationForm;
-                subNode.CustomAttributes.Add(new ConfigItem("IsGroup",(sMenu.IsCategory?"1":"0"), ParameterMode.Value));
+                subNode.CustomAttributes.Add(new ConfigItem("IsGroup", (sMenu.IsCategory ? "1" : "0"), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
                 GenerateSubTreeNode(subNode, sMenu);
                 mainNode.Nodes.Add(subNode);

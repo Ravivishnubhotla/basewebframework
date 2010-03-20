@@ -1,6 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuEdit.ascx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuEdit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuEdit.ascx.cs"
+    Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuEdit" %>
 <ext:Window ID="winSystemMenuEdit" runat="server" Icon="ApplicationAdd" Title="编辑系统菜单"
-    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
+    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSystemMenuEdit" runat="server" Frame="true" Header="false"
@@ -13,6 +14,10 @@
                                     <Anchors>
                                         <ext:Anchor Horizontal="95%">
                                             <ext:Hidden ID="hidPMenuID" runat="server">
+                                            </ext:Hidden>
+                                        </ext:Anchor>
+                                        <ext:Anchor Horizontal="95%">
+                                            <ext:Hidden ID="hidMenuID" runat="server">
                                             </ext:Hidden>
                                         </ext:Anchor>
                                         <ext:Anchor Horizontal="95%">
@@ -39,7 +44,6 @@
                                         <ext:Anchor Horizontal="95%">
                                             <ext:Checkbox ID="chkMenuIsEnable" runat="server" FieldLabel="是否可用" />
                                         </ext:Anchor>
-                                        
                                     </Anchors>
                                 </ext:FormLayout>
                             </Body>

@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuAdd.ascx.cs"
     Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuAdd" %>
 <ext:Window ID="winSystemMenuAdd" runat="server" Icon="ApplicationAdd" Title="新建系统菜单"
-    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
+    Width="420" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSystemMenuAdd" runat="server" Frame="true" Header="false"
@@ -35,10 +35,10 @@
                                             <ext:TextArea ID="txtMenuDescription" runat="server" FieldLabel="菜单描述" />
                                         </ext:Anchor>
                                         <ext:Anchor Horizontal="95%">
-                                            <ext:Checkbox ID="chkMenuIsSystemMenu" runat="server" FieldLabel="是否为系统菜单" />
+                                            <ext:Checkbox ID="chkMenuIsSystemMenu" runat="server" FieldLabel="是否为系统菜单" Checked="true" />
                                         </ext:Anchor>
                                         <ext:Anchor Horizontal="95%">
-                                            <ext:Checkbox ID="chkMenuIsEnable" runat="server" FieldLabel="是否可用" />
+                                            <ext:Checkbox ID="chkMenuIsEnable" runat="server" FieldLabel="是否可用" Checked="true" />
                                         </ext:Anchor>
                                     </Anchors>
                                 </ext:FormLayout>
