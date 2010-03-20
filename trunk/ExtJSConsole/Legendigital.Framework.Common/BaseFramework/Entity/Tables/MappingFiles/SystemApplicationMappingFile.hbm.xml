@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemApplicationEntity,Legendigital.Framework.Common" table="SystemApplication" lazy="true"  >
+
+<id name="SystemApplicationID" column="SystemApplication_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="SystemApplication_Name" type="string" name="SystemApplicationName"   not-null="true"  length="400" />	
+		<property column="SystemApplication_Description" type="string" name="SystemApplicationDescription"   length="4000" />	
+		<property column="SystemApplication_Url" type="string" name="SystemApplicationUrl"   length="400" />	
+		<property column="SystemApplication_IsSystemApplication" type="Boolean" name="SystemApplicationIsSystemApplication"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
