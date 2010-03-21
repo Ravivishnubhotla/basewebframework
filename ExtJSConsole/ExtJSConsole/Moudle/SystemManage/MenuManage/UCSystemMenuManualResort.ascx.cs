@@ -27,7 +27,30 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
             //storeSubMenu.AutoLoadParams[0].Value = pmenuID;
 
+
             winSystemMenuManualResort.Show();
+        }
+
+
+        [AjaxMethod]
+        public void SaveNewOrder(string ids)
+        {
+            Dictionary<string, string>[] sortItems = JSON.Deserialize<Dictionary<string, string>[]>(ids);
+
+            int i = 1;
+
+            foreach (Dictionary<string, string> row in sortItems)
+            {
+                int id = int.Parse(row["value"].ToString());
+
+                SystemMenuWrapper menu = SystemMenuWrapper.FindById(id);
+
+                menu.MenuOrder = i;
+
+                SystemMenuWrapper.Update(menu);
+
+                i++;
+            }
         }
 
         protected void btnResortSystemMenu_Click(object sender, AjaxEventArgs e)
@@ -36,6 +59,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
             {
                 Console.WriteLine(item.Value);
             }
+
 
 
             winSystemMenuManualResort.Hide();
