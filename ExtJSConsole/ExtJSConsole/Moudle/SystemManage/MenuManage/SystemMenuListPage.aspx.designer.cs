@@ -77,6 +77,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         protected global::Coolite.Ext.Web.MenuItem MenuItem1;
         
         /// <summary>
+        /// MenuItem2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MenuItem MenuItem2;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
@@ -165,6 +174,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton2;
+        
+        /// <summary>
+        /// ToolbarButton5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton5;
         
         /// <summary>
         /// ToolbarButton3 control.

@@ -32,6 +32,29 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
 
         [AjaxMethod]
+        public void AutoMaticSortSubItems(string appid, string pmenuID)
+        {
+            try
+            {
+                int menuID = int.Parse(pmenuID);
+
+                int iappID = int.Parse(appid);
+
+                SystemMenuWrapper.AutoMaticSortSubItems(iappID, menuID);
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(e.Message);
+                return;
+            }
+
+        }
+
+
+        [AjaxMethod]
         public void DeleteMenu(string smenuID)
         {
 
