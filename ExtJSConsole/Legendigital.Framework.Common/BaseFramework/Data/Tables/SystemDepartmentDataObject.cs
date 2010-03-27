@@ -11,5 +11,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemDepartmentDataObject
     {
+        public List<SystemDepartmentEntity> FindAllByOrder()
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentEntity> dynamicQueryGenerator =
+                this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_DEPARTMENTSORTINDEX.Asc());
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_PARENTDEPARTMENTID.Asc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

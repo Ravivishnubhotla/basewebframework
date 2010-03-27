@@ -13,13 +13,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 {
 	public interface ISystemDepartmentServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemDepartmentEntity>
     {
-
-
+	    IList<SystemDepartmentEntity> FindAllByOrder();
     }
 
     public partial class SystemDepartmentServiceProxy : ISystemDepartmentServiceProxy
     {
-
-
+        public IList<SystemDepartmentEntity> FindAllByOrder()
+        {
+            return this.SelfDataObj.FindAllByOrder();
+        }
     }
 }

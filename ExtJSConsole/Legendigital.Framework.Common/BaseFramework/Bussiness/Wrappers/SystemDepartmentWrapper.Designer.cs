@@ -72,6 +72,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMECN = "DepartmentNameCn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMEEN = "DepartmentNameEn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTDECRIPTION = "DepartmentDecription";
+		public static readonly string PROPERTY_NAME_DEPARTMENTSORTINDEX = "DepartmentSortIndex";
 		
         #endregion
 
@@ -145,6 +146,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.DepartmentDecription = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? DepartmentSortIndex
+		{
+			get
+			{
+				return entity.DepartmentSortIndex;
+			}
+			set
+			{
+				entity.DepartmentSortIndex = value;
 			}
 		}
 		#endregion 
