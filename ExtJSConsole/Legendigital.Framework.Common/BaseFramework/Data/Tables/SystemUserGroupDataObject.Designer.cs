@@ -36,16 +36,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "GroupID":
                     return typeof (int);
-                    break;
                 case "GroupNameCn":
                     return typeof (string);
-                    break;
                 case "GroupNameEn":
                     return typeof (string);
-                    break;
                 case "GroupDescription":
                     return typeof (string);
-                    break;
           }
 			return typeof(string);
         }

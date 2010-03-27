@@ -237,7 +237,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                     systemPrivilegeInRolesEntity.ExpiryTime = System.DateTime.Now.AddYears(20);
                     systemPrivilegeInRolesEntity.EnableParameter = true;
                     systemPrivilegeInRolesEntity.EnableType = "";
-                    systemPrivilegeInRolesEntity.PrivilegeRoleValueType = "string";
                     systemPrivilegeInRolesEntity.PrivilegeRoleValue = null;
                     this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.SaveOrUpdate(systemPrivilegeInRolesEntity);
                 }

@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int ProfileID
 		{
@@ -93,7 +93,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户ID
+		/// 
 		/// </summary>		
 		public SystemUserWrapper UserID
 		{
@@ -107,7 +107,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 属性ID
+		/// 
 		/// </summary>		
 		public SystemUserProfilePropertysWrapper PropertyID
 		{
@@ -121,7 +121,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 属性值
+		/// 
 		/// </summary>		
 		public string PropertyValuesString
 		{
@@ -135,7 +135,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 属性二进制值
+		/// 
 		/// </summary>		
 		public byte[] PropertyValuesBinary
 		{
@@ -149,7 +149,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 上次更新时间
+		/// 
 		/// </summary>		
 		public DateTime LastUpdatedDate
 		{

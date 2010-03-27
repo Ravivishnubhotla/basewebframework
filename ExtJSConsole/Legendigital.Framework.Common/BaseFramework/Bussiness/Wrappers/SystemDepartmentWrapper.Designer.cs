@@ -78,7 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int DepartmentID
 		{
@@ -92,7 +92,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 父部门
+		/// 
 		/// </summary>		
 		public SystemDepartmentWrapper ParentDepartmentID
 		{
@@ -106,7 +106,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 部门中文名
+		/// 
 		/// </summary>		
 		public string DepartmentNameCn
 		{
@@ -120,7 +120,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 部门英文名
+		/// 
 		/// </summary>		
 		public string DepartmentNameEn
 		{
@@ -134,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 部门描述
+		/// 
 		/// </summary>		
 		public string DepartmentDecription
 		{

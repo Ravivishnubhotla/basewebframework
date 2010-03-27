@@ -15,6 +15,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 				#region Expression Query Property (标准查询字段)
 		public static readonly Property PROPERTY_PROPERTYID = Property.ForName(SystemUserProfilePropertysEntity.PROPERTY_NAME_PROPERTYID);
 		public static readonly Property PROPERTY_PROPERTYNAME = Property.ForName(SystemUserProfilePropertysEntity.PROPERTY_NAME_PROPERTYNAME);
+		public static readonly Property PROPERTY_PROPERTYDATATYPE = Property.ForName(SystemUserProfilePropertysEntity.PROPERTY_NAME_PROPERTYDATATYPE);
 		public static readonly Property PROPERTY_PROPERTYDESCRIPTION = Property.ForName(SystemUserProfilePropertysEntity.PROPERTY_NAME_PROPERTYDESCRIPTION);
       
 		#region 子类集合字段查询字段
@@ -35,13 +36,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "PropertyID":
                     return typeof (int);
-                    break;
                 case "PropertyName":
                     return typeof (string);
-                    break;
+                case "PropertyDataType":
+                    return typeof (string);
                 case "PropertyDescription":
                     return typeof (string);
-                    break;
           }
 			return typeof(string);
         }

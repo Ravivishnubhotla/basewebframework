@@ -35,8 +35,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
         List<SystemUserEntity> FindAuthenticatedUserAll(int pageIndex, int pageSize, out int totalRecords);
 	    bool CheckUserIfDeveloperAdminOrSystemAdmin(SystemUserWrapper userWrapper);
-	    SystemRoleEntity GetUserMaxRoleTypeRole(SystemUserEntity systemUserEntity);
-        SystemRoleEntity GetUserMinRoleTypeRole(SystemUserEntity systemUserEntity);
     }
 
     public partial class SystemUserServiceProxy : ISystemUserServiceProxy
@@ -283,15 +281,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                  userWrapper.UserLoginID.ToUpper().Equals(SYS_USER_ID.ToUpper()));
         }
 
-        public SystemRoleEntity GetUserMaxRoleTypeRole(SystemUserEntity systemUserEntity)
-        {
-            return this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserMaxRoleTypeRole(systemUserEntity);
-        }
 
-        public SystemRoleEntity GetUserMinRoleTypeRole(SystemUserEntity systemUserEntity)
-        {
-            return this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserMinRoleTypeRole(systemUserEntity);
-        }
 
         /// <summary>
         /// É¾³ýÓÃ»§

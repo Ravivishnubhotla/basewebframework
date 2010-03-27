@@ -78,7 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int SystemViewID
 		{
@@ -92,7 +92,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 视图中文名
+		/// 
 		/// </summary>		
 		public string SystemViewNameCn
 		{
@@ -106,7 +106,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 视图英文名
+		/// 
 		/// </summary>		
 		public string SystemViewNameEn
 		{
@@ -120,7 +120,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 应用ID
+		/// 
 		/// </summary>		
 		public SystemApplicationWrapper ApplicationID
 		{
@@ -134,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 视图描述
+		/// 
 		/// </summary>		
 		public string SystemViewDescription
 		{

@@ -82,7 +82,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int ResourcesID
 		{
@@ -96,7 +96,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源中文名
+		/// 
 		/// </summary>		
 		public string ResourcesNameCn
 		{
@@ -110,7 +110,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源英文名
+		/// 
 		/// </summary>		
 		public string ResourcesNameEn
 		{
@@ -124,7 +124,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源描述
+		/// 
 		/// </summary>		
 		public string ResourcesDescription
 		{
@@ -138,7 +138,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源类型
+		/// 
 		/// </summary>		
 		public string ResourcesType
 		{
@@ -166,7 +166,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源限制条件
+		/// 
 		/// </summary>		
 		public string ResourcesLimitExpression
 		{
@@ -180,7 +180,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 资源是否于用户相关
+		/// 
 		/// </summary>		
 		public bool ResourcesIsRelateUser
 		{
@@ -194,7 +194,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 所属模块
+		/// 
 		/// </summary>		
 		public SystemMoudleWrapper MoudleID
 		{

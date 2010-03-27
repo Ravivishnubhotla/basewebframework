@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int Id
 		{
@@ -93,7 +93,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 系统名称
+		/// 
 		/// </summary>		
 		public string SystemName
 		{
@@ -107,7 +107,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 系统描述
+		/// 
 		/// </summary>		
 		public string SystemDescription
 		{
@@ -121,7 +121,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 系统URL
+		/// 
 		/// </summary>		
 		public string SystemUrl
 		{
@@ -135,7 +135,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 系统版本
+		/// 
 		/// </summary>		
 		public string SystemVersion
 		{
@@ -149,7 +149,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 系统版权声明
+		/// 
 		/// </summary>		
 		public string SystemLisence
 		{

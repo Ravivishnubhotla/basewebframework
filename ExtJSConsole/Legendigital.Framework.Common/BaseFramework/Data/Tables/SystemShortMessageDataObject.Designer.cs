@@ -40,28 +40,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "ShortMessageID":
                     return typeof (int);
-                    break;
                 case "ShortMessageTitle":
                     return typeof (string);
-                    break;
                 case "ShortMessageCategory":
                     return typeof (string);
-                    break;
                 case "ShortMessageContent":
                     return typeof (string);
-                    break;
                 case "ShortMessageSender":
                     return typeof (string);
-                    break;
                 case "ShortMessageSendDate":
                     return typeof (DateTime);
-                    break;
                 case "ShortMessageReceiverID":
                     return typeof (int);
-                    break;
                 case "ShortMessageIsRead":
                     return typeof (bool);
-                    break;
           }
 			return typeof(string);
         }

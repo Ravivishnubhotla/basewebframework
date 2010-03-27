@@ -71,18 +71,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ROLENAME = "RoleName";
 		public static readonly string PROPERTY_NAME_ROLEDESCRIPTION = "RoleDescription";
 		public static readonly string PROPERTY_NAME_ROLEISSYSTEMROLE = "RoleIsSystemRole";
-		public static readonly string PROPERTY_NAME_ROLETYPE = "RoleType";
-		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_LASTUPDATEBY = "LastUpdateBy";
-		public static readonly string PROPERTY_NAME_LASTUPDATEDATE = "LastUpdateDate";
 		
         #endregion
 
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int RoleID
 		{
@@ -96,7 +91,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Role Name
+		/// 
 		/// </summary>		
 		public string RoleName
 		{
@@ -110,7 +105,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Role Description
+		/// 
 		/// </summary>		
 		public string RoleDescription
 		{
@@ -124,7 +119,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is System Role
+		/// 
 		/// </summary>		
 		public bool? RoleIsSystemRole
 		{
@@ -135,76 +130,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.RoleIsSystemRole = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string RoleType
-		{
-			get
-			{
-				return entity.RoleType;
-			}
-			set
-			{
-				entity.RoleType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? CreateBy
-		{
-			get
-			{
-				return entity.CreateBy;
-			}
-			set
-			{
-				entity.CreateBy = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public DateTime? CreateDate
-		{
-			get
-			{
-				return entity.CreateDate;
-			}
-			set
-			{
-				entity.CreateDate = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? LastUpdateBy
-		{
-			get
-			{
-				return entity.LastUpdateBy;
-			}
-			set
-			{
-				entity.LastUpdateBy = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public DateTime? LastUpdateDate
-		{
-			get
-			{
-				return entity.LastUpdateDate;
-			}
-			set
-			{
-				entity.LastUpdateDate = value;
 			}
 		}
 		#endregion 

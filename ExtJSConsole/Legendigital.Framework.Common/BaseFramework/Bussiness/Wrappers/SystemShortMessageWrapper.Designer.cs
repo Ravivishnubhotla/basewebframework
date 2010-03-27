@@ -81,7 +81,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int ShortMessageID
 		{
@@ -95,7 +95,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 标题
+		/// 
 		/// </summary>		
 		public string ShortMessageTitle
 		{
@@ -123,7 +123,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 内容
+		/// 
 		/// </summary>		
 		public string ShortMessageContent
 		{
@@ -137,7 +137,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 发送者ID
+		/// 
 		/// </summary>		
 		public string ShortMessageSender
 		{
@@ -151,7 +151,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 发送日期
+		/// 
 		/// </summary>		
 		public DateTime ShortMessageSendDate
 		{
@@ -165,7 +165,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 接受者ID
+		/// 
 		/// </summary>		
 		public int ShortMessageReceiverID
 		{
@@ -179,7 +179,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否已读
+		/// 
 		/// </summary>		
 		public bool ShortMessageIsRead
 		{

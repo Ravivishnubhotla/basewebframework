@@ -84,7 +84,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int OperationID
 		{
@@ -98,7 +98,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 操作中文名
+		/// 
 		/// </summary>		
 		public string OperationNameCn
 		{
@@ -112,7 +112,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 操作代号
+		/// 
 		/// </summary>		
 		public string OperationNameEn
 		{
@@ -126,7 +126,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 操作描述
+		/// 
 		/// </summary>		
 		public string OperationDescription
 		{
@@ -140,7 +140,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否为系统操作
+		/// 
 		/// </summary>		
 		public bool IsSystemOperation
 		{
@@ -154,7 +154,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否可以单条数据操作
+		/// 
 		/// </summary>		
 		public bool IsCanSingleOperation
 		{
@@ -168,7 +168,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否可以多条数据操作
+		/// 
 		/// </summary>		
 		public bool IsCanMutilOperation
 		{
@@ -182,7 +182,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否生效
+		/// 
 		/// </summary>		
 		public bool IsEnable
 		{
@@ -196,7 +196,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否出现在列表页面
+		/// 
 		/// </summary>		
 		public bool IsInListPage
 		{
@@ -210,7 +210,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否出现在详细页面
+		/// 
 		/// </summary>		
 		public bool IsInSinglePage
 		{
@@ -224,7 +224,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 操作排序号
+		/// 
 		/// </summary>		
 		public int OperationOrder
 		{

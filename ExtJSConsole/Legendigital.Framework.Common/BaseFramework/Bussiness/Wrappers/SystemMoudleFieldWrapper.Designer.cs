@@ -84,7 +84,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 字段ID
+		/// 
 		/// </summary>		
 		public int SystemMoudleFieldID
 		{
@@ -98,7 +98,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段英文名
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldNameEn
 		{
@@ -112,7 +112,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段中文名
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldNameCn
 		{
@@ -126,7 +126,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段数据表名
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldNameDb
 		{
@@ -140,7 +140,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段类型
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldType
 		{
@@ -154,7 +154,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段是否必填
+		/// 
 		/// </summary>		
 		public bool? SystemMoudleFieldIsRequired
 		{
@@ -168,7 +168,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段默认值
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldDefaultValue
 		{
@@ -182,7 +182,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段是否为主键
+		/// 
 		/// </summary>		
 		public bool? SystemMoudleFieldIsKeyField
 		{
@@ -196,7 +196,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段大小
+		/// 
 		/// </summary>		
 		public int? SystemMoudleFieldSize
 		{
@@ -210,7 +210,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段描述
+		/// 
 		/// </summary>		
 		public string SystemMoudleFieldDescription
 		{
@@ -224,7 +224,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 字段对应模块ID
+		/// 
 		/// </summary>		
 		public SystemMoudleWrapper SystemMoudleID
 		{

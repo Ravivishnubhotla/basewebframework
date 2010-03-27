@@ -76,7 +76,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int UserRoleID
 		{
@@ -90,7 +90,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户ID
+		/// 
 		/// </summary>		
 		public SystemUserWrapper UserID
 		{
@@ -104,7 +104,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 角色ID
+		/// 
 		/// </summary>		
 		public SystemRoleWrapper RoleID
 		{

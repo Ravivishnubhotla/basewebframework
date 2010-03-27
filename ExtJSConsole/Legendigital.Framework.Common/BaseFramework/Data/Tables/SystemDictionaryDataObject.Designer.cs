@@ -39,25 +39,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "SystemDictionaryID":
                     return typeof (int);
-                    break;
                 case "SystemDictionaryCategoryID":
                     return typeof (string);
-                    break;
                 case "SystemDictionaryKey":
                     return typeof (string);
-                    break;
                 case "SystemDictionaryValue":
                     return typeof (string);
-                    break;
                 case "SystemDictionaryDesciption":
                     return typeof (string);
-                    break;
                 case "SystemDictionaryOrder":
                     return typeof (int);
-                    break;
                 case "SystemDictionaryIsEnable":
                     return typeof (bool);
-                    break;
           }
 			return typeof(string);
         }

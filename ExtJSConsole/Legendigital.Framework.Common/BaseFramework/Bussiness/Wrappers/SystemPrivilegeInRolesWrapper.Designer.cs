@@ -70,20 +70,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PRIVILEGEROLEID = "PrivilegeRoleID";
 		public static readonly string PROPERTY_NAME_ROLEID = "RoleID";
 		public static readonly string PROPERTY_NAME_PRIVILEGEID = "PrivilegeID";
-		public static readonly string PROPERTY_NAME_PRIVILEGEROLEVALUETYPE = "PrivilegeRoleValueType";
+		public static readonly string PROPERTY_NAME_PRIVILEGEROLEVALUE = "PrivilegeRoleValue";
 		public static readonly string PROPERTY_NAME_ENABLETYPE = "EnableType";
 		public static readonly string PROPERTY_NAME_CREATETIME = "CreateTime";
 		public static readonly string PROPERTY_NAME_UPDATETIME = "UpdateTime";
 		public static readonly string PROPERTY_NAME_EXPIRYTIME = "ExpiryTime";
 		public static readonly string PROPERTY_NAME_ENABLEPARAMETER = "EnableParameter";
-		public static readonly string PROPERTY_NAME_PRIVILEGEROLEVALUE = "PrivilegeRoleValue";
 		
         #endregion
 
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int PrivilegeRoleID
 		{
@@ -97,7 +96,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 角色ID
+		/// 
 		/// </summary>		
 		public SystemRoleWrapper RoleID
 		{
@@ -111,7 +110,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 权限ID
+		/// 
 		/// </summary>		
 		public SystemPrivilegeWrapper PrivilegeID
 		{
@@ -127,19 +126,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string PrivilegeRoleValueType
+		public string PrivilegeRoleValue
 		{
 			get
 			{
-				return entity.PrivilegeRoleValueType;
+				return entity.PrivilegeRoleValue;
 			}
 			set
 			{
-				entity.PrivilegeRoleValueType = value;
+				entity.PrivilegeRoleValue = value;
 			}
 		}
 		/// <summary>
-		/// 授权类型
+		/// 
 		/// </summary>		
 		public string EnableType
 		{
@@ -153,7 +152,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>		
 		public DateTime CreateTime
 		{
@@ -167,7 +166,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 最后更新时间
+		/// 
 		/// </summary>		
 		public DateTime UpdateTime
 		{
@@ -181,7 +180,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 过期时间
+		/// 
 		/// </summary>		
 		public DateTime ExpiryTime
 		{
@@ -195,7 +194,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否允许参数
+		/// 
 		/// </summary>		
 		public bool EnableParameter
 		{
@@ -206,20 +205,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.EnableParameter = value;
-			}
-		}
-		/// <summary>
-		/// 权限分配值
-		/// </summary>		
-		public byte[] PrivilegeRoleValue
-		{
-			get
-			{
-				return entity.PrivilegeRoleValue;
-			}
-			set
-			{
-				entity.PrivilegeRoleValue = value;
 			}
 		}
 		#endregion 

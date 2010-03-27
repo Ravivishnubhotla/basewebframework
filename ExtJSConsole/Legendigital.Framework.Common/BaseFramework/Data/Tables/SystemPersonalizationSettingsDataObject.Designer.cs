@@ -83,22 +83,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "PersonalizationID":
                     return typeof (int);
-                    break;
                 case "ApplicationID":
                     return typeof (int);
-                    break;
                 case "UserId":
                     return typeof (int);
-                    break;
                 case "Path":
                     return typeof (string);
-                    break;
                 case "PageSettings":
                     return typeof (byte[]);
-                    break;
                 case "LastUpdatedDate":
                     return typeof (DateTime);
-                    break;
           }
 			return typeof(string);
         }

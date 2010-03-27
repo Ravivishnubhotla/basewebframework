@@ -4,15 +4,16 @@
 <class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserProfilePropertysEntity,Legendigital.Framework.Common" table="SystemUserProfilePropertys" lazy="true"  >
 
 <id name="PropertyID" column="Property_ID" type="int" unsaved-value="0" >
-   <generator class="assigned">
+   <generator class="native">
 
 </generator>
 
 </id>
 
 
-		<property column="Property_Name" type="string" name="PropertyName"   not-null="true"  length="1000" />	
-		<property column="Property_Description" type="string" name="PropertyDescription"   length="4000" />	
+		<property column="Property_Name" type="string" name="PropertyName"   not-null="true"  length="2000" />	
+		<property column="Property_DataType" type="string" name="PropertyDataType"   length="800" />	
+		<property column="Property_Description" type="string" name="PropertyDescription"   length="8000" />	
 
 
 

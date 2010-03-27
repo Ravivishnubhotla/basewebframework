@@ -55,31 +55,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "ResourcesID":
                     return typeof (int);
-                    break;
                 case "ResourcesNameCn":
                     return typeof (string);
-                    break;
                 case "ResourcesNameEn":
                     return typeof (string);
-                    break;
                 case "ResourcesDescription":
                     return typeof (string);
-                    break;
                 case "ResourcesType":
                     return typeof (string);
-                    break;
                 case "ResourcesCategory":
                     return typeof (string);
-                    break;
                 case "ResourcesLimitExpression":
                     return typeof (string);
-                    break;
                 case "ResourcesIsRelateUser":
                     return typeof (bool);
-                    break;
                 case "MoudleID":
                     return typeof (int);
-                    break;
           }
 			return typeof(string);
         }

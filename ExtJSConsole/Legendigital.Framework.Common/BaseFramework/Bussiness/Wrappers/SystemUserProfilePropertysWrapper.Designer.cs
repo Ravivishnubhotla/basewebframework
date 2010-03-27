@@ -69,6 +69,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserProfilePropertysEntity";
 		public static readonly string PROPERTY_NAME_PROPERTYID = "PropertyID";
 		public static readonly string PROPERTY_NAME_PROPERTYNAME = "PropertyName";
+		public static readonly string PROPERTY_NAME_PROPERTYDATATYPE = "PropertyDataType";
 		public static readonly string PROPERTY_NAME_PROPERTYDESCRIPTION = "PropertyDescription";
 		
         #endregion
@@ -101,6 +102,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.PropertyName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string PropertyDataType
+		{
+			get
+			{
+				return entity.PropertyDataType;
+			}
+			set
+			{
+				entity.PropertyDataType = value;
 			}
 		}
 		/// <summary>

@@ -96,12 +96,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
 
                         return pc;
                     };
-                    break;
                 case ProfileAuthenticationOption.Anonymous:
                     {
                         return pc;
                     };
-                    break;
                 case ProfileAuthenticationOption.Authenticated:
                     {
                         List<SystemUserWrapper> users = SystemUserWrapper.FindAuthenticatedUserAll(((pageIndex - 1) * pageSize), pageSize, out totalRecords);
@@ -111,8 +109,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                         }
                         return pc;
                     };
-                    break;
-                default: return pc; break;
+                default: return pc; 
             }
 
         }

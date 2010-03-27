@@ -57,6 +57,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         public static readonly string PROPERTY_PROPERTYID_ALIAS_NAME = "PropertyID_SystemUserProfileEntity_Alias";
 		public static readonly Property PROPERTY_PROPERTYID_PROPERTYID = Property.ForName(PROPERTY_PROPERTYID_ALIAS_NAME + ".PropertyID");
 		public static readonly Property PROPERTY_PROPERTYID_PROPERTYNAME = Property.ForName(PROPERTY_PROPERTYID_ALIAS_NAME + ".PropertyName");
+		public static readonly Property PROPERTY_PROPERTYID_PROPERTYDATATYPE = Property.ForName(PROPERTY_PROPERTYID_ALIAS_NAME + ".PropertyDataType");
 		public static readonly Property PROPERTY_PROPERTYID_PROPERTYDESCRIPTION = Property.ForName(PROPERTY_PROPERTYID_ALIAS_NAME + ".PropertyDescription");
 		#endregion
 		public static readonly Property PROPERTY_PROPERTYVALUESSTRING = Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_PROPERTYVALUESSTRING);
@@ -81,22 +82,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "ProfileID":
                     return typeof (int);
-                    break;
                 case "UserID":
                     return typeof (int);
-                    break;
                 case "PropertyID":
                     return typeof (int);
-                    break;
                 case "PropertyValuesString":
                     return typeof (string);
-                    break;
                 case "PropertyValuesBinary":
                     return typeof (byte[]);
-                    break;
                 case "LastUpdatedDate":
                     return typeof (DateTime);
-                    break;
           }
 			return typeof(string);
         }

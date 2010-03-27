@@ -79,13 +79,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "UserGroupUserID":
                     return typeof (int);
-                    break;
                 case "UserID":
                     return typeof (int);
-                    break;
                 case "UserGroupID":
                     return typeof (int);
-                    break;
           }
 			return typeof(string);
         }

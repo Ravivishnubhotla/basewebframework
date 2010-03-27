@@ -80,7 +80,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int MoudleID
 		{
@@ -94,7 +94,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 模块中文名
+		/// 
 		/// </summary>		
 		public string MoudleNameCn
 		{
@@ -108,7 +108,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 模块英文名
+		/// 
 		/// </summary>		
 		public string MoudleNameEn
 		{
@@ -122,7 +122,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 模块对应数据表名
+		/// 
 		/// </summary>		
 		public string MoudleNameDb
 		{
@@ -136,7 +136,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 模块描述
+		/// 
 		/// </summary>		
 		public string MoudleDescription
 		{
@@ -150,7 +150,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 应用ID
+		/// 
 		/// </summary>		
 		public SystemApplicationWrapper ApplicationID
 		{
@@ -164,7 +164,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 是否为系统模块
+		/// 
 		/// </summary>		
 		public bool MoudleIsSystemMoudle
 		{

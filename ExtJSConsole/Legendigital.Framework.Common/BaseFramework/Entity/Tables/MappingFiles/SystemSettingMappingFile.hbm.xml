@@ -11,11 +11,11 @@
 </id>
 
 
-		<property column="SystemName" type="string" name="SystemName"   not-null="true"  length="400" />	
-		<property column="SystemDescription" type="string" name="SystemDescription"   length="4000" />	
-		<property column="SystemUrl" type="string" name="SystemUrl"   length="400" />	
-		<property column="SystemVersion" type="string" name="SystemVersion"   not-null="true"  length="400" />	
-		<property column="SystemLisence" type="string" name="SystemLisence"   not-null="true"  length="4000" />	
+		<property column="SystemName" type="string" name="SystemName"   not-null="true"  length="800" />	
+		<property column="SystemDescription" type="string" name="SystemDescription"   length="8000" />	
+		<property column="SystemUrl" type="string" name="SystemUrl"   length="800" />	
+		<property column="SystemVersion" type="string" name="SystemVersion"   not-null="true"  length="800" />	
+		<property column="SystemLisence" type="string" name="SystemLisence"   not-null="true"  length="8000" />	
 
 
 

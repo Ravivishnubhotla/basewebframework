@@ -77,7 +77,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int GroupID
 		{
@@ -91,7 +91,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户组中文名
+		/// 
 		/// </summary>		
 		public string GroupNameCn
 		{
@@ -105,7 +105,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户组英文名
+		/// 
 		/// </summary>		
 		public string GroupNameEn
 		{
@@ -119,7 +119,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户组描述
+		/// 
 		/// </summary>		
 		public string GroupDescription
 		{
