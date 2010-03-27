@@ -99,7 +99,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             List<TypedTreeNodeItem<SystemDepartmentWrapper>> nodes = new List<TypedTreeNodeItem<SystemDepartmentWrapper>>();
 
-            List<SystemDepartmentWrapper> departments = SystemDepartmentWrapper.FindAll();
+            List<SystemDepartmentWrapper> departments = SystemDepartmentWrapper.FindAllByOrder();
 
             List<SystemDepartmentWrapper> topDepartments = departments.FindAll(p => (p.ParentDepartmentID == null));
 
@@ -119,7 +119,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return nodes;
         }
 
-        private static void AddSubDepartment(TypedTreeNodeItem<SystemDepartmentWrapper> mnode, SystemDepartmentWrapper topDepartment, List<SystemDepartmentWrapper> departments)
+	    private static List<SystemDepartmentWrapper> FindAllByOrder()
+	    {
+	        return ConvertToWrapperList(businessProxy.FindAllByOrder());
+	    }
+
+	    private static void AddSubDepartment(TypedTreeNodeItem<SystemDepartmentWrapper> mnode, SystemDepartmentWrapper topDepartment, List<SystemDepartmentWrapper> departments)
 	    {
             List<SystemDepartmentWrapper> subdepartments = departments.FindAll(p => (p.ParentDepartmentID == topDepartment));
 

@@ -72,6 +72,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWNAMEEN = "SystemViewNameEn";
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWDESCRIPTION = "SystemViewDescription";
+		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEID = "SystemMoudleID";
 		
         #endregion
 
@@ -145,6 +146,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemViewDescription = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SystemMoudleWrapper SystemMoudleID
+		{
+			get
+			{
+				return SystemMoudleWrapper.ConvertEntityToWrapper(entity.SystemMoudleID) ;
+			}
+			set
+			{
+				entity.SystemMoudleID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 

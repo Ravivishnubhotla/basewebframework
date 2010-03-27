@@ -71,8 +71,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMNAMEEN = "SystemViewItemNameEn";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMNAMECN = "SystemViewItemNameCn";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDESCRIPTION = "SystemViewItemDescription";
-		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDISPLAYFORMAT = "SystemViewItemDisplayFormat";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWID = "SystemViewID";
+		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEFIELDID = "SystemMoudleFieldID";
 		
         #endregion
 
@@ -137,20 +137,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string SystemViewItemDisplayFormat
-		{
-			get
-			{
-				return entity.SystemViewItemDisplayFormat;
-			}
-			set
-			{
-				entity.SystemViewItemDisplayFormat = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public SystemViewWrapper SystemViewID
 		{
 			get
@@ -160,6 +146,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemViewID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SystemMoudleFieldWrapper SystemMoudleFieldID
+		{
+			get
+			{
+				return SystemMoudleFieldWrapper.ConvertEntityToWrapper(entity.SystemMoudleFieldID) ;
+			}
+			set
+			{
+				entity.SystemMoudleFieldID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 
