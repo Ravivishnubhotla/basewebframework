@@ -31,6 +31,31 @@
 
         }
         
+        function AutoReorder(id,appID)
+        {
+        
+                        Coolite.AjaxMethods.AutoMaticSortSubItems(appID,id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    success: function(result) {
+                                                                        RefreshTreeList1();
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }); 
+        
+        
+        
+        
+        
+        
+        
+        }
+        
         
                function showReorderForm(id,stores,appID) {
                
@@ -75,6 +100,7 @@ stores.autoLoad.params.AppID = appID;
             menu.items.items[1].setVisible(true);
             menu.items.items[2].setVisible((node.childNodes.length==0));
             menu.items.items[3].setVisible((node.childNodes.length>0));
+            menu.items.items[4].setVisible((node.childNodes.length>0));
             menu.showAt(point);
         }
         
@@ -184,6 +210,11 @@ stores.autoLoad.params.AppID = appID;
                     <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{storeSubMenus},#{cbApplication}.getValue());" />
                 </Listeners>
             </ext:MenuItem>
+            <ext:MenuItem ID="MenuItem2" runat="server" Text="子菜单自动排序" Icon="SortAscending">
+                <Listeners>
+                    <Click Handler="AutoReorder(#{TreePanel1}.selModel.selNode.attributes.id,#{cbApplication}.getValue());" />
+                </Listeners>
+            </ext:MenuItem>
         </Items>
     </ext:Menu>
     <ext:ViewPort ID="viewPortMain" runat="server">
@@ -216,6 +247,11 @@ stores.autoLoad.params.AppID = appID;
                                                         <Click Handler="showReorderForm(0,#{storeSubMenus},#{cbApplication}.getValue());" />
                                                     </Listeners>
                                                 </ext:ToolbarButton>
+                                                <ext:ToolbarButton ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="根菜单自动排序">
+                                                    <Listeners>
+                                                        <Click Handler="AutoReorder(0,#{cbApplication}.getValue());" />
+                                                    </Listeners>
+                                                </ext:ToolbarButton>
                                                 <ext:ToolbarButton ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="全部展开">
                                                     <Listeners>
                                                         <Click Handler="#{TreePanel1}.root.expand(true);" />
@@ -224,7 +260,8 @@ stores.autoLoad.params.AppID = appID;
                                                         <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="Expand All" />
                                                     </ToolTips>
                                                 </ext:ToolbarButton>
-                                                <ext:ToolbarButton ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="全部收起">
+                                                <ext:ToolbarButton ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all"
+                                                    Text="全部收起">
                                                     <Listeners>
                                                         <Click Handler="#{TreePanel1}.root.collapse(true);" />
                                                     </Listeners>
