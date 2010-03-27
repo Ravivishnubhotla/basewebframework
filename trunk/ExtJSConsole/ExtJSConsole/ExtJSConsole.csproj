@@ -165,6 +165,27 @@
     <Compile Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
       <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.designer.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.cs">
+      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.cs">
+      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
       <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +231,9 @@
     <Content Include="Moudle\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
     <Content Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
     <Content Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
+    <Content Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
+    <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
+    <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuAdd.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuEdit.ascx" />
@@ -217,7 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Moudle\SystemManage\DepartmentManage\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
