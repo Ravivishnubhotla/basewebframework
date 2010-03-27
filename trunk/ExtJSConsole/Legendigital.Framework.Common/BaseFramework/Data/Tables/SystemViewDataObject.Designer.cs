@@ -30,6 +30,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationIsSystemApplication");
 		#endregion
 		public static readonly Property PROPERTY_SYSTEMVIEWDESCRIPTION = Property.ForName(SystemViewEntity.PROPERTY_NAME_SYSTEMVIEWDESCRIPTION);
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID = Property.ForName(SystemViewEntity.PROPERTY_NAME_SYSTEMMOUDLEID);
+		#region systemMoudleID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemViewEntity> InClude_SystemMoudleID_Query(NHibernateDynamicQueryGenerator<SystemViewEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemViewEntity.PROPERTY_NAME_SYSTEMMOUDLEID, PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME = "SystemMoudleID_SystemViewEntity_Alias";
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLEID = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleID");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLENAMECN = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleNameCn");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEEN = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleNameEn");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEDB = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleNameDb");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLEDESCRIPTION = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleDescription");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_APPLICATIONID = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".ApplicationID");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEID_MOUDLEISSYSTEMMOUDLE = Property.ForName(PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME + ".MoudleIsSystemMoudle");
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -57,6 +72,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "SystemViewDescription":
                     return typeof (string);
+                case "SystemMoudleID":
+                    return typeof (int);
           }
 			return typeof(string);
         }

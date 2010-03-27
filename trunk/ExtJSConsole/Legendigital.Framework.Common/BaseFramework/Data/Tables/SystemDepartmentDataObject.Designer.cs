@@ -18,6 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_DEPARTMENTNAMECN = Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTNAMECN);
 		public static readonly Property PROPERTY_DEPARTMENTNAMEEN = Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTNAMEEN);
 		public static readonly Property PROPERTY_DEPARTMENTDECRIPTION = Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTDECRIPTION);
+		public static readonly Property PROPERTY_DEPARTMENTSORTINDEX = Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTSORTINDEX);
       
 		#region 子类集合字段查询字段
 	
@@ -45,6 +46,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "DepartmentDecription":
                     return typeof (string);
+                case "DepartmentSortIndex":
+                    return typeof (int);
           }
 			return typeof(string);
         }

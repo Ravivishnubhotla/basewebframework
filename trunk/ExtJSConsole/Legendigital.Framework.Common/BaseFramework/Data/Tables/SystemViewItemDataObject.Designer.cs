@@ -17,7 +17,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_SYSTEMVIEWITEMNAMEEN = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWITEMNAMEEN);
 		public static readonly Property PROPERTY_SYSTEMVIEWITEMNAMECN = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWITEMNAMECN);
 		public static readonly Property PROPERTY_SYSTEMVIEWITEMDESCRIPTION = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWITEMDESCRIPTION);
-		public static readonly Property PROPERTY_SYSTEMVIEWITEMDISPLAYFORMAT = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWITEMDISPLAYFORMAT);
 		public static readonly Property PROPERTY_SYSTEMVIEWID = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWID);
 		#region systemViewID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SystemViewItemEntity> InClude_SystemViewID_Query(NHibernateDynamicQueryGenerator<SystemViewItemEntity> queryGenerator)
@@ -30,6 +29,26 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN = Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".SystemViewNameEn");
 		public static readonly Property PROPERTY_SYSTEMVIEWID_APPLICATIONID = Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".ApplicationID");
 		public static readonly Property PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION = Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".SystemViewDescription");
+		public static readonly Property PROPERTY_SYSTEMVIEWID_SYSTEMMOUDLEID = Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".SystemMoudleID");
+		#endregion
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID = Property.ForName(SystemViewItemEntity.PROPERTY_NAME_SYSTEMMOUDLEFIELDID);
+		#region systemMoudleFieldID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemViewItemEntity> InClude_SystemMoudleFieldID_Query(NHibernateDynamicQueryGenerator<SystemViewItemEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemViewItemEntity.PROPERTY_NAME_SYSTEMMOUDLEFIELDID, PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME = "SystemMoudleFieldID_SystemViewItemEntity_Alias";
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDID = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldID");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDNAMEEN = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldNameEn");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDNAMECN = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldNameCn");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDNAMEDB = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldNameDb");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDTYPE = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldType");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDISREQUIRED = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldIsRequired");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDDEFAULTVALUE = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldDefaultValue");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDISKEYFIELD = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldIsKeyField");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDSIZE = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldSize");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEFIELDDESCRIPTION = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleFieldDescription");
+		public static readonly Property PROPERTY_SYSTEMMOUDLEFIELDID_SYSTEMMOUDLEID = Property.ForName(PROPERTY_SYSTEMMOUDLEFIELDID_ALIAS_NAME + ".SystemMoudleID");
 		#endregion
       
 		#region 子类集合字段查询字段
@@ -56,9 +75,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "SystemViewItemDescription":
                     return typeof (string);
-                case "SystemViewItemDisplayFormat":
-                    return typeof (string);
                 case "SystemViewID":
+                    return typeof (int);
+                case "SystemMoudleFieldID":
                     return typeof (int);
           }
 			return typeof(string);
