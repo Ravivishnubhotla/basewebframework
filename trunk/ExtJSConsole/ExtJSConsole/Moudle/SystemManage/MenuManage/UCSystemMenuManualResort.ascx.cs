@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using ListItem = Coolite.Ext.Web.ListItem;
+using ScriptManager=Coolite.Ext.Web.ScriptManager;
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
@@ -35,35 +36,32 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         [AjaxMethod]
         public void SaveNewOrder(string ids)
         {
-            Dictionary<string, string>[] sortItems = JSON.Deserialize<Dictionary<string, string>[]>(ids);
-
-            int i = 1;
-
-            foreach (Dictionary<string, string> row in sortItems)
+            try
             {
-                int id = int.Parse(row["value"].ToString());
+                Dictionary<string, string>[] sortItems = JSON.Deserialize<Dictionary<string, string>[]>(ids);
 
-                SystemMenuWrapper menu = SystemMenuWrapper.FindById(id);
+                List<int> sortIDs = new List<int>();
 
-                menu.MenuOrder = i;
+                foreach (Dictionary<string, string> row in sortItems)
+                {
+                    sortIDs.Add(int.Parse(row["value"].ToString()));
+                }
 
-                SystemMenuWrapper.Update(menu);
+                SystemMenuWrapper.UpdateOrder(sortIDs);
 
-                i++;
+                ScriptManager.AjaxSuccess = true;
+                return;
             }
-        }
-
-        protected void btnResortSystemMenu_Click(object sender, AjaxEventArgs e)
-        {
-            foreach (ListItem item in this.MultiSelect1.Items)
+            catch (Exception ex)
             {
-                Console.WriteLine(item.Value);
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = ex.Message;
+                return;
             }
 
-
-
-            winSystemMenuManualResort.Hide();
         }
+
+
 
         //protected void storeSubMenu_Refresh(object sender, StoreRefreshDataEventArgs e)
         //{
