@@ -43,37 +43,26 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "OperationID":
                     return typeof (int);
-                    break;
                 case "OperationNameCn":
                     return typeof (string);
-                    break;
                 case "OperationNameEn":
                     return typeof (string);
-                    break;
                 case "OperationDescription":
                     return typeof (string);
-                    break;
                 case "IsSystemOperation":
                     return typeof (bool);
-                    break;
                 case "IsCanSingleOperation":
                     return typeof (bool);
-                    break;
                 case "IsCanMutilOperation":
                     return typeof (bool);
-                    break;
                 case "IsEnable":
                     return typeof (bool);
-                    break;
                 case "IsInListPage":
                     return typeof (bool);
-                    break;
                 case "IsInSinglePage":
                     return typeof (bool);
-                    break;
                 case "OperationOrder":
                     return typeof (int);
-                    break;
           }
 			return typeof(string);
         }

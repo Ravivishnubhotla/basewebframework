@@ -56,7 +56,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_PRIVILEGEORDER = Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGEORDER);
 		public static readonly Property PROPERTY_PRIVILEGECATEGORY = Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGECATEGORY);
-		public static readonly Property PROPERTY_PRIVILEGETYPE = Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGETYPE);
       
 		#region 子类集合字段查询字段
 	
@@ -76,34 +75,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "PrivilegeID":
                     return typeof (int);
-                    break;
                 case "OperationID":
                     return typeof (int);
-                    break;
                 case "ResourcesID":
                     return typeof (int);
-                    break;
                 case "PrivilegeCnName":
                     return typeof (string);
-                    break;
                 case "PrivilegeEnName":
                     return typeof (string);
-                    break;
                 case "DefaultValue":
                     return typeof (string);
-                    break;
                 case "Description":
                     return typeof (string);
-                    break;
                 case "PrivilegeOrder":
                     return typeof (int);
-                    break;
                 case "PrivilegeCategory":
                     return typeof (string);
-                    break;
-                case "PrivilegeType":
-                    return typeof (string);
-                    break;
           }
 			return typeof(string);
         }

@@ -59,11 +59,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_ROLEID_ROLENAME = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleName");
 		public static readonly Property PROPERTY_ROLEID_ROLEDESCRIPTION = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleDescription");
 		public static readonly Property PROPERTY_ROLEID_ROLEISSYSTEMROLE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole");
-		public static readonly Property PROPERTY_ROLEID_ROLETYPE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType");
-		public static readonly Property PROPERTY_ROLEID_CREATEBY = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy");
-		public static readonly Property PROPERTY_ROLEID_CREATEDATE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateDate");
-		public static readonly Property PROPERTY_ROLEID_LASTUPDATEBY = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateBy");
-		public static readonly Property PROPERTY_ROLEID_LASTUPDATEDATE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateDate");
 		#endregion
       
 		#region 子类集合字段查询字段
@@ -84,13 +79,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "UserRoleID":
                     return typeof (int);
-                    break;
                 case "UserID":
                     return typeof (int);
-                    break;
                 case "RoleID":
                     return typeof (int);
-                    break;
           }
 			return typeof(string);
         }

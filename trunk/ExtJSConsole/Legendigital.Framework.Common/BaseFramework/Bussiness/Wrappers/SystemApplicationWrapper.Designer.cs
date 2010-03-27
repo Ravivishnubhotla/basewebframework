@@ -78,7 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int SystemApplicationID
 		{
@@ -92,7 +92,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Application Name
+		/// 
 		/// </summary>		
 		public string SystemApplicationName
 		{
@@ -106,7 +106,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Application Description
+		/// 
 		/// </summary>		
 		public string SystemApplicationDescription
 		{
@@ -120,7 +120,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Appilcation Url
+		/// 
 		/// </summary>		
 		public string SystemApplicationUrl
 		{
@@ -134,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// {$DisplayName:"Is System Application"} Test description
+		/// 
 		/// </summary>		
 		public bool? SystemApplicationIsSystemApplication
 		{

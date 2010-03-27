@@ -86,7 +86,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int MenuID
 		{
@@ -100,7 +100,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Name
+		/// 
 		/// </summary>		
 		public string MenuName
 		{
@@ -114,7 +114,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Description
+		/// 
 		/// </summary>		
 		public string MenuDescription
 		{
@@ -128,7 +128,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Url
+		/// 
 		/// </summary>		
 		public string MenuUrl
 		{
@@ -142,7 +142,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Url Target Name
+		/// 
 		/// </summary>		
 		public string MenuUrlTarget
 		{
@@ -170,7 +170,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Is Category
+		/// 
 		/// </summary>		
 		public bool MenuIsCategory
 		{
@@ -184,7 +184,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Parent Menu
+		/// 
 		/// </summary>		
 		public SystemMenuWrapper ParentMenuID
 		{
@@ -198,7 +198,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Order
+		/// 
 		/// </summary>		
 		public int? MenuOrder
 		{
@@ -212,7 +212,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Menu Type
+		/// 
 		/// </summary>		
 		public string MenuType
 		{
@@ -226,7 +226,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is System Menu
+		/// 
 		/// </summary>		
 		public bool? MenuIsSystemMenu
 		{
@@ -240,7 +240,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is Enable
+		/// 
 		/// </summary>		
 		public bool? MenuIsEnable
 		{
@@ -254,7 +254,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Application
+		/// 
 		/// </summary>		
 		public SystemApplicationWrapper ApplicationID
 		{

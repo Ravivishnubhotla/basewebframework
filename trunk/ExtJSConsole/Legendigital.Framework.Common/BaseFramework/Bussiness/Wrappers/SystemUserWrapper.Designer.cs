@@ -99,7 +99,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int UserID
 		{
@@ -113,7 +113,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Login ID
+		/// 
 		/// </summary>		
 		public string UserLoginID
 		{
@@ -127,7 +127,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// User Name
+		/// 
 		/// </summary>		
 		public string UserName
 		{
@@ -141,7 +141,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Email
+		/// 
 		/// </summary>		
 		public string UserEmail
 		{
@@ -155,7 +155,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Password
+		/// 
 		/// </summary>		
 		public string UserPassword
 		{
@@ -169,7 +169,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Status
+		/// 
 		/// </summary>		
 		public string UserStatus
 		{
@@ -183,7 +183,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Create Date
+		/// 
 		/// </summary>		
 		public DateTime UserCreateDate
 		{
@@ -197,7 +197,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// User Type
+		/// 
 		/// </summary>		
 		public string UserType
 		{
@@ -211,7 +211,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Department
+		/// 
 		/// </summary>		
 		public SystemDepartmentWrapper DepartmentID
 		{
@@ -225,7 +225,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// MobilePIN
+		/// 
 		/// </summary>		
 		public string MobilePIN
 		{
@@ -239,7 +239,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// PasswordF ormat
+		/// 
 		/// </summary>		
 		public int PasswordFormat
 		{
@@ -253,7 +253,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Password Salt
+		/// 
 		/// </summary>		
 		public string PasswordSalt
 		{
@@ -267,7 +267,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Lowered Email
+		/// 
 		/// </summary>		
 		public string LoweredEmail
 		{
@@ -281,7 +281,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Password Question
+		/// 
 		/// </summary>		
 		public string PasswordQuestion
 		{
@@ -295,7 +295,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Password Answer
+		/// 
 		/// </summary>		
 		public string PasswordAnswer
 		{
@@ -309,7 +309,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Comments
+		/// 
 		/// </summary>		
 		public string Comments
 		{
@@ -323,7 +323,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is Approved
+		/// 
 		/// </summary>		
 		public bool IsApproved
 		{
@@ -337,7 +337,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is Locked Out
+		/// 
 		/// </summary>		
 		public bool IsLockedOut
 		{
@@ -351,7 +351,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Last Activity Date
+		/// 
 		/// </summary>		
 		public DateTime LastActivityDate
 		{
@@ -365,7 +365,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Last Login Date
+		/// 
 		/// </summary>		
 		public DateTime LastLoginDate
 		{
@@ -379,7 +379,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Last Locked Out Date
+		/// 
 		/// </summary>		
 		public DateTime LastLockedOutDate
 		{
@@ -393,7 +393,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Last Password Change Date
+		/// 
 		/// </summary>		
 		public DateTime LastPasswordChangeDate
 		{
@@ -407,7 +407,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Failed Password Attempt Count
+		/// 
 		/// </summary>		
 		public int FailedPwdAttemptCnt
 		{
@@ -421,7 +421,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Failed Password Attempt DateTime
+		/// 
 		/// </summary>		
 		public DateTime FailedPwdAttemptWndStart
 		{
@@ -435,7 +435,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Failed Password Answer Attempt Count
+		/// 
 		/// </summary>		
 		public int FailedPwdAnsAttemptCnt
 		{
@@ -449,7 +449,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Failed Password Answer Attempt DateTime
+		/// 
 		/// </summary>		
 		public DateTime FailedPwdAnsAttemptWndStart
 		{

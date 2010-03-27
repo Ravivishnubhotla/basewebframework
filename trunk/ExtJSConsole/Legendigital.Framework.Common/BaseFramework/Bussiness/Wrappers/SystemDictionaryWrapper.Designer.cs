@@ -80,7 +80,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int SystemDictionaryID
 		{
@@ -94,7 +94,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Category Name
+		/// 
 		/// </summary>		
 		public string SystemDictionaryCategoryID
 		{
@@ -108,7 +108,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Key
+		/// 
 		/// </summary>		
 		public string SystemDictionaryKey
 		{
@@ -122,7 +122,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Value
+		/// 
 		/// </summary>		
 		public string SystemDictionaryValue
 		{
@@ -136,7 +136,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Description
+		/// 
 		/// </summary>		
 		public string SystemDictionaryDesciption
 		{
@@ -150,7 +150,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Order Index
+		/// 
 		/// </summary>		
 		public int? SystemDictionaryOrder
 		{
@@ -164,7 +164,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Is Enable
+		/// 
 		/// </summary>		
 		public bool? SystemDictionaryIsEnable
 		{

@@ -95,17 +95,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		#endregion
 
-        public object PrivilegeRoleParseValue
-        {
-            get
-            {
-                return DeserializeObject(PrivilegeRoleValue); 
-            }
-            set
-            {
-                PrivilegeRoleValue = SerializeObject(value);
-            }
-        }
 
 
         public byte[] SerializeObject(object obj)

@@ -91,59 +91,39 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             {
                 case FilterFunction.NoFilter:
                     return null;
-                    break;
                 case FilterFunction.Contains:
                     return Property.ForName(this.filterFieldName).Like(filterValue,MatchMode.Anywhere);
-                    break;
                 case FilterFunction.DoesNotContain:
                     return Expression.Not(Property.ForName(this.filterFieldName).Like(filterValue, MatchMode.Anywhere));
-                    break;
                 case FilterFunction.StartsWith:
                     return Property.ForName(this.filterFieldName).Like(filterValue, MatchMode.Start);
-                    break;
                 case FilterFunction.EndsWith:
                     return Property.ForName(this.filterFieldName).Like(filterValue, MatchMode.End);
-                    break;
                 case FilterFunction.EqualTo:
                     return Property.ForName(this.filterFieldName).Eq(Convert.ChangeType(filterValue, fieldType));
-                    break;
                 case FilterFunction.NotEqualTo:
                     return Expression.Not(Property.ForName(this.filterFieldName).Eq(Convert.ChangeType(filterValue, fieldType)));
-                    break;
                 case FilterFunction.GreaterThan:
                     return Property.ForName(this.filterFieldName).Gt(Convert.ChangeType(filterValue, fieldType));
-                    break;
                 case FilterFunction.LessThan:
                     return Property.ForName(this.filterFieldName).Lt(Convert.ChangeType(filterValue, fieldType));
-                    break;
                 case FilterFunction.GreaterThanOrEqualTo:
                     return Property.ForName(this.filterFieldName).Ge(Convert.ChangeType(filterValue, fieldType));
-                    break;
                 case FilterFunction.LessThanOrEqualTo:
                     return Property.ForName(this.filterFieldName).Le(Convert.ChangeType(filterValue, fieldType));
-                    break;
                 case FilterFunction.Between:
-
                     return Property.ForName(this.filterFieldName).Between(Convert.ChangeType(FilterValue1, fieldType), Convert.ChangeType(FilterValue2, fieldType));
-                    break;
                 case FilterFunction.NotBetween:
                     return Expression.Not(Property.ForName(this.filterFieldName).Between(Convert.ChangeType(FilterValue1, fieldType), Convert.ChangeType(FilterValue2, fieldType)));
-                    break;
                 case FilterFunction.IsEmpty:
-                    return Property.ForName(this.filterFieldName).IsEmpty();
-                    break;
                 case FilterFunction.NotIsEmpty:
                     return Property.ForName(this.filterFieldName).IsNotEmpty();
-                    break;
                 case FilterFunction.IsNull:
                     return Property.ForName(this.filterFieldName).IsNull();
-                    break;
                 case FilterFunction.NotIsNull:
                     return Property.ForName(this.filterFieldName).IsNotNull();
-                    break;
                 default :
                     return null;
-                    break;
             }
         }
     }

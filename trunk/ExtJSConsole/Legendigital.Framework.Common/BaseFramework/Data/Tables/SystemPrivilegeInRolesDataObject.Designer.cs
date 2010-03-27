@@ -25,11 +25,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_ROLEID_ROLENAME = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleName");
 		public static readonly Property PROPERTY_ROLEID_ROLEDESCRIPTION = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleDescription");
 		public static readonly Property PROPERTY_ROLEID_ROLEISSYSTEMROLE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole");
-		public static readonly Property PROPERTY_ROLEID_ROLETYPE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType");
-		public static readonly Property PROPERTY_ROLEID_CREATEBY = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy");
-		public static readonly Property PROPERTY_ROLEID_CREATEDATE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateDate");
-		public static readonly Property PROPERTY_ROLEID_LASTUPDATEBY = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateBy");
-		public static readonly Property PROPERTY_ROLEID_LASTUPDATEDATE = Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateDate");
 		#endregion
 		public static readonly Property PROPERTY_PRIVILEGEID = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEID);
 		#region privilegeID字段外键查询字段
@@ -47,15 +42,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_PRIVILEGEID_DESCRIPTION = Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_PRIVILEGEID_PRIVILEGEORDER = Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeOrder");
 		public static readonly Property PROPERTY_PRIVILEGEID_PRIVILEGECATEGORY = Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeCategory");
-		public static readonly Property PROPERTY_PRIVILEGEID_PRIVILEGETYPE = Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeType");
 		#endregion
-		public static readonly Property PROPERTY_PRIVILEGEROLEVALUETYPE = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEROLEVALUETYPE);
+		public static readonly Property PROPERTY_PRIVILEGEROLEVALUE = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEROLEVALUE);
 		public static readonly Property PROPERTY_ENABLETYPE = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_ENABLETYPE);
 		public static readonly Property PROPERTY_CREATETIME = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_CREATETIME);
 		public static readonly Property PROPERTY_UPDATETIME = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_UPDATETIME);
 		public static readonly Property PROPERTY_EXPIRYTIME = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_EXPIRYTIME);
 		public static readonly Property PROPERTY_ENABLEPARAMETER = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_ENABLEPARAMETER);
-		public static readonly Property PROPERTY_PRIVILEGEROLEVALUE = Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEROLEVALUE);
       
 		#region 子类集合字段查询字段
 	
@@ -75,34 +68,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "PrivilegeRoleID":
                     return typeof (int);
-                    break;
                 case "RoleID":
                     return typeof (int);
-                    break;
                 case "PrivilegeID":
                     return typeof (int);
-                    break;
-                case "PrivilegeRoleValueType":
+                case "PrivilegeRoleValue":
                     return typeof (string);
-                    break;
                 case "EnableType":
                     return typeof (string);
-                    break;
                 case "CreateTime":
                     return typeof (DateTime);
-                    break;
                 case "UpdateTime":
                     return typeof (DateTime);
-                    break;
                 case "ExpiryTime":
                     return typeof (DateTime);
-                    break;
                 case "EnableParameter":
                     return typeof (bool);
-                    break;
-                case "PrivilegeRoleValue":
-                    return typeof (byte[]);
-                    break;
           }
 			return typeof(string);
         }

@@ -57,43 +57,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "MenuID":
                     return typeof (int);
-                    break;
                 case "MenuName":
                     return typeof (string);
-                    break;
                 case "MenuDescription":
                     return typeof (string);
-                    break;
                 case "MenuUrl":
                     return typeof (string);
-                    break;
                 case "MenuUrlTarget":
                     return typeof (string);
-                    break;
                 case "MenuIconUrl":
                     return typeof (string);
-                    break;
                 case "MenuIsCategory":
                     return typeof (bool);
-                    break;
                 case "ParentMenuID":
                     return typeof (int);
-                    break;
                 case "MenuOrder":
                     return typeof (int);
-                    break;
                 case "MenuType":
                     return typeof (string);
-                    break;
                 case "MenuIsSystemMenu":
                     return typeof (bool);
-                    break;
                 case "MenuIsEnable":
                     return typeof (bool);
-                    break;
                 case "ApplicationID":
                     return typeof (int);
-                    break;
           }
 			return typeof(string);
         }

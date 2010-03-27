@@ -38,22 +38,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "Id":
                     return typeof (int);
-                    break;
                 case "SystemName":
                     return typeof (string);
-                    break;
                 case "SystemDescription":
                     return typeof (string);
-                    break;
                 case "SystemUrl":
                     return typeof (string);
-                    break;
                 case "SystemVersion":
                     return typeof (string);
-                    break;
                 case "SystemLisence":
                     return typeof (string);
-                    break;
           }
 			return typeof(string);
         }

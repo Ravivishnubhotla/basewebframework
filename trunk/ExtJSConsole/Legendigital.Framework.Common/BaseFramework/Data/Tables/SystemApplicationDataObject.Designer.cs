@@ -37,19 +37,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "SystemApplicationID":
                     return typeof (int);
-                    break;
                 case "SystemApplicationName":
                     return typeof (string);
-                    break;
                 case "SystemApplicationDescription":
                     return typeof (string);
-                    break;
                 case "SystemApplicationUrl":
                     return typeof (string);
-                    break;
                 case "SystemApplicationIsSystemApplication":
                     return typeof (bool);
-                    break;
           }
 			return typeof(string);
         }

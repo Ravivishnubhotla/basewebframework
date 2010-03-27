@@ -51,25 +51,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "MoudleID":
                     return typeof (int);
-                    break;
                 case "MoudleNameCn":
                     return typeof (string);
-                    break;
                 case "MoudleNameEn":
                     return typeof (string);
-                    break;
                 case "MoudleNameDb":
                     return typeof (string);
-                    break;
                 case "MoudleDescription":
                     return typeof (string);
-                    break;
                 case "ApplicationID":
                     return typeof (int);
-                    break;
                 case "MoudleIsSystemMoudle":
                     return typeof (bool);
-                    break;
           }
 			return typeof(string);
         }

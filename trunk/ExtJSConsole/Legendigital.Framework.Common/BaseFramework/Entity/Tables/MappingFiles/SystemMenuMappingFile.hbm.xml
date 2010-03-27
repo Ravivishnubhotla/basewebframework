@@ -11,15 +11,15 @@
 </id>
 
 
-		<property column="Menu_Name" type="string" name="MenuName"   not-null="true"  length="400" />	
-		<property column="Menu_Description" type="string" name="MenuDescription"   length="4000" />	
-		<property column="Menu_Url" type="string" name="MenuUrl"   length="400" />	
-		<property column="Menu_UrlTarget" type="string" name="MenuUrlTarget"   length="400" />	
-		<property column="Menu_IconUrl" type="string" name="MenuIconUrl"   length="400" />	
+		<property column="Menu_Name" type="string" name="MenuName"   not-null="true"  length="800" />	
+		<property column="Menu_Description" type="string" name="MenuDescription"   length="8000" />	
+		<property column="Menu_Url" type="string" name="MenuUrl"   length="800" />	
+		<property column="Menu_UrlTarget" type="string" name="MenuUrlTarget"   length="800" />	
+		<property column="Menu_IconUrl" type="string" name="MenuIconUrl"   length="800" />	
 		<property column="Menu_IsCategory" type="Boolean" name="MenuIsCategory"   not-null="true"  />	
 		<many-to-one column="ParentMenu_ID" name="ParentMenuID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMenuEntity,Legendigital.Framework.Common" />		
 		<property column="Menu_Order" type="int" name="MenuOrder"   />	
-		<property column="Menu_Type" type="string" name="MenuType"   not-null="true"  length="400" />	
+		<property column="Menu_Type" type="string" name="MenuType"   not-null="true"  length="800" />	
 		<property column="Menu_IsSystemMenu" type="Boolean" name="MenuIsSystemMenu"   />	
 		<property column="Menu_IsEnable" type="Boolean" name="MenuIsEnable"   />	
 		<many-to-one column="ApplicationID" name="ApplicationID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemApplicationEntity,Legendigital.Framework.Common" />		

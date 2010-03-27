@@ -11,10 +11,10 @@
 </id>
 
 
-		<property column="SystemDictionary_CategoryID" type="string" name="SystemDictionaryCategoryID"   length="400" />	
-		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="400" />	
-		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="4000" />	
-		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="4000" />	
+		<property column="SystemDictionary_CategoryID" type="string" name="SystemDictionaryCategoryID"   length="800" />	
+		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="800" />	
+		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="8000" />	
+		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="8000" />	
 		<property column="SystemDictionary_Order" type="int" name="SystemDictionaryOrder"   />	
 		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	
 

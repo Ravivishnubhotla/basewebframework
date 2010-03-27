@@ -12,9 +12,9 @@
 
 
 		<many-to-one column="Parent_Department_ID" name="ParentDepartmentID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDepartmentEntity,Legendigital.Framework.Common" />		
-		<property column="Department_NameCn" type="string" name="DepartmentNameCn"   not-null="true"  length="400" />	
-		<property column="Department_NameEn" type="string" name="DepartmentNameEn"   not-null="true"  length="400" />	
-		<property column="Department_Decription" type="string" name="DepartmentDecription"   length="4000" />	
+		<property column="Department_NameCn" type="string" name="DepartmentNameCn"   not-null="true"  length="800" />	
+		<property column="Department_NameEn" type="string" name="DepartmentNameEn"   not-null="true"  length="800" />	
+		<property column="Department_Decription" type="string" name="DepartmentDecription"   length="8000" />	
 
 
 

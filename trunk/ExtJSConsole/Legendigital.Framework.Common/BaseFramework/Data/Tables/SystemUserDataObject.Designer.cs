@@ -70,82 +70,56 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "UserID":
                     return typeof (int);
-                    break;
                 case "UserLoginID":
                     return typeof (string);
-                    break;
                 case "UserName":
                     return typeof (string);
-                    break;
                 case "UserEmail":
                     return typeof (string);
-                    break;
                 case "UserPassword":
                     return typeof (string);
-                    break;
                 case "UserStatus":
                     return typeof (string);
-                    break;
                 case "UserCreateDate":
                     return typeof (DateTime);
-                    break;
                 case "UserType":
                     return typeof (string);
-                    break;
                 case "DepartmentID":
                     return typeof (int);
-                    break;
                 case "MobilePIN":
                     return typeof (string);
-                    break;
                 case "PasswordFormat":
                     return typeof (int);
-                    break;
                 case "PasswordSalt":
                     return typeof (string);
-                    break;
                 case "LoweredEmail":
                     return typeof (string);
-                    break;
                 case "PasswordQuestion":
                     return typeof (string);
-                    break;
                 case "PasswordAnswer":
                     return typeof (string);
-                    break;
                 case "Comments":
                     return typeof (string);
-                    break;
                 case "IsApproved":
                     return typeof (bool);
-                    break;
                 case "IsLockedOut":
                     return typeof (bool);
-                    break;
                 case "LastActivityDate":
                     return typeof (DateTime);
-                    break;
                 case "LastLoginDate":
                     return typeof (DateTime);
-                    break;
                 case "LastLockedOutDate":
                     return typeof (DateTime);
-                    break;
                 case "LastPasswordChangeDate":
                     return typeof (DateTime);
-                    break;
                 case "FailedPwdAttemptCnt":
                     return typeof (int);
-                    break;
                 case "FailedPwdAttemptWndStart":
                     return typeof (DateTime);
-                    break;
                 case "FailedPwdAnsAttemptCnt":
                     return typeof (int);
-                    break;
                 case "FailedPwdAnsAttemptWndStart":
                     return typeof (DateTime);
-                    break;
           }
 			return typeof(string);
         }

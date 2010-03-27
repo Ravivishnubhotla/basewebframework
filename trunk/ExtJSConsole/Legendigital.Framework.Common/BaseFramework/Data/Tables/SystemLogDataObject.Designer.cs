@@ -44,40 +44,28 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "LogID":
                     return typeof (int);
-                    break;
                 case "LogLevel":
                     return typeof (string);
-                    break;
                 case "LogType":
                     return typeof (string);
-                    break;
                 case "LogDate":
                     return typeof (DateTime);
-                    break;
                 case "LogSource":
                     return typeof (string);
-                    break;
                 case "LogUser":
                     return typeof (string);
-                    break;
                 case "LogDescrption":
                     return typeof (string);
-                    break;
                 case "LogRequestInfo":
                     return typeof (string);
-                    break;
                 case "LogRelateMoudleID":
                     return typeof (int);
-                    break;
                 case "LogRelateMoudleDataID":
                     return typeof (int);
-                    break;
                 case "LogRelateUserID":
                     return typeof (int);
-                    break;
                 case "LogRelateDateTime":
                     return typeof (DateTime);
-                    break;
           }
 			return typeof(string);
         }

@@ -13,7 +13,7 @@
 
 		<many-to-one column="RoleID" name="RoleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleEntity,Legendigital.Framework.Common" />		
 		<many-to-one column="PrivilegeID" name="PrivilegeID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPrivilegeEntity,Legendigital.Framework.Common" />		
-		<property column="BizParameter" type="string" name="BizParameter"   not-null="true"  length="4000" />	
+		<property column="BizParameter" type="string" name="BizParameter"   not-null="true"  length="8000" />	
 
 
 

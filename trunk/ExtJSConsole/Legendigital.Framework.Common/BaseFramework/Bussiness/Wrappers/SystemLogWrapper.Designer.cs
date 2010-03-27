@@ -85,7 +85,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int LogID
 		{
@@ -99,7 +99,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志级别
+		/// 
 		/// </summary>		
 		public string LogLevel
 		{
@@ -113,7 +113,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志类型
+		/// 
 		/// </summary>		
 		public string LogType
 		{
@@ -127,7 +127,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志日期
+		/// 
 		/// </summary>		
 		public DateTime LogDate
 		{
@@ -141,7 +141,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志来源
+		/// 
 		/// </summary>		
 		public string LogSource
 		{
@@ -155,7 +155,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志用户
+		/// 
 		/// </summary>		
 		public string LogUser
 		{
@@ -169,7 +169,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志内容
+		/// 
 		/// </summary>		
 		public string LogDescrption
 		{
@@ -183,7 +183,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志请求信息
+		/// 
 		/// </summary>		
 		public string LogRequestInfo
 		{
@@ -197,7 +197,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志相关模块
+		/// 
 		/// </summary>		
 		public int? LogRelateMoudleID
 		{
@@ -211,7 +211,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志相关模块数据ID
+		/// 
 		/// </summary>		
 		public int? LogRelateMoudleDataID
 		{
@@ -225,7 +225,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志相关用户ID
+		/// 
 		/// </summary>		
 		public int? LogRelateUserID
 		{
@@ -239,7 +239,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 日志相关时间
+		/// 
 		/// </summary>		
 		public DateTime? LogRelateDateTime
 		{

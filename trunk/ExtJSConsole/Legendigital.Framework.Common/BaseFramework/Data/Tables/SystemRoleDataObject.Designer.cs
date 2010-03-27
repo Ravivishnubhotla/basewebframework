@@ -17,11 +17,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_ROLENAME = Property.ForName(SystemRoleEntity.PROPERTY_NAME_ROLENAME);
 		public static readonly Property PROPERTY_ROLEDESCRIPTION = Property.ForName(SystemRoleEntity.PROPERTY_NAME_ROLEDESCRIPTION);
 		public static readonly Property PROPERTY_ROLEISSYSTEMROLE = Property.ForName(SystemRoleEntity.PROPERTY_NAME_ROLEISSYSTEMROLE);
-		public static readonly Property PROPERTY_ROLETYPE = Property.ForName(SystemRoleEntity.PROPERTY_NAME_ROLETYPE);
-		public static readonly Property PROPERTY_CREATEBY = Property.ForName(SystemRoleEntity.PROPERTY_NAME_CREATEBY);
-		public static readonly Property PROPERTY_CREATEDATE = Property.ForName(SystemRoleEntity.PROPERTY_NAME_CREATEDATE);
-		public static readonly Property PROPERTY_LASTUPDATEBY = Property.ForName(SystemRoleEntity.PROPERTY_NAME_LASTUPDATEBY);
-		public static readonly Property PROPERTY_LASTUPDATEDATE = Property.ForName(SystemRoleEntity.PROPERTY_NAME_LASTUPDATEDATE);
       
 		#region 子类集合字段查询字段
 	
@@ -41,31 +36,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "RoleID":
                     return typeof (int);
-                    break;
                 case "RoleName":
                     return typeof (string);
-                    break;
                 case "RoleDescription":
                     return typeof (string);
-                    break;
                 case "RoleIsSystemRole":
                     return typeof (bool);
-                    break;
-                case "RoleType":
-                    return typeof (string);
-                    break;
-                case "CreateBy":
-                    return typeof (int);
-                    break;
-                case "CreateDate":
-                    return typeof (DateTime);
-                    break;
-                case "LastUpdateBy":
-                    return typeof (int);
-                    break;
-                case "LastUpdateDate":
-                    return typeof (DateTime);
-                    break;
           }
 			return typeof(string);
         }

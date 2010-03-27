@@ -76,14 +76,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_PRIVILEGEORDER = "PrivilegeOrder";
 		public static readonly string PROPERTY_NAME_PRIVILEGECATEGORY = "PrivilegeCategory";
-		public static readonly string PROPERTY_NAME_PRIVILEGETYPE = "PrivilegeType";
 		
         #endregion
 
 
 		#region Public Property
 		/// <summary>
-		/// Primary Key
+		/// 
 		/// </summary>		
 		public int PrivilegeID
 		{
@@ -97,7 +96,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Operation ID
+		/// 
 		/// </summary>		
 		public SystemOperationWrapper OperationID
 		{
@@ -111,7 +110,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Resources ID
+		/// 
 		/// </summary>		
 		public SystemResourcesWrapper ResourcesID
 		{
@@ -125,7 +124,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Permission Name
+		/// 
 		/// </summary>		
 		public string PrivilegeCnName
 		{
@@ -139,7 +138,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Permission Code
+		/// 
 		/// </summary>		
 		public string PrivilegeEnName
 		{
@@ -153,7 +152,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Default Value
+		/// 
 		/// </summary>		
 		public string DefaultValue
 		{
@@ -167,7 +166,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Permission Description
+		/// 
 		/// </summary>		
 		public string Description
 		{
@@ -181,7 +180,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// Permission Order
+		/// 
 		/// </summary>		
 		public int PrivilegeOrder
 		{
@@ -195,7 +194,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// permission Category
+		/// 
 		/// </summary>		
 		public string PrivilegeCategory
 		{
@@ -206,20 +205,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.PrivilegeCategory = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string PrivilegeType
-		{
-			get
-			{
-				return entity.PrivilegeType;
-			}
-			set
-			{
-				entity.PrivilegeType = value;
 			}
 		}
 		#endregion 

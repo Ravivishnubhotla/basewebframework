@@ -57,41 +57,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             return this.FindSingleEntityByQueryBuilder(queryGenerator);
         }
 
-        public SystemRoleEntity GetUserMaxRoleTypeRole(SystemUserEntity systemUserEntity)
-        {
-            NHibernateDynamicQueryGenerator<SystemUserRoleRelationEntity> queryGenerator = this.GetNewQueryBuilder();
 
-            queryGenerator.AddWhereClause(PROPERTY_USERID.Eq(systemUserEntity));
 
-            InClude_RoleID_Query(queryGenerator);
-
-            queryGenerator.AddOrderBy(PROPERTY_ROLEID_ROLETYPE.Desc());
-
-            SystemUserRoleRelationEntity userRoleRelationEntity = this.FindSingleEntityByQueryBuilder(queryGenerator);
-
-            if(userRoleRelationEntity==null)
-                return null;
-            else
-                return userRoleRelationEntity.RoleID;
-        }
-
-        public SystemRoleEntity GetUserMinRoleTypeRole(SystemUserEntity systemUserEntity)
-        {
-            NHibernateDynamicQueryGenerator<SystemUserRoleRelationEntity> queryGenerator = this.GetNewQueryBuilder();
-
-            queryGenerator.AddWhereClause(PROPERTY_USERID.Eq(systemUserEntity));
-
-            InClude_RoleID_Query(queryGenerator);
-
-            queryGenerator.AddOrderBy(PROPERTY_ROLEID_ROLETYPE.Asc());
-
-            SystemUserRoleRelationEntity userRoleRelationEntity = this.FindSingleEntityByQueryBuilder(queryGenerator);
-
-            if (userRoleRelationEntity == null)
-                return null;
-            else
-                return userRoleRelationEntity.RoleID;
-        }
 
 
 

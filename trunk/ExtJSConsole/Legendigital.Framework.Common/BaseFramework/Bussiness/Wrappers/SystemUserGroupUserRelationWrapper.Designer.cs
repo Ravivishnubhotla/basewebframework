@@ -76,7 +76,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int UserGroupUserID
 		{
@@ -90,7 +90,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户
+		/// 
 		/// </summary>		
 		public SystemUserWrapper UserID
 		{
@@ -104,7 +104,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 用户组
+		/// 
 		/// </summary>		
 		public SystemUserGroupWrapper UserGroupID
 		{

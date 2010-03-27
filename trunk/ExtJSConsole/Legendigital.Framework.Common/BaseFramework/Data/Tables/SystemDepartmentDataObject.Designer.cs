@@ -37,19 +37,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "DepartmentID":
                     return typeof (int);
-                    break;
                 case "ParentDepartmentID":
                     return typeof (int);
-                    break;
                 case "DepartmentNameCn":
                     return typeof (string);
-                    break;
                 case "DepartmentNameEn":
                     return typeof (string);
-                    break;
                 case "DepartmentDecription":
                     return typeof (string);
-                    break;
           }
 			return typeof(string);
         }

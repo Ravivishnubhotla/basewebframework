@@ -330,15 +330,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
 
-        public static SystemRoleWrapper GetUserMaxRoleTypeRole(SystemUserWrapper userWrapper)
-        {
-            return SystemRoleWrapper.ConvertEntityToWrapper(businessProxy.GetUserMaxRoleTypeRole(userWrapper.entity));
-        }
 
-        public static SystemRoleWrapper GetUserMinRoleTypeRole(SystemUserWrapper userWrapper)
-        {
-            return SystemRoleWrapper.ConvertEntityToWrapper(businessProxy.GetUserMinRoleTypeRole(userWrapper.entity));
-        }
 
 
     }

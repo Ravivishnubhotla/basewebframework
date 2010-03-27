@@ -77,7 +77,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int PrivilegeParameterID
 		{
@@ -91,7 +91,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 角色ID
+		/// 
 		/// </summary>		
 		public SystemRoleWrapper RoleID
 		{
@@ -105,7 +105,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 权限ID
+		/// 
 		/// </summary>		
 		public SystemPrivilegeWrapper PrivilegeID
 		{
@@ -119,7 +119,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 参数
+		/// 
 		/// </summary>		
 		public string BizParameter
 		{
