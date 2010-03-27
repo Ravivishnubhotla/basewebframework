@@ -14,15 +14,21 @@ using Spring.Transaction.Interceptor;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemMenuServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemMenuEntity>
+    public interface ISystemMenuServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemMenuEntity>
     {
         List<SystemMenuWrapper> GetUserAssignedMenuByLoginID(string loginID);
         List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app);
-        SystemMenuEntity GetNewMaxMenuByParentMenuAndApplication(SystemMenuWrapper menuWrapper, SystemApplicationWrapper applicationWrapper);
+
+        SystemMenuEntity GetNewMaxMenuByParentMenuAndApplication(SystemMenuWrapper menuWrapper,
+                                                                 SystemApplicationWrapper applicationWrapper);
+
         List<SystemMenuEntity> GetMenuByParentID(int parentMenuId);
         void PatchUpdate(List<SystemMenuWrapper> menus);
         List<string> GetRoleAssignedMenuIDs(SystemRoleEntity role);
-	    List<SystemMenuEntity> GetTopMenuByAppID(int appId);
+        List<SystemMenuEntity> GetTopMenuByAppID(int appId);
+        void UpdateOrder(List<int> ids);
+
+        void AutoUpdateOrder(int appID, int parentID);
     }
 
     public partial class SystemMenuServiceProxy : ISystemMenuServiceProxy
@@ -36,18 +42,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             if (userEntity != null)
             {
                 //开发用户直接返回所有的可用的菜单
-                if(loginID==SystemUserWrapper.DEV_USER_ID)
-                    return SystemMenuWrapper.ConvertToWrapperList(this.DataObjectsContainerIocID.SystemMenuDataObjectInstance.GetAllAviableMenu());
+                if (loginID == SystemUserWrapper.DEV_USER_ID)
+                    return
+                        SystemMenuWrapper.ConvertToWrapperList(
+                            this.DataObjectsContainerIocID.SystemMenuDataObjectInstance.GetAllAviableMenu());
 
                 //获取用户分配的角色
                 List<SystemRoleEntity> userAssignedRole =
-                    this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserAssignedRoles(userEntity);
+                    this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserAssignedRoles(
+                        userEntity);
 
                 if (userAssignedRole != null && userAssignedRole.Count > 0)
                 {
                     //查找角色下面分配的所有的菜单,(未排序)
                     List<SystemMenuEntity> listMenu =
-                        this.DataObjectsContainerIocID.SystemRoleMenuRelationDataObjectInstance.GetRoleAssignMenu(userAssignedRole);
+                        this.DataObjectsContainerIocID.SystemRoleMenuRelationDataObjectInstance.GetRoleAssignMenu(
+                            userAssignedRole);
 
                     List<int> menuIDs = new List<int>();
 
@@ -57,12 +67,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                     }
 
                     //获取重新排序的Menu
-                    return SystemMenuWrapper.ConvertToWrapperList(this.DataObjectsContainerIocID.SystemMenuDataObjectInstance.SortMenu(menuIDs));
+                    return
+                        SystemMenuWrapper.ConvertToWrapperList(
+                            this.DataObjectsContainerIocID.SystemMenuDataObjectInstance.SortMenu(menuIDs));
                 }
             }
 
             return null;
-
         }
 
         public List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app)
@@ -71,17 +82,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         }
 
 
-        public List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app,SystemUserEntity userEntity)
+        public List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app, SystemUserEntity userEntity)
         {
             return this.SelfDataObj.GetMenuByApplication(app.entity);
         }
 
-        public SystemMenuEntity GetNewMaxMenuByParentMenuAndApplication(SystemMenuWrapper menuWrapper, SystemApplicationWrapper applicationWrapper)
+        public SystemMenuEntity GetNewMaxMenuByParentMenuAndApplication(SystemMenuWrapper menuWrapper,
+                                                                        SystemApplicationWrapper applicationWrapper)
         {
             if (menuWrapper == null)
                 return this.SelfDataObj.GetNewMaxMenuByParentMenuAndApplication(null, applicationWrapper.entity);
 
-            return this.SelfDataObj.GetNewMaxMenuByParentMenuAndApplication(menuWrapper.entity, applicationWrapper.entity);
+            return this.SelfDataObj.GetNewMaxMenuByParentMenuAndApplication(menuWrapper.entity,
+                                                                            applicationWrapper.entity);
         }
 
         public List<SystemMenuEntity> GetMenuByParentID(int parentMenuId)
@@ -91,6 +104,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
             return this.SelfDataObj.GetMenuByParentID(this.FindById(parentMenuId));
         }
+
         [Transaction(TransactionPropagation.Required, ReadOnly = false)]
         public void PatchUpdate(List<SystemMenuWrapper> menus)
         {
@@ -116,7 +130,58 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
         public List<SystemMenuEntity> GetTopMenuByAppID(int appId)
         {
-            return this.SelfDataObj.GetTopMenuByAppID(this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(appId));
+            return
+                this.SelfDataObj.GetTopMenuByAppID(
+                    this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(appId));
+        }
+
+        [Transaction(TransactionPropagation.Required, ReadOnly = false)]
+        public void UpdateOrder(List<int> ids)
+        {
+            int i = 1;
+
+            foreach (int id in ids)
+            {
+                SystemMenuEntity systemMenuEntity = this.SelfDataObj.Load(id);
+                systemMenuEntity.MenuOrder = i;
+
+                this.SelfDataObj.Update(systemMenuEntity);
+
+                i++;
+            }
+        }
+
+
+        [Transaction(TransactionPropagation.Required, ReadOnly = false)]
+        public void AutoUpdateOrder(int appID, int parentID)
+        {
+            SystemApplicationEntity applicationEntity =
+                this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(appID);
+
+            List<SystemMenuEntity> menus;
+
+            if (parentID == 0)
+            {
+                menus = this.SelfDataObj.GetMenuByParentIDAndApp(null, applicationEntity);
+            }
+            else
+            {
+                SystemMenuEntity topMenu = this.DataObjectsContainerIocID.SystemMenuDataObjectInstance.Load(parentID);
+
+                menus = this.SelfDataObj.GetMenuByParentIDAndApp(topMenu, applicationEntity);
+            }
+
+
+            int i = 1;
+
+            foreach (SystemMenuEntity menu in menus)
+            {
+                menu.MenuOrder = i;
+
+                this.SelfDataObj.Update(menu);
+
+                i++;
+            }
         }
     }
 }
