@@ -21,7 +21,7 @@
 					 provider="SqlServer-2.0"
 					 connectionString="Persist Security Info=False;Integrated Security=true;Initial Catalog=TroniTechRMTS;server=(local)"/>-->
   
-  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate20">
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
 		<property name="MappingAssemblies">
 			<list>
@@ -41,7 +41,7 @@
 		<property name="ExposeTransactionAwareSessionFactory" value="true" />
 	</object>
 	<object id="transactionManager"
-		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate20">
+		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
 		<property name="DbProvider" ref="DbProvider"/>
 		<property name="SessionFactory" ref="NHibernateSessionFactory"/>
 	</object>
