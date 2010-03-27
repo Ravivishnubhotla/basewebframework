@@ -281,5 +281,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    {
             return ConvertToWrapperList(businessProxy.GetTopMenuByAppID(appID));
 	    }
+
+	    public static void UpdateOrder(List<int> ids)
+	    {
+	        businessProxy.UpdateOrder(ids);
+	    }
+
+        public static void AutoMaticSortSubItems(int appID,int parentMenuId)
+        {
+            businessProxy.AutoUpdateOrder(appID, parentMenuId);
+        }
     }
 }

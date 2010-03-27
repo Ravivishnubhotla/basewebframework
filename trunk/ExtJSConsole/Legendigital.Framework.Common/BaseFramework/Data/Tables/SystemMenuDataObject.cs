@@ -105,5 +105,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public List<SystemMenuEntity> GetMenuByParentIDAndApp(SystemMenuEntity pMenu, SystemApplicationEntity applicationEntity)
+        {
+            NHibernateDynamicQueryGenerator<SystemMenuEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(SystemMenuDataObject.PROPERTY_APPLICATIONID.Eq(applicationEntity));
+            if (pMenu==null)
+                dynamicQueryGenerator.AddWhereClause(SystemMenuDataObject.PROPERTY_PARENTMENUID.IsNull());
+            else
+                dynamicQueryGenerator.AddWhereClause(SystemMenuDataObject.PROPERTY_PARENTMENUID.Eq(pMenu));
+            //指定排序规则
+            dynamicQueryGenerator.AddOrderBy(SystemMenuDataObject.PROPERTY_MENUORDER.Asc());
+            dynamicQueryGenerator.AddOrderBy(SystemMenuDataObject.PROPERTY_MENUID.Desc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
