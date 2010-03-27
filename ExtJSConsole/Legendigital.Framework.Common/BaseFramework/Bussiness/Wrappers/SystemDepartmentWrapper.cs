@@ -5,6 +5,7 @@ using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.Web.UI;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
@@ -93,5 +94,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		#endregion
 
+
+        public static List<TypedTreeNodeItem<SystemDepartmentWrapper>> GetAllDepartment()
+        {
+            List<TypedTreeNodeItem<SystemDepartmentWrapper>> nodes = new List<TypedTreeNodeItem<SystemDepartmentWrapper>>();
+
+            List<SystemDepartmentWrapper> departments = SystemDepartmentWrapper.FindAll();
+
+            List<SystemDepartmentWrapper> topDepartments = departments.FindAll(p => (p.ParentDepartmentID == null));
+
+            foreach (SystemDepartmentWrapper topDepartment in topDepartments)
+            {
+                TypedTreeNodeItem<SystemDepartmentWrapper> topnode = new TypedTreeNodeItem<SystemDepartmentWrapper>();
+                topnode.Id = topDepartment.DepartmentID.ToString();
+                topnode.Name = topDepartment.DepartmentNameCn;
+                topnode.DataItem = topDepartment;
+                topnode.ParentNode = null;
+
+                AddSubDepartment(topnode, topDepartment, departments);
+
+                nodes.Add(topnode);
+            }
+
+            return nodes;
+        }
+
+        private static void AddSubDepartment(TypedTreeNodeItem<SystemDepartmentWrapper> mnode, SystemDepartmentWrapper topDepartment, List<SystemDepartmentWrapper> departments)
+	    {
+            List<SystemDepartmentWrapper> subdepartments = departments.FindAll(p => (p.ParentDepartmentID == topDepartment));
+
+	        foreach (SystemDepartmentWrapper subdepartment in subdepartments)
+	        {
+                TypedTreeNodeItem<SystemDepartmentWrapper> subnode = new TypedTreeNodeItem<SystemDepartmentWrapper>();
+                subnode.Id = subdepartment.DepartmentID.ToString();
+                subnode.Name = subdepartment.DepartmentNameCn;
+                subnode.DataItem = subdepartment;
+                subnode.ParentNode = mnode;
+
+                AddSubDepartment(subnode, subdepartment, departments);
+
+                mnode.SubNodes.Add(subnode);
+	        }
+
+	    }
     }
 }

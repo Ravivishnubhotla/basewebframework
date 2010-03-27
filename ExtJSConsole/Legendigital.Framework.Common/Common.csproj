@@ -606,6 +606,7 @@
     <Compile Include="Web\UI\GridViewSortExtender.cs" />
     <Compile Include="Web\UI\SuperWebTreeNode.cs" />
     <Compile Include="Web\UI\TreeViewExenter.cs" />
+    <Compile Include="Web\UI\TypedTreeNodeItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemApplicationMappingFile.hbm.xml" />
@@ -649,11 +650,6 @@
     <EmbeddedResource Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainersFile.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BaseFramework\Data\Views\" />
-    <Folder Include="BaseFramework\Entity\Views\MappingFiles\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -669,6 +665,11 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseFramework\Data\Views\" />
+    <Folder Include="BaseFramework\Entity\Views\MappingFiles\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
