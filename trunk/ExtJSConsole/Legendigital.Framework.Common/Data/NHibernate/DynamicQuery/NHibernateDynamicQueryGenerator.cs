@@ -37,13 +37,6 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
             return this;
         }
 
-        public NHibernateDynamicQueryGenerator<EntityType> ToRootCriteria()
-        {
-            query = (DetachedCriteria)query.SubcriteriaList[0];
-            queryCount = (DetachedCriteria)queryCount.SubcriteriaList[0];
-            return this;
-        }
-
         public NHibernateDynamicQueryGenerator<EntityType> AddWhereClause(ICriterion criterion)
         {
             query.Add(criterion);
