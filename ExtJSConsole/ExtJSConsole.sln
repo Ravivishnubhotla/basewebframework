@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Legendigital.Fram
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{7F8A19FF-9E5E-4D25-9A03-DF4A1BD742D4}"
 	ProjectSection(SolutionItems) = preProject
-		ThirdsDll\antlr.runtime.dll = ThirdsDll\antlr.runtime.dll
-		ThirdsDll\Castle.Core.dll = ThirdsDll\Castle.Core.dll
-		ThirdsDll\Castle.DynamicProxy2.dll = ThirdsDll\Castle.DynamicProxy2.dll
+		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
 		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
 		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
 		ThirdsDll\Coolite.Ext.Web.dll = ThirdsDll\Coolite.Ext.Web.dll
@@ -21,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
-		ThirdsDll\Spring.Data.NHibernate20.dll = ThirdsDll\Spring.Data.NHibernate20.dll
+		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 	EndProjectSection
