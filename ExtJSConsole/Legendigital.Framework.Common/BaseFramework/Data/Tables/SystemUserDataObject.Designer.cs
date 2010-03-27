@@ -33,6 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly Property PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameCn");
 		public static readonly Property PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameEn");
 		public static readonly Property PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentDecription");
+		public static readonly Property PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentSortIndex");
 		#endregion
 		public static readonly Property PROPERTY_MOBILEPIN = Property.ForName(SystemUserEntity.PROPERTY_NAME_MOBILEPIN);
 		public static readonly Property PROPERTY_PASSWORDFORMAT = Property.ForName(SystemUserEntity.PROPERTY_NAME_PASSWORDFORMAT);
