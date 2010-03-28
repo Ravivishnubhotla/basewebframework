@@ -15,6 +15,7 @@
 		<property column="Department_NameCn" type="string" name="DepartmentNameCn"   not-null="true"  length="800" />	
 		<property column="Department_NameEn" type="string" name="DepartmentNameEn"   not-null="true"  length="800" />	
 		<property column="Department_Decription" type="string" name="DepartmentDecription"   length="8000" />	
+		<property column="Department_SortIndex" type="int" name="DepartmentSortIndex"   />	
 
 
 
