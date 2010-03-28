@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemUserListPage.aspx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.UserManage.SystemUserListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SystemUserListPage.aspx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.UserManage.SystemUserListPage" %>
+
 <%@ Register Src="UCSystemUserAdd.ascx" TagName="UCSystemUserAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemUserEdit.ascx" TagName="UCSystemUserEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
 
     <script type="text/javascript">
@@ -88,20 +90,19 @@
         <Reader>
             <ext:JsonReader ReaderID="UserID">
                 <Fields>
-										<ext:RecordField Name="UserID" Type="int" />
-		<ext:RecordField Name="UserLoginID" />			
-		<ext:RecordField Name="UserName" />			
-		<ext:RecordField Name="UserEmail" />			
-		<ext:RecordField Name="UserPassword" />			
-		<ext:RecordField Name="UserStatus" />			
-				<ext:RecordField Name="UserCreateDate" Type="Date" />
-		<ext:RecordField Name="UserType" />			
-				<ext:RecordField Name="PasswordFormat" Type="int" />
-		<ext:RecordField Name="Comments" />			
-				<ext:RecordField Name="IsApproved" Type="Boolean" />
-				<ext:RecordField Name="IsLockedOut" Type="Boolean" />
-				<ext:RecordField Name="LastActivityDate" Type="Date" />
- 
+                    <ext:RecordField Name="UserID" Type="int" />
+                    <ext:RecordField Name="UserLoginID" />
+                    <ext:RecordField Name="UserName" />
+                    <ext:RecordField Name="UserEmail" />
+                    <ext:RecordField Name="UserPassword" />
+                    <ext:RecordField Name="UserStatus" />
+                    <ext:RecordField Name="UserCreateDate" Type="Date" />
+                    <ext:RecordField Name="UserType" />
+                    <ext:RecordField Name="PasswordFormat" Type="int" />
+                    <ext:RecordField Name="Comments" />
+                    <ext:RecordField Name="IsApproved" Type="Boolean" />
+                    <ext:RecordField Name="IsLockedOut" Type="Boolean" />
+                    <ext:RecordField Name="LastActivityDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -114,8 +115,8 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="gridPanelSystemUser" runat="server" StoreID="storeSystemUser" StripeRows="true"
-                        Title="系统用户管理" Icon="Table">
+                    <ext:GridPanel ID="gridPanelSystemUser" runat="server" StoreID="storeSystemUser"
+                        StripeRows="true" Title="系统用户管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -143,42 +144,50 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-												<ext:Column ColumnID="colUserID" DataIndex="UserID" Header="主键" Sortable="true">
+                                <ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="登录ID" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="登录ID" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colUserName" DataIndex="UserName" Header="用户名" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="邮件" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colUserPassword" DataIndex="UserPassword" Header="密码" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="用户状态" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="创建日期" Sortable="true">
+                                <ext:Column ColumnID="colUserName" DataIndex="UserName" Header="用户名" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colUserType" DataIndex="UserType" Header="用户类型" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colPasswordFormat" DataIndex="PasswordFormat" Header="密码格式" Sortable="true">
+                                <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="邮件" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colComments" DataIndex="Comments" Header="备注" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="是否通过" Sortable="true">
+                                <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="用户状态" Sortable="true"
+                                    Width="60">
+                                </ext:Column>
+                                <ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="创建日期"
+                                    Sortable="true" Width="60">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colUserType" DataIndex="UserType" Header="用户类型" Sortable="true"
+                                    Width="60">
+                                </ext:Column>
+                                <ext:Column ColumnID="colComments" DataIndex="Comments" Header="备注" Sortable="true"
+                                    Width="60">
+                                </ext:Column>
+                                <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="是否通过" Sortable="true"
+                                    Width="50">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
-				<ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="是否锁定" Sortable="true">
+                                <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="是否锁定" Sortable="true"
+                                    Width="50">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
-				<ext:Column ColumnID="colLastActivityDate" DataIndex="LastActivityDate" Header="上次活动时间" Sortable="true">
+                                <ext:Column ColumnID="colLastActivityDate" DataIndex="LastActivityDate" Header="上次活动时间"
+                                    Sortable="true" Width="60">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
- 
-                                <ext:CommandColumn ColumnID="colManage" Header="系统用户管理" Width="60">
+                                <ext:CommandColumn ColumnID="colManage" Header="系统用户管理" Width="160">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" >
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="Key" CommandName="cmdChangePassword" Text="修改密码">
+                                            <ToolTip Text="修改密码" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="Lock" CommandName="cmdLock" Text="解锁">
+                                            <ToolTip Text="解锁" />
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>
@@ -191,7 +200,6 @@
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
-                            
                         </Listeners>
                     </ext:GridPanel>
                 </Items>
@@ -199,4 +207,3 @@
         </Body>
     </ext:ViewPort>
 </asp:Content>
-
