@@ -18,8 +18,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMNAMEEN = "SystemViewItemNameEn";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMNAMECN = "SystemViewItemNameCn";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDESCRIPTION = "SystemViewItemDescription";
-		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDISPLAYFORMAT = "SystemViewItemDisplayFormat";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWID = "SystemViewID";
+		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEFIELDID = "SystemMoudleFieldID";
 		
         #endregion
 	
@@ -32,8 +32,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemViewItemNameEn;
 		private string _systemViewItemNameCn;
 		private string _systemViewItemDescription;
-		private string _systemViewItemDisplayFormat;
 		private SystemViewEntity _systemViewID;
+		private SystemMoudleFieldEntity _systemMoudleFieldID;
 		
 		#endregion
 
@@ -47,8 +47,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemViewItemNameEn = null;
 			_systemViewItemNameCn = null;
 			_systemViewItemDescription = null;
-			_systemViewItemDisplayFormat = null;
 			_systemViewID = null;
+			_systemMoudleFieldID = null;
 		}
 		#endregion
 
@@ -56,14 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemViewItemEntity( int systemViewItemID, string systemViewItemNameEn, string systemViewItemNameCn, string systemViewItemDescription, string systemViewItemDisplayFormat, SystemViewEntity systemViewID)
+		public SystemViewItemEntity( int systemViewItemID, string systemViewItemNameEn, string systemViewItemNameCn, string systemViewItemDescription, SystemViewEntity systemViewID, SystemMoudleFieldEntity systemMoudleFieldID)
 		{
 			_systemViewItemID = systemViewItemID;
 			_systemViewItemNameEn = systemViewItemNameEn;
 			_systemViewItemNameCn = systemViewItemNameCn;
 			_systemViewItemDescription = systemViewItemDescription;
-			_systemViewItemDisplayFormat = systemViewItemDisplayFormat;
 			_systemViewID = systemViewID;
+			_systemMoudleFieldID = systemMoudleFieldID;
 		}
 		#endregion     
 	
@@ -138,23 +138,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string SystemViewItemDisplayFormat
-		{
-			get { return _systemViewItemDisplayFormat; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 8000)
-					throw new ArgumentOutOfRangeException("Invalid value for SystemViewItemDisplayFormat", value, value.ToString());
-				_isChanged |= (_systemViewItemDisplayFormat != value); _systemViewItemDisplayFormat = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual SystemViewEntity SystemViewID
 		{
 			get { return _systemViewID; }
@@ -162,6 +145,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemViewID != value); _systemViewID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SystemMoudleFieldEntity SystemMoudleFieldID
+		{
+			get { return _systemMoudleFieldID; }
+
+			set	
+			{
+				_isChanged |= (_systemMoudleFieldID != value); _systemMoudleFieldID = value;
 			}
 		}
 		/// <summary>

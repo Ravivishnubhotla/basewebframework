@@ -19,6 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWNAMEEN = "SystemViewNameEn";
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWDESCRIPTION = "SystemViewDescription";
+		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEID = "SystemMoudleID";
 		
         #endregion
 	
@@ -32,6 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemViewNameEn;
 		private SystemApplicationEntity _applicationID;
 		private string _systemViewDescription;
+		private SystemMoudleEntity _systemMoudleID;
 		
 		#endregion
 
@@ -46,6 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemViewNameEn = null;
 			_applicationID = null;
 			_systemViewDescription = null;
+			_systemMoudleID = null;
 		}
 		#endregion
 
@@ -53,13 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemViewEntity( int systemViewID, string systemViewNameCn, string systemViewNameEn, SystemApplicationEntity applicationID, string systemViewDescription)
+		public SystemViewEntity( int systemViewID, string systemViewNameCn, string systemViewNameEn, SystemApplicationEntity applicationID, string systemViewDescription, SystemMoudleEntity systemMoudleID)
 		{
 			_systemViewID = systemViewID;
 			_systemViewNameCn = systemViewNameCn;
 			_systemViewNameEn = systemViewNameEn;
 			_applicationID = applicationID;
 			_systemViewDescription = systemViewDescription;
+			_systemMoudleID = systemMoudleID;
 		}
 		#endregion     
 	
@@ -141,6 +145,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 8000)
 					throw new ArgumentOutOfRangeException("Invalid value for SystemViewDescription", value, value.ToString());
 				_isChanged |= (_systemViewDescription != value); _systemViewDescription = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SystemMoudleEntity SystemMoudleID
+		{
+			get { return _systemMoudleID; }
+
+			set	
+			{
+				_isChanged |= (_systemMoudleID != value); _systemMoudleID = value;
 			}
 		}
 		/// <summary>

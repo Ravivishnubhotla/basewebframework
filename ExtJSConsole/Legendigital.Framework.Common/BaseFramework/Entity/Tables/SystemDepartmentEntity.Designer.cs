@@ -19,6 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMECN = "DepartmentNameCn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMEEN = "DepartmentNameEn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTDECRIPTION = "DepartmentDecription";
+		public static readonly string PROPERTY_NAME_DEPARTMENTSORTINDEX = "DepartmentSortIndex";
 		
         #endregion
 	
@@ -32,6 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _departmentNameCn;
 		private string _departmentNameEn;
 		private string _departmentDecription;
+		private int? _departmentSortIndex;
 		
 		#endregion
 
@@ -46,6 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_departmentNameCn = String.Empty;
 			_departmentNameEn = String.Empty;
 			_departmentDecription = null;
+			_departmentSortIndex = null;
 		}
 		#endregion
 
@@ -53,13 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDepartmentEntity( int departmentID, SystemDepartmentEntity parentDepartmentID, string departmentNameCn, string departmentNameEn, string departmentDecription)
+		public SystemDepartmentEntity( int departmentID, SystemDepartmentEntity parentDepartmentID, string departmentNameCn, string departmentNameEn, string departmentDecription, int? departmentSortIndex)
 		{
 			_departmentID = departmentID;
 			_parentDepartmentID = parentDepartmentID;
 			_departmentNameCn = departmentNameCn;
 			_departmentNameEn = departmentNameEn;
 			_departmentDecription = departmentDecription;
+			_departmentSortIndex = departmentSortIndex;
 		}
 		#endregion     
 	
@@ -141,6 +145,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 8000)
 					throw new ArgumentOutOfRangeException("Invalid value for DepartmentDecription", value, value.ToString());
 				_isChanged |= (_departmentDecription != value); _departmentDecription = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? DepartmentSortIndex
+		{
+			get { return _departmentSortIndex; }
+
+			set	
+			{
+				_isChanged |= (_departmentSortIndex != value); _departmentSortIndex = value;
 			}
 		}
 		/// <summary>
