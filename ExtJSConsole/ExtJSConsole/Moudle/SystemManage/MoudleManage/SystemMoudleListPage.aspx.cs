@@ -54,7 +54,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage
 
             int limit = this.PagingToolBar1.PageSize;
 
-                        int pageIndex = 1;
+            int pageIndex = 1;
 
             if ((startIndex % limit) == 0)
                 pageIndex = startIndex / limit + 1;
