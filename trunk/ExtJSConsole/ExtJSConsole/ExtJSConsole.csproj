@@ -256,6 +256,27 @@
     <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx.cs">
       <DependentUpon>SystemUserListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -307,6 +328,9 @@
     <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
+    <Content Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx" />
+    <Content Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx" />
+    <Content Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx" />
     <Content Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx" />
     <Content Include="Moudle\SystemManage\UserManage\UCSystemUserAdd.ascx" />
     <Content Include="Moudle\SystemManage\UserManage\UCSystemUserEdit.ascx" />
@@ -316,7 +340,6 @@
     <Folder Include="Moudle\SystemManage\DictionaryManage\" />
     <Folder Include="Moudle\SystemManage\LogManage\" />
     <Folder Include="Moudle\SystemManage\PermissionManage\" />
-    <Folder Include="Moudle\SystemManage\UserGroupManage\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
