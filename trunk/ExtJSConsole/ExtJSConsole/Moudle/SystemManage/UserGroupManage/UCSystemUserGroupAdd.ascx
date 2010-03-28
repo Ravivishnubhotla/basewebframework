@@ -15,8 +15,8 @@
 					 <ext:Anchor Horizontal="95%">
 						<ext:TextField ID="txtGroupNameEn" runat="server" FieldLabel="组编码" AllowBlank="False"  />
                      </ext:Anchor>
-					 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtGroupDescription" runat="server" FieldLabel="描述" AllowBlank="True"  />
+					<ext:Anchor Horizontal="95%">
+						<ext:TextArea ID="txtGroupDescription" runat="server" FieldLabel="描述" AllowBlank="True"  />
                      </ext:Anchor>
 
                         </Anchors>
@@ -42,6 +42,8 @@
         </ext:Button>
     </Buttons>
 </ext:Window>
+
+
 
 
 

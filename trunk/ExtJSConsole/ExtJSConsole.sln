@@ -24,6 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeTemplate", "CodeTemplate", "{F257D46F-4ABE-4EE8-8F9C-8652CA688E20}"
+	ProjectSection(SolutionItems) = preProject
+		CodeTemplate\ExtJs表现层代码模版.zeus = CodeTemplate\ExtJs表现层代码模版.zeus
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

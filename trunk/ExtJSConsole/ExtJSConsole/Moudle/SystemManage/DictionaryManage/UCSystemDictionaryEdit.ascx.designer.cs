@@ -8,99 +8,126 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
+namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
     
     
-    public partial class UCSystemUserGroupEdit {
+    public partial class UCSystemDictionaryEdit {
         
         /// <summary>
-        /// winSystemUserGroupEdit control.
+        /// winSystemDictionaryEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemUserGroupEdit;
+        protected global::Coolite.Ext.Web.Window winSystemDictionaryEdit;
         
         /// <summary>
-        /// fitLayoutMainSystemUserGroup control.
+        /// fitLayoutMainSystemDictionary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemUserGroup;
+        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemDictionary;
         
         /// <summary>
-        /// formPanelSystemUserGroupEdit control.
+        /// formPanelSystemDictionaryEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemUserGroupEdit;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSystemDictionaryEdit;
         
         /// <summary>
-        /// formLayoutSystemUserGroup control.
+        /// formLayoutSystemDictionary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemUserGroup;
+        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemDictionary;
         
         /// <summary>
-        /// hidSystemUserGroupID control.
+        /// hidSystemDictionaryID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemUserGroupID;
+        protected global::Coolite.Ext.Web.Hidden hidSystemDictionaryID;
         
         /// <summary>
-        /// txtGroupNameCn control.
+        /// txtSystemDictionaryCategoryID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameCn;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryCategoryID;
         
         /// <summary>
-        /// txtGroupNameEn control.
+        /// txtSystemDictionaryKey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameEn;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryKey;
         
         /// <summary>
-        /// txtGroupDescription control.
+        /// txtSystemDictionaryValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtGroupDescription;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryValue;
         
         /// <summary>
-        /// btnSaveSystemUserGroup control.
+        /// txtSystemDictionaryDesciption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemUserGroup;
+        protected global::Coolite.Ext.Web.TextArea txtSystemDictionaryDesciption;
         
         /// <summary>
-        /// btnCancelSystemUserGroup control.
+        /// txtSystemDictionaryOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemUserGroup;
+        protected global::Coolite.Ext.Web.NumberField txtSystemDictionaryOrder;
+        
+        /// <summary>
+        /// chkSystemDictionaryIsEnable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkSystemDictionaryIsEnable;
+        
+        /// <summary>
+        /// btnSaveSystemDictionary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnSaveSystemDictionary;
+        
+        /// <summary>
+        /// btnCancelSystemDictionary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnCancelSystemDictionary;
     }
 }

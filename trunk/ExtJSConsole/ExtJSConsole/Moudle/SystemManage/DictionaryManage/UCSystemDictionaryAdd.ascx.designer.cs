@@ -8,90 +8,117 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
+namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
     
     
-    public partial class UCSystemUserGroupAdd {
+    public partial class UCSystemDictionaryAdd {
         
         /// <summary>
-        /// winSystemUserGroupAdd control.
+        /// winSystemDictionaryAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemUserGroupAdd;
+        protected global::Coolite.Ext.Web.Window winSystemDictionaryAdd;
         
         /// <summary>
-        /// fitLayoutMainSystemUserGroup control.
+        /// fitLayoutMainSystemDictionary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemUserGroup;
+        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemDictionary;
         
         /// <summary>
-        /// formPanelSystemUserGroupAdd control.
+        /// formPanelSystemDictionaryAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemUserGroupAdd;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSystemDictionaryAdd;
         
         /// <summary>
-        /// formLayoutSystemUserGroup control.
+        /// formLayoutSystemDictionary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemUserGroup;
+        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemDictionary;
         
         /// <summary>
-        /// txtGroupNameCn control.
+        /// txtSystemDictionaryCategoryID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameCn;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryCategoryID;
         
         /// <summary>
-        /// txtGroupNameEn control.
+        /// txtSystemDictionaryKey control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameEn;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryKey;
         
         /// <summary>
-        /// txtGroupDescription control.
+        /// txtSystemDictionaryValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtGroupDescription;
+        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryValue;
         
         /// <summary>
-        /// btnSaveSystemUserGroup control.
+        /// txtSystemDictionaryDesciption control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemUserGroup;
+        protected global::Coolite.Ext.Web.TextArea txtSystemDictionaryDesciption;
         
         /// <summary>
-        /// btnCancelSystemUserGroup control.
+        /// txtSystemDictionaryOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemUserGroup;
+        protected global::Coolite.Ext.Web.NumberField txtSystemDictionaryOrder;
+        
+        /// <summary>
+        /// chkSystemDictionaryIsEnable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkSystemDictionaryIsEnable;
+        
+        /// <summary>
+        /// btnSaveSystemDictionary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnSaveSystemDictionary;
+        
+        /// <summary>
+        /// btnCancelSystemDictionary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnCancelSystemDictionary;
     }
 }
