@@ -235,6 +235,27 @@
     <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx.designer.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebCode\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -262,10 +283,12 @@
     <Content Include="Moudle\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
     <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />
     <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx" />
+    <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
+    <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
+    <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Moudle\SystemManage\RoleManage\" />
     <Folder Include="Moudle\SystemManage\UserManage\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
