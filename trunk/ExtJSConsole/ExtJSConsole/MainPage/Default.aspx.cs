@@ -74,14 +74,14 @@ namespace ExtJSConsole.MainPage
             abMenu1.AddSubMenu("M112", "菜单管理", "~/Moudle/SystemManage/MenuManage/SystemMenuListPage.aspx", "");
             abMenu1.AddSubMenu("M113", "部门管理", "~/Moudle/SystemManage/DepartmentManage/SystemDepartmentListPage.aspx", "");
             abMenu1.AddSubMenu("M114", "角色管理", "~/Moudle/SystemManage/RoleManage/SystemRoleListPage.aspx", "");
-            abMenu1.AddSubMenu("M115", "用户管理", "~/Moudle/SystemManage/UserManage/AblumListPage.aspx", "");
-            abMenu1.AddSubMenu("M115", "用户组管理", "~/Moudle/SystemManage/UserGroupManage/AblumListPage.aspx", "");
-            abMenu1.AddSubMenu("M116", "权限管理", "~/Moudle/SystemManage/PermissionManage/AblumListPage.aspx", "");
+            abMenu1.AddSubMenu("M115", "用户管理", "~/Moudle/SystemManage/UserManage/SystemUserListPage.aspx", "");
+            abMenu1.AddSubMenu("M115", "用户组管理", "~/Moudle/SystemManage/UserGroupManage/SystemUserGroupListPage.aspx", "");
+            abMenu1.AddSubMenu("M116", "权限管理", "~/Moudle/SystemManage/PermissionManage/SystemPermissionListPage.aspx", "");
             abMenu1.AddSubMenu("M119", "模块管理", "~/Moudle/SystemManage/MoudleManage/SystemMoudleListPage.aspx", "");
 
             
             abMenu1.AddSubMenu("M117", "字典管理", "~/Moudle/SystemManage/DictionaryManage/AblumListPage.aspx", "");
-            abMenu1.AddSubMenu("M118", "日志查询", "~/Moudle/SystemManage/MoudleManage/SystemMoudleListPage.aspx", "");
+            abMenu1.AddSubMenu("M118", "日志查询", "~/Moudle/SystemManage/LogManage/SystemLogListPage.aspx", "");
 
             rootMenu.AddSubMenu(abMenu1);
 
