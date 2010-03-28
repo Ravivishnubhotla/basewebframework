@@ -63,7 +63,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除系统应用！',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除记录！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
