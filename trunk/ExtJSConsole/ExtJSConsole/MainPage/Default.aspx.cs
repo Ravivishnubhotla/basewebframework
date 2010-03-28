@@ -77,8 +77,11 @@ namespace ExtJSConsole.MainPage
             abMenu1.AddSubMenu("M115", "用户管理", "~/Moudle/SystemManage/UserManage/AblumListPage.aspx", "");
             abMenu1.AddSubMenu("M115", "用户组管理", "~/Moudle/SystemManage/UserGroupManage/AblumListPage.aspx", "");
             abMenu1.AddSubMenu("M116", "权限管理", "~/Moudle/SystemManage/PermissionManage/AblumListPage.aspx", "");
+            abMenu1.AddSubMenu("M119", "模块管理", "~/Moudle/SystemManage/MoudleManage/SystemMoudleListPage.aspx", "");
+
+            
             abMenu1.AddSubMenu("M117", "字典管理", "~/Moudle/SystemManage/DictionaryManage/AblumListPage.aspx", "");
-            abMenu1.AddSubMenu("M118", "日志查询", "~/Moudle/SystemManage/LogManage/AblumListPage.aspx", "");
+            abMenu1.AddSubMenu("M118", "日志查询", "~/Moudle/SystemManage/MoudleManage/SystemMoudleListPage.aspx", "");
 
             rootMenu.AddSubMenu(abMenu1);
 
