@@ -4,7 +4,7 @@
 <%@ Register Src="UCSystemMoudleAdd.ascx" TagName="UCSystemMoudleAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemMoudleEdit.ascx" TagName="UCSystemMoudleEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
     </ext:ScriptManagerProxy>
 
     <script type="text/javascript">
@@ -53,7 +53,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选记录 ? ',
+                Ext.MessageBox.confirm('警告','确认要删除所选系统模块 ? ',
                     function(e) {
                         if (e == 'yes')
                             Coolite.AjaxMethods.DeleteRecord(
@@ -63,7 +63,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除记录！',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除系统模块！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -90,13 +90,14 @@
         <Reader>
             <ext:JsonReader ReaderID="MoudleID">
                 <Fields>
-                    <ext:RecordField Name="MoudleID" Type="int" />
-                    <ext:RecordField Name="MoudleNameCn" />
-                    <ext:RecordField Name="MoudleNameEn" />
-                    <ext:RecordField Name="MoudleNameDb" />
-                    <ext:RecordField Name="MoudleDescription" />
-                    <ext:RecordField Name="ApplicationID" Type="int" />
-                    <ext:RecordField Name="MoudleIsSystemMoudle" Type="Boolean" />
+										<ext:RecordField Name="MoudleID" Type="int" />
+		<ext:RecordField Name="MoudleNameCn" />			
+		<ext:RecordField Name="MoudleNameEn" />			
+		<ext:RecordField Name="MoudleNameDb" />			
+		<ext:RecordField Name="MoudleDescription" />			
+				<ext:RecordField Name="ApplicationID" Type="int" />
+				<ext:RecordField Name="MoudleIsSystemMoudle" Type="Boolean" />
+ 
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -109,8 +110,8 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="gridPanelSystemMoudle" runat="server" StoreID="storeSystemMoudle"
-                        StripeRows="true" Title="SystemMoudle" Icon="Table">
+                    <ext:GridPanel ID="gridPanelSystemMoudle" runat="server" StoreID="storeSystemMoudle" StripeRows="true"
+                        Title="系统模块管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -138,33 +139,22 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column DataIndex="MoudleID" Header="主键" Sortable="true">
+												<ext:Column DataIndex="MoudleID" Header="主键" Sortable="true">
                                 </ext:Column>
-                                <ext:Column DataIndex="MoudleNameCn" Header="显示名" Sortable="true">
+		<ext:Column DataIndex="MoudleNameCn" Header="显示名" Sortable="true">
+                                </ext:Column>			
+		<ext:Column DataIndex="MoudleNameEn" Header="编码" Sortable="true">
+                                </ext:Column>			
+		<ext:Column DataIndex="MoudleNameDb" Header="数据库名" Sortable="true">
+                                </ext:Column>			
+		<ext:Column DataIndex="MoudleDescription" Header="描述" Sortable="true">
+                                </ext:Column>			
+				<ext:Column DataIndex="ApplicationID" Header="所属系统应用" Sortable="true">
                                 </ext:Column>
-                                <ext:Column DataIndex="MoudleNameEn" Header="编码" Sortable="true">
-                                </ext:Column>
-                                <ext:Column DataIndex="MoudleNameDb" Header="数据库名" Sortable="true">
-                                </ext:Column>
-                                <ext:Column DataIndex="MoudleDescription" Header="描述" Sortable="true">
-                                </ext:Column>
-                                <ext:Column DataIndex="ApplicationID" Header="所属系统应用" Sortable="true">
-                                </ext:Column>
-                                <ext:Column DataIndex="MoudleIsSystemMoudle" Header="是否以偶系统应用" Sortable="true">
+				<ext:Column DataIndex="MoudleIsSystemMoudle" Header="是否为系统模块" Sortable="true">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
-                                <ext:Column DataIndex="SystemApplicationID" Header="主键" Sortable="true">
-                                </ext:Column>
-                                <ext:Column DataIndex="SystemApplicationName" Header="名称" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colSystemApplicationDescription" DataIndex="SystemApplicationDescription"
-                                    Header="描述">
-                                </ext:Column>
-                                <ext:Column DataIndex="SystemApplicationUrl" Header="链接">
-                                </ext:Column>
-                                <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="是否为系统应用" Sortable="true">
-                                    <Renderer Fn="FormatBool" />
-                                </ext:Column>
+ 
                                 <ext:CommandColumn Width="60">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
@@ -180,10 +170,11 @@
                         <LoadMask ShowMask="true" />
                         <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemMoudle"
-                                DisplayInfo="true" DisplayMsg="显示系统应用 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的SystemMoudle" />
+                                DisplayInfo="true" DisplayMsg="显示系统模块 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的系统模块" />
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
+                            
                         </Listeners>
                     </ext:GridPanel>
                 </Items>
