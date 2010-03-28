@@ -1,0 +1,1239 @@
+﻿##|TYPE Template
+##|UNIQUEID 03fe1be6-f041-4e2e-81bd-642378804296
+##|TITLE SpringNHibernate表现层代码模版
+##|NAMESPACE 
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll  , System.Windows.Forms.dll, System.Drawing.dll %>
+<%#NAMESPACE System.Windows.Forms, System.Drawing ,Legendigital.Code.MyGenAddin,System.Collections.Generic,Legendigital.Code.MyGenAddin.NHibernateFramework %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+
+	//-----------------------------------------
+	// The User Interface Entry Point
+	//-----------------------------------------
+	public override void Setup()
+	{
+	
+		NHibernateFrameworkWebUIGenerateForm form = new NHibernateFrameworkWebUIGenerateForm(MyMeta, input); 
+
+		if (form.ShowDialog() != DialogResult.OK) 
+		{
+			ui.IsCanceled = true;
+		}
+	
+	}
+
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll, System.Windows.Forms.dll,System.Web.dll %><%#NAMESPACE System,System.IO,System.Web.UI.WebControls, System.Text, System.Text.RegularExpressions, System.Globalization, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 ,Dnp.Utils, Legendigital.Code.MyGenAddin , Legendigital.Code.MyGenAddin.NHibernateFramework %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	
+	private Utils utils = new Utils();
+
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+	
+	private UICodeGenerationConfig uiftg;
+	
+	private	string listPageUrl = "ListPage.aspx";
+	
+    private	string IDKeyName = "ID";
+	
+	 private NHibernateFrameworkWebUIGenerateConfig cfg;
+	
+	//---------------------------------------------------
+	// Render() is where you want to write your logic    
+	//---------------------------------------------------
+	public override void Render()
+	{
+		
+		ITable selectTable = (ITable)input["selectTable"];
+		
+		string GenerateType = (string)input["GenerateType"];
+		
+		uiftg = (UICodeGenerationConfig)input["Uiconfig"];
+		
+		NHibernateFrameworkWebUIGenerateConfig config = (NHibernateFrameworkWebUIGenerateConfig)input["codeGenerationSetting"];
+		
+		cfg = config;
+		
+		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
+		
+		
+		switch (GenerateType)
+		{
+			case "GenerateAddPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateEditPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateViewPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateListPageHtmlAndPageCode":
+				GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateSingleManageListPageHtmlAndPageCode":
+				break;
+			default:
+				break;
+		}
+		
+
+		
+%>
+<%  
+		}
+		
+		
+		private void GenerateAddPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%>
+
+
+<ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="Add" Title="添加<%= config.GenerateMoudleFormTitle(table) %>"
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
+    <Body>
+        <ext:FitLayout ID="fitLayoutMain<%= moudleCodeName %>" runat="server">
+            <ext:FormPanel ID="formPanel<%= moudleCodeName %>Add" runat="server" Frame="true" Header="false" MonitorValid="true"
+                BodyStyle="padding:5px;">
+                <Body>
+                    <ext:FormLayout ID="formLayout<%= moudleCodeName %>" runat="server" LabelSeparator=":" LabelWidth="100">
+                        <Anchors>
+						<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+		GenerateInputControl(table,tableUIGenerationParamsListArray[i],config);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+   } 
+%>
+                        </Anchors>
+                    </ext:FormLayout>
+                </Body>
+            </ext:FormPanel>
+        </ext:FitLayout>
+    </Body>
+    <Buttons>
+        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="添加" Icon="Add">
+            <AjaxEvents>
+                <Click Before="if(!#{formPanel<%= moudleCodeName %>Add}.getForm().isValid()) return false;" OnEvent="btnSave<%= moudleCodeName %>_Click"
+                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了<%= config.GenerateMoudleFormTitle(table) %>。',callback);function callback(id) {#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
+                </Click>
+            </AjaxEvents>
+        </ext:Button>
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="取消" Icon="Cancel">
+            <Listeners>
+                <Click Handler="#{win<%= moudleCodeName %>Add}.hide();" />
+            </Listeners>
+        </ext:Button>
+    </Buttons>
+</ext:Window>
+
+
+
+
+
+
+
+
+
+<%		
+		}
+		
+		
+		private void GenerateEditPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%>
+
+<ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="编辑<%= config.GenerateMoudleFormTitle(table) %>"
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
+    <Body>
+        <ext:FitLayout ID="fitLayoutMain<%= moudleCodeName %>" runat="server">
+            <ext:FormPanel ID="formPanel<%= moudleCodeName %>Edit" runat="server" Frame="true" Header="false" MonitorValid="true"
+                BodyStyle="padding:5px;">
+                <Body>
+                    <ext:FormLayout ID="formLayout<%= moudleCodeName %>" runat="server" LabelSeparator=":" LabelWidth="100">
+                        <Anchors>
+						                            <ext:Anchor Horizontal="95%">
+                                <ext:Hidden ID="hid<%= moudleCodeName %>ID" runat="server">
+                                </ext:Hidden>
+                            </ext:Anchor>
+						
+						<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+		GenerateInputControl(table,tableUIGenerationParamsListArray[i],config);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+   } 
+%>
+                        </Anchors>
+                    </ext:FormLayout>
+                </Body>
+            </ext:FormPanel>
+        </ext:FitLayout>
+    </Body>
+    <Buttons>
+        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="编辑" Icon="ApplicationEdit">
+            <AjaxEvents>
+                <Click Before="if(!#{formPanel<%= moudleCodeName %>Edit}.getForm().isValid()) return false;" OnEvent="btnSave<%= moudleCodeName %>_Click"
+                    Success="Ext.MessageBox.alert('操作成功', '成功的编辑了<%= config.GenerateMoudleFormTitle(table) %>。',callback);function callback(id) {#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
+                </Click>
+            </AjaxEvents>
+        </ext:Button>
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="取消" Icon="Cancel">
+            <Listeners>
+                <Click Handler="#{win<%= moudleCodeName %>Edit}.hide();" />
+            </Listeners>
+        </ext:Button>
+    </Buttons>
+</ext:Window>
+
+<%		
+		}
+		
+		
+		
+		
+		private void GenerateViewPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%>
+<ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationEdit" Title="查看<%= config.GenerateMoudleFormTitle(table) %>"
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false" ConstrainHeader=true Resizable=true>
+    <Body>
+        <ext:FitLayout ID="fitLayoutMain<%= moudleCodeName %>" runat="server">
+            <ext:FormPanel ID="formPanel<%= moudleCodeName %>Edit" runat="server" Frame="true" Header="false" MonitorValid="true"
+                BodyStyle="padding:5px;">
+                <Body>
+                    <ext:FormLayout ID="formLayout<%= moudleCodeName %>" runat="server" LabelSeparator=":" LabelWidth="100">
+                        <Anchors>
+						                            <ext:Anchor Horizontal="95%">
+                                <ext:Hidden ID="hid<%= moudleCodeName %>ID" runat="server">
+                                </ext:Hidden>
+                            </ext:Anchor>
+						
+						<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+		GenerateInputControl(table,tableUIGenerationParamsListArray[i],config);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+   } 
+%>
+                        </Anchors>
+                    </ext:FormLayout>
+                </Body>
+            </ext:FormPanel>
+        </ext:FitLayout>
+    </Body>
+    <Buttons>
+        <ext:Button ID="btnClose<%= moudleCodeName %>" runat="server" Text="关闭" Icon="Close">
+            <Listeners>
+                <Click Handler="#{win<%= moudleCodeName %>View}.hide();" />
+            </Listeners>
+        </ext:Button>
+    </Buttons>
+</ext:Window>
+
+
+<%		
+		}
+
+		
+		
+		private void GenerateInputControl(ITable table ,TableUIGenerationParams tableUIGenerationParamsListItem,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+			IColumn column = table.Columns[tableUIGenerationParamsListItem.DbColumnName];
+			string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			if(!tableUIGenerationParamsListItem.IsSelect)
+				return;
+			if(tableUIGenerationParamsListItem.IsAutoKey)
+				return;
+			string domainFieldName = TableColumnGenerationHelper.GeneratePorpertyTypeByTableColumn(column);
+			switch (tableUIGenerationParamsListItem.InputType)
+			{
+				case "Label":
+%>					<ext:Anchor Horizontal="95%">
+						<ext:TextField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   />
+                     </ext:Anchor>
+<%					break;
+				case "TextBox":
+%>					 <ext:Anchor Horizontal="95%">
+						<ext:TextField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  />
+                     </ext:Anchor>
+<%					break;
+				case "TextBoxMultiLine":
+%>					<ext:Anchor Horizontal="95%">
+						<ext:TextArea ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  />
+                     </ext:Anchor>
+<%					break;
+				case "DropDownList":
+%>					<ext:Anchor Horizontal="95%"><ext:ComboBox ID="cmb<%= tableUIGenerationParamsListItem.FieldName %>" Editable="false" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>" 
+                                                SelectedIndex="0">
+                                                <Items>
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>
+                                                </Items>
+                                            </ext:ComboBox></ext:Anchor>
+<%					break;
+				case "CheckBox":
+%>					                                        <ext:Anchor Horizontal="95%">
+                                            <ext:Checkbox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" Checked="false" />
+                                        </ext:Anchor>
+<%					break;
+				case "CheckBoxList":
+%>					                                   <ext:Anchor Horizontal="95%">       <ext:CheckboxGroup 
+                                                ID="cbl<%= tableUIGenerationParamsListItem.FieldName %>" 
+                                                runat="server" 
+                                                FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>">
+                                                <Items>
+												<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>
+                                                    <ext:Checkbox ID="Checkbox4" runat="server" BoxLabel="Item 1" Checked="true" />
+                                                    <ext:Checkbox ID="Checkbox5" runat="server" BoxLabel="Item 2" Checked="true" />
+                                                    <ext:Checkbox ID="Checkbox6" runat="server" BoxLabel="Item 3" />
+                                                    <ext:Checkbox ID="Checkbox7" runat="server" BoxLabel="Item 4" Checked="true" />
+                                                    <ext:Checkbox ID="Checkbox8" runat="server" BoxLabel="Item 5" />
+                                                </Items>
+                                            </ext:CheckboxGroup>   </ext:Anchor>
+<%					break;
+				case "RadioButtonList":
+%>				  <ext:Anchor Horizontal="95%"> 	 <ext:RadioGroup ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>">
+                                                <Items>
+												<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>
+                                                    <ext:Radio ID="Radio4" runat="server" BoxLabel="Item 1" />
+                                                    <ext:Radio ID="Radio5" runat="server" BoxLabel="Item 2" Checked="true" />
+                                                    <ext:Radio ID="Radio6" runat="server" BoxLabel="Item 3" />
+                                                    <ext:Radio ID="Radio7" runat="server" BoxLabel="Item 4" />
+                                                    <ext:Radio ID="Radio8" runat="server" BoxLabel="Item 5" />
+                                                </Items>
+                                            </ext:RadioGroup>   </ext:Anchor>
+<%					break;
+				case "ListBox":
+%>					                                  <ext:Anchor Horizontal="95%">       <ext:MultiSelect runat="server" ID="lbx<%= tableUIGenerationParamsListItem.FieldName %>"  Legend="<%= tableUIGenerationParamsListItem.FieldNameCn %>" >
+                                            <Items>
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>
+                                            </Items>
+                                        </ext:MultiSelect>    </ext:Anchor>
+
+<%					break;
+				case "RadComboBox":
+%>					<telerik:RadComboBox ID="<%= GetInputControlName(tableUIGenerationParamsListItem) %>" runat="server" ToolTip="Please select <%= tableUIGenerationParamsListItem.FieldNameCn %>" EmptyMessage="Please select <%= tableUIGenerationParamsListItem.FieldNameCn %>" Width="300px"  ValidationGroup="<%= validgroup %>">
+                    </telerik:RadComboBox>
+<%					break;
+				case "RadNumericTextBox":
+%>					  <ext:Anchor Horizontal="95%">
+						<ext:NumberField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  />
+                     </ext:Anchor>		
+<%					break;
+				case "RadDatePicker":
+%>                 <ext:Anchor Horizontal="95%">
+						<ext:DateField  ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  />
+                     </ext:Anchor>
+<%					break;
+				case "RadEditor":
+%>					<ext:Anchor Horizontal="95%">
+						<ext:HtmlEditor ID="edit<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  />
+                     </ext:Anchor>
+<%					break;
+				default:
+					break;
+			}
+		}
+		
+		
+		private void GenerateListItem(ListItemCollection lc,string defaultValue)
+		{
+			foreach(ListItem item in lc){
+%>						<ext:ListItem Value="<%= item.Value %>" Text="<%= item.Text %>" ></ext:ListItem>
+<%			}
+		}
+		
+		
+		private string GetInputControlName(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlIDFormat.Replace("{$PName}",tableUIGenerationParamsListItem.FieldName);		
+		}
+		
+		private string GetInputControlValue(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlGetSetValuePrppertyName;
+		}
+		
+		
+		
+		private void GenerateGetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+%>				<%= moudleNameEn %> obj = new <%= moudleNameEn %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}
+		}
+		
+		private void GenerateSetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = obj.<%= tableUIGenerationParamsListArray[i].FieldName %><%if (!((column.LanguageType=="bool")&((tableUIGenerationParamsListArray[i].InputType=="CheckBox")|(tableUIGenerationParamsListArray[i].InputType=="HtmlInputCheckBox")))) {%>.ToString()<%}%>;          	
+<%				}
+		}
+		
+		private void GenerateSetValueToDisplayCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.lbl<%= tableUIGenerationParamsListArray[i].FieldName %>.Text = obj.<%= tableUIGenerationParamsListArray[i].FieldName %>.ToString();
+<%				}
+		}
+		
+		private string GetParseControlValue(string controlID,string controlValue,string languageType)
+		{
+			switch(languageType)
+			{
+				case "string":
+					return "this."+controlID+"."+controlValue+".Trim()";
+				case "DateTime":
+					if(!cfg.IsUseTelerikControl1)
+						return "UIHelper.SaftGetDateTime(this."+controlID+"."+controlValue+".Trim())";
+					else
+						return "this."+controlID+"."+controlValue;						
+				case "int":
+					if(!cfg.IsUseTelerikControl1)
+						return "Convert.ToInt32(this."+controlID+"."+controlValue+".Trim())";
+					else
+						return "this."+controlID+"."+controlValue;		
+				case "double":
+					if(!cfg.IsUseTelerikControl1)
+						return "Convert.ToDouble(this."+controlID+"."+controlValue+".Trim())";
+					else
+						return "this."+controlID+"."+controlValue;	
+				case "decimal":
+					if(!cfg.IsUseTelerikControl1)
+						return "Convert.ToDecimal(this."+controlID+"."+controlValue+".Trim())";
+					else
+						return "this."+controlID+"."+controlValue;	
+				default:
+					return "this."+controlID+"."+controlValue+"";
+			}
+		}
+		
+
+
+		
+		private void GenerateAddPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%>  
+
+--------------------------------------------------Add Page Code----------------------------------------------------
+
+
+
+
+    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UC<%= moudleCodeName %>Add")]
+    public partial class UC<%= moudleCodeName %>Add : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        [AjaxMethod]
+        public void Show()
+        {
+            try
+            {
+                this.win<%= moudleCodeName %>Add.Show();
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+            }
+        }
+
+        protected void btnSave<%= moudleCodeName %>_Click(object sender, AjaxEventArgs e)
+        {
+            try
+            {
+                <%= wrapperClassName %> obj = new <%= wrapperClassName %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+
+                <%= wrapperClassName %>.Save(obj);
+
+                win<%= moudleCodeName %>Add.Hide();
+
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+            }
+        }
+    }
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}
+		
+		
+		private void GenerateEditPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+				string PkQueryString = config.GetPkQueryKey(table);
+%>  
+
+--------------------------------------------------Edit Page Code----------------------------------------------------
+
+    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UC<%= moudleCodeName %>Edit")]
+    public partial class UC<%= moudleCodeName %>Edit : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        [AjaxMethod]
+        public void Show(int id)
+        {
+            try
+            {
+                <%= wrapperClassName %> obj = <%= wrapperClassName %>.FindById(id);
+
+                if (obj != null)
+                {
+					<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = <%= GetControlValueString(table,tableUIGenerationParamsListArray[i]) %>;          	
+<%				}%> 
+				
+				
+                    hid<%= moudleCodeName %>ID.Text = id.ToString();
+
+
+                    win<%= moudleCodeName %>Edit.Show();
+
+                }
+                else
+                {
+                    ScriptManager.AjaxSuccess = false;
+                    ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                return;
+            }
+        }
+
+        protected void btnSave<%= moudleCodeName %>_Click(object sender, AjaxEventArgs e)
+        {
+            try
+            {
+       <%= wrapperClassName %> obj = <%= wrapperClassName %>.FindById(int.Parse(hid<%= moudleCodeName %>ID.Text.Trim()));
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+                <%= wrapperClassName %>.Update(obj);
+
+                win<%= moudleCodeName %>Edit.Hide();
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                return;
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}
+		
+		
+		
+		
+		private void GenerateViewPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+				string PkQueryString = config.GetPkQueryKey(table);
+%>  
+
+--------------------------------------------------View Page Code----------------------------------------------------
+
+
+    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UC<%= moudleCodeName %>View")]
+    public partial class UC<%= moudleCodeName %>View : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        [AjaxMethod]
+        public void Show(int id)
+        {
+            try
+            {
+                <%= wrapperClassName %> obj = <%= wrapperClassName %>.FindById(id);
+
+                if (obj != null)
+                {
+					<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = <%= GetControlValueString(table,tableUIGenerationParamsListArray[i]) %>;          	
+<%				}%> 
+				
+				
+                    hid<%= moudleCodeName %>ID.Text = id.ToString();
+
+
+                    win<%= moudleCodeName %>Edit.Show();
+
+                }
+                else
+                {
+                    ScriptManager.AjaxSuccess = false;
+                    ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                return;
+            }
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+ 
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}		
+
+		
+		private void GenerateGridView( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config)
+	    {
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
+			string gridID = config.GetRadGridControlName(table);
+			string PkPropertyName = config.GetPkProprtyName(table);
+			string PkQueryString = config.GetPkQueryString(table);
+			string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+%>
+<%= "<" %>%@ Register Src="UC<%= moudleNameEn %>Add.ascx" TagName="UC<%= moudleNameEn %>Add" TagPrefix="uc1" %<%= ">" %>
+<%= "<" %>%@ Register Src="UC<%= moudleNameEn %>Edit.ascx" TagName="UC<%= moudleNameEn %>Edit" TagPrefix="uc2" %<%= ">" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
+    </ext:ScriptManagerProxy>
+
+    <script type="text/javascript">
+        var rooturl = '<%= "<" + "%" %>=this.ResolveUrl("~/")<%= "%" + ">" %>';
+
+        var FormatBool = function(value) {
+            if (value)
+                return '是';
+            else
+                return '否';
+        }
+
+
+        var RefreshData = function(btn) {
+            <%= "<" + "%" %>= this.store<%= moudleNameEn %>.ClientID <%= "%" + ">" %>.reload();
+        };
+        
+        function showAddForm() {
+                Coolite.AjaxMethods.UC<%= moudleNameEn %>Add.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                });    
+        
+        }
+
+        function processcmd(cmd, id) {
+
+            if (cmd == "cmdEdit") {
+                Coolite.AjaxMethods.UC<%= moudleNameEn %>Edit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
+            if (cmd == "cmdDelete") {
+                Ext.MessageBox.confirm('警告','确认要删除所选<%= moudleNameCn %> ? ',
+                    function(e) {
+                        if (e == 'yes')
+                            Coolite.AjaxMethods.DeleteRecord(
+                                                                id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '成功删除<%= moudleNameCn %>！',RefreshData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            }
+        }
+
+    </script>
+
+    <ext:Store ID="store<%= moudleNameEn %>" runat="server" AutoLoad="true" RemoteSort="true"
+        OnRefreshData="store<%= moudleNameEn %>_Refresh">
+        <AutoLoadParams>
+            <ext:Parameter Name="start" Value="0" Mode="Raw" />
+            <ext:Parameter Name="limit" Value="8" Mode="Raw" />
+        </AutoLoadParams>
+        <Proxy>
+            <ext:DataSourceProxy />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader ReaderID="<%= PkPropertyName %>">
+                <Fields>
+						<%Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+System.Collections.Generic.List<string> la1 = new System.Collections.Generic.List<string>();
+System.Collections.Generic.List<string> la2 = new System.Collections.Generic.List<string>();
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+	continue;
+}
+	la1.Add("\"" + tableUIGenerationParamsListArray[i].FieldName + "\"");
+	la2.Add("\"" + "" + "\"");
+}
+string aa11 = string.Join(", ",la1.ToArray());
+string aa22 = string.Join(", ", la2.ToArray());
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+
+	continue;
+}
+	BulidStoreRecordField(table ,tableUIGenerationParamsListArray[i] ,config);
+}
+%> 
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc1:UC<%= moudleNameEn %>Add ID="UC<%= moudleNameEn %>Add1" runat="server" />
+    <uc2:UC<%= moudleNameEn %>Edit ID="UC<%= moudleNameEn %>Edit1" runat="server" />
+    <ext:ViewPort ID="viewPortMain" runat="server">
+        <Body>
+            <ext:FitLayout ID="fitLayoutMain" runat="server">
+                <Items>
+                    <ext:GridPanel ID="gridPanel<%= moudleNameEn %>" runat="server" StoreID="store<%= moudleNameEn %>" StripeRows="true"
+                        Title="<%= moudleNameCn %>管理" Icon="Table">
+                        <TopBar>
+                            <ext:Toolbar ID="tbTop" runat="server">
+                                <Items>
+                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="Add">
+                                        <Listeners>
+                                            <Click Handler="showAddForm();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='btnSearch' runat="server" Text="搜索" Icon="Find">
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                        <Listeners>
+                                            <Click Handler="#{store<%= moudleNameEn %>}.reload();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                </Items>
+                            </ext:Toolbar>
+                        </TopBar>
+                        <View>
+                            <ext:GridView ForceFit="true" ID="GridView1">
+                                <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
+                            </ext:GridView>
+                        </View>
+                        <ColumnModel ID="ColumnModel1" runat="server">
+                            <Columns>
+                                <ext:RowNumbererColumn>
+                                </ext:RowNumbererColumn>
+								<% 
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+
+	continue;
+}
+	BulidGridPanelColumn(table ,tableUIGenerationParamsListArray[i] ,config);
+}
+%> 
+                                <ext:CommandColumn ColumnID="colManage" Header="<%= moudleNameCn %>管理" Width="60">
+                                    <Commands>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            <ToolTip Text="编辑" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" >
+                                            <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                    </Commands>
+                                </ext:CommandColumn>
+                            </Columns>
+                        </ColumnModel>
+                        <LoadMask ShowMask="true" />
+                        <BottomBar>
+                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="store<%= moudleNameEn %>"
+                                DisplayInfo="true" DisplayMsg="显示<%= moudleNameCn %> {0} - {1} 共 {2}" EmptyMsg="没有符合条件的<%= moudleNameCn %>" />
+                        </BottomBar>
+                        <Listeners>
+                            <Command Handler="processcmd(command, record);" />
+                            
+                        </Listeners>
+                    </ext:GridPanel>
+                </Items>
+            </ext:FitLayout>
+        </Body>
+    </ext:ViewPort>
+</asp:Content>
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+    public partial class <%= moudleNameEn %>ListPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Ext.IsAjaxRequest)
+                return;
+
+           
+
+            this.gridPanel<%= moudleNameEn %>.Reload();
+        }
+
+
+        [AjaxMethod]
+        public void DeleteRecord(int id)
+        {
+            try
+            {
+                <%= moudleNameEn %>Wrapper.DeleteByID(id);
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
+
+        protected void store<%= moudleNameEn %>_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            int recordCount = 0;
+            string sortFieldName = "";
+            if (e.Sort != null)
+                sortFieldName = e.Sort;
+
+            int startIndex = 0;
+
+            if(e.Start > -1)
+            {
+                startIndex = e.Start;
+            }
+			
+			int limit = this.PagingToolBar1.PageSize;
+
+            int pageIndex = 1;
+
+            if ((startIndex % limit) == 0)
+                pageIndex = startIndex / limit + 1;
+            else
+                pageIndex = startIndex / limit;
+
+            store<%= moudleNameEn %>.DataSource = <%= moudleNameEn %>Wrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            e.TotalCount = recordCount;
+
+            store<%= moudleNameEn %>.DataBind();
+
+        }
+    }
+
+
+
+
+			
+<%}	
+
+
+
+
+
+private void BulidGridPanelColumn(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
+{
+	if(tableUIGenerationParam.LanguageType=="string")
+{
+%>		<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                </ext:Column>			
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="DateTime")
+{
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                </ext:Column>
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="bool")
+{
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                    <Renderer Fn="FormatBool" />
+                                </ext:Column>
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" )
+{
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                </ext:Column>
+<%	return;
+}
+
+	if(tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal" )
+{
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                </ext:Column>
+<%	return;
+}
+
+
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+                                </ext:Column>
+<%
+}
+
+
+
+
+
+
+private void BulidStoreRecordField(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
+{
+	if(tableUIGenerationParam.LanguageType=="string")
+{
+%>		<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>" />			
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="DateTime")
+{
+%>				<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>" Type="Date" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="bool")
+{
+%>				<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>" Type="Boolean" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" )
+{
+%>				<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>" Type="float" />
+<%	return;
+}
+
+	if(tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal" )
+{
+%>				<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>" Type="int" />
+<%	return;
+}
+
+
+%>				<ext:RecordField Name="<%= tableUIGenerationParam.FieldName %>"  Type="auto"  />
+<%
+}
+
+
+
+
+
+
+private void BulidGridColumn(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
+{
+	if(tableUIGenerationParam.LanguageType=="string")
+{
+%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>"/>
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="DateTime")
+{
+%>					<telerik:GridDateTimeColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="bool")
+{
+%>					<telerik:GridCheckBoxColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" || tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal")
+{
+%>					<telerik:GridNumericColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%
+}
+
+		
+		private string ShowGridFieldType(TableUIGenerationParams tableUIGenerationParam)
+		{
+			if(tableUIGenerationParam.LanguageType=="string")
+				return "System.String";
+			if(tableUIGenerationParam.LanguageType=="DateTime")
+				return "System.DateTime";
+			if(tableUIGenerationParam.LanguageType=="bool")
+				return "System.Boolean";
+			if(tableUIGenerationParam.LanguageType=="int")
+				return "System.Int32";
+			if(tableUIGenerationParam.LanguageType=="long")
+				return "System.Int64";
+			if(tableUIGenerationParam.LanguageType=="float")
+				return "System.Single";
+			if(tableUIGenerationParam.LanguageType=="double")
+				return "System.Double";
+			if(tableUIGenerationParam.LanguageType=="decimal")
+				return "System.Decimal";	
+			return "System.String";
+		}		
+
+
+
+		private string GetMaxLength(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			if(tableUIGenerationParamsListItem.LanguageType=="string")
+			{
+				return "MaxLength='"+tableUIGenerationParamsListItem.Size.ToString()+"'";			
+			}
+			else
+			{
+				return "";
+			}
+		}
+		
+		private string GetControlValueString(ITable table,TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			IColumn column = table.Columns[tableUIGenerationParamsListItem.DbColumnName];
+			
+			
+			if(!column.IsNullable)
+			{
+				if(tableUIGenerationParamsListItem.LanguageType == "bool" && ((tableUIGenerationParamsListItem.InputType=="CheckBox")||(tableUIGenerationParamsListItem.InputType=="HtmlInputCheckBox")))
+					return "obj."+ tableUIGenerationParamsListItem.FieldName;
+				else
+					return "obj."+ tableUIGenerationParamsListItem.FieldName + ".ToString()";
+			}
+			else
+			{
+				if(tableUIGenerationParamsListItem.LanguageType == "bool" && ((tableUIGenerationParamsListItem.InputType=="CheckBox")||(tableUIGenerationParamsListItem.InputType=="HtmlInputCheckBox")))
+					return "ValueConvertUtil.ConvertNullableValue<bool>(this.DataObject."+ tableUIGenerationParamsListItem.FieldName + ")";
+				else
+					return "obj."+ tableUIGenerationParamsListItem.FieldName + ".ToString()";				
+			}
+		}
+		
+		private string ShowCharLength(int length)
+		{
+			if(length==0)
+			{
+				return "";
+			}
+			else
+			{
+				return length.ToString();			
+			}
+		}
+		
+		private ListItemCollection getListItemCollectionFormString(string itemstring)
+        {
+            ListItemCollection items = new ListItemCollection();
+            string[] splitValues = itemstring.Split(("|").ToCharArray());
+            foreach (string s in splitValues)
+            {
+                string[] nsplit = s.Split(("$").ToCharArray());
+                if (nsplit[0].Trim()=="")
+                    continue;
+                if (nsplit.Length == 1)
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[0]));
+                }
+                else
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[1]));
+                }
+            }
+            return items;
+        }
+		
+		private string ShowBool(bool boolean)
+		{
+			if(boolean)
+			{
+				return "是";
+			}
+			else
+			{
+				return "否";		
+			}
+		}
+	
+}
+%>
+##|BODY_END

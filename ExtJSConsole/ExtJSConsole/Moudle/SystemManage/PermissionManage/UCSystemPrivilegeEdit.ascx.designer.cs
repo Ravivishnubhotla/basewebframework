@@ -8,90 +8,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
+namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
     
     
-    public partial class UCSystemUserGroupAdd {
+    public partial class UCSystemPrivilegeEdit {
         
         /// <summary>
-        /// winSystemUserGroupAdd control.
+        /// winSystemPrivilegeEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemUserGroupAdd;
+        protected global::Coolite.Ext.Web.Window winSystemPrivilegeEdit;
         
         /// <summary>
-        /// fitLayoutMainSystemUserGroup control.
+        /// fitLayoutMainSystemPrivilege control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemUserGroup;
+        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemPrivilege;
         
         /// <summary>
-        /// formPanelSystemUserGroupAdd control.
+        /// formPanelSystemPrivilegeEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemUserGroupAdd;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSystemPrivilegeEdit;
         
         /// <summary>
-        /// formLayoutSystemUserGroup control.
+        /// formLayoutSystemPrivilege control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemUserGroup;
+        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemPrivilege;
         
         /// <summary>
-        /// txtGroupNameCn control.
+        /// hidSystemPrivilegeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameCn;
+        protected global::Coolite.Ext.Web.Hidden hidSystemPrivilegeID;
         
         /// <summary>
-        /// txtGroupNameEn control.
+        /// txtPrivilegeCnName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameEn;
+        protected global::Coolite.Ext.Web.TextField txtPrivilegeCnName;
         
         /// <summary>
-        /// txtGroupDescription control.
+        /// txtPrivilegeEnName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtGroupDescription;
+        protected global::Coolite.Ext.Web.TextField txtPrivilegeEnName;
         
         /// <summary>
-        /// btnSaveSystemUserGroup control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemUserGroup;
+        protected global::Coolite.Ext.Web.TextArea txtDescription;
         
         /// <summary>
-        /// btnCancelSystemUserGroup control.
+        /// txtPrivilegeCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemUserGroup;
+        protected global::Coolite.Ext.Web.TextField txtPrivilegeCategory;
+        
+        /// <summary>
+        /// btnSaveSystemPrivilege control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnSaveSystemPrivilege;
+        
+        /// <summary>
+        /// btnCancelSystemPrivilege control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnCancelSystemPrivilege;
     }
 }

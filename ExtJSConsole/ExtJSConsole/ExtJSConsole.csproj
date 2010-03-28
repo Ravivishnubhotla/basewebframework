@@ -186,6 +186,34 @@
     <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.designer.cs">
       <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.designer.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
       <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,6 +262,27 @@
     </Compile>
     <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.cs">
+      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.designer.cs">
+      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.cs">
+      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.cs">
+      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
       <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
@@ -318,6 +367,10 @@
     <Content Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
     <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
     <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
+    <Content Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx" />
+    <Content Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx" />
+    <Content Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx" />
+    <Content Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx" />
     <Content Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuAdd.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuEdit.ascx" />
@@ -325,6 +378,9 @@
     <Content Include="Moudle\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
     <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />
     <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx" />
+    <Content Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx" />
+    <Content Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx" />
+    <Content Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
@@ -337,9 +393,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Moudle\SystemManage\DictionaryManage\" />
-    <Folder Include="Moudle\SystemManage\LogManage\" />
-    <Folder Include="Moudle\SystemManage\PermissionManage\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
