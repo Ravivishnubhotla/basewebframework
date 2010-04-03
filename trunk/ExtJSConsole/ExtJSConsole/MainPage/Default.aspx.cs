@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
@@ -14,13 +14,15 @@ namespace ExtJSConsole.MainPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Ext.IsAjaxRequest)
+            if (X.IsAjaxRequest)
                 return;
 
 
-            this.Session["Coolite.Theme"] = Coolite.Ext.Web.Theme.Default;
+            this.Session["Ext.Net.Theme"] = Ext.Net.Theme.Default;
 
-            this.cbTheme.SelectedItem.Value = this.ScriptManagerProxy1.Theme.ToString();
+ 
+
+            this.cbTheme.SelectedItem.Value = this.ResourceManagerProxy1.Theme.ToString();
 
             this.lblUser.Text = string.Format("<b>{0}</b>", this.Context.User.Identity.Name.ToString());
 
@@ -30,39 +32,17 @@ namespace ExtJSConsole.MainPage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public string GetThemeUrl(string theme)
         {
             Theme temp = (Theme)Enum.Parse(typeof(Theme), theme);
 
-            this.Session["Coolite.Theme"] = temp;
-
-            return (temp == Coolite.Ext.Web.Theme.Default) ? "Default" : this.ScriptManagerProxy1.GetThemeUrl(temp);
+            this.Session["Ext.Net.Theme"] = temp;
+            return (temp == Ext.Net.Theme.Default) ? "Default" : X.ResourceManager.GetThemeUrl(temp);
         }
 
         private void InitLeftMenu()
         {
-            //List<SystemMenuWrapper> usermenus = SystemMenuWrapper.GetUserAssignedMenuByUserLoginID(this.Context.User.Identity.Name.ToString());
-
-            //List<SystemMenuWrapper> topMenus = usermenus.FindAll(p => p.ParentMenuID == null || p.ParentMenuID.MenuID == 0);
-
-
-
-            //foreach (SystemMenuWrapper menu in topMenus)
-            //{
-            //    TreeNode rootNode = CreateMainItem(menu, leftAccordion);
-
-            //    int menuID = menu.MenuID;
-
-            //    List<SystemMenuWrapper> subMenus = usermenus.FindAll(p => p.ParentMenuID != null && p.ParentMenuID.MenuID == menuID);
-
-            //    foreach (SystemMenuWrapper subMenu in subMenus)
-            //    {
-            //        CreateSubItem(subMenu.MenuID.ToString(), subMenu.MenuName, Icon.FolderLink, this.Page.ResolveUrl(subMenu.MenuUrl), rootNode);
-            //    }
-
-            //}
-
             NavMenu rootMenu = new NavMenu();
 
             NavMenu abMenu1 = new NavMenu();
@@ -87,7 +67,7 @@ namespace ExtJSConsole.MainPage
 
             foreach (NavMenu menu in rootMenu.SubMenus)
             {
-                TreeNode rootNode = CreateMainItem(menu.Id, menu.Name, leftAccordion);
+                TreeNode rootNode = CreateMainItem(menu.Id, menu.Name, LeftPanel);
 
                 foreach (NavMenu subMenu in menu.SubMenus)
                 {
@@ -99,7 +79,7 @@ namespace ExtJSConsole.MainPage
 
         }
 
-        private TreeNode CreateMainItem(string id, string name, Accordion accordion)
+        private TreeNode CreateMainItem(string id, string name, Panel leftPanel)
         {
             TreePanel treePanel = new TreePanel();
             treePanel.ID = "tp" + id;
@@ -114,29 +94,29 @@ namespace ExtJSConsole.MainPage
             TreeNode rootNode = new TreeNode(id, name, Icon.FolderHome);
             rootNode.Expanded = true;
             treePanel.Root.Add(rootNode);
-            accordion.Items.Add(treePanel);
+            leftPanel.Items.Add(treePanel);
             return rootNode;
         }
 
 
-        private TreeNode CreateMainItem(SystemMenuWrapper menu, Accordion accordion)
-        {
-            TreePanel treePanel = new TreePanel();
-            treePanel.ID = "tp" + menu.MenuID.ToString();
-            treePanel.AutoScroll = true;
-            treePanel.Collapsed = false;
-            treePanel.CollapseFirst = true;
-            treePanel.HideParent = false;
-            treePanel.RootVisible = false;
-            treePanel.Title = menu.MenuName;
-            treePanel.Icon = Icon.ApplicationHome;
-            treePanel.Listeners.Click.Handler = "e.stopEvent();loadPage(MainTabs,node);";
-            TreeNode rootNode = new TreeNode(menu.MenuID.ToString(), menu.MenuName, Icon.FolderHome);
-            rootNode.Expanded = true;
-            treePanel.Root.Add(rootNode);
-            accordion.Items.Add(treePanel);
-            return rootNode;
-        }
+        //private TreeNode CreateMainItem(SystemMenuWrapper menu, Accordion accordion)
+        //{
+        //    TreePanel treePanel = new TreePanel();
+        //    treePanel.ID = "tp" + menu.MenuID.ToString();
+        //    treePanel.AutoScroll = true;
+        //    treePanel.Collapsed = false;
+        //    treePanel.CollapseFirst = true;
+        //    treePanel.HideParent = false;
+        //    treePanel.RootVisible = false;
+        //    treePanel.Title = menu.MenuName;
+        //    treePanel.Icon = Icon.ApplicationHome;
+        //    treePanel.Listeners.Click.Handler = "e.stopEvent();loadPage(MainTabs,node);";
+        //    TreeNode rootNode = new TreeNode(menu.MenuID.ToString(), menu.MenuName, Icon.FolderHome);
+        //    rootNode.Expanded = true;
+        //    treePanel.Root.Add(rootNode);
+        //    accordion.Items.Add(treePanel);
+        //    return rootNode;
+        //}
 
         private TreeNode CreateSubItem(string id, string name, Icon icon, string url, TreeNode mainNode)
         {
@@ -146,10 +126,9 @@ namespace ExtJSConsole.MainPage
             return subNode;
         }
 
-        protected void btnExit_Click(object sender, EventArgs e)
+        protected void btnExit_Click(object sender, DirectEventArgs e)
         {
             FormsAuthentication.SignOut();
-            FormsAuthentication.RedirectToLoginPage();
         }
     }
 }

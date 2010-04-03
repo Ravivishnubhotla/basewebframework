@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+//using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.MainPage
@@ -18,31 +19,31 @@ namespace ExtJSConsole.MainPage
         }
 
 
-        protected void BtnLogin_Click(object sender, AjaxEventArgs e)
-        {
-            string username = this.txtUserName.Text.Trim();
-            string password = this.txtPassWord.Text.Trim();
+        //protected void BtnLogin_Click(object sender, AjaxEventArgs e)
+        //{
+        //    string username = this.txtUserName.Text.Trim();
+        //    string password = this.txtPassWord.Text.Trim();
 
-            if (Membership.ValidateUser(username, password))
-            {
-                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+        //    if (Membership.ValidateUser(username, password))
+        //    {
+        //        SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
 
-                FormsAuthentication.SetAuthCookie(user.UserLoginID,
-                                                  false);
+        //        FormsAuthentication.SetAuthCookie(user.UserLoginID,
+        //                                          false);
 
-                Response.Redirect(FormsAuthentication.DefaultUrl);
-            }
-            else
-            {
-                Ext.Msg.Show(new MessageBox.Config
-                                 {
-                                     Title = "返回提示",
-                                     Message = "用户名或密码错误,请确认!",
-                                     Icon = MessageBox.Icon.ERROR,
-                                     Buttons = MessageBox.Button.OK
-                                 });
-            }
-        }
+        //        Response.Redirect(FormsAuthentication.DefaultUrl);
+        //    }
+        //    else
+        //    {
+        //        Ext.Msg.Show(new MessageBox.Config
+        //                         {
+        //                             Title = "返回提示",
+        //                             Message = "用户名或密码错误,请确认!",
+        //                             Icon = MessageBox.Icon.ERROR,
+        //                             Buttons = MessageBox.Button.OK
+        //                         });
+        //    }
+        //}
 
         //protected void btnLogin_Click(object sender, AjaxEventArgs e)
         //{
@@ -62,5 +63,24 @@ namespace ExtJSConsole.MainPage
 
 
         //}
+        protected void BtnLogin_Click(object sender, DirectEventArgs e)
+        {
+                string username = this.txtUserName.Text.Trim();
+                string password = this.txtPassWord.Text.Trim();
+
+                if (Membership.ValidateUser(username, password))
+                {
+                    SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+
+                    FormsAuthentication.SetAuthCookie(user.UserLoginID,
+                                                      false);
+
+                    Response.Redirect(FormsAuthentication.DefaultUrl);
+                }
+                else
+                {
+                    X.Msg.Show(new MessageBoxConfig() { Title = "返回提示", Message = "用户名或密码错误,请确认!", Icon = MessageBox.Icon.ERROR, Buttons = MessageBox.Button.OK });
+                }
+        }
     }
 }

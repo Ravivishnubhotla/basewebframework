@@ -4,8 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-    </ext:ScriptManagerProxy>
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+    </ext:ResourceManagerProxy>
 
     <script type="text/javascript">
         var loadPage = function(mtab, node) {
@@ -39,17 +39,17 @@
         }
     </script>
 
-    <ext:ViewPort ID="ViewPort1" runat="server">
-        <Body>
+    <ext:Viewport ID="ViewPort1" runat="server">
+        <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <North Collapsible="True" Split="True">
                     <ext:Panel runat="server" ID="regionHeader" AutoHeight="true" Header="false">
-                        <Body>
+                        <Content>
                             <div id="header" class="headerDiv">
                                 <h1 class="headTitle">
                                     管理后台</h1>
                             </div>
-                        </Body>
+                        </Content>
                         <BottomBar>
                             <ext:Toolbar ID="Toolbar1" runat="server">
                                 <Items>
@@ -66,32 +66,48 @@
                                     <ext:ToolbarFill>
                                     </ext:ToolbarFill>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="主题：" />
-                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="Choose Theme" Width="75" Editable="false"
+                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="选择主题" Width="80" Editable="false"
                                         TypeAhead="true">
                                         <Items>
-                                            <ext:ListItem Text="Default" Value="Default" />
-                                            <ext:ListItem Text="Gray" Value="Gray" />
-                                            <ext:ListItem Text="Slate" Value="Slate" />
+                                            <ext:ListItem Text="默认" Value="Default" />
+                                            <ext:ListItem Text="灰色" Value="Gray" />
+                                            <ext:ListItem Text="暗蓝" Value="Slate" />
+                                            <ext:ListItem Text="Access" Value="Access" />                                     
                                         </Items>
                                         <Listeners>
-                                            <Select Handler="Coolite.AjaxMethods.GetThemeUrl(#{cbTheme}.getValue(),{
-                                                                success: function (result) {
-                                                                    Coolite.Ext.setTheme(result);
-                                                                    #{MainTabs}.items.each(function (el) {
-                                                                        if (!Ext.isEmpty(el.iframe)) {
-                                                                            el.iframe.dom.contentWindow.Coolite.Ext.setTheme(result);
-                                                                        }
-                                                                    });
-                                                                }
-                                                            });" />
+                                            <Select Handler="Ext.net.DirectMethods.GetThemeUrl(
+                                                                                                #{cbTheme}.getValue(), {
+                                                                        success: function(result) {
+                                                                            Ext.net.ResourceMgr.setTheme(result);
+                                                                            #{MainTabs}.items.each(function(el) {
+                                                                                if (!Ext.isEmpty(el.iframe)) {
+                                                                                    el.iframe.dom.contentWindow.Ext.net.ResourceMgr.setTheme(result);
+                                                                                }
+                                                                            });
+                                                                        },
+                    eventMask: {
+                        showMask: true,
+                        msg: '主题更换中...'
+                    }
+            });" />
                                         </Listeners>
                                     </ext:ComboBox>
                                     <ext:Button Icon="UserEdit" Text="个人设置">
                                     </ext:Button>
                                     <ext:Button Icon="UserKey" Text="修改密码">
                                     </ext:Button>
-                                    <ext:Button ID="btnExit" OnClick="btnExit_Click" AutoPostBack="true" Icon="UserGo"
-                                        Text="注销">
+                                    <ext:Button ID="btnExit" Icon="UserGo" Text="注销">
+                                        <DirectEvents>
+                                            <Click OnEvent="btnExit_Click" Failure="Ext.Msg.show({ 
+                            title:   '系统错误', 
+                            msg:     result.errorMessage, 
+                            buttons: Ext.Msg.OK, 
+                            icon:    Ext.MessageBox.ERROR 
+                         });" Success="window.location.href='Login.aspx'">
+                                                <EventMask ShowMask="true" Msg="注销中..." />
+                                                <Confirmation ConfirmRequest="true" Message="确认退出系统？" Title="警告" />
+                                            </Click>
+                                        </DirectEvents>
                                     </ext:Button>
                                 </Items>
                             </ext:Toolbar>
@@ -101,37 +117,33 @@
                 <South Collapsible="true" Split="true">
                     <ext:Panel runat="server" ID="regionFooter" AutoHeight="true" Border="true" Header="false"
                         BodyBorder="false">
-                        <Body>
+                        <Content>
                             <div class="menu south">
                                 @ X工作室 2009</div>
-                        </Body>
+                        </Content>
                     </ext:Panel>
                 </South>
                 <West Collapsible="true" Split="true">
-                    <ext:Panel ID="Panel1" runat="server" Title="菜单导航" Width="175">
-                        <Body>
-                            <ext:Accordion ID="leftAccordion" runat="server" Animate="true">
-                            </ext:Accordion>
-                        </Body>
+                    <ext:Panel ID="LeftPanel" runat="server" Title="菜单导航" Width="175" Layout="Accordion">
+                        <Items>
+                        </Items>
                     </ext:Panel>
                 </West>
                 <Center>
-                    <ext:Panel ID="Panel2" runat="server" Title="主工作区">
-                        <Body>
-                            <ext:FitLayout ID="FitLayout1" runat="server">
-                                <ext:TabPanel ID="MainTabs" runat="server" ActiveTabIndex="0" Border="false">
-                                    <Tabs>
-                                        <ext:Tab runat="server" ID="HomeTab" Closable="false" Title="系统首页">
-                                            <Body>
-                                            </Body>
-                                        </ext:Tab>
-                                    </Tabs>
-                                </ext:TabPanel>
-                            </ext:FitLayout>
-                        </Body>
+                    <ext:Panel ID="Panel2" runat="server" Title="主工作区" Layout="Fit">
+                        <Items>
+                            <ext:TabPanel ID="MainTabs" runat="server" ActiveTabIndex="0" Border="false">
+                                <Items>
+                                    <ext:Panel runat="server" ID="HomeTab" Closable="false" Title="系统首页">
+                                        <Content>
+                                        </Content>
+                                    </ext:Panel>
+                                </Items>
+                            </ext:TabPanel>
+                        </Items>
                     </ext:Panel>
                 </Center>
             </ext:BorderLayout>
-        </Body>
-    </ext:ViewPort>
+        </Items>
+    </ext:Viewport>
 </asp:Content>

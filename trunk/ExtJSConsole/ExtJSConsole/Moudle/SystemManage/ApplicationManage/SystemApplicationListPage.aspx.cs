@@ -4,9 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using ScriptManager=Coolite.Ext.Web.ScriptManager;
 
 namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
 {
@@ -14,7 +13,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Ext.IsAjaxRequest)
+            if (X.IsAjaxRequest)
                 return;
 
            
@@ -23,7 +22,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod()]
         public void DeleteRecord(int id)
         {
             try
@@ -31,12 +30,12 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
                 //throw new Exception("11111");
                 SystemApplicationWrapper.DeleteByID(id);
 
-                ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                ScriptManager.AjaxSuccess = false;
-                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
                 return;
             }
         }
@@ -62,8 +61,8 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
                 limit = e.Limit;
             }
 
-            storeSystemApplication.DataSource = SystemApplicationWrapper.SelectMethod(startIndex, limit, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), out recordCount);
-            e.TotalCount = recordCount;
+            storeSystemApplication.DataSource = SystemApplicationWrapper.SelectMethod(startIndex, limit, sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), out recordCount);
+            e.Total= recordCount;
 
             storeSystemApplication.DataBind();
 

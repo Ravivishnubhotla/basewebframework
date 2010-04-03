@@ -20,7 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
         
         /// <summary>
         /// storeSystemLog control.
@@ -29,7 +29,34 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSystemLog;
+        protected global::Ext.Net.Store storeSystemLog;
+        
+        /// <summary>
+        /// UCSystemLogAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.LogManage.UCSystemLogAdd UCSystemLogAdd1;
+        
+        /// <summary>
+        /// UCSystemLogEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.LogManage.UCSystemLogEdit UCSystemLogEdit1;
+        
+        /// <summary>
+        /// UCSystemLogView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.LogManage.UCSystemLogView UCSystemLogView1;
         
         /// <summary>
         /// viewPortMain control.
@@ -38,16 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
-        
-        /// <summary>
-        /// fitLayoutMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
         /// gridPanelSystemLog control.
@@ -56,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSystemLog;
+        protected global::Ext.Net.GridPanel gridPanelSystemLog;
         
         /// <summary>
         /// tbTop control.
@@ -65,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar tbTop;
+        protected global::Ext.Net.Toolbar tbTop;
         
         /// <summary>
         /// btnAdd control.
@@ -74,16 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
-        
-        /// <summary>
-        /// btnSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnSearch;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
         /// btnRefresh control.
@@ -92,7 +101,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
+        protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
         /// GridView1 control.
@@ -101,7 +110,7 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
+        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
         /// PagingToolBar1 control.
@@ -110,6 +119,6 @@ namespace ExtJSConsole.Moudle.SystemManage.LogManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.PagingToolbar PagingToolBar1;
     }
 }

@@ -23,13 +23,13 @@ namespace ExtJSConsole.MainPage {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ScriptManager1 control.
+        /// ResourceManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManager ScriptManager1;
+        protected global::Ext.Net.ResourceManager ResourceManager1;
         
         /// <summary>
         /// extwinLogin control.
@@ -38,7 +38,25 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window extwinLogin;
+        protected global::Ext.Net.Window extwinLogin;
+        
+        /// <summary>
+        /// BorderLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.BorderLayout BorderLayout1;
+        
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
         /// pnlLogin control.
@@ -47,16 +65,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel pnlLogin;
-        
-        /// <summary>
-        /// FormLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
+        protected global::Ext.Net.FormPanel pnlLogin;
         
         /// <summary>
         /// txtUserName control.
@@ -65,7 +74,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtUserName;
+        protected global::Ext.Net.TextField txtUserName;
         
         /// <summary>
         /// txtPassWord control.
@@ -74,7 +83,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtPassWord;
+        protected global::Ext.Net.TextField txtPassWord;
         
         /// <summary>
         /// btnLogin control.
@@ -83,7 +92,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnLogin;
+        protected global::Ext.Net.Button btnLogin;
         
         /// <summary>
         /// btnReset control.
@@ -92,6 +101,6 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnReset;
+        protected global::Ext.Net.Button btnReset;
     }
 }

@@ -14,13 +14,13 @@ namespace ExtJSConsole.MainPage {
     public partial class Default {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
         /// ViewPort1 control.
@@ -29,7 +29,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort ViewPort1;
+        protected global::Ext.Net.Viewport ViewPort1;
         
         /// <summary>
         /// BorderLayout1 control.
@@ -38,7 +38,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.BorderLayout BorderLayout1;
+        protected global::Ext.Net.BorderLayout BorderLayout1;
         
         /// <summary>
         /// regionHeader control.
@@ -47,7 +47,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel regionHeader;
+        protected global::Ext.Net.Panel regionHeader;
         
         /// <summary>
         /// Toolbar1 control.
@@ -56,7 +56,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar Toolbar1;
+        protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
         /// lblUser control.
@@ -65,7 +65,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem lblUser;
+        protected global::Ext.Net.ToolbarTextItem lblUser;
         
         /// <summary>
         /// lblToday control.
@@ -74,7 +74,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem lblToday;
+        protected global::Ext.Net.ToolbarTextItem lblToday;
         
         /// <summary>
         /// ToolbarTextItem1 control.
@@ -83,7 +83,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem1;
+        protected global::Ext.Net.ToolbarTextItem ToolbarTextItem1;
         
         /// <summary>
         /// cbTheme control.
@@ -92,7 +92,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cbTheme;
+        protected global::Ext.Net.ComboBox cbTheme;
         
         /// <summary>
         /// btnExit control.
@@ -101,7 +101,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnExit;
+        protected global::Ext.Net.Button btnExit;
         
         /// <summary>
         /// regionFooter control.
@@ -110,25 +110,16 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel regionFooter;
+        protected global::Ext.Net.Panel regionFooter;
         
         /// <summary>
-        /// Panel1 control.
+        /// LeftPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel Panel1;
-        
-        /// <summary>
-        /// leftAccordion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Accordion leftAccordion;
+        protected global::Ext.Net.Panel LeftPanel;
         
         /// <summary>
         /// Panel2 control.
@@ -137,16 +128,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel Panel2;
-        
-        /// <summary>
-        /// FitLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout FitLayout1;
+        protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
         /// MainTabs control.
@@ -155,7 +137,7 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TabPanel MainTabs;
+        protected global::Ext.Net.TabPanel MainTabs;
         
         /// <summary>
         /// HomeTab control.
@@ -164,6 +146,6 @@ namespace ExtJSConsole.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Tab HomeTab;
+        protected global::Ext.Net.Panel HomeTab;
     }
 }

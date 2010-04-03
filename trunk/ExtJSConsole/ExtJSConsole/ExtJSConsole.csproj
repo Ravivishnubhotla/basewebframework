@@ -42,13 +42,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Coolite.Ext.Web, Version=0.8.2.983, Culture=neutral, PublicKeyToken=f58c952e9aa5b80a, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net, Version=1.0.0.34580, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdsDll\Coolite.Ext.Web.dll</HintPath>
+      <HintPath>..\ThirdsDll\Ext.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Coolite.Utilities, Version=1.0.0.981, Culture=neutral, PublicKeyToken=f06596a209371c29, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net.Utilities, Version=1.0.0.34577, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ThirdsDll\Coolite.Utilities.dll</HintPath>
+      <HintPath>..\ThirdsDll\Ext.Net.Utilities.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -58,7 +58,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Spring.NET 1.3.0\lib\NHibernate21\net\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b9a188c8922137c6, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -111,8 +111,6 @@
     <Content Include="images\collapse-all.gif" />
     <Content Include="images\expand-all.gif" />
     <Content Include="images\layout-browser-hd-bg.gif" />
-    <Content Include="MainPage\Default.aspx" />
-    <Content Include="MainPage\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -165,54 +163,33 @@
     <Compile Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
       <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.cs">
-      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.designer.cs">
-      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.cs">
-      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.cs">
-      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.cs">
-      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.designer.cs">
-      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.cs">
-      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.cs">
-      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx.cs">
       <DependentUpon>SystemLogListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
       <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogAdd.ascx.cs">
+      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogEdit.ascx.cs">
+      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogView.ascx.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
       <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
@@ -242,48 +219,6 @@
     <Compile Include="Moudle\SystemManage\MenuManage\UCSystemMenuManualResort.ascx.designer.cs">
       <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\SystemMoudleListPage.aspx.cs">
-      <DependentUpon>SystemMoudleListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\SystemMoudleListPage.aspx.designer.cs">
-      <DependentUpon>SystemMoudleListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx.cs">
-      <DependentUpon>UCSystemMoudleAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemMoudleAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.cs">
-      <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.cs">
-      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.designer.cs">
-      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.cs">
-      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.cs">
-      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
       <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,48 +240,6 @@
     <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.cs">
-      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.designer.cs">
-      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.cs">
-      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.cs">
-      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx.cs">
-      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx.designer.cs">
-      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\UCSystemUserAdd.ascx.cs">
-      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\UCSystemUserAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\UCSystemUserEdit.ascx.cs">
-      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudle\SystemManage\UserManage\UCSystemUserEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebCode\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -360,36 +253,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\user.png" />
+    <Content Include="MainPage\Login.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainPage\Default.aspx" />
     <Content Include="Masters\AdminMaster.Master" />
     <Content Include="Moudle\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
     <Content Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
     <Content Include="Moudle\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
-    <Content Include="Moudle\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
-    <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
-    <Content Include="Moudle\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
-    <Content Include="Moudle\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx" />
-    <Content Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx" />
-    <Content Include="Moudle\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx" />
     <Content Include="Moudle\SystemManage\LogManage\SystemLogListPage.aspx" />
+    <Content Include="Moudle\SystemManage\LogManage\UCSystemLogAdd.ascx" />
+    <Content Include="Moudle\SystemManage\LogManage\UCSystemLogEdit.ascx" />
+    <Content Include="Moudle\SystemManage\LogManage\UCSystemLogView.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuAdd.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuEdit.ascx" />
     <Content Include="Moudle\SystemManage\MenuManage\UCSystemMenuManualResort.ascx" />
-    <Content Include="Moudle\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
-    <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />
-    <Content Include="Moudle\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx" />
-    <Content Include="Moudle\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx" />
-    <Content Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx" />
-    <Content Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
-    <Content Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx" />
-    <Content Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx" />
-    <Content Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx" />
-    <Content Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx" />
-    <Content Include="Moudle\SystemManage\UserManage\UCSystemUserAdd.ascx" />
-    <Content Include="Moudle\SystemManage\UserManage\UCSystemUserEdit.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
