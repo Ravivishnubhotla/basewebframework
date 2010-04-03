@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemRoleEdit;
-        
-        /// <summary>
-        /// fitLayoutMainSystemRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemRole;
+        protected global::Ext.Net.Window winSystemRoleEdit;
         
         /// <summary>
         /// formPanelSystemRoleEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemRoleEdit;
-        
-        /// <summary>
-        /// formLayoutSystemRole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemRole;
+        protected global::Ext.Net.FormPanel formPanelSystemRoleEdit;
         
         /// <summary>
         /// hidSystemRoleID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemRoleID;
+        protected global::Ext.Net.Hidden hidSystemRoleID;
         
         /// <summary>
         /// txtRoleName control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtRoleName;
+        protected global::Ext.Net.TextField txtRoleName;
         
         /// <summary>
         /// txtRoleDescription control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtRoleDescription;
+        protected global::Ext.Net.TextArea txtRoleDescription;
         
         /// <summary>
         /// chkRoleIsSystemRole control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkRoleIsSystemRole;
+        protected global::Ext.Net.Checkbox chkRoleIsSystemRole;
         
         /// <summary>
         /// btnSaveSystemRole control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemRole;
+        protected global::Ext.Net.Button btnSaveSystemRole;
         
         /// <summary>
         /// btnCancelSystemRole control.
@@ -101,6 +83,6 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemRole;
+        protected global::Ext.Net.Button btnCancelSystemRole;
     }
 }

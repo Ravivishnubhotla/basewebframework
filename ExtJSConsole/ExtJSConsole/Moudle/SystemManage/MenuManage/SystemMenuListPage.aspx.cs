@@ -4,13 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using ScriptManager = Coolite.Ext.Web.ScriptManager;
-using TreeNode = Coolite.Ext.Web.TreeNode;
-using TreeNodeCollection = Coolite.Ext.Web.TreeNodeCollection;
+
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
@@ -18,7 +15,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Ext.IsAjaxRequest)
+            if (X.IsAjaxRequest)
                 return;
         }
 
@@ -31,7 +28,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         }
 
 
-        [AjaxMethod]
+       [DirectMethod]
         public void AutoMaticSortSubItems(string appid, string pmenuID)
         {
             try
@@ -42,19 +39,19 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
                 SystemMenuWrapper.AutoMaticSortSubItems(iappID, menuID);
 
-                ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception e)
             {
-                ScriptManager.AjaxSuccess = false;
-                ScriptManager.AjaxErrorMessage = string.Format(e.Message);
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(e.Message);
                 return;
             }
 
         }
 
 
-        [AjaxMethod]
+       [DirectMethod]
         public void DeleteMenu(string smenuID)
         {
 
@@ -64,19 +61,19 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
                 SystemMenuWrapper.DeleteByID(menuID);
 
-                ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception e)
             {
-                ScriptManager.AjaxSuccess = false;
-                ScriptManager.AjaxErrorMessage = string.Format(e.Message);
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(e.Message);
                 return;
             }
 
         }
 
 
-        [AjaxMethod]
+       [DirectMethod]
         public string GetTreeNodes(string selectNodeID)
         {
             int applicationid = int.Parse(selectNodeID);

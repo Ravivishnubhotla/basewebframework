@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemApplicationEdit;
-        
-        /// <summary>
-        /// fitLayoutMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Ext.Net.Window winSystemApplicationEdit;
         
         /// <summary>
         /// formPanelSystemApplicationEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemApplicationEdit;
-        
-        /// <summary>
-        /// FormLayout2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout2;
+        protected global::Ext.Net.FormPanel formPanelSystemApplicationEdit;
         
         /// <summary>
         /// hidSystemApplicationID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemApplicationID;
+        protected global::Ext.Net.Hidden hidSystemApplicationID;
         
         /// <summary>
         /// txtSystemApplicationName control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtSystemApplicationName;
+        protected global::Ext.Net.TextField txtSystemApplicationName;
         
         /// <summary>
         /// txtSystemApplicationDescription control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtSystemApplicationDescription;
+        protected global::Ext.Net.TextArea txtSystemApplicationDescription;
         
         /// <summary>
         /// txtSystemApplicationUrl control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtSystemApplicationUrl;
+        protected global::Ext.Net.TextField txtSystemApplicationUrl;
         
         /// <summary>
         /// chkSystemApplicationIsSystemApplication control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkSystemApplicationIsSystemApplication;
+        protected global::Ext.Net.Checkbox chkSystemApplicationIsSystemApplication;
         
         /// <summary>
         /// btnSaveSystemApplication control.
@@ -101,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemApplication;
+        protected global::Ext.Net.Button btnSaveSystemApplication;
         
         /// <summary>
         /// btnCancelSystemApplication control.
@@ -110,6 +92,6 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemApplication;
+        protected global::Ext.Net.Button btnCancelSystemApplication;
     }
 }

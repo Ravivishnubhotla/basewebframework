@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemApplicationAdd")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemApplicationAdd")]
     public partial class UCSystemApplicationAdd : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -17,7 +17,7 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
             
         }
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show()
         {
             try
@@ -26,12 +26,12 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
 
-        protected void btnSaveSystemApplication_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemApplication_Click(object sender, DirectEventArgs e)
         {
             try
             {
@@ -48,8 +48,8 @@ namespace ExtJSConsole.Moudle.SystemManage.ApplicationManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
     }
