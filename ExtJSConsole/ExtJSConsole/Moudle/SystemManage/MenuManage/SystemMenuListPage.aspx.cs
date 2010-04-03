@@ -24,7 +24,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
             storeSystemApplication.DataSource = SystemApplicationWrapper.FindAll();
 
             storeSystemApplication.DataBind();
-
         }
 
 

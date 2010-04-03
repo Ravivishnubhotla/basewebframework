@@ -14,15 +14,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
     public partial class SystemMenuListPage {
         
         /// <summary>
-        /// storeSystemApplication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store storeSystemApplication;
-        
-        /// <summary>
         /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
@@ -30,6 +21,15 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
+        
+        /// <summary>
+        /// storeSystemApplication control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeSystemApplication;
         
         /// <summary>
         /// cmenu control.
