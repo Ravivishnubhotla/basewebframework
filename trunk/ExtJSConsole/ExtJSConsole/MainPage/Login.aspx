@@ -47,11 +47,11 @@
                             <ext:Parameter Name="MsgTarget" Value="side" />
                         </Defaults>
                         <Items>
-                            <ext:TextField ID="txtUserName" runat="server" FieldLabel="Login ID" AllowBlank="false"
+                            <ext:TextField ID="txtUserName" runat="server" FieldLabel="登录名" AllowBlank="false"
                                 Text="DeveloperAdministrator" Cls="LoginID" BlankText="Please enter login id!"
                                 AnchorHorizontal="95%">
                             </ext:TextField>
-                            <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="Password"
+                            <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="密码"
                                 Cls="Password" AllowBlank="false" BlankText="Please enter password!" AnchorHorizontal="95%">
                             </ext:TextField>
                         </Items>
@@ -60,7 +60,7 @@
             </ext:BorderLayout>
         </Content>
         <Buttons>
-            <ext:Button ID="btnLogin" runat="server" Text="Login" Type="Submit" Icon="Accept">
+            <ext:Button ID="btnLogin" runat="server" Text="登陆" Type="Submit" Icon="Accept">
                 <DirectEvents>
                     <Click OnEvent="BtnLogin_Click" Before="return #{pnlLogin}.getForm().isValid();"
                         Failure="Ext.Msg.show({ 
@@ -69,11 +69,11 @@
                             buttons: Ext.Msg.OK, 
                             icon:    Ext.MessageBox.ERROR 
                          });" Success="#{extwinLogin}.hide();">
-                        <EventMask ShowMask="true" Msg="Checking user,Please waiting......" />
+                        <EventMask ShowMask="true" Msg="用户校验中, 请等待......" />
                     </Click>
                 </DirectEvents>
             </ext:Button>
-            <ext:Button ID="btnReset" runat="server" Text="Reset" Type="Reset" Icon="ArrowRefreshSmall">
+            <ext:Button ID="btnReset" runat="server" Text="重置" Type="Reset" Icon="ArrowRefreshSmall">
                 <Listeners>
                     <Click Handler="#{pnlLogin}.getForm().reset();" />
                 </Listeners>
