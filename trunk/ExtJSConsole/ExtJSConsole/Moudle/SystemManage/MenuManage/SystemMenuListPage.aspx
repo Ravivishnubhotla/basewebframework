@@ -162,7 +162,16 @@ stores.autoLoad.params.AppID = appID;
     
     </script>
 
-    <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" OnRefreshData="storeSystemApplication_Refresh">
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSystemApplication}.reload();" />
+        </Listeners>
+    </ext:ResourceManagerProxy>
+    
+        <ext:Store ID="storeSystemApplication" runat="server">
         <Reader>
             <ext:JsonReader IDProperty="SystemApplicationID">
                 <Fields>
@@ -175,16 +184,9 @@ stores.autoLoad.params.AppID = appID;
             </ext:JsonReader>
         </Reader>
         <Listeners>
-            <Load Handler="#{cbApplication}.setValue(#{storeSystemApplication}.data.items[0].data.SystemApplicationID);RefreshList(#{cbApplication},#{TreePanel1});#{WestPanel}.setDisabled(false);" />
+            <Load Handler="if(#{storeSystemApplication}.data.items.length>0) {#{cbApplication}.setValue(#{storeSystemApplication}.data.items[0].data.SystemApplicationID);RefreshList(#{cbApplication},#{TreePanel1});#{WestPanel}.setDisabled(false);}" />
         </Listeners>
     </ext:Store>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
-        <Listeners>
-            <DocumentReady Handler="#{storeSystemApplication}.reload();" />
-        </Listeners>
-    </ext:ResourceManagerProxy>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
             <ext:MenuItem ID="copyItems" runat="server" Text="添加子菜单" Icon="Add">

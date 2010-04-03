@@ -191,6 +191,13 @@
     <Compile Include="Moudle\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
       <DependentUpon>UCSystemLogView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx.designer.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
       <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -240,6 +247,7 @@
     <Content Include="Moudle\SystemManage\LogManage\UCSystemLogAdd.ascx" />
     <Content Include="Moudle\SystemManage\LogManage\UCSystemLogEdit.ascx" />
     <Content Include="Moudle\SystemManage\LogManage\UCSystemLogView.ascx" />
+    <Content Include="Moudle\SystemManage\MenuManage\SystemMenuListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
