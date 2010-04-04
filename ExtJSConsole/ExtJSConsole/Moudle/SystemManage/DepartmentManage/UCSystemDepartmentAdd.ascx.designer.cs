@@ -12,5 +12,86 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
     
     
     public partial class UCSystemDepartmentAdd {
+        
+        /// <summary>
+        /// winSystemDepartmentAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winSystemDepartmentAdd;
+        
+        /// <summary>
+        /// formPanelSystemDepartmentAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.FormPanel formPanelSystemDepartmentAdd;
+        
+        /// <summary>
+        /// lblParentMenuName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Label lblParentMenuName;
+        
+        /// <summary>
+        /// hidParentDepartmentID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidParentDepartmentID;
+        
+        /// <summary>
+        /// txtDepartmentNameCn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDepartmentNameCn;
+        
+        /// <summary>
+        /// txtDepartmentNameEn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDepartmentNameEn;
+        
+        /// <summary>
+        /// txtDepartmentDecription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDepartmentDecription;
+        
+        /// <summary>
+        /// btnSavelSystemDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnSavelSystemDepartment;
+        
+        /// <summary>
+        /// btnCancelSystemDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelSystemDepartment;
     }
 }

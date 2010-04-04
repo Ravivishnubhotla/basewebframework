@@ -14,13 +14,31 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
     public partial class SystemDepartmentListPage {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// UCSystemDepartmentAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::ExtJSConsole.Moudle.SystemManage.DepartmentManage.UCSystemDepartmentAdd UCSystemDepartmentAdd1;
+        
+        /// <summary>
+        /// UCSystemDepartmentEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.DepartmentManage.UCSystemDepartmentEdit UCSystemDepartmentEdit1;
+        
+        /// <summary>
+        /// ResourceManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
         /// cmenu control.
@@ -29,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Menu cmenu;
+        protected global::Ext.Net.Menu cmenu;
         
         /// <summary>
         /// copyItems control.
@@ -38,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MenuItem copyItems;
+        protected global::Ext.Net.MenuItem copyItems;
         
         /// <summary>
         /// editItems control.
@@ -47,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MenuItem editItems;
+        protected global::Ext.Net.MenuItem editItems;
         
         /// <summary>
         /// deleteItems control.
@@ -56,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MenuItem deleteItems;
+        protected global::Ext.Net.MenuItem deleteItems;
         
         /// <summary>
         /// MenuItem1 control.
@@ -65,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MenuItem MenuItem1;
+        protected global::Ext.Net.MenuItem MenuItem1;
         
         /// <summary>
         /// MenuItem2 control.
@@ -74,7 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MenuItem MenuItem2;
+        protected global::Ext.Net.MenuItem MenuItem2;
         
         /// <summary>
         /// viewPortMain control.
@@ -83,7 +101,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
         /// BorderLayout1 control.
@@ -92,7 +110,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.BorderLayout BorderLayout1;
+        protected global::Ext.Net.BorderLayout BorderLayout1;
         
         /// <summary>
         /// WestPanel control.
@@ -101,16 +119,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel WestPanel;
-        
-        /// <summary>
-        /// FitLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout FitLayout1;
+        protected global::Ext.Net.Panel WestPanel;
         
         /// <summary>
         /// TreePanel1 control.
@@ -119,7 +128,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TreePanel TreePanel1;
+        protected global::Ext.Net.TreePanel TreePanel1;
         
         /// <summary>
         /// ToolBar1 control.
@@ -128,52 +137,52 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar ToolBar1;
+        protected global::Ext.Net.Toolbar ToolBar1;
         
         /// <summary>
-        /// ToolbarButton1 control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton1;
+        protected global::Ext.Net.Button Button1;
         
         /// <summary>
-        /// ToolbarButton2 control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton2;
+        protected global::Ext.Net.Button Button2;
         
         /// <summary>
-        /// ToolbarButton5 control.
+        /// Button5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton5;
+        protected global::Ext.Net.Button Button5;
         
         /// <summary>
-        /// ToolbarButton3 control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton3;
+        protected global::Ext.Net.Button Button3;
         
         /// <summary>
-        /// ToolbarButton4 control.
+        /// Button4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton4;
+        protected global::Ext.Net.Button Button4;
         
         /// <summary>
         /// ToolbarFill1 control.
@@ -182,7 +191,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarFill ToolbarFill1;
+        protected global::Ext.Net.ToolbarFill ToolbarFill1;
         
         /// <summary>
         /// StatusBar1 control.
@@ -191,6 +200,6 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.StatusBar StatusBar1;
+        protected global::Ext.Net.StatusBar StatusBar1;
     }
 }
