@@ -1,25 +1,44 @@
-ï»¿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SystemDepartmentListPage.aspx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.DepartmentManage.SystemDepartmentListPage" %>
-
+<%@ Register Src="UCSystemDepartmentAdd.ascx" TagName="UCSystemDepartmentAdd" TagPrefix="uc1" %>
+<%@ Register Src="UCSystemDepartmentEdit.ascx" TagName="UCSystemDepartmentEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
 
+        function RefreshTreeList1() {
+            RefreshList(<%= this.TreePanel1.ClientID %>);
+        }
+
+        function ShowMenu(node,menu,point) {
+            menu.items.items[0].setVisible(true);
+            menu.items.items[1].setVisible(true);
+            menu.items.items[2].setVisible((node.childNodes.length==0));
+            menu.items.items[3].setVisible((node.childNodes.length>0));
+            menu.items.items[4].setVisible((node.childNodes.length>0));
+            menu.showAt(point);
+        }
+
+
+
         function RefreshList(treepanel) {
-            Coolite.AjaxMethods.GetTreeNodes(
+            Ext.net.DirectMethods.GetTreeNodes(
                                                 {
                                                     failure: function(msg) {
-                                                        Ext.Msg.alert('æ“ä½œå¤±è´¥', msg);
+                                                        Ext.Msg.alert('²Ù×÷Ê§°Ü', msg);
                                                     },
                                                     success: function(result) {
                                                         var nodes = eval(result);
-                                                        treepanel.root.ui.remove();
-                                                        treepanel.initChildren(nodes);
-                                                        treepanel.root.render();
+                                                        if (nodes.length > 0) {
+                                                            treepanel.initChildren(nodes);
+                                                        }
+                                                        else {
+                                                            treepanel.getRootNode().removeChildren();
+                                                        }
                                                     },
                                                     eventMask: {
                                                         showMask: true,
-                                                        msg: 'æ­£åœ¨åŠ è½½éƒ¨é—¨......'
+                                                        msg: 'ÕýÔÚ¼ÓÔØ²¿ÃÅ......'
                                                     }
                                                 }
                                              );
@@ -36,7 +55,17 @@
 
 
         function ShowAddForm(pid) {
-
+            Ext.net.DirectMethods.UCSystemDepartmentAdd.Show(
+                                                        pid,
+                                                        {
+                                                            failure: function(msg) {
+                                                                Ext.Msg.alert('²Ù×÷Ê§°Ü', msg);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '¼ÓÔØÖÐ......'
+                                                            }
+                                                        });
         }
 
 
@@ -46,69 +75,76 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+    <uc1:UCSystemDepartmentAdd ID="UCSystemDepartmentAdd1" runat="server" />
+    <uc2:UCSystemDepartmentEdit ID="UCSystemDepartmentEdit1" runat="server" /> 
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
             <DocumentReady Handler="RefreshList(#{TreePanel1});" />
         </Listeners>
-    </ext:ScriptManagerProxy>
+    </ext:ResourceManagerProxy>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="copyItems" runat="server" Text="æ·»åŠ å­éƒ¨é—¨" Icon="Add">
+            <ext:MenuItem ID="copyItems" runat="server" Text="Ìí¼Ó×Ó²¿ÃÅ" Icon="Add">
+            <Listeners>
+            <Click Handler="ShowAddForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
+            </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="editItems" runat="server" Text="ç¼–è¾‘éƒ¨é—¨" Icon="Anchor">
+            <ext:MenuItem ID="editItems" runat="server" Text="±à¼­²¿ÃÅ" Icon="Anchor">
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItems" runat="server" Text="åˆ é™¤éƒ¨é—¨" Icon="Delete">
+            <ext:MenuItem ID="deleteItems" runat="server" Text="É¾³ý²¿ÃÅ" Icon="Delete">
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem1" runat="server" Text="å­éƒ¨é—¨æŽ’åº" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem1" runat="server" Text="×Ó²¿ÃÅÅÅÐò" Icon="SortAscending">
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem2" runat="server" Text="å­éƒ¨é—¨è‡ªåŠ¨æŽ’åº" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem2" runat="server" Text="×Ó²¿ÃÅ×Ô¶¯ÅÅÐò" Icon="SortAscending">
             </ext:MenuItem>
         </Items>
     </ext:Menu>
     <ext:ViewPort ID="viewPortMain" runat="server">
-        <Body>
+        <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
-                    <ext:Panel ID="WestPanel" runat="server" Title="ç³»ç»Ÿéƒ¨é—¨ç®¡ç†" Width="300">
-                        <Body>
-                            <ext:FitLayout ID="FitLayout1" runat="server">
+                    <ext:Panel ID="WestPanel" runat="server" Title="ÏµÍ³²¿ÃÅ¹ÜÀí" Width="300" Layout=fit>
+<Content>
                                 <ext:TreePanel ID="TreePanel1" runat="server" Header="false" RootVisible="false"
                                     AutoScroll="true">
                                     <TopBar>
                                         <ext:Toolbar ID="ToolBar1" runat="server">
                                             <Items>
-                                                <ext:ToolbarButton ID="ToolbarButton1" runat="server" Icon="Add" Text="æ·»åŠ æ ¹éƒ¨é—¨">
-                                                </ext:ToolbarButton>
-                                                <ext:ToolbarButton ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="æ ¹éƒ¨é—¨æŽ’åº">
-                                                </ext:ToolbarButton>
-                                                <ext:ToolbarButton ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="æ ¹éƒ¨é—¨è‡ªåŠ¨æŽ’åº">
-                                                </ext:ToolbarButton>
-                                                <ext:ToolbarButton ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="å…¨éƒ¨å±•å¼€">
-                                                </ext:ToolbarButton>
-                                                <ext:ToolbarButton ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all"
-                                                    Text="å…¨éƒ¨æ”¶èµ·">
-                                                </ext:ToolbarButton>
+                                                <ext:Button ID="Button1" runat="server" Icon="Add" Text="Ìí¼Ó¸ù²¿ÃÅ">
+                                                <Listeners> 
+                                                <Click Handler="ShowAddForm(0);" />
+                                                </Listeners>
+                                                </ext:Button>
+                                                <ext:Button ID="Button2" runat="server" Icon="SortAscending" Text="¸ù²¿ÃÅÅÅÐò">
+                                                </ext:Button>
+                                                <ext:Button ID="Button5" runat="server" Icon="SortAscending" Text="¸ù²¿ÃÅ×Ô¶¯ÅÅÐò">
+                                                </ext:Button>
+                                                <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="È«²¿Õ¹¿ª">
+                                                </ext:Button>
+                                                <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all"
+                                                    Text="È«²¿ÊÕÆð">
+                                                </ext:Button>
                                                 <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                             </Items>
                                         </ext:Toolbar>
                                     </TopBar>
                                     <Root>
-                                        <ext:TreeNode Text="ç³»ç»Ÿèœå•" Expanded="true" Icon="Folder">
+                                        <ext:TreeNode Text="ÏµÍ³²Ëµ¥" Expanded="true" Icon="Folder">
                                         </ext:TreeNode>
                                     </Root>
                                     <BottomBar>
                                         <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
                                     </BottomBar>
                                     <Listeners>
-                                        <ContextMenu Handler="e.preventDefault();node.select();" />
+                                        <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cmenu},e.getPoint());" />
                                         <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '</b>', clear: true});" />
                                     </Listeners>
                                 </ext:TreePanel>
                             </ext:FitLayout>
-                        </Body>
+</Content>
                     </ext:Panel>
                 </Center>
             </ext:BorderLayout>
-        </Body>
+</Items>
     </ext:ViewPort>
 </asp:Content>

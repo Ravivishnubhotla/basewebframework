@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Web.UI;
-using TreeNode=Coolite.Ext.Web.TreeNode;
-using TreeNodeCollection=Coolite.Ext.Web.TreeNodeCollection;
+using Ext.Net;
+
 
 namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage
 {
@@ -19,7 +17,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public string GetTreeNodes()
         {
             List<TypedTreeNodeItem<SystemDepartmentWrapper>> menus = SystemDepartmentWrapper.GetAllDepartment();
@@ -33,7 +31,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage
 
             TreeNode root = new TreeNode();
             root.Text = "所有部门";
-            root.Icon = Icon.Folder;
+            root.Icon = Icon.Group;
 
             nodes.Add(root);
 
