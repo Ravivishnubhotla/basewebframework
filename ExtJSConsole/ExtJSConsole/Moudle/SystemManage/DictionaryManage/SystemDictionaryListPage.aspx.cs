@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 
@@ -13,7 +13,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Ext.IsAjaxRequest)
+            if (X.IsAjaxRequest)
                 return;
 
 
@@ -22,19 +22,19 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void DeleteRecord(int id)
         {
             try
             {
                 SystemDictionaryWrapper.DeleteByID(id);
 
-                ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                ScriptManager.AjaxSuccess = false;
-                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
                 return;
             }
         }
@@ -62,8 +62,8 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
             else
                 pageIndex = startIndex / limit;
 
-            storeSystemDictionary.DataSource = SystemDictionaryWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
-            e.TotalCount = recordCount;
+            storeSystemDictionary.DataSource = SystemDictionaryWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageIndex, limit, out recordCount);
+            e.Total = recordCount;
 
             storeSystemDictionary.DataBind();
 

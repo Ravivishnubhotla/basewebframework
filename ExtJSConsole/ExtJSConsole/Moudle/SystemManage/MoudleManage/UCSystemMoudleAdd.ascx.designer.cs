@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemMoudleAdd;
-        
-        /// <summary>
-        /// fitLayoutMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Ext.Net.Window winSystemMoudleAdd;
         
         /// <summary>
         /// formPanelSystemMoudleAdd control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemMoudleAdd;
-        
-        /// <summary>
-        /// FormLayout2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout2;
+        protected global::Ext.Net.FormPanel formPanelSystemMoudleAdd;
         
         /// <summary>
         /// txtMoudleNameCn control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMoudleNameCn;
+        protected global::Ext.Net.TextField txtMoudleNameCn;
         
         /// <summary>
         /// txtMoudleNameEn control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMoudleNameEn;
+        protected global::Ext.Net.TextField txtMoudleNameEn;
         
         /// <summary>
         /// txtMoudleNameDb control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMoudleNameDb;
+        protected global::Ext.Net.TextField txtMoudleNameDb;
         
         /// <summary>
         /// txtMoudleDescription control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMoudleDescription;
+        protected global::Ext.Net.TextField txtMoudleDescription;
         
         /// <summary>
         /// txtApplicationID control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtApplicationID;
+        protected global::Ext.Net.TextField txtApplicationID;
         
         /// <summary>
         /// chkMoudleIsSystemMoudle control.
@@ -101,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkMoudleIsSystemMoudle;
+        protected global::Ext.Net.Checkbox chkMoudleIsSystemMoudle;
         
         /// <summary>
         /// btnSaveSystemMoudle control.
@@ -110,7 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemMoudle;
+        protected global::Ext.Net.Button btnSaveSystemMoudle;
         
         /// <summary>
         /// btnCancelSystemMoudle control.
@@ -119,6 +101,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MoudleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemMoudle;
+        protected global::Ext.Net.Button btnCancelSystemMoudle;
     }
 }

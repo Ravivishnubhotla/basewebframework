@@ -4,8 +4,8 @@
 <%@ Register Src="UCSystemUserAdd.ascx" TagName="UCSystemUserAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemUserEdit.ascx" TagName="UCSystemUserEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-    </ext:ScriptManagerProxy>
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+    </ext:ResourceManagerProxy>
 
     <script type="text/javascript">
         var rooturl = '<%=this.ResolveUrl("~/")%>';
@@ -23,7 +23,7 @@
         };
         
         function showAddForm() {
-                Coolite.AjaxMethods.UCSystemUserAdd.Show( 
+                Ext.net.DirectMethods.UCSystemUserAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
@@ -39,7 +39,7 @@
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
-                Coolite.AjaxMethods.UCSystemUserEdit.Show(id.id,
+                Ext.net.DirectMethods.UCSystemUserEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
@@ -56,7 +56,7 @@
                 Ext.MessageBox.confirm('警告','确认要删除所选系统用户 ? ',
                     function(e) {
                         if (e == 'yes')
-                            Coolite.AjaxMethods.DeleteRecord(
+                            Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
@@ -84,11 +84,8 @@
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
         </AutoLoadParams>
-        <Proxy>
-            <ext:DataSourceProxy />
-        </Proxy>
         <Reader>
-            <ext:JsonReader ReaderID="UserID">
+            <ext:JsonReader IDProperty="UserID">
                 <Fields>
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserLoginID" />
@@ -111,27 +108,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemUserAdd ID="UCSystemUserAdd1" runat="server" />
     <uc2:UCSystemUserEdit ID="UCSystemUserEdit1" runat="server" />
-    <ext:ViewPort ID="viewPortMain" runat="server">
-        <Body>
-            <ext:FitLayout ID="fitLayoutMain" runat="server">
+    <ext:ViewPort ID="viewPortMain" runat="server" Layout="fit">
                 <Items>
                     <ext:GridPanel ID="gridPanelSystemUser" runat="server" StoreID="storeSystemUser"
                         StripeRows="true" Title="系统用户管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="Add">
+                                    <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="Add">
                                         <Listeners>
                                             <Click Handler="showAddForm();" />
                                         </Listeners>
-                                    </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='btnSearch' runat="server" Text="搜索" Icon="Find">
-                                    </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                    </ext:Button>
+                                    <ext:Button ID='btnSearch' runat="server" Text="搜索" Icon="Find">
+                                    </ext:Button>
+                                    <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSystemUser}.reload();" />
                                         </Listeners>
-                                    </ext:ToolbarButton>
+                                    </ext:Button>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
@@ -203,7 +198,5 @@
                         </Listeners>
                     </ext:GridPanel>
                 </Items>
-            </ext:FitLayout>
-        </Body>
     </ext:ViewPort>
 </asp:Content>

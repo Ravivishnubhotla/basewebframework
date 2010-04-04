@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemDictionaryEdit;
-        
-        /// <summary>
-        /// fitLayoutMainSystemDictionary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemDictionary;
+        protected global::Ext.Net.Window winSystemDictionaryEdit;
         
         /// <summary>
         /// formPanelSystemDictionaryEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemDictionaryEdit;
-        
-        /// <summary>
-        /// formLayoutSystemDictionary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemDictionary;
+        protected global::Ext.Net.FormPanel formPanelSystemDictionaryEdit;
         
         /// <summary>
         /// hidSystemDictionaryID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemDictionaryID;
+        protected global::Ext.Net.Hidden hidSystemDictionaryID;
         
         /// <summary>
         /// txtSystemDictionaryCategoryID control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryCategoryID;
+        protected global::Ext.Net.TextField txtSystemDictionaryCategoryID;
         
         /// <summary>
         /// txtSystemDictionaryKey control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryKey;
+        protected global::Ext.Net.TextField txtSystemDictionaryKey;
         
         /// <summary>
         /// txtSystemDictionaryValue control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtSystemDictionaryValue;
+        protected global::Ext.Net.TextField txtSystemDictionaryValue;
         
         /// <summary>
         /// txtSystemDictionaryDesciption control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtSystemDictionaryDesciption;
+        protected global::Ext.Net.TextArea txtSystemDictionaryDesciption;
         
         /// <summary>
         /// txtSystemDictionaryOrder control.
@@ -101,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtSystemDictionaryOrder;
+        protected global::Ext.Net.NumberField txtSystemDictionaryOrder;
         
         /// <summary>
         /// chkSystemDictionaryIsEnable control.
@@ -110,7 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkSystemDictionaryIsEnable;
+        protected global::Ext.Net.Checkbox chkSystemDictionaryIsEnable;
         
         /// <summary>
         /// btnSaveSystemDictionary control.
@@ -119,7 +101,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemDictionary;
+        protected global::Ext.Net.Button btnSaveSystemDictionary;
         
         /// <summary>
         /// btnCancelSystemDictionary control.
@@ -128,6 +110,6 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemDictionary;
+        protected global::Ext.Net.Button btnCancelSystemDictionary;
     }
 }

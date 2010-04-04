@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemPrivilegeEdit;
-        
-        /// <summary>
-        /// fitLayoutMainSystemPrivilege control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemPrivilege;
+        protected global::Ext.Net.Window winSystemPrivilegeEdit;
         
         /// <summary>
         /// formPanelSystemPrivilegeEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemPrivilegeEdit;
-        
-        /// <summary>
-        /// formLayoutSystemPrivilege control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemPrivilege;
+        protected global::Ext.Net.FormPanel formPanelSystemPrivilegeEdit;
         
         /// <summary>
         /// hidSystemPrivilegeID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemPrivilegeID;
+        protected global::Ext.Net.Hidden hidSystemPrivilegeID;
         
         /// <summary>
         /// txtPrivilegeCnName control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtPrivilegeCnName;
+        protected global::Ext.Net.TextField txtPrivilegeCnName;
         
         /// <summary>
         /// txtPrivilegeEnName control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtPrivilegeEnName;
+        protected global::Ext.Net.TextField txtPrivilegeEnName;
         
         /// <summary>
         /// txtDescription control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtDescription;
+        protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
         /// txtPrivilegeCategory control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtPrivilegeCategory;
+        protected global::Ext.Net.TextField txtPrivilegeCategory;
         
         /// <summary>
         /// btnSaveSystemPrivilege control.
@@ -101,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemPrivilege;
+        protected global::Ext.Net.Button btnSaveSystemPrivilege;
         
         /// <summary>
         /// btnCancelSystemPrivilege control.
@@ -110,6 +92,6 @@ namespace ExtJSConsole.Moudle.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemPrivilege;
+        protected global::Ext.Net.Button btnCancelSystemPrivilege;
     }
 }

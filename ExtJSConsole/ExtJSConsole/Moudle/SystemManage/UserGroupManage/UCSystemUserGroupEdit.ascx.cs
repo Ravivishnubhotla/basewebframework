@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemUserGroupEdit")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemUserGroupEdit")]
     public partial class UCSystemUserGroupEdit : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -17,7 +17,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show(int id)
         {
             try
@@ -40,20 +40,20 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage
                 }
                 else
                 {
-                    ScriptManager.AjaxSuccess = false;
-                    ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    ResourceManager.AjaxSuccess = false;
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在";
                     return;
                 }
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
         }
 
-        protected void btnSaveSystemUserGroup_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemUserGroup_Click(object sender, DirectEventArgs e)
         {
             try
             {
@@ -65,12 +65,12 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage
                 SystemUserGroupWrapper.Update(obj);
 
                 winSystemUserGroupEdit.Hide();
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
 
