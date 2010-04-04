@@ -14,13 +14,13 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
     public partial class SystemUserListPage {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
         /// storeSystemUser control.
@@ -29,7 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSystemUser;
+        protected global::Ext.Net.Store storeSystemUser;
         
         /// <summary>
         /// UCSystemUserAdd1 control.
@@ -56,16 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
-        
-        /// <summary>
-        /// fitLayoutMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
         /// gridPanelSystemUser control.
@@ -74,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSystemUser;
+        protected global::Ext.Net.GridPanel gridPanelSystemUser;
         
         /// <summary>
         /// tbTop control.
@@ -83,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar tbTop;
+        protected global::Ext.Net.Toolbar tbTop;
         
         /// <summary>
         /// btnAdd control.
@@ -92,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
         /// btnSearch control.
@@ -101,7 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnSearch;
+        protected global::Ext.Net.Button btnSearch;
         
         /// <summary>
         /// btnRefresh control.
@@ -110,7 +101,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
+        protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
         /// GridView1 control.
@@ -119,7 +110,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
+        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
         /// PagingToolBar1 control.
@@ -128,6 +119,6 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.PagingToolbar PagingToolBar1;
     }
 }

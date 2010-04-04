@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemUserEdit;
-        
-        /// <summary>
-        /// fitLayoutMainSystemUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemUser;
+        protected global::Ext.Net.Window winSystemUserEdit;
         
         /// <summary>
         /// formPanelSystemUserEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemUserEdit;
-        
-        /// <summary>
-        /// formLayoutSystemUser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemUser;
+        protected global::Ext.Net.FormPanel formPanelSystemUserEdit;
         
         /// <summary>
         /// hidSystemUserID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemUserID;
+        protected global::Ext.Net.Hidden hidSystemUserID;
         
         /// <summary>
         /// txtUserName control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtUserName;
+        protected global::Ext.Net.TextField txtUserName;
         
         /// <summary>
         /// txtUserEmail control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtUserEmail;
+        protected global::Ext.Net.TextField txtUserEmail;
         
         /// <summary>
         /// txtComments control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtComments;
+        protected global::Ext.Net.TextField txtComments;
         
         /// <summary>
         /// btnSaveSystemUser control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemUser;
+        protected global::Ext.Net.Button btnSaveSystemUser;
         
         /// <summary>
         /// btnCancelSystemUser control.
@@ -101,6 +83,6 @@ namespace ExtJSConsole.Moudle.SystemManage.UserManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemUser;
+        protected global::Ext.Net.Button btnCancelSystemUser;
     }
 }

@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
 {
 
 
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemDictionaryAdd")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemDictionaryAdd")]
     public partial class UCSystemDictionaryAdd : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
 
         }
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show()
         {
             try
@@ -28,12 +29,12 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
 
-        protected void btnSaveSystemDictionary_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemDictionary_Click(object sender, DirectEventArgs e)
         {
             try
             {
@@ -53,8 +54,8 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
     }

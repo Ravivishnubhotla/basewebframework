@@ -4,7 +4,7 @@
 <%@ Register Src="UCSystemRoleAdd.ascx" TagName="UCSystemRoleAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemRoleEdit.ascx" TagName="UCSystemRoleEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
 
     <script type="text/javascript">

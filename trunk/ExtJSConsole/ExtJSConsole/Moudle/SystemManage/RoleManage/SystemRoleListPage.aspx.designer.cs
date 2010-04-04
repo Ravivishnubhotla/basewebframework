@@ -14,13 +14,13 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
     public partial class SystemRoleListPage {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
         /// storeSystemRole control.

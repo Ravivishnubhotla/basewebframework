@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemUserGroupEdit;
-        
-        /// <summary>
-        /// fitLayoutMainSystemUserGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMainSystemUserGroup;
+        protected global::Ext.Net.Window winSystemUserGroupEdit;
         
         /// <summary>
         /// formPanelSystemUserGroupEdit control.
@@ -38,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemUserGroupEdit;
-        
-        /// <summary>
-        /// formLayoutSystemUserGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout formLayoutSystemUserGroup;
+        protected global::Ext.Net.FormPanel formPanelSystemUserGroupEdit;
         
         /// <summary>
         /// hidSystemUserGroupID control.
@@ -56,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidSystemUserGroupID;
+        protected global::Ext.Net.Hidden hidSystemUserGroupID;
         
         /// <summary>
         /// txtGroupNameCn control.
@@ -65,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameCn;
+        protected global::Ext.Net.TextField txtGroupNameCn;
         
         /// <summary>
         /// txtGroupNameEn control.
@@ -74,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGroupNameEn;
+        protected global::Ext.Net.TextField txtGroupNameEn;
         
         /// <summary>
         /// txtGroupDescription control.
@@ -83,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtGroupDescription;
+        protected global::Ext.Net.TextArea txtGroupDescription;
         
         /// <summary>
         /// btnSaveSystemUserGroup control.
@@ -92,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemUserGroup;
+        protected global::Ext.Net.Button btnSaveSystemUserGroup;
         
         /// <summary>
         /// btnCancelSystemUserGroup control.
@@ -101,6 +83,6 @@ namespace ExtJSConsole.Moudle.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemUserGroup;
+        protected global::Ext.Net.Button btnCancelSystemUserGroup;
     }
 }

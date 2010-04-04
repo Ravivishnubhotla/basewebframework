@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Utility;
 
 namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
 {
 
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemDictionaryEdit")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemDictionaryEdit")]
     public partial class UCSystemDictionaryEdit : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show(int id)
         {
             try
@@ -45,20 +46,20 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
                 }
                 else
                 {
-                    ScriptManager.AjaxSuccess = false;
-                    ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    ResourceManager.AjaxSuccess = false;
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在";
                     return;
                 }
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
         }
 
-        protected void btnSaveSystemDictionary_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemDictionary_Click(object sender, DirectEventArgs e)
         {
             try
             {
@@ -73,12 +74,12 @@ namespace ExtJSConsole.Moudle.SystemManage.DictionaryManage
                 SystemDictionaryWrapper.Update(obj);
 
                 winSystemDictionaryEdit.Hide();
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
 
