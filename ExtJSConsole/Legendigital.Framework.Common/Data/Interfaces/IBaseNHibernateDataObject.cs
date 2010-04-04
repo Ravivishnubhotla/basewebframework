@@ -27,5 +27,7 @@ namespace Legendigital.Framework.Common.Data.Interfaces
         void Lock(DomainType instance, LockMode lockMode);
 
 
+
+
     }
 }
