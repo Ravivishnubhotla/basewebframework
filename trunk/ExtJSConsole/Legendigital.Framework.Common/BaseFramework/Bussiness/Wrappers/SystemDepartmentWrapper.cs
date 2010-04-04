@@ -142,5 +142,28 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	        }
 
 	    }
+
+        public static int GetNewMaxOrder(int pid)
+        {
+            SystemDepartmentEntity pDepartment = null;
+
+            if (pid != 0)
+                pDepartment = SystemDepartmentWrapper.FindById(pid).entity;
+
+            SystemDepartmentWrapper maxOrder = ConvertEntityToWrapper(businessProxy.GetNewMaxOrder(pDepartment));
+
+            if (maxOrder == null)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!maxOrder.DepartmentSortIndex.HasValue)
+                {
+                    return 1;
+                }
+                return maxOrder.DepartmentSortIndex.Value + 1;
+            }
+        }
     }
 }

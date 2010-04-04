@@ -14,6 +14,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	public interface ISystemDepartmentServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemDepartmentEntity>
     {
 	    IList<SystemDepartmentEntity> FindAllByOrder();
+
+        SystemDepartmentEntity GetNewMaxOrder(SystemDepartmentEntity systemDepartmentEntity);
     }
 
     public partial class SystemDepartmentServiceProxy : ISystemDepartmentServiceProxy
@@ -22,5 +24,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {
             return this.SelfDataObj.FindAllByOrder();
         }
+
+
+
+        #region ISystemDepartmentServiceProxy Members
+
+
+        public SystemDepartmentEntity GetNewMaxOrder(SystemDepartmentEntity systemDepartmentEntity)
+        {
+            return this.SelfDataObj.GetNewMaxOrderDepartment(systemDepartmentEntity);
+        }
+
+        #endregion
     }
 }

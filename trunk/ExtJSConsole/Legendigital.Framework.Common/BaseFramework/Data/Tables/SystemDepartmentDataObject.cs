@@ -22,5 +22,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public SystemDepartmentEntity GetNewMaxOrderDepartment(SystemDepartmentEntity pEntity)
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            if (pEntity != null)
+                dynamicQueryGenerator.AddWhereClause(SystemDepartmentDataObject.PROPERTY_PARENTDEPARTMENTID.Eq(pEntity));
+            else
+                dynamicQueryGenerator.AddWhereClause(SystemDepartmentDataObject.PROPERTY_PARENTDEPARTMENTID.IsNull());
+            //指定排序规则
+            dynamicQueryGenerator.AddOrderBy(SystemDepartmentDataObject.PROPERTY_DEPARTMENTSORTINDEX.Desc());
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
