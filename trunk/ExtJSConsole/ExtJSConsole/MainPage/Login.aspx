@@ -68,7 +68,7 @@
                             msg:     result.errorMessage, 
                             buttons: Ext.Msg.OK, 
                             icon:    Ext.MessageBox.ERROR 
-                         });#{extwinLogin}.Show();" Success="#{extwinLogin}.hide();">
+                         });" Success="#{extwinLogin}.hide();">
                         <EventMask ShowMask="true" Msg="用户校验中, 请等待......" />
                     </Click>
                 </DirectEvents>

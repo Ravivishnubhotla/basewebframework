@@ -228,5 +228,32 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.StatusBar StatusBar1;
+        
+        /// <summary>
+        /// UCSystemMenuAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuAdd UCSystemMenuAdd1;
+        
+        /// <summary>
+        /// UCSystemMenuEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuEdit UCSystemMenuEdit1;
+        
+        /// <summary>
+        /// UCSystemMenuManualResort1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.MenuManage.UCSystemMenuManualResort UCSystemMenuManualResort1;
     }
 }

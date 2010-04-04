@@ -20,16 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemMenuEdit;
-        
-        /// <summary>
-        /// fitLayoutMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
+        protected global::Ext.Net.Window winSystemMenuEdit;
         
         /// <summary>
         /// formPanelSystemMenuEdit control.
@@ -38,16 +29,16 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSystemMenuEdit;
+        protected global::Ext.Net.FormPanel formPanelSystemMenuEdit;
         
         /// <summary>
-        /// FormLayout2 control.
+        /// FieldSet1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout2;
+        protected global::Ext.Net.FieldSet FieldSet1;
         
         /// <summary>
         /// hidPMenuID control.
@@ -56,7 +47,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidPMenuID;
+        protected global::Ext.Net.Hidden hidPMenuID;
         
         /// <summary>
         /// hidMenuID control.
@@ -65,7 +56,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidMenuID;
+        protected global::Ext.Net.Hidden hidMenuID;
         
         /// <summary>
         /// hidApplicationID control.
@@ -74,7 +65,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidApplicationID;
+        protected global::Ext.Net.Hidden hidApplicationID;
         
         /// <summary>
         /// lblApplicationName control.
@@ -83,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Label lblApplicationName;
+        protected global::Ext.Net.Label lblApplicationName;
         
         /// <summary>
         /// lblParentMenuName control.
@@ -92,7 +83,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Label lblParentMenuName;
+        protected global::Ext.Net.Label lblParentMenuName;
         
         /// <summary>
         /// txtMenuName control.
@@ -101,7 +92,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMenuName;
+        protected global::Ext.Net.TextField txtMenuName;
         
         /// <summary>
         /// txtMenuDescription control.
@@ -110,7 +101,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtMenuDescription;
+        protected global::Ext.Net.TextArea txtMenuDescription;
         
         /// <summary>
         /// chkMenuIsSystemMenu control.
@@ -119,7 +110,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkMenuIsSystemMenu;
+        protected global::Ext.Net.Checkbox chkMenuIsSystemMenu;
         
         /// <summary>
         /// chkMenuIsEnable control.
@@ -128,7 +119,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkMenuIsEnable;
+        protected global::Ext.Net.Checkbox chkMenuIsEnable;
         
         /// <summary>
         /// fsMenuIsCategory control.
@@ -137,16 +128,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FieldSet fsMenuIsCategory;
-        
-        /// <summary>
-        /// FormLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
+        protected global::Ext.Net.FieldSet fsMenuIsCategory;
         
         /// <summary>
         /// txtMenuIconUrl control.
@@ -155,7 +137,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMenuIconUrl;
+        protected global::Ext.Net.TextField txtMenuIconUrl;
         
         /// <summary>
         /// txtMenuUrl control.
@@ -164,7 +146,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMenuUrl;
+        protected global::Ext.Net.TextField txtMenuUrl;
         
         /// <summary>
         /// cmbMenuUrlTarget control.
@@ -173,7 +155,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbMenuUrlTarget;
+        protected global::Ext.Net.ComboBox cmbMenuUrlTarget;
         
         /// <summary>
         /// cmbMenuType control.
@@ -182,7 +164,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbMenuType;
+        protected global::Ext.Net.ComboBox cmbMenuType;
         
         /// <summary>
         /// btnSaveSystemMenu control.
@@ -191,7 +173,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSystemMenu;
+        protected global::Ext.Net.Button btnSaveSystemMenu;
         
         /// <summary>
         /// btnCancelSystemMenu control.
@@ -200,6 +182,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemMenu;
+        protected global::Ext.Net.Button btnCancelSystemMenu;
     }
 }
