@@ -20,7 +20,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSubMenus;
+        protected global::Ext.Net.Store storeSubMenus;
         
         /// <summary>
         /// winSystemMenuManualResort control.
@@ -29,16 +29,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSystemMenuManualResort;
-        
-        /// <summary>
-        /// ColumnLayout1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ColumnLayout ColumnLayout1;
+        protected global::Ext.Net.Window winSystemMenuManualResort;
         
         /// <summary>
         /// pnlSortItems control.
@@ -47,7 +38,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel pnlSortItems;
+        protected global::Ext.Net.Panel pnlSortItems;
         
         /// <summary>
         /// MultiSelect1 control.
@@ -56,7 +47,25 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.MultiSelect MultiSelect1;
+        protected global::Ext.Net.MultiSelect MultiSelect1;
+        
+        /// <summary>
+        /// hidSortPMenuID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidSortPMenuID;
+        
+        /// <summary>
+        /// hidSortAppID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidSortAppID;
         
         /// <summary>
         /// btnResortSystemMenu control.
@@ -65,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnResortSystemMenu;
+        protected global::Ext.Net.Button btnResortSystemMenu;
         
         /// <summary>
         /// btnCancelSystemMenu control.
@@ -74,6 +83,6 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSystemMenu;
+        protected global::Ext.Net.Button btnCancelSystemMenu;
     }
 }

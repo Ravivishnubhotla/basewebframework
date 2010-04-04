@@ -4,13 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
-
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemMenuEdit")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemMenuEdit")]
     public partial class UCSystemMenuEdit : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +18,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show(int id)
         {
             try
@@ -82,20 +81,20 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 }
                 else
                 {
-                    Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                    Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    ResourceManager.AjaxSuccess = false;
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在";
                     return;
                 }
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
         }
 
-        protected void btnSaveSystemMenu_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemMenu_Click(object sender, DirectEventArgs e)
         {
 
             try
@@ -105,8 +104,8 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
                 if (menuWrapper == null)
                 {
                     winSystemMenuEdit.Hide();
-                    Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                    Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：数据不存在";
+                    ResourceManager.AjaxSuccess = false;
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在";
                     return;
                 }
 
@@ -151,8 +150,8 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
     }

@@ -17,6 +17,10 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         {
             if (X.IsAjaxRequest)
                 return;
+
+            //storeSystemApplication.DataSource = SystemApplicationWrapper.FindAll();
+
+            //storeSystemApplication.DataBind();
         }
 
         protected void storeSystemApplication_Refresh(object sender, StoreRefreshDataEventArgs e)

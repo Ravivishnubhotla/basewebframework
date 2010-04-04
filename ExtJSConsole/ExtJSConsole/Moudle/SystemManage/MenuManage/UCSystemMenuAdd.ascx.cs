@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemMenuAdd")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemMenuAdd")]
     public partial class UCSystemMenuAdd : System.Web.UI.UserControl
     {
 
@@ -18,7 +18,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
         }
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show(string applicationId, string parentID)
         {
 
@@ -57,7 +57,7 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
         }
 
-        protected void btnSaveSystemMenu_Click(object sender, AjaxEventArgs e)
+        protected void btnSaveSystemMenu_Click(object sender, DirectEventArgs e)
         {
 
             try
@@ -104,8 +104,8 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
             }
             catch (Exception ex)
             {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
     }

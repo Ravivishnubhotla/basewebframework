@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Coolite.Ext.Web;
+using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using ListItem = Coolite.Ext.Web.ListItem;
-using ScriptManager=Coolite.Ext.Web.ScriptManager;
+
 
 namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSystemMenuManualResort")]
+    [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemMenuManualResort")]
     public partial class UCSystemMenuManualResort : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -20,20 +19,20 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void Show(string pmenuID)
         {
-            //if (pmenuID == "")
-            //    return;
+            if (pmenuID == "")
+                return;
 
-            //storeSubMenu.AutoLoadParams[0].Value = pmenuID;
+            //storeSubMenus.AutoLoadParams[0].Value = pmenuID;
 
 
             winSystemMenuManualResort.Show();
         }
 
 
-        [AjaxMethod]
+        [DirectMethod]
         public void SaveNewOrder(string ids)
         {
             try
@@ -49,13 +48,13 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
 
                 SystemMenuWrapper.UpdateOrder(sortIDs);
 
-                ScriptManager.AjaxSuccess = true;
+                ResourceManager.AjaxSuccess = true;
                 return;
             }
             catch (Exception ex)
             {
-                ScriptManager.AjaxSuccess = false;
-                ScriptManager.AjaxErrorMessage = ex.Message;
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = ex.Message;
                 return;
             }
 
@@ -77,21 +76,24 @@ namespace ExtJSConsole.Moudle.SystemManage.MenuManage
         //}
         protected void storeSubMenus_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            if (e.Parameters["ParentMenuID"] == "-1")
+            int pid = Convert.ToInt32(hidSortPMenuID.Value);
+            int aid = Convert.ToInt32(hidSortAppID.Value);
+
+            if (pid ==  -1)
             {
                 this.storeSubMenus.DataSource = new List<SystemMenuWrapper>();
                 this.storeSubMenus.DataBind();
             }
             else
             {
-                if(e.Parameters["ParentMenuID"] == "0")
+                if (pid == 0)
                 {
-                    this.storeSubMenus.DataSource = SystemMenuWrapper.GetTopMenuByAppID(int.Parse(e.Parameters["AppID"]));
+                    this.storeSubMenus.DataSource = SystemMenuWrapper.GetTopMenuByAppID(aid);
                     this.storeSubMenus.DataBind();
                 }
                 else
                 {
-                    this.storeSubMenus.DataSource = SystemMenuWrapper.GetMenuByParentID(int.Parse(e.Parameters["ParentMenuID"]));
+                    this.storeSubMenus.DataSource = SystemMenuWrapper.GetMenuByParentID(pid);
                     this.storeSubMenus.DataBind();               
                 }
             }

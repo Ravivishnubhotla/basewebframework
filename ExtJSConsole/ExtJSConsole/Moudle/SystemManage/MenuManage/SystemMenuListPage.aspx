@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SystemMenuListPage.aspx.cs" Inherits="ExtJSConsole.Moudle.SystemManage.MenuManage.SystemMenuListPage" %>
-<%--
+
 <%@ Register Src="UCSystemMenuAdd.ascx" TagName="UCSystemMenuAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemMenuEdit.ascx" TagName="UCSystemMenuEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSystemMenuManualResort.ascx" TagName="UCSystemMenuManualResort"
-    TagPrefix="uc3" %>--%>
+    TagPrefix="uc3" %>
+<%----%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
@@ -18,9 +19,13 @@
                                                     },
                                                     success: function(result) {
                                                         var nodes = eval(result);
-                                                        treepanel.root.ui.remove();
-                                                        treepanel.initChildren(nodes);
-                                                        treepanel.root.render();
+                                                        if(nodes.length > 0){
+                                                            treepanel.initChildren(nodes);
+                                                        }
+                                                        else{
+                                                            treepanel.getRootNode().removeChildren();
+                                                        }
+
                                                     },
                                                     eventMask: {
                                                         showMask: true,
@@ -57,11 +62,15 @@
         }
         
         
-               function showReorderForm(id,stores,appID) {
+               function showReorderForm(id,stores,appID,hid,hidappID) {
                
-stores.autoLoad.params.ParentMenuID = id;
+               hid.setValue(id);
+               
+               hidappID.setValue(appID); 
+               
+//stores.autoLoad.params.ParentMenuID = id;
 
-stores.autoLoad.params.AppID = appID;
+//stores.autoLoad.params.AppID = appID;
                
                 Ext.net.DirectMethods.UCSystemMenuManualResort.Show(id,
                                                                 {
@@ -162,7 +171,6 @@ stores.autoLoad.params.AppID = appID;
     
     </script>
 
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
@@ -170,8 +178,7 @@ stores.autoLoad.params.AppID = appID;
             <DocumentReady Handler="#{storeSystemApplication}.reload();" />
         </Listeners>
     </ext:ResourceManagerProxy>
-    
-        <ext:Store ID="storeSystemApplication" runat="server">
+    <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" OnRefreshData="storeSystemApplication_Refresh">
         <Reader>
             <ext:JsonReader IDProperty="SystemApplicationID">
                 <Fields>
@@ -206,7 +213,7 @@ stores.autoLoad.params.AppID = appID;
             </ext:MenuItem>
             <ext:MenuItem ID="MenuItem1" runat="server" Text="子菜单排序" Icon="SortAscending">
                 <Listeners>
-                    <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{storeSubMenus},#{cbApplication}.getValue());" />
+                    <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{storeSubMenus},#{cbApplication}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
                 </Listeners>
             </ext:MenuItem>
             <ext:MenuItem ID="MenuItem2" runat="server" Text="子菜单自动排序" Icon="SortAscending">
@@ -243,7 +250,7 @@ stores.autoLoad.params.AppID = appID;
                                             </ext:Button>
                                             <ext:Button ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="根菜单排序">
                                                 <Listeners>
-                                                    <Click Handler="showReorderForm(0,#{storeSubMenus},#{cbApplication}.getValue());" />
+                                                    <Click Handler="showReorderForm(0,#{storeSubMenus},#{cbApplication}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
                                                 </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="根菜单自动排序">
@@ -289,7 +296,8 @@ stores.autoLoad.params.AppID = appID;
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-<%--    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
+    <uc1:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
     <uc2:UCSystemMenuEdit ID="UCSystemMenuEdit1" runat="server" />
-    <uc3:UCSystemMenuManualResort ID="UCSystemMenuManualResort1" runat="server" />--%>
+    <uc3:UCSystemMenuManualResort ID="UCSystemMenuManualResort1" runat="server" />
+    <%-- --%>
 </asp:Content>
