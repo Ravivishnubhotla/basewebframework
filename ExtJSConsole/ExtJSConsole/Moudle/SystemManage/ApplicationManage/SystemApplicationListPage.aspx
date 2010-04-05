@@ -119,8 +119,6 @@
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnSearch' runat="server" Text="搜索" Icon="Find">
-                            </ext:Button>
                             <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemApplication}.reload();" />
