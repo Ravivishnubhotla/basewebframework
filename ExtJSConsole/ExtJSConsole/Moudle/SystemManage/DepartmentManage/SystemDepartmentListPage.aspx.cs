@@ -17,6 +17,29 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage
         }
 
 
+
+        [DirectMethod]
+        public void DeleteData(string id)
+        {
+
+            try
+            {
+                int menuID = int.Parse(id);
+
+                SystemDepartmentWrapper.DeleteByID(menuID);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(e.Message);
+                return;
+            }
+
+        }
+
+
         [DirectMethod]
         public string GetTreeNodes()
         {
