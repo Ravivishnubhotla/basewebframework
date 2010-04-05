@@ -145,45 +145,53 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="邮件" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="用户状态" Sortable="true"
-                                    Width="60">
+                                <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="状态" Sortable="true"
+                                    Width="35">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="创建日期"
                                     Sortable="true" Width="60">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserType" DataIndex="UserType" Header="用户类型" Sortable="true"
-                                    Width="60">
+                                <ext:Column ColumnID="colUserType" DataIndex="UserType" Header="类型" Sortable="true"
+                                    Width="35">
                                 </ext:Column>
                                 <ext:Column ColumnID="colComments" DataIndex="Comments" Header="备注" Sortable="true"
                                     Width="60">
                                 </ext:Column>
-                                <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="是否通过" Sortable="true"
-                                    Width="50">
+                                <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="通过" Sortable="true"
+                                    Width="35">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="是否锁定" Sortable="true"
-                                    Width="50">
+                                <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="锁定" Sortable="true"
+                                    Width="35">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colLastActivityDate" DataIndex="LastActivityDate" Header="上次活动时间"
                                     Sortable="true" Width="60">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:CommandColumn ColumnID="colManage" Header="系统用户管理" Width="160">
+                                <ext:CommandColumn ColumnID="colManage" Header="系统用户管理" Width="60">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
-                                            <ToolTip Text="删除" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="Key" CommandName="cmdChangePassword" Text="修改密码">
-                                            <ToolTip Text="修改密码" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="Lock" CommandName="cmdLock" Text="解锁">
-                                            <ToolTip Text="解锁" />
-                                        </ext:GridCommand>
+                                    <ext:SplitCommand Text="管理" Icon="ApplicationEdit">
+                                    <Menu>
+                                    <Items>
+                                    
+                                                        <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑"></ext:MenuCommand>
+                                                        
+                                                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            </ext:MenuCommand>
+                                            
+                                                                                           <ext:MenuCommand Icon="Key" CommandName="cmdChangePassword" Text="修改密码">
+                                            </ext:MenuCommand>
+                                                                                                    <ext:MenuCommand Icon="Lock" CommandName="cmdLock" Text="解锁">
+                                       
+                                            </ext:MenuCommand>
+                                    </Items>
+                                    
+                                    </Menu>
+                                    
+                                    </ext:SplitCommand>
+
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>

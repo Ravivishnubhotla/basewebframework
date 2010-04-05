@@ -18,11 +18,11 @@
 			
 						<ext:TextField ID="txtDepartmentNameCn" runat="server" FieldLabel="部门名" AllowBlank="False"  AnchorHorizontal="95%" />
               
-			
+
 						<ext:TextField ID="txtDepartmentNameEn" runat="server" FieldLabel="部门编码" AllowBlank="False"  AnchorHorizontal="95%" />
               
 			
-						<ext:TextField ID="txtDepartmentDecription" runat="server" FieldLabel="部门描述" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextArea ID="txtDepartmentDecription" runat="server" FieldLabel="部门描述" AllowBlank="True"  AnchorHorizontal="95%" />
               
 			
               

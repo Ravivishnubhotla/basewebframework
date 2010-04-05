@@ -138,7 +138,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="SystemApplicationID" Header="主键" Sortable="true">
+                        <ext:Column DataIndex="SystemApplicationID" Header="主键" Sortable="true" Width="50">
                         </ext:Column>
                         <ext:Column DataIndex="SystemApplicationName" Header="名称" Sortable="true">
                         </ext:Column>
@@ -147,7 +147,7 @@
                         </ext:Column>
                         <ext:Column DataIndex="SystemApplicationUrl" Header="链接">
                         </ext:Column>
-                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="是否为系统应用" Sortable="true">
+                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="是否为系统应用"  Width="80">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn Width="60">

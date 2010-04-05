@@ -74,7 +74,7 @@ namespace ExtJSConsole.Moudle.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtDepartmentDecription;
+        protected global::Ext.Net.TextArea txtDepartmentDecription;
         
         /// <summary>
         /// btnSaveSystemDepartment control.
