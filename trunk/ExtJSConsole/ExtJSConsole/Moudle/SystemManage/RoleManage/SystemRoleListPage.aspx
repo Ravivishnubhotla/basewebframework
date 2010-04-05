@@ -130,17 +130,17 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="RoleID" Header="主键" Sortable="true">
+                        <ext:Column DataIndex="RoleID" Header="主键" Sortable="true" Width="50">
                         </ext:Column>
                         <ext:Column DataIndex="RoleName" Header="角色名" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colRoleDescription" DataIndex="RoleDescription" Header="描述"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column DataIndex="RoleIsSystemRole" Header="是否为系统角色" Sortable="true">
+                        <ext:Column DataIndex="RoleIsSystemRole" Header="是否为系统角色" Sortable="true" Width="90">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn Header="系统角色管理" Width="160">
+                        <ext:CommandColumn Header="系统角色管理" Width="200">
                             <Commands>
                                 <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                     <ToolTip Text="编辑" />

@@ -46,7 +46,9 @@
 
         }
 
-
+        var RefreshData = function(btn) {
+            RefreshList(<%= this.TreePanel1.ClientID %>);
+        };
 
 
 
