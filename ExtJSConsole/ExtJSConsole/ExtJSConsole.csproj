@@ -317,6 +317,13 @@
     <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx.designer.cs">
       <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleAssignedApplication.ascx.cs">
+      <DependentUpon>UCSystemRoleAssignedApplication.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleAssignedApplication.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleAssignedApplication.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -412,6 +419,7 @@
     <Content Include="Moudle\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
+    <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleAssignedApplication.ascx" />
     <Content Include="Moudle\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
     <Content Include="Moudle\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx" />
     <Content Include="Moudle\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx" />

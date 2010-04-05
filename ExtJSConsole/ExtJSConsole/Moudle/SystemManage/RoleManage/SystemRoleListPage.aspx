@@ -3,6 +3,7 @@
 
 <%@ Register Src="UCSystemRoleAdd.ascx" TagName="UCSystemRoleAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemRoleEdit.ascx" TagName="UCSystemRoleEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSystemRoleAssignedApplication.ascx" TagName="UCSystemRoleAssignedApplication" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -40,6 +41,21 @@
 
             if (cmd == "cmdEdit") {
                 Ext.net.DirectMethods.UCSystemRoleEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+            
+            
+            if (cmd == "cmdAssignedApp") {
+                Ext.net.DirectMethods.UCSystemRoleAssignedApplication.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
@@ -99,6 +115,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
        <uc1:UCSystemRoleAdd ID="UCSystemRoleAdd1" runat="server" />
     <uc2:UCSystemRoleEdit ID="UCSystemRoleEdit1" runat="server" /> 
+        <uc3:UCSystemRoleAssignedApplication ID="UCSystemRoleAssignedApplication1" runat="server" /> 
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemRole" runat="server" StoreID="storeSystemRole"
@@ -148,7 +165,7 @@
                                 <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                     <ToolTip Text="删除" />
                                 </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdAssignedMenu" Text="分配应用">
+                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdAssignedApp" Text="分配应用">
                                     <ToolTip Text="分配应用" />
                                 </ext:GridCommand>
                                 <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" Text="菜单权限">

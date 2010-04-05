@@ -50,6 +50,15 @@ namespace ExtJSConsole.Moudle.SystemManage.RoleManage {
         protected global::ExtJSConsole.Moudle.SystemManage.RoleManage.UCSystemRoleEdit UCSystemRoleEdit1;
         
         /// <summary>
+        /// UCSystemRoleAssignedApplication1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ExtJSConsole.Moudle.SystemManage.RoleManage.UCSystemRoleAssignedApplication UCSystemRoleAssignedApplication1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
