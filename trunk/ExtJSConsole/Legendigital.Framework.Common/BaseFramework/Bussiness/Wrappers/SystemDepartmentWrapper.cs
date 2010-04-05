@@ -126,7 +126,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 	    private static void AddSubDepartment(TypedTreeNodeItem<SystemDepartmentWrapper> mnode, SystemDepartmentWrapper topDepartment, List<SystemDepartmentWrapper> departments)
 	    {
-            List<SystemDepartmentWrapper> subdepartments = departments.FindAll(p => (p.ParentDepartmentID == topDepartment));
+            List<SystemDepartmentWrapper> subdepartments = departments.FindAll(p => (p.ParentDepartmentID != null) && (p.ParentDepartmentID.DepartmentID == topDepartment.DepartmentID));
 
 	        foreach (SystemDepartmentWrapper subdepartment in subdepartments)
 	        {
