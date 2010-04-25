@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架数据访问层容器配置文件
+  </description>
+  <!-- 数据访问类 -->
+ <object id="SystemApplicationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemApplicationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemDepartmentDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDepartmentDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemDictionaryDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDictionaryDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemLogDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemLogDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemMenuDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemMenuDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemMoudleDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemMoudleDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemMoudleFieldDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemMoudleFieldDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemOperationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemOperationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPersonalizationSettingsDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPersonalizationSettingsDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPrivilegeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPrivilegeDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPrivilegeInRolesDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPrivilegeInRolesDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPrivilegeParameterDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPrivilegeParameterDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemResourcesDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemResourcesDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemRoleDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemRoleDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemRoleApplicationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemRoleApplicationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemRoleMenuRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemRoleMenuRelationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemSettingDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemSettingDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemShortMessageDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemShortMessageDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserGroupDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserGroupDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserGroupRoleRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserGroupRoleRelationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserGroupUserRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserGroupUserRelationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserProfileDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserProfileDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserProfilePropertysDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserProfilePropertysDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemUserRoleRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserRoleRelationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemViewDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemViewDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemViewItemDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemViewItemDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+
+
+
+
+
+<object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
+    <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
+    <property name="SystemDepartmentDataObjectInstance" ref="SystemDepartmentDataObjectIocID"/>
+    <property name="SystemDictionaryDataObjectInstance" ref="SystemDictionaryDataObjectIocID"/>
+    <property name="SystemLogDataObjectInstance" ref="SystemLogDataObjectIocID"/>
+    <property name="SystemMenuDataObjectInstance" ref="SystemMenuDataObjectIocID"/>
+    <property name="SystemMoudleDataObjectInstance" ref="SystemMoudleDataObjectIocID"/>
+    <property name="SystemMoudleFieldDataObjectInstance" ref="SystemMoudleFieldDataObjectIocID"/>
+    <property name="SystemOperationDataObjectInstance" ref="SystemOperationDataObjectIocID"/>
+    <property name="SystemPersonalizationSettingsDataObjectInstance" ref="SystemPersonalizationSettingsDataObjectIocID"/>
+    <property name="SystemPrivilegeDataObjectInstance" ref="SystemPrivilegeDataObjectIocID"/>
+    <property name="SystemPrivilegeInRolesDataObjectInstance" ref="SystemPrivilegeInRolesDataObjectIocID"/>
+    <property name="SystemPrivilegeParameterDataObjectInstance" ref="SystemPrivilegeParameterDataObjectIocID"/>
+    <property name="SystemResourcesDataObjectInstance" ref="SystemResourcesDataObjectIocID"/>
+    <property name="SystemRoleDataObjectInstance" ref="SystemRoleDataObjectIocID"/>
+    <property name="SystemRoleApplicationDataObjectInstance" ref="SystemRoleApplicationDataObjectIocID"/>
+    <property name="SystemRoleMenuRelationDataObjectInstance" ref="SystemRoleMenuRelationDataObjectIocID"/>
+    <property name="SystemSettingDataObjectInstance" ref="SystemSettingDataObjectIocID"/>
+    <property name="SystemShortMessageDataObjectInstance" ref="SystemShortMessageDataObjectIocID"/>
+    <property name="SystemUserDataObjectInstance" ref="SystemUserDataObjectIocID"/>
+    <property name="SystemUserGroupDataObjectInstance" ref="SystemUserGroupDataObjectIocID"/>
+    <property name="SystemUserGroupRoleRelationDataObjectInstance" ref="SystemUserGroupRoleRelationDataObjectIocID"/>
+    <property name="SystemUserGroupUserRelationDataObjectInstance" ref="SystemUserGroupUserRelationDataObjectIocID"/>
+    <property name="SystemUserProfileDataObjectInstance" ref="SystemUserProfileDataObjectIocID"/>
+    <property name="SystemUserProfilePropertysDataObjectInstance" ref="SystemUserProfilePropertysDataObjectIocID"/>
+    <property name="SystemUserRoleRelationDataObjectInstance" ref="SystemUserRoleRelationDataObjectIocID"/>
+    <property name="SystemViewDataObjectInstance" ref="SystemViewDataObjectIocID"/>
+    <property name="SystemViewItemDataObjectInstance" ref="SystemViewItemDataObjectIocID"/>
+ 
+
+
+</object>
+</objects>
