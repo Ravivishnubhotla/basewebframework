@@ -379,12 +379,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
-      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="images\lock.png" />
     <Content Include="images\logo.png" />
@@ -427,6 +421,12 @@
     <Content Include="Moudle\SystemManage\UserManage\SystemUserListPage.aspx" />
     <Content Include="Moudle\SystemManage\UserManage\UCSystemUserAdd.ascx" />
     <Content Include="Moudle\SystemManage\UserManage\UCSystemUserEdit.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comon\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
