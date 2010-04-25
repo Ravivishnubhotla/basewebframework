@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 

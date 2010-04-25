@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
