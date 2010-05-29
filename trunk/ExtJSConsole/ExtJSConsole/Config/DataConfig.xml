@@ -10,11 +10,13 @@
 	<!--<db:provider id="DbProvider"
 					 provider="SqlServer-2.0"
 					 connectionString="Persist Security Info=False;Integrated Security=true;Initial Catalog=ExtJSConsole;server=(local)\sqlexpress"/>-->
-
-  <db:provider id="DbProvider"
+    <db:provider id="DbProvider"
+                  provider="SqlServer-2.0"
+                  connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=TroniTech;uid=TroniTech;pwd=TroniTech"/>
+   <!--<db:provider id="DbProvider"
               provider="SqlServer-2.0"
               connectionString="Data Source=atom\SQLEXPRESS;Initial Catalog=WebConsole;uid=sa;pwd=1234"/>
-  <!--<db:provider id="DbProvider"
+ <db:provider id="DbProvider"
             provider="SqlServer-2.0"
             connectionString="Initial Catalog=zhuli;server=TGS-01;Integrated Security =true;"/>-->
    <!--<db:provider id="DbProvider"
