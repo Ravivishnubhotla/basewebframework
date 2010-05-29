@@ -1,0 +1,19 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "SqlScript"
+   MSDTVersion = "80"
+   DefDBRef = "tgs-dev.TroniTechRMTS.dbo"
+   Begin Folder = "Change Scripts"
+   End
+   Begin Folder = "Create Scripts"
+      Script = "Script1.SQL"
+   End
+   Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "tgs-dev.TroniTechRMTS.dbo"
+         ConnectStr = "Data Source=192.168.1.131;Initial Catalog=TroniTechRMTS;User ID=TroniTechRMTS"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
+   End
+   Begin Folder = "Queries"
+   End
+End
