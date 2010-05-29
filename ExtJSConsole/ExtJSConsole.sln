@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeTemplate", "CodeTemplat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Comon\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
 EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "SqlScript", "SqlScript\SqlScript.dbp", "{F363B3FA-984B-4079-812E-B0590241BEB2}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
