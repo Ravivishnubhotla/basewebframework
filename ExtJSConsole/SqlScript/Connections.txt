@@ -1,0 +1,4 @@
+DBRefFolders found in your dbp file
+Connect String: Data Source=192.168.1.131;Initial Catalog=TroniTechRMTS;User ID=TroniTechRMTS
+Provider: Microsoft SQL Server
+
