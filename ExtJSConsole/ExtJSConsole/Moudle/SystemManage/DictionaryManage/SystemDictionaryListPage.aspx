@@ -105,7 +105,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout=fit> 
                 <Items>
                     <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeSystemDictionary"
-                        StripeRows="true" Title="SystemDictionary管理" Icon="Table">
+                        StripeRows="true" Title="字典管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -113,8 +113,6 @@
                                         <listeners>
                                             <Click Handler="showAddForm();" />
                                         </listeners>
-                                    </ext:Button>
-                                    <ext:Button ID='btnSearch' runat="server" Text="搜索" Icon="Find">
                                     </ext:Button>
                                     <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <listeners>
