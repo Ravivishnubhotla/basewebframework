@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Legendigital.Framework.Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{5DCFF4E5-BC86-4FF9-8BFB-92022C1218C5}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
+		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
+		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
+		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
+		ThirdsDll\Ext.Net.Utilities.dll = ThirdsDll\Ext.Net.Utilities.dll
+		ThirdsDll\Iesi.Collections.dll = ThirdsDll\Iesi.Collections.dll
+		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
+		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
+		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
+		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
+		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
+		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
+		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
+		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
+		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		WebDebug|Any CPU = WebDebug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.ActiveCfg = WebDebug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.Build.0 = WebDebug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
