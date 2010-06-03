@@ -1,16 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Legendigital.Framework.Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{5DCFF4E5-BC86-4FF9-8BFB-92022C1218C5}"
 	ProjectSection(SolutionItems) = preProject
 		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
@@ -30,6 +20,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bussiness", "Bussiness\Bussiness.csproj", "{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Legendigital.Framework.Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
