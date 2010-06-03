@@ -97,15 +97,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public const int SYSTEMMENU_MAX_DEPTH = 2;
         public const int SYSTEMMENU_MIN_DEPTH = 1;
 
-        /// <summary>
-        /// 获取用户分配的所有菜单，如果是developmentAdmin直接获取所有的菜单。
-        /// </summary>
-        /// <param name="loginID">用户登陆ID</param>
-        /// <returns></returns>
-        public static List<SystemMenuWrapper> GetUserAssignedMenuByUserLoginID(string loginID)
-        {
-            return SystemMenuWrapper.ConvertToWrapperList(businessProxy.GetUserAssignedMenuByLoginID(loginID));
-        }
+
 
         /// <summary>
         /// 获取角色分配的所有菜单
@@ -123,57 +115,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 throw new ArgumentNullException("role");
             }
         }
-
-
- 
-
-
-        public static TreeNode GenerateManageAspNetWebTreeNodeByApplication(SystemApplicationWrapper app, string rootImageUrl, string groupImageUrl, string itemImageUrl)
-        {
-            TreeNode baseTreeNode = new TreeNode();
-            baseTreeNode.Checked = false;
-            baseTreeNode.Text = app.SystemApplicationName;
-            baseTreeNode.Value = "0";
-            baseTreeNode.NavigateUrl = HttpContext.Current.Server.MapPath("#0");
-            baseTreeNode.ImageUrl = rootImageUrl;
-
-            List<SystemMenuWrapper> listmenu = ConvertToWrapperList(businessProxy.GetMenuByApplication(app.entity));
-
-            foreach (SystemMenuWrapper groupMenu in listmenu)
-            {
-                if (groupMenu.MenuIsCategory)
-                {
-                    TreeNode groupTreeNode = new TreeNode();
-                    groupTreeNode.Checked = false;
-                    groupTreeNode.Text = groupMenu.MenuName;
-                    groupTreeNode.ImageUrl = groupImageUrl;
-                    groupTreeNode.Value = groupMenu.MenuID.ToString();
-                    groupTreeNode.ToolTip = string.Format("{0}:[{1}]", groupMenu.MenuOrder, groupMenu.MenuName);
-                    groupTreeNode.NavigateUrl = HttpContext.Current.Server.MapPath("#") + groupMenu.MenuID.ToString();
-                    baseTreeNode.ChildNodes.Add(groupTreeNode);
-                    foreach (SystemMenuWrapper itemMenu in listmenu)
-                    {
-                        if (!itemMenu.MenuIsCategory && itemMenu.ParentMenuID.MenuID == groupMenu.MenuID)
-                        {
-                            TreeNode itemTreeNode = new TreeNode();
-                            itemTreeNode.Checked = false;
-                            itemTreeNode.Text = itemMenu.MenuName;
-                            itemTreeNode.ToolTip = string.Format("{0}:[{1}]", itemMenu.MenuOrder, itemMenu.MenuName);
-                            itemTreeNode.ImageUrl = itemImageUrl;
-                            itemTreeNode.NavigateUrl = HttpContext.Current.Server.MapPath("#") + itemMenu.MenuID.ToString();
-                            itemTreeNode.Value = itemMenu.MenuID.ToString(); ;
-                            groupTreeNode.ChildNodes.Add(itemTreeNode);
-                        }
-                    }
-                }
-            }
-
-            return baseTreeNode;
-        }
-
-
-
-      
 
         public static int GetNewMaxMenuOrder(int parentMenuId, int applicationId)
         {
@@ -259,32 +200,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.UpdateOrder(ids);
         }
 
+        /// <summary>
+        /// 获取用户分配的所有菜单，如果是developmentAdmin直接获取所有的菜单。
+        /// </summary>
+        /// <param name="loginID">用户登陆ID</param>
+        /// <returns></returns>
+        public static List<NavMenu> GetUserAssignedNavMenuByUserLoginID(string loginID)
+        {
+            List<SystemMenuWrapper> listmenu = SystemMenuWrapper.ConvertToWrapperList(businessProxy.GetUserAssignedMenuByLoginID(loginID));
 
-        public static List<NavMenu> GetNavMenuByApplication(SystemApplicationWrapper app)
+            return GetNavMenusFromSystemMenus(listmenu);
+        }
+
+	    private static List<NavMenu> GetNavMenusFromSystemMenus(List<SystemMenuWrapper> listmenu)
+	    {
+	        List<NavMenu> menus = new List<NavMenu>();
+
+	        foreach (SystemMenuWrapper gmenu in listmenu)
+	        {
+	            if (gmenu.ParentMenuID == null || gmenu.ParentMenuID.MenuID == 0)
+	            {
+	                NavMenu groupMenu = new NavMenu();
+	                groupMenu.Id = gmenu.MenuID.ToString();
+	                groupMenu.Name = gmenu.MenuName;
+	                groupMenu.NavUrl = gmenu.MenuUrl;
+	                groupMenu.IsCategory = gmenu.MenuIsCategory;
+	                groupMenu.Icon = gmenu.MenuIconUrl;
+	                groupMenu.Tooltip = gmenu.MenuDescription;
+
+	                AddSubMenus(listmenu, gmenu, groupMenu);
+
+	                menus.Add(groupMenu);
+	            }
+	        }
+	        return menus;
+	    }
+
+
+	    public static List<NavMenu> GetNavMenuByApplication(SystemApplicationWrapper app)
         {
             List<SystemMenuWrapper> listmenu = ConvertToWrapperList(businessProxy.GetMenuByApplication(app));
 
-            List<NavMenu> menus = new List<NavMenu>();
-
-            foreach (SystemMenuWrapper gmenu in listmenu)
-            {
-                if (gmenu.ParentMenuID == null || gmenu.ParentMenuID.MenuID == 0)
-                {
-                    NavMenu groupMenu = new NavMenu();
-                    groupMenu.Id = gmenu.MenuID.ToString();
-                    groupMenu.Name = gmenu.MenuName;
-                    groupMenu.NavUrl = gmenu.MenuUrl;
-                    groupMenu.IsCategory = gmenu.MenuIsCategory;
-                    groupMenu.Icon = gmenu.MenuIconUrl;
-                    groupMenu.Tooltip = gmenu.MenuDescription;
-
-                    AddSubMenus(listmenu, gmenu, groupMenu);
-
-                    menus.Add(groupMenu);
-                }
-            }
-
-            return menus;
+            return GetNavMenusFromSystemMenus(listmenu);
         }
 
 
