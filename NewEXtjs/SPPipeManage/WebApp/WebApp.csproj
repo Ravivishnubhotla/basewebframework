@@ -57,6 +57,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="Ext.Net">
+      <HintPath>..\ThirdsDll\Ext.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Ext.Net.Utilities">
       <HintPath>..\ThirdsDll\Ext.Net.Utilities.dll</HintPath>
     </Reference>
