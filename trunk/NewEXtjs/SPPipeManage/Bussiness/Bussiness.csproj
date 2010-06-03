@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LD.SPPipeManage.Bussiness</RootNamespace>
+    <AssemblyName>LD.SPPipeManage.Bussiness</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPRateDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
+      <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
+      <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
+      <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPPaymentInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPRateServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPRateServiceProxy.Designer.cs">
+      <DependentUpon>SPRateServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPRequestInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSendClientParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSendClientParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPSendClientParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPSendRequestInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelWrapper.Designer.cs">
+      <DependentUpon>SPChannelWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientWrapper.cs" />
+    <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
+      <DependentUpon>SPClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMemoWrapper.cs" />
+    <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
+      <DependentUpon>SPMemoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPPaymentInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPPaymentInfoWrapper.Designer.cs">
+      <DependentUpon>SPPaymentInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPRateWrapper.cs" />
+    <Compile Include="Wrappers\SPRateWrapper.Designer.cs">
+      <DependentUpon>SPRateWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPRequestInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPRequestInfoWrapper.Designer.cs">
+      <DependentUpon>SPRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSendClientParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPSendClientParamsWrapper.Designer.cs">
+      <DependentUpon>SPSendClientParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSendRequestInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPSendRequestInfoWrapper.Designer.cs">
+      <DependentUpon>SPSendRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ServiceProxys\Tables\Container\ServiceProxyContainersFile.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

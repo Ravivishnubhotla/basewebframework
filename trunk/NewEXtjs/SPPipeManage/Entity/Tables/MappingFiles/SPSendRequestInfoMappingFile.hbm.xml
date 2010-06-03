@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPSendRequestInfoEntity,LD.SPPipeManage.Entity" table="SPSendRequestInfo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ToUrl" type="int" name="ToUrl"   />	
+		<property column="DataID" type="int" name="DataID"   />	
+		<property column="IsSuccess" type="Boolean" name="IsSuccess"   />	
+		<property column="ErrorCode" type="string" name="ErrorCode"   length="100" />	
+		<property column="ErrorMessage" type="string" name="ErrorMessage"   length="4000" />	
+		<property column="SendParans" type="string" name="SendParans"   length="4000" />	
+
+
+
+
+</class>
+</hibernate-mapping>

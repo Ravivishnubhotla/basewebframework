@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPRateEntity,LD.SPPipeManage.Entity" table="SPRate" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="ClinetID" type="int" name="ClinetID"   />	
+		<property column="InterceptRate" type="int" name="InterceptRate"   />	
+		<property column="UpRate" type="int" name="UpRate"   />	
+		<property column="DownRate" type="int" name="DownRate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
