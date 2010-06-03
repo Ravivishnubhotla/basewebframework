@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDictionaryEntity,Legendigital.Framework.Common" table="SystemDictionary" lazy="true"  >
+
+<id name="SystemDictionaryID" column="SystemDictionary_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="SystemDictionary_CategoryID" type="string" name="SystemDictionaryCategoryID"   length="400" />	
+		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="400" />	
+		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="4000" />	
+		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="4000" />	
+		<property column="SystemDictionary_Order" type="int" name="SystemDictionaryOrder"   />	
+		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LD.SPPipeManage.Entity</RootNamespace>
+    <AssemblyName>LD.SPPipeManage.Entity</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\SPChannelEntity.cs" />
+    <Compile Include="Tables\SPChannelEntity.Designer.cs">
+      <DependentUpon>SPChannelEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPChannelParamsEntity.cs" />
+    <Compile Include="Tables\SPChannelParamsEntity.Designer.cs">
+      <DependentUpon>SPChannelParamsEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPClientEntity.cs" />
+    <Compile Include="Tables\SPClientEntity.Designer.cs">
+      <DependentUpon>SPClientEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPMemoEntity.cs" />
+    <Compile Include="Tables\SPMemoEntity.Designer.cs">
+      <DependentUpon>SPMemoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPPaymentInfoEntity.cs" />
+    <Compile Include="Tables\SPPaymentInfoEntity.Designer.cs">
+      <DependentUpon>SPPaymentInfoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPRateEntity.cs" />
+    <Compile Include="Tables\SPRateEntity.Designer.cs">
+      <DependentUpon>SPRateEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPRequestInfoEntity.cs" />
+    <Compile Include="Tables\SPRequestInfoEntity.Designer.cs">
+      <DependentUpon>SPRequestInfoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPSendClientParamsEntity.cs" />
+    <Compile Include="Tables\SPSendClientParamsEntity.Designer.cs">
+      <DependentUpon>SPSendClientParamsEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPSendRequestInfoEntity.cs" />
+    <Compile Include="Tables\SPSendRequestInfoEntity.Designer.cs">
+      <DependentUpon>SPSendRequestInfoEntity.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPChannelMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPMemoMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPPaymentInfoMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPRateMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPRequestInfoMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPSendClientParamsMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPSendRequestInfoMappingFile.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

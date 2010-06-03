@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPMemoEntity,LD.SPPipeManage.Entity" table="SPMemo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Title" type="string" name="Title"   not-null="true"  length="400" />	
+		<property column="MemoContent" type="string" name="MemoContent"   length="4000" />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

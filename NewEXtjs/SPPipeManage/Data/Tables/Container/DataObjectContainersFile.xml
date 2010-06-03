@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架数据访问层容器配置文件
+  </description>
+  <!-- 数据访问类 -->
+ <object id="SPChannelDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPChannelParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPMemoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMemoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPPaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPaymentInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPRateDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRateDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRequestInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPSendClientParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSendClientParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPSendRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSendRequestInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+
+
+
+
+
+<object id="DataObjectContainersIocID" type="LD.SPPipeManage.Data.Tables.Container.DataObjectContainers, LD.SPPipeManage.Data">
+    <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
+    <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
+    <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
+    <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
+    <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
+    <property name="SPRateDataObjectInstance" ref="SPRateDataObjectIocID"/>
+    <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
+    <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
+    <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
+ 
+
+
+</object>
+</objects>
