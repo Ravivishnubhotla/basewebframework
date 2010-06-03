@@ -60,25 +60,25 @@ namespace Legendigital.Framework.Common.Utility
         }
 
 
-        public static string ToJson<T>(T obj)
-        {
-            DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
-            MemoryStream ms = new MemoryStream();
-            ds.WriteObject(ms, obj);
-            string strJSON = Encoding.UTF8.GetString(ms.ToArray());
-            ms.Close();
-            return strJSON;
-        }
+        //public static string ToJson<T>(T obj)
+        //{
+        //    DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
+        //    MemoryStream ms = new MemoryStream();
+        //    ds.WriteObject(ms, obj);
+        //    string strJSON = Encoding.UTF8.GetString(ms.ToArray());
+        //    ms.Close();
+        //    return strJSON;
+        //}
 
-        public static T JsonDeserialize<T>(string sJson) where T : class
-        {
-            DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
-            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(sJson));
-            T obj = (T)ds.ReadObject(ms);
+        //public static T JsonDeserialize<T>(string sJson) where T : class
+        //{
+        //    DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
+        //    MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(sJson));
+        //    T obj = (T)ds.ReadObject(ms);
 
-            ms.Close();
-            return obj;
-        }
+        //    ms.Close();
+        //    return obj;
+        //}
 
 
 
