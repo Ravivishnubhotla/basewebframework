@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
 
         protected override void OnPreInit(System.EventArgs e)
         {
-            this.Page.Theme = "Default";
+            //this.Page.Theme = "Default";
             base.OnPreInit(e);
         }
 

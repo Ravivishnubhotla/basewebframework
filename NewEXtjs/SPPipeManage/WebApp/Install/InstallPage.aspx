@@ -7,15 +7,16 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
-                    <ext:Panel ID="Panel2" runat="server" Title="安装系统" Layout="Fit">
+                    <ext:Panel ID="Panel2" runat="server" Frame=true Title="安装系统" Layout="Form">
                         <Items>
-
+                            <ext:TextField ID="txtApplicationName" FieldLabel="应用名称"  runat=server AnchorHorizontal="75%"></ext:TextField>
                         </Items>
+                        <Buttons>
+                        <ext:Button ID="btnCreate" runat=server></ext:Button>
+                        </Buttons>
                     </ext:Panel>
                 </Center>
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-
-
 </asp:Content>
