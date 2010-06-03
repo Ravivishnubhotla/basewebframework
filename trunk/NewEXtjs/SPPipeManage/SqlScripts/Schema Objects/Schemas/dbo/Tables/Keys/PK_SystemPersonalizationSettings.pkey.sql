@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[SystemPersonalizationSettings]
+    ADD CONSTRAINT [PK_SystemPersonalizationSettings] PRIMARY KEY CLUSTERED ([PersonalizationID] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
