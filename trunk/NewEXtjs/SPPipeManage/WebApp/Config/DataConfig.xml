@@ -8,9 +8,11 @@
 
   <!-- Database and NHibernate Configuration  -->
 
-<db:provider id="DbProvider"
+    <db:provider id="DbProvider" provider="SqlServer-2.0" connectionString="data source=sql88.51ym.com,1433;User ID=a1013143610;pwd=6085418;Initial Catalog=a1013143610" />
+
+    <!--<db:provider id="DbProvider"
          provider="SqlServer-2.0"
-         connectionString="Initial Catalog=WebConsole;server=ATOM\SQLEXPRESS;uid=WebConsole;pwd=WebConsole;"/>
+         connectionString="Initial Catalog=WebConsole;server=ATOM\SQLEXPRESS;uid=WebConsole;pwd=WebConsole;"/>-->
 
 
 		 <!--<db:provider id="DbProvider"
