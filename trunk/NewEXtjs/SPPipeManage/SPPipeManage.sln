@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{621CBD3C-7
 		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web80\Web.csproj", "{C6A0C68A-70F7-4687-B273-B1BA083D7615}"
+EndProject
+Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "SQLDB", "SQLDB\SQLDB.dbp", "{43D45CFD-1B74-4221-8837-9ACAB88D5C7C}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -80,6 +84,12 @@ Global
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.ActiveCfg = WebDebug|Any CPU
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.Build.0 = WebDebug|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
