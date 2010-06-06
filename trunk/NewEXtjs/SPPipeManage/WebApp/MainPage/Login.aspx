@@ -19,7 +19,7 @@
         }
         .x-plain-body
         {
-            background: #f0edce url('/images/logo2.png') no-repeat;
+            background: #f0edce url('/images/logo.png') no-repeat;
         }
     </style>
 </asp:Content>
