@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{5DCFF4E5-BC86-4FF9-8BFB-92022C1218C5}"
 	ProjectSection(SolutionItems) = preProject
 		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
@@ -32,7 +32,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Legendigital.Framework.Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "SqlScripts", "SqlScripts\SqlScripts.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{621CBD3C-79D7-4258-987C-4378F8A06B97}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls\Coolite.Ext.Web.dll = Dlls\Coolite.Ext.Web.dll
+		Dlls\Coolite.Utilities.dll = Dlls\Coolite.Utilities.dll
+		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -75,15 +80,6 @@ Global
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.ActiveCfg = WebDebug|Any CPU
 		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.Build.0 = WebDebug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
-		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.WebDebug|Any CPU.Deploy.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

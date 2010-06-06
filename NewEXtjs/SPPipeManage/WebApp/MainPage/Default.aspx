@@ -96,9 +96,6 @@
                                         </Listeners>
                                     </ext:ComboBox>
                                     <ext:Button Icon="UserKey" Text="更改密码">
-                                        <Listeners>
-                                            <Click Handler="#{winChangePassword}.show();" />
-                                        </Listeners>
                                     </ext:Button>
                                     <ext:Button ID="btnExit" Icon="UserGo" Text="注销">
                                         <DirectEvents>
