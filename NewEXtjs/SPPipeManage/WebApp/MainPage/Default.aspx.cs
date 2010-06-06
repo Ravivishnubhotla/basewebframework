@@ -74,11 +74,11 @@ namespace Legendigital.Common.WebApp.MainPage
         {
             foreach (NavMenu submenu in menu.SubMenus)
             {
-                var subNode = new TreeNode(menu.Id);
-                subNode.Text = menu.Name;
-                SetIcon(menu.Icon, menu.IsCategory, subNode);
-                subNode.Href = ResolveUrl(menu.NavUrl);
-                subNode.CustomAttributes.Add(new ConfigItem("isCategory", menu.IsCategory.ToString(),
+                var subNode = new TreeNode(submenu.Id);
+                subNode.Text = submenu.Name;
+                SetIcon(submenu.Icon, submenu.IsCategory, subNode);
+                subNode.Href = ResolveUrl(submenu.NavUrl);
+                subNode.CustomAttributes.Add(new ConfigItem("isCategory", submenu.IsCategory.ToString(),
                                                             ParameterMode.Value));
                 mainNode.Nodes.Add(subNode);
                 CreateSubItem(submenu, subNode);
