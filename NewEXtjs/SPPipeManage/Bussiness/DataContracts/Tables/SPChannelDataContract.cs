@@ -6,7 +6,7 @@ using LD.SPPipeManage.Bussiness.Wrappers;
 namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 {
 	/// <summary>
-	///	短行通道
+	///	
 	/// </summary>
 	[DataContract]
 	public class SPChannelDataContract
@@ -79,7 +79,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 	    #region 公共属性
 
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>
 		[DataMember]
 		public int Id
@@ -93,7 +93,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 名称
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Name
@@ -110,7 +110,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 描述
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Description
@@ -127,7 +127,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 支持区域
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Area
@@ -144,7 +144,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 运营商
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Operator
@@ -161,7 +161,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 通道编号
+		/// 
 		/// </summary>
 		[DataMember]
 		public string ChannelCode
@@ -178,7 +178,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 模糊指令
+		/// 
 		/// </summary>
 		[DataMember]
 		public string FuzzyCommand
@@ -195,7 +195,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 精准指令
+		/// 
 		/// </summary>
 		[DataMember]
 		public string AccurateCommand
@@ -212,7 +212,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 端口号
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Port
@@ -229,7 +229,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 通道类型
+		/// 
 		/// </summary>
 		[DataMember]
 		public string ChannelType
@@ -246,7 +246,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 价格
+		/// 
 		/// </summary>
 		[DataMember]
 		public decimal? Price
@@ -260,7 +260,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 分成比例
+		/// 
 		/// </summary>
 		[DataMember]
 		public int? Rate
@@ -274,7 +274,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 状态
+		/// 
 		/// </summary>
 		[DataMember]
 		public int? Status
@@ -288,7 +288,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>
 		[DataMember]
 		public DateTime? CreateTime
@@ -302,7 +302,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 创建人
+		/// 
 		/// </summary>
 		[DataMember]
 		public int? CreateBy

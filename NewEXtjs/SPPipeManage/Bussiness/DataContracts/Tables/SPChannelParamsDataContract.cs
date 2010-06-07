@@ -19,6 +19,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
+		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		
         #endregion
 	
@@ -29,6 +31,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _description;
 		private bool? _isEnable;
 		private bool? _isRequired;
+		private string _paramsType;
+		private int _channelID;
 		
 		#endregion
 
@@ -43,6 +47,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_description = null;
 			_isEnable = null;
 			_isRequired = null;
+			_paramsType = null;
+			_channelID = 0;
 		}
 		#endregion
 
@@ -124,6 +130,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ParamsType
+		{
+			get { return _paramsType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsType", value, value.ToString());
+				_paramsType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int ChannelID
+		{
+			get { return _channelID; }
+
+			set	
+			{
+				_channelID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -135,6 +172,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Description = wrapper.Description;
 			this.IsEnable = wrapper.IsEnable;
 			this.IsRequired = wrapper.IsRequired;
+			this.ParamsType = wrapper.ParamsType;
+			this.ChannelID = (wrapper.ChannelID!=null) ? wrapper.ChannelID.Id : 0 ; 
 		}
 		
 		
@@ -146,6 +185,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Description = this.Description;
 			wrapper.IsEnable = this.IsEnable;
 			wrapper.IsRequired = this.IsRequired;
+			wrapper.ParamsType = this.ParamsType;
+			wrapper.ChannelID =  (this.ChannelID==null) ? null : SPChannelWrapper.FindById(this.ChannelID);
 		
 		return wrapper;
         }

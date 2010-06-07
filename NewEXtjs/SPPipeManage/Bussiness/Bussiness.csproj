@@ -91,10 +91,10 @@
   <ItemGroup>
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPRateDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
@@ -111,6 +111,10 @@
     <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.Designer.cs">
       <DependentUpon>SPChannelServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSettingServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
@@ -122,10 +126,6 @@
     <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.Designer.cs">
       <DependentUpon>SPPaymentInfoServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceProxys\Tables\SPRateServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPRateServiceProxy.Designer.cs">
-      <DependentUpon>SPRateServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.Designer.cs">
@@ -147,6 +147,10 @@
     <Compile Include="Wrappers\SPChannelWrapper.Designer.cs">
       <DependentUpon>SPChannelWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\SPClientChannelSettingWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSettingWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSettingWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPClientWrapper.cs" />
     <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
       <DependentUpon>SPClientWrapper.cs</DependentUpon>
@@ -158,10 +162,6 @@
     <Compile Include="Wrappers\SPPaymentInfoWrapper.cs" />
     <Compile Include="Wrappers\SPPaymentInfoWrapper.Designer.cs">
       <DependentUpon>SPPaymentInfoWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wrappers\SPRateWrapper.cs" />
-    <Compile Include="Wrappers\SPRateWrapper.Designer.cs">
-      <DependentUpon>SPRateWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPRequestInfoWrapper.cs" />
     <Compile Include="Wrappers\SPRequestInfoWrapper.Designer.cs">

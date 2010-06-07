@@ -6,7 +6,7 @@ using LD.SPPipeManage.Bussiness.Wrappers;
 namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 {
 	/// <summary>
-	///	公告
+	///	
 	/// </summary>
 	[DataContract]
 	public class SPMemoDataContract
@@ -46,7 +46,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 	    #region 公共属性
 
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>
 		[DataMember]
 		public int Id
@@ -60,7 +60,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 标题
+		/// 
 		/// </summary>
 		[DataMember]
 		public string Title
@@ -77,7 +77,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 内容
+		/// 
 		/// </summary>
 		[DataMember]
 		public string MemoContent
@@ -94,7 +94,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		}
 
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>
 		[DataMember]
 		public DateTime? CreateDate
