@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LD.SPPipeManage.Bussiness.Wrappers;
 
-namespace Web
+namespace Legendigital.Common.Web
 {
     public partial class _Default : System.Web.UI.Page
     {

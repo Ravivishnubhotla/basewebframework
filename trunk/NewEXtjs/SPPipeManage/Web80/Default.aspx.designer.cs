@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web
+namespace Legendigital.Common.Web
 {
 
 
