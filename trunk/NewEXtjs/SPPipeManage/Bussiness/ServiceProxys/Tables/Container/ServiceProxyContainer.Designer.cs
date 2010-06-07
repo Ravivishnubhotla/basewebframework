@@ -14,11 +14,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPClientServiceProxy SPClientServiceProxyInstance
         {get; set;}
+		public ISPClientChannelSettingServiceProxy SPClientChannelSettingServiceProxyInstance
+        {get; set;}
 		public ISPMemoServiceProxy SPMemoServiceProxyInstance
         {get; set;}
 		public ISPPaymentInfoServiceProxy SPPaymentInfoServiceProxyInstance
-        {get; set;}
-		public ISPRateServiceProxy SPRateServiceProxyInstance
         {get; set;}
 		public ISPRequestInfoServiceProxy SPRequestInfoServiceProxyInstance
         {get; set;}

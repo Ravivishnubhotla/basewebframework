@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormUISetting xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TableName>SPChannel</TableName>
+  <Items>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>ID</FieldName>
+      <LanguageType>int</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>true</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>true</IsReqiured>
+      <FieldNameCn>ID</FieldNameCn>
+      <DbColumnName>ID</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Name</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>名称</FieldNameCn>
+      <DbColumnName>Name</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Description</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>2000</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBoxMultiLine</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>描述</FieldNameCn>
+      <Items />
+      <DbColumnName>Description</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Area</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>2000</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBoxMultiLine</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>支持省份</FieldNameCn>
+      <Items />
+      <DbColumnName>Area</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Operator</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>操作者</FieldNameCn>
+      <DbColumnName>Operator</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>ChannelCode</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>通道编码</FieldNameCn>
+      <DbColumnName>ChannelCode</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>FuzzyCommand</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>提交别名</FieldNameCn>
+      <DbColumnName>FuzzyCommand</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>AccurateCommand</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>预留</FieldNameCn>
+      <DbColumnName>AccurateCommand</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Port</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>RadNumericTextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>端口</FieldNameCn>
+      <Items />
+      <DbColumnName>Port</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>ChannelType</FieldName>
+      <LanguageType>string</LanguageType>
+      <Size>200</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>通道类型</FieldNameCn>
+      <Items />
+      <DbColumnName>ChannelType</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Price</FieldName>
+      <LanguageType>decimal</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>RadNumericTextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>单价</FieldNameCn>
+      <Items />
+      <DbColumnName>Price</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Rate</FieldName>
+      <LanguageType>int</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>RadNumericTextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>分成比例</FieldNameCn>
+      <Items />
+      <DbColumnName>Rate</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>Status</FieldName>
+      <LanguageType>int</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>状态</FieldNameCn>
+      <DbColumnName>Status</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>CreateTime</FieldName>
+      <LanguageType>DateTime</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>创建时间</FieldNameCn>
+      <DbColumnName>CreateTime</DbColumnName>
+    </TableUIGenerationParams>
+    <TableUIGenerationParams>
+      <IsSelect>true</IsSelect>
+      <FieldName>CreateBy</FieldName>
+      <LanguageType>int</LanguageType>
+      <Size>0</Size>
+      <IsAutoKey>false</IsAutoKey>
+      <InputType>TextBox</InputType>
+      <DefaultValue />
+      <IsReqiured>false</IsReqiured>
+      <FieldNameCn>创建人</FieldNameCn>
+      <DbColumnName>CreateBy</DbColumnName>
+    </TableUIGenerationParams>
+  </Items>
+</FormUISetting>

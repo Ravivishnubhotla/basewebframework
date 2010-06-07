@@ -8,38 +8,47 @@
   <!-- 服务层类 -->
   <object id="SPChannelServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPChannelServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPChannelDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPChannelParamsServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPChannelParamsServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPChannelParamsDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPClientServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPClientServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPClientDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPClientChannelSettingServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPClientChannelSettingServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPClientChannelSettingDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPMemoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPMemoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPMemoDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPPaymentInfoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPPaymentInfoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPPaymentInfoDataObjectIocID"/>
-	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
-  </object>
-  <object id="SPRateServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPRateServiceProxy, LD.SPPipeManage.Bussiness">
-    <property name="SelfDataObj" ref="SPRateDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPRequestInfoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPRequestInfoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPRequestInfoDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPSendClientParamsServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPSendClientParamsServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPSendClientParamsDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPSendRequestInfoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPSendRequestInfoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPSendRequestInfoDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
 
@@ -50,9 +59,9 @@
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
     <property name="SPClientServiceProxyInstance" ref="SPClientServiceProxyIocID"/>
+    <property name="SPClientChannelSettingServiceProxyInstance" ref="SPClientChannelSettingServiceProxyIocID"/>
     <property name="SPMemoServiceProxyInstance" ref="SPMemoServiceProxyIocID"/>
     <property name="SPPaymentInfoServiceProxyInstance" ref="SPPaymentInfoServiceProxyIocID"/>
-    <property name="SPRateServiceProxyInstance" ref="SPRateServiceProxyIocID"/>
     <property name="SPRequestInfoServiceProxyInstance" ref="SPRequestInfoServiceProxyIocID"/>
     <property name="SPSendClientParamsServiceProxyInstance" ref="SPSendClientParamsServiceProxyIocID"/>
     <property name="SPSendRequestInfoServiceProxyInstance" ref="SPSendRequestInfoServiceProxyIocID"/>
