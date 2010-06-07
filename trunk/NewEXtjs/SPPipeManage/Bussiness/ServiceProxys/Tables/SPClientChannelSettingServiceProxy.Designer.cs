@@ -8,17 +8,18 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
+using Legendigital.TroniTechRMTS.Data.AdoNet;
 
 
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-    internal partial class SPRateServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRateEntity>
+    internal partial class SPClientChannelSettingServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingEntity>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
-        public SPRateDataObject SelfDataObj
+        public SPClientChannelSettingDataObject SelfDataObj
         {
             set
             {
@@ -26,10 +27,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
 			get
             {
-                return (SPRateDataObject)selfDataObject;
+                return (SPClientChannelSettingDataObject)selfDataObject;
             }
         }
 		
+        public AdoNetDataObject AdoNetDb { set; get; }		
 
 		
     }

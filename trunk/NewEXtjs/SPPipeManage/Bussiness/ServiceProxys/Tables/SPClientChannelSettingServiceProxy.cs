@@ -11,13 +11,13 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPRateServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRateEntity>
+	public interface ISPClientChannelSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingEntity>
     {
 
 
     }
 
-    internal partial class SPRateServiceProxy : ISPRateServiceProxy
+    internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
     {
 
 

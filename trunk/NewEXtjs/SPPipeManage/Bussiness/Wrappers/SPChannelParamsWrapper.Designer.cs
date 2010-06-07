@@ -72,6 +72,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
+		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		
         #endregion
 
@@ -145,6 +147,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.IsRequired = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ParamsType
+		{
+			get
+			{
+				return entity.ParamsType;
+			}
+			set
+			{
+				entity.ParamsType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SPChannelWrapper ChannelID
+		{
+			get
+			{
+				return SPChannelWrapper.ConvertEntityToWrapper(entity.ChannelID) ;
+			}
+			set
+			{
+				entity.ChannelID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 

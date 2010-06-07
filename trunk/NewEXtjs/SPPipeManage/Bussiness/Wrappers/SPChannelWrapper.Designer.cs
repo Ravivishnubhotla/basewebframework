@@ -88,7 +88,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int Id
 		{
@@ -102,7 +102,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 名称
+		/// 
 		/// </summary>		
 		public string Name
 		{
@@ -116,7 +116,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 描述
+		/// 
 		/// </summary>		
 		public string Description
 		{
@@ -130,7 +130,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 支持区域
+		/// 
 		/// </summary>		
 		public string Area
 		{
@@ -144,7 +144,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 运营商
+		/// 
 		/// </summary>		
 		public string Operator
 		{
@@ -158,7 +158,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 通道编号
+		/// 
 		/// </summary>		
 		public string ChannelCode
 		{
@@ -172,7 +172,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 模糊指令
+		/// 
 		/// </summary>		
 		public string FuzzyCommand
 		{
@@ -186,7 +186,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 精准指令
+		/// 
 		/// </summary>		
 		public string AccurateCommand
 		{
@@ -200,7 +200,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 端口号
+		/// 
 		/// </summary>		
 		public string Port
 		{
@@ -214,7 +214,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 通道类型
+		/// 
 		/// </summary>		
 		public string ChannelType
 		{
@@ -228,7 +228,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 价格
+		/// 
 		/// </summary>		
 		public decimal? Price
 		{
@@ -242,7 +242,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 分成比例
+		/// 
 		/// </summary>		
 		public int? Rate
 		{
@@ -256,7 +256,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 状态
+		/// 
 		/// </summary>		
 		public int? Status
 		{
@@ -270,7 +270,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>		
 		public DateTime? CreateTime
 		{
@@ -284,7 +284,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 创建人
+		/// 
 		/// </summary>		
 		public int? CreateBy
 		{

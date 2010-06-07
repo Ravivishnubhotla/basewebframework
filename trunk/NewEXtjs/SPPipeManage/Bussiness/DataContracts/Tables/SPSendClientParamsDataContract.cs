@@ -19,6 +19,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
+		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		
         #endregion
 	
@@ -29,6 +31,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _description;
 		private bool? _isEnable;
 		private bool? _isRequired;
+		private int? _clientID;
+		private string _mappingParams;
 		
 		#endregion
 
@@ -43,6 +47,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_description = null;
 			_isEnable = null;
 			_isRequired = null;
+			_clientID = null;
+			_mappingParams = null;
 		}
 		#endregion
 
@@ -124,6 +130,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? ClientID
+		{
+			get { return _clientID; }
+
+			set	
+			{
+				_clientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string MappingParams
+		{
+			get { return _mappingParams; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for MappingParams", value, value.ToString());
+				_mappingParams = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -135,6 +172,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Description = wrapper.Description;
 			this.IsEnable = wrapper.IsEnable;
 			this.IsRequired = wrapper.IsRequired;
+			this.ClientID = (wrapper.ClientID!=null) ? wrapper.ClientID.Id : 0 ; 
+			this.MappingParams = wrapper.MappingParams;
 		}
 		
 		
@@ -146,6 +185,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Description = this.Description;
 			wrapper.IsEnable = this.IsEnable;
 			wrapper.IsRequired = this.IsRequired;
+			wrapper.ClientID =  (this.ClientID==null) ? null : SPClientWrapper.FindById(this.ClientID);
+			wrapper.MappingParams = this.MappingParams;
 		
 		return wrapper;
         }

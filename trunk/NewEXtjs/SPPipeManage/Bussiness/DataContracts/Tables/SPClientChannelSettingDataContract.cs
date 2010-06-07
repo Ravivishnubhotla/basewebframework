@@ -9,17 +9,19 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public class SPRateDataContract
+	public class SPClientChannelSettingDataContract
 	{
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Bussiness.DataContracts.Tables.SPRateDataContract";
+		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Bussiness.DataContracts.Tables.SPClientChannelSettingDataContract";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLINETID = "ClinetID";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_UPRATE = "UpRate";
 		public static readonly string PROPERTY_NAME_DOWNRATE = "DownRate";
+		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
+		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		
         #endregion
 	
@@ -31,6 +33,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _interceptRate;
 		private int? _upRate;
 		private int? _downRate;
+		private string _commandType;
+		private string _commandCode;
 		
 		#endregion
 
@@ -38,7 +42,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SPRateDataContract()
+		public SPClientChannelSettingDataContract()
 		{
 			_id = 0;
 			_channelID = null;
@@ -46,6 +50,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_interceptRate = null;
 			_upRate = null;
 			_downRate = null;
+			_commandType = null;
+			_commandCode = null;
 		}
 		#endregion
 
@@ -135,30 +141,68 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string CommandType
+		{
+			get { return _commandType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for CommandType", value, value.ToString());
+				_commandType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string CommandCode
+		{
+			get { return _commandCode; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1600)
+					throw new ArgumentOutOfRangeException("Invalid value for CommandCode", value, value.ToString());
+				_commandCode = value;
+			}
+		}
+
 		
 		#endregion 
 
 
-        public void FromWrapper(SPRateWrapper wrapper)
+        public void FromWrapper(SPClientChannelSettingWrapper wrapper)
 		{
 			this.Id = wrapper.Id;
-			this.ChannelID = wrapper.ChannelID;
-			this.ClinetID = wrapper.ClinetID;
+			this.ChannelID = (wrapper.ChannelID!=null) ? wrapper.ChannelID.Id : 0 ; 
+			this.ClinetID = (wrapper.ClinetID!=null) ? wrapper.ClinetID.Id : 0 ; 
 			this.InterceptRate = wrapper.InterceptRate;
 			this.UpRate = wrapper.UpRate;
 			this.DownRate = wrapper.DownRate;
+			this.CommandType = wrapper.CommandType;
+			this.CommandCode = wrapper.CommandCode;
 		}
 		
 		
-		public SPRateWrapper ToWrapper()
+		public SPClientChannelSettingWrapper ToWrapper()
         {
-			SPRateWrapper wrapper = new SPRateWrapper();
+			SPClientChannelSettingWrapper wrapper = new SPClientChannelSettingWrapper();
 			wrapper.Id = this.Id;
-			wrapper.ChannelID = this.ChannelID;
-			wrapper.ClinetID = this.ClinetID;
+			wrapper.ChannelID =  (this.ChannelID==null) ? null : SPChannelWrapper.FindById(this.ChannelID);
+			wrapper.ClinetID =  (this.ClinetID==null) ? null : SPClientWrapper.FindById(this.ClinetID);
 			wrapper.InterceptRate = this.InterceptRate;
 			wrapper.UpRate = this.UpRate;
 			wrapper.DownRate = this.DownRate;
+			wrapper.CommandType = this.CommandType;
+			wrapper.CommandCode = this.CommandCode;
 		
 		return wrapper;
         }

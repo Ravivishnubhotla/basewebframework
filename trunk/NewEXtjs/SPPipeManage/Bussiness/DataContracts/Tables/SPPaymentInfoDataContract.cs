@@ -183,8 +183,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		{
 			this.Id = wrapper.Id;
 			this.MobileNumber = wrapper.MobileNumber;
-			this.ChannelID = wrapper.ChannelID;
-			this.ClientID = wrapper.ClientID;
+			this.ChannelID = (wrapper.ChannelID!=null) ? wrapper.ChannelID.Id : 0 ; 
+			this.ClientID = (wrapper.ClientID!=null) ? wrapper.ClientID.Id : 0 ; 
 			this.Message = wrapper.Message;
 			this.IsIntercept = wrapper.IsIntercept;
 			this.CreateDate = wrapper.CreateDate;
@@ -197,8 +197,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			SPPaymentInfoWrapper wrapper = new SPPaymentInfoWrapper();
 			wrapper.Id = this.Id;
 			wrapper.MobileNumber = this.MobileNumber;
-			wrapper.ChannelID = this.ChannelID;
-			wrapper.ClientID = this.ClientID;
+			wrapper.ChannelID =  (this.ChannelID==null) ? null : SPChannelWrapper.FindById(this.ChannelID);
+			wrapper.ClientID =  (this.ClientID==null) ? null : SPClientWrapper.FindById(this.ClientID);
 			wrapper.Message = this.Message;
 			wrapper.IsIntercept = this.IsIntercept;
 			wrapper.CreateDate = this.CreateDate;

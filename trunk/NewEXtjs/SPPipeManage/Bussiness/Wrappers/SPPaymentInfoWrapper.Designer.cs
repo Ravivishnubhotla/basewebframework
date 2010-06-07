@@ -111,29 +111,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ChannelID
+		public SPChannelWrapper ChannelID
 		{
 			get
 			{
-				return entity.ChannelID;
+				return SPChannelWrapper.ConvertEntityToWrapper(entity.ChannelID) ;
 			}
 			set
 			{
-				entity.ChannelID = value;
+				entity.ChannelID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ClientID
+		public SPClientWrapper ClientID
 		{
 			get
 			{
-				return entity.ClientID;
+				return SPClientWrapper.ConvertEntityToWrapper(entity.ClientID) ;
 			}
 			set
 			{
-				entity.ClientID = value;
+				entity.ClientID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>

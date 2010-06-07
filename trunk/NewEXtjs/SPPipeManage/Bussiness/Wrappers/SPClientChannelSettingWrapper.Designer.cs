@@ -10,14 +10,14 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
-    public partial class SPRateWrapper
+    public partial class SPClientChannelSettingWrapper
     {
         #region Member
 
-		internal static readonly ISPRateServiceProxy businessProxy = ((LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPRateServiceProxyInstance;
-		//internal static readonly ISPRateServiceProxy businessProxy = ((ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID"))).SPRateServiceProxyInstance;
+		internal static readonly ISPClientChannelSettingServiceProxy businessProxy = ((LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPClientChannelSettingServiceProxyInstance;
+		//internal static readonly ISPClientChannelSettingServiceProxy businessProxy = ((ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID"))).SPClientChannelSettingServiceProxyInstance;
 
-        internal SPRateEntity entity;
+        internal SPClientChannelSettingEntity entity;
 		
 		private static ILog logger = null;
 
@@ -26,7 +26,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             get
             {
                 if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPRateWrapper));
+                    logger = LogManager.GetLogger(typeof(SPClientChannelSettingWrapper));
                 return logger;
             }
         }
@@ -34,12 +34,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         #endregion
 
         #region Construtor
-        public SPRateWrapper() : this(new SPRateEntity())
+        public SPClientChannelSettingWrapper() : this(new SPClientChannelSettingEntity())
         {
             
         }
 
-        internal SPRateWrapper(SPRateEntity entityObj)
+        internal SPClientChannelSettingWrapper(SPClientChannelSettingEntity entityObj)
         {
             entity = entityObj;
         }
@@ -66,13 +66,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPRateEntity";
+		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPClientChannelSettingEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLINETID = "ClinetID";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_UPRATE = "UpRate";
 		public static readonly string PROPERTY_NAME_DOWNRATE = "DownRate";
+		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
+		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		
         #endregion
 
@@ -95,29 +97,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ChannelID
+		public SPChannelWrapper ChannelID
 		{
 			get
 			{
-				return entity.ChannelID;
+				return SPChannelWrapper.ConvertEntityToWrapper(entity.ChannelID) ;
 			}
 			set
 			{
-				entity.ChannelID = value;
+				entity.ChannelID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ClinetID
+		public SPClientWrapper ClinetID
 		{
 			get
 			{
-				return entity.ClinetID;
+				return SPClientWrapper.ConvertEntityToWrapper(entity.ClinetID) ;
 			}
 			set
 			{
-				entity.ClinetID = value;
+				entity.ClinetID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>
@@ -162,6 +164,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 				entity.DownRate = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string CommandType
+		{
+			get
+			{
+				return entity.CommandType;
+			}
+			set
+			{
+				entity.CommandType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string CommandCode
+		{
+			get
+			{
+				return entity.CommandCode;
+			}
+			set
+			{
+				entity.CommandCode = value;
+			}
+		}
 		#endregion 
 
 
@@ -172,37 +202,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region Static Common Data Operation
 		
-		internal static List<SPRateWrapper> ConvertToWrapperList(List<SPRateEntity> entitylist)
+		internal static List<SPClientChannelSettingWrapper> ConvertToWrapperList(List<SPClientChannelSettingEntity> entitylist)
         {
-            List<SPRateWrapper> list = new List<SPRateWrapper>();
-            foreach (SPRateEntity lentity in entitylist)
+            List<SPClientChannelSettingWrapper> list = new List<SPClientChannelSettingWrapper>();
+            foreach (SPClientChannelSettingEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 
-		internal static List<SPRateWrapper> ConvertToWrapperList(IList<SPRateEntity> entitylist)
+		internal static List<SPClientChannelSettingWrapper> ConvertToWrapperList(IList<SPClientChannelSettingEntity> entitylist)
         {
-            List<SPRateWrapper> list = new List<SPRateWrapper>();
-            foreach (SPRateEntity lentity in entitylist)
+            List<SPClientChannelSettingWrapper> list = new List<SPClientChannelSettingWrapper>();
+            foreach (SPClientChannelSettingEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 		
-		internal static List<SPRateEntity> ConvertToEntityList(List<SPRateWrapper> wrapperlist)
+		internal static List<SPClientChannelSettingEntity> ConvertToEntityList(List<SPClientChannelSettingWrapper> wrapperlist)
         {
-            List<SPRateEntity> list = new List<SPRateEntity>();
-            foreach (SPRateWrapper wrapper in wrapperlist)
+            List<SPClientChannelSettingEntity> list = new List<SPClientChannelSettingEntity>();
+            foreach (SPClientChannelSettingWrapper wrapper in wrapperlist)
             {
                 list.Add(wrapper.entity);
             }
             return list;
         }
 
-        internal static SPRateWrapper ConvertEntityToWrapper(SPRateEntity entity)
+        internal static SPClientChannelSettingWrapper ConvertEntityToWrapper(SPClientChannelSettingEntity entity)
         {
             if (entity == null)
                 return null;
@@ -210,7 +240,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             if (entity.Id == 0)
                 return null;
 
-            return new SPRateWrapper(entity);
+            return new SPClientChannelSettingWrapper(entity);
         }
 		
 		#endregion

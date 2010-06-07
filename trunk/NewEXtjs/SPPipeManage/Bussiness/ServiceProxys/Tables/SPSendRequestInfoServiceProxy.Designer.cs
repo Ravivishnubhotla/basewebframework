@@ -8,6 +8,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
+using Legendigital.TroniTechRMTS.Data.AdoNet;
 
 
 
@@ -30,6 +31,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 		
+        public AdoNetDataObject AdoNetDb { set; get; }		
 
 		
     }

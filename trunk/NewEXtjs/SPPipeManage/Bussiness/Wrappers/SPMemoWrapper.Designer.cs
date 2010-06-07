@@ -77,7 +77,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 		#region Public Property
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>		
 		public int Id
 		{
@@ -91,7 +91,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 标题
+		/// 
 		/// </summary>		
 		public string Title
 		{
@@ -105,7 +105,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 内容
+		/// 
 		/// </summary>		
 		public string MemoContent
 		{
@@ -119,7 +119,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>		
 		public DateTime? CreateDate
 		{

@@ -10,21 +10,21 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SPRateWrapper
+    public partial class SPClientChannelSettingWrapper
     {
         #region Static Common Data Operation
 		
-		public static void Save(SPRateWrapper obj)
+		public static void Save(SPClientChannelSettingWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
 
-        public static void Update(SPRateWrapper obj)
+        public static void Update(SPClientChannelSettingWrapper obj)
         {
             businessProxy.Update(obj.entity);
         }
 
-        public static void SaveOrUpdate(SPRateWrapper obj)
+        public static void SaveOrUpdate(SPClientChannelSettingWrapper obj)
         {
             businessProxy.SaveOrUpdate(obj.entity);
         }
@@ -45,42 +45,42 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.PatchDeleteByIDs(ids);
         }
 
-        public static void Delete(SPRateWrapper instance)
+        public static void Delete(SPClientChannelSettingWrapper instance)
         {
             businessProxy.Delete(instance.entity);
         }
 
-        public static void Refresh(SPRateWrapper instance)
+        public static void Refresh(SPClientChannelSettingWrapper instance)
         {
             businessProxy.Refresh(instance.entity);
         }
 
-        public static SPRateWrapper FindById(object id)
+        public static SPClientChannelSettingWrapper FindById(object id)
         {
             return ConvertEntityToWrapper(businessProxy.FindById(id));
         }
 
-        public static List<SPRateWrapper> FindAll()
+        public static List<SPClientChannelSettingWrapper> FindAll()
         {
             return ConvertToWrapperList(businessProxy.FindAll());
         }
 
-        public static List<SPRateWrapper> FindAll(int firstRow, int maxRows, out int recordCount)
+        public static List<SPClientChannelSettingWrapper> FindAll(int firstRow, int maxRows, out int recordCount)
         {
-            List<SPRateEntity> list = businessProxy.FindAll(firstRow, maxRows, out recordCount);
+            List<SPClientChannelSettingEntity> list = businessProxy.FindAll(firstRow, maxRows, out recordCount);
             return ConvertToWrapperList(list);
         }
 		
-		public static List<SPRateWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+		public static List<SPClientChannelSettingWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
                                              out recordCount);
         }
 
 
-        public static List<SPRateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
-            List<SPRateWrapper> results = null;
+            List<SPClientChannelSettingWrapper> results = null;
 
             results = ConvertToWrapperList(
                     businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
@@ -90,7 +90,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 		
 
-        public static List<SPRateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
         }
