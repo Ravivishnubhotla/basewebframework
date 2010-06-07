@@ -15,13 +15,13 @@
  <object id="SPClientDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPClientChannelSettingDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPMemoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMemoDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPPaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPaymentInfoDataObject, LD.SPPipeManage.Data">
-    <property name="HibernateTemplate" ref="HibernateTemplate"/>
-  </object>
- <object id="SPRateDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRateDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRequestInfoDataObject, LD.SPPipeManage.Data">
@@ -43,9 +43,9 @@
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
+    <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
     <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
-    <property name="SPRateDataObjectInstance" ref="SPRateDataObjectIocID"/>
     <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
     <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
     <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
