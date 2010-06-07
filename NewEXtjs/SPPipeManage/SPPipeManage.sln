@@ -43,6 +43,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web80\Web.csproj", "
 EndProject
 Project("{4F174C21-8C12-11D0-8340-0000F80270F8}") = "SQLDB", "SQLDB\SQLDB.dbp", "{43D45CFD-1B74-4221-8837-9ACAB88D5C7C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGene", "CodeGene", "{56C66CE0-FE51-43AD-9177-4AC2FD075C31}"
+	ProjectSection(SolutionItems) = preProject
+		CodeGene\ExtJs表现层代码模版.zeus = CodeGene\ExtJs表现层代码模版.zeus
+		CodeGene\SPChannel_FormUISetting = CodeGene\SPChannel_FormUISetting
+		CodeGene\SPS.dat = CodeGene\SPS.dat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
