@@ -15,6 +15,8 @@
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
 		<property column="IsRequired" type="Boolean" name="IsRequired"   />	
+		<many-to-one column="ClientID" name="ClientID" class="LD.SPPipeManage.Entity.Tables.SPClientEntity,LD.SPPipeManage.Entity" />		
+		<property column="MappingParams" type="string" name="MappingParams"   length="400" />	
 
 
 

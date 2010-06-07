@@ -60,6 +60,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -79,6 +82,10 @@
     <Compile Include="Tables\SPChannelParamsEntity.Designer.cs">
       <DependentUpon>SPChannelParamsEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientChannelSettingEntity.cs" />
+    <Compile Include="Tables\SPClientChannelSettingEntity.Designer.cs">
+      <DependentUpon>SPClientChannelSettingEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPClientEntity.cs" />
     <Compile Include="Tables\SPClientEntity.Designer.cs">
       <DependentUpon>SPClientEntity.cs</DependentUpon>
@@ -90,10 +97,6 @@
     <Compile Include="Tables\SPPaymentInfoEntity.cs" />
     <Compile Include="Tables\SPPaymentInfoEntity.Designer.cs">
       <DependentUpon>SPPaymentInfoEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\SPRateEntity.cs" />
-    <Compile Include="Tables\SPRateEntity.Designer.cs">
-      <DependentUpon>SPRateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPRequestInfoEntity.cs" />
     <Compile Include="Tables\SPRequestInfoEntity.Designer.cs">
@@ -116,7 +119,6 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPaymentInfoMappingFile.hbm.xml" />
-    <EmbeddedResource Include="Tables\MappingFiles\SPRateMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPRequestInfoMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSendClientParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSendRequestInfoMappingFile.hbm.xml" />
@@ -137,6 +139,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSettingMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

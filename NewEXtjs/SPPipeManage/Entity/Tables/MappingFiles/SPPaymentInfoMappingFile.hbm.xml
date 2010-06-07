@@ -12,8 +12,8 @@
 
 
 		<property column="MobileNumber" type="string" name="MobileNumber"   length="400" />	
-		<property column="ChannelID" type="int" name="ChannelID"   />	
-		<property column="ClientID" type="int" name="ClientID"   />	
+		<many-to-one column="ChannelID" name="ChannelID" class="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" />		
+		<many-to-one column="ClientID" name="ClientID" class="LD.SPPipeManage.Entity.Tables.SPClientEntity,LD.SPPipeManage.Entity" />		
 		<property column="Message" type="string" name="Message"   length="4000" />	
 		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	

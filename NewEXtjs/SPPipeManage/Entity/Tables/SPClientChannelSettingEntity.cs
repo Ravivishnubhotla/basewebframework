@@ -4,7 +4,7 @@ using System;
 namespace LD.SPPipeManage.Entity.Tables
 {
 	[Serializable]
-	public partial class SPRateEntity
+	public partial class SPClientChannelSettingEntity
 	{
 	
 	}

@@ -9,7 +9,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace LD.SPPipeManage.Data.Tables
 {
-    public partial class SPRateDataObject
+    public partial class SPClientChannelSettingDataObject
     {
     }
 }

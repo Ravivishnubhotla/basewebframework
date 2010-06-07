@@ -6,8 +6,9 @@ using System.Runtime.Serialization;
 namespace LD.SPPipeManage.Entity.Tables
 {
 	/// <summary>
-	///	公告
+	///	
 	/// </summary>
+	[DataContract]
 	public partial class SPMemoEntity : ICloneable
 	{
         #region 公共常量
@@ -61,9 +62,9 @@ namespace LD.SPPipeManage.Entity.Tables
 	    #region 公共属性
 
 		/// <summary>
-		/// 主键
+		/// 
 		/// </summary>
-		
+		[DataMember]
 		public virtual int Id
 		{
 			get { return _id; }
@@ -75,9 +76,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		}
 
 		/// <summary>
-		/// 标题
+		/// 
 		/// </summary>
-		
+		[DataMember]
 		public virtual string Title
 		{
 			get { return _title; }
@@ -92,9 +93,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		}
 
 		/// <summary>
-		/// 内容
+		/// 
 		/// </summary>
-		
+		[DataMember]
 		public virtual string MemoContent
 		{
 			get { return _memoContent; }
@@ -109,9 +110,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		}
 
 		/// <summary>
-		/// 创建时间
+		/// 
 		/// </summary>
-		
+		[DataMember]
 		public virtual DateTime? CreateDate
 		{
 			get { return _createDate; }
