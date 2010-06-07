@@ -18,6 +18,20 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_ISENABLE = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_ISENABLE);
 		public static readonly Property PROPERTY_ISREQUIRED = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_ISREQUIRED);
+		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_CLIENTID);
+		#region clientID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> InClude_ClientID_Query(NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPSendClientParamsEntity.PROPERTY_NAME_CLIENTID, PROPERTY_CLIENTID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_CLIENTID_ALIAS_NAME = "ClientID_SPSendClientParamsEntity_Alias";
+		public static readonly Property PROPERTY_CLIENTID_ID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Id");
+		public static readonly Property PROPERTY_CLIENTID_NAME = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Name");
+		public static readonly Property PROPERTY_CLIENTID_DESCRIPTION = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description");
+		public static readonly Property PROPERTY_CLIENTID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl");
+		public static readonly Property PROPERTY_CLIENTID_USERID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID");
+		#endregion
+		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
       
 		#region 子类集合字段查询字段
 	
@@ -45,6 +59,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "IsRequired":
                     return typeof (bool);
+                case "ClientID":
+                    return typeof (int);
+                case "MappingParams":
+                    return typeof (string);
           }
 			return typeof(string);
         }

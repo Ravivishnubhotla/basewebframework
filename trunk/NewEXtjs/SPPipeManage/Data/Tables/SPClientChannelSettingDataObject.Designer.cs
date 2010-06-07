@@ -10,18 +10,17 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace LD.SPPipeManage.Data.Tables
 {
-    public partial class SPPaymentInfoDataObject : BaseNHibernateDataObject<SPPaymentInfoEntity>
+    public partial class SPClientChannelSettingDataObject : BaseNHibernateDataObject<SPClientChannelSettingEntity>
     {
 				#region Expression Query Property (标准查询字段)
-		public static readonly Property PROPERTY_ID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ID);
-		public static readonly Property PROPERTY_MOBILENUMBER = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MOBILENUMBER);
-		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CHANNELID);
+		public static readonly Property PROPERTY_ID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ID);
+		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CHANNELID);
 		#region channelID字段外键查询字段
-        public static NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> queryGenerator)
+        public static NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator)
         {
-            return queryGenerator.AddAlians(SPPaymentInfoEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
+            return queryGenerator.AddAlians(SPClientChannelSettingEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
         }
-        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPPaymentInfoEntity_Alias";
+        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPClientChannelSettingEntity_Alias";
 		public static readonly Property PROPERTY_CHANNELID_ID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Id");
 		public static readonly Property PROPERTY_CHANNELID_NAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name");
 		public static readonly Property PROPERTY_CHANNELID_DESCRIPTION = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description");
@@ -38,23 +37,24 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
 		#endregion
-		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CLIENTID);
-		#region clientID字段外键查询字段
-        public static NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> InClude_ClientID_Query(NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> queryGenerator)
+		public static readonly Property PROPERTY_CLINETID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CLINETID);
+		#region clinetID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> InClude_ClinetID_Query(NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator)
         {
-            return queryGenerator.AddAlians(SPPaymentInfoEntity.PROPERTY_NAME_CLIENTID, PROPERTY_CLIENTID_ALIAS_NAME);
+            return queryGenerator.AddAlians(SPClientChannelSettingEntity.PROPERTY_NAME_CLINETID, PROPERTY_CLINETID_ALIAS_NAME);
         }
-        public static readonly string PROPERTY_CLIENTID_ALIAS_NAME = "ClientID_SPPaymentInfoEntity_Alias";
-		public static readonly Property PROPERTY_CLIENTID_ID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Id");
-		public static readonly Property PROPERTY_CLIENTID_NAME = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Name");
-		public static readonly Property PROPERTY_CLIENTID_DESCRIPTION = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description");
-		public static readonly Property PROPERTY_CLIENTID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl");
-		public static readonly Property PROPERTY_CLIENTID_USERID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID");
+        public static readonly string PROPERTY_CLINETID_ALIAS_NAME = "ClinetID_SPClientChannelSettingEntity_Alias";
+		public static readonly Property PROPERTY_CLINETID_ID = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".Id");
+		public static readonly Property PROPERTY_CLINETID_NAME = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".Name");
+		public static readonly Property PROPERTY_CLINETID_DESCRIPTION = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".Description");
+		public static readonly Property PROPERTY_CLINETID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".RecieveDataUrl");
+		public static readonly Property PROPERTY_CLINETID_USERID = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".UserID");
 		#endregion
-		public static readonly Property PROPERTY_MESSAGE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MESSAGE);
-		public static readonly Property PROPERTY_ISINTERCEPT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISINTERCEPT);
-		public static readonly Property PROPERTY_CREATEDATE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CREATEDATE);
-		public static readonly Property PROPERTY_REQUESTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_REQUESTID);
+		public static readonly Property PROPERTY_INTERCEPTRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATE);
+		public static readonly Property PROPERTY_UPRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_UPRATE);
+		public static readonly Property PROPERTY_DOWNRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DOWNRATE);
+		public static readonly Property PROPERTY_COMMANDTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDTYPE);
+		public static readonly Property PROPERTY_COMMANDCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCODE);
       
 		#region 子类集合字段查询字段
 	
@@ -74,20 +74,20 @@ namespace LD.SPPipeManage.Data.Tables
             {
                 case "Id":
                     return typeof (int);
-                case "MobileNumber":
-                    return typeof (string);
                 case "ChannelID":
                     return typeof (int);
-                case "ClientID":
+                case "ClinetID":
                     return typeof (int);
-                case "Message":
+                case "InterceptRate":
+                    return typeof (int);
+                case "UpRate":
+                    return typeof (int);
+                case "DownRate":
+                    return typeof (int);
+                case "CommandType":
                     return typeof (string);
-                case "IsIntercept":
-                    return typeof (bool);
-                case "CreateDate":
-                    return typeof (DateTime);
-                case "RequestID":
-                    return typeof (int);
+                case "CommandCode":
+                    return typeof (string);
           }
 			return typeof(string);
         }

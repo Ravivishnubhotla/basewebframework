@@ -18,6 +18,30 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_ISENABLE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ISENABLE);
 		public static readonly Property PROPERTY_ISREQUIRED = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ISREQUIRED);
+		public static readonly Property PROPERTY_PARAMSTYPE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSTYPE);
+		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_CHANNELID);
+		#region channelID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPChannelParamsEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPChannelParamsEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPChannelParamsEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPChannelParamsEntity_Alias";
+		public static readonly Property PROPERTY_CHANNELID_ID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Id");
+		public static readonly Property PROPERTY_CHANNELID_NAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name");
+		public static readonly Property PROPERTY_CHANNELID_DESCRIPTION = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description");
+		public static readonly Property PROPERTY_CHANNELID_AREA = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Area");
+		public static readonly Property PROPERTY_CHANNELID_OPERATOR = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Operator");
+		public static readonly Property PROPERTY_CHANNELID_CHANNELCODE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelCode");
+		public static readonly Property PROPERTY_CHANNELID_FUZZYCOMMAND = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".FuzzyCommand");
+		public static readonly Property PROPERTY_CHANNELID_ACCURATECOMMAND = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".AccurateCommand");
+		public static readonly Property PROPERTY_CHANNELID_PORT = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Port");
+		public static readonly Property PROPERTY_CHANNELID_CHANNELTYPE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelType");
+		public static readonly Property PROPERTY_CHANNELID_PRICE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Price");
+		public static readonly Property PROPERTY_CHANNELID_RATE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Rate");
+		public static readonly Property PROPERTY_CHANNELID_STATUS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Status");
+		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
+		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -45,6 +69,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "IsRequired":
                     return typeof (bool);
+                case "ParamsType":
+                    return typeof (string);
+                case "ChannelID":
+                    return typeof (int);
           }
 			return typeof(string);
         }
