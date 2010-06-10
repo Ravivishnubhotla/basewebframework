@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using ListItem = Coolite.Ext.Web.ListItem;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 {
@@ -14,20 +15,35 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Ext.IsAjaxRequest)
+                return;
 
+            //this.cmbChannelID.Items.Clear();
+
+            //foreach (SPChannelWrapper channelWrapper in SPChannelWrapper.FindAll())
+            //{
+            //    this.cmbChannelID.Items.Add(new ListItem(channelWrapper.Name, channelWrapper.Id.ToString()));
+            //}
+
+
+            //storeSPChannelAdd.DataSource = SPChannelWrapper.FindAll();
+            //storeSPChannelAdd.DataBind();
+            //storeSPClientAdd.DataSource = SPClientWrapper.FindAll();
+            //storeSPClientAdd.DataBind();
         }
 
         //protected void storeSPChannelAdd_Refresh(object sender, StoreRefreshDataEventArgs e)
         //{
+        //    //this.cmbChannelID.Items.Clear();
         //    storeSPChannelAdd.DataSource = SPChannelWrapper.FindAll();
         //    storeSPChannelAdd.DataBind();
         //}
 
-        protected void storeSPClientAdd_Refresh(object sender, StoreRefreshDataEventArgs e)
-        {
-            storeSPClientAdd.DataSource = SPClientWrapper.FindAll();
-            storeSPClientAdd.DataBind();
-        }
+        //protected void storeSPClientAdd_Refresh(object sender, StoreRefreshDataEventArgs e)
+        //{
+        //    storeSPClientAdd.DataSource = SPClientWrapper.FindAll();
+        //    storeSPClientAdd.DataBind();
+        //}
 
 
         [AjaxMethod]
