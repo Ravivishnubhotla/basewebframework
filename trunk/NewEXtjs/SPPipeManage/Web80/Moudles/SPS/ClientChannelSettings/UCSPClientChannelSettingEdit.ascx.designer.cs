@@ -14,6 +14,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
     public partial class UCSPClientChannelSettingEdit {
         
         /// <summary>
+        /// ScriptManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
         /// winSPClientChannelSettingEdit control.
         /// </summary>
         /// <remarks>
@@ -59,22 +68,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.Hidden hidId;
         
         /// <summary>
-        /// txtChannelID control.
+        /// lblChannelName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtChannelID;
+        protected global::Coolite.Ext.Web.Label lblChannelName;
         
         /// <summary>
-        /// txtClinetID control.
+        /// lblClientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtClinetID;
+        protected global::Coolite.Ext.Web.Label lblClientName;
         
         /// <summary>
         /// txtInterceptRate control.
@@ -83,34 +92,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtInterceptRate;
+        protected global::Coolite.Ext.Web.NumberField txtInterceptRate;
         
         /// <summary>
-        /// txtUpRate control.
+        /// cmbCommandType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtUpRate;
-        
-        /// <summary>
-        /// txtDownRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtDownRate;
-        
-        /// <summary>
-        /// txtCommandType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtCommandType;
+        protected global::Coolite.Ext.Web.ComboBox cmbCommandType;
         
         /// <summary>
         /// txtCommandCode control.

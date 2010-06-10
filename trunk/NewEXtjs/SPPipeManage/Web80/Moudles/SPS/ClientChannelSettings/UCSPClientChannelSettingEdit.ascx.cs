@@ -26,13 +26,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 if (obj != null)
                 {
-					              	this.txtChannelID.Text = obj.ChannelID.ToString();          	
-              	this.txtClinetID.Text = obj.ClinetID.ToString();          	
-              	this.txtInterceptRate.Text = obj.InterceptRate.ToString();          	
-              	this.txtUpRate.Text = obj.UpRate.ToString();          	
-              	this.txtDownRate.Text = obj.DownRate.ToString();          	
-              	this.txtCommandType.Text = obj.CommandType.ToString();          	
-              	this.txtCommandCode.Text = obj.CommandCode.ToString();          	
+                    if (obj.ChannelID!=null)
+                    {
+                        this.lblChannelName.Text = obj.ChannelID.Name;
+                    }
+                    if (obj.ClinetID!=null)
+                    {
+                        this.lblClientName.Text = obj.ClinetID.Name;
+                    }         	
+              	    this.txtInterceptRate.Text = obj.InterceptRate.ToString();
+                    this.cmbCommandType.SetValue(obj.CommandType.ToString());          	
+              	    this.txtCommandCode.Text = obj.CommandCode.ToString();          	
  
 
 
@@ -63,12 +67,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             try
             {
                 SPClientChannelSettingWrapper obj = SPClientChannelSettingWrapper.FindById(int.Parse(hidId.Text.Trim()));
-                //obj.ChannelID = Convert.ToInt32(this.txtChannelID.Text.Trim());
-                //obj.ClinetID = Convert.ToInt32(this.txtClinetID.Text.Trim());
+                //obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.SelectedItem.Value.ToString()));
+                //obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.SelectedItem.Value.ToString()));        	
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
-                obj.UpRate = Convert.ToInt32(this.txtUpRate.Text.Trim());
-                obj.DownRate = Convert.ToInt32(this.txtDownRate.Text.Trim());
-                obj.CommandType = this.txtCommandType.Text.Trim();
+                obj.UpRate = 0;
+                obj.DownRate = 0;
+                obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
 
 

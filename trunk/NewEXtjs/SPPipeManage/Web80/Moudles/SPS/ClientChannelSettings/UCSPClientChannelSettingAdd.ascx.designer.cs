@@ -101,7 +101,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtInterceptRate;
+        protected global::Coolite.Ext.Web.NumberField txtInterceptRate;
         
         /// <summary>
         /// cmbCommandType control.

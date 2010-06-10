@@ -11,5 +11,13 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPChannelDataObject
     {
+        public SPChannelEntity FindByAlias(string aliasName)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_FUZZYCOMMAND.Eq(aliasName));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
     }
 }
