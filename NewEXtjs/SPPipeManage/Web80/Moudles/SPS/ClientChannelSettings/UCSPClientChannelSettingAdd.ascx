@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientChannelSettingAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingAdd" %>
+ 
 <ext:Store ID="storeSPChannelAdd" runat="server" AutoLoad="false" >
     <Proxy>
           <ext:HttpProxy Method="GET" Url="../Channels/SPChannelHandler.ashx" />
@@ -13,6 +14,22 @@
         </ext:JsonReader>
     </Reader>
 </ext:Store>
+ <ext:Store ID="storeSPClientAdd" runat="server" AutoLoad="false" >
+    <Proxy>
+          <ext:HttpProxy Method="GET" Url="../Clients/SPClientHandler.ashx" />
+    </Proxy>
+    <Reader>
+        <ext:JsonReader Root="clients" TotalProperty="total">
+            <Fields>
+                <ext:RecordField Name="Id" Type="int" Mapping="Id" />
+                <ext:RecordField Name="Name"  Mapping="Name" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+</ext:Store>
+ 
+<%--
+
 <ext:Store ID="storeSPClientAdd" runat="server" AutoLoad="false" RemoteSort="false"
     OnRefreshData="storeSPClientAdd_Refresh">
     <Proxy>
@@ -26,11 +43,9 @@
             </Fields>
         </ext:JsonReader>
     </Reader>
-</ext:Store>
+</ext:Store>--%>
 	<ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
-	<Listeners>
-	<DocumentReady Handler="#{storeSPClientAdd}.reload();#{storeSPChannelAdd}.reload();" />
-	</Listeners>
+ 
     </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingAdd" runat="server" Icon="ApplicationAdd"
     Title="新建通道下家设置" Width="400" Height="270" AutoShow="false" Maximizable="true"
@@ -44,12 +59,14 @@
                         LabelWidth="100">
                         <Anchors>
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbChannelID" runat="server" FieldLabel="通道" AllowBlank="False"
-                                    StoreID="storeSPChannelAdd" Editable="false"  ForceSelection="true"
-                                      DisplayField="Name" ValueField="ID"  />
+                                        <%--                       <ext:ComboBox ID="cmbChannelID" runat="server" FieldLabel="通道" AllowBlank="False"  Editable="false" ForceSelection="true"  />--%>
+                             <ext:ComboBox ID="cmbChannelID" runat="server" FieldLabel="通道" AllowBlank="False"
+                                    StoreID="storeSPChannelAdd"  Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
+                                      DisplayField="Name" ValueField="ID" EmptyText="请选择通道" ValueNotFoundText="加载中..."  />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbClinetID" runat="server" FieldLabel="下家" AllowBlank="False" StoreID="storeSPClientAdd"
+                          <%--         <ext:ComboBox ID="cmbClinetID" runat="server" FieldLabel="通道" AllowBlank="False"  Editable="false" ForceSelection="true"  />--%>
+                          <ext:ComboBox ID="cmbClinetID" runat="server" FieldLabel="下家" AllowBlank="False" StoreID="storeSPClientAdd"
                                     Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true" TriggerAction="All"
                                     DisplayField="Name" ValueField="ID" EmptyText="请选择下家" ValueNotFoundText="加载中..." />
                             </ext:Anchor>
@@ -58,9 +75,9 @@
                                     Text="50" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbCommandType" runat="server" FieldLabel="通道" AllowBlank="False"
-                                    StoreID="storeSPChannelAdd" Editable="false" TypeAhead="true" ForceSelection="true"  Mode="Local"
-                                    TriggerAction="All" EmptyText="请选择通道">
+                                <ext:ComboBox ID="cmbCommandType" runat="server" FieldLabel="指令匹配规则" AllowBlank="False"
+                                  Editable="false" TypeAhead="true" ForceSelection="true"  Mode="Local"
+                                    TriggerAction="All" EmptyText="请选择指令匹配规则">
                                     <Items>
                                         <ext:ListItem Text="完全匹配" Value="1" />
                                         <ext:ListItem Text="包含" Value="2" />
@@ -96,5 +113,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
- 
+ <Listeners>
+ <Show  Handler="#{storeSPChannelAdd}.reload();#{storeSPClientAdd}.reload();" />
+ </Listeners>
 </ext:Window>
