@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
+
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
 
     <script type="text/javascript">
@@ -78,9 +80,8 @@
         }
 
     </script>
-	
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true"
-        OnRefreshData="storeSPChannel_Refresh">
+
+    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeSPChannel_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="20" Mode="Raw" />
@@ -91,39 +92,35 @@
         <Reader>
             <ext:JsonReader ReaderID="Id">
                 <Fields>
-				<ext:RecordField Name="Id" Type="int" />
-		<ext:RecordField Name="Name" />			
-		<ext:RecordField Name="Description" />			
-		<ext:RecordField Name="Area" />			
-		<ext:RecordField Name="Operator" />			
-		<ext:RecordField Name="ChannelCode" />			
-		<ext:RecordField Name="FuzzyCommand" />			
-		<ext:RecordField Name="AccurateCommand" />			
-		<ext:RecordField Name="Port" />			
-		<ext:RecordField Name="ChannelType" />			
-				<ext:RecordField Name="Price" Type="int" />
-				<ext:RecordField Name="Rate" Type="int" />
-				<ext:RecordField Name="Status" Type="int" />
-				<ext:RecordField Name="CreateTime" Type="Date" />
-				<ext:RecordField Name="CreateBy" Type="int" />
- 
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Description" />
+                    <ext:RecordField Name="Area" />
+                    <ext:RecordField Name="Operator" />
+                    <ext:RecordField Name="ChannelCode" />
+                    <ext:RecordField Name="FuzzyCommand" />
+                    <ext:RecordField Name="AccurateCommand" />
+                    <ext:RecordField Name="Port" />
+                    <ext:RecordField Name="ChannelType" />
+                    <ext:RecordField Name="Price" Type="int" />
+                    <ext:RecordField Name="Rate" Type="int" />
+                    <ext:RecordField Name="Status" Type="int" />
+                    <ext:RecordField Name="CreateTime" Type="Date" />
+                    <ext:RecordField Name="CreateBy" Type="int" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
     </ext:Store>
-	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPChannelAdd ID="UCSPChannelAdd1" runat="server" />
-    <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" /> 
-    
-	
+    <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPChannel" runat="server" StoreID="storeSPChannel" StripeRows="true"
-                        Title="通道管理" Icon="Table"  >
+                        Title="通道管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -149,32 +146,30 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-		<ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
-                                </ext:Column>					
-		<ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Sortable="true">
-                                </ext:Column>				
-		<ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
-                                </ext:Column>					
-		<ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true">
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
-				<ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true">
+                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Sortable="true">
                                 </ext:Column>
-				<ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true">
+                                <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true">
                                 </ext:Column>
- 
-                        <ext:CommandColumn Header="SPChannel管理" Width="120">
-
+                                <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true">
+                                </ext:Column>
+                                <ext:CommandColumn Header="通道管理" Width="120">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit"  Text="编辑">
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" >
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                     </Commands>
@@ -187,17 +182,16 @@
                                 DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的通道" />
                         </BottomBar>
                         <Listeners>
-                            <Command Handler="processcmd(command, record);" />                        
+                            <Command Handler="processcmd(command, record);" />
                         </Listeners>
-                         <Plugins>
-                <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
-                    <Template ID="Template1" runat="server">
+                        <Plugins>
+                            <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
+                                <Template ID="Template1" runat="server">
                     <br />
                         <p><b>描述：</b> {Description}</p>
-                    </Template>
-                </ext:RowExpander>
-            </Plugins>
-
+                                </Template>
+                            </ext:RowExpander>
+                        </Plugins>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>

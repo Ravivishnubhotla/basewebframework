@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -13,13 +14,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPChannelParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelParamsEntity>
     {
-
-
+ 
     }
 
     internal partial class SPChannelParamsServiceProxy : ISPChannelParamsServiceProxy
     {
-
-
+ 
     }
 }

@@ -97,5 +97,39 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        public static SPChannelWrapper GetChannelByPath(string fileName)
+        {
+            int id = 0;
+
+            int.TryParse(fileName, out id);
+
+            SPChannelWrapper channel = null;
+
+            if (id != 0)
+            {
+                channel = SPChannelWrapper.FindById(id);
+            }
+
+            if (channel != null)
+            {
+                return channel;
+            }
+
+            return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName)); 
+        }
+
+
+        public void ProcessRequest(System.Collections.Hashtable hashtable)
+        {
+            string cpid = hashtable["cpid"].ToString();
+            string mid = hashtable["mid"].ToString();
+            string mobile = hashtable["mobile"].ToString();
+            string port = hashtable["port"].ToString();
+            string ywid = hashtable["ywid"].ToString();
+            string msg = hashtable["msg"].ToString(); 
+
+            
+
+        }
     }
 }

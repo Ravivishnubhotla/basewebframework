@@ -66,14 +66,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             {
                 SPClientChannelSettingWrapper obj = new SPClientChannelSettingWrapper();
 
-
-
-                obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.Value.ToString()));
-                obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.Value.ToString()));        	
+                obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.SelectedItem.Value.ToString()));
+                obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.SelectedItem.Value.ToString()));        	
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
-                obj.CommandType = this.cmbCommandType.Value.ToString();
+                obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
 
                 SPClientChannelSettingWrapper.Save(obj);

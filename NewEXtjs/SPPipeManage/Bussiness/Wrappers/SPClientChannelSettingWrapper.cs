@@ -97,5 +97,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public string ClientName
+	    {
+	        get
+	        {
+	            if(this.ClinetID!=null)
+	            {
+	                return this.ClinetID.Name;
+	            }
+	            return "";
+	        }
+	    }
+
+        public string ChannelName
+        {
+            get
+            {
+                if (this.ChannelID != null)
+                {
+                    return this.ChannelID.Name;
+                }
+                return "";
+            }
+        }
+
     }
 }

@@ -1,8 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPClientListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.SPClientListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SPClientListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.SPClientListPage" %>
+
 <%@ Register Src="UCSPClientAdd.ascx" TagName="UCSPClientAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPClientEdit.ascx" TagName="UCSPClientEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-	<ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
 
     <script type="text/javascript">
@@ -78,9 +80,8 @@
         }
 
     </script>
-	
-    <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" RemoteSort="true"
-        OnRefreshData="storeSPClient_Refresh">
+
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeSPClient_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="20" Mode="Raw" />
@@ -89,31 +90,27 @@
             <ext:DataSourceProxy />
         </Proxy>
         <Reader>
-            <ext:JsonReader ReaderID="ID">
+            <ext:JsonReader ReaderID="Id">
                 <Fields>
-				<ext:RecordField Name="ID" Type="int" />
-		<ext:RecordField Name="Name" />			
-		<ext:RecordField Name="Description" />			
-		<ext:RecordField Name="RecieveDataUrl" />			
-				<ext:RecordField Name="UserID" Type="int" />
- 
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Description" />
+                    <ext:RecordField Name="RecieveDataUrl" />
+                    <ext:RecordField Name="UserID" Type="int" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
     </ext:Store>
-	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPClientAdd ID="UCSPClientAdd1" runat="server" />
-    <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" /> 
-    
-	
+    <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClient" runat="server" StoreID="storeSPClient" StripeRows="true"
-                        Title="下家管理" Icon="Table"  >
+                        Title="下家管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -139,24 +136,21 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colID" DataIndex="ID" Header="主键" Sortable="true">
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colUserID" DataIndex="UserID" Header="关联用户" Sortable="true">
+                                <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
- 
-                        <ext:CommandColumn Header="下家管理" Width="160">
-
+                                <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
+                                    Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colUserID" DataIndex="UserID" Header="关联用户" Sortable="true">
+                                </ext:Column>
+                                <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                     </Commands>
@@ -169,7 +163,7 @@
                                 DisplayInfo="true" DisplayMsg="显示下家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的下家" />
                         </BottomBar>
                         <Listeners>
-                            <Command Handler="processcmd(command, record);" />                        
+                            <Command Handler="processcmd(command, record);" />
                         </Listeners>
                     </ext:GridPanel>
                 </Items>
