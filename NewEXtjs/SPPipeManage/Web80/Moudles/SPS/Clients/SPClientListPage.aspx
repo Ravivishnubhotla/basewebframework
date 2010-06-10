@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
-<%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPClientListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.SPClientListPage" %>
+<%@ Register Src="UCSPClientAdd.ascx" TagName="UCSPClientAdd" TagPrefix="uc1" %>
+<%@ Register Src="UCSPClientEdit.ascx" TagName="UCSPClientEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 	<ext:ScriptManagerProxy ID="ScriptManagerProxy1"   runat="server">
     </ext:ScriptManagerProxy>
@@ -15,19 +15,19 @@
                 return '否';
         }
 
-        function RefreshSPChannelList() {
-            <%= this.storeSPChannel.ClientID %>.reload();
+        function RefreshSPClientList() {
+            <%= this.storeSPClient.ClientID %>.reload();
         };
 
-        var RefreshSPChannelData = function(btn) {
-            <%= this.storeSPChannel.ClientID %>.reload();
+        var RefreshSPClientData = function(btn) {
+            <%= this.storeSPClient.ClientID %>.reload();
         };
         
-        function ShowAddSPChannelForm() {
-                Coolite.AjaxMethods.UCSPChannelAdd.Show( 
+        function ShowAddSPClientForm() {
+                Coolite.AjaxMethods.UCSPClientAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -40,10 +40,10 @@
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
-                Coolite.AjaxMethods.UCSPChannelEdit.Show(id.id,
+                Coolite.AjaxMethods.UCSPClientEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -54,7 +54,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选通道 ? ',
+                Ext.MessageBox.confirm('警告','确认要删除所选SPClient ? ',
                     function(e) {
                         if (e == 'yes')
                             Coolite.AjaxMethods.DeleteRecord(
@@ -64,7 +64,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除通道！',RefreshSPChannelData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除SPClient！',RefreshSPClientData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -79,8 +79,8 @@
 
     </script>
 	
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true"
-        OnRefreshData="storeSPChannel_Refresh">
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" RemoteSort="true"
+        OnRefreshData="storeSPClient_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="20" Mode="Raw" />
@@ -89,23 +89,13 @@
             <ext:DataSourceProxy />
         </Proxy>
         <Reader>
-            <ext:JsonReader ReaderID="Id">
+            <ext:JsonReader ReaderID="ID">
                 <Fields>
-				<ext:RecordField Name="Id" Type="int" />
+				<ext:RecordField Name="ID" Type="int" />
 		<ext:RecordField Name="Name" />			
 		<ext:RecordField Name="Description" />			
-		<ext:RecordField Name="Area" />			
-		<ext:RecordField Name="Operator" />			
-		<ext:RecordField Name="ChannelCode" />			
-		<ext:RecordField Name="FuzzyCommand" />			
-		<ext:RecordField Name="AccurateCommand" />			
-		<ext:RecordField Name="Port" />			
-		<ext:RecordField Name="ChannelType" />			
-				<ext:RecordField Name="Price" Type="int" />
-				<ext:RecordField Name="Rate" Type="int" />
-				<ext:RecordField Name="Status" Type="int" />
-				<ext:RecordField Name="CreateTime" Type="Date" />
-				<ext:RecordField Name="CreateBy" Type="int" />
+		<ext:RecordField Name="RecieveDataUrl" />			
+				<ext:RecordField Name="UserID" Type="int" />
  
                 </Fields>
             </ext:JsonReader>
@@ -114,27 +104,27 @@
 	
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCSPChannelAdd ID="UCSPChannelAdd1" runat="server" />
-    <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" /> 
+    <uc1:UCSPClientAdd ID="UCSPClientAdd1" runat="server" />
+    <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" /> 
     
 	
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="gridPanelSPChannel" runat="server" StoreID="storeSPChannel" StripeRows="true"
-                        Title="通道管理" Icon="Table"  >
+                    <ext:GridPanel ID="gridPanelSPClient" runat="server" StoreID="storeSPClient" StripeRows="true"
+                        Title="下家管理" Icon="Table"  >
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
                                     <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
                                         <Listeners>
-                                            <Click Handler="ShowAddSPChannelForm();" />
+                                            <Click Handler="ShowAddSPClientForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
-                                            <Click Handler="#{storeSPChannel}.reload();" />
+                                            <Click Handler="#{storeSPClient}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                 </Items>
@@ -149,32 +139,24 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
+				<ext:Column ColumnID="colID" DataIndex="ID" Header="主键" Sortable="true">
+                                </ext:Column>
 		<ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
-                                </ext:Column>					
-		<ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Sortable="true">
-                                </ext:Column>				
-		<ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
-                                </ext:Column>					
-		<ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true">
+		<ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Sortable="true">
+		<ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口" Sortable="true">
                                 </ext:Column>			
-				<ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true">
+				<ext:Column ColumnID="colUserID" DataIndex="UserID" Header="关联用户" Sortable="true">
                                 </ext:Column>
  
-                        <ext:CommandColumn Header="SPChannel管理" Width="120">
+                        <ext:CommandColumn Header="下家管理" Width="160">
 
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit"  Text="编辑">
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" >
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                     </Commands>
@@ -183,21 +165,12 @@
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
                         <BottomBar>
-                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPChannel"
-                                DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的通道" />
+                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPClient"
+                                DisplayInfo="true" DisplayMsg="显示下家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的下家" />
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />                        
                         </Listeners>
-                         <Plugins>
-                <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
-                    <Template ID="Template1" runat="server">
-                    <br />
-                        <p><b>描述：</b> {Description}</p>
-                    </Template>
-                </ext:RowExpander>
-            </Plugins>
-
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>
