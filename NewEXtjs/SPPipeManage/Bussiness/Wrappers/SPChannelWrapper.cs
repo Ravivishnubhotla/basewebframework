@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -119,17 +120,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public void ProcessRequest(System.Collections.Hashtable hashtable)
+        public void ProcessRequest(Hashtable hashtable)
         {
-            string cpid = hashtable["cpid"].ToString();
-            string mid = hashtable["mid"].ToString();
-            string mobile = hashtable["mobile"].ToString();
-            string port = hashtable["port"].ToString();
-            string ywid = hashtable["ywid"].ToString();
-            string msg = hashtable["msg"].ToString(); 
+            string cpid = GetParamsValue(hashtable,"cpid");
+            string mid = GetParamsValue(hashtable, "mid");
+            string mobile = GetParamsValue(hashtable, "mobile");
+            string port = GetParamsValue(hashtable, "port");
+            string ywid = GetParamsValue(hashtable, "ywid");
+            string msg = GetParamsValue(hashtable, "msg");
 
+            Hashtable exparams = GetEXParamsValue(hashtable);
+
+
+            SPClientWrapper spClientWrapper = GetClientFromYWID(ywid);
+
+            spClientWrapper.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
             
+        }
 
+	    private Hashtable GetEXParamsValue(Hashtable hashtable)
+	    {
+	        return new Hashtable();
+	    }
+
+	    private SPClientWrapper GetClientFromYWID(string ywid)
+	    {
+	        return null;
+	    }
+
+	    private string GetParamsValue(Hashtable hashtable,string key)
+        {
+            return hashtable[key].ToString();
         }
     }
 }
