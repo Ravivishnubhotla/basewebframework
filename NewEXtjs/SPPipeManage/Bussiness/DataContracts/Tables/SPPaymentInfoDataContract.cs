@@ -22,6 +22,12 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_REQUESTID = "RequestID";
+		public static readonly string PROPERTY_NAME_CPID = "Cpid";
+		public static readonly string PROPERTY_NAME_MID = "Mid";
+		public static readonly string PROPERTY_NAME_PORT = "Port";
+		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_IP = "Ip";
+		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		
         #endregion
 	
@@ -35,6 +41,12 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isIntercept;
 		private DateTime? _createDate;
 		private int? _requestID;
+		private string _cpid;
+		private string _mid;
+		private string _port;
+		private string _ywid;
+		private string _ip;
+		private bool? _sucesssToSend;
 		
 		#endregion
 
@@ -52,6 +64,12 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isIntercept = null;
 			_createDate = null;
 			_requestID = null;
+			_cpid = null;
+			_mid = null;
+			_port = String.Empty;
+			_ywid = null;
+			_ip = null;
+			_sucesssToSend = null;
 		}
 		#endregion
 
@@ -175,6 +193,105 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Cpid
+		{
+			get { return _cpid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Cpid", value, value.ToString());
+				_cpid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Mid
+		{
+			get { return _mid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Mid", value, value.ToString());
+				_mid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Port
+		{
+			get { return _port; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Port", value, value.ToString());
+				_port = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Ywid
+		{
+			get { return _ywid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Ywid", value, value.ToString());
+				_ywid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Ip
+		{
+			get { return _ip; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for Ip", value, value.ToString());
+				_ip = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? SucesssToSend
+		{
+			get { return _sucesssToSend; }
+
+			set	
+			{
+				_sucesssToSend = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -189,6 +306,12 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsIntercept = wrapper.IsIntercept;
 			this.CreateDate = wrapper.CreateDate;
 			this.RequestID = wrapper.RequestID;
+			this.Cpid = wrapper.Cpid;
+			this.Mid = wrapper.Mid;
+			this.Port = wrapper.Port;
+			this.Ywid = wrapper.Ywid;
+			this.Ip = wrapper.Ip;
+			this.SucesssToSend = wrapper.SucesssToSend;
 		}
 		
 		
@@ -203,6 +326,12 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsIntercept = this.IsIntercept;
 			wrapper.CreateDate = this.CreateDate;
 			wrapper.RequestID = this.RequestID;
+			wrapper.Cpid = this.Cpid;
+			wrapper.Mid = this.Mid;
+			wrapper.Port = this.Port;
+			wrapper.Ywid = this.Ywid;
+			wrapper.Ip = this.Ip;
+			wrapper.SucesssToSend = this.SucesssToSend;
 		
 		return wrapper;
         }
