@@ -75,6 +75,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_REQUESTID = "RequestID";
+		public static readonly string PROPERTY_NAME_CPID = "Cpid";
+		public static readonly string PROPERTY_NAME_MID = "Mid";
+		public static readonly string PROPERTY_NAME_PORT = "Port";
+		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_IP = "Ip";
+		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		
         #endregion
 
@@ -190,6 +196,90 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.RequestID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Cpid
+		{
+			get
+			{
+				return entity.Cpid;
+			}
+			set
+			{
+				entity.Cpid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Mid
+		{
+			get
+			{
+				return entity.Mid;
+			}
+			set
+			{
+				entity.Mid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Port
+		{
+			get
+			{
+				return entity.Port;
+			}
+			set
+			{
+				entity.Port = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Ywid
+		{
+			get
+			{
+				return entity.Ywid;
+			}
+			set
+			{
+				entity.Ywid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Ip
+		{
+			get
+			{
+				return entity.Ip;
+			}
+			set
+			{
+				entity.Ip = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? SucesssToSend
+		{
+			get
+			{
+				return entity.SucesssToSend;
+			}
+			set
+			{
+				entity.SucesssToSend = value;
 			}
 		}
 		#endregion 

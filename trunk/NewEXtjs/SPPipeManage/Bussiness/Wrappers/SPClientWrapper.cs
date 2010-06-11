@@ -1,7 +1,10 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
+using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -97,5 +100,55 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public void SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg,Hashtable exparams)
+	    {
+            string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, exparams);
+
+	        string errorMessage = string.Empty;
+
+            if(SendUrl(requesturl,out errorMessage))
+            {
+
+            }
+            else
+            {
+                
+            }
+
+
+	    }
+
+	    private bool SendUrl(string requesturl, out string errorMessage)
+	    {
+	        errorMessage = "";
+	        return true;
+
+	    }
+
+	    private string BulidUrl(string cpid, string mid, string mobile, string port, string ywid, string msg, Hashtable exparams)
+	    {
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            BulidParams(queryString,"cpid", cpid);
+            BulidParams(queryString, "mid", mid);
+            BulidParams(queryString, "mobile", mobile);
+            BulidParams(queryString, "port", port);
+            BulidParams(queryString, "ywid", ywid);
+            BulidParams(queryString, "msg", msg);
+
+            BulidParams(queryString, exparams);
+
+	        return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
+	    }
+
+	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
+	    {
+	        return;
+	    }
+
+	    private void BulidParams(NameValueCollection queryString, string key, string value)
+	    {
+            queryString.Add("cpid", HttpUtility.UrlEncode(value));
+	    }
     }
 }
