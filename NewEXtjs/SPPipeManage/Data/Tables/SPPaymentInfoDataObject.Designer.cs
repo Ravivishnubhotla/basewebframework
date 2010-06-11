@@ -55,6 +55,12 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_ISINTERCEPT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISINTERCEPT);
 		public static readonly Property PROPERTY_CREATEDATE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CREATEDATE);
 		public static readonly Property PROPERTY_REQUESTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_REQUESTID);
+		public static readonly Property PROPERTY_CPID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CPID);
+		public static readonly Property PROPERTY_MID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MID);
+		public static readonly Property PROPERTY_PORT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PORT);
+		public static readonly Property PROPERTY_YWID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_YWID);
+		public static readonly Property PROPERTY_IP = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_IP);
+		public static readonly Property PROPERTY_SUCESSSTOSEND = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SUCESSSTOSEND);
       
 		#region 子类集合字段查询字段
 	
@@ -88,6 +94,18 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (DateTime);
                 case "RequestID":
                     return typeof (int);
+                case "Cpid":
+                    return typeof (string);
+                case "Mid":
+                    return typeof (string);
+                case "Port":
+                    return typeof (string);
+                case "Ywid":
+                    return typeof (string);
+                case "Ip":
+                    return typeof (string);
+                case "SucesssToSend":
+                    return typeof (bool);
           }
 			return typeof(string);
         }
