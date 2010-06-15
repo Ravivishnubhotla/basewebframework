@@ -120,7 +120,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public void ProcessRequest(Hashtable hashtable)
+        public void ProcessRequest(Hashtable hashtable,string ip)
         {
             string cpid = GetParamsValue(hashtable,"cpid");
             string mid = GetParamsValue(hashtable, "mid");
@@ -131,10 +131,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Hashtable exparams = GetEXParamsValue(hashtable);
 
+            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromYWID(ywid);
 
-            SPClientWrapper spClientWrapper = GetClientFromYWID(ywid);
 
-            spClientWrapper.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+
+            if (channelSetting != null)
+            {
+
+                SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
+
+                paymentInfo.ChannelID = this;
+                paymentInfo.ClientID = channelSetting.ClinetID;
+                paymentInfo.Cpid = cpid;
+                paymentInfo.Mid = mid;
+                paymentInfo.MobileNumber = mobile;
+                paymentInfo.Port = port;
+                paymentInfo.Ywid = ywid;
+                paymentInfo.Message = msg;
+                paymentInfo.Ip = ip;
+                paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
+                paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+
+                SPPaymentInfoWrapper.Save(paymentInfo);
+            }
+
             
         }
 
@@ -143,8 +163,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        return new Hashtable();
 	    }
 
-	    private SPClientWrapper GetClientFromYWID(string ywid)
+        private SPClientChannelSettingWrapper GetClientChannelSettingFromYWID(string ywid)
 	    {
+	        List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
+
+	        foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
+	        {
+	            if(channelSetting.MatchByYWID(ywid))
+	            {
+	                return channelSetting;
+	            }
+	        }
+
 	        return null;
 	    }
 

@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.IO;
+using System.Net;
+using System.Text;
 using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
@@ -100,27 +103,46 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-	    public void SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg,Hashtable exparams)
-	    {
+	    public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg,Hashtable exparams)
+	    {            
             string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, exparams);
 
 	        string errorMessage = string.Empty;
 
-            if(SendUrl(requesturl,out errorMessage))
-            {
+	        bool sendOk = SendUrl(requesturl, out errorMessage);
 
-            }
-            else
-            {
-                
-            }
-
-
+	        return sendOk;
 	    }
 
 	    private bool SendUrl(string requesturl, out string errorMessage)
 	    {
 	        errorMessage = "";
+
+            HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);    
+            webRequest.Timeout = 60000;
+	        HttpWebResponse webResponse = null;                                      
+            
+            try 
+            { 
+                webResponse = (HttpWebResponse)webRequest.GetResponse();              
+            }
+
+            catch 
+            {
+                errorMessage = "No Connection";
+                return false; 
+            }
+
+            //ÅÐ¶ÏHTTPÏìÓ¦×´Ì¬ 
+            if(webResponse.StatusCode != HttpStatusCode.OK) 
+            {
+                errorMessage = "Error:" + webResponse.StatusCode;
+                return false; 
+            } 
+ 
+            string content = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();                                                             
+  
+
 	        return true;
 
 	    }
@@ -148,7 +170,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    private void BulidParams(NameValueCollection queryString, string key, string value)
 	    {
-            queryString.Add("cpid", HttpUtility.UrlEncode(value));
+            queryString.Add(key, HttpUtility.UrlEncode(value));
 	    }
     }
 }

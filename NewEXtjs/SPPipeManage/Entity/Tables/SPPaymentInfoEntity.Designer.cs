@@ -22,6 +22,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_REQUESTID = "RequestID";
+		public static readonly string PROPERTY_NAME_CPID = "Cpid";
+		public static readonly string PROPERTY_NAME_MID = "Mid";
+		public static readonly string PROPERTY_NAME_PORT = "Port";
+		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_IP = "Ip";
+		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		
         #endregion
 	
@@ -38,6 +44,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isIntercept;
 		private DateTime? _createDate;
 		private int? _requestID;
+		private string _cpid;
+		private string _mid;
+		private string _port;
+		private string _ywid;
+		private string _ip;
+		private bool? _sucesssToSend;
 		
 		#endregion
 
@@ -55,6 +67,12 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isIntercept = null;
 			_createDate = null;
 			_requestID = null;
+			_cpid = null;
+			_mid = null;
+			_port = String.Empty;
+			_ywid = null;
+			_ip = null;
+			_sucesssToSend = null;
 		}
 		#endregion
 
@@ -62,7 +80,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -72,6 +90,12 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isIntercept = isIntercept;
 			_createDate = createDate;
 			_requestID = requestID;
+			_cpid = cpid;
+			_mid = mid;
+			_port = port;
+			_ywid = ywid;
+			_ip = ip;
+			_sucesssToSend = sucesssToSend;
 		}
 		#endregion     
 	
@@ -192,6 +216,105 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_requestID != value); _requestID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Cpid
+		{
+			get { return _cpid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Cpid", value, value.ToString());
+				_isChanged |= (_cpid != value); _cpid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Mid
+		{
+			get { return _mid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Mid", value, value.ToString());
+				_isChanged |= (_mid != value); _mid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Port
+		{
+			get { return _port; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Port", value, value.ToString());
+				_isChanged |= (_port != value); _port = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Ywid
+		{
+			get { return _ywid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Ywid", value, value.ToString());
+				_isChanged |= (_ywid != value); _ywid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Ip
+		{
+			get { return _ip; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for Ip", value, value.ToString());
+				_isChanged |= (_ip != value); _ip = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? SucesssToSend
+		{
+			get { return _sucesssToSend; }
+
+			set	
+			{
+				_isChanged |= (_sucesssToSend != value); _sucesssToSend = value;
 			}
 		}
 		/// <summary>

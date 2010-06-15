@@ -18,6 +18,12 @@
 		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
 		<property column="RequestID" type="int" name="RequestID"   />	
+		<property column="Cpid" type="string" name="Cpid"   length="600" />	
+		<property column="Mid" type="string" name="Mid"   length="600" />	
+		<property column="Port" type="string" name="Port"   not-null="true"  length="600" />	
+		<property column="Ywid" type="string" name="Ywid"   length="600" />	
+		<property column="IP" type="string" name="Ip"   length="100" />	
+		<property column="SucesssToSend" type="Boolean" name="SucesssToSend"   />	
 
 
 
