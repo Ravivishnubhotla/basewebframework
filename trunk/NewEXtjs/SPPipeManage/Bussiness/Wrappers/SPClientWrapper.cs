@@ -109,9 +109,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	        string errorMessage = string.Empty;
 
-	        bool sendOk = SendUrl(requesturl, out errorMessage);
+            bool sendOk = SendUrl(requesturl, out errorMessage);
 
-	        return sendOk;
+            return sendOk;
 	    }
 
 	    private bool SendUrl(string requesturl, out string errorMessage)
@@ -124,7 +124,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             
             try 
             { 
-                webResponse = (HttpWebResponse)webRequest.GetResponse();              
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+
+                //ÅÐ¶ÏHTTPÏìÓ¦×´Ì¬ 
+                if (webResponse.StatusCode != HttpStatusCode.OK)
+                {
+                    errorMessage = "Error:" + webResponse.StatusCode;
+                    return false;
+                }
+
+
+                string content = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
+
+                return true;
+
             }
 
             catch 
@@ -132,18 +146,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 errorMessage = "No Connection";
                 return false; 
             }
-
-            //ÅÐ¶ÏHTTPÏìÓ¦×´Ì¬ 
-            if(webResponse.StatusCode != HttpStatusCode.OK) 
-            {
-                errorMessage = "Error:" + webResponse.StatusCode;
-                return false; 
-            } 
- 
-            string content = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();                                                             
-  
-
-	        return true;
 
 	    }
 
