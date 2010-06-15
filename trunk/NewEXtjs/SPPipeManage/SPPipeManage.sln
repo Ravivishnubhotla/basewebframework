@@ -14,10 +14,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
 		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
 		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
+		ThirdsDll\Quartz.dll = ThirdsDll\Quartz.dll
 		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
 		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Scheduling.Quartz.dll = ThirdsDll\Spring.Scheduling.Quartz.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 	EndProjectSection
