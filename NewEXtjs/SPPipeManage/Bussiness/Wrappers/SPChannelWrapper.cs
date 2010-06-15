@@ -129,6 +129,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string ywid = GetParamsValue(hashtable, "ywid");
             string msg = GetParamsValue(hashtable, "msg");
 
+            if(string.IsNullOrEmpty(mobile))
+                return;
+            if (string.IsNullOrEmpty(msg))
+                return;
+            if (string.IsNullOrEmpty(ywid))
+                return;
+
+
             Hashtable exparams = GetEXParamsValue(hashtable);
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromYWID(ywid);
@@ -180,6 +188,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    private string GetParamsValue(Hashtable hashtable,string key)
         {
+            if (!hashtable.ContainsKey(key))
+                return "";
             return hashtable[key].ToString();
         }
     }
