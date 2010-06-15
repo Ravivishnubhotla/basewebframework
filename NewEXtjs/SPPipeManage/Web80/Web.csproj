@@ -66,6 +66,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Quartz, Version=1.0.2.2, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Aop, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Spring.Aop.dll</HintPath>
@@ -81,6 +85,10 @@
     <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Scheduling.Quartz.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Web, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -114,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppClass\SPRecievedHandler.cs" />
+    <Compile Include="AppClass\SPTestSendHandle.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -121,6 +130,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\DailyReportGenerateJob.cs" />
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +168,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx.cs">
+      <DependentUpon>UCChannelParamsSetting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx.designer.cs">
+      <DependentUpon>UCChannelParamsSetting.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
@@ -203,6 +220,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.designer.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.cs">
+      <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.designer.cs">
+      <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPClientAdd.ascx.cs">
       <DependentUpon>UCSPClientAdd.ascx</DependentUpon>
@@ -261,6 +285,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
+    <Content Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

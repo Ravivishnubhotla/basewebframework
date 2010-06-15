@@ -20,7 +20,7 @@ namespace WebRequestTestConsole
 
             int j = 0;
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
 
 
@@ -29,7 +29,7 @@ namespace WebRequestTestConsole
                 {
 
                     HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(BulidUrl(i, requesturl));
-                    webRequest.Timeout = 60000;
+                    webRequest.Timeout = 20000;
                     HttpWebResponse webResponse = null;
 
                     webResponse = (HttpWebResponse)webRequest.GetResponse();
@@ -56,7 +56,7 @@ namespace WebRequestTestConsole
 
                 Console.WriteLine(string.Format("line {0} ok", i));
 
-                Thread.Sleep(100);
+                Thread.Sleep(200);
 
             }
 
