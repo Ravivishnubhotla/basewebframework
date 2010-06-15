@@ -97,6 +97,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+
+        //public static List<SPClientChannelSettingWrapper> Get
+
 	    public string ClientName
 	    {
 	        get
@@ -121,5 +124,36 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+	    public static List<SPClientChannelSettingWrapper> GetSettingByChannel(SPChannelWrapper spChannelWrapper)
+	    {
+            return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));
+	    }
+
+
+	    public bool MatchByYWID(string ywid)
+	    {
+	        switch(this.CommandType)
+	        {
+                case "1":
+                    return ywid.Equals(this.CommandCode);
+                case "2":
+                    return ywid.StartsWith(this.CommandCode);
+                case "3":
+                    return ywid.EndsWith(this.CommandCode);
+                case "4":
+                    return ywid.Contains(this.CommandCode);
+                case "5":
+                    return false;
+                case "6":
+	                return false;
+                    break;
+	        }
+            return false;
+	    }
+
+	    public bool CaculteIsIntercept()
+	    {
+	        return false;
+	    }
     }
 }

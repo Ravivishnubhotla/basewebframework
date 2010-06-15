@@ -11,5 +11,13 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPClientChannelSettingDataObject
     {
+        public List<SPClientChannelSettingEntity> GetSettingByChannel(SPChannelEntity spChannelEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(spChannelEntity));
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }
