@@ -33,12 +33,32 @@ namespace Legendigital.Common.Web.SPSInterface
 
             if(channel!=null)
             {
-                channel.ProcessRequest(GetRequestValue(context));
+                channel.ProcessRequest(GetRequestValue(context), GetRealIP());
             }
-
-
-
         }
+
+
+        public static string GetRealIP()
+        {
+            string ip = string.Empty;
+            try
+            {
+                if (HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null)
+                {
+                    ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
+                }
+                else
+                {
+                    ip = HttpContext.Current.Request.UserHostAddress;
+                }
+            }
+            catch (Exception e)
+            {
+             
+            }
+            return ip;
+        } 
+
 
 
         private Hashtable GetRequestValue(HttpContext requestContext)
