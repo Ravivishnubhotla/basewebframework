@@ -120,7 +120,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public void ProcessRequest(Hashtable hashtable,string ip)
+        public bool ProcessRequest(Hashtable hashtable,string ip)
         {
             string cpid = GetParamsValue(hashtable,"cpid");
             string mid = GetParamsValue(hashtable, "mid");
@@ -130,11 +130,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string msg = GetParamsValue(hashtable, "msg");
 
             if(string.IsNullOrEmpty(mobile))
-                return;
+                return false;
             if (string.IsNullOrEmpty(msg))
-                return;
+                return false;
             if (string.IsNullOrEmpty(ywid))
-                return;
+                return false;
 
 
             Hashtable exparams = GetEXParamsValue(hashtable);
@@ -158,9 +158,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.Message = msg;
                 paymentInfo.Ip = ip;
                 paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
-                paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+                paymentInfo.CreateDate = System.DateTime.Now;
+
+                if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
+                    paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+                else
+                    paymentInfo.SucesssToSend = false;
 
                 SPPaymentInfoWrapper.Save(paymentInfo);
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
 
             

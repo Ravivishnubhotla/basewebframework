@@ -137,11 +137,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 case "1":
                     return ywid.Equals(this.CommandCode);
                 case "2":
-                    return ywid.StartsWith(this.CommandCode);
-                case "3":
-                    return ywid.EndsWith(this.CommandCode);
-                case "4":
                     return ywid.Contains(this.CommandCode);
+                case "3":
+                    return ywid.StartsWith(this.CommandCode);
+                case "4":
+                    return ywid.EndsWith(this.CommandCode);
                 case "5":
                     return false;
                 case "6":
