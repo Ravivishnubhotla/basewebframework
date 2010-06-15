@@ -222,7 +222,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\DataConfig.xml" />
-    <Content Include="Config\Log4Net.xml" />
     <Content Include="Css\css.css" />
     <Content Include="Images\bg.gif" />
     <Content Include="Images\collapse-all.gif" />
@@ -265,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Logs\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>

@@ -11,25 +11,41 @@ namespace Legendigital.Common.Web.AppClass
 {
     public class SPRecievedHandler : IHttpHandler
     {
-        protected ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
+        protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
 
 
         public void ProcessRequest(HttpContext context)
         {
-            string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
-
-            SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(fileName);
-
-            if (channel != null)
+            try
             {
-                bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP());
+                string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
 
-                if(!result)
+                //logger.Error("Process Request Error:");
+
+                //context.Response.StatusCode = 500;
+
+                //return;
+
+
+                SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(fileName);
+
+                if (channel != null)
+                {
+                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP());
+
+                    if(!result)
+                        context.Response.StatusCode = 500;
+ 
+
+                }
+                else
+                {
                     context.Response.StatusCode = 500; 
+                }
             }
-            else
+            catch (Exception ex)
             {
-                context.Response.StatusCode = 500; 
+                logger.Error("Process Request Error:", ex);
             }
         }
 
@@ -48,9 +64,9 @@ namespace Legendigital.Common.Web.AppClass
                     ip = HttpContext.Current.Request.UserHostAddress;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                logger.Error("Get IP Error:",ex);
             }
             return ip;
         }
