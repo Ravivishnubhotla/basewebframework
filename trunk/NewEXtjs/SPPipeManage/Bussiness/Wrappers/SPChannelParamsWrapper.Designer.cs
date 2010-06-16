@@ -74,6 +74,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		
         #endregion
 
@@ -175,6 +176,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ChannelID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ParamsMappingName
+		{
+			get
+			{
+				return entity.ParamsMappingName;
+			}
+			set
+			{
+				entity.ParamsMappingName = value;
 			}
 		}
 		#endregion 

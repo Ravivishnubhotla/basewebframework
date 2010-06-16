@@ -81,6 +81,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD3 = "ExtendField3";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD4 = "ExtendField4";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD5 = "ExtendField5";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD6 = "ExtendField6";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		
         #endregion
 
@@ -280,6 +289,132 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.SucesssToSend = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField1
+		{
+			get
+			{
+				return entity.ExtendField1;
+			}
+			set
+			{
+				entity.ExtendField1 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField2
+		{
+			get
+			{
+				return entity.ExtendField2;
+			}
+			set
+			{
+				entity.ExtendField2 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField3
+		{
+			get
+			{
+				return entity.ExtendField3;
+			}
+			set
+			{
+				entity.ExtendField3 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField4
+		{
+			get
+			{
+				return entity.ExtendField4;
+			}
+			set
+			{
+				entity.ExtendField4 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField5
+		{
+			get
+			{
+				return entity.ExtendField5;
+			}
+			set
+			{
+				entity.ExtendField5 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField6
+		{
+			get
+			{
+				return entity.ExtendField6;
+			}
+			set
+			{
+				entity.ExtendField6 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField7
+		{
+			get
+			{
+				return entity.ExtendField7;
+			}
+			set
+			{
+				entity.ExtendField7 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField8
+		{
+			get
+			{
+				return entity.ExtendField8;
+			}
+			set
+			{
+				entity.ExtendField8 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ExtendField9
+		{
+			get
+			{
+				return entity.ExtendField9;
+			}
+			set
+			{
+				entity.ExtendField9 = value;
 			}
 		}
 		#endregion 

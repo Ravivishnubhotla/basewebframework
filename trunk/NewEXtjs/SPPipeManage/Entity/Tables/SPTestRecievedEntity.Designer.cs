@@ -9,19 +9,18 @@ namespace LD.SPPipeManage.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPChannelParamsEntity : ICloneable
+	public partial class SPTestRecievedEntity : ICloneable
 	{
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPChannelParamsEntity";
+		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPTestRecievedEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
-		public static readonly string PROPERTY_NAME_NAME = "Name";
-		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
-		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
-		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
+		public static readonly string PROPERTY_NAME_RECIEVEDCONTENT = "RecievedContent";
+		public static readonly string PROPERTY_NAME_RECIEVEDDATE = "RecievedDate";
+		public static readonly string PROPERTY_NAME_RECIEVEDIP = "RecievedIP";
+		public static readonly string PROPERTY_NAME_RECIEVEDSENDURL = "RecievedSendUrl";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
-		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
+		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		
         #endregion
 	
@@ -31,13 +30,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _id;
-		private string _name;
-		private string _description;
-		private bool? _isEnable;
-		private bool? _isRequired;
-		private string _paramsType;
-		private SPChannelEntity _channelID;
-		private string _paramsMappingName;
+		private string _recievedContent;
+		private DateTime? _recievedDate;
+		private string _recievedIP;
+		private string _recievedSendUrl;
+		private int? _channelID;
+		private int? _clientID;
 		
 		#endregion
 
@@ -45,16 +43,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SPChannelParamsEntity()
+		public SPTestRecievedEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_isEnable = null;
-			_isRequired = null;
-			_paramsType = null;
+			_recievedContent = null;
+			_recievedDate = null;
+			_recievedIP = null;
+			_recievedSendUrl = null;
 			_channelID = null;
-			_paramsMappingName = null;
+			_clientID = null;
 		}
 		#endregion
 
@@ -62,16 +59,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName)
+		public SPTestRecievedEntity( int id, string recievedContent, DateTime? recievedDate, string recievedIP, string recievedSendUrl, int? channelID, int? clientID)
 		{
 			_id = id;
-			_name = name;
-			_description = description;
-			_isEnable = isEnable;
-			_isRequired = isRequired;
-			_paramsType = paramsType;
+			_recievedContent = recievedContent;
+			_recievedDate = recievedDate;
+			_recievedIP = recievedIP;
+			_recievedSendUrl = recievedSendUrl;
 			_channelID = channelID;
-			_paramsMappingName = paramsMappingName;
+			_clientID = clientID;
 		}
 		#endregion     
 	
@@ -95,33 +91,16 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string Name
+		public virtual string RecievedContent
 		{
-			get { return _name; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for Name", value, value.ToString());
-				_isChanged |= (_name != value); _name = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string Description
-		{
-			get { return _description; }
+			get { return _recievedContent; }
 
 			set	
 			{
 
 				if( value != null && value.Length > 4000)
-					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
-				_isChanged |= (_description != value); _description = value;
+					throw new ArgumentOutOfRangeException("Invalid value for RecievedContent", value, value.ToString());
+				_isChanged |= (_recievedContent != value); _recievedContent = value;
 			}
 		}
 
@@ -129,13 +108,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsEnable
+		public virtual DateTime? RecievedDate
 		{
-			get { return _isEnable; }
+			get { return _recievedDate; }
 
 			set	
 			{
-				_isChanged |= (_isEnable != value); _isEnable = value;
+				_isChanged |= (_recievedDate != value); _recievedDate = value;
 			}
 		}
 
@@ -143,13 +122,16 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsRequired
+		public virtual string RecievedIP
 		{
-			get { return _isRequired; }
+			get { return _recievedIP; }
 
 			set	
 			{
-				_isChanged |= (_isRequired != value); _isRequired = value;
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for RecievedIP", value, value.ToString());
+				_isChanged |= (_recievedIP != value); _recievedIP = value;
 			}
 		}
 
@@ -157,16 +139,16 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string ParamsType
+		public virtual string RecievedSendUrl
 		{
-			get { return _paramsType; }
+			get { return _recievedSendUrl; }
 
 			set	
 			{
 
 				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ParamsType", value, value.ToString());
-				_isChanged |= (_paramsType != value); _paramsType = value;
+					throw new ArgumentOutOfRangeException("Invalid value for RecievedSendUrl", value, value.ToString());
+				_isChanged |= (_recievedSendUrl != value); _recievedSendUrl = value;
 			}
 		}
 
@@ -174,7 +156,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual SPChannelEntity ChannelID
+		public virtual int? ChannelID
 		{
 			get { return _channelID; }
 
@@ -188,16 +170,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string ParamsMappingName
+		public virtual int? ClientID
 		{
-			get { return _paramsMappingName; }
+			get { return _clientID; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ParamsMappingName", value, value.ToString());
-				_isChanged |= (_paramsMappingName != value); _paramsMappingName = value;
+				_isChanged |= (_clientID != value); _clientID = value;
 			}
 		}
 		/// <summary>
@@ -241,7 +220,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			
-			SPChannelParamsEntity castObj = (SPChannelParamsEntity)obj;
+			SPTestRecievedEntity castObj = (SPTestRecievedEntity)obj;
 			
 			return ( castObj != null ) && ( this._id == castObj.Id );
 		}

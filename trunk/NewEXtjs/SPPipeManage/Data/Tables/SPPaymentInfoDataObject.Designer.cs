@@ -61,6 +61,15 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_YWID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_YWID);
 		public static readonly Property PROPERTY_IP = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_IP);
 		public static readonly Property PROPERTY_SUCESSSTOSEND = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SUCESSSTOSEND);
+		public static readonly Property PROPERTY_EXTENDFIELD1 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD1);
+		public static readonly Property PROPERTY_EXTENDFIELD2 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD2);
+		public static readonly Property PROPERTY_EXTENDFIELD3 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD3);
+		public static readonly Property PROPERTY_EXTENDFIELD4 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD4);
+		public static readonly Property PROPERTY_EXTENDFIELD5 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD5);
+		public static readonly Property PROPERTY_EXTENDFIELD6 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD6);
+		public static readonly Property PROPERTY_EXTENDFIELD7 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD7);
+		public static readonly Property PROPERTY_EXTENDFIELD8 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD8);
+		public static readonly Property PROPERTY_EXTENDFIELD9 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD9);
       
 		#region 子类集合字段查询字段
 	
@@ -106,6 +115,24 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "SucesssToSend":
                     return typeof (bool);
+                case "ExtendField1":
+                    return typeof (string);
+                case "ExtendField2":
+                    return typeof (string);
+                case "ExtendField3":
+                    return typeof (string);
+                case "ExtendField4":
+                    return typeof (string);
+                case "ExtendField5":
+                    return typeof (string);
+                case "ExtendField6":
+                    return typeof (string);
+                case "ExtendField7":
+                    return typeof (string);
+                case "ExtendField8":
+                    return typeof (string);
+                case "ExtendField9":
+                    return typeof (string);
           }
 			return typeof(string);
         }

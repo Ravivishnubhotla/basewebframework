@@ -24,6 +24,15 @@
 		<property column="Ywid" type="string" name="Ywid"   length="600" />	
 		<property column="IP" type="string" name="Ip"   length="100" />	
 		<property column="SucesssToSend" type="Boolean" name="SucesssToSend"   />	
+		<property column="ExtendField1" type="string" name="ExtendField1"   length="400" />	
+		<property column="ExtendField2" type="string" name="ExtendField2"   length="400" />	
+		<property column="ExtendField3" type="string" name="ExtendField3"   length="400" />	
+		<property column="ExtendField4" type="string" name="ExtendField4"   length="400" />	
+		<property column="ExtendField5" type="string" name="ExtendField5"   length="400" />	
+		<property column="ExtendField6" type="string" name="ExtendField6"   length="400" />	
+		<property column="ExtendField7" type="string" name="ExtendField7"   length="400" />	
+		<property column="ExtendField8" type="string" name="ExtendField8"   length="400" />	
+		<property column="ExtendField9" type="string" name="ExtendField9"   length="400" />	
 
 
 

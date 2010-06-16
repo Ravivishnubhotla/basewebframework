@@ -28,6 +28,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD3 = "ExtendField3";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD4 = "ExtendField4";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD5 = "ExtendField5";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD6 = "ExtendField6";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		
         #endregion
 	
@@ -50,6 +59,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _ywid;
 		private string _ip;
 		private bool? _sucesssToSend;
+		private string _extendField1;
+		private string _extendField2;
+		private string _extendField3;
+		private string _extendField4;
+		private string _extendField5;
+		private string _extendField6;
+		private string _extendField7;
+		private string _extendField8;
+		private string _extendField9;
 		
 		#endregion
 
@@ -73,6 +91,15 @@ namespace LD.SPPipeManage.Entity.Tables
 			_ywid = null;
 			_ip = null;
 			_sucesssToSend = null;
+			_extendField1 = null;
+			_extendField2 = null;
+			_extendField3 = null;
+			_extendField4 = null;
+			_extendField5 = null;
+			_extendField6 = null;
+			_extendField7 = null;
+			_extendField8 = null;
+			_extendField9 = null;
 		}
 		#endregion
 
@@ -80,7 +107,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -96,6 +123,15 @@ namespace LD.SPPipeManage.Entity.Tables
 			_ywid = ywid;
 			_ip = ip;
 			_sucesssToSend = sucesssToSend;
+			_extendField1 = extendField1;
+			_extendField2 = extendField2;
+			_extendField3 = extendField3;
+			_extendField4 = extendField4;
+			_extendField5 = extendField5;
+			_extendField6 = extendField6;
+			_extendField7 = extendField7;
+			_extendField8 = extendField8;
+			_extendField9 = extendField9;
 		}
 		#endregion     
 	
@@ -315,6 +351,159 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_sucesssToSend != value); _sucesssToSend = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField1
+		{
+			get { return _extendField1; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField1", value, value.ToString());
+				_isChanged |= (_extendField1 != value); _extendField1 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField2
+		{
+			get { return _extendField2; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField2", value, value.ToString());
+				_isChanged |= (_extendField2 != value); _extendField2 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField3
+		{
+			get { return _extendField3; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField3", value, value.ToString());
+				_isChanged |= (_extendField3 != value); _extendField3 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField4
+		{
+			get { return _extendField4; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField4", value, value.ToString());
+				_isChanged |= (_extendField4 != value); _extendField4 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField5
+		{
+			get { return _extendField5; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField5", value, value.ToString());
+				_isChanged |= (_extendField5 != value); _extendField5 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField6
+		{
+			get { return _extendField6; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField6", value, value.ToString());
+				_isChanged |= (_extendField6 != value); _extendField6 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField7
+		{
+			get { return _extendField7; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField7", value, value.ToString());
+				_isChanged |= (_extendField7 != value); _extendField7 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField8
+		{
+			get { return _extendField8; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField8", value, value.ToString());
+				_isChanged |= (_extendField8 != value); _extendField8 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ExtendField9
+		{
+			get { return _extendField9; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField9", value, value.ToString());
+				_isChanged |= (_extendField9 != value); _extendField9 = value;
 			}
 		}
 		/// <summary>
