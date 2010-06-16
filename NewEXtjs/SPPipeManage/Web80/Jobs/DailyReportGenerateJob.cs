@@ -12,10 +12,25 @@ namespace Legendigital.Common.Web.Jobs
     {
         private ILog logger = LogManager.GetLogger(typeof (DailyReportGenerateJob));
 
+        private string userName;
+
+        /// <summary>
+        /// Simple property that can be injected.
+        /// </summary>
+        public string UserName
+        {
+            set { userName = value; }
+        }
+
+        //public void Execute(JobExecutionContext context)
+        //{
+        //    //System.Configuration.NameValueSectionHandler
+        //    logger.Error("1111111111111111111111111111111111111111s");
+        //}
 
         protected override void ExecuteInternal(JobExecutionContext context)
         {
-            logger.Error("1111111111111111111111111111111111111111s");
+            logger.Info("Daily Report Generate Job Start");
         }
     }
 }

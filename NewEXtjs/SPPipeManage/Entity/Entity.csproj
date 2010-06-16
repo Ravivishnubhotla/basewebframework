@@ -90,6 +90,10 @@
     <Compile Include="Tables\SPClientEntity.Designer.cs">
       <DependentUpon>SPClientEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPDayReportEntity.cs" />
+    <Compile Include="Tables\SPDayReportEntity.Designer.cs">
+      <DependentUpon>SPDayReportEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPMemoEntity.cs" />
     <Compile Include="Tables\SPMemoEntity.Designer.cs">
       <DependentUpon>SPMemoEntity.cs</DependentUpon>
@@ -109,6 +113,10 @@
     <Compile Include="Tables\SPSendRequestInfoEntity.cs" />
     <Compile Include="Tables\SPSendRequestInfoEntity.Designer.cs">
       <DependentUpon>SPSendRequestInfoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPTestRecievedEntity.cs" />
+    <Compile Include="Tables\SPTestRecievedEntity.Designer.cs">
+      <DependentUpon>SPTestRecievedEntity.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSettingMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPDayReportMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPTestRecievedMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		
         #endregion
 	
@@ -33,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isRequired;
 		private string _paramsType;
 		private int _channelID;
+		private string _paramsMappingName;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isRequired = null;
 			_paramsType = null;
 			_channelID = 0;
+			_paramsMappingName = null;
 		}
 		#endregion
 
@@ -161,6 +164,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ParamsMappingName
+		{
+			get { return _paramsMappingName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsMappingName", value, value.ToString());
+				_paramsMappingName = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -174,6 +194,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsRequired = wrapper.IsRequired;
 			this.ParamsType = wrapper.ParamsType;
 			this.ChannelID = (wrapper.ChannelID!=null) ? wrapper.ChannelID.Id : 0 ; 
+			this.ParamsMappingName = wrapper.ParamsMappingName;
 		}
 		
 		
@@ -187,6 +208,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsRequired = this.IsRequired;
 			wrapper.ParamsType = this.ParamsType;
 			wrapper.ChannelID =  (this.ChannelID==null) ? null : SPChannelWrapper.FindById(this.ChannelID);
+			wrapper.ParamsMappingName = this.ParamsMappingName;
 		
 		return wrapper;
         }

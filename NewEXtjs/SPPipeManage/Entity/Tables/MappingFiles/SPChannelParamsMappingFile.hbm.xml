@@ -17,6 +17,7 @@
 		<property column="IsRequired" type="Boolean" name="IsRequired"   />	
 		<property column="ParamsType" type="string" name="ParamsType"   length="400" />	
 		<many-to-one column="ChannelID" name="ChannelID" class="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" />		
+		<property column="ParamsMappingName" type="string" name="ParamsMappingName"   length="400" />	
 
 
 

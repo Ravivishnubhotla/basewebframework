@@ -130,6 +130,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Jobs\DailyReportGenerateJob.cs" />
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -284,6 +287,7 @@
     <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
     <Content Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx" />
     <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />

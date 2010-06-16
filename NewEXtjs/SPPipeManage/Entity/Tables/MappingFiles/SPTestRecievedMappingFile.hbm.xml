@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPTestRecievedEntity,LD.SPPipeManage.Entity" table="SPTestRecieved" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="RecievedContent" type="string" name="RecievedContent"   length="4000" />	
+		<property column="RecievedDate" type="DateTime" name="RecievedDate"   />	
+		<property column="RecievedIP" type="string" name="RecievedIP"   length="100" />	
+		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="400" />	
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="ClientID" type="int" name="ClientID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

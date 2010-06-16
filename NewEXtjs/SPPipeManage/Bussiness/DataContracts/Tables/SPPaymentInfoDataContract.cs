@@ -28,6 +28,15 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD3 = "ExtendField3";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD4 = "ExtendField4";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD5 = "ExtendField5";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD6 = "ExtendField6";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
+		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		
         #endregion
 	
@@ -47,6 +56,15 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _ywid;
 		private string _ip;
 		private bool? _sucesssToSend;
+		private string _extendField1;
+		private string _extendField2;
+		private string _extendField3;
+		private string _extendField4;
+		private string _extendField5;
+		private string _extendField6;
+		private string _extendField7;
+		private string _extendField8;
+		private string _extendField9;
 		
 		#endregion
 
@@ -70,6 +88,15 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_ywid = null;
 			_ip = null;
 			_sucesssToSend = null;
+			_extendField1 = null;
+			_extendField2 = null;
+			_extendField3 = null;
+			_extendField4 = null;
+			_extendField5 = null;
+			_extendField6 = null;
+			_extendField7 = null;
+			_extendField8 = null;
+			_extendField9 = null;
 		}
 		#endregion
 
@@ -292,6 +319,159 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField1
+		{
+			get { return _extendField1; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField1", value, value.ToString());
+				_extendField1 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField2
+		{
+			get { return _extendField2; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField2", value, value.ToString());
+				_extendField2 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField3
+		{
+			get { return _extendField3; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField3", value, value.ToString());
+				_extendField3 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField4
+		{
+			get { return _extendField4; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField4", value, value.ToString());
+				_extendField4 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField5
+		{
+			get { return _extendField5; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField5", value, value.ToString());
+				_extendField5 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField6
+		{
+			get { return _extendField6; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField6", value, value.ToString());
+				_extendField6 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField7
+		{
+			get { return _extendField7; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField7", value, value.ToString());
+				_extendField7 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField8
+		{
+			get { return _extendField8; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField8", value, value.ToString());
+				_extendField8 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ExtendField9
+		{
+			get { return _extendField9; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ExtendField9", value, value.ToString());
+				_extendField9 = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -312,6 +492,15 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Ywid = wrapper.Ywid;
 			this.Ip = wrapper.Ip;
 			this.SucesssToSend = wrapper.SucesssToSend;
+			this.ExtendField1 = wrapper.ExtendField1;
+			this.ExtendField2 = wrapper.ExtendField2;
+			this.ExtendField3 = wrapper.ExtendField3;
+			this.ExtendField4 = wrapper.ExtendField4;
+			this.ExtendField5 = wrapper.ExtendField5;
+			this.ExtendField6 = wrapper.ExtendField6;
+			this.ExtendField7 = wrapper.ExtendField7;
+			this.ExtendField8 = wrapper.ExtendField8;
+			this.ExtendField9 = wrapper.ExtendField9;
 		}
 		
 		
@@ -332,6 +521,15 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Ywid = this.Ywid;
 			wrapper.Ip = this.Ip;
 			wrapper.SucesssToSend = this.SucesssToSend;
+			wrapper.ExtendField1 = this.ExtendField1;
+			wrapper.ExtendField2 = this.ExtendField2;
+			wrapper.ExtendField3 = this.ExtendField3;
+			wrapper.ExtendField4 = this.ExtendField4;
+			wrapper.ExtendField5 = this.ExtendField5;
+			wrapper.ExtendField6 = this.ExtendField6;
+			wrapper.ExtendField7 = this.ExtendField7;
+			wrapper.ExtendField8 = this.ExtendField8;
+			wrapper.ExtendField9 = this.ExtendField9;
 		
 		return wrapper;
         }

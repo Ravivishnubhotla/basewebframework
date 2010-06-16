@@ -42,6 +42,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
 		#endregion
+		public static readonly Property PROPERTY_PARAMSMAPPINGNAME = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME);
       
 		#region 子类集合字段查询字段
 	
@@ -73,6 +74,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "ChannelID":
                     return typeof (int);
+                case "ParamsMappingName":
+                    return typeof (string);
           }
 			return typeof(string);
         }

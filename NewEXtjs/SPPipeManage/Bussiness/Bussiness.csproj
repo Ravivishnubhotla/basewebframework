@@ -94,11 +94,13 @@
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPDayReportDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
@@ -120,6 +122,10 @@
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
+      <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
       <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
@@ -140,6 +146,10 @@
     <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.Designer.cs">
       <DependentUpon>SPSendRequestInfoServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.Designer.cs">
+      <DependentUpon>SPTestRecievedServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
@@ -155,6 +165,10 @@
     <Compile Include="Wrappers\SPClientWrapper.cs" />
     <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
       <DependentUpon>SPClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPDayReportWrapper.cs" />
+    <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">
+      <DependentUpon>SPDayReportWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPMemoWrapper.cs" />
     <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
@@ -175,6 +189,10 @@
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.cs" />
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.Designer.cs">
       <DependentUpon>SPSendRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPTestRecievedWrapper.cs" />
+    <Compile Include="Wrappers\SPTestRecievedWrapper.Designer.cs">
+      <DependentUpon>SPTestRecievedWrapper.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
