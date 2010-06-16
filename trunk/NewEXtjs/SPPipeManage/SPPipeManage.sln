@@ -49,6 +49,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGene", "CodeGene", "{56
 	ProjectSection(SolutionItems) = preProject
 		CodeGene\ExtJs表现层代码模版.zeus = CodeGene\ExtJs表现层代码模版.zeus
 		CodeGene\SPChannel_FormUISetting = CodeGene\SPChannel_FormUISetting
+		CodeGene\SpringNHibernate开发架构表代码模板.zeus = CodeGene\SpringNHibernate开发架构表代码模板.zeus
 		CodeGene\SPS.dat = CodeGene\SPS.dat
 	EndProjectSection
 EndProject
