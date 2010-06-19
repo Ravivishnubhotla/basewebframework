@@ -10,6 +10,8 @@ namespace LD.SPPipeManage.Data.Tables.Container
         {
         }
 
+      public SPDayReportDataObject SPDayReportDataObjectInstance { set; get; }
+      public SPTestRecievedDataObject SPTestRecievedDataObjectInstance { set; get; }
       public SPChannelDataObject SPChannelDataObjectInstance { set; get; }
       public SPChannelParamsDataObject SPChannelParamsDataObjectInstance { set; get; }
       public SPClientDataObject SPClientDataObjectInstance { set; get; }

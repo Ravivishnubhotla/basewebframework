@@ -20,11 +20,14 @@ namespace Legendigital.Common.Web.AppClass
             {
                 string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
 
-                //logger.Error("Process Request Error:");
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    context.Response.StatusCode = 500;
+                    return;
+                }
 
-                //context.Response.StatusCode = 500;
 
-                //return;
+                fileName = fileName.Substring(0, fileName.Length - ("Recieved").Length);
 
 
                 SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(fileName);
@@ -46,6 +49,8 @@ namespace Legendigital.Common.Web.AppClass
             catch (Exception ex)
             {
                 logger.Error("Process Request Error:", ex);
+                context.Response.StatusCode = 500; 
+                return;
             }
         }
 

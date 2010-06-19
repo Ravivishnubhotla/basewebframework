@@ -6,6 +6,16 @@
     Spring.Net框架服务层容器配置文件
   </description>
   <!-- 服务层类 -->
+  <object id="SPDayReportServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPDayReportServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPDayReportDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPTestRecievedServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPTestRecievedServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPTestRecievedDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPChannelServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPChannelServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPChannelDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -56,6 +66,8 @@
 
 
 <object id="ServiceProxyContainerIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer, LD.SPPipeManage.Bussiness">
+    <property name="SPDayReportServiceProxyInstance" ref="SPDayReportServiceProxyIocID"/>
+    <property name="SPTestRecievedServiceProxyInstance" ref="SPTestRecievedServiceProxyIocID"/>
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
     <property name="SPClientServiceProxyInstance" ref="SPClientServiceProxyIocID"/>

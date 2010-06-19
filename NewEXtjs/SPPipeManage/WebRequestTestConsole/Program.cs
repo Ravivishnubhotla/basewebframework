@@ -22,48 +22,67 @@ namespace WebRequestTestConsole
 
             for (int i = 0; i < 10000; i++)
             {
+                int retryTimes = 0;
 
+                bool requestOk = false;
 
-
-                try
+                do
                 {
-
-                    HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(BulidUrl(i, requesturl));
-                    webRequest.Timeout = 20000;
-                    HttpWebResponse webResponse = null;
-
-                    webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-                    //判断HTTP响应状态 
-                    if (webResponse.StatusCode != HttpStatusCode.OK)
+                    try
                     {
-                        j++;
-                        Console.WriteLine(string.Format("line {0} failed", i));
-                        return;
+                        requestOk = SendRequest(i, requesturl);
+                    }
+                    catch
+                    {
+                        requestOk = false;
                     }
 
+                    retryTimes++;
+
+                    if(retryTimes>=3)
+                        break;
+
+                } while (!requestOk);
 
 
-                }
-
-                catch
+                if (!requestOk)
                 {
                     j++;
-                    Console.WriteLine(string.Format("line {0} failed",i));
-                    continue;
+                    Console.WriteLine(string.Format("line {0} failed", i));
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("line {0} ok", i));               
                 }
 
 
-                Console.WriteLine(string.Format("line {0} ok", i));
+
+
+
+
+
 
                 Thread.Sleep(200);
 
             }
 
-            Console.WriteLine("Error Count:"+j.ToString());
+            Console.WriteLine("Error Count:" + j.ToString());
 
             Console.ReadKey();
 
+        }
+
+        private static bool SendRequest(int i, string requesturl)
+        {
+            HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(BulidUrl(i, requesturl));
+
+            webRequest.Timeout = 15000;
+
+            HttpWebResponse webResponse = null;
+
+            webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+            return (webResponse.StatusCode == HttpStatusCode.OK);
         }
 
 
@@ -73,7 +92,7 @@ namespace WebRequestTestConsole
 
             BulidParams(queryString, "cpid", "1");
             BulidParams(queryString, "mid", "2");
-            BulidParams(queryString, "mobile", "13521"+i.ToString("D5"));
+            BulidParams(queryString, "mobile", "13521" + i.ToString("D5"));
             BulidParams(queryString, "port", "21");
             BulidParams(queryString, "ywid", "10000903");
             BulidParams(queryString, "msg", "msg" + i.ToString("D5"));

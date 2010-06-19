@@ -3,6 +3,7 @@
 
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCChannelParamsManage.ascx" TagName="UCChannelParamsManage" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -77,6 +78,20 @@
                     }
                     );
             }
+            
+            if (cmd == "cmdParams") {
+                Coolite.AjaxMethods.UCChannelParamsManage.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelParamsData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }    
         }
 
     </script>
@@ -115,6 +130,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPChannelAdd ID="UCSPChannelAdd1" runat="server" />
     <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
+    <uc3:UCChannelParamsManage ID="UCChannelParamsManage1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -154,23 +170,26 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true">
+                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true" Width=50>
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true">
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true" Width=50>
                                 </ext:Column>
-                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true">
+                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true" Width=50>
                                 </ext:Column>
-                                <ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true">
+                                <ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true" Width=50>
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="120">
+                                <ext:CommandColumn Header="通道管理" Width="150">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
+                                            <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>

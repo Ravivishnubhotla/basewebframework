@@ -172,6 +172,13 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx.cs">
+      <DependentUpon>UCChannelParamsManage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx.designer.cs">
+      <DependentUpon>UCChannelParamsManage.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx.cs">
       <DependentUpon>UCChannelParamsSetting.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,6 +199,20 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
       <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.cs">
       <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
@@ -289,7 +310,10 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
+    <Content Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx" />
     <Content Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />
   </ItemGroup>
   <ItemGroup>

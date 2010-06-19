@@ -8,6 +8,10 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
     public partial class ServiceProxyContainer
     {		
+		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
+        {get; set;}
+		public ISPTestRecievedServiceProxy SPTestRecievedServiceProxyInstance
+        {get; set;}
 		public ISPChannelServiceProxy SPChannelServiceProxyInstance
         {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
