@@ -97,6 +97,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-
+        public static List<SPChannelParamsWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, int channleID, out int recordCount)
+        {
+            return
+                ConvertToWrapperList(businessProxy.FindPageDataByChannelID(orderByColumnName, isDesc, pageIndex,
+                                                                           pageSize, channleID, out recordCount));
+        }
     }
 }

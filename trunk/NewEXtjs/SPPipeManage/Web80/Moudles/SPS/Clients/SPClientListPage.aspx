@@ -84,7 +84,7 @@
     <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeSPClient_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
-            <ext:Parameter Name="limit" Value="20" Mode="Raw" />
+            <ext:Parameter Name="limit" Value="15" Mode="Raw" />
         </AutoLoadParams>
         <Proxy>
             <ext:DataSourceProxy />
@@ -159,7 +159,7 @@
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
                         <BottomBar>
-                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPClient"
+                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="storeSPClient"
                                 DisplayInfo="true" DisplayMsg="显示下家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的下家" />
                         </BottomBar>
                         <Listeners>

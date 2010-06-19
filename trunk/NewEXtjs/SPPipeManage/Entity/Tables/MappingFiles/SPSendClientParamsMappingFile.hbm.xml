@@ -4,7 +4,7 @@
 <class name="LD.SPPipeManage.Entity.Tables.SPSendClientParamsEntity,LD.SPPipeManage.Entity" table="SPSendClientParams" lazy="true"  >
 
 <id name="Id" column="ID" type="int" unsaved-value="0" >
-   <generator class="assigned">
+   <generator class="native">
 
 </generator>
 

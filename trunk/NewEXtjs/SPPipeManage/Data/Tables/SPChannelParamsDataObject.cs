@@ -11,6 +11,23 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPChannelParamsDataObject
     {
-  
+        public List<SPChannelParamsEntity> FindPageDataByChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity channle, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelParamsEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            if(channle==null)
+            {
+                recordCount = 0;
+                return new List<SPChannelParamsEntity>();
+            }
+            else
+            {
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channle));
+            }
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, queryGenerator);
+
+            return this.FindListByPageByQueryBuilder(queryGenerator, pageIndex, pageSize, out recordCount);
+        }
     }
 }

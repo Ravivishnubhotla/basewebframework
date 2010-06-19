@@ -14,11 +14,22 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPChannelParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelParamsEntity>
     {
- 
+	    List<SPChannelParamsEntity> FindPageDataByChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, int channleId, out int recordCount);
     }
 
     internal partial class SPChannelParamsServiceProxy : ISPChannelParamsServiceProxy
     {
- 
+        public List<SPChannelParamsEntity> FindPageDataByChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, int channleId, out int recordCount)
+        {
+            SPChannelEntity channel = null;
+
+            if(channleId>0)
+            {
+                channel = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channleId);
+            }
+
+            return this.SelfDataObj.FindPageDataByChannelID(orderByColumnName, isDesc, pageIndex, pageSize, channel,
+                                                            out recordCount);
+        }
     }
 }
