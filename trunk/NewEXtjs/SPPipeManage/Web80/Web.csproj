@@ -266,6 +266,20 @@
     <Compile Include="Moudles\SPS\Clients\UCSPClientEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -315,6 +329,8 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,7 +353,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>10402</DevelopmentServerPort>
+          <DevelopmentServerPort>42161</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -15,11 +15,17 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     {
 
 
+        List<SPSendClientParamsEntity> FindAllByOrderByAndClientID(string sortFieldName, bool isDesc, int pageIndex, int limit, int clientId, out int recordCount);
     }
 
     internal partial class SPSendClientParamsServiceProxy : ISPSendClientParamsServiceProxy
     {
+        public List<SPSendClientParamsEntity> FindAllByOrderByAndClientID(string sortFieldName, bool isDesc, int pageIndex, int limit, int clientId, out int recordCount)
+        {
+            SPClientEntity clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientId);
 
-
+            return this.SelfDataObj.FindAllByOrderByAndClientID(sortFieldName, isDesc, pageIndex, limit, clientEntity,
+                                                                out recordCount);
+        }
     }
 }

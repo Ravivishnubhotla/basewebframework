@@ -11,5 +11,16 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPSendClientParamsDataObject
     {
+        public List<SPSendClientParamsEntity> FindAllByOrderByAndClientID(string sortFieldName, bool isDesc, int pageIndex, int limit, SPClientEntity client, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(client));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryGenerator);
+
+            return this.FindListByPageByQueryBuilder(queryGenerator, pageIndex, limit, out recordCount);
+
+        }
     }
 }
