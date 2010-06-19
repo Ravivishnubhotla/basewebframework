@@ -97,5 +97,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        public static List<SPSendClientParamsWrapper> FindAllByOrderByAndClientID(string sortFieldName, bool isDesc, int pageIndex, int limit, int clientId, out int recordCount)
+        {
+            return
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndClientID(sortFieldName, isDesc, pageIndex, limit,
+                                                                               clientId, out recordCount));
+        }
     }
 }
