@@ -192,7 +192,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
                 else
                 {
-                    paymentInfo.SucesssToSend = true;
+                    paymentInfo.SucesssToSend = false;
                 }
 
                 SPPaymentInfoWrapper.Save(paymentInfo);

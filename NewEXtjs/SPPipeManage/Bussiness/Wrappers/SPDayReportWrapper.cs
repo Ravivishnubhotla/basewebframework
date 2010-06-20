@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -96,6 +97,41 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 			
 		#endregion
+
+
+        private static string GetReportOutPutPath()
+        {
+            return HttpContext.Current.Server.MapPath("~/DayReport");
+        }
+
+
+	    public static void  GenerateDayReport(DateTime date)
+        {
+            businessProxy.BulidReport(GetReportOutPutPath(), date);
+        }
+
+        public static void GenerateALLDayReport(DateTime date)
+        {
+            List<DateTime> dates = GetALLDayNeedToGenerateReport();
+
+            foreach (DateTime dateTime in dates)
+            {
+                try
+                {
+                    GenerateDayReport(dateTime);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("Generate Day Report Error", ex);
+                }
+            }
+        }
+
+
+        public static List<DateTime> GetALLDayNeedToGenerateReport()
+        {
+            return new List<DateTime>();
+        }
 
     }
 }

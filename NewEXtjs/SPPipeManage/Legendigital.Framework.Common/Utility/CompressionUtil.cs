@@ -4,6 +4,7 @@ using System.Text;
 using ICSharpCode.SharpZipLib.BZip2;
 using ICSharpCode.SharpZipLib.GZip;
 using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Zip.Compression;
 using Legendigital.Framework.Common.SevenZip;
 
 namespace Legendigital.Framework.Common.Utility
@@ -159,5 +160,17 @@ namespace Legendigital.Framework.Common.Utility
 
             return outArr;
         }
+
+
+
+        public static byte[] Compress(byte[] bytesToCompress)
+        {
+            MemoryStream ms = new MemoryStream();
+            Stream s = OutputStream(ms, CompressionType.BZip2);
+            s.Write(bytesToCompress, 0, bytesToCompress.Length);
+            s.Close();
+            return ms.ToArray();
+        }
+
     }
 }

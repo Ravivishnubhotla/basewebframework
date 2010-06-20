@@ -71,11 +71,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_UPTOTALCOUNT = "UpTotalCount";
 		public static readonly string PROPERTY_NAME_UPSUCCESS = "UpSuccess";
-		public static readonly string PROPERTY_NAME_UPINTERCEPT = "UpIntercept";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_DOWNINTERCEPT = "DownIntercept";
+		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
+		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
+		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		
         #endregion
 
@@ -140,20 +142,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? UpIntercept
-		{
-			get
-			{
-				return entity.UpIntercept;
-			}
-			set
-			{
-				entity.UpIntercept = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public int? DownTotalCount
 		{
 			get
@@ -182,15 +170,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DownIntercept
+		public int? InterceptSuccess
 		{
 			get
 			{
-				return entity.DownIntercept;
+				return entity.InterceptSuccess;
 			}
 			set
 			{
-				entity.DownIntercept = value;
+				entity.InterceptSuccess = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? InterceptTotalCount
+		{
+			get
+			{
+				return entity.InterceptTotalCount;
+			}
+			set
+			{
+				entity.InterceptTotalCount = value;
 			}
 		}
 		/// <summary>
@@ -205,6 +207,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DayXmlFileName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ClientID
+		{
+			get
+			{
+				return entity.ClientID;
+			}
+			set
+			{
+				entity.ClientID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ChannelID
+		{
+			get
+			{
+				return entity.ChannelID;
+			}
+			set
+			{
+				entity.ChannelID = value;
 			}
 		}
 		#endregion 
