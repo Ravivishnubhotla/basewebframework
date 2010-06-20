@@ -98,6 +98,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+
+        public static string[] fields = new string[] { "cpid", "mid", "mobile", "port", "ywid", "msg", "extendfield1", "extendfield2", "extendfield3", "extendfield4", "extendfield5", "extendfield6", "extendfield7", "extendfield8", "extendfield9" };
+
         public static SPChannelWrapper GetChannelByPath(string fileName)
         {
             int id = 0;
@@ -122,12 +125,23 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public bool ProcessRequest(Hashtable hashtable,string ip)
         {
-            string cpid = GetParamsValue(hashtable,"cpid");
-            string mid = GetParamsValue(hashtable, "mid");
-            string mobile = GetParamsValue(hashtable, "mobile");
-            string port = GetParamsValue(hashtable, "port");
-            string ywid = GetParamsValue(hashtable, "ywid");
-            string msg = GetParamsValue(hashtable, "msg");
+            Hashtable fieldMappings = this.GetFieldMappings();
+
+            string cpid = GetParamsValue(hashtable, "cpid", fieldMappings);
+            string mid = GetParamsValue(hashtable, "mid", fieldMappings);
+            string mobile = GetParamsValue(hashtable, "mobile", fieldMappings);
+            string port = GetParamsValue(hashtable, "port", fieldMappings);
+            string ywid = GetParamsValue(hashtable, "ywid", fieldMappings);
+            string msg = GetParamsValue(hashtable, "msg", fieldMappings);
+            string extendfield1 = GetParamsValue(hashtable, "extendfield1", fieldMappings);
+            string extendfield2 = GetParamsValue(hashtable, "extendfield2", fieldMappings);
+            string extendfield3 = GetParamsValue(hashtable, "extendfield3", fieldMappings);
+            string extendfield4 = GetParamsValue(hashtable, "extendfield4", fieldMappings);
+            string extendfield5 = GetParamsValue(hashtable, "extendfield5", fieldMappings);
+            string extendfield6 = GetParamsValue(hashtable, "extendfield6", fieldMappings);
+            string extendfield7 = GetParamsValue(hashtable, "extendfield7", fieldMappings);
+            string extendfield8 = GetParamsValue(hashtable, "extendfield8", fieldMappings);
+            string extendfield9 = GetParamsValue(hashtable, "extendfield9", fieldMappings);
 
             if(string.IsNullOrEmpty(mobile))
                 return false;
@@ -156,6 +170,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.Port = port;
                 paymentInfo.Ywid = ywid;
                 paymentInfo.Message = msg;
+                paymentInfo.ExtendField1 = extendfield1;
+                paymentInfo.ExtendField2 = extendfield2;
+                paymentInfo.ExtendField3 = extendfield3;
+                paymentInfo.ExtendField4 = extendfield4;
+                paymentInfo.ExtendField5 = extendfield5;
+                paymentInfo.ExtendField6 = extendfield6;
+                paymentInfo.ExtendField7 = extendfield7;
+                paymentInfo.ExtendField8 = extendfield8;
+                paymentInfo.ExtendField9 = extendfield9;
                 paymentInfo.Ip = ip;
                 paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
                 paymentInfo.CreateDate = System.DateTime.Now;
@@ -177,6 +200,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             
         }
 
+	    private Hashtable GetFieldMappings()
+	    {
+            Hashtable mappingFields = new Hashtable();
+
+            List<SPChannelParamsWrapper> spChannelParamsWrappers = SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+
+	        foreach (string field in fields)
+	        {
+	            string findFeild = field;
+
+	            SPChannelParamsWrapper channelParamsWrapper =
+	                spChannelParamsWrappers.Find(p => (p.ParamsMappingName.Equals(findFeild)));
+
+                if(channelParamsWrapper==null)
+                {
+                    mappingFields.Add(findFeild,findFeild);
+                }
+                else
+                {
+                    mappingFields.Add(findFeild,channelParamsWrapper.Name);                  
+                }
+	        }
+
+	        return mappingFields;
+	    }
+
 	    private Hashtable GetEXParamsValue(Hashtable hashtable)
 	    {
 	        return new Hashtable();
@@ -197,11 +246,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        return null;
 	    }
 
-	    private string GetParamsValue(Hashtable hashtable,string key)
+	    private string GetParamsValue(Hashtable hashtable, string key, Hashtable fieldMappings)
         {
-            if (!hashtable.ContainsKey(key))
+	        string queryKey = key;
+
+            if (fieldMappings.ContainsKey(key))
+            {
+                queryKey = (string)fieldMappings[key];
+            }
+
+            if (!hashtable.ContainsKey(queryKey))
                 return "";
-            return hashtable[key].ToString();
+            return hashtable[queryKey].ToString();
         }
     }
 }

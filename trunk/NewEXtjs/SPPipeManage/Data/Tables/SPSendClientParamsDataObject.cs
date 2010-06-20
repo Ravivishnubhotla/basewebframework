@@ -22,5 +22,18 @@ namespace LD.SPPipeManage.Data.Tables
             return this.FindListByPageByQueryBuilder(queryGenerator, pageIndex, limit, out recordCount);
 
         }
+
+        public List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity spClientEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(spClientEntity));
+
+            queryGenerator.AddWhereClause(PROPERTY_ISENABLE.Eq(true));
+
+            queryGenerator.AddOrderBy(PROPERTY_ID.Desc());
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

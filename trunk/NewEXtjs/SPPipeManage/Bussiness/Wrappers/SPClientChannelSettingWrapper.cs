@@ -153,7 +153,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    public bool CaculteIsIntercept()
 	    {
-	        return false;
+            Random random = new Random(DateTime.Now.Millisecond);
+
+	        int result = random.Next(0, 100);
+
+	        return (result > this.InterceptRate);
 	    }
     }
 }

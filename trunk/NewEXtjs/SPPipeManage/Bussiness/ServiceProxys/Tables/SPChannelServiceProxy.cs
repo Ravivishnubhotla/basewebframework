@@ -15,6 +15,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity>
     {
 	    SPChannelEntity FindByAlias(string fileName);
+        List<SPChannelParamsEntity> GetAllEnableParams(SPChannelEntity entity);
     }
 
     internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
@@ -22,6 +23,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public SPChannelEntity FindByAlias(string fileName)
         {
             return this.SelfDataObj.FindByAlias(fileName);
+        }
+
+        public List<SPChannelParamsEntity> GetAllEnableParams(SPChannelEntity entity)
+        {
+            return this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetAllEnableParams(entity);
         }
     }
 }

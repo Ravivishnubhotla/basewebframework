@@ -11,5 +11,6 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPClientDataObject
     {
+
     }
 }

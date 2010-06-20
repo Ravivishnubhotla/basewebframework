@@ -13,13 +13,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientEntity>
     {
-
-
+	    List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity);
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
     {
-
-
+        public List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity)
+        {
+            return this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.GetAllEnableParams(entity);
+        }
     }
 }

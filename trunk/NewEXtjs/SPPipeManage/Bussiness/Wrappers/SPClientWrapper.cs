@@ -153,6 +153,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
+            Hashtable clientFieldMappings = this.GetFieldMappings();
+
             BulidParams(queryString,"cpid", cpid);
             BulidParams(queryString, "mid", mid);
             BulidParams(queryString, "mobile", mobile);
@@ -165,10 +167,36 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
 	    }
 
-	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
+	    private Hashtable GetFieldMappings()
 	    {
-	        return;
+            Hashtable mappingFields = new Hashtable();
+
+            List<SPSendClientParamsWrapper> spSendClientParamsWrappers = SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+
+            foreach (string field in SPChannelWrapper.fields)
+            {
+                string findFeild = field;
+
+                SPSendClientParamsWrapper clientParamsWrapper =
+                    spSendClientParamsWrappers.Find(p => (p.MappingParams.Equals(findFeild)));
+
+                if (clientParamsWrapper == null)
+                {
+                    mappingFields.Add(findFeild, findFeild);
+                }
+                else
+                {
+                    mappingFields.Add(findFeild, clientParamsWrapper.Name);
+                }
+            }
+
+            return mappingFields;
 	    }
+
+	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
+        {
+            return;
+        }
 
 	    private void BulidParams(NameValueCollection queryString, string key, string value)
 	    {
