@@ -57,7 +57,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选SPClient ? ',
+                Ext.MessageBox.confirm('警告','确认要删除所选下家 ? ',
                     function(e) {
                         if (e == 'yes')
                             Coolite.AjaxMethods.DeleteRecord(
@@ -67,7 +67,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除SPClient！',RefreshSPClientData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除下家！',RefreshSPClientData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -177,7 +177,7 @@
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
-                        <LoadMask ShowMask="true" />
+                        <LoadMask ShowMask="true" Msg="处理中..." />
                         <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="storeSPClient"
                                 DisplayInfo="true" DisplayMsg="显示下家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的下家" />

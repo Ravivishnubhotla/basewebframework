@@ -149,7 +149,7 @@
                             </ext:Column>
                             <ext:Column ColumnID="colMappingParams" DataIndex="MappingParams" Header="映射字段" Sortable="true">
                             </ext:Column>
-                            <ext:CommandColumn Header="SPSendClientParams管理" Width="160">
+                            <ext:CommandColumn Header="下家参数管理" Width="160">
                                 <Commands>
                                     <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
                                         <ToolTip Text="编辑" />
@@ -161,7 +161,7 @@
                             </ext:CommandColumn>
                         </Columns>
                     </ColumnModel>
-                    <LoadMask ShowMask="true" />
+                    <LoadMask ShowMask="true" Msg="加载中..." />
                     <BottomBar>
                         <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPSendClientParams"
                             DisplayInfo="true" DisplayMsg="显示下家参数 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的下家参数" />
