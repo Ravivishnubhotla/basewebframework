@@ -20,7 +20,19 @@ namespace WebRequestTestConsole
 
             int j = 0;
 
-            for (int i = 0; i < 10; i++)
+            int testDataCount = int.Parse(ConfigurationManager.AppSettings["testDataCount"]);
+
+            int reTryCount = int.Parse(ConfigurationManager.AppSettings["reTryCount"]);
+
+            int sleepTime = int.Parse(ConfigurationManager.AppSettings["sleepTime"]);
+
+            string mobileformat = ConfigurationManager.AppSettings["mobileformat"];
+
+            string msg =  ConfigurationManager.AppSettings["msg"];
+
+            string ywid =  ConfigurationManager.AppSettings["ywid"];
+
+            for (int i = 0; i < testDataCount; i++)
             {
                 int retryTimes = 0;
 
@@ -30,7 +42,7 @@ namespace WebRequestTestConsole
                 {
                     try
                     {
-                        requestOk = SendRequest(i, requesturl);
+                        requestOk = SendRequest(i, requesturl, mobileformat, msg, ywid);
                     }
                     catch
                     {
@@ -39,7 +51,7 @@ namespace WebRequestTestConsole
 
                     retryTimes++;
 
-                    if(retryTimes>=3)
+                    if (retryTimes >= reTryCount)
                         break;
 
                 } while (!requestOk);
@@ -55,14 +67,7 @@ namespace WebRequestTestConsole
                     Console.WriteLine(string.Format("line {0} ok", i));               
                 }
 
-
-
-
-
-
-
-
-                Thread.Sleep(200);
+                Thread.Sleep(sleepTime);
 
             }
 
@@ -72,9 +77,9 @@ namespace WebRequestTestConsole
 
         }
 
-        private static bool SendRequest(int i, string requesturl)
+        private static bool SendRequest(int i, string requesturl, string mobileformat, string msg, string ywid)
         {
-            HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(BulidUrl(i, requesturl));
+            HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(BulidUrl(i, requesturl, mobileformat, msg, ywid));
 
             webRequest.Timeout = 15000;
 
@@ -85,17 +90,22 @@ namespace WebRequestTestConsole
             return (webResponse.StatusCode == HttpStatusCode.OK);
         }
 
+        //private static bool SendRequest(int i, string requesturl)
+        //{
 
-        private static string BulidUrl(int i, string requesturl)
+        //}
+
+
+        private static string BulidUrl(int i, string requesturl, string mobileformat, string msg, string ywid)
         {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
             BulidParams(queryString, "cpid", "1");
             BulidParams(queryString, "mid", "2");
-            BulidParams(queryString, "mobile", "13521" + i.ToString("D5"));
+            BulidParams(queryString, "mobile",string.Format(mobileformat,i.ToString("D5")));
             BulidParams(queryString, "port", "21");
-            BulidParams(queryString, "ywid", "10000903");
-            BulidParams(queryString, "msg", "msg" + i.ToString("D5"));
+            BulidParams(queryString, "ywid", ywid);
+            BulidParams(queryString, "msg", string.Format(msg,i.ToString("D5")));
 
             return string.Format("{0}?{1}", requesturl, queryString.ToString());
         }

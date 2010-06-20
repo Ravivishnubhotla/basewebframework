@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Common.Logging;
@@ -28,7 +29,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 spTestRecievedWrapper.ClientID = null;
 
-                spTestRecievedWrapper.RecievedSendUrl = VirtualPathUtility.GetFileName(context.Request.PhysicalPath);
+                spTestRecievedWrapper.RecievedSendUrl = Path.GetFileName(context.Request.PhysicalPath);
 
                 spTestRecievedWrapper.RecievedDate = DateTime.Now;
 
@@ -76,9 +77,9 @@ namespace Legendigital.Common.Web.AppClass
         {
             Hashtable hb = new Hashtable();
 
-            foreach (string key in requestContext.Request.Params.Keys)
+            foreach (string key in requestContext.Request.QueryString.Keys)
             {
-                hb.Add(key, requestContext.Request.Params[key]);
+                hb.Add(key, requestContext.Request.QueryString[key]);
             }
 
             return hb;
