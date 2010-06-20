@@ -257,6 +257,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (!hashtable.ContainsKey(queryKey))
                 return "";
+
             return hashtable[queryKey].ToString();
         }
     }
