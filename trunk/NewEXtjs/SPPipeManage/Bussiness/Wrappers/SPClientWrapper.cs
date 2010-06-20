@@ -153,45 +153,82 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
-            Hashtable clientFieldMappings = this.GetFieldMappings();
+            //Hashtable values = new Hashtable();
 
-            BulidParams(queryString,"cpid", cpid);
-            BulidParams(queryString, "mid", mid);
-            BulidParams(queryString, "mobile", mobile);
-            BulidParams(queryString, "port", port);
-            BulidParams(queryString, "ywid", ywid);
-            BulidParams(queryString, "msg", msg);
+            //values.Add("cpid", cpid);
+            //values.Add("mid", mid);
+            //values.Add("mobile", mobile);
+            //values.Add("port", port);
+            //values.Add("ywid", ywid);
+            //values.Add("msg", msg);
+
+            List<SPSendClientParamsWrapper> clientFieldMappings = this.GetFieldMappings();
+
+            foreach (SPSendClientParamsWrapper clientFieldMapping in clientFieldMappings)
+	        {
+                switch (clientFieldMapping.MappingParams)
+	            {
+                    case "mid":
+                        BulidParams(queryString, clientFieldMapping.Name, mid);
+	                    break;
+                    case "mobile":
+                        BulidParams(queryString, clientFieldMapping.Name, mobile);
+                        break;
+                    case "port":
+                        BulidParams(queryString, clientFieldMapping.Name, port);
+                        break;
+                    case "ywid":
+                        BulidParams(queryString, clientFieldMapping.Name, ywid);
+                        break;
+                    case "msg":
+                        BulidParams(queryString, clientFieldMapping.Name, msg);
+                        break;
+                    case "cpid":
+                        BulidParams(queryString, clientFieldMapping.Name, cpid);
+                        break;
+	            }         
+	        }
 
             BulidParams(queryString, exparams);
 
 	        return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
 	    }
 
-	    private Hashtable GetFieldMappings()
-	    {
-            Hashtable mappingFields = new Hashtable();
+        private List<SPSendClientParamsWrapper> GetFieldMappings()
+        {
+           return SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+        }
 
-            List<SPSendClientParamsWrapper> spSendClientParamsWrappers = SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+        //private Hashtable GetFieldMappings()
+        //{
+        //    Hashtable mappingFields = new Hashtable();
 
-            foreach (string field in SPChannelWrapper.fields)
-            {
-                string findFeild = field;
+        //    List<SPSendClientParamsWrapper> spSendClientParamsWrappers = SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
 
-                SPSendClientParamsWrapper clientParamsWrapper =
-                    spSendClientParamsWrappers.Find(p => (p.MappingParams.Equals(findFeild)));
+        //    foreach (SPSendClientParamsWrapper spSendClientParamsWrapper in spSendClientParamsWrappers)
+        //    {
+        //        mappingFields.Add(spSendClientParamsWrapper.MappingParams, spSendClientParamsWrapper.Name);
+        //    }
+            
+        //    //foreach (string field in SPChannelWrapper.fields)
+        //    //{
+        //    //    string findFeild = field;
 
-                if (clientParamsWrapper == null)
-                {
-                    mappingFields.Add(findFeild, findFeild);
-                }
-                else
-                {
-                    mappingFields.Add(findFeild, clientParamsWrapper.Name);
-                }
-            }
+        //    //    SPSendClientParamsWrapper clientParamsWrapper =
+        //    //        spSendClientParamsWrappers.Find(p => (p.MappingParams.Equals(findFeild)));
 
-            return mappingFields;
-	    }
+        //    //    if (clientParamsWrapper == null)
+        //    //    {
+        //    //        mappingFields.Add(findFeild, findFeild);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        mappingFields.Add(findFeild, clientParamsWrapper.Name);
+        //    //    }
+        //    //}
+
+        //    return mappingFields;
+        //}
 
 	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
         {
