@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSendClientParamsAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPSendClientParamsAdd" %>
-<ext:Window ID="winSPSendClientParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建SPSendClientParams"
+<ext:Window ID="winSPSendClientParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建下家参数"
     Width="400" Height="300" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -60,7 +60,7 @@
         <ext:Button ID="btnSaveSPSendClientParams" runat="server" Text="添加" Icon="Add">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPSendClientParamsAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了系统应用。',callback);function callback(id) {#{formPanelSPSendClientParamsAdd}.getForm().reset();#{storeSPSendClientParams}.reload(); };
+                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了下家参数。',callback);function callback(id) {#{formPanelSPSendClientParamsAdd}.getForm().reset();#{storeSPSendClientParams}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

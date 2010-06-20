@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSendClientParamsEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPSendClientParamsEdit" %>
 <ext:Window ID="winSPSendClientParamsEdit" runat="server" Icon="ApplicationEdit"
-    Title="编辑SPSendClientParams" Width="400" Height="300" AutoShow="false" Maximizable="true"
+    Title="编辑下家参数" Width="400" Height="300" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -62,7 +62,7 @@
         <ext:Button ID="btnSaveSPSendClientParams" runat="server" Text="编辑" Icon="ApplicationEdit">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPSendClientParamsEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了SPSendClientParams。',callback);function callback(id) { #{storeSPSendClientParams}.reload(); };
+                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了下家参数。',callback);function callback(id) { #{storeSPSendClientParams}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>
