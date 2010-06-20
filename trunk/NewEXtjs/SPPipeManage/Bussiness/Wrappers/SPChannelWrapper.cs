@@ -183,10 +183,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
                 paymentInfo.CreateDate = System.DateTime.Now;
 
-                if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
-                    paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+                if (!paymentInfo.IsIntercept.Value)
+                {
+                    if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
+                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+                    else
+                        paymentInfo.SucesssToSend = false;
+                }
                 else
-                    paymentInfo.SucesssToSend = false;
+                {
+                    paymentInfo.SucesssToSend = true;
+                }
 
                 SPPaymentInfoWrapper.Save(paymentInfo);
 

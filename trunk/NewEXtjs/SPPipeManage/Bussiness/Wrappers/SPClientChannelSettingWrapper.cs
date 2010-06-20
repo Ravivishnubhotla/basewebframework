@@ -157,7 +157,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	        int result = random.Next(0, 100);
 
-	        return (result > this.InterceptRate);
+	        return (result <= this.InterceptRate);
 	    }
     }
 }
