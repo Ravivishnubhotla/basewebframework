@@ -18,11 +18,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_UPTOTALCOUNT = "UpTotalCount";
 		public static readonly string PROPERTY_NAME_UPSUCCESS = "UpSuccess";
-		public static readonly string PROPERTY_NAME_UPINTERCEPT = "UpIntercept";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_DOWNINTERCEPT = "DownIntercept";
+		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
+		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
+		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		
         #endregion
 	
@@ -35,11 +37,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		private DateTime? _reportDate;
 		private int? _upTotalCount;
 		private int? _upSuccess;
-		private int? _upIntercept;
 		private int? _downTotalCount;
 		private int? _downSuccess;
-		private int? _downIntercept;
+		private int? _interceptSuccess;
+		private int? _interceptTotalCount;
 		private string _dayXmlFileName;
+		private int? _clientID;
+		private int? _channelID;
 		
 		#endregion
 
@@ -53,11 +57,13 @@ namespace LD.SPPipeManage.Entity.Tables
 			_reportDate = null;
 			_upTotalCount = null;
 			_upSuccess = null;
-			_upIntercept = null;
 			_downTotalCount = null;
 			_downSuccess = null;
-			_downIntercept = null;
+			_interceptSuccess = null;
+			_interceptTotalCount = null;
 			_dayXmlFileName = null;
+			_clientID = null;
+			_channelID = null;
 		}
 		#endregion
 
@@ -65,17 +71,19 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? upIntercept, int? downTotalCount, int? downSuccess, int? downIntercept, string dayXmlFileName)
+		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? downTotalCount, int? downSuccess, int? interceptSuccess, int? interceptTotalCount, string dayXmlFileName, int? clientID, int? channelID)
 		{
 			_reportID = reportID;
 			_reportDate = reportDate;
 			_upTotalCount = upTotalCount;
 			_upSuccess = upSuccess;
-			_upIntercept = upIntercept;
 			_downTotalCount = downTotalCount;
 			_downSuccess = downSuccess;
-			_downIntercept = downIntercept;
+			_interceptSuccess = interceptSuccess;
+			_interceptTotalCount = interceptTotalCount;
 			_dayXmlFileName = dayXmlFileName;
+			_clientID = clientID;
+			_channelID = channelID;
 		}
 		#endregion     
 	
@@ -141,20 +149,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? UpIntercept
-		{
-			get { return _upIntercept; }
-
-			set	
-			{
-				_isChanged |= (_upIntercept != value); _upIntercept = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int? DownTotalCount
 		{
 			get { return _downTotalCount; }
@@ -183,13 +177,27 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownIntercept
+		public virtual int? InterceptSuccess
 		{
-			get { return _downIntercept; }
+			get { return _interceptSuccess; }
 
 			set	
 			{
-				_isChanged |= (_downIntercept != value); _downIntercept = value;
+				_isChanged |= (_interceptSuccess != value); _interceptSuccess = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? InterceptTotalCount
+		{
+			get { return _interceptTotalCount; }
+
+			set	
+			{
+				_isChanged |= (_interceptTotalCount != value); _interceptTotalCount = value;
 			}
 		}
 
@@ -207,6 +215,34 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for DayXmlFileName", value, value.ToString());
 				_isChanged |= (_dayXmlFileName != value); _dayXmlFileName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ClientID
+		{
+			get { return _clientID; }
+
+			set	
+			{
+				_isChanged |= (_clientID != value); _clientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChannelID
+		{
+			get { return _channelID; }
+
+			set	
+			{
+				_isChanged |= (_channelID != value); _channelID = value;
 			}
 		}
 		/// <summary>
