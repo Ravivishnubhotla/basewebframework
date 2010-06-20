@@ -335,6 +335,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Logs\" />
+    <Folder Include="Moudles\SPS\Reports\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>
