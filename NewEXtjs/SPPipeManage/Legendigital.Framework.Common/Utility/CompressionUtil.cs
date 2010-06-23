@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.Utility
 
     public class CompressionUtil
     {
-        private static Stream OutputStream(Stream inputStream,CompressionType compressionProvider)
+        private static Stream OutputStream(Stream inputStream, CompressionType compressionProvider)
         {
             switch (compressionProvider)
             {
@@ -135,18 +135,15 @@ namespace Legendigital.Framework.Common.Utility
             var outStream = new MemoryStream();
 
             while (true)
-
             {
                 int size = s2.Read(writeData, 0, writeData.Length);
 
                 if (size > 0)
-
                 {
                     outStream.Write(writeData, 0, size);
                 }
 
                 else
-
                 {
                     break;
                 }
@@ -163,13 +160,36 @@ namespace Legendigital.Framework.Common.Utility
 
 
 
-        public static byte[] Compress(byte[] bytesToCompress)
+        public static byte[] CompressZipFile(byte[] fileContent, string fileName)
         {
-            MemoryStream ms = new MemoryStream();
-            Stream s = OutputStream(ms, CompressionType.BZip2);
-            s.Write(bytesToCompress, 0, bytesToCompress.Length);
-            s.Close();
-            return ms.ToArray();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (ZipOutputStream s = new ZipOutputStream(ms))
+                {
+                    s.SetLevel(9);
+
+                    byte[] buffer = new byte[4096];
+
+                    ZipEntry entry = new ZipEntry(fileName);
+                    entry.DateTime = DateTime.Now;
+                    s.PutNextEntry(entry);
+
+                    using (MemoryStream zipm = new MemoryStream(fileContent))
+                    {
+                        int sourceBytes;
+                        do
+                        {
+                            sourceBytes = zipm.Read(buffer, 0, buffer.Length);
+                            s.Write(buffer, 0, sourceBytes);
+                        } while (sourceBytes > 0);
+                    }
+
+                    s.Finish();
+                    s.Close();
+               
+                }
+                return ms.ToArray();
+            }
         }
 
     }

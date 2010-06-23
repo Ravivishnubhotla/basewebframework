@@ -39,26 +39,59 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             DataSet dsAllFailedSend = this.AdoNetDb.GetAllFailedSendCountData(date.Year, date.Month, date.Day);
 
+            bool hasReport = false;
+
 
             foreach (DataRow dataRow in dsAll.Tables[0].Rows)
             {
-                SPDayReportEntity dayReportEntity = new SPDayReportEntity();
+                int channelID = (int)dataRow["ChannelID"];
+                int clientID = (int)dataRow["ChannelID"];
 
-                dayReportEntity.ChannelID = (int)dataRow["ChannelID"];
-                dayReportEntity.ClientID = (int)dataRow["ClientID"];
-                dayReportEntity.UpTotalCount = (int)dataRow["TotalCount"];
-                dayReportEntity.UpSuccess = (int)dataRow["TotalCount"];
-                dayReportEntity.InterceptTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                dayReportEntity.InterceptSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                dayReportEntity.DownTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllNoIsIntercept);
-                dayReportEntity.DownSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllSuccessSend);
+                SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
+
+                if (dayReportEntity==null)
+                {
+                    hasReport = false;
+                    dayReportEntity = new SPDayReportEntity();
+                }
+                else
+                {
+                    hasReport = true;
+                }
+
+                dayReportEntity.ChannelID = channelID;
+                dayReportEntity.ClientID = clientID;
+                if (hasReport)
+                {
+                    dayReportEntity.UpTotalCount += (int)dataRow["TotalCount"];
+                    dayReportEntity.UpSuccess += (int)dataRow["TotalCount"];
+                    dayReportEntity.InterceptTotalCount += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
+                    dayReportEntity.InterceptSuccess += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
+                    dayReportEntity.DownTotalCount += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllNoIsIntercept);
+                    dayReportEntity.DownSuccess += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllSuccessSend);
+                }
+                else
+                {
+                    dayReportEntity.UpTotalCount = (int)dataRow["TotalCount"];
+                    dayReportEntity.UpSuccess = (int)dataRow["TotalCount"];
+                    dayReportEntity.InterceptTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
+                    dayReportEntity.InterceptSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
+                    dayReportEntity.DownTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllNoIsIntercept);
+                    dayReportEntity.DownSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllSuccessSend);           
+                }
+
+
                 dayReportEntity.DayXmlFileName = "yyyyMMdd.zip";
                 dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
 
-                this.SelfDataObj.Save(dayReportEntity);
+                this.SelfDataObj.SaveOrUpdate(dayReportEntity);
             }
 
             WriteDataSetToXml(reportOutPutPath, date.ToString("yyyyMMdd") + ".zip", dsReportDate);
+
+
+            this.AdoNetDb.DeleteAllReportData(date);
+
         }
 
         private int GetTotalCountFromDataSet(string totalcount, int channelId, int clientId, DataSet ds)
@@ -83,7 +116,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             dsReportDate.WriteXml(ms);
 
-            File.WriteAllBytes(filePath,CompressionUtil.Compress(ms.ToArray()));
+            File.WriteAllBytes(filePath, CompressionUtil.CompressZipFile(ms.ToArray(), Path.GetFileNameWithoutExtension(fileName)+".xml"));
         }
     }
 }

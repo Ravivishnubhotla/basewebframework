@@ -112,7 +112,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static void GenerateALLDayReport(DateTime date)
         {
-            List<DateTime> dates = GetALLDayNeedToGenerateReport();
+            List<DateTime> dates = GetALLDayNeedToGenerateReport(date);
 
             foreach (DateTime dateTime in dates)
             {
@@ -128,9 +128,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public static List<DateTime> GetALLDayNeedToGenerateReport()
+        public static List<DateTime> GetALLDayNeedToGenerateReport(DateTime nowdate)
         {
-            return new List<DateTime>();
+            List<DateTime> dateTimes = new List<DateTime>();
+
+            for (int j = 0; j < 10; j++)
+            {
+                DateTime addDate = nowdate.AddDays((0 - j - 1));
+
+                dateTimes.Add(new DateTime(addDate.Year, addDate.Month, addDate.Day));
+            }
+
+            return dateTimes;
         }
 
     }

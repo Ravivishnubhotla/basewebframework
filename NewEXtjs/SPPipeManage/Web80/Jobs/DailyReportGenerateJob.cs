@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Common.Logging;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Quartz;
 using Spring.Scheduling.Quartz;
 
@@ -22,15 +23,15 @@ namespace Legendigital.Common.Web.Jobs
             set { userName = value; }
         }
 
-        //public void Execute(JobExecutionContext context)
-        //{
-        //    //System.Configuration.NameValueSectionHandler
-        //    logger.Error("1111111111111111111111111111111111111111s");
-        //}
-
         protected override void ExecuteInternal(JobExecutionContext context)
         {
             logger.Info("Daily Report Generate Job Start");
+
+
+            SPDayReportWrapper.GenerateDayReport(System.DateTime.Now.AddDays(-1));
+
+
+            logger.Info("Daily Report Generate Job End");
         }
     }
 }
