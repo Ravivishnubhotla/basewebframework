@@ -146,5 +146,20 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
         }
+
+        public void DeleteAllReportData(DateTime date)
+        {
+            string sql = "delete from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("year", date.Year.ToString());
+
+            dbParameters.AddWithValue("month", date.Month.ToString());
+
+            dbParameters.AddWithValue("day", date.Day.ToString());
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
     }
 }

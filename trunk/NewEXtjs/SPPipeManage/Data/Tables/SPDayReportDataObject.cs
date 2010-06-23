@@ -11,5 +11,15 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPDayReportDataObject
     {
+        public SPDayReportEntity FindReportByChannelIDChannelIDAndDate(int channelId, int clientId, DateTime date)
+        {
+            NHibernateDynamicQueryGenerator<SPDayReportEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+            queryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(clientId));
+            queryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Eq(new DateTime(date.Year, date.Month, date.Day)));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
     }
 }

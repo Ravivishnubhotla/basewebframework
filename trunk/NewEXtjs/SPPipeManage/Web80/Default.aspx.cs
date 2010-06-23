@@ -13,7 +13,7 @@ namespace Legendigital.Common.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SPDayReportWrapper.GenerateDayReport(System.DateTime.Now);
+            //SPDayReportWrapper.GenerateALLDayReport(System.DateTime.Now);
 
 
 
