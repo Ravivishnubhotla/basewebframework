@@ -14,6 +14,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives {
     public partial class DataArchive {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManager1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
@@ -59,13 +68,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives {
         protected global::Coolite.Ext.Web.MultiField MultiField1;
         
         /// <summary>
-        /// Progress1 control.
+        /// prgData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ProgressBar Progress1;
+        protected global::Coolite.Ext.Web.ProgressBar prgData;
         
         /// <summary>
         /// MultiField2 control.

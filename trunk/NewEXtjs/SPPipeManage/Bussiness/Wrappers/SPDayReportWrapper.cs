@@ -111,7 +111,46 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.BulidReport(date);
         }
 
-        //public static void GenerateALLDayReport(DateTime date)
+        public static string GetDbSizeString()
+        {
+            return businessProxy.GetDbSize();
+        }
+
+        public static decimal GetDbSize()
+        {
+            string dbstring = businessProxy.GetDbSize();
+
+            decimal dbsize = decimal.Zero;
+
+            try
+            {
+                dbsize = Convert.ToDecimal(dbstring.Split(' ')[0]);
+            }
+            catch 
+            {
+                try
+                {
+                    dbsize = Convert.ToDecimal(dbstring.Replace(" ", "").Replace("MB", ""));
+                }
+                catch
+                {
+                    
+                }
+            }
+
+            return dbsize;
+        }
+
+        public static void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
+        {
+            //for (DateTime i = startDate.Date; i < endDate.Date.AddDays(1); i=i.AddDays(1))
+            //{
+            businessProxy.ArchivesData(archivesPath, startDate.Date, endDate.Date);
+            //}
+        }
+
+	    
+	    //public static void GenerateALLDayReport(DateTime date)
         //{
         //    List<DateTime> dates = GetALLDayNeedToGenerateReport(date);
 

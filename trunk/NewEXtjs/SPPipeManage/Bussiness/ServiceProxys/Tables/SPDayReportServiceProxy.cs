@@ -18,6 +18,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>
     {
 	    void BulidReport(DateTime date);
+	    string GetDbSize();
+	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -28,7 +30,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             //Get all need to generate report's channle nad client ID.
             DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
 
-            DataSet dsReportDate = this.AdoNetDb.GetAllReportData(date.Year, date.Month, date.Day);
+            DataSet dsReportDate = this.AdoNetDb.GetAllNOReportData(date.Year, date.Month, date.Day);
 
             foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
             {
@@ -87,19 +89,52 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.ClearAllReportedData(date);     
         }
 
-        private DataTable GetReportData(DataSet dsReportDate,string filter)
+        public string GetDbSize()
         {
-            DataTable cdt = dsReportDate.Tables[0].Clone();
-
-            DataRow[] drs = dsReportDate.Tables[0].Select(filter);
-
-            foreach (DataRow dr in drs)
-            {
-                cdt.ImportRow(dr);
-            }
-
-            return cdt;
+            return this.AdoNetDb.GetDbSize();
         }
+
+        [Transaction(ReadOnly = false)]
+        public void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
+        {
+            for (DateTime i = startDate; i < endDate.AddDays(1); i=i.AddDays(1))
+            {
+                ArchivesData(archivesPath, i);
+            }
+        }
+
+        [Transaction(ReadOnly = false)]
+        private void ArchivesData(string archivesPath, DateTime dateTime)
+        {
+            BulidReport(dateTime);
+
+            DataSet ds = this.AdoNetDb.GetAllReportData(dateTime);
+
+            if(ds.Tables[0].Rows.Count ==0)
+                return;
+
+            string fileName = GetFileName(archivesPath, dateTime);
+
+            WriteDataSetToXml(archivesPath, fileName + ".bak", ds);
+
+            WriteDataSetToXml(archivesPath, fileName + ".zip", ds);
+
+            this.AdoNetDb.DeleteAllReportData(dateTime);
+        }
+
+        //private DataTable GetReportData(DataSet dsReportDate,string filter)
+        //{
+        //    DataTable cdt = dsReportDate.Tables[0].Clone();
+
+        //    DataRow[] drs = dsReportDate.Tables[0].Select(filter);
+
+        //    foreach (DataRow dr in drs)
+        //    {
+        //        cdt.ImportRow(dr);
+        //    }
+
+        //    return cdt;
+        //}
 
 
 
@@ -107,8 +142,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4} ",
                                           date.Year, date.Month, date.Day, channelID, clientID);
-
-            //DataTable dt = GetReportData(dsReportDate, filter);
 
             object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
@@ -124,8 +157,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 1 ",
                               date.Year, date.Month, date.Day, channelID, clientID);
 
-            //DataTable dt = GetReportData(dsReportDate, filter);
-
             object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
             if (upTotalCountResult == System.DBNull.Value)
@@ -138,8 +169,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 0 and [SucesssToSend] =0",
                   date.Year, date.Month, date.Day, channelID, clientID);
-
-            //DataTable dt = GetReportData(dsReportDate, filter);
 
             object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
@@ -172,16 +201,16 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return fileName;
         }
 
-        private int GetTotalCountFromDataSet(string totalcount, int channelId, int clientId, DataSet ds)
-        {
-            DataRow[] drs =
-                ds.Tables[0].Select(string.Format(" ChannelID = {0} and ClientID ={1} ", channelId.ToString(),
-                                                  clientId.ToString()));
-            if (drs.Length > 0)
-                return (int) drs[0][totalcount];
-            else
-                return 0;
-        }
+        //private int GetTotalCountFromDataSet(string totalcount, int channelId, int clientId, DataSet ds)
+        //{
+        //    DataRow[] drs =
+        //        ds.Tables[0].Select(string.Format(" ChannelID = {0} and ClientID ={1} ", channelId.ToString(),
+        //                                          clientId.ToString()));
+        //    if (drs.Length > 0)
+        //        return (int) drs[0][totalcount];
+        //    else
+        //        return 0;
+        //}
 
         private void WriteDataSetToXml(string reportOutPutPath, string fileName, DataSet dsReportDate)
         {
