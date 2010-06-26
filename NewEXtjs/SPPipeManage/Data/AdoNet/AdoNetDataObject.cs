@@ -57,85 +57,8 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataSet GetAllReportData(int year, int month, int day)
         {
-            string sql = "Select * from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 0";
+            string sql = "Select * from wiew_NoPayReport where CYear = @year and  CMonth =  @month and  CDay=@day";
  
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("year", year.ToString());
-
-            dbParameters.AddWithValue("month", month.ToString());
-
-            dbParameters.AddWithValue("day", day.ToString());
-
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
-        }
-
-        public DataSet GetAllCountData(int year, int month, int day)
-        {
-            string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 0) as tb1 group by ChannelID,ClientID";
-
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("year", year.ToString());
-
-            dbParameters.AddWithValue("month", month.ToString());
-
-            dbParameters.AddWithValue("day", day.ToString());
-
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
-        }
-
-        public DataSet GetAllIsInterceptCountData(int year, int month, int day)
-        {
-            string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=1  and IsReport = 0) as tb1 group by ChannelID,ClientID";
-
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("year", year.ToString());
-
-            dbParameters.AddWithValue("month", month.ToString());
-
-            dbParameters.AddWithValue("day", day.ToString());
-
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
-        }
-
-
-        public DataSet GetAllNoIsInterceptCountData(int year, int month, int day)
-        {
-            string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day  and IsIntercept=0  and IsReport = 0) as tb1 group by ChannelID,ClientID";
-
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("year", year.ToString());
-
-            dbParameters.AddWithValue("month", month.ToString());
-
-            dbParameters.AddWithValue("day", day.ToString());
-
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
-        }
-
-        public DataSet GetAllSuccessSendCountData(int year, int month, int day)
-        {
-            string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=0 and  SucesssToSend =1 and IsReport = 0) as tb1 group by ChannelID,ClientID";
-
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("year", year.ToString());
-
-            dbParameters.AddWithValue("month", month.ToString());
-
-            dbParameters.AddWithValue("day", day.ToString());
-
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
-        }
-
-
-        public DataSet GetAllFailedSendCountData(int year, int month, int day)
-        {
-            string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=0 and  SucesssToSend =0 and IsReport = 0) as tb1 group by ChannelID,ClientID";
-
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("year", year.ToString());
@@ -162,6 +85,94 @@ namespace LD.SPPipeManage.Data.AdoNet
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
         }
 
+        public DataSet GetAllClientChannel()
+        {
+            string sql = "Select * from view_ClientChannel";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
+
+        //public DataSet GetAllCountData(int year, int month, int day)
+        //{
+        //    string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 0) as tb1 group by ChannelID,ClientID";
+
+        //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+        //    dbParameters.AddWithValue("year", year.ToString());
+
+        //    dbParameters.AddWithValue("month", month.ToString());
+
+        //    dbParameters.AddWithValue("day", day.ToString());
+
+        //    return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        //}
+
+        //public DataSet GetAllIsInterceptCountData(int year, int month, int day)
+        //{
+        //    string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=1  and IsReport = 0) as tb1 group by ChannelID,ClientID";
+
+        //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+        //    dbParameters.AddWithValue("year", year.ToString());
+
+        //    dbParameters.AddWithValue("month", month.ToString());
+
+        //    dbParameters.AddWithValue("day", day.ToString());
+
+        //    return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        //}
+
+
+        //public DataSet GetAllNoIsInterceptCountData(int year, int month, int day)
+        //{
+        //    string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day  and IsIntercept=0  and IsReport = 0) as tb1 group by ChannelID,ClientID";
+
+        //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+        //    dbParameters.AddWithValue("year", year.ToString());
+
+        //    dbParameters.AddWithValue("month", month.ToString());
+
+        //    dbParameters.AddWithValue("day", day.ToString());
+
+        //    return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        //}
+
+        //public DataSet GetAllSuccessSendCountData(int year, int month, int day)
+        //{
+        //    string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=0 and  SucesssToSend =1 and IsReport = 0) as tb1 group by ChannelID,ClientID";
+
+        //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+        //    dbParameters.AddWithValue("year", year.ToString());
+
+        //    dbParameters.AddWithValue("month", month.ToString());
+
+        //    dbParameters.AddWithValue("day", day.ToString());
+
+        //    return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        //}
+
+
+        //public DataSet GetAllFailedSendCountData(int year, int month, int day)
+        //{
+        //    string sql = "select ChannelID,ClientID,Count(*) as TotalCount from (Select ChannelID,ClientID,IsIntercept,SucesssToSend from dbo.SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsIntercept=0 and  SucesssToSend =0 and IsReport = 0) as tb1 group by ChannelID,ClientID";
+
+        //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+        //    dbParameters.AddWithValue("year", year.ToString());
+
+        //    dbParameters.AddWithValue("month", month.ToString());
+
+        //    dbParameters.AddWithValue("day", day.ToString());
+
+        //    return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        //}
+
+
+
         public void DeleteAllReportData(DateTime date)
         {
             string sql = "delete from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 1";
@@ -176,5 +187,8 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
         }
+
+
+
     }
 }

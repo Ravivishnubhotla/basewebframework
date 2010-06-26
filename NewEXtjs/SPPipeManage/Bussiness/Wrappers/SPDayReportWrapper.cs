@@ -111,37 +111,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.BulidReport(date);
         }
 
-        public static void GenerateALLDayReport(DateTime date)
-        {
-            List<DateTime> dates = GetALLDayNeedToGenerateReport(date);
+        //public static void GenerateALLDayReport(DateTime date)
+        //{
+        //    List<DateTime> dates = GetALLDayNeedToGenerateReport(date);
 
-            foreach (DateTime dateTime in dates)
-            {
-                try
-                {
-                    GenerateDayReport(dateTime);
-                }
-                catch (Exception ex)
-                {
-                    logger.Error("Generate Day Report Error", ex);
-                }
-            }
-        }
+        //    foreach (DateTime dateTime in dates)
+        //    {
+        //        try
+        //        {
+        //            GenerateDayReport(dateTime);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            logger.Error("Generate Day Report Error", ex);
+        //        }
+        //    }
+        //}
 
 
-        public static List<DateTime> GetALLDayNeedToGenerateReport(DateTime nowdate)
-        {
-            List<DateTime> dateTimes = new List<DateTime>();
+        //public static List<DateTime> GetALLDayNeedToGenerateReport(DateTime nowdate)
+        //{
+        //    List<DateTime> dateTimes = new List<DateTime>();
 
-            for (int j = 0; j < 10; j++)
-            {
-                DateTime addDate = nowdate.AddDays((0 - j - 1));
+        //    for (int j = 0; j < 10; j++)
+        //    {
+        //        DateTime addDate = nowdate.AddDays((0 - j - 1));
 
-                dateTimes.Add(new DateTime(addDate.Year, addDate.Month, addDate.Day));
-            }
+        //        dateTimes.Add(new DateTime(addDate.Year, addDate.Month, addDate.Day));
+        //    }
 
-            return dateTimes;
-        }
+        //    return dateTimes;
+        //}
 
     }
 }
