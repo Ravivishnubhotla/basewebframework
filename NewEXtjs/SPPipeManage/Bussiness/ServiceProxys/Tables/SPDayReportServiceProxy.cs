@@ -17,17 +17,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>
     {
-	    void BulidReport(string reportOutPutPath, DateTime date);
+	    void BulidReport(DateTime date);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
     {
         [Transaction(ReadOnly=false)]
-        public void BulidReport(string reportOutPutPath, DateTime date)
+        public void BulidReport(DateTime date)
         {
             DataSet dsReportDate = this.AdoNetDb.GetAllReportData(date.Year, date.Month, date.Day);
 
-            WriteDataSetToXml(reportOutPutPath, date.ToString("yyyyMMdd"+".bak"), dsReportDate);
+            //string reportFileName = GetFileName(reportOutPutPath, date);
+
+            //WriteDataSetToXml(reportOutPutPath, reportFileName + ".bak", dsReportDate);
 
             DataSet dsAll = this.AdoNetDb.GetAllCountData(date.Year, date.Month, date.Day);
 
@@ -81,17 +83,39 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 }
 
 
-                dayReportEntity.DayXmlFileName = "yyyyMMdd.zip";
+                //dayReportEntity.DayXmlFileName = "yyyyMMdd.zip";
                 dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
 
                 this.SelfDataObj.SaveOrUpdate(dayReportEntity);
             }
 
-            WriteDataSetToXml(reportOutPutPath, date.ToString("yyyyMMdd") + ".zip", dsReportDate);
+            //WriteDataSetToXml(reportOutPutPath, reportFileName + ".zip", dsReportDate);
+
+            this.AdoNetDb.ClearAllReportedData(date);
+
+        }
+
+        private string GetFileName(string reportOutPutPath, DateTime date)
+        {
+            int i = 1;
+
+            bool existFileName = false;
+
+            string fileName = "";
+
+            do
+            {
+                existFileName =
+                    File.Exists(Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("N3") + ".zip"));
+
+                fileName = Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("N3"));
+
+                i++;
 
 
-            this.AdoNetDb.DeleteAllReportData(date);
+            } while (existFileName);
 
+            return fileName;
         }
 
         private int GetTotalCountFromDataSet(string totalcount, int channelId, int clientId, DataSet ds)
