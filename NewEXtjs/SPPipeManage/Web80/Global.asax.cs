@@ -15,21 +15,12 @@ namespace Legendigital.Common.Web
     {
         private ILog logger = LogManager.GetLogger(typeof(Global));
 
-        //IScheduler sched;
+        
 
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            // 在应用程序启动时运行的代码
-            //ISchedulerFactory sf = new Quartz.Impl.StdSchedulerFactory();
-            //sched = sf.GetScheduler();
-            //JobDetail job = new JobDetail("job1", "group1", typeof(DailyReportGenerateJob));
-
-            //string cronExpr = ConfigurationManager.AppSettings["DailyReportRunTimeCronExpression"];
-            //CronTrigger trigger = new CronTrigger("trigger1", "group1", "job1", "group1", cronExpr);
-            //sched.AddJob(job, true);
-            //DateTime ft = sched.ScheduleJob(trigger);
-            //sched.Start();
+            
 
 
         }
@@ -62,12 +53,6 @@ namespace Legendigital.Common.Web
 
         protected void Application_End(object sender, EventArgs e)
         {
-            //  在应用程序关闭时运行的代码
-            //if (sched != null)
-            //{
-            //    sched.Shutdown(true);
-            //}
-
         }
     }
 }
