@@ -280,6 +280,13 @@
     <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.designer.cs">
       <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.cs">
+      <DependentUpon>DataArchive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.designer.cs">
+      <DependentUpon>DataArchive.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +338,7 @@
     <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\DataArchives\DataArchive.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
