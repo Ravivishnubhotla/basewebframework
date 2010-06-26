@@ -35,9 +35,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 int channelID = (int)dataRow["ChannelID"];
                 int clientID = (int)dataRow["ClientID"];
 
-                int upTotalCount = GetUpTotalCount(date, dsReportDate);
-                int interceptTotalCount = GetInterceptTotalCount(date, dsReportDate);
-                int sendFailedTotalCount = GetSendFailedTotalCount(date, dsReportDate);
+                int upTotalCount = GetUpTotalCount(date, channelID, clientID, dsReportDate);
+                int interceptTotalCount = GetInterceptTotalCount(date, channelID, clientID, dsReportDate);
+                int sendFailedTotalCount = GetSendFailedTotalCount(date, channelID, clientID, dsReportDate);
 
 
                 SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
@@ -87,10 +87,30 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.ClearAllReportedData(date);     
         }
 
-
-        private int GetUpTotalCount(DateTime date,DataSet dsReportDate)
+        private DataTable GetReportData(DataSet dsReportDate,string filter)
         {
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} ", date.Year, date.Month, date.Day));
+            DataTable cdt = dsReportDate.Tables[0].Clone();
+
+            DataRow[] drs = dsReportDate.Tables[0].Select(filter);
+
+            foreach (DataRow dr in drs)
+            {
+                cdt.ImportRow(dr);
+            }
+
+            return cdt;
+        }
+
+
+
+        private int GetUpTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
+        {
+            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4} ",
+                                          date.Year, date.Month, date.Day, channelID, clientID);
+
+            //DataTable dt = GetReportData(dsReportDate, filter);
+
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
             if (upTotalCountResult == System.DBNull.Value)
                 return 0;
@@ -98,9 +118,15 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return Convert.ToInt32(upTotalCountResult);
         }
 
-        private int GetInterceptTotalCount(DateTime date, DataSet dsReportDate)
+        private int GetInterceptTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
         {
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} and [IsIntercept] = 1 ", date.Year, date.Month, date.Day));
+
+            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 1 ",
+                              date.Year, date.Month, date.Day, channelID, clientID);
+
+            //DataTable dt = GetReportData(dsReportDate, filter);
+
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
             if (upTotalCountResult == System.DBNull.Value)
                 return 0;
@@ -108,9 +134,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return Convert.ToInt32(upTotalCountResult);
         }
 
-        private int GetSendFailedTotalCount(DateTime date, DataSet dsReportDate)
+        private int GetSendFailedTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
         {
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} and [IsIntercept] = 0 and [SucesssToSend]=0 ", date.Year, date.Month, date.Day));
+            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 0 and [SucesssToSend] =0",
+                  date.Year, date.Month, date.Day, channelID, clientID);
+
+            //DataTable dt = GetReportData(dsReportDate, filter);
+
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
             if (upTotalCountResult == System.DBNull.Value)
                 return 0;
