@@ -13,10 +13,6 @@ namespace Legendigital.Common.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //SPDayReportWrapper.GenerateDayReport(new DateTime(2010,6,23));
-
-
-
             Response.Redirect(FormsAuthentication.DefaultUrl);
         }
     }
