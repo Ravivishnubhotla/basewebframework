@@ -13,25 +13,31 @@ namespace Legendigital.Common.Web.Jobs
     {
         private ILog logger = LogManager.GetLogger(typeof (DailyReportGenerateJob));
 
-        private string userName;
+        private string reportOutPutPath;
 
         /// <summary>
         /// Simple property that can be injected.
         /// </summary>
-        public string UserName
+        public string ReportOutPutPath
         {
-            set { userName = value; }
+            set { reportOutPutPath = value; }
         }
 
         protected override void ExecuteInternal(JobExecutionContext context)
         {
             logger.Info("Daily Report Generate Job Start");
 
+            try
+            {
+                SPDayReportWrapper.GenerateDayReport(DateTime.Now.AddDays(-1));
 
-            SPDayReportWrapper.GenerateDayReport(System.DateTime.Now.AddDays(-1));
 
-
-            logger.Info("Daily Report Generate Job End");
+                logger.Info("Daily Report Generate Job End");
+            }
+            catch (Exception ex)
+            {
+                logger.Info("Daily Report Generate Job Failed:"+ex.Message);
+            }
         }
     }
 }
