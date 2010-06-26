@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
@@ -99,15 +100,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		#endregion
 
 
-        private static string GetReportOutPutPath()
-        {
-            return HttpContext.Current.Server.MapPath("~/DayReport");
-        }
+        //private static string GetReportOutPutPath()
+        //{
+            
+        //}
 
 
 	    public static void  GenerateDayReport(DateTime date)
         {
-            businessProxy.BulidReport(GetReportOutPutPath(), date);
+            businessProxy.BulidReport(date);
         }
 
         public static void GenerateALLDayReport(DateTime date)
