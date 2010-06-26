@@ -25,31 +25,25 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         [Transaction(ReadOnly=false)]
         public void BulidReport(DateTime date)
         {
+            //Get all need to generate report's channle nad client ID.
+            DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
+
             DataSet dsReportDate = this.AdoNetDb.GetAllReportData(date.Year, date.Month, date.Day);
 
-            //string reportFileName = GetFileName(reportOutPutPath, date);
-
-            //WriteDataSetToXml(reportOutPutPath, reportFileName + ".bak", dsReportDate);
-
-            DataSet dsAll = this.AdoNetDb.GetAllCountData(date.Year, date.Month, date.Day);
-
-            DataSet dsAllIsIntercept = this.AdoNetDb.GetAllIsInterceptCountData(date.Year, date.Month, date.Day);
-
-            DataSet dsAllNoIsIntercept = this.AdoNetDb.GetAllNoIsInterceptCountData(date.Year, date.Month, date.Day);
-
-            DataSet dsAllSuccessSend = this.AdoNetDb.GetAllSuccessSendCountData(date.Year, date.Month, date.Day);
-
-            DataSet dsAllFailedSend = this.AdoNetDb.GetAllFailedSendCountData(date.Year, date.Month, date.Day);
-
-            bool hasReport = false;
-
-
-            foreach (DataRow dataRow in dsAll.Tables[0].Rows)
+            foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
             {
                 int channelID = (int)dataRow["ChannelID"];
-                int clientID = (int)dataRow["ChannelID"];
+                int clientID = (int)dataRow["ClientID"];
+
+                int upTotalCount = GetUpTotalCount(date, dsReportDate);
+                int interceptTotalCount = GetInterceptTotalCount(date, dsReportDate);
+                int sendFailedTotalCount = GetSendFailedTotalCount(date, dsReportDate);
+
 
                 SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
+
+                bool hasReport = false;
+
 
                 if (dayReportEntity==null)
                 {
@@ -65,34 +59,63 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 dayReportEntity.ClientID = clientID;
                 if (hasReport)
                 {
-                    dayReportEntity.UpTotalCount += (int)dataRow["TotalCount"];
-                    dayReportEntity.UpSuccess += (int)dataRow["TotalCount"];
-                    dayReportEntity.InterceptTotalCount += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                    dayReportEntity.InterceptSuccess += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                    dayReportEntity.DownTotalCount += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllNoIsIntercept);
-                    dayReportEntity.DownSuccess += GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllSuccessSend);
+                    dayReportEntity.UpTotalCount += upTotalCount;
+                    dayReportEntity.UpSuccess += upTotalCount;
+                    dayReportEntity.InterceptTotalCount += upTotalCount;
+                    dayReportEntity.InterceptSuccess += interceptTotalCount;
+                    dayReportEntity.DownTotalCount += (upTotalCount - interceptTotalCount);
+                    dayReportEntity.DownSuccess += (upTotalCount - interceptTotalCount-sendFailedTotalCount);
                 }
                 else
                 {
-                    dayReportEntity.UpTotalCount = (int)dataRow["TotalCount"];
-                    dayReportEntity.UpSuccess = (int)dataRow["TotalCount"];
-                    dayReportEntity.InterceptTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                    dayReportEntity.InterceptSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllIsIntercept);
-                    dayReportEntity.DownTotalCount = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllNoIsIntercept);
-                    dayReportEntity.DownSuccess = GetTotalCountFromDataSet("TotalCount", dayReportEntity.ChannelID.Value, dayReportEntity.ClientID.Value, dsAllSuccessSend);           
-                }
-
-
-                //dayReportEntity.DayXmlFileName = "yyyyMMdd.zip";
+                    dayReportEntity.UpTotalCount = upTotalCount;
+                    dayReportEntity.UpSuccess = upTotalCount;
+                    dayReportEntity.InterceptTotalCount = upTotalCount;
+                    dayReportEntity.InterceptSuccess = interceptTotalCount;
+                    dayReportEntity.DownTotalCount = (upTotalCount - interceptTotalCount);
+                    dayReportEntity.DownSuccess = (upTotalCount - interceptTotalCount-sendFailedTotalCount);
+                }        
+                
                 dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
 
                 this.SelfDataObj.SaveOrUpdate(dayReportEntity);
+
+
+
             }
 
-            //WriteDataSetToXml(reportOutPutPath, reportFileName + ".zip", dsReportDate);
+            this.AdoNetDb.ClearAllReportedData(date);     
+        }
 
-            this.AdoNetDb.ClearAllReportedData(date);
 
+        private int GetUpTotalCount(DateTime date,DataSet dsReportDate)
+        {
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} ", date.Year, date.Month, date.Day));
+
+            if (upTotalCountResult == System.DBNull.Value)
+                return 0;
+
+            return Convert.ToInt32(upTotalCountResult);
+        }
+
+        private int GetInterceptTotalCount(DateTime date, DataSet dsReportDate)
+        {
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} and [IsIntercept] = 1 ", date.Year, date.Month, date.Day));
+
+            if (upTotalCountResult == System.DBNull.Value)
+                return 0;
+
+            return Convert.ToInt32(upTotalCountResult);
+        }
+
+        private int GetSendFailedTotalCount(DateTime date, DataSet dsReportDate)
+        {
+            object upTotalCountResult = dsReportDate.Tables[0].Compute("Count(*)", string.Format(" [CYear] = {0} and [CYear] = {1} and [CYear] = {2} and [IsIntercept] = 0 and [SucesssToSend]=0 ", date.Year, date.Month, date.Day));
+
+            if (upTotalCountResult == System.DBNull.Value)
+                return 0;
+
+            return Convert.ToInt32(upTotalCountResult);
         }
 
         private string GetFileName(string reportOutPutPath, DateTime date)
