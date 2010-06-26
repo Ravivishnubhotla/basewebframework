@@ -55,7 +55,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         #endregion
 
-        public DataSet GetAllReportData(int year, int month, int day)
+        public DataSet GetAllNOReportData(int year, int month, int day)
         {
             string sql = "Select * from wiew_NoPayReport where CYear = @year and  CMonth =  @month and  CDay=@day";
  
@@ -92,6 +92,18 @@ namespace LD.SPPipeManage.Data.AdoNet
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
+
+
+        public string GetDbSize()
+        {
+            string sql = "exec sp_spaceused";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            DataSet ds = this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+
+            return ds.Tables[0].Rows[0]["database_size"].ToString();
         }
 
         //public DataSet GetAllCountData(int year, int month, int day)
@@ -189,6 +201,19 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
+        public DataSet GetAllReportData(DateTime date)
+        {
+            string sql = "Select * from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 1";
 
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("year", date.Year.ToString());
+
+            dbParameters.AddWithValue("month", date.Month.ToString());
+
+            dbParameters.AddWithValue("day", date.Day.ToString());
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
     }
 }
