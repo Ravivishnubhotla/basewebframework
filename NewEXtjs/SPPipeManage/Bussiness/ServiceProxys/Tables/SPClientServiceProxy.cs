@@ -14,6 +14,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	public interface ISPClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientEntity>
     {
 	    List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity);
+	    List<SPClientEntity> FindByChannelID(int cid);
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -21,6 +22,25 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity)
         {
             return this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.GetAllEnableParams(entity);
+        }
+
+        public List<SPClientEntity> FindByChannelID(int cid)
+        {
+            SPChannelEntity channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(cid);
+
+            List<SPClientChannelSettingEntity> settings = this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.GetSettingByChannel(channelEntity);
+
+            List<SPClientEntity> clientEntities = new List<SPClientEntity>();
+
+            foreach (SPClientChannelSettingEntity spClientEntity in settings)
+            {
+                if(!clientEntities.Contains(spClientEntity.ClinetID))
+                {
+                    clientEntities.Add(spClientEntity.ClinetID);
+                }
+            }
+
+            return clientEntities;
         }
     }
 }

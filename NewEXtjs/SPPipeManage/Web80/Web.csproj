@@ -238,6 +238,9 @@
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx.cs">
+      <DependentUpon>SPClientHandlerByChannel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -286,6 +289,27 @@
     </Compile>
     <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.designer.cs">
       <DependentUpon>DataArchive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.cs">
+      <DependentUpon>ReportChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.designer.cs">
+      <DependentUpon>ReportChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClient.aspx.cs">
+      <DependentUpon>ReportClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClient.aspx.designer.cs">
+      <DependentUpon>ReportClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.cs">
+      <DependentUpon>ReportDayTotal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.designer.cs">
+      <DependentUpon>ReportDayTotal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -339,12 +363,18 @@
     <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx" />
     <Content Include="Moudles\SPS\DataArchives\DataArchive.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportChannel.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportClient.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDayTotal.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
-    <Folder Include="Moudles\SPS\Reports\" />
+    <Folder Include="Moudles\SPS\Memos\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>

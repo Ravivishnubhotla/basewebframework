@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
+using LD.SPPipeManage.Data.AdoNet;
+using LD.SPPipeManage.Data.Tables.Container;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -20,9 +22,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    void BulidReport(DateTime date);
 	    string GetDbSize();
 	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
+	    DataTable GetDayliyReport(DateTime dateTime);
     }
 
-    internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
+    internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
     {
         [Transaction(ReadOnly=false)]
         public void BulidReport(DateTime date)
@@ -103,6 +106,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 
+        public DataTable GetDayliyReport(DateTime dateTime)
+        {
+            return this.AdoNetDb.GetDayliyReport(dateTime);
+        }
+
         [Transaction(ReadOnly = false)]
         private void ArchivesData(string archivesPath, DateTime dateTime)
         {
@@ -122,21 +130,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.DeleteAllReportData(dateTime);
         }
 
-        //private DataTable GetReportData(DataSet dsReportDate,string filter)
-        //{
-        //    DataTable cdt = dsReportDate.Tables[0].Clone();
-
-        //    DataRow[] drs = dsReportDate.Tables[0].Select(filter);
-
-        //    foreach (DataRow dr in drs)
-        //    {
-        //        cdt.ImportRow(dr);
-        //    }
-
-        //    return cdt;
-        //}
-
-
 
         private int GetUpTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
         {
@@ -155,7 +148,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
 
             string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 1 ",
-                              date.Year, date.Month, date.Day, channelID, clientID);
+                                          date.Year, date.Month, date.Day, channelID, clientID);
 
             object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
@@ -168,7 +161,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         private int GetSendFailedTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
         {
             string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 0 and [SucesssToSend] =0",
-                  date.Year, date.Month, date.Day, channelID, clientID);
+                                          date.Year, date.Month, date.Day, channelID, clientID);
 
             object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
 
@@ -201,17 +194,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return fileName;
         }
 
-        //private int GetTotalCountFromDataSet(string totalcount, int channelId, int clientId, DataSet ds)
-        //{
-        //    DataRow[] drs =
-        //        ds.Tables[0].Select(string.Format(" ChannelID = {0} and ClientID ={1} ", channelId.ToString(),
-        //                                          clientId.ToString()));
-        //    if (drs.Length > 0)
-        //        return (int) drs[0][totalcount];
-        //    else
-        //        return 0;
-        //}
-
         private void WriteDataSetToXml(string reportOutPutPath, string fileName, DataSet dsReportDate)
         {
             string filePath = Path.Combine(reportOutPutPath, fileName);
@@ -225,5 +207,21 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             File.WriteAllBytes(filePath, CompressionUtil.CompressZipFile(ms.ToArray(), Path.GetFileNameWithoutExtension(fileName)+".xml"));
         }
+
+        public DataObjectContainers DataObjectsContainerIocID { set; get; }
+	
+        public SPDayReportDataObject SelfDataObj
+        {
+            set
+            {
+                selfDataObject = value;
+            }
+            get
+            {
+                return (SPDayReportDataObject)selfDataObject;
+            }
+        }
+		
+        public AdoNetDataObject AdoNetDb { set; get; }
     }
 }

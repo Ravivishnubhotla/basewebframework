@@ -123,9 +123,6 @@
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
-      <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
-    </Compile>
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
       <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
