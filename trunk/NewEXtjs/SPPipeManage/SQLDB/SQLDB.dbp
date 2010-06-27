@@ -6,6 +6,9 @@ Begin DataProject = "SQLDB"
    End
    Begin Folder = "Create Scripts"
       Script = "a1013143610.dbo.SystemApplication.SQL"
+      Script = "a1013143610.dbo.view_ClientChannel.SQL"
+      Script = "a1013143610.dbo.view_ReportDayTotal.SQL"
+      Script = "Script1.sql"
    End
    Begin DBRefFolder = "Database References"
       Begin DBRefNode = "atom\sqlexpress.WebConsole.dbo"

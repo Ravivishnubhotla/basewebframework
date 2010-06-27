@@ -215,5 +215,20 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
         }
+
+        public DataTable GetDayliyReport(DateTime date)
+        {
+            string sql = "Select * from view_ReportDayTotal where Year = @year and  Month =  @month and  Day=@day";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("year", date.Year.ToString());
+
+            dbParameters.AddWithValue("month", date.Month.ToString());
+
+            dbParameters.AddWithValue("day", date.Day.ToString());
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }

@@ -239,5 +239,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             queryString.Add(key, HttpUtility.UrlEncode(value));
 	    }
+
+	    public static List<SPClientWrapper> FindByChannelID(int cid)
+	    {
+	        return ConvertToWrapperList(businessProxy.FindByChannelID(cid));
+	    }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -182,5 +183,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         //    return dateTimes;
         //}
 
+	    public static DataTable GetDayliyReport(DateTime dateTime)
+	    {
+	        return businessProxy.GetDayliyReport(dateTime);
+	    }
     }
 }
