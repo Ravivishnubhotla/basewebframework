@@ -123,9 +123,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             string fileName = GetFileName(archivesPath, dateTime);
 
-            WriteDataSetToXml(archivesPath, fileName + ".bak", ds);
+            WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName)+".jpg", ds);
 
-            WriteDataSetToXml(archivesPath, fileName + ".zip", ds);
+            WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName) + ".zip", ds);
 
             this.AdoNetDb.DeleteAllReportData(dateTime);
         }
@@ -182,9 +182,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             do
             {
                 existFileName =
-                    File.Exists(Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("N3") + ".zip"));
+                    File.Exists(Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("D3") + ".zip"));
 
-                fileName = Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("N3"));
+                fileName = Path.Combine(reportOutPutPath, date.ToString("yyyyMMdd") + i.ToString("D3") + ".zip");
 
                 i++;
 
