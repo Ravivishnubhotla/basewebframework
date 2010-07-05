@@ -235,5 +235,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
 	        return ConvertToWrapperList(businessProxy.FindByChannelID(cid));
 	    }
+
+	    public static int GetClientIDByUserID(int userId)
+	    {
+	        SystemUserWrapper user = SystemUserWrapper.FindById(userId);
+
+	        return ConvertEntityToWrapper(businessProxy.GetClientByUserID(userId)).Id;
+	    }
     }
 }

@@ -267,5 +267,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return hashtable[queryKey].ToString();
         }
+
+        //public static List<SPChannelWrapper> GetChannelByClientID(int cid)
+        //{
+        //    return 
+        //}
     }
 }

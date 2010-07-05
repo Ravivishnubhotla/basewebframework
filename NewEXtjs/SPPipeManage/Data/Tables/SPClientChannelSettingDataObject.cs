@@ -20,5 +20,14 @@ namespace LD.SPPipeManage.Data.Tables
             return this.FindListByQueryBuilder(queryGenerator);
         }
 
+        public List<SPClientChannelSettingEntity> GetSettingByClient(SPClientEntity spClientEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CLINETID.Eq(spClientEntity));
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
+
     }
 }

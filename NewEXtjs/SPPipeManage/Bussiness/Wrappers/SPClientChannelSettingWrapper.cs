@@ -130,6 +130,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));
 	    }
 
+
+        public static List<SPChannelWrapper> GetChannelByClient(SPClientWrapper spClientWrapper)
+        {
+            return SPChannelWrapper.ConvertToWrapperList(businessProxy.GetChannelByClient(spClientWrapper.entity));
+        }
+
         public static List<SystemUserWrapper> GetAvailableUser()
         {
             List<SystemUserWrapper> users = SystemUserWrapper.GetAllUserByRoleName("SPDownUser");
