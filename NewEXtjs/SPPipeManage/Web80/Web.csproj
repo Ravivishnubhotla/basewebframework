@@ -136,14 +136,12 @@
     <Compile Include="Jobs\DailyReportGenerateJob.cs" />
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -167,7 +165,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
@@ -188,7 +185,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.designer.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
@@ -216,7 +212,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.cs">
       <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.designer.cs">
       <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
@@ -243,7 +238,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.designer.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
@@ -289,6 +283,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.designer.cs">
       <DependentUpon>DataArchive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\SPSMonoListPage.aspx.cs">
+      <DependentUpon>SPSMonoListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\SPSMonoListPage.aspx.designer.cs">
+      <DependentUpon>SPSMonoListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.cs">
       <DependentUpon>ReportChannel.aspx</DependentUpon>
@@ -369,12 +370,13 @@
     <Content Include="Config\DataConfig.xml" />
     <Content Include="Css\css.css" />
     <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
+    <Content Include="Moudles\SPS\Memos\SPSMonoListPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
-    <Folder Include="Moudles\SPS\Memos\" />
+    <Folder Include="Moudles\SPS\ClientsView\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>
