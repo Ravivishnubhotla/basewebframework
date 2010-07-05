@@ -39,9 +39,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
-                //obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());        	
 
-
+                if (this.cmUserID.SelectedItem!=null)
+                {
+                    obj.UserID = Convert.ToInt32(this.cmUserID.SelectedItem.Value.ToString());
+                }
 
 
 

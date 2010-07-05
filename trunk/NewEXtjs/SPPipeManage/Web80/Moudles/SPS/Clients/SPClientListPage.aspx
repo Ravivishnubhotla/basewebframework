@@ -112,6 +112,9 @@
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
+                        <ext:RecordField Name="UserLoginID" />                
+                    
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -159,7 +162,7 @@
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserID" DataIndex="UserID" Header="关联用户" Sortable="true">
+                                <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>

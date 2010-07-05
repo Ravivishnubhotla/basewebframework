@@ -8,6 +8,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Web;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -102,6 +103,24 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 			
 		#endregion
+
+
+        public string UserLoginID
+        {
+            get
+            {
+                if (this.UserID != null && this.UserID>0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                    if (user != null)
+                        return user.UserLoginID;
+                }
+                return "";
+            }
+        }
+
+
 
 	    public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg,Hashtable exparams)
 	    {            
