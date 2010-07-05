@@ -314,7 +314,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Css\css.css" />
     <Content Include="Images\bg.gif" />
     <Content Include="Images\collapse-all.gif" />
     <Content Include="Images\expand-all.gif" />
@@ -368,6 +367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\DataConfig.xml" />
+    <Content Include="Css\css.css" />
     <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
   </ItemGroup>
   <ItemGroup>
