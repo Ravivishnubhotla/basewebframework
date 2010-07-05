@@ -9,25 +9,6 @@
   <!-- Database and NHibernate Configuration  -->
 
 
-    <!--<db:provider id="DbProvider"
-         provider="SqlServer-2.0"
-         connectionString="Initial Catalog=WebConsole;server=ATOM\SQLEXPRESS;uid=WebConsole;pwd=WebConsole;"/>-->
-
-
-		 <!--<db:provider id="DbProvider"
-					 provider="SqlServer-2.0"
-					 connectionString="Persist Security Info=False;Integrated Security=true;Initial Catalog=WebSiteAdministratorDb;server=(local)"/>-->
-
-		<!--<db:provider id="DbProvider"
-		 provider="SqlServer-2.0"
-		 connectionString="Initial Catalog=TroniTechRMTS;server=192.168.1.131;uid=TroniTechRMTS;pwd=TroniTechRMTS;"/>-->
-		 <!--<db:provider id="DbProvider"
-			provider="SqlServer-2.0"
-			connectionString="Data Source=(local);Initial Catalog=TroniTechRMTS;uid=sa;pwd=1234;"/>-->
-  <!--<db:provider id="DbProvider"
-					 provider="SqlServer-2.0"
-					 connectionString="Persist Security Info=False;Integrated Security=true;Initial Catalog=TroniTechRMTS;server=(local)"/>-->
-
   <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="MappingAssemblies">
