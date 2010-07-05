@@ -199,36 +199,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
            return SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
         }
 
-        //private Hashtable GetFieldMappings()
-        //{
-        //    Hashtable mappingFields = new Hashtable();
 
-        //    List<SPSendClientParamsWrapper> spSendClientParamsWrappers = SPSendClientParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
 
-        //    foreach (SPSendClientParamsWrapper spSendClientParamsWrapper in spSendClientParamsWrappers)
-        //    {
-        //        mappingFields.Add(spSendClientParamsWrapper.MappingParams, spSendClientParamsWrapper.Name);
-        //    }
-            
-        //    //foreach (string field in SPChannelWrapper.fields)
-        //    //{
-        //    //    string findFeild = field;
-
-        //    //    SPSendClientParamsWrapper clientParamsWrapper =
-        //    //        spSendClientParamsWrappers.Find(p => (p.MappingParams.Equals(findFeild)));
-
-        //    //    if (clientParamsWrapper == null)
-        //    //    {
-        //    //        mappingFields.Add(findFeild, findFeild);
-        //    //    }
-        //    //    else
-        //    //    {
-        //    //        mappingFields.Add(findFeild, clientParamsWrapper.Name);
-        //    //    }
-        //    //}
-
-        //    return mappingFields;
-        //}
 
 	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
         {

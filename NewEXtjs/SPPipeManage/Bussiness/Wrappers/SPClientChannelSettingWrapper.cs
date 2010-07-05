@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -129,6 +130,72 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));
 	    }
 
+        public static List<SystemUserWrapper> GetAvailableUser(int clientChannelSettingID,int channelID)
+        {
+            List<SystemUserWrapper> users = SystemUserWrapper.GetAllUserByRoleName("SPDownUser");
+
+            List<int> hasUserID = GetUsedUser(channelID);
+
+            RemoveUserByID(users, hasUserID);
+
+            if(clientChannelSettingID>0)
+            {
+                SPClientChannelSettingWrapper spClientChannelSettingWrapper = FindById(channelID);
+
+                if (spClientChannelSettingWrapper != null && spClientChannelSettingWrapper.ClinetID != null && spClientChannelSettingWrapper.ClinetID.UserID != null)
+                {
+                    if(spClientChannelSettingWrapper.ClinetID.UserID>0)
+                    {
+                        SystemUserWrapper userWrapper =
+                             SystemUserWrapper.FindById(spClientChannelSettingWrapper.ClinetID.UserID);
+                        users.Add(userWrapper);
+                    }
+                }
+            }
+
+
+
+            return users;
+        }
+
+	    private static void RemoveUserByID(List<SystemUserWrapper> users, List<int> hasUserId)
+	    {
+	        foreach (int uid in hasUserId)
+	        {
+                SystemUserWrapper userWrapper = users.Find(p => (p.UserID == uid));
+
+                if(userWrapper!=null)
+                {
+                    users.Remove(userWrapper);
+                }
+	        }
+	    }
+
+	    private static List<int> GetUsedUser(int channelID)
+	    {
+	        SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
+
+	        List<SPClientChannelSettingEntity> settings = businessProxy.GetSettingByChannel(channelWrapper.entity);
+
+            List<int> userIDs = new List<int>();
+
+	        foreach (SPClientChannelSettingEntity setting in settings)
+	        {
+                if (setting != null && setting.ClinetID != null && setting.ClinetID.UserID != null)
+                {
+                    if (setting.ClinetID.UserID > 0)
+                    {
+                        if(!userIDs.Contains(setting.ClinetID.UserID.Value))
+                        {
+                            userIDs.Add(setting.ClinetID.UserID.Value);
+                        }
+                    }
+                }
+	        }
+
+            return userIDs;
+	    }
+
 
 	    public bool MatchByYWID(string ywid)
 	    {
@@ -146,6 +213,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return false;
                 case "6":
 	                return false;
+                case "7":
+                    return true;
                     break;
 	        }
             return false;
