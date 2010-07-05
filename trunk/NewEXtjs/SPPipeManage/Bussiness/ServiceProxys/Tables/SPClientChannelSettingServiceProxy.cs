@@ -23,5 +23,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             return this.SelfDataObj.GetSettingByChannel(spChannelEntity);
         }
+
+ 
     }
 }
