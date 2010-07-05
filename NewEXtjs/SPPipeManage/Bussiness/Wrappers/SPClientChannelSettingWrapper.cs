@@ -130,28 +130,28 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));
 	    }
 
-        public static List<SystemUserWrapper> GetAvailableUser(int clientChannelSettingID,int channelID)
+        public static List<SystemUserWrapper> GetAvailableUser()
         {
             List<SystemUserWrapper> users = SystemUserWrapper.GetAllUserByRoleName("SPDownUser");
 
-            List<int> hasUserID = GetUsedUser(channelID);
+            //List<int> hasUserID = GetUsedUser(channelID);
 
-            RemoveUserByID(users, hasUserID);
+            //RemoveUserByID(users, hasUserID);
 
-            if(clientChannelSettingID>0)
-            {
-                SPClientChannelSettingWrapper spClientChannelSettingWrapper = FindById(channelID);
+            //if(clientChannelSettingID>0)
+            //{
+            //    SPClientChannelSettingWrapper spClientChannelSettingWrapper = FindById(channelID);
 
-                if (spClientChannelSettingWrapper != null && spClientChannelSettingWrapper.ClinetID != null && spClientChannelSettingWrapper.ClinetID.UserID != null)
-                {
-                    if(spClientChannelSettingWrapper.ClinetID.UserID>0)
-                    {
-                        SystemUserWrapper userWrapper =
-                             SystemUserWrapper.FindById(spClientChannelSettingWrapper.ClinetID.UserID);
-                        users.Add(userWrapper);
-                    }
-                }
-            }
+            //    if (spClientChannelSettingWrapper != null && spClientChannelSettingWrapper.ClinetID != null && spClientChannelSettingWrapper.ClinetID.UserID != null)
+            //    {
+            //        if(spClientChannelSettingWrapper.ClinetID.UserID>0)
+            //        {
+            //            SystemUserWrapper userWrapper =
+            //                 SystemUserWrapper.FindById(spClientChannelSettingWrapper.ClinetID.UserID);
+            //            users.Add(userWrapper);
+            //        }
+            //    }
+            //}
 
 
 

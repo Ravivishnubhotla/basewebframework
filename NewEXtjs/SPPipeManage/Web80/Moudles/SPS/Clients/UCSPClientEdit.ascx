@@ -1,4 +1,17 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
+<ext:Store ID="storeUsers" runat="server" AutoLoad="false">
+    <Proxy>
+        <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
+    </Proxy>
+    <Reader>
+        <ext:JsonReader Root="users" TotalProperty="total">
+            <Fields>
+                <ext:RecordField Name="Id" Type="int" Mapping="UserID" />
+                <ext:RecordField Name="Name" Mapping="UserLoginID" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+</ext:Store>
 <ext:Window ID="winSPClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑下家"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
@@ -21,8 +34,15 @@
 			 <ext:Anchor Horizontal="95%">
 						<ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True"   />
              </ext:Anchor> 
- 
-
+                             <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmUserID" runat="server" FieldLabel="关联用户" AllowBlank="False"
+                                    StoreID="storeUsers" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
+                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择关联用户" ValueNotFoundText="加载中..." />
+                            </ext:Anchor>
+			 <ext:Anchor Horizontal="95%">
+							<ext:Hidden ID="hidUserID" runat="server">
+                                </ext:Hidden>
+             </ext:Anchor> 
 
                         </Anchors>
                     </ext:FormLayout>
@@ -46,6 +66,9 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+            <Listeners>
+        <Show Handler="#{storeUsers}.reload();if(#{hidUserID}.getValue()!=''){#{cmUserID}.setValue(#{hidUserID}.getValue())}" />
+    </Listeners>
 </ext:Window>
 
 

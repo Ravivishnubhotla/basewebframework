@@ -31,6 +31,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     this.txtDescription.Text = obj.Description.ToString();
                     this.txtRecieveDataUrl.Text = obj.RecieveDataUrl.ToString();
 
+                    if(obj.UserID==null)
+                    {
+                        this.hidUserID.Text = "";
+                    }
+                    else
+                    {
+                        if (obj.UserID.Value <= 0)
+                        {
+                            this.hidUserID.Text = "";
+                        }
+                        else
+                        {
+                            this.hidUserID.Text = obj.UserID.ToString();                          
+                        }
+                    }
+
                     hidId.Text = id.ToString();
 
 

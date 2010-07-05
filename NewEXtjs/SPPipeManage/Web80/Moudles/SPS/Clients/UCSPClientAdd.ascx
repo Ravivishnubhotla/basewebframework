@@ -1,4 +1,20 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientAdd.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientAdd" %>
+<ext:Store ID="storeUsers" runat="server" AutoLoad="false">
+    <Proxy>
+        <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
+    </Proxy>
+    <Reader>
+        <ext:JsonReader Root="users" TotalProperty="total">
+            <Fields>
+                <ext:RecordField Name="Id" Type="int" Mapping="UserID" />
+                <ext:RecordField Name="Name" Mapping="UserLoginID" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+</ext:Store>
+<ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+</ext:ScriptManagerProxy>
+
 <ext:Window ID="winSPClientAdd" runat="server" Icon="ApplicationAdd" Title="新建下家"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
@@ -18,7 +34,11 @@
 						<ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True"   />
              </ext:Anchor> 
  
-
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmUserID" runat="server" FieldLabel="关联用户" AllowBlank="False"
+                                    StoreID="storeUsers" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
+                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择关联用户" ValueNotFoundText="加载中..." />
+                            </ext:Anchor>
 
                         </Anchors>
                     </ext:FormLayout>
@@ -42,4 +62,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+        <Listeners>
+        <Show Handler="#{storeUsers}.reload();" />
+    </Listeners>
 </ext:Window>
