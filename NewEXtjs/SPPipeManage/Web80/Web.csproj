@@ -314,7 +314,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\DataConfig.xml" />
     <Content Include="Css\css.css" />
     <Content Include="Images\bg.gif" />
     <Content Include="Images\collapse-all.gif" />
@@ -368,6 +367,7 @@
     <Content Include="Moudles\SPS\Reports\ReportDayTotal.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Config\DataConfig.xml" />
     <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
   </ItemGroup>
   <ItemGroup>
