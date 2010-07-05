@@ -11,6 +11,13 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPClientDataObject
     {
+        public SPClientEntity GetClientByUserID(int userId)
+        {
+            NHibernateDynamicQueryGenerator<SPClientEntity> queryGenerator = this.GetNewQueryBuilder();
 
+            queryGenerator.AddWhereClause(PROPERTY_USERID.Eq(userId));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
     }
 }

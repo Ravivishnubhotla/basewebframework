@@ -15,6 +15,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	public interface ISPClientChannelSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingEntity>
     {
 	    List<SPClientChannelSettingEntity> GetSettingByChannel(SPChannelEntity spChannelEntity);
+        List<SPChannelEntity> GetChannelByClient(SPClientEntity spClientEntity);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -24,6 +25,24 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.SelfDataObj.GetSettingByChannel(spChannelEntity);
         }
 
- 
+        public List<SPChannelEntity> GetChannelByClient(SPClientEntity spClientEntity)
+        {
+            List < SPClientChannelSettingEntity > list =
+                this.SelfDataObj.GetSettingByClient(
+                    spClientEntity);
+
+            List<SPChannelEntity> clients = new List<SPChannelEntity>();
+
+            foreach (SPClientChannelSettingEntity spClientChannelSettingEntity in list)
+            {
+                if(!clients.Contains(spClientChannelSettingEntity.ChannelID))
+                {
+                    clients.Add(spClientChannelSettingEntity.ChannelID);
+                }
+            }
+
+            return clients;
+
+        }
     }
 }

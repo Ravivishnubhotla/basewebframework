@@ -121,6 +121,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppClass\SPSClientViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppClass\SPRecievedHandler.cs" />
     <Compile Include="AppClass\SPTestSendHandle.cs" />
     <Compile Include="Default.aspx.cs">
@@ -164,6 +167,9 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
       <DependentUpon>SPChannelHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx.cs">
+      <DependentUpon>SPChannelHandlerByClientID.ashx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
@@ -234,6 +240,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelSettingEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx.cs">
+      <DependentUpon>ClientToDayReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx.designer.cs">
+      <DependentUpon>ClientToDayReportPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>
@@ -382,13 +395,16 @@
     <Content Include="Moudles\SPS\Memos\SPSMonoListPage.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx" />
     <Content Include="Moudles\SPS\Users\GetAUserByChannel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
-    <Folder Include="Moudles\SPS\ClientsView\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>

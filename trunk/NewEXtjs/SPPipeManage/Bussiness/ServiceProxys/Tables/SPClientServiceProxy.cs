@@ -15,6 +15,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     {
 	    List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity);
 	    List<SPClientEntity> FindByChannelID(int cid);
+	    SPClientEntity GetClientByUserID(int userId);
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -43,7 +44,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return clientEntities;
         }
 
-
-
+        public SPClientEntity GetClientByUserID(int userId)
+        {
+            return this.SelfDataObj.GetClientByUserID(userId);
+        }
     }
 }
