@@ -74,6 +74,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void PatchAssignUserUserGroups(SystemUserEntity userentity, List<string> usergroupids);
         [OperationContract]
         List<SystemUserGroupEntity> GetUserAssignedGroupsByUser(SystemUserEntity systemUserEntity);
+
+        List<SystemUserEntity> FindAllUserByRole(SystemRoleEntity systemRoleEntity);
     }
 
     public partial class SystemUserServiceProxy : ISystemUserServiceProxy
@@ -259,6 +261,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             foreach (SystemUserGroupUserRelationEntity relation in userGroupRoleRelations)
             {
                 list.Add(relation.UserGroupID);
+            }
+
+            return list;
+        }
+
+        public List<SystemUserEntity> FindAllUserByRole(SystemRoleEntity systemRoleEntity)
+        {
+            List<SystemUserEntity> list = new List<SystemUserEntity>();
+
+            List<SystemUserRoleRelationEntity> userRoleRelations = this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserRoleRelationByRole(systemRoleEntity);
+
+            foreach (SystemUserRoleRelationEntity relation in userRoleRelations)
+            {
+                list.Add(relation.UserID);
             }
 
             return list;

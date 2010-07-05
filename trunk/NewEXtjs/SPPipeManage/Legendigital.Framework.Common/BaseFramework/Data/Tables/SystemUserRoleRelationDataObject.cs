@@ -103,13 +103,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         }
 
 
-        //public List<SystemUserRoleRelationEntity> GetUserByRole(List< string> roleTypes)
-        //{
-        //    NHibernateDynamicQueryGenerator<SystemUserRoleRelationEntity> queryGenerator = this.GetNewQueryBuilder();
+        public List<SystemUserRoleRelationEntity> GetUserRoleRelationByRole(SystemRoleEntity systemRoleEntity)
+        {
+            NHibernateDynamicQueryGenerator<SystemUserRoleRelationEntity> queryGenerator = this.GetNewQueryBuilder();
 
-        //    queryGenerator.AddWhereClause( PROPERTY_ROLEID_ROLETYPE.In(roleTypes));
+            queryGenerator.AddWhereClause(PROPERTY_ROLEID.Eq(systemRoleEntity));
 
-        //    return this.FindListByQueryBuilder(queryGenerator);
-        //}
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

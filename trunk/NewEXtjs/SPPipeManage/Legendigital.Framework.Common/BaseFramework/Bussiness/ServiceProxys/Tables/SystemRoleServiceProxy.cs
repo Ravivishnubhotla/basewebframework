@@ -43,6 +43,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void PatchAssignRolePermissions(SystemRoleEntity roleEntity, List<string> assignedPermissionIDs);
         [OperationContract]
         List<SystemPrivilegeInRolesEntity> GetRoleAssignedPrivilegesInRole(SystemRoleEntity systemRoleEntity);
+
+        SystemRoleEntity GetRoleByName(string roleName);
     }
 
     public partial class SystemRoleServiceProxy : ISystemRoleServiceProxy
@@ -276,6 +278,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             return
                 this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.GetRoleAssignedPrivilegesInRole(
                     systemRoleEntity);
+        }
+
+        public SystemRoleEntity GetRoleByName(string roleName)
+        {
+            return this.SelfDataObj.GetRoleByName(roleName); 
         }
 
         public List<SystemApplicationEntity> GetRoleAssignedApplications(SystemRoleEntity roleEntity)

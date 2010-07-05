@@ -407,6 +407,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
 
+        public static List<SystemUserWrapper> GetAllUserByRoleName(string roleName)
+        {
+            SystemRoleWrapper roleWrapper = SystemRoleWrapper.GetRoleByName(roleName);
+
+            return ConvertToWrapperList(businessProxy.FindAllUserByRole(roleWrapper.entity)) ;
+        }
+
+
         public static bool SaveFirstChangePassword(string loginID, string newPassword)
         {
             try

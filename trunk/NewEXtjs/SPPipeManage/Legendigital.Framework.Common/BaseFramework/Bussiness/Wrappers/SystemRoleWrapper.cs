@@ -230,5 +230,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         }
 
+	    public static SystemRoleWrapper GetRoleByName(string roleName)
+	    {
+	        return ConvertEntityToWrapper(businessProxy.GetRoleByName(roleName));
+	    }
     }
 }
