@@ -17,33 +17,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
         {
             if(Ext.IsAjaxRequest)
                 return;
-
-            //this.cmbChannelID.Items.Clear();
-
-            //foreach (SPChannelWrapper channelWrapper in SPChannelWrapper.FindAll())
-            //{
-            //    this.cmbChannelID.Items.Add(new ListItem(channelWrapper.Name, channelWrapper.Id.ToString()));
-            //}
-
-
-            //storeSPChannelAdd.DataSource = SPChannelWrapper.FindAll();
-            //storeSPChannelAdd.DataBind();
-            //storeSPClientAdd.DataSource = SPClientWrapper.FindAll();
-            //storeSPClientAdd.DataBind();
         }
-
-        //protected void storeSPChannelAdd_Refresh(object sender, StoreRefreshDataEventArgs e)
-        //{
-        //    //this.cmbChannelID.Items.Clear();
-        //    storeSPChannelAdd.DataSource = SPChannelWrapper.FindAll();
-        //    storeSPChannelAdd.DataBind();
-        //}
-
-        //protected void storeSPClientAdd_Refresh(object sender, StoreRefreshDataEventArgs e)
-        //{
-        //    storeSPClientAdd.DataSource = SPClientWrapper.FindAll();
-        //    storeSPClientAdd.DataBind();
-        //}
 
 
         [AjaxMethod]

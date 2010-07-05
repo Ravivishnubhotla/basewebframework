@@ -64,6 +64,7 @@
                                         <ext:ListItem Text="以结尾" Value="4" />
                                         <ext:ListItem Text="正则表达式" Value="5" />
                                         <ext:ListItem Text="自定义解析" Value="6" />
+                                        <ext:ListItem Text="无条件匹配" Value="7" />
                                     </Items>
                                 </ext:ComboBox>
                             </ext:Anchor>
