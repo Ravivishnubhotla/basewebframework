@@ -38,6 +38,7 @@
                                         <ext:ListItem Text="以结尾" Value="4" />
                                         <ext:ListItem Text="正则表达式" Value="5" />
                                         <ext:ListItem Text="自定义解析" Value="6" />
+                                        <ext:ListItem Text="无条件匹配" Value="7" />
                                     </Items>
                                 </ext:ComboBox>
                             </ext:Anchor>
@@ -54,7 +55,7 @@
         <ext:Button ID="btnSaveSPClientChannelSetting" runat="server" Text="编辑" Icon="ApplicationEdit">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPClientChannelSettingEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了SPClientChannelSetting。',callback);function callback(id) { #{storeSPClientChannelSetting}.reload(); };
+                    OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了通道下家设置。',callback);function callback(id) { #{storeSPClientChannelSetting}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>
