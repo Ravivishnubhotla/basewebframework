@@ -18,10 +18,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_UPTOTALCOUNT = "UpTotalCount";
 		public static readonly string PROPERTY_NAME_UPSUCCESS = "UpSuccess";
+		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
+		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
@@ -34,10 +34,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private DateTime? _reportDate;
 		private int? _upTotalCount;
 		private int? _upSuccess;
+		private int? _interceptTotalCount;
+		private int? _interceptSuccess;
 		private int? _downTotalCount;
 		private int? _downSuccess;
-		private int? _interceptSuccess;
-		private int? _interceptTotalCount;
 		private string _dayXmlFileName;
 		private int? _clientID;
 		private int? _channelID;
@@ -54,10 +54,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_reportDate = null;
 			_upTotalCount = null;
 			_upSuccess = null;
+			_interceptTotalCount = null;
+			_interceptSuccess = null;
 			_downTotalCount = null;
 			_downSuccess = null;
-			_interceptSuccess = null;
-			_interceptTotalCount = null;
 			_dayXmlFileName = null;
 			_clientID = null;
 			_channelID = null;
@@ -126,27 +126,13 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public int? DownTotalCount
+		public int? InterceptTotalCount
 		{
-			get { return _downTotalCount; }
+			get { return _interceptTotalCount; }
 
 			set	
 			{
-				_downTotalCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public int? DownSuccess
-		{
-			get { return _downSuccess; }
-
-			set	
-			{
-				_downSuccess = value;
+				_interceptTotalCount = value;
 			}
 		}
 
@@ -168,13 +154,27 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public int? InterceptTotalCount
+		public int? DownTotalCount
 		{
-			get { return _interceptTotalCount; }
+			get { return _downTotalCount; }
 
 			set	
 			{
-				_interceptTotalCount = value;
+				_downTotalCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? DownSuccess
+		{
+			get { return _downSuccess; }
+
+			set	
+			{
+				_downSuccess = value;
 			}
 		}
 
@@ -233,10 +233,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ReportDate = wrapper.ReportDate;
 			this.UpTotalCount = wrapper.UpTotalCount;
 			this.UpSuccess = wrapper.UpSuccess;
+			this.InterceptTotalCount = wrapper.InterceptTotalCount;
+			this.InterceptSuccess = wrapper.InterceptSuccess;
 			this.DownTotalCount = wrapper.DownTotalCount;
 			this.DownSuccess = wrapper.DownSuccess;
-			this.InterceptSuccess = wrapper.InterceptSuccess;
-			this.InterceptTotalCount = wrapper.InterceptTotalCount;
 			this.DayXmlFileName = wrapper.DayXmlFileName;
 			this.ClientID = wrapper.ClientID;
 			this.ChannelID = wrapper.ChannelID;
@@ -250,10 +250,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ReportDate = this.ReportDate;
 			wrapper.UpTotalCount = this.UpTotalCount;
 			wrapper.UpSuccess = this.UpSuccess;
+			wrapper.InterceptTotalCount = this.InterceptTotalCount;
+			wrapper.InterceptSuccess = this.InterceptSuccess;
 			wrapper.DownTotalCount = this.DownTotalCount;
 			wrapper.DownSuccess = this.DownSuccess;
-			wrapper.InterceptSuccess = this.InterceptSuccess;
-			wrapper.InterceptTotalCount = this.InterceptTotalCount;
 			wrapper.DayXmlFileName = this.DayXmlFileName;
 			wrapper.ClientID = this.ClientID;
 			wrapper.ChannelID = this.ChannelID;

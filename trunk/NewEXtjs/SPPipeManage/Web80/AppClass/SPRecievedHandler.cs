@@ -34,7 +34,16 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP());
+                    string query = "";
+
+                    if (context.Request != null && context.Request.Url != null)
+                    {
+                        query = context.Request.Url.Query;
+                    }
+
+
+
+                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), query);
 
                     if(!result)
                         context.Response.StatusCode = 500;

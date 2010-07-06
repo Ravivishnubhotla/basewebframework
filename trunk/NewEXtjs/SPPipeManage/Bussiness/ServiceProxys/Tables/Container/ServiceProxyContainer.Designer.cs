@@ -8,10 +8,6 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
     public partial class ServiceProxyContainer
     {		
-		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
-        {get; set;}
-		public ISPTestRecievedServiceProxy SPTestRecievedServiceProxyInstance
-        {get; set;}
 		public ISPChannelServiceProxy SPChannelServiceProxyInstance
         {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
@@ -19,6 +15,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
 		public ISPClientServiceProxy SPClientServiceProxyInstance
         {get; set;}
 		public ISPClientChannelSettingServiceProxy SPClientChannelSettingServiceProxyInstance
+        {get; set;}
+		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
         {get; set;}
 		public ISPMemoServiceProxy SPMemoServiceProxyInstance
         {get; set;}
@@ -29,6 +27,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
 		public ISPSendClientParamsServiceProxy SPSendClientParamsServiceProxyInstance
         {get; set;}
 		public ISPSendRequestInfoServiceProxy SPSendRequestInfoServiceProxyInstance
+        {get; set;}
+		public ISPTestRecievedServiceProxy SPTestRecievedServiceProxyInstance
         {get; set;}
 
 

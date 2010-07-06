@@ -11,5 +11,50 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPPaymentInfoDataObject
     {
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(SPChannelEntity channelId, SPClientEntity clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            if (channelId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            if (clientId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientId));
+
+
+            if (startDateTime==DateTime.MinValue)
+                startDateTime = DateTime.Now;
+
+
+            if (enddateTime == DateTime.MinValue)
+                enddateTime = DateTime.Now;
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDateTime.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(enddateTime.AddDays(1).Date));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * pageSize);
+
+            queryBuilder.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

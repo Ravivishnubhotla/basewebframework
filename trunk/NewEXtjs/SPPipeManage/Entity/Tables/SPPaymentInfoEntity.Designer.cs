@@ -37,6 +37,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
+		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
+		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		
         #endregion
 	
@@ -68,6 +70,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _extendField7;
 		private string _extendField8;
 		private string _extendField9;
+		private bool _isReport;
+		private string _requestContent;
 		
 		#endregion
 
@@ -100,6 +104,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField7 = null;
 			_extendField8 = null;
 			_extendField9 = null;
+			_isReport = false;
+			_requestContent = null;
 		}
 		#endregion
 
@@ -107,7 +113,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -132,6 +138,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField7 = extendField7;
 			_extendField8 = extendField8;
 			_extendField9 = extendField9;
+			_isReport = isReport;
+			_requestContent = requestContent;
 		}
 		#endregion     
 	
@@ -504,6 +512,37 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField9", value, value.ToString());
 				_isChanged |= (_extendField9 != value); _extendField9 = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool IsReport
+		{
+			get { return _isReport; }
+
+			set	
+			{
+				_isChanged |= (_isReport != value); _isReport = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string RequestContent
+		{
+			get { return _requestContent; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 8000)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
+				_isChanged |= (_requestContent != value); _requestContent = value;
 			}
 		}
 		/// <summary>

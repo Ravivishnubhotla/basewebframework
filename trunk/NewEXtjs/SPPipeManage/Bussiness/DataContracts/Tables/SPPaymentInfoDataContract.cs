@@ -37,6 +37,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
+		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
+		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		
         #endregion
 	
@@ -65,6 +67,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _extendField7;
 		private string _extendField8;
 		private string _extendField9;
+		private bool _isReport;
+		private string _requestContent;
 		
 		#endregion
 
@@ -97,6 +101,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_extendField7 = null;
 			_extendField8 = null;
 			_extendField9 = null;
+			_isReport = false;
+			_requestContent = null;
 		}
 		#endregion
 
@@ -472,6 +478,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool IsReport
+		{
+			get { return _isReport; }
+
+			set	
+			{
+				_isReport = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string RequestContent
+		{
+			get { return _requestContent; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 8000)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
+				_requestContent = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -501,6 +538,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ExtendField7 = wrapper.ExtendField7;
 			this.ExtendField8 = wrapper.ExtendField8;
 			this.ExtendField9 = wrapper.ExtendField9;
+			this.IsReport = wrapper.IsReport;
+			this.RequestContent = wrapper.RequestContent;
 		}
 		
 		
@@ -530,6 +569,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ExtendField7 = this.ExtendField7;
 			wrapper.ExtendField8 = this.ExtendField8;
 			wrapper.ExtendField9 = this.ExtendField9;
+			wrapper.IsReport = this.IsReport;
+			wrapper.RequestContent = this.RequestContent;
 		
 		return wrapper;
         }

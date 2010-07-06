@@ -13,13 +13,31 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPPaymentInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity>
     {
-
-
+	    List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
     {
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            SPChannelEntity channelEntity = null;
+
+            if (channelId > 0)
+                channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
 
 
+            SPClientEntity clientEntity = null;
+
+            if (clientId > 0)
+                clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientId);
+
+
+            return this.SelfDataObj.FindAllByOrderByAndCleintIDAndChanneLIDAndDate(channelEntity, clientEntity,
+                                                                                   startDateTime,
+                                                                                   enddateTime,
+                                                                                   sortFieldName, isDesc,
+                                                                                   pageIndex, pageSize,
+                                                                                   out recordCount);
+        }
     }
 }

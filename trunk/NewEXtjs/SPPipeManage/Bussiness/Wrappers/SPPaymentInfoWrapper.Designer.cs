@@ -90,6 +90,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
+		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
+		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		
         #endregion
 
@@ -415,6 +417,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ExtendField9 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool IsReport
+		{
+			get
+			{
+				return entity.IsReport;
+			}
+			set
+			{
+				entity.IsReport = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string RequestContent
+		{
+			get
+			{
+				return entity.RequestContent;
+			}
+			set
+			{
+				entity.RequestContent = value;
 			}
 		}
 		#endregion 

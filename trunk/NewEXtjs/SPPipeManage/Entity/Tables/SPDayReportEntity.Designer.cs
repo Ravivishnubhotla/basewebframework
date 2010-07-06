@@ -18,10 +18,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_UPTOTALCOUNT = "UpTotalCount";
 		public static readonly string PROPERTY_NAME_UPSUCCESS = "UpSuccess";
+		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
+		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
@@ -37,10 +37,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		private DateTime? _reportDate;
 		private int? _upTotalCount;
 		private int? _upSuccess;
+		private int? _interceptTotalCount;
+		private int? _interceptSuccess;
 		private int? _downTotalCount;
 		private int? _downSuccess;
-		private int? _interceptSuccess;
-		private int? _interceptTotalCount;
 		private string _dayXmlFileName;
 		private int? _clientID;
 		private int? _channelID;
@@ -57,10 +57,10 @@ namespace LD.SPPipeManage.Entity.Tables
 			_reportDate = null;
 			_upTotalCount = null;
 			_upSuccess = null;
+			_interceptTotalCount = null;
+			_interceptSuccess = null;
 			_downTotalCount = null;
 			_downSuccess = null;
-			_interceptSuccess = null;
-			_interceptTotalCount = null;
 			_dayXmlFileName = null;
 			_clientID = null;
 			_channelID = null;
@@ -71,16 +71,16 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? downTotalCount, int? downSuccess, int? interceptSuccess, int? interceptTotalCount, string dayXmlFileName, int? clientID, int? channelID)
+		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? interceptTotalCount, int? interceptSuccess, int? downTotalCount, int? downSuccess, string dayXmlFileName, int? clientID, int? channelID)
 		{
 			_reportID = reportID;
 			_reportDate = reportDate;
 			_upTotalCount = upTotalCount;
 			_upSuccess = upSuccess;
+			_interceptTotalCount = interceptTotalCount;
+			_interceptSuccess = interceptSuccess;
 			_downTotalCount = downTotalCount;
 			_downSuccess = downSuccess;
-			_interceptSuccess = interceptSuccess;
-			_interceptTotalCount = interceptTotalCount;
 			_dayXmlFileName = dayXmlFileName;
 			_clientID = clientID;
 			_channelID = channelID;
@@ -149,27 +149,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownTotalCount
+		public virtual int? InterceptTotalCount
 		{
-			get { return _downTotalCount; }
+			get { return _interceptTotalCount; }
 
 			set	
 			{
-				_isChanged |= (_downTotalCount != value); _downTotalCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? DownSuccess
-		{
-			get { return _downSuccess; }
-
-			set	
-			{
-				_isChanged |= (_downSuccess != value); _downSuccess = value;
+				_isChanged |= (_interceptTotalCount != value); _interceptTotalCount = value;
 			}
 		}
 
@@ -191,13 +177,27 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? InterceptTotalCount
+		public virtual int? DownTotalCount
 		{
-			get { return _interceptTotalCount; }
+			get { return _downTotalCount; }
 
 			set	
 			{
-				_isChanged |= (_interceptTotalCount != value); _interceptTotalCount = value;
+				_isChanged |= (_downTotalCount != value); _downTotalCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? DownSuccess
+		{
+			get { return _downSuccess; }
+
+			set	
+			{
+				_isChanged |= (_downSuccess != value); _downSuccess = value;
 			}
 		}
 
