@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Clients
@@ -24,6 +25,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
         {
             try
             {
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
+
+                if (clientWrapper.UserID>0)
+                    SystemUserWrapper.DeleteByID(clientWrapper.UserID);
+
                 SPClientWrapper.DeleteByID(id);
 
                 ScriptManager.AjaxSuccess = true;

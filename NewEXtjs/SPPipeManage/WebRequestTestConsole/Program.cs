@@ -28,9 +28,9 @@ namespace WebRequestTestConsole
 
             string mobileformat = ConfigurationManager.AppSettings["mobileformat"];
 
-            string msg =  ConfigurationManager.AppSettings["msg"];
+            string msgformat = ConfigurationManager.AppSettings["msgformat"];
 
-            string ywid =  ConfigurationManager.AppSettings["ywid"];
+            string ywidformat = ConfigurationManager.AppSettings["ywidformat"];
 
             for (int i = 0; i < testDataCount; i++)
             {
@@ -42,7 +42,7 @@ namespace WebRequestTestConsole
                 {
                     try
                     {
-                        requestOk = SendRequest(i, requesturl, mobileformat, msg, ywid);
+                        requestOk = SendRequest(i, requesturl, mobileformat, msgformat, ywidformat);
                     }
                     catch
                     {
@@ -100,12 +100,12 @@ namespace WebRequestTestConsole
         {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
-            BulidParams(queryString, "cpid", "1");
-            BulidParams(queryString, "mid", "2");
-            BulidParams(queryString, "mobile",string.Format(mobileformat,i.ToString("D5")));
-            BulidParams(queryString, "port", "21");
-            BulidParams(queryString, "ywid", ywid);
-            BulidParams(queryString, "msg", string.Format(msg,i.ToString("D5")));
+            BulidParams(queryString, ConfigurationManager.AppSettings["cpid"], "1");
+            BulidParams(queryString, ConfigurationManager.AppSettings["mid"], "2");
+            BulidParams(queryString, ConfigurationManager.AppSettings["mobile"],string.Format(mobileformat,i.ToString("D5")));
+            BulidParams(queryString, ConfigurationManager.AppSettings["port"], "21");
+            BulidParams(queryString, ConfigurationManager.AppSettings["ywid"], ywid);
+            BulidParams(queryString, ConfigurationManager.AppSettings["msg"], string.Format(msg,i.ToString("D5")));
 
             return string.Format("{0}?{1}", requesturl, queryString.ToString());
         }

@@ -95,13 +95,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Coolite.Ext.Web.TextField txtRecieveDataUrl;
         
         /// <summary>
-        /// cmUserID control.
+        /// txtRelateUserLoginID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmUserID;
+        protected global::Coolite.Ext.Web.TextField txtRelateUserLoginID;
+        
+        /// <summary>
+        /// txtRelateUserPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtRelateUserPassword;
+        
+        /// <summary>
+        /// txtRelateUserRePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtRelateUserRePassword;
         
         /// <summary>
         /// btnSaveSPClient control.

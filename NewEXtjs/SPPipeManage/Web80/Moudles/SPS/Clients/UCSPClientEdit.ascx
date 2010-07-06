@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs"
+    Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
 <ext:Store ID="storeUsers" runat="server" AutoLoad="false">
     <Proxy>
         <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
@@ -22,28 +23,22 @@
                     <ext:FormLayout ID="FormLayoutSPClient" runat="server" LabelSeparator=":" LabelWidth="100">
                         <Anchors>
                             <ext:Anchor Horizontal="95%">
-							<ext:Hidden ID="hidId" runat="server">
+                                <ext:Hidden ID="hidId" runat="server">
                                 </ext:Hidden>
                             </ext:Anchor>
-                           			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True"   />
-             </ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"   />
-             </ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True"   />
-             </ext:Anchor> 
-                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmUserID" runat="server" FieldLabel="关联用户" AllowBlank="False"
-                                    StoreID="storeUsers" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
-                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择关联用户" ValueNotFoundText="加载中..." />
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" />
                             </ext:Anchor>
-			 <ext:Anchor Horizontal="95%">
-							<ext:Hidden ID="hidUserID" runat="server">
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Hidden ID="hidUserID" runat="server">
                                 </ext:Hidden>
-             </ext:Anchor> 
-
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>
@@ -53,8 +48,8 @@
     <Buttons>
         <ext:Button ID="btnSaveSPClient" runat="server" Text="编辑" Icon="ApplicationEdit">
             <AjaxEvents>
-                <Click Before="if(!#{formPanelSPClientEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPClient_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了下家。',callback);function callback(id) { #{storeSPClient}.reload(); };
+                <Click Before="if(!#{formPanelSPClientEdit}.getForm().isValid()) return false;" OnEvent="btnSaveSPClient_Click"
+                    Success="Ext.MessageBox.alert('操作成功', '成功的编辑了下家。',callback);function callback(id) { #{storeSPClient}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>
@@ -66,9 +61,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-            <Listeners>
+    <Listeners>
         <Show Handler="#{storeUsers}.reload();if(#{hidUserID}.getValue()!=''){#{cmUserID}.setValue(#{hidUserID}.getValue())}" />
     </Listeners>
 </ext:Window>
-
-
