@@ -233,13 +233,25 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataTable GetTodayReport(int clientId, int channelId)
         {
-            string sql = "Select * from view_TodayHourTotal where ChannelID = @ChannelID and  ClientID =  @ClientID  ";
+            string sql = "";
+
+            if(channelId==0)
+            {
+                sql = "SELECT ClientID, ChannelID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord GROUP BY ClientID, ChannelID, CHour where ChannelID = @ChannelID and  ClientID =  @ClientID  ";
+            }
+            else
+            {
+                sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord GROUP BY ClientID, ChannelID, CHour where ClientID =  @ClientID  ";              
+            }
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
-            dbParameters.AddWithValue("ChannelID", channelId);
-
             dbParameters.AddWithValue("ClientID", clientId);
+
+            if (channelId == 0)
+            {
+                dbParameters.AddWithValue("ChannelID", channelId);
+            }
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
