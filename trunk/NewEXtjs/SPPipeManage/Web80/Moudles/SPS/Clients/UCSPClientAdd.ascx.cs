@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Clients
 {
@@ -35,18 +37,37 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
         {
             try
             {
+                string loginID = this.txtRelateUserLoginID.Text.Trim();
+
+                if (SystemUserWrapper.GetUserByLoginID(loginID) != null)
+                {
+                    Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                    Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：用户登录ID已存在！";
+                    return;
+                }
+
+
                 SPClientWrapper obj = new SPClientWrapper();
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
 
-                if (this.cmUserID.SelectedItem!=null)
-                {
-                    obj.UserID = Convert.ToInt32(this.cmUserID.SelectedItem.Value.ToString());
-                }
+
+                Membership.CreateUser(loginID, this.txtRelateUserPassword.Text.Trim(), this.txtRelateUserLoginID.Text.Trim()+"@163.com");
 
 
+                SystemUserWrapper clientUser = SystemUserWrapper.GetUserByLoginID(loginID);
 
+                clientUser.UserName = loginID;
+
+                SystemUserWrapper.Update(clientUser);
+
+                SystemRoleWrapper clientRole = SystemRoleWrapper.GetRoleByName("SPDownUser");
+
+                SystemUserWrapper.PatchAssignUserRoles(clientUser, new List<string> { clientRole.RoleID.ToString() });
+
+                obj.UserID = clientUser.UserID;
+ 
                 SPClientWrapper.Save(obj);
 
                 winSPClientAdd.Hide();

@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientAdd.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientAdd" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientAdd.ascx.cs"
+    Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientAdd" %>
 <ext:Store ID="storeUsers" runat="server" AutoLoad="false">
     <Proxy>
         <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
@@ -15,31 +16,39 @@
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
 
+<script language="javascript">
+    Ext.apply(Ext.form.VTypes, { password: function(val, field) { if (field.initialPassField) { var pwd = Ext.getCmp(field.initialPassField); return pwd ? (val == pwd.getValue()) : false; } return true; }, passwordText: "两次输入的密码不匹配！" });
+</script>
+
 <ext:Window ID="winSPClientAdd" runat="server" Icon="ApplicationAdd" Title="新建下家"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    Width="500" Height="320" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
-            <ext:FormPanel ID="formPanelSPClientAdd" runat="server" Frame="true" Header="false" MonitorValid="true"
-                BodyStyle="padding:5px;">
+            <ext:FormPanel ID="formPanelSPClientAdd" runat="server" Frame="true" Header="false"
+                MonitorValid="true" BodyStyle="padding:5px;">
                 <Body>
                     <ext:FormLayout ID="FormLayoutSPClient" runat="server" LabelSeparator=":" LabelWidth="100">
                         <Anchors>
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True"   />
-             </ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"   />
-             </ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True"   />
-             </ext:Anchor> 
- 
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmUserID" runat="server" FieldLabel="关联用户" AllowBlank="False"
-                                    StoreID="storeUsers" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
-                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择关联用户" ValueNotFoundText="加载中..." />
+                                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="False" />
                             </ext:Anchor>
-
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRelateUserLoginID" runat="server" FieldLabel="关联用户登陆ID" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRelateUserPassword" runat="server" InputType="Password" FieldLabel="关联用户密码"
+                                    AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRelateUserRePassword" runat="server" InputType="Password" Vtype="password" FieldLabel="关联用户重复密码"
+                                    AllowBlank="False" />
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>
@@ -62,7 +71,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-        <Listeners>
+    <Listeners>
         <Show Handler="#{storeUsers}.reload();" />
     </Listeners>
 </ext:Window>

@@ -235,20 +235,20 @@ namespace LD.SPPipeManage.Data.AdoNet
         {
             string sql = "";
 
-            if(channelId==0)
+            if(channelId!=0)
             {
-                sql = "SELECT ClientID, ChannelID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord GROUP BY ClientID, ChannelID, CHour where ChannelID = @ChannelID and  ClientID =  @ClientID  ";
+                sql = "SELECT ClientID, ChannelID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord Where (ChannelID = @ChannelID) AND (ClientID = @ClientID) GROUP BY ClientID, ChannelID, CHour  ";
             }
             else
             {
-                sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord GROUP BY ClientID, ChannelID, CHour where ClientID =  @ClientID  ";              
+                sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID =  @ClientID GROUP BY ClientID, ChannelID, CHour   ";              
             }
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("ClientID", clientId);
 
-            if (channelId == 0)
+            if (channelId != 0)
             {
                 dbParameters.AddWithValue("ChannelID", channelId);
             }

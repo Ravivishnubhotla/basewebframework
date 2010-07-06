@@ -25,7 +25,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
                 int channelID = 0;
 
-                if(this.cmbChannelID.SelectedItem!=null)
+                if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
                 {
                     channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
                 }
@@ -39,7 +39,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             int channelID = 0;
 
-            if (this.cmbChannelID.SelectedItem != null)
+            if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
             {
                 channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
             }
