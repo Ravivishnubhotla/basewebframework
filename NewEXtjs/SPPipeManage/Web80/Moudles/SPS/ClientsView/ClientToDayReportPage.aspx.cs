@@ -53,8 +53,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             DataTable dt = SPDayReportWrapper.GetTodayReport(clientID, channelID);
 
-
-
             DataTable table = new DataTable();
 
             table.Columns.AddRange(new DataColumn[] {
@@ -69,7 +67,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             {
                 int count = 0;
 
-                DataRow[] drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} ", channelID, clientID));
+                DataRow[] drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));
 
                 if (drs.Length>0)
                 {
