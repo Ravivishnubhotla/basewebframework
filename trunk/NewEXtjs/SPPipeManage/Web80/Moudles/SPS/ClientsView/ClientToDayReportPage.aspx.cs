@@ -67,7 +67,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             {
                 int count = 0;
 
-                DataRow[] drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));
+                DataRow[] drs;
+
+                if (channelID!=0)
+                {
+                    drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));
+                }
+                else
+                {
+                    drs = dt.Select(string.Format(" ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));               
+                }
+
 
                 if (drs.Length>0)
                 {
