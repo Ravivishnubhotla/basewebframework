@@ -230,5 +230,18 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public DataTable GetTodayReport(int clientId, int channelId)
+        {
+            string sql = "Select * from view_TodayHourTotal where ChannelID = @ChannelID and  ClientID =  @ClientID  ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ChannelID", channelId);
+
+            dbParameters.AddWithValue("ClientID", clientId);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }

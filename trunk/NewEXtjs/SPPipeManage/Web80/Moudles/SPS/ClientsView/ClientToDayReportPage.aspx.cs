@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Common.Web.AppClass;
+using Parameter = Coolite.Ext.Web.Parameter;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
@@ -17,25 +19,43 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             if (!Ext.IsAjaxRequest)
             {
                 this.hidId.Text = this.ClientID.ToString();
-                this.Store1.DataSource = this.GetDataTable();
+
+                this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
+
+
+                int channelID = 0;
+
+                if(this.cmbChannelID.SelectedItem!=null)
+                {
+                    channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+                }
+
+                this.Store1.DataSource = this.GetDataTable(this.ClientID, channelID);
                 this.Store1.DataBind();
             }
         }
 
         protected void Store1_RefreshData(object sender, StoreRefreshDataEventArgs e)
         {
-            this.Store1.DataSource = this.GetDataTable();
+            int channelID = 0;
+
+            if (this.cmbChannelID.SelectedItem != null)
+            {
+                channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+            }
+
+            this.Store1.DataSource = this.GetDataTable(this.ClientID, channelID);
             this.Store1.DataBind();
         }
 
 
-        private DataTable GetDataTable()
+        private DataTable GetDataTable(int clientID,int channelID)
         {
-            int clientID = this.ClientID;
-            
+            DataTable dt = SPDayReportWrapper.GetTodayReport(clientID, channelID);
+
+
+
             DataTable table = new DataTable();
-
-
 
             table.Columns.AddRange(new DataColumn[] {
             new DataColumn("CHour")   { ColumnName = "CHour",    DataType = typeof(string) },
@@ -47,8 +67,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             for (int i = 0; i <= chour; i++)
             {
-                table.Rows.Add(new object[] { i.ToString("D2") + ":00", 1 + clientID });
-                ;
+                int count = 0;
+
+                DataRow[] drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} ", channelID, clientID));
+
+                if (drs.Length>0)
+                {
+                    if(drs[0]["Total"]!=System.DBNull.Value)
+                    {
+                        count = Convert.ToInt32(drs[0]["Total"]);
+                    }
+                }
+
+                table.Rows.Add(new object[] { i.ToString("D2") + ":00", count.ToString() });
             }
 
             return table;

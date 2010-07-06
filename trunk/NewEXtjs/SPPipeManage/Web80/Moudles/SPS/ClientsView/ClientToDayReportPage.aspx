@@ -3,9 +3,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-    <Listeners>
-    <DocumentReady Handler="#{storeSPChannel}.reload();" />
-    </Listeners>
+        <Listeners>
+            <DocumentReady Handler="#{storeSPChannel}.reload();" />
+        </Listeners>
     </ext:ScriptManagerProxy>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
@@ -21,10 +21,6 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
-        <AutoLoadParams>
-            <ext:Parameter Name="ClinetID" Mode="Raw" Value="#{hidId}.getValue()">
-            </ext:Parameter>
-        </AutoLoadParams>
     </ext:Store>
     <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
         <Reader>
@@ -49,9 +45,18 @@
                                 <Items>
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
-                                                                       <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
+                                    <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
                                         TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
-                                        EmptyText="全部" /> 
+                                        EmptyText="全部">
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                    </ext:ComboBox>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
