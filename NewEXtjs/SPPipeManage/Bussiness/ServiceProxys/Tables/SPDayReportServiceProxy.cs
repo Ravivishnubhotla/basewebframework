@@ -23,6 +23,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    string GetDbSize();
 	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
 	    DataTable GetDayliyReport(DateTime dateTime);
+        DataTable GetTodayReport(int clientId, int channelId);
     }
 
     internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
@@ -109,6 +110,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetDayliyReport(DateTime dateTime)
         {
             return this.AdoNetDb.GetDayliyReport(dateTime);
+        }
+
+        public DataTable GetTodayReport(int clientId, int channelId)
+        {
+            return this.AdoNetDb.GetTodayReport(clientId, channelId);
         }
 
         [Transaction(ReadOnly = false)]
