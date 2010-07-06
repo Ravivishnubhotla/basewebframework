@@ -70,6 +70,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_EXTENDFIELD7 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD7);
 		public static readonly Property PROPERTY_EXTENDFIELD8 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD8);
 		public static readonly Property PROPERTY_EXTENDFIELD9 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD9);
+		public static readonly Property PROPERTY_ISREPORT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISREPORT);
+		public static readonly Property PROPERTY_REQUESTCONTENT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_REQUESTCONTENT);
       
 		#region 子类集合字段查询字段
 	
@@ -132,6 +134,10 @@ namespace LD.SPPipeManage.Data.Tables
                 case "ExtendField8":
                     return typeof (string);
                 case "ExtendField9":
+                    return typeof (string);
+                case "IsReport":
+                    return typeof (bool);
+                case "RequestContent":
                     return typeof (string);
           }
 			return typeof(string);

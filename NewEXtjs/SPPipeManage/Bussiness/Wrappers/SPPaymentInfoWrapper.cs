@@ -97,5 +97,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+	    {
+	        return
+	            ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+	                                                                                              startDateTime,
+	                                                                                              enddateTime,
+	                                                                                              sortFieldName, isDesc,
+	                                                                                              pageIndex, pageSize,
+	                                                                                              out recordCount));
+
+
+	    }
     }
 }

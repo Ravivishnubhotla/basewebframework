@@ -33,6 +33,8 @@
 		<property column="ExtendField7" type="string" name="ExtendField7"   length="400" />	
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="400" />	
 		<property column="ExtendField9" type="string" name="ExtendField9"   length="400" />	
+		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="8000" />	
 
 
 

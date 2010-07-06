@@ -6,6 +6,7 @@ using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -123,7 +124,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public bool ProcessRequest(Hashtable hashtable,string ip)
+        public bool ProcessRequest(Hashtable hashtable, string ip, string query)
         {
             Hashtable fieldMappings = this.GetFieldMappings();
 
@@ -142,6 +143,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield7 = GetParamsValue(hashtable, "extendfield7", fieldMappings);
             string extendfield8 = GetParamsValue(hashtable, "extendfield8", fieldMappings);
             string extendfield9 = GetParamsValue(hashtable, "extendfield9", fieldMappings);
+
+
+            string content = query;
 
             if(string.IsNullOrEmpty(mobile))
                 return false;
@@ -182,6 +186,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.Ip = ip;
                 paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
                 paymentInfo.CreateDate = System.DateTime.Now;
+                paymentInfo.RequestContent = content;
 
                 if (!paymentInfo.IsIntercept.Value)
                 {

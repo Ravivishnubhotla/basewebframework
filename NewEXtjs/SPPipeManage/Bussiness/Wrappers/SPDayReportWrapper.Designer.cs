@@ -71,10 +71,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_UPTOTALCOUNT = "UpTotalCount";
 		public static readonly string PROPERTY_NAME_UPSUCCESS = "UpSuccess";
+		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
+		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTSUCCESS = "InterceptSuccess";
-		public static readonly string PROPERTY_NAME_INTERCEPTTOTALCOUNT = "InterceptTotalCount";
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
@@ -142,6 +142,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public int? InterceptTotalCount
+		{
+			get
+			{
+				return entity.InterceptTotalCount;
+			}
+			set
+			{
+				entity.InterceptTotalCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? InterceptSuccess
+		{
+			get
+			{
+				return entity.InterceptSuccess;
+			}
+			set
+			{
+				entity.InterceptSuccess = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public int? DownTotalCount
 		{
 			get
@@ -165,34 +193,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DownSuccess = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? InterceptSuccess
-		{
-			get
-			{
-				return entity.InterceptSuccess;
-			}
-			set
-			{
-				entity.InterceptSuccess = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? InterceptTotalCount
-		{
-			get
-			{
-				return entity.InterceptTotalCount;
-			}
-			set
-			{
-				entity.InterceptTotalCount = value;
 			}
 		}
 		/// <summary>

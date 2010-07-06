@@ -17,10 +17,10 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_REPORTDATE = Property.ForName(SPDayReportEntity.PROPERTY_NAME_REPORTDATE);
 		public static readonly Property PROPERTY_UPTOTALCOUNT = Property.ForName(SPDayReportEntity.PROPERTY_NAME_UPTOTALCOUNT);
 		public static readonly Property PROPERTY_UPSUCCESS = Property.ForName(SPDayReportEntity.PROPERTY_NAME_UPSUCCESS);
+		public static readonly Property PROPERTY_INTERCEPTTOTALCOUNT = Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTTOTALCOUNT);
+		public static readonly Property PROPERTY_INTERCEPTSUCCESS = Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTSUCCESS);
 		public static readonly Property PROPERTY_DOWNTOTALCOUNT = Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNTOTALCOUNT);
 		public static readonly Property PROPERTY_DOWNSUCCESS = Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSUCCESS);
-		public static readonly Property PROPERTY_INTERCEPTSUCCESS = Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTSUCCESS);
-		public static readonly Property PROPERTY_INTERCEPTTOTALCOUNT = Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTTOTALCOUNT);
 		public static readonly Property PROPERTY_DAYXMLFILENAME = Property.ForName(SPDayReportEntity.PROPERTY_NAME_DAYXMLFILENAME);
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CLIENTID);
 		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CHANNELID);
@@ -49,13 +49,13 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (int);
                 case "UpSuccess":
                     return typeof (int);
-                case "DownTotalCount":
-                    return typeof (int);
-                case "DownSuccess":
+                case "InterceptTotalCount":
                     return typeof (int);
                 case "InterceptSuccess":
                     return typeof (int);
-                case "InterceptTotalCount":
+                case "DownTotalCount":
+                    return typeof (int);
+                case "DownSuccess":
                     return typeof (int);
                 case "DayXmlFileName":
                     return typeof (string);
