@@ -65,23 +65,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             for (int i = 0; i <= chour; i++)
             {
-                int count = 0;
-
                 DataRow[] drs;
 
                 if (channelID!=0)
                 {
-                    drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));
+                    drs = dt.Select(string.Format(" ChannelID = {0} and  ClientID =  {1} and  CHour = {2} ", channelID, clientID, i));
                 }
                 else
                 {
-                    drs = dt.Select(string.Format(" ClientID =  {1} and  CHour = {2} ", channelID, clientID, chour));               
+                    drs = dt.Select(string.Format(" ClientID =  {1} and  CHour = {2} ", channelID, clientID, i));               
                 }
 
+                int count = 0;
 
                 if (drs.Length>0)
                 {
-                    if(drs[0]["Total"]!=System.DBNull.Value)
+                    if (drs[0]["Total"] != System.DBNull.Value)
                     {
                         count = Convert.ToInt32(drs[0]["Total"]);
                     }
