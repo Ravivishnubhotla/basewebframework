@@ -122,9 +122,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-	    public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg,Hashtable exparams)
-	    {            
-            string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, exparams);
+        public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
+	    {
+            string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
 
 	        string errorMessage = string.Empty;
 
@@ -168,7 +168,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    }
 
-	    private string BulidUrl(string cpid, string mid, string mobile, string port, string ywid, string msg, Hashtable exparams)
+        private string BulidUrl(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
 	    {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
@@ -204,6 +204,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                         break;
                     case "cpid":
                         BulidParams(queryString, clientFieldMapping.Name, cpid);
+                        break;
+                    case "linkid":
+                        BulidParams(queryString, clientFieldMapping.Name, linkid);
+                        break;
+                    case "dest":
+                        BulidParams(queryString, clientFieldMapping.Name, dest);
+                        break;
+                    case "price":
+                        BulidParams(queryString, clientFieldMapping.Name, price);
                         break;
 	            }         
 	        }
@@ -242,5 +251,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	        return ConvertEntityToWrapper(businessProxy.GetClientByUserID(userId)).Id;
 	    }
+
+
+
+
     }
 }

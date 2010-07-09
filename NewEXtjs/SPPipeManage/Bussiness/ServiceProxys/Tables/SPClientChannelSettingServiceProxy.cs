@@ -12,7 +12,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPClientChannelSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingEntity>
+    public interface ISPClientChannelSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingEntity>, ISPClientChannelSettingServiceProxyDesigner
     {
 	    List<SPClientChannelSettingEntity> GetSettingByChannel(SPChannelEntity spChannelEntity);
         List<SPChannelEntity> GetChannelByClient(SPClientEntity spClientEntity);

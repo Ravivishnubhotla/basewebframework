@@ -243,6 +243,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
+        #region "FKQuery"
+
+
+
+        #endregion
+
+
+
+
+
+
 
 
         #region Static Common Data Operation

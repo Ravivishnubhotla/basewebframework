@@ -11,7 +11,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPPaymentInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity>
+    public interface ISPPaymentInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity>, ISPPaymentInfoServiceProxyDesigner
     {
 	    List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
     }

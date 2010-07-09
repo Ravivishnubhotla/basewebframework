@@ -79,6 +79,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_MID = "Mid";
 		public static readonly string PROPERTY_NAME_PORT = "Port";
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_LINKID = "Linkid";
+		public static readonly string PROPERTY_NAME_DEST = "Dest";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
@@ -268,6 +271,48 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string Linkid
+		{
+			get
+			{
+				return entity.Linkid;
+			}
+			set
+			{
+				entity.Linkid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Dest
+		{
+			get
+			{
+				return entity.Dest;
+			}
+			set
+			{
+				entity.Dest = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Price
+		{
+			get
+			{
+				return entity.Price;
+			}
+			set
+			{
+				entity.Price = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string Ip
 		{
 			get
@@ -448,6 +493,39 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			}
 		}
 		#endregion 
+
+
+
+
+
+        #region "FKQuery"
+		
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc, pageIndex, pageSize, channelID.entity, out recordCount));
+        }
+
+        public static List<SPPaymentInfoWrapper> FindAllByChannelID(SPChannelWrapper channelID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByChannelID(channelID.entity));
+        }
+		
+		
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientWrapper clientID, out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndClientID(orderByColumnName, isDesc, pageIndex, pageSize, clientID.entity, out recordCount));
+        }
+
+        public static List<SPPaymentInfoWrapper> FindAllByClientID(SPClientWrapper clientID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByClientID(clientID.entity));
+        }
+		
+
+
+
+        #endregion
+
 
 
 
