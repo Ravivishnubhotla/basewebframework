@@ -49,6 +49,9 @@
                                         <ext:ListItem Value="port" Text="port"></ext:ListItem>
                                         <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                         <ext:ListItem Value="msg" Text="msg"></ext:ListItem>
+                                        <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>                                      
+                                        <ext:ListItem Value="dest" Text="dest"></ext:ListItem>                           
+                                        <ext:ListItem Value="price" Text="price"></ext:ListItem> 
                                         <ext:ListItem Value="extendfield1" Text="extendfield1"></ext:ListItem>
                                         <ext:ListItem Value="extendfield2" Text="extendfield2"></ext:ListItem>
                                         <ext:ListItem Value="extendfield3" Text="extendfield3"></ext:ListItem>
