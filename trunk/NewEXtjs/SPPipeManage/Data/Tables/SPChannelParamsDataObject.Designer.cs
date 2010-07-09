@@ -79,5 +79,34 @@ namespace LD.SPPipeManage.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SPChannelParamsEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPChannelParamsEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+
+		
+		
     }
 }

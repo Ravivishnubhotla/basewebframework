@@ -66,5 +66,34 @@ namespace LD.SPPipeManage.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SPSendClientParamsEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPSendClientParamsEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+
+		
+		
     }
 }

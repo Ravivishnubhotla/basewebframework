@@ -59,6 +59,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_MID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MID);
 		public static readonly Property PROPERTY_PORT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PORT);
 		public static readonly Property PROPERTY_YWID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_YWID);
+		public static readonly Property PROPERTY_LINKID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_LINKID);
+		public static readonly Property PROPERTY_DEST = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_DEST);
+		public static readonly Property PROPERTY_PRICE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PRICE);
 		public static readonly Property PROPERTY_IP = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_IP);
 		public static readonly Property PROPERTY_SUCESSSTOSEND = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SUCESSSTOSEND);
 		public static readonly Property PROPERTY_EXTENDFIELD1 = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD1);
@@ -113,6 +116,12 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "Ywid":
                     return typeof (string);
+                case "Linkid":
+                    return typeof (string);
+                case "Dest":
+                    return typeof (string);
+                case "Price":
+                    return typeof (string);
                 case "Ip":
                     return typeof (string);
                 case "SucesssToSend":
@@ -142,5 +151,59 @@ namespace LD.SPPipeManage.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SPPaymentInfoEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPPaymentInfoEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+		public List<SPPaymentInfoEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPPaymentInfoEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+
+		
+		
     }
 }
