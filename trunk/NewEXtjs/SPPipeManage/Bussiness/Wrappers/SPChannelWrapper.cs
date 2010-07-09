@@ -134,6 +134,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string port = GetParamsValue(hashtable, "port", fieldMappings);
             string ywid = GetParamsValue(hashtable, "ywid", fieldMappings);
             string msg = GetParamsValue(hashtable, "msg", fieldMappings);
+            string linkid = GetParamsValue(hashtable, "linkid", fieldMappings);
+            string dest = GetParamsValue(hashtable, "dest", fieldMappings);
+            string price = GetParamsValue(hashtable, "price", fieldMappings);
             string extendfield1 = GetParamsValue(hashtable, "extendfield1", fieldMappings);
             string extendfield2 = GetParamsValue(hashtable, "extendfield2", fieldMappings);
             string extendfield3 = GetParamsValue(hashtable, "extendfield3", fieldMappings);
@@ -147,12 +150,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             string content = query;
 
-            if(string.IsNullOrEmpty(mobile))
-                return false;
-            if (string.IsNullOrEmpty(msg))
-                return false;
-            if (string.IsNullOrEmpty(ywid))
-                return false;
+            //if(string.IsNullOrEmpty(mobile))
+            //    return false;
+            //if (string.IsNullOrEmpty(linkid))
+            //    return false;
+            //if (string.IsNullOrEmpty(ywid))
+            //    return false;
 
 
             Hashtable exparams = GetEXParamsValue(hashtable);
@@ -174,6 +177,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.Port = port;
                 paymentInfo.Ywid = ywid;
                 paymentInfo.Message = msg;
+                paymentInfo.Linkid = linkid;
+                paymentInfo.Dest = dest;
+                paymentInfo.Price = price;
                 paymentInfo.ExtendField1 = extendfield1;
                 paymentInfo.ExtendField2 = extendfield2;
                 paymentInfo.ExtendField3 = extendfield3;
@@ -191,7 +197,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!paymentInfo.IsIntercept.Value)
                 {
                     if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
-                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, exparams);
+                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
                     else
                         paymentInfo.SucesssToSend = false;
                 }
@@ -220,18 +226,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	        foreach (string field in fields)
 	        {
-	            string findFeild = field;
+                string findFeild = field.ToLower();
 
 	            SPChannelParamsWrapper channelParamsWrapper =
-	                spChannelParamsWrappers.Find(p => (p.ParamsMappingName.Equals(findFeild)));
+                    spChannelParamsWrappers.Find(p => (p.ParamsMappingName.Equals(findFeild.ToLower())));
 
                 if(channelParamsWrapper==null)
                 {
-                    mappingFields.Add(findFeild,findFeild);
+                    mappingFields.Add(findFeild.ToLower(), findFeild.ToLower());
                 }
                 else
                 {
-                    mappingFields.Add(findFeild,channelParamsWrapper.Name);                  
+                    mappingFields.Add(findFeild.ToLower(), channelParamsWrapper.Name.ToLower());                  
                 }
 	        }
 
@@ -260,7 +266,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    private string GetParamsValue(Hashtable hashtable, string key, Hashtable fieldMappings)
         {
-	        string queryKey = key;
+            string queryKey = key.ToLower();
 
             if (fieldMappings.ContainsKey(key))
             {
@@ -273,9 +279,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return hashtable[queryKey].ToString();
         }
 
-        //public static List<SPChannelWrapper> GetChannelByClientID(int cid)
-        //{
-        //    return 
-        //}
+
+	    public string GetOkCode()
+	    {
+	        return "ok";
+	    }
     }
 }

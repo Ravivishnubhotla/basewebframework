@@ -12,7 +12,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity>
+    public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity>, ISPChannelServiceProxyDesigner
     {
 	    SPChannelEntity FindByAlias(string fileName);
         List<SPChannelParamsEntity> GetAllEnableParams(SPChannelEntity entity);

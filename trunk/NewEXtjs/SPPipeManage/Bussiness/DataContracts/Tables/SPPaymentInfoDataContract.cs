@@ -26,6 +26,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_MID = "Mid";
 		public static readonly string PROPERTY_NAME_PORT = "Port";
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_LINKID = "Linkid";
+		public static readonly string PROPERTY_NAME_DEST = "Dest";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
@@ -56,6 +59,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _mid;
 		private string _port;
 		private string _ywid;
+		private string _linkid;
+		private string _dest;
+		private string _price;
 		private string _ip;
 		private bool? _sucesssToSend;
 		private string _extendField1;
@@ -90,6 +96,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_mid = null;
 			_port = String.Empty;
 			_ywid = null;
+			_linkid = null;
+			_dest = null;
+			_price = null;
 			_ip = null;
 			_sucesssToSend = null;
 			_extendField1 = null;
@@ -291,6 +300,57 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for Ywid", value, value.ToString());
 				_ywid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Linkid
+		{
+			get { return _linkid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Linkid", value, value.ToString());
+				_linkid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Dest
+		{
+			get { return _dest; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Dest", value, value.ToString());
+				_dest = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Price
+		{
+			get { return _price; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for Price", value, value.ToString());
+				_price = value;
 			}
 		}
 
@@ -527,6 +587,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Mid = wrapper.Mid;
 			this.Port = wrapper.Port;
 			this.Ywid = wrapper.Ywid;
+			this.Linkid = wrapper.Linkid;
+			this.Dest = wrapper.Dest;
+			this.Price = wrapper.Price;
 			this.Ip = wrapper.Ip;
 			this.SucesssToSend = wrapper.SucesssToSend;
 			this.ExtendField1 = wrapper.ExtendField1;
@@ -558,6 +621,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Mid = this.Mid;
 			wrapper.Port = this.Port;
 			wrapper.Ywid = this.Ywid;
+			wrapper.Linkid = this.Linkid;
+			wrapper.Dest = this.Dest;
+			wrapper.Price = this.Price;
 			wrapper.Ip = this.Ip;
 			wrapper.SucesssToSend = this.SucesssToSend;
 			wrapper.ExtendField1 = this.ExtendField1;

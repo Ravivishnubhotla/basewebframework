@@ -11,7 +11,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPMemoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMemoEntity>
+    public interface ISPMemoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMemoEntity>, ISPMemoServiceProxyDesigner
     {
 
 

@@ -11,7 +11,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientEntity>
+    public interface ISPClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientEntity>, ISPClientServiceProxyDesigner
     {
 	    List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity);
 	    List<SPClientEntity> FindByChannelID(int cid);

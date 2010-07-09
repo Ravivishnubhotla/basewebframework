@@ -9,12 +9,20 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
+using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
+
+    public interface ISPChannelParamsServiceProxyDesigner
+    {
+		List<SPChannelParamsEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity _channelID, out int recordCount);
+		List<SPChannelParamsEntity> FindAllByChannelID(SPChannelEntity _channelID);
+    }
+
     internal partial class SPChannelParamsServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelParamsEntity>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
@@ -30,7 +38,20 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 return (SPChannelParamsDataObject)selfDataObject;
             }
         }
+	
+		public List<SPChannelParamsEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity _channelID, out int recordCount)
+        {
+			return this.SelfDataObj.GetPageList_By_SPChannelEntity(orderByColumnName, isDesc, pageIndex, pageSize,_channelID, out recordCount);
+        }
 		
+		public List<SPChannelParamsEntity> FindAllByChannelID(SPChannelEntity _channelID)
+        {
+			return this.SelfDataObj.GetList_By_SPChannelEntity(_channelID);
+        }
+
+
+
+
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

@@ -11,7 +11,7 @@ using LD.SPPipeManage.Entity.Tables;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPSendClientParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSendClientParamsEntity>
+    public interface ISPSendClientParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSendClientParamsEntity>, ISPSendClientParamsServiceProxyDesigner
     {
 
 
