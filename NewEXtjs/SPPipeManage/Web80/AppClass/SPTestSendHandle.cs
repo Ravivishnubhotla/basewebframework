@@ -38,11 +38,12 @@ namespace Legendigital.Common.Web.AppClass
                 spTestRecievedWrapper.RecievedIP = GetRealIP();
 
                 SPTestRecievedWrapper.Save(spTestRecievedWrapper);
+
+                context.Response.Write("ok");
             }
             catch (Exception e)
             {
                 logger.Error("Process Request Error:", e);
-                context.Response.StatusCode = 500;
                 return;
             }
 

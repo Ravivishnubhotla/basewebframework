@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using Common.Logging;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.AppClass
 {
@@ -22,7 +23,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    context.Response.StatusCode = 500;
+                    //context.Response.StatusCode = 500;
                     return;
                 }
 
@@ -34,34 +35,43 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
-                    string query = "";
+                    //string query = "";
 
-                    if (context.Request != null && context.Request.Url != null)
-                    {
-                        query = context.Request.Url.Query;
-                    }
+                    //if (context.Request != null && context.Request.Url != null)
+                    //{
+                    //    query = context.Request.Url.Query;
+                    //}
+
+                    Hashtable recivedata = GetRequestValue(context);
+
+                    string recievdData = JsonConvert.SerializeObject(recivedata);
 
 
 
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), query);
+                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData);
 
-                    if(!result)
-                        context.Response.StatusCode = 500;
+                    if(result)
+                        context.Response.Write(channel.GetOkCode());
+
+                    //if(!result)
+                    //    context.Response.StatusCode = 500;
  
 
                 }
                 else
                 {
-                    context.Response.StatusCode = 500; 
+                    //context.Response.StatusCode = 500; 
                 }
             }
             catch (Exception ex)
             {
                 logger.Error("Process Request Error:", ex);
-                context.Response.StatusCode = 500; 
+                //context.Response.StatusCode = 500; 
                 return;
             }
         }
+
+        //private Output()
 
 
         public static string GetRealIP()
@@ -93,11 +103,13 @@ namespace Legendigital.Common.Web.AppClass
 
             foreach (string key in requestContext.Request.Params.Keys)
             {
-                hb.Add(key, requestContext.Request.Params[key]);
+                hb.Add(key.ToLower(), requestContext.Request.Params[key.ToLower()]);
             }
 
             return hb;
         }
+
+
 
 
 
