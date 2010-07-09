@@ -26,6 +26,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_MID = "Mid";
 		public static readonly string PROPERTY_NAME_PORT = "Port";
 		public static readonly string PROPERTY_NAME_YWID = "Ywid";
+		public static readonly string PROPERTY_NAME_LINKID = "Linkid";
+		public static readonly string PROPERTY_NAME_DEST = "Dest";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SUCESSSTOSEND = "SucesssToSend";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
@@ -59,6 +62,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _mid;
 		private string _port;
 		private string _ywid;
+		private string _linkid;
+		private string _dest;
+		private string _price;
 		private string _ip;
 		private bool? _sucesssToSend;
 		private string _extendField1;
@@ -93,6 +99,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_mid = null;
 			_port = String.Empty;
 			_ywid = null;
+			_linkid = null;
+			_dest = null;
+			_price = null;
 			_ip = null;
 			_sucesssToSend = null;
 			_extendField1 = null;
@@ -113,7 +122,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -127,6 +136,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_mid = mid;
 			_port = port;
 			_ywid = ywid;
+			_linkid = linkid;
+			_dest = dest;
+			_price = price;
 			_ip = ip;
 			_sucesssToSend = sucesssToSend;
 			_extendField1 = extendField1;
@@ -328,6 +340,57 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for Ywid", value, value.ToString());
 				_isChanged |= (_ywid != value); _ywid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Linkid
+		{
+			get { return _linkid; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Linkid", value, value.ToString());
+				_isChanged |= (_linkid != value); _linkid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Dest
+		{
+			get { return _dest; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for Dest", value, value.ToString());
+				_isChanged |= (_dest != value); _dest = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Price
+		{
+			get { return _price; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for Price", value, value.ToString());
+				_isChanged |= (_price != value); _price = value;
 			}
 		}
 
