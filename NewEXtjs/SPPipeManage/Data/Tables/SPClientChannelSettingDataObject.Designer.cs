@@ -91,5 +91,59 @@ namespace LD.SPPipeManage.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SPClientChannelSettingEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPClientChannelSettingEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+		public List<SPClientChannelSettingEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLINETID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPClientChannelSettingEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLINETID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+
+		
+		
     }
 }
