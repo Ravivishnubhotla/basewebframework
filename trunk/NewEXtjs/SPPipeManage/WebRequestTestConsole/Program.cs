@@ -28,9 +28,11 @@ namespace WebRequestTestConsole
 
             string mobileformat = ConfigurationManager.AppSettings["mobileformat"];
 
-            string msgformat = ConfigurationManager.AppSettings["msgformat"];
+            string msgformat = "";
 
             string ywidformat = ConfigurationManager.AppSettings["ywidformat"];
+
+
 
             for (int i = 0; i < testDataCount; i++)
             {
@@ -87,7 +89,16 @@ namespace WebRequestTestConsole
 
             webResponse = (HttpWebResponse)webRequest.GetResponse();
 
-            return (webResponse.StatusCode == HttpStatusCode.OK);
+
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+                string responseText = sr.ReadToEnd();
+
+                return responseText.Trim().ToLower().Equals("ok");
+            }
+
+            return false;
         }
 
         //private static bool SendRequest(int i, string requesturl)
@@ -100,12 +111,27 @@ namespace WebRequestTestConsole
         {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
-            BulidParams(queryString, ConfigurationManager.AppSettings["cpid"], "1");
-            BulidParams(queryString, ConfigurationManager.AppSettings["mid"], "2");
-            BulidParams(queryString, ConfigurationManager.AppSettings["mobile"],string.Format(mobileformat,i.ToString("D5")));
-            BulidParams(queryString, ConfigurationManager.AppSettings["port"], "21");
-            BulidParams(queryString, ConfigurationManager.AppSettings["ywid"], ywid);
-            BulidParams(queryString, ConfigurationManager.AppSettings["msg"], string.Format(msg,i.ToString("D5")));
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["cpid"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["cpid"], "1");
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["mid"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["mid"], "2");
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["mobile"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["mobile"],string.Format(mobileformat,i.ToString("D5")));
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["port"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["port"], "21");
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["ywid"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["ywid"], ywid);
+            if (!string.IsNullOrEmpty(ConfigurationManager.AppSettings["msg"]))
+                BulidParams(queryString, ConfigurationManager.AppSettings["msg"], string.Format(msg,i.ToString("D5")));
+
+            string exparams = ConfigurationManager.AppSettings["exparams"];
+
+            string[] ep = exparams.Split(',');
+
+            foreach (string s in ep)
+            {
+                BulidParams(queryString, s, s + i.ToString("D5"));               
+            }
 
             return string.Format("{0}?{1}", requesturl, queryString.ToString());
         }
