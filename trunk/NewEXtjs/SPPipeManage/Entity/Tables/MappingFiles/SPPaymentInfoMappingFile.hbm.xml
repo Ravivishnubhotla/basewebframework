@@ -22,6 +22,9 @@
 		<property column="Mid" type="string" name="Mid"   length="600" />	
 		<property column="Port" type="string" name="Port"   not-null="true"  length="600" />	
 		<property column="Ywid" type="string" name="Ywid"   length="600" />	
+		<property column="Linkid" type="string" name="Linkid"   length="600" />	
+		<property column="Dest" type="string" name="Dest"   length="600" />	
+		<property column="Price" type="string" name="Price"   length="100" />	
 		<property column="IP" type="string" name="Ip"   length="100" />	
 		<property column="SucesssToSend" type="Boolean" name="SucesssToSend"   />	
 		<property column="ExtendField1" type="string" name="ExtendField1"   length="400" />	
