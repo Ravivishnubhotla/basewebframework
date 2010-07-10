@@ -100,7 +100,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		#endregion
 
 
-        public static string[] fields = new string[] { "cpid", "mid", "mobile", "port", "ywid", "msg", "extendfield1", "extendfield2", "extendfield3", "extendfield4", "extendfield5", "extendfield6", "extendfield7", "extendfield8", "extendfield9" };
+        public static string[] fields = new string[] { "cpid", "mid", "mobile", "port", "ywid", "msg", "linkid", "dest", "price", "extendfield1", "extendfield2", "extendfield3", "extendfield4", "extendfield5", "extendfield6", "extendfield7", "extendfield8", "extendfield9" };
 
         public static SPChannelWrapper GetChannelByPath(string fileName)
         {
@@ -218,7 +218,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             
         }
 
-	    private Hashtable GetFieldMappings()
+	    public Hashtable GetFieldMappings()
 	    {
             Hashtable mappingFields = new Hashtable();
 

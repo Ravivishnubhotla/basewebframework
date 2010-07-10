@@ -3,6 +3,7 @@ Begin DataProject = "SQLDB"
    MSDTVersion = "80"
    DefDBRef = "atom\sqlexpress.WebConsole.dbo"
    Begin Folder = "Change Scripts"
+      Script = "Script1.sql"
    End
    Begin Folder = "Create Scripts"
       Script = "a1013143610.dbo.SystemApplication.SQL"

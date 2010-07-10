@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="ClientToDayReportPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientToDayReportPage" %>
+    CodeBehind="ClientViewDaySum.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientViewDaySum" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
@@ -22,12 +22,14 @@
             </ext:JsonReader>
         </Reader>
     </ext:Store>
-    <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
+    <ext:Store ID="store1" runat="server" AutoLoad="true" OnRefreshData="store1_Refresh">
         <Reader>
-            <ext:JsonReader>
+            <ext:JsonReader ReaderID="RID">
                 <Fields>
-                    <ext:RecordField Name="CHour" />
-                    <ext:RecordField Name="Count" Type="Int" />
+                    <ext:RecordField Name="RID" Type="int" />
+                    <ext:RecordField Name="ReportDate" Type="Date" />
+                    <ext:RecordField Name="DataCount" Type="Int" />
+                    <ext:RecordField Name="Price" Type="Float" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -38,7 +40,7 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
+                    <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="store1"
                         StripeRows="true" Title="即时统计" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
@@ -57,14 +59,19 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
+                                    <ext:ToolbarTextItem Text="日期从">
+                                    </ext:ToolbarTextItem>
+                                    <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
+                                    </ext:DateFieldMenuItem>
+                                    <ext:ToolbarTextItem Text="到">
+                                    </ext:ToolbarTextItem>
+                                    <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
+                                    </ext:DateFieldMenuItem>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarTextItem ID="txtTotalCount" runat=server Text="共计:">
-                                    </ext:ToolbarTextItem>
-                                    
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
@@ -75,14 +82,22 @@
                         </View>
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
-                                <ext:Column ColumnID="colReportDate" DataIndex="CHour" Header="小时" Sortable="true"
-                                    Width="80">
+                                <ext:RowNumbererColumn>
+                                </ext:RowNumbererColumn>
+                                 <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
+                                    Width="20">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colUpTotalCount" DataIndex="Count" Header="点播数" Sortable="true">
-                                </ext:Column>
+                                <ext:Column ColumnID="colDataCount" DataIndex="DataCount" Header="点播数" Sortable="true"
+                                    Width="20">
+                                </ext:Column>                               
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
+                        <BottomBar>
+                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="store1"
+                                DisplayInfo="true" DisplayMsg="显示记录 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的记录" />
+                        </BottomBar>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>

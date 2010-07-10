@@ -36,7 +36,9 @@
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="MobileNumber" />
                     <ext:RecordField Name="RequestContent" />
-                    <ext:RecordField Name="CreateDate" />
+                    <ext:RecordField Name="Values" />
+                    <ext:RecordField Name="Linkid" />
+                    <ext:RecordField Name="CreateDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -48,7 +50,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="store1"
-                        StripeRows="true" Title="即时统计" Icon="Table">
+                        StripeRows="true" Title="即时统计" Icon="Table" AutoExpandColumn="colRequestContent">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -73,6 +75,7 @@
                                     <ext:ToolbarTextItem Text="到">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
+                                   
                                     </ext:DateFieldMenuItem>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>
@@ -89,21 +92,32 @@
                         </View>
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
-                               <ext:RowNumbererColumn>
+                                <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true">
+                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true"
+                                    Width="20">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUpTotalCount" DataIndex="RequestContent" Header="内容" Sortable="false">
+                                <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUpTotalCount" DataIndex="CreateDate" Header="日期" Sortable="true">
+                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
+                                    Width="20">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
-                                                <BottomBar>
+                        <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="store1"
-                                DisplayInfo="true" DisplayMsg="显示下家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的记录" />
+                                DisplayInfo="true" DisplayMsg="显示记录 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的记录" />
                         </BottomBar>
+                        <Plugins>
+                            <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
+                                <Template ID="Template1" runat="server">
+                    <br />
+                        <p><b>所有参数：</b> {Values}</p>
+                                </Template>
+                            </ext:RowExpander>
+                        </Plugins>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>

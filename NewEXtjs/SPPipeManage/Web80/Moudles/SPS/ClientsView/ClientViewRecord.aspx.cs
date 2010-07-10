@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +8,7 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Common.Web.AppClass;
+using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
@@ -16,10 +18,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             if (Ext.IsAjaxRequest)
                 return;
+            
+            this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date;
 
-            this.dfReportStartDate.DateField.SetValue(System.DateTime.Now);
-
-            this.dfReportEndDate.DateField.SetValue(System.DateTime.Now);
+            this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
             this.hidId.Text = this.ClientID.ToString();
 
@@ -61,10 +63,29 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
             }
 
-            storeSPChannel.DataSource = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDate(channelID, this.ClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            List<SPPaymentInfoWrapper> list= SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(channelID, this.ClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+
+            if (list.Count > 0)
+            {
+                foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in list)
+                {
+                    spPaymentInfoWrapper.Values = JsonConvert.SerializeObject(
+                        spPaymentInfoWrapper.GetValues(
+                            JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
+                   //spPaymentInfoWrapper.SetHBValues(spPaymentInfoWrapper.GetValues(JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
+                }
+            }
+
+            store1.DataSource = list;
             e.TotalCount = recordCount;
 
-            storeSPChannel.DataBind();
+
+            ;
+
+
+
+
+            store1.DataBind();
            
 
         }

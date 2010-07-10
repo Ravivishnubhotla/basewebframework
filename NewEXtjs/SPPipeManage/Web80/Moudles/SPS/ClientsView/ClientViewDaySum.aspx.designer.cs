@@ -11,7 +11,7 @@
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
     
     
-    public partial class ClientToDayReportPage {
+    public partial class ClientViewDaySum {
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -41,13 +41,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.Store storeSPChannel;
         
         /// <summary>
-        /// Store1 control.
+        /// store1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store Store1;
+        protected global::Coolite.Ext.Web.Store store1;
         
         /// <summary>
         /// viewPortMain control.
@@ -95,6 +95,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
         
         /// <summary>
+        /// dfReportStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportStartDate;
+        
+        /// <summary>
+        /// dfReportEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>
@@ -104,15 +122,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
         
         /// <summary>
-        /// txtTotalCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem txtTotalCount;
-        
-        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -120,5 +129,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.GridView GridView1;
+        
+        /// <summary>
+        /// PagingToolBar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
     }
 }

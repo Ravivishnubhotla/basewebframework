@@ -30,7 +30,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                     channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
                 }
 
-                this.Store1.DataSource = this.GetDataTable(this.ClientID, channelID);
+                DataTable dt = this.GetDataTable(this.ClientID, channelID);
+
+                this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
+
+                this.Store1.DataSource = dt;
                 this.Store1.DataBind();
             }
         }
@@ -44,7 +48,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
             }
 
-            this.Store1.DataSource = this.GetDataTable(this.ClientID, channelID);
+            DataTable dt = this.GetDataTable(this.ClientID, channelID);
+
+            this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
+
+            this.Store1.DataSource = dt;
             this.Store1.DataBind();
         }
 

@@ -150,6 +150,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             //}
         }
 
+
+        public static DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
+        {
+            return businessProxy.GetCountReport(channelId, clientId, startDateTime, enddateTime);
+        }
 	    
 	    //public static void GenerateALLDayReport(DateTime date)
         //{
