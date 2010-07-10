@@ -15,7 +15,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (!Ext.IsAjaxRequest)
             {
-                //dfReportDate.DateField.Value = System.DateTime.Now;
                 this.Store1.DataSource = SPDayReportWrapper.GetDayliyReport(System.DateTime.Now);
                 this.Store1.DataBind();
             }

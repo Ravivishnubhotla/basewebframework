@@ -145,9 +145,9 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="通道" Sortable="true">
+                               <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="下家" Sortable="true">
+                                <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                                 </ext:Column>
