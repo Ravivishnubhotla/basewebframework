@@ -51,29 +51,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
             }
         }
 
-        //private void LongAction(object state)
-        //{
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        Thread.Sleep(1000);
-        //        this.Session["LongActionProgress"] = i + 1;
-        //    }
-        //    this.Session.Remove("LongActionProgress");
-        //}
 
-        //protected void RefreshProgress(object sender, AjaxEventArgs e)
-        //{
-        //    object progress = this.Session["LongActionProgress"];
-        //    if (progress != null)
-        //    {
-        //        Progress1.UpdateProgress(((int)progress) / 10f, string.Format("Step {0} of {1}...", progress.ToString(), 10));
-        //    }
-        //    else
-        //    {
-        //        ScriptManager1.AddScript("{0}.stopTask('longactionprogress');", TaskManager1.ClientID);
-        //        Progress1.UpdateProgress(1, "All finished!");
-        //    }
-        //}
 
     }
 }
