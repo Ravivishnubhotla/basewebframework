@@ -24,6 +24,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
 	    DataTable GetDayliyReport(DateTime dateTime);
         DataTable GetTodayReport(int clientId, int channelId);
+        DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
     }
 
     internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
@@ -117,6 +118,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetTodayReport(clientId, channelId);
         }
 
+        public DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
+        {
+            return this.AdoNetDb.GetDayliyReport(channelId, clientId, startDateTime, enddateTime);
+        }
+
         [Transaction(ReadOnly = false)]
         private void ArchivesData(string archivesPath, DateTime dateTime)
         {
@@ -176,6 +182,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return Convert.ToInt32(upTotalCountResult);
         }
+
+
+
+
 
         private string GetFileName(string reportOutPutPath, DateTime date)
         {

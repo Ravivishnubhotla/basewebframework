@@ -255,5 +255,71 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+
+
+        public DataTable GetDayliyReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
+        {
+
+            DataTable reportDt = new DataTable();
+
+
+            DataColumn dc = new DataColumn("RID",typeof(int));
+            reportDt.Columns.Add(dc);
+            reportDt.PrimaryKey = new DataColumn[]{dc};
+
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
+            reportDt.Columns.Add(new DataColumn("DataCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("Price", typeof(decimal)));
+
+            reportDt.AcceptChanges();
+
+            int j = 0;
+
+            for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+            {
+                string sql = "";
+
+                if (channelId != 0)
+                {
+                    sql = "SELECT  ClientID,ChannelID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal]where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID and ChannelID=@ChannelID group by  ClientID,ChannelID";
+                }
+                else
+                {
+                    sql = "SELECT  ClientID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal]where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID group by  ClientID";
+                }
+
+                DbParameters dbParameters = this.CreateNewDbParameters();
+
+                dbParameters.AddWithValue("year", i.Year);
+
+                dbParameters.AddWithValue("month", i.Month);
+
+                dbParameters.AddWithValue("day", i.Day);
+
+                dbParameters.AddWithValue("ClientID", clientId);
+
+                if (channelId != 0)
+                {
+                    dbParameters.AddWithValue("ChannelID", channelId);
+                }
+
+                DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+                j++;
+
+                if(dt==null|| dt.Rows.Count==0)
+                {
+                    reportDt.Rows.Add(j,i, 0, 0);
+                }
+                else
+                {
+                    reportDt.Rows.Add(j, i, dt.Rows[0]["DownTotal"], 0);      
+                }
+            }
+
+            return reportDt;
+        }
+       
     }
 }

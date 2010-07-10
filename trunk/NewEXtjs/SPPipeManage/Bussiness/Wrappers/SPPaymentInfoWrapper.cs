@@ -1,10 +1,13 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -97,10 +100,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
 	    {
 	        return
-	            ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(channelId, clientId,
 	                                                                                              startDateTime,
 	                                                                                              enddateTime,
 	                                                                                              sortFieldName, isDesc,
@@ -109,5 +112,44 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 	    }
+
+	    private string values;
+
+	    public string Values
+	    {
+	        get
+	        {
+	            return values;
+	        }
+            set
+            {
+                values = value;
+            }
+	    }
+
+        public void SetHBValues(Hashtable hashtable)
+        {
+            values = SerializeUtil.ToJson(hashtable);
+        }
+
+	    public Hashtable GetValues(Hashtable hashtable)
+	    {
+	        Hashtable hb = this.ChannelID.GetFieldMappings();
+
+            Hashtable nhb = new Hashtable();
+
+            foreach (DictionaryEntry entry in hb)
+	        {
+	            if(hashtable.ContainsKey(entry.Value))
+	            {
+                    if (!nhb.ContainsKey(entry.Value))
+                        nhb.Add(entry.Value, hashtable[entry.Value]);
+	            }
+	        }
+
+	        return nhb;
+	    }
+
+
     }
 }
