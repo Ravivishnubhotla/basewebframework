@@ -15,7 +15,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (!Ext.IsAjaxRequest)
             {
-                dfReportDate.DateField.Value = System.DateTime.Now;
+                dfReportDate.DateField.Value = System.DateTime.Now.AddDays(-1);
+                dfReportDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
                 this.Store1.DataSource = SPDayReportWrapper.GetDayliyReport(Convert.ToDateTime(dfReportDate.DateField.Value));
                 this.Store1.DataBind();
             }

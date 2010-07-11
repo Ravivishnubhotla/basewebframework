@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="ReportDayTotal.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportDayTotal" %>
+    CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 
     <script type="text/javascript">
         var template = '<span style="color:{0};">{1}</span>';
@@ -16,7 +15,6 @@
         };
 
     </script>
-
 
     <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
         <Reader>
@@ -41,15 +39,11 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
-                        StripeRows="true" Title="数据日报表" Icon="Table">
+                        StripeRows="true" Title="数据即时报表" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem Text="  日期:  ">
-                                    </ext:ToolbarTextItem>
-                                    <ext:DateFieldMenuItem ID="dfReportDate" runat="server">
-                                    </ext:DateFieldMenuItem>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>

@@ -214,5 +214,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetTodayReport(clientId, channelId);
 	    }
+
+	    public static DataTable GetAllTodayReport()
+	    {
+            return businessProxy.GetAllTodayReport();
+	    }
     }
 }
