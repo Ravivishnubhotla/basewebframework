@@ -228,7 +228,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    public bool CaculteIsIntercept()
 	    {
-            Random random = new Random(DateTime.Now.Millisecond);
+            Random random = new Random(unchecked((int)DateTime.Now.Ticks));
 
 	        int result = random.Next(0, 100);
 

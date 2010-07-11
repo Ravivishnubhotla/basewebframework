@@ -17,11 +17,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
             if (Ext.IsAjaxRequest)
                 return;
 
+            dfStart.MaxDate = System.DateTime.Now.AddDays(-1);
+
+            dfStart.MaxDate = System.DateTime.Now.AddDays(-1);
+
             string dbsizestring = SPDayReportWrapper.GetDbSizeString();
 
             decimal space = SPDayReportWrapper.GetDbSize();
 
-            decimal total = 100.00m;
+            decimal total = 200.00m;
 
             prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
         }
@@ -38,7 +42,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
                 decimal space = SPDayReportWrapper.GetDbSize();
 
-                decimal total = 100.00m;
+                decimal total = 200.00m;
 
                 prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
                 

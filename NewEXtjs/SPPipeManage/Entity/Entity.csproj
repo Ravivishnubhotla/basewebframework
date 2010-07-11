@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomTyoe\ReportResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables\SPChannelEntity.cs" />
     <Compile Include="Tables\SPChannelEntity.Designer.cs">

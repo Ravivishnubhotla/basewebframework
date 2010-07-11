@@ -28,6 +28,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(DateTime reportDateTime);
+	    DataTable GetAllTodayReport();
     }
 
     internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
@@ -38,17 +39,23 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             //Get all need to generate report's channle nad client ID.
             DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
 
-            DataSet dsReportDate = this.AdoNetDb.GetAllNOReportData(date.Year, date.Month, date.Day);
+            DataTable dsDayTotalCount = this.AdoNetDb.GetDayTotalCount(date);
+            DataTable dsDayDownCount = this.AdoNetDb.GetDayDownCount(date);
+            DataTable dsDayInterceptCount = this.AdoNetDb.GetDayInterceptCount(date);
+            DataTable dsDayDownSycnCount = this.AdoNetDb.GetDayDownSycnCount(date);    
 
             foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
             {
                 int channelID = (int)dataRow["ChannelID"];
                 int clientID = (int)dataRow["ClientID"];
 
-                int upTotalCount = GetUpTotalCount(date, channelID, clientID, dsReportDate);
-                int interceptTotalCount = GetInterceptTotalCount(date, channelID, clientID, dsReportDate);
-                int sendFailedTotalCount = GetSendFailedTotalCount(date, channelID, clientID, dsReportDate);
 
+                string filterSql = string.Format(" ClientID = {0} and ChannelID = {1} ", clientID, channelID);
+
+                int totalCount = this.AdoNetDb.ExecuteScalarFormDataTable("TotalCount", filterSql, dsDayTotalCount);
+                int downCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownCount", filterSql, dsDayDownCount);
+                int interceptCount = this.AdoNetDb.ExecuteScalarFormDataTable("InterceptCount", filterSql, dsDayInterceptCount);
+                int downSycnCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownSycnCount", filterSql, dsDayDownSycnCount);
 
                 SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
 
@@ -57,7 +64,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
                 if (dayReportEntity==null)
                 {
-                    hasReport = false;
                     dayReportEntity = new SPDayReportEntity();
                 }
                 else
@@ -69,21 +75,21 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 dayReportEntity.ClientID = clientID;
                 if (hasReport)
                 {
-                    dayReportEntity.UpTotalCount += upTotalCount;
-                    dayReportEntity.UpSuccess += upTotalCount;
-                    dayReportEntity.InterceptTotalCount += upTotalCount;
-                    dayReportEntity.InterceptSuccess += interceptTotalCount;
-                    dayReportEntity.DownTotalCount += (upTotalCount - interceptTotalCount);
-                    dayReportEntity.DownSuccess += (upTotalCount - interceptTotalCount-sendFailedTotalCount);
+                    dayReportEntity.UpTotalCount += totalCount;
+                    dayReportEntity.UpSuccess += 0;
+                    dayReportEntity.InterceptTotalCount += interceptCount;
+                    dayReportEntity.InterceptSuccess += 0;
+                    dayReportEntity.DownTotalCount += downCount;
+                    dayReportEntity.DownSuccess += downSycnCount;
                 }
                 else
                 {
-                    dayReportEntity.UpTotalCount = upTotalCount;
-                    dayReportEntity.UpSuccess = upTotalCount;
-                    dayReportEntity.InterceptTotalCount = upTotalCount;
-                    dayReportEntity.InterceptSuccess = interceptTotalCount;
-                    dayReportEntity.DownTotalCount = (upTotalCount - interceptTotalCount);
-                    dayReportEntity.DownSuccess = (upTotalCount - interceptTotalCount-sendFailedTotalCount);
+                    dayReportEntity.UpTotalCount = totalCount;
+                    dayReportEntity.UpSuccess = 0;
+                    dayReportEntity.InterceptTotalCount = interceptCount;
+                    dayReportEntity.InterceptSuccess = 0;
+                    dayReportEntity.DownTotalCount = downCount;
+                    dayReportEntity.DownSuccess = downSycnCount;
                 }        
                 
                 dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
@@ -139,6 +145,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetCountReportForMaster(DateTime reportDateTime)
         {
             throw new NotImplementedException();
+        }
+
+        public DataTable GetAllTodayReport()
+        {
+            return this.AdoNetDb.GetAllTodayReport();
         }
 
         [Transaction(ReadOnly = false)]

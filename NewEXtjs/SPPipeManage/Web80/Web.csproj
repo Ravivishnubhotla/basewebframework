@@ -345,6 +345,13 @@
     <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.designer.cs">
       <DependentUpon>ReportDayTotal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.cs">
+      <DependentUpon>ReportToday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.designer.cs">
+      <DependentUpon>ReportToday.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Users\GetAUserByChannel.ashx.cs">
       <DependentUpon>GetAUserByChannel.ashx</DependentUpon>
     </Compile>
@@ -416,6 +423,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportToday.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
