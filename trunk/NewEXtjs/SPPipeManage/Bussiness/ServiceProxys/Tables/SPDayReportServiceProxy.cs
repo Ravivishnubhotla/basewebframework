@@ -25,6 +25,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    DataTable GetDayliyReport(DateTime dateTime);
         DataTable GetTodayReport(int clientId, int channelId);
         DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
+	    DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
+	    DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime);
+	    DataTable GetCountReportForMaster(DateTime reportDateTime);
     }
 
     internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
@@ -123,6 +126,21 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetDayliyReport(channelId, clientId, startDateTime, enddateTime);
         }
 
+        public DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetCountReportForMaster(DateTime reportDateTime)
+        {
+            throw new NotImplementedException();
+        }
+
         [Transaction(ReadOnly = false)]
         private void ArchivesData(string archivesPath, DateTime dateTime)
         {
@@ -139,7 +157,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName) + ".zip", ds);
 
-            this.AdoNetDb.DeleteAllReportData(dateTime);
+            //this.AdoNetDb.DeleteAllReportData(dateTime);
         }
 
 
