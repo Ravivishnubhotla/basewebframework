@@ -31,12 +31,11 @@ namespace Legendigital.Common.Web.Jobs
             {
                 SPDayReportWrapper.GenerateDayReport(DateTime.Now.AddDays(-1));
 
-
                 logger.Info("Daily Report Generate Job End");
             }
             catch (Exception ex)
             {
-                logger.Info("Daily Report Generate Job Failed:"+ex.Message);
+                logger.Error("Daily Report Generate Job Failed:"+ex.Message);
             }
         }
     }

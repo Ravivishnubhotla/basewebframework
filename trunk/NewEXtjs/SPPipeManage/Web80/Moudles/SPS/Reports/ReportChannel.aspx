@@ -41,6 +41,7 @@
                     <ext:RecordField Name="InterceptRate" Type="Float" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ReportDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -91,6 +92,10 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
+                                <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
+                                    Width="50">
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
+                                </ext:Column>
                                 <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">

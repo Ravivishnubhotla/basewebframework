@@ -566,7 +566,50 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
         {
-            throw new NotImplementedException();
+            DataTable reportDt = new DataTable();
+
+
+            DataColumn dc = new DataColumn("ReportID", typeof(int));
+            reportDt.Columns.Add(dc);
+            reportDt.PrimaryKey = new DataColumn[] { dc };
+
+            reportDt.Columns.Add(new DataColumn("ChannelName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("ClientName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("TotalCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
+
+            reportDt.AcceptChanges();
+
+            DataTable dtChannelClient = GetAllEnableChannelClient();
+
+            int j = 0;
+
+            DataTable dCountReportForMaster = QueryReportForMaster(channelId, clientId, startDateTime.Date, enddateTime.Date);
+
+            foreach (DataRow rowChannelClient in dtChannelClient.Rows)
+            {
+                for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+                {
+                    j++;
+
+                    ReportResult reportResult = GetReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], i, dCountReportForMaster);
+
+                    reportDt.Rows.Add(j,
+                                      rowChannelClient["ChannelName"],
+                                      rowChannelClient["ClientName"],
+                                      reportResult.TotalCount,
+                                      reportResult.DownCount,
+                                      reportResult.InterceptCount,
+                                      reportResult.DownSycnCount,
+                                      reportResult.InterceptRate, i.Date);
+                }
+            }
+
+            return reportDt;
         }
 
         public DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime)
@@ -585,6 +628,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
 
             reportDt.AcceptChanges();
 
@@ -609,7 +653,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                                       reportResult.DownCount,
                                       reportResult.InterceptCount,
                                       reportResult.DownSycnCount,
-                                      reportResult.InterceptRate);
+                                      reportResult.InterceptRate,i.Date);
                 }
             }
 
