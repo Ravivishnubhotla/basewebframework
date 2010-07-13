@@ -31,7 +31,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
             if (this.cmbChannelID.SelectedItem != null)
             {
-                channleID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+                if (!string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
+                    channleID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+                else
+                    channleID = 0;
             }
 
 
@@ -39,7 +42,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
             if (this.cmbClinetID.SelectedItem != null)
             {
-                clientID = int.Parse(this.cmbClinetID.SelectedItem.Value);
+                if (!string.IsNullOrEmpty(this.cmbClinetID.SelectedItem.Value))
+                    clientID = int.Parse(this.cmbClinetID.SelectedItem.Value);
+                else
+                    clientID = 0;
             }
 
             this.Store1.DataSource = SPDayReportWrapper.GetCountReportForMaster(channleID, clientID, (DateTime)dfReportStartDate.DateField.Value, (DateTime)dfReportEndDate.DateField.Value);
