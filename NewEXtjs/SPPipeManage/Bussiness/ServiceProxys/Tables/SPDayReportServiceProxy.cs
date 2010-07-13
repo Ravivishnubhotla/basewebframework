@@ -17,7 +17,7 @@ using Spring.Transaction.Interceptor;
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>
+    public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxyDesigner
     {
 	    void BulidReport(DateTime date);
 	    string GetDbSize();
@@ -27,11 +27,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime);
-	    DataTable GetCountReportForMaster(DateTime reportDateTime);
 	    DataTable GetAllTodayReport();
     }
 
-    internal class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxy
+    internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
     {
         [Transaction(ReadOnly=false)]
         public void BulidReport(DateTime date)
@@ -134,23 +133,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
         public DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
         {
-            throw new NotImplementedException();
+            return this.AdoNetDb.GetCountReportForMaster(channelId, clientId, startDateTime, enddateTime);
         }
 
         public DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime)
         {
-            throw new NotImplementedException();
-        }
-
-        public DataTable GetCountReportForMaster(DateTime reportDateTime)
-        {
-            throw new NotImplementedException();
+            return this.AdoNetDb.GetCountReportForMaster(channelId, startDateTime, enddateTime);
         }
 
         public DataTable GetAllTodayReport()
         {
             return this.AdoNetDb.GetAllTodayReport();
         }
+
 
         [Transaction(ReadOnly = false)]
         private void ArchivesData(string archivesPath, DateTime dateTime)
@@ -170,51 +165,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             //this.AdoNetDb.DeleteAllReportData(dateTime);
         }
-
-
-        private int GetUpTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
-        {
-            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4} ",
-                                          date.Year, date.Month, date.Day, channelID, clientID);
-
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
-
-            if (upTotalCountResult == System.DBNull.Value)
-                return 0;
-
-            return Convert.ToInt32(upTotalCountResult);
-        }
-
-        private int GetInterceptTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
-        {
-
-            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 1 ",
-                                          date.Year, date.Month, date.Day, channelID, clientID);
-
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
-
-            if (upTotalCountResult == System.DBNull.Value)
-                return 0;
-
-            return Convert.ToInt32(upTotalCountResult);
-        }
-
-        private int GetSendFailedTotalCount(DateTime date, int channelID, int clientID, DataSet dsReportDate)
-        {
-            string filter = string.Format(" [CYear] = {0} and [CMonth] = {1} and [CDay] = {2} and [ChannelID] = {3} and [ClientID] = {4}  and [IsIntercept] = 0 and [SucesssToSend] =0",
-                                          date.Year, date.Month, date.Day, channelID, clientID);
-
-            object upTotalCountResult = dsReportDate.Tables[0].Compute("Sum(TotalCount)", filter);
-
-            if (upTotalCountResult == System.DBNull.Value)
-                return 0;
-
-            return Convert.ToInt32(upTotalCountResult);
-        }
-
-
-
-
 
         private string GetFileName(string reportOutPutPath, DateTime date)
         {
@@ -253,20 +203,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             File.WriteAllBytes(filePath, CompressionUtil.CompressZipFile(ms.ToArray(), Path.GetFileNameWithoutExtension(fileName)+".xml"));
         }
 
-        public DataObjectContainers DataObjectsContainerIocID { set; get; }
-	
-        public SPDayReportDataObject SelfDataObj
-        {
-            set
-            {
-                selfDataObject = value;
-            }
-            get
-            {
-                return (SPDayReportDataObject)selfDataObject;
-            }
-        }
-		
-        public AdoNetDataObject AdoNetDb { set; get; }
+ 
     }
 }

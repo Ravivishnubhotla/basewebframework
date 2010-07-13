@@ -37,9 +37,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 
-
-
-
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

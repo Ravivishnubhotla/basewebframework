@@ -10,10 +10,10 @@
             return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
         }
 
-
-        var pctChange = function(value) {
-            return String.format(template, (value > 0) ? "green" : "green", formatFloat(value, 2).toString() + "%");
+        var decimalFormat = function(value) {
+            return formatFloat(value, 2).toString() + "%";
         };
+
     </script>
 
     <ext:Store ID="storeSPChannelAdd" runat="server" AutoLoad="false">
@@ -34,17 +34,13 @@
             <ext:JsonReader ReaderID="ReportID">
                 <Fields>
                     <ext:RecordField Name="ReportID" Type="Int" />
-                    <ext:RecordField Name="ReportDate" Type="Date" DateFormat="Y-m-dTh:i:s" />
-                    <ext:RecordField Name="UpTotalCount" Type="Int" />
-                    <ext:RecordField Name="UpSuccess" Type="Int" />
-                    <ext:RecordField Name="InterceptTotalCount" Type="Int" />
-                    <ext:RecordField Name="InterceptSuccess" Type="Int" />
-                    <ext:RecordField Name="DownSuccess" Type="Int" />
-                    <ext:RecordField Name="InterceptSuccess" Type="Int" />
-                    <ext:RecordField Name="ClientName" />
-                    <ext:RecordField Name="ChannelName" />
-                    <ext:RecordField Name="LastChange" Type="Date" DateFormat="Y-m-dTh:i:s" />
+                    <ext:RecordField Name="TotalCount" Type="Int" />
+                    <ext:RecordField Name="DownCount" Type="Int" />
+                    <ext:RecordField Name="InterceptCount" Type="Int" />
+                    <ext:RecordField Name="DownSycnCount" Type="Int" />
                     <ext:RecordField Name="InterceptRate" Type="Float" />
+                    <ext:RecordField Name="ChannelName" />
+                    <ext:RecordField Name="ClientName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -61,7 +57,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
-                        StripeRows="true" Title="数据日报表" Icon="Table">
+                        StripeRows="true" Title="通道数据报表" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -93,29 +89,24 @@
                         </View>
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
-                                <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true" Width=80>
+                                <ext:RowNumbererColumn>
+                                </ext:RowNumbererColumn>
+                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUpTotalCount" DataIndex="UpTotalCount" Header="总数（下行数）"
+                                <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="总点播数(条)" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colInterceptSuccess" DataIndex="InterceptCount" Header="扣量数(条)"
                                     Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUpSuccess" DataIndex="UpSuccess" Header="总数（成功数)" Sortable="true">
+                                <ext:Column ColumnID="colDownSuccess" DataIndex="DownCount" Header="转发下家数(条)" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="col1" DataIndex="InterceptRate" Header="总数（成功率)" Sortable="true">
+                                <ext:Column ColumnID="colDownSuccess" DataIndex="DownSycnCount" Header="同步下家数(条)"
+                                    Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="col23" DataIndex="UpTotalCount" Header="同步数（下行数）" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="col25" DataIndex="UpSuccess" Header="同步数（成功数)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="col26" DataIndex="InterceptRate" Header="同步数（成功率)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="col33" DataIndex="UpTotalCount" Header="扣量（下行数）" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="col35" DataIndex="UpSuccess" Header="扣量（成功数)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="col36" DataIndex="InterceptRate" Header="扣量（成功率)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣量率" Sortable="true" Width=50>
-                                    <Renderer Fn="pctChange" />
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣量率" Sortable="true">
+                                    <Renderer Fn="decimalFormat" />
                                 </ext:Column>
                             </Columns>
                         </ColumnModel>
