@@ -15,17 +15,35 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (!Ext.IsAjaxRequest)
             {
-                this.Store1.DataSource = SPDayReportWrapper.GetDayliyReport(System.DateTime.Now);
-                this.Store1.DataBind();
+                dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-8);
+                dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+                dfReportEndDate.DateField.Value = System.DateTime.Now.AddDays(-1);
+                dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+
+                BindData();
             }
         }
 
+        private void BindData()
+        {
+            int channleID = 0;
+
+            if (this.cmbChannelID.SelectedItem!=null)
+            {
+                if (!string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
+                    channleID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+                else
+                    channleID = 0;
+            }
+
+            this.Store1.DataSource = SPDayReportWrapper.GetCountReportForMaster(channleID, (DateTime)dfReportStartDate.DateField.Value, (DateTime)dfReportEndDate.DateField.Value);
+            this.Store1.DataBind();
+        }
 
 
         protected void Store1_RefreshData(object sender, StoreRefreshDataEventArgs e)
         {
-            this.Store1.DataSource = SPDayReportWrapper.GetDayliyReport(System.DateTime.Now);
-            this.Store1.DataBind();
+            BindData();
         }
     }
 }

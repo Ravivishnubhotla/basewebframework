@@ -100,13 +100,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-
-        //private static string GetReportOutPutPath()
-        //{
-            
-        //}
-
-
 	    public static void  GenerateDayReport(DateTime date)
         {
             businessProxy.BulidReport(date);
@@ -144,10 +137,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
         {
-            //for (DateTime i = startDate.Date; i < endDate.Date.AddDays(1); i=i.AddDays(1))
-            //{
             businessProxy.ArchivesData(archivesPath, startDate.Date, endDate.Date);
-            //}
         }
 
 
@@ -167,44 +157,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return businessProxy.GetCountReportForMaster(channelId, startDateTime, enddateTime);
         }
-
-        public static DataTable GetCountReportForMaster(DateTime reportDateTime)
-        {
-            return businessProxy.GetCountReportForMaster(reportDateTime);
-        }
 	    
-	    //public static void GenerateALLDayReport(DateTime date)
-        //{
-        //    List<DateTime> dates = GetALLDayNeedToGenerateReport(date);
-
-        //    foreach (DateTime dateTime in dates)
-        //    {
-        //        try
-        //        {
-        //            GenerateDayReport(dateTime);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            logger.Error("Generate Day Report Error", ex);
-        //        }
-        //    }
-        //}
-
-
-        //public static List<DateTime> GetALLDayNeedToGenerateReport(DateTime nowdate)
-        //{
-        //    List<DateTime> dateTimes = new List<DateTime>();
-
-        //    for (int j = 0; j < 10; j++)
-        //    {
-        //        DateTime addDate = nowdate.AddDays((0 - j - 1));
-
-        //        dateTimes.Add(new DateTime(addDate.Year, addDate.Month, addDate.Day));
-        //    }
-
-        //    return dateTimes;
-        //}
-
 	    public static DataTable GetDayliyReport(DateTime dateTime)
 	    {
 	        return businessProxy.GetDayliyReport(dateTime);
@@ -219,5 +172,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetAllTodayReport();
 	    }
+
+
     }
 }

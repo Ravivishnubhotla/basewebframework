@@ -2,6 +2,10 @@
 Begin DataProject = "SQLDB"
    MSDTVersion = "80"
    DefDBRef = "atom\sqlexpress.WebConsole.dbo"
+   SccProjectName = "Svn"
+   SccLocalPath = "Svn"
+   SccAuxPath = "Svn"
+   SccProvider = "SubversionScc"
    Begin Folder = "Change Scripts"
       Script = "Script1.sql"
    End

@@ -564,5 +564,137 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
+        public DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime)
+        {
+            DataTable reportDt = new DataTable();
+
+
+            DataColumn dc = new DataColumn("ReportID", typeof(int));
+            reportDt.Columns.Add(dc);
+            reportDt.PrimaryKey = new DataColumn[] { dc };
+
+            reportDt.Columns.Add(new DataColumn("ChannelName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("ClientName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("TotalCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
+
+            reportDt.AcceptChanges();
+
+            DataTable dtChannelClient = GetAllEnableChannelClient();
+
+            int j = 0;
+
+            DataTable dCountReportForMaster = QueryReportForMaster(channelId, 0, startDateTime.Date, enddateTime.Date);
+
+            foreach (DataRow rowChannelClient in dtChannelClient.Rows)
+            {
+                for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+                {
+                    j++;
+
+                    ReportResult reportResult = GetReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], i, dCountReportForMaster);
+
+                    reportDt.Rows.Add(j,
+                                      rowChannelClient["ChannelName"],
+                                      rowChannelClient["ClientName"],
+                                      reportResult.TotalCount,
+                                      reportResult.DownCount,
+                                      reportResult.InterceptCount,
+                                      reportResult.DownSycnCount,
+                                      reportResult.InterceptRate);
+                }
+            }
+
+            return reportDt;
+        }
+
+        private ReportResult GetReportResult(int clientID, int channelID,DateTime dateTime, DataTable dCountReportForMaster)
+        {
+            ReportResult reportResult = new ReportResult();
+
+            reportResult.ReportDate = DateTime.Now;
+
+            string filterSql = string.Format(" ReportDate='{0}' ", dateTime);
+            
+            if(channelID>0)
+            {
+                filterSql += string.Format(" And  channelId = {0} ",channelID);
+            }
+
+            if (clientID > 0)
+            {
+                filterSql += string.Format(" And  clientID = {0} ",clientID);
+            }
+
+            reportResult.TotalCount = ExecuteSumFormDataTable("UpTotalCount", filterSql, dCountReportForMaster);
+            reportResult.DownCount = ExecuteSumFormDataTable("DownTotalCount", filterSql, dCountReportForMaster);
+            reportResult.InterceptCount = ExecuteSumFormDataTable("InterceptTotalCount", filterSql, dCountReportForMaster);
+            reportResult.DownSycnCount = ExecuteSumFormDataTable("DownSuccess", filterSql, dCountReportForMaster);
+
+            if (reportResult.TotalCount == 0)
+                reportResult.InterceptRate = 0;
+            else
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount) / (decimal)(reportResult.TotalCount);
+
+
+            return reportResult;
+        }
+
+        private int ExecuteSumFormDataTable(string field, string filterSql, DataTable dCountReportForMaster)
+        {
+            object result = dCountReportForMaster.Compute(string.Format(" SUM({0}) ", field), filterSql);
+
+            if (result == System.DBNull.Value)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(result);
+            }
+
+            return 0;
+        }
+
+        private DataTable QueryReportForMaster(int channelId, int clientID, DateTime startDateTime, DateTime enddateTime)
+        {
+            string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>@startDate and ReportDate<@enddate ";
+
+            if(channelId>0)
+            {
+                sql += " And  channelId = @channelId ";
+            }
+
+            if (clientID > 0)
+            {
+                sql += " And  clientID = @clientID ";
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDateTime.Date);
+
+            dbParameters.AddWithValue("enddate", enddateTime.AddDays(1).Date);
+
+            if (channelId > 0)
+            {
+                dbParameters.AddWithValue("channelId", channelId);
+            }
+
+            if (clientID > 0)
+            {
+                dbParameters.AddWithValue("clientID", clientID);
+            }
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }
