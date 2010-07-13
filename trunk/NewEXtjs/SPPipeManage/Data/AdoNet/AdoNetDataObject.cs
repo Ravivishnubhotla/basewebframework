@@ -592,6 +592,17 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
+                if (channelId > 0)
+                {
+                    if ((int)rowChannelClient["ChannelID"] != channelId)
+                        continue;
+                }
+                if (clientId > 0)
+                {
+                    if ((int)rowChannelClient["ClientID"] != clientId)
+                        continue;
+                }
+
                 for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
                 {
                     j++;
@@ -640,6 +651,13 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
+                if (channelId>0)
+                {
+                    if ((int)rowChannelClient["ChannelID"] != channelId)
+                        continue;
+                }
+
+
                 for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
                 {
                     j++;
