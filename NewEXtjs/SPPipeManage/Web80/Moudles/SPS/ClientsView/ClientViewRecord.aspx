@@ -101,7 +101,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
                                     Width="20">
-                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
                                 </ext:Column>
                             </Columns>
                         </ColumnModel>
