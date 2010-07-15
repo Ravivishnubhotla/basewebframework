@@ -95,6 +95,11 @@ namespace WebRequestTestConsole
                 StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
                 string responseText = sr.ReadToEnd();
 
+                Console.WriteLine(responseText);
+
+
+                return true;
+
                 return responseText.Trim().ToLower().Equals("ok");
             }
 
