@@ -201,7 +201,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             if (reportResult.TotalCount == 0)
                 reportResult.InterceptRate = 0;
             else
-                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount) / (decimal)(reportResult.TotalCount);
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
 
 
             return reportResult;
@@ -339,7 +339,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             if (reportResult.TotalCount == 0)
                 reportResult.InterceptRate = 0;
             else
-                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount) / (decimal)(reportResult.TotalCount);
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
 
 
             return reportResult;
@@ -477,7 +477,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             if (reportResult.TotalCount==0)
                 reportResult.InterceptRate = 0;
             else
-                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount) / (decimal)(reportResult.TotalCount);
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount*100) / (decimal)(reportResult.TotalCount);
 
 
             return reportResult;
@@ -704,7 +704,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             if (reportResult.TotalCount == 0)
                 reportResult.InterceptRate = 0;
             else
-                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount) / (decimal)(reportResult.TotalCount);
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
 
 
             return reportResult;
