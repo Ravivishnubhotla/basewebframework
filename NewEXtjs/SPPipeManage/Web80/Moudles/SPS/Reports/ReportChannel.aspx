@@ -46,6 +46,9 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+        <Load Handler="#{txtTotalCount}.setText('总点播数(条)：'+this.sum('TotalCount'));#{txtInterceptCount}.setText('总扣量数(条)：'+this.sum('InterceptCount'));#{txtDownCount}.setText('总转发下家数(条)：'+this.sum('DownCount'));#{txtDownSycnCount}.setText('总同步下家数(条)：'+this.sum('DownSycnCount'));" />
+        </Listeners>
     </ext:Store>
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
