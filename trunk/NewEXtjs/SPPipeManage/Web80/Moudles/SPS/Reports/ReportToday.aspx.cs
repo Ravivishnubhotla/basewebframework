@@ -31,6 +31,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             DataTable dt = SPDayReportWrapper.GetAllTodayReport();
             Store1.DataSource = dt;
             Store1.DataBind();
+
+            this.txtTotalCount.Text = string.Format("总点播数(条)：{0}", GetSumField(dt, "TotalCount"));
+            this.txtInterceptCount.Text = string.Format("总扣量数(条)：{0}", GetSumField(dt, "InterceptCount"));
+            this.txtDownCount.Text = string.Format("总转发下家数(条)：{0}", GetSumField(dt, "DownCount"));
+            this.txtDownSycnCount.Text = string.Format("总同步下家数(条)：{0}", GetSumField(dt, "DownSycnCount"));
+        }
+
+
+        private int GetSumField(DataTable dt,string field)
+        {
+            object result = dt.Compute("SUM(" + field + ")", "");
+
+            if (result == System.DBNull.Value)
+                return 0;
+
+            return Convert.ToInt32(result);
         }
     }
 }

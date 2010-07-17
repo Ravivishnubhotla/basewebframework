@@ -29,7 +29,8 @@
             </ext:JsonReader>
         </Reader>
     </ext:Store>
-    <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
+    <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData" GroupField="ReportDate">
+        <SortInfo Direction="DESC" Field="ReportDate" />
         <Reader>
             <ext:JsonReader ReaderID="ReportID">
                 <Fields>
@@ -41,7 +42,7 @@
                     <ext:RecordField Name="InterceptRate" Type="Float" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="ClientName" />
-                    <ext:RecordField Name="ReportDate" Type="Date" />
+                    <ext:RecordField Name="ReportDate" Type="Date" DateFormat="Y-m-dTh:i:s" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -58,7 +59,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
-                        StripeRows="true" Title="通道数据报表" Icon="Table">
+                        StripeRows="true" Title="汇总报表" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -66,7 +67,7 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannelAdd"
                                         TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
-                                        EmptyText="全部" />
+                                        EmptyText="全部" Visible="false" />
                                     <ext:ToolbarTextItem Text="日期从">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
@@ -80,42 +81,79 @@
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
+                                    
+                                                                                                         <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="数据汇总统计">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtTotalCount" runat="server" Text="总点播数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtInterceptCount" runat="server" Text="总扣量数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtDownCount" runat="server" Text="总转发下家数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtDownSycnCount" runat="server" Text="总同步下家数(条)：0">
+                                    </ext:ToolbarTextItem>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
-                        <View>
-                            <ext:GridView ForceFit="true" ID="GridView1">
-                                <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
-                            </ext:GridView>
-                        </View>
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
+                                <ext:Column ColumnID="colReportDate" Header="日期" Sortable="true" DataIndex="ReportDate"
                                     Width="50">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="总点播数(条)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colInterceptSuccess" DataIndex="InterceptCount" Header="扣量数(条)"
-                                    Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colDownSuccess" DataIndex="DownCount" Header="转发下家数(条)" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colDownSuccess" DataIndex="DownSycnCount" Header="同步下家数(条)"
-                                    Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣量率" Sortable="true">
+                                <ext:GroupingSummaryColumn ColumnID="colChannelID" Header="通道" DataIndex="ChannelName"
+                                    Groupable="true" Hideable="false" SummaryType="None" Sortable="false">
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colClinetID" Header="下家" DataIndex="ClientName"
+                                    Groupable="true" Hideable="false" SummaryType="None" Sortable="false">
+                                    <SummaryRenderer Handler="return '总计';" />
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colUpSuccess" Header="总点播数(条)" DataIndex="TotalCount"
+                                    Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colInterceptSuccess" Header="扣量数(条)" DataIndex="InterceptCount"
+                                    Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colDownCount" Header="转发下家数(条)" DataIndex="DownCount"
+                                    Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colDownSycnCount" Header="同步下家数(条)" DataIndex="DownSycnCount"
+                                    Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colInterceptRate" Header="扣量率" DataIndex="InterceptRate"
+                                    Groupable="false" Hideable="false" SummaryType="None" Sortable="false">
                                     <Renderer Fn="decimalFormat" />
-                                </ext:Column>
+                                </ext:GroupingSummaryColumn>
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
+                        <View>
+                            <ext:GroupingView ID="GroupingView1" runat="server" ForceFit="true" ShowGroupName="false"
+                                EnableNoGroups="true" HideGroupedColumn="true" />
+                        </View>
+                        <Plugins>
+                            <ext:GroupingSummary ID="GroupingSummary1" runat="server" />
+                        </Plugins>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>

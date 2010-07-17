@@ -420,9 +420,10 @@ namespace LD.SPPipeManage.Data.AdoNet
             DataColumn dc = new DataColumn("ReportID", typeof(int));
             reportDt.Columns.Add(dc);
             reportDt.PrimaryKey = new DataColumn[] { dc };
-
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
             reportDt.Columns.Add(new DataColumn("ChannelName", typeof(string)));
             reportDt.Columns.Add(new DataColumn("ClientName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("ChannelClientName", typeof(string)));
             reportDt.Columns.Add(new DataColumn("TotalCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
@@ -448,9 +449,11 @@ namespace LD.SPPipeManage.Data.AdoNet
 
                 ReportResult reportResult = GetTodayReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], dsTodayTotalCount, dsTodayDownCount, dsTodayInterceptCount, dsTodayDownSycnCount);
 
-                reportDt.Rows.Add(j, 
+                reportDt.Rows.Add(j, System.DateTime.Now.Date,
                                   rowChannelClient["ChannelName"], 
                                   rowChannelClient["ClientName"],
+                                  rowChannelClient["ChannelName"] + " - " + rowChannelClient["ClientName"]
+                                  ,
                                   reportResult.TotalCount, 
                                   reportResult.DownCount, 
                                   reportResult.InterceptCount,
@@ -658,7 +661,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                 }
 
 
-                for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+                for (DateTime i = enddateTime.Date; i > startDateTime.AddDays(-1); i = i.AddDays(-1))
                 {
                     j++;
 
