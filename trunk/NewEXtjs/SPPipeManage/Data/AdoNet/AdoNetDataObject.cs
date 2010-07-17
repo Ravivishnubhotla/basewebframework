@@ -731,7 +731,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         private DataTable QueryReportForMaster(int channelId, int clientID, DateTime startDateTime, DateTime enddateTime)
         {
-            string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>@startDate and ReportDate<@enddate ";
+            string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>=@startDate and ReportDate<=@enddate ";
 
             if(channelId>0)
             {
