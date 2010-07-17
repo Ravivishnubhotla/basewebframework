@@ -77,6 +77,51 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
         
         /// <summary>
+        /// ToolbarTextItem1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem1;
+        
+        /// <summary>
+        /// txtTotalCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtTotalCount;
+        
+        /// <summary>
+        /// txtInterceptCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtInterceptCount;
+        
+        /// <summary>
+        /// txtDownCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownCount;
+        
+        /// <summary>
+        /// txtDownSycnCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownSycnCount;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>

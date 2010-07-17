@@ -41,7 +41,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
-                        StripeRows="true" Title="数据日报表" Icon="Table">
+                        StripeRows="true" Title="日报表" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -54,6 +54,35 @@
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
+                                    
+                                                                      <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="数据汇总统计">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtTotalCount" runat="server" Text="总点播数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtInterceptCount" runat="server" Text="总扣量数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtDownCount" runat="server" Text="总转发下家数(条)：0">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="txtDownSycnCount" runat="server" Text="总同步下家数(条)：0">
+                                    </ext:ToolbarTextItem>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
