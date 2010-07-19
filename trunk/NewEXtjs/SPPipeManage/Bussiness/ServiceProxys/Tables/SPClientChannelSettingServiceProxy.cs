@@ -16,6 +16,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     {
 	    List<SPClientChannelSettingEntity> GetSettingByChannel(SPChannelEntity spChannelEntity);
         List<SPChannelEntity> GetChannelByClient(SPClientEntity spClientEntity);
+        decimal GetToDayRate(int clinetId, int channelId);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -43,6 +44,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return clients;
 
+        }
+
+        public decimal GetToDayRate(int clinetId, int channelId)
+        {
+            return this.AdoNetDb.CountInterceptRate(clinetId, channelId);
         }
     }
 }

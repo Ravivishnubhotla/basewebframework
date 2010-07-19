@@ -545,6 +545,35 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
+
+        public decimal CountInterceptRate(int clientID,int channelID)
+        {
+            string procName = "CountInterceptRate";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ClientID", clientID);
+
+            dbParameters.AddWithValue("ChannelID", channelID);
+
+            dbParameters.AddReturn("returnvalue", DbType.Int32);
+
+
+            int interceptRate = 0;
+
+            this.ExecuteNoQuery(procName, CommandType.StoredProcedure, dbParameters);
+
+            object result = dbParameters["@returnvalue"].Value;
+
+            if (result != System.DBNull.Value)
+            {
+                interceptRate = (int)result;
+            }
+
+            return Convert.ToDecimal(interceptRate)/100;
+        }
+
+
         public int ExecuteScalarFormDataTable(string scalarField, string filterExpress, DataTable dt)
         {
             DataRow[] selectDrs = dt.Select(filterExpress);

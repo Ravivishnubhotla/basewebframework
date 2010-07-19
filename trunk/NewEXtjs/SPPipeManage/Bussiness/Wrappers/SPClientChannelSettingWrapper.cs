@@ -228,11 +228,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    public bool CaculteIsIntercept()
 	    {
-            Random random = new Random(unchecked((int)DateTime.Now.Ticks));
+	        decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
 
-	        int result = random.Next(0, 100);
+            //Console.WriteLine(rate.ToString());
 
-	        return (result <= this.InterceptRate);
+            if(rate<Convert.ToDecimal(this.InterceptRate))
+                return true;
+            else
+                return false;
+
+
+	        //Random random = new Random(unchecked((int)DateTime.Now.Ticks));
+
+	        //int result = random.Next(0, 100);
+
+	        //return (result <= this.InterceptRate);
 	    }
+
+        private decimal GetToDayRate(int clinetID, int channelID)
+        {
+            return businessProxy.GetToDayRate(clinetID, channelID);
+        }
     }
 }
