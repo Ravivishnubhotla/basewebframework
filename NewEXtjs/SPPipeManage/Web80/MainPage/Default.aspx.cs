@@ -26,7 +26,7 @@ namespace Legendigital.Common.Web.MainPage
             if (Ext.IsAjaxRequest)
                 return;
 
-            logger.Error("1111");
+            //logger.Error("1111");
 
 
             Session["Ext.Net.Theme"] = Coolite.Ext.Web.Theme.Default;
