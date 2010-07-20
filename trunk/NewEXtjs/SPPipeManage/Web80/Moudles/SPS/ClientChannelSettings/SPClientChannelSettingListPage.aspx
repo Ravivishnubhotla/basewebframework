@@ -101,11 +101,9 @@
                     <ext:RecordField Name="DownRate" Type="int" />
                     <ext:RecordField Name="CommandType" />
                     <ext:RecordField Name="CommandCode" />
-                    
-                        <ext:RecordField Name="ClientName" />
-                    <ext:RecordField Name="ChannelName" />                
-                    
-                    
+                    <ext:RecordField Name="CommandTypeName" />
+                    <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ChannelName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -145,13 +143,13 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                               <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
+                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCommandType" DataIndex="CommandType" Header="指令类型" Sortable="true">
+                                <ext:Column ColumnID="colCommandType" DataIndex="CommandTypeName" Header="指令类型" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandCode" DataIndex="CommandCode" Header="指令代码" Sortable="true">
                                 </ext:Column>

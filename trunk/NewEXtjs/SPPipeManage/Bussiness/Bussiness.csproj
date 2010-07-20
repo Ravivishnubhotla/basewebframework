@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commons\ChannelStatus.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />

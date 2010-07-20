@@ -120,6 +120,7 @@
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="Rate" Type="int" />
                     <ext:RecordField Name="Status" Type="int" />
+                    <ext:RecordField Name="CStatusString"   />
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
                 </Fields>
@@ -178,7 +179,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true" Width=50>
                                 </ext:Column>
-                                <ext:Column ColumnID="colStatus" DataIndex="Status" Header="状态" Sortable="true" Width=50>
+                                <ext:Column ColumnID="colStatus" DataIndex="CStatusString" Header="状态" Sortable="true" Width=50>
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道管理" Width="150">
                                     <Commands>

@@ -140,27 +140,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             List<SystemUserWrapper> users = SystemUserWrapper.GetAllUserByRoleName("SPDownUser");
 
-            //List<int> hasUserID = GetUsedUser(channelID);
-
-            //RemoveUserByID(users, hasUserID);
-
-            //if(clientChannelSettingID>0)
-            //{
-            //    SPClientChannelSettingWrapper spClientChannelSettingWrapper = FindById(channelID);
-
-            //    if (spClientChannelSettingWrapper != null && spClientChannelSettingWrapper.ClinetID != null && spClientChannelSettingWrapper.ClinetID.UserID != null)
-            //    {
-            //        if(spClientChannelSettingWrapper.ClinetID.UserID>0)
-            //        {
-            //            SystemUserWrapper userWrapper =
-            //                 SystemUserWrapper.FindById(spClientChannelSettingWrapper.ClinetID.UserID);
-            //            users.Add(userWrapper);
-            //        }
-            //    }
-            //}
-
-
-
             return users;
         }
 
@@ -226,23 +205,46 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return false;
 	    }
 
+        public string CommandTypeName
+	    {
+            get
+            {
+                switch (this.CommandType)
+                {
+                    case "1":
+                        return "完全匹配";
+                    case "2":
+                        return "包含";
+                    case "3":
+                        return "以开头";
+                    case "4":
+                        return "以结尾";
+                    case "5":
+                        return "正则表达式";
+                    case "6":
+                        return "自定义解析";
+                    case "7":
+                        return "无条件匹配";
+                }
+                return "未知类型";
+            }       
+	    }
+
 	    public bool CaculteIsIntercept()
 	    {
-	        decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
 
-            //Console.WriteLine(rate.ToString());
-
-            if(rate<Convert.ToDecimal(this.InterceptRate))
-                return true;
-            else
-                return false;
+            //if(rate<Convert.ToDecimal(this.InterceptRate))
+            //    return true;
+            //else
+            //    return false;
 
 
-	        //Random random = new Random(unchecked((int)DateTime.Now.Ticks));
+            Random random = new Random(unchecked((int)DateTime.Now.Ticks));
 
-	        //int result = random.Next(0, 100);
+            int result = random.Next(0, 100);
 
-	        //return (result <= this.InterceptRate);
+            return (result <= this.InterceptRate);
 	    }
 
         private decimal GetToDayRate(int clinetID, int channelID)
