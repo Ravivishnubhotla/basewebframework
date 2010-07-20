@@ -32,12 +32,6 @@ namespace WebRequestTestConsole
 
             string spparams = ConfigurationManager.AppSettings["spparams"].Replace("|","&");
 
-            
-
-
-
-            
-
 
             for (int i = 0; i < testDataCount; i++)
             {

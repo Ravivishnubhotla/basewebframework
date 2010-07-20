@@ -150,13 +150,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             string content = query;
 
-            //if(string.IsNullOrEmpty(mobile))
-            //    return false;
-            //if (string.IsNullOrEmpty(linkid))
-            //    return false;
-            //if (string.IsNullOrEmpty(ywid))
-            //    return false;
-
 
             Hashtable exparams = GetEXParamsValue(hashtable);
 
@@ -212,6 +205,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
             else
             {
+                logger.Error("Process Request Error:Can't find channle client setting.");
+
                 return false;
             }
 
