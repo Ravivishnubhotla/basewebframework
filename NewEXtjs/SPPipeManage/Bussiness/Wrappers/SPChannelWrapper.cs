@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -274,6 +275,50 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return hashtable[queryKey].ToString();
         }
 
+
+        public ChannelStatus CStatus
+        {
+            get
+            {
+                switch (this.Status)
+                {
+                    case 0:
+                        return ChannelStatus.Run;
+                        break;
+                    case 1:
+                        return ChannelStatus.Stop;
+                        break;
+                    case 2:
+                        return ChannelStatus.Disable;
+                        break;
+                    default:
+                        return ChannelStatus.Disable;
+                        break;
+                }
+            }
+        }
+
+        public string CStatusString
+        {
+            get
+            {
+                switch (this.CStatus)
+                {
+                    case ChannelStatus.Run:
+                        return "运行";
+                        break;
+                    case ChannelStatus.Stop:
+                        return "暂停";
+                        break;
+                    case ChannelStatus.Disable:
+                        return "禁用";
+                        break;
+                    default:
+                        return "禁用";
+                        break;
+                }
+            }
+        }
 
 	    public string GetOkCode()
 	    {
