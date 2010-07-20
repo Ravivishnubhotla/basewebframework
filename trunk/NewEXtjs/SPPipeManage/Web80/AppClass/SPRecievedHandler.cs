@@ -23,7 +23,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    //context.Response.StatusCode = 500;
+                    logger.Error("Process Request Error:not file Name.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
                     return;
                 }
 
@@ -35,43 +35,44 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
-                    //string query = "";
-
-                    //if (context.Request != null && context.Request.Url != null)
-                    //{
-                    //    query = context.Request.Url.Query;
-                    //}
-
                     Hashtable recivedata = GetRequestValue(context);
 
                     string recievdData = JsonConvert.SerializeObject(recivedata);
-
-
 
                     bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData);
 
                     if(result)
                         context.Response.Write(channel.GetOkCode());
-
-                    //if(!result)
-                    //    context.Response.StatusCode = 500;
- 
+                    else
+                        logger.Error("Process Request Error:Request failed.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
 
                 }
                 else
                 {
-                    //context.Response.StatusCode = 500; 
+                    logger.Error("Process Request Error:Can't find channle.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
                 }
             }
             catch (Exception ex)
             {
-                logger.Error("Process Request Error:", ex);
-                //context.Response.StatusCode = 500; 
+                logger.Error("Process Request Error:\n" + "Request Info:\n" + GetRequestInfo(context.Request), ex);
                 return;
             }
         }
 
-        //private Output()
+        private string GetRequestInfo(HttpRequest request)
+        {
+            Hashtable hb = new Hashtable();
+
+            foreach (string key in request.Params.Keys)
+            {
+                hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+            }
+
+            return JsonConvert.SerializeObject(hb);
+        }
+
+
+ 
 
 
         public static string GetRealIP()
