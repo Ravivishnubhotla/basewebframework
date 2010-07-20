@@ -13,6 +13,10 @@ namespace Legendigital.Common.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
+
+
             Response.Redirect(FormsAuthentication.DefaultUrl);
         }
     }

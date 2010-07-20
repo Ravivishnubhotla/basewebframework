@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Common.Logging;
 using Coolite.Ext.Web;
+using Legendigital.Common.Web.Jobs;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
@@ -16,10 +18,15 @@ namespace Legendigital.Common.Web.MainPage
 {
     public partial class Default : BaseSecurityPage
     {
+        private ILog logger = LogManager.GetLogger(typeof(BaseSecurityPage));
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
                 return;
+
+            logger.Error("1111");
 
 
             Session["Ext.Net.Theme"] = Coolite.Ext.Web.Theme.Default;
