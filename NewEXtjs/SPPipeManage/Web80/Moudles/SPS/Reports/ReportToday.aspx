@@ -31,6 +31,9 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+            <Load Handler="if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(function(record) {return record.get('TotalCount') >= 0;});} else {#{Store1}.clearFilter();}" />
+        </Listeners>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -50,6 +53,17 @@
                                     </ext:ToolbarButton>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="不显示0流量的通道">
+                                    
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
+                                    <Listeners>
+                                    <Change Handler="#{Store1}.reload();" />
+                                    
+                                    </Listeners>
+                                    </ext:Checkbox>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarSpacer>
