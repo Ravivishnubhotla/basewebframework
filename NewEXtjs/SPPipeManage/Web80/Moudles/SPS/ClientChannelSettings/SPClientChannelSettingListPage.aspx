@@ -158,7 +158,7 @@
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                     </Commands>
