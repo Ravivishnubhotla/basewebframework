@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Common.Logging;
+using LD.SPPipeManage.Bussiness.Commons;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Newtonsoft.Json;
 
@@ -35,6 +36,13 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
+                    if(channel.CStatus != ChannelStatus.Run)
+                    {
+                        logger.Error("Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n" + GetRequestInfo(context.Request));
+                        return;
+                    }
+
+
                     Hashtable recivedata = GetRequestValue(context);
 
                     string recievdData = JsonConvert.SerializeObject(recivedata);

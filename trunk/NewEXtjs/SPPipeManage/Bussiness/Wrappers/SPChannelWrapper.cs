@@ -206,7 +206,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
             else
             {
-                logger.Error("Process Request Error:Can't find channle client setting.");
+                logger.Error("Process Request Error:Can't find channle  "+this.Name+" client setting.");
 
                 return false;
             }
