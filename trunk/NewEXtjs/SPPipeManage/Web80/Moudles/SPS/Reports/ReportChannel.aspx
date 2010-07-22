@@ -14,6 +14,10 @@
             return formatFloat(value, 2).toString() + "%";
         };
 
+        var filterfn = function(rec, id) {
+            return (rec.data.TotalCount > 0);
+        }
+
     </script>
 
     <ext:Store ID="storeSPChannelAdd" runat="server" AutoLoad="false">
@@ -47,7 +51,7 @@
             </ext:JsonReader>
         </Reader>
         <Listeners>
-        <Load Handler="#{txtTotalCount}.setText('总点播数(条)：'+this.sum('TotalCount'));#{txtInterceptCount}.setText('总扣量数(条)：'+this.sum('InterceptCount'));#{txtDownCount}.setText('总转发下家数(条)：'+this.sum('DownCount'));#{txtDownSycnCount}.setText('总同步下家数(条)：'+this.sum('DownSycnCount'));" />
+            <Load Handler="#{txtTotalCount}.setText('总点播数(条)：'+this.sum('TotalCount'));#{txtInterceptCount}.setText('总扣量数(条)：'+this.sum('InterceptCount'));#{txtDownCount}.setText('总转发下家数(条)：'+this.sum('DownCount'));#{txtDownSycnCount}.setText('总同步下家数(条)：'+this.sum('DownSycnCount'));if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(filterfn);} else {#{Store1}.clearFilter();}" />
         </Listeners>
     </ext:Store>
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
@@ -66,8 +70,6 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem Text="通道:">
-                                    </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannelAdd"
                                         TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
                                         EmptyText="全部" Visible="false" />
@@ -84,31 +86,51 @@
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    
-                                                                                                         <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" runat="server" Text="不显示0流量的通道">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                   <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
+                                        <Listeners>
+                                            <Check Handler="#{Store1}.reload();" />
+                                        </Listeners>
+                                    </ext:Checkbox>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="数据汇总统计">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="txtTotalCount" runat="server" Text="总点播数(条)：0">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="txtInterceptCount" runat="server" Text="总扣量数(条)：0">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="txtDownCount" runat="server" Text="总转发下家数(条)：0">
                                     </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="txtDownSycnCount" runat="server" Text="总同步下家数(条)：0">
