@@ -3,7 +3,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-
     <script type="text/javascript">
         var template = '<span style="color:{0};">{1}</span>';
 
@@ -15,8 +14,11 @@
             return formatFloat(value, 2).toString() + "%";
         };
 
-    </script>
+        var filterfn = function(rec, id) {
+            return (rec.data.TotalCount > 0); 
+        }
 
+    </script>
 
     <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
         <Reader>
@@ -33,6 +35,9 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+            <Load Handler="if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(filterfn);} else {#{Store1}.clearFilter();}" />
+        </Listeners>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -54,33 +59,49 @@
                                             <Click Handler="#{Store1}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    
-                                                                      <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" runat="server" Text="不显示0流量的通道">
+                                    </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
+                                        <Listeners>
+                                            <Check Handler="#{Store1}.reload();" />
+                                        </Listeners>
+                                    </ext:Checkbox>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="数据汇总统计">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="txtTotalCount" runat="server" Text="总点播数(条)：0">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="txtInterceptCount" runat="server" Text="总扣量数(条)：0">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="txtDownCount" runat="server" Text="总转发下家数(条)：0">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="txtDownSycnCount" runat="server" Text="总同步下家数(条)：0">
                                     </ext:ToolbarTextItem>
                                 </Items>
