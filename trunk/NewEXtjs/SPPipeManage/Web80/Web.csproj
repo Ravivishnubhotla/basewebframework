@@ -117,6 +117,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage\Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage\Errors.aspx.designer.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -416,6 +424,7 @@
     <Content Include="Moudles\SPS\Users\GetAUserByChannel.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ErrorPage\Errors.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />

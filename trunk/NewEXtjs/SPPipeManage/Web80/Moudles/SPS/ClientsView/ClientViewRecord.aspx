@@ -75,7 +75,6 @@
                                     <ext:ToolbarTextItem Text="到">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
-                                   
                                     </ext:DateFieldMenuItem>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>

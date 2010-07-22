@@ -20,45 +20,45 @@
 
 
 
-        var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
-            if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
-                if (record.data.TotalCount == 9421) {
-                    alert(record);
-                }
-                command.hidden = false;
-                command.hideMode = 'display'; //you can try 'visibility' also                
-            }
-        };
+//        var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
+//            if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
+//                if (record.data.TotalCount == 9421) {
+//                    alert(record);
+//                }
+//                command.hidden = false;
+//                command.hideMode = 'display'; //you can try 'visibility' also                
+//            }
+//        };
 
 
-        var prepareCellCommandDownCount = function(grid, command, record, row, col, value) {
-            if (command.command == 'DownCountDetail' && record.data.DownCount > 0) {
-                if (row > 0) {
-                    command.hidden = false;
-                    command.hideMode = 'display'; //you can try 'visibility' also
-                }
-                else {
-                    alert('111');
-                }
+//        var prepareCellCommandDownCount = function(grid, command, record, row, col, value) {
+//            if (command.command == 'DownCountDetail' && record.data.DownCount > 0) {
+//                if (row > 0) {
+//                    command.hidden = false;
+//                    command.hideMode = 'display'; //you can try 'visibility' also
+//                }
+//                else {
+//                    alert('111');
+//                }
 
-            }
-        };
-
-
-        var prepareCellCommandInterceptCount = function(grid, command, record, row, col, value) {
-        if (command.command == 'InterceptCountDetail' && record.data.InterceptCount > 0) {
-            command.hidden = false;
-                command.hideMode = 'display'; //you can try 'visibility' also                
-            }
-        };
+//            }
+//        };
 
 
-        var prepareCellCommandDownSycnCount = function(grid, command, record, row, col, value) {
-        if (command.command == 'DownSycnCountDetail' && record.data.DownSycnCount > 0) {
-            command.hidden = false;
-                command.hideMode = 'display'; //you can try 'visibility' also                
-            }
-        };
+//        var prepareCellCommandInterceptCount = function(grid, command, record, row, col, value) {
+//        if (command.command == 'InterceptCountDetail' && record.data.InterceptCount > 0) {
+//            command.hidden = false;
+//                command.hideMode = 'display'; //you can try 'visibility' also                
+//            }
+//        };
+
+
+//        var prepareCellCommandDownSycnCount = function(grid, command, record, row, col, value) {
+//        if (command.command == 'DownSycnCountDetail' && record.data.DownSycnCount > 0) {
+//            command.hidden = false;
+//                command.hideMode = 'display'; //you can try 'visibility' also                
+//            }
+//        };
     </script>
 
     <ext:Store ID="storeSPChannelAdd" runat="server" AutoLoad="false">
@@ -196,40 +196,40 @@
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colUpSuccess" Header="总点播数(条)" DataIndex="TotalCount"
                                     Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false" Width="80">
-                                    <Commands>
+<%--                                    <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="TotalCountDetail" Hidden=true>
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                     </Commands>
-                                    <PrepareCommand Fn="prepareCellCommandTotalCount" />
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" />--%>
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colInterceptSuccess" Header="扣量数(条)" DataIndex="InterceptCount"
                                     Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
-                                    <Commands>
+<%--                                    <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="InterceptCountDetail" Hidden=true>
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                         
                                     </Commands>
-                                    <PrepareCommand Fn="prepareCellCommandInterceptCount" />
+                                    <PrepareCommand Fn="prepareCellCommandInterceptCount" />--%>
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colDownCount" Header="转发下家数(条)" DataIndex="DownCount"
                                     Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
-                                    <Commands>
+<%--                                    <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="DownCountDetail" Hidden=true>
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                                                                 
-                                    </Commands><PrepareCommand Fn="prepareCellCommandDownCount" />
+                                    </Commands><PrepareCommand Fn="prepareCellCommandDownCount" />--%>
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colDownSycnCount" Header="同步下家数(条)" DataIndex="DownSycnCount"
                                     Groupable="false" Hideable="false" SummaryType="Sum" Sortable="false">
-                                    <Commands>
+<%--                                    <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="DownSycnCountDetail" Hidden=true>
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                         
-                                    </Commands><PrepareCommand Fn="prepareCellCommandDownSycnCount" />
+                                    </Commands><PrepareCommand Fn="prepareCellCommandDownSycnCount" />--%>
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colInterceptRate" Header="扣量率" DataIndex="InterceptRate"
                                     Groupable="false" Hideable="false" SummaryType="None" Sortable="false">
