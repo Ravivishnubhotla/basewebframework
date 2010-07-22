@@ -27,7 +27,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
 
-            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
+            //this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
 
             this.gridPanelSPClientChannelSetting.Reload();
         }
@@ -54,7 +54,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
         protected void store1_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
+            //this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
 
             int recordCount = 0;
             string sortFieldName = "";
