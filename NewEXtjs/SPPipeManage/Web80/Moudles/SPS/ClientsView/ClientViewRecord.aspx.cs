@@ -27,13 +27,35 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
 
+            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
+
             this.gridPanelSPClientChannelSetting.Reload();
         }
+
+
+        private Column NewColumn(string id, string header, string dataIndex, string renderHandler)
+        {
+            Column col1 = new Column();
+            col1.ColumnID = id;
+            col1.Header = header;
+            col1.Sortable = false;
+            col1.DataIndex = dataIndex;
+            if (!string.IsNullOrEmpty(renderHandler))
+            {
+                if (col1.Renderer == null)
+                    col1.Renderer = new Renderer();
+                col1.Renderer.Handler = renderHandler;
+            }
+            return col1;
+        }
+
 
  
 
         protected void store1_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
+            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("colMsgID", "MsgID".ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", "MsgID".ToLower())));
+
             int recordCount = 0;
             string sortFieldName = "";
             if (e.Sort != null)

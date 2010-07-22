@@ -271,54 +271,102 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.PrimaryKey = new DataColumn[]{dc};
 
             reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
-            reportDt.Columns.Add(new DataColumn("DataCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("ChannelName", typeof(string)));
+            reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("Price", typeof(decimal)));
 
             reportDt.AcceptChanges();
 
+            DataTable dtChannelClient = GetAllEnableChannelClient();
+
             int j = 0;
 
-            for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+            DataTable dCountReportForMaster = QueryReportForMaster(channelId, clientId, startDateTime.Date, enddateTime.Date);
+
+            foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
-                string sql = "";
-
-                if (channelId != 0)
+                if (channelId > 0)
                 {
-                    sql = "SELECT  ClientID,ChannelID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID and ChannelID=@ChannelID group by  ClientID,ChannelID";
+                    if ((int)rowChannelClient["ChannelID"] != channelId)
+                        continue;
                 }
-                else
+                if (clientId > 0)
                 {
-                    sql = "SELECT  ClientID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID group by  ClientID";
-                }
-
-                DbParameters dbParameters = this.CreateNewDbParameters();
-
-                dbParameters.AddWithValue("year", i.Year);
-
-                dbParameters.AddWithValue("month", i.Month);
-
-                dbParameters.AddWithValue("day", i.Day);
-
-                dbParameters.AddWithValue("ClientID", clientId);
-
-                if (channelId != 0)
-                {
-                    dbParameters.AddWithValue("ChannelID", channelId);
+                    if ((int)rowChannelClient["ClientID"] != clientId)
+                        continue;
                 }
 
-                DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
-
-                j++;
-
-                if(dt==null|| dt.Rows.Count==0)
+                for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
                 {
-                    reportDt.Rows.Add(j,i, 0, 0);
-                }
-                else
-                {
-                    reportDt.Rows.Add(j, i, dt.Rows[0]["DownTotal"], 0);      
+                    j++;
+
+                    ReportResult reportResult = GetReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], i, dCountReportForMaster);
+
+                    reportDt.Rows.Add(j,i.Date,
+                                      rowChannelClient["ChannelName"],
+                                      reportResult.DownCount,
+                                      reportResult.DownSycnCount,decimal.Zero);
                 }
             }
+
+            return reportDt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //int j = 0;
+
+            //for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
+            //{
+            //    string sql = "";
+
+            //    if (channelId != 0)
+            //    {
+            //        sql = "SELECT  ClientID,ChannelID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID and ChannelID=@ChannelID group by  ClientID,ChannelID";
+            //    }
+            //    else
+            //    {
+            //        sql = "SELECT  ClientID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID group by  ClientID";
+            //    }
+
+            //    DbParameters dbParameters = this.CreateNewDbParameters();
+
+            //    dbParameters.AddWithValue("year", i.Year);
+
+            //    dbParameters.AddWithValue("month", i.Month);
+
+            //    dbParameters.AddWithValue("day", i.Day);
+
+            //    dbParameters.AddWithValue("ClientID", clientId);
+
+            //    if (channelId != 0)
+            //    {
+            //        dbParameters.AddWithValue("ChannelID", channelId);
+            //    }
+
+            //    DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+            //    j++;
+
+            //    if(dt==null|| dt.Rows.Count==0)
+            //    {
+            //        reportDt.Rows.Add(j,i, 0, 0);
+            //    }
+            //    else
+            //    {
+            //        reportDt.Rows.Add(j, i, dt.Rows[0]["DownTotal"], 0);      
+            //    }
+            //}
 
             return reportDt;
         }

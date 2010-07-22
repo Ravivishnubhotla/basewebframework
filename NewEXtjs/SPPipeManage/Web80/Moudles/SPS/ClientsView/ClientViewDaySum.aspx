@@ -28,7 +28,9 @@
                 <Fields>
                     <ext:RecordField Name="RID" Type="int" />
                     <ext:RecordField Name="ReportDate" Type="Date" />
-                    <ext:RecordField Name="DataCount" Type="Int" />
+                    <ext:RecordField Name="ChannelName" />
+                    <ext:RecordField Name="DownCount" Type="Int" />
+                    <ext:RecordField Name="DownSycnCount" Type="Int" />
                     <ext:RecordField Name="Price" Type="Float" />
                 </Fields>
             </ext:JsonReader>
@@ -84,13 +86,19 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                 <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
+                                <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
                                     Width="20">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colDataCount" DataIndex="DataCount" Header="点播数" Sortable="true"
+                                <ext:Column ColumnID="colChannelName" DataIndex="ChannelName" Header="通道" Sortable="true"
                                     Width="20">
-                                </ext:Column>                               
+                                </ext:Column>
+                                <ext:Column ColumnID="colDownCount" DataIndex="DownCount" Header="点播数" Sortable="true"
+                                    Width="20">
+                                </ext:Column>
+                                <ext:Column ColumnID="colDownSycnCount" DataIndex="DownSycnCount" Header="同步下发数"
+                                    Sortable="true" Width="20">
+                                </ext:Column>
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
