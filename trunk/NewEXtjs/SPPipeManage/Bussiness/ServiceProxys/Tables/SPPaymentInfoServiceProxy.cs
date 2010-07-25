@@ -45,7 +45,55 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
         public DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
-            throw new NotImplementedException();
+            string tableName = "[SPPaymentInfo]";
+
+            string orderBy = " Order By [CreateDate] DESC ";
+
+            string where = " Where 1=1 ";
+
+            if(channelId<=0)
+                throw new ArgumentException(" channelId must great than 0.", "channelId");
+
+            where += string.Format(" AND (ChannelID={0}) ", channelId);
+
+            if(clientId>0)
+            {
+                where += string.Format(" AND (ClientID={0}) ", clientId);
+            }
+
+            if(startDateTime!=DateTime.MinValue)
+            {
+                where += string.Format(" AND (CreateDate>={0}) ", startDateTime.Date);
+            }
+
+            if (enddateTime != DateTime.MinValue)
+            {
+                where += string.Format(" AND (CreateDate<{0}) ", enddateTime.AddDays(1).Date);
+            }
+
+            string selectfield = " [CreateDate] ";
+
+            SPChannelEntity channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
+
+            List<SPChannelParamsEntity> cparam =
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetList_By_SPChannelEntity(
+                    channelEntity);
+
+
+            foreach (SPChannelParamsEntity spChannelParamsEntity in cparam)
+            {
+                selectfield += string.Format(" ,[{0}] ", spChannelParamsEntity.ParamsMappingName);
+            }
+
+
+            recordCount = this.AdoNetDb.ExcuteCount(tableName, where, orderBy);
+
+            return this.AdoNetDb.ExcutePageResult(selectfield, tableName, where, orderBy, pageIndex, pageSize);
+
+
+
+
+
         }
     }
 }

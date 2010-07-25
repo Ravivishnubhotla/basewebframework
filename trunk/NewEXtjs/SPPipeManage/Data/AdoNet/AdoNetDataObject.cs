@@ -57,20 +57,57 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         #endregion
 
+
         public string BuildSelectPageSql(string selectField,string tableName,string where,string orderBy,int pageIndex,int pageSize)
         {
             StringBuilder sb = new StringBuilder();
-            return "";
+
+            StringBuilder subquery = new StringBuilder();
+
+            subquery.AppendFormat("SELECT {0},ROW_NUMBER() OVER({1}) AS RowNumber FROM {2} {3} ", selectField, orderBy,
+                                  tableName, where);
+
+            int startIndex = (pageIndex - 1)*pageSize+1;
+
+
+            sb.AppendFormat(
+                "SELECT {0},RowNumber FROM ({1}) AS RowNumberTableSource WHERE  RowNumber BETWEEN {2} AND {3} ", selectField, subquery.ToString(), startIndex, pageIndex*pageSize);
+
+
+            return sb.ToString();
         }
 
 
-        public string BuildCountPageSql(string selectField, string tableName, string where, string orderBy, int pageIndex, int pageSize)
+        public string BuildCountPageSql(string tableName, string where, string orderBy)
         {
             StringBuilder sb = new StringBuilder();
-            return "";
+
+            sb.AppendFormat(" SELECT COUNT(*) FROM {0} {1} {2} ", tableName, where, orderBy);
+
+            return sb.ToString();
         }
 
 
+        public DataTable ExcutePageResult(string selectField, string tableName, string where, string orderBy, int pageIndex, int pageSize)
+        {
+            string sql = BuildSelectPageSql(selectField,tableName, where, orderBy, pageIndex, pageSize);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, this.CreateNewDbParameters()).Tables[0];
+
+        }
+
+
+        public int ExcuteCount(string tableName, string where, string orderBy)
+        {
+            string sql = BuildCountPageSql(tableName, where, orderBy);
+
+            object result = this.ExecuteScalar(sql, CommandType.Text, this.CreateNewDbParameters());
+
+            if (result == System.DBNull.Value)
+                return 0;
+
+            return (int)result;
+        }
 
         public DataSet GetAllNOReportData(int year, int month, int day)
         {
