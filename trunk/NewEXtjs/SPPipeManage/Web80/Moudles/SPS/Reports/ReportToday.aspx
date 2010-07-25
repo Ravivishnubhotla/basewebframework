@@ -18,6 +18,17 @@
             return (rec.data.TotalCount > 0);
         }
 
+
+                var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
+                     if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
+                         if (record.data.TotalCount == 9421) {
+                             alert(record);
+                         }
+                        command.hidden = false;
+                         command.hideMode = 'display'; //you can try 'visibility' also                
+                      }
+                 };
+
     </script>
 
     <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
@@ -63,7 +74,7 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="false" runat="server">
                                         <Listeners>
                                             <Check Handler="#{Store1}.reload();" />
                                         </Listeners>
@@ -119,6 +130,12 @@
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="点播数(条)" Sortable="true">
+                                    <Commands>
+                                        <ext:ImageCommand Icon="Table" CommandName="TotalCountDetail" Hidden="true">
+                                            <ToolTip Text="显示所有明细数据" />
+                                        </ext:ImageCommand>
+                                    </Commands>
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptSuccess" DataIndex="InterceptCount" Header="扣量数(条)"
                                     Sortable="true">
