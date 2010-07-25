@@ -12,25 +12,64 @@ using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
-    public partial class ClientViewRecord : SPSClientViewPage
+    public partial class ClientViewRecordListPage : SPSClientViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
                 return;
-            
-            this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date;
-
-            this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
-
-            this.hidId.Text = this.ClientID.ToString();
-
-            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
 
 
-            if (ChannelID > 0)
+            string title = "";
+
+            if(this.ChannleID>0)
             {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannelID);
+                SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(this.ChannleID);
+
+                if (channelWrapper != null)
+                {
+                    title += " 通道 " + channelWrapper.Name;
+                }
+            }
+            else
+            {
+                title += " 全部通道 ";                
+            }
+
+            if (this.QClientID > 0)
+            {
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(this.QClientID);
+
+                if (clientWrapper != null)
+                {
+                    title += " 下家 " + clientWrapper.Name;
+                }
+            }
+            else
+            {
+                title += " 全部下家 ";
+            }
+
+
+            if (this.StartDate != DateTime.MinValue)
+            {
+                title += " 从 " + this.StartDate.ToShortDateString();
+            }
+
+
+            if (this.EndDate != DateTime.MinValue)
+            {
+                title += " 至 " + this.EndDate.ToShortDateString();
+            }
+            else        
+            {
+                title += " 至今 ";               
+            }
+
+
+            if (ChannleID > 0)
+            {
+                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannleID);
 
                 if (channel != null)
                 {
@@ -45,22 +84,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 }
             }
 
+            this.gridPanelSPClientChannelSetting.Title =title;
+
             this.gridPanelSPClientChannelSetting.Reload();
-        }
-
-        public int ChannelID
-        {
-            get
-            {
-                int channelID = 0;
-
-                if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
-                {
-                    channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
-                }
-
-                return channelID;
-            }
         }
 
 
@@ -80,8 +106,56 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             return col1;
         }
 
+        public int ChannleID
+        {
+            get
+            {
+                if(!string.IsNullOrEmpty(this.Request.QueryString["ChannleID"]))
+                {
+                    return Convert.ToInt32(this.Request.QueryString["ChannleID"]);
+                }
+                return 0;
+            }
+        }
 
- 
+        public int QClientID
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.Request.QueryString["ClientID"]))
+                {
+                    return Convert.ToInt32(this.Request.QueryString["ClientID"]);
+                }
+                return 0;
+            }
+        }
+
+
+        public DateTime StartDate
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.Request.QueryString["StartDate"]))
+                {
+                    return Convert.ToDateTime(this.Request.QueryString["StartDate"].Replace("\"", ""));
+                }
+                return DateTime.MinValue;
+            }
+        }
+
+
+        public DateTime EndDate
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.Request.QueryString["EndDate"]))
+                {
+                    return Convert.ToDateTime(this.Request.QueryString["EndDate"].Replace("\"",""));
+                }
+                return DateTime.MinValue;
+            }
+        }
+
 
         protected void store1_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
@@ -106,9 +180,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             else
                 pageIndex = startIndex / limit;
 
-            if (ChannelID > 0)
+            if (ChannleID > 0)
             {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannelID);
+                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannleID);
 
                 if (channel != null)
                 {
@@ -124,7 +198,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             }
 
 
-            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannelID, this.ClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
             if (list.Count > 0)
             {
@@ -140,7 +214,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             e.TotalCount = recordCount;
 
             store1.DataBind();
-           
+
 
         }
     }
