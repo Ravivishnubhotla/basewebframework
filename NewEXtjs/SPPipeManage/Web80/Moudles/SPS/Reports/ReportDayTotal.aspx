@@ -61,21 +61,6 @@
                                     </ext:ToolbarButton>
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" runat="server" Text="不显示0流量的通道">
-                                    </ext:ToolbarTextItem>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
-                                        <Listeners>
-                                            <Check Handler="#{Store1}.reload();" />
-                                        </Listeners>
-                                    </ext:Checkbox>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:ToolbarSeparator>
-                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="数据汇总统计">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
@@ -104,6 +89,21 @@
                                     </ext:ToolbarSeparator>
                                     <ext:ToolbarTextItem ID="txtDownSycnCount" runat="server" Text="总同步下家数(条)：0">
                                     </ext:ToolbarTextItem>
+                                                                   <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" runat="server" Text="不显示0流量的通道">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="false" runat="server">
+                                        <Listeners>
+                                            <Check Handler="#{Store1}.reload();" />
+                                        </Listeners>
+                                    </ext:Checkbox>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
