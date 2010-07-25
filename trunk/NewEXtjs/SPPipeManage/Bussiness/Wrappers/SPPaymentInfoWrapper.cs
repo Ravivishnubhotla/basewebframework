@@ -113,6 +113,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    }
 
+
+        public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            return businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(channelId, clientId,
+                                                                                                  startDateTime,
+                                                                                                  enddateTime,
+                                                                                                  sortFieldName, isDesc,
+                                                                                                  pageIndex, pageSize,
+                                                                                                  out recordCount);
+
+
+        }
+
 	    private string values;
 
 	    public string Values
