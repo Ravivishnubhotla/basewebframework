@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -180,37 +181,30 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             else
                 pageIndex = startIndex / limit;
 
+            DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+
             if (ChannleID > 0)
             {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannleID);
 
-                if (channel != null)
-                {
-                    Hashtable channelParams = channel.GetFieldMappings();
 
-                    foreach (DictionaryEntry dictionaryEntry in channelParams)
-                    {
-                        string pName = dictionaryEntry.Value.ToString();
-
-                        this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("col" + pName, pName.ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", pName.ToLower())));
-                    }
-                }
             }
 
+            
 
-            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
-            if (list.Count > 0)
-            {
-                foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in list)
-                {
-                    spPaymentInfoWrapper.Values = JsonConvert.SerializeObject(
-                        spPaymentInfoWrapper.GetValues(
-                            JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
-                }
-            }
+            //List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
-            store1.DataSource = list;
+            //if (list.Count > 0)
+            //{
+            //    foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in list)
+            //    {
+            //        spPaymentInfoWrapper.Values = JsonConvert.SerializeObject(
+            //            spPaymentInfoWrapper.GetValues(
+            //                JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
+            //    }
+            //}
+
+            store1.DataSource = dt;
             e.TotalCount = recordCount;
 
             store1.DataBind();
