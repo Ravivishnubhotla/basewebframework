@@ -138,25 +138,23 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        errorMessage = "";
 
             HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);    
-            webRequest.Timeout = 60000;
+            webRequest.Timeout = 10000;
 	        HttpWebResponse webResponse = null;                                      
             
             try 
             { 
-                webResponse = (HttpWebResponse)webRequest.GetResponse();
+                if (webResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+                    string responseText = sr.ReadToEnd();
 
-
-                //ÅÐ¶ÏHTTPÏìÓ¦×´Ì¬ 
-                if (webResponse.StatusCode != HttpStatusCode.OK)
+                    return responseText.Trim().ToLower().Equals("ok");
+                }
+                else
                 {
                     errorMessage = "Error:" + webResponse.StatusCode;
                     return false;
                 }
-
-
-                string content = new StreamReader(webResponse.GetResponseStream()).ReadToEnd();
-
-                return true;
 
             }
 

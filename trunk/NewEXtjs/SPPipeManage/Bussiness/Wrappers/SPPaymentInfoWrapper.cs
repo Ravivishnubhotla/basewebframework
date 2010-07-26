@@ -164,5 +164,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
+	    public bool SendToClient()
+	    {
+	        if(this.IsIntercept.HasValue && this.IsIntercept.Value)
+	            return false;
+
+            if (this.SucesssToSend.HasValue && this.SucesssToSend.Value)
+                return false;
+
+	        SPClientWrapper clientWrapper = SPClientWrapper.FindById(this.ClientID);
+
+	        clientWrapper.SendMsg();
+
+
+	    }
     }
 }
