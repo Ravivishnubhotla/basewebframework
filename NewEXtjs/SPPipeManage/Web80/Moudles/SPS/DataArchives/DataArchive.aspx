@@ -2,10 +2,10 @@
     CodeBehind="DataArchive.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.DataArchives.DataArchive" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ScriptManagerProxy ID="ScriptManager1" runat="server" >
-    <Listeners>
-    <DocumentReady  Handler="#{dfStart}.setValue(#{dfEnd}.getValue());" />
-    </Listeners>
+    <ext:ScriptManagerProxy ID="ScriptManager1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{dfStart}.setValue(#{dfEnd}.getValue());" />
+        </Listeners>
     </ext:ScriptManagerProxy>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -50,10 +50,25 @@
                                         </Fields>
                                     </ext:MultiField>
                                 </ext:Anchor>
+                                <ext:Anchor>
+                                    <ext:MultiField ID="MultiField3" runat="server" FieldLabel="手动发送同步数据">
+                                        <Fields>
+                                            <ext:Label ID="lblSendData" runat="server" Text="同步数据ID" />
+                                            <ext:TextArea ID="txtPaymentID" runat="server" AllowBlank="false" />
+                                            <ext:Button ID="Button1" runat="server" Text="发送">
+                                                <AjaxEvents>
+                                                    <Click OnEvent="SendData" Success="Ext.MessageBox.alert('操作成功', '成功的手动发送同步数据.',callback);function callback(id) {};">
+                                                        <EventMask ShowMask="true" Msg="处理中..." />
+                                                        <Confirmation ConfirmRequest="true" Message="确认进行手动发送同步数据操作？" Title="确认操作" />
+                                                    </Click>
+                                                </AjaxEvents>
+                                            </ext:Button>
+                                        </Fields>
+                                    </ext:MultiField>
+                                </ext:Anchor>
                             </ext:FormLayout>
                         </Body>
                         <Listeners>
-       
                         </Listeners>
                     </ext:FormPanel>
                 </Items>
