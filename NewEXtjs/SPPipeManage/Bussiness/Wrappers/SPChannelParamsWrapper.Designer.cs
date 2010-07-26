@@ -75,6 +75,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
 		
         #endregion
 
@@ -190,6 +192,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ParamsMappingName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Title
+		{
+			get
+			{
+				return entity.Title;
+			}
+			set
+			{
+				entity.Title = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? ShowInClientGrid
+		{
+			get
+			{
+				return entity.ShowInClientGrid;
+			}
+			set
+			{
+				entity.ShowInClientGrid = value;
 			}
 		}
 		#endregion 

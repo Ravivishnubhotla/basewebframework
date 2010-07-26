@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		
         #endregion
 	
@@ -33,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isRequired;
 		private int? _clientID;
 		private string _mappingParams;
+		private string _title;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isRequired = null;
 			_clientID = null;
 			_mappingParams = null;
+			_title = null;
 		}
 		#endregion
 
@@ -161,6 +164,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Title
+		{
+			get { return _title; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Title", value, value.ToString());
+				_title = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -174,6 +194,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsRequired = wrapper.IsRequired;
 			this.ClientID = (wrapper.ClientID!=null) ? wrapper.ClientID.Id : 0 ; 
 			this.MappingParams = wrapper.MappingParams;
+			this.Title = wrapper.Title;
 		}
 		
 		
@@ -187,6 +208,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsRequired = this.IsRequired;
 			wrapper.ClientID =  (this.ClientID==null) ? null : SPClientWrapper.FindById(this.ClientID);
 			wrapper.MappingParams = this.MappingParams;
+			wrapper.Title = this.Title;
 		
 		return wrapper;
         }

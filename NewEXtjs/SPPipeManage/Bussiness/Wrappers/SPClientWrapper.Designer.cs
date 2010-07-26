@@ -72,6 +72,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_RECIEVEDATAURL = "RecieveDataUrl";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		
         #endregion
 
@@ -145,6 +149,62 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.UserID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? SyncData
+		{
+			get
+			{
+				return entity.SyncData;
+			}
+			set
+			{
+				entity.SyncData = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string OkMessage
+		{
+			get
+			{
+				return entity.OkMessage;
+			}
+			set
+			{
+				entity.OkMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string FailedMessage
+		{
+			get
+			{
+				return entity.FailedMessage;
+			}
+			set
+			{
+				entity.FailedMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SyncType
+		{
+			get
+			{
+				return entity.SyncType;
+			}
+			set
+			{
+				entity.SyncType = value;
 			}
 		}
 		#endregion 

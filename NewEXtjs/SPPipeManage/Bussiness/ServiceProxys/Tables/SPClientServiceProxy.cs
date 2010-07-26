@@ -7,6 +7,7 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
@@ -16,6 +17,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    List<SPSendClientParamsEntity> GetAllEnableParams(SPClientEntity entity);
 	    List<SPClientEntity> FindByChannelID(int cid);
 	    SPClientEntity GetClientByUserID(int userId);
+        void CloneChannelParams(int channelId, SPClientEntity entity);
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -43,6 +45,38 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return clientEntities;
         }
+
+        [Transaction(ReadOnly = false)]
+        public void CloneChannelParams(int channelId, SPClientEntity entity)
+        {
+            SPChannelEntity channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
+
+            List<SPChannelParamsEntity> channelParamsEntities =
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetAllEnableParams(channelEntity);
+
+
+            List<SPSendClientParamsEntity> sendClientParamsEntities =
+                this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.GetAllEnableParams(entity);
+
+            foreach (SPSendClientParamsEntity spSendClientParamsEntity in sendClientParamsEntities)
+            {
+                this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.Delete(spSendClientParamsEntity);
+            }
+
+            foreach (SPChannelParamsEntity channelParamsEntity in channelParamsEntities)
+            {
+                SPSendClientParamsEntity spSendClientParamsEntity = new SPSendClientParamsEntity();
+                spSendClientParamsEntity.ClientID = entity;
+                spSendClientParamsEntity.Name = channelParamsEntity.Name;
+                spSendClientParamsEntity.Title = channelParamsEntity.Title;
+                spSendClientParamsEntity.Description = channelParamsEntity.Description;
+                spSendClientParamsEntity.IsEnable = channelParamsEntity.IsEnable;
+                spSendClientParamsEntity.IsRequired = channelParamsEntity.IsRequired;
+                spSendClientParamsEntity.MappingParams = channelParamsEntity.ParamsMappingName;
+                this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.Save(spSendClientParamsEntity);
+            }
+        }
+
 
         public SPClientEntity GetClientByUserID(int userId)
         {

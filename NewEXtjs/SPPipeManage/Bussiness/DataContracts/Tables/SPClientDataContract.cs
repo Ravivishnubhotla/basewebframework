@@ -19,6 +19,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_RECIEVEDATAURL = "RecieveDataUrl";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		
         #endregion
 	
@@ -29,6 +33,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _description;
 		private string _recieveDataUrl;
 		private int? _userID;
+		private bool? _syncData;
+		private string _okMessage;
+		private string _failedMessage;
+		private string _syncType;
 		
 		#endregion
 
@@ -43,6 +51,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_description = null;
 			_recieveDataUrl = null;
 			_userID = null;
+			_syncData = null;
+			_okMessage = null;
+			_failedMessage = null;
+			_syncType = null;
 		}
 		#endregion
 
@@ -127,6 +139,71 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? SyncData
+		{
+			get { return _syncData; }
+
+			set	
+			{
+				_syncData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string OkMessage
+		{
+			get { return _okMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
+				_okMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_failedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SyncType
+		{
+			get { return _syncType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
+				_syncType = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -138,6 +215,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Description = wrapper.Description;
 			this.RecieveDataUrl = wrapper.RecieveDataUrl;
 			this.UserID = wrapper.UserID;
+			this.SyncData = wrapper.SyncData;
+			this.OkMessage = wrapper.OkMessage;
+			this.FailedMessage = wrapper.FailedMessage;
+			this.SyncType = wrapper.SyncType;
 		}
 		
 		
@@ -149,6 +230,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Description = this.Description;
 			wrapper.RecieveDataUrl = this.RecieveDataUrl;
 			wrapper.UserID = this.UserID;
+			wrapper.SyncData = this.SyncData;
+			wrapper.OkMessage = this.OkMessage;
+			wrapper.FailedMessage = this.FailedMessage;
+			wrapper.SyncType = this.SyncType;
 		
 		return wrapper;
         }

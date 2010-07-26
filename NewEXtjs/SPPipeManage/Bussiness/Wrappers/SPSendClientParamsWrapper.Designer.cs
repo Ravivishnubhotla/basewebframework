@@ -74,6 +74,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		
         #endregion
 
@@ -175,6 +176,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.MappingParams = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Title
+		{
+			get
+			{
+				return entity.Title;
+			}
+			set
+			{
+				entity.Title = value;
 			}
 		}
 		#endregion 

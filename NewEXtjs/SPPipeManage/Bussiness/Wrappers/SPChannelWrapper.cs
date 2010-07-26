@@ -191,7 +191,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!paymentInfo.IsIntercept.Value)
                 {
                     if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
-                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
+                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(paymentInfo);
+                        //paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
                     else
                         paymentInfo.SucesssToSend = false;
                 }

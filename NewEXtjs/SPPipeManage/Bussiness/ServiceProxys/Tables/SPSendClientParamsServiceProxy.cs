@@ -16,6 +16,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
 
         List<SPSendClientParamsEntity> FindAllByOrderByAndClientID(string sortFieldName, bool isDesc, int pageIndex, int limit, int clientId, out int recordCount);
+
     }
 
     internal partial class SPSendClientParamsServiceProxy : ISPSendClientParamsServiceProxy
@@ -27,5 +28,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.SelfDataObj.FindAllByOrderByAndClientID(sortFieldName, isDesc, pageIndex, limit, clientEntity,
                                                                 out recordCount);
         }
+
+
     }
 }

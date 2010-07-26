@@ -22,6 +22,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
 		
         #endregion
 	
@@ -35,6 +37,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _paramsType;
 		private int _channelID;
 		private string _paramsMappingName;
+		private string _title;
+		private bool? _showInClientGrid;
 		
 		#endregion
 
@@ -52,6 +56,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_paramsType = null;
 			_channelID = 0;
 			_paramsMappingName = null;
+			_title = null;
+			_showInClientGrid = null;
 		}
 		#endregion
 
@@ -181,6 +187,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Title
+		{
+			get { return _title; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Title", value, value.ToString());
+				_title = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? ShowInClientGrid
+		{
+			get { return _showInClientGrid; }
+
+			set	
+			{
+				_showInClientGrid = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -195,6 +232,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ParamsType = wrapper.ParamsType;
 			this.ChannelID = (wrapper.ChannelID!=null) ? wrapper.ChannelID.Id : 0 ; 
 			this.ParamsMappingName = wrapper.ParamsMappingName;
+			this.Title = wrapper.Title;
+			this.ShowInClientGrid = wrapper.ShowInClientGrid;
 		}
 		
 		
@@ -209,6 +248,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ParamsType = this.ParamsType;
 			wrapper.ChannelID =  (this.ChannelID==null) ? null : SPChannelWrapper.FindById(this.ChannelID);
 			wrapper.ParamsMappingName = this.ParamsMappingName;
+			wrapper.Title = this.Title;
+			wrapper.ShowInClientGrid = this.ShowInClientGrid;
 		
 		return wrapper;
         }

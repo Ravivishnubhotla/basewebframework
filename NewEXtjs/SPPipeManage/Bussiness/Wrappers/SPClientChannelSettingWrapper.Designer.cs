@@ -75,6 +75,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DOWNRATE = "DownRate";
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
+		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		
         #endregion
 
@@ -190,6 +191,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.CommandCode = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? Disable
+		{
+			get
+			{
+				return entity.Disable;
+			}
+			set
+			{
+				entity.Disable = value;
 			}
 		}
 		#endregion 
