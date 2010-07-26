@@ -51,6 +51,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
+                obj.SyncData = this.chkSyncDate.Checked;
+                obj.OkMessage = this.txtOkMessage.Text.Trim();
+                obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                obj.SyncType = this.cmbSycnType.SelectedItem.Value;
 
 
                 Membership.CreateUser(loginID, this.txtRelateUserPassword.Text.Trim(), this.txtRelateUserLoginID.Text.Trim()+"@163.com");

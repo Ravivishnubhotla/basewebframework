@@ -36,8 +36,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     this.cmbParamsType.SetValue(obj.ParamsType.ToString());
                     this.lblChannelName.Text = obj.ChannelID.Name.ToString();
                     this.cmbParamsMappingName.SetValue(obj.ParamsMappingName.ToString());
-
-
+                    this.txtTitle.Text = obj.Title;
+                    this.chkShowInClientGrid.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.ShowInClientGrid);
 
 
                     hidId.Text = id.ToString();
@@ -73,6 +73,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.IsRequired = this.chkIsRequired.Checked;
                 obj.ParamsType = this.cmbParamsType.SelectedItem.Value.ToString();
                 obj.ParamsMappingName = this.cmbParamsMappingName.SelectedItem.Value.ToString();
+                obj.Title = this.txtTitle.Text.Trim();
+                obj.ShowInClientGrid = this.chkShowInClientGrid.Checked;
 
 
                 SPChannelParamsWrapper.Update(obj);

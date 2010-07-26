@@ -50,8 +50,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.Status = 0;
                 obj.CreateTime = System.DateTime.Now;
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
-
-
+                obj.OkMessage = txtOkMessage.Text.Trim();
+                obj.FailedMessage = txtFailedMessage.Text.Trim();
 
 
 

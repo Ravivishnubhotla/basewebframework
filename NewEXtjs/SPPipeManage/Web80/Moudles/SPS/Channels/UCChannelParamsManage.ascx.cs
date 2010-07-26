@@ -22,6 +22,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             try
             {
                 this.hidChannelSelect.Text = id.ToString();
+
+                SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(id);
+
+                this.winSPChannelParamsList.Title = "["+channelWrapper.Name + "]通道参数管理";
                 this.winSPChannelParamsList.Show();
             }
             catch (Exception ex)

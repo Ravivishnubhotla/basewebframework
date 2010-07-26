@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSendClientParamsAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPSendClientParamsAdd" %>
-<ext:Window ID="winSPSendClientParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建下家参数"
-    Width="400" Height="300" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+<ext:Window ID="winSPSendClientParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建下家参数"  ConstrainHeader=true
+    Width="400" Height="330" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPSendClientParamsAdd" runat="server" Frame="true" Header="false"
@@ -18,6 +18,9 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtName" runat="server" FieldLabel="编码" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtTitle" runat="server" FieldLabel="参数名" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
@@ -38,9 +41,9 @@
                                         <ext:ListItem Value="port" Text="port"></ext:ListItem>
                                         <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                         <ext:ListItem Value="msg" Text="msg"></ext:ListItem>
-                                        <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>                                      
-                                        <ext:ListItem Value="dest" Text="dest"></ext:ListItem>                           
-                                        <ext:ListItem Value="price" Text="price"></ext:ListItem> 
+                                        <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>
+                                        <ext:ListItem Value="dest" Text="dest"></ext:ListItem>
+                                        <ext:ListItem Value="price" Text="price"></ext:ListItem>
                                         <ext:ListItem Value="extendfield1" Text="extendfield1"></ext:ListItem>
                                         <ext:ListItem Value="extendfield2" Text="extendfield2"></ext:ListItem>
                                         <ext:ListItem Value="extendfield3" Text="extendfield3"></ext:ListItem>

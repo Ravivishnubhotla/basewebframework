@@ -1,43 +1,47 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelAdd.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelAdd" %>
-<ext:Window ID="winSPChannelAdd" runat="server" Icon="ApplicationAdd" Title="新建通道"
-    Width="500" Height="418" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelAdd.ascx.cs"
+    Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelAdd" %>
+<ext:Window ID="winSPChannelAdd" runat="server" Icon="ApplicationAdd" Title="新建通道" ConstrainHeader=true
+    Width="500" Height="460" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
-            <ext:FormPanel ID="formPanelSPChannelAdd" runat="server" Frame="true" Header="false" MonitorValid="true"
-                BodyStyle="padding:5px;">
+            <ext:FormPanel ID="formPanelSPChannelAdd" runat="server" Frame="true" Header="false"
+                MonitorValid="true" BodyStyle="padding:5px;">
                 <Body>
                     <ext:FormLayout ID="FormLayoutSPChannel" runat="server" LabelSeparator=":" LabelWidth="100">
                         <Anchors>
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True"   />
-             </ext:Anchor> 
-					<ext:Anchor Horizontal="95%">
-						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"   />
-                    </ext:Anchor>
-					<ext:Anchor Horizontal="95%">
-						<ext:TextArea ID="txtArea" runat="server" FieldLabel="支持省份" AllowBlank="True"   />
-                    </ext:Anchor>
-
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道编码" AllowBlank="True"   />
-             </ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtFuzzyCommand" runat="server" FieldLabel="提交别名" AllowBlank="True"   />
-             </ext:Anchor> 
-
-				 <ext:Anchor Horizontal="95%"> 
-						<ext:NumberField ID="txtPort" runat="server" FieldLabel="端口"  AllowBlank="True"  />
-                 	</ext:Anchor> 
-			 <ext:Anchor Horizontal="95%">
-						<ext:TextField ID="txtChannelType" runat="server" FieldLabel="通道类型" AllowBlank="True"   />
-             </ext:Anchor> 
-				 <ext:Anchor Horizontal="95%"> 
-						<ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价"  AllowBlank="True"  />
-                 	</ext:Anchor> 
-				 <ext:Anchor Horizontal="95%"> 
-						<ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例"  AllowBlank="True"  />
-                 	</ext:Anchor> 
-
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtArea" runat="server" FieldLabel="支持省份" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道编码" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtFuzzyCommand" runat="server" FieldLabel="提交别名" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtPort" runat="server" FieldLabel="端口" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtChannelType" runat="server" FieldLabel="通道类型" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="成功响应消息" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="失败响应消息" AllowBlank="True" />
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>

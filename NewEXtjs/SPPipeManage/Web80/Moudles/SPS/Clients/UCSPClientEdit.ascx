@@ -14,7 +14,8 @@
     </Reader>
 </ext:Store>
 <ext:Window ID="winSPClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑下家"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    ConstrainHeader="true" Width="600" Height="460" AutoShow="false" Maximizable="true"
+    Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientEdit" runat="server" Frame="true" Header="false"
@@ -27,17 +28,35 @@
                                 </ext:Hidden>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:Hidden ID="hidUserID" runat="server">
+                                </ext:Hidden>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True" />
+                                <ext:Checkbox ID="chkSyncDate" runat="server" FieldLabel="是否允许同步数据" Checked="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Hidden ID="hidUserID" runat="server">
-                                </ext:Hidden>
+                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步数据接口" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步数据成功信息" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步数据失败信息" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
+                                    AllowBlank="True" SelectedIndex="0">
+                                    <Items>
+                                        <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
+                                        <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
+                                    </Items>
+                                </ext:ComboBox>
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

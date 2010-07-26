@@ -21,7 +21,8 @@
 </script>
 
 <ext:Window ID="winSPClientAdd" runat="server" Icon="ApplicationAdd" Title="新建下家"
-    Width="500" Height="320" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    ConstrainHeader="true" Width="600" Height="460" AutoShow="false" Maximizable="true"
+    Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientAdd" runat="server" Frame="true" Header="false"
@@ -36,7 +37,25 @@
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="接收数据接口" AllowBlank="True" />
+                                <ext:Checkbox ID="chkSyncDate" runat="server" FieldLabel="是否允许同步数据" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步数据接口" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步数据成功信息" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步数据失败信息" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
+                                    AllowBlank="True" SelectedIndex="0">
+                                    <Items>
+                                        <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
+                                        <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
+                                    </Items>
+                                </ext:ComboBox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtRelateUserLoginID" runat="server" FieldLabel="关联用户登陆ID" AllowBlank="False" />
@@ -46,8 +65,8 @@
                                     AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRelateUserRePassword" runat="server" InputType="Password" Vtype="password" FieldLabel="关联用户重复密码"
-                                    AllowBlank="False" />
+                                <ext:TextField ID="txtRelateUserRePassword" runat="server" InputType="Password" Vtype="password"
+                                    FieldLabel="关联用户重复密码" AllowBlank="False" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

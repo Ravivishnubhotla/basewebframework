@@ -30,22 +30,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     this.txtName.Text = obj.Name.ToString();
                     this.txtDescription.Text = obj.Description.ToString();
                     this.txtRecieveDataUrl.Text = obj.RecieveDataUrl.ToString();
+                    this.chkSyncDate.Checked = obj.SyncData.HasValue ? obj.SyncData.Value:false;
+                    this.txtOkMessage.Text = obj.OkMessage;
+                    this.txtFailedMessage.Text = obj.FailedMessage;
+                    if(!string.IsNullOrEmpty((obj.SyncType)))
+                        this.cmbSycnType.SetValue(obj.SyncType);
 
-                    //if(obj.UserID==null)
-                    //{
-                    //    this.hidUserID.Text = "";
-                    //}
-                    //else
-                    //{
-                    //    if (obj.UserID.Value <= 0)
-                    //    {
-                    //        this.hidUserID.Text = "";
-                    //    }
-                    //    else
-                    //    {
-                    //        this.hidUserID.Text = obj.UserID.ToString();                          
-                    //    }
-                    //}
 
                     hidId.Text = id.ToString();
 
@@ -76,7 +66,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
-
+                obj.SyncData = this.chkSyncDate.Checked;
+                obj.OkMessage = this.txtOkMessage.Text.Trim();
+                obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                obj.SyncType = this.cmbSycnType.SelectedItem.Value;
 
                 SPClientWrapper.Update(obj);
 

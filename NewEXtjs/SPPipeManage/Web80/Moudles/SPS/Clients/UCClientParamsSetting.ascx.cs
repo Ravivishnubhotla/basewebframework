@@ -26,6 +26,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             try
             {
                 this.hidClientSelect.Text = id.ToString();
+
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
+
+                this.winSPChannelParamsList.Title = "[" + clientWrapper.Name + "]下家参数管理";
+
+
                 this.winSPChannelParamsList.Show();
             }
             catch (Exception ex)

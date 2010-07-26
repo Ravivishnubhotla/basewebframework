@@ -4,6 +4,7 @@
 <%@ Register Src="UCSPClientAdd.ascx" TagName="UCSPClientAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPClientEdit.ascx" TagName="UCSPClientEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCClientParamsSetting.ascx" TagName="UCClientParamsSetting" TagPrefix="uc3" %>
+<%@ Register Src="UCSPSendClientParamsClone.ascx" TagName="UCSPSendClientParamsClone" TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -91,7 +92,29 @@
                                                                                }
                                                                 }              
                 );
-            }   
+                
+                
+        
+                
+                
+                
+            }
+            
+            
+             if (cmd == "cmdParamsClone") {
+                Coolite.AjaxMethods.UCSPSendClientParamsClone.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelParamsData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+             }
+                  
         }
 
     </script>
@@ -112,9 +135,7 @@
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
-                        <ext:RecordField Name="UserLoginID" />                
-                    
-                    
+                    <ext:RecordField Name="UserLoginID" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -123,7 +144,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPClientAdd ID="UCSPClientAdd1" runat="server" />
     <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" />
-        <uc3:UCClientParamsSetting ID="UCClientParamsSetting1" runat="server" />
+    <uc3:UCClientParamsSetting ID="UCClientParamsSetting1" runat="server" />
+        <uc5:UCSPSendClientParamsClone ID="UCSPSendClientParamsClone1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -169,13 +191,15 @@
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除"  Hidden="true">
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
-                                                                                <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
-                                        
+                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone" Text="参数复制">
+                                            <ToolTip Text="参数复制" />
+                                        </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>
