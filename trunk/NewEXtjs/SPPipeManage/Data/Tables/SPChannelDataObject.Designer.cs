@@ -28,6 +28,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_STATUS = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATUS);
 		public static readonly Property PROPERTY_CREATETIME = Property.ForName(SPChannelEntity.PROPERTY_NAME_CREATETIME);
 		public static readonly Property PROPERTY_CREATEBY = Property.ForName(SPChannelEntity.PROPERTY_NAME_CREATEBY);
+		public static readonly Property PROPERTY_OKMESSAGE = Property.ForName(SPChannelEntity.PROPERTY_NAME_OKMESSAGE);
+		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPChannelEntity.PROPERTY_NAME_FAILEDMESSAGE);
       
 		#region 子类集合字段查询字段
 	
@@ -75,6 +77,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (DateTime);
                 case "CreateBy":
                     return typeof (int);
+                case "OkMessage":
+                    return typeof (string);
+                case "FailedMessage":
+                    return typeof (string);
           }
 			return typeof(string);
         }

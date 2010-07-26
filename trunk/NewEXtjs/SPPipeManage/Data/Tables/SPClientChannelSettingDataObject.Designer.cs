@@ -36,6 +36,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_STATUS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Status");
 		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
+		public static readonly Property PROPERTY_CHANNELID_OKMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CHANNELID_FAILEDMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".FailedMessage");
 		#endregion
 		public static readonly Property PROPERTY_CLINETID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CLINETID);
 		#region clinetID字段外键查询字段
@@ -49,12 +51,17 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLINETID_DESCRIPTION = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_CLINETID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".RecieveDataUrl");
 		public static readonly Property PROPERTY_CLINETID_USERID = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".UserID");
+		public static readonly Property PROPERTY_CLINETID_SYNCDATA = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SyncData");
+		public static readonly Property PROPERTY_CLINETID_OKMESSAGE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CLINETID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".FailedMessage");
+		public static readonly Property PROPERTY_CLINETID_SYNCTYPE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SyncType");
 		#endregion
 		public static readonly Property PROPERTY_INTERCEPTRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATE);
 		public static readonly Property PROPERTY_UPRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_UPRATE);
 		public static readonly Property PROPERTY_DOWNRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DOWNRATE);
 		public static readonly Property PROPERTY_COMMANDTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDTYPE);
 		public static readonly Property PROPERTY_COMMANDCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCODE);
+		public static readonly Property PROPERTY_DISABLE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DISABLE);
       
 		#region 子类集合字段查询字段
 	
@@ -88,6 +95,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "CommandCode":
                     return typeof (string);
+                case "Disable":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

@@ -30,8 +30,13 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTID_DESCRIPTION = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_CLIENTID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl");
 		public static readonly Property PROPERTY_CLIENTID_USERID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID");
+		public static readonly Property PROPERTY_CLIENTID_SYNCDATA = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData");
+		public static readonly Property PROPERTY_CLIENTID_OKMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CLIENTID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage");
+		public static readonly Property PROPERTY_CLIENTID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
+		public static readonly Property PROPERTY_TITLE = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_TITLE);
       
 		#region 子类集合字段查询字段
 	
@@ -62,6 +67,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "ClientID":
                     return typeof (int);
                 case "MappingParams":
+                    return typeof (string);
+                case "Title":
                     return typeof (string);
           }
 			return typeof(string);

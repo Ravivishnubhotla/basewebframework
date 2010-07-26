@@ -37,6 +37,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_STATUS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Status");
 		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
+		public static readonly Property PROPERTY_CHANNELID_OKMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CHANNELID_FAILEDMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".FailedMessage");
 		#endregion
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CLIENTID);
 		#region clientID字段外键查询字段
@@ -50,6 +52,10 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTID_DESCRIPTION = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_CLIENTID_RECIEVEDATAURL = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl");
 		public static readonly Property PROPERTY_CLIENTID_USERID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID");
+		public static readonly Property PROPERTY_CLIENTID_SYNCDATA = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData");
+		public static readonly Property PROPERTY_CLIENTID_OKMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CLIENTID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage");
+		public static readonly Property PROPERTY_CLIENTID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType");
 		#endregion
 		public static readonly Property PROPERTY_MESSAGE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MESSAGE);
 		public static readonly Property PROPERTY_ISINTERCEPT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISINTERCEPT);

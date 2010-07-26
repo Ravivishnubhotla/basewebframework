@@ -41,8 +41,12 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_STATUS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Status");
 		public static readonly Property PROPERTY_CHANNELID_CREATETIME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateTime");
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
+		public static readonly Property PROPERTY_CHANNELID_OKMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OkMessage");
+		public static readonly Property PROPERTY_CHANNELID_FAILEDMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".FailedMessage");
 		#endregion
 		public static readonly Property PROPERTY_PARAMSMAPPINGNAME = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME);
+		public static readonly Property PROPERTY_TITLE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_TITLE);
+		public static readonly Property PROPERTY_SHOWINCLIENTGRID = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_SHOWINCLIENTGRID);
       
 		#region 子类集合字段查询字段
 	
@@ -76,6 +80,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (int);
                 case "ParamsMappingName":
                     return typeof (string);
+                case "Title":
+                    return typeof (string);
+                case "ShowInClientGrid":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

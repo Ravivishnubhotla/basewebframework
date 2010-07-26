@@ -18,6 +18,10 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SPClientEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_RECIEVEDATAURL = Property.ForName(SPClientEntity.PROPERTY_NAME_RECIEVEDATAURL);
 		public static readonly Property PROPERTY_USERID = Property.ForName(SPClientEntity.PROPERTY_NAME_USERID);
+		public static readonly Property PROPERTY_SYNCDATA = Property.ForName(SPClientEntity.PROPERTY_NAME_SYNCDATA);
+		public static readonly Property PROPERTY_OKMESSAGE = Property.ForName(SPClientEntity.PROPERTY_NAME_OKMESSAGE);
+		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPClientEntity.PROPERTY_NAME_FAILEDMESSAGE);
+		public static readonly Property PROPERTY_SYNCTYPE = Property.ForName(SPClientEntity.PROPERTY_NAME_SYNCTYPE);
       
 		#region 子类集合字段查询字段
 	
@@ -45,6 +49,14 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "UserID":
                     return typeof (int);
+                case "SyncData":
+                    return typeof (bool);
+                case "OkMessage":
+                    return typeof (string);
+                case "FailedMessage":
+                    return typeof (string);
+                case "SyncType":
+                    return typeof (string);
           }
 			return typeof(string);
         }
