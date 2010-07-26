@@ -303,6 +303,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return sendOk;   
 	    }
 
+
+        public bool SendMsg(SPPaymentInfoWrapper spPaymentInfo,out string errorMessage)
+        {
+            string requesturl = BulidUrl(spPaymentInfo);
+
+            bool sendOk = SendRequest(requesturl, 10000, "ok", out errorMessage);
+
+            return sendOk;
+        }
+
 	    private string BulidUrl(SPPaymentInfoWrapper spPaymentInfo)
 	    {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
@@ -370,9 +380,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
 	    }
 
-	    public bool SendMsgAndUpdate(SPPaymentInfoWrapper spPaymentInfoWrapper)
+        public bool SendMsgAndUpdate(SPPaymentInfoWrapper spPaymentInfoWrapper, out string errorMessage)
 	    {
-	        spPaymentInfoWrapper.SucesssToSend = SendMsg(spPaymentInfoWrapper);
+            spPaymentInfoWrapper.SucesssToSend = SendMsg(spPaymentInfoWrapper,out errorMessage);
 
             SPPaymentInfoWrapper.Update(spPaymentInfoWrapper);
 
