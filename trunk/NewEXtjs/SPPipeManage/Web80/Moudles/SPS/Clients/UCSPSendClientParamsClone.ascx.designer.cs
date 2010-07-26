@@ -11,16 +11,25 @@
 namespace Legendigital.Common.Web.Moudles.SPS.Clients {
     
     
-    public partial class UCSPSendClientParamsEdit {
+    public partial class UCSPSendClientParamsClone {
         
         /// <summary>
-        /// winSPSendClientParamsEdit control.
+        /// storeSPChannelAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSPSendClientParamsEdit;
+        protected global::Coolite.Ext.Web.Store storeSPChannelAdd;
+        
+        /// <summary>
+        /// winSPSendClientParamsClone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winSPSendClientParamsClone;
         
         /// <summary>
         /// fitLayoutMain control.
@@ -32,13 +41,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// formPanelSPSendClientParamsEdit control.
+        /// formPanelSPSendClientParamsClone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSPSendClientParamsEdit;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSPSendClientParamsClone;
         
         /// <summary>
         /// FormLayoutSPSendClientParams control.
@@ -50,76 +59,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Coolite.Ext.Web.FormLayout FormLayoutSPSendClientParams;
         
         /// <summary>
-        /// hidId control.
+        /// hidClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidId;
+        protected global::Coolite.Ext.Web.Hidden hidClientID;
         
         /// <summary>
-        /// lblClientName control.
+        /// cmbChannelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Label lblClientName;
-        
-        /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtName;
-        
-        /// <summary>
-        /// txtTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtTitle;
-        
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtDescription;
-        
-        /// <summary>
-        /// chkIsEnable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkIsEnable;
-        
-        /// <summary>
-        /// chkIsRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkIsRequired;
-        
-        /// <summary>
-        /// cmbMappingParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbMappingParams;
+        protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
         
         /// <summary>
         /// btnSaveSPSendClientParams control.

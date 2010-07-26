@@ -50,7 +50,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.ParamsType = this.cmbParamsType.SelectedItem.Value.Trim();
                 obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.hidChannelID.Text.Trim()));
                 obj.ParamsMappingName = this.cmbParamsMappingName.SelectedItem.Text.Trim();
-
+                obj.Title = this.txtTitle.Text.Trim();
+                obj.ShowInClientGrid = this.chkShowInClientGrid.Checked;
                 SPChannelParamsWrapper.Save(obj);
 
                 winSPChannelParamsAdd.Hide();

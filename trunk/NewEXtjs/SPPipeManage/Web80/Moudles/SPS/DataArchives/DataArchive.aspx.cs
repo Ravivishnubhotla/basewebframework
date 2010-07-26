@@ -25,15 +25,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
 
 
-            string dbsizestring = SPDayReportWrapper.GetDbSizeString();
+            //string dbsizestring = SPDayReportWrapper.GetDbSizeString();
 
-            decimal space = SPDayReportWrapper.GetDbSize();
+            //decimal space = SPDayReportWrapper.GetDbSize();
 
-            decimal total = 500.00m;
+            //decimal total = 500.00m;
 
-            prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
+            //prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
 
-            prgData.UpdateProgress(float.Parse((space / total).ToString()));
+            //prgData.UpdateProgress(float.Parse((space / total).ToString()));
         }
 
 
@@ -44,15 +44,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
             {
                 SPDayReportWrapper.ArchivesData(this.Server.MapPath("~/DayReport/"), Convert.ToDateTime(this.dfStart.Value), Convert.ToDateTime(this.dfEnd.Value));
 
-                string dbsizestring = SPDayReportWrapper.GetDbSizeString();
+                //string dbsizestring = SPDayReportWrapper.GetDbSizeString();
 
-                decimal space = SPDayReportWrapper.GetDbSize();
+                //decimal space = SPDayReportWrapper.GetDbSize();
 
-                decimal total = 500.00m;
+                //decimal total = 500.00m;
 
-                prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
+                //prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
 
-                prgData.UpdateProgress(float.Parse((space / total).ToString()));
+                //prgData.UpdateProgress(float.Parse((space / total).ToString()));
                 
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }

@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Clients
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSPSendClientParamsAdd")]
-    public partial class UCSPSendClientParamsAdd : System.Web.UI.UserControl
+    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSPSendClientParamsClone")]
+    public partial class UCSPSendClientParamsClone : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
 
         [AjaxMethod]
         public void Show(int clientID)
@@ -24,9 +27,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
                 this.hidClientID.Text = clientID.ToString();
 
-                this.lblClientName.Text = spClientWrapper.Name;
+                winSPSendClientParamsClone.Title = string.Format("下家[{0}]复制通道参数", spClientWrapper.Name);
 
-                this.winSPSendClientParamsAdd.Show();
+                this.winSPSendClientParamsClone.Show();
             }
             catch (Exception ex)
             {
@@ -39,17 +42,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
         {
             try
             {
-                SPSendClientParamsWrapper obj = new SPSendClientParamsWrapper();
-                obj.Name = this.txtName.Text.Trim();
-                obj.Description = this.txtDescription.Text.Trim();
-                obj.IsEnable = this.chkIsEnable.Checked;
-                obj.IsRequired = this.chkIsRequired.Checked;
-                obj.ClientID = SPClientWrapper.FindById(Convert.ToInt32(this.hidClientID.Text.Trim()));
-                obj.MappingParams = this.cmbMappingParams.SelectedItem.Value.Trim();
-                obj.Title = this.txtTitle.Text.Trim();
-                SPSendClientParamsWrapper.Save(obj);
+                SPClientWrapper obj = SPClientWrapper.FindById(int.Parse(hidClientID.Text.Trim()));
 
-                winSPSendClientParamsAdd.Hide();
+                if (obj != null)
+                {
+                    obj.CloneChannelParams(int.Parse(this.cmbChannelID.SelectedItem.Value));
+
+                }
 
             }
             catch (Exception ex)
@@ -58,9 +57,5 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
-
-
-
     }
-
 }

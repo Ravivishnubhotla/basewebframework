@@ -34,7 +34,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     this.chkIsRequired.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsRequired);
                     this.lblClientName.Text = obj.ClientID.Name.ToString();
                     this.cmbMappingParams.SetValue(obj.MappingParams.ToString());
-
+                    this.txtTitle.Text = obj.Title;
 
 
 
@@ -69,7 +69,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 obj.IsEnable = this.chkIsEnable.Checked;
                 obj.IsRequired = this.chkIsRequired.Checked;
                 obj.MappingParams = this.cmbMappingParams.SelectedItem.Value.Trim();
-
+                obj.Title = this.txtTitle.Text.Trim();
 
                 SPSendClientParamsWrapper.Update(obj);
 
