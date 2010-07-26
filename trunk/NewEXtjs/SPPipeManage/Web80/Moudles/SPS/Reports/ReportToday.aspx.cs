@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
+using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 
@@ -37,7 +39,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             this.txtDownCount.Text = string.Format("总转发下家数(条)：{0}", GetSumField(dt, "DownCount"));
             this.txtDownSycnCount.Text = string.Format("总同步下家数(条)：{0}", GetSumField(dt, "DownSycnCount"));
         }
-
 
         private int GetSumField(DataTable dt,string field)
         {

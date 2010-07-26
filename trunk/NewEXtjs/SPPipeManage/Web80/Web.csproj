@@ -445,6 +445,7 @@
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx" />
+    <Content Include="Moudles\SPS\Reports\Excel.xsl" />
     <Content Include="Moudles\SPS\Reports\ReportToday.aspx" />
   </ItemGroup>
   <ItemGroup>
