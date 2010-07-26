@@ -22,6 +22,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DOWNRATE = "DownRate";
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
+		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		
         #endregion
 	
@@ -38,6 +39,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _downRate;
 		private string _commandType;
 		private string _commandCode;
+		private bool? _disable;
 		
 		#endregion
 
@@ -55,6 +57,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_downRate = null;
 			_commandType = null;
 			_commandCode = null;
+			_disable = false;
 		}
 		#endregion
 
@@ -62,7 +65,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode)
+		public SPClientChannelSettingEntity( int id, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable)
 		{
 			_id = id;
 			_channelID = channelID;
@@ -72,6 +75,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_downRate = downRate;
 			_commandType = commandType;
 			_commandCode = commandCode;
+			_disable = disable;
 		}
 		#endregion     
 	
@@ -192,6 +196,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 1600)
 					throw new ArgumentOutOfRangeException("Invalid value for CommandCode", value, value.ToString());
 				_isChanged |= (_commandCode != value); _commandCode = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? Disable
+		{
+			get { return _disable; }
+
+			set	
+			{
+				_isChanged |= (_disable != value); _disable = value;
 			}
 		}
 		/// <summary>

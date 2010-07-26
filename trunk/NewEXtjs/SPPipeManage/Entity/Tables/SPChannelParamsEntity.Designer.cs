@@ -22,6 +22,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
 		
         #endregion
 	
@@ -38,6 +40,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _paramsType;
 		private SPChannelEntity _channelID;
 		private string _paramsMappingName;
+		private string _title;
+		private bool? _showInClientGrid;
 		
 		#endregion
 
@@ -55,6 +59,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_paramsType = null;
 			_channelID = null;
 			_paramsMappingName = null;
+			_title = null;
+			_showInClientGrid = null;
 		}
 		#endregion
 
@@ -62,7 +68,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName)
+		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid)
 		{
 			_id = id;
 			_name = name;
@@ -72,6 +78,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_paramsType = paramsType;
 			_channelID = channelID;
 			_paramsMappingName = paramsMappingName;
+			_title = title;
+			_showInClientGrid = showInClientGrid;
 		}
 		#endregion     
 	
@@ -198,6 +206,37 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for ParamsMappingName", value, value.ToString());
 				_isChanged |= (_paramsMappingName != value); _paramsMappingName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Title
+		{
+			get { return _title; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Title", value, value.ToString());
+				_isChanged |= (_title != value); _title = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? ShowInClientGrid
+		{
+			get { return _showInClientGrid; }
+
+			set	
+			{
+				_isChanged |= (_showInClientGrid != value); _showInClientGrid = value;
 			}
 		}
 		/// <summary>

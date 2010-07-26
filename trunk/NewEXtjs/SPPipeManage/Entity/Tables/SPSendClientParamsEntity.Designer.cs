@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		
         #endregion
 	
@@ -36,6 +37,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isRequired;
 		private SPClientEntity _clientID;
 		private string _mappingParams;
+		private string _title;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isRequired = null;
 			_clientID = null;
 			_mappingParams = null;
+			_title = null;
 		}
 		#endregion
 
@@ -59,7 +62,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSendClientParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPClientEntity clientID, string mappingParams)
+		public SPSendClientParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPClientEntity clientID, string mappingParams, string title)
 		{
 			_id = id;
 			_name = name;
@@ -68,6 +71,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isRequired = isRequired;
 			_clientID = clientID;
 			_mappingParams = mappingParams;
+			_title = title;
 		}
 		#endregion     
 	
@@ -177,6 +181,23 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for MappingParams", value, value.ToString());
 				_isChanged |= (_mappingParams != value); _mappingParams = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Title
+		{
+			get { return _title; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Title", value, value.ToString());
+				_isChanged |= (_title != value); _title = value;
 			}
 		}
 		/// <summary>

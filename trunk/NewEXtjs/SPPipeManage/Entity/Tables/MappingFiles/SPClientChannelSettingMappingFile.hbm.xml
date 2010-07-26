@@ -18,6 +18,7 @@
 		<property column="DownRate" type="int" name="DownRate"   />	
 		<property column="CommandType" type="string" name="CommandType"   length="100" />	
 		<property column="CommandCode" type="string" name="CommandCode"   length="1600" />	
+		<property column="Disable" type="Boolean" name="Disable"   />	
 
 
 

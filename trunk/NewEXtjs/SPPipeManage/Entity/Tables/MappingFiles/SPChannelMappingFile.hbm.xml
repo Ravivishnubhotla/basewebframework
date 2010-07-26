@@ -25,6 +25,8 @@
 		<property column="Status" type="int" name="Status"   />	
 		<property column="CreateTime" type="DateTime" name="CreateTime"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
 
 
 

@@ -19,6 +19,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_RECIEVEDATAURL = "RecieveDataUrl";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		
         #endregion
 	
@@ -32,6 +36,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _description;
 		private string _recieveDataUrl;
 		private int? _userID;
+		private bool? _syncData;
+		private string _okMessage;
+		private string _failedMessage;
+		private string _syncType;
 		
 		#endregion
 
@@ -46,6 +54,10 @@ namespace LD.SPPipeManage.Entity.Tables
 			_description = null;
 			_recieveDataUrl = null;
 			_userID = null;
+			_syncData = null;
+			_okMessage = null;
+			_failedMessage = null;
+			_syncType = null;
 		}
 		#endregion
 
@@ -53,13 +65,17 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID)
+		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
 			_recieveDataUrl = recieveDataUrl;
 			_userID = userID;
+			_syncData = syncData;
+			_okMessage = okMessage;
+			_failedMessage = failedMessage;
+			_syncType = syncType;
 		}
 		#endregion     
 	
@@ -141,6 +157,71 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_userID != value); _userID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? SyncData
+		{
+			get { return _syncData; }
+
+			set	
+			{
+				_isChanged |= (_syncData != value); _syncData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string OkMessage
+		{
+			get { return _okMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
+				_isChanged |= (_okMessage != value); _okMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_isChanged |= (_failedMessage != value); _failedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SyncType
+		{
+			get { return _syncType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
+				_isChanged |= (_syncType != value); _syncType = value;
 			}
 		}
 		/// <summary>
