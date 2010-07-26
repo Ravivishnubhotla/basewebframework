@@ -122,103 +122,136 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-        public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
-	    {
-            string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
+        //public bool SendMsg(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
+        //{
+        //    string requesturl = BulidUrl(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
 
-	        string errorMessage = string.Empty;
+        //    string errorMessage = string.Empty;
 
-            bool sendOk = SendUrl(requesturl, out errorMessage);
+        //    bool sendOk = SendUrl(requesturl, out errorMessage);
 
-            return sendOk;
-	    }
+        //    return sendOk;
+        //}
 
-	    private bool SendUrl(string requesturl, out string errorMessage)
-	    {
-	        errorMessage = "";
+        private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)
+        {
+            try
+            {
+                errorMessage = "";
 
-            HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);    
-            webRequest.Timeout = 10000;
-	        HttpWebResponse webResponse = null;                                      
-            
-            try 
-            { 
+                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);
+
+                webRequest.Timeout = timeOut;
+
+                HttpWebResponse webResponse = null;
+
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+
                 if (webResponse.StatusCode == HttpStatusCode.OK)
                 {
                     StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
                     string responseText = sr.ReadToEnd();
 
-                    return responseText.Trim().ToLower().Equals("ok");
-                }
-                else
-                {
-                    errorMessage = "Error:" + webResponse.StatusCode;
-                    return false;
+                    return responseText.Trim().ToLower().Equals(okMessage);
                 }
 
+                return false;
             }
-
-            catch 
+            catch (Exception e)
             {
-                errorMessage = "No Connection";
-                return false; 
+                errorMessage = e.Message;
+                return false;
             }
+        }
 
-	    }
 
-        private string BulidUrl(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
-	    {
-            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+        //private bool SendUrl(string requesturl, out string errorMessage)
+        //{
+        //    errorMessage = "";
 
-            //Hashtable values = new Hashtable();
+        //    HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);    
+        //    webRequest.Timeout = 10000;
+        //    HttpWebResponse webResponse = null;                                      
+            
+        //    try 
+        //    { 
+        //        if (webResponse.StatusCode == HttpStatusCode.OK)
+        //        {
+        //            StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+        //            string responseText = sr.ReadToEnd();
 
-            //values.Add("cpid", cpid);
-            //values.Add("mid", mid);
-            //values.Add("mobile", mobile);
-            //values.Add("port", port);
-            //values.Add("ywid", ywid);
-            //values.Add("msg", msg);
+        //            return responseText.Trim().ToLower().Equals("ok");
+        //        }
+        //        else
+        //        {
+        //            errorMessage = "Error:" + webResponse.StatusCode;
+        //            return false;
+        //        }
 
-            List<SPSendClientParamsWrapper> clientFieldMappings = this.GetFieldMappings();
+        //    }
 
-            foreach (SPSendClientParamsWrapper clientFieldMapping in clientFieldMappings)
-	        {
-                switch (clientFieldMapping.MappingParams)
-	            {
-                    case "mid":
-                        BulidParams(queryString, clientFieldMapping.Name, mid);
-	                    break;
-                    case "mobile":
-                        BulidParams(queryString, clientFieldMapping.Name, mobile);
-                        break;
-                    case "port":
-                        BulidParams(queryString, clientFieldMapping.Name, port);
-                        break;
-                    case "ywid":
-                        BulidParams(queryString, clientFieldMapping.Name, ywid);
-                        break;
-                    case "msg":
-                        BulidParams(queryString, clientFieldMapping.Name, msg);
-                        break;
-                    case "cpid":
-                        BulidParams(queryString, clientFieldMapping.Name, cpid);
-                        break;
-                    case "linkid":
-                        BulidParams(queryString, clientFieldMapping.Name, linkid);
-                        break;
-                    case "dest":
-                        BulidParams(queryString, clientFieldMapping.Name, dest);
-                        break;
-                    case "price":
-                        BulidParams(queryString, clientFieldMapping.Name, price);
-                        break;
-	            }         
-	        }
+        //    catch 
+        //    {
+        //        errorMessage = "No Connection";
+        //        return false; 
+        //    }
 
-            BulidParams(queryString, exparams);
+        //}
 
-	        return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
-	    }
+        //private string BulidUrl(string cpid, string mid, string mobile, string port, string ywid, string msg, string linkid, string dest, string price, Hashtable exparams)
+        //{
+        //    NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+
+        //    //Hashtable values = new Hashtable();
+
+        //    //values.Add("cpid", cpid);
+        //    //values.Add("mid", mid);
+        //    //values.Add("mobile", mobile);
+        //    //values.Add("port", port);
+        //    //values.Add("ywid", ywid);
+        //    //values.Add("msg", msg);
+
+        //    List<SPSendClientParamsWrapper> clientFieldMappings = this.GetFieldMappings();
+
+        //    foreach (SPSendClientParamsWrapper clientFieldMapping in clientFieldMappings)
+        //    {
+        //        switch (clientFieldMapping.MappingParams)
+        //        {
+        //            case "mid":
+        //                BulidParams(queryString, clientFieldMapping.Name, mid);
+        //                break;
+        //            case "mobile":
+        //                BulidParams(queryString, clientFieldMapping.Name, mobile);
+        //                break;
+        //            case "port":
+        //                BulidParams(queryString, clientFieldMapping.Name, port);
+        //                break;
+        //            case "ywid":
+        //                BulidParams(queryString, clientFieldMapping.Name, ywid);
+        //                break;
+        //            case "msg":
+        //                BulidParams(queryString, clientFieldMapping.Name, msg);
+        //                break;
+        //            case "cpid":
+        //                BulidParams(queryString, clientFieldMapping.Name, cpid);
+        //                break;
+        //            case "linkid":
+        //                BulidParams(queryString, clientFieldMapping.Name, linkid);
+        //                break;
+        //            case "dest":
+        //                BulidParams(queryString, clientFieldMapping.Name, dest);
+        //                break;
+        //            case "price":
+        //                BulidParams(queryString, clientFieldMapping.Name, price);
+        //                break;
+        //        }         
+        //    }
+
+        //    BulidParams(queryString, exparams);
+
+        //    return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
+        //}
 
         private List<SPSendClientParamsWrapper> GetFieldMappings()
         {
@@ -228,10 +261,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-	    private void BulidParams(NameValueCollection queryString, Hashtable exparams)
-        {
-            return;
-        }
+        //private void BulidParams(NameValueCollection queryString, Hashtable exparams)
+        //{
+        //    return;
+        //}
 
 	    private void BulidParams(NameValueCollection queryString, string key, string value)
 	    {
@@ -251,7 +284,99 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
+        public void CloneChannelParams(int channelID)
+        {
+            businessProxy.CloneChannelParams(channelID, this.entity);
+        }
 
 
+
+
+	    public bool SendMsg(SPPaymentInfoWrapper spPaymentInfo)
+	    {
+            string requesturl = BulidUrl(spPaymentInfo);
+
+            string errorMessage = string.Empty;
+
+            bool sendOk = SendRequest(requesturl,10000,"ok", out errorMessage);
+
+            return sendOk;   
+	    }
+
+	    private string BulidUrl(SPPaymentInfoWrapper spPaymentInfo)
+	    {
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            List<SPSendClientParamsWrapper> clientFieldMappings = this.GetFieldMappings();
+
+            foreach (SPSendClientParamsWrapper clientFieldMapping in clientFieldMappings)
+            {
+                switch (clientFieldMapping.MappingParams)
+                {
+                    case "mid":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Mid);
+                        break;
+                    case "mobile":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.MobileNumber);
+                        break;
+                    case "port":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Port);
+                        break;
+                    case "ywid":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Ywid);
+                        break;
+                    case "msg":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Message);
+                        break;
+                    case "cpid":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Cpid);
+                        break;
+                    case "linkid":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Linkid);
+                        break;
+                    case "dest":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Dest);
+                        break;
+                    case "extendfield1":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField1);
+                        break;
+                    case "extendfield2":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField2);
+                        break;
+                    case "extendfield3":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField3);
+                        break;
+                    case "extendfield4":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField4);
+                        break;
+                    case "extendfield5":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField5);
+                        break;
+                    case "extendfield6":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField6);
+                        break;
+                    case "extendfield7":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField7);
+                        break;
+                    case "extendfield8":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField8);
+                        break;
+                    case "extendfield9":
+                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField9);
+                        break;
+                }
+            }
+
+            return string.Format("{0}?{1}", this.RecieveDataUrl, queryString.ToString());
+	    }
+
+	    public bool SendMsgAndUpdate(SPPaymentInfoWrapper spPaymentInfoWrapper)
+	    {
+	        spPaymentInfoWrapper.SucesssToSend = SendMsg(spPaymentInfoWrapper);
+
+            SPPaymentInfoWrapper.Update(spPaymentInfoWrapper);
+
+            return spPaymentInfoWrapper.SucesssToSend.Value;
+	    }
     }
 }

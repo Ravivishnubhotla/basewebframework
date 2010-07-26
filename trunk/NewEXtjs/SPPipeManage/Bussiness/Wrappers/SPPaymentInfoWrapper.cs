@@ -172,9 +172,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             if (this.SucesssToSend.HasValue && this.SucesssToSend.Value)
                 return false;
 
-	        SPClientWrapper clientWrapper = SPClientWrapper.FindById(this.ClientID);
-
-	        clientWrapper.SendMsg();
+            return this.ClientID.SendMsgAndUpdate(this);
 
 
 	    }

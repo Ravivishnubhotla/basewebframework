@@ -22,6 +22,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_DOWNRATE = "DownRate";
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
+		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		
         #endregion
 	
@@ -35,6 +36,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _downRate;
 		private string _commandType;
 		private string _commandCode;
+		private bool? _disable;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_downRate = null;
 			_commandType = null;
 			_commandCode = null;
+			_disable = false;
 		}
 		#endregion
 
@@ -175,6 +178,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? Disable
+		{
+			get { return _disable; }
+
+			set	
+			{
+				_disable = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -189,6 +206,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.DownRate = wrapper.DownRate;
 			this.CommandType = wrapper.CommandType;
 			this.CommandCode = wrapper.CommandCode;
+			this.Disable = wrapper.Disable;
 		}
 		
 		
@@ -203,6 +221,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.DownRate = this.DownRate;
 			wrapper.CommandType = this.CommandType;
 			wrapper.CommandCode = this.CommandCode;
+			wrapper.Disable = this.Disable;
 		
 		return wrapper;
         }

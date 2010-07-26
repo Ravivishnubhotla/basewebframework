@@ -29,6 +29,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_STATUS = "Status";
 		public static readonly string PROPERTY_NAME_CREATETIME = "CreateTime";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		
         #endregion
 	
@@ -49,6 +51,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _status;
 		private DateTime? _createTime;
 		private int? _createBy;
+		private string _okMessage;
+		private string _failedMessage;
 		
 		#endregion
 
@@ -73,6 +77,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_status = null;
 			_createTime = null;
 			_createBy = null;
+			_okMessage = null;
+			_failedMessage = null;
 		}
 		#endregion
 
@@ -315,6 +321,40 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string OkMessage
+		{
+			get { return _okMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
+				_okMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_failedMessage = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -336,6 +376,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Status = wrapper.Status;
 			this.CreateTime = wrapper.CreateTime;
 			this.CreateBy = wrapper.CreateBy;
+			this.OkMessage = wrapper.OkMessage;
+			this.FailedMessage = wrapper.FailedMessage;
 		}
 		
 		
@@ -357,6 +399,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Status = this.Status;
 			wrapper.CreateTime = this.CreateTime;
 			wrapper.CreateBy = this.CreateBy;
+			wrapper.OkMessage = this.OkMessage;
+			wrapper.FailedMessage = this.FailedMessage;
 		
 		return wrapper;
         }

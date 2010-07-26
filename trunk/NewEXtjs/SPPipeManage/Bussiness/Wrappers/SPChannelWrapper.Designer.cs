@@ -82,6 +82,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_STATUS = "Status";
 		public static readonly string PROPERTY_NAME_CREATETIME = "CreateTime";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		
         #endregion
 
@@ -295,6 +297,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string OkMessage
+		{
+			get
+			{
+				return entity.OkMessage;
+			}
+			set
+			{
+				entity.OkMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string FailedMessage
+		{
+			get
+			{
+				return entity.FailedMessage;
+			}
+			set
+			{
+				entity.FailedMessage = value;
 			}
 		}
 		#endregion 
