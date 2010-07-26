@@ -66,12 +66,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
         protected void SendData(object sender, AjaxEventArgs e)
         {
-            Server.ScriptTimeout = 300;
+            Server.ScriptTimeout = 10000;
             try
             {
                 SPPaymentInfoWrapper paymentInfoWrapper = SPPaymentInfoWrapper.FindById(int.Parse(this.txtPaymentID.Text.Trim()));
 
-                paymentInfoWrapper.SendToClient();
+                string error = "";
+
+                if(!paymentInfoWrapper.SendToClient(out error))
+                {
+                    Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                    Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + error;
+                    return;
+                }
 
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
