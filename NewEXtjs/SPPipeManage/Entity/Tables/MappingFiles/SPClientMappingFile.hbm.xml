@@ -15,6 +15,10 @@
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="RecieveDataUrl" type="string" name="RecieveDataUrl"   length="400" />	
 		<property column="UserID" type="int" name="UserID"   />	
+		<property column="SyncData" type="Boolean" name="SyncData"   />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
+		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 
 
 

@@ -29,6 +29,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_STATUS = "Status";
 		public static readonly string PROPERTY_NAME_CREATETIME = "CreateTime";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		
         #endregion
 	
@@ -52,6 +54,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _status;
 		private DateTime? _createTime;
 		private int? _createBy;
+		private string _okMessage;
+		private string _failedMessage;
 		
 		#endregion
 
@@ -76,6 +80,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_status = null;
 			_createTime = null;
 			_createBy = null;
+			_okMessage = null;
+			_failedMessage = null;
 		}
 		#endregion
 
@@ -83,7 +89,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage)
 		{
 			_id = id;
 			_name = name;
@@ -100,6 +106,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_status = status;
 			_createTime = createTime;
 			_createBy = createBy;
+			_okMessage = okMessage;
+			_failedMessage = failedMessage;
 		}
 		#endregion     
 	
@@ -339,6 +347,40 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string OkMessage
+		{
+			get { return _okMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
+				_isChanged |= (_okMessage != value); _okMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_isChanged |= (_failedMessage != value); _failedMessage = value;
 			}
 		}
 		/// <summary>
