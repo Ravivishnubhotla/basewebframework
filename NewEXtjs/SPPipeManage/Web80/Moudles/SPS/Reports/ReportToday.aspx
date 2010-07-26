@@ -19,15 +19,18 @@
         }
 
 
-                var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
-                     if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
-                         if (record.data.TotalCount == 9421) {
-                             alert(record);
-                         }
-                        command.hidden = false;
-                         command.hideMode = 'display'; //you can try 'visibility' also                
-                      }
-                 };
+
+
+
+        var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
+            if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
+                if (record.data.TotalCount == 9421) {
+                    alert(record);
+                }
+                command.hidden = false;
+                command.hideMode = 'display'; //you can try 'visibility' also                
+            }
+        };
 
     </script>
 
@@ -61,6 +64,13 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
+                                    <ext:ToolbarButton ID='btnExport' runat="server" Text="导出" Icon="PageExcel" Hidden="true">
+                                        <Listeners>
+                                            <Click Handler="exportData(#{gridPanelSPClientChannelSetting});" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
