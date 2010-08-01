@@ -51,7 +51,7 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:NumberField ID="txtInterceptRate" runat="server" FieldLabel="扣率(%)" AllowBlank="False"
-                                    Text="50" DecimalPrecision="0" MinValue="1" MaxValue="99"  />
+                                    Text="50" DecimalPrecision="0" MinValue="0" MaxValue="100"  />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbCommandType" runat="server" FieldLabel="指令匹配规则" AllowBlank="False"
