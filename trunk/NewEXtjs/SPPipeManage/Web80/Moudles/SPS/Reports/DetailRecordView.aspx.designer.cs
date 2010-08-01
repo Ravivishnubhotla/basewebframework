@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
+namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     
     
-    public partial class ClientViewRecordListPage {
+    public partial class DetailRecordView {
         
         /// <summary>
         /// storeData control.

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
@@ -123,7 +124,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName)); 
         }
-
 
         public bool ProcessRequest(Hashtable hashtable, string ip, string query)
         {
@@ -276,7 +276,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return hashtable[queryKey].ToString();
         }
 
-
         public ChannelStatus CStatus
         {
             get
@@ -325,5 +324,22 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
 	        return "ok";
 	    }
+
+        public DataTable BuildChannelRecordTable()
+        {
+            DataTable record = new DataTable();
+
+            record.Columns.Add("RecordID", typeof(int));
+            record.Columns.Add("CreateDate",typeof(DateTime));
+
+            foreach (string field in fields)
+            {
+                record.Columns.Add(field);
+            }
+
+            record.AcceptChanges();
+
+            return record;
+        }
     }
 }

@@ -12,6 +12,15 @@ using Legendigital.Framework.Common.Utility;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
+    public enum DataType
+    {
+        All,
+        Intercept,
+        Down,
+        DownSycn
+    }
+
+
 	[Serializable]
     public partial class SPPaymentInfoWrapper
     {
@@ -116,15 +125,92 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
-            return businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(channelId, clientId,
+            if(channelId==0)
+                throw new ArgumentException(" channelId not allow 0.");
+
+            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelId);
+
+            List<SPPaymentInfoWrapper> spPaymentInfoWrappers = ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(channelId, clientId,
                                                                                                   startDateTime,
                                                                                                   enddateTime,
                                                                                                   sortFieldName, isDesc,
                                                                                                   pageIndex, pageSize,
-                                                                                                  out recordCount);
+                                                                                                  out recordCount));
 
+            DataTable channelRecordTable = channelWrapper.BuildChannelRecordTable();
+
+            for (int i = 0; i < spPaymentInfoWrappers.Count; i++)
+            {
+                DataRow dr = channelRecordTable.NewRow();
+
+                dr.BeginEdit();
+
+                dr["RecordID"] = spPaymentInfoWrappers[i].Id;
+                dr["CreateDate"] = spPaymentInfoWrappers[i].CreateDate;
+
+                foreach (string field in SPChannelWrapper.fields)
+                {
+                    dr[field] = spPaymentInfoWrappers[i].GetMappingValue(field);
+                }
+
+                dr.EndEdit();
+
+                channelRecordTable.Rows.Add(dr);
+
+
+            }
+
+            channelRecordTable.AcceptChanges();
+
+            return channelRecordTable;
 
         }
+
+        public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate
+            (int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            if (channelId == 0)
+                throw new ArgumentException(" channelId not allow 0.");
+
+            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelId);
+
+            List<SPPaymentInfoWrapper> spPaymentInfoWrappers = ConvertToWrapperList(businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+                                                                                                  startDateTime,
+                                                                                                  enddateTime,dataType,
+                                                                                                  sortFieldName, isDesc,
+                                                                                                  pageIndex, pageSize,
+                                                                                                  out recordCount));
+
+            DataTable channelRecordTable = channelWrapper.BuildChannelRecordTable();
+
+            for (int i = 0; i < spPaymentInfoWrappers.Count; i++)
+            {
+                DataRow dr = channelRecordTable.NewRow();
+
+                dr.BeginEdit();
+
+                dr["RecordID"] = spPaymentInfoWrappers[i].Id;
+                dr["CreateDate"] = spPaymentInfoWrappers[i].CreateDate;
+
+                foreach (string field in SPChannelWrapper.fields)
+                {
+                    dr[field] = spPaymentInfoWrappers[i].GetMappingValue(field);
+                }
+
+                dr.EndEdit();
+
+                channelRecordTable.Rows.Add(dr);
+
+
+            }
+
+            channelRecordTable.AcceptChanges();
+
+            return channelRecordTable;
+
+        }
+
+
 
 	    private string values;
 
@@ -187,5 +273,112 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 	    }
+
+
+        public string GetMappingValue(string mappingName)
+        {
+            switch (mappingName)
+            {
+                case "cpid":
+                    return this.Cpid;
+                case "mid":
+                    return this.Mid;
+                case "mobile":
+                    return this.MobileNumber;
+                case "port":
+                    return this.Port;
+                case "ywid":
+                    return this.Ywid;
+                case "msg":
+                    return this.Message;
+                case "linkid":
+                    return this.Linkid;
+                case "dest":
+                    return this.Dest;
+                case "price":
+                    return this.Price;
+                case "extendfield1":
+                    return this.ExtendField1;
+                case "extendfield2":
+                    return this.ExtendField2;
+                case "extendfield3":
+                    return this.ExtendField3;
+                case "extendfield4":
+                    return this.ExtendField4;
+                case "extendfield5":
+                    return this.ExtendField5;
+                case "extendfield6":
+                    return this.ExtendField6;
+                case "extendfield7":
+                    return this.ExtendField7;
+                case "extendfield8":
+                    return this.ExtendField8;
+                case "extendfield9":
+                    return this.ExtendField9;
+                default:
+                    return "";
+            }
+        }
+
+        public void SetMappingValue(string mappingName, string sValue)
+        {
+            switch (mappingName)
+            {
+                case "cpid":
+                    this.Cpid = sValue;
+                    break;
+                case "mid":
+                    this.Mid = sValue;
+                    break;
+                case "mobile":
+                    this.MobileNumber = sValue;
+                    break;
+                case "port":
+                    this.Port = sValue;
+                    break;
+                case "ywid":
+                    this.Ywid = sValue;
+                    break;
+                case "msg":
+                    this.Message = sValue;
+                    break;
+                case "linkid":
+                    this.Linkid = sValue;
+                    break;
+                case "dest":
+                    this.Dest = sValue;
+                    break;
+                case "price":
+                    this.Price = sValue;
+                    break;
+                case "extendfield1":
+                    this.ExtendField1 = sValue;
+                    break;
+                case "extendfield2":
+                    this.ExtendField2 = sValue;
+                    break;
+                case "extendfield3":
+                    this.ExtendField3 = sValue;
+                    break;
+                case "extendfield4":
+                    this.ExtendField4 = sValue;
+                    break;
+                case "extendfield5":
+                    this.ExtendField5 = sValue;
+                    break;
+                case "extendfield6":
+                    this.ExtendField6 = sValue;
+                    break;
+                case "extendfield7":
+                    this.ExtendField7 = sValue;
+                    break;
+                case "extendfield8":
+                    this.ExtendField8 = sValue;
+                    break;
+                case "extendfield9":
+                    this.ExtendField9 = sValue;
+                    break;
+            }
+        }
     }
 }

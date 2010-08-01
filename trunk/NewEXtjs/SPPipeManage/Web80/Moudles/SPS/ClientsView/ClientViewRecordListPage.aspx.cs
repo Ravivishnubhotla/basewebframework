@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Common.Web.AppClass;
-using Newtonsoft.Json;
+
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
@@ -20,7 +20,48 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             if (Ext.IsAjaxRequest)
                 return;
 
+            SetTitle();
 
+            storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID)));
+
+            this.GridPanel1.StoreID = "storeData";
+
+            this.PagingToolBar1.StoreID = "storeData";
+        }
+
+       
+
+        private DataReader GetJsonReaderByDataTable(SPChannelWrapper channelWrapper)
+        {
+            JsonReader reader = new JsonReader();
+
+            reader.ReaderID = "RecordID";
+
+            reader.Fields.Add("RecordID", RecordFieldType.Int);
+            reader.Fields[reader.Fields.Count - 1].Mapping = "RecordID";
+
+            reader.Fields.Add("CreateDate", RecordFieldType.Date);
+            reader.Fields[reader.Fields.Count - 1].Mapping = "CreateDate";
+
+            Hashtable channelParams = channelWrapper.GetFieldMappings();
+
+            foreach (DictionaryEntry dictionaryEntry in channelParams)
+            {
+                string pName = dictionaryEntry.Value.ToString();
+                reader.Fields.Add(dictionaryEntry.Key.ToString(), RecordFieldType.String);
+                reader.Fields[reader.Fields.Count - 1].Mapping = dictionaryEntry.Key.ToString();
+                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("col" + pName, pName, false, dictionaryEntry.Key.ToString(), "", RendererFormat.None));
+            }
+
+            return reader;
+
+
+
+ 
+        }
+
+        private void SetTitle()
+        {
             string title = "";
 
             if(this.ChannleID>0)
@@ -67,43 +108,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 title += " 至今 ";               
             }
 
-
-            if (ChannleID > 0)
-            {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ChannleID);
-
-                if (channel != null)
-                {
-                    Hashtable channelParams = channel.GetFieldMappings();
-
-                    foreach (DictionaryEntry dictionaryEntry in channelParams)
-                    {
-                        string pName = dictionaryEntry.Value.ToString();
-
-                        this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("col" + pName, pName.ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", pName.ToLower())));
-                    }
-                }
-            }
-
-            this.gridPanelSPClientChannelSetting.Title =title;
-
-            this.gridPanelSPClientChannelSetting.Reload();
+            this.GridPanel1.Title = title;
         }
 
 
-        private Column NewColumn(string id, string header, string dataIndex, string renderHandler)
+        private Column NewColumn(string id, string header, bool cansort, string dataIndex, string render, RendererFormat rendererFormat)
         {
             Column col1 = new Column();
             col1.ColumnID = id;
             col1.Header = header;
-            col1.Sortable = false;
+            col1.Sortable = cansort;
             col1.DataIndex = dataIndex;
-            if (!string.IsNullOrEmpty(renderHandler))
+            if (!string.IsNullOrEmpty(render))
             {
                 if (col1.Renderer == null)
                     col1.Renderer = new Renderer();
-                col1.Renderer.Handler = renderHandler;
+                col1.Renderer.Fn = render;
             }
+
+            if (rendererFormat != RendererFormat.None)
+            {
+                if (col1.Renderer == null)
+                    col1.Renderer = new Renderer();
+                col1.Renderer.Format = rendererFormat;
+            }
+
             return col1;
         }
 
@@ -158,7 +187,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         }
 
 
-        protected void store1_Refresh(object sender, StoreRefreshDataEventArgs e)
+        protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             int recordCount = 0;
             string sortFieldName = "";
@@ -181,33 +210,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             else
                 pageIndex = startIndex / limit;
 
-            DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), "", false, pageIndex, limit, out recordCount);
 
-            if (ChannleID > 0)
-            {
+            if (storeData.Reader.Count == 0)
+                storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID)));
 
-
-            }
-
-            
-
-
-            //List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
-
-            //if (list.Count > 0)
-            //{
-            //    foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in list)
-            //    {
-            //        spPaymentInfoWrapper.Values = JsonConvert.SerializeObject(
-            //            spPaymentInfoWrapper.GetValues(
-            //                JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
-            //    }
-            //}
-
-            store1.DataSource = dt;
+            storeData.DataSource = dt;
             e.TotalCount = recordCount;
 
-            store1.DataBind();
+            storeData.DataBind();
 
 
         }

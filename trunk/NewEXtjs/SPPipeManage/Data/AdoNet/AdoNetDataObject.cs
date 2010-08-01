@@ -78,11 +78,11 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
-        public string BuildCountPageSql(string tableName, string where, string orderBy)
+        public string BuildCountPageSql(string tableName, string where)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendFormat(" SELECT COUNT(*) FROM {0} {1} {2} ", tableName, where, orderBy);
+            sb.AppendFormat(" SELECT COUNT(*) FROM {0} {1} ", tableName, where);
 
             return sb.ToString();
         }
@@ -97,9 +97,9 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
-        public int ExcuteCount(string tableName, string where, string orderBy)
+        public int ExcuteCount(string tableName, string where)
         {
-            string sql = BuildCountPageSql(tableName, where, orderBy);
+            string sql = BuildCountPageSql(tableName, where);
 
             object result = this.ExecuteScalar(sql, CommandType.Text, this.CreateNewDbParameters());
 
