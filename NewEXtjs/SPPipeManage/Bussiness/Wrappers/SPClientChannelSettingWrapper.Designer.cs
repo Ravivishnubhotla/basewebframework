@@ -76,6 +76,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
+		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
 		
         #endregion
 
@@ -205,6 +206,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.Disable = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string CommandColumn
+		{
+			get
+			{
+				return entity.CommandColumn;
+			}
+			set
+			{
+				entity.CommandColumn = value;
 			}
 		}
 		#endregion 

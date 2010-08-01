@@ -84,6 +84,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		
         #endregion
 
@@ -327,6 +328,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 				entity.FailedMessage = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SPUperWrapper UperID
+		{
+			get
+			{
+				return SPUperWrapper.ConvertEntityToWrapper(entity.UperID) ;
+			}
+			set
+			{
+				entity.UperID = ((value == null) ? null : value.entity);
+			}
+		}
 		#endregion 
 
 
@@ -334,6 +349,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SPChannelWrapper> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperWrapper uperID, out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUperID(orderByColumnName, isDesc, pageIndex, pageSize, uperID.entity, out recordCount));
+        }
+
+        public static List<SPChannelWrapper> FindAllByUperID(SPUperWrapper uperID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByUperID(uperID.entity));
+        }
+		
 
 
 
