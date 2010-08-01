@@ -31,6 +31,16 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPFailedRequestServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPFailedRequestServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPFailedRequestDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPInterceptRateServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPInterceptRateServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPInterceptRateDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPMemoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPMemoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPMemoDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -61,6 +71,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPUperServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPUperServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPUperDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
 
 
 
@@ -71,12 +86,15 @@
     <property name="SPClientServiceProxyInstance" ref="SPClientServiceProxyIocID"/>
     <property name="SPClientChannelSettingServiceProxyInstance" ref="SPClientChannelSettingServiceProxyIocID"/>
     <property name="SPDayReportServiceProxyInstance" ref="SPDayReportServiceProxyIocID"/>
+    <property name="SPFailedRequestServiceProxyInstance" ref="SPFailedRequestServiceProxyIocID"/>
+    <property name="SPInterceptRateServiceProxyInstance" ref="SPInterceptRateServiceProxyIocID"/>
     <property name="SPMemoServiceProxyInstance" ref="SPMemoServiceProxyIocID"/>
     <property name="SPPaymentInfoServiceProxyInstance" ref="SPPaymentInfoServiceProxyIocID"/>
     <property name="SPRequestInfoServiceProxyInstance" ref="SPRequestInfoServiceProxyIocID"/>
     <property name="SPSendClientParamsServiceProxyInstance" ref="SPSendClientParamsServiceProxyIocID"/>
     <property name="SPSendRequestInfoServiceProxyInstance" ref="SPSendRequestInfoServiceProxyIocID"/>
     <property name="SPTestRecievedServiceProxyInstance" ref="SPTestRecievedServiceProxyIocID"/>
+    <property name="SPUperServiceProxyInstance" ref="SPUperServiceProxyIocID"/>
 
 
 

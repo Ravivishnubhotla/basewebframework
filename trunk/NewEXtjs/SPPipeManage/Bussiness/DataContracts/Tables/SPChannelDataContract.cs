@@ -31,6 +31,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		
         #endregion
 	
@@ -53,6 +54,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _createBy;
 		private string _okMessage;
 		private string _failedMessage;
+		private int? _uperID;
 		
 		#endregion
 
@@ -79,6 +81,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_createBy = null;
 			_okMessage = null;
 			_failedMessage = null;
+			_uperID = null;
 		}
 		#endregion
 
@@ -355,6 +358,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? UperID
+		{
+			get { return _uperID; }
+
+			set	
+			{
+				_uperID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -378,6 +395,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.CreateBy = wrapper.CreateBy;
 			this.OkMessage = wrapper.OkMessage;
 			this.FailedMessage = wrapper.FailedMessage;
+			this.UperID = (wrapper.UperID!=null) ? wrapper.UperID.Id : 0 ; 
 		}
 		
 		
@@ -401,6 +419,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.CreateBy = this.CreateBy;
 			wrapper.OkMessage = this.OkMessage;
 			wrapper.FailedMessage = this.FailedMessage;
+			wrapper.UperID =  (this.UperID==null) ? null : SPUperWrapper.FindById(this.UperID);
 		
 		return wrapper;
         }

@@ -23,6 +23,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
+		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
 		
         #endregion
 	
@@ -37,6 +38,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _commandType;
 		private string _commandCode;
 		private bool? _disable;
+		private string _commandColumn;
 		
 		#endregion
 
@@ -55,6 +57,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_commandType = null;
 			_commandCode = null;
 			_disable = false;
+			_commandColumn = null;
 		}
 		#endregion
 
@@ -192,6 +195,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string CommandColumn
+		{
+			get { return _commandColumn; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for CommandColumn", value, value.ToString());
+				_commandColumn = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -207,6 +227,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.CommandType = wrapper.CommandType;
 			this.CommandCode = wrapper.CommandCode;
 			this.Disable = wrapper.Disable;
+			this.CommandColumn = wrapper.CommandColumn;
 		}
 		
 		
@@ -222,6 +243,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.CommandType = this.CommandType;
 			wrapper.CommandCode = this.CommandCode;
 			wrapper.Disable = this.Disable;
+			wrapper.CommandColumn = this.CommandColumn;
 		
 		return wrapper;
         }
