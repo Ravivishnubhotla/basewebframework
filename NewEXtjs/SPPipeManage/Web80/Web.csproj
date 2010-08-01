@@ -321,6 +321,13 @@
     <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx.designer.cs">
       <DependentUpon>UCSPSendClientParamsAdd.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsClone.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsClone.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.cs">
       <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -479,6 +486,7 @@
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx" />
     <Content Include="Moudles\SPS\Memos\SPMemoListPage.aspx" />
     <Content Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx" />
     <Content Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx" />
