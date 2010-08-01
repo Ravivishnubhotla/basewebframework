@@ -27,6 +27,7 @@
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
 		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
+		<many-to-one column="UperID" name="UperID" class="LD.SPPipeManage.Entity.Tables.SPUperEntity,LD.SPPipeManage.Entity" />		
 
 
 

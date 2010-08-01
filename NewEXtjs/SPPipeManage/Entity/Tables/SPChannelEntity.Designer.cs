@@ -31,6 +31,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		
         #endregion
 	
@@ -56,6 +57,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _createBy;
 		private string _okMessage;
 		private string _failedMessage;
+		private SPUperEntity _uperID;
 		
 		#endregion
 
@@ -82,6 +84,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_createBy = null;
 			_okMessage = null;
 			_failedMessage = null;
+			_uperID = null;
 		}
 		#endregion
 
@@ -89,7 +92,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID)
 		{
 			_id = id;
 			_name = name;
@@ -108,6 +111,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_createBy = createBy;
 			_okMessage = okMessage;
 			_failedMessage = failedMessage;
+			_uperID = uperID;
 		}
 		#endregion     
 	
@@ -381,6 +385,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
 				_isChanged |= (_failedMessage != value); _failedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPUperEntity UperID
+		{
+			get { return _uperID; }
+
+			set	
+			{
+				_isChanged |= (_uperID != value); _uperID = value;
 			}
 		}
 		/// <summary>

@@ -23,6 +23,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_COMMANDTYPE = "CommandType";
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
+		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
 		
         #endregion
 	
@@ -40,6 +41,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _commandType;
 		private string _commandCode;
 		private bool? _disable;
+		private string _commandColumn;
 		
 		#endregion
 
@@ -58,6 +60,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_commandType = null;
 			_commandCode = null;
 			_disable = false;
+			_commandColumn = null;
 		}
 		#endregion
 
@@ -65,7 +68,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable)
+		public SPClientChannelSettingEntity( int id, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn)
 		{
 			_id = id;
 			_channelID = channelID;
@@ -76,6 +79,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_commandType = commandType;
 			_commandCode = commandCode;
 			_disable = disable;
+			_commandColumn = commandColumn;
 		}
 		#endregion     
 	
@@ -210,6 +214,23 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_disable != value); _disable = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string CommandColumn
+		{
+			get { return _commandColumn; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for CommandColumn", value, value.ToString());
+				_isChanged |= (_commandColumn != value); _commandColumn = value;
 			}
 		}
 		/// <summary>

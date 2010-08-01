@@ -30,6 +30,18 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CREATEBY = Property.ForName(SPChannelEntity.PROPERTY_NAME_CREATEBY);
 		public static readonly Property PROPERTY_OKMESSAGE = Property.ForName(SPChannelEntity.PROPERTY_NAME_OKMESSAGE);
 		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPChannelEntity.PROPERTY_NAME_FAILEDMESSAGE);
+		public static readonly Property PROPERTY_UPERID = Property.ForName(SPChannelEntity.PROPERTY_NAME_UPERID);
+		#region uperID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPChannelEntity> InClude_UperID_Query(NHibernateDynamicQueryGenerator<SPChannelEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPChannelEntity.PROPERTY_NAME_UPERID, PROPERTY_UPERID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_UPERID_ALIAS_NAME = "UperID_SPChannelEntity_Alias";
+		public static readonly Property PROPERTY_UPERID_ID = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Id");
+		public static readonly Property PROPERTY_UPERID_NAME = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Name");
+		public static readonly Property PROPERTY_UPERID_DESCRIPTION = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Description");
+		public static readonly Property PROPERTY_UPERID_CREATEDATE = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateDate");
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -81,9 +93,36 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "FailedMessage":
                     return typeof (string);
+                case "UperID":
+                    return typeof (int);
           }
 			return typeof(string);
         }
+		
+		public List<SPChannelEntity> GetList_By_SPUperEntity(SPUperEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_UPERID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPChannelEntity> GetPageList_By_SPUperEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_UPERID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
 		
 
 		
