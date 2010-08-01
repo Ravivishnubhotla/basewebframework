@@ -27,24 +27,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
 
-
-            //if (ChannelID > 0)
-            //{
-            //    SPChannelWrapper channel = SPChannelWrapper.FindById(ChannelID);
-
-            //    if (channel != null)
-            //    {
-            //        Hashtable channelParams = channel.GetFieldMappings();
-
-            //        foreach (DictionaryEntry dictionaryEntry in channelParams)
-            //        {
-            //            string pName = dictionaryEntry.Value.ToString();
-
-            //            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("col" + pName, pName.ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", pName.ToLower())));
-            //        }
-            //    }
-            //}
-
             this.gridPanelSPClientChannelSetting.Reload();
         }
 
@@ -105,23 +87,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 pageIndex = startIndex / limit + 1;
             else
                 pageIndex = startIndex / limit;
-
-            //if (ChannelID > 0)
-            //{
-            //    SPChannelWrapper channel = SPChannelWrapper.FindById(ChannelID);
-
-            //    if (channel != null)
-            //    {
-            //        Hashtable channelParams = channel.GetFieldMappings();
-
-            //        foreach (DictionaryEntry dictionaryEntry in channelParams)
-            //        {
-            //            string pName = dictionaryEntry.Value.ToString();
-
-            //            this.gridPanelSPClientChannelSetting.ColumnModel.Columns.Add(NewColumn("col" + pName, pName.ToLower(), "Values", string.Format("var cparams = Ext.decode(record.data.Values); return cparams.{0};", pName.ToLower())));
-            //        }
-            //    }
-            //}
 
 
             List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannelID, this.ClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
