@@ -21,6 +21,12 @@
  <object id="SPDayReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPDayReportDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPFailedRequestDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPFailedRequestDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPInterceptRateDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPInterceptRateDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPMemoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMemoDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -39,6 +45,9 @@
  <object id="SPTestRecievedDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPTestRecievedDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPUperDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPUperDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
 
 
 
@@ -51,12 +60,15 @@
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
     <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
+    <property name="SPFailedRequestDataObjectInstance" ref="SPFailedRequestDataObjectIocID"/>
+    <property name="SPInterceptRateDataObjectInstance" ref="SPInterceptRateDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
     <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
     <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
     <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
     <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
     <property name="SPTestRecievedDataObjectInstance" ref="SPTestRecievedDataObjectIocID"/>
+    <property name="SPUperDataObjectInstance" ref="SPUperDataObjectIocID"/>
  
 
 

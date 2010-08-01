@@ -115,6 +115,14 @@
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPFailedRequestDataObject.cs" />
+    <Compile Include="Tables\SPFailedRequestDataObject.Designer.cs">
+      <DependentUpon>SPFailedRequestDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPInterceptRateDataObject.cs" />
+    <Compile Include="Tables\SPInterceptRateDataObject.Designer.cs">
+      <DependentUpon>SPInterceptRateDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPMemoDataObject.cs" />
     <Compile Include="Tables\SPMemoDataObject.Designer.cs">
       <DependentUpon>SPMemoDataObject.cs</DependentUpon>
@@ -138,6 +146,10 @@
     <Compile Include="Tables\SPTestRecievedDataObject.cs" />
     <Compile Include="Tables\SPTestRecievedDataObject.Designer.cs">
       <DependentUpon>SPTestRecievedDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPUperDataObject.cs" />
+    <Compile Include="Tables\SPUperDataObject.Designer.cs">
+      <DependentUpon>SPUperDataObject.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

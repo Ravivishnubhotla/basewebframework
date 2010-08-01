@@ -38,6 +38,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_CREATEBY = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy");
 		public static readonly Property PROPERTY_CHANNELID_OKMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OkMessage");
 		public static readonly Property PROPERTY_CHANNELID_FAILEDMESSAGE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".FailedMessage");
+		public static readonly Property PROPERTY_CHANNELID_UPERID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UperID");
 		#endregion
 		public static readonly Property PROPERTY_CLINETID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CLINETID);
 		#region clinetID字段外键查询字段
@@ -62,6 +63,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_COMMANDTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDTYPE);
 		public static readonly Property PROPERTY_COMMANDCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCODE);
 		public static readonly Property PROPERTY_DISABLE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DISABLE);
+		public static readonly Property PROPERTY_COMMANDCOLUMN = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCOLUMN);
       
 		#region 子类集合字段查询字段
 	
@@ -97,6 +99,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "Disable":
                     return typeof (bool);
+                case "CommandColumn":
+                    return typeof (string);
           }
 			return typeof(string);
         }

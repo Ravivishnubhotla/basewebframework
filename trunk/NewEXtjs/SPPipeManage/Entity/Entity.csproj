@@ -95,6 +95,14 @@
     <Compile Include="Tables\SPDayReportEntity.Designer.cs">
       <DependentUpon>SPDayReportEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPFailedRequestEntity.cs" />
+    <Compile Include="Tables\SPFailedRequestEntity.Designer.cs">
+      <DependentUpon>SPFailedRequestEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPInterceptRateEntity.cs" />
+    <Compile Include="Tables\SPInterceptRateEntity.Designer.cs">
+      <DependentUpon>SPInterceptRateEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPMemoEntity.cs" />
     <Compile Include="Tables\SPMemoEntity.Designer.cs">
       <DependentUpon>SPMemoEntity.cs</DependentUpon>
@@ -118,6 +126,10 @@
     <Compile Include="Tables\SPTestRecievedEntity.cs" />
     <Compile Include="Tables\SPTestRecievedEntity.Designer.cs">
       <DependentUpon>SPTestRecievedEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPUperEntity.cs" />
+    <Compile Include="Tables\SPUperEntity.Designer.cs">
+      <DependentUpon>SPUperEntity.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +167,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPDayReportMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPTestRecievedMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPFailedRequestMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPUperMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPInterceptRateMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
