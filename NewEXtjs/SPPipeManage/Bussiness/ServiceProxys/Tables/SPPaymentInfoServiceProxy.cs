@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -16,7 +17,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     {
         List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
 
-        DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
+        //DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -43,57 +45,81 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    out recordCount);
         }
 
-        public DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        public List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
-            string tableName = "[SPPaymentInfo]";
+            SPChannelEntity channelEntity = null;
 
-            string orderBy = " Order By [CreateDate] DESC ";
-
-            string where = " Where 1=1 ";
-
-            if(channelId<=0)
-                throw new ArgumentException(" channelId must great than 0.", "channelId");
-
-            where += string.Format(" AND (ChannelID={0}) ", channelId);
-
-            if(clientId>0)
-            {
-                where += string.Format(" AND (ClientID={0}) ", clientId);
-            }
-
-            if(startDateTime!=DateTime.MinValue)
-            {
-                where += string.Format(" AND (CreateDate>={0}) ", startDateTime.Date);
-            }
-
-            if (enddateTime != DateTime.MinValue)
-            {
-                where += string.Format(" AND (CreateDate<{0}) ", enddateTime.AddDays(1).Date);
-            }
-
-            string selectfield = " [CreateDate] ";
-
-            SPChannelEntity channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
-
-            List<SPChannelParamsEntity> cparam =
-                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetList_By_SPChannelEntity(
-                    channelEntity);
+            if (channelId > 0)
+                channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
 
 
-            foreach (SPChannelParamsEntity spChannelParamsEntity in cparam)
-            {
-                selectfield += string.Format(" ,[{0}] ", spChannelParamsEntity.ParamsMappingName);
-            }
+            SPClientEntity clientEntity = null;
+
+            if (clientId > 0)
+                clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientId);
 
 
-            recordCount = this.AdoNetDb.ExcuteCount(tableName, where, orderBy);
-
-            return this.AdoNetDb.ExcutePageResult(selectfield, tableName, where, orderBy, pageIndex, pageSize);
-
-
-
-
-
+            return this.SelfDataObj.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(channelEntity, clientEntity,
+                                                                                   startDateTime,
+                                                                                   enddateTime, dataType.ToString(),
+                                                                                   sortFieldName, isDesc,
+                                                                                   pageIndex, pageSize,
+                                                                                   out recordCount);
         }
+
+        //public DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        //{
+
+
+
+
+
+
+        //    //string tableName = "[SPPaymentInfo]";
+
+        //    //string orderBy = " Order By [CreateDate] DESC ";
+
+        //    //string where = " Where IsIntercept=1 ";
+
+        //    //if(channelId<=0)
+        //    //    throw new ArgumentException(" channelId must great than 0.", "channelId");
+
+        //    //where += string.Format(" AND (ChannelID={0}) ", channelId);
+
+        //    //if(clientId>0)
+        //    //{
+        //    //    where += string.Format(" AND (ClientID={0}) ", clientId);
+        //    //}
+
+        //    //if(startDateTime!=DateTime.MinValue)
+        //    //{
+        //    //    where += string.Format(" AND (CreateDate>='{0}') ", startDateTime.Date.ToShortDateString());
+        //    //}
+
+        //    //if (enddateTime != DateTime.MinValue)
+        //    //{
+        //    //    where += string.Format(" AND (CreateDate<'{0}') ", enddateTime.AddDays(1).Date.ToShortDateString());
+        //    //}
+
+        //    //string selectfield = " [CreateDate] ";
+
+        //    //SPChannelEntity channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
+
+        //    //List<SPChannelParamsEntity> cparam =
+        //    //    this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetList_By_SPChannelEntity(
+        //    //        channelEntity);
+
+
+        //    //foreach (SPChannelParamsEntity spChannelParamsEntity in cparam)
+        //    //{
+        //    //    selectfield += string.Format(" ,[{0}] ", spChannelParamsEntity.ParamsMappingName);
+        //    //}
+
+
+        //    //recordCount = this.AdoNetDb.ExcuteCount(tableName, where);
+
+        //    //return this.AdoNetDb.ExcutePageResult(selectfield, tableName, where, orderBy, pageIndex, pageSize);
+
+        //}
     }
 }

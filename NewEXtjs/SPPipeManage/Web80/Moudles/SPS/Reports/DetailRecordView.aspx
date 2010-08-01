@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="ClientViewRecordListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientViewRecordListPage" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="DetailRecordView.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.DetailRecordView" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -41,3 +39,4 @@
         </Body>
     </ext:ViewPort>
 </asp:Content>
+
