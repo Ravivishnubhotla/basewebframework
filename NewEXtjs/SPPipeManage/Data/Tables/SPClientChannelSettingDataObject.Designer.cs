@@ -64,6 +64,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_COMMANDCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCODE);
 		public static readonly Property PROPERTY_DISABLE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DISABLE);
 		public static readonly Property PROPERTY_COMMANDCOLUMN = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCOLUMN);
+		public static readonly Property PROPERTY_INTERCEPTRATETYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATETYPE);
       
 		#region 子类集合字段查询字段
 	
@@ -100,6 +101,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "Disable":
                     return typeof (bool);
                 case "CommandColumn":
+                    return typeof (string);
+                case "InterceptRateType":
                     return typeof (string);
           }
 			return typeof(string);

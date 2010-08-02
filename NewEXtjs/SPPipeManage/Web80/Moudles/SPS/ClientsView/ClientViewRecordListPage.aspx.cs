@@ -42,15 +42,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             reader.Fields.Add("CreateDate", RecordFieldType.Date);
             reader.Fields[reader.Fields.Count - 1].Mapping = "CreateDate";
+            this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCreateDate", "CreateDate", false, "CreateDate", "Ext.util.Format.dateRenderer('n/d/Y H:i:s A')", RendererFormat.None));
 
-            Hashtable channelParams = channelWrapper.GetFieldMappings();
+            List<SPChannelParamsWrapper> channelParams = channelWrapper.GetAllShowParams();
 
-            foreach (DictionaryEntry dictionaryEntry in channelParams)
+            foreach (SPChannelParamsWrapper channelParam in channelParams)
             {
-                string pName = dictionaryEntry.Value.ToString();
-                reader.Fields.Add(dictionaryEntry.Key.ToString(), RecordFieldType.String);
-                reader.Fields[reader.Fields.Count - 1].Mapping = dictionaryEntry.Key.ToString();
-                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("col" + pName, pName, false, dictionaryEntry.Key.ToString(), "", RendererFormat.None));
+                string pName = channelParam.Name.ToString();
+                reader.Fields.Add(channelParam.ParamsMappingName, RecordFieldType.String);
+                reader.Fields[reader.Fields.Count - 1].Mapping = channelParam.ParamsMappingName.ToString();
+                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("col" + pName, pName, false, channelParam.ParamsMappingName.ToString(), "", RendererFormat.None));
             }
 
             return reader;

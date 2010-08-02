@@ -208,6 +208,10 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
+            reportDt.Columns.Add(new DataColumn("ChannelID", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("ClientID", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
+            
 
             reportDt.AcceptChanges();
 
@@ -230,7 +234,10 @@ namespace LD.SPPipeManage.Data.AdoNet
                                   reportResult.DownCount,
                                   reportResult.InterceptCount,
                                   reportResult.DownSycnCount,
-                                  reportResult.InterceptRate);
+                                  reportResult.InterceptRate, 
+                                  (int)rowChannelClient["ChannelID"], 
+                                  (int)rowChannelClient["ClientID"],
+                                  date);
             }
 
             return reportDt;
@@ -530,6 +537,8 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.Columns.Add(new DataColumn("InterceptCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
             reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
+            reportDt.Columns.Add(new DataColumn("ChannelID", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("ClientID", typeof(int)));
 
             reportDt.AcceptChanges();
 
@@ -553,13 +562,14 @@ namespace LD.SPPipeManage.Data.AdoNet
                 reportDt.Rows.Add(j, System.DateTime.Now.Date,
                                   rowChannelClient["ChannelName"], 
                                   rowChannelClient["ClientName"],
-                                  rowChannelClient["ChannelName"] + " - " + rowChannelClient["ClientName"]
-                                  ,
+                                  rowChannelClient["ChannelName"] + " - " + rowChannelClient["ClientName"],
                                   reportResult.TotalCount, 
                                   reportResult.DownCount, 
                                   reportResult.InterceptCount,
                                   reportResult.DownSycnCount,
-                                  reportResult.InterceptRate);
+                                  reportResult.InterceptRate,
+                                  (int)rowChannelClient["ChannelID"],
+                                  (int)rowChannelClient["ClientID"]);
             }
 
             return reportDt;

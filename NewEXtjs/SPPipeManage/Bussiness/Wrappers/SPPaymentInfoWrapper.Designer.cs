@@ -533,9 +533,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPPaymentInfoWrapper> ConvertToWrapperList(List<SPPaymentInfoEntity> entitylist)

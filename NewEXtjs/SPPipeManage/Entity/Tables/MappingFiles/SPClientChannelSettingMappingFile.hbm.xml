@@ -20,6 +20,7 @@
 		<property column="CommandCode" type="string" name="CommandCode"   length="1600" />	
 		<property column="Disable" type="Boolean" name="Disable"   />	
 		<property column="CommandColumn" type="string" name="CommandColumn"   length="100" />	
+		<property column="InterceptRateType" type="string" name="InterceptRateType"   length="100" />	
 
 
 
