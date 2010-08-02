@@ -77,6 +77,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_COMMANDCODE = "CommandCode";
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
+		public static readonly string PROPERTY_NAME_INTERCEPTRATETYPE = "InterceptRateType";
 		
         #endregion
 
@@ -220,6 +221,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.CommandColumn = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string InterceptRateType
+		{
+			get
+			{
+				return entity.InterceptRateType;
+			}
+			set
+			{
+				entity.InterceptRateType = value;
 			}
 		}
 		#endregion 

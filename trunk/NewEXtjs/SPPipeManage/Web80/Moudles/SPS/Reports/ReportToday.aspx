@@ -19,17 +19,55 @@
         }
 
 
-
-
-
         var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
-            if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
-                if (record.data.TotalCount == 9421) {
-                    alert(record);
-                }
+            if ((command.command == 'TotalCountDetail'||command.command == 'InterceptCountDetail'||command.command == 'DownCountDetail'||command.command == 'DownSycnCountDetail') && value > 0) {
                 command.hidden = false;
-                command.hideMode = 'display'; //you can try 'visibility' also                
+                command.hideMode = 'display';
             }
+        };
+
+
+        var gridCommand = function(command, record, row, col) {
+            if (command == 'TotalCountDetail'||command == 'InterceptCountDetail'||command == 'DownCountDetail'||command == 'DownSycnCountDetail')  {
+                
+                
+                var win = <%= this.Window1.ClientID %>;
+                
+                var datatypeName = "";
+                
+                if(command == 'TotalCountDetail')
+                {
+                    datatypeName = '总点播';
+                }
+                if(command == 'InterceptCountDetail')
+                {
+                    datatypeName = '扣量';
+                }
+                if(command == 'DownCountDetail')
+                {
+                    datatypeName = '转发下家';
+                }
+                if(command == 'DownSycnCountDetail')
+                {
+                    datatypeName = '同步下家';
+                }                
+                
+                
+                win.setTitle(" 通道 "+record.data.ChannelName+"  " + " 下家 "+record.data.ClientName+"  " + datatypeName + " 明细数据 ");
+                
+                win.autoLoad.url = 'DetailRecordView.aspx';
+                
+                win.autoLoad.params.ChannleID = record.data.ChannelID;
+                win.autoLoad.params.ClientID = record.data.ClientID;
+                win.autoLoad.params.StartDate = record.data.ReportDate;
+                win.autoLoad.params.EndDate = record.data.ReportDate;
+                win.autoLoad.params.DataType = command;           
+                win.show();              
+                
+                
+                //alert(win);
+            }
+
         };
 
     </script>
@@ -46,6 +84,9 @@
                     <ext:RecordField Name="InterceptRate" Type="Float" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ChannelID" Type="Int" />
+                    <ext:RecordField Name="ClientID" Type="Int" />
+                    <ext:RecordField Name="ReportDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -145,15 +186,33 @@
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                     </Commands>
-                                    <PrepareCommand Fn="prepareCellCommandTotalCount" />
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptSuccess" DataIndex="InterceptCount" Header="扣量数(条)"
                                     Sortable="true">
+                                    <Commands>
+                                        <ext:ImageCommand Icon="Table" CommandName="InterceptCountDetail" Hidden="true">
+                                            <ToolTip Text="显示所有明细数据" />
+                                        </ext:ImageCommand>
+                                    </Commands>
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colDownSuccess" DataIndex="DownCount" Header="转发下家数(条)" Sortable="true">
+                                    <Commands>
+                                        <ext:ImageCommand Icon="Table" CommandName="DownCountDetail" Hidden="true">
+                                            <ToolTip Text="显示所有明细数据" />
+                                        </ext:ImageCommand>
+                                    </Commands>
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colDownSuccess" DataIndex="DownSycnCount" Header="同步下家数(条)"
                                     Sortable="true">
+                                    <Commands>
+                                        <ext:ImageCommand Icon="Table" CommandName="DownSycnCountDetail" Hidden="true">
+                                            <ToolTip Text="显示所有明细数据" />
+                                        </ext:ImageCommand>
+                                    </Commands>
+                                    <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣量率" Sortable="true">
                                     <Renderer Fn="decimalFormat" />
@@ -161,9 +220,34 @@
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
+                        <Listeners>
+                            <Command Fn="gridCommand" />
+                        </Listeners>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="Window1" runat="server" Title="Window" Frame="true" Width="640" ConstrainHeader="true"
+        Height="480" Maximizable="true" Closable="true" Resizable="true" Modal="true"
+        ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="StartDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="EndDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

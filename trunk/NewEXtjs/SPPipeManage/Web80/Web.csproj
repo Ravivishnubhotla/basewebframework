@@ -513,6 +513,7 @@
     <Content Include="Moudles\SPS\Memos\SPMemoListPage.aspx" />
     <Content Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx" />
     <Content Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx" />
+    <Content Include="Moudles\SPS\Reports\Blank.htm" />
     <Content Include="Moudles\SPS\Reports\DetailRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\Excel.xsl" />
     <Content Include="Moudles\SPS\Reports\ReportToday.aspx" />

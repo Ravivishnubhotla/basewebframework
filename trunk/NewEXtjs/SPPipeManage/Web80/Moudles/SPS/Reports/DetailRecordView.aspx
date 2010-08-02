@@ -7,10 +7,6 @@
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="30" Mode="Raw" />
         </AutoLoadParams>
-        <BaseParams>
-            <ext:Parameter Name="docTypeID" Value="1" Mode="Value" />
-            <ext:Parameter Name="searchCondition" Value="NA" Mode="Value" />
-        </BaseParams>
         <Proxy>
             <ext:DataSourceProxy />
         </Proxy>
@@ -19,7 +15,7 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="GridPanel1" runat="server" StripeRows="true" TrackMouseOver="true">
+                    <ext:GridPanel ID="GridPanel1" Header=false runat="server" StripeRows="true" TrackMouseOver="true">
                         <ColumnModel ID="ColumnModel1" runat="server">
                         </ColumnModel>
                         <View>

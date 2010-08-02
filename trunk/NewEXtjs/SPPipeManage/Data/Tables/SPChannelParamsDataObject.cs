@@ -43,5 +43,18 @@ namespace LD.SPPipeManage.Data.Tables
             return this.FindListByQueryBuilder(queryGenerator);
 
         }
+
+        public List<SPChannelParamsEntity> GetAllShowParams(SPChannelEntity channle)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelParamsEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channle));
+
+            queryGenerator.AddWhereClause(PROPERTY_ISENABLE.Eq(true));
+
+            queryGenerator.AddOrderBy(PROPERTY_ID.Desc());
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

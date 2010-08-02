@@ -215,6 +215,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             
         }
 
+        public List<SPChannelParamsWrapper> GetAllShowParams()
+        {
+            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllShowParams(this.entity));
+        }
+
 	    public Hashtable GetFieldMappings()
 	    {
             Hashtable mappingFields = new Hashtable();
