@@ -111,7 +111,7 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Area" />
-                    <ext:RecordField Name="Operator" />
+                    <ext:RecordField Name="Operator"   />
                     <ext:RecordField Name="ChannelCode" />
                     <ext:RecordField Name="FuzzyCommand" />
                     <ext:RecordField Name="AccurateCommand" />
