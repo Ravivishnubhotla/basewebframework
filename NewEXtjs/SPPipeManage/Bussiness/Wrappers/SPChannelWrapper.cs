@@ -355,9 +355,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return "";
 
                 if (context.Request.Url.Port==80)
-                    return string.Format("{0}://{1}/{2}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,this.FuzzyCommand);
-    
-	            return string.Format("{0}://{1}:{2}/{3}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,
+                    return string.Format("{0}://{1}/SPSInterface/{2}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host, this.FuzzyCommand);
+
+                return string.Format("{0}://{1}:{2}/SPSInterface/{3}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,
 	                                 context.Request.Url.Port, this.FuzzyCommand);
 
 	        }

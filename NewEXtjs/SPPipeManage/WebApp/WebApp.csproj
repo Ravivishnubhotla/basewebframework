@@ -141,28 +141,24 @@
     </Compile>
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\UCChangeMySetting.ascx.cs">
       <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\UCChangeMySetting.ascx.designer.cs">
       <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\UCChangePassword.ascx.cs">
       <DependentUpon>UCChangePassword.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\UCChangePassword.ascx.designer.cs">
       <DependentUpon>UCChangePassword.ascx</DependentUpon>
@@ -190,21 +186,18 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.designer.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.cs">
       <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
       <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
@@ -225,42 +218,36 @@
     </Compile>
     <Compile Include="Moudles\SPS\Memos\SPMemoListPage.aspx.cs">
       <DependentUpon>SPMemoListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\SPMemoListPage.aspx.designer.cs">
       <DependentUpon>SPMemoListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx.cs">
       <DependentUpon>UCSPMemoAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx.designer.cs">
       <DependentUpon>UCSPMemoAdd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx.cs">
       <DependentUpon>UCSPMemoEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx.designer.cs">
       <DependentUpon>UCSPMemoEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ChannelPayReport.aspx.cs">
       <DependentUpon>ChannelPayReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ChannelPayReport.aspx.designer.cs">
       <DependentUpon>ChannelPayReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\TotalReport.aspx.cs">
       <DependentUpon>TotalReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\TotalReport.aspx.designer.cs">
       <DependentUpon>TotalReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\UserPayReport.aspx.cs">
       <DependentUpon>UserPayReport.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\UserPayReport.aspx.designer.cs">
       <DependentUpon>UserPayReport.aspx</DependentUpon>
@@ -309,7 +296,6 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.cs">
       <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.designer.cs">
       <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
@@ -554,7 +540,6 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.cs">
       <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.designer.cs">
       <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
