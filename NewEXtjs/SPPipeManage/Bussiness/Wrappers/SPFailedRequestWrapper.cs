@@ -1,7 +1,10 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
+using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -97,5 +100,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public static void SaveFailedRequest(HttpRequest request, string ip, string getRequestValue)
+	    {
+	        try
+	        {
+	            SPFailedRequestWrapper spFailedRequestWrapper = new SPFailedRequestWrapper();
+
+	            spFailedRequestWrapper.ChannelID = null;
+
+	            spFailedRequestWrapper.ClientID = null;
+
+	            spFailedRequestWrapper.RecievedSendUrl = request.Url.ToString();
+
+	            spFailedRequestWrapper.RecievedDate = DateTime.Now;
+
+	            spFailedRequestWrapper.RecievedContent = getRequestValue;
+
+	            spFailedRequestWrapper.RecievedIP = ip;
+
+	            Save(spFailedRequestWrapper);
+	        }
+	        catch (Exception e)
+	        {
+	            logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫",e);
+	        }
+	    }
     }
 }

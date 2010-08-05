@@ -22,9 +22,16 @@ namespace Legendigital.Common.Web.AppClass
             {
                 string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
 
+                Hashtable recivedata = GetRequestValue(context);
+
+                string recievdData = JsonConvert.SerializeObject(recivedata);
+
                 if (string.IsNullOrEmpty(fileName))
                 {
                     logger.Error("Process Request Error:not file Name.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData);
+
                     return;
                 }
 
@@ -39,30 +46,45 @@ namespace Legendigital.Common.Web.AppClass
                     if(channel.CStatus != ChannelStatus.Run)
                     {
                         logger.Error("Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n" + GetRequestInfo(context.Request));
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData);
                         return;
                     }
 
-
-                    Hashtable recivedata = GetRequestValue(context);
-
-                    string recievdData = JsonConvert.SerializeObject(recivedata);
-
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData);
+                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
 
                     if(result)
                         context.Response.Write(channel.GetOkCode());
                     else
+                    {
                         logger.Error("Process Request Error:Request failed.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
 
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData);
+                    }
                 }
                 else
                 {
                     logger.Error("Process Request Error:Can't find channle.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData);
                 }
             }
             catch (Exception ex)
             {
                 logger.Error("Process Request Error:\n" + "Request Info:\n" + GetRequestInfo(context.Request), ex);
+
+                try
+                {
+                    Hashtable recivedata = GetRequestValue(context);
+
+                    string recievdData = JsonConvert.SerializeObject(recivedata);
+
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData);
+                }
+                catch (Exception e)
+                {
+                    logger.Error("失败请求保存失败.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request));
+                }
+                
                 return;
             }
         }

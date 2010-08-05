@@ -126,7 +126,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName)); 
         }
 
-        public bool ProcessRequest(Hashtable hashtable, string ip, string query)
+        public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request)
         {
             Hashtable fieldMappings = this.GetFieldMappings();
 
@@ -148,6 +148,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield7 = GetParamsValue(hashtable, "extendfield7", fieldMappings);
             string extendfield8 = GetParamsValue(hashtable, "extendfield8", fieldMappings);
             string extendfield9 = GetParamsValue(hashtable, "extendfield9", fieldMappings);
+
+            if(string.IsNullOrEmpty(linkid))
+            {
+                logger.Error("not link id  " + this.Name + " channe;l setting.");
+
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query);
+
+                return false;
+            }
 
 
             string content = query;
@@ -189,6 +198,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.CreateDate = System.DateTime.Now;
                 paymentInfo.RequestContent = content;
 
+                //SPInterceptRateWrapper.InsertRecord(paymentInfo);
+
                 if (!paymentInfo.IsIntercept.Value)
                 {
                     if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
@@ -209,6 +220,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             else
             {
                 logger.Error("Process Request Error:Can't find channle  "+this.Name+" client setting.");
+
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content);
 
                 return false;
             }
@@ -331,7 +344,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        return "ok";
 	    }
 
-        public DataTable BuildChannelRecordTable()
+
+	    public string InterfaceUrl
+	    {
+	        get
+	        {
+                HttpContext context =  HttpContext.Current;
+
+                if(context==null)
+                    return "";
+
+                if (context.Request.Url.Port==80)
+                    return string.Format("{0}://{1}/{2}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,this.FuzzyCommand);
+    
+	            return string.Format("{0}://{1}:{2}/{3}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,
+	                                 context.Request.Url.Port, this.FuzzyCommand);
+
+	        }
+	    }
+
+	    public DataTable BuildChannelRecordTable()
         {
             DataTable record = new DataTable();
 

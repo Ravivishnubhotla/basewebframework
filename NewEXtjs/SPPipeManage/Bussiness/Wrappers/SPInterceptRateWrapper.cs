@@ -97,5 +97,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        //public static void InsertRecord(SPPaymentInfoWrapper paymentInfo)
+        //{
+        //    SPInterceptRateWrapper spInterceptRateWrappe  =new SPInterceptRateWrapper();
+
+        //}
     }
 }
