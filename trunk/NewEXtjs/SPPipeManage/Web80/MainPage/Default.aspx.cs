@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Common.Logging;
 using Coolite.Ext.Web;
+using Coolite.Utilities;
 using Legendigital.Common.Web.Jobs;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
@@ -23,6 +24,17 @@ namespace Legendigital.Common.Web.MainPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //foreach (Portlet portlet in ControlUtils.FindControls<Portlet>(this.Page))
+            //{
+            //    portlet.AjaxEvents.Hide.Event += Portlet_Hide;
+            //    portlet.AjaxEvents.Hide.EventMask.ShowMask = true;
+            //    portlet.AjaxEvents.Hide.EventMask.Msg = "Saving...";
+            //    portlet.AjaxEvents.Hide.EventMask.MinDelay = 500;
+
+            //    portlet.AjaxEvents.Hide.ExtraParams.Add(new Coolite.Ext.Web.Parameter("ID", portlet.ClientID));
+            //}
+
+
             if (Ext.IsAjaxRequest)
                 return;
 
@@ -86,6 +98,12 @@ namespace Legendigital.Common.Web.MainPage
                 mainNode.Nodes.Add(subNode);
                 CreateSubItem(submenu, subNode);
             }
+        }
+
+        protected void Portlet_Hide(object sender, AjaxEventArgs e)
+        {
+            string id = e.ExtraParams["ID"];
+            this.ScriptManagerProxy1.AddScript("Ext.Msg.alert('Status','" + id + " Hidden');");
         }
 
         private Icon GetDefaultIcon(bool iscategoty)

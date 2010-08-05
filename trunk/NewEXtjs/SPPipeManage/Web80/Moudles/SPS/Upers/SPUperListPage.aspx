@@ -55,7 +55,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选SPUper ? ',
+                Ext.MessageBox.confirm('警告','确认要删除所选上家 ? ',
                     function(e) {
                         if (e == 'yes')
                             Coolite.AjaxMethods.DeleteRecord(
@@ -65,7 +65,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除SPUper！',RefreshSPUperData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除上家！',RefreshSPUperData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -113,7 +113,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPUper" runat="server" StoreID="storeSPUper" StripeRows="true"
-                        Title="SPUper管理" Icon="Table"  >
+                        Title="上家管理" Icon="Table"  >
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -164,7 +164,7 @@
                         <LoadMask ShowMask="true" />
                         <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPUper"
-                                DisplayInfo="true" DisplayMsg="显示SPUper {0} - {1} 共 {2}" EmptyMsg="没有符合条件的SPUper" />
+                                DisplayInfo="true" DisplayMsg="显示上家 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的上家" />
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />                        

@@ -251,6 +251,27 @@
     <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx.designer.cs">
       <DependentUpon>ClientInterfaceSubmitUrlSetting.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoView.aspx.cs">
+      <DependentUpon>ClientMemoView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoView.aspx.designer.cs">
+      <DependentUpon>ClientMemoView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoViewChannleView.aspx.cs">
+      <DependentUpon>ClientMemoViewChannleView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoViewChannleView.aspx.designer.cs">
+      <DependentUpon>ClientMemoViewChannleView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx.cs">
+      <DependentUpon>ClientParamsDocumentView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx.designer.cs">
+      <DependentUpon>ClientParamsDocumentView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx.cs">
       <DependentUpon>ClientToDayReportPage.aspx</DependentUpon>
     </Compile>
@@ -489,6 +510,9 @@
     <Content Include="Moudles\SPS\ClientsView\BlankData.htm" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfacePage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientMemoView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientMemoViewChannleView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx" />
