@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPMemoAdd.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Memos.UCSPMemoAdd" %>
-<ext:Window ID="winSPMemoAdd" runat="server" Icon="ApplicationAdd" Title="新建SPMemo"
+<ext:Window ID="winSPMemoAdd" runat="server" Icon="ApplicationAdd" Title="新建公告"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -29,7 +29,7 @@
         <ext:Button ID="btnSaveSPMemo" runat="server" Text="添加" Icon="Add">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPMemoAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPMemo_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了系统应用。',callback);function callback(id) {#{formPanelSPMemoAdd}.getForm().reset();#{storeSPMemo}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了公告。',callback);function callback(id) {#{formPanelSPMemoAdd}.getForm().reset();#{storeSPMemo}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPUperEdit.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Upers.UCSPUperEdit" %>
-<ext:Window ID="winSPUperEdit" runat="server" Icon="ApplicationEdit" Title="编辑SPUper"
+<ext:Window ID="winSPUperEdit" runat="server" Icon="ApplicationEdit" Title="编辑上家"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -34,7 +34,7 @@
         <ext:Button ID="btnSaveSPUper" runat="server" Text="编辑" Icon="ApplicationEdit">
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPUperEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPUper_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了SPUper。',callback);function callback(id) { #{storeSPUper}.reload(); };
+                    OnEvent="btnSaveSPUper_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了上家。',callback);function callback(id) { #{storeSPUper}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

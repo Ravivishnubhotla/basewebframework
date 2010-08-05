@@ -56,7 +56,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选SPMemo ? ',
+                Ext.MessageBox.confirm('警告','确认要删除所选公告 ? ',
                     function(e) {
                         if (e == 'yes')
                             Coolite.AjaxMethods.DeleteRecord(
@@ -66,7 +66,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除SPMemo！',RefreshSPMemoData);            
+                                                                        Ext.Msg.alert('操作成功', '成功删除公告！',RefreshSPMemoData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -109,7 +109,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPMemo" runat="server" StoreID="storeSPMemo" StripeRows="true"
-                        Title="SPMemo管理" Icon="Table">
+                        Title="公告管理" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -143,7 +143,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="发布日期" Sortable="true">
                                 </ext:Column>
-                                <ext:CommandColumn Header="SPMemo管理" Width="160">
+                                <ext:CommandColumn Header="公告管理" Width="160">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
                                             <ToolTip Text="编辑" />
@@ -158,7 +158,7 @@
                         <LoadMask ShowMask="true" />
                         <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSPMemo"
-                                DisplayInfo="true" DisplayMsg="显示SPMemo {0} - {1} 共 {2}" EmptyMsg="没有符合条件的SPMemo" />
+                                DisplayInfo="true" DisplayMsg="显示公告 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的公告" />
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
