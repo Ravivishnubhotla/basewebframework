@@ -123,6 +123,8 @@
                     <ext:RecordField Name="CStatusString" />
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
+                            <ext:RecordField Name="InterfaceUrl" />            
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -210,6 +212,7 @@
                                 <Template ID="Template1" runat="server">
                     <br />
                         <p><b>描述：</b> {Description}</p>
+                        <p><b>接口链接：</b> {InterfaceUrl}</p>
                                 </Template>
                             </ext:RowExpander>
                         </Plugins>
