@@ -115,7 +115,6 @@
                                                         success: function(result) {
                                                             Ext.MessageBox.alert('Operation successful', 'Success Added System Role ', callback);
                                                             function callback(id) {
-                                                                debugger;
                                                             };
                                                         },
                                                         eventMask:

@@ -10,9 +10,6 @@
                     <ext:FormLayout ID="FormLayoutSPUper" runat="server" LabelSeparator=":" LabelWidth="100">
                         <Anchors>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtID" runat="server" FieldLabel="ID" AllowBlank="False" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

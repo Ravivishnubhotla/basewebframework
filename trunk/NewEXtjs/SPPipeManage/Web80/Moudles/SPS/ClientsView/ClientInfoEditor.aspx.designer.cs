@@ -12,7 +12,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
 
 
-    public partial class ClientMemoViewChannleView
+    public partial class ClientInfoEditor
     {
     }
 }

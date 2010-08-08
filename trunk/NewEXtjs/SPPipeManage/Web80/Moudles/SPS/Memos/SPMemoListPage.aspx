@@ -92,7 +92,7 @@
         <Reader>
             <ext:JsonReader ReaderID="Id">
                 <Fields>
-                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Title" />
                     <ext:RecordField Name="MemoContent" />
                     <ext:RecordField Name="CreateDate" Type="Date" />
@@ -135,13 +135,14 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+                                <ext:Column ColumnID="colID" DataIndex="Id" Header="主键" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colTitle" DataIndex="Title" Header="标题" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colMemoContent" DataIndex="MemoContent" Header="内容" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="发布日期" Sortable="true">
+                                <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y')" />
                                 </ext:Column>
                                 <ext:CommandColumn Header="公告管理" Width="160">
                                     <Commands>
