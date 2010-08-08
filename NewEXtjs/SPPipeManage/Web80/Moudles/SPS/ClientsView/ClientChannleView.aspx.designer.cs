@@ -11,25 +11,25 @@
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
     
     
-    public partial class ClientParamsDocumentView {
+    public partial class ClientChannleView {
         
         /// <summary>
-        /// hidClientSelect control.
+        /// ScriptManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidClientSelect;
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
         
         /// <summary>
-        /// storeSPSendClientParams control.
+        /// storeSPChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPSendClientParams;
+        protected global::Coolite.Ext.Web.Store storeSPChannel;
         
         /// <summary>
         /// viewPortMain control.
@@ -50,13 +50,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPSendClientParams control.
+        /// gridPanelSPChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPSendClientParams;
+        protected global::Coolite.Ext.Web.GridPanel gridPanelSPChannel;
         
         /// <summary>
         /// tbTop control.
@@ -93,5 +93,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// RowExpander1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.RowExpander RowExpander1;
     }
 }

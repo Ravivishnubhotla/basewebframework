@@ -25,6 +25,8 @@ namespace DbBackUpTools
 
                 string backupfileformat = ConfigurationManager.AppSettings["backupfileformat"];
 
+                bool comperssionbak = bool.Parse(ConfigurationManager.AppSettings["backupfileformat"]);
+
                 string backupfile = Path.Combine(appRoot,string.Format(backupfileformat, Convert.ToInt32(DateTime.Now.DayOfWeek)));
 
                 if(File.Exists(backupfile))
@@ -35,7 +37,15 @@ namespace DbBackUpTools
                     try
                     {
                         connection.Open();
-                        using (SqlCommand sqlCommand = new SqlCommand(string.Format("BACKUP DATABASE {1} TO DISK='{0}'", backupfile, connection.Database), connection))
+
+                        string sql = string.Format("BACKUP DATABASE {1} TO DISK='{0}' ", backupfile, connection.Database);
+
+                        if(comperssionbak)
+                        {
+                            sql = sql + " WITH COMPRESSION ";
+                        }
+
+                        using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
                         {
                             sqlCommand.CommandType = CommandType.Text;
                             sqlCommand.ExecuteNonQuery();

@@ -92,7 +92,7 @@
         <Reader>
             <ext:JsonReader ReaderID="Id">
                 <Fields>
-				<ext:RecordField Name="ID" Type="int" />
+				<ext:RecordField Name="Id" Type="int" />
 		<ext:RecordField Name="Name" />			
 		<ext:RecordField Name="Description" />			
 				<ext:RecordField Name="CreateDate" Type="Date" />
@@ -139,7 +139,7 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+				<ext:Column ColumnID="colID" DataIndex="Id" Header="主键" Sortable="true">
                                 </ext:Column>
 		<ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>			
@@ -148,7 +148,7 @@
 				<ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="创建日期" Sortable="true">
                                 </ext:Column>
  
-                        <ext:CommandColumn Header="SPUper管理" Width="160">
+                        <ext:CommandColumn Header="上家管理" Width="160">
 
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
-    public partial class ClientMemoViewChannleView : System.Web.UI.Page
+    public partial class ClientInfoEditor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
