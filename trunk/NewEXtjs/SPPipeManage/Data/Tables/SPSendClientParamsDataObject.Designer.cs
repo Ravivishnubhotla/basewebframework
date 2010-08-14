@@ -35,6 +35,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLIENTID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType");
 		#endregion
+		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_CHANNELID);
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_TITLE);
       
@@ -65,6 +66,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "IsRequired":
                     return typeof (bool);
                 case "ClientID":
+                    return typeof (int);
+                case "ChannelID":
                     return typeof (int);
                 case "MappingParams":
                     return typeof (string);

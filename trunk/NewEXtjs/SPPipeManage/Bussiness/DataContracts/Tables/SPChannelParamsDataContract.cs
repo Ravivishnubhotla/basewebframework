@@ -57,7 +57,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channelID = 0;
 			_paramsMappingName = null;
 			_title = null;
-			_showInClientGrid = null;
+			_showInClientGrid = true;
 		}
 		#endregion
 

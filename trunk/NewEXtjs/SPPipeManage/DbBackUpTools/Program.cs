@@ -25,7 +25,7 @@ namespace DbBackUpTools
 
                 string backupfileformat = ConfigurationManager.AppSettings["backupfileformat"];
 
-                bool comperssionbak = bool.Parse(ConfigurationManager.AppSettings["backupfileformat"]);
+                bool comperssionbak = bool.Parse(ConfigurationManager.AppSettings["comperssionbak"]);
 
                 string backupfile = Path.Combine(appRoot,string.Format(backupfileformat, Convert.ToInt32(DateTime.Now.DayOfWeek)));
 

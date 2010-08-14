@@ -42,6 +42,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
+		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		
         #endregion
 	
@@ -75,6 +77,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _extendField9;
 		private bool _isReport;
 		private string _requestContent;
+		private string _city;
+		private string _province;
 		
 		#endregion
 
@@ -112,6 +116,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_extendField9 = null;
 			_isReport = false;
 			_requestContent = null;
+			_city = null;
+			_province = null;
 		}
 		#endregion
 
@@ -563,9 +569,43 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 8000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
 				_requestContent = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string City
+		{
+			get { return _city; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for City", value, value.ToString());
+				_city = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Province
+		{
+			get { return _province; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for Province", value, value.ToString());
+				_province = value;
 			}
 		}
 
@@ -603,6 +643,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ExtendField9 = wrapper.ExtendField9;
 			this.IsReport = wrapper.IsReport;
 			this.RequestContent = wrapper.RequestContent;
+			this.City = wrapper.City;
+			this.Province = wrapper.Province;
 		}
 		
 		
@@ -637,6 +679,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ExtendField9 = this.ExtendField9;
 			wrapper.IsReport = this.IsReport;
 			wrapper.RequestContent = this.RequestContent;
+			wrapper.City = this.City;
+			wrapper.Province = this.Province;
 		
 		return wrapper;
         }
