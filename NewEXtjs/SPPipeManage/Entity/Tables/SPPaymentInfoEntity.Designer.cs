@@ -42,6 +42,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
+		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		
         #endregion
 	
@@ -78,6 +80,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _extendField9;
 		private bool _isReport;
 		private string _requestContent;
+		private string _city;
+		private string _province;
 		
 		#endregion
 
@@ -115,6 +119,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField9 = null;
 			_isReport = false;
 			_requestContent = null;
+			_city = null;
+			_province = null;
 		}
 		#endregion
 
@@ -122,7 +128,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -152,6 +158,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField9 = extendField9;
 			_isReport = isReport;
 			_requestContent = requestContent;
+			_city = city;
+			_province = province;
 		}
 		#endregion     
 	
@@ -603,9 +611,43 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 8000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
 				_isChanged |= (_requestContent != value); _requestContent = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string City
+		{
+			get { return _city; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for City", value, value.ToString());
+				_isChanged |= (_city != value); _city = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Province
+		{
+			get { return _province; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for Province", value, value.ToString());
+				_isChanged |= (_province != value); _province = value;
 			}
 		}
 		/// <summary>

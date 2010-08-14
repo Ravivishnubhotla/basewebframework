@@ -20,6 +20,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		
@@ -33,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isEnable;
 		private bool? _isRequired;
 		private int? _clientID;
+		private int? _channelID;
 		private string _mappingParams;
 		private string _title;
 		
@@ -50,6 +52,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isEnable = null;
 			_isRequired = null;
 			_clientID = null;
+			_channelID = null;
 			_mappingParams = null;
 			_title = null;
 		}
@@ -151,6 +154,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public int? ChannelID
+		{
+			get { return _channelID; }
+
+			set	
+			{
+				_channelID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public string MappingParams
 		{
 			get { return _mappingParams; }
@@ -193,6 +210,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsEnable = wrapper.IsEnable;
 			this.IsRequired = wrapper.IsRequired;
 			this.ClientID = (wrapper.ClientID!=null) ? wrapper.ClientID.Id : 0 ; 
+			this.ChannelID = wrapper.ChannelID;
 			this.MappingParams = wrapper.MappingParams;
 			this.Title = wrapper.Title;
 		}
@@ -207,6 +225,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsEnable = this.IsEnable;
 			wrapper.IsRequired = this.IsRequired;
 			wrapper.ClientID =  (this.ClientID==null) ? null : SPClientWrapper.FindById(this.ClientID);
+			wrapper.ChannelID = this.ChannelID;
 			wrapper.MappingParams = this.MappingParams;
 			wrapper.Title = this.Title;
 		

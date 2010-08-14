@@ -20,6 +20,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		
@@ -36,6 +37,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isEnable;
 		private bool? _isRequired;
 		private SPClientEntity _clientID;
+		private int? _channelID;
 		private string _mappingParams;
 		private string _title;
 		
@@ -53,6 +55,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isEnable = null;
 			_isRequired = null;
 			_clientID = null;
+			_channelID = null;
 			_mappingParams = null;
 			_title = null;
 		}
@@ -62,7 +65,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSendClientParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPClientEntity clientID, string mappingParams, string title)
+		public SPSendClientParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPClientEntity clientID, int? channelID, string mappingParams, string title)
 		{
 			_id = id;
 			_name = name;
@@ -70,6 +73,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isEnable = isEnable;
 			_isRequired = isRequired;
 			_clientID = clientID;
+			_channelID = channelID;
 			_mappingParams = mappingParams;
 			_title = title;
 		}
@@ -164,6 +168,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_clientID != value); _clientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChannelID
+		{
+			get { return _channelID; }
+
+			set	
+			{
+				_isChanged |= (_channelID != value); _channelID = value;
 			}
 		}
 

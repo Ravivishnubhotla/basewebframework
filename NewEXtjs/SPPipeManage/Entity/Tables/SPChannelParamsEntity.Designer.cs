@@ -60,7 +60,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelID = null;
 			_paramsMappingName = null;
 			_title = null;
-			_showInClientGrid = null;
+			_showInClientGrid = true;
 		}
 		#endregion
 

@@ -37,7 +37,9 @@
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="400" />	
 		<property column="ExtendField9" type="string" name="ExtendField9"   length="400" />	
 		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
-		<property column="RequestContent" type="string" name="RequestContent"   length="8000" />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
+		<property column="City" type="string" name="City"   length="40" />	
+		<property column="Province" type="string" name="Province"   length="40" />	
 
 
 

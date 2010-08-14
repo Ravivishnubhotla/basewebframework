@@ -61,7 +61,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_downRate = null;
 			_commandType = null;
 			_commandCode = null;
-			_disable = false;
+			_disable = null;
 			_commandColumn = null;
 			_interceptRateType = null;
 		}

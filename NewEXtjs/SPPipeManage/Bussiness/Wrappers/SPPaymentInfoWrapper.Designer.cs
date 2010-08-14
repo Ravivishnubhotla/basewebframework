@@ -95,6 +95,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
+		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		
         #endregion
 
@@ -490,6 +492,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.RequestContent = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string City
+		{
+			get
+			{
+				return entity.City;
+			}
+			set
+			{
+				entity.City = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Province
+		{
+			get
+			{
+				return entity.Province;
+			}
+			set
+			{
+				entity.Province = value;
 			}
 		}
 		#endregion 
