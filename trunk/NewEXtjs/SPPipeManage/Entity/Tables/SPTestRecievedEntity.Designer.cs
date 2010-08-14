@@ -98,7 +98,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for RecievedContent", value, value.ToString());
 				_isChanged |= (_recievedContent != value); _recievedContent = value;
 			}

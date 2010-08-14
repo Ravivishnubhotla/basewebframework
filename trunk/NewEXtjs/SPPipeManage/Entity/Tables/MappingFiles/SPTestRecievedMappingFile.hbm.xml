@@ -11,7 +11,7 @@
 </id>
 
 
-		<property column="RecievedContent" type="string" name="RecievedContent"   length="4000" />	
+		<property column="RecievedContent" type="string" name="RecievedContent"   length="2147483646" />	
 		<property column="RecievedDate" type="DateTime" name="RecievedDate"   />	
 		<property column="RecievedIP" type="string" name="RecievedIP"   length="100" />	
 		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="400" />	
