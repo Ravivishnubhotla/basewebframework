@@ -45,6 +45,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
+                if (this.cmbChannelCodeParamsName.SelectedItem != null)
+                    obj.CommandColumn = this.cmbChannelCodeParamsName.SelectedItem.Value;
+                else
+                    obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
 

@@ -15,7 +15,7 @@
 		<property column="RequestInfo" type="string" name="RequestInfo"   length="2147483646" />	
 		<property column="RequestDate" type="DateTime" name="RequestDate"   />	
 		<property column="IsToPayment" type="Boolean" name="IsToPayment"   />	
-		<property column="RequestUrl" type="string" name="RequestUrl"   length="4000" />	
+		<property column="RequestUrl" type="string" name="RequestUrl"   length="2147483646" />	
 		<property column="DataID" type="int" name="DataID"   />	
 
 

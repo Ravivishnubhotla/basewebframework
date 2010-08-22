@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
+    <Compile Include="AppClass\SPHandler.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

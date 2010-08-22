@@ -35,6 +35,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                         this.lblClientName.Text = obj.ClinetID.Name;
                     }         	
               	    this.txtInterceptRate.Text = obj.InterceptRate.ToString();
+
+                    if (!string.IsNullOrEmpty(obj.CommandColumn))
+                        this.cmbChannelCodeParamsName.SetValue(obj.CommandColumn);
+                    else
+                        this.cmbChannelCodeParamsName.SetValue("");
+
                     this.cmbCommandType.SetValue(obj.CommandType.ToString());          	
               	    this.txtCommandCode.Text = obj.CommandCode.ToString();          	
  
@@ -72,6 +78,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
+                if (this.cmbChannelCodeParamsName.SelectedItem != null)
+                    obj.CommandColumn = this.cmbChannelCodeParamsName.SelectedItem.Value;
+                else
+                    obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
 

@@ -91,6 +91,10 @@
     <Compile Include="Tables\SPClientEntity.Designer.cs">
       <DependentUpon>SPClientEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientGroupEntity.cs" />
+    <Compile Include="Tables\SPClientGroupEntity.Designer.cs">
+      <DependentUpon>SPClientGroupEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportEntity.cs" />
     <Compile Include="Tables\SPDayReportEntity.Designer.cs">
       <DependentUpon>SPDayReportEntity.cs</DependentUpon>
@@ -110,6 +114,10 @@
     <Compile Include="Tables\SPPaymentInfoEntity.cs" />
     <Compile Include="Tables\SPPaymentInfoEntity.Designer.cs">
       <DependentUpon>SPPaymentInfoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPPhoneAreaEntity.cs" />
+    <Compile Include="Tables\SPPhoneAreaEntity.Designer.cs">
+      <DependentUpon>SPPhoneAreaEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPRequestInfoEntity.cs" />
     <Compile Include="Tables\SPRequestInfoEntity.Designer.cs">
@@ -174,6 +182,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPInterceptRateMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

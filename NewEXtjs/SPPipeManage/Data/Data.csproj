@@ -111,6 +111,10 @@
     <Compile Include="Tables\SPClientDataObject.Designer.cs">
       <DependentUpon>SPClientDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientGroupDataObject.cs" />
+    <Compile Include="Tables\SPClientGroupDataObject.Designer.cs">
+      <DependentUpon>SPClientGroupDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>
@@ -130,6 +134,10 @@
     <Compile Include="Tables\SPPaymentInfoDataObject.cs" />
     <Compile Include="Tables\SPPaymentInfoDataObject.Designer.cs">
       <DependentUpon>SPPaymentInfoDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPPhoneAreaDataObject.cs" />
+    <Compile Include="Tables\SPPhoneAreaDataObject.Designer.cs">
+      <DependentUpon>SPPhoneAreaDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPRequestInfoDataObject.cs" />
     <Compile Include="Tables\SPRequestInfoDataObject.Designer.cs">
