@@ -100,15 +100,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-	    public static void SaveFailedRequest(HttpRequest request, string ip, string getRequestValue)
+	    public static void SaveFailedRequest(HttpRequest request, string ip, string getRequestValue,string errormessgae,int channelID,int clientID)
 	    {
 	        try
 	        {
 	            SPFailedRequestWrapper spFailedRequestWrapper = new SPFailedRequestWrapper();
 
-	            spFailedRequestWrapper.ChannelID = null;
+                if (channelID<=0)
+	                spFailedRequestWrapper.ChannelID = null;
+                else
+                    spFailedRequestWrapper.ChannelID = channelID;
 
-	            spFailedRequestWrapper.ClientID = null;
+                if (clientID <= 0)
+                    spFailedRequestWrapper.ClientID = null;
+                else
+                    spFailedRequestWrapper.ClientID = clientID;
 
 	            spFailedRequestWrapper.RecievedSendUrl = request.Url.ToString();
 
@@ -118,11 +124,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	            spFailedRequestWrapper.RecievedIP = ip;
 
+	            spFailedRequestWrapper.FailedMessage = errormessgae;
+
 	            Save(spFailedRequestWrapper);
 	        }
 	        catch (Exception e)
 	        {
-	            logger.Error("±£´æÊ§°ÜÇëÇóÊ§°Ü£º",e);
+                Logger.Error("±£´æÊ§°ÜÇëÇóÊ§°Ü£º", e);
 	        }
 	    }
     }

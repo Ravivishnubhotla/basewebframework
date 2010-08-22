@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -130,30 +131,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             Hashtable fieldMappings = this.GetFieldMappings();
 
-            string cpid = GetParamsValue(hashtable, "cpid", fieldMappings);
-            string mid = GetParamsValue(hashtable, "mid", fieldMappings);
-            string mobile = GetParamsValue(hashtable, "mobile", fieldMappings);
-            string port = GetParamsValue(hashtable, "port", fieldMappings);
-            string ywid = GetParamsValue(hashtable, "ywid", fieldMappings);
-            string msg = GetParamsValue(hashtable, "msg", fieldMappings);
-            string linkid = GetParamsValue(hashtable, "linkid", fieldMappings);
-            string dest = GetParamsValue(hashtable, "dest", fieldMappings);
-            string price = GetParamsValue(hashtable, "price", fieldMappings);
-            string extendfield1 = GetParamsValue(hashtable, "extendfield1", fieldMappings);
-            string extendfield2 = GetParamsValue(hashtable, "extendfield2", fieldMappings);
-            string extendfield3 = GetParamsValue(hashtable, "extendfield3", fieldMappings);
-            string extendfield4 = GetParamsValue(hashtable, "extendfield4", fieldMappings);
-            string extendfield5 = GetParamsValue(hashtable, "extendfield5", fieldMappings);
-            string extendfield6 = GetParamsValue(hashtable, "extendfield6", fieldMappings);
-            string extendfield7 = GetParamsValue(hashtable, "extendfield7", fieldMappings);
-            string extendfield8 = GetParamsValue(hashtable, "extendfield8", fieldMappings);
-            string extendfield9 = GetParamsValue(hashtable, "extendfield9", fieldMappings);
+            string cpid = GetMappedParamValueFromRequest(hashtable, "cpid", fieldMappings);
+            string mid = GetMappedParamValueFromRequest(hashtable, "mid", fieldMappings);
+            string mobile = GetMappedParamValueFromRequest(hashtable, "mobile", fieldMappings);
+            string port = GetMappedParamValueFromRequest(hashtable, "port", fieldMappings);
+            string ywid = GetMappedParamValueFromRequest(hashtable, "ywid", fieldMappings);
+            string msg = GetMappedParamValueFromRequest(hashtable, "msg", fieldMappings);
+            string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
+            string dest = GetMappedParamValueFromRequest(hashtable, "dest", fieldMappings);
+            string price = GetMappedParamValueFromRequest(hashtable, "price", fieldMappings);
+            string extendfield1 = GetMappedParamValueFromRequest(hashtable, "extendfield1", fieldMappings);
+            string extendfield2 = GetMappedParamValueFromRequest(hashtable, "extendfield2", fieldMappings);
+            string extendfield3 = GetMappedParamValueFromRequest(hashtable, "extendfield3", fieldMappings);
+            string extendfield4 = GetMappedParamValueFromRequest(hashtable, "extendfield4", fieldMappings);
+            string extendfield5 = GetMappedParamValueFromRequest(hashtable, "extendfield5", fieldMappings);
+            string extendfield6 = GetMappedParamValueFromRequest(hashtable, "extendfield6", fieldMappings);
+            string extendfield7 = GetMappedParamValueFromRequest(hashtable, "extendfield7", fieldMappings);
+            string extendfield8 = GetMappedParamValueFromRequest(hashtable, "extendfield8", fieldMappings);
+            string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
 
             if(string.IsNullOrEmpty(linkid))
             {
-                logger.Error("not link id  " + this.Name + " channe;l setting.");
+                Logger.Error("not link id  " + this.Name + " channel setting.");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, "not link id  " + this.Name + " channel setting.",this.Id,0);
 
                 return false;
             }
@@ -164,9 +165,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Hashtable exparams = GetEXParamsValue(hashtable);
 
-            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromYWID(ywid);
+            //SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromYWID(ywid);
 
-
+            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable, fieldMappings);
 
             if (channelSetting != null)
             {
@@ -198,6 +199,35 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.CreateDate = System.DateTime.Now;
                 paymentInfo.RequestContent = content;
 
+
+                if(!string.IsNullOrEmpty(mobile)&&mobile.Length>7)
+                {
+                    try
+                    {
+                        PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                        if (phoneAreaInfo!=null)
+                        {
+                            paymentInfo.Province = phoneAreaInfo.Province;
+                            paymentInfo.City = phoneAreaInfo.City;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error(ex.Message);
+                    }
+                }
+
+                try
+                {
+                    SPInterceptRateWrapper.InsertRate(channelSetting.ChannelID, channelSetting.ClinetID, paymentInfo.IsIntercept.Value);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+
+
+
                 //SPInterceptRateWrapper.InsertRecord(paymentInfo);
 
                 if (!paymentInfo.IsIntercept.Value)
@@ -213,15 +243,39 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     paymentInfo.SucesssToSend = false;
                 }
 
-                SPPaymentInfoWrapper.Save(paymentInfo);
+                try
+                {
+                    SPPaymentInfoWrapper.Save(paymentInfo);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Exception innerException = ex;
 
-                return true;
+                    while (innerException.InnerException !=null)
+                    {
+                        innerException = innerException.InnerException;
+                    }
+
+                    SqlException sqlException = innerException as SqlException;
+
+                    if (sqlException!=null && sqlException.Number == 2627)
+                    {
+                        Logger.Error("Process Request Error:linkid repeater");
+                        throw new Exception("Process Request Error:linkid repeater");
+                    }
+
+                    Logger.Error("Process Request Error:Isert date failed  " + ex.Message);
+                    throw new Exception("Process Request Error:Isert date failed  " + ex.Message);
+                }
+
+
             }
             else
             {
-                logger.Error("Process Request Error:Can't find channle  "+this.Name+" client setting.");
+                Logger.Error("Process Request Error:Can't find match Client  " + this.Name + " client setting.");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content,"Process Request Error:Can't find match Client  "+this.Name+" client setting.",this.Id,0);
 
                 return false;
             }
@@ -280,19 +334,44 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        return null;
 	    }
 
-	    private string GetParamsValue(Hashtable hashtable, string key, Hashtable fieldMappings)
-        {
-            string queryKey = key.ToLower();
 
-            if (fieldMappings.ContainsKey(key))
+        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,Hashtable fieldMappings)
+        {
+            List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
+
+            foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
             {
-                queryKey = (string)fieldMappings[key];
+                string columnName = "ywid";
+
+                if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
+                {
+                    columnName = channelSetting.CommandColumn;
+                }
+
+                string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
+
+                if (channelSetting.MatchByYWID(ywid))
+                {
+                    return channelSetting;
+                }
             }
 
-            if (!hashtable.ContainsKey(queryKey))
+            return null;
+        }
+
+	    private string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
+        {
+            string queryKey = mapName.ToLower();
+
+            if (fieldMappings.ContainsKey(mapName))
+            {
+                queryKey = (string)fieldMappings[mapName];
+            }
+
+            if (!requestValues.ContainsKey(queryKey))
                 return "";
 
-            return hashtable[queryKey].ToString();
+            return requestValues[queryKey].ToString();
         }
 
         public ChannelStatus CStatus

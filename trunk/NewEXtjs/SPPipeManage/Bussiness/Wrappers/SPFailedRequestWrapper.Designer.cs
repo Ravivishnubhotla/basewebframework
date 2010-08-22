@@ -74,6 +74,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_RECIEVEDSENDURL = "RecievedSendUrl";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		
         #endregion
 
@@ -175,6 +176,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ClientID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string FailedMessage
+		{
+			get
+			{
+				return entity.FailedMessage;
+			}
+			set
+			{
+				entity.FailedMessage = value;
 			}
 		}
 		#endregion 

@@ -102,5 +102,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         //    SPInterceptRateWrapper spInterceptRateWrappe  =new SPInterceptRateWrapper();
 
         //}
+	    public static void InsertRate(SPChannelWrapper channelId, SPClientWrapper clinetId,bool isInterCept)
+	    {
+            SPInterceptRateEntity spInterceptRateWrapper = businessProxy.FindRateByChannelIdAndClinetId(channelId.Id,clinetId.Id);
+
+            if (isInterCept)
+                spInterceptRateWrapper.InterceptCount = spInterceptRateWrapper.InterceptCount + 1;
+
+            spInterceptRateWrapper.TotalCount = spInterceptRateWrapper.TotalCount + 1;
+
+            spInterceptRateWrapper.InterceptRate = Convert.ToDecimal(spInterceptRateWrapper.InterceptCount) / Convert.ToDecimal(spInterceptRateWrapper.TotalCount);
+
+	        spInterceptRateWrapper.LastSycnDate = System.DateTime.Now;
+
+            Update(ConvertEntityToWrapper(spInterceptRateWrapper));
+	    }
     }
 }
