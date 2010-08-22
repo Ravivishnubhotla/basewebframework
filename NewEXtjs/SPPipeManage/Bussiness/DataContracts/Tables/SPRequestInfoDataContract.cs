@@ -141,7 +141,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestUrl", value, value.ToString());
 				_requestUrl = value;
 			}

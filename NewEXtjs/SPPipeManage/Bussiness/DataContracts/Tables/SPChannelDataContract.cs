@@ -32,6 +32,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
+		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
 		
         #endregion
 	
@@ -55,6 +56,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _okMessage;
 		private string _failedMessage;
 		private int? _uperID;
+		private string _channelCodeParamsName;
 		
 		#endregion
 
@@ -82,6 +84,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_okMessage = null;
 			_failedMessage = null;
 			_uperID = null;
+			_channelCodeParamsName = null;
 		}
 		#endregion
 
@@ -372,6 +375,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChannelCodeParamsName
+		{
+			get { return _channelCodeParamsName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelCodeParamsName", value, value.ToString());
+				_channelCodeParamsName = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -396,6 +416,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.OkMessage = wrapper.OkMessage;
 			this.FailedMessage = wrapper.FailedMessage;
 			this.UperID = (wrapper.UperID!=null) ? wrapper.UperID.Id : 0 ; 
+			this.ChannelCodeParamsName = wrapper.ChannelCodeParamsName;
 		}
 		
 		
@@ -420,6 +441,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.OkMessage = this.OkMessage;
 			wrapper.FailedMessage = this.FailedMessage;
 			wrapper.UperID =  (this.UperID==null) ? null : SPUperWrapper.FindById(this.UperID);
+			wrapper.ChannelCodeParamsName = this.ChannelCodeParamsName;
 		
 		return wrapper;
         }

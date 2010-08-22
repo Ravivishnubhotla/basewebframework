@@ -125,6 +125,22 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string ChannelClientRuleMatch
+        {
+            get
+            {
+                string columnName = "ywid";
+                
+                if (!string.IsNullOrEmpty(this.CommandColumn))
+                    columnName = this.CommandColumn;
+
+                if (this.CommandType == "7")
+                    return this.CommandTypeName;
+
+                return columnName + " " + this.CommandTypeName + " " + this.CommandCode;
+            }
+        }
+
 	    public static List<SPClientChannelSettingWrapper> GetSettingByChannel(SPChannelWrapper spChannelWrapper)
 	    {
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));

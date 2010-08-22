@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_RECIEVEDSENDURL = "RecievedSendUrl";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		
         #endregion
 	
@@ -33,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _recievedSendUrl;
 		private int? _channelID;
 		private int? _clientID;
+		private string _failedMessage;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_recievedSendUrl = null;
 			_channelID = null;
 			_clientID = null;
+			_failedMessage = null;
 		}
 		#endregion
 
@@ -161,6 +164,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4000)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_failedMessage = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -174,6 +194,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.RecievedSendUrl = wrapper.RecievedSendUrl;
 			this.ChannelID = wrapper.ChannelID;
 			this.ClientID = wrapper.ClientID;
+			this.FailedMessage = wrapper.FailedMessage;
 		}
 		
 		
@@ -187,6 +208,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.RecievedSendUrl = this.RecievedSendUrl;
 			wrapper.ChannelID = this.ChannelID;
 			wrapper.ClientID = this.ClientID;
+			wrapper.FailedMessage = this.FailedMessage;
 		
 		return wrapper;
         }
