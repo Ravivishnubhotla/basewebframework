@@ -17,6 +17,7 @@
 		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="400" />	
 		<property column="ChannelID" type="int" name="ChannelID"   />	
 		<property column="ClientID" type="int" name="ClientID"   />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="4000" />	
 
 
 

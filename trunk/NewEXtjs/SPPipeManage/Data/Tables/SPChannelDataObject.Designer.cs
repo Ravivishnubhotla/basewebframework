@@ -42,6 +42,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_UPERID_DESCRIPTION = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_UPERID_CREATEDATE = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateDate");
 		#endregion
+		public static readonly Property PROPERTY_CHANNELCODEPARAMSNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELCODEPARAMSNAME);
       
 		#region 子类集合字段查询字段
 	
@@ -95,6 +96,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "UperID":
                     return typeof (int);
+                case "ChannelCodeParamsName":
+                    return typeof (string);
           }
 			return typeof(string);
         }

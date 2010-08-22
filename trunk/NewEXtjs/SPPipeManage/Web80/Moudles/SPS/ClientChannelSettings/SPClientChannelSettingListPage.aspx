@@ -102,6 +102,7 @@
                     <ext:RecordField Name="CommandType" />
                     <ext:RecordField Name="CommandCode" />
                     <ext:RecordField Name="CommandTypeName" />
+                    <ext:RecordField Name="ChannelClientRuleMatch" />                  
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
                 </Fields>
@@ -149,9 +150,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCommandType" DataIndex="CommandTypeName" Header="指令类型" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colCommandCode" DataIndex="CommandCode" Header="指令代码" Sortable="true">
+                                <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则" Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道下家设置管理" Width="160">
                                     <Commands>

@@ -32,6 +32,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
+		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
 		
         #endregion
 	
@@ -58,6 +59,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _okMessage;
 		private string _failedMessage;
 		private SPUperEntity _uperID;
+		private string _channelCodeParamsName;
 		
 		#endregion
 
@@ -85,6 +87,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_okMessage = null;
 			_failedMessage = null;
 			_uperID = null;
+			_channelCodeParamsName = null;
 		}
 		#endregion
 
@@ -92,7 +95,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName)
 		{
 			_id = id;
 			_name = name;
@@ -112,6 +115,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_okMessage = okMessage;
 			_failedMessage = failedMessage;
 			_uperID = uperID;
+			_channelCodeParamsName = channelCodeParamsName;
 		}
 		#endregion     
 	
@@ -399,6 +403,23 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_uperID != value); _uperID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelCodeParamsName
+		{
+			get { return _channelCodeParamsName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelCodeParamsName", value, value.ToString());
+				_isChanged |= (_channelCodeParamsName != value); _channelCodeParamsName = value;
 			}
 		}
 		/// <summary>

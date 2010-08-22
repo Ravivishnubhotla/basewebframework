@@ -11,5 +11,15 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPInterceptRateDataObject
     {
+        public SPInterceptRateEntity FindRateByChannelIdAndClinetId(int channelId, int clientId)
+        {
+            NHibernateDynamicQueryGenerator<SPInterceptRateEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            queryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(clientId));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
     }
 }

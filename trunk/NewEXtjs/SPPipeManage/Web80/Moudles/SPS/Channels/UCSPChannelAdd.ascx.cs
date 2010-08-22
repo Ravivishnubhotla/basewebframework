@@ -47,6 +47,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.ChannelType = this.txtChannelType.Text.Trim();
                 obj.Price = Convert.ToDecimal(this.txtPrice.Value);
                 obj.Rate = Convert.ToInt32(this.txtRate.Value);
+                if (this.cmbChannelCodeParamsName.SelectedItem != null)
+                    obj.ChannelCodeParamsName = this.cmbChannelCodeParamsName.SelectedItem.Value;
+                else
+                    obj.ChannelCodeParamsName = "";
                 obj.Status = 0;
                 obj.CreateTime = System.DateTime.Now;
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;

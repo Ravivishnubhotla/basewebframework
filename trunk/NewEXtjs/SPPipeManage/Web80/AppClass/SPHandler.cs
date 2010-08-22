@@ -11,31 +11,30 @@ using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.AppClass
 {
-    public class SPRecievedHandler : IHttpHandler
+    public class SPHandler : IHttpHandler
     {
-        protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
+        protected static ILog logger = LogManager.GetLogger(typeof(SPHandler));
 
 
         public void ProcessRequest(HttpContext context)
         {
             try
             {
-
+                string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
 
                 Hashtable recivedata = GetRequestValue(context);
 
                 string recievdData = JsonConvert.SerializeObject(recivedata);
 
-                string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
-
                 if (string.IsNullOrEmpty(fileName))
                 {
                     logger.Error("Process Request Error:not file Name.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
 
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:not file Name.\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData,"Process Request Error:not file Name.\n",0,0);
 
                     return;
                 }
+
 
                 fileName = fileName.Substring(0, fileName.Length - ("Recieved").Length);
 
@@ -44,16 +43,16 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
-                    if(channel.CStatus != ChannelStatus.Run)
+                    if (channel.CStatus != ChannelStatus.Run)
                     {
                         logger.Error("Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n" + GetRequestInfo(context.Request));
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData,"Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n", channel.Id, 0);
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n", channel.Id, 0);
                         return;
                     }
 
                     bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
 
-                    if(result)
+                    if (result)
                         context.Response.Write(channel.GetOkCode());
                     else
                     {
@@ -65,7 +64,7 @@ namespace Legendigital.Common.Web.AppClass
                 else
                 {
                     logger.Error("Process Request Error:Can't find channle.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Can't find channle.\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Can't find channle.\n",0,0);
                 }
             }
             catch (Exception ex)
@@ -83,9 +82,9 @@ namespace Legendigital.Common.Web.AppClass
                 catch (Exception e)
                 {
                     logger.Error("失败请求保存失败.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "Process Request Error:" + ex.Message + "\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request),"Process Request Error:" + ex.Message + "\n", 0, 0);
                 }
-                
+
                 return;
             }
         }
@@ -103,7 +102,7 @@ namespace Legendigital.Common.Web.AppClass
         }
 
 
- 
+
 
 
         public static string GetRealIP()
@@ -122,7 +121,7 @@ namespace Legendigital.Common.Web.AppClass
             }
             catch (Exception ex)
             {
-                logger.Error("Get IP Error:",ex);
+                logger.Error("Get IP Error:", ex);
             }
             return ip;
         }

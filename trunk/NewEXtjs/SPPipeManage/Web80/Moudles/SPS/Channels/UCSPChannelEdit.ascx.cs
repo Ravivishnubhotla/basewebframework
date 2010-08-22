@@ -27,18 +27,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 if (obj != null)
                 {
-					              	this.txtName.Text = obj.Name.ToString();          	
-              	this.txtDescription.Text = obj.Description.ToString();          	
-              	this.txtArea.Text = obj.Area.ToString();          	
-      	
-              	this.txtChannelCode.Text = obj.ChannelCode.ToString();          	
-              	this.txtFuzzyCommand.Text = obj.FuzzyCommand.ToString();
-                this.txtPort.Text = obj.Port.ToString();          	
-              	this.txtChannelType.Text = obj.ChannelType.ToString();
-                this.txtPrice.Text = obj.Price.ToString();
-                this.txtRate.Text = obj.Rate.ToString();
-                this.txtOkMessage.Text = obj.OkMessage;
-                this.txtFailedMessage.Text = obj.FailedMessage;
+				    this.txtName.Text = obj.Name.ToString();          	
+              	    this.txtDescription.Text = obj.Description.ToString();          	
+              	    this.txtArea.Text = obj.Area.ToString();
+
+                    if (!string.IsNullOrEmpty(obj.ChannelCodeParamsName))
+                        this.cmbChannelCodeParamsName.SetValue(obj.ChannelCodeParamsName);
+                    else
+                        this.cmbChannelCodeParamsName.SetValue("");
+
+              	    this.txtChannelCode.Text = obj.ChannelCode.ToString();
+
+              	    this.txtFuzzyCommand.Text = obj.FuzzyCommand.ToString();
+                    this.txtPort.Text = obj.Port.ToString();          	
+              	    this.txtChannelType.Text = obj.ChannelType.ToString();
+                    this.txtPrice.Text = obj.Price.ToString();
+                    this.txtRate.Text = obj.Rate.ToString();
+                    this.txtOkMessage.Text = obj.OkMessage;
+                    this.txtFailedMessage.Text = obj.FailedMessage;
  
 
 
@@ -74,6 +80,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.Area = this.txtArea.Text.Trim();
 
                 obj.ChannelCode = this.txtChannelCode.Text.Trim();
+
+                if (this.cmbChannelCodeParamsName.SelectedItem != null)
+                    obj.ChannelCodeParamsName = this.cmbChannelCodeParamsName.SelectedItem.Value;
+                else
+                    obj.ChannelCodeParamsName = "";
+
                 obj.FuzzyCommand = this.txtFuzzyCommand.Text.Trim();
                 obj.Port = this.txtPort.Value.ToString();
                 obj.ChannelType = this.txtChannelType.Text.Trim();

@@ -80,6 +80,8 @@ namespace WebRequestTestConsole
 
         private static bool SendRequest(int i, string requesturl, int timeOut, string okMessage)
         {
+            Console.WriteLine(string.Format(requesturl, i));
+
             HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(string.Format(requesturl,i));
 
             webRequest.Timeout = timeOut;
