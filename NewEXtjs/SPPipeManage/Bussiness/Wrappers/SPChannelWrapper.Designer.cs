@@ -86,6 +86,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
+		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		
         #endregion
 
@@ -355,6 +356,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ChannelCodeParamsName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsAllowNullLinkID
+		{
+			get
+			{
+				return entity.IsAllowNullLinkID;
+			}
+			set
+			{
+				entity.IsAllowNullLinkID = value;
 			}
 		}
 		#endregion 

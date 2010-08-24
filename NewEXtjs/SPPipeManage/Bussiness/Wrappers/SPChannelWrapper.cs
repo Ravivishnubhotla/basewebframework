@@ -150,6 +150,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield8 = GetMappedParamValueFromRequest(hashtable, "extendfield8", fieldMappings);
             string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
 
+
+            if (string.IsNullOrEmpty(linkid) && this.IsAllowNullLinkID.HasValue && this.IsAllowNullLinkID.Value)
+            {
+                linkid = Guid.NewGuid().ToString();
+            }
+
             if(string.IsNullOrEmpty(linkid))
             {
                 Logger.Error("not link id  " + this.Name + " channel setting.");

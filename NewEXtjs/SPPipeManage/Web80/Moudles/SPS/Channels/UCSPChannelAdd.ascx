@@ -76,6 +76,9 @@
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="失败响应消息" AllowBlank="True" />
                             </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>

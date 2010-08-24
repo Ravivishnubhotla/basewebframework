@@ -158,6 +158,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtFailedMessage;
         
         /// <summary>
+        /// chkIsAllowNullLinkID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkIsAllowNullLinkID;
+        
+        /// <summary>
         /// btnSaveSPChannel control.
         /// </summary>
         /// <remarks>

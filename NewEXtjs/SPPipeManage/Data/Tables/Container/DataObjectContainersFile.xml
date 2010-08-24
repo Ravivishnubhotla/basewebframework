@@ -18,6 +18,9 @@
  <object id="SPClientChannelSettingDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPClientGroupDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientGroupDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPDayReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPDayReportDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -31,6 +34,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPPaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPaymentInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPPhoneAreaDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPhoneAreaDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRequestInfoDataObject, LD.SPPipeManage.Data">
@@ -59,11 +65,13 @@
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
     <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
+    <property name="SPClientGroupDataObjectInstance" ref="SPClientGroupDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
     <property name="SPFailedRequestDataObjectInstance" ref="SPFailedRequestDataObjectIocID"/>
     <property name="SPInterceptRateDataObjectInstance" ref="SPInterceptRateDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
     <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
+    <property name="SPPhoneAreaDataObjectInstance" ref="SPPhoneAreaDataObjectIocID"/>
     <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
     <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
     <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
