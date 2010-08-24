@@ -36,6 +36,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     else
                         this.cmbChannelCodeParamsName.SetValue("");
 
+                    if (obj.IsAllowNullLinkID.HasValue)
+                        chkIsAllowNullLinkID.Checked = obj.IsAllowNullLinkID.Value;
+
               	    this.txtChannelCode.Text = obj.ChannelCode.ToString();
 
               	    this.txtFuzzyCommand.Text = obj.FuzzyCommand.ToString();
@@ -85,6 +88,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     obj.ChannelCodeParamsName = this.cmbChannelCodeParamsName.SelectedItem.Value;
                 else
                     obj.ChannelCodeParamsName = "";
+
+                obj.IsAllowNullLinkID = chkIsAllowNullLinkID.Checked;
 
                 obj.FuzzyCommand = this.txtFuzzyCommand.Text.Trim();
                 obj.Port = this.txtPort.Value.ToString();

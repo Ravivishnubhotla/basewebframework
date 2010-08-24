@@ -16,6 +16,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPClientChannelSettingServiceProxy SPClientChannelSettingServiceProxyInstance
         {get; set;}
+		public ISPClientGroupServiceProxy SPClientGroupServiceProxyInstance
+        {get; set;}
 		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
         {get; set;}
 		public ISPFailedRequestServiceProxy SPFailedRequestServiceProxyInstance
@@ -25,6 +27,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
 		public ISPMemoServiceProxy SPMemoServiceProxyInstance
         {get; set;}
 		public ISPPaymentInfoServiceProxy SPPaymentInfoServiceProxyInstance
+        {get; set;}
+		public ISPPhoneAreaServiceProxy SPPhoneAreaServiceProxyInstance
         {get; set;}
 		public ISPRequestInfoServiceProxy SPRequestInfoServiceProxyInstance
         {get; set;}

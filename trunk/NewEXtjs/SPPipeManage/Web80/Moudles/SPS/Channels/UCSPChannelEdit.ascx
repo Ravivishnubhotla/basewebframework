@@ -75,6 +75,9 @@
                                 <ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="成功响应消息" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

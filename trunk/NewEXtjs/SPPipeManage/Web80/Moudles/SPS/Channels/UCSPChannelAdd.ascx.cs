@@ -51,6 +51,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     obj.ChannelCodeParamsName = this.cmbChannelCodeParamsName.SelectedItem.Value;
                 else
                     obj.ChannelCodeParamsName = "";
+                obj.IsAllowNullLinkID = chkIsAllowNullLinkID.Checked;
                 obj.Status = 0;
                 obj.CreateTime = System.DateTime.Now;
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
