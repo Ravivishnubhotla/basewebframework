@@ -33,6 +33,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
+		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		
         #endregion
 	
@@ -57,6 +58,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _failedMessage;
 		private int? _uperID;
 		private string _channelCodeParamsName;
+		private bool? _isAllowNullLinkID;
 		
 		#endregion
 
@@ -85,6 +87,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_failedMessage = null;
 			_uperID = null;
 			_channelCodeParamsName = null;
+			_isAllowNullLinkID = null;
 		}
 		#endregion
 
@@ -392,6 +395,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsAllowNullLinkID
+		{
+			get { return _isAllowNullLinkID; }
+
+			set	
+			{
+				_isAllowNullLinkID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -417,6 +434,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.FailedMessage = wrapper.FailedMessage;
 			this.UperID = (wrapper.UperID!=null) ? wrapper.UperID.Id : 0 ; 
 			this.ChannelCodeParamsName = wrapper.ChannelCodeParamsName;
+			this.IsAllowNullLinkID = wrapper.IsAllowNullLinkID;
 		}
 		
 		
@@ -442,6 +460,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.FailedMessage = this.FailedMessage;
 			wrapper.UperID =  (this.UperID==null) ? null : SPUperWrapper.FindById(this.UperID);
 			wrapper.ChannelCodeParamsName = this.ChannelCodeParamsName;
+			wrapper.IsAllowNullLinkID = this.IsAllowNullLinkID;
 		
 		return wrapper;
         }
