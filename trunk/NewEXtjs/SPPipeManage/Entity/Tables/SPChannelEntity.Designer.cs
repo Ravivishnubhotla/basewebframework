@@ -33,6 +33,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
+		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		
         #endregion
 	
@@ -60,6 +61,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _failedMessage;
 		private SPUperEntity _uperID;
 		private string _channelCodeParamsName;
+		private bool? _isAllowNullLinkID;
 		
 		#endregion
 
@@ -88,6 +90,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = null;
 			_uperID = null;
 			_channelCodeParamsName = null;
+			_isAllowNullLinkID = null;
 		}
 		#endregion
 
@@ -95,7 +98,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID)
 		{
 			_id = id;
 			_name = name;
@@ -116,6 +119,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = failedMessage;
 			_uperID = uperID;
 			_channelCodeParamsName = channelCodeParamsName;
+			_isAllowNullLinkID = isAllowNullLinkID;
 		}
 		#endregion     
 	
@@ -420,6 +424,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ChannelCodeParamsName", value, value.ToString());
 				_isChanged |= (_channelCodeParamsName != value); _channelCodeParamsName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsAllowNullLinkID
+		{
+			get { return _isAllowNullLinkID; }
+
+			set	
+			{
+				_isChanged |= (_isAllowNullLinkID != value); _isAllowNullLinkID = value;
 			}
 		}
 		/// <summary>

@@ -29,6 +29,7 @@
 		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
 		<many-to-one column="UperID" name="UperID" class="LD.SPPipeManage.Entity.Tables.SPUperEntity,LD.SPPipeManage.Entity" />		
 		<property column="ChannelCodeParamsName" type="string" name="ChannelCodeParamsName"   length="100" />	
+		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	
 
 
 

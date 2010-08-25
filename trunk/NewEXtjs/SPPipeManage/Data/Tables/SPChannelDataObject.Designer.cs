@@ -43,6 +43,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_UPERID_CREATEDATE = Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateDate");
 		#endregion
 		public static readonly Property PROPERTY_CHANNELCODEPARAMSNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELCODEPARAMSNAME);
+		public static readonly Property PROPERTY_ISALLOWNULLLINKID = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISALLOWNULLLINKID);
       
 		#region 子类集合字段查询字段
 	
@@ -98,6 +99,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (int);
                 case "ChannelCodeParamsName":
                     return typeof (string);
+                case "IsAllowNullLinkID":
+                    return typeof (bool);
           }
 			return typeof(string);
         }
