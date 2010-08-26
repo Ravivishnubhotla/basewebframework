@@ -191,6 +191,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 dr["RecordID"] = spPaymentInfoWrappers[i].Id;
                 dr["CreateDate"] = spPaymentInfoWrappers[i].CreateDate;
+                dr["Province"] = spPaymentInfoWrappers[i].Province;
+                dr["City"] = spPaymentInfoWrappers[i].City;
 
                 foreach (string field in SPChannelWrapper.fields)
                 {

@@ -454,6 +454,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             record.Columns.Add("RecordID", typeof(int));
             record.Columns.Add("CreateDate",typeof(DateTime));
+            record.Columns.Add("Province", typeof(string));
+            record.Columns.Add("City", typeof(string));
 
             foreach (string field in fields)
             {

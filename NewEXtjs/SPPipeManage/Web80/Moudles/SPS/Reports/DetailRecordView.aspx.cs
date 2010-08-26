@@ -40,7 +40,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
             reader.Fields.Add("CreateDate", RecordFieldType.Date);
             reader.Fields[reader.Fields.Count - 1].Mapping = "CreateDate";
-            this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCreateDate", "CreateDate", false, "CreateDate", "Ext.util.Format.dateRenderer('n/d/Y H:i:s A')", RendererFormat.None));
+            this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCreateDate", "日期", false, "CreateDate", "Ext.util.Format.dateRenderer('n/d/Y H:i:s A')", RendererFormat.None));
+
+            reader.Fields.Add("Province", RecordFieldType.String);
+            reader.Fields[reader.Fields.Count - 1].Mapping = "Province";
+            this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colProvince", "省份", false, "Province", "", RendererFormat.None));
 
             List<SPChannelParamsWrapper> channelParams = channelWrapper.GetAllShowParams();
 
