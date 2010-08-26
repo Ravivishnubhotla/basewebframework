@@ -38,6 +38,7 @@
                     <ext:RecordField Name="RequestContent" />
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
+                    <ext:RecordField Name="Province" />
                     <ext:RecordField Name="CreateDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
@@ -98,6 +99,8 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
+                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false">
+                                </ext:Column>                     
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
                                     Width="20">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
