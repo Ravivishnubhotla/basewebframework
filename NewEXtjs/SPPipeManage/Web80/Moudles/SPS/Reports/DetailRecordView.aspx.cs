@@ -46,6 +46,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             reader.Fields[reader.Fields.Count - 1].Mapping = "Province";
             this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colProvince", "省份", false, "Province", "", RendererFormat.None));
 
+            reader.Fields.Add("City", RecordFieldType.String);
+            reader.Fields[reader.Fields.Count - 1].Mapping = "City";
+            this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCity", "城市", false, "City", "", RendererFormat.None));
+
             List<SPChannelParamsWrapper> channelParams = channelWrapper.GetAllShowParams();
 
             foreach (SPChannelParamsWrapper channelParam in channelParams)
