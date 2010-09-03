@@ -38,24 +38,5 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             }
         }
 
-        protected void btnSaveSPSendClientParams_Click(object sender, AjaxEventArgs e)
-        {
-            try
-            {
-                SPClientWrapper obj = SPClientWrapper.FindById(int.Parse(hidClientID.Text.Trim()));
-
-                if (obj != null)
-                {
-                    obj.CloneChannelParams(int.Parse(this.cmbChannelID.SelectedItem.Value));
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
-            }
-        }
     }
 }

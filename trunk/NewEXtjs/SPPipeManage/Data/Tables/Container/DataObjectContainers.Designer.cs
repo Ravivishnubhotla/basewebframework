@@ -14,6 +14,7 @@ namespace LD.SPPipeManage.Data.Tables.Container
       public SPChannelParamsDataObject SPChannelParamsDataObjectInstance { set; get; }
       public SPClientDataObject SPClientDataObjectInstance { set; get; }
       public SPClientChannelSettingDataObject SPClientChannelSettingDataObjectInstance { set; get; }
+      public SPClientChannelSycnParamsDataObject SPClientChannelSycnParamsDataObjectInstance { set; get; }
       public SPClientGroupDataObject SPClientGroupDataObjectInstance { set; get; }
       public SPDayReportDataObject SPDayReportDataObjectInstance { set; get; }
       public SPFailedRequestDataObject SPFailedRequestDataObjectInstance { set; get; }

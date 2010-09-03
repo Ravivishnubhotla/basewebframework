@@ -14,6 +14,8 @@ namespace LD.SPPipeManage.Data.Tables
     {
 				#region Expression Query Property (标准查询字段)
 		public static readonly Property PROPERTY_ID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ID);
+		public static readonly Property PROPERTY_NAME = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_NAME);
+		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CHANNELID);
 		#region channelID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator)
@@ -67,6 +69,12 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DISABLE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DISABLE);
 		public static readonly Property PROPERTY_COMMANDCOLUMN = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_COMMANDCOLUMN);
 		public static readonly Property PROPERTY_INTERCEPTRATETYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATETYPE);
+		public static readonly Property PROPERTY_SYNCDATA = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SYNCDATA);
+		public static readonly Property PROPERTY_SYNCDATAURL = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SYNCDATAURL);
+		public static readonly Property PROPERTY_OKMESSAGE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_OKMESSAGE);
+		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_FAILEDMESSAGE);
+		public static readonly Property PROPERTY_SYNCTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SYNCTYPE);
+		public static readonly Property PROPERTY_ORDERINDEX = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ORDERINDEX);
       
 		#region 子类集合字段查询字段
 	
@@ -86,6 +94,10 @@ namespace LD.SPPipeManage.Data.Tables
             {
                 case "Id":
                     return typeof (int);
+                case "Name":
+                    return typeof (string);
+                case "Description":
+                    return typeof (string);
                 case "ChannelID":
                     return typeof (int);
                 case "ClinetID":
@@ -106,6 +118,18 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "InterceptRateType":
                     return typeof (string);
+                case "SyncData":
+                    return typeof (bool);
+                case "SyncDataUrl":
+                    return typeof (string);
+                case "OkMessage":
+                    return typeof (string);
+                case "FailedMessage":
+                    return typeof (string);
+                case "SyncType":
+                    return typeof (string);
+                case "OrderIndex":
+                    return typeof (int);
           }
 			return typeof(string);
         }

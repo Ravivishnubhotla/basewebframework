@@ -33,7 +33,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     if (obj.ClinetID!=null)
                     {
                         this.lblClientName.Text = obj.ClinetID.Name;
-                    }         	
+                    }
+
+                    if (obj.Name!=null)
+                        this.txtName.Text = obj.Name.ToString();
+                    if (obj.Description!=null)
+                        this.txtDescription.Text = obj.Description.ToString();
+
               	    this.txtInterceptRate.Text = obj.InterceptRate.ToString();
 
                     if (!string.IsNullOrEmpty(obj.CommandColumn))
@@ -41,14 +47,38 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     else
                         this.cmbChannelCodeParamsName.SetValue("");
 
-                    this.cmbCommandType.SetValue(obj.CommandType.ToString());          	
-              	    this.txtCommandCode.Text = obj.CommandCode.ToString();          	
+                    this.cmbCommandType.SetValue(obj.CommandType.ToString());
+
+                    if (obj.CommandCode != null)
+              	        this.txtCommandCode.Text = obj.CommandCode.ToString();
+
+                    this.fsAllowSycnData.CheckboxToggle = obj.SyncData.HasValue && obj.SyncData.Value;
+
+                    this.fsAllowSycnData.Collapsed = !this.fsAllowSycnData.CheckboxToggle;
+
+
+                    if (obj.SyncData.HasValue && obj.SyncData.Value)
+                    {
+                        if (obj.SyncDataUrl != null)
+                            this.txtSyncDataUrl.Text = obj.SyncDataUrl;
+                        if (this.cmbSycnType.SelectedItem != null)
+                            obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+                        if (obj.OkMessage != null)
+                            this.txtOkMessage.Text = obj.OkMessage;
+                        if (obj.FailedMessage != null)
+                            this.txtFailedMessage.Text = obj.FailedMessage;
+                    }
+                    else
+                    {
+                        this.txtSyncDataUrl.Text = "";
+                        this.cmbSycnType.SetValue("");
+                        this.txtOkMessage.Text = "";
+                        this.txtFailedMessage.Text = "";
+                    }
+         	
+
  
-
-
-
                     hidId.Text = id.ToString();
-
 
                     winSPClientChannelSettingEdit.Show();
 
@@ -73,8 +103,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             try
             {
                 SPClientChannelSettingWrapper obj = SPClientChannelSettingWrapper.FindById(int.Parse(hidId.Text.Trim()));
-                //obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.SelectedItem.Value.ToString()));
-                //obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.SelectedItem.Value.ToString()));        	
+                obj.Name = this.txtName.Text.Trim();
+                obj.Description = this.txtDescription.Text.Trim();
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
@@ -84,6 +114,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
+
+
+                if (!this.fsAllowSycnData.Collapsed)
+                {
+                    obj.SyncData = true;
+                    obj.SyncDataUrl = this.txtSyncDataUrl.Text.Trim();
+                    if (this.cmbSycnType.SelectedItem != null)
+                        obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+                    obj.OkMessage = this.txtOkMessage.Text.Trim();
+                    obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                }
+                else
+                {
+                    obj.SyncData = false;
+                    obj.SyncDataUrl = "";
+                    obj.SyncType = "";
+                    obj.OkMessage = "";
+                    obj.FailedMessage = "";
+                }
 
 
                 SPClientChannelSettingWrapper.Update(obj);

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -15,12 +16,12 @@ using Legendigital.Framework.Common.Utility;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
-	[Serializable]
+    [Serializable]
     public partial class SPChannelWrapper
     {
         #region Static Common Data Operation
-		
-		public static void Save(SPChannelWrapper obj)
+
+        public static void Save(SPChannelWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
@@ -76,8 +77,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             List<SPChannelEntity> list = businessProxy.FindAll(firstRow, maxRows, out recordCount);
             return ConvertToWrapperList(list);
         }
-		
-		public static List<SPChannelWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+
+        public static List<SPChannelWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
                                              out recordCount);
@@ -94,15 +95,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return results;
         }
-		
+
 
         public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
         }
-			
-		#endregion
 
+        #endregion
 
         public static string[] fields = new string[] { "cpid", "mid", "mobile", "port", "ywid", "msg", "linkid", "dest", "price", "extendfield1", "extendfield2", "extendfield3", "extendfield4", "extendfield5", "extendfield6", "extendfield7", "extendfield8", "extendfield9" };
 
@@ -124,7 +124,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return channel;
             }
 
-            return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName)); 
+            return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName));
         }
 
         public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request)
@@ -156,11 +156,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 linkid = Guid.NewGuid().ToString();
             }
 
-            if(string.IsNullOrEmpty(linkid))
+            if (string.IsNullOrEmpty(linkid))
             {
                 Logger.Error("not link id  " + this.Name + " channel setting.");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, "not link id  " + this.Name + " channel setting.",this.Id,0);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, "not link id  " + this.Name + " channel setting.", this.Id, 0);
 
                 return false;
             }
@@ -206,12 +206,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.RequestContent = content;
 
 
-                if(!string.IsNullOrEmpty(mobile)&&mobile.Length>7)
+                if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
                 {
                     try
                     {
                         PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                        if (phoneAreaInfo!=null)
+                        if (phoneAreaInfo != null)
                         {
                             paymentInfo.Province = phoneAreaInfo.Province;
                             paymentInfo.City = phoneAreaInfo.City;
@@ -238,9 +238,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 if (!paymentInfo.IsIntercept.Value)
                 {
-                    if (!string.IsNullOrEmpty(channelSetting.ClinetID.RecieveDataUrl))
-                        paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(paymentInfo);
-                        //paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
+                    if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                        paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
+                    //paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
                     else
                         paymentInfo.SucesssToSend = false;
                 }
@@ -258,14 +258,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     Exception innerException = ex;
 
-                    while (innerException.InnerException !=null)
+                    while (innerException.InnerException != null)
                     {
                         innerException = innerException.InnerException;
                     }
 
                     SqlException sqlException = innerException as SqlException;
 
-                    if (sqlException!=null && sqlException.Number == 2627)
+                    if (sqlException != null && sqlException.Number == 2627)
                     {
                         Logger.Error("Process Request Error:linkid repeater");
                         throw new Exception("Process Request Error:linkid repeater");
@@ -281,12 +281,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 Logger.Error("Process Request Error:Can't find match Client  " + this.Name + " client setting.");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content,"Process Request Error:Can't find match Client  "+this.Name+" client setting.",this.Id,0);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "Process Request Error:Can't find match Client  " + this.Name + " client setting.", this.Id, 0);
 
                 return false;
             }
 
-            
+
         }
 
         public List<SPChannelParamsWrapper> GetAllShowParams()
@@ -294,56 +294,65 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllShowParams(this.entity));
         }
 
-	    public Hashtable GetFieldMappings()
-	    {
+        public List<SPChannelParamsWrapper> GetAllEnableParams()
+        {
+            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+        }
+
+        public Hashtable GetFieldMappings()
+        {
             Hashtable mappingFields = new Hashtable();
 
             List<SPChannelParamsWrapper> spChannelParamsWrappers = SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
 
-	        foreach (string field in fields)
-	        {
+            foreach (string field in fields)
+            {
                 string findFeild = field.ToLower();
 
-	            SPChannelParamsWrapper channelParamsWrapper =
+                SPChannelParamsWrapper channelParamsWrapper =
                     spChannelParamsWrappers.Find(p => (p.ParamsMappingName.Equals(findFeild.ToLower())));
 
-                if(channelParamsWrapper==null)
+                if (channelParamsWrapper == null)
                 {
                     mappingFields.Add(findFeild.ToLower(), findFeild.ToLower());
                 }
                 else
                 {
-                    mappingFields.Add(findFeild.ToLower(), channelParamsWrapper.Name.ToLower());                  
+                    mappingFields.Add(findFeild.ToLower(), channelParamsWrapper.Name.ToLower());
                 }
-	        }
+            }
 
-	        return mappingFields;
-	    }
+            return mappingFields;
+        }
 
-	    private Hashtable GetEXParamsValue(Hashtable hashtable)
-	    {
-	        return new Hashtable();
-	    }
+        private Hashtable GetEXParamsValue(Hashtable hashtable)
+        {
+            return new Hashtable();
+        }
 
         private SPClientChannelSettingWrapper GetClientChannelSettingFromYWID(string ywid)
-	    {
-	        List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
-
-	        foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
-	        {
-	            if(channelSetting.MatchByYWID(ywid))
-	            {
-	                return channelSetting;
-	            }
-	        }
-
-	        return null;
-	    }
-
-
-        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,Hashtable fieldMappings)
         {
             List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
+
+            foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
+            {
+                if (channelSetting.MatchByYWID(ywid))
+                {
+                    return channelSetting;
+                }
+            }
+
+            return null;
+        }
+
+        public List<SPClientChannelSettingWrapper> GetAllClientChannelSetting()
+        {
+            return SPClientChannelSettingWrapper.GetSettingByChannel(this);
+        }
+
+        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues, Hashtable fieldMappings)
+        {
+            List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
 
             foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
             {
@@ -365,7 +374,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return null;
         }
 
-	    private string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
+        private string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
         {
             string queryKey = mapName.ToLower();
 
@@ -424,36 +433,71 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-	    public string GetOkCode()
-	    {
-	        return "ok";
-	    }
+        public string GetOkCode()
+        {
+            return "ok";
+        }
 
+        public string InterfaceUrl
+        {
+            get
+            {
+                HttpContext context = HttpContext.Current;
 
-	    public string InterfaceUrl
-	    {
-	        get
-	        {
-                HttpContext context =  HttpContext.Current;
-
-                if(context==null)
+                if (context == null)
                     return "";
 
-                if (context.Request.Url.Port==80)
+                if (context.Request.Url.Port == 80)
                     return string.Format("{0}://{1}/SPSInterface/{2}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host, this.FuzzyCommand);
 
                 return string.Format("{0}://{1}:{2}/SPSInterface/{3}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,
-	                                 context.Request.Url.Port, this.FuzzyCommand);
+                                     context.Request.Url.Port, this.FuzzyCommand);
 
-	        }
-	    }
+            }
+        }
 
-	    public DataTable BuildChannelRecordTable()
+        public string CodeList
+        {
+            get
+            {
+                List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
+
+                StringBuilder sb = new StringBuilder();
+
+                foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
+                {
+                    sb.AppendFormat("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}',<br/>", channelSetting.Name, channelSetting.ChannelClientRuleMatch, channelSetting.ClientName);
+                }
+
+                return sb.ToString();
+
+            }
+        }
+
+        public string ParamsList
+        {
+            get
+            {
+                List<SPChannelParamsWrapper> clientChannelParams = this.GetAllEnableParams();
+
+                StringBuilder sb = new StringBuilder();
+
+                foreach (SPChannelParamsWrapper paramsWrapper in clientChannelParams)
+                {
+                    sb.AppendFormat("参数 {0} - {2}：{1} ,<br/>", paramsWrapper.Name, paramsWrapper.Description, paramsWrapper.ParamsMappingName);
+                }
+
+                return sb.ToString();
+
+            }
+        }
+
+        public DataTable BuildChannelRecordTable()
         {
             DataTable record = new DataTable();
 
             record.Columns.Add("RecordID", typeof(int));
-            record.Columns.Add("CreateDate",typeof(DateTime));
+            record.Columns.Add("CreateDate", typeof(DateTime));
             record.Columns.Add("Province", typeof(string));
             record.Columns.Add("City", typeof(string));
 

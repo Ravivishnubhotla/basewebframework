@@ -40,6 +40,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             {
                 SPClientChannelSettingWrapper obj = new SPClientChannelSettingWrapper();
 
+                obj.Name = this.txtName.Text.Trim();
+                obj.Description = this.txtDescription.Text.Trim();
                 obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.SelectedItem.Value.ToString()));
                 obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.SelectedItem.Value.ToString()));        	
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
@@ -51,6 +53,21 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
+
+                if (!this.fsAllowSycnData.Collapsed)
+                {
+                    obj.SyncData = true;
+                    obj.SyncDataUrl = this.txtSyncDataUrl.Text.Trim();
+                    if (this.cmbSycnType.SelectedItem != null)
+                        obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+                    obj.OkMessage = this.txtOkMessage.Text.Trim();
+                    obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                }
+                else
+                {
+                    obj.SyncData = false;
+                }
+
 
                 SPClientChannelSettingWrapper.Save(obj);
 

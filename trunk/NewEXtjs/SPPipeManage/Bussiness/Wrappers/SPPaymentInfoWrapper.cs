@@ -252,29 +252,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
-	    public bool SendToClient(out string error)
-	    {
-	        error = "";
+        //public bool SendToClient(out string error)
+        //{
+        //    error = "";
 
-	        if(this.IsIntercept.HasValue && this.IsIntercept.Value)
-	        {
-                error = "Is Intercept";
-                return false;
-	        }
-
-
-            if (this.SucesssToSend.HasValue && this.SucesssToSend.Value)
-            {
-                error = "Is Sucesss To Send";
-                return false;
-            }
-
-            error = "Is Sucesss To Send";
-
-            return this.ClientID.SendMsgAndUpdate(this, out error);
+        //    if(this.IsIntercept.HasValue && this.IsIntercept.Value)
+        //    {
+        //        error = "Is Intercept";
+        //        return false;
+        //    }
 
 
-	    }
+        //    if (this.SucesssToSend.HasValue && this.SucesssToSend.Value)
+        //    {
+        //        error = "Is Sucesss To Send";
+        //        return false;
+        //    }
+
+        //    error = "Is Sucesss To Send";
+
+        //    return this.c.SendMsgAndUpdate(this, out error);
+
+
+        //}
 
 
         public string GetMappingValue(string mappingName)

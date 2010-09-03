@@ -87,6 +87,10 @@
     <Compile Include="Tables\SPClientChannelSettingEntity.Designer.cs">
       <DependentUpon>SPClientChannelSettingEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientChannelSycnParamsEntity.cs" />
+    <Compile Include="Tables\SPClientChannelSycnParamsEntity.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPClientEntity.cs" />
     <Compile Include="Tables\SPClientEntity.Designer.cs">
       <DependentUpon>SPClientEntity.cs</DependentUpon>
@@ -184,6 +188,7 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPInterceptRateMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSycnParamsMappingFile.hbm.xml" />
     <Content Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
   </ItemGroup>
