@@ -8,7 +8,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
-
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -18,6 +17,12 @@
             else
                 return '否';
         }
+
+        function AllValidate(frm1,frm2,frm3)
+        {
+            return frm1.getForm().isValid()&&frm2.getForm().isValid()&&frm3.getForm().isValid();
+        } 
+        
 
         function RefreshSPClientChannelSettingList() {
             <%= this.storeSPClientChannelSetting.ClientID %>.reload();
@@ -79,10 +84,24 @@
                     }
                     );
             }
+
+            if (cmd == "cmdParamsEdit") {
+                
+                var win = <%= this.winParamsEdit.ClientID %>;
+                 
+                win.setTitle("  "+id.data.Name + " 参数设置 ");
+                
+                win.autoLoad.url = 'SPClientChannelParamsManage.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+          
+                win.show();  
+            }
+
+
         }
 
     </script>
-
     <ext:Store ID="storeSPClientChannelSetting" runat="server" AutoLoad="true" RemoteSort="true"
         OnRefreshData="storeSPClientChannelSetting_Refresh">
         <AutoLoadParams>
@@ -96,13 +115,15 @@
             <ext:JsonReader ReaderID="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Description" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="UpRate" Type="int" />
                     <ext:RecordField Name="DownRate" Type="int" />
                     <ext:RecordField Name="CommandType" />
                     <ext:RecordField Name="CommandCode" />
                     <ext:RecordField Name="CommandTypeName" />
-                    <ext:RecordField Name="ChannelClientRuleMatch" />                  
+                    <ext:RecordField Name="ChannelClientRuleMatch" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
                 </Fields>
@@ -144,17 +165,23 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则" Sortable="true">
+                                <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道下家设置管理" Width="160">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            <ToolTip Text="编辑" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
@@ -177,4 +204,18 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winParamsEdit" runat="server" Title="Window" Frame="true" Width="640"
+        ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

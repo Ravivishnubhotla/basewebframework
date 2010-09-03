@@ -38,15 +38,7 @@
         </ext:FitLayout>
     </Body>
     <Buttons>
-        <ext:Button ID="btnSaveSPSendClientParams" runat="server" Text="添加" Icon="Add">
-            <AjaxEvents>
-                <Click Before="if(!#{formPanelSPSendClientParamsClone}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的复制通道参数。',callback);function callback(id) {#{formPanelSPSendClientParamsClone}.getForm().reset();#{storeSPSendClientParams}.reload(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
-                </Click>
-            </AjaxEvents>
-        </ext:Button>
+   
         <ext:Button ID="btnCancelSPSendClientParams" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSPSendClientParamsClone}.hide();" />

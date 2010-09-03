@@ -107,6 +107,10 @@
     <Compile Include="Tables\SPClientChannelSettingDataObject.Designer.cs">
       <DependentUpon>SPClientChannelSettingDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientChannelSycnParamsDataObject.cs" />
+    <Compile Include="Tables\SPClientChannelSycnParamsDataObject.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPClientDataObject.cs" />
     <Compile Include="Tables\SPClientDataObject.Designer.cs">
       <DependentUpon>SPClientDataObject.cs</DependentUpon>

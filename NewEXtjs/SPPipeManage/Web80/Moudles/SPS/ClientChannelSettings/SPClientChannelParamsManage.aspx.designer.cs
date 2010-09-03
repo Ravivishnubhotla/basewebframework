@@ -10,43 +10,34 @@
 namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
     
     
-    public partial class SPClientChannelSettingListPage {
+    public partial class SPClientChannelParamsManage {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// UCSPClientChannelParamsEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelParamsEdit UCSPClientChannelParamsEdit1;
         
         /// <summary>
-        /// storeSPClientChannelSetting control.
+        /// UCSPClientChannelParamsAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPClientChannelSetting;
+        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelParamsAdd UCSPClientChannelParamsAdd1;
         
         /// <summary>
-        /// UCSPClientChannelSettingAdd1 control.
+        /// storeSPSendClientParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingAdd UCSPClientChannelSettingAdd1;
-        
-        /// <summary>
-        /// UCSPClientChannelSettingEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingEdit UCSPClientChannelSettingEdit1;
+        protected global::Coolite.Ext.Web.Store storeSPSendClientParams;
         
         /// <summary>
         /// viewPortMain control.
@@ -67,13 +58,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPClientChannelSetting control.
+        /// gridPanelSPSendClientParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPClientChannelSetting;
+        protected global::Coolite.Ext.Web.GridPanel gridPanelSPSendClientParams;
         
         /// <summary>
         /// tbTop control.
@@ -103,6 +94,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
         
         /// <summary>
+        /// btnPatchAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton btnPatchAdd;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -121,12 +121,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
         
         /// <summary>
-        /// winParamsEdit control.
+        /// hidClientSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winParamsEdit;
+        protected global::Coolite.Ext.Web.Hidden hidClientSelect;
     }
 }

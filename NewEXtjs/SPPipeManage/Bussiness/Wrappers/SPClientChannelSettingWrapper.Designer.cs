@@ -68,6 +68,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPClientChannelSettingEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
+		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLINETID = "ClinetID";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
@@ -78,6 +80,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATETYPE = "InterceptRateType";
+		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
+		public static readonly string PROPERTY_NAME_SYNCDATAURL = "SyncDataUrl";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 
@@ -95,6 +103,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.Id = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Name
+		{
+			get
+			{
+				return entity.Name;
+			}
+			set
+			{
+				entity.Name = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Description
+		{
+			get
+			{
+				return entity.Description;
+			}
+			set
+			{
+				entity.Description = value;
 			}
 		}
 		/// <summary>
@@ -235,6 +271,90 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.InterceptRateType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? SyncData
+		{
+			get
+			{
+				return entity.SyncData;
+			}
+			set
+			{
+				entity.SyncData = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SyncDataUrl
+		{
+			get
+			{
+				return entity.SyncDataUrl;
+			}
+			set
+			{
+				entity.SyncDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string OkMessage
+		{
+			get
+			{
+				return entity.OkMessage;
+			}
+			set
+			{
+				entity.OkMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string FailedMessage
+		{
+			get
+			{
+				return entity.FailedMessage;
+			}
+			set
+			{
+				entity.FailedMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SyncType
+		{
+			get
+			{
+				return entity.SyncType;
+			}
+			set
+			{
+				entity.SyncType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? OrderIndex
+		{
+			get
+			{
+				return entity.OrderIndex;
+			}
+			set
+			{
+				entity.OrderIndex = value;
 			}
 		}
 		#endregion 

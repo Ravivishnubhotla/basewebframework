@@ -7,7 +7,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
-
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -91,11 +90,24 @@
                                                                                }
                                                                 }              
                 );
-            }    
+            }   
+            
+            if (cmd == "cmdSendTestRequest") {
+
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 发送模拟数据 ");
+                
+                win.autoLoad.url = 'SPChannelSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannleID = id.data.Id;
+        
+                win.show();    
+            }     
         }
 
     </script>
-
     <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeSPChannel_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
@@ -111,7 +123,7 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Area" />
-                    <ext:RecordField Name="Operator"   />
+                    <ext:RecordField Name="Operator" />
                     <ext:RecordField Name="ChannelCode" />
                     <ext:RecordField Name="FuzzyCommand" />
                     <ext:RecordField Name="AccurateCommand" />
@@ -123,8 +135,9 @@
                     <ext:RecordField Name="CStatusString" />
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
-                            <ext:RecordField Name="InterfaceUrl" />            
-                    
+                    <ext:RecordField Name="InterfaceUrl" />
+                    <ext:RecordField Name="CodeList" />
+                    <ext:RecordField Name="ParamsList" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -175,16 +188,19 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true" Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Sortable="true">
+                                <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Hidden="true"
+                                    Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Sortable="true" Width="50">
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Hidden="true" Sortable="true"
+                                    Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Sortable="true" Width="50">
+                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Hidden="true" Sortable="true"
+                                    Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colStatus" DataIndex="CStatusString" Header="状态" Sortable="true"
                                     Width="50">
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="150">
+                                <ext:CommandColumn Header="通道管理" Width="160">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
@@ -194,6 +210,12 @@
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
                                             <ToolTip Text="参数管理" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
+                                            <ToolTip Text="测试" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="下家分配">
+                                            <ToolTip Text="下家分配" />
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>
@@ -213,6 +235,9 @@
                     <br />
                         <p><b>描述：</b> {Description}</p>
                         <p><b>接口链接：</b> {InterfaceUrl}</p>
+                        <p><b>通道列表：</b><br /> {ParamsList}</p>
+                        <p><b>指令下家列表：</b><br /> {CodeList}</p>
+                        
                                 </Template>
                             </ext:RowExpander>
                         </Plugins>
@@ -221,4 +246,18 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

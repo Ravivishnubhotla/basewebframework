@@ -94,6 +94,7 @@
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientGroupDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPDayReportDataContract.cs" />
@@ -123,6 +124,10 @@
     <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.Designer.cs">
       <DependentUpon>SPClientChannelSettingServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPClientGroupServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPClientGroupServiceProxy.Designer.cs">
@@ -188,6 +193,10 @@
     <Compile Include="Wrappers\SPClientChannelSettingWrapper.cs" />
     <Compile Include="Wrappers\SPClientChannelSettingWrapper.Designer.cs">
       <DependentUpon>SPClientChannelSettingWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientChannelSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPClientGroupWrapper.cs" />
     <Compile Include="Wrappers\SPClientGroupWrapper.Designer.cs">

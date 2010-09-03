@@ -15,6 +15,8 @@ namespace LD.SPPipeManage.Entity.Tables
 
 		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPClientChannelSettingEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
+		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLINETID = "ClinetID";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
@@ -25,6 +27,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DISABLE = "Disable";
 		public static readonly string PROPERTY_NAME_COMMANDCOLUMN = "CommandColumn";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATETYPE = "InterceptRateType";
+		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
+		public static readonly string PROPERTY_NAME_SYNCDATAURL = "SyncDataUrl";
+		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
+		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -34,6 +42,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _id;
+		private string _name;
+		private string _description;
 		private SPChannelEntity _channelID;
 		private SPClientEntity _clinetID;
 		private int? _interceptRate;
@@ -44,6 +54,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _disable;
 		private string _commandColumn;
 		private string _interceptRateType;
+		private bool? _syncData;
+		private string _syncDataUrl;
+		private string _okMessage;
+		private string _failedMessage;
+		private string _syncType;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -54,6 +70,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public SPClientChannelSettingEntity()
 		{
 			_id = 0;
+			_name = null;
+			_description = null;
 			_channelID = null;
 			_clinetID = null;
 			_interceptRate = null;
@@ -64,6 +82,12 @@ namespace LD.SPPipeManage.Entity.Tables
 			_disable = null;
 			_commandColumn = null;
 			_interceptRateType = null;
+			_syncData = null;
+			_syncDataUrl = null;
+			_okMessage = null;
+			_failedMessage = null;
+			_syncType = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -71,9 +95,11 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex)
 		{
 			_id = id;
+			_name = name;
+			_description = description;
 			_channelID = channelID;
 			_clinetID = clinetID;
 			_interceptRate = interceptRate;
@@ -84,6 +110,12 @@ namespace LD.SPPipeManage.Entity.Tables
 			_disable = disable;
 			_commandColumn = commandColumn;
 			_interceptRateType = interceptRateType;
+			_syncData = syncData;
+			_syncDataUrl = syncDataUrl;
+			_okMessage = okMessage;
+			_failedMessage = failedMessage;
+			_syncType = syncType;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -100,6 +132,40 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_id != value); _id = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Name
+		{
+			get { return _name; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Name", value, value.ToString());
+				_isChanged |= (_name != value); _name = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Description
+		{
+			get { return _description; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4000)
+					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
+				_isChanged |= (_description != value); _description = value;
 			}
 		}
 
@@ -252,6 +318,102 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for InterceptRateType", value, value.ToString());
 				_isChanged |= (_interceptRateType != value); _interceptRateType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? SyncData
+		{
+			get { return _syncData; }
+
+			set	
+			{
+				_isChanged |= (_syncData != value); _syncData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SyncDataUrl
+		{
+			get { return _syncDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for SyncDataUrl", value, value.ToString());
+				_isChanged |= (_syncDataUrl != value); _syncDataUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string OkMessage
+		{
+			get { return _okMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
+				_isChanged |= (_okMessage != value); _okMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string FailedMessage
+		{
+			get { return _failedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
+				_isChanged |= (_failedMessage != value); _failedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SyncType
+		{
+			get { return _syncType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
+				_isChanged |= (_syncType != value); _syncType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

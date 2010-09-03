@@ -16,6 +16,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPClientChannelSettingServiceProxy SPClientChannelSettingServiceProxyInstance
         {get; set;}
+		public ISPClientChannelSycnParamsServiceProxy SPClientChannelSycnParamsServiceProxyInstance
+        {get; set;}
 		public ISPClientGroupServiceProxy SPClientGroupServiceProxyInstance
         {get; set;}
 		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance

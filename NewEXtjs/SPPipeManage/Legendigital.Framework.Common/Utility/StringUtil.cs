@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.Utility
             var ra = new Random();
             for (int i = 0; i < lenght; i++)
             {
-                randNumber += (ra.Next(11) - 1).ToString();
+                randNumber += (ra.Next(1,10) - 1).ToString();
             }
             return randNumber;
         }
