@@ -97,6 +97,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
+		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
 		
         #endregion
 
@@ -520,6 +521,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.Province = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsTestData
+		{
+			get
+			{
+				return entity.IsTestData;
+			}
+			set
+			{
+				entity.IsTestData = value;
 			}
 		}
 		#endregion 

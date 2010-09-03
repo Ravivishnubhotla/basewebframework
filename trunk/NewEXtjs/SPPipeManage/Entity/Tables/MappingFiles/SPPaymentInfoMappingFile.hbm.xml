@@ -40,6 +40,7 @@
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="City" type="string" name="City"   length="40" />	
 		<property column="Province" type="string" name="Province"   length="40" />	
+		<property column="IsTestData" type="Boolean" name="IsTestData"   />	
 
 
 
