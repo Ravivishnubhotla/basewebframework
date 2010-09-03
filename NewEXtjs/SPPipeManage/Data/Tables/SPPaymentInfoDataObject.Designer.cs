@@ -86,6 +86,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_REQUESTCONTENT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_REQUESTCONTENT);
 		public static readonly Property PROPERTY_CITY = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CITY);
 		public static readonly Property PROPERTY_PROVINCE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PROVINCE);
+		public static readonly Property PROPERTY_ISTESTDATA = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISTESTDATA);
       
 		#region 子类集合字段查询字段
 	
@@ -163,6 +164,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "Province":
                     return typeof (string);
+                case "IsTestData":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

@@ -44,6 +44,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
+		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
 		
         #endregion
 	
@@ -82,6 +83,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _requestContent;
 		private string _city;
 		private string _province;
+		private bool? _isTestData;
 		
 		#endregion
 
@@ -121,6 +123,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_requestContent = null;
 			_city = null;
 			_province = null;
+			_isTestData = null;
 		}
 		#endregion
 
@@ -128,7 +131,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -160,6 +163,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_requestContent = requestContent;
 			_city = city;
 			_province = province;
+			_isTestData = isTestData;
 		}
 		#endregion     
 	
@@ -648,6 +652,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for Province", value, value.ToString());
 				_isChanged |= (_province != value); _province = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsTestData
+		{
+			get { return _isTestData; }
+
+			set	
+			{
+				_isChanged |= (_isTestData != value); _isTestData = value;
 			}
 		}
 		/// <summary>
