@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEdit" %>
 <ext:Window ID="winSPChannelEdit" runat="server" Icon="ApplicationEdit" Title="编辑通道"
-    ConstrainHeader="true" Width="500" Height="500" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="500" Height="530" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
