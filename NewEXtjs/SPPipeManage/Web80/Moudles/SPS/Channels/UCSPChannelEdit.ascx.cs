@@ -48,8 +48,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     this.txtRate.Text = obj.Rate.ToString();
                     this.txtOkMessage.Text = obj.OkMessage;
                     this.txtFailedMessage.Text = obj.FailedMessage;
- 
 
+                    if (obj.RecStatReport.HasValue)
+                        chkRecStatReport.Checked = obj.RecStatReport.Value;
+
+                    if (!string.IsNullOrEmpty(obj.StatParamsName))
+                        this.txtStatParamName.Text = obj.StatParamsName.ToString();
 
 
                     hidId.Text = id.ToString();
@@ -99,7 +103,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.Status = 0;
                 obj.OkMessage = txtOkMessage.Text.Trim();
                 obj.FailedMessage = txtFailedMessage.Text.Trim();
-
+                obj.RecStatReport = chkRecStatReport.Checked;
+                obj.StatParamsName = txtStatParamName.Text.Trim();
 
                 SPChannelWrapper.Update(obj);
 

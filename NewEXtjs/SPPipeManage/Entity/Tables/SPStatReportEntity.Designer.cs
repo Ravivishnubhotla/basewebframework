@@ -9,18 +9,18 @@ namespace LD.SPPipeManage.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPRequestInfoEntity : ICloneable
+	public partial class SPStatReportEntity : ICloneable
 	{
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPRequestInfoEntity";
+		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPStatReportEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
-		public static readonly string PROPERTY_NAME_IP = "Ip";
-		public static readonly string PROPERTY_NAME_REQUESTINFO = "RequestInfo";
-		public static readonly string PROPERTY_NAME_REQUESTDATE = "RequestDate";
-		public static readonly string PROPERTY_NAME_ISTOPAYMENT = "IsToPayment";
-		public static readonly string PROPERTY_NAME_REQUESTURL = "RequestUrl";
-		public static readonly string PROPERTY_NAME_DATAID = "DataID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_STAT = "Stat";
+		public static readonly string PROPERTY_NAME_LINKID = "LinkID";
+		public static readonly string PROPERTY_NAME_QUERYSTRING = "QueryString";
+		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
+		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		
         #endregion
 	
@@ -30,12 +30,12 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _id;
-		private string _ip;
-		private string _requestInfo;
-		private DateTime? _requestDate;
-		private bool? _isToPayment;
-		private string _requestUrl;
-		private int? _dataID;
+		private int _channelID;
+		private string _stat;
+		private string _linkID;
+		private string _queryString;
+		private string _requestContent;
+		private DateTime? _createDate;
 		
 		#endregion
 
@@ -43,15 +43,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SPRequestInfoEntity()
+		public SPStatReportEntity()
 		{
 			_id = 0;
-			_ip = null;
-			_requestInfo = null;
-			_requestDate = null;
-			_isToPayment = null;
-			_requestUrl = null;
-			_dataID = null;
+			_channelID = 0;
+			_stat = null;
+			_linkID = null;
+			_queryString = null;
+			_requestContent = null;
+			_createDate = null;
 		}
 		#endregion
 
@@ -59,15 +59,15 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRequestInfoEntity( int id, string ip, string requestInfo, DateTime? requestDate, bool? isToPayment, string requestUrl, int? dataID)
+		public SPStatReportEntity( int id, int channelID, string stat, string linkID, string queryString, string requestContent, DateTime? createDate)
 		{
 			_id = id;
-			_ip = ip;
-			_requestInfo = requestInfo;
-			_requestDate = requestDate;
-			_isToPayment = isToPayment;
-			_requestUrl = requestUrl;
-			_dataID = dataID;
+			_channelID = channelID;
+			_stat = stat;
+			_linkID = linkID;
+			_queryString = queryString;
+			_requestContent = requestContent;
+			_createDate = createDate;
 		}
 		#endregion     
 	
@@ -91,16 +91,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string Ip
+		public virtual int ChannelID
 		{
-			get { return _ip; }
+			get { return _channelID; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for Ip", value, value.ToString());
-				_isChanged |= (_ip != value); _ip = value;
+				_isChanged |= (_channelID != value); _channelID = value;
 			}
 		}
 
@@ -108,16 +105,67 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string RequestInfo
+		public virtual string Stat
 		{
-			get { return _requestInfo; }
+			get { return _stat; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for Stat", value, value.ToString());
+				_isChanged |= (_stat != value); _stat = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LinkID
+		{
+			get { return _linkID; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 200)
+					throw new ArgumentOutOfRangeException("Invalid value for LinkID", value, value.ToString());
+				_isChanged |= (_linkID != value); _linkID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string QueryString
+		{
+			get { return _queryString; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for QueryString", value, value.ToString());
+				_isChanged |= (_queryString != value); _queryString = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string RequestContent
+		{
+			get { return _requestContent; }
 
 			set	
 			{
 
 				if( value != null && value.Length > 2147483646)
-					throw new ArgumentOutOfRangeException("Invalid value for RequestInfo", value, value.ToString());
-				_isChanged |= (_requestInfo != value); _requestInfo = value;
+					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
+				_isChanged |= (_requestContent != value); _requestContent = value;
 			}
 		}
 
@@ -125,58 +173,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? RequestDate
+		public virtual DateTime? CreateDate
 		{
-			get { return _requestDate; }
+			get { return _createDate; }
 
 			set	
 			{
-				_isChanged |= (_requestDate != value); _requestDate = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? IsToPayment
-		{
-			get { return _isToPayment; }
-
-			set	
-			{
-				_isChanged |= (_isToPayment != value); _isToPayment = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string RequestUrl
-		{
-			get { return _requestUrl; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 4000)
-					throw new ArgumentOutOfRangeException("Invalid value for RequestUrl", value, value.ToString());
-				_isChanged |= (_requestUrl != value); _requestUrl = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? DataID
-		{
-			get { return _dataID; }
-
-			set	
-			{
-				_isChanged |= (_dataID != value); _dataID = value;
+				_isChanged |= (_createDate != value); _createDate = value;
 			}
 		}
 		/// <summary>
@@ -220,7 +223,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			
-			SPRequestInfoEntity castObj = (SPRequestInfoEntity)obj;
+			SPStatReportEntity castObj = (SPStatReportEntity)obj;
 			
 			return ( castObj != null ) && ( this._id == castObj.Id );
 		}

@@ -98,6 +98,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
+		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		
         #endregion
 
@@ -535,6 +536,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.IsTestData = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ChannleClientID
+		{
+			get
+			{
+				return entity.ChannleClientID;
+			}
+			set
+			{
+				entity.ChannleClientID = value;
 			}
 		}
 		#endregion 

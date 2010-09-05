@@ -38,6 +38,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPSendRequestInfoServiceProxy SPSendRequestInfoServiceProxyInstance
         {get; set;}
+		public ISPStatReportServiceProxy SPStatReportServiceProxyInstance
+        {get; set;}
 		public ISPTestRecievedServiceProxy SPTestRecievedServiceProxyInstance
         {get; set;}
 		public ISPUperServiceProxy SPUperServiceProxyInstance

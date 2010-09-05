@@ -45,6 +45,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
+		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		
         #endregion
 	
@@ -84,6 +85,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _city;
 		private string _province;
 		private bool? _isTestData;
+		private int? _channleClientID;
 		
 		#endregion
 
@@ -124,6 +126,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_city = null;
 			_province = null;
 			_isTestData = null;
+			_channleClientID = null;
 		}
 		#endregion
 
@@ -131,7 +134,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -164,6 +167,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_city = city;
 			_province = province;
 			_isTestData = isTestData;
+			_channleClientID = channleClientID;
 		}
 		#endregion     
 	
@@ -666,6 +670,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isTestData != value); _isTestData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChannleClientID
+		{
+			get { return _channleClientID; }
+
+			set	
+			{
+				_isChanged |= (_channleClientID != value); _channleClientID = value;
 			}
 		}
 		/// <summary>

@@ -41,6 +41,7 @@
 		<property column="City" type="string" name="City"   length="40" />	
 		<property column="Province" type="string" name="Province"   length="40" />	
 		<property column="IsTestData" type="Boolean" name="IsTestData"   />	
+		<property column="ChannleClientID" type="int" name="ChannleClientID"   />	
 
 
 

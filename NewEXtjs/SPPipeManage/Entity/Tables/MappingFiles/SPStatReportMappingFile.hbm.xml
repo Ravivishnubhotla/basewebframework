@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPStatReportEntity,LD.SPPipeManage.Entity" table="SPStatReport" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ChannelID" type="int" name="ChannelID"   not-null="true"  />	
+		<property column="Stat" type="string" name="Stat"   length="100" />	
+		<property column="LinkID" type="string" name="LinkID"   length="200" />	
+		<property column="QueryString" type="string" name="QueryString"   length="600" />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

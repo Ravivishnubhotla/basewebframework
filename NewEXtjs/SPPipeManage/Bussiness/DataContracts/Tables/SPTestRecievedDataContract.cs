@@ -127,7 +127,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 1000)
 					throw new ArgumentOutOfRangeException("Invalid value for RecievedSendUrl", value, value.ToString());
 				_recievedSendUrl = value;
 			}

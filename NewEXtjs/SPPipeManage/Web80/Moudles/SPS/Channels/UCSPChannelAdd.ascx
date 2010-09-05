@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelAdd" %>
 <ext:Window ID="winSPChannelAdd" runat="server" Icon="ApplicationAdd" Title="新建通道"
-    ConstrainHeader="true" Width="500" Height="350" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="500" Height="399" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -59,25 +59,35 @@
                                 <ext:TextField ID="txtFuzzyCommand" runat="server" FieldLabel="提交别名" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtPort" runat="server" FieldLabel="端口"  Hidden="true" AllowBlank="True" />
+                                <ext:NumberField ID="txtPort" runat="server" FieldLabel="端口" Hidden="true" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtChannelType" runat="server" FieldLabel="通道类型"  Hidden="true" AllowBlank="True" />
+                                <ext:TextField ID="txtChannelType" runat="server" FieldLabel="通道类型" Hidden="true"
+                                    AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" Text="1"  Hidden="true" AllowBlank="True" />
+                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" Text="1" Hidden="true"
+                                    AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例"  Text="45"  Hidden="true" AllowBlank="True" />
+                                <ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例" Text="45" Hidden="true"
+                                    AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="成功响应消息" Text="ok" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="失败响应消息" Text="failed" AllowBlank="True" />
+                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="失败响应消息" Text="failed"
+                                    AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkRecStatReport" runat="server" FieldLabel="允许接收状态信息" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtStatParamName" runat="server" FieldLabel="状态字段" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

@@ -183,6 +183,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 paymentInfo.ChannelID = this;
                 paymentInfo.ClientID = channelSetting.ClinetID;
+                paymentInfo.ChannleClientID = channelSetting.Id;
                 paymentInfo.Cpid = cpid;
                 paymentInfo.Mid = mid;
                 paymentInfo.MobileNumber = mobile;
@@ -508,6 +509,23 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             record.AcceptChanges();
 
             return record;
+        }
+
+        public void SaveStatReport(Hashtable hashtable, string recievdData,string query,string stat)
+        {
+            Hashtable fieldMappings = this.GetFieldMappings();
+
+            string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
+
+            SPStatReportWrapper statReport = new SPStatReportWrapper();
+            statReport.ChannelID = this.Id;
+            statReport.LinkID = linkid;
+            statReport.CreateDate = System.DateTime.Now;
+            statReport.QueryString = query;
+            statReport.RequestContent = recievdData;
+            statReport.Stat = stat;
+
+            SPStatReportWrapper.Save(statReport);
         }
     }
 }

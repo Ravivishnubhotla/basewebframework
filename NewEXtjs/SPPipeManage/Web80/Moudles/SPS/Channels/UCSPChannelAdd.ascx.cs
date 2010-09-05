@@ -57,7 +57,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
                 obj.OkMessage = txtOkMessage.Text.Trim();
                 obj.FailedMessage = txtFailedMessage.Text.Trim();
-
+                obj.RecStatReport = chkRecStatReport.Checked;
+                obj.StatParamsName = txtStatParamName.Text.Trim();
 
 
 

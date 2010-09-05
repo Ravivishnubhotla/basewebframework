@@ -33,8 +33,6 @@ namespace Legendigital.Common.Web.AppClass
                 for (int i = 0; i < events.Length; i++)
                 {
 
-                    // Render the event and append the text to the buffer
-
                     RenderLoggingEvent(writer, events[i]);
 
                 }
@@ -48,11 +46,9 @@ namespace Legendigital.Common.Web.AppClass
 
                 }
 
-                // Use SmtpClient so we can use SSL.
-
                 SmtpClient client = new SmtpClient(SmtpHost, Port);
 
-                //client.EnableSsl = true;
+                client.EnableSsl = true;
 
                 client.Credentials = new NetworkCredential(Username, Password);
 

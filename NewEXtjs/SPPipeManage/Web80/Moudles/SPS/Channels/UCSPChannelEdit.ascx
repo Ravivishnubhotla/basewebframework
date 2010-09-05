@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEdit" %>
 <ext:Window ID="winSPChannelEdit" runat="server" Icon="ApplicationEdit" Title="编辑通道"
-    ConstrainHeader="true" Width="500" Height="350" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="500" Height="399" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -83,6 +83,12 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
+                            </ext:Anchor>
+                                                        <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkRecStatReport" runat="server" FieldLabel="允许接收状态信息" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtStatParamName" runat="server" FieldLabel="状态字段" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

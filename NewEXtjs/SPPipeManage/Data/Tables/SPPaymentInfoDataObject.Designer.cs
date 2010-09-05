@@ -42,6 +42,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_UPERID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UperID");
 		public static readonly Property PROPERTY_CHANNELID_CHANNELCODEPARAMSNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelCodeParamsName");
 		public static readonly Property PROPERTY_CHANNELID_ISALLOWNULLLINKID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID");
+		public static readonly Property PROPERTY_CHANNELID_RECSTATREPORT = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecStatReport");
+		public static readonly Property PROPERTY_CHANNELID_STATPARAMSNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsName");
 		#endregion
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CLIENTID);
 		#region clientID字段外键查询字段
@@ -87,6 +89,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CITY = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CITY);
 		public static readonly Property PROPERTY_PROVINCE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PROVINCE);
 		public static readonly Property PROPERTY_ISTESTDATA = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISTESTDATA);
+		public static readonly Property PROPERTY_CHANNLECLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CHANNLECLIENTID);
       
 		#region 子类集合字段查询字段
 	
@@ -166,6 +169,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "IsTestData":
                     return typeof (bool);
+                case "ChannleClientID":
+                    return typeof (int);
           }
 			return typeof(string);
         }

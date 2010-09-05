@@ -14,7 +14,7 @@
 		<property column="RecievedContent" type="string" name="RecievedContent"   length="2147483646" />	
 		<property column="RecievedDate" type="DateTime" name="RecievedDate"   />	
 		<property column="RecievedIP" type="string" name="RecievedIP"   length="100" />	
-		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="400" />	
+		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="1000" />	
 		<property column="ChannelID" type="int" name="ChannelID"   />	
 		<property column="ClientID" type="int" name="ClientID"   />	
 		<property column="FailedMessage" type="string" name="FailedMessage"   length="4000" />	
