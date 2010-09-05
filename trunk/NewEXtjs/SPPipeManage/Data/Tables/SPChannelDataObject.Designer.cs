@@ -44,6 +44,8 @@ namespace LD.SPPipeManage.Data.Tables
 		#endregion
 		public static readonly Property PROPERTY_CHANNELCODEPARAMSNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELCODEPARAMSNAME);
 		public static readonly Property PROPERTY_ISALLOWNULLLINKID = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISALLOWNULLLINKID);
+		public static readonly Property PROPERTY_RECSTATREPORT = Property.ForName(SPChannelEntity.PROPERTY_NAME_RECSTATREPORT);
+		public static readonly Property PROPERTY_STATPARAMSNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATPARAMSNAME);
       
 		#region 子类集合字段查询字段
 	
@@ -101,6 +103,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "IsAllowNullLinkID":
                     return typeof (bool);
+                case "RecStatReport":
+                    return typeof (bool);
+                case "StatParamsName":
+                    return typeof (string);
           }
 			return typeof(string);
         }

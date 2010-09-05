@@ -87,6 +87,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
+		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
+		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		
         #endregion
 
@@ -370,6 +372,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.IsAllowNullLinkID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? RecStatReport
+		{
+			get
+			{
+				return entity.RecStatReport;
+			}
+			set
+			{
+				entity.RecStatReport = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string StatParamsName
+		{
+			get
+			{
+				return entity.StatParamsName;
+			}
+			set
+			{
+				entity.StatParamsName = value;
 			}
 		}
 		#endregion 

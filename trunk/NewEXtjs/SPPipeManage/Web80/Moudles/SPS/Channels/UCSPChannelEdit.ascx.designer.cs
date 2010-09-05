@@ -148,15 +148,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.NumberField txtRate;
         
         /// <summary>
-        /// chkIsAllowNullLinkID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkIsAllowNullLinkID;
-        
-        /// <summary>
         /// txtOkMessage control.
         /// </summary>
         /// <remarks>
@@ -173,6 +164,33 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.TextField txtFailedMessage;
+        
+        /// <summary>
+        /// chkIsAllowNullLinkID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkIsAllowNullLinkID;
+        
+        /// <summary>
+        /// chkRecStatReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkRecStatReport;
+        
+        /// <summary>
+        /// txtStatParamName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtStatParamName;
         
         /// <summary>
         /// btnSaveSPChannel control.

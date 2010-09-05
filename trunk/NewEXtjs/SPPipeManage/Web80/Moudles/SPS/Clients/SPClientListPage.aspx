@@ -197,7 +197,7 @@
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone" Text="参数复制">
+                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone"  Hidden="true" Text="参数复制">
                                             <ToolTip Text="参数复制" />
                                         </ext:GridCommand>
                                     </Commands>

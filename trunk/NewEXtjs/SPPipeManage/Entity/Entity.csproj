@@ -135,6 +135,10 @@
     <Compile Include="Tables\SPSendRequestInfoEntity.Designer.cs">
       <DependentUpon>SPSendRequestInfoEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPStatReportEntity.cs" />
+    <Compile Include="Tables\SPStatReportEntity.Designer.cs">
+      <DependentUpon>SPStatReportEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPTestRecievedEntity.cs" />
     <Compile Include="Tables\SPTestRecievedEntity.Designer.cs">
       <DependentUpon>SPTestRecievedEntity.cs</DependentUpon>
@@ -188,6 +192,7 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPInterceptRateMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPStatReportMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSycnParamsMappingFile.hbm.xml" />
     <Content Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />

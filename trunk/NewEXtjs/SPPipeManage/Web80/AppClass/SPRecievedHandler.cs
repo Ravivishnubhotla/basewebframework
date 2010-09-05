@@ -22,17 +22,17 @@ namespace Legendigital.Common.Web.AppClass
             {
 
 
-                Hashtable recivedata = GetRequestValue(context);
+                Hashtable requestData = GetRequestValue(context);
 
-                string recievdData = JsonConvert.SerializeObject(recivedata);
+                string recievdData = JsonConvert.SerializeObject(requestData);
 
                 string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
 
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    logger.Error("Process Request Error:not file Name.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+                    logger.Error("请求失败：没有指定ashx路径。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
 
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:not file Name.\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：没有指定ashx路径。\n", 0, 0);
 
                     return;
                 }
@@ -44,16 +44,26 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (channel != null)
                 {
-                    if(channel.CStatus != ChannelStatus.Run)
+                    if (channel.CStatus != ChannelStatus.Run)
                     {
-                        logger.Error("Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n" + GetRequestInfo(context.Request));
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData,"Process Request Error:\n" + " Channel " + channel.Name + " is not run Request Info:\n", channel.Id, 0);
+                        logger.Error("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n", channel.Id, 0);
                         return;
+                    }
+
+                    if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
+                    {
+                        if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
+                        {
+                            channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+                            context.Response.Write(channel.GetOkCode());
+                            return;
+                        }
                     }
 
                     bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
 
-                    if(result)
+                    if (result)
                         context.Response.Write(channel.GetOkCode());
                     else
                     {
@@ -85,7 +95,7 @@ namespace Legendigital.Common.Web.AppClass
                     logger.Error("失败请求保存失败.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "Process Request Error:" + ex.Message + "\n", 0, 0);
                 }
-                
+
                 return;
             }
         }
@@ -104,7 +114,7 @@ namespace Legendigital.Common.Web.AppClass
         }
 
 
- 
+
 
 
         public static string GetRealIP()
@@ -123,7 +133,7 @@ namespace Legendigital.Common.Web.AppClass
             }
             catch (Exception ex)
             {
-                logger.Error("Get IP Error:",ex);
+                logger.Error("Get IP Error:", ex);
             }
             return ip;
         }

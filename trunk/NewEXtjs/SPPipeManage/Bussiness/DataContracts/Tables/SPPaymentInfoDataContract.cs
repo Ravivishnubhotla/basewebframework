@@ -45,6 +45,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
+		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		
         #endregion
 	
@@ -81,6 +82,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _city;
 		private string _province;
 		private bool? _isTestData;
+		private int? _channleClientID;
 		
 		#endregion
 
@@ -121,6 +123,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_city = null;
 			_province = null;
 			_isTestData = null;
+			_channleClientID = null;
 		}
 		#endregion
 
@@ -626,6 +629,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? ChannleClientID
+		{
+			get { return _channleClientID; }
+
+			set	
+			{
+				_channleClientID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -663,6 +680,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.City = wrapper.City;
 			this.Province = wrapper.Province;
 			this.IsTestData = wrapper.IsTestData;
+			this.ChannleClientID = wrapper.ChannleClientID;
 		}
 		
 		
@@ -700,6 +718,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.City = this.City;
 			wrapper.Province = this.Province;
 			wrapper.IsTestData = this.IsTestData;
+			wrapper.ChannleClientID = this.ChannleClientID;
 		
 		return wrapper;
         }

@@ -34,6 +34,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
+		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
+		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		
         #endregion
 	
@@ -62,6 +64,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private SPUperEntity _uperID;
 		private string _channelCodeParamsName;
 		private bool? _isAllowNullLinkID;
+		private bool? _recStatReport;
+		private string _statParamsName;
 		
 		#endregion
 
@@ -91,6 +95,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_uperID = null;
 			_channelCodeParamsName = null;
 			_isAllowNullLinkID = null;
+			_recStatReport = null;
+			_statParamsName = null;
 		}
 		#endregion
 
@@ -98,7 +104,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName)
 		{
 			_id = id;
 			_name = name;
@@ -120,6 +126,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_uperID = uperID;
 			_channelCodeParamsName = channelCodeParamsName;
 			_isAllowNullLinkID = isAllowNullLinkID;
+			_recStatReport = recStatReport;
+			_statParamsName = statParamsName;
 		}
 		#endregion     
 	
@@ -438,6 +446,37 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isAllowNullLinkID != value); _isAllowNullLinkID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? RecStatReport
+		{
+			get { return _recStatReport; }
+
+			set	
+			{
+				_isChanged |= (_recStatReport != value); _recStatReport = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string StatParamsName
+		{
+			get { return _statParamsName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for StatParamsName", value, value.ToString());
+				_isChanged |= (_statParamsName != value); _statParamsName = value;
 			}
 		}
 		/// <summary>

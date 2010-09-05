@@ -106,6 +106,7 @@
     <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPStatReportDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPUperDataContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +173,10 @@
     <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.Designer.cs">
       <DependentUpon>SPSendRequestInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.Designer.cs">
+      <DependentUpon>SPStatReportServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.Designer.cs">
@@ -241,6 +246,10 @@
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.cs" />
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.Designer.cs">
       <DependentUpon>SPSendRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPStatReportWrapper.cs" />
+    <Compile Include="Wrappers\SPStatReportWrapper.Designer.cs">
+      <DependentUpon>SPStatReportWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPTestRecievedWrapper.cs" />
     <Compile Include="Wrappers\SPTestRecievedWrapper.Designer.cs">

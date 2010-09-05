@@ -34,6 +34,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		public static readonly string PROPERTY_NAME_CHANNELCODEPARAMSNAME = "ChannelCodeParamsName";
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
+		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
+		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		
         #endregion
 	
@@ -59,6 +61,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _uperID;
 		private string _channelCodeParamsName;
 		private bool? _isAllowNullLinkID;
+		private bool? _recStatReport;
+		private string _statParamsName;
 		
 		#endregion
 
@@ -88,6 +92,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_uperID = null;
 			_channelCodeParamsName = null;
 			_isAllowNullLinkID = null;
+			_recStatReport = null;
+			_statParamsName = null;
 		}
 		#endregion
 
@@ -409,6 +415,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? RecStatReport
+		{
+			get { return _recStatReport; }
+
+			set	
+			{
+				_recStatReport = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string StatParamsName
+		{
+			get { return _statParamsName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for StatParamsName", value, value.ToString());
+				_statParamsName = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -435,6 +472,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.UperID = (wrapper.UperID!=null) ? wrapper.UperID.Id : 0 ; 
 			this.ChannelCodeParamsName = wrapper.ChannelCodeParamsName;
 			this.IsAllowNullLinkID = wrapper.IsAllowNullLinkID;
+			this.RecStatReport = wrapper.RecStatReport;
+			this.StatParamsName = wrapper.StatParamsName;
 		}
 		
 		
@@ -461,6 +500,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.UperID =  (this.UperID==null) ? null : SPUperWrapper.FindById(this.UperID);
 			wrapper.ChannelCodeParamsName = this.ChannelCodeParamsName;
 			wrapper.IsAllowNullLinkID = this.IsAllowNullLinkID;
+			wrapper.RecStatReport = this.RecStatReport;
+			wrapper.StatParamsName = this.StatParamsName;
 		
 		return wrapper;
         }
