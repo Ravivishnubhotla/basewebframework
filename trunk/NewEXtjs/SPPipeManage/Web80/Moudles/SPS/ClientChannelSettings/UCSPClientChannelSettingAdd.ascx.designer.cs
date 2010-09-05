@@ -121,15 +121,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.TextArea txtDescription;
         
         /// <summary>
-        /// chkDisable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkDisable;
-        
-        /// <summary>
         /// pnl2 control.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.FormLayout FormLayout2;
+        
+        /// <summary>
+        /// chkDisable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkDisable;
         
         /// <summary>
         /// cmbChannelID control.
@@ -209,6 +209,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.FormLayout FormLayout3;
+        
+        /// <summary>
+        /// numOrderIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.NumberField numOrderIndex;
         
         /// <summary>
         /// cmbClinetID control.

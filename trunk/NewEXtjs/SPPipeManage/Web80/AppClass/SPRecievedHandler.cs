@@ -96,7 +96,8 @@ namespace Legendigital.Common.Web.AppClass
 
             foreach (string key in request.Params.Keys)
             {
-                hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                if (!string.IsNullOrEmpty(key))
+                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
             }
 
             return JsonConvert.SerializeObject(hb);

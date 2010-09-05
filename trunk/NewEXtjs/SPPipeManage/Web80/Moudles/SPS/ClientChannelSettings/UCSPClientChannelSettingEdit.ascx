@@ -3,7 +3,7 @@
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"
-    Title="编辑通道下家设置" Width="640" Height="480" AutoShow="false" Maximizable="true"
+    Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -27,10 +27,6 @@
                                                 <ext:Anchor Horizontal="95%">
                                                     <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="False" />
                                                 </ext:Anchor>
-                                                <ext:Anchor Horizontal="95%">
-                                                    <ext:Checkbox ID="chkDisable" runat="server" FieldLabel="禁用">
-                                                    </ext:Checkbox>
-                                                </ext:Anchor>
                                             </Anchors>
                                         </ext:FormLayout>
                                     </Body>
@@ -43,6 +39,10 @@
                                                     <Body>
                                                         <ext:FormLayout ID="FormLayout2" runat="server">
                                                             <Anchors>
+                                                                <ext:Anchor Horizontal="95%">
+                                                                    <ext:Checkbox ID="chkDisable" runat="server" FieldLabel="禁用">
+                                                                    </ext:Checkbox>
+                                                                </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:Label ID="lblChannelName" runat="server" FieldLabel="通道">
                                                                     </ext:Label>
@@ -77,6 +77,10 @@
                                                         <ext:FormLayout ID="FormLayout3" runat="server">
                                                             <Anchors>
                                                                 <ext:Anchor Horizontal="95%">
+                                                                    <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="排序号" AllowBlank="False"
+                                                                        Text="1" DecimalPrecision="0" MinValue="0" MaxValue="1000" />
+                                                                </ext:Anchor>
+                                                                <ext:Anchor Horizontal="95%">
                                                                     <ext:Label ID="lblClientName" runat="server" FieldLabel="下家">
                                                                     </ext:Label>
                                                                 </ext:Anchor>
@@ -85,10 +89,10 @@
                                                                         AllowBlank="True" TriggerAction="All" SelectedIndex="0">
                                                                         <Items>
                                                                             <ext:ListItem Value="cpid" Text="cpid"></ext:ListItem>
+                                                                            <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                                                             <ext:ListItem Value="mid" Text="mid"></ext:ListItem>
                                                                             <ext:ListItem Value="mobile" Text="mobile"></ext:ListItem>
-                                                                            <ext:ListItem Value="port" Text="port"></ext:ListItem>
-                                                                            <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
+                                                                            <ext:ListItem Value="port" Text="port"></ext:ListItem>  
                                                                             <ext:ListItem Value="msg" Text="msg"></ext:ListItem>
                                                                             <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>
                                                                             <ext:ListItem Value="dest" Text="dest"></ext:ListItem>
@@ -142,7 +146,7 @@
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
                                         <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
-                                            AllowBlank="True" SelectedIndex="0">
+                                            AllowBlank="True" SelectedIndex="0" Hidden=true>
                                             <Items>
                                                 <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
                                                 <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>

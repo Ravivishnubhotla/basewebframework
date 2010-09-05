@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
@@ -164,43 +165,58 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return users;
         }
 
-        private static void RemoveUserByID(List<SystemUserWrapper> users, List<int> hasUserId)
+
+        public bool IsMacth(Hashtable requestValues, Hashtable fieldMappings)
         {
-            foreach (int uid in hasUserId)
+            string columnName = "ywid";
+
+            if (!string.IsNullOrEmpty(this.CommandColumn))
             {
-                SystemUserWrapper userWrapper = users.Find(p => (p.UserID == uid));
-
-                if (userWrapper != null)
-                {
-                    users.Remove(userWrapper);
-                }
-            }
-        }
-
-        private static List<int> GetUsedUser(int channelID)
-        {
-            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
-
-            List<SPClientChannelSettingEntity> settings = businessProxy.GetSettingByChannel(channelWrapper.entity);
-
-            List<int> userIDs = new List<int>();
-
-            foreach (SPClientChannelSettingEntity setting in settings)
-            {
-                if (setting != null && setting.ClinetID != null && setting.ClinetID.UserID != null)
-                {
-                    if (setting.ClinetID.UserID > 0)
-                    {
-                        if (!userIDs.Contains(setting.ClinetID.UserID.Value))
-                        {
-                            userIDs.Add(setting.ClinetID.UserID.Value);
-                        }
-                    }
-                }
+                columnName = this.CommandColumn;
             }
 
-            return userIDs;
+            string ywid = SPChannelWrapper.GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
+
+            return this.MatchByYWID(ywid);
         }
+
+        //private static void RemoveUserByID(List<SystemUserWrapper> users, List<int> hasUserId)
+        //{
+        //    foreach (int uid in hasUserId)
+        //    {
+        //        SystemUserWrapper userWrapper = users.Find(p => (p.UserID == uid));
+
+        //        if (userWrapper != null)
+        //        {
+        //            users.Remove(userWrapper);
+        //        }
+        //    }
+        //}
+
+        //private static List<int> GetUsedUser(int channelID)
+        //{
+        //    SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
+
+        //    List<SPClientChannelSettingEntity> settings = businessProxy.GetSettingByChannel(channelWrapper.entity);
+
+        //    List<int> userIDs = new List<int>();
+
+        //    foreach (SPClientChannelSettingEntity setting in settings)
+        //    {
+        //        if (setting != null && setting.ClinetID != null && setting.ClinetID.UserID != null)
+        //        {
+        //            if (setting.ClinetID.UserID > 0)
+        //            {
+        //                if (!userIDs.Contains(setting.ClinetID.UserID.Value))
+        //                {
+        //                    userIDs.Add(setting.ClinetID.UserID.Value);
+        //                }
+        //            }
+        //        }
+        //    }
+
+        //    return userIDs;
+        //}
 
 
         public bool MatchByYWID(string ywid)
