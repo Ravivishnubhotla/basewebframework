@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
@@ -330,20 +331,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return new Hashtable();
         }
 
-        private SPClientChannelSettingWrapper GetClientChannelSettingFromYWID(string ywid)
-        {
-            List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
+        //private SPClientChannelSettingWrapper GetClientChannelSettingFromYWID(string ywid)
+        //{
+        //    List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
 
-            foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
-            {
-                if (channelSetting.MatchByYWID(ywid))
-                {
-                    return channelSetting;
-                }
-            }
-
-            return null;
-        }
+        //    SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings where (cc.MatchByYWID(ywid)) orderby cc.OrderIndex descending select cc).FirstOrDefault();
+            
+        //    return macthClientChannelSetting;
+        //}
 
         public List<SPClientChannelSettingWrapper> GetAllClientChannelSetting()
         {
@@ -354,27 +349,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
 
-            foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
+            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings where (cc.IsMacth(requestValues, fieldMappings)) orderby cc.OrderIndex descending select cc).FirstOrDefault();
+
+            return macthClientChannelSetting;
+        }
+
+        private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting, Hashtable requestValues, Hashtable fieldMappings)
+        {
+            string columnName = "ywid";
+
+            if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
             {
-                string columnName = "ywid";
+                columnName = channelSetting.CommandColumn;
+            }
 
-                if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
-                {
-                    columnName = channelSetting.CommandColumn;
-                }
+            string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
 
-                string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
-
-                if (channelSetting.MatchByYWID(ywid))
-                {
-                    return channelSetting;
-                }
+            if (channelSetting.MatchByYWID(ywid))
+            {
+                return channelSetting;
             }
 
             return null;
         }
 
-        private string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
+        public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
         {
             string queryKey = mapName.ToLower();
 

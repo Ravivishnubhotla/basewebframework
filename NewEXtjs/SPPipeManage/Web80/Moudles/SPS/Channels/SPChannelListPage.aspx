@@ -17,6 +17,9 @@
                 return '否';
         }
 
+
+
+
         function RefreshSPChannelList() {
             <%= this.storeSPChannel.ClientID %>.reload();
         };
@@ -104,7 +107,22 @@
                 win.autoLoad.params.ChannleID = id.data.Id;
         
                 win.show();    
-            }     
+            }  
+            
+            
+            if (cmd == "cmdClientSetting") {
+
+                var win = <%= this.winChannelClientSettings.ClientID %>;
+                
+
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 下家分配 ");
+                
+                win.autoLoad.url = '../ClientChannelSettings/SPClientChannelSettingListPage.aspx';
+                
+                win.autoLoad.params.ChannleID = id.data.Id;
+        
+                win.show();    
+            }       
         }
 
     </script>
@@ -180,13 +198,13 @@
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Sortable="true">
+                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份"   Hidden="true" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Sortable="true" Width="50">
+                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Hidden="true" Sortable="true" Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Hidden="true"
                                     Sortable="true">
@@ -248,6 +266,20 @@
     </ext:ViewPort>
     <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelClientSettings" runat="server" Title="Window" Frame="true"
+        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">

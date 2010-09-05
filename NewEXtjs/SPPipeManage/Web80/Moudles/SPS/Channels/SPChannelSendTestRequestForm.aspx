@@ -17,9 +17,9 @@
                 success: function (response, opts) {
                     var rtext = response.responseText.toLowerCase();
                     if (rtext == "ok")
-                        Ext.Msg.alert('请求成功，响应字符串："' + response.responseText + '"');
+                        Ext.Msg.alert('消息','请求成功，响应字符串："' + response.responseText + '"');
                     else
-                        Ext.Msg.alert('请求失败，响应字符串："' + response.responseText + '"');
+                        Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
                     //alert(response.responseText);
                 },
                 failure: function () {

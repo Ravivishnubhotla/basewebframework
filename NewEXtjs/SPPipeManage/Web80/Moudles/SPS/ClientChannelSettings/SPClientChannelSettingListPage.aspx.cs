@@ -16,7 +16,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             if (Ext.IsAjaxRequest)
                 return;
 
+            if (ChannleID>0)
+            {
+                this.gridPanelSPClientChannelSetting.Header = false;
+            }
+
             this.gridPanelSPClientChannelSetting.Reload();
+        }
+
+        public int ChannleID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannleID"] == null)
+                    return 0;
+                return Convert.ToInt32(this.Request.QueryString["ChannleID"]);
+            }
+
         }
 
 
@@ -60,7 +76,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             else
                 pageIndex = startIndex / limit;
 
-            storeSPClientChannelSetting.DataSource = SPClientChannelSettingWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);
+            List<SPClientChannelSettingWrapper> spClientChannelSettingWrappers;
+
+            if(ChannleID>0)
+            {
+                spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, SPChannelWrapper.FindById(ChannleID), out recordCount); 
+            }
+            else
+            {
+                spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount); 
+            }
+
+            storeSPClientChannelSetting.DataSource = spClientChannelSettingWrappers;
             e.TotalCount = recordCount;
 
             storeSPClientChannelSetting.DataBind();

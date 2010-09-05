@@ -12,6 +12,9 @@
             </Fields>
         </ext:JsonReader>
     </Reader>
+    <Listeners>
+        <Load Handler="if (GetChannleID()>0) {#{cmbChannelID}.setValue(GetChannleID());#{cmbChannelID}.setDisabled(true)} else {#{cmbChannelID}.setDisabled(false)}" />
+    </Listeners>
 </ext:Store>
 <ext:Store ID="storeSPClientAdd" runat="server" AutoLoad="false">
     <Proxy>
@@ -29,8 +32,8 @@
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingAdd" runat="server" Icon="ApplicationAdd"
-    Title="新建通道下家设置" Width="640" Height="480" AutoShow="false" Maximizable="true"
-    Modal="true" ShowOnLoad="false">
+    ConstrainHeader="true" Title="新建通道下家设置" Width="680" Height="460" AutoShow="false"
+    Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
@@ -39,7 +42,7 @@
                     <ext:ContainerLayout ID="ContainerLayout1" runat="server">
                         <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="false" Title="基本信息" Collapsed="false">
                             <Body>
-                                <ext:FormPanel ID="pnlSPClientChannelSettingAdd1" runat="server"  MonitorValid="true">
+                                <ext:FormPanel ID="pnlSPClientChannelSettingAdd1" runat="server" MonitorValid="true">
                                     <Body>
                                         <ext:FormLayout ID="FormLayout4" runat="server">
                                             <Anchors>
@@ -48,10 +51,6 @@
                                                 </ext:Anchor>
                                                 <ext:Anchor Horizontal="95%">
                                                     <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="False" />
-                                                </ext:Anchor>
-                                                <ext:Anchor Horizontal="95%">
-                                                    <ext:Checkbox ID="chkDisable" runat="server" FieldLabel="禁用">
-                                                    </ext:Checkbox>
                                                 </ext:Anchor>
                                             </Anchors>
                                         </ext:FormLayout>
@@ -65,6 +64,10 @@
                                                     <Body>
                                                         <ext:FormLayout ID="FormLayout2" runat="server">
                                                             <Anchors>
+                                                                <ext:Anchor Horizontal="95%">
+                                                                    <ext:Checkbox ID="chkDisable" runat="server" FieldLabel="禁用">
+                                                                    </ext:Checkbox>
+                                                                </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:ComboBox ID="cmbChannelID" runat="server" FieldLabel="通道" AllowBlank="False"
                                                                         StoreID="storeSPChannelAdd" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
@@ -100,19 +103,23 @@
                                                         <ext:FormLayout ID="FormLayout3" runat="server">
                                                             <Anchors>
                                                                 <ext:Anchor Horizontal="95%">
+                                                                    <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="排序号" AllowBlank="False"
+                                                                        Text="1" DecimalPrecision="0" MinValue="0" MaxValue="1000" />
+                                                                </ext:Anchor>
+                                                                <ext:Anchor Horizontal="95%">
                                                                     <ext:ComboBox ID="cmbClinetID" runat="server" FieldLabel="下家" AllowBlank="False"
                                                                         StoreID="storeSPClientAdd" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
                                                                         TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择下家" ValueNotFoundText="加载中..." />
                                                                 </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:ComboBox ID="cmbChannelCodeParamsName" Editable="false" runat="server" FieldLabel="指令映射字段"
-                                                                        AllowBlank="True" TriggerAction="All" SelectedIndex="0">
+                                                                        AllowBlank="True" TriggerAction="All" SelectedIndex="1">
                                                                         <Items>
                                                                             <ext:ListItem Value="cpid" Text="cpid"></ext:ListItem>
+                                                                            <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                                                             <ext:ListItem Value="mid" Text="mid"></ext:ListItem>
                                                                             <ext:ListItem Value="mobile" Text="mobile"></ext:ListItem>
                                                                             <ext:ListItem Value="port" Text="port"></ext:ListItem>
-                                                                            <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                                                             <ext:ListItem Value="msg" Text="msg"></ext:ListItem>
                                                                             <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>
                                                                             <ext:ListItem Value="dest" Text="dest"></ext:ListItem>
@@ -159,14 +166,14 @@
                                         </ext:TextField>
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
-                                        <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步数据成功信息" AllowBlank="True" />
+                                        <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步数据成功信息"  Text="ok" AllowBlank="True" />
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
-                                        <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步数据失败信息" AllowBlank="True" />
+                                        <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步数据失败信息" Text="failed" AllowBlank="True" />
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
                                         <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
-                                            AllowBlank="True" SelectedIndex="0">
+                                            AllowBlank="True" SelectedIndex="0" Hidden=true>
                                             <Items>
                                                 <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
                                                 <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
@@ -188,7 +195,7 @@
         <ext:Button ID="btnSaveSPClientChannelSetting" runat="server" Text="添加" Icon="Add">
             <AjaxEvents>
                 <Click Before="if (!AllValidate(#{pnlSPClientChannelSettingAdd1},#{pnlSPClientChannelSettingAdd2},#{pnlSPClientChannelSettingAdd3})) return false;"
-                    OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了通道下家设置。',callback);function callback(id) {#{formPanelSPClientChannelSettingAdd}.getForm().reset();#{storeSPClientChannelSetting}.reload(); };
+                    OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了通道下家设置。',callback);function callback(id) {#{pnlSPClientChannelSettingAdd1}.getForm().reset();#{pnlSPClientChannelSettingAdd2}.getForm().reset();#{pnlSPClientChannelSettingAdd3}.getForm().reset();#{storeSPClientChannelSetting}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

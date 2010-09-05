@@ -18,10 +18,17 @@
                 return '否';
         }
 
+        function GetChannleID()
+        {
+            return <%= this.ChannleID %>;
+        }
+
         function AllValidate(frm1,frm2,frm3)
         {
             return frm1.getForm().isValid()&&frm2.getForm().isValid()&&frm3.getForm().isValid();
-        } 
+        }
+        
+ 
         
 
         function RefreshSPClientChannelSettingList() {
@@ -44,6 +51,15 @@
                                                                                }
                                                                 });    
         
+        }
+
+        function prepareToolbar(grid, toolbar, rowIndex, record){
+            if(record.get("SyncData")!=null && record.get("SyncData")){
+                toolbar.items.itemAt(1).show();
+            }
+            else{
+                toolbar.items.itemAt(1).hide();
+            }
         }
 
         function processcmd(cmd, id) {
@@ -126,6 +142,8 @@
                     <ext:RecordField Name="ChannelClientRuleMatch" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
+                    <ext:RecordField Name="SyncData" Type=Boolean />
+                    <ext:RecordField Name="OrderIndex" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -171,7 +189,9 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Width="50">
+                                </ext:Column>
+                                <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="排序号" Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
                                     Sortable="true">
@@ -182,12 +202,13 @@
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数">
-                                            <ToolTip Text="编辑" />
+                                            <ToolTip Text="设置同步参数" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                     </Commands>
+                                    <PrepareToolbar Fn="prepareToolbar" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
@@ -198,6 +219,7 @@
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
+                           
                         </Listeners>
                     </ext:GridPanel>
                 </Items>
@@ -205,7 +227,7 @@
         </Body>
     </ext:ViewPort>
     <ext:Window ID="winParamsEdit" runat="server" Title="Window" Frame="true" Width="640"
-        ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
+        ConstrainHeader="true" Height="450" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">

@@ -20,11 +20,32 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
         }
 
 
+        public int ChannleID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannleID"] == null)
+                    return 0;
+                return Convert.ToInt32(this.Request.QueryString["ChannleID"]);
+            }
+        }
+
+
         [AjaxMethod]
         public void Show()
         {
             try
             {
+                //if (ChannleID>0)
+                //{
+                //    //this.cmbChannelID.SetValue(ChannleID);
+                //    this.cmbChannelID.Disabled = true;
+                //}
+                //else
+                //{
+                //    this.cmbChannelID.Disabled = false;                
+                //}
+
                 this.winSPClientChannelSettingAdd.Show();
             }
             catch (Exception ex)
@@ -45,6 +66,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.ChannelID = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannelID.SelectedItem.Value.ToString()));
                 obj.ClinetID = SPClientWrapper.FindById(Convert.ToInt32(this.cmbClinetID.SelectedItem.Value.ToString()));        	
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
+                obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
                 if (this.cmbChannelCodeParamsName.SelectedItem != null)
