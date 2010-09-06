@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Linq;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -381,6 +382,44 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     this.ExtendField9 = sValue;
                     break;
             }
+        }
+
+        public static List<SPPaymentInfoWrapper> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate)
+	    {
+            return ConvertToWrapperList(businessProxy.FindAllNotSendData(channelId, clientId, startdate, endDate));
+	    }
+
+        public static DataTable FindAllNotSendChannelClient()
+        {
+            return businessProxy.FindAllNotSendChannelClient();
+        }
+
+	    public void ReSend()
+	    {
+	        SPClientChannelSettingWrapper spClientChannelSettingWrapper = GetChannleClientSetting();
+
+	        //spClientChannelSettingWrapper.ChannelName;
+
+	        //this.SucesssToSend = spClientChannelSettingWrapper.SendMsg(this);
+
+	        string na = spClientChannelSettingWrapper.CommandType;
+
+	        return;
+
+	    }
+
+        public SPClientChannelSettingWrapper GetChannleClientSetting()
+        {
+            if (this.ChannleClientID.HasValue && this.ChannleClientID.Value > 0)
+            {
+                return SPClientChannelSettingWrapper.FindById(this.ChannleClientID.Value);
+            }
+
+            List<SPClientChannelSettingWrapper> clientChannelSettings = this.ChannelID.GetAllClientChannelSetting();
+
+            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings where (cc.ChannelID.Id == this.ChannelID.Id && cc.ClinetID.Id == this.ClientID.Id) orderby cc.OrderIndex descending select cc).FirstOrDefault();
+
+            return macthClientChannelSetting;
         }
     }
 }

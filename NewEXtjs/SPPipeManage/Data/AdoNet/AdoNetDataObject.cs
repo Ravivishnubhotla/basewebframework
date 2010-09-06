@@ -177,6 +177,16 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
+        public DataSet GetAllNeedSendChannelClient()
+        {
+            string sql = "SELECT  [ChannelID],[ClinetID] FROM  [dbo].[SPClientChannelSetting] where [SyncData] = 1 group by [ChannelID],[ClinetID]";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
+
+
         public DataSet GetAllReportData(DateTime date)
         {
             string sql = "Select * from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 1";

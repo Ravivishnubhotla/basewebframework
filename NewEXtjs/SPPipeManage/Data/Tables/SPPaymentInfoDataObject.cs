@@ -100,5 +100,27 @@ namespace LD.SPPipeManage.Data.Tables
 
 
         }
+
+        public List<SPPaymentInfoEntity> FindAllNotSendData(SPChannelEntity channelId, SPClientEntity clientId, DateTime startdate, DateTime endDate)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+
+            if (channelId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            if (clientId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientId));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startdate.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+
+
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+            queryBuilder.AddWhereClause(PROPERTY_SUCESSSTOSEND.Eq(false));
+
+            return this.FindListByQueryBuilder(queryBuilder);
+        }
     }
 }
