@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -23,6 +24,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
             dfEnd.Value = System.DateTime.Now.AddDays(-1);
 
+            DateField1.MaxDate = System.DateTime.Now.AddDays(-1);
+
+            DateField2.Value = System.DateTime.Now.AddDays(-1);
 
 
             //string dbsizestring = SPDayReportWrapper.GetDbSizeString();
@@ -54,6 +58,39 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
                 //prgData.UpdateProgress(float.Parse((space / total).ToString()));
                 
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+            }
+        }
+
+        protected void StartLongAction2(object sender, AjaxEventArgs e)
+        {
+            Server.ScriptTimeout = 300;
+            try
+            {
+                DataTable dt = SPPaymentInfoWrapper.FindAllNotSendChannelClient();
+
+                int i = 1;
+
+                foreach (DataRow dataRow in dt.Rows)
+                {
+                    int channelID = Convert.ToInt32(dataRow["ChannelID"].ToString());
+                    int ClinetID = Convert.ToInt32(dataRow["ClinetID"].ToString());
+
+                    List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, ClinetID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
+
+                    foreach (SPPaymentInfoWrapper paymentInfo in paymentInfos)
+                    {
+                        paymentInfo.ReSend();
+                    }
+
+                }
+                //SPPaymentInfoWrapper paymentInfoWrapper = SPPaymentInfoWrapper.FindAllNotSendData(Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
+
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)

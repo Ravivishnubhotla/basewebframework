@@ -16,33 +16,55 @@
                     <ext:FormPanel ID="FormPanel1" runat="server" Frame="true" Title="高级数据管理">
                         <Body>
                             <ext:FormLayout ID="FormLayout1" runat="server">
-                                <ext:Anchor>
-                                    <ext:MultiField ID="MultiField2" runat="server" FieldLabel="手动生成报表">
-                                        <Fields>
-                                            <ext:Label ID="lblStart" runat="server" Text="开始时间：" />
-                                            <ext:DateField ID="dfStart" runat="server" Vtype="daterange">
-                                                <Listeners>
-                                                    <Render Handler="this.endDateField = '#{dfEnd}'" />
-                                                </Listeners>
-                                            </ext:DateField>
-                                            <ext:Label ID="Label4" runat="server" Text="结束时间：" />
-                                            <ext:DateField ID="dfEnd" runat="server" Vtype="daterange">
-                                                <Listeners>
-                                                    <Render Handler="this.startDateField = '#{dfStart}'" />
-                                                </Listeners>
-                                            </ext:DateField>
-                                            <ext:Button ID="btnArchive" runat="server" Text="开始生成报表">
-                                                <AjaxEvents>
-                                                    <Click OnEvent="StartLongAction" Success="Ext.MessageBox.alert('操作成功', '成功的手动生成报表.',callback);function callback(id) {};">
-                                                        <EventMask ShowMask="true" Msg="处理中..." />
-                                                        <Confirmation ConfirmRequest="true" Message="确认进行手动生成报表？" Title="确认操作" />
-                                                    </Click>
-                                                </AjaxEvents>
-                                            </ext:Button>
-                                        </Fields>
-                                    </ext:MultiField>
-                                </ext:Anchor>
-                             
+                                <Anchors>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:MultiField ID="MultiField2" runat="server" FieldLabel="手动生成报表">
+                                            <Fields>
+                                                <ext:Label ID="lblStart" runat="server" Text="开始时间：" />
+                                                <ext:DateField ID="dfStart" runat="server" Vtype="daterange">
+                                                    <Listeners>
+                                                        <Render Handler="this.endDateField = '#{dfEnd}'" />
+                                                    </Listeners>
+                                                </ext:DateField>
+                                                <ext:Label ID="Label4" runat="server" Text="结束时间：" />
+                                                <ext:DateField ID="dfEnd" runat="server" Vtype="daterange">
+                                                    <Listeners>
+                                                        <Render Handler="this.startDateField = '#{dfStart}'" />
+                                                    </Listeners>
+                                                </ext:DateField>
+                                                <ext:Button ID="btnArchive" runat="server" Text="开始生成报表">
+                                                    <AjaxEvents>
+                                                        <Click OnEvent="StartLongAction" Success="Ext.MessageBox.alert('操作成功', '成功的手动生成报表.',callback);function callback(id) {};">
+                                                            <EventMask ShowMask="true" Msg="处理中..." />
+                                                            <Confirmation ConfirmRequest="true" Message="确认进行手动生成报表？" Title="确认操作" />
+                                                        </Click>
+                                                    </AjaxEvents>
+                                                </ext:Button>
+                                            </Fields>
+                                        </ext:MultiField>
+                                    </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:MultiField ID="MultiField5" runat="server" FieldLabel="手动重发数据">
+                                            <Fields>
+                                                <ext:Label ID="Label1" runat="server" Text="开始时间：" />
+                                                <ext:DateField ID="DateField1" runat="server" Vtype="daterange">
+                                                </ext:DateField>
+                                                <ext:Label ID="Label2" runat="server" Text="结束时间：" />
+                                                <ext:DateField ID="DateField2" runat="server" Vtype="daterange">
+                                                </ext:DateField>
+                                                <ext:Button ID="Button1" runat="server" Text="开始重发数据">
+                                                    <AjaxEvents>
+                                                        <Click OnEvent="StartLongAction2" Success="Ext.MessageBox.alert('操作成功', '成功的重发数据.',callback);function callback(id) {};"
+                                                            Timeout="1000000">
+                                                            <EventMask ShowMask="true" Msg="处理中..." />
+                                                            <Confirmation ConfirmRequest="true" Message="确认进行手动重发数据？" Title="确认操作" />
+                                                        </Click>
+                                                    </AjaxEvents>
+                                                </ext:Button>
+                                            </Fields>
+                                        </ext:MultiField>
+                                    </ext:Anchor>
+                                </Anchors>
                             </ext:FormLayout>
                         </Body>
                         <Listeners>

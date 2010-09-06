@@ -19,6 +19,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
         //DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
         List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate);
+        DataTable FindAllNotSendChannelClient();
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -65,6 +67,28 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    sortFieldName, isDesc,
                                                                                    pageIndex, pageSize,
                                                                                    out recordCount);
+        }
+
+        public List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate)
+        {
+            SPChannelEntity channelEntity = null;
+
+            if (channelId > 0)
+                channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
+
+
+            SPClientEntity clientEntity = null;
+
+            if (clientId > 0)
+                clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientId);
+
+
+            return this.SelfDataObj.FindAllNotSendData(channelEntity, clientEntity, startdate, endDate);
+        }
+
+        public DataTable FindAllNotSendChannelClient()
+        {
+            return this.AdoNetDb.GetAllNeedSendChannelClient().Tables[0];
         }
 
         //public DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
