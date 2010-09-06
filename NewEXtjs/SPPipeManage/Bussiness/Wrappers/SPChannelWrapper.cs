@@ -466,7 +466,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
                 {
-                    sb.AppendFormat("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}',<br/>", channelSetting.Name, channelSetting.ChannelClientRuleMatch, channelSetting.ClientName);
+                    string interceptRate = "<font color='red'>0</font>";
+
+                    string syncDataUrl = "";
+
+                    if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                    {
+                        syncDataUrl = " ,<font color='blue'>下家同步地址：" + channelSetting.SyncDataUrl + "</font>";
+                    }
+
+                    if (channelSetting.InterceptRate.HasValue && channelSetting.InterceptRate.Value>0)
+                    {
+                        interceptRate = channelSetting.InterceptRate.Value.ToString();
+                    }
+
+                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}', 扣率  {3} , {4}<br/>", channelSetting.Name,
+                                                channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
+                                                interceptRate, syncDataUrl);
+
+ 
+                    sb.Append(line);
                 }
 
                 return sb.ToString();
