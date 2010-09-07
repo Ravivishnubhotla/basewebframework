@@ -80,7 +80,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		
         #endregion
 
-
 		#region Public Property
 		/// <summary>
 		/// 
@@ -224,10 +223,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		}
 		#endregion 
 
-
-
-
-
         #region "FKQuery"
 		
         public static List<SPChannelParamsWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
@@ -244,13 +239,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #endregion
-
-
-
-
-
-
-
 
         #region Static Common Data Operation
 		
