@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
+using NHibernate.Tool.hbm2ddl;
 
 
 namespace DataBaseSchemaExport
@@ -14,10 +15,12 @@ namespace DataBaseSchemaExport
         static void Main(string[] args)
         {
             Configuration cfg = new Configuration();
+            
             cfg.Configure();
+            
             string[] sqls = cfg.GenerateSchemaCreationScript(new MySQL5Dialect());
 
-            File.WriteAllLines("1.sql", sqls);
+            File.WriteAllLines("MySQL5.sql", sqls);
 
             Console.WriteLine("OK");
         }
