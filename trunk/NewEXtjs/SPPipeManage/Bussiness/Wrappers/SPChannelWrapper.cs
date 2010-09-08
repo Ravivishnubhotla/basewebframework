@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
