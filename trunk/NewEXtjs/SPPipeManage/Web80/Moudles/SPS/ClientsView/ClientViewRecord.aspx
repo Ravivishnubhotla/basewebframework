@@ -39,6 +39,7 @@
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
                     <ext:RecordField Name="Province" />
+                    <ext:RecordField Name="SSycnDataUrl" />          
                     <ext:RecordField Name="CreateDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
@@ -116,7 +117,10 @@
                             <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
                                 <Template ID="Template1" runat="server">
                     <br />
-                        <p><b>所有参数：</b> {Values}</p>
+                        <b>所有参数：</b> {Values}  <br />
+
+                        <b>同步链接：</b> {SSycnDataUrl}
+
                                 </Template>
                             </ext:RowExpander>
                         </Plugins>
