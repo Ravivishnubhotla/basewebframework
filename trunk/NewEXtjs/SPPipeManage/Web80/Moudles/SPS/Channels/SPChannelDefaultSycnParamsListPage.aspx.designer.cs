@@ -10,52 +10,34 @@
 namespace Legendigital.Common.Web.Moudles.SPS.Channels {
     
     
-    public partial class SPChannelListPage {
+    public partial class SPChannelDefaultSycnParamsListPage {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// UCSPClientChannelParamsEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCSPClientChannelParamsEdit UCSPClientChannelParamsEdit1;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// UCSPClientChannelParamsAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPChannel;
+        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCSPClientChannelParamsAdd UCSPClientChannelParamsAdd1;
         
         /// <summary>
-        /// UCSPChannelAdd1 control.
+        /// storeSPSendClientParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelAdd UCSPChannelAdd1;
-        
-        /// <summary>
-        /// UCSPChannelEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEdit UCSPChannelEdit1;
-        
-        /// <summary>
-        /// UCChannelParamsManage1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCChannelParamsManage UCChannelParamsManage1;
+        protected global::Coolite.Ext.Web.Store storeSPSendClientParams;
         
         /// <summary>
         /// viewPortMain control.
@@ -76,13 +58,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPChannel control.
+        /// gridPanelSPSendClientParams control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPChannel;
+        protected global::Coolite.Ext.Web.GridPanel gridPanelSPSendClientParams;
         
         /// <summary>
         /// tbTop control.
@@ -112,6 +94,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
         
         /// <summary>
+        /// btnPatchAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton btnPatchAdd;
+        
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -128,41 +119,5 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
-        
-        /// <summary>
-        /// RowExpander1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.RowExpander RowExpander1;
-        
-        /// <summary>
-        /// winSendTestRequestForm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSendTestRequestForm;
-        
-        /// <summary>
-        /// winChannelClientSettings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Window winChannelClientSettings;
-        
-        /// <summary>
-        /// winChannelDefaultSendParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Window winChannelDefaultSendParams;
     }
 }

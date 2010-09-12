@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Commons\ChannelStatus.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs" />
@@ -113,6 +114,10 @@
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
       <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
@@ -187,6 +192,10 @@
       <DependentUpon>SPUperServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
+    <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>

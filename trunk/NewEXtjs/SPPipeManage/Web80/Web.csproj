@@ -121,7 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
@@ -181,6 +184,13 @@
     </Compile>
     <Compile Include="Masters\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPChannelDefaultSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelDefaultSycnParamsListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
       <DependentUpon>SPChannelHandler.ashx</DependentUpon>
@@ -243,6 +253,20 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.designer.cs">
       <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx.cs">
       <DependentUpon>SPChannelClientSycnListPage.aspx</DependentUpon>

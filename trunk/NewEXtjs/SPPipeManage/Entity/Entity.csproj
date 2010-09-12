@@ -75,6 +75,10 @@
   <ItemGroup>
     <Compile Include="CustomTyoe\ReportResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\SPChannelDefaultClientSycnParamsEntity.cs" />
+    <Compile Include="Tables\SPChannelDefaultClientSycnParamsEntity.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelEntity.cs" />
     <Compile Include="Tables\SPChannelEntity.Designer.cs">
       <DependentUpon>SPChannelEntity.cs</DependentUpon>
@@ -194,6 +198,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPStatReportMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSycnParamsMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPChannelDefaultClientSycnParamsMappingFile.hbm.xml" />
     <Content Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
   </ItemGroup>

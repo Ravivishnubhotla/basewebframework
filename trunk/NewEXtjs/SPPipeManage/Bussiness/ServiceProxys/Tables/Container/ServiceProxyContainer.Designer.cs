@@ -10,6 +10,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
     {		
 		public ISPChannelServiceProxy SPChannelServiceProxyInstance
         {get; set;}
+		public ISPChannelDefaultClientSycnParamsServiceProxy SPChannelDefaultClientSycnParamsServiceProxyInstance
+        {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
         {get; set;}
 		public ISPClientServiceProxy SPClientServiceProxyInstance
