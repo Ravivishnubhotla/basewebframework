@@ -122,7 +122,24 @@
                 win.autoLoad.params.ChannleID = id.data.Id;
         
                 win.show();    
-            }       
+            }
+            
+            if (cmd == "cmdnChannelDefaultSendParams") {
+
+                var win = <%= this.winChannelDefaultSendParams.ClientID %>;
+                
+
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 默认下发参数 ");
+                
+                win.autoLoad.url = 'SPChannelDefaultSycnParamsListPage.aspx';
+                
+                win.autoLoad.params.ChannleID = id.data.Id;
+        
+                win.show();    
+            }      
+            
+            
+                   
         }
 
     </script>
@@ -216,9 +233,9 @@
                                     Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colStatus" DataIndex="CStatusString" Header="状态" Sortable="true"
-                                    Width="50">
+                                    Width="30">
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="160">
+                                <ext:CommandColumn Header="通道管理" Width="172">
                                     <Commands>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
@@ -235,6 +252,14 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="下家分配">
                                             <ToolTip Text="下家分配" />
                                         </ext:GridCommand>
+
+
+                                       <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams" Text="默认下发参数">
+                                            <ToolTip Text="默认下发参数" />
+                                        </ext:GridCommand>
+
+
+
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>
@@ -279,6 +304,20 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winChannelClientSettings" runat="server" Title="Window" Frame="true"
+        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+        <ext:Window ID="winChannelDefaultSendParams" runat="server" Title="Window" Frame="true"
         Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"

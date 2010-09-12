@@ -9,6 +9,9 @@
  <object id="SPChannelDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPChannelDefaultClientSycnParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDefaultClientSycnParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPChannelParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelParamsDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -68,6 +71,7 @@
 
 <object id="DataObjectContainersIocID" type="LD.SPPipeManage.Data.Tables.Container.DataObjectContainers, LD.SPPipeManage.Data">
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
+    <property name="SPChannelDefaultClientSycnParamsDataObjectInstance" ref="SPChannelDefaultClientSycnParamsDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
     <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>

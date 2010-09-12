@@ -99,6 +99,10 @@
     <Compile Include="Tables\SPChannelDataObject.Designer.cs">
       <DependentUpon>SPChannelDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPChannelDefaultClientSycnParamsDataObject.cs" />
+    <Compile Include="Tables\SPChannelDefaultClientSycnParamsDataObject.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelParamsDataObject.cs" />
     <Compile Include="Tables\SPChannelParamsDataObject.Designer.cs">
       <DependentUpon>SPChannelParamsDataObject.cs</DependentUpon>

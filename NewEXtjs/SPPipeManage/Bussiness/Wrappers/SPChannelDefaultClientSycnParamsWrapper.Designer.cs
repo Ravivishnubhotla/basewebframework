@@ -10,14 +10,14 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
-    public partial class SPChannelParamsWrapper
+    public partial class SPChannelDefaultClientSycnParamsWrapper
     {
         #region Member
 
-		internal static readonly ISPChannelParamsServiceProxy businessProxy = ((LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPChannelParamsServiceProxyInstance;
-		//internal static readonly ISPChannelParamsServiceProxy businessProxy = ((ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID"))).SPChannelParamsServiceProxyInstance;
+		internal static readonly ISPChannelDefaultClientSycnParamsServiceProxy businessProxy = ((LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPChannelDefaultClientSycnParamsServiceProxyInstance;
+		//internal static readonly ISPChannelDefaultClientSycnParamsServiceProxy businessProxy = ((ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID"))).SPChannelDefaultClientSycnParamsServiceProxyInstance;
 
-        internal SPChannelParamsEntity entity;
+        internal SPChannelDefaultClientSycnParamsEntity entity;
 		
 		private static ILog logger = null;
 
@@ -26,7 +26,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             get
             {
                 if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPChannelParamsWrapper));
+                    logger = LogManager.GetLogger(typeof(SPChannelDefaultClientSycnParamsWrapper));
                 return logger;
             }
         }
@@ -34,12 +34,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         #endregion
 
         #region Construtor
-        public SPChannelParamsWrapper() : this(new SPChannelParamsEntity())
+        public SPChannelDefaultClientSycnParamsWrapper() : this(new SPChannelDefaultClientSycnParamsEntity())
         {
             
         }
 
-        internal SPChannelParamsWrapper(SPChannelParamsEntity entityObj)
+        internal SPChannelDefaultClientSycnParamsWrapper(SPChannelDefaultClientSycnParamsEntity entityObj)
         {
             entity = entityObj;
         }
@@ -66,17 +66,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPChannelParamsEntity";
+		public static readonly string CLASS_FULL_NAME = "LD.SPPipeManage.Entity.Tables.SPChannelDefaultClientSycnParamsEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
-		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
-		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
+		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
-		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
 		
         #endregion
 
@@ -155,20 +153,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ParamsType
-		{
-			get
-			{
-				return entity.ParamsType;
-			}
-			set
-			{
-				entity.ParamsType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public SPChannelWrapper ChannelID
 		{
 			get
@@ -183,15 +167,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ParamsMappingName
+		public string MappingParams
 		{
 			get
 			{
-				return entity.ParamsMappingName;
+				return entity.MappingParams;
 			}
 			set
 			{
-				entity.ParamsMappingName = value;
+				entity.MappingParams = value;
 			}
 		}
 		/// <summary>
@@ -208,20 +192,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 				entity.Title = value;
 			}
 		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? ShowInClientGrid
-		{
-			get
-			{
-				return entity.ShowInClientGrid;
-			}
-			set
-			{
-				entity.ShowInClientGrid = value;
-			}
-		}
 		#endregion 
 
 
@@ -230,12 +200,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region "FKQuery"
 		
-        public static List<SPChannelParamsWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
+        public static List<SPChannelDefaultClientSycnParamsWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc, pageIndex, pageSize, channelID.entity, out recordCount));
         }
 
-        public static List<SPChannelParamsWrapper> FindAllByChannelID(SPChannelWrapper channelID)
+        public static List<SPChannelDefaultClientSycnParamsWrapper> FindAllByChannelID(SPChannelWrapper channelID)
         {
             return ConvertToWrapperList(businessProxy.FindAllByChannelID(channelID.entity));
         }
@@ -254,37 +224,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region Static Common Data Operation
 		
-		internal static List<SPChannelParamsWrapper> ConvertToWrapperList(List<SPChannelParamsEntity> entitylist)
+		internal static List<SPChannelDefaultClientSycnParamsWrapper> ConvertToWrapperList(List<SPChannelDefaultClientSycnParamsEntity> entitylist)
         {
-            List<SPChannelParamsWrapper> list = new List<SPChannelParamsWrapper>();
-            foreach (SPChannelParamsEntity lentity in entitylist)
+            List<SPChannelDefaultClientSycnParamsWrapper> list = new List<SPChannelDefaultClientSycnParamsWrapper>();
+            foreach (SPChannelDefaultClientSycnParamsEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 
-		internal static List<SPChannelParamsWrapper> ConvertToWrapperList(IList<SPChannelParamsEntity> entitylist)
+		internal static List<SPChannelDefaultClientSycnParamsWrapper> ConvertToWrapperList(IList<SPChannelDefaultClientSycnParamsEntity> entitylist)
         {
-            List<SPChannelParamsWrapper> list = new List<SPChannelParamsWrapper>();
-            foreach (SPChannelParamsEntity lentity in entitylist)
+            List<SPChannelDefaultClientSycnParamsWrapper> list = new List<SPChannelDefaultClientSycnParamsWrapper>();
+            foreach (SPChannelDefaultClientSycnParamsEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 		
-		internal static List<SPChannelParamsEntity> ConvertToEntityList(List<SPChannelParamsWrapper> wrapperlist)
+		internal static List<SPChannelDefaultClientSycnParamsEntity> ConvertToEntityList(List<SPChannelDefaultClientSycnParamsWrapper> wrapperlist)
         {
-            List<SPChannelParamsEntity> list = new List<SPChannelParamsEntity>();
-            foreach (SPChannelParamsWrapper wrapper in wrapperlist)
+            List<SPChannelDefaultClientSycnParamsEntity> list = new List<SPChannelDefaultClientSycnParamsEntity>();
+            foreach (SPChannelDefaultClientSycnParamsWrapper wrapper in wrapperlist)
             {
                 list.Add(wrapper.entity);
             }
             return list;
         }
 
-        internal static SPChannelParamsWrapper ConvertEntityToWrapper(SPChannelParamsEntity entity)
+        internal static SPChannelDefaultClientSycnParamsWrapper ConvertEntityToWrapper(SPChannelDefaultClientSycnParamsEntity entity)
         {
             if (entity == null)
                 return null;
@@ -292,7 +262,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             if (entity.Id == 0)
                 return null;
 
-            return new SPChannelParamsWrapper(entity);
+            return new SPChannelDefaultClientSycnParamsWrapper(entity);
         }
 		
 		#endregion
