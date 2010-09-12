@@ -398,14 +398,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
 	        SPClientChannelSettingWrapper spClientChannelSettingWrapper = GetChannleClientSetting();
 
-	        //spClientChannelSettingWrapper.ChannelName;
+            this.SucesssToSend = spClientChannelSettingWrapper.SendMsg(this);
 
-	        //this.SucesssToSend = spClientChannelSettingWrapper.SendMsg(this);
-
-	        string na = spClientChannelSettingWrapper.CommandType;
-
-	        return;
-
+            Update(this);
 	    }
 
         public SPClientChannelSettingWrapper GetChannleClientSetting()

@@ -22,6 +22,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives {
         protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManager1;
         
         /// <summary>
+        /// storeSPChannel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSPChannel;
+        
+        /// <summary>
+        /// storeSPClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSPClient;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,42 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.MultiField MultiField5;
+        
+        /// <summary>
+        /// lbl1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lbl1;
+        
+        /// <summary>
+        /// cmbChannelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
+        
+        /// <summary>
+        /// Label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label Label5;
+        
+        /// <summary>
+        /// cmbClientID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbClientID;
         
         /// <summary>
         /// Label1 control.
