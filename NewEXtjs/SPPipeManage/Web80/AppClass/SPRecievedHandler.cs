@@ -67,20 +67,20 @@ namespace Legendigital.Common.Web.AppClass
                         context.Response.Write(channel.GetOkCode());
                     else
                     {
-                        logger.Error("Process Request Error:Request failed.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+                        logger.Error("处理请求失败：请求失败。\n" + "请求信息:\n" + GetRequestInfo(context.Request));
 
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Request failed.\n", channel.Id, 0);
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：请求失败。\n", channel.Id, 0);
                     }
                 }
                 else
                 {
-                    logger.Error("Process Request Error:Can't find channle.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Can't find channle.\n", 0, 0);
+                    logger.Error("处理请求失败：无法找到对应的通道。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：无法找到对应的通道。\n", 0, 0);
                 }
             }
             catch (Exception ex)
             {
-                logger.Error("Process Request Error:\n" + "Request Info:\n" + GetRequestInfo(context.Request), ex);
+                logger.Error("处理请求失败:\n" + "请求信息:\n" + GetRequestInfo(context.Request), ex);
 
                 try
                 {
@@ -88,12 +88,12 @@ namespace Legendigital.Common.Web.AppClass
 
                     string recievdData = JsonConvert.SerializeObject(recivedata);
 
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:" + ex.Message + "\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：" + ex.Message + "\n", 0, 0);
                 }
                 catch (Exception e)
                 {
-                    logger.Error("失败请求保存失败.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "Process Request Error:" + ex.Message + "\n", 0, 0);
+                    logger.Error("失败请求保存失败.\n" + "请求信息系:\n" + GetRequestInfo(context.Request));
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "请求错误:" + ex.Message + "\n", 0, 0);
                 }
 
                 return;
