@@ -21,21 +21,43 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
         {
             context.Response.ContentType = "text/json";
 
-            List<SPClientWrapper> clients = SPClientWrapper.FindAll();
+            List<SPClientWrapper> clients = new List<SPClientWrapper>();
 
-            //string clientID = context.Request.QueryString["ClinetID"];
+            if (context.Request.QueryString["DataType"] == "GetChannelSycnClient")
+            {
+                int channelID = 0;
 
-            //if (string.IsNullOrEmpty(clientID))
-            //{
-            //    clients = new List<SPClientWrapper>();
-            //}
-            //else
-            //{
-            //    int cid = int.Parse(clientID);
+                if(context.Request.QueryString["ChannleID"]!=null)
+                {
+                    channelID = Convert.ToInt32(context.Request.QueryString["ChannleID"]);
 
-            //    clients = SPClientWrapper.FindByChannelID(cid);
+                    if(channelID>0)
+                    {
+                        List<SPClientChannelSettingWrapper> settings = SPChannelWrapper.FindById(channelID).GetAllClientChannelSetting();
 
-            //}
+                        foreach (SPClientChannelSettingWrapper spClientChannelSettingWrapper in settings)
+                        {
+                            int cid = spClientChannelSettingWrapper.ClinetID.Id;
+                            bool sycnData = spClientChannelSettingWrapper.SyncData.HasValue &&
+                                            spClientChannelSettingWrapper.SyncData.Value;
+
+                            bool hasSycnDataUrl = !string.IsNullOrEmpty(spClientChannelSettingWrapper.SyncDataUrl);
+
+                            if (!clients.Exists(p => (p.Id == cid)) && sycnData && hasSycnDataUrl)
+                            {
+                                clients.Add(spClientChannelSettingWrapper.ClinetID);
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+            if (context.Request.QueryString["DataType"]==null || string.IsNullOrEmpty(context.Request.QueryString["DataType"]))
+            {
+                clients = SPClientWrapper.FindAll();
+            }
 
             context.Response.Write(string.Format("{{total:{1},'clients':{0}}}", JSON.Serialize(clients), clients.Count));
         }

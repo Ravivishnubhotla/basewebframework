@@ -69,26 +69,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
         protected void StartLongAction2(object sender, AjaxEventArgs e)
         {
-            Server.ScriptTimeout = 300;
+            Server.ScriptTimeout = 3000;
+
             try
             {
-                DataTable dt = SPPaymentInfoWrapper.FindAllNotSendChannelClient();
+                int channelID = Convert.ToInt32(cmbChannelID.SelectedItem.Value);
 
-                int i = 1;
+                int clientID = Convert.ToInt32(cmbClientID.SelectedItem.Value);
 
-                foreach (DataRow dataRow in dt.Rows)
-                {
-                    int channelID = Convert.ToInt32(dataRow["ChannelID"].ToString());
-                    int ClinetID = Convert.ToInt32(dataRow["ClinetID"].ToString());
+                List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, clientID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
 
-                    List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, ClinetID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
+                    //foreach (SPPaymentInfoWrapper paymentInfo in paymentInfos)
+                    //{
+                    //    paymentInfo.ReSend();
+                    //}
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
+                return;
 
-                    foreach (SPPaymentInfoWrapper paymentInfo in paymentInfos)
-                    {
-                        paymentInfo.ReSend();
-                    }
-
-                }
+        
                 //SPPaymentInfoWrapper paymentInfoWrapper = SPPaymentInfoWrapper.FindAllNotSendData(Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
 
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
