@@ -99,6 +99,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
+		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
+		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		
         #endregion
 
@@ -550,6 +552,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ChannleClientID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsSycnData
+		{
+			get
+			{
+				return entity.IsSycnData;
+			}
+			set
+			{
+				entity.IsSycnData = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SSycnDataUrl
+		{
+			get
+			{
+				return entity.SSycnDataUrl;
+			}
+			set
+			{
+				entity.SSycnDataUrl = value;
 			}
 		}
 		#endregion 

@@ -160,9 +160,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (string.IsNullOrEmpty(linkid))
             {
-                Logger.Error("not link id  " + this.Name + " channel setting.");
+                Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, "not link id  " + this.Name + " channel setting.", this.Id, 0);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .", this.Id, 0);
 
                 return false;
             }
@@ -172,8 +172,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
             Hashtable exparams = GetEXParamsValue(hashtable);
-
-            //SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromYWID(ywid);
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable, fieldMappings);
 
@@ -235,15 +233,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     Logger.Error(ex.Message);
                 }
 
-
+                paymentInfo.IsSycnData = false;
 
                 //SPInterceptRateWrapper.InsertRecord(paymentInfo);
 
                 if (!paymentInfo.IsIntercept.Value)
                 {
                     if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                    {
                         paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
-                    //paymentInfo.SucesssToSend = channelSetting.ClinetID.SendMsg(cpid, mid, mobile, port, ywid, msg, linkid, dest, price, exparams);
+                    }
                     else
                         paymentInfo.SucesssToSend = false;
                 }
@@ -270,21 +269,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                     if (sqlException != null && sqlException.Number == 2627)
                     {
-                        Logger.Error("Process Request Error:linkid repeater");
-                        throw new Exception("Process Request Error:linkid repeater");
+                        Logger.Error("请求失败：重复的唯一标识（Linkid）。");
+                        throw new Exception("请求失败：重复的唯一标识（Linkid）。");
                     }
 
-                    Logger.Error("Process Request Error:Isert date failed  " + ex.Message);
-                    throw new Exception("Process Request Error:Isert date failed  " + ex.Message);
+                    Logger.Error("请求失败：插入数据失败，错误信息：" + ex.Message);
+                    throw new Exception("请求失败：插入数据失败，错误信息： " + ex.Message);
                 }
 
 
             }
             else
             {
-                Logger.Error("Process Request Error:Can't find match Client  " + this.Name + " client setting.");
+                Logger.Error("请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "Process Request Error:Can't find match Client  " + this.Name + " client setting.", this.Id, 0);
+                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
 
                 return false;
             }
@@ -546,6 +545,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             statReport.Stat = stat;
 
             SPStatReportWrapper.Save(statReport);
+        }
+
+        public List<SPChannelDefaultClientSycnParamsWrapper> GetAllEnableDefaultSendParams()
+        {
+            return SPChannelDefaultClientSycnParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableDefaultSendParams(this.entity));
         }
     }
 }

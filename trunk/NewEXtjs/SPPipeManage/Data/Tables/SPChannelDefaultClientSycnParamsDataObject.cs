@@ -11,5 +11,17 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPChannelDefaultClientSycnParamsDataObject
     {
+        public List<SPChannelDefaultClientSycnParamsEntity> GetAllEnableDefaultSendParams(SPChannelEntity spChannelEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelDefaultClientSycnParamsEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(spChannelEntity));
+
+            queryGenerator.AddWhereClause(PROPERTY_ISENABLE.Eq(true));
+
+            queryGenerator.AddOrderBy(PROPERTY_ID.Desc());
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

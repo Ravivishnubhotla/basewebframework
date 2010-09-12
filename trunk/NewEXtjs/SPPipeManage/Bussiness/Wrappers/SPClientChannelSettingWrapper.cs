@@ -293,6 +293,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             string requesturl = BulidUrl(spPaymentInfo);
 
+            spPaymentInfo.IsSycnData = true;
+
+            spPaymentInfo.SSycnDataUrl = requesturl;
+
             string errorMessage = string.Empty;
 
             bool sendOk = SendRequest(requesturl, 10000, "ok", out errorMessage);
@@ -306,63 +310,131 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             List<SPClientChannelSycnParamsWrapper> clientFieldMappings = this.GetFieldMappings();
 
-            foreach (SPClientChannelSycnParamsWrapper clientFieldMapping in clientFieldMappings)
+            if (clientFieldMappings.Count > 0)
             {
-                switch (clientFieldMapping.MappingParams)
+                foreach (SPClientChannelSycnParamsWrapper clientFieldMapping in clientFieldMappings)
                 {
-                    case "mid":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Mid);
-                        break;
-                    case "mobile":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.MobileNumber);
-                        break;
-                    case "port":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Port);
-                        break;
-                    case "ywid":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Ywid);
-                        break;
-                    case "msg":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Message);
-                        break;
-                    case "cpid":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Cpid);
-                        break;
-                    case "linkid":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Linkid);
-                        break;
-                    case "dest":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Dest);
-                        break;
-                    case "extendfield1":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField1);
-                        break;
-                    case "extendfield2":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField2);
-                        break;
-                    case "extendfield3":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField3);
-                        break;
-                    case "extendfield4":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField4);
-                        break;
-                    case "extendfield5":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField5);
-                        break;
-                    case "extendfield6":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField6);
-                        break;
-                    case "extendfield7":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField7);
-                        break;
-                    case "extendfield8":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField8);
-                        break;
-                    case "extendfield9":
-                        BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField9);
-                        break;
+                    switch (clientFieldMapping.MappingParams)
+                    {
+                        case "mid":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Mid);
+                            break;
+                        case "mobile":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.MobileNumber);
+                            break;
+                        case "port":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Port);
+                            break;
+                        case "ywid":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Ywid);
+                            break;
+                        case "msg":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Message);
+                            break;
+                        case "cpid":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Cpid);
+                            break;
+                        case "linkid":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Linkid);
+                            break;
+                        case "dest":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.Dest);
+                            break;
+                        case "extendfield1":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField1);
+                            break;
+                        case "extendfield2":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField2);
+                            break;
+                        case "extendfield3":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField3);
+                            break;
+                        case "extendfield4":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField4);
+                            break;
+                        case "extendfield5":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField5);
+                            break;
+                        case "extendfield6":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField6);
+                            break;
+                        case "extendfield7":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField7);
+                            break;
+                        case "extendfield8":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField8);
+                            break;
+                        case "extendfield9":
+                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField9);
+                            break;
+                    }
                 }
             }
+            else
+            {
+                List<SPChannelDefaultClientSycnParamsWrapper> channelFieldMappings = this.ChannelID.GetAllEnableDefaultSendParams();
+
+
+                foreach (SPChannelDefaultClientSycnParamsWrapper channelDefaultClientSycnParam in channelFieldMappings)
+                {
+                    switch (channelDefaultClientSycnParam.MappingParams)
+                    {
+                        case "mid":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Mid);
+                            break;
+                        case "mobile":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.MobileNumber);
+                            break;
+                        case "port":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Port);
+                            break;
+                        case "ywid":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Ywid);
+                            break;
+                        case "msg":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Message);
+                            break;
+                        case "cpid":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Cpid);
+                            break;
+                        case "linkid":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Linkid);
+                            break;
+                        case "dest":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.Dest);
+                            break;
+                        case "extendfield1":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField1);
+                            break;
+                        case "extendfield2":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField2);
+                            break;
+                        case "extendfield3":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField3);
+                            break;
+                        case "extendfield4":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField4);
+                            break;
+                        case "extendfield5":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField5);
+                            break;
+                        case "extendfield6":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField6);
+                            break;
+                        case "extendfield7":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField7);
+                            break;
+                        case "extendfield8":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField8);
+                            break;
+                        case "extendfield9":
+                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField9);
+                            break;
+                    }
+                }
+            }
+
+
 
             return string.Format("{0}?{1}", this.SyncDataUrl, queryString.ToString());
         }
