@@ -4,11 +4,11 @@
 <%@ Register Src="UCSPClientAdd.ascx" TagName="UCSPClientAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPClientEdit.ascx" TagName="UCSPClientEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCClientParamsSetting.ascx" TagName="UCClientParamsSetting" TagPrefix="uc3" %>
-<%@ Register Src="UCSPSendClientParamsClone.ascx" TagName="UCSPSendClientParamsClone" TagPrefix="uc5" %>
+<%@ Register Src="UCSPSendClientParamsClone.ascx" TagName="UCSPSendClientParamsClone"
+    TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
-
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -118,7 +118,6 @@
         }
 
     </script>
-
     <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeSPClient_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
@@ -145,7 +144,7 @@
     <uc1:UCSPClientAdd ID="UCSPClientAdd1" runat="server" />
     <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" />
     <uc3:UCClientParamsSetting ID="UCClientParamsSetting1" runat="server" />
-        <uc5:UCSPSendClientParamsClone ID="UCSPSendClientParamsClone1" runat="server" />
+    <uc5:UCSPSendClientParamsClone ID="UCSPSendClientParamsClone1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -182,7 +181,7 @@
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
-                                    Sortable="true">
+                                    Hidden="true" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Sortable="true">
                                 </ext:Column>
@@ -197,7 +196,8 @@
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone"  Hidden="true" Text="参数复制">
+                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone" Hidden="true"
+                                            Text="参数复制">
                                             <ToolTip Text="参数复制" />
                                         </ext:GridCommand>
                                     </Commands>
