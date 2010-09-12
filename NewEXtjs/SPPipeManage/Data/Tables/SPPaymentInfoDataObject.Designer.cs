@@ -90,6 +90,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_PROVINCE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_PROVINCE);
 		public static readonly Property PROPERTY_ISTESTDATA = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISTESTDATA);
 		public static readonly Property PROPERTY_CHANNLECLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CHANNLECLIENTID);
+		public static readonly Property PROPERTY_ISSYCNDATA = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISSYCNDATA);
+		public static readonly Property PROPERTY_SSYCNDATAURL = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SSYCNDATAURL);
       
 		#region 子类集合字段查询字段
 	
@@ -171,6 +173,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "ChannleClientID":
                     return typeof (int);
+                case "IsSycnData":
+                    return typeof (bool);
+                case "SSycnDataUrl":
+                    return typeof (string);
           }
 			return typeof(string);
         }

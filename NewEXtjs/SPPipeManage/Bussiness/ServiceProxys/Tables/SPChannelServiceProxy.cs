@@ -17,6 +17,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    SPChannelEntity FindByAlias(string fileName);
         List<SPChannelParamsEntity> GetAllEnableParams(SPChannelEntity entity);
         List<SPChannelParamsEntity> GetAllShowParams(SPChannelEntity entity);
+        List<SPChannelDefaultClientSycnParamsEntity> GetAllEnableDefaultSendParams(SPChannelEntity spChannelEntity);
     }
 
     internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
@@ -34,6 +35,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public List<SPChannelParamsEntity> GetAllShowParams(SPChannelEntity entity)
         {
             return this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.GetAllShowParams(entity);
+        }
+
+        public List<SPChannelDefaultClientSycnParamsEntity> GetAllEnableDefaultSendParams(SPChannelEntity spChannelEntity)
+        {
+            return this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.GetAllEnableDefaultSendParams(spChannelEntity);
         }
     }
 }
