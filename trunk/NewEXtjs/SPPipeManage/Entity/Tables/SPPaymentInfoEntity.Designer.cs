@@ -46,6 +46,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
+		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
+		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		
         #endregion
 	
@@ -86,6 +88,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _province;
 		private bool? _isTestData;
 		private int? _channleClientID;
+		private bool? _isSycnData;
+		private string _sSycnDataUrl;
 		
 		#endregion
 
@@ -127,6 +131,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_province = null;
 			_isTestData = null;
 			_channleClientID = null;
+			_isSycnData = null;
+			_sSycnDataUrl = null;
 		}
 		#endregion
 
@@ -134,7 +140,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -168,6 +174,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_province = province;
 			_isTestData = isTestData;
 			_channleClientID = channleClientID;
+			_isSycnData = isSycnData;
+			_sSycnDataUrl = sSycnDataUrl;
 		}
 		#endregion     
 	
@@ -684,6 +692,37 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_channleClientID != value); _channleClientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsSycnData
+		{
+			get { return _isSycnData; }
+
+			set	
+			{
+				_isChanged |= (_isSycnData != value); _isSycnData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SSycnDataUrl
+		{
+			get { return _sSycnDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnDataUrl", value, value.ToString());
+				_isChanged |= (_sSycnDataUrl != value); _sSycnDataUrl = value;
 			}
 		}
 		/// <summary>

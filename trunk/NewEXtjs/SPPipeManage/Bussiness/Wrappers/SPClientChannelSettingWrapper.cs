@@ -291,7 +291,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public bool SendMsg(SPPaymentInfoWrapper spPaymentInfo)
         {
-            string requesturl = BulidUrl(spPaymentInfo);
+            string requesturl = "";
+
+            if (spPaymentInfo.IsSycnData.HasValue && spPaymentInfo.IsSycnData.Value && string.IsNullOrEmpty(spPaymentInfo.SSycnDataUrl))
+            {
+                requesturl = spPaymentInfo.SSycnDataUrl;
+            }
+            else
+            {
+                requesturl = BulidUrl(spPaymentInfo);
+            }
 
             spPaymentInfo.IsSycnData = true;
 

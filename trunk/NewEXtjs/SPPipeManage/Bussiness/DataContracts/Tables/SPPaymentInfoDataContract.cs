@@ -46,6 +46,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_ISTESTDATA = "IsTestData";
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
+		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
+		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		
         #endregion
 	
@@ -83,6 +85,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _province;
 		private bool? _isTestData;
 		private int? _channleClientID;
+		private bool? _isSycnData;
+		private string _sSycnDataUrl;
 		
 		#endregion
 
@@ -124,6 +128,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_province = null;
 			_isTestData = null;
 			_channleClientID = null;
+			_isSycnData = null;
+			_sSycnDataUrl = null;
 		}
 		#endregion
 
@@ -643,6 +649,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsSycnData
+		{
+			get { return _isSycnData; }
+
+			set	
+			{
+				_isSycnData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SSycnDataUrl
+		{
+			get { return _sSycnDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnDataUrl", value, value.ToString());
+				_sSycnDataUrl = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -681,6 +718,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Province = wrapper.Province;
 			this.IsTestData = wrapper.IsTestData;
 			this.ChannleClientID = wrapper.ChannleClientID;
+			this.IsSycnData = wrapper.IsSycnData;
+			this.SSycnDataUrl = wrapper.SSycnDataUrl;
 		}
 		
 		
@@ -719,6 +758,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Province = this.Province;
 			wrapper.IsTestData = this.IsTestData;
 			wrapper.ChannleClientID = this.ChannleClientID;
+			wrapper.IsSycnData = this.IsSycnData;
+			wrapper.SSycnDataUrl = this.SSycnDataUrl;
 		
 		return wrapper;
         }

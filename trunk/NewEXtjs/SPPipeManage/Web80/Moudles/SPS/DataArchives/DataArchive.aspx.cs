@@ -79,16 +79,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
                 List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, clientID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
 
-                    //foreach (SPPaymentInfoWrapper paymentInfo in paymentInfos)
-                    //{
-                    //    paymentInfo.ReSend();
-                    //}
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
-                return;
+                foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in paymentInfos)
+                {
+                    spPaymentInfoWrapper.ReSend();
+                }
 
-        
-                //SPPaymentInfoWrapper paymentInfoWrapper = SPPaymentInfoWrapper.FindAllNotSendData(Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
+                //Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                //Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
+                //return;
+
 
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }

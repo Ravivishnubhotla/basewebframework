@@ -42,6 +42,8 @@
 		<property column="Province" type="string" name="Province"   length="40" />	
 		<property column="IsTestData" type="Boolean" name="IsTestData"   />	
 		<property column="ChannleClientID" type="int" name="ChannleClientID"   />	
+		<property column="IsSycnData" type="Boolean" name="IsSycnData"   />	
+		<property column="sSycnDataUrl" type="string" name="SSycnDataUrl"   length="600" />	
 
 
 
