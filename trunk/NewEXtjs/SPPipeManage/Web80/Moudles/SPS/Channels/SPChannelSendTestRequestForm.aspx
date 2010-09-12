@@ -6,10 +6,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
         function GetParams(frmValues) {
-            return frmValues.replace('"', '').replace(/ctl00_ContentPlaceHolder1_txt/g, '');
+            return frmValues.replace(/"/g, '').replace(/ctl00_ContentPlaceHolder1_txt/g, '');
         }
 
-        function SubmitUrl(surl) {
+        function SubmitUrl(surl, lbl) {
+            lbl.setText(surl);
             //Ext.Msg.alert('操作', surl);
             Ext.Ajax.request({
                 url: surl,
@@ -17,7 +18,7 @@
                 success: function (response, opts) {
                     var rtext = response.responseText.toLowerCase();
                     if (rtext == "ok")
-                        Ext.Msg.alert('消息','请求成功，响应字符串："' + response.responseText + '"');
+                        Ext.Msg.alert('消息', '请求成功，响应字符串："' + response.responseText + '"');
                     else
                         Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
                     //alert(response.responseText);
@@ -43,13 +44,16 @@
                                     <ext:Anchor Horizontal="95%">
                                         <ext:Label ID="txtChannelSubmitUrl" runat="server" FieldLabel="通道提交地址" />
                                     </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:Label ID="lblSendUrl" runat="server" FieldLabel="通道提交测试Url" />
+                                    </ext:Anchor>
                                 </Anchors>
                             </ext:FormLayout>
                         </Body>
                         <Buttons>
                             <ext:Button ID="btnSPClientSendRequest" runat="server" Text="发送" Icon="TelephoneGo">
                                 <Listeners>
-                                    <Click Handler=" SubmitUrl(#{txtChannelSubmitUrl}.getText()+'?'+GetParams(Ext.encode(#{FormPanel1}.getForm().getValues(true))));" />
+                                    <Click Handler=" SubmitUrl(#{txtChannelSubmitUrl}.getText()+'?'+GetParams(Ext.encode(#{FormPanel1}.getForm().getValues(true))),#{lblSendUrl});" />
                                 </Listeners>
                             </ext:Button>
                         </Buttons>
