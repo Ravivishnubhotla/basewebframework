@@ -464,7 +464,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 StringBuilder sb = new StringBuilder();
 
-                foreach (SPClientChannelSettingWrapper channelSetting in clientChannelSettings)
+                var sortedList = (from cc in clientChannelSettings 
+                                  orderby cc.OrderIndex descending
+                                  select cc).ToList();
+
+                foreach (SPClientChannelSettingWrapper channelSetting in sortedList)
                 {
                     string interceptRate = "<font color='red'>0</font>";
 
@@ -480,9 +484,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                         interceptRate = channelSetting.InterceptRate.Value.ToString();
                     }
 
-                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}', 扣率  {3} , {4}<br/>", channelSetting.Name,
+                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
                                                 channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
-                                                interceptRate, syncDataUrl);
+                                                interceptRate, syncDataUrl, channelSetting.OrderIndex);
 
  
                     sb.Append(line);
@@ -507,9 +511,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
 
                 return sb.ToString();
-
             }
         }
+
 
         public DataTable BuildChannelRecordTable()
         {

@@ -25,17 +25,17 @@ namespace Legendigital.Common.Web.Jobs
 
         protected override void ExecuteInternal(JobExecutionContext context)
         {
-            logger.Info("Daily Report Generate Job Start");
+            logger.Info("日报表任务开始。。。");
 
             try
             {
                 SPDayReportWrapper.GenerateDayReport(DateTime.Now.AddDays(-1));
 
-                logger.Info("Daily Report Generate Job End");
+                logger.Info("日报表任务成功。。。");
             }
             catch (Exception ex)
             {
-                logger.Error("Daily Report Generate Job Failed:"+ex.Message);
+                logger.Error("日报表任务失败:" + ex.Message);
             }
         }
     }

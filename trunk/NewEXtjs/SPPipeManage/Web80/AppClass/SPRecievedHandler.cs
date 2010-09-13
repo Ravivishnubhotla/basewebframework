@@ -133,7 +133,7 @@ namespace Legendigital.Common.Web.AppClass
             }
             catch (Exception ex)
             {
-                logger.Error("Get IP Error:", ex);
+                logger.Error("获取IP错误:", ex);
             }
             return ip;
         }

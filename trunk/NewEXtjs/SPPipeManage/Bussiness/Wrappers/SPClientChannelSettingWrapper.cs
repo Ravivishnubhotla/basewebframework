@@ -293,14 +293,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             string requesturl = "";
 
-            if (spPaymentInfo.IsSycnData.HasValue && spPaymentInfo.IsSycnData.Value && string.IsNullOrEmpty(spPaymentInfo.SSycnDataUrl))
-            {
-                requesturl = spPaymentInfo.SSycnDataUrl;
-            }
-            else
-            {
-                requesturl = BulidUrl(spPaymentInfo);
-            }
+            //if (spPaymentInfo.IsSycnData.HasValue && spPaymentInfo.IsSycnData.Value && string.IsNullOrEmpty(spPaymentInfo.SSycnDataUrl))
+            //{
+            //    requesturl = spPaymentInfo.SSycnDataUrl;
+            //}
+            //else
+            //{
+           requesturl = BulidUrl(spPaymentInfo);
+            //}
 
             spPaymentInfo.IsSycnData = true;
 

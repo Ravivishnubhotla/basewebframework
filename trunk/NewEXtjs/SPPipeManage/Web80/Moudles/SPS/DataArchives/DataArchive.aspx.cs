@@ -69,7 +69,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
         protected void StartLongAction2(object sender, AjaxEventArgs e)
         {
-            Server.ScriptTimeout = 3000;
+            Server.ScriptTimeout = 30000;
 
             try
             {
