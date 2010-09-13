@@ -107,7 +107,7 @@
                                                 <ext:Button ID="Button1" runat="server" Text="开始重发数据">
                                                     <AjaxEvents>
                                                         <Click OnEvent="StartLongAction2" Success="Ext.MessageBox.alert('操作成功', '成功的重发数据.',callback);function callback(id) {};"
-                                                            Timeout="1000000">
+                                                            Timeout="10000000">
                                                             <EventMask ShowMask="true" Msg="处理中..." />
                                                             <Confirmation ConfirmRequest="true" Message="确认进行手动重发数据？" Title="确认操作" />
                                                         </Click>
