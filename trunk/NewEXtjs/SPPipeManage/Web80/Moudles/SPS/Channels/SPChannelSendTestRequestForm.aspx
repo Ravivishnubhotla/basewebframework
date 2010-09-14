@@ -47,6 +47,12 @@
                                     <ext:Anchor Horizontal="95%">
                                         <ext:Label ID="lblSendUrl" runat="server" FieldLabel="通道提交测试Url" />
                                     </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:Label ID="lblChannelCode" runat="server" FieldLabel="通道号" />
+                                    </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:Label ID="lblChannelInfo" runat="server" FieldLabel="通道信息" />
+                                    </ext:Anchor>
                                 </Anchors>
                             </ext:FormLayout>
                         </Body>

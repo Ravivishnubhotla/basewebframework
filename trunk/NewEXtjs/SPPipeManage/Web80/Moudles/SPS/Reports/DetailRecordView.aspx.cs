@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
+using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 
@@ -25,6 +27,26 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             this.GridPanel1.StoreID = "storeData";
 
             this.PagingToolBar1.StoreID = "storeData";
+        }
+
+
+        protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
+        {
+ 
+
+            XmlNode xml = e.Xml;
+
+            this.Response.Clear();
+
+ 
+            this.Response.ContentType = "application/vnd.ms-excel";
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
+            XslCompiledTransform xtExcel = new XslCompiledTransform();
+            xtExcel.Load(Server.MapPath("Excel.xsl"));
+            xtExcel.Transform(xml, null, Response.OutputStream);
+ 
+
+            this.Response.End();
         }
 
 
@@ -50,6 +72,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             reader.Fields[reader.Fields.Count - 1].Mapping = "City";
             this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCity", "城市", false, "City", "", RendererFormat.None));
 
+
+            
+
             List<SPChannelParamsWrapper> channelParams = channelWrapper.GetAllShowParams();
 
             foreach (SPChannelParamsWrapper channelParam in channelParams)
@@ -59,6 +84,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                 reader.Fields[reader.Fields.Count - 1].Mapping = channelParam.ParamsMappingName.ToString();
                 this.GridPanel1.ColumnModel.Columns.Add(NewColumn("col" + pName, pName, false, channelParam.ParamsMappingName.ToString(), "", RendererFormat.None));
             }
+
+            reader.Fields.Add("SendUrl", RecordFieldType.String);
+            reader.Fields[reader.Fields.Count - 1].Mapping = "SendUrl";
 
             return reader;
 
