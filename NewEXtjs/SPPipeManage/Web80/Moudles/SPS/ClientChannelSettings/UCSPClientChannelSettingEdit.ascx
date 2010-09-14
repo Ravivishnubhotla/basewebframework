@@ -135,7 +135,7 @@
                             <Body>
                                 <ext:FormLayout ID="FormLayout1" runat="server" LabelSeparator=":" LabelWidth="100">
                                     <ext:Anchor Horizontal="95%">
-                                        <ext:TextField ID="txtSyncDataUrl" runat="server" FieldLabel="数据同步URL" AllowBlank="true">
+                                        <ext:TextField ID="txtSyncDataUrl" runat="server" FieldLabel="数据同步URL" AllowBlank="true" >
                                         </ext:TextField>
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">

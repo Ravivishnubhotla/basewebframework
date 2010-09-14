@@ -27,6 +27,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
             this.txtChannelSubmitUrl.Text = channelWrapper.InterfaceUrl;
 
+            this.lblChannelCode.Text = channelWrapper.ChannelCode;
+
             List<SPChannelParamsWrapper> channelParamsWrappers = channelWrapper.GetAllEnableParams();
 
             foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParamsWrappers)
@@ -52,5 +54,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             }
 
         }
+
     }
 }

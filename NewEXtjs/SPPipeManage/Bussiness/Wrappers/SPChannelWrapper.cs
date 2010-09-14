@@ -523,6 +523,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             record.Columns.Add("CreateDate", typeof(DateTime));
             record.Columns.Add("Province", typeof(string));
             record.Columns.Add("City", typeof(string));
+            record.Columns.Add("SendUrl", typeof(string));
 
             foreach (string field in fields)
             {
