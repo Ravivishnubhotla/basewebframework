@@ -61,6 +61,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasrseProviceCode", "Pasrse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseSchemaExport", "DataBaseSchemaExport\DataBaseSchemaExport.csproj", "{306AABE2-6875-4A24-B3E1-20D907C8DA0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestSendTools", "RequestSendTools\RequestSendTools.csproj", "{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -243,6 +245,21 @@ Global
 		{306AABE2-6875-4A24-B3E1-20D907C8DA0A}.WebDebug|Mixed Platforms.Build.0 = Debug|x86
 		{306AABE2-6875-4A24-B3E1-20D907C8DA0A}.WebDebug|x86.ActiveCfg = Debug|x86
 		{306AABE2-6875-4A24-B3E1-20D907C8DA0A}.WebDebug|x86.Build.0 = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Debug|x86.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Debug|x86.Build.0 = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Release|Any CPU.ActiveCfg = Release|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Release|Mixed Platforms.Build.0 = Release|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Release|x86.ActiveCfg = Release|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.Release|x86.Build.0 = Release|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|Any CPU.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|Mixed Platforms.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|Mixed Platforms.Build.0 = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|x86.ActiveCfg = Debug|x86
+		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

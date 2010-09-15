@@ -129,7 +129,9 @@
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
