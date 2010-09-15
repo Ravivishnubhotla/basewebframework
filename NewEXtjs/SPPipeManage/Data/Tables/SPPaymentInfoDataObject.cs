@@ -122,5 +122,16 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindListByQueryBuilder(queryBuilder);
         }
+
+        public SPPaymentInfoEntity CheckChannleLinkIDIsExist(SPChannelEntity spChannelEntity, string linkId)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(spChannelEntity));
+
+            queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(linkId));
+  
+            return this.FindSingleEntityByQueryBuilder(queryBuilder);
+        }
     }
 }

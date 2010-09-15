@@ -9,10 +9,14 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
+    public enum PaymentInfoInsertErrorType {NoError,RepeatLinkID}
+
+
     public interface ISPPaymentInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity>, ISPPaymentInfoServiceProxyDesigner
     {
         List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
@@ -21,6 +25,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
         List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate);
         DataTable FindAllNotSendChannelClient();
+        bool InsertPayment(SPPaymentInfoEntity paymentInfo, out PaymentInfoInsertErrorType errorType);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -89,6 +94,26 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable FindAllNotSendChannelClient()
         {
             return this.AdoNetDb.GetAllNeedSendChannelClient().Tables[0];
+        }
+
+
+        [Transaction(ReadOnly = false)]
+        public bool InsertPayment(SPPaymentInfoEntity paymentInfo,out PaymentInfoInsertErrorType errorType)
+        {
+            errorType = PaymentInfoInsertErrorType.NoError;
+
+            SPPaymentInfoEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.CheckChannleLinkIDIsExist(paymentInfo.ChannelID, paymentInfo.Linkid);
+
+            if(spPaymentInfoEntity!=null)
+            {
+                errorType = PaymentInfoInsertErrorType.RepeatLinkID;
+
+                return false;
+            }
+
+            this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.Save(paymentInfo);
+
+            return true;
         }
 
         //public DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)

@@ -168,6 +168,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
 
 
+            //if (CheckChannleLinkIDIsExist(linkid))
+            //{
+            //    Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .");
+
+            //    SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .", this.Id, 0);
+
+            //    return false;
+            //}
+
+
             string content = query;
 
 
@@ -253,25 +263,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 try
                 {
-                    SPPaymentInfoWrapper.Save(paymentInfo);
+                    PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
+
+                    bool result = paymentInfo.InsertPayment(out errorType);
+
+                    if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
+                    {
+                        Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .");
+
+                        SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .", this.Id, 0);
+
+                        return false;
+                    } 
+
                     return true;
                 }
                 catch (Exception ex)
                 {
                     Exception innerException = ex;
 
-                    while (innerException.InnerException != null)
-                    {
-                        innerException = innerException.InnerException;
-                    }
+                    //while (innerException.InnerException != null)
+                    //{
+                    //    innerException = innerException.InnerException;
+                    //}
 
-                    SqlException sqlException = innerException as SqlException;
+                    //SqlException sqlException = innerException as SqlException;
 
-                    if (sqlException != null && sqlException.Number == 2627)
-                    {
-                        Logger.Error("请求失败：重复的唯一标识（Linkid）。");
-                        throw new Exception("请求失败：重复的唯一标识（Linkid）。");
-                    }
+                    //if (sqlException != null && sqlException.Number == 2627)
+                    //{
+                    //    Logger.Error("请求失败：重复的唯一标识（Linkid）。");
+                    //    throw new Exception("请求失败：重复的唯一标识（Linkid）。");
+                    //}
 
                     Logger.Error("请求失败：插入数据失败，错误信息：" + ex.Message);
                     throw new Exception("请求失败：插入数据失败，错误信息： " + ex.Message);
@@ -551,6 +573,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             SPStatReportWrapper.Save(statReport);
         }
+
+        //public bool CheckChannleLinkIDIsExist(string linkID)
+        //{
+
+        //    return businessProxy.CheckChannleLinkIDIsExist(this.entity, linkID);
+        //}
 
         public List<SPChannelDefaultClientSycnParamsWrapper> GetAllEnableDefaultSendParams()
         {
