@@ -26,7 +26,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channleId);
 
             List<SPChannelDefaultClientSycnParamsEntity> paramsEntities =
-                this.SelfDataObj.GetList_By_SPChannelEntity(spChannelEntity);
+                this.SelfDataObj.GetList_By_ChannelID_SPChannelEntity(spChannelEntity);
 
             foreach (SPChannelDefaultClientSycnParamsEntity paramsEntity in paramsEntities)
             {

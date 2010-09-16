@@ -41,12 +41,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	
 		public List<SPClientChannelSycnParamsEntity> FindAllByOrderByAndFilterAndClientChannelSettingID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientChannelSettingEntity _clientChannelSettingID, out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPClientChannelSettingEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientChannelSettingID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_ClientChannelSettingID_SPClientChannelSettingEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientChannelSettingID, out recordCount);
         }
 		
 		public List<SPClientChannelSycnParamsEntity> FindAllByClientChannelSettingID(SPClientChannelSettingEntity _clientChannelSettingID)
         {
-			return this.SelfDataObj.GetList_By_SPClientChannelSettingEntity(_clientChannelSettingID);
+			return this.SelfDataObj.GetList_By_ClientChannelSettingID_SPClientChannelSettingEntity(_clientChannelSettingID);
         }
 
 

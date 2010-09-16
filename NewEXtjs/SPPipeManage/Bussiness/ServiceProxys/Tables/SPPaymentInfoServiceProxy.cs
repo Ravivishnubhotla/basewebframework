@@ -25,7 +25,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
         List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate);
         DataTable FindAllNotSendChannelClient();
-        bool InsertPayment(SPPaymentInfoEntity paymentInfo, out PaymentInfoInsertErrorType errorType);
+        bool InsertPayment(SPPaymentInfoEntity paymentInfo, List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -98,11 +98,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
 
         [Transaction(ReadOnly = false)]
-        public bool InsertPayment(SPPaymentInfoEntity paymentInfo,out PaymentInfoInsertErrorType errorType)
+        public bool InsertPayment(SPPaymentInfoEntity paymentInfo, List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType)
         {
             errorType = PaymentInfoInsertErrorType.NoError;
 
-            SPPaymentInfoEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.CheckChannleLinkIDIsExist(paymentInfo.ChannelID, paymentInfo.Linkid);
+            SPPaymentInfoEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.CheckChannleLinkIDIsExist(paymentInfo.ChannelID, paymentInfo, uniqueKeyNames);
 
             if(spPaymentInfoEntity!=null)
             {

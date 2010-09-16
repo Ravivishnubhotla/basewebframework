@@ -123,14 +123,19 @@ namespace LD.SPPipeManage.Data.Tables
             return this.FindListByQueryBuilder(queryBuilder);
         }
 
-        public SPPaymentInfoEntity CheckChannleLinkIDIsExist(SPChannelEntity spChannelEntity, string linkId)
+ 
+
+        public SPPaymentInfoEntity CheckChannleLinkIDIsExist(SPChannelEntity spChannelEntity, SPPaymentInfoEntity paymentInfo, List<string> uniqueKeyNames)
         {
             var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
 
             queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(spChannelEntity));
 
-            queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(linkId));
-  
+            queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(paymentInfo.Linkid));
+
+            if (uniqueKeyNames.Contains("mobile"))
+                queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.Eq(paymentInfo.MobileNumber));
+
             return this.FindSingleEntityByQueryBuilder(queryBuilder);
         }
     }

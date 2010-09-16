@@ -35,9 +35,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLIENTID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType");
 		#endregion
-		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_CHANNELID);
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_TITLE);
+		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPSendClientParamsEntity.PROPERTY_NAME_CHANNELID);
       
 		#region 子类集合字段查询字段
 	
@@ -67,17 +67,17 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "ClientID":
                     return typeof (int);
-                case "ChannelID":
-                    return typeof (int);
                 case "MappingParams":
                     return typeof (string);
                 case "Title":
                     return typeof (string);
+                case "ChannelID":
+                    return typeof (int);
           }
 			return typeof(string);
         }
 		
-		public List<SPSendClientParamsEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+		public List<SPSendClientParamsEntity> GetList_By_ClientID_SPClientEntity(SPClientEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -87,7 +87,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPSendClientParamsEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        public List<SPSendClientParamsEntity> GetPageList_By_ClientID_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

@@ -45,6 +45,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_ISALLOWNULLLINKID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID");
 		public static readonly Property PROPERTY_CHANNELID_RECSTATREPORT = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecStatReport");
 		public static readonly Property PROPERTY_CHANNELID_STATPARAMSNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsName");
+		public static readonly Property PROPERTY_CHANNELID_STATPARAMSVALUES = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsValues");
 		#endregion
 		public static readonly Property PROPERTY_CLINETID = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CLINETID);
 		#region clinetID字段外键查询字段
@@ -136,7 +137,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPClientChannelSettingEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+		public List<SPClientChannelSettingEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -146,7 +147,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPClientChannelSettingEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        public List<SPClientChannelSettingEntity> GetPageList_By_ChannelID_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -161,7 +162,7 @@ namespace LD.SPPipeManage.Data.Tables
             return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
         }		
 		
-		public List<SPClientChannelSettingEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+		public List<SPClientChannelSettingEntity> GetList_By_ClinetID_SPClientEntity(SPClientEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -171,7 +172,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPClientChannelSettingEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        public List<SPClientChannelSettingEntity> GetPageList_By_ClinetID_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

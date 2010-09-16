@@ -77,6 +77,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
+		public static readonly string PROPERTY_NAME_ISUNIQUE = "IsUnique";
 		
         #endregion
 
@@ -220,6 +221,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ShowInClientGrid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsUnique
+		{
+			get
+			{
+				return entity.IsUnique;
+			}
+			set
+			{
+				entity.IsUnique = value;
 			}
 		}
 		#endregion 
