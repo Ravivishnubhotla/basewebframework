@@ -265,7 +265,22 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
 
-                    bool result = paymentInfo.InsertPayment(out errorType);
+                    List<string> uniqueKeyNames = new List<string>();
+
+                    List<SPChannelParamsWrapper> channelParams = this.GetAllEnableParams();
+
+                    foreach (var spChannelParamsWrapper in channelParams)
+                    {
+                        if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
+                            uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
+                    }
+
+                    if (!uniqueKeyNames.Contains("linkid"))
+                    {
+                        uniqueKeyNames.Add("linkid");
+                    }
+
+                    bool result = paymentInfo.InsertPayment(uniqueKeyNames,out errorType);
 
                     if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
                     {
@@ -419,16 +434,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     case 0:
                         return ChannelStatus.Run;
-                        break;
                     case 1:
                         return ChannelStatus.Stop;
-                        break;
                     case 2:
                         return ChannelStatus.Disable;
-                        break;
                     default:
                         return ChannelStatus.Disable;
-                        break;
                 }
             }
         }
@@ -441,16 +452,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     case ChannelStatus.Run:
                         return "运行";
-                        break;
                     case ChannelStatus.Stop:
                         return "暂停";
-                        break;
                     case ChannelStatus.Disable:
                         return "禁用";
-                        break;
                     default:
                         return "禁用";
-                        break;
                 }
             }
         }

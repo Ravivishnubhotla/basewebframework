@@ -89,6 +89,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
+		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
 		
         #endregion
 
@@ -400,6 +401,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.StatParamsName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string StatParamsValues
+		{
+			get
+			{
+				return entity.StatParamsValues;
+			}
+			set
+			{
+				entity.StatParamsValues = value;
 			}
 		}
 		#endregion 

@@ -418,9 +418,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return macthClientChannelSetting;
         }
 
-        public bool InsertPayment(out PaymentInfoInsertErrorType errorType)
-	    {
-            return businessProxy.InsertPayment(this.entity, out errorType);
-	    }
+ 
+
+        internal bool InsertPayment(List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType)
+        {
+            return businessProxy.InsertPayment(this.entity, uniqueKeyNames, out errorType);
+        }
     }
 }

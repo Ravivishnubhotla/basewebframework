@@ -1,7 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelParamsAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelParamsAdd" %>
-<ext:Window ID="winSPChannelParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建通道参数" ConstrainHeader=true
-    Width="400" Height="330" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+<ext:Window ID="winSPChannelParamsAdd" runat="server" Icon="ApplicationAdd" Title="新建通道参数"
+    ConstrainHeader="true" Width="400" Height="330" AutoShow="false" Maximizable="true"
+    Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPChannelParamsAdd" runat="server" Frame="true" Header="false"

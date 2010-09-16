@@ -48,10 +48,12 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_ISALLOWNULLLINKID = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID");
 		public static readonly Property PROPERTY_CHANNELID_RECSTATREPORT = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecStatReport");
 		public static readonly Property PROPERTY_CHANNELID_STATPARAMSNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsName");
+		public static readonly Property PROPERTY_CHANNELID_STATPARAMSVALUES = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsValues");
 		#endregion
 		public static readonly Property PROPERTY_PARAMSMAPPINGNAME = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_TITLE);
 		public static readonly Property PROPERTY_SHOWINCLIENTGRID = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_SHOWINCLIENTGRID);
+		public static readonly Property PROPERTY_ISUNIQUE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ISUNIQUE);
       
 		#region 子类集合字段查询字段
 	
@@ -89,11 +91,13 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "ShowInClientGrid":
                     return typeof (bool);
+                case "IsUnique":
+                    return typeof (bool);
           }
 			return typeof(string);
         }
 		
-		public List<SPChannelParamsEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+		public List<SPChannelParamsEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -103,7 +107,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPChannelParamsEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        public List<SPChannelParamsEntity> GetPageList_By_ChannelID_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

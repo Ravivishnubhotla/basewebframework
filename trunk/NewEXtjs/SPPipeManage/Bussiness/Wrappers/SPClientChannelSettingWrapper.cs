@@ -237,7 +237,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return false;
                 case "7":
                     return true;
-                    break;
             }
             return false;
         }

@@ -41,12 +41,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	
 		public List<SPChannelEntity> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity _uperID, out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPUperEntity(orderByColumnName, isDesc, pageIndex, pageSize,_uperID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_UperID_SPUperEntity(orderByColumnName, isDesc, pageIndex, pageSize,_uperID, out recordCount);
         }
 		
 		public List<SPChannelEntity> FindAllByUperID(SPUperEntity _uperID)
         {
-			return this.SelfDataObj.GetList_By_SPUperEntity(_uperID);
+			return this.SelfDataObj.GetList_By_UperID_SPUperEntity(_uperID);
         }
 
 
