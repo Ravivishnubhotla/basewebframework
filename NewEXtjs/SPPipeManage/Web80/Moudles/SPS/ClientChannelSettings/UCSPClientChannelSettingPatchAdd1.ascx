@@ -28,7 +28,7 @@
         <ext:Button ID="btnSaveSPSendClientParams" runat="server" Text="添加" Icon="Add">
             <AjaxEvents>
                 <Click Before="if(!#{formSPChannelClientSetingQuickAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了下家参数。',callback);function callback(id) {#{formSPChannelClientSetingQuickAdd}.getForm().reset();#{storeSPSendClientParams}.reload(); };
+                    OnEvent="btnSaveSPSendClientParams_Click" Success="Ext.MessageBox.alert('操作成功', '成功的添加了下家参数。',callback);function callback(id) {#{formSPChannelClientSetingQuickAdd}.getForm().reset();#{storeSPClientChannelSetting}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

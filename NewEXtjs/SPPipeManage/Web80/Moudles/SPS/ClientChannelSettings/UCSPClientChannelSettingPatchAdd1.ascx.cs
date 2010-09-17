@@ -94,6 +94,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     codeUserID.Code = scode;
                     string subUserLoginID = mainUserLoginID + scode;
                     codeUserID.UserID = AddClientUser(subUserLoginID);
+                    codeUserIds.Add(codeUserID);
                 }
 
 
