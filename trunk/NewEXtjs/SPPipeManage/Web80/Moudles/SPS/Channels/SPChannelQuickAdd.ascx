@@ -93,7 +93,7 @@
         <ext:Button ID="btnSaveSPChannel" runat="server" Text="添加" Icon="Add">
                         <AjaxEvents>
                 <Click Before="if(!#{formPanelSPChannelQuickAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPChannel_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了通道。',callback);function callback(id) {#{formPanelSPChannelQuickAdd}.getForm().reset();#{storeSPChannel}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', '成功的添加了通道。',callback);function callback(id) {#{formPanelSPChannelQuickAdd}.getForm().reset();#{storeSPChannel}.reload();#{winSPChannelQuickAdd}.hide(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

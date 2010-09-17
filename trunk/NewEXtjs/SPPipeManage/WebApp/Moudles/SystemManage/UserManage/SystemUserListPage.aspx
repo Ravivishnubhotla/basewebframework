@@ -179,6 +179,9 @@
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="20" Mode="Raw" />
         </AutoLoadParams>
+                <Proxy>
+            <ext:PageProxy />
+        </Proxy>
         <Reader>
             <ext:JsonReader IDProperty="UserID">
                 <Fields>
