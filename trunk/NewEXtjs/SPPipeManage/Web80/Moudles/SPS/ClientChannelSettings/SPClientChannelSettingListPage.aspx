@@ -5,6 +5,12 @@
     TagPrefix="uc1" %>
 <%@ Register Src="UCSPClientChannelSettingEdit.ascx" TagName="UCSPClientChannelSettingEdit"
     TagPrefix="uc2" %>
+<%@ Register Src="UCSPClientChannelSettingPatchAdd1.ascx" TagName="UCSPClientChannelSettingPatchAdd1"
+    TagPrefix="uc3" %>
+
+
+
+    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -41,6 +47,21 @@
         
         function ShowAddSPClientChannelSettingForm() {
                 Coolite.AjaxMethods.UCSPClientChannelSettingAdd.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                });    
+        
+        }
+
+
+      function ShowSPClientChannelSettingPatchAddForm() {
+                Coolite.AjaxMethods.UCSPClientChannelSettingPatchAdd1.Show( 
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
@@ -152,6 +173,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPClientChannelSettingAdd ID="UCSPClientChannelSettingAdd1" runat="server" />
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
+    <uc3:UCSPClientChannelSettingPatchAdd1 ID="UCSPClientChannelSettingPatchAdd11" runat="server" />
+
+    
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -164,6 +188,11 @@
                                     <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
                                         <Listeners>
                                             <Click Handler="ShowAddSPClientChannelSettingForm();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加" Icon="ApplicationAdd">
+                                        <Listeners>
+                                            <Click Handler="ShowSPClientChannelSettingPatchAddForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">

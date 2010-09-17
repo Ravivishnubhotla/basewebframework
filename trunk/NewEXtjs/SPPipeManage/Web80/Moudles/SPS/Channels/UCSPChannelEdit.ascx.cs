@@ -55,9 +55,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     if (!string.IsNullOrEmpty(obj.StatParamsName))
                         this.txtStatParamName.Text = obj.StatParamsName.ToString();
 
+                    if (!string.IsNullOrEmpty(obj.StatParamsValues))
+                        this.txtStatValues.Text = obj.StatParamsValues.ToString();
 
                     hidId.Text = id.ToString();
-
 
                     winSPChannelEdit.Show();
 
@@ -105,6 +106,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.FailedMessage = txtFailedMessage.Text.Trim();
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
+                obj.StatParamsValues = txtStatValues.Text.Trim();
 
                 SPChannelWrapper.Update(obj);
 

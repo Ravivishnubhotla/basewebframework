@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelAdd" %>
 <ext:Window ID="winSPChannelAdd" runat="server" Icon="ApplicationAdd" Title="新建通道"
-    ConstrainHeader="true" Width="500" Height="399" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="500" Height="420" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -88,6 +88,9 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtStatParamName" runat="server" FieldLabel="状态字段" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtStatValues" runat="server" FieldLabel="状态字段成功值" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

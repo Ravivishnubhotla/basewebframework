@@ -10,16 +10,16 @@
 namespace Legendigital.Common.Web.Moudles.SPS.Channels {
     
     
-    public partial class UCSPChannelAdd {
+    public partial class SPChannelQuickAdd {
         
         /// <summary>
-        /// winSPChannelAdd control.
+        /// winSPChannelQuickAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSPChannelAdd;
+        protected global::Coolite.Ext.Web.Window winSPChannelQuickAdd;
         
         /// <summary>
         /// fitLayoutMain control.
@@ -31,22 +31,49 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// formPanelSPChannelAdd control.
+        /// formPanelSPChannelQuickAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSPChannelAdd;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSPChannelQuickAdd;
         
         /// <summary>
-        /// FormLayoutSPChannel control.
+        /// Panel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayoutSPChannel;
+        protected global::Coolite.Ext.Web.Panel Panel3;
+        
+        /// <summary>
+        /// ColumnLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ColumnLayout ColumnLayout1;
+        
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Panel Panel1;
+        
+        /// <summary>
+        /// FormLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
         
         /// <summary>
         /// txtName control.
@@ -58,22 +85,40 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtName;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtFuzzyCommand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtDescription;
+        protected global::Coolite.Ext.Web.TextField txtFuzzyCommand;
         
         /// <summary>
-        /// txtArea control.
+        /// chkRecStatReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtArea;
+        protected global::Coolite.Ext.Web.Checkbox chkRecStatReport;
+        
+        /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Panel Panel2;
+        
+        /// <summary>
+        /// FormLayout2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout2;
         
         /// <summary>
         /// txtChannelCode control.
@@ -85,78 +130,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtChannelCode;
         
         /// <summary>
-        /// cmbChannelCodeParamsName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbChannelCodeParamsName;
-        
-        /// <summary>
-        /// txtFuzzyCommand control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtFuzzyCommand;
-        
-        /// <summary>
-        /// txtPort control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtPort;
-        
-        /// <summary>
-        /// txtChannelType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtChannelType;
-        
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtPrice;
-        
-        /// <summary>
-        /// txtRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtRate;
-        
-        /// <summary>
-        /// txtOkMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtOkMessage;
-        
-        /// <summary>
-        /// txtFailedMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtFailedMessage;
-        
-        /// <summary>
         /// chkIsAllowNullLinkID control.
         /// </summary>
         /// <remarks>
@@ -164,15 +137,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Checkbox chkIsAllowNullLinkID;
-        
-        /// <summary>
-        /// chkRecStatReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkRecStatReport;
         
         /// <summary>
         /// txtStatParamName control.
@@ -191,6 +155,96 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.TextField txtStatValues;
+        
+        /// <summary>
+        /// Panel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Panel Panel4;
+        
+        /// <summary>
+        /// ColumnLayout2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ColumnLayout ColumnLayout2;
+        
+        /// <summary>
+        /// Panel5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Panel Panel5;
+        
+        /// <summary>
+        /// FormLayout3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout3;
+        
+        /// <summary>
+        /// txtLinkParamsName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtLinkParamsName;
+        
+        /// <summary>
+        /// txtMobileParamsName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtMobileParamsName;
+        
+        /// <summary>
+        /// Panel6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Panel Panel6;
+        
+        /// <summary>
+        /// FormLayout4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout4;
+        
+        /// <summary>
+        /// txtSPcodeParamsName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtSPcodeParamsName;
+        
+        /// <summary>
+        /// txtMoParamsName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtMoParamsName;
         
         /// <summary>
         /// btnSaveSPChannel control.

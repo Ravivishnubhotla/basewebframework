@@ -24,6 +24,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
+		public static readonly string PROPERTY_NAME_ISUNIQUE = "IsUnique";
 		
         #endregion
 	
@@ -42,6 +43,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _paramsMappingName;
 		private string _title;
 		private bool? _showInClientGrid;
+		private bool? _isUnique;
 		
 		#endregion
 
@@ -61,6 +63,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_paramsMappingName = null;
 			_title = null;
 			_showInClientGrid = true;
+			_isUnique = null;
 		}
 		#endregion
 
@@ -68,7 +71,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid)
+		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid, bool? isUnique)
 		{
 			_id = id;
 			_name = name;
@@ -80,6 +83,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_paramsMappingName = paramsMappingName;
 			_title = title;
 			_showInClientGrid = showInClientGrid;
+			_isUnique = isUnique;
 		}
 		#endregion     
 	
@@ -237,6 +241,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_showInClientGrid != value); _showInClientGrid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsUnique
+		{
+			get { return _isUnique; }
+
+			set	
+			{
+				_isChanged |= (_isUnique != value); _isUnique = value;
 			}
 		}
 		/// <summary>
