@@ -2,12 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Security;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
@@ -18,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPChannelParamsEntity> GetAllEnableParams(SPChannelEntity entity);
         List<SPChannelParamsEntity> GetAllShowParams(SPChannelEntity entity);
         List<SPChannelDefaultClientSycnParamsEntity> GetAllEnableDefaultSendParams(SPChannelEntity spChannelEntity);
+        void QuickAdd(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID);
     }
 
     internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
@@ -42,5 +46,92 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.GetAllEnableDefaultSendParams(spChannelEntity);
         }
 
+        [Transaction(ReadOnly = false)]
+        public void QuickAdd(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID)
+        {
+            this.SelfDataObj.Save(spChannelWrapper);
+
+            SPClientEntity spClientEntity = new SPClientEntity();
+            spClientEntity.Name = spChannelWrapper.Name + "默认下家";
+            spClientEntity.Description = spChannelWrapper.Name + "默认下家";
+            spClientEntity.UserID = userID;
+
+            this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(spClientEntity);
+
+
+            SPClientChannelSettingEntity obj = new SPClientChannelSettingEntity();
+
+            obj.Name = spChannelWrapper.Name + "默认下家";
+            obj.Description = spChannelWrapper.Name + "默认下家";
+            obj.ChannelID = spChannelWrapper;
+            obj.ClinetID = spClientEntity;
+            obj.InterceptRate = 0;
+            obj.OrderIndex = 0;
+            obj.UpRate = 0;
+            obj.DownRate = 0;
+            obj.CommandColumn = "ywid";
+            obj.CommandType = "7";
+            obj.CommandCode = "";
+            obj.SyncData = false;
+
+            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(obj);
+
+            SPChannelParamsEntity moParamsEntity = new SPChannelParamsEntity();
+
+            moParamsEntity.ChannelID = spChannelWrapper;
+            moParamsEntity.Name = moPName;
+            moParamsEntity.Title = moPName;
+            moParamsEntity.Description = "上行内容";
+            moParamsEntity.IsEnable = true;
+            moParamsEntity.IsRequired = true;
+            moParamsEntity.IsUnique = false;
+            moParamsEntity.ParamsMappingName = "ywid";
+            moParamsEntity.ParamsType = "普通参数";
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(moParamsEntity);
+
+            SPChannelParamsEntity linkidParamsEntity = new SPChannelParamsEntity();
+
+            linkidParamsEntity.ChannelID = spChannelWrapper;
+            linkidParamsEntity.Name = linkPName;
+            linkidParamsEntity.Title = linkPName;
+            linkidParamsEntity.Description = "唯一标识";
+            linkidParamsEntity.IsEnable = true;
+            linkidParamsEntity.IsRequired = true;
+            linkidParamsEntity.IsUnique = false;
+            linkidParamsEntity.ParamsMappingName = "linkid";
+            linkidParamsEntity.ParamsType = "普通参数";
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(linkidParamsEntity);
+
+            SPChannelParamsEntity mobileParamsEntity = new SPChannelParamsEntity();
+
+            mobileParamsEntity.ChannelID = spChannelWrapper;
+            mobileParamsEntity.Name = "mobile";
+            mobileParamsEntity.Title = "mobile";
+            mobileParamsEntity.Description = "手机号码";
+            mobileParamsEntity.IsEnable = true;
+            mobileParamsEntity.IsRequired = true;
+            mobileParamsEntity.IsUnique = false;
+            mobileParamsEntity.ParamsMappingName = "mobile";
+            mobileParamsEntity.ParamsType = "普通参数";
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(mobileParamsEntity);
+
+
+            SPChannelParamsEntity spCodeParamsEntity = new SPChannelParamsEntity();
+
+            spCodeParamsEntity.ChannelID = spChannelWrapper;
+            spCodeParamsEntity.Name = "spCode";
+            spCodeParamsEntity.Title = "spCode";
+            spCodeParamsEntity.Description = "通道号码";
+            spCodeParamsEntity.IsEnable = true;
+            spCodeParamsEntity.IsRequired = true;
+            spCodeParamsEntity.IsUnique = false;
+            spCodeParamsEntity.ParamsMappingName = "cpid";
+            spCodeParamsEntity.ParamsType = "普通参数";
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(spCodeParamsEntity);
+        }
     }
 }

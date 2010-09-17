@@ -4,6 +4,7 @@
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCChannelParamsManage.ascx" TagName="UCChannelParamsManage" TagPrefix="uc3" %>
+<%@ Register Src="SPChannelQuickAdd.ascx" TagName="SPChannelQuickAdd" TagPrefix="uc4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -41,6 +42,24 @@
                                                                 });    
         
         }
+
+
+        function ShowSPChannelQuickAdd() {
+                Coolite.AjaxMethods.SPChannelQuickAdd.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                });    
+        
+        }
+
+
+        
 
         function processcmd(cmd, id) {
 
@@ -182,6 +201,7 @@
     <uc1:UCSPChannelAdd ID="UCSPChannelAdd1" runat="server" />
     <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
     <uc3:UCChannelParamsManage ID="UCChannelParamsManage1" runat="server" />
+    <uc4:SPChannelQuickAdd ID="SPChannelQuickAdd1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -196,6 +216,11 @@
                                             <Click Handler="ShowAddSPChannelForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加" Icon="ApplicationAdd">
+                                        <Listeners>
+                                            <Click Handler="ShowSPChannelQuickAdd();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>  
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPChannel}.reload();" />

@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
-using Legendigital.Framework.Common.Web.ControlHelper;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Channels
 {
-    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "UCSPChannelAdd")]
-    public partial class UCSPChannelAdd : BaseUserControl
+    [AjaxMethodProxyID(IDMode = AjaxMethodProxyIDMode.Alias, Alias = "SPChannelQuickAdd")]
+    public partial class SPChannelQuickAdd : BaseUserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +25,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
         {
             try
             {
-                this.winSPChannelAdd.Show();
+                this.winSPChannelQuickAdd.Show();
             }
             catch (Exception ex)
             {
@@ -33,9 +34,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             }
         }
 
+
         protected void btnSaveSPChannel_Click(object sender, AjaxEventArgs e)
         {
-
             if (SPChannelWrapper.GetChannelByPath(this.txtFuzzyCommand.Text.Trim()) != null)
             {
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
@@ -43,36 +44,54 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 return;
             }
 
+
+            string loginID = "default" + this.txtFuzzyCommand.Text.Trim();
+
+            if (SystemUserWrapper.GetUserByLoginID(loginID) != null)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：用户登录ID已存在！";
+                return;
+            }
+
             try
             {
                 SPChannelWrapper obj = new SPChannelWrapper();
                 obj.Name = this.txtName.Text.Trim();
-                obj.Description = this.txtDescription.Text.Trim();
-                obj.Area = this.txtArea.Text.Trim();
+                obj.Description = obj.Name;
+                obj.Area = "";
                 obj.ChannelCode = this.txtChannelCode.Text.Trim();
                 obj.FuzzyCommand = this.txtFuzzyCommand.Text.Trim();
-                obj.Port = this.txtPort.Value.ToString();
-                obj.ChannelType = this.txtChannelType.Text.Trim();
-                obj.Price = Convert.ToDecimal(this.txtPrice.Value);
-                obj.Rate = Convert.ToInt32(this.txtRate.Value);
-                if (this.cmbChannelCodeParamsName.SelectedItem != null)
-                    obj.ChannelCodeParamsName = this.cmbChannelCodeParamsName.SelectedItem.Value;
-                else
-                    obj.ChannelCodeParamsName = "";
+                obj.Port = "";
+                obj.ChannelType = "";
+                obj.Price = 0;
+                obj.Rate = 0;
+                obj.ChannelCodeParamsName = "cpid";
                 obj.IsAllowNullLinkID = chkIsAllowNullLinkID.Checked;
                 obj.Status = 0;
                 obj.CreateTime = System.DateTime.Now;
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
-                obj.OkMessage = txtOkMessage.Text.Trim();
-                obj.FailedMessage = txtFailedMessage.Text.Trim();
+                obj.OkMessage = "ok";
+                obj.FailedMessage = "failed";
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
                 obj.StatParamsValues = txtStatValues.Text.Trim();
 
+                Membership.CreateUser(loginID, "123456", loginID + "@163.com");
 
-                SPChannelWrapper.Save(obj);
+                SystemUserWrapper clientUser = SystemUserWrapper.GetUserByLoginID(loginID);
 
-                winSPChannelAdd.Hide();
+                clientUser.UserName = loginID;
+
+                SystemUserWrapper.Update(clientUser);
+
+                SystemRoleWrapper clientRole = SystemRoleWrapper.GetRoleByName("SPDownUser");
+
+                SystemUserWrapper.PatchAssignUserRoles(clientUser, new List<string> { clientRole.RoleID.ToString() });
+
+
+                SPChannelWrapper.QuickAdd(obj, this.txtLinkParamsName.Text.Trim(), this.txtMobileParamsName.Text.Trim(), this.txtMoParamsName.Text.Trim(), this.txtSPcodeParamsName.Text.Trim(), clientUser.UserID);
+
 
             }
             catch (Exception ex)
@@ -81,8 +100,5 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
-
-
     }
-
 }

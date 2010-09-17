@@ -36,6 +36,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
+		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
 		
         #endregion
 	
@@ -66,6 +67,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isAllowNullLinkID;
 		private bool? _recStatReport;
 		private string _statParamsName;
+		private string _statParamsValues;
 		
 		#endregion
 
@@ -97,6 +99,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isAllowNullLinkID = null;
 			_recStatReport = null;
 			_statParamsName = null;
+			_statParamsValues = null;
 		}
 		#endregion
 
@@ -104,7 +107,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues)
 		{
 			_id = id;
 			_name = name;
@@ -128,6 +131,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isAllowNullLinkID = isAllowNullLinkID;
 			_recStatReport = recStatReport;
 			_statParamsName = statParamsName;
+			_statParamsValues = statParamsValues;
 		}
 		#endregion     
 	
@@ -477,6 +481,23 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for StatParamsName", value, value.ToString());
 				_isChanged |= (_statParamsName != value); _statParamsName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string StatParamsValues
+		{
+			get { return _statParamsValues; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for StatParamsValues", value, value.ToString());
+				_isChanged |= (_statParamsValues != value); _statParamsValues = value;
 			}
 		}
 		/// <summary>

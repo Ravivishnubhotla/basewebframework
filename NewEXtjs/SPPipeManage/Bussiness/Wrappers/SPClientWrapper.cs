@@ -16,6 +16,15 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
+    [Serializable]
+    public class CodeUserID
+    {
+        public string Code { get; set; }
+        public int UserID { get; set; }
+    }
+
+
+
 	[Serializable]
     public partial class SPClientWrapper
     {
@@ -132,8 +141,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.FindByChannelID(cid));
         }
 
+  
 
-
- 
+        public static void QuickAdd(string loginID, string code, SPChannelWrapper channelWrapper, int mainloginuserID, List<CodeUserID> codeUserIds)
+        {
+            businessProxy.QuickAdd(loginID, code, channelWrapper.entity, mainloginuserID, codeUserIds);
+        }
     }
 }

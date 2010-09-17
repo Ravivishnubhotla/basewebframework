@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -18,6 +19,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    List<SPClientEntity> FindByChannelID(int cid);
 	    SPClientEntity GetClientByUserID(int userId);
         void CloneChannelParams(int channelId, SPClientEntity entity);
+        void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds);
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -75,6 +77,65 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 spSendClientParamsEntity.MappingParams = channelParamsEntity.ParamsMappingName;
                 this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.Save(spSendClientParamsEntity);
             }
+        }
+        [Transaction(ReadOnly = false)]
+        public void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds)
+        {
+            SPClientEntity mainclientEntity = new SPClientEntity();
+            mainclientEntity.Name = channelEntity.Name + loginID;
+            mainclientEntity.Description = channelEntity.Name + loginID;
+            mainclientEntity.UserID = mainloginuserID;
+
+            this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(mainclientEntity);
+
+            foreach (CodeUserID codeUserId in codeUserIds)
+            {
+                SPClientEntity subClientEntity = new SPClientEntity();
+                subClientEntity.Name = channelEntity.Name + loginID + codeUserId.Code;
+                subClientEntity.Description = channelEntity.Name + loginID + codeUserId.Code;
+                subClientEntity.UserID = codeUserId.UserID;
+
+                this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
+            }
+
+            SPClientChannelSettingEntity mainChannelClient = new SPClientChannelSettingEntity();
+
+            mainChannelClient.Name = channelEntity.Name + loginID;
+            mainChannelClient.Description = channelEntity.Name + loginID;
+            mainChannelClient.ChannelID = channelEntity;
+            mainChannelClient.ClinetID = mainclientEntity;
+            mainChannelClient.InterceptRate = 0;
+            mainChannelClient.OrderIndex = 1;
+            mainChannelClient.UpRate = 0;
+            mainChannelClient.DownRate = 0;
+            mainChannelClient.CommandColumn = "ywid";
+            mainChannelClient.CommandType = "3";
+            mainChannelClient.CommandCode = code;
+            mainChannelClient.SyncData = false;
+
+            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
+
+            foreach (CodeUserID codeUserId in codeUserIds)
+            {
+                SPClientChannelSettingEntity subChannelClient = new SPClientChannelSettingEntity();
+
+                subChannelClient.Name = channelEntity.Name + loginID + codeUserId.Code;
+                subChannelClient.Description = channelEntity.Name + loginID + codeUserId.Code;
+                subChannelClient.ChannelID = channelEntity;
+                subChannelClient.ClinetID = mainclientEntity;
+                subChannelClient.InterceptRate = 0;
+                subChannelClient.OrderIndex = 2;
+                subChannelClient.UpRate = 0;
+                subChannelClient.DownRate = 0;
+                subChannelClient.CommandColumn = "ywid";
+                subChannelClient.CommandType = "3";
+                subChannelClient.CommandCode = code + codeUserId.Code;
+                subChannelClient.SyncData = false;
+
+                this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(subChannelClient);           
+            }
+
+
         }
 
 

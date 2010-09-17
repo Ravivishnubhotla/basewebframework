@@ -193,6 +193,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtStatParamName;
         
         /// <summary>
+        /// txtStatValues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtStatValues;
+        
+        /// <summary>
         /// btnSaveSPChannel control.
         /// </summary>
         /// <remarks>

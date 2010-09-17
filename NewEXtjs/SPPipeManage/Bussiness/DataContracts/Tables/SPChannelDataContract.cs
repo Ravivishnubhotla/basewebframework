@@ -36,6 +36,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
+		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
 		
         #endregion
 	
@@ -63,6 +64,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isAllowNullLinkID;
 		private bool? _recStatReport;
 		private string _statParamsName;
+		private string _statParamsValues;
 		
 		#endregion
 
@@ -94,6 +96,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isAllowNullLinkID = null;
 			_recStatReport = null;
 			_statParamsName = null;
+			_statParamsValues = null;
 		}
 		#endregion
 
@@ -446,6 +449,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string StatParamsValues
+		{
+			get { return _statParamsValues; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for StatParamsValues", value, value.ToString());
+				_statParamsValues = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -474,6 +494,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsAllowNullLinkID = wrapper.IsAllowNullLinkID;
 			this.RecStatReport = wrapper.RecStatReport;
 			this.StatParamsName = wrapper.StatParamsName;
+			this.StatParamsValues = wrapper.StatParamsValues;
 		}
 		
 		
@@ -502,6 +523,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsAllowNullLinkID = this.IsAllowNullLinkID;
 			wrapper.RecStatReport = this.RecStatReport;
 			wrapper.StatParamsName = this.StatParamsName;
+			wrapper.StatParamsValues = this.StatParamsValues;
 		
 		return wrapper;
         }

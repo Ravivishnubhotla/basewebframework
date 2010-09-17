@@ -20,6 +20,7 @@
 		<property column="ParamsMappingName" type="string" name="ParamsMappingName"   length="400" />	
 		<property column="Title" type="string" name="Title"   length="400" />	
 		<property column="ShowInClientGrid" type="Boolean" name="ShowInClientGrid"   />	
+		<property column="IsUnique" type="Boolean" name="IsUnique"   />	
 
 
 

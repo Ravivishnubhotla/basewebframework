@@ -24,6 +24,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
+		public static readonly string PROPERTY_NAME_ISUNIQUE = "IsUnique";
 		
         #endregion
 	
@@ -39,6 +40,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _paramsMappingName;
 		private string _title;
 		private bool? _showInClientGrid;
+		private bool? _isUnique;
 		
 		#endregion
 
@@ -58,6 +60,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_paramsMappingName = null;
 			_title = null;
 			_showInClientGrid = true;
+			_isUnique = null;
 		}
 		#endregion
 
@@ -218,6 +221,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsUnique
+		{
+			get { return _isUnique; }
+
+			set	
+			{
+				_isUnique = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -234,6 +251,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ParamsMappingName = wrapper.ParamsMappingName;
 			this.Title = wrapper.Title;
 			this.ShowInClientGrid = wrapper.ShowInClientGrid;
+			this.IsUnique = wrapper.IsUnique;
 		}
 		
 		
@@ -250,6 +268,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ParamsMappingName = this.ParamsMappingName;
 			wrapper.Title = this.Title;
 			wrapper.ShowInClientGrid = this.ShowInClientGrid;
+			wrapper.IsUnique = this.IsUnique;
 		
 		return wrapper;
         }

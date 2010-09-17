@@ -513,9 +513,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                         interceptRate = channelSetting.InterceptRate.Value.ToString();
                     }
 
-                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
+                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’, 登陆ID ‘{6}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
                                                 channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
-                                                interceptRate, syncDataUrl, channelSetting.OrderIndex);
+                                                interceptRate, syncDataUrl, channelSetting.OrderIndex, channelSetting.ClinetID.UserLoginID);
 
  
                     sb.Append(line);
@@ -590,6 +590,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public List<SPChannelDefaultClientSycnParamsWrapper> GetAllEnableDefaultSendParams()
         {
             return SPChannelDefaultClientSycnParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableDefaultSendParams(this.entity));
+        }
+
+        public static void QuickAdd(SPChannelWrapper spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID)
+        {
+            businessProxy.QuickAdd(spChannelWrapper.entity, linkPName, mobilePName, spCodePName, moPName, userID);
         }
     }
 }
