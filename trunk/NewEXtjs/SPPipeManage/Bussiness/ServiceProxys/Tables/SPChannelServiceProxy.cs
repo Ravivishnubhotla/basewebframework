@@ -107,8 +107,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             SPChannelParamsEntity mobileParamsEntity = new SPChannelParamsEntity();
 
             mobileParamsEntity.ChannelID = spChannelWrapper;
-            mobileParamsEntity.Name = "mobile";
-            mobileParamsEntity.Title = "mobile";
+            mobileParamsEntity.Name = mobilePName;
+            mobileParamsEntity.Title = mobilePName;
             mobileParamsEntity.Description = "手机号码";
             mobileParamsEntity.IsEnable = true;
             mobileParamsEntity.IsRequired = true;
@@ -122,8 +122,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             SPChannelParamsEntity spCodeParamsEntity = new SPChannelParamsEntity();
 
             spCodeParamsEntity.ChannelID = spChannelWrapper;
-            spCodeParamsEntity.Name = "spCode";
-            spCodeParamsEntity.Title = "spCode";
+            spCodeParamsEntity.Name = spCodePName;
+            spCodeParamsEntity.Title = spCodePName;
             spCodeParamsEntity.Description = "通道号码";
             spCodeParamsEntity.IsEnable = true;
             spCodeParamsEntity.IsRequired = true;
@@ -132,6 +132,60 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             spCodeParamsEntity.ParamsType = "普通参数";
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(spCodeParamsEntity);
+
+            SPChannelDefaultClientSycnParamsEntity moSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            moSendParamsEntity.ChannelID = spChannelWrapper;
+            moSendParamsEntity.Name = "mo";
+            moSendParamsEntity.Title = "mo";
+            moSendParamsEntity.Description = "上行内容";
+            moSendParamsEntity.IsEnable = true;
+            moSendParamsEntity.IsRequired = true;
+            moSendParamsEntity.MappingParams = "ywid";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(moSendParamsEntity);
+
+            SPChannelDefaultClientSycnParamsEntity linkidSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            linkidSendParamsEntity.ChannelID = spChannelWrapper;
+            linkidSendParamsEntity.Name = "linkid";
+            linkidSendParamsEntity.Title = "linkid";
+            linkidSendParamsEntity.Description = "唯一标识";
+            linkidSendParamsEntity.IsEnable = true;
+            linkidSendParamsEntity.IsRequired = true;
+            linkidSendParamsEntity.MappingParams = "linkid";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(linkidSendParamsEntity);
+
+            SPChannelDefaultClientSycnParamsEntity mobileSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            mobileSendParamsEntity.ChannelID = spChannelWrapper;
+            mobileSendParamsEntity.Name = "mobile";
+            mobileSendParamsEntity.Title = "mobile";
+            mobileSendParamsEntity.Description = "手机号码";
+            mobileSendParamsEntity.IsEnable = true;
+            mobileSendParamsEntity.IsRequired = true;
+            mobileSendParamsEntity.MappingParams = "mobile";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(mobileSendParamsEntity);
+
+
+            SPChannelDefaultClientSycnParamsEntity spCodeSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            spCodeSendParamsEntity.ChannelID = spChannelWrapper;
+            spCodeSendParamsEntity.Name = "spCode";
+            spCodeSendParamsEntity.Title = "spCode";
+            spCodeSendParamsEntity.Description = "通道号码";
+            spCodeSendParamsEntity.IsEnable = true;
+            spCodeSendParamsEntity.IsRequired = true;
+            spCodeSendParamsEntity.MappingParams = "cpid";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(spCodeSendParamsEntity);
+
+
+
+
+
         }
     }
 }

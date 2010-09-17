@@ -88,16 +88,6 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(mainclientEntity);
 
-            foreach (CodeUserID codeUserId in codeUserIds)
-            {
-                SPClientEntity subClientEntity = new SPClientEntity();
-                subClientEntity.Name = channelEntity.Name + loginID + codeUserId.Code;
-                subClientEntity.Description = channelEntity.Name + loginID + codeUserId.Code;
-                subClientEntity.UserID = codeUserId.UserID;
-
-                this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
-            }
-
             SPClientChannelSettingEntity mainChannelClient = new SPClientChannelSettingEntity();
 
             mainChannelClient.Name = channelEntity.Name + loginID;
@@ -117,12 +107,20 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             foreach (CodeUserID codeUserId in codeUserIds)
             {
+                SPClientEntity subClientEntity = new SPClientEntity();
+                subClientEntity.Name = channelEntity.Name + loginID + codeUserId.Code;
+                subClientEntity.Description = channelEntity.Name + loginID + codeUserId.Code;
+                subClientEntity.UserID = codeUserId.UserID;
+
+                this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
+
+
                 SPClientChannelSettingEntity subChannelClient = new SPClientChannelSettingEntity();
 
                 subChannelClient.Name = channelEntity.Name + loginID + codeUserId.Code;
                 subChannelClient.Description = channelEntity.Name + loginID + codeUserId.Code;
                 subChannelClient.ChannelID = channelEntity;
-                subChannelClient.ClinetID = mainclientEntity;
+                subChannelClient.ClinetID = subClientEntity;
                 subChannelClient.InterceptRate = 0;
                 subChannelClient.OrderIndex = 2;
                 subChannelClient.UpRate = 0;
