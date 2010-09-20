@@ -139,6 +139,27 @@ namespace LD.SPPipeManage.Data.AdoNet
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
         }
 
+
+        public void ResetAllReportedData(DateTime date)
+        {
+            string sql = "update SPPaymentInfo set  IsReport = 0  where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and  IsReport = 1";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("year", date.Year.ToString());
+
+            dbParameters.AddWithValue("month", date.Month.ToString());
+
+            dbParameters.AddWithValue("day", date.Day.ToString());
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+
+
+
+
+
         public DataSet GetAllClientChannel()
         {
             string sql = "Select * from view_ClientChannel";

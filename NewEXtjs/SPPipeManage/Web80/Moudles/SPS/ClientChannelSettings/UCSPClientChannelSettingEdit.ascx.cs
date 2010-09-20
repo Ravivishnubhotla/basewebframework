@@ -123,6 +123,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 if (!this.fsAllowSycnData.Collapsed)
                 {
+
+                    if (!this.txtSyncDataUrl.Text.Trim().ToLower().StartsWith("http://"))
+                    {
+                        Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                        Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：提交地址一定要以http://开头";
+                        return;
+                    }
+
                     obj.SyncData = true;
                     obj.SyncDataUrl = this.txtSyncDataUrl.Text.Trim();
                     if (this.cmbSycnType.SelectedItem != null)
