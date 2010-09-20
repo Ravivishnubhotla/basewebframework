@@ -101,7 +101,7 @@
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="Store1"
-                        StripeRows="true" Title="即时日报表" Icon="Table">
+                        StripeRows="true" Title="今日即时报表" Icon="Table">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -121,11 +121,11 @@
                                     </ext:ToolbarSeparator>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="不显示0流量的通道">
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="隐藏0流量通道">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:Checkbox ID="chkFilterNoCount" Checked="false" runat="server">
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
                                         <Listeners>
                                             <Check Handler="#{Store1}.reload();" />
                                         </Listeners>
@@ -134,7 +134,7 @@
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
-                                    <ext:ToolbarTextItem runat="server" Text="今日数据汇总统计">
+                                    <ext:ToolbarTextItem runat="server" Text="汇总统计">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>

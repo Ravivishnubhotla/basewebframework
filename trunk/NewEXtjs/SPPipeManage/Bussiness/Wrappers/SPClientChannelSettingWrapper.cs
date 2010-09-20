@@ -224,13 +224,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             switch (this.CommandType)
             {
                 case "1":
-                    return ywid.Equals(this.CommandCode);
+                    return ywid.ToLower().Equals(this.CommandCode.ToLower());
                 case "2":
-                    return ywid.Contains(this.CommandCode);
+                    return ywid.ToLower().Contains(this.CommandCode.ToLower());
                 case "3":
-                    return ywid.StartsWith(this.CommandCode);
+                    return ywid.ToLower().StartsWith(this.CommandCode.ToLower());
                 case "4":
-                    return ywid.EndsWith(this.CommandCode);
+                    return ywid.ToLower().EndsWith(this.CommandCode.ToLower());
                 case "5":
                     return false;
                 case "6":

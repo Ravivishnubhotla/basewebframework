@@ -99,7 +99,85 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             }
 
+
+
+
             this.AdoNetDb.ClearAllReportedData(date);     
+        }
+
+
+
+
+        [Transaction(ReadOnly = false)]
+        public void ReBulidReport(DateTime date)
+        {
+            this.AdoNetDb.ResetAllReportedData(date);
+
+            //Get all need to generate report's channle nad client ID.
+            DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
+
+            DataTable dsDayTotalCount = this.AdoNetDb.GetDayTotalCount(date);
+            DataTable dsDayDownCount = this.AdoNetDb.GetDayDownCount(date);
+            DataTable dsDayInterceptCount = this.AdoNetDb.GetDayInterceptCount(date);
+            DataTable dsDayDownSycnCount = this.AdoNetDb.GetDayDownSycnCount(date);
+
+            foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
+            {
+                int channelID = (int)dataRow["ChannelID"];
+                int clientID = (int)dataRow["ClientID"];
+
+
+                string filterSql = string.Format(" ClientID = {0} and ChannelID = {1} ", clientID, channelID);
+
+                int totalCount = this.AdoNetDb.ExecuteScalarFormDataTable("TotalCount", filterSql, dsDayTotalCount);
+                int downCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownCount", filterSql, dsDayDownCount);
+                int interceptCount = this.AdoNetDb.ExecuteScalarFormDataTable("InterceptCount", filterSql, dsDayInterceptCount);
+                int downSycnCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownSycnCount", filterSql, dsDayDownSycnCount);
+
+                SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
+
+                bool hasReport = false;
+
+
+                if (dayReportEntity == null)
+                {
+                    dayReportEntity = new SPDayReportEntity();
+                }
+                //else
+                //{
+                //    hasReport = true;
+                //}
+
+                //dayReportEntity.ChannelID = channelID;
+                //dayReportEntity.ClientID = clientID;
+                //if (hasReport)
+                //{
+                    //dayReportEntity.UpTotalCount =  totalCount;
+                    //dayReportEntity.UpSuccess =  0;
+                    //dayReportEntity.InterceptTotalCount += interceptCount;
+                    //dayReportEntity.InterceptSuccess += 0;
+                    //dayReportEntity.DownTotalCount += downCount;
+                    //dayReportEntity.DownSuccess += downSycnCount;
+                //}
+                //else
+                //{
+                    dayReportEntity.UpTotalCount = totalCount;
+                    dayReportEntity.UpSuccess = 0;
+                    dayReportEntity.InterceptTotalCount = interceptCount;
+                    dayReportEntity.InterceptSuccess = 0;
+                    dayReportEntity.DownTotalCount = downCount;
+                    dayReportEntity.DownSuccess = downSycnCount;
+                //}
+
+                dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
+
+                this.SelfDataObj.SaveOrUpdate(dayReportEntity);
+
+
+
+            }
+
+            this.AdoNetDb.ClearAllReportedData(date);
         }
 
         public string GetDbSize()
