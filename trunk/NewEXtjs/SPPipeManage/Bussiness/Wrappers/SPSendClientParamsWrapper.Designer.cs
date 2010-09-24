@@ -73,9 +73,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
-		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		
         #endregion
 
@@ -168,6 +168,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public int? ChannelID
+		{
+			get
+			{
+				return entity.ChannelID;
+			}
+			set
+			{
+				entity.ChannelID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string MappingParams
 		{
 			get
@@ -191,20 +205,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.Title = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? ChannelID
-		{
-			get
-			{
-				return entity.ChannelID;
-			}
-			set
-			{
-				entity.ChannelID = value;
 			}
 		}
 		#endregion 

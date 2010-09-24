@@ -932,5 +932,158 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public DataTable GetTodayReportByClientGroupID(int clientGroupID)
+        {
+            string sql = "";
+
+            sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID in (SELECT  [ID] FROM  [SPClient] where [SPClientGroupID] = @SPClientGroupID) GROUP BY ClientID, CHour   ";
+            
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("SPClientGroupID", clientGroupID);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetTodayReportByClientID(int clientID)
+        {
+            string sql = "";
+
+            sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID = @clientID GROUP BY ClientID, CHour   ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("clientID", clientID);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+
+        public DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate)
+        {
+            DataTable reportDt = new DataTable();
+
+
+            DataColumn dc = new DataColumn("RID", typeof(int));
+            reportDt.Columns.Add(dc);
+            reportDt.PrimaryKey = new DataColumn[] { dc };
+
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
+            reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("Price", typeof(decimal)));
+
+            reportDt.AcceptChanges();
+
+            int j = 0;
+
+            DataTable dCountReportForMaster = QueryReportForClient(spClientId, startDate.Date, enddate.Date);
+
+            for (DateTime i = startDate; i < enddate.AddDays(1); i = i.AddDays(1))
+            {
+                j++;
+
+                ReportResult reportResult = GetReportResultByDate(i, dCountReportForMaster);
+
+                reportDt.Rows.Add(j, i.Date,
+                                    reportResult.DownCount,
+                                    reportResult.DownSycnCount, decimal.Zero);
+            }
+   
+
+            return reportDt;
+        }
+
+        private ReportResult GetReportResultByDate(DateTime dateTime, DataTable dCountReportForMaster)
+        {
+            ReportResult reportResult = new ReportResult();
+
+            reportResult.ReportDate = DateTime.Now;
+
+            string filterSql = string.Format(" ReportDate='{0}' ", dateTime);
+
+            reportResult.TotalCount = ExecuteSumFormDataTable("UpTotalCount", filterSql, dCountReportForMaster);
+            reportResult.DownCount = ExecuteSumFormDataTable("DownTotalCount", filterSql, dCountReportForMaster);
+            reportResult.InterceptCount = ExecuteSumFormDataTable("InterceptTotalCount", filterSql, dCountReportForMaster);
+            reportResult.DownSycnCount = ExecuteSumFormDataTable("DownSuccess", filterSql, dCountReportForMaster);
+
+            if (reportResult.TotalCount == 0)
+                reportResult.InterceptRate = 0;
+            else
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
+
+
+            return reportResult;   
+
+        }
+
+
+        private DataTable QueryReportForClient(int clientID, DateTime startDateTime, DateTime enddateTime)
+        {
+            string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>=@startDate and ReportDate<=@enddate And  clientID = @clientID  ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDateTime.Date);
+
+            dbParameters.AddWithValue("enddate", enddateTime.AddDays(1).Date);
+ 
+            dbParameters.AddWithValue("clientID", clientID);
+   
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate)
+        {
+            DataTable reportDt = new DataTable();
+
+
+            DataColumn dc = new DataColumn("RID", typeof(int));
+            reportDt.Columns.Add(dc);
+            reportDt.PrimaryKey = new DataColumn[] { dc };
+
+            reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
+            reportDt.Columns.Add(new DataColumn("DownCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("DownSycnCount", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("Price", typeof(decimal)));
+
+            reportDt.AcceptChanges();
+
+            int j = 0;
+
+            DataTable dCountReportForMaster = QueryReportForClientGroup(spClientGroupId, startDate.Date, enddate.Date);
+
+            for (DateTime i = startDate; i < enddate.AddDays(1); i = i.AddDays(1))
+            {
+                j++;
+
+                ReportResult reportResult = GetReportResultByDate(i, dCountReportForMaster);
+
+                reportDt.Rows.Add(j, i.Date,
+                                    reportResult.DownCount,
+                                    reportResult.DownSycnCount, decimal.Zero);
+            }
+
+
+            return reportDt;
+
+        }
+
+        private DataTable QueryReportForClientGroup(int spClientGroupId, DateTime startDateTime, DateTime enddateTime)
+        {
+            string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>=@startDate and ReportDate<=@enddate And  clientID in (SELECT  [ID] FROM  [SPClient] where [SPClientGroupID] = @SPClientGroupID)  ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDateTime.Date);
+
+            dbParameters.AddWithValue("enddate", enddateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("SPClientGroupID", spClientGroupId);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+        }
     }
 }

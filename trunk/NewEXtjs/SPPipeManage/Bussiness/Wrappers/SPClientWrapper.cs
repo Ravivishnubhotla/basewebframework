@@ -129,6 +129,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+        public string ClientGroupName
+        {
+            get
+            {
+                if (this.SPClientGroupID != null)
+                {
+                    return this.SPClientGroupID.Name;
+                }
+                return "";
+            }
+        }
+
         public static int GetClientIDByUserID(int userId)
         {
             SystemUserWrapper user = SystemUserWrapper.FindById(userId);

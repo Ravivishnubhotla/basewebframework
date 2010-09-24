@@ -23,6 +23,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
 		
         #endregion
 	
@@ -37,6 +38,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _okMessage;
 		private string _failedMessage;
 		private string _syncType;
+		private int? _sPClientGroupID;
 		
 		#endregion
 
@@ -55,6 +57,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_okMessage = null;
 			_failedMessage = null;
 			_syncType = null;
+			_sPClientGroupID = null;
 		}
 		#endregion
 
@@ -204,6 +207,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? SPClientGroupID
+		{
+			get { return _sPClientGroupID; }
+
+			set	
+			{
+				_sPClientGroupID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -219,6 +236,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.OkMessage = wrapper.OkMessage;
 			this.FailedMessage = wrapper.FailedMessage;
 			this.SyncType = wrapper.SyncType;
+			this.SPClientGroupID = (wrapper.SPClientGroupID!=null) ? wrapper.SPClientGroupID.Id : 0 ; 
 		}
 		
 		
@@ -234,6 +252,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.OkMessage = this.OkMessage;
 			wrapper.FailedMessage = this.FailedMessage;
 			wrapper.SyncType = this.SyncType;
+			wrapper.SPClientGroupID =  (this.SPClientGroupID==null) ? null : SPClientGroupWrapper.FindById(this.SPClientGroupID);
 		
 		return wrapper;
         }

@@ -131,6 +131,13 @@
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -138,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
+    <Compile Include="AppClass\SPClientGroupViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppClass\SPHandler.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -339,12 +349,64 @@
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelSettingPatchAdd1.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPChannelGroupHandle.ashx.cs">
+      <DependentUpon>SPChannelGroupHandle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx.cs">
+      <DependentUpon>SPClientGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx.designer.cs">
+      <DependentUpon>SPClientGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx.cs">
+      <DependentUpon>UCChangeLoginID.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx.designer.cs">
+      <DependentUpon>UCChangeLoginID.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx.designer.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx.cs">
+      <DependentUpon>UCSPClientGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx.cs">
+      <DependentUpon>UCSPClientGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientGroupEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.cs">
       <DependentUpon>ClientChannleView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.designer.cs">
       <DependentUpon>ClientChannleView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.cs">
+      <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.designer.cs">
+      <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx.cs">
+      <DependentUpon>ClientGroupViewDaySum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx.designer.cs">
+      <DependentUpon>ClientGroupViewDaySum.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientInfoEditor.aspx.cs">
       <DependentUpon>ClientInfoEditor.aspx</DependentUpon>
@@ -428,6 +490,9 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.designer.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientsHandler.ashx.cs">
+      <DependentUpon>SPClientsHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.cs">
       <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>
@@ -661,6 +726,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\ClientGroups\SPChannelGroupHandle.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientsHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

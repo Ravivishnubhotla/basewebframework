@@ -13,13 +13,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPClientGroupServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPClientGroupEntity>
     {
-
-
+	    SPClientGroupEntity GetIDByUserID(int userId);
     }
 
     internal partial class SPClientGroupServiceProxy : ISPClientGroupServiceProxy
     {
-
-
+        public SPClientGroupEntity GetIDByUserID(int userId)
+        {
+            return this.SelfDataObj.GetByUserID(userId);
+        }
     }
 }

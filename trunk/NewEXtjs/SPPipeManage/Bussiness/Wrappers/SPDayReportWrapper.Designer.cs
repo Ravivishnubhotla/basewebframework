@@ -78,6 +78,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_CHANNELCLIENTID = "ChannelClientID";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
+		public static readonly string PROPERTY_NAME_CLIENTGROUPID = "ClientGroupID";
 		
         #endregion
 
@@ -235,6 +238,48 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ChannelID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ChannelClientID
+		{
+			get
+			{
+				return entity.ChannelClientID;
+			}
+			set
+			{
+				entity.ChannelClientID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? UperID
+		{
+			get
+			{
+				return entity.UperID;
+			}
+			set
+			{
+				entity.UperID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ClientGroupID
+		{
+			get
+			{
+				return entity.ClientGroupID;
+			}
+			set
+			{
+				entity.ClientGroupID = value;
 			}
 		}
 		#endregion 

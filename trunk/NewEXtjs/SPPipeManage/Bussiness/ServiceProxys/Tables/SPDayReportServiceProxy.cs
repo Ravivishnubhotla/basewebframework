@@ -28,6 +28,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetAllTodayReport();
+        DataTable GetTodayReportByClientGroupID(int clientGroupId);
+        DataTable GetTodayReportByClientID(int clientId);
+        DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate);
+        DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -222,6 +226,26 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetAllTodayReport()
         {
             return this.AdoNetDb.GetAllTodayReport();
+        }
+
+        public DataTable GetTodayReportByClientGroupID(int clientGroupId)
+        {
+            return this.AdoNetDb.GetTodayReportByClientGroupID(clientGroupId);
+        }
+
+        public DataTable GetTodayReportByClientID(int clientId)
+        {
+            return this.AdoNetDb.GetTodayReportByClientID(clientId);
+        }
+
+        public DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate)
+        {
+            return this.AdoNetDb.GetCountReportByClientID(spClientId,startDate, enddate);
+        }
+
+        public DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate)
+        {
+            return this.AdoNetDb.GetCountReportByClientGroupID(spClientGroupId,  startDate, enddate);
         }
 
 

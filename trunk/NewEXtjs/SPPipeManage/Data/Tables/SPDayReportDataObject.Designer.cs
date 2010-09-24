@@ -24,6 +24,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DAYXMLFILENAME = Property.ForName(SPDayReportEntity.PROPERTY_NAME_DAYXMLFILENAME);
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CLIENTID);
 		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CHANNELID);
+		public static readonly Property PROPERTY_CHANNELCLIENTID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CHANNELCLIENTID);
+		public static readonly Property PROPERTY_UPERID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_UPERID);
+		public static readonly Property PROPERTY_CLIENTGROUPID = Property.ForName(SPDayReportEntity.PROPERTY_NAME_CLIENTGROUPID);
       
 		#region 子类集合字段查询字段
 	
@@ -62,6 +65,12 @@ namespace LD.SPPipeManage.Data.Tables
                 case "ClientID":
                     return typeof (int);
                 case "ChannelID":
+                    return typeof (int);
+                case "ChannelClientID":
+                    return typeof (int);
+                case "UperID":
+                    return typeof (int);
+                case "ClientGroupID":
                     return typeof (int);
           }
 			return typeof(string);

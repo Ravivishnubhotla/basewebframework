@@ -21,6 +21,9 @@
 		<property column="DayXmlFileName" type="string" name="DayXmlFileName"   length="400" />	
 		<property column="ClientID" type="int" name="ClientID"   />	
 		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="ChannelClientID" type="int" name="ChannelClientID"   />	
+		<property column="UperID" type="int" name="UperID"   />	
+		<property column="ClientGroupID" type="int" name="ClientGroupID"   />	
 
 
 

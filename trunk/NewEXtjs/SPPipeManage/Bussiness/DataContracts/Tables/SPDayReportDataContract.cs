@@ -25,6 +25,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_CHANNELCLIENTID = "ChannelClientID";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
+		public static readonly string PROPERTY_NAME_CLIENTGROUPID = "ClientGroupID";
 		
         #endregion
 	
@@ -41,6 +44,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _dayXmlFileName;
 		private int? _clientID;
 		private int? _channelID;
+		private int? _channelClientID;
+		private int? _uperID;
+		private int? _clientGroupID;
 		
 		#endregion
 
@@ -61,6 +67,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_dayXmlFileName = null;
 			_clientID = null;
 			_channelID = null;
+			_channelClientID = null;
+			_uperID = null;
+			_clientGroupID = null;
 		}
 		#endregion
 
@@ -223,6 +232,48 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? ChannelClientID
+		{
+			get { return _channelClientID; }
+
+			set	
+			{
+				_channelClientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? UperID
+		{
+			get { return _uperID; }
+
+			set	
+			{
+				_uperID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? ClientGroupID
+		{
+			get { return _clientGroupID; }
+
+			set	
+			{
+				_clientGroupID = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -240,6 +291,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.DayXmlFileName = wrapper.DayXmlFileName;
 			this.ClientID = wrapper.ClientID;
 			this.ChannelID = wrapper.ChannelID;
+			this.ChannelClientID = wrapper.ChannelClientID;
+			this.UperID = wrapper.UperID;
+			this.ClientGroupID = wrapper.ClientGroupID;
 		}
 		
 		
@@ -257,6 +311,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.DayXmlFileName = this.DayXmlFileName;
 			wrapper.ClientID = this.ClientID;
 			wrapper.ChannelID = this.ChannelID;
+			wrapper.ChannelClientID = this.ChannelClientID;
+			wrapper.UperID = this.UperID;
+			wrapper.ClientGroupID = this.ClientGroupID;
 		
 		return wrapper;
         }

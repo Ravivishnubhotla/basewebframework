@@ -135,6 +135,7 @@
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserLoginID" />
+                    <ext:RecordField Name="ClientGroupName" />       
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -184,6 +185,8 @@
                                     Hidden="true" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组" Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>
