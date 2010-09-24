@@ -87,7 +87,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_okMessage = null;
 			_failedMessage = null;
 			_syncType = null;
-			_orderIndex = 1;
+			_orderIndex = null;
 		}
 		#endregion
 

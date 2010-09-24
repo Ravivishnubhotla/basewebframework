@@ -173,6 +173,25 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return businessProxy.GetAllTodayReport();
 	    }
 
+        public static DataTable GetTodayReportByClientGroupID(int clientGroupID)
+        {
+            return businessProxy.GetTodayReportByClientGroupID(clientGroupID);
+        }
 
+        public static DataTable GetTodayReportByClientID(int clientID)
+        {
+            return businessProxy.GetTodayReportByClientID(clientID);
+        }
+
+
+	    public static DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate)
+	    {
+            return businessProxy.GetCountReportByClientID(spClientId, startDate, enddate);
+	    }
+
+        public static DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate)
+	    {
+            return businessProxy.GetCountReportByClientGroupID(spClientGroupId, startDate, enddate);
+	    }
     }
 }

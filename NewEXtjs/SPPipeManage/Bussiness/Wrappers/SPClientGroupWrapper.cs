@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -97,5 +98,27 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+
+        public string UserName
+        {
+            get
+            {
+                if (this.UserID != null && this.UserID > 0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                    if (user != null)
+                        return user.UserLoginID;
+                }
+                return "";
+            }
+        }
+
+	    public static int GetIDByUserID(int userId)
+	    {
+            SystemUserWrapper user = SystemUserWrapper.FindById(userId);
+
+            return ConvertEntityToWrapper(businessProxy.GetIDByUserID(userId)).Id;
+	    }
     }
 }

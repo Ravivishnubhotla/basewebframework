@@ -76,6 +76,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
 		
         #endregion
 
@@ -207,6 +208,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 				entity.SyncType = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SPClientGroupWrapper SPClientGroupID
+		{
+			get
+			{
+				return SPClientGroupWrapper.ConvertEntityToWrapper(entity.SPClientGroupID) ;
+			}
+			set
+			{
+				entity.SPClientGroupID = ((value == null) ? null : value.entity);
+			}
+		}
 		#endregion 
 
 
@@ -214,6 +229,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SPClientWrapper> FindAllByOrderByAndFilterAndSPClientGroupID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupWrapper sPClientGroupID, out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPClientGroupID(orderByColumnName, isDesc, pageIndex, pageSize, sPClientGroupID.entity, out recordCount));
+        }
+
+        public static List<SPClientWrapper> FindAllBySPClientGroupID(SPClientGroupWrapper sPClientGroupID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllBySPClientGroupID(sPClientGroupID.entity));
+        }
+		
 
 
 

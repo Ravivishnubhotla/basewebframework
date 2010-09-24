@@ -22,6 +22,18 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_OKMESSAGE = Property.ForName(SPClientEntity.PROPERTY_NAME_OKMESSAGE);
 		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPClientEntity.PROPERTY_NAME_FAILEDMESSAGE);
 		public static readonly Property PROPERTY_SYNCTYPE = Property.ForName(SPClientEntity.PROPERTY_NAME_SYNCTYPE);
+		public static readonly Property PROPERTY_SPCLIENTGROUPID = Property.ForName(SPClientEntity.PROPERTY_NAME_SPCLIENTGROUPID);
+		#region sPClientGroupID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPClientEntity> InClude_SPClientGroupID_Query(NHibernateDynamicQueryGenerator<SPClientEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPClientEntity.PROPERTY_NAME_SPCLIENTGROUPID, PROPERTY_SPCLIENTGROUPID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SPCLIENTGROUPID_ALIAS_NAME = "SPClientGroupID_SPClientEntity_Alias";
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_ID = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Id");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_NAME = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Name");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_DESCRIPTION = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Description");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_USERID = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".UserID");
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -57,9 +69,36 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "SyncType":
                     return typeof (string);
+                case "SPClientGroupID":
+                    return typeof (int);
           }
 			return typeof(string);
         }
+		
+		public List<SPClientEntity> GetList_By_SPClientGroupID_SPClientGroupEntity(SPClientGroupEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPCLIENTGROUPID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPClientEntity> GetPageList_By_SPClientGroupID_SPClientGroupEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupEntity fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPCLIENTGROUPID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
 		
 
 		

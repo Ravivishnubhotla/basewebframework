@@ -21,26 +21,26 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
             int clientID = 0;
 
-            switch (dataType)
-            {
-                case "GetChannelByClientID":
+            //switch (dataType)
+            //{
+            //    case "GetChannelByClientID":
 
-                    clientID = Convert.ToInt32(context.Request.QueryString["ClientID"]);
+            //        clientID = Convert.ToInt32(context.Request.QueryString["ClientID"]);
 
-                    List<SPChannelWrapper> channels = SPClientChannelSettingWrapper.GetSettingByClientID(clientID);
+            //        List<SPChannelWrapper> channels = SPClientChannelSettingWrapper.GetSettingByClientID(clientID);
 
-                    context.Response.Write(string.Format("{{total:{1},'data':{0}}}", JSON.Serialize(channels), channels.Count));
+            //        context.Response.Write(string.Format("{{total:{1},'data':{0}}}", JSON.Serialize(channels), channels.Count));
 
-                    break;
-                case "GetChannelClientIDSettingByClientIDAndChannelID":
-                    clientID = Convert.ToInt32(context.Request.QueryString["ClientID"]);
+            //        break;
+            //    case "GetChannelClientIDSettingByClientIDAndChannelID":
+            //        clientID = Convert.ToInt32(context.Request.QueryString["ClientID"]);
 
-                    List<SPClientChannelSettingWrapper> settingWrappers = SPClientChannelSettingWrapper.GetSettingByChannelAndClientID(clientID);
+            //        List<SPClientChannelSettingWrapper> settingWrappers = SPClientChannelSettingWrapper.GetSettingByChannelAndClientID(clientID);
 
-                    context.Response.Write(string.Format("{{total:{1},'data':{0}}}", JSON.Serialize(settingWrappers), settingWrappers.Count));
+            //        context.Response.Write(string.Format("{{total:{1},'data':{0}}}", JSON.Serialize(settingWrappers), settingWrappers.Count));
 
-                    break;
-            }
+            //        break;
+            //}
 
 
 

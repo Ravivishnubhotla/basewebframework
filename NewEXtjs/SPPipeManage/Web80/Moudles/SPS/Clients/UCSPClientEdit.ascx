@@ -1,18 +1,33 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
-<ext:Store ID="storeUsers" runat="server" AutoLoad="false">
+<ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="false">
     <Proxy>
-        <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
+        <ext:HttpProxy Method="GET" Url="../ClientGroups/SPChannelGroupHandle.ashx" />
     </Proxy>
     <Reader>
-        <ext:JsonReader Root="users" TotalProperty="total">
+        <ext:JsonReader Root="datas" TotalProperty="total">
             <Fields>
-                <ext:RecordField Name="Id" Type="int" Mapping="UserID" />
-                <ext:RecordField Name="Name" Mapping="UserLoginID" />
+                <ext:RecordField Name="Id" Type="int" Mapping="Id" />
+                <ext:RecordField Name="Name" Mapping="Name" />
             </Fields>
         </ext:JsonReader>
     </Reader>
+    <BaseParams>
+        <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientGroup">
+        </ext:Parameter>
+    </BaseParams>
+        <Listeners>
+        <Load Handler="if (GetGroupID()!='') {#{cmbClientGroupID}.setValue(GetGroupID());} #{formPanelSPClientEdit}.setDisabled(false);" />
+    </Listeners>
 </ext:Store>
+<script type="text/javascript">
+    function GetGroupID() {
+        var hidClientGroupID = <%=  hidClientGroupID.ClientID %>;
+        if(hidClientGroupID==null)
+            return '';
+        return hidClientGroupID.getValue();
+    }
+</script>
 <ext:Window ID="winSPClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑下家"
     ConstrainHeader="true" Width="600" Height="220" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
@@ -38,25 +53,14 @@
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Checkbox ID="chkSyncDate" runat="server" Hidden=true FieldLabel="是否允许同步数据" Checked="false" />
+                                <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="False"
+                                    StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local"
+                                    ForceSelection="true" TriggerAction="All" DisplayField="Name" ValueField="Id"
+                                    EmptyText="请选择下家组" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRecieveDataUrl" runat="server" Hidden=true FieldLabel="同步数据接口" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtOkMessage" runat="server" Hidden=true FieldLabel="同步数据成功信息" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtFailedMessage" runat="server" Hidden=true FieldLabel="同步数据失败信息" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbSycnType" Editable="false" Hidden=true runat="server" FieldLabel="同步数据类型"
-                                    AllowBlank="True" SelectedIndex="0">
-                                    <Items>
-                                        <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
-                                        <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
-                                    </Items>
-                                </ext:ComboBox>
+                                <ext:Hidden ID="hidClientGroupID"  runat="server">
+                                </ext:Hidden>
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
@@ -81,6 +85,6 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <Show Handler="#{storeUsers}.reload();if(#{hidUserID}.getValue()!=''){#{cmUserID}.setValue(#{hidUserID}.getValue())}" />
+        <Show Handler="#{formPanelSPClientEdit}.setDisabled(true);#{storeSPChannelGroup}.reload();" />
     </Listeners>
 </ext:Window>

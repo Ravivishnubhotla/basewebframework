@@ -23,6 +23,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
 		
         #endregion
 	
@@ -40,6 +41,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _okMessage;
 		private string _failedMessage;
 		private string _syncType;
+		private SPClientGroupEntity _sPClientGroupID;
 		
 		#endregion
 
@@ -58,6 +60,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_okMessage = null;
 			_failedMessage = null;
 			_syncType = null;
+			_sPClientGroupID = null;
 		}
 		#endregion
 
@@ -65,7 +68,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType)
+		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType, SPClientGroupEntity sPClientGroupID)
 		{
 			_id = id;
 			_name = name;
@@ -76,6 +79,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_okMessage = okMessage;
 			_failedMessage = failedMessage;
 			_syncType = syncType;
+			_sPClientGroupID = sPClientGroupID;
 		}
 		#endregion     
 	
@@ -222,6 +226,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
 				_isChanged |= (_syncType != value); _syncType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPClientGroupEntity SPClientGroupID
+		{
+			get { return _sPClientGroupID; }
+
+			set	
+			{
+				_isChanged |= (_sPClientGroupID != value); _sPClientGroupID = value;
 			}
 		}
 		/// <summary>

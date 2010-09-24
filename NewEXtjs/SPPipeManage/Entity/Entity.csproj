@@ -199,7 +199,7 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPStatReportMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSycnParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelDefaultClientSycnParamsMappingFile.hbm.xml" />
-    <Content Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

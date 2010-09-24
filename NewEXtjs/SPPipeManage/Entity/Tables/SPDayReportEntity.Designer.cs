@@ -25,6 +25,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DAYXMLFILENAME = "DayXmlFileName";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
+		public static readonly string PROPERTY_NAME_CHANNELCLIENTID = "ChannelClientID";
+		public static readonly string PROPERTY_NAME_UPERID = "UperID";
+		public static readonly string PROPERTY_NAME_CLIENTGROUPID = "ClientGroupID";
 		
         #endregion
 	
@@ -44,6 +47,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _dayXmlFileName;
 		private int? _clientID;
 		private int? _channelID;
+		private int? _channelClientID;
+		private int? _uperID;
+		private int? _clientGroupID;
 		
 		#endregion
 
@@ -64,6 +70,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_dayXmlFileName = null;
 			_clientID = null;
 			_channelID = null;
+			_channelClientID = null;
+			_uperID = null;
+			_clientGroupID = null;
 		}
 		#endregion
 
@@ -71,7 +80,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? interceptTotalCount, int? interceptSuccess, int? downTotalCount, int? downSuccess, string dayXmlFileName, int? clientID, int? channelID)
+		public SPDayReportEntity( int reportID, DateTime? reportDate, int? upTotalCount, int? upSuccess, int? interceptTotalCount, int? interceptSuccess, int? downTotalCount, int? downSuccess, string dayXmlFileName, int? clientID, int? channelID, int? channelClientID, int? uperID, int? clientGroupID)
 		{
 			_reportID = reportID;
 			_reportDate = reportDate;
@@ -84,6 +93,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_dayXmlFileName = dayXmlFileName;
 			_clientID = clientID;
 			_channelID = channelID;
+			_channelClientID = channelClientID;
+			_uperID = uperID;
+			_clientGroupID = clientGroupID;
 		}
 		#endregion     
 	
@@ -243,6 +255,48 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_channelID != value); _channelID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChannelClientID
+		{
+			get { return _channelClientID; }
+
+			set	
+			{
+				_isChanged |= (_channelClientID != value); _channelClientID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? UperID
+		{
+			get { return _uperID; }
+
+			set	
+			{
+				_isChanged |= (_uperID != value); _uperID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ClientGroupID
+		{
+			get { return _clientGroupID; }
+
+			set	
+			{
+				_isChanged |= (_clientGroupID != value); _clientGroupID = value;
 			}
 		}
 		/// <summary>

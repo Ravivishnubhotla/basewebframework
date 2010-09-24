@@ -63,6 +63,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLINETID_OKMESSAGE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".OkMessage");
 		public static readonly Property PROPERTY_CLINETID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLINETID_SYNCTYPE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SyncType");
+		public static readonly Property PROPERTY_CLINETID_SPCLIENTGROUPID = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SPClientGroupID");
 		#endregion
 		public static readonly Property PROPERTY_INTERCEPTRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATE);
 		public static readonly Property PROPERTY_UPRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_UPRATE);

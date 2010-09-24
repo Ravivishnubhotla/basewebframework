@@ -1,25 +1,24 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientAdd" %>
-<ext:Store ID="storeUsers" runat="server" AutoLoad="false">
+<ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="false">
     <Proxy>
-        <ext:HttpProxy Method="GET" Url="../Users/GetAUserByChannel.ashx" />
+        <ext:HttpProxy Method="GET" Url="../ClientGroups/SPChannelGroupHandle.ashx" />
     </Proxy>
     <Reader>
-        <ext:JsonReader Root="users" TotalProperty="total">
+        <ext:JsonReader Root="datas" TotalProperty="total">
             <Fields>
-                <ext:RecordField Name="Id" Type="int" Mapping="UserID" />
-                <ext:RecordField Name="Name" Mapping="UserLoginID" />
+                <ext:RecordField Name="Id" Type="int" Mapping="Id" />
+                <ext:RecordField Name="Name" Mapping="Name" />
             </Fields>
         </ext:JsonReader>
     </Reader>
+    <BaseParams>
+        <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientGroup">
+        </ext:Parameter>
+    </BaseParams>
 </ext:Store>
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
-
-<script language="javascript">
-    Ext.apply(Ext.form.VTypes, { password: function(val, field) { if (field.initialPassField) { var pwd = Ext.getCmp(field.initialPassField); return pwd ? (val == pwd.getValue()) : false; } return true; }, passwordText: "两次输入的密码不匹配！" });
-</script>
-
 <ext:Window ID="winSPClientAdd" runat="server" Icon="ApplicationAdd" Title="新建下家"
     ConstrainHeader="true" Width="600" Height="290" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
@@ -37,36 +36,9 @@
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Checkbox ID="chkSyncDate" runat="server" FieldLabel="是否允许同步数据"  Hidden=true Checked="false" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步数据接口"  Hidden=true AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步数据成功信息" Hidden=true AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步数据失败信息" Hidden=true AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型" Hidden=true
-                                    AllowBlank="True" SelectedIndex="0">
-                                    <Items>
-                                        <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
-                                        <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
-                                    </Items>
-                                </ext:ComboBox>
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRelateUserLoginID" runat="server" FieldLabel="关联用户登陆ID" AllowBlank="False" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRelateUserPassword" runat="server" InputType="Password" FieldLabel="关联用户密码"
-                                    AllowBlank="False" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtRelateUserRePassword" runat="server" InputType="Password" Vtype="password"
-                                    FieldLabel="关联用户重复密码" AllowBlank="False" />
+                                <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="False"
+                                    StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
+                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择下家组"  />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
@@ -91,6 +63,6 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <Show Handler="#{storeUsers}.reload();" />
+        <Show Handler="#{storeSPChannelGroup}.reload();" />
     </Listeners>
 </ext:Window>

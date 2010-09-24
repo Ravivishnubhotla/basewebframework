@@ -13,13 +13,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
     public partial class UCSPClientAdd {
         
         /// <summary>
-        /// storeUsers control.
+        /// storeSPChannelGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeUsers;
+        protected global::Coolite.Ext.Web.Store storeSPChannelGroup;
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -85,76 +85,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Coolite.Ext.Web.TextArea txtDescription;
         
         /// <summary>
-        /// chkSyncDate control.
+        /// cmbClientGroupID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkSyncDate;
-        
-        /// <summary>
-        /// txtRecieveDataUrl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtRecieveDataUrl;
-        
-        /// <summary>
-        /// txtOkMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtOkMessage;
-        
-        /// <summary>
-        /// txtFailedMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtFailedMessage;
-        
-        /// <summary>
-        /// cmbSycnType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbSycnType;
-        
-        /// <summary>
-        /// txtRelateUserLoginID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtRelateUserLoginID;
-        
-        /// <summary>
-        /// txtRelateUserPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtRelateUserPassword;
-        
-        /// <summary>
-        /// txtRelateUserRePassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtRelateUserRePassword;
+        protected global::Coolite.Ext.Web.ComboBox cmbClientGroupID;
         
         /// <summary>
         /// btnSaveSPClient control.
