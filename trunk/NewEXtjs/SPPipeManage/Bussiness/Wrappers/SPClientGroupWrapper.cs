@@ -114,11 +114,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-	    public static int GetIDByUserID(int userId)
+        public static SPClientGroupWrapper GetByUserID(int userId)
 	    {
             SystemUserWrapper user = SystemUserWrapper.FindById(userId);
 
-            return ConvertEntityToWrapper(businessProxy.GetIDByUserID(userId)).Id;
+            return ConvertEntityToWrapper(businessProxy.GetIDByUserID(userId));
 	    }
     }
 }

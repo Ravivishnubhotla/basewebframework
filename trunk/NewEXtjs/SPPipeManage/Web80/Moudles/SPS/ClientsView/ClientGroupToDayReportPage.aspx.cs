@@ -68,7 +68,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             }
             else
             {
-                dt = SPDayReportWrapper.GetTodayReportByClientID(spClientGroupId);              
+                dt = SPDayReportWrapper.GetTodayReportByClientGroupID(spClientGroupId);              
             }
             
 
@@ -93,10 +93,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
                 if (drs.Length > 0)
                 {
-                    if (drs[0]["Total"] != System.DBNull.Value)
+                    foreach (DataRow dataRow in drs)
                     {
-                        count = Convert.ToInt32(drs[0]["Total"]);
-                    }
+                        count += Convert.ToInt32(dataRow["Total"]);                  
+                    } 
+
+                    //if (drs[0]["Total"] != System.DBNull.Value)
+                    //{
+                    //    count = Convert.ToInt32(drs[0]["Total"]);
+                    //}
                 }
 
                 table.Rows.Add(new object[] { i.ToString("D2") + ":00", count.ToString() });
