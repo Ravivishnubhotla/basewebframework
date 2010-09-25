@@ -424,5 +424,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return businessProxy.InsertPayment(this.entity, uniqueKeyNames, out errorType);
         }
+
+	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndClientIDAndDateNoIntercept(int spClientID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+	    {
+            return
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndClientIDAndDateNoIntercept(spClientID,
+                                                                                                  startDate,
+                                                                                                  endDate,
+                                                                                                  sortFieldName, isdesc,
+                                                                                                  pageIndex, limit,
+                                                                                                  out recordCount));
+
+	    }
+
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+	    {
+
+            return
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(spClientGroupID,
+                                                                                                  startDate,
+                                                                                                  endDate,
+                                                                                                  sortFieldName, isdesc,
+                                                                                                  pageIndex, limit,
+                                                                                                  out recordCount));
+
+	    }
     }
 }

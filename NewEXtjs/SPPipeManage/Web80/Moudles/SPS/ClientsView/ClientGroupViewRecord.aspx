@@ -1,24 +1,28 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ClientGroupViewRecord.aspx.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupViewRecord.aspx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ClientGroupViewRecord.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupViewRecord" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="#{storeSPChannel}.reload();" />
+            <DocumentReady Handler="#{storeSPClient}.reload();" />
         </Listeners>
     </ext:ScriptManagerProxy>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="false">
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:HttpProxy Method="GET" Url="../Channels/SPChannelHandlerByClientID.ashx" />
+            <ext:HttpProxy Method="GET" Url="../Clients/SPClientsHandler.ashx" />
         </Proxy>
         <Reader>
-            <ext:JsonReader Root="channels" TotalProperty="total">
+            <ext:JsonReader Root="datas" TotalProperty="total">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" Mapping="Id" />
                     <ext:RecordField Name="Name" Mapping="Name" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <BaseParams>
+            <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientByClientGroup">
+            </ext:Parameter>
+        </BaseParams>
     </ext:Store>
     <ext:Store ID="store1" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="store1_Refresh">
         <AutoLoadParams>
@@ -56,7 +60,7 @@
                                 <Items>
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
+                                    <ext:ComboBox ID="cmbClientID" runat="server" AllowBlank="true" StoreID="storeSPClient"
                                         TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
                                         EmptyText="全部">
                                         <Triggers>
@@ -128,4 +132,3 @@
         </Body>
     </ext:ViewPort>
 </asp:Content>
-
