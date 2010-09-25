@@ -18,7 +18,7 @@ namespace Legendigital.Common.Web.AppClass
                 if (!this.Context.User.IsInRole("SPDownGroupUser"))
                     return 0;
 
-                return SPClientGroupWrapper.GetIDByUserID(this.CurrentLoginUser.UserID);
+                return SPClientGroupWrapper.GetByUserID(this.CurrentLoginUser.UserID).Id;
             }
 
         }
