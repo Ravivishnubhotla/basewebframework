@@ -93,12 +93,6 @@ namespace LD.SPPipeManage.Data.Tables
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);        
 
 
-
-
-
-
-
-
         }
 
         public List<SPPaymentInfoEntity> FindAllNotSendData(SPChannelEntity channelId, SPClientEntity clientId, DateTime startdate, DateTime endDate)
@@ -137,6 +131,64 @@ namespace LD.SPPipeManage.Data.Tables
                 queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.Eq(paymentInfo.MobileNumber));
 
             return this.FindSingleEntityByQueryBuilder(queryBuilder);
+        }
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDateNoIntercept(SPClientEntity clientEntity, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientEntity));
+
+
+            if (startDate == DateTime.MinValue)
+                startDate = DateTime.Now;
+
+
+            if (endDate == DateTime.MinValue)
+                endDate = DateTime.Now;
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+        }
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientIDsAndDateNoIntercept(List<SPClientEntity> spClientEntities, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.In(spClientEntities));
+
+
+            if (startDate == DateTime.MinValue)
+                startDate = DateTime.Now;
+
+
+            if (endDate == DateTime.MinValue)
+                endDate = DateTime.Now;
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
         }
     }
 }

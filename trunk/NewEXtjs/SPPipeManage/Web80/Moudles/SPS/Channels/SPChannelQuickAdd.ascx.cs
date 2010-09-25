@@ -90,7 +90,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 SystemUserWrapper.PatchAssignUserRoles(clientUser, new List<string> { clientRole.RoleID.ToString() });
 
 
-                SPChannelWrapper.QuickAdd(obj, this.txtLinkParamsName.Text.Trim(), this.txtMobileParamsName.Text.Trim(), this.txtMoParamsName.Text.Trim(), this.txtSPcodeParamsName.Text.Trim(), clientUser.UserID);
+                SPChannelWrapper.QuickAdd(obj, this.txtLinkParamsName.Text.Trim(), this.txtMobileParamsName.Text.Trim(),this.txtSPcodeParamsName.Text.Trim() , this.txtMoParamsName.Text.Trim(), clientUser.UserID);
 
 
             }

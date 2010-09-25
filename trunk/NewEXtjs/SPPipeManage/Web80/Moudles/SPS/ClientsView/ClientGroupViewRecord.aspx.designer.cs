@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupViewRecord {
+namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
     
     
-    public partial class aspx {
+    public partial class ClientGroupViewRecord {
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -31,13 +31,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupViewRecord 
         protected global::Coolite.Ext.Web.Hidden hidId;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// storeSPClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPChannel;
+        protected global::Coolite.Ext.Web.Store storeSPClient;
         
         /// <summary>
         /// store1 control.
@@ -85,13 +85,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupViewRecord 
         protected global::Coolite.Ext.Web.Toolbar tbTop;
         
         /// <summary>
-        /// cmbChannelID control.
+        /// cmbClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
+        protected global::Coolite.Ext.Web.ComboBox cmbClientID;
         
         /// <summary>
         /// dfReportStartDate control.
