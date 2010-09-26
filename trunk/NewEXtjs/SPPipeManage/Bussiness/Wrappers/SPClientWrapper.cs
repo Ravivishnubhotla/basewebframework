@@ -130,6 +130,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
+
+
         public string ClientGroupName
         {
             get
@@ -154,7 +156,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.FindByChannelID(cid));
         }
 
-  
+        public SPClientChannelSettingWrapper FindDefaultSetting()
+        {
+            List<SPClientChannelSettingWrapper> clientChannelSettingWrappers =
+                SPClientChannelSettingWrapper.FindAllByClinetID(this);
+
+            if (clientChannelSettingWrappers != null && clientChannelSettingWrappers.Count > 0)
+                return clientChannelSettingWrappers[0];
+            else
+                return null;
+        }
 
         public static void QuickAdd(string loginID, string code, SPChannelWrapper channelWrapper, int mainloginuserID, List<CodeUserID> codeUserIds)
         {
