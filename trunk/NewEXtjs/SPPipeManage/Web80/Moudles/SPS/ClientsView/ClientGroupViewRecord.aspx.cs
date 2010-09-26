@@ -18,6 +18,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             int id = this.ClientGroupID;
 
+            this.dfReportEndDate.DateField.Value = System.DateTime.Now;
+
+            this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-7);
+
             storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
             this.hidId.Text = id.ToString();
