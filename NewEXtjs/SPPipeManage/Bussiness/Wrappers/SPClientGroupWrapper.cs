@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Text;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
@@ -98,6 +99,33 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+
+        public string ClientList
+	    {
+	        get
+	        {
+	            StringBuilder sb = new StringBuilder();
+
+	            List<SPClientWrapper> clientWrappers = SPClientWrapper.FindAllBySPClientGroupID(this);
+
+	            foreach (SPClientWrapper spClientWrapper in clientWrappers)
+	            {
+	                SPClientChannelSettingWrapper channelSettingWrapper = spClientWrapper.FindDefaultSetting();
+
+	                string codeChannel = "";
+
+                    if(channelSettingWrapper!=null)
+                    {
+                        codeChannel = string.Format("指令 ‘{0}’ 通道 ‘{1}’", channelSettingWrapper.ChannelClientRuleMatch, channelSettingWrapper.ChannelID.Name);
+                    }
+
+	                sb.AppendFormat(" 下家 ‘{0}’{1}  <br/>", spClientWrapper.Name, codeChannel);
+	            }
+
+	            return sb.ToString();
+	        }
+
+	    }
 
         public string UserName
         {

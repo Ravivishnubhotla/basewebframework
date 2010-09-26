@@ -96,6 +96,10 @@
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserName" />
+                    <ext:RecordField Name="ClientList" />
+
+
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -163,6 +167,15 @@
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
                         </Listeners>
+                                                <Plugins>
+                            <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
+                                <Template ID="Template1" runat="server">
+                    <br />
+                        <p><b>下家指令列表：</b><br /> {ClientList}</p>
+                        
+                                </Template>
+                            </ext:RowExpander>
+                        </Plugins>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>
