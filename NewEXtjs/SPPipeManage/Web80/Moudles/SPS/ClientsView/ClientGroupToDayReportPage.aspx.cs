@@ -102,10 +102,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                         count += Convert.ToInt32(dataRow["Total"]);                  
                     } 
 
-                    //if (drs[0]["Total"] != System.DBNull.Value)
-                    //{
-                    //    count = Convert.ToInt32(drs[0]["Total"]);
-                    //}
                 }
 
                 table.Rows.Add(new object[] { i.ToString("D2") + ":00", count.ToString() });
