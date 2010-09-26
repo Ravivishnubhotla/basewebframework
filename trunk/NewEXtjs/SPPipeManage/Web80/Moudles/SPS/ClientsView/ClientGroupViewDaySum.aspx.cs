@@ -27,7 +27,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             int id = this.ClientGroupID;
 
-            storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", this.ClientGroupID.ToString(), ParameterMode.Value));
+            storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
             this.hidId.Text = id.ToString();
 
@@ -73,6 +73,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             get
             {
+                if (this.hidId.Text == "")
+                {
+                    this.hidId.Text = this.ClientGroupID.ToString();
+                }
                 return Convert.ToInt32(this.hidId.Text);
             }
         }
