@@ -234,14 +234,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     }
                 }
 
-                try
-                {
-                    SPInterceptRateWrapper.InsertRate(channelSetting.ChannelID, channelSetting.ClinetID, paymentInfo.IsIntercept.Value);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex.Message);
-                }
+                //try
+                //{
+                //    SPInterceptRateWrapper.InsertRate(channelSetting.ChannelID, channelSetting.ClinetID, paymentInfo.IsIntercept.Value);
+                //}
+                //catch (Exception ex)
+                //{
+                //    Logger.Error(ex.Message);
+                //}
 
                 paymentInfo.IsSycnData = false;
 

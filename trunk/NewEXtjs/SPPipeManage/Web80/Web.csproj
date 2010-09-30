@@ -139,6 +139,8 @@
     <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
+    <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -492,6 +494,13 @@
     <Compile Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx.cs">
       <DependentUpon>SPClientHandlerByChannel.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx.cs">
+      <DependentUpon>SPClientListForClientGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx.designer.cs">
+      <DependentUpon>SPClientListForClientGroup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -571,6 +580,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx.designer.cs">
       <DependentUpon>UCSPMemoEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx.cs">
+      <DependentUpon>DefaultClientRecordView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx.designer.cs">
+      <DependentUpon>DefaultClientRecordView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\DetailRecordView.aspx.cs">
       <DependentUpon>DetailRecordView.aspx</DependentUpon>
