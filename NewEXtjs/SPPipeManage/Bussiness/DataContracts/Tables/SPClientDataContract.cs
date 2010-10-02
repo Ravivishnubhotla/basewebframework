@@ -24,6 +24,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
+		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
+		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
 		
         #endregion
 	
@@ -39,6 +41,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _failedMessage;
 		private string _syncType;
 		private int? _sPClientGroupID;
+		private bool? _isDefaultClient;
+		private string _alias;
 		
 		#endregion
 
@@ -58,6 +62,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_failedMessage = null;
 			_syncType = null;
 			_sPClientGroupID = null;
+			_isDefaultClient = null;
+			_alias = null;
 		}
 		#endregion
 
@@ -221,6 +227,37 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsDefaultClient
+		{
+			get { return _isDefaultClient; }
+
+			set	
+			{
+				_isDefaultClient = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string Alias
+		{
+			get { return _alias; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Alias", value, value.ToString());
+				_alias = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -237,6 +274,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.FailedMessage = wrapper.FailedMessage;
 			this.SyncType = wrapper.SyncType;
 			this.SPClientGroupID = (wrapper.SPClientGroupID!=null) ? wrapper.SPClientGroupID.Id : 0 ; 
+			this.IsDefaultClient = wrapper.IsDefaultClient;
+			this.Alias = wrapper.Alias;
 		}
 		
 		
@@ -253,6 +292,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.FailedMessage = this.FailedMessage;
 			wrapper.SyncType = this.SyncType;
 			wrapper.SPClientGroupID =  (this.SPClientGroupID==null) ? null : SPClientGroupWrapper.FindById(this.SPClientGroupID);
+			wrapper.IsDefaultClient = this.IsDefaultClient;
+			wrapper.Alias = this.Alias;
 		
 		return wrapper;
         }

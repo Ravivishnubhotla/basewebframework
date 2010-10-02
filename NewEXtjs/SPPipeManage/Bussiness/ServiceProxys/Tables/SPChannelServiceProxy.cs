@@ -55,6 +55,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             spClientEntity.Name = spChannelWrapper.Name + "默认下家";
             spClientEntity.Description = spChannelWrapper.Name + "默认下家";
             spClientEntity.UserID = userID;
+            spClientEntity.IsDefaultClient = true;
+            spClientEntity.Alias = "";
 
             this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(spClientEntity);
 

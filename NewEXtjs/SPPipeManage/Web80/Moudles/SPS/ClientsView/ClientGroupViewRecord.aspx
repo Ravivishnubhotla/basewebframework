@@ -15,7 +15,7 @@
             <ext:JsonReader Root="datas" TotalProperty="total">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" Mapping="Id" />
-                    <ext:RecordField Name="Name" Mapping="Name" />
+                    <ext:RecordField Name="Alias" Mapping="Alias" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -61,7 +61,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbClientID" runat="server" AllowBlank="true" StoreID="storeSPClient"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Alias" ValueField="Id"
                                         EmptyText="全部">
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />

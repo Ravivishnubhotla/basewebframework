@@ -90,9 +90,6 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
-        <Listeners>
-            <Load Handler="if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(filterfn);} else {#{Store1}.clearFilter();}" />
-        </Listeners>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

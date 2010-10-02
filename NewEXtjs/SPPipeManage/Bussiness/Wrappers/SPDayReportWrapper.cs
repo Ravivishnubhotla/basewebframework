@@ -168,9 +168,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return businessProxy.GetTodayReport(clientId, channelId);
 	    }
 
-	    public static DataTable GetAllTodayReport()
+	    public static DataTable GetAllTodayReport(bool filterZeroCountChannel)
 	    {
-            return businessProxy.GetAllTodayReport();
+            if (filterZeroCountChannel)
+                return businessProxy.GetAllTodayReport(filterZeroCountChannel);
+            return businessProxy.GetAllTodayReport(filterZeroCountChannel);
 	    }
 
         public static DataTable GetTodayReportByClientGroupID(int clientGroupID)

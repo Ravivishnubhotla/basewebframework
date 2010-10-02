@@ -34,6 +34,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_DESCRIPTION = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_USERID = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".UserID");
 		#endregion
+		public static readonly Property PROPERTY_ISDEFAULTCLIENT = Property.ForName(SPClientEntity.PROPERTY_NAME_ISDEFAULTCLIENT);
+		public static readonly Property PROPERTY_ALIAS = Property.ForName(SPClientEntity.PROPERTY_NAME_ALIAS);
       
 		#region 子类集合字段查询字段
 	
@@ -71,6 +73,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "SPClientGroupID":
                     return typeof (int);
+                case "IsDefaultClient":
+                    return typeof (bool);
+                case "Alias":
+                    return typeof (string);
           }
 			return typeof(string);
         }

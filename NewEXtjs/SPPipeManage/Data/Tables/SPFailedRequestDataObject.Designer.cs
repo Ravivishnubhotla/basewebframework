@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID = Property.ForName(SPFailedRequestEntity.PROPERTY_NAME_CHANNELID);
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPFailedRequestEntity.PROPERTY_NAME_CLIENTID);
 		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPFailedRequestEntity.PROPERTY_NAME_FAILEDMESSAGE);
+		public static readonly Property PROPERTY_ISPROCESSED = Property.ForName(SPFailedRequestEntity.PROPERTY_NAME_ISPROCESSED);
       
 		#region 子类集合字段查询字段
 	
@@ -54,6 +55,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (int);
                 case "FailedMessage":
                     return typeof (string);
+                case "IsProcessed":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

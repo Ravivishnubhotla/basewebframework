@@ -77,6 +77,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
+		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
+		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
 		
         #endregion
 
@@ -220,6 +222,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.SPClientGroupID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsDefaultClient
+		{
+			get
+			{
+				return entity.IsDefaultClient;
+			}
+			set
+			{
+				entity.IsDefaultClient = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Alias
+		{
+			get
+			{
+				return entity.Alias;
+			}
+			set
+			{
+				entity.Alias = value;
 			}
 		}
 		#endregion 

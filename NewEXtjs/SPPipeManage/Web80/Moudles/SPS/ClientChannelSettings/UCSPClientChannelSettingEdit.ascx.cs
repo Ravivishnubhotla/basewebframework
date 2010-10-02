@@ -30,21 +30,45 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     {
                         this.lblChannelName.Text = obj.ChannelID.Name;
                     }
+                    else
+                    {
+                        this.lblChannelName.Text = "";
+                    }
                     if (obj.ClinetID!=null)
                     {
                         this.lblClientName.Text = obj.ClinetID.Name;
                     }
+                    else
+                    {
+                        this.lblClientName.Text = "";
+                    }
 
                     if (obj.Name!=null)
                         this.txtName.Text = obj.Name.ToString();
+                    else
+                        this.txtName.Text = "";
+
+
                     if (obj.Description!=null)
                         this.txtDescription.Text = obj.Description.ToString();
+                    else
+                        this.txtDescription.Text = "";
+
+                    if (obj.ChannelCode != null)
+                        this.txtChannleCode.Text = obj.ChannelCode.ToString();
+                    else
+                        this.txtChannleCode.Text = "";
+
+
+ 
 
               	    this.txtInterceptRate.Text = obj.InterceptRate.ToString();
 
 
-                    if(obj.OrderIndex.HasValue)
+                    if (obj.OrderIndex.HasValue)
                         this.numOrderIndex.SetValue(obj.OrderIndex.Value);
+                    else
+                        this.numOrderIndex.Text = "";
 
                     if (!string.IsNullOrEmpty(obj.CommandColumn))
                         this.cmbChannelCodeParamsName.SetValue(obj.CommandColumn);
@@ -55,6 +79,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     if (obj.CommandCode != null)
               	        this.txtCommandCode.Text = obj.CommandCode.ToString();
+                    else
+                        this.txtCommandCode.Text = "";
 
                     this.fsAllowSycnData.CheckboxToggle = obj.SyncData.HasValue && obj.SyncData.Value;
 
@@ -65,12 +91,27 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     {
                         if (obj.SyncDataUrl != null)
                             this.txtSyncDataUrl.Text = obj.SyncDataUrl;
+                        else
+                            this.txtSyncDataUrl.Text = "";
+
+
+
                         if (this.cmbSycnType.SelectedItem != null)
                             obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+
+
                         if (obj.OkMessage != null)
                             this.txtOkMessage.Text = obj.OkMessage;
+                        else
+                            this.txtOkMessage.Text = "";
+
+
                         if (obj.FailedMessage != null)
                             this.txtFailedMessage.Text = obj.FailedMessage;
+                        else
+                            this.txtFailedMessage.Text = "";
+
+
                     }
                     else
                     {
@@ -119,6 +160,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
+
+                obj.ChannelCode = this.txtChannleCode.Text.Trim();
 
 
                 if (!this.fsAllowSycnData.Collapsed)

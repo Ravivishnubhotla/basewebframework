@@ -68,6 +68,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
                 obj.StatParamsValues = txtStatValues.Text.Trim();
+                
 
 
                 SPChannelWrapper.Save(obj);

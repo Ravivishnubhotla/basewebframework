@@ -19,12 +19,29 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
         }
 
+        public int ClientGroupID
+        {
+            get
+            {
+                if (this.Request.QueryString["ClientGroupID"] == null)
+                    return 0;
+                return Convert.ToInt32(this.Request.QueryString["ClientGroupID"]);
+            }
+
+        }
+
         [AjaxMethod]
         public void Show()
         {
             try
             {
+                if (ClientGroupID > 0)
+                {
+                    this.cmbClientGroupID.Hide();
+                }
                 this.winSPClientAdd.Show();
+
+
             }
             catch (Exception ex)
             {
@@ -51,9 +68,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
                 SPClientWrapper obj = new SPClientWrapper();
                 obj.Name = this.txtName.Text.Trim();
+                obj.Alias = this.txtAlias.Text.Trim();
+                obj.IsDefaultClient = false;
+
+
+                
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.SPClientGroupID =
-                    SPClientGroupWrapper.FindById(Convert.ToInt32(this.cmbClientGroupID.SelectedItem.Value));
+
+                if (ClientGroupID<=0)
+                {
+                    obj.SPClientGroupID =
+                        SPClientGroupWrapper.FindById(Convert.ToInt32(this.cmbClientGroupID.SelectedItem.Value));
+                }
+                else
+                {
+                    obj.SPClientGroupID = SPClientGroupWrapper.FindById(ClientGroupID);                
+                }
+
+
                 //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
                 //obj.SyncData = this.chkSyncDate.Checked;
                 //obj.OkMessage = this.txtOkMessage.Text.Trim();

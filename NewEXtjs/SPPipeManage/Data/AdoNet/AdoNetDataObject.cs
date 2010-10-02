@@ -551,7 +551,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         #region TodayReport
 
-        public DataTable GetAllTodayReport()
+        public DataTable GetAllTodayReport(bool filterZeroCountChannel)
         {
             DataTable reportDt = new DataTable();
 
@@ -570,10 +570,16 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.Columns.Add(new DataColumn("InterceptRate", typeof(decimal)));
             reportDt.Columns.Add(new DataColumn("ChannelID", typeof(int)));
             reportDt.Columns.Add(new DataColumn("ClientID", typeof(int)));
+            reportDt.Columns.Add(new DataColumn("ChannelClientID", typeof(int)));
 
             reportDt.AcceptChanges();
 
-            DataTable dtChannelClient = GetAllChannelClient();
+            DataTable dtChannelClient = null;
+
+            if (filterZeroCountChannel)
+                dtChannelClient = GetAllTodayChannelClient();
+            else
+                dtChannelClient = GetAllChannelClient();
 
             int j = 0;
 
@@ -581,8 +587,6 @@ namespace LD.SPPipeManage.Data.AdoNet
             DataTable dsTodayDownCount = GetTodayDownCount();
             DataTable dsTodayInterceptCount = GetTodayInterceptCount();
             DataTable dsTodayDownSycnCount = GetTodayDownSycnCount();    
-
-
 
             foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
@@ -600,7 +604,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                                   reportResult.DownSycnCount,
                                   reportResult.InterceptRate,
                                   (int)rowChannelClient["ChannelID"],
-                                  (int)rowChannelClient["ClientID"]);
+                                  (int)rowChannelClient["ClientID"],System.DBNull.Value);
             }
 
             return reportDt;
@@ -676,6 +680,28 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+
+        public DataTable GetAllTodayChannelClient()
+        {
+            string sql = @"SELECT * FROM [view_AllTodayClientChannleInfo]";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         public DataTable GetAllEnableChannelClient()
         {

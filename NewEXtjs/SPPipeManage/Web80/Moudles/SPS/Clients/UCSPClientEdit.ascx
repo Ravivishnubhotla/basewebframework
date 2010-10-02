@@ -16,7 +16,7 @@
         <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientGroup">
         </ext:Parameter>
     </BaseParams>
-        <Listeners>
+    <Listeners>
         <Load Handler="if (GetGroupID()!='') {#{cmbClientGroupID}.setValue(GetGroupID());} #{formPanelSPClientEdit}.setDisabled(false);" />
     </Listeners>
 </ext:Store>
@@ -29,7 +29,7 @@
     }
 </script>
 <ext:Window ID="winSPClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑下家"
-    ConstrainHeader="true" Width="600" Height="220" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="600" Height="250" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -50,26 +50,28 @@
                                 <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtAlias" runat="server" FieldLabel="下家显示名" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="False"
                                     StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local"
                                     ForceSelection="true" TriggerAction="All" DisplayField="Name" ValueField="Id"
-                                    EmptyText="请选择下家组" >
-                                                                            <Triggers>
-                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
-                                        </Triggers>
-                                        <Listeners>
-                                            <Select Handler="this.triggers[0].show();" />
-                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
-                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
-                                        </Listeners>
-                                    
-                                    </ext:ComboBox>
+                                    EmptyText="请选择下家组">
+                                    <Triggers>
+                                        <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                    </Triggers>
+                                    <Listeners>
+                                        <Select Handler="this.triggers[0].show();" />
+                                        <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                        <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                    </Listeners>
+                                </ext:ComboBox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Hidden ID="hidClientGroupID"  runat="server">
+                                <ext:Hidden ID="hidClientGroupID" runat="server">
                                 </ext:Hidden>
                             </ext:Anchor>
                         </Anchors>

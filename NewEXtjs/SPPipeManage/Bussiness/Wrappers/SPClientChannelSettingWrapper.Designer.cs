@@ -86,6 +86,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
+		public static readonly string PROPERTY_NAME_CHANNELCODE = "ChannelCode";
 		
         #endregion
 
@@ -355,6 +356,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.OrderIndex = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ChannelCode
+		{
+			get
+			{
+				return entity.ChannelCode;
+			}
+			set
+			{
+				entity.ChannelCode = value;
 			}
 		}
 		#endregion 

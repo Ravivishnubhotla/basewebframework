@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="#{storeSPClient}.reload();#{storeTodayReport}.reload();" />
+            <DocumentReady Handler="#{storeSPClient}.reload();" />
         </Listeners>
     </ext:ScriptManagerProxy>
     <ext:Store ID="storeSPClient" runat="server" AutoLoad="false">
@@ -15,7 +15,7 @@
             <ext:JsonReader Root="datas" TotalProperty="total">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" Mapping="Id" />
-                    <ext:RecordField Name="Name" Mapping="Name" />
+                    <ext:RecordField Name="Alias" Mapping="Alias" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -23,6 +23,9 @@
             <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientByClientGroup">
             </ext:Parameter>
         </BaseParams>
+        <Listeners>
+            <Load Handler="#{storeTodayReport}.reload();" />
+        </Listeners>
     </ext:Store>
     <ext:Store ID="storeTodayReport" runat="server" OnRefreshData="storeTodayReport_RefreshData">
         <Reader>
@@ -48,7 +51,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbClientID" runat="server" AllowBlank="true" StoreID="storeSPClient"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Alias" ValueField="Id"
                                         EmptyText="全部">
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />

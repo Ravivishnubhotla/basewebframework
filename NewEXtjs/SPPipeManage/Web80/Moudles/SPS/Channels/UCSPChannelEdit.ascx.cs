@@ -38,6 +38,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                     if (obj.IsAllowNullLinkID.HasValue)
                         chkIsAllowNullLinkID.Checked = obj.IsAllowNullLinkID.Value;
+                    else
+                        chkIsAllowNullLinkID.Checked = false;
 
               	    this.txtChannelCode.Text = obj.ChannelCode.ToString();
 
@@ -51,12 +53,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                     if (obj.RecStatReport.HasValue)
                         chkRecStatReport.Checked = obj.RecStatReport.Value;
+                    else
+                        chkRecStatReport.Checked = false;
 
                     if (!string.IsNullOrEmpty(obj.StatParamsName))
                         this.txtStatParamName.Text = obj.StatParamsName.ToString();
+                    else
+                        this.txtStatParamName.Text = "";
 
                     if (!string.IsNullOrEmpty(obj.StatParamsValues))
                         this.txtStatValues.Text = obj.StatParamsValues.ToString();
+                    else
+                        this.txtStatValues.Text = "";
 
                     hidId.Text = id.ToString();
 

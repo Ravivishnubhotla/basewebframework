@@ -20,7 +20,7 @@
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientAdd" runat="server" Icon="ApplicationAdd" Title="新建下家"
-    ConstrainHeader="true" Width="600" Height="290" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="600" Height="320" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -33,12 +33,16 @@
                                 <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtAlias" runat="server" FieldLabel="下家显示名" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="False"
-                                    StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local" ForceSelection="true"
-                                    TriggerAction="All" DisplayField="Name" ValueField="Id" EmptyText="请选择下家组"  />
+                                    StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local"
+                                    ForceSelection="true" TriggerAction="All" DisplayField="Name" ValueField="Id"
+                                    EmptyText="请选择下家组" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
