@@ -66,6 +66,10 @@
                                                                         </Items>
                                                                     </ext:ComboBox>
                                                                 </ext:Anchor>
+                                                                <ext:Anchor Horizontal="95%">
+                                                                    <ext:TextField ID="txtChannleCode" runat="server" FieldLabel="通道号" AllowBlank="true">
+                                                                    </ext:TextField>
+                                                                </ext:Anchor>
                                                             </Anchors>
                                                         </ext:FormLayout>
                                                     </Body>
@@ -92,7 +96,7 @@
                                                                             <ext:ListItem Value="ywid" Text="ywid"></ext:ListItem>
                                                                             <ext:ListItem Value="mid" Text="mid"></ext:ListItem>
                                                                             <ext:ListItem Value="mobile" Text="mobile"></ext:ListItem>
-                                                                            <ext:ListItem Value="port" Text="port"></ext:ListItem>  
+                                                                            <ext:ListItem Value="port" Text="port"></ext:ListItem>
                                                                             <ext:ListItem Value="msg" Text="msg"></ext:ListItem>
                                                                             <ext:ListItem Value="linkid" Text="linkid"></ext:ListItem>
                                                                             <ext:ListItem Value="dest" Text="dest"></ext:ListItem>
@@ -135,7 +139,7 @@
                             <Body>
                                 <ext:FormLayout ID="FormLayout1" runat="server" LabelSeparator=":" LabelWidth="100">
                                     <ext:Anchor Horizontal="95%">
-                                        <ext:TextField ID="txtSyncDataUrl" runat="server" FieldLabel="数据同步URL" AllowBlank="true" >
+                                        <ext:TextField ID="txtSyncDataUrl" runat="server" FieldLabel="数据同步URL" AllowBlank="true">
                                         </ext:TextField>
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
@@ -146,7 +150,7 @@
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
                                         <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
-                                            AllowBlank="True" SelectedIndex="0" Hidden=true>
+                                            AllowBlank="True" SelectedIndex="0" Hidden="true">
                                             <Items>
                                                 <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
                                                 <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>

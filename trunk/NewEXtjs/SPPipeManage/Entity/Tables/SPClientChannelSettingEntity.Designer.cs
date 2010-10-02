@@ -33,6 +33,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
+		public static readonly string PROPERTY_NAME_CHANNELCODE = "ChannelCode";
 		
         #endregion
 	
@@ -60,6 +61,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _failedMessage;
 		private string _syncType;
 		private int? _orderIndex;
+		private string _channelCode;
 		
 		#endregion
 
@@ -88,6 +90,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = null;
 			_syncType = null;
 			_orderIndex = null;
+			_channelCode = null;
 		}
 		#endregion
 
@@ -95,7 +98,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode)
 		{
 			_id = id;
 			_name = name;
@@ -116,6 +119,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = failedMessage;
 			_syncType = syncType;
 			_orderIndex = orderIndex;
+			_channelCode = channelCode;
 		}
 		#endregion     
 	
@@ -414,6 +418,23 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_orderIndex != value); _orderIndex = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelCode
+		{
+			get { return _channelCode; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelCode", value, value.ToString());
+				_isChanged |= (_channelCode != value); _channelCode = value;
 			}
 		}
 		/// <summary>

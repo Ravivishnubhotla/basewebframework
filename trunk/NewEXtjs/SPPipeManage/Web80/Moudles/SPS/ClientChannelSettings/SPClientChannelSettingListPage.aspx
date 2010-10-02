@@ -7,10 +7,6 @@
     TagPrefix="uc2" %>
 <%@ Register Src="UCSPClientChannelSettingPatchAdd1.ascx" TagName="UCSPClientChannelSettingPatchAdd1"
     TagPrefix="uc3" %>
-
-
-
-    
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -163,7 +159,7 @@
                     <ext:RecordField Name="ChannelClientRuleMatch" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
-                    <ext:RecordField Name="SyncData" Type=Boolean />
+                    <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OrderIndex" />
                 </Fields>
             </ext:JsonReader>
@@ -174,8 +170,6 @@
     <uc1:UCSPClientChannelSettingAdd ID="UCSPClientChannelSettingAdd1" runat="server" />
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <uc3:UCSPClientChannelSettingPatchAdd1 ID="UCSPClientChannelSettingPatchAdd11" runat="server" />
-
-    
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -233,6 +227,9 @@
                                         <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数">
                                             <ToolTip Text="设置同步参数" />
                                         </ext:GridCommand>
+                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试">
+                                            <ToolTip Text="测试" />
+                                        </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
@@ -248,7 +245,6 @@
                         </BottomBar>
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
-                           
                         </Listeners>
                     </ext:GridPanel>
                 </Items>

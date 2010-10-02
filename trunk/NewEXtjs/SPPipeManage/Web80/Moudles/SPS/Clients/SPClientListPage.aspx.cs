@@ -19,6 +19,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             this.gridPanelSPClient.Reload();
         }
 
+        public int ClientGroupID
+        {
+            get
+            {
+                if (this.Request.QueryString["ClientGroupID"] == null)
+                    return 0;
+                return Convert.ToInt32(this.Request.QueryString["ClientGroupID"]);
+            }
+
+        }
+
 
         [AjaxMethod]
         public void DeleteRecord(int id)
@@ -65,7 +76,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             else
                 pageIndex = startIndex / limit;
 
-            storeSPClient.DataSource = SPClientWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);
+
+            if (ClientGroupID>0)
+            {
+                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderByAndFilterAndSPClientGroupID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit,SPClientGroupWrapper.FindById(this.ClientGroupID), out recordCount);
+            }
+            else
+            {
+                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);               
+            }
+
+
             e.TotalCount = recordCount;
 
             storeSPClient.DataBind();

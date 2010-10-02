@@ -76,6 +76,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.TextArea txtSubCode;
         
         /// <summary>
+        /// txtChannelCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextArea txtChannelCode;
+        
+        /// <summary>
         /// btnSaveSPSendClientParams control.
         /// </summary>
         /// <remarks>

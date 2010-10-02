@@ -30,7 +30,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         protected void bindData()
         {
-            DataTable dt = SPDayReportWrapper.GetAllTodayReport();
+            DataTable dt = SPDayReportWrapper.GetAllTodayReport(this.chkFilterNoCount.Checked);
             Store1.DataSource = dt;
             Store1.DataBind();
 

@@ -24,6 +24,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SPCLIENTGROUPID = "SPClientGroupID";
+		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
+		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
 		
         #endregion
 	
@@ -42,6 +44,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _failedMessage;
 		private string _syncType;
 		private SPClientGroupEntity _sPClientGroupID;
+		private bool? _isDefaultClient;
+		private string _alias;
 		
 		#endregion
 
@@ -61,6 +65,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = null;
 			_syncType = null;
 			_sPClientGroupID = null;
+			_isDefaultClient = null;
+			_alias = null;
 		}
 		#endregion
 
@@ -68,7 +74,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType, SPClientGroupEntity sPClientGroupID)
+		public SPClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType, SPClientGroupEntity sPClientGroupID, bool? isDefaultClient, string alias)
 		{
 			_id = id;
 			_name = name;
@@ -80,6 +86,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_failedMessage = failedMessage;
 			_syncType = syncType;
 			_sPClientGroupID = sPClientGroupID;
+			_isDefaultClient = isDefaultClient;
+			_alias = alias;
 		}
 		#endregion     
 	
@@ -240,6 +248,37 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_sPClientGroupID != value); _sPClientGroupID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsDefaultClient
+		{
+			get { return _isDefaultClient; }
+
+			set	
+			{
+				_isChanged |= (_isDefaultClient != value); _isDefaultClient = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Alias
+		{
+			get { return _alias; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Alias", value, value.ToString());
+				_isChanged |= (_alias != value); _alias = value;
 			}
 		}
 		/// <summary>

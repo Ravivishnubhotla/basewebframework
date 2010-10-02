@@ -44,6 +44,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SyncType");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_ORDERINDEX = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".OrderIndex");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_CHANNELCODE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".ChannelCode");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_TITLE);

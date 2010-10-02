@@ -33,6 +33,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
+		public static readonly string PROPERTY_NAME_CHANNELCODE = "ChannelCode";
 		
         #endregion
 	
@@ -57,6 +58,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _failedMessage;
 		private string _syncType;
 		private int? _orderIndex;
+		private string _channelCode;
 		
 		#endregion
 
@@ -85,6 +87,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_failedMessage = null;
 			_syncType = null;
 			_orderIndex = null;
+			_channelCode = null;
 		}
 		#endregion
 
@@ -386,6 +389,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChannelCode
+		{
+			get { return _channelCode; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelCode", value, value.ToString());
+				_channelCode = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -411,6 +431,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.FailedMessage = wrapper.FailedMessage;
 			this.SyncType = wrapper.SyncType;
 			this.OrderIndex = wrapper.OrderIndex;
+			this.ChannelCode = wrapper.ChannelCode;
 		}
 		
 		
@@ -436,6 +457,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.FailedMessage = this.FailedMessage;
 			wrapper.SyncType = this.SyncType;
 			wrapper.OrderIndex = this.OrderIndex;
+			wrapper.ChannelCode = this.ChannelCode;
 		
 		return wrapper;
         }

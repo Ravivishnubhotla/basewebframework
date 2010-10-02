@@ -18,6 +18,7 @@
 		<property column="ChannelID" type="int" name="ChannelID"   />	
 		<property column="ClientID" type="int" name="ClientID"   />	
 		<property column="FailedMessage" type="string" name="FailedMessage"   length="4000" />	
+		<property column="IsProcessed" type="Boolean" name="IsProcessed"   />	
 
 
 

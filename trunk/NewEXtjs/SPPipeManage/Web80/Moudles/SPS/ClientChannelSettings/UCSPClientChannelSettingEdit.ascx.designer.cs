@@ -184,6 +184,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.ComboBox cmbCommandType;
         
         /// <summary>
+        /// txtChannleCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtChannleCode;
+        
+        /// <summary>
         /// pnlSPClientChannelSettingAdd3 control.
         /// </summary>
         /// <remarks>

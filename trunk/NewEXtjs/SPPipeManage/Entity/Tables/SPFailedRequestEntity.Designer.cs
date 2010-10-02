@@ -22,6 +22,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_ISPROCESSED = "IsProcessed";
 		
         #endregion
 	
@@ -38,6 +39,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _channelID;
 		private int? _clientID;
 		private string _failedMessage;
+		private bool? _isProcessed;
 		
 		#endregion
 
@@ -55,6 +57,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelID = null;
 			_clientID = null;
 			_failedMessage = null;
+			_isProcessed = null;
 		}
 		#endregion
 
@@ -62,7 +65,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPFailedRequestEntity( int id, string recievedContent, DateTime? recievedDate, string recievedIP, string recievedSendUrl, int? channelID, int? clientID, string failedMessage)
+		public SPFailedRequestEntity( int id, string recievedContent, DateTime? recievedDate, string recievedIP, string recievedSendUrl, int? channelID, int? clientID, string failedMessage, bool? isProcessed)
 		{
 			_id = id;
 			_recievedContent = recievedContent;
@@ -72,6 +75,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelID = channelID;
 			_clientID = clientID;
 			_failedMessage = failedMessage;
+			_isProcessed = isProcessed;
 		}
 		#endregion     
 	
@@ -198,6 +202,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 4000)
 					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
 				_isChanged |= (_failedMessage != value); _failedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsProcessed
+		{
+			get { return _isProcessed; }
+
+			set	
+			{
+				_isChanged |= (_isProcessed != value); _isProcessed = value;
 			}
 		}
 		/// <summary>

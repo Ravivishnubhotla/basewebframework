@@ -1,10 +1,12 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientChannelSettingPatchAdd1.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingPatchAdd1" %>
-<ext:Window ID="winSPChannelClientSetingQuickAdd" runat="server" Icon="ApplicationAdd" Title="新建下家参数"  ConstrainHeader=true
-    Width="400" Height="330" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientChannelSettingPatchAdd1.ascx.cs"
+    Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingPatchAdd1" %>
+<ext:Window ID="winSPChannelClientSetingQuickAdd" runat="server" Icon="ApplicationAdd"
+    Title="新建下家参数" ConstrainHeader="true" Width="400" Height="330" AutoShow="false"
+    Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
-            <ext:FormPanel ID="formSPChannelClientSetingQuickAdd" runat="server" Frame="true" Header="false"
-                MonitorValid="true" BodyStyle="padding:5px;">
+            <ext:FormPanel ID="formSPChannelClientSetingQuickAdd" runat="server" Frame="true"
+                Header="false" MonitorValid="true" BodyStyle="padding:5px;">
                 <Body>
                     <ext:FormLayout ID="FormLayoutSPSendClientParams" runat="server" LabelSeparator=":"
                         LabelWidth="100">
@@ -17,6 +19,9 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtChannelCode" runat="server" FieldLabel="通道号" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

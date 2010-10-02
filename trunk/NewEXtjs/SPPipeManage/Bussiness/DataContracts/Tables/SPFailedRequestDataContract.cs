@@ -22,6 +22,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_ISPROCESSED = "IsProcessed";
 		
         #endregion
 	
@@ -35,6 +36,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _channelID;
 		private int? _clientID;
 		private string _failedMessage;
+		private bool? _isProcessed;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channelID = null;
 			_clientID = null;
 			_failedMessage = null;
+			_isProcessed = null;
 		}
 		#endregion
 
@@ -181,6 +184,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsProcessed
+		{
+			get { return _isProcessed; }
+
+			set	
+			{
+				_isProcessed = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -195,6 +212,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ChannelID = wrapper.ChannelID;
 			this.ClientID = wrapper.ClientID;
 			this.FailedMessage = wrapper.FailedMessage;
+			this.IsProcessed = wrapper.IsProcessed;
 		}
 		
 		
@@ -209,6 +227,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ChannelID = this.ChannelID;
 			wrapper.ClientID = this.ClientID;
 			wrapper.FailedMessage = this.FailedMessage;
+			wrapper.IsProcessed = this.IsProcessed;
 		
 		return wrapper;
         }

@@ -100,6 +100,11 @@
                 
             }
             
+
+
+
+
+
             
              if (cmd == "cmdParamsClone") {
                 Coolite.AjaxMethods.UCSPSendClientParamsClone.Show(id.id,
@@ -131,11 +136,12 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Alias" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserLoginID" />
-                    <ext:RecordField Name="ClientGroupName" />       
+                    <ext:RecordField Name="ClientGroupName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -179,6 +185,8 @@
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colAlias" DataIndex="Alias" Header="下家显示名" Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
@@ -186,7 +194,8 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组" Sortable="true">
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>
@@ -196,7 +205,7 @@
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden="true">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone" Hidden="true"

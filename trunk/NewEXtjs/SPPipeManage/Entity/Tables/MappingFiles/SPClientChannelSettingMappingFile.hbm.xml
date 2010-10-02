@@ -29,6 +29,7 @@
 		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="ChannelCode" type="string" name="ChannelCode"   length="100" />	
 
 
 

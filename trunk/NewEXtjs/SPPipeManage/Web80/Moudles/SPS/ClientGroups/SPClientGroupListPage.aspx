@@ -54,6 +54,21 @@
                 );
             }
 
+
+                                    if (cmd == "cmdClientManage") {
+
+                var win = <%= this.winClientmanage.ClientID %>;
+                
+
+                win.setTitle(" 下家组 "+id.data.Name+"  " + " 下家管理 ");
+                
+                //win.autoLoad.url = '../ClientChannelSettings/SPClientChannelSettingListPage.aspx';
+                
+                win.autoLoad.params.ClientGroupID = id.data.Id;
+        
+                win.show();    
+            }
+
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认要删除所选SPClientGroup ? ',
                     function(e) {
@@ -97,9 +112,6 @@
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserName" />
                     <ext:RecordField Name="ClientList" />
-
-
-                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -149,11 +161,14 @@
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家组管理" Width="160">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Hidden="true">
                                             <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理">
+                                            <ToolTip Text="下家管理" />
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>
@@ -167,7 +182,7 @@
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
                         </Listeners>
-                                                <Plugins>
+                        <Plugins>
                             <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="true">
                                 <Template ID="Template1" runat="server">
                     <br />
@@ -181,4 +196,18 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winClientmanage" runat="server" Title="Window" Frame="true" Width="850"
+        ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Clients/SPClientListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

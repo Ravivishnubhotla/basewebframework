@@ -75,6 +75,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_ISPROCESSED = "IsProcessed";
 		
         #endregion
 
@@ -190,6 +191,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.FailedMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsProcessed
+		{
+			get
+			{
+				return entity.IsProcessed;
+			}
+			set
+			{
+				entity.IsProcessed = value;
 			}
 		}
 		#endregion 

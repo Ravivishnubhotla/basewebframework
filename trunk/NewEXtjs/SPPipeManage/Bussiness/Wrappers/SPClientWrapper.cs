@@ -167,9 +167,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return null;
         }
 
-        public static void QuickAdd(string loginID, string code, SPChannelWrapper channelWrapper, int mainloginuserID, List<CodeUserID> codeUserIds)
+        public static void QuickAdd(string loginID, string code, SPChannelWrapper channelWrapper, int mainloginuserID, List<CodeUserID> codeUserIds,string channelCode)
         {
-            businessProxy.QuickAdd(loginID, code, channelWrapper.entity, mainloginuserID, codeUserIds);
+            businessProxy.QuickAdd(loginID, code, channelWrapper.entity, mainloginuserID, codeUserIds, channelCode);
         }
     }
 }

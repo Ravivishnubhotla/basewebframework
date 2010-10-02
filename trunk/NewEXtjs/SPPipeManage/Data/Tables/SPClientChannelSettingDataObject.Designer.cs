@@ -64,6 +64,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLINETID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLINETID_SYNCTYPE = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SyncType");
 		public static readonly Property PROPERTY_CLINETID_SPCLIENTGROUPID = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".SPClientGroupID");
+		public static readonly Property PROPERTY_CLINETID_ISDEFAULTCLIENT = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".IsDefaultClient");
+		public static readonly Property PROPERTY_CLINETID_ALIAS = Property.ForName(PROPERTY_CLINETID_ALIAS_NAME + ".Alias");
 		#endregion
 		public static readonly Property PROPERTY_INTERCEPTRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_INTERCEPTRATE);
 		public static readonly Property PROPERTY_UPRATE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_UPRATE);
@@ -79,6 +81,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_FAILEDMESSAGE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_FAILEDMESSAGE);
 		public static readonly Property PROPERTY_SYNCTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SYNCTYPE);
 		public static readonly Property PROPERTY_ORDERINDEX = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ORDERINDEX);
+		public static readonly Property PROPERTY_CHANNELCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CHANNELCODE);
       
 		#region 子类集合字段查询字段
 	
@@ -134,6 +137,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "OrderIndex":
                     return typeof (int);
+                case "ChannelCode":
+                    return typeof (string);
           }
 			return typeof(string);
         }

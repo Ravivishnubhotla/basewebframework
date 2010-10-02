@@ -27,7 +27,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
 	    DataTable GetCountReportForMaster(int channelId, DateTime startDateTime, DateTime enddateTime);
-	    DataTable GetAllTodayReport();
+	    DataTable GetAllTodayReport(bool filterZeroCountChannel);
         DataTable GetTodayReportByClientGroupID(int clientGroupId);
         DataTable GetTodayReportByClientID(int clientId);
         DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate);
@@ -223,9 +223,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetCountReportForMaster(channelId, startDateTime, enddateTime);
         }
 
-        public DataTable GetAllTodayReport()
+        public DataTable GetAllTodayReport(bool filterZeroCountChannel)
         {
-            return this.AdoNetDb.GetAllTodayReport();
+            return this.AdoNetDb.GetAllTodayReport(filterZeroCountChannel);
         }
 
         public DataTable GetTodayReportByClientGroupID(int clientGroupId)

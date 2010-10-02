@@ -63,6 +63,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTID_FAILEDMESSAGE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage");
 		public static readonly Property PROPERTY_CLIENTID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType");
 		public static readonly Property PROPERTY_CLIENTID_SPCLIENTGROUPID = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SPClientGroupID");
+		public static readonly Property PROPERTY_CLIENTID_ISDEFAULTCLIENT = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".IsDefaultClient");
+		public static readonly Property PROPERTY_CLIENTID_ALIAS = Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias");
 		#endregion
 		public static readonly Property PROPERTY_MESSAGE = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_MESSAGE);
 		public static readonly Property PROPERTY_ISINTERCEPT = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISINTERCEPT);
