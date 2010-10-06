@@ -179,6 +179,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Jobs\DailyReportGenerateJob.cs" />
+    <Compile Include="Jobs\DailyResendDataJob.cs" />
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -663,6 +664,7 @@
       <DependentUpon>SPDataService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Services\SPSSendUrlEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\bg.gif" />

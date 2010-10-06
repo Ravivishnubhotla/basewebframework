@@ -99,6 +99,30 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
         }
 
 
+        protected void btnResendAll_Click(object sender, AjaxEventArgs e)
+        {
+            Server.ScriptTimeout = 30000;
+
+            try
+            {
+                SPPaymentInfoWrapper.RendAllData(DateTime.Now.AddDays(-1));
+
+                //Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                //Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
+                //return;
+
+
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+            }
+        }
+
+        
+
  
 
 

@@ -6,7 +6,7 @@
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPChannelAdd" runat="server" Frame="true" Header="false"
-                MonitorValid="true" BodyStyle="padding:5px;">
+                MonitorValid="true" BodyStyle="padding:5px;" AutoScroll="true">
                 <Body>
                     <ext:FormLayout ID="FormLayoutSPChannel" runat="server" LabelSeparator=":" LabelWidth="100">
                         <Anchors>

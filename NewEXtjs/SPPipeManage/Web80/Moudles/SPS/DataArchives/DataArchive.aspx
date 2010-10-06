@@ -116,6 +116,21 @@
                                             </Fields>
                                         </ext:MultiField>
                                     </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:MultiField ID="mfResendAll" runat="server" FieldLabel="手动重发所有数据">
+                                            <Fields>
+                                                <ext:Button ID="btnResendAll" runat="server" Text="开始重发数据">
+                                                    <AjaxEvents>
+                                                        <Click OnEvent="btnResendAll_Click" Success="Ext.MessageBox.alert('操作成功', '成功的重发数据.',callback);function callback(id) {};"
+                                                            Timeout="10000000">
+                                                            <EventMask ShowMask="true" Msg="处理中..." />
+                                                            <Confirmation ConfirmRequest="true" Message="确认进行手动重发数据？" Title="确认操作" />
+                                                        </Click>
+                                                    </AjaxEvents>
+                                                </ext:Button>
+                                            </Fields>
+                                        </ext:MultiField>
+                                    </ext:Anchor>
                                 </Anchors>
                             </ext:FormLayout>
                         </Body>

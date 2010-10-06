@@ -101,6 +101,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
+		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		
         #endregion
 
@@ -580,6 +581,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.SSycnDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? SycnRetryTimes
+		{
+			get
+			{
+				return entity.SycnRetryTimes;
+			}
+			set
+			{
+				entity.SycnRetryTimes = value;
 			}
 		}
 		#endregion 

@@ -4,11 +4,11 @@
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"
     Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false" Maximizable="true"
-    Modal="true" ShowOnLoad="false">
+     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
-                Header="false" MonitorValid="true" BodyStyle="padding:5px;">
+                Header="false" MonitorValid="true" BodyStyle="padding:5px;" AutoScroll=true>
                 <Body>
                     <ext:ContainerLayout ID="ContainerLayout1" runat="server">
                         <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="false" Title="基本信息" Collapsed="false">

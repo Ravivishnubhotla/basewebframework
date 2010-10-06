@@ -26,6 +26,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
+    <script type="text/javascript">
+        if (top.location !== self.location) {
+            top.location = self.location;
+        }   
+    </script>
     <ext:Window ID="extwinLogin" runat="server" Width="322" ButtonAlign="Right" Height="300"
         Title="SP1.00" Draggable="false" Closable="false" Maximizable="false" Modal="true"
         Icon="UserKey" Resizable="false">

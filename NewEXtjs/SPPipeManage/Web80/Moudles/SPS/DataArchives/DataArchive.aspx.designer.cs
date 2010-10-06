@@ -218,5 +218,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Button Button1;
+        
+        /// <summary>
+        /// mfResendAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MultiField mfResendAll;
+        
+        /// <summary>
+        /// btnResendAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnResendAll;
     }
 }
