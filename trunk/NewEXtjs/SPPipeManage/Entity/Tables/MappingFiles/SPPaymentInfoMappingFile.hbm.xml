@@ -44,6 +44,7 @@
 		<property column="ChannleClientID" type="int" name="ChannleClientID"   />	
 		<property column="IsSycnData" type="Boolean" name="IsSycnData"   />	
 		<property column="sSycnDataUrl" type="string" name="SSycnDataUrl"   length="600" />	
+		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
 
 
 

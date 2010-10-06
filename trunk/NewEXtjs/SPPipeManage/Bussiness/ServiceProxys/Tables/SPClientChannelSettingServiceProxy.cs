@@ -18,6 +18,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPChannelEntity> GetChannelByClient(SPClientEntity spClientEntity);
         decimal GetToDayRate(int clinetId, int channelId);
         List<SPClientChannelSycnParamsEntity> GetAllEnableParams(SPClientChannelSettingEntity entity);
+        List<SPClientChannelSettingEntity> GetAllNeedRendSetting();
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -55,6 +56,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public List<SPClientChannelSycnParamsEntity> GetAllEnableParams(SPClientChannelSettingEntity entity)
         {
             return this.DataObjectsContainerIocID.SPClientChannelSycnParamsDataObjectInstance.GetAllEnableParams(entity);
+        }
+
+        public List<SPClientChannelSettingEntity> GetAllNeedRendSetting()
+        {
+            return this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.GetAllNeedRendSetting();
         }
     }
 }

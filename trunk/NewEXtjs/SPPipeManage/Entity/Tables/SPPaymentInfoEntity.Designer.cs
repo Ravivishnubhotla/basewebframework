@@ -48,6 +48,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
+		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		
         #endregion
 	
@@ -90,6 +91,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _channleClientID;
 		private bool? _isSycnData;
 		private string _sSycnDataUrl;
+		private int? _sycnRetryTimes;
 		
 		#endregion
 
@@ -133,6 +135,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channleClientID = null;
 			_isSycnData = null;
 			_sSycnDataUrl = null;
+			_sycnRetryTimes = 0;
 		}
 		#endregion
 
@@ -140,7 +143,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -176,6 +179,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channleClientID = channleClientID;
 			_isSycnData = isSycnData;
 			_sSycnDataUrl = sSycnDataUrl;
+			_sycnRetryTimes = sycnRetryTimes;
 		}
 		#endregion     
 	
@@ -723,6 +727,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for SSycnDataUrl", value, value.ToString());
 				_isChanged |= (_sSycnDataUrl != value); _sSycnDataUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? SycnRetryTimes
+		{
+			get { return _sycnRetryTimes; }
+
+			set	
+			{
+				_isChanged |= (_sycnRetryTimes != value); _sycnRetryTimes = value;
 			}
 		}
 		/// <summary>

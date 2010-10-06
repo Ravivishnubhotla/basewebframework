@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Threading;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Utility;
+using Spring.Data.NHibernate.Support;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -449,5 +451,71 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                                                                                                   out recordCount));
 
 	    }
+
+	    public static void RendAllData(DateTime resendDay)
+	    {
+            //using (new SessionScope())
+            //{
+                Logger.Info("开始重新发送失败同步数据");
+
+                List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
+
+                //Logger.Info(string.Format("读取设置成功，共{0}个配置需要重新发送", allNeedResendChannleClientSetting.Count));
+
+                //foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
+                //{
+                //    Logger.Info(string.Format("开始重新发送设置{0}-{1}请求", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name));
+
+                //    List<SPPaymentInfoWrapper> spReSendPaymentInfos = FindAllNotSendData(channelSetting.ChannelID.Id,
+                //                                                                         channelSetting.ClinetID.Id, resendDay,
+                //                                                                         resendDay);
+
+                //    Logger.Info(string.Format("设置{0}-{1}开始，发送请求，共{2}条记录。", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, spReSendPaymentInfos.Count));
+
+                //    int failedCount = 0;
+
+                //    foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
+                //    {
+                //        int retryTimes = 0;
+
+                //        bool requestOk = false;
+
+                //        do
+                //        {
+                //            try
+                //            {
+                //                reSendPaymentInfo.ReSend();
+                //                requestOk = true;
+                //            }
+                //            catch (Exception ex)
+                //            {
+                //                requestOk = false;
+                //                Thread.Sleep(1000);
+                //            }
+
+                //            retryTimes++;
+
+                //            if (retryTimes >= 3)
+                //                break;
+
+                //        } while (!requestOk);
+
+                //        if (!requestOk)
+                //            failedCount++;
+
+                //    }
+
+                //    Logger.Info(string.Format("设置{0}-{1}结束，失败{2}条记录。", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, failedCount));
+
+                //}
+
+                Logger.Info("重新发送失败同步数据结束");
+            }
+        //}
+
+        public string ReBuildUrl()
+        {
+            return GetChannleClientSetting().BulidUrl(this);
+        }
     }
 }

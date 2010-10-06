@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI.MobileControls;
+using LD.SPPipeManage.Bussiness.Wrappers;
 
 namespace Legendigital.Common.Web.Services
 {
@@ -19,17 +21,88 @@ namespace Legendigital.Common.Web.Services
     {
 
         [WebMethod]
-        public DataSet GetAllClientChannelNeedSendData()
+        public bool Connect()
         {
-            DataSet ds = new DataSet();
-            return ds;
+            return true;
         }
 
         [WebMethod]
-        public DataSet GetAllSendLink()
+        public int GetAllClientChannelNeedSendDataCount()
         {
-            DataSet ds = new DataSet();
-            return ds;
+            List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
+
+            List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
+
+            foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
+            {
+                List<SPPaymentInfoWrapper> spReSendPaymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelSetting.ChannelID.Id,
+                                                                                     channelSetting.ClinetID.Id, System.DateTime.Now.Date,
+                                                                                     System.DateTime.Now.Date);
+
+                foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
+                {
+                    SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
+                    sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
+                    sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
+                    sendUrlEntity.ChannelID = channelSetting.ChannelID.Id;
+                    sendUrlEntity.SycnRetryTimes = (reSendPaymentInfo.SycnRetryTimes.HasValue
+                                                        ? reSendPaymentInfo.SycnRetryTimes.Value
+                                                        : 0);
+                    sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
+
+                    sendUrlEntities.Add(sendUrlEntity);
+                }
+            }
+
+            return sendUrlEntities.Count;
+
+        }
+
+        [WebMethod]
+        public List<SPSSendUrlEntity> GetAllClientChannelNeedSendData()
+        {
+            List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
+
+            List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
+
+            foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
+            {
+                List<SPPaymentInfoWrapper> spReSendPaymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelSetting.ChannelID.Id,
+                                                                                     channelSetting.ClinetID.Id, System.DateTime.Now.Date,
+                                                                                     System.DateTime.Now.Date);
+
+                foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
+                {
+                    SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
+                    sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
+                    sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
+                    sendUrlEntity.ChannelID = channelSetting.ChannelID.Id;
+                    sendUrlEntity.SycnRetryTimes = (reSendPaymentInfo.SycnRetryTimes.HasValue
+                                                        ? reSendPaymentInfo.SycnRetryTimes.Value
+                                                        : 0);
+                    sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
+
+                    sendUrlEntities.Add(sendUrlEntity);
+                }
+            }
+
+            return sendUrlEntities;
+        }
+
+        [WebMethod]
+        public void UpdatePaymentSend(int id, bool isSendOk, string sendUrl, int sycnRetryTimes)
+        {
+            SPPaymentInfoWrapper spPaymentInfoWrapper = SPPaymentInfoWrapper.FindById(id);
+
+            spPaymentInfoWrapper.SucesssToSend = isSendOk;
+
+            spPaymentInfoWrapper.IsSycnData = true;
+
+            spPaymentInfoWrapper.SSycnDataUrl = sendUrl;
+
+            spPaymentInfoWrapper.SycnRetryTimes = sycnRetryTimes;
+
+            SPPaymentInfoWrapper.Update(spPaymentInfoWrapper);
         }
     }
 }

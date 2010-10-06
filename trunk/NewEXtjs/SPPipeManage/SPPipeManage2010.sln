@@ -63,6 +63,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseSchemaExport", "Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestSendTools", "RequestSendTools\RequestSendTools.csproj", "{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSSiteTask", "SPSSiteTask\SPSSiteTask.csproj", "{9AF13276-A579-44C7-B784-F0F2BB088EFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C6A0C68A-70F7-4687-B273-B1BA083D7615} = {C6A0C68A-70F7-4687-B273-B1BA083D7615}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -260,6 +265,21 @@ Global
 		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|Mixed Platforms.Build.0 = Debug|x86
 		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|x86.ActiveCfg = Debug|x86
 		{25F64075-BCC6-43C4-A9CB-0FB7A6534E53}.WebDebug|x86.Build.0 = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Debug|x86.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Debug|x86.Build.0 = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Release|Any CPU.ActiveCfg = Release|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Release|Mixed Platforms.Build.0 = Release|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Release|x86.ActiveCfg = Release|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.Release|x86.Build.0 = Release|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.WebDebug|Any CPU.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.WebDebug|Mixed Platforms.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.WebDebug|Mixed Platforms.Build.0 = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.WebDebug|x86.ActiveCfg = Debug|x86
+		{9AF13276-A579-44C7-B784-F0F2BB088EFD}.WebDebug|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

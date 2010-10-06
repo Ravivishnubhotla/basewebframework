@@ -12,6 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -312,7 +313,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return sendOk;
         }
 
-        private string BulidUrl(SPPaymentInfoWrapper spPaymentInfo)
+        public string BulidUrl(SPPaymentInfoWrapper spPaymentInfo)
         {
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
@@ -516,5 +517,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return spPaymentInfoWrapper.SucesssToSend.Value;
         }
 
+        public static List<SPClientChannelSettingWrapper> GetAllNeedRendSetting()
+        {
+            return ConvertToWrapperList(businessProxy.GetAllNeedRendSetting());
+        }
     }
 }
