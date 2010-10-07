@@ -140,10 +140,13 @@
     <Content Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
+    <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
@@ -409,6 +412,13 @@
     <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.designer.cs">
       <DependentUpon>ClientChannleView.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx.cs">
+      <DependentUpon>ClientGroupInterfaceSettingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx.designer.cs">
+      <DependentUpon>ClientGroupInterfaceSettingPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.cs">
       <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -443,6 +453,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientInterfacePage.aspx.designer.cs">
       <DependentUpon>ClientInterfacePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx.cs">
+      <DependentUpon>ClientInterfaceSettingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx.designer.cs">
+      <DependentUpon>ClientInterfaceSettingPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx.cs">
       <DependentUpon>ClientInterfaceSubmitUrlSetting.aspx</DependentUpon>
@@ -571,6 +588,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.designer.cs">
       <DependentUpon>DataArchive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx.cs">
+      <DependentUpon>SPFailedRequestListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx.designer.cs">
+      <DependentUpon>SPFailedRequestListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Memos\SPMemoListPage.aspx.cs">
       <DependentUpon>SPMemoListPage.aspx</DependentUpon>
@@ -757,7 +781,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
-    <Folder Include="Moudles\SPS\FailedRequests\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>

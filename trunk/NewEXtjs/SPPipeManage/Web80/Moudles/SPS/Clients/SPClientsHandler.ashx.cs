@@ -23,6 +23,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             {
                 clientGroups = SPClientWrapper.FindAll();
             }
+            if (context.Request.QueryString["DataType"] == "GetAllDefaultClient")
+            {
+                clientGroups = SPClientWrapper.GetAllDefaultClient();
+            }
             if (context.Request.QueryString["DataType"] == "GetAllClientByClientGroup")
             {
                 int clientGroupID = Convert.ToInt32(context.Request.QueryString["ClientGroupID"]);

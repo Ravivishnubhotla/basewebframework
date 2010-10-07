@@ -96,6 +96,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNLECLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CHANNLECLIENTID);
 		public static readonly Property PROPERTY_ISSYCNDATA = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_ISSYCNDATA);
 		public static readonly Property PROPERTY_SSYCNDATAURL = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SSYCNDATAURL);
+		public static readonly Property PROPERTY_SYCNRETRYTIMES = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_SYCNRETRYTIMES);
       
 		#region 子类集合字段查询字段
 	
@@ -181,6 +182,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "SSycnDataUrl":
                     return typeof (string);
+                case "SycnRetryTimes":
+                    return typeof (int);
           }
 			return typeof(string);
         }

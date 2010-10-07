@@ -22,5 +22,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             return this.SelfDataObj.GetByUserID(userId);
         }
+
+ 
     }
 }

@@ -45,7 +45,7 @@
                         </Defaults>
                         <Items>
                             <ext:TextField ID="txtUserName" runat="server"  FieldLabel="登陆ID" AllowBlank="false"
-                                Text="DeveloperAdministrator" Cls="LoginID" BlankText="请输入登陆ID！"
+                                  Cls="LoginID" BlankText="请输入登陆ID！"
                                 AnchorHorizontal="95%">
                             </ext:TextField>
                             <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="密码"
