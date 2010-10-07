@@ -48,6 +48,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_CHANNLECLIENTID = "ChannleClientID";
 		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
+		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		
         #endregion
 	
@@ -87,6 +88,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private int? _channleClientID;
 		private bool? _isSycnData;
 		private string _sSycnDataUrl;
+		private int? _sycnRetryTimes;
 		
 		#endregion
 
@@ -130,6 +132,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channleClientID = null;
 			_isSycnData = null;
 			_sSycnDataUrl = null;
+			_sycnRetryTimes = 0;
 		}
 		#endregion
 
@@ -680,6 +683,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? SycnRetryTimes
+		{
+			get { return _sycnRetryTimes; }
+
+			set	
+			{
+				_sycnRetryTimes = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -720,6 +737,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ChannleClientID = wrapper.ChannleClientID;
 			this.IsSycnData = wrapper.IsSycnData;
 			this.SSycnDataUrl = wrapper.SSycnDataUrl;
+			this.SycnRetryTimes = wrapper.SycnRetryTimes;
 		}
 		
 		
@@ -760,6 +778,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ChannleClientID = this.ChannleClientID;
 			wrapper.IsSycnData = this.IsSycnData;
 			wrapper.SSycnDataUrl = this.SSycnDataUrl;
+			wrapper.SycnRetryTimes = this.SycnRetryTimes;
 		
 		return wrapper;
         }

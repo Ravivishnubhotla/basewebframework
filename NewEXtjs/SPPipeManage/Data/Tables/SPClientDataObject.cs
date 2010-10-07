@@ -19,5 +19,14 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindSingleEntityByQueryBuilder(queryGenerator);
         }
+
+        public List<SPClientEntity> GetAllDefaultClient()
+        {
+            NHibernateDynamicQueryGenerator<SPClientEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_ISDEFAULTCLIENT.Eq(true));
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

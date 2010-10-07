@@ -112,6 +112,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        public string ChannelName
+        {
+            get
+            {
+                if (this.ChannelID != null)
+                {
+                    return this.ChannelID.Name;
+                }
+                return "";
+            }
+        }
+
 	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
 	    {
 	        return
@@ -517,5 +529,24 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return GetChannleClientSetting().BulidUrl(this);
         }
+
+	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndClientIDAndDate(int clientId, DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+	    {
+	        return
+	            ConvertToWrapperList(businessProxy.FindAllByOrderByAndClientIDAndDate(clientId, startDate, endDate,
+	                                                                                  sortFieldName, isDesc, pageIndex,
+	                                                                                  limit, out recordCount));
+
+
+	    }
+
+        public static List<SPPaymentInfoWrapper> FindAllDefaultClientPaymentByOrderByDate(DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+	    {
+            return
+            ConvertToWrapperList(businessProxy.FindAllDefaultClientPaymentByOrderByDate(startDate, endDate,
+                                                                                  sortFieldName, isDesc, pageIndex,
+                                                                                  limit, out recordCount));        
+
+	    }
     }
 }

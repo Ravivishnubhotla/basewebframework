@@ -190,5 +190,61 @@ namespace LD.SPPipeManage.Data.Tables
 
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
         }
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDate(SPClientEntity clientEntity, DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientEntity));
+
+
+            if (startDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+            }
+
+
+            if (endDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+            }
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+
+
+        }
+
+        public List<SPPaymentInfoEntity> FindAllDefaultClientPaymentByOrderByDate(List<SPClientEntity> spClientEntities, DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.In(spClientEntities));
+
+
+            if (startDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+            }
+
+
+            if (endDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+            }
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+        }
     }
 }

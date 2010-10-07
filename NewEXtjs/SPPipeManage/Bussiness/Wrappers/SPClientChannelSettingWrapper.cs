@@ -450,7 +450,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-        private List<SPClientChannelSycnParamsWrapper> GetFieldMappings()
+        public List<SPClientChannelSycnParamsWrapper> GetFieldMappings()
         {
             return SPClientChannelSycnParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
         }
@@ -520,6 +520,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static List<SPClientChannelSettingWrapper> GetAllNeedRendSetting()
         {
             return ConvertToWrapperList(businessProxy.GetAllNeedRendSetting());
+        }
+
+ 
+
+        public static List<SPClientChannelSettingWrapper> GetSettingByClient(SPClientWrapper spClientWrapper)
+        {
+            return ConvertToWrapperList(businessProxy.GetSettingByClient(spClientWrapper.entity));
         }
     }
 }

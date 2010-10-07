@@ -20,6 +20,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    SPClientEntity GetClientByUserID(int userId);
         void CloneChannelParams(int channelId, SPClientEntity entity);
         void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds,string channelCode);
+        List<SPClientEntity> GetAllDefaultClient();
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -141,6 +142,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
 
 
+        }
+
+        public List<SPClientEntity> GetAllDefaultClient()
+        {
+            return this.SelfDataObj.GetAllDefaultClient();
         }
 
 

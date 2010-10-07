@@ -129,7 +129,101 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+	    private SPClientChannelSettingWrapper defaultClientChannelSetting = null;
 
+	    public SPClientChannelSettingWrapper DefaultClientChannelSetting
+	    {
+	        get
+	        {
+	            if(defaultClientChannelSetting==null)
+	                defaultClientChannelSetting = FindDefaultSetting();
+	            return defaultClientChannelSetting;
+	        }
+	    }
+
+
+
+
+        public string SyncDataUrl
+        {            
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+                return DefaultClientChannelSetting.SyncDataUrl;
+            }
+        }
+
+        public string SPCode
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                if (DefaultClientChannelSetting.CommandType == "4")
+                    return "";
+                if (DefaultClientChannelSetting.CommandType == "5")
+                    return "";
+                if (DefaultClientChannelSetting.CommandType == "6")
+                    return "";
+                if (DefaultClientChannelSetting.CommandType == "7")
+                    return "";
+
+                string channelCode = "";
+                string cmdCode = "";
+
+                if (!string.IsNullOrEmpty(DefaultClientChannelSetting.ChannelCode))
+                    channelCode = DefaultClientChannelSetting.ChannelCode;
+
+                if (!string.IsNullOrEmpty(DefaultClientChannelSetting.CommandCode))
+                    cmdCode = DefaultClientChannelSetting.CommandCode;
+
+                string cmdType = "";
+
+                if (DefaultClientChannelSetting.CommandType == "1" )
+                    cmdType = "精准";
+                if (DefaultClientChannelSetting.CommandType == "2")
+                    cmdType = "精准";
+                if (DefaultClientChannelSetting.CommandType == "3")
+                    cmdType = "模糊";
+
+                return string.Format("发送 {0} 到 {1} ({2})", cmdCode, channelCode, cmdType);
+            }
+        }
+
+
+        public string InterfaceList
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                StringBuilder sbInterfaceList = new StringBuilder();
+
+                List<SPClientChannelSycnParamsWrapper> clientFieldMappings = DefaultClientChannelSetting.GetFieldMappings();
+
+                if (clientFieldMappings.Count > 0)
+                {
+                    foreach (SPClientChannelSycnParamsWrapper clientFieldMapping in clientFieldMappings)
+                    {
+                        sbInterfaceList.AppendLine(string.Format("{0}:{1}<br/>", clientFieldMapping.Name, clientFieldMapping.Description));
+                    }
+                }
+                else
+                {
+                    List<SPChannelDefaultClientSycnParamsWrapper> channelFieldMappings = DefaultClientChannelSetting.ChannelID.GetAllEnableDefaultSendParams();
+
+                    foreach (SPChannelDefaultClientSycnParamsWrapper channelDefaultClientSycnParam in channelFieldMappings)
+                    {
+                        sbInterfaceList.AppendLine(string.Format("{0}:{1}<br/>", channelDefaultClientSycnParam.Name, channelDefaultClientSycnParam.Description));
+                    }
+                }
+
+                return sbInterfaceList.ToString();
+            }
+        }
 
 
         public string ClientGroupName
@@ -144,6 +238,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+
+
+
+
+
         public static int GetClientIDByUserID(int userId)
         {
             SystemUserWrapper user = SystemUserWrapper.FindById(userId);
@@ -155,6 +255,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindByChannelID(cid));
         }
+
+
+
 
         public SPClientChannelSettingWrapper FindDefaultSetting()
         {
@@ -171,5 +274,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             businessProxy.QuickAdd(loginID, code, channelWrapper.entity, mainloginuserID, codeUserIds, channelCode);
         }
+
+	    public static List<SPClientWrapper> GetAllDefaultClient()
+	    {
+            return ConvertToWrapperList(businessProxy.GetAllDefaultClient());       
+
+	    }
     }
 }

@@ -94,22 +94,49 @@ namespace Legendigital.Common.Web.Moudles.SPS.RecordViews {
         protected global::Coolite.Ext.Web.ComboBox cmbClientID;
         
         /// <summary>
-        /// dfReportStartDate control.
+        /// dfStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportStartDate;
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfStartDate;
         
         /// <summary>
-        /// dfReportEndDate control.
+        /// dfEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfEndDate;
+        
+        /// <summary>
+        /// cmbParamsMappingName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbParamsMappingName;
+        
+        /// <summary>
+        /// cmbSearchType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbSearchType;
+        
+        /// <summary>
+        /// txtUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtUrl;
         
         /// <summary>
         /// btnRefresh control.
@@ -128,6 +155,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.RecordViews {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.GridView GridView1;
+        
+        /// <summary>
+        /// CheckboxSelectionModel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.CheckboxSelectionModel CheckboxSelectionModel1;
         
         /// <summary>
         /// PagingToolBar1 control.
