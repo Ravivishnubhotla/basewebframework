@@ -50,16 +50,16 @@ namespace Legendigital.Common.Web.AppClass
                         return;
                     }
 
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
+                    //bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
 
-                    if (result)
-                        context.Response.Write(channel.GetOkCode());
-                    else
-                    {
-                        logger.Error("Process Request Error:Request failed.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
+                    //if (result)
+                    //    context.Response.Write(channel.GetOkCode());
+                    //else
+                    //{
+                    //    logger.Error("Process Request Error:Request failed.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
 
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Request failed.\n", channel.Id, 0);
-                    }
+                    //    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "Process Request Error:Request failed.\n", channel.Id, 0);
+                    //}
                 }
                 else
                 {

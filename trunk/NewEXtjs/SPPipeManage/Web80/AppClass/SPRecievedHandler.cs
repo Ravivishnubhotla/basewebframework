@@ -20,8 +20,6 @@ namespace Legendigital.Common.Web.AppClass
         {
             try
             {
-
-
                 Hashtable requestData = GetRequestValue(context);
 
                 string recievdData = JsonConvert.SerializeObject(requestData);
@@ -61,15 +59,17 @@ namespace Legendigital.Common.Web.AppClass
                         }
                     }
 
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
+                    RequestError requestError;
+
+                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
 
                     if (result)
                         context.Response.Write(channel.GetOkCode());
                     else
                     {
-                        logger.Error("处理请求失败：请求失败。\n" + "请求信息:\n" + GetRequestInfo(context.Request));
+                        logger.Error(requestError.ErrorMessage);
 
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：请求失败。\n", channel.Id, 0);
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError.ErrorMessage, channel.Id, 0);
                     }
                 }
                 else
