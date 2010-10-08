@@ -1,23 +1,35 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
-using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.Bussiness.NHibernate;
-using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
-using Legendigital.Framework.Common.Utility;
-
+using LD.SPPipeManage.Entity.Tables;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
+    public enum RequestErrorType
+    {
+        NoError,
+        NoLinkID,
+        RepeatLinkID,
+        NoChannelClientSetting,
+        DataSaveError
+    }
+
+    public class RequestError
+    {
+        public RequestErrorType ErrorType { get; set; }
+        public string ErrorMessage { get; set; }
+        public int ChannelID { get; set; }
+        public int ClientID { get; set; }
+    }
+
+
     [Serializable]
     public partial class SPChannelWrapper
     {
@@ -50,7 +62,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static void PatchDeleteByIDs(object[] ids)
         {
-
             businessProxy.PatchDeleteByIDs(ids);
         }
 
@@ -80,33 +91,157 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertToWrapperList(list);
         }
 
-        public static List<SPChannelWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        public static List<SPChannelWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex,
+                                                              int pageSize, out int recordCount)
         {
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
                                              out recordCount);
         }
 
 
-        public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters,
+                                                                       string orderByColumnName, bool isDesc,
+                                                                       int pageIndex, int pageSize, out int recordCount)
         {
             List<SPChannelWrapper> results = null;
 
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
-                                                   (pageIndex - 1) * pageSize, pageSize, out recordCount));
+                businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
+                                                        (pageIndex - 1)*pageSize, pageSize, out recordCount));
 
             return results;
         }
 
 
-        public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters,
+                                                                       string orderByFieldName, bool isDesc)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
         }
 
         #endregion
 
-        public static string[] fields = new string[] { "cpid", "mid", "mobile", "port", "ywid", "msg", "linkid", "dest", "price", "extendfield1", "extendfield2", "extendfield3", "extendfield4", "extendfield5", "extendfield6", "extendfield7", "extendfield8", "extendfield9" };
+        public static string[] fields = new[]
+                                            {
+                                                "cpid", "mid", "mobile", "port", "ywid", "msg", "linkid", "dest", "price",
+                                                "extendfield1", "extendfield2", "extendfield3", "extendfield4",
+                                                "extendfield5", "extendfield6", "extendfield7", "extendfield8",
+                                                "extendfield9"
+                                            };
+
+        public ChannelStatus CStatus
+        {
+            get
+            {
+                switch (Status)
+                {
+                    case 0:
+                        return ChannelStatus.Run;
+                    case 1:
+                        return ChannelStatus.Stop;
+                    case 2:
+                        return ChannelStatus.Disable;
+                    default:
+                        return ChannelStatus.Disable;
+                }
+            }
+        }
+
+        public string CStatusString
+        {
+            get
+            {
+                switch (CStatus)
+                {
+                    case ChannelStatus.Run:
+                        return "运行";
+                    case ChannelStatus.Stop:
+                        return "暂停";
+                    case ChannelStatus.Disable:
+                        return "禁用";
+                    default:
+                        return "禁用";
+                }
+            }
+        }
+
+        public string InterfaceUrl
+        {
+            get
+            {
+                HttpContext context = HttpContext.Current;
+
+                if (context == null)
+                    return "";
+
+                if (context.Request.Url.Port == 80)
+                    return string.Format("{0}://{1}/SPSInterface/{2}Recieved.ashx", context.Request.Url.Scheme,
+                                         context.Request.Url.Host, FuzzyCommand);
+
+                return string.Format("{0}://{1}:{2}/SPSInterface/{3}Recieved.ashx", context.Request.Url.Scheme,
+                                     context.Request.Url.Host,
+                                     context.Request.Url.Port, FuzzyCommand);
+            }
+        }
+
+        public string CodeList
+        {
+            get
+            {
+                List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
+
+                var sb = new StringBuilder();
+
+                List<SPClientChannelSettingWrapper> sortedList = (from cc in clientChannelSettings
+                                                                  orderby cc.OrderIndex descending
+                                                                  select cc).ToList();
+
+                foreach (SPClientChannelSettingWrapper channelSetting in sortedList)
+                {
+                    string interceptRate = "<font color='red'>0</font>";
+
+                    string syncDataUrl = "";
+
+                    if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                    {
+                        syncDataUrl = " ,<font color='blue'>下家同步地址：" + channelSetting.SyncDataUrl + "</font>";
+                    }
+
+                    if (channelSetting.InterceptRate.HasValue && channelSetting.InterceptRate.Value > 0)
+                    {
+                        interceptRate = channelSetting.InterceptRate.Value.ToString();
+                    }
+
+                    string line = string.Format(
+                        "名称 ‘{0}’ , 下家 ‘{2}’, 登陆ID ‘{6}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
+                        channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
+                        interceptRate, syncDataUrl, channelSetting.OrderIndex, channelSetting.ClinetID.UserLoginID);
+
+
+                    sb.Append(line);
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        public string ParamsList
+        {
+            get
+            {
+                List<SPChannelParamsWrapper> clientChannelParams = GetAllEnableParams();
+
+                var sb = new StringBuilder();
+
+                foreach (SPChannelParamsWrapper paramsWrapper in clientChannelParams)
+                {
+                    sb.AppendFormat("参数 {0} - {2}：{1} ,<br/>", paramsWrapper.Name, paramsWrapper.Description,
+                                    paramsWrapper.ParamsMappingName);
+                }
+
+                return sb.ToString();
+            }
+        }
 
         public static SPChannelWrapper GetChannelByPath(string fileName)
         {
@@ -118,7 +253,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (id != 0)
             {
-                channel = SPChannelWrapper.FindById(id);
+                channel = FindById(id);
             }
 
             if (channel != null)
@@ -129,9 +264,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName));
         }
 
-        public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request)
+        public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request,
+                                   out RequestError error)
         {
-            Hashtable fieldMappings = this.GetFieldMappings();
+            error = new RequestError();
+            error.ErrorType = RequestErrorType.NoError;
+            error.ErrorMessage = "";
+            error.ChannelID = Id;
+
+            Hashtable fieldMappings = GetFieldMappings();
 
             string cpid = GetMappedParamValueFromRequest(hashtable, "cpid", fieldMappings);
             string mid = GetMappedParamValueFromRequest(hashtable, "mid", fieldMappings);
@@ -153,196 +294,165 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
 
 
-            if (string.IsNullOrEmpty(linkid) && this.IsAllowNullLinkID.HasValue && this.IsAllowNullLinkID.Value)
+            if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
             {
                 linkid = Guid.NewGuid().ToString();
             }
 
             if (string.IsNullOrEmpty(linkid))
             {
-                Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .");
+                //Logger.Error(" 通道 ‘" + Name + "’ 请求失败：没有LinkID .");
 
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .", this.Id, 0);
+                error.ErrorType = RequestErrorType.NoLinkID;
+                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
+
+                //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .", this.Id, 0);
 
                 return false;
             }
-
-
-            //if (CheckChannleLinkIDIsExist(linkid))
-            //{
-            //    Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .");
-
-            //    SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .", this.Id, 0);
-
-            //    return false;
-            //}
-
 
             string content = query;
 
 
             Hashtable exparams = GetEXParamsValue(hashtable);
 
-            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable, fieldMappings);
+            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable,
+                                                                                                   fieldMappings);
 
-            if (channelSetting != null)
+            if (channelSetting == null)
             {
+                error.ErrorType = RequestErrorType.NoChannelClientSetting;
+                error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
 
-                SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
-
-                paymentInfo.ChannelID = this;
-                paymentInfo.ClientID = channelSetting.ClinetID;
-                paymentInfo.ChannleClientID = channelSetting.Id;
-                paymentInfo.Cpid = cpid;
-                paymentInfo.Mid = mid;
-                paymentInfo.MobileNumber = mobile;
-                paymentInfo.Port = port;
-                paymentInfo.Ywid = ywid;
-                paymentInfo.Message = msg;
-                paymentInfo.Linkid = linkid;
-                paymentInfo.Dest = dest;
-                paymentInfo.Price = price;
-                paymentInfo.ExtendField1 = extendfield1;
-                paymentInfo.ExtendField2 = extendfield2;
-                paymentInfo.ExtendField3 = extendfield3;
-                paymentInfo.ExtendField4 = extendfield4;
-                paymentInfo.ExtendField5 = extendfield5;
-                paymentInfo.ExtendField6 = extendfield6;
-                paymentInfo.ExtendField7 = extendfield7;
-                paymentInfo.ExtendField8 = extendfield8;
-                paymentInfo.ExtendField9 = extendfield9;
-                paymentInfo.Ip = ip;
-                paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
-                paymentInfo.CreateDate = System.DateTime.Now;
-                paymentInfo.RequestContent = content;
-
-
-                if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-                {
-                    try
-                    {
-                        PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                        if (phoneAreaInfo != null)
-                        {
-                            paymentInfo.Province = phoneAreaInfo.Province;
-                            paymentInfo.City = phoneAreaInfo.City;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error(ex.Message);
-                    }
-                }
-
-                //try
-                //{
-                //    SPInterceptRateWrapper.InsertRate(channelSetting.ChannelID, channelSetting.ClinetID, paymentInfo.IsIntercept.Value);
-                //}
-                //catch (Exception ex)
-                //{
-                //    Logger.Error(ex.Message);
-                //}
-
-                paymentInfo.IsSycnData = false;
-
-                //SPInterceptRateWrapper.InsertRecord(paymentInfo);
-
-                if (!paymentInfo.IsIntercept.Value)
-                {
-                    if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
-                    {
-                        paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
-                    }
-                    else
-                        paymentInfo.SucesssToSend = false;
-                }
-                else
-                {
-                    paymentInfo.SucesssToSend = false;
-                }
-
-                try
-                {
-                    PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
-
-                    List<string> uniqueKeyNames = new List<string>();
-
-                    List<SPChannelParamsWrapper> channelParams = this.GetAllEnableParams();
-
-                    foreach (var spChannelParamsWrapper in channelParams)
-                    {
-                        if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-                            uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-                    }
-
-                    if (!uniqueKeyNames.Contains("linkid"))
-                    {
-                        uniqueKeyNames.Add("linkid");
-                    }
-
-                    bool result = paymentInfo.InsertPayment(uniqueKeyNames,out errorType);
-
-                    if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
-                    {
-                        Logger.Error(" 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .");
-
-                        SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：重复的LinkID .", this.Id, 0);
-
-                        return false;
-                    } 
-
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Exception innerException = ex;
-
-                    //while (innerException.InnerException != null)
-                    //{
-                    //    innerException = innerException.InnerException;
-                    //}
-
-                    //SqlException sqlException = innerException as SqlException;
-
-                    //if (sqlException != null && sqlException.Number == 2627)
-                    //{
-                    //    Logger.Error("请求失败：重复的唯一标识（Linkid）。");
-                    //    throw new Exception("请求失败：重复的唯一标识（Linkid）。");
-                    //}
-
-                    Logger.Error("请求失败：插入数据失败，错误信息：" + ex.Message);
-                    throw new Exception("请求失败：插入数据失败，错误信息： " + ex.Message);
-                }
-
-
-            }
-            else
-            {
-                Logger.Error("请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。");
-
-                SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
+                //SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
 
                 return false;
             }
 
 
+            SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
+
+            paymentInfo.ChannelID = this;
+            paymentInfo.ClientID = channelSetting.ClinetID;
+            paymentInfo.ChannleClientID = channelSetting.Id;
+            paymentInfo.Cpid = cpid;
+            paymentInfo.Mid = mid;
+            paymentInfo.MobileNumber = mobile;
+            paymentInfo.Port = port;
+            paymentInfo.Ywid = ywid;
+            paymentInfo.Message = msg;
+            paymentInfo.Linkid = linkid;
+            paymentInfo.Dest = dest;
+            paymentInfo.Price = price;
+            paymentInfo.ExtendField1 = extendfield1;
+            paymentInfo.ExtendField2 = extendfield2;
+            paymentInfo.ExtendField3 = extendfield3;
+            paymentInfo.ExtendField4 = extendfield4;
+            paymentInfo.ExtendField5 = extendfield5;
+            paymentInfo.ExtendField6 = extendfield6;
+            paymentInfo.ExtendField7 = extendfield7;
+            paymentInfo.ExtendField8 = extendfield8;
+            paymentInfo.ExtendField9 = extendfield9;
+            paymentInfo.Ip = ip;
+            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
+            paymentInfo.CreateDate = DateTime.Now;
+            paymentInfo.RequestContent = content;
+
+
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    if (phoneAreaInfo != null)
+                    {
+                        paymentInfo.Province = phoneAreaInfo.Province;
+                        paymentInfo.City = phoneAreaInfo.City;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+
+            paymentInfo.IsSycnData = false;
+
+            if (!paymentInfo.IsIntercept.Value)
+            {
+                if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                {
+                    paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
+                }
+                else
+                    paymentInfo.SucesssToSend = false;
+            }
+            else
+            {
+                paymentInfo.SucesssToSend = false;
+            }
+
+            try
+            {
+                PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
+
+                var uniqueKeyNames = new List<string>();
+
+                List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
+
+                foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
+                {
+                    if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
+                        uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
+                }
+
+                if (!uniqueKeyNames.Contains("linkid"))
+                {
+                    uniqueKeyNames.Add("linkid");
+                }
+
+                bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
+
+                if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
+                {
+                    error.ErrorType = RequestErrorType.RepeatLinkID;
+                    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
+                    error.ClientID = channelSetting.ClinetID.Id;
+                    //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .",
+                    //                                         Id, 0);
+
+                    return false;
+                }
+
+                error.ErrorType = RequestErrorType.NoError;
+                error.ErrorMessage = "";
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                error.ErrorType = RequestErrorType.DataSaveError;
+                error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
+                return false;
+            }
         }
 
         public List<SPChannelParamsWrapper> GetAllShowParams()
         {
-            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllShowParams(this.entity));
+            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllShowParams(entity));
         }
 
         public List<SPChannelParamsWrapper> GetAllEnableParams()
         {
-            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+            return SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(entity));
         }
 
         public Hashtable GetFieldMappings()
         {
-            Hashtable mappingFields = new Hashtable();
+            var mappingFields = new Hashtable();
 
-            List<SPChannelParamsWrapper> spChannelParamsWrappers = SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(this.entity));
+            List<SPChannelParamsWrapper> spChannelParamsWrappers =
+                SPChannelParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableParams(entity));
 
             foreach (string field in fields)
             {
@@ -374,7 +484,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         //    List<SPClientChannelSettingWrapper> clientChannelSettings = SPClientChannelSettingWrapper.GetSettingByChannel(this);
 
         //    SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings where (cc.MatchByYWID(ywid)) orderby cc.OrderIndex descending select cc).FirstOrDefault();
-            
+
         //    return macthClientChannelSetting;
         //}
 
@@ -383,16 +493,22 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPClientChannelSettingWrapper.GetSettingByChannel(this);
         }
 
-        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues, Hashtable fieldMappings)
+        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,
+                                                                                      Hashtable fieldMappings)
         {
             List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
 
-            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings where (cc.IsMacth(requestValues, fieldMappings)) orderby cc.OrderIndex descending select cc).FirstOrDefault();
+            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings
+                                                                       where (cc.IsMacth(requestValues, fieldMappings))
+                                                                       orderby cc.OrderIndex descending
+                                                                       select cc).FirstOrDefault();
 
             return macthClientChannelSetting;
         }
 
-        private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting, Hashtable requestValues, Hashtable fieldMappings)
+        private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting,
+                                                                         Hashtable requestValues,
+                                                                         Hashtable fieldMappings)
         {
             string columnName = "ywid";
 
@@ -411,13 +527,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return null;
         }
 
-        public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName, Hashtable fieldMappings)
+        public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName,
+                                                            Hashtable fieldMappings)
         {
             string queryKey = mapName.ToLower();
 
             if (fieldMappings.ContainsKey(mapName))
             {
-                queryKey = (string)fieldMappings[mapName];
+                queryKey = (string) fieldMappings[mapName];
             }
 
             if (!requestValues.ContainsKey(queryKey))
@@ -426,133 +543,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return requestValues[queryKey].ToString();
         }
 
-        public ChannelStatus CStatus
-        {
-            get
-            {
-                switch (this.Status)
-                {
-                    case 0:
-                        return ChannelStatus.Run;
-                    case 1:
-                        return ChannelStatus.Stop;
-                    case 2:
-                        return ChannelStatus.Disable;
-                    default:
-                        return ChannelStatus.Disable;
-                }
-            }
-        }
-
-        public string CStatusString
-        {
-            get
-            {
-                switch (this.CStatus)
-                {
-                    case ChannelStatus.Run:
-                        return "运行";
-                    case ChannelStatus.Stop:
-                        return "暂停";
-                    case ChannelStatus.Disable:
-                        return "禁用";
-                    default:
-                        return "禁用";
-                }
-            }
-        }
-
         public string GetOkCode()
         {
             return "ok";
         }
 
-        public string InterfaceUrl
-        {
-            get
-            {
-                HttpContext context = HttpContext.Current;
-
-                if (context == null)
-                    return "";
-
-                if (context.Request.Url.Port == 80)
-                    return string.Format("{0}://{1}/SPSInterface/{2}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host, this.FuzzyCommand);
-
-                return string.Format("{0}://{1}:{2}/SPSInterface/{3}Recieved.ashx", context.Request.Url.Scheme, context.Request.Url.Host,
-                                     context.Request.Url.Port, this.FuzzyCommand);
-
-            }
-        }
-
-        public string CodeList
-        {
-            get
-            {
-                List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
-
-                StringBuilder sb = new StringBuilder();
-
-                var sortedList = (from cc in clientChannelSettings 
-                                  orderby cc.OrderIndex descending
-                                  select cc).ToList();
-
-                foreach (SPClientChannelSettingWrapper channelSetting in sortedList)
-                {
-                    string interceptRate = "<font color='red'>0</font>";
-
-                    string syncDataUrl = "";
-
-                    if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
-                    {
-                        syncDataUrl = " ,<font color='blue'>下家同步地址：" + channelSetting.SyncDataUrl + "</font>";
-                    }
-
-                    if (channelSetting.InterceptRate.HasValue && channelSetting.InterceptRate.Value>0)
-                    {
-                        interceptRate = channelSetting.InterceptRate.Value.ToString();
-                    }
-
-                    string line = string.Format("名称 ‘{0}’ , 下家 ‘{2}’, 登陆ID ‘{6}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
-                                                channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
-                                                interceptRate, syncDataUrl, channelSetting.OrderIndex, channelSetting.ClinetID.UserLoginID);
-
- 
-                    sb.Append(line);
-                }
-
-                return sb.ToString();
-
-            }
-        }
-
-        public string ParamsList
-        {
-            get
-            {
-                List<SPChannelParamsWrapper> clientChannelParams = this.GetAllEnableParams();
-
-                StringBuilder sb = new StringBuilder();
-
-                foreach (SPChannelParamsWrapper paramsWrapper in clientChannelParams)
-                {
-                    sb.AppendFormat("参数 {0} - {2}：{1} ,<br/>", paramsWrapper.Name, paramsWrapper.Description, paramsWrapper.ParamsMappingName);
-                }
-
-                return sb.ToString();
-            }
-        }
-
 
         public DataTable BuildChannelRecordTable()
         {
-            DataTable record = new DataTable();
+            var record = new DataTable();
 
-            record.Columns.Add("RecordID", typeof(int));
-            record.Columns.Add("CreateDate", typeof(DateTime));
-            record.Columns.Add("Province", typeof(string));
-            record.Columns.Add("City", typeof(string));
-            record.Columns.Add("SendUrl", typeof(string));
+            record.Columns.Add("RecordID", typeof (int));
+            record.Columns.Add("CreateDate", typeof (DateTime));
+            record.Columns.Add("Province", typeof (string));
+            record.Columns.Add("City", typeof (string));
+            record.Columns.Add("SendUrl", typeof (string));
 
             foreach (string field in fields)
             {
@@ -564,16 +569,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return record;
         }
 
-        public void SaveStatReport(Hashtable hashtable, string recievdData,string query,string stat)
+        public void SaveStatReport(Hashtable hashtable, string recievdData, string query, string stat)
         {
-            Hashtable fieldMappings = this.GetFieldMappings();
+            Hashtable fieldMappings = GetFieldMappings();
 
             string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
 
-            SPStatReportWrapper statReport = new SPStatReportWrapper();
-            statReport.ChannelID = this.Id;
+            var statReport = new SPStatReportWrapper();
+            statReport.ChannelID = Id;
             statReport.LinkID = linkid;
-            statReport.CreateDate = System.DateTime.Now;
+            statReport.CreateDate = DateTime.Now;
             statReport.QueryString = query;
             statReport.RequestContent = recievdData;
             statReport.Stat = stat;
@@ -589,10 +594,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public List<SPChannelDefaultClientSycnParamsWrapper> GetAllEnableDefaultSendParams()
         {
-            return SPChannelDefaultClientSycnParamsWrapper.ConvertToWrapperList(businessProxy.GetAllEnableDefaultSendParams(this.entity));
+            return
+                SPChannelDefaultClientSycnParamsWrapper.ConvertToWrapperList(
+                    businessProxy.GetAllEnableDefaultSendParams(entity));
         }
 
-        public static void QuickAdd(SPChannelWrapper spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID)
+        public static void QuickAdd(SPChannelWrapper spChannelWrapper, string linkPName, string mobilePName,
+                                    string spCodePName, string moPName, int userID)
         {
             businessProxy.QuickAdd(spChannelWrapper.entity, linkPName, mobilePName, spCodePName, moPName, userID);
         }
