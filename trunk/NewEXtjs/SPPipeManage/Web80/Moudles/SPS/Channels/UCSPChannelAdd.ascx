@@ -92,6 +92,15 @@
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtStatValues" runat="server" FieldLabel="状态字段成功值" AllowBlank="True" />
                             </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkHasRequestTypeParams" runat="server" FieldLabel="请求类型分类" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRequestTypeParamName" runat="server" FieldLabel="请求类型字段" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtRequestTypeValues" runat="server" FieldLabel="请求类型值定义" AllowBlank="True" />
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>

@@ -134,8 +134,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	                                                                                              pageIndex, pageSize,
 	                                                                                              out recordCount));
 
-
 	    }
+
 
 
         public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
@@ -268,29 +268,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
-        //public bool SendToClient(out string error)
-        //{
-        //    error = "";
-
-        //    if(this.IsIntercept.HasValue && this.IsIntercept.Value)
-        //    {
-        //        error = "Is Intercept";
-        //        return false;
-        //    }
-
-
-        //    if (this.SucesssToSend.HasValue && this.SucesssToSend.Value)
-        //    {
-        //        error = "Is Sucesss To Send";
-        //        return false;
-        //    }
-
-        //    error = "Is Sucesss To Send";
-
-        //    return this.c.SendMsgAndUpdate(this, out error);
-
-
-        //}
+ 
 
 
         public string GetMappingValue(string mappingName)
@@ -548,5 +526,46 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                                                                                   limit, out recordCount));        
 
 	    }
+
+
+        public void SetPaymentProviceAndCity()
+        {
+            if (!string.IsNullOrEmpty(this.MobileNumber) && this.MobileNumber.Length > 7)
+            {
+                try
+                {
+                    PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(this.MobileNumber.Substring(0, 7));
+                    if (phoneAreaInfo != null)
+                    {
+                        this.Province = phoneAreaInfo.Province;
+                        this.City = phoneAreaInfo.City;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+        }
+
+        public void SycnDataToClient()
+        {
+            SPClientChannelSettingWrapper channelSetting = this.GetChannleClientSetting();
+
+            if (!this.IsIntercept.Value)
+            {
+                if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                {
+                    this.IsSycnData = true;
+                    this.SucesssToSend = channelSetting.SendMsg(this);
+                }
+                else
+                    this.SucesssToSend = false;
+            }
+            else
+            {
+                this.SucesssToSend = false;
+            }
+        }
     }
 }

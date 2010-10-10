@@ -54,6 +54,9 @@
  <object id="SPSendRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSendRequestInfoDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPSStatePaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSStatePaymentInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPStatReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPStatReportDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -86,6 +89,7 @@
     <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
     <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
     <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
+    <property name="SPSStatePaymentInfoDataObjectInstance" ref="SPSStatePaymentInfoDataObjectIocID"/>
     <property name="SPStatReportDataObjectInstance" ref="SPStatReportDataObjectIocID"/>
     <property name="SPTestRecievedDataObjectInstance" ref="SPTestRecievedDataObjectIocID"/>
     <property name="SPUperDataObjectInstance" ref="SPUperDataObjectIocID"/>

@@ -11,6 +11,14 @@ using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.AppClass
 {
+    public enum RequestType
+    {
+        Normal,
+        StateReport
+    } 
+
+
+
     public class SPRecievedHandler : IHttpHandler
     {
         protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
@@ -51,13 +59,81 @@ namespace Legendigital.Common.Web.AppClass
 
                     if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
                     {
-                        if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
+
+                        RequestError requestError1 = new RequestError();
+
+                        bool result1 = false;
+
+                        if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
                         {
-                            channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+                            //报告状态请求
+                            if(IsRequestContainValues(requestData,channel.RequestTypeParamName,channel.RequestReportTypeValue))
+                            {
+                                if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                                {
+                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                }
+                                else
+                                {
+                                    channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+
+                                    context.Response.Write(channel.GetOkCode());
+
+                                    return;
+                                }
+                            }
+                            //发送数据请求
+                            else if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestDataTypeValue))
+                            {
+                                result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            }
+                            else
+                            {
+                                SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "未知类型请求", channel.Id, 0);
+
+                                logger.Error("未知类型请求:" + GetRequestInfo(context.Request));
+
+                                return;                                                        
+                            }
+                        }
+                        else
+                        {
+                            if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
+                            {
+                                if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                                {
+                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                }
+                                else
+                                {
+                                    channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+                                    
+                                    context.Response.Write(channel.GetOkCode());
+
+                                    return;                      
+                                }
+                            }
+                            else
+                            {
+                                result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            }                            
+                        }
+
+                        if (result1)
+                        {
                             context.Response.Write(channel.GetOkCode());
                             return;
                         }
+                        else
+                        {
+                            logger.Error(requestError1.ErrorMessage);
+
+                            SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError1.ErrorMessage, channel.Id, 0);
+                            return;
+                        }
                     }
+
+
 
                     RequestError requestError;
 
@@ -98,6 +174,12 @@ namespace Legendigital.Common.Web.AppClass
 
                 return;
             }
+        }
+
+
+        private bool IsRequestContainValues(Hashtable requestData, string fieldName,string value)
+        {
+            return requestData.ContainsKey(fieldName.ToLower()) && value.ToLower().Trim().Contains(requestData[fieldName.ToLower()].ToString().ToLower().Trim());
         }
 
         private string GetRequestInfo(HttpRequest request)

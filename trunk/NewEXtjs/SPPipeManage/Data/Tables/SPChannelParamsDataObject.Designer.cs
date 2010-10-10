@@ -49,6 +49,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_RECSTATREPORT = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecStatReport");
 		public static readonly Property PROPERTY_CHANNELID_STATPARAMSNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsName");
 		public static readonly Property PROPERTY_CHANNELID_STATPARAMSVALUES = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatParamsValues");
+		public static readonly Property PROPERTY_CHANNELID_HASREQUESTTYPEPARAMS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasRequestTypeParams");
+		public static readonly Property PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RequestTypeParamName");
+		public static readonly Property PROPERTY_CHANNELID_REQUESTTYPEVALUES = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RequestTypeValues");
 		#endregion
 		public static readonly Property PROPERTY_PARAMSMAPPINGNAME = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_TITLE);

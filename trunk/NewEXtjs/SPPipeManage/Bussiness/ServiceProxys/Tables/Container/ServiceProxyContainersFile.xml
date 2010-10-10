@@ -86,6 +86,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPSStatePaymentInfoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPSStatePaymentInfoServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPSStatePaymentInfoDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPStatReportServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPStatReportServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPStatReportDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -122,6 +127,7 @@
     <property name="SPRequestInfoServiceProxyInstance" ref="SPRequestInfoServiceProxyIocID"/>
     <property name="SPSendClientParamsServiceProxyInstance" ref="SPSendClientParamsServiceProxyIocID"/>
     <property name="SPSendRequestInfoServiceProxyInstance" ref="SPSendRequestInfoServiceProxyIocID"/>
+    <property name="SPSStatePaymentInfoServiceProxyInstance" ref="SPSStatePaymentInfoServiceProxyIocID"/>
     <property name="SPStatReportServiceProxyInstance" ref="SPStatReportServiceProxyIocID"/>
     <property name="SPTestRecievedServiceProxyInstance" ref="SPTestRecievedServiceProxyIocID"/>
     <property name="SPUperServiceProxyInstance" ref="SPUperServiceProxyIocID"/>
