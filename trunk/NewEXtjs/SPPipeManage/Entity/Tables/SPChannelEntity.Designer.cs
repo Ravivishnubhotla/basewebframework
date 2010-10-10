@@ -37,6 +37,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
+		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
 		
         #endregion
 	
@@ -68,6 +71,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _recStatReport;
 		private string _statParamsName;
 		private string _statParamsValues;
+		private bool? _hasRequestTypeParams;
+		private string _requestTypeParamName;
+		private string _requestTypeValues;
 		
 		#endregion
 
@@ -100,6 +106,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_recStatReport = null;
 			_statParamsName = null;
 			_statParamsValues = null;
+			_hasRequestTypeParams = null;
+			_requestTypeParamName = null;
+			_requestTypeValues = null;
 		}
 		#endregion
 
@@ -107,7 +116,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues)
 		{
 			_id = id;
 			_name = name;
@@ -132,6 +141,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_recStatReport = recStatReport;
 			_statParamsName = statParamsName;
 			_statParamsValues = statParamsValues;
+			_hasRequestTypeParams = hasRequestTypeParams;
+			_requestTypeParamName = requestTypeParamName;
+			_requestTypeValues = requestTypeValues;
 		}
 		#endregion     
 	
@@ -498,6 +510,54 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 1000)
 					throw new ArgumentOutOfRangeException("Invalid value for StatParamsValues", value, value.ToString());
 				_isChanged |= (_statParamsValues != value); _statParamsValues = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasRequestTypeParams
+		{
+			get { return _hasRequestTypeParams; }
+
+			set	
+			{
+				_isChanged |= (_hasRequestTypeParams != value); _hasRequestTypeParams = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string RequestTypeParamName
+		{
+			get { return _requestTypeParamName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeParamName", value, value.ToString());
+				_isChanged |= (_requestTypeParamName != value); _requestTypeParamName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string RequestTypeValues
+		{
+			get { return _requestTypeValues; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeValues", value, value.ToString());
+				_isChanged |= (_requestTypeValues != value); _requestTypeValues = value;
 			}
 		}
 		/// <summary>
