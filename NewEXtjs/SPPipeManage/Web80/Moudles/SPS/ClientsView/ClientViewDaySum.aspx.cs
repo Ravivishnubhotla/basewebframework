@@ -15,12 +15,48 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
     public partial class ClientViewDaySum : SPSClientViewPage
     {
+
+        protected DateTime GetDT()
+        {
+            switch (System.DateTime.Now.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return System.DateTime.Now.AddDays(-7);
+                    break;
+                case DayOfWeek.Tuesday:
+                    return System.DateTime.Now.AddDays(-8);
+                    break;
+                case DayOfWeek.Wednesday:
+                    return System.DateTime.Now.AddDays(-9);
+                    break;
+                case DayOfWeek.Thursday:
+                    return System.DateTime.Now.AddDays(-10);
+                    break;
+                case DayOfWeek.Friday:
+                    return System.DateTime.Now.AddDays(-11);
+                    break;
+                case DayOfWeek.Saturday:
+                    return System.DateTime.Now.AddDays(-12);
+                    break;
+                case DayOfWeek.Sunday:
+                    return System.DateTime.Now.AddDays(-13);
+                    break;
+
+            }
+
+            return DateTime.Now;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
                 return;
 
-            this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-10).Date;
+            this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-7).Date;
+
+            this.dfReportStartDate.DateField.MinDate = GetDT();
+
+            this.dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1).Date;
 
             this.dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1).Date;
 
@@ -68,7 +104,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
             }
 
-            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.ClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
+
+            DateTime startDate = Convert.ToDateTime(this.dfReportStartDate.DateField.Value);
+
+            if (startDate < GetDT())
+            {
+                startDate = GetDT();
+            }
+
+            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.ClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
 
             store1.DataSource = tb;
             store1.DataBind();

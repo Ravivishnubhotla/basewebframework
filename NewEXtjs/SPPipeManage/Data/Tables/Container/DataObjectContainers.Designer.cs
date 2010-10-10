@@ -26,6 +26,7 @@ namespace LD.SPPipeManage.Data.Tables.Container
       public SPRequestInfoDataObject SPRequestInfoDataObjectInstance { set; get; }
       public SPSendClientParamsDataObject SPSendClientParamsDataObjectInstance { set; get; }
       public SPSendRequestInfoDataObject SPSendRequestInfoDataObjectInstance { set; get; }
+      public SPSStatePaymentInfoDataObject SPSStatePaymentInfoDataObjectInstance { set; get; }
       public SPStatReportDataObject SPStatReportDataObjectInstance { set; get; }
       public SPTestRecievedDataObject SPTestRecievedDataObjectInstance { set; get; }
       public SPUperDataObject SPUperDataObjectInstance { set; get; }

@@ -179,6 +179,10 @@
     <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.Designer.cs">
       <DependentUpon>SPSendRequestInfoServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSStatePaymentInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSStatePaymentInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.Designer.cs">
       <DependentUpon>SPStatReportServiceProxy.cs</DependentUpon>
@@ -255,6 +259,10 @@
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.cs" />
     <Compile Include="Wrappers\SPSendRequestInfoWrapper.Designer.cs">
       <DependentUpon>SPSendRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSStatePaymentInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPSStatePaymentInfoWrapper.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPStatReportWrapper.cs" />
     <Compile Include="Wrappers\SPStatReportWrapper.Designer.cs">

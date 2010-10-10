@@ -159,6 +159,10 @@
     <Compile Include="Tables\SPSendRequestInfoDataObject.Designer.cs">
       <DependentUpon>SPSendRequestInfoDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPSStatePaymentInfoDataObject.cs" />
+    <Compile Include="Tables\SPSStatePaymentInfoDataObject.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPStatReportDataObject.cs" />
     <Compile Include="Tables\SPStatReportDataObject.Designer.cs">
       <DependentUpon>SPStatReportDataObject.cs</DependentUpon>

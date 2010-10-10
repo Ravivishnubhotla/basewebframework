@@ -139,6 +139,10 @@
     <Compile Include="Tables\SPSendRequestInfoEntity.Designer.cs">
       <DependentUpon>SPSendRequestInfoEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPSStatePaymentInfoEntity.cs" />
+    <Compile Include="Tables\SPSStatePaymentInfoEntity.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPStatReportEntity.cs" />
     <Compile Include="Tables\SPStatReportEntity.Designer.cs">
       <DependentUpon>SPStatReportEntity.cs</DependentUpon>
@@ -201,6 +205,9 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelDefaultClientSycnParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPSStatePaymentInfoMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

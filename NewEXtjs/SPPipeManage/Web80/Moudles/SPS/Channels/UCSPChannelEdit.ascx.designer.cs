@@ -202,6 +202,33 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtStatValues;
         
         /// <summary>
+        /// chkHasRequestTypeParams control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkHasRequestTypeParams;
+        
+        /// <summary>
+        /// txtRequestTypeParamName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtRequestTypeParamName;
+        
+        /// <summary>
+        /// txtRequestTypeValues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtRequestTypeValues;
+        
+        /// <summary>
         /// btnSaveSPChannel control.
         /// </summary>
         /// <remarks>

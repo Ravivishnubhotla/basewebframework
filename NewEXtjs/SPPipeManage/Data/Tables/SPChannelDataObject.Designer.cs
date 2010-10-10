@@ -47,6 +47,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_RECSTATREPORT = Property.ForName(SPChannelEntity.PROPERTY_NAME_RECSTATREPORT);
 		public static readonly Property PROPERTY_STATPARAMSNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATPARAMSNAME);
 		public static readonly Property PROPERTY_STATPARAMSVALUES = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATPARAMSVALUES);
+		public static readonly Property PROPERTY_HASREQUESTTYPEPARAMS = Property.ForName(SPChannelEntity.PROPERTY_NAME_HASREQUESTTYPEPARAMS);
+		public static readonly Property PROPERTY_REQUESTTYPEPARAMNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEPARAMNAME);
+		public static readonly Property PROPERTY_REQUESTTYPEVALUES = Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEVALUES);
       
 		#region 子类集合字段查询字段
 	
@@ -109,6 +112,12 @@ namespace LD.SPPipeManage.Data.Tables
                 case "StatParamsName":
                     return typeof (string);
                 case "StatParamsValues":
+                    return typeof (string);
+                case "HasRequestTypeParams":
+                    return typeof (bool);
+                case "RequestTypeParamName":
+                    return typeof (string);
+                case "RequestTypeValues":
                     return typeof (string);
           }
 			return typeof(string);

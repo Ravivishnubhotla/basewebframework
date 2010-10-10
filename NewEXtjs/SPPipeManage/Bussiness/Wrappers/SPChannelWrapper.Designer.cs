@@ -90,6 +90,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
+		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
 		
         #endregion
 
@@ -415,6 +418,48 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.StatParamsValues = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasRequestTypeParams
+		{
+			get
+			{
+				return entity.HasRequestTypeParams;
+			}
+			set
+			{
+				entity.HasRequestTypeParams = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string RequestTypeParamName
+		{
+			get
+			{
+				return entity.RequestTypeParamName;
+			}
+			set
+			{
+				entity.RequestTypeParamName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string RequestTypeValues
+		{
+			get
+			{
+				return entity.RequestTypeValues;
+			}
+			set
+			{
+				entity.RequestTypeValues = value;
 			}
 		}
 		#endregion 

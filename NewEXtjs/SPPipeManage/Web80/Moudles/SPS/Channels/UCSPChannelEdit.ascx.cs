@@ -66,6 +66,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     else
                         this.txtStatValues.Text = "";
 
+
+                    if (obj.HasRequestTypeParams.HasValue)
+                        chkHasRequestTypeParams.Checked = obj.HasRequestTypeParams.Value;
+                    else
+                        chkHasRequestTypeParams.Checked = false;
+
+                    if (!string.IsNullOrEmpty(obj.RequestTypeParamName))
+                        this.txtRequestTypeParamName.Text = obj.RequestTypeParamName.ToString();
+                    else
+                        this.txtRequestTypeParamName.Text = "";
+
+                    if (!string.IsNullOrEmpty(obj.RequestTypeValues))
+                        this.txtRequestTypeValues.Text = obj.RequestTypeValues.ToString();
+                    else
+                        this.txtRequestTypeValues.Text = "";
+
+
+
                     hidId.Text = id.ToString();
 
                     winSPChannelEdit.Show();
@@ -115,6 +133,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
                 obj.StatParamsValues = txtStatValues.Text.Trim();
+
+                obj.HasRequestTypeParams = chkHasRequestTypeParams.Checked;
+                obj.RequestTypeParamName = txtRequestTypeParamName.Text.Trim();
+                obj.RequestTypeValues = txtRequestTypeValues.Text.Trim();
 
                 SPChannelWrapper.Update(obj);
 

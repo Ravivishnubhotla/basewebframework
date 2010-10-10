@@ -130,8 +130,14 @@ namespace SPSSiteTask
             {
                 logger.Info("批量发送请求开始....");
 
+                int i = 0;
+
+                int titalCOunt = sendUrlEntities.Count;
+
                 foreach (SPSSendUrlEntity spsSendUrlEntity in sendUrlEntities)
                 {
+                    i++;
+
                     if (string.IsNullOrEmpty(spsSendUrlEntity.SendUrl))
                     {
                         logger.Error(string.Format("请求略过，ID{0}", spsSendUrlEntity.PaymentID));
