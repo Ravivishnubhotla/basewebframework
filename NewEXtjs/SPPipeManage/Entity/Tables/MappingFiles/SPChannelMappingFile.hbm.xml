@@ -33,6 +33,9 @@
 		<property column="RecStatReport" type="Boolean" name="RecStatReport"   />	
 		<property column="StatParamsName" type="string" name="StatParamsName"   length="100" />	
 		<property column="StatParamsValues" type="string" name="StatParamsValues"   length="1000" />	
+		<property column="HasRequestTypeParams" type="Boolean" name="HasRequestTypeParams"   />	
+		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   length="100" />	
+		<property column="RequestTypeValues" type="string" name="RequestTypeValues"   length="400" />	
 
 
 
