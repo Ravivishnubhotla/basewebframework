@@ -37,6 +37,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_RECSTATREPORT = "RecStatReport";
 		public static readonly string PROPERTY_NAME_STATPARAMSNAME = "StatParamsName";
 		public static readonly string PROPERTY_NAME_STATPARAMSVALUES = "StatParamsValues";
+		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
 		
         #endregion
 	
@@ -65,6 +68,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _recStatReport;
 		private string _statParamsName;
 		private string _statParamsValues;
+		private bool? _hasRequestTypeParams;
+		private string _requestTypeParamName;
+		private string _requestTypeValues;
 		
 		#endregion
 
@@ -97,6 +103,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_recStatReport = null;
 			_statParamsName = null;
 			_statParamsValues = null;
+			_hasRequestTypeParams = null;
+			_requestTypeParamName = null;
+			_requestTypeValues = null;
 		}
 		#endregion
 
@@ -466,6 +475,54 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? HasRequestTypeParams
+		{
+			get { return _hasRequestTypeParams; }
+
+			set	
+			{
+				_hasRequestTypeParams = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string RequestTypeParamName
+		{
+			get { return _requestTypeParamName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeParamName", value, value.ToString());
+				_requestTypeParamName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string RequestTypeValues
+		{
+			get { return _requestTypeValues; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeValues", value, value.ToString());
+				_requestTypeValues = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -495,6 +552,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.RecStatReport = wrapper.RecStatReport;
 			this.StatParamsName = wrapper.StatParamsName;
 			this.StatParamsValues = wrapper.StatParamsValues;
+			this.HasRequestTypeParams = wrapper.HasRequestTypeParams;
+			this.RequestTypeParamName = wrapper.RequestTypeParamName;
+			this.RequestTypeValues = wrapper.RequestTypeValues;
 		}
 		
 		
@@ -524,6 +584,9 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.RecStatReport = this.RecStatReport;
 			wrapper.StatParamsName = this.StatParamsName;
 			wrapper.StatParamsValues = this.StatParamsValues;
+			wrapper.HasRequestTypeParams = this.HasRequestTypeParams;
+			wrapper.RequestTypeParamName = this.RequestTypeParamName;
+			wrapper.RequestTypeValues = this.RequestTypeValues;
 		
 		return wrapper;
         }

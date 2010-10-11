@@ -179,7 +179,7 @@ namespace Legendigital.Common.Web.AppClass
 
         private bool IsRequestContainValues(Hashtable requestData, string fieldName,string value)
         {
-            return requestData.ContainsKey(fieldName.ToLower()) && value.ToLower().Trim().Contains(requestData[fieldName.ToLower()].ToString().ToLower().Trim());
+            return requestData.ContainsKey(fieldName.ToLower()) && requestData[fieldName.ToLower()].ToString().ToLower().Trim().Contains(value.ToLower().Trim());
         }
 
         private string GetRequestInfo(HttpRequest request)

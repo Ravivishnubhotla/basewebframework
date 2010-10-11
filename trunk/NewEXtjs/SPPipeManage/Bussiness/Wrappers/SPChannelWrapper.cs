@@ -495,7 +495,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 if (channelParamsWrapper == null)
                 {
-                    mappingFields.Add(findFeild.ToLower(), findFeild.ToLower());
+                    //mappingFields.Add(findFeild.ToLower(), findFeild.ToLower());
                 }
                 else
                 {
@@ -560,6 +560,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             if (fieldMappings.ContainsKey(mapName))
             {
                 queryKey = (string) fieldMappings[mapName];
+            }
+            else
+            {
+                queryKey = "";
             }
 
             if (!requestValues.ContainsKey(queryKey))
