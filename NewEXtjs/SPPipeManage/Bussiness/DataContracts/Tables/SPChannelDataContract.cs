@@ -40,6 +40,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_CHANNELINFO = "ChannelInfo";
+		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
+		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		
         #endregion
 	
@@ -71,6 +75,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _hasRequestTypeParams;
 		private string _requestTypeParamName;
 		private string _requestTypeValues;
+		private bool? _hasFilters;
+		private string _channelInfo;
+		private bool? _statSendOnce;
+		private bool? _isMonitoringRequest;
 		
 		#endregion
 
@@ -106,6 +114,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_hasRequestTypeParams = null;
 			_requestTypeParamName = null;
 			_requestTypeValues = null;
+			_hasFilters = null;
+			_channelInfo = null;
+			_statSendOnce = null;
+			_isMonitoringRequest = null;
 		}
 		#endregion
 
@@ -523,6 +535,65 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? HasFilters
+		{
+			get { return _hasFilters; }
+
+			set	
+			{
+				_hasFilters = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChannelInfo
+		{
+			get { return _channelInfo; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 2147483646)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelInfo", value, value.ToString());
+				_channelInfo = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? StatSendOnce
+		{
+			get { return _statSendOnce; }
+
+			set	
+			{
+				_statSendOnce = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsMonitoringRequest
+		{
+			get { return _isMonitoringRequest; }
+
+			set	
+			{
+				_isMonitoringRequest = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -555,6 +626,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.HasRequestTypeParams = wrapper.HasRequestTypeParams;
 			this.RequestTypeParamName = wrapper.RequestTypeParamName;
 			this.RequestTypeValues = wrapper.RequestTypeValues;
+			this.HasFilters = wrapper.HasFilters;
+			this.ChannelInfo = wrapper.ChannelInfo;
+			this.StatSendOnce = wrapper.StatSendOnce;
+			this.IsMonitoringRequest = wrapper.IsMonitoringRequest;
 		}
 		
 		
@@ -587,6 +662,10 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.HasRequestTypeParams = this.HasRequestTypeParams;
 			wrapper.RequestTypeParamName = this.RequestTypeParamName;
 			wrapper.RequestTypeValues = this.RequestTypeValues;
+			wrapper.HasFilters = this.HasFilters;
+			wrapper.ChannelInfo = this.ChannelInfo;
+			wrapper.StatSendOnce = this.StatSendOnce;
+			wrapper.IsMonitoringRequest = this.IsMonitoringRequest;
 		
 		return wrapper;
         }

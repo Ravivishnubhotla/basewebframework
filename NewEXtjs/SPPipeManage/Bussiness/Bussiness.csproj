@@ -93,6 +93,7 @@
     <Compile Include="Commons\ChannelStatus.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelFiltersDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs" />
@@ -102,11 +103,13 @@
     <Compile Include="DataContracts\Tables\SPFailedRequestDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPInterceptRateDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPMonitoringRequestDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPPhoneAreaDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSStatePaymentInfoDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPStatReportDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPUperDataContract.cs" />
@@ -118,6 +121,10 @@
     <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.Designer.cs">
       <DependentUpon>SPChannelDefaultClientSycnParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelFiltersServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
@@ -158,6 +165,10 @@
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
       <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.Designer.cs">
+      <DependentUpon>SPMonitoringRequestServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.Designer.cs">
@@ -200,6 +211,10 @@
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelDefaultClientSycnParamsWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.Designer.cs">
+      <DependentUpon>SPChannelFiltersWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
@@ -239,6 +254,10 @@
     <Compile Include="Wrappers\SPMemoWrapper.cs" />
     <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
       <DependentUpon>SPMemoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.cs" />
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.Designer.cs">
+      <DependentUpon>SPMonitoringRequestWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPPaymentInfoWrapper.cs" />
     <Compile Include="Wrappers\SPPaymentInfoWrapper.Designer.cs">
