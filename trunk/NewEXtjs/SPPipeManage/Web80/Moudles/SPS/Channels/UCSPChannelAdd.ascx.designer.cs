@@ -157,6 +157,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtFailedMessage;
         
         /// <summary>
+        /// chkHasFilters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkHasFilters;
+        
+        /// <summary>
+        /// chkIsMonitoringRequest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkIsMonitoringRequest;
+        
+        /// <summary>
         /// chkIsAllowNullLinkID control.
         /// </summary>
         /// <remarks>
@@ -218,6 +236,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.TextField txtRequestTypeValues;
+        
+        /// <summary>
+        /// chkStatSendOnce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkStatSendOnce;
         
         /// <summary>
         /// btnSaveSPChannel control.

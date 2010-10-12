@@ -40,6 +40,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_CHANNELINFO = "ChannelInfo";
+		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
+		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		
         #endregion
 	
@@ -74,6 +78,10 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _hasRequestTypeParams;
 		private string _requestTypeParamName;
 		private string _requestTypeValues;
+		private bool? _hasFilters;
+		private string _channelInfo;
+		private bool? _statSendOnce;
+		private bool? _isMonitoringRequest;
 		
 		#endregion
 
@@ -109,6 +117,10 @@ namespace LD.SPPipeManage.Entity.Tables
 			_hasRequestTypeParams = null;
 			_requestTypeParamName = null;
 			_requestTypeValues = null;
+			_hasFilters = null;
+			_channelInfo = null;
+			_statSendOnce = null;
+			_isMonitoringRequest = null;
 		}
 		#endregion
 
@@ -116,7 +128,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues, bool? hasFilters, string channelInfo, bool? statSendOnce, bool? isMonitoringRequest)
 		{
 			_id = id;
 			_name = name;
@@ -144,6 +156,10 @@ namespace LD.SPPipeManage.Entity.Tables
 			_hasRequestTypeParams = hasRequestTypeParams;
 			_requestTypeParamName = requestTypeParamName;
 			_requestTypeValues = requestTypeValues;
+			_hasFilters = hasFilters;
+			_channelInfo = channelInfo;
+			_statSendOnce = statSendOnce;
+			_isMonitoringRequest = isMonitoringRequest;
 		}
 		#endregion     
 	
@@ -558,6 +574,65 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeValues", value, value.ToString());
 				_isChanged |= (_requestTypeValues != value); _requestTypeValues = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasFilters
+		{
+			get { return _hasFilters; }
+
+			set	
+			{
+				_isChanged |= (_hasFilters != value); _hasFilters = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelInfo
+		{
+			get { return _channelInfo; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 2147483646)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelInfo", value, value.ToString());
+				_isChanged |= (_channelInfo != value); _channelInfo = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? StatSendOnce
+		{
+			get { return _statSendOnce; }
+
+			set	
+			{
+				_isChanged |= (_statSendOnce != value); _statSendOnce = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsMonitoringRequest
+		{
+			get { return _isMonitoringRequest; }
+
+			set	
+			{
+				_isChanged |= (_isMonitoringRequest != value); _isMonitoringRequest = value;
 			}
 		}
 		/// <summary>

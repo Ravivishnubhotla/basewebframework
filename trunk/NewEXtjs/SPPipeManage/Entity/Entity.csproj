@@ -83,6 +83,10 @@
     <Compile Include="Tables\SPChannelEntity.Designer.cs">
       <DependentUpon>SPChannelEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPChannelFiltersEntity.cs" />
+    <Compile Include="Tables\SPChannelFiltersEntity.Designer.cs">
+      <DependentUpon>SPChannelFiltersEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelParamsEntity.cs" />
     <Compile Include="Tables\SPChannelParamsEntity.Designer.cs">
       <DependentUpon>SPChannelParamsEntity.cs</DependentUpon>
@@ -118,6 +122,10 @@
     <Compile Include="Tables\SPMemoEntity.cs" />
     <Compile Include="Tables\SPMemoEntity.Designer.cs">
       <DependentUpon>SPMemoEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPMonitoringRequestEntity.cs" />
+    <Compile Include="Tables\SPMonitoringRequestEntity.Designer.cs">
+      <DependentUpon>SPMonitoringRequestEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPPaymentInfoEntity.cs" />
     <Compile Include="Tables\SPPaymentInfoEntity.Designer.cs">
@@ -208,6 +216,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPSStatePaymentInfoMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPChannelFiltersMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPMonitoringRequestMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

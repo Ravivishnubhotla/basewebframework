@@ -103,6 +103,10 @@
     <Compile Include="Tables\SPChannelDefaultClientSycnParamsDataObject.Designer.cs">
       <DependentUpon>SPChannelDefaultClientSycnParamsDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPChannelFiltersDataObject.cs" />
+    <Compile Include="Tables\SPChannelFiltersDataObject.Designer.cs">
+      <DependentUpon>SPChannelFiltersDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelParamsDataObject.cs" />
     <Compile Include="Tables\SPChannelParamsDataObject.Designer.cs">
       <DependentUpon>SPChannelParamsDataObject.cs</DependentUpon>
@@ -138,6 +142,10 @@
     <Compile Include="Tables\SPMemoDataObject.cs" />
     <Compile Include="Tables\SPMemoDataObject.Designer.cs">
       <DependentUpon>SPMemoDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPMonitoringRequestDataObject.cs" />
+    <Compile Include="Tables\SPMonitoringRequestDataObject.Designer.cs">
+      <DependentUpon>SPMonitoringRequestDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPPaymentInfoDataObject.cs" />
     <Compile Include="Tables\SPPaymentInfoDataObject.Designer.cs">
