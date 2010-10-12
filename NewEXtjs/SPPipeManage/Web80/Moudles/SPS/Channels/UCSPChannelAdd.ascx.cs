@@ -73,6 +73,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RequestTypeParamName = txtRequestTypeParamName.Text.Trim();
                 obj.RequestTypeValues = txtRequestTypeValues.Text.Trim();
 
+
+                obj.HasFilters = chkHasFilters.Checked;
+                obj.StatSendOnce = chkStatSendOnce.Checked;
+                obj.IsMonitoringRequest = chkIsMonitoringRequest.Checked;
+
                 SPChannelWrapper.Save(obj);
 
                 winSPChannelAdd.Hide();

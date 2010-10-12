@@ -15,7 +15,7 @@ namespace Legendigital.Common.Web.AppClass
     {
         Normal,
         StateReport
-    } 
+    }
 
 
 
@@ -48,111 +48,132 @@ namespace Legendigital.Common.Web.AppClass
 
                 SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(fileName);
 
-                if (channel != null)
-                {
-                    if (channel.CStatus != ChannelStatus.Run)
-                    {
-                        logger.Error("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n", channel.Id, 0);
-                        return;
-                    }
-
-                    if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
-                    {
-
-                        RequestError requestError1 = new RequestError();
-
-                        bool result1 = false;
-
-                        if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
-                        {
-                            //报告状态请求
-                            if(IsRequestContainValues(requestData,channel.RequestTypeParamName,channel.RequestReportTypeValue))
-                            {
-                                if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
-                                {
-                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
-                                }
-                                else
-                                {
-                                    channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
-
-                                    context.Response.Write(channel.GetOkCode());
-
-                                    return;
-                                }
-                            }
-                            //发送数据请求
-                            else if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestDataTypeValue))
-                            {
-                                result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
-                            }
-                            else
-                            {
-                                SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "未知类型请求", channel.Id, 0);
-
-                                logger.Error("未知类型请求:" + GetRequestInfo(context.Request));
-
-                                return;                                                        
-                            }
-                        }
-                        else
-                        {
-                            if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
-                            {
-                                if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
-                                {
-                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
-                                }
-                                else
-                                {
-                                    channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
-                                    
-                                    context.Response.Write(channel.GetOkCode());
-
-                                    return;                      
-                                }
-                            }
-                            else
-                            {
-                                result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
-                            }                            
-                        }
-
-                        if (result1)
-                        {
-                            context.Response.Write(channel.GetOkCode());
-                            return;
-                        }
-                        else
-                        {
-                            logger.Error(requestError1.ErrorMessage);
-
-                            SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError1.ErrorMessage, channel.Id, 0);
-                            return;
-                        }
-                    }
-
-
-
-                    RequestError requestError;
-
-                    bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
-
-                    if (result)
-                        context.Response.Write(channel.GetOkCode());
-                    else
-                    {
-                        logger.Error(requestError.ErrorMessage);
-
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError.ErrorMessage, channel.Id, 0);
-                    }
-                }
-                else
+                //如果没有找到通道
+                if (channel == null)
                 {
                     logger.Error("处理请求失败：无法找到对应的通道。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：无法找到对应的通道。\n", 0, 0);
+                    return;
                 }
+
+                if (channel.CStatus != ChannelStatus.Run)
+                {
+                    logger.Error("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n", channel.Id, 0);
+                    context.Response.Write(channel.GetFailedCode());
+                    return;
+                }
+
+                if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
+                {
+                    SPMonitoringRequestWrapper.SaveRequest(context.Request, GetRealIP(), recievdData, channel.Id);
+                }
+
+                if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
+                {
+
+                    RequestError requestError1 = new RequestError();
+
+                    bool result1 = false;
+
+                    if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
+                    {
+                        //报告状态请求
+                        if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestReportTypeValue))
+                        {
+                            if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                            {
+                                result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                            }
+                            else
+                            {
+                                channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+
+                                context.Response.Write(channel.GetOkCode());
+
+                                return;
+                            }
+                        }
+                        //发送数据请求
+                        else if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestDataTypeValue))
+                        {
+                            result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                        }
+                        else
+                        {
+                            SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "未知类型请求", channel.Id, 0);
+
+                            logger.Error("未知类型请求:" + GetRequestInfo(context.Request));
+
+                            context.Response.Write(channel.GetFailedCode());
+
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
+                        {
+                            if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                            {
+                                if (channel.StatSendOnce.HasValue && channel.StatSendOnce.Value)
+                                {
+                                    result1 = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                                }
+                                else
+                                {
+                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                }
+                            }
+                            else
+                            {
+                                channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+
+                                context.Response.Write(channel.GetOkCode());
+
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                        }
+                    }
+
+                    if (result1)
+                    {
+                        context.Response.Write(channel.GetOkCode());
+                        return;
+                    }
+                    else
+                    {
+                        logger.Error(requestError1.ErrorMessage);
+
+                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError1.ErrorMessage, channel.Id, 0);
+
+                        context.Response.Write(channel.GetFailedCode());
+
+                        return;
+                    }
+                }
+
+
+
+                RequestError requestError;
+
+                bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
+
+                if (result)
+                    context.Response.Write(channel.GetOkCode());
+                else
+                {
+                    logger.Error(requestError.ErrorMessage);
+
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError.ErrorMessage, channel.Id, 0);
+
+                    context.Response.Write(channel.GetFailedCode());
+                }
+
             }
             catch (Exception ex)
             {
@@ -172,12 +193,14 @@ namespace Legendigital.Common.Web.AppClass
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "请求错误:" + ex.Message + "\n", 0, 0);
                 }
 
+
+
                 return;
             }
         }
 
 
-        private bool IsRequestContainValues(Hashtable requestData, string fieldName,string value)
+        private bool IsRequestContainValues(Hashtable requestData, string fieldName, string value)
         {
             return requestData.ContainsKey(fieldName.ToLower()) && requestData[fieldName.ToLower()].ToString().ToLower().Trim().Contains(value.ToLower().Trim());
         }

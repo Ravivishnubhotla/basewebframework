@@ -50,6 +50,10 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_HASREQUESTTYPEPARAMS = Property.ForName(SPChannelEntity.PROPERTY_NAME_HASREQUESTTYPEPARAMS);
 		public static readonly Property PROPERTY_REQUESTTYPEPARAMNAME = Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEPARAMNAME);
 		public static readonly Property PROPERTY_REQUESTTYPEVALUES = Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEVALUES);
+		public static readonly Property PROPERTY_HASFILTERS = Property.ForName(SPChannelEntity.PROPERTY_NAME_HASFILTERS);
+		public static readonly Property PROPERTY_CHANNELINFO = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELINFO);
+		public static readonly Property PROPERTY_STATSENDONCE = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATSENDONCE);
+		public static readonly Property PROPERTY_ISMONITORINGREQUEST = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORINGREQUEST);
       
 		#region 子类集合字段查询字段
 	
@@ -119,6 +123,14 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "RequestTypeValues":
                     return typeof (string);
+                case "HasFilters":
+                    return typeof (bool);
+                case "ChannelInfo":
+                    return typeof (string);
+                case "StatSendOnce":
+                    return typeof (bool);
+                case "IsMonitoringRequest":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

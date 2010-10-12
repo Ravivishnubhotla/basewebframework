@@ -81,6 +81,12 @@
                                     AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤请求" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkIsMonitoringRequest" runat="server" FieldLabel="是否监控请求" Checked="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
@@ -100,6 +106,9 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtRequestTypeValues" runat="server" FieldLabel="请求类型值定义" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkStatSendOnce" runat="server" FieldLabel="单次状态发送" Checked="false" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

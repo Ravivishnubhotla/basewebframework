@@ -83,6 +83,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                         this.txtRequestTypeValues.Text = "";
 
 
+                    if (obj.StatSendOnce.HasValue)
+                        chkStatSendOnce.Checked = obj.StatSendOnce.Value;
+                    else
+                        chkStatSendOnce.Checked = false;
+
+
+                    if (obj.HasFilters.HasValue)
+                        chkHasFilters.Checked = obj.HasFilters.Value;
+                    else
+                        chkHasFilters.Checked = false;
+
+
+
+                    if (obj.IsMonitoringRequest.HasValue)
+                        chkIsMonitoringRequest.Checked = obj.IsMonitoringRequest.Value;
+                    else
+                        chkIsMonitoringRequest.Checked = false;
+
+
 
                     hidId.Text = id.ToString();
 
@@ -137,6 +156,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.HasRequestTypeParams = chkHasRequestTypeParams.Checked;
                 obj.RequestTypeParamName = txtRequestTypeParamName.Text.Trim();
                 obj.RequestTypeValues = txtRequestTypeValues.Text.Trim();
+
+
+                obj.HasFilters = chkHasFilters.Checked;
+                obj.StatSendOnce = chkStatSendOnce.Checked;
+                obj.IsMonitoringRequest = chkIsMonitoringRequest.Checked;
 
                 SPChannelWrapper.Update(obj);
 

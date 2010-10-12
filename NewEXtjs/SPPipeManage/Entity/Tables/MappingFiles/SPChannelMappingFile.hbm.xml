@@ -36,6 +36,10 @@
 		<property column="HasRequestTypeParams" type="Boolean" name="HasRequestTypeParams"   />	
 		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   length="100" />	
 		<property column="RequestTypeValues" type="string" name="RequestTypeValues"   length="400" />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
+		<property column="ChannelInfo" type="string" name="ChannelInfo"   length="2147483646" />	
+		<property column="StatSendOnce" type="Boolean" name="StatSendOnce"   />	
+		<property column="IsMonitoringRequest" type="Boolean" name="IsMonitoringRequest"   />	
 
 
 
