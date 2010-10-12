@@ -888,5 +888,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
+        public string GetFailedCode()
+        {
+            if(string.IsNullOrEmpty(this.FailedMessage))
+                return "";
+
+            if (this.FailedMessage.Trim().ToLower().Equals("false"))
+                return this.FailedMessage.Trim().ToLower();
+            else
+                return "";
+        }
     }
 }

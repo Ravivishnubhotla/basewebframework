@@ -93,6 +93,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_HASREQUESTTYPEPARAMS = "HasRequestTypeParams";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
 		public static readonly string PROPERTY_NAME_REQUESTTYPEVALUES = "RequestTypeValues";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_CHANNELINFO = "ChannelInfo";
+		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
+		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		
         #endregion
 
@@ -460,6 +464,62 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.RequestTypeValues = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasFilters
+		{
+			get
+			{
+				return entity.HasFilters;
+			}
+			set
+			{
+				entity.HasFilters = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ChannelInfo
+		{
+			get
+			{
+				return entity.ChannelInfo;
+			}
+			set
+			{
+				entity.ChannelInfo = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? StatSendOnce
+		{
+			get
+			{
+				return entity.StatSendOnce;
+			}
+			set
+			{
+				entity.StatSendOnce = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsMonitoringRequest
+		{
+			get
+			{
+				return entity.IsMonitoringRequest;
+			}
+			set
+			{
+				entity.IsMonitoringRequest = value;
 			}
 		}
 		#endregion 
