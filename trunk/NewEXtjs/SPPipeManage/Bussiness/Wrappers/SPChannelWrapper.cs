@@ -245,9 +245,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     }
 
                     string line = string.Format(
-                        "名称 ‘{0}’ , 下家 ‘{2}’, 登陆ID ‘{6}’ , 指令 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
+                        "名称 ‘{0}’ , 下家 ‘{2}’, 登陆ID ‘{6}’, 指令 '{7}' , 指令规则 '{1}', 扣率  {3},优先级  {5}, {4}<br/>", channelSetting.Name,
                         channelSetting.ChannelClientRuleMatch, channelSetting.ClientName,
-                        interceptRate, syncDataUrl, channelSetting.OrderIndex, channelSetting.ClinetID.UserLoginID);
+                        interceptRate, syncDataUrl, channelSetting.OrderIndex, channelSetting.ClinetID.UserLoginID, channelSetting.ChannelClientCode);
 
 
                     sb.Append(line);
@@ -333,12 +333,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (string.IsNullOrEmpty(linkid))
             {
-                //Logger.Error(" 通道 ‘" + Name + "’ 请求失败：没有LinkID .");
-
                 error.ErrorType = RequestErrorType.NoLinkID;
                 error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
-
-                //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + this.Name + "’ 请求失败：没有LinkID .", this.Id, 0);
 
                 return false;
             }
@@ -885,6 +881,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
 
 
+        }
+
+        public void RefreshChannelInfo()
+        {
+            this.ChannelInfo = this.CodeList;
+            Save(this);
+        }
+
+        public static void RefreshAllChannelInfo()
+        {
+            List<SPChannelWrapper> allchannels = SPChannelWrapper.FindAll();
+            foreach (SPChannelWrapper spChannelWrapper in allchannels)
+            {
+                spChannelWrapper.RefreshChannelInfo();
+            }
         }
 
 

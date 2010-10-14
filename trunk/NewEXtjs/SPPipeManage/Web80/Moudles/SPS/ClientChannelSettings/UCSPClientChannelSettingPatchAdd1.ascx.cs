@@ -100,6 +100,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 SPClientWrapper.QuickAdd(this.txtLoginID.Text.Trim(), this.txtCode.Text.Trim(), channelWrapper, mainloginuserID, codeUserIds, txtChannelCode.Text.Trim());
 
+                channelWrapper.RefreshChannelInfo();
+
                 winSPChannelClientSetingQuickAdd.Hide();
 
             }

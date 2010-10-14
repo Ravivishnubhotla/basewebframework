@@ -12,6 +12,9 @@
  <object id="SPChannelDefaultClientSycnParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDefaultClientSycnParamsDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPChannelFiltersDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelFiltersDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPChannelParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelParamsDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -37,6 +40,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPMemoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMemoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPMonitoringRequestDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMonitoringRequestDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPPaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPaymentInfoDataObject, LD.SPPipeManage.Data">
@@ -75,6 +81,7 @@
 <object id="DataObjectContainersIocID" type="LD.SPPipeManage.Data.Tables.Container.DataObjectContainers, LD.SPPipeManage.Data">
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
     <property name="SPChannelDefaultClientSycnParamsDataObjectInstance" ref="SPChannelDefaultClientSycnParamsDataObjectIocID"/>
+    <property name="SPChannelFiltersDataObjectInstance" ref="SPChannelFiltersDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
     <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
@@ -84,6 +91,7 @@
     <property name="SPFailedRequestDataObjectInstance" ref="SPFailedRequestDataObjectIocID"/>
     <property name="SPInterceptRateDataObjectInstance" ref="SPInterceptRateDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
+    <property name="SPMonitoringRequestDataObjectInstance" ref="SPMonitoringRequestDataObjectIocID"/>
     <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
     <property name="SPPhoneAreaDataObjectInstance" ref="SPPhoneAreaDataObjectIocID"/>
     <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>

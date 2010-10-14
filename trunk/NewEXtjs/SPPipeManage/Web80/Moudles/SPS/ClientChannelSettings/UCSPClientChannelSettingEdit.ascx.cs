@@ -193,6 +193,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 SPClientChannelSettingWrapper.Update(obj);
 
+                obj.ChannelID.RefreshChannelInfo();
+
                 winSPClientChannelSettingEdit.Hide();
             }
             catch (Exception ex)

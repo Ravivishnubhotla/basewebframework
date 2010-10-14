@@ -19,7 +19,23 @@
         }
 
 
-
+        function ReloadAllChannelInfo()
+        {
+                               Coolite.AjaxMethods.RefreshAllChannelInfo( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '成功刷新通道信息！',RefreshSPChannelData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }
+                                                            );     
+        }
 
         function RefreshSPChannelList() {
             <%= this.storeSPChannel.ClientID %>.reload();
@@ -192,6 +208,7 @@
                     <ext:RecordField Name="InterfaceUrl" />
                     <ext:RecordField Name="CodeList" />
                     <ext:RecordField Name="ParamsList" />
+                    <ext:RecordField Name="ChannelInfo" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -220,7 +237,13 @@
                                         <Listeners>
                                             <Click Handler="ShowSPChannelQuickAdd();" />
                                         </Listeners>
-                                    </ext:ToolbarButton>  
+                                    </ext:ToolbarButton>
+                                                            <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload">
+                                        <Listeners>
+                                            <Click Handler="ReloadAllChannelInfo();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                      
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPChannel}.reload();" />
@@ -304,7 +327,7 @@
                         <p><b>描述：</b> {Description}</p>
                         <p><b>接口链接：</b> {InterfaceUrl}</p>
                         <p><b>通道列表：</b><br /> {ParamsList}</p>
-                        <p><b>指令下家列表：</b><br /> {CodeList}</p>
+                        <p><b>指令下家列表：</b><br /> {ChannelInfo}</p>
                         
                                 </Template>
                             </ext:RowExpander>
@@ -329,7 +352,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winChannelClientSettings" runat="server" Title="Window" Frame="true"
-        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Width="900" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">

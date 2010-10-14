@@ -16,6 +16,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPChannelFiltersServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPChannelFiltersServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPChannelFiltersDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPChannelParamsServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPChannelParamsServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPChannelParamsDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -58,6 +63,11 @@
   </object>
   <object id="SPMemoServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPMemoServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPMemoDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPMonitoringRequestServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPMonitoringRequestServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPMonitoringRequestDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
@@ -113,6 +123,7 @@
 <object id="ServiceProxyContainerIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer, LD.SPPipeManage.Bussiness">
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelDefaultClientSycnParamsServiceProxyInstance" ref="SPChannelDefaultClientSycnParamsServiceProxyIocID"/>
+    <property name="SPChannelFiltersServiceProxyInstance" ref="SPChannelFiltersServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
     <property name="SPClientServiceProxyInstance" ref="SPClientServiceProxyIocID"/>
     <property name="SPClientChannelSettingServiceProxyInstance" ref="SPClientChannelSettingServiceProxyIocID"/>
@@ -122,6 +133,7 @@
     <property name="SPFailedRequestServiceProxyInstance" ref="SPFailedRequestServiceProxyIocID"/>
     <property name="SPInterceptRateServiceProxyInstance" ref="SPInterceptRateServiceProxyIocID"/>
     <property name="SPMemoServiceProxyInstance" ref="SPMemoServiceProxyIocID"/>
+    <property name="SPMonitoringRequestServiceProxyInstance" ref="SPMonitoringRequestServiceProxyIocID"/>
     <property name="SPPaymentInfoServiceProxyInstance" ref="SPPaymentInfoServiceProxyIocID"/>
     <property name="SPPhoneAreaServiceProxyInstance" ref="SPPhoneAreaServiceProxyIocID"/>
     <property name="SPRequestInfoServiceProxyInstance" ref="SPRequestInfoServiceProxyIocID"/>

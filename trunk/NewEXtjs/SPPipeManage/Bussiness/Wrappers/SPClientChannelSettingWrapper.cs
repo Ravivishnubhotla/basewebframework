@@ -148,6 +148,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+        public string ChannelClientCode
+        {
+            get
+            {
+                string columnName = "ywid";
+
+                if (!string.IsNullOrEmpty(this.CommandColumn))
+                    columnName = this.CommandColumn;
+
+                if (!columnName.Equals("ywid"))
+                    return "";
+
+                if (string.IsNullOrEmpty(this.CommandCode))
+                    return "";
+
+                string spcode = "<font color='Red'>空缺</font>";
+
+                if(!string.IsNullOrEmpty(this.ChannelCode))
+                    spcode = this.ChannelCode;
+
+                if (this.CommandType == "1")
+                    return this.CommandCode + " (精准) 到 " + spcode;
+
+                if (this.CommandType == "3")
+                    return this.CommandCode + " (模糊) 到 " + spcode;
+ 
+                return columnName + " " + this.CommandTypeName + " " + this.CommandCode;
+            }
+        }
+
         public static List<SPClientChannelSettingWrapper> GetSettingByChannel(SPChannelWrapper spChannelWrapper)
         {
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));

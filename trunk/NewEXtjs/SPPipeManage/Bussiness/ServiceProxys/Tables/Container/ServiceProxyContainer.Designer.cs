@@ -12,6 +12,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPChannelDefaultClientSycnParamsServiceProxy SPChannelDefaultClientSycnParamsServiceProxyInstance
         {get; set;}
+		public ISPChannelFiltersServiceProxy SPChannelFiltersServiceProxyInstance
+        {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
         {get; set;}
 		public ISPClientServiceProxy SPClientServiceProxyInstance
@@ -29,6 +31,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables.Container{
 		public ISPInterceptRateServiceProxy SPInterceptRateServiceProxyInstance
         {get; set;}
 		public ISPMemoServiceProxy SPMemoServiceProxyInstance
+        {get; set;}
+		public ISPMonitoringRequestServiceProxy SPMonitoringRequestServiceProxyInstance
         {get; set;}
 		public ISPPaymentInfoServiceProxy SPPaymentInfoServiceProxyInstance
         {get; set;}

@@ -164,6 +164,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 SPChannelWrapper.Update(obj);
 
+                obj.RefreshChannelInfo();
+
                 winSPChannelEdit.Hide();
             }
             catch (Exception ex)
