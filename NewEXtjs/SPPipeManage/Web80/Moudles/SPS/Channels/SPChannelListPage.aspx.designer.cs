@@ -121,6 +121,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton1;
         
         /// <summary>
+        /// ToolbarButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton ToolbarButton2;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>

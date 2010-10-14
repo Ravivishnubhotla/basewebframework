@@ -35,6 +35,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             }
         }
 
+        [AjaxMethod]
+        public void RefreshAllChannelInfo()
+        {
+            try
+            {
+                SPChannelWrapper.RefreshAllChannelInfo();
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
+
         protected void storeSPChannel_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             int recordCount = 0;

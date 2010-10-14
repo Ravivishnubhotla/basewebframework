@@ -80,6 +80,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 SPChannelWrapper.Save(obj);
 
+                obj.RefreshChannelInfo();
+
                 winSPChannelAdd.Hide();
 
             }

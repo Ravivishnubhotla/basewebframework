@@ -93,7 +93,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 SPChannelWrapper.QuickAdd(obj, this.txtLinkParamsName.Text.Trim(), this.txtMobileParamsName.Text.Trim(),this.txtSPcodeParamsName.Text.Trim() , this.txtMoParamsName.Text.Trim(), clientUser.UserID);
 
-
+                obj.RefreshChannelInfo();
             }
             catch (Exception ex)
             {

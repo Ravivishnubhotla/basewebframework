@@ -103,8 +103,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.SyncData = false;
                 }
 
-
                 SPClientChannelSettingWrapper.Save(obj);
+
+                obj.ChannelID.RefreshChannelInfo();
 
                 winSPClientChannelSettingAdd.Hide();
 

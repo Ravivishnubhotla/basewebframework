@@ -157,6 +157,7 @@
                     <ext:RecordField Name="CommandCode" />
                     <ext:RecordField Name="CommandTypeName" />
                     <ext:RecordField Name="ChannelClientRuleMatch" />
+                    <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
@@ -217,7 +218,10 @@
                                 <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="排序号" Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
-                                    Sortable="true">
+                                    Sortable="false">
+                                </ext:Column>
+                                <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
+                                    Sortable="false">
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道下家设置管理" Width="160">
                                     <Commands>

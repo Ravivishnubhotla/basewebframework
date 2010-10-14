@@ -41,6 +41,12 @@ namespace Legendigital.Common.Web.Services
 
                 foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
                 {
+                    if(!reSendPaymentInfo.IsIntercept.HasValue)
+                        continue;
+
+                    if (reSendPaymentInfo.IsIntercept.Value)
+                        continue;
+
                     SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
                     sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
                     sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
@@ -73,6 +79,13 @@ namespace Legendigital.Common.Web.Services
 
                 foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
                 {
+                    if (!reSendPaymentInfo.IsIntercept.HasValue)
+                        continue;
+
+                    if (reSendPaymentInfo.IsIntercept.Value)
+                        continue;
+
+
                     SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
                     sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
                     sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
@@ -94,7 +107,13 @@ namespace Legendigital.Common.Web.Services
         {
             SPPaymentInfoWrapper spPaymentInfoWrapper = SPPaymentInfoWrapper.FindById(id);
 
-            spPaymentInfoWrapper.SucesssToSend = isSendOk;
+   
+
+            if (spPaymentInfoWrapper.IsIntercept.HasValue && spPaymentInfoWrapper.IsIntercept.Value)
+                return;
+
+            if (isSendOk)
+                spPaymentInfoWrapper.SucesssToSend = isSendOk;
 
             spPaymentInfoWrapper.IsSycnData = true;
 
