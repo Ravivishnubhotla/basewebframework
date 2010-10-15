@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Connect">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConnectResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClientChannelNeedSendData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maxDataCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxAllDataCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClientChannelNeedSendDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClientChannelNeedSendDataResult" type="tns:ArrayOfSPSSendUrlEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPSSendUrlEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPSSendUrlEntity" nillable="true" type="tns:SPSSendUrlEntity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPSSendUrlEntity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClientID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SycnRetryTimes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendUrl" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaymentID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdatePaymentSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isSendOk" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="sendUrl" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sycnRetryTimes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdatePaymentSendResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ConnectSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientChannelNeedSendDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClientChannelNeedSendData" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientChannelNeedSendDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClientChannelNeedSendDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentSendSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentSend" />
+  </wsdl:message>
+  <wsdl:message name="UpdatePaymentSendSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentSendResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SPDataServiceSoap">
+    <wsdl:operation name="Connect">
+      <wsdl:input message="tns:ConnectSoapIn" />
+      <wsdl:output message="tns:ConnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelNeedSendData">
+      <wsdl:input message="tns:GetAllClientChannelNeedSendDataSoapIn" />
+      <wsdl:output message="tns:GetAllClientChannelNeedSendDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentSend">
+      <wsdl:input message="tns:UpdatePaymentSendSoapIn" />
+      <wsdl:output message="tns:UpdatePaymentSendSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SPDataServiceSoap" type="tns:SPDataServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelNeedSendData">
+      <soap:operation soapAction="http://tempuri.org/GetAllClientChannelNeedSendData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentSend">
+      <soap:operation soapAction="http://tempuri.org/UpdatePaymentSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SPDataServiceSoap12" type="tns:SPDataServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelNeedSendData">
+      <soap12:operation soapAction="http://tempuri.org/GetAllClientChannelNeedSendData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentSend">
+      <soap12:operation soapAction="http://tempuri.org/UpdatePaymentSend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SPDataService">
+    <wsdl:port name="SPDataServiceSoap" binding="tns:SPDataServiceSoap">
+      <soap:address location="http://localhost:10086/Services/SPDataService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SPDataServiceSoap12" binding="tns:SPDataServiceSoap12">
+      <soap12:address location="http://localhost:10086/Services/SPDataService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
