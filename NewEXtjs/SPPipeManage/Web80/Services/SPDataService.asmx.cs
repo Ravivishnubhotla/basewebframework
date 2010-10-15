@@ -27,55 +27,19 @@ namespace Legendigital.Common.Web.Services
         }
 
         [WebMethod]
-        public int GetAllClientChannelNeedSendDataCount()
+        public List<SPSSendUrlEntity> GetAllClientChannelNeedSendData(int maxDataCount, int maxAllDataCount)
         {
             List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
 
             List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
 
-            foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
-            {
-                List<SPPaymentInfoWrapper> spReSendPaymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelSetting.ChannelID.Id,
-                                                                                     channelSetting.ClinetID.Id, System.DateTime.Now.Date,
-                                                                                     System.DateTime.Now.Date);
-
-                foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
-                {
-                    if(!reSendPaymentInfo.IsIntercept.HasValue)
-                        continue;
-
-                    if (reSendPaymentInfo.IsIntercept.Value)
-                        continue;
-
-                    SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
-                    sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
-                    sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
-                    sendUrlEntity.ChannelID = channelSetting.ChannelID.Id;
-                    sendUrlEntity.SycnRetryTimes = (reSendPaymentInfo.SycnRetryTimes.HasValue
-                                                        ? reSendPaymentInfo.SycnRetryTimes.Value
-                                                        : 0);
-                    sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
-
-                    sendUrlEntities.Add(sendUrlEntity);
-                }
-            }
-
-            return sendUrlEntities.Count;
-
-        }
-
-        [WebMethod]
-        public List<SPSSendUrlEntity> GetAllClientChannelNeedSendData()
-        {
-            List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
-
-            List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
+            int dataCount = 0;
 
             foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
             {
                 List<SPPaymentInfoWrapper> spReSendPaymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelSetting.ChannelID.Id,
                                                                                      channelSetting.ClinetID.Id, System.DateTime.Now.Date,
-                                                                                     System.DateTime.Now.Date);
+                                                                                     System.DateTime.Now.Date, maxDataCount);
 
                 foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
                 {
@@ -96,6 +60,13 @@ namespace Legendigital.Common.Web.Services
                     sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
 
                     sendUrlEntities.Add(sendUrlEntity);
+
+                    dataCount++;
+
+                    if(dataCount>=maxAllDataCount)
+                        return sendUrlEntities;
+
+
                 }
             }
 

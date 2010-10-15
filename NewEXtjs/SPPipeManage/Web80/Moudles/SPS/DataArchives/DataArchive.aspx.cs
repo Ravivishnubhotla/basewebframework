@@ -77,7 +77,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
                 int clientID = Convert.ToInt32(cmbClientID.SelectedItem.Value);
 
-                List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, clientID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value));
+                List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, clientID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value),2000);
 
                 foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in paymentInfos)
                 {

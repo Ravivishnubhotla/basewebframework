@@ -23,7 +23,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
         //DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
         List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount);
-        List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate);
+        List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate, int maxDataCount);
         DataTable FindAllNotSendChannelClient();
         bool InsertPayment(SPPaymentInfoEntity paymentInfo, List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType);
         List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDateNoIntercept(int spClientID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
@@ -78,7 +78,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    out recordCount);
         }
 
-        public List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate)
+        public List<SPPaymentInfoEntity> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate, int maxDataCount)
         {
             SPChannelEntity channelEntity = null;
 
@@ -92,7 +92,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientId);
 
 
-            return this.SelfDataObj.FindAllNotSendData(channelEntity, clientEntity, startdate, endDate);
+            return this.SelfDataObj.FindAllNotSendData(channelEntity, clientEntity, startdate, endDate, maxDataCount);
         }
 
         public DataTable FindAllNotSendChannelClient()

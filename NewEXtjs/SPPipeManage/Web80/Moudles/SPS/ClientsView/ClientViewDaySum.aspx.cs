@@ -22,25 +22,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             {
                 case DayOfWeek.Monday:
                     return System.DateTime.Now.AddDays(-7);
-                    break;
                 case DayOfWeek.Tuesday:
                     return System.DateTime.Now.AddDays(-8);
-                    break;
                 case DayOfWeek.Wednesday:
                     return System.DateTime.Now.AddDays(-9);
-                    break;
                 case DayOfWeek.Thursday:
                     return System.DateTime.Now.AddDays(-10);
-                    break;
                 case DayOfWeek.Friday:
                     return System.DateTime.Now.AddDays(-11);
-                    break;
                 case DayOfWeek.Saturday:
                     return System.DateTime.Now.AddDays(-12);
-                    break;
                 case DayOfWeek.Sunday:
                     return System.DateTime.Now.AddDays(-13);
-                    break;
 
             }
 
@@ -64,9 +57,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1).Date;
 
-            this.hidId.Text = this.ClientID.ToString();
+            this.hidId.Text = this.SPClientID.ToString();
 
-            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
+            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
 
             this.gridPanelSPClientChannelSetting.Reload();
         }
@@ -112,7 +105,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 startDate = GetDT();
             }
 
-            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.ClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
+            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
 
             store1.DataSource = tb;
             store1.DataBind();

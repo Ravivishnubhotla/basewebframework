@@ -95,7 +95,7 @@ namespace LD.SPPipeManage.Data.Tables
 
         }
 
-        public List<SPPaymentInfoEntity> FindAllNotSendData(SPChannelEntity channelId, SPClientEntity clientId, DateTime startdate, DateTime endDate)
+        public List<SPPaymentInfoEntity> FindAllNotSendData(SPChannelEntity channelId, SPClientEntity clientId, DateTime startdate, DateTime endDate, int maxDataCount)
         {
             var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
 
@@ -110,9 +110,10 @@ namespace LD.SPPipeManage.Data.Tables
 
             queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
 
-
             queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
             queryBuilder.AddWhereClause(PROPERTY_SUCESSSTOSEND.Eq(false));
+
+            queryBuilder.SetMaxResults(maxDataCount);
 
             return this.FindListByQueryBuilder(queryBuilder);
         }

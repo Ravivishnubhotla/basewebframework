@@ -377,9 +377,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public static List<SPPaymentInfoWrapper> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate)
+        public static List<SPPaymentInfoWrapper> FindAllNotSendData(int channelId, int clientId, DateTime startdate, DateTime endDate,int maxDataCount)
 	    {
-            return ConvertToWrapperList(businessProxy.FindAllNotSendData(channelId, clientId, startdate, endDate));
+            return ConvertToWrapperList(businessProxy.FindAllNotSendData(channelId, clientId, startdate, endDate, maxDataCount));
 	    }
 
         public static DataTable FindAllNotSendChannelClient()
@@ -567,5 +567,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 this.SucesssToSend = false;
             }
         }
+
+ 
     }
 }

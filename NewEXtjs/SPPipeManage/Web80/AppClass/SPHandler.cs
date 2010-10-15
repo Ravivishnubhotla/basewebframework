@@ -82,7 +82,7 @@ namespace Legendigital.Common.Web.AppClass
                 catch (Exception e)
                 {
                     logger.Error("失败请求保存失败.\n" + "Request Info:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request),"Process Request Error:" + ex.Message + "\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "Process Request Error:" + e.Message + "\n", 0, 0);
                 }
 
                 return;

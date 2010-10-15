@@ -21,9 +21,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
-            this.hidId.Text = this.ClientID.ToString();
+            this.hidId.Text = this.SPClientID.ToString();
 
-            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
+            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
 
         }
 
@@ -48,7 +48,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             this.pnlDataView.AutoLoad.Url = "ClientViewRecordListPage.aspx";
             this.pnlDataView.AutoLoad.Params.Clear();
             this.pnlDataView.AutoLoad.Params.Add(new Parameter("ChannleID", ChannelID.ToString()));
-            this.pnlDataView.AutoLoad.Params.Add(new Parameter("ClientID", ClientID.ToString()));
+            this.pnlDataView.AutoLoad.Params.Add(new Parameter("ClientID", SPClientID.ToString()));
             this.pnlDataView.AutoLoad.Params.Add(new Parameter("StartDate",this.dfReportStartDate.DateField.Value.ToString(), true));
             this.pnlDataView.AutoLoad.Params.Add(new Parameter("EndDate", this.dfReportEndDate.DateField.Value.ToString(), true));
             this.pnlDataView.LoadContent();

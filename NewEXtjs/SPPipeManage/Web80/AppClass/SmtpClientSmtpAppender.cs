@@ -62,7 +62,7 @@ namespace Legendigital.Common.Web.AppClass
 
             catch (Exception e)
             {
-                
+                Console.WriteLine(e.Message);
             }
 
         }
