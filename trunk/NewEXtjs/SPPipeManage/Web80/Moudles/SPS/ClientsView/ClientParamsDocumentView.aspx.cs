@@ -43,7 +43,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             else
                 pageIndex = startIndex / limit;
 
-            storeSPSendClientParams.DataSource = SPSendClientParamsWrapper.FindAllByOrderByAndClientID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, this.ClientID, out recordCount);
+            storeSPSendClientParams.DataSource = SPSendClientParamsWrapper.FindAllByOrderByAndClientID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, this.SPClientID, out recordCount);
             e.TotalCount = recordCount;
 
             storeSPSendClientParams.DataBind();

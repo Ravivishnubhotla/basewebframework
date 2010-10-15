@@ -21,6 +21,10 @@ namespace SPSSiteTask
 
         private static string debugCmd = "";
 
+        private static int maxDataCount = 500;
+
+        private static int maxAllDataCount = 1500;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -45,11 +49,28 @@ namespace SPSSiteTask
             }
         }
 
+        private static int ReadAppConfigInt(string configkey, int defaultValue)
+        {
+            try
+            {
+                return int.Parse(ConfigurationManager.AppSettings[configkey]);
+            }
+            catch (Exception)
+            {
+                return defaultValue;
+            }
+        }
+
         static void Main(string[] args)
         {
             isDebug = ReadAppConfigBoolean("IsDebug",isDebug);
 
             debugCmd = ReadAppConfigString("DebugCmd", debugCmd);
+
+            maxDataCount = ReadAppConfigInt("MaxDataCount", maxDataCount);
+
+            maxAllDataCount = ReadAppConfigInt("MaxAllDataCount", maxAllDataCount);
+
 
             string[] cmds;
 
@@ -103,6 +124,8 @@ namespace SPSSiteTask
             EndApplication(); 
         }
 
+
+
         private static void ReSendAllSendFailedRequest()
         {
             List<SPSSendUrlEntity> sendUrlEntities = null;
@@ -111,7 +134,7 @@ namespace SPSSiteTask
             {
                 logger.Info("获取发送请求数据开始....");
 
-                sendUrlEntities = client.GetAllClientChannelNeedSendData();
+                sendUrlEntities = client.GetAllClientChannelNeedSendData(maxDataCount,maxAllDataCount);
 
                 logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
             }
@@ -138,9 +161,11 @@ namespace SPSSiteTask
                 {
                     i++;
 
+                    string progress = string.Format("({0}/{1})", i, titalCOunt);
+
                     if (string.IsNullOrEmpty(spsSendUrlEntity.SendUrl))
                     {
-                        logger.Error(string.Format("请求略过，ID{0}", spsSendUrlEntity.PaymentID));
+                        logger.Error(string.Format(progress + "请求略过，ID{0}", spsSendUrlEntity.PaymentID));
                         continue;
                     }
 
@@ -159,7 +184,7 @@ namespace SPSSiteTask
 
                             if (!requestOk)
                             {
-                                logger.Error(string.Format("请求失败，ID{0},错误信息：{1}", spsSendUrlEntity.PaymentID, errorMessage));
+                                logger.Error(string.Format(progress + "请求失败，ID{0},错误信息：{1}", spsSendUrlEntity.PaymentID, errorMessage));
 
                                 Thread.Sleep(1000);
 
@@ -172,15 +197,14 @@ namespace SPSSiteTask
 
                         } while (!requestOk);
 
-                        logger.Info(string.Format("请求成功，ID:{0},Url:{1}", spsSendUrlEntity.PaymentID, spsSendUrlEntity.SendUrl));
+                        logger.Info(string.Format(progress + "请求成功，ID:{0},Url:{1}", spsSendUrlEntity.PaymentID, spsSendUrlEntity.SendUrl));
 
                         client.UpdatePaymentSend(spsSendUrlEntity.PaymentID, requestOk, spsSendUrlEntity.SendUrl, spsSendUrlEntity.SycnRetryTimes+1);
 
                     }
                     catch (Exception ex)
                     {
-                        logger.Error(string.Format("请求失败，ID{0}", spsSendUrlEntity.PaymentID), ex);
-
+                        logger.Error(string.Format(progress + "请求失败，ID{0}", spsSendUrlEntity.PaymentID), ex);
                     }
                 }
 

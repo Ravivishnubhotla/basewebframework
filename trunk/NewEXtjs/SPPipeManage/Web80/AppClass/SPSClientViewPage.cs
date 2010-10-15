@@ -10,7 +10,7 @@ namespace Legendigital.Common.Web.AppClass
     public class SPSClientViewPage : BaseSecurityPage
     {
 
-        public int ClientID
+        public int SPClientID
         {
             get
             {

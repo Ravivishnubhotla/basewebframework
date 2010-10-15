@@ -19,7 +19,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
             string dataType = context.Request.QueryString["DataType"];
 
-            int clientID = 0;
+            //int clientID = 0;
 
             //switch (dataType)
             //{

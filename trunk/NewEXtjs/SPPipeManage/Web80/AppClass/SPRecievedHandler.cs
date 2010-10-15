@@ -190,7 +190,7 @@ namespace Legendigital.Common.Web.AppClass
                 catch (Exception e)
                 {
                     logger.Error("失败请求保存失败.\n" + "请求信息系:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "请求错误:" + ex.Message + "\n", 0, 0);
+                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "请求错误:" + e.Message + "\n", 0, 0);
                 }
 
 

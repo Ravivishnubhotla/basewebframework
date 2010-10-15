@@ -213,9 +213,9 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Width="50">
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Width="30">
                                 </ext:Column>
-                                <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="排序号" Width="50">
+                                <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="序号" Width="30">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
                                     Sortable="false">

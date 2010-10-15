@@ -211,7 +211,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             else
                 pageIndex = startIndex / limit;
 
-            DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.ClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), "", false, pageIndex, limit, out recordCount);
+            DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannleID, this.SPClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), "", false, pageIndex, limit, out recordCount);
 
             if (storeData.Reader.Count == 0)
                 storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID)));

@@ -18,9 +18,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             if (!Ext.IsAjaxRequest)
             {
-                this.hidId.Text = this.ClientID.ToString();
+                this.hidId.Text = this.SPClientID.ToString();
 
-                this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
+                this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
 
 
                 int channelID = 0;
@@ -30,7 +30,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                     channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
                 }
 
-                DataTable dt = this.GetDataTable(this.ClientID, channelID);
+                DataTable dt = this.GetDataTable(this.SPClientID, channelID);
 
                 this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
 
@@ -48,7 +48,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
             }
 
-            DataTable dt = this.GetDataTable(this.ClientID, channelID);
+            DataTable dt = this.GetDataTable(this.SPClientID, channelID);
 
             this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
 

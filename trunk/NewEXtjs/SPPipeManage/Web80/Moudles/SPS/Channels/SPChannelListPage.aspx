@@ -206,7 +206,6 @@
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
                     <ext:RecordField Name="InterfaceUrl" />
-                    <ext:RecordField Name="CodeList" />
                     <ext:RecordField Name="ParamsList" />
                     <ext:RecordField Name="ChannelInfo" />
                 </Fields>
@@ -352,7 +351,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winChannelClientSettings" runat="server" Title="Window" Frame="true"
-        Width="900" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Width="950" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">

@@ -20,26 +20,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             {
                 case DayOfWeek.Monday:
                     return System.DateTime.Now.AddDays(-7);
-                    break;
                 case DayOfWeek.Tuesday:
                     return System.DateTime.Now.AddDays(-8);
-                    break;
                 case DayOfWeek.Wednesday:
                     return System.DateTime.Now.AddDays(-9);
-                    break;
                 case DayOfWeek.Thursday:
                     return System.DateTime.Now.AddDays(-10);
-                    break;
                 case DayOfWeek.Friday:
                     return System.DateTime.Now.AddDays(-11);
-                    break;
                 case DayOfWeek.Saturday:
                     return System.DateTime.Now.AddDays(-12);
-                    break;
                 case DayOfWeek.Sunday:
                     return System.DateTime.Now.AddDays(-13);
-                    break;
-
             }
 
             return DateTime.Now;
@@ -57,9 +49,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
-            this.hidId.Text = this.ClientID.ToString();
+            this.hidId.Text = this.SPClientID.ToString();
 
-            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.ClientID.ToString()));
+            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
 
             this.gridPanelSPClientChannelSetting.Reload();
         }
@@ -130,7 +122,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             }
 
 
-            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannelID, this.ClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
             if (list.Count > 0)
             {

@@ -23,7 +23,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
         protected void storeSPChannel_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            List<SPChannelWrapper> channels = SPClientChannelSettingWrapper.GetChannelByClient(SPClientWrapper.FindById(this.ClientID));
+            List<SPChannelWrapper> channels = SPClientChannelSettingWrapper.GetChannelByClient(SPClientWrapper.FindById(this.SPClientID));
 
             storeSPChannel.DataSource = channels;
 

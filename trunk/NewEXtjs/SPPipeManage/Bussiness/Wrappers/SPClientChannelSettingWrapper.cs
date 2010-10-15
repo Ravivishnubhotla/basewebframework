@@ -212,43 +212,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return this.MatchByYWID(ywid);
         }
 
-        //private static void RemoveUserByID(List<SystemUserWrapper> users, List<int> hasUserId)
-        //{
-        //    foreach (int uid in hasUserId)
-        //    {
-        //        SystemUserWrapper userWrapper = users.Find(p => (p.UserID == uid));
 
-        //        if (userWrapper != null)
-        //        {
-        //            users.Remove(userWrapper);
-        //        }
-        //    }
-        //}
-
-        //private static List<int> GetUsedUser(int channelID)
-        //{
-        //    SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
-
-        //    List<SPClientChannelSettingEntity> settings = businessProxy.GetSettingByChannel(channelWrapper.entity);
-
-        //    List<int> userIDs = new List<int>();
-
-        //    foreach (SPClientChannelSettingEntity setting in settings)
-        //    {
-        //        if (setting != null && setting.ClinetID != null && setting.ClinetID.UserID != null)
-        //        {
-        //            if (setting.ClinetID.UserID > 0)
-        //            {
-        //                if (!userIDs.Contains(setting.ClinetID.UserID.Value))
-        //                {
-        //                    userIDs.Add(setting.ClinetID.UserID.Value);
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    return userIDs;
-        //}
 
 
         public bool MatchByYWID(string ywid)
@@ -474,7 +438,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
 
+            Uri uri = new Uri(this.SyncDataUrl);
 
+            if (!string.IsNullOrEmpty(uri.Query.Trim()))
+                return string.Format("{0}&{1}", this.SyncDataUrl, queryString.ToString()); 
 
             return string.Format("{0}?{1}", this.SyncDataUrl, queryString.ToString());
         }
