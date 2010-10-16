@@ -440,6 +440,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Uri uri = new Uri(this.SyncDataUrl);
 
+            if (string.IsNullOrEmpty(queryString.ToString()))
+            {
+                return this.SyncDataUrl;
+            }
+
             if (!string.IsNullOrEmpty(uri.Query.Trim()))
                 return string.Format("{0}&{1}", this.SyncDataUrl, queryString.ToString()); 
 

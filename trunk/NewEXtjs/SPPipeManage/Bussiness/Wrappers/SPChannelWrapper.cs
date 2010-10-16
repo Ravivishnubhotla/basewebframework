@@ -18,7 +18,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         NoLinkID,
         RepeatLinkID,
         NoChannelClientSetting,
-        DataSaveError
+        DataSaveError,
+        NoReportData
     }
 
     public class RequestError
@@ -410,7 +411,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
-                    paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
+                    paymentInfo.IsSycnData = true;
+                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    {
+                        paymentInfo.SucesssToSend = false;
+                    }
+                    else
+                    {
+                        paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
+                    }
                 }
                 else
                     paymentInfo.SucesssToSend = false;
@@ -799,6 +808,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             error.ErrorType = RequestErrorType.NoError;
             error.ErrorMessage = "";
             error.ChannelID = Id;
+
+
+            if (statepaymentInfo==null)
+            {
+                error.ErrorType = RequestErrorType.NoReportData;
+                error.ErrorMessage = "没有linkid为“" + linkid + "”找到状态报告数据";
+                return false;
+            }
+
+
 
             SPClientChannelSettingWrapper channelSetting =
                 SPClientChannelSettingWrapper.FindById(statepaymentInfo.ChannleClientID);

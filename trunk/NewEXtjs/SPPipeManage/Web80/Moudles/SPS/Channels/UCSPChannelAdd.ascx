@@ -20,7 +20,7 @@
                                 <ext:TextArea ID="txtArea" runat="server" FieldLabel="支持省份" Hidden="true" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道编码" AllowBlank="True" />
+                                <ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道编码" AllowBlank="True"  Hidden="true" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbChannelCodeParamsName" Editable="false" runat="server" FieldLabel="通道映射字段"

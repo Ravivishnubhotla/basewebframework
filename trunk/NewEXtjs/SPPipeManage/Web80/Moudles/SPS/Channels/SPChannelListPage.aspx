@@ -264,7 +264,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份"   Hidden="true" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true">
+                                <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true"  Hidden="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
                                 </ext:Column>

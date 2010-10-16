@@ -18,6 +18,8 @@
             return (rec.data.TotalCount > 0);
         }
 
+ 
+
 
         var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
             if ((command.command == 'TotalCountDetail'||command.command == 'InterceptCountDetail'||command.command == 'DownCountDetail'||command.command == 'DownSycnCountDetail') && value > 0) {
