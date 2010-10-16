@@ -557,7 +557,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
                     this.IsSycnData = true;
-                    this.SucesssToSend = channelSetting.SendMsg(this);
+                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    {
+                        this.SucesssToSend = false;
+                    }
+                    else
+                    {
+                        this.SucesssToSend = channelSetting.SendMsg(this);
+                    }
                 }
                 else
                     this.SucesssToSend = false;

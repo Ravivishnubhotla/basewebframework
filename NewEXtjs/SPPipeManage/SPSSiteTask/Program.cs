@@ -25,6 +25,8 @@ namespace SPSSiteTask
 
         private static int maxAllDataCount = 1500;
 
+        private static int historyDateCount = 2;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -71,6 +73,8 @@ namespace SPSSiteTask
 
             maxAllDataCount = ReadAppConfigInt("MaxAllDataCount", maxAllDataCount);
 
+            historyDateCount = ReadAppConfigInt("HistoryDateCount", historyDateCount);
+
 
             string[] cmds;
 
@@ -116,17 +120,48 @@ namespace SPSSiteTask
             switch (cmds[0].ToLower())
             {
                 case "-rsr":
-                    ReSendAllSendFailedRequest();
+                    ReSendAllSendTodayNoSendRequest();
                     break;
-
+                case "-rhsr":
+                    ReSendAllSendHistoryNoSendRequest();
+                    break;
             }
 
             EndApplication(); 
         }
 
+        private static void ReSendAllSendHistoryNoSendRequest()
+        {
+            List<SPSSendUrlEntity> sendUrlEntities = null;
+
+            try
+            {
+                logger.Info("获取发送请求数据开始....");
+
+                DateTime endDate = System.DateTime.Now.AddDays(-1);
+
+                DateTime startDate = endDate.AddDays(-1*historyDateCount);
+
+                sendUrlEntities = client.GetAllClientChannelNeedSendHistoryData(maxDataCount, maxAllDataCount, startDate, endDate);
+
+                logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
+            }
+            catch (Exception ex)
+            {
+                logger.Error("获取发送请求数据失败！", ex);
+
+                if (isDebug)
+                    Console.ReadKey();
+
+                return;
+            }
 
 
-        private static void ReSendAllSendFailedRequest()
+            PatchSend(sendUrlEntities);
+        }
+
+
+        private static void ReSendAllSendTodayNoSendRequest()
         {
             List<SPSSendUrlEntity> sendUrlEntities = null;
 
@@ -149,6 +184,11 @@ namespace SPSSiteTask
             }
 
 
+            PatchSend(sendUrlEntities);
+        }
+
+        private static void PatchSend(List<SPSSendUrlEntity> sendUrlEntities)
+        {
             try
             {
                 logger.Info("批量发送请求开始....");

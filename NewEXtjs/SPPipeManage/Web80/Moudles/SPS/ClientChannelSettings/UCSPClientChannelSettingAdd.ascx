@@ -33,7 +33,7 @@
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingAdd" runat="server" Icon="ApplicationAdd"
     ConstrainHeader="true" Title="新建通道下家设置" Width="680" Height="460" AutoShow="false"
-    Maximizable="true" Modal="true" ShowOnLoad="false">
+    Maximizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
@@ -178,10 +178,10 @@
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
                                         <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
-                                            AllowBlank="True" SelectedIndex="0" Hidden="true">
+                                            AllowBlank="True" SelectedIndex="0">
                                             <Items>
-                                                <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
-                                                <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
+                                                <ext:ListItem Value="1" Text="即时同步"></ext:ListItem>
+                                                <ext:ListItem Value="2" Text="异步同步"></ext:ListItem>
                                             </Items>
                                         </ext:ComboBox>
                                     </ext:Anchor>

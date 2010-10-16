@@ -4,11 +4,11 @@
 </ext:ScriptManagerProxy>
 <ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"
     Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false" Maximizable="true"
-     Modal="true" ShowOnLoad="false">
+    Modal="true" ShowOnLoad="false" AutoScroll="true">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
-                Header="false" MonitorValid="true" BodyStyle="padding:5px;" AutoScroll=true>
+                Header="false" MonitorValid="true" BodyStyle="padding:5px;" AutoScroll="true">
                 <Body>
                     <ext:ContainerLayout ID="ContainerLayout1" runat="server">
                         <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="false" Title="基本信息" Collapsed="false">
@@ -150,10 +150,10 @@
                                     </ext:Anchor>
                                     <ext:Anchor Horizontal="95%">
                                         <ext:ComboBox ID="cmbSycnType" Editable="false" runat="server" FieldLabel="同步数据类型"
-                                            AllowBlank="True" SelectedIndex="0" Hidden="true">
+                                            AllowBlank="True" SelectedIndex="0">
                                             <Items>
-                                                <ext:ListItem Value="即时同步" Text="即时同步"></ext:ListItem>
-                                                <ext:ListItem Value="异步同步" Text="异步同步"></ext:ListItem>
+                                                <ext:ListItem Value="1" Text="即时同步"></ext:ListItem>
+                                                <ext:ListItem Value="2" Text="异步同步"></ext:ListItem>
                                             </Items>
                                         </ext:ComboBox>
                                     </ext:Anchor>

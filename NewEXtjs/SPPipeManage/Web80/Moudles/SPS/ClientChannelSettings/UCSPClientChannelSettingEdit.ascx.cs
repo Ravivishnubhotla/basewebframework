@@ -96,9 +96,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
 
 
-                        if (this.cmbSycnType.SelectedItem != null)
-                            obj.SyncType = this.cmbSycnType.SelectedItem.Value;
-
+                        if (!string.IsNullOrEmpty(obj.SyncType))
+                            this.cmbSycnType.SetInitValue(obj.SyncType);
+                        else
+                            this.cmbSycnType.SelectedIndex = 0;
 
                         if (obj.OkMessage != null)
                             this.txtOkMessage.Text = obj.OkMessage;
@@ -178,6 +179,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.SyncDataUrl = this.txtSyncDataUrl.Text.Trim();
                     if (this.cmbSycnType.SelectedItem != null)
                         obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+                    else
+                        obj.SyncType = "1";
                     obj.OkMessage = this.txtOkMessage.Text.Trim();
                     obj.FailedMessage = this.txtFailedMessage.Text.Trim();
                 }
@@ -188,6 +191,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.SyncType = "";
                     obj.OkMessage = "";
                     obj.FailedMessage = "";
+                    obj.SyncType = "1";
                 }
 
 

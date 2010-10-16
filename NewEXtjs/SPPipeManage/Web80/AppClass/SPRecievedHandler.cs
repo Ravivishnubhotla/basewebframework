@@ -36,7 +36,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (string.IsNullOrEmpty(fileName))
                 {
-                    logger.Error("请求失败：没有指定ashx路径。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
+                    logger.Warn("请求失败：没有指定ashx路径。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
 
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：没有指定ashx路径。\n", 0, 0);
 
@@ -51,14 +51,14 @@ namespace Legendigital.Common.Web.AppClass
                 //如果没有找到通道
                 if (channel == null)
                 {
-                    logger.Error("处理请求失败：无法找到对应的通道。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
+                    logger.Warn("处理请求失败：无法找到对应的通道。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：无法找到对应的通道。\n", 0, 0);
                     return;
                 }
 
                 if (channel.CStatus != ChannelStatus.Run)
                 {
-                    logger.Error("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
+                    logger.Warn("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n", channel.Id, 0);
                     context.Response.Write(channel.GetFailedCode());
                     return;
@@ -103,7 +103,7 @@ namespace Legendigital.Common.Web.AppClass
                         {
                             SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "未知类型请求", channel.Id, 0);
 
-                            logger.Error("未知类型请求:" + GetRequestInfo(context.Request));
+                            logger.Warn("未知类型请求:" + GetRequestInfo(context.Request));
 
                             context.Response.Write(channel.GetFailedCode());
 
@@ -147,7 +147,7 @@ namespace Legendigital.Common.Web.AppClass
                     }
                     else
                     {
-                        logger.Error(requestError1.ErrorMessage);
+                        logger.Warn(requestError1.ErrorMessage);
 
                         SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError1.ErrorMessage, channel.Id, 0);
 
@@ -167,7 +167,7 @@ namespace Legendigital.Common.Web.AppClass
                     context.Response.Write(channel.GetOkCode());
                 else
                 {
-                    logger.Error(requestError.ErrorMessage);
+                    logger.Warn(requestError.ErrorMessage);
 
                     SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError.ErrorMessage, channel.Id, 0);
 

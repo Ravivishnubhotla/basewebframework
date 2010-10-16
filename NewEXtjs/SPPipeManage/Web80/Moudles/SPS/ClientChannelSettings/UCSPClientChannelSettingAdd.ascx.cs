@@ -95,12 +95,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.SyncDataUrl = this.txtSyncDataUrl.Text.Trim();
                     if (this.cmbSycnType.SelectedItem != null)
                         obj.SyncType = this.cmbSycnType.SelectedItem.Value;
+                    else
+                        obj.SyncType = "1";
                     obj.OkMessage = this.txtOkMessage.Text.Trim();
                     obj.FailedMessage = this.txtFailedMessage.Text.Trim();
                 }
                 else
                 {
                     obj.SyncData = false;
+                    obj.SyncType = "1";
                 }
 
                 SPClientChannelSettingWrapper.Save(obj);
