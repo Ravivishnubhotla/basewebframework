@@ -105,6 +105,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.BulidReport(date);
         }
 
+        public static void ReGenerateDayReport(DateTime date)
+        {
+            businessProxy.ReBulidReport(date);
+        }
+
         public static string GetDbSizeString()
         {
             return businessProxy.GetDbSize();
@@ -194,6 +199,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate)
 	    {
             return businessProxy.GetCountReportByClientGroupID(spClientGroupId, startDate, enddate);
+	    }
+
+        public static void ReGenerateDayReport(DateTime startDateTime, DateTime endDateTime)
+	    {
+            businessProxy.ReGenerateDayReport(startDateTime, endDateTime);
 	    }
     }
 }
