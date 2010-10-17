@@ -94,6 +94,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.Label lblChannelInfo;
         
         /// <summary>
+        /// btnRefreshData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnRefreshData;
+        
+        /// <summary>
         /// btnSPClientSendRequest control.
         /// </summary>
         /// <remarks>
@@ -110,5 +119,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Hidden hidChannelID;
+        
+        /// <summary>
+        /// hidMobileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidMobileName;
+        
+        /// <summary>
+        /// hidLinkIDeName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidLinkIDeName;
     }
 }

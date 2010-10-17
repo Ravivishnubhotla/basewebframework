@@ -255,6 +255,7 @@
     <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
       <DependentUpon>SPMemoWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\SPMessage.cs" />
     <Compile Include="Wrappers\SPMonitoringRequestWrapper.cs" />
     <Compile Include="Wrappers\SPMonitoringRequestWrapper.Designer.cs">
       <DependentUpon>SPMonitoringRequestWrapper.cs</DependentUpon>

@@ -366,7 +366,7 @@
     </ext:Window>
         <ext:Window ID="winChannelDefaultSendParams" runat="server" Title="Window" Frame="true"
         Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false">
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll=true>
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>

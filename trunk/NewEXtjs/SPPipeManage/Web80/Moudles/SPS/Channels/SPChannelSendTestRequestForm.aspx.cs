@@ -10,6 +10,9 @@ using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Channels
 {
+ 
+
+
     public partial class SPChannelSendTestRequestForm : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -42,17 +45,39 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 if (spChannelParamsWrapper.ParamsMappingName=="linkid")
                 {
                     txt.Value = "test" + Guid.NewGuid().ToString();
+
+                    hidLinkIDeName.Text = txt.ClientID;
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName == "mobile")
                 {
                     txt.Value = "135" + StringUtil.GetRandNumber(8);
+
+                    hidMobileName.Text = txt.ClientID;
                 }
 
                 anchor.Items.Add(txt);
                 this.FormLayout1.Anchors.Add(anchor);
             }
 
+        }
+
+
+
+
+
+
+
+
+        [AjaxMethod]
+        public SPMessage GetTestSPMessage()
+        {
+            SPMessage spMessage = new SPMessage();
+            spMessage.LinkID = "test" + Guid.NewGuid().ToString();
+            spMessage.Mobile = "135" + StringUtil.GetRandNumber(8);
+            spMessage.Mo = "";
+            spMessage.SPCode = "";
+            return spMessage;
         }
 
     }

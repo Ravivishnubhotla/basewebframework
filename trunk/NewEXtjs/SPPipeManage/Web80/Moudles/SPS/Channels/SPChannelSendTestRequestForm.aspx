@@ -29,6 +29,37 @@
             });
 
         }
+
+
+        function RefreshValue(clinkid, cmoblieid) {
+            //alert(clinkid);
+            //alert(cmoblieid);
+
+            Coolite.AjaxMethods.GetTestSPMessage(
+                                                                {
+                                                                    failure: function (msg) {
+                                                                        Ext.Msg.alert('刷新失败', msg);
+                                                                    },
+                                                                    success: function (result) {
+                                                                        eval(' var clid = ctl00_ContentPlaceHolder1_' + clinkid);
+                                                                        eval(' var cmob = ctl00_ContentPlaceHolder1_' + cmoblieid);
+                                                                        clid.setValue(result.LinkID);
+                                                                        cmob.setValue(result.Mobile);
+                                                                    },
+                                                                    eventMask: {
+                                                                        showMask: true,
+                                                                        msg: '刷新中...'
+                                                                    }
+                                                                }
+                                                            );
+
+
+            //alert(clid.getValue());
+
+
+            //alert('ctl00_ContentPlaceHolder1_txt'+clinkid);
+            //alert('ctl00_ContentPlaceHolder1_txt'+cmoblieid);
+        }
     </script>
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
@@ -57,6 +88,11 @@
                             </ext:FormLayout>
                         </Body>
                         <Buttons>
+                            <ext:Button ID="btnRefreshData" runat="server" Text="刷新测试数据" Icon="Reload">
+                                <Listeners>
+                                    <Click Handler="RefreshValue(#{hidLinkIDeName}.getValue(),#{hidMobileName}.getValue());" />
+                                </Listeners>
+                            </ext:Button>
                             <ext:Button ID="btnSPClientSendRequest" runat="server" Text="发送" Icon="TelephoneGo">
                                 <Listeners>
                                     <Click Handler=" SubmitUrl(#{txtChannelSubmitUrl}.getText()+'?'+GetParams(Ext.encode(#{FormPanel1}.getForm().getValues(true))),#{lblSendUrl});" />
@@ -69,5 +105,9 @@
         </Body>
     </ext:ViewPort>
     <ext:Hidden ID="hidChannelID" runat="server">
+    </ext:Hidden>
+    <ext:Hidden ID="hidMobileName" runat="server">
+    </ext:Hidden>
+    <ext:Hidden ID="hidLinkIDeName" runat="server">
     </ext:Hidden>
 </asp:Content>
