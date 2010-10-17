@@ -7,15 +7,12 @@
             <DocumentReady Handler="#{storeSPClient}.reload();" />
         </Listeners>
     </ext:ScriptManagerProxy>
-    <ext:Store ID="storeSPClient" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:HttpProxy Method="GET" Url="../Clients/SPClientsHandler.ashx" />
-        </Proxy>
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="false"  OnRefreshData="storeSPClient_OnRefresh">
         <Reader>
-            <ext:JsonReader Root="datas" TotalProperty="total">
+            <ext:JsonReader ReaderID="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" Mapping="Id" />
-                    <ext:RecordField Name="Alias" Mapping="Alias" />
+                    <ext:RecordField Name="DisplayName" Mapping="DisplayName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -51,7 +48,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbClientID" runat="server" AllowBlank="true" StoreID="storeSPClient"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Alias" ValueField="Id"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="DisplayName" ValueField="Id"
                                         EmptyText="全部">
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />

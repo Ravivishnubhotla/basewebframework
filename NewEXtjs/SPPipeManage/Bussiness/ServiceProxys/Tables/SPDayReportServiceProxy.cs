@@ -19,6 +19,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
     public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxyDesigner
     {
+        void ReBulidReport(DateTime date);
 	    void BulidReport(DateTime date);
 	    string GetDbSize();
 	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
@@ -32,6 +33,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetTodayReportByClientID(int clientId);
         DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate);
         DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate);
+        void ReGenerateDayReport(DateTime startDateTime, DateTime endDateTime);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -147,31 +149,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 {
                     dayReportEntity = new SPDayReportEntity();
                 }
-                //else
-                //{
-                //    hasReport = true;
-                //}
-
-                //dayReportEntity.ChannelID = channelID;
-                //dayReportEntity.ClientID = clientID;
-                //if (hasReport)
-                //{
-                    //dayReportEntity.UpTotalCount =  totalCount;
-                    //dayReportEntity.UpSuccess =  0;
-                    //dayReportEntity.InterceptTotalCount += interceptCount;
-                    //dayReportEntity.InterceptSuccess += 0;
-                    //dayReportEntity.DownTotalCount += downCount;
-                    //dayReportEntity.DownSuccess += downSycnCount;
-                //}
-                //else
-                //{
-                    dayReportEntity.UpTotalCount = totalCount;
-                    dayReportEntity.UpSuccess = 0;
-                    dayReportEntity.InterceptTotalCount = interceptCount;
-                    dayReportEntity.InterceptSuccess = 0;
-                    dayReportEntity.DownTotalCount = downCount;
-                    dayReportEntity.DownSuccess = downSycnCount;
-                //}
+ 
+                dayReportEntity.UpTotalCount = totalCount;
+                dayReportEntity.UpSuccess = 0;
+                dayReportEntity.InterceptTotalCount = interceptCount;
+                dayReportEntity.InterceptSuccess = 0;
+                dayReportEntity.DownTotalCount = downCount;
+                dayReportEntity.DownSuccess = downSycnCount;
+ 
 
                 dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
 
@@ -182,6 +167,15 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
 
             this.AdoNetDb.ClearAllReportedData(date);
+        }
+
+        [Transaction(ReadOnly = false)]
+        public void ReGenerateDayReport(DateTime startDateTime, DateTime endDateTime)
+        {
+            for (DateTime i = startDateTime; i < endDateTime.AddDays(1); i = i.AddDays(1))
+            {
+                ReBulidReport(i);
+            }
         }
 
         public string GetDbSize()
@@ -247,6 +241,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             return this.AdoNetDb.GetCountReportByClientGroupID(spClientGroupId,  startDate, enddate);
         }
+
+
 
 
         [Transaction(ReadOnly = false)]

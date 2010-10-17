@@ -109,5 +109,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             return table;
         }
+
+        protected void storeSPClient_OnRefresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            SPClientGroupWrapper clientGroup = SPClientGroupWrapper.FindById(this.ClientGroupID);
+
+            storeSPClient.DataSource = SPClientWrapper.FindAllBySPClientGroupID(clientGroup);
+            storeSPClient.DataBind();
+        }
     }
 }

@@ -3,10 +3,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-    <Listeners>
-    
-    <DocumentReady Handler="RefreshSPClientList();" />
-    </Listeners>
+        <Listeners>
+            <DocumentReady Handler="RefreshSPClientList();" />
+        </Listeners>
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -62,6 +61,7 @@
                     <ext:RecordField Name="SPCode" />
                     <ext:RecordField Name="InterfaceList" />
                     <ext:RecordField Name="SyncDataUrl" />
+                    <ext:RecordField Name="DisplayName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -94,16 +94,17 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colChannelID" DataIndex="Alias" Header="通道名称" Sortable="true">
+                                <ext:Column ColumnID="colChannelID" DataIndex="DisplayName" Header="通道名称" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCommandType" DataIndex="SPCode" Header="指令"
-                                    Sortable="true">
+                                <ext:Column ColumnID="colCommandType" DataIndex="SPCode" Header="指令" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRecieveDataUrl" DataIndex="SyncDataUrl" Header="同步地址"
-                                    Sortable="true">
+                                <ext:Column ColumnID="colRecieveDataUrl" DataIndex="SyncDataUrl" Header="同步地址" Sortable="true">
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道管理" Width="160">
                                     <Commands>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdParamsEdit" Text="编辑通道名称">
+                                            <ToolTip Text="编辑通道名称" />
+                                        </ext:GridCommand>
                                         <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步地址">
                                             <ToolTip Text="设置同步地址" />
                                         </ext:GridCommand>
@@ -122,7 +123,7 @@
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
                         </Listeners>
-<Plugins>
+                        <Plugins>
                             <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="false">
                                 <Template ID="Template1" runat="server">
                         <p><b>通道接口文档：</b><br /> {InterfaceList}</p>

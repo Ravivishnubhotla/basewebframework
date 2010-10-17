@@ -46,18 +46,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
             Server.ScriptTimeout = 300;
             try
             {
-                SPDayReportWrapper.ArchivesData(this.Server.MapPath("~/DayReport/"), Convert.ToDateTime(this.dfStart.Value), Convert.ToDateTime(this.dfEnd.Value));
+                //SPDayReportWrapper.ArchivesData(this.Server.MapPath("~/DayReport/"), );
 
-                //string dbsizestring = SPDayReportWrapper.GetDbSizeString();
+                SPDayReportWrapper.ReGenerateDayReport(Convert.ToDateTime(this.dfStart.Value), Convert.ToDateTime(this.dfEnd.Value));
 
-                //decimal space = SPDayReportWrapper.GetDbSize();
-
-                //decimal total = 500.00m;
-
-                //prgData.Text = string.Format("占用数据库空间{0},空间使用率{1}%", dbsizestring, (space / total * 100m).ToString("N2"));
-
-                //prgData.UpdateProgress(float.Parse((space / total).ToString()));
-                
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)

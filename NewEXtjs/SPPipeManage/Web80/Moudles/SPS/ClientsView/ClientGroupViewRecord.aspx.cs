@@ -27,6 +27,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             this.hidId.Text = id.ToString();
         }
 
+        protected void storeSPClient_OnRefresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            SPClientGroupWrapper clientGroup = SPClientGroupWrapper.FindById(this.ClientGroupID);
+
+            storeSPClient.DataSource = SPClientWrapper.FindAllBySPClientGroupID(clientGroup);
+            storeSPClient.DataBind();
+        }
+
 
         public int SPClientID
         {
