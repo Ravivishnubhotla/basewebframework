@@ -129,6 +129,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+
+	    public string DisplayName
+	    {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Alias))
+                {
+                    return this.UserLoginID;
+                }
+                return this.Alias;
+            }      
+	    }
+
 	    private SPClientChannelSettingWrapper defaultClientChannelSetting = null;
 
 	    public SPClientChannelSettingWrapper DefaultClientChannelSetting

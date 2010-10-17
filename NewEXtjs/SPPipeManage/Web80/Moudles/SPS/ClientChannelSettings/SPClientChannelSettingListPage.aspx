@@ -118,6 +118,21 @@
                     );
             }
 
+
+          if (cmd == "cmdTest") {
+
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle("  "+id.data.Name + "  " + " 发送模拟数据 ");
+                
+                win.autoLoad.url = 'SPChannelClientSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+        
+                win.show();    
+            }  
+
             if (cmd == "cmdParamsEdit") {
                 
                 var win = <%= this.winParamsEdit.ClientID %>;
@@ -258,6 +273,20 @@
     <ext:Window ID="winParamsEdit" runat="server" Title="Window" Frame="true" Width="640"
         ConstrainHeader="true" Height="450" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>
