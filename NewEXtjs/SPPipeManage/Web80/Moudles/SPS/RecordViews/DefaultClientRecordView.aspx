@@ -9,22 +9,15 @@
     </ext:ScriptManagerProxy>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
-    <ext:Store ID="storeSPClient" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:HttpProxy Method="GET" Url="../Clients/SPClientsHandler.ashx" />
-        </Proxy>
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="false"  OnRefreshData="storeSPClient_Refresh">
         <Reader>
-            <ext:JsonReader Root="datas" TotalProperty="total">
+            <ext:JsonReader  ReaderID="Id" >
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" Mapping="Id" />
                     <ext:RecordField Name="Name" Mapping="Name" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
-        <BaseParams>
-            <ext:Parameter Name="DataType" Mode="Value" Value="GetAllDefaultClient">
-            </ext:Parameter>
-        </BaseParams>
     </ext:Store>
     <ext:Store ID="store1" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="store1_Refresh">
         <AutoLoadParams>
