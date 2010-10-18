@@ -105,5 +105,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.RecordViews
 
 
         }
+
+        protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            storeSPClient.DataSource = SPClientWrapper.GetAllDefaultClient();
+
+            storeSPClient.DataBind();
+
+        }
     }
 }
