@@ -781,6 +781,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
+    <Folder Include="Moudles\SPS\MonitorRequestView\" />
+    <Folder Include="Moudles\SPS\SPChannelFilters\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>
