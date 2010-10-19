@@ -297,6 +297,23 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName));
         }
 
+        public static Hashtable GetRequestValue(HttpContext requestContext)
+        {
+            Hashtable hb = new Hashtable();
+
+            foreach (string key in requestContext.Request.Params.Keys)
+            {
+                hb.Add(key.ToLower(), requestContext.Request.Params[key.ToLower()]);
+            }
+
+            return hb;
+        }
+
+        public string GetRequsetValue(HttpContext requestContext, string fieldName)
+        {
+            return GetMappedParamValueFromRequest(GetRequestValue(requestContext), fieldName, GetFieldMappings());
+        }
+
         public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request,
                                    out RequestError error)
         {
@@ -577,9 +594,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return requestValues[queryKey].ToString();
         }
 
-        public string GetOkCode()
+        public string GetOkCode(HttpContext context)
         {
-            return "ok";
+            if (this.OkMessage == null)
+                return "";
+            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context,"linkid"));
         }
 
 
@@ -922,11 +941,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             if(string.IsNullOrEmpty(this.FailedMessage))
                 return "";
-
-            if (this.FailedMessage.Trim().ToLower().Equals("false"))
-                return this.FailedMessage.Trim().ToLower();
-            else
-                return "";
+            return this.FailedMessage.Trim().ToLower();
         }
     }
 }
