@@ -28,7 +28,7 @@ namespace Legendigital.Common.Web.AppClass
         {
             try
             {
-                Hashtable requestData = GetRequestValue(context);
+                Hashtable requestData = SPChannelWrapper.GetRequestValue(context);
 
                 string recievdData = JsonConvert.SerializeObject(requestData);
 
@@ -83,13 +83,13 @@ namespace Legendigital.Common.Web.AppClass
                         {
                             if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
                             {
-                                result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                result1 = channel.RecState(SPChannelWrapper.GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                             }
                             else
                             {
                                 channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
 
-                                context.Response.Write(channel.GetOkCode());
+                                context.Response.Write(channel.GetOkCode(context));
 
                                 return;
                             }
@@ -97,7 +97,7 @@ namespace Legendigital.Common.Web.AppClass
                         //发送数据请求
                         else if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestDataTypeValue))
                         {
-                            result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            result1 = channel.ProcessStateRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
                         }
                         else
                         {
@@ -118,31 +118,31 @@ namespace Legendigital.Common.Web.AppClass
                             {
                                 if (channel.StatSendOnce.HasValue && channel.StatSendOnce.Value)
                                 {
-                                    result1 = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                                    result1 = channel.ProcessRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
                                 }
                                 else
                                 {
-                                    result1 = channel.RecState(GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                    result1 = channel.RecState(SPChannelWrapper.GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                                 }
                             }
                             else
                             {
                                 channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
 
-                                context.Response.Write(channel.GetOkCode());
+                                context.Response.Write(channel.GetOkCode(context));
 
                                 return;
                             }
                         }
                         else
                         {
-                            result1 = channel.ProcessStateRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            result1 = channel.ProcessStateRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
                         }
                     }
 
                     if (result1)
                     {
-                        context.Response.Write(channel.GetOkCode());
+                        context.Response.Write(channel.GetOkCode(context));
                         return;
                     }
                     else
@@ -161,10 +161,10 @@ namespace Legendigital.Common.Web.AppClass
 
                 RequestError requestError;
 
-                bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
+                bool result = channel.ProcessRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
 
                 if (result)
-                    context.Response.Write(channel.GetOkCode());
+                    context.Response.Write(channel.GetOkCode(context));
                 else
                 {
                     logger.Warn(requestError.ErrorMessage);
@@ -181,7 +181,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 try
                 {
-                    Hashtable recivedata = GetRequestValue(context);
+                    Hashtable recivedata = SPChannelWrapper.GetRequestValue(context);
 
                     string recievdData = JsonConvert.SerializeObject(recivedata);
 
@@ -242,24 +242,6 @@ namespace Legendigital.Common.Web.AppClass
             }
             return ip;
         }
-
-
-
-        private Hashtable GetRequestValue(HttpContext requestContext)
-        {
-            Hashtable hb = new Hashtable();
-
-            foreach (string key in requestContext.Request.Params.Keys)
-            {
-                hb.Add(key.ToLower(), requestContext.Request.Params[key.ToLower()]);
-            }
-
-            return hb;
-        }
-
-
-
-
 
 
 
