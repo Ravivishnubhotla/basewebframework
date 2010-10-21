@@ -205,5 +205,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             businessProxy.ReGenerateDayReport(startDateTime, endDateTime);
 	    }
+
+	    public static DataTable GetTodayReportByProvince(int clientID, int channelID, string province)
+	    {
+            return businessProxy.GetTodayReport(clientID, channelID);
+	    }
     }
 }

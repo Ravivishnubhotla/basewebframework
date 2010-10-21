@@ -20,17 +20,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             {
                 this.hidId.Text = this.SPClientID.ToString();
 
-                this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
-
-
                 int channelID = 0;
 
-                if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
-                {
-                    channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
-                }
 
-                DataTable dt = this.GetDataTable(this.SPClientID, channelID);
+                DataTable dt = this.GetDataTable(this.SPClientID, channelID, "");
 
                 this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
 
@@ -43,12 +36,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             int channelID = 0;
 
-            if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
+            string province = "";
+
+            if(cmbProvince.SelectedItem !=null)
             {
-                channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+                province = (cmbProvince.SelectedItem).ToString();
             }
 
-            DataTable dt = this.GetDataTable(this.SPClientID, channelID);
+            DataTable dt = this.GetDataTable(this.SPClientID, channelID, province);
 
             this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
 
@@ -57,9 +52,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         }
 
 
-        private DataTable GetDataTable(int clientID,int channelID)
+        private DataTable GetDataTable(int clientID,int channelID,string province)
         {
-            DataTable dt = SPDayReportWrapper.GetTodayReport(clientID, channelID);
+            DataTable dt = SPDayReportWrapper.GetTodayReportByProvince(clientID, channelID, province);
 
             DataTable table = new DataTable();
 
@@ -67,7 +62,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             new DataColumn("CHour")   { ColumnName = "CHour",    DataType = typeof(string) },
             new DataColumn("Count")     { ColumnName = "Count",      DataType = typeof(int) }
             });
-
 
             int chour = System.DateTime.Now.Hour;
 
