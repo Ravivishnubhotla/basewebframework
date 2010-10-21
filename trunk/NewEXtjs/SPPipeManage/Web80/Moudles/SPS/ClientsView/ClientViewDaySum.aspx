@@ -3,25 +3,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-        <Listeners>
-            <DocumentReady Handler="#{storeSPChannel}.reload();" />
-        </Listeners>
     </ext:ScriptManagerProxy>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:HttpProxy Method="GET" Url="../Channels/SPChannelHandlerByClientID.ashx" />
-        </Proxy>
-        <Reader>
-            <ext:JsonReader Root="channels" TotalProperty="total">
-                <Fields>
-                    <ext:RecordField Name="Id" Type="int" Mapping="Id" />
-                    <ext:RecordField Name="Name" Mapping="Name" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>
     <ext:Store ID="store1" runat="server" AutoLoad="true" OnRefreshData="store1_Refresh">
         <Reader>
             <ext:JsonReader ReaderID="RID">
@@ -47,11 +31,41 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem Text="通道:">
+                                    <ext:ToolbarTextItem Text="省份:">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Id"
-                                        EmptyText="全部">
+                                    <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" AllowBlank="True" TriggerAction="All">
+                                        <Items>
+                                            <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
+                                            <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
+                                            <ext:ListItem Value="福建" Text="福建"></ext:ListItem>
+                                            <ext:ListItem Value="甘肃" Text="甘肃"></ext:ListItem>
+                                            <ext:ListItem Value="广东" Text="广东"></ext:ListItem>
+                                            <ext:ListItem Value="广西" Text="广西"></ext:ListItem>
+                                            <ext:ListItem Value="贵州" Text="贵州"></ext:ListItem>
+                                            <ext:ListItem Value="海南" Text="海南"></ext:ListItem>
+                                            <ext:ListItem Value="河北" Text="河北"></ext:ListItem>
+                                            <ext:ListItem Value="河南" Text="河南"></ext:ListItem>
+                                            <ext:ListItem Value="黑龙江" Text="黑龙江"></ext:ListItem>
+                                            <ext:ListItem Value="湖北" Text="湖北"></ext:ListItem>
+                                            <ext:ListItem Value="湖南" Text="湖南"></ext:ListItem>
+                                            <ext:ListItem Value="吉林" Text="吉林"></ext:ListItem>
+                                            <ext:ListItem Value="江苏" Text="江苏"></ext:ListItem>
+                                            <ext:ListItem Value="江西" Text="江西"></ext:ListItem>
+                                            <ext:ListItem Value="辽宁" Text="辽宁"></ext:ListItem>
+                                            <ext:ListItem Value="内蒙古" Text="内蒙古"></ext:ListItem>
+                                            <ext:ListItem Value="宁夏" Text="宁夏"></ext:ListItem>
+                                            <ext:ListItem Value="青海" Text="青海"></ext:ListItem>
+                                            <ext:ListItem Value="山东" Text="山东"></ext:ListItem>
+                                            <ext:ListItem Value="陕西" Text="陕西"></ext:ListItem>
+                                            <ext:ListItem Value="上海" Text="上海"></ext:ListItem>
+                                            <ext:ListItem Value="四川" Text="四川"></ext:ListItem>
+                                            <ext:ListItem Value="天津" Text="天津"></ext:ListItem>
+                                            <ext:ListItem Value="西藏" Text="西藏"></ext:ListItem>
+                                            <ext:ListItem Value="新疆" Text="新疆"></ext:ListItem>
+                                            <ext:ListItem Value="云南" Text="云南"></ext:ListItem>
+                                            <ext:ListItem Value="浙江" Text="浙江"></ext:ListItem>
+                                            <ext:ListItem Value="重庆" Text="重庆"></ext:ListItem>
+                                        </Items>
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                         </Triggers>

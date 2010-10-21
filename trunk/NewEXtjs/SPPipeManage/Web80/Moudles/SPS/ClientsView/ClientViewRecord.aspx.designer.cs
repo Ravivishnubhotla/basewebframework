@@ -31,15 +31,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.Hidden hidId;
         
         /// <summary>
-        /// storeSPChannel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPChannel;
-        
-        /// <summary>
         /// store1 control.
         /// </summary>
         /// <remarks>
@@ -85,13 +76,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.Toolbar tbTop;
         
         /// <summary>
-        /// cmbChannelID control.
+        /// cmbProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
+        protected global::Coolite.Ext.Web.ComboBox cmbProvince;
         
         /// <summary>
         /// dfReportStartDate control.

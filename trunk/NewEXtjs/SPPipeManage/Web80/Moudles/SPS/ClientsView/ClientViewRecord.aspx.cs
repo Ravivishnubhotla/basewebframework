@@ -51,7 +51,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.hidId.Text = this.SPClientID.ToString();
 
-            this.storeSPChannel.BaseParams.Add(new Coolite.Ext.Web.Parameter("ClinetID", this.SPClientID.ToString()));
+
 
             this.gridPanelSPClientChannelSetting.Reload();
         }
@@ -61,11 +61,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             get
             {
                 int channelID = 0;
-
-                if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
-                {
-                    channelID = int.Parse(this.cmbChannelID.SelectedItem.Value);
-                }
 
                 return channelID;
             }
