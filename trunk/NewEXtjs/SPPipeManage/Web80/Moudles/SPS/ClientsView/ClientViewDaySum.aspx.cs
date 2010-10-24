@@ -16,6 +16,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
     public partial class ClientViewDaySum : SPSClientViewPage
     {
 
+
+
+
         protected DateTime GetDT()
         {
             switch (System.DateTime.Now.DayOfWeek)
@@ -58,6 +61,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             this.dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1).Date;
 
             this.hidId.Text = this.SPClientID.ToString();
+
+            this.hidChannelID.Text =
+                SPClientWrapper.FindById(this.SPClientID).DefaultClientChannelSetting.ChannelID.Id.ToString();
 
             this.gridPanelSPClientChannelSetting.Reload();
         }

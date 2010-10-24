@@ -6,6 +6,8 @@
     </ext:ScriptManagerProxy>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
+        <ext:Hidden ID="hidChannelID" runat="server">
+    </ext:Hidden>
     <ext:Store ID="store1" runat="server" AutoLoad="true" OnRefreshData="store1_Refresh">
         <Reader>
             <ext:JsonReader ReaderID="RID">
@@ -22,6 +24,30 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+  <script type="text/javascript">
+   var gridCommand = function(command, record, row, col) {
+       if (command == 'cmdChartProvince') {
+                
+               var win = <%= this.winRrovinceReport.ClientID %>;
+
+               var hchannelID = <%= this.hidChannelID.ClientID %>;
+
+                win.setTitle("  日期：【" +  Ext.util.Format.date(record.data.ReportDate,'Y-m-d') + "】省份分布 ");
+                
+ 
+                
+                win.autoLoad.params.ChannleID = hchannelID.getValue();
+                win.autoLoad.params.ClientID = <%= SPClientID %>;
+                win.autoLoad.params.StartDate = record.data.ReportDate;
+                win.autoLoad.params.EndDate = record.data.ReportDate;
+                win.autoLoad.params.DataType = "downcountdetail";
+                win.autoLoad.params.IsClientShow = "1";        
+
+        win.show(); 
+            }
+        };
+  </script>
+  
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -31,9 +57,10 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem Text="省份:">
+                                    <ext:ToolbarTextItem Text=" ">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" AllowBlank="True" TriggerAction="All">
+                                    <ext:ComboBox ID="cmbProvince" Hidden="true" Editable="true" runat="server" AllowBlank="True"
+                                        TriggerAction="All">
                                         <Items>
                                             <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                             <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
@@ -104,18 +131,25 @@
                                     Width="20">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelName" DataIndex="ChannelName" Header="通道" Sortable="true"
-                                    Width="20">
-                                </ext:Column>
                                 <ext:Column ColumnID="colDownCount" DataIndex="DownCount" Header="点播数" Sortable="true"
                                     Width="20">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDownSycnCount" DataIndex="DownSycnCount" Header="同步下发数"
                                     Sortable="true" Width="20">
                                 </ext:Column>
+                                <ext:CommandColumn Header="统计" Width="80">
+                                    <Commands>
+                                        <ext:GridCommand Icon="ChartBar" CommandName="cmdChartProvince" Text="省份分布">
+                                            <ToolTip Text="省份分布" />
+                                        </ext:GridCommand>
+                                    </Commands>
+                                </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
+                        <Listeners>
+                            <Command Fn="gridCommand" />
+                        </Listeners>
                         <BottomBar>
                             <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="store1"
                                 DisplayInfo="true" DisplayMsg="显示记录 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的记录" />
@@ -125,4 +159,31 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+
+
+
+        <ext:Window ID="winRrovinceReport" runat="server" Title="数据省份分布报表" Frame="true" Width="640"
+        ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Reports/DataProviceReport.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="StartDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="EndDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="IsClientShow" Mode="Raw" Value="1">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>
