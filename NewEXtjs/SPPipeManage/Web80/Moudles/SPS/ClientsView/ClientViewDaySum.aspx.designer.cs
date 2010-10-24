@@ -31,6 +31,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.Hidden hidId;
         
         /// <summary>
+        /// hidChannelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidChannelID;
+        
+        /// <summary>
         /// store1 control.
         /// </summary>
         /// <remarks>
@@ -128,5 +137,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winRrovinceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winRrovinceReport;
     }
 }
