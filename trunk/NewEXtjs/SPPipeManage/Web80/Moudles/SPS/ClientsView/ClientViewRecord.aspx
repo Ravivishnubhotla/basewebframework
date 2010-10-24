@@ -31,6 +31,7 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -74,6 +75,7 @@
                                             <ext:ListItem Value="云南" Text="云南"></ext:ListItem>
                                             <ext:ListItem Value="浙江" Text="浙江"></ext:ListItem>
                                             <ext:ListItem Value="重庆" Text="重庆"></ext:ListItem>
+                                            <ext:ListItem Value="NULL" Text="未知地区"></ext:ListItem>
                                         </Items>
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />

@@ -22,8 +22,41 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
                 int channelID = 0;
 
+                SPClientChannelSettingWrapper channelSettingWrapper = SPClientWrapper.FindById(this.SPClientID).DefaultClientChannelSetting; 
 
                 DataTable dt = this.GetDataTable(this.SPClientID, channelID, "");
+
+
+
+                winRrovinceReport.AutoLoad.Params.Clear();
+
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("ChannleID", channelSettingWrapper.ChannelID.Id.ToString(), ParameterMode.Value));
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("ClientID", channelSettingWrapper.ClinetID.Id.ToString(), ParameterMode.Value));
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("StartDate", System.DateTime.Now.ToShortDateString(), ParameterMode.Value));
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("EndDate", System.DateTime.Now.ToShortDateString(), ParameterMode.Value));
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("DataType", "downcountdetail", ParameterMode.Value));
+                winRrovinceReport.AutoLoad.Params.Add(new Parameter("IsClientShow", "1", ParameterMode.Value));
+
+
+                
+                //                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                //</ext:Parameter>
+                //<ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                //</ext:Parameter>
+                //<ext:Parameter Name="StartDate" Mode="Raw" Value="2009-1-1">
+                //</ext:Parameter>
+                //<ext:Parameter Name="EndDate" Mode="Raw" Value="2009-1-1">
+                //</ext:Parameter>
+                //<ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                //</ext:Parameter>
+
+                //winRrovinceReport.AutoLoad.Params["ChannleID"] = channelSettingWrapper.ChannelID.Id.ToString();
+                //winRrovinceReport.AutoLoad.Params["ClientID"] = channelSettingWrapper.ClinetID.Id.ToString();
+                //winRrovinceReport.AutoLoad.Params["StartDate"] = System.DateTime.Now.ToShortDateString();
+                //winRrovinceReport.AutoLoad.Params["EndDate"] = System.DateTime.Now.ToShortDateString();
+                //winRrovinceReport.AutoLoad.Params["DataType"] = "downcountdetail";
+
+                
 
                 this.txtTotalCount.Text = "共计：" + dt.Compute(" Sum(Count) ", " 1=1 ").ToString();
 

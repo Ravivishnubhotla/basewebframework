@@ -1111,5 +1111,41 @@ namespace LD.SPPipeManage.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
 
         }
+
+
+        public DataTable CountDataByProvince(int channelID,int clientID, DateTime startDateTime, DateTime enddateTime,string dataType)
+        {
+            string sql = "select IsNull(Province,'Î´ÖªÊ¡·İ') as ProvinceName,COUNT(*) as DataCount from SPPaymentInfo where ChannelID = @ChannelID and  ClientID =@ClientID and CreateDate>=@startDate and CreateDate<=@enddate {0} group by Province";
+
+            switch (dataType)
+            {
+                case "All":
+                    sql = string.Format(sql, " ");
+                    break;
+                case "Intercept":
+                    sql = string.Format(sql, " and IsIntercept = 1 ");
+                    break;
+                case "Down":
+                    sql = string.Format(sql, " and IsIntercept = 0 ");
+                    break;
+                case "DownSycn":
+                    sql = string.Format(sql, " and IsIntercept = 0 and SucesssToSend =1 ");
+                    break;       
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ChannelID", channelID);
+
+            dbParameters.AddWithValue("ClientID", clientID);
+
+            dbParameters.AddWithValue("startDate", startDateTime.Date);
+
+            dbParameters.AddWithValue("enddate", enddateTime.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+ 
     }
 }

@@ -116,8 +116,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 startDate = GetDT();
             }
 
+            string province = "";
 
-            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(ChannelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            if(this.cmbProvince.SelectedItem !=null)
+            {
+                province = this.cmbProvince.SelectedItem.Value;
+            }
+
+
+            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
             if (list.Count > 0)
             {
