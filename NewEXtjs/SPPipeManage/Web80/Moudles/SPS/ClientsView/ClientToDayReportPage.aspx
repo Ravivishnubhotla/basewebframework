@@ -18,6 +18,13 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+    function showProvince() { 
+        var win = <%= this.winRrovinceReport.ClientID %>;
+        win.show(); 
+    }
+
+    </script>
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -29,7 +36,7 @@
                                 <Items>
                                     <ext:ToolbarTextItem Text="省份:">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" AllowBlank="True" TriggerAction="All">
+                                    <ext:ComboBox ID="cmbProvince" Editable="true" Hidden=true runat="server" AllowBlank="True" TriggerAction="All">
                                         <Items>
                                             <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                             <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
@@ -71,9 +78,14 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="省份分布" Icon="ChartBar">
+                                        <Listeners>
+                                            <Click Handler="showProvince();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                     <ext:ToolbarTextItem ID="txtTotalCount" runat="server" Text="共计:">
@@ -101,4 +113,28 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winRrovinceReport" runat="server" Title="数据省份分布报表" Frame="true" Width="640"
+        ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Reports/DataProviceReport.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="StartDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="EndDate" Mode="Raw" Value="2009-1-1">
+                </ext:Parameter>
+                <ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="IsClientShow" Mode="Raw" Value="1">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

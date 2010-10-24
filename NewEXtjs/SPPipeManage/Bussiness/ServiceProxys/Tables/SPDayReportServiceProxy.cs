@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Text;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using LD.SPPipeManage.Data.AdoNet;
 using LD.SPPipeManage.Data.Tables.Container;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
@@ -34,6 +35,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetCountReportByClientID(int spClientId, DateTime startDate, DateTime enddate);
         DataTable GetCountReportByClientGroupID(int spClientGroupId, DateTime startDate, DateTime enddate);
         void ReGenerateDayReport(DateTime startDateTime, DateTime endDateTime);
+        DataTable GetProvinceCountReport(int channleId, int clientId, DateTime startDate, DateTime endDate, DataType dType);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -176,6 +178,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             {
                 ReBulidReport(i);
             }
+        }
+
+        public DataTable GetProvinceCountReport(int channleId, int clientId, DateTime startDate, DateTime endDate, DataType dType)
+        {
+            return this.AdoNetDb.CountDataByProvince(channleId, clientId, startDate, endDate, dType.ToString());
         }
 
         public string GetDbSize()

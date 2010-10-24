@@ -148,6 +148,7 @@
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
+    <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -623,6 +624,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx.designer.cs">
       <DependentUpon>DefaultClientRecordView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataProviceReport.aspx.cs">
+      <DependentUpon>DataProviceReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataProviceReport.aspx.designer.cs">
+      <DependentUpon>DataProviceReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\DetailRecordView.aspx.cs">
       <DependentUpon>DetailRecordView.aspx</DependentUpon>

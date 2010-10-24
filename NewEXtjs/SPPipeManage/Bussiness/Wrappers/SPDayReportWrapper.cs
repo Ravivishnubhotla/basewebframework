@@ -210,5 +210,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetTodayReport(clientID, channelID);
 	    }
+
+	    public static DataTable GetProvinceCountReport(int channleId, int clientId, DateTime startDate, DateTime endDate, DataType dType)
+	    {
+            return businessProxy.GetProvinceCountReport(channleId, clientId, startDate, endDate, dType);
+	    }
     }
 }

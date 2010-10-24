@@ -247,5 +247,51 @@ namespace LD.SPPipeManage.Data.Tables
 
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
         }
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(SPClientEntity clientEntity, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientEntity));
+
+
+            if (startDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+            }
+
+
+            if (endDate != DateTime.MinValue)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                if (province.Equals("NULL"))
+                {
+                    queryBuilder.AddWhereClause(PROPERTY_PROVINCE.Eq(""));
+                }
+                else
+                {
+                    queryBuilder.AddWhereClause(PROPERTY_PROVINCE.Eq(province));
+                }
+            }
+
+
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+ 
+
+
+
+        }
     }
 }
