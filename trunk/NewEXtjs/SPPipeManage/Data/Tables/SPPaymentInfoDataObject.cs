@@ -279,7 +279,7 @@ namespace LD.SPPipeManage.Data.Tables
                 }
             }
 
-
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
 
             AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
 
