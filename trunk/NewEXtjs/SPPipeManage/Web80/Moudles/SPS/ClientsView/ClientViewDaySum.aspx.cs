@@ -106,7 +106,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 startDate = GetDT();
             }
 
-            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
+            DataTable tb = SPDayReportWrapper.GetCountReport(channelID, this.SPClientID, startDate.Date, Convert.ToDateTime(this.dfReportEndDate.DateField.Value).Date);
 
             store1.DataSource = tb;
             store1.DataBind();
