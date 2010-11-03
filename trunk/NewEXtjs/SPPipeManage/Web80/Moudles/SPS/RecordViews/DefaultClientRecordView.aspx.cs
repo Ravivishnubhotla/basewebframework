@@ -88,15 +88,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.RecordViews
             }
 
 
-            if (list.Count > 0)
-            {
-                foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in list)
-                {
-                    spPaymentInfoWrapper.Values = JsonConvert.SerializeObject(
-                        spPaymentInfoWrapper.GetValues(
-                            JsonConvert.DeserializeObject<Hashtable>(spPaymentInfoWrapper.RequestContent)));
-                }
-            }
 
             store1.DataSource = list;
             e.TotalCount = recordCount;

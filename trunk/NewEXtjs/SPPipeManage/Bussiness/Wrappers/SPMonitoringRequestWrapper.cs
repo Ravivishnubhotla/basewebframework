@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web;
+using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -126,5 +127,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 Logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫", e);
             }
 	    }
+
+        public static void SaveRequest(HttpGetPostRequest httpGetPostRequest, int channelID)
+        {
+            try
+            {
+                SPMonitoringRequestWrapper spFailedRequestWrapper = new SPMonitoringRequestWrapper();
+
+                if (channelID <= 0)
+                    spFailedRequestWrapper.ChannelID = null;
+                else
+                    spFailedRequestWrapper.ChannelID = channelID;
+
+
+
+                spFailedRequestWrapper.RecievedSendUrl = httpGetPostRequest.RequestUrl;
+
+                spFailedRequestWrapper.RecievedDate = DateTime.Now;
+
+                spFailedRequestWrapper.RecievedContent = httpGetPostRequest.RequestData;
+
+                spFailedRequestWrapper.RecievedIP = httpGetPostRequest.RequestIp;
+
+                Save(spFailedRequestWrapper);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫", e);
+            }
+        }
     }
 }

@@ -150,7 +150,7 @@
                 var win = <%= this.winChannelClientSettings.ClientID %>;
                 
 
-                win.setTitle(" 通道 "+id.data.Name+"  " + " 下家分配 ");
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 指令分配 ");
                 
                 win.autoLoad.url = '../ClientChannelSettings/SPClientChannelSettingListPage.aspx';
                 
@@ -296,8 +296,8 @@
                                         <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
                                             <ToolTip Text="测试" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="下家分配">
-                                            <ToolTip Text="下家分配" />
+                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配">
+                                            <ToolTip Text="指令分配" />
                                         </ext:GridCommand>
 
 

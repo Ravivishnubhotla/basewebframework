@@ -50,7 +50,7 @@ namespace Legendigital.Common.Web.AppClass
                         return;
                     }
 
-                    //bool result = channel.ProcessRequest(GetRequestValue(context), GetRealIP(), recievdData, context.Request);
+                    //bool result = channel.ProcessRequest(PraseHttpGetPostRequestValue(context), GetRealIP(), recievdData, context.Request);
 
                     //if (result)
                     //    context.Response.Write(channel.GetOkCode());

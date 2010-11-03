@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Web;
+using LD.SPPipeManage.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -133,5 +134,39 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 Logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫", e);
 	        }
 	    }
+
+        public static void SaveFailedRequest(HttpGetPostRequest httpGetPostRequest,string errormessgae, int channelID, int clientID)
+        {
+            try
+            {
+                SPFailedRequestWrapper spFailedRequestWrapper = new SPFailedRequestWrapper();
+
+                if (channelID <= 0)
+                    spFailedRequestWrapper.ChannelID = null;
+                else
+                    spFailedRequestWrapper.ChannelID = channelID;
+
+                if (clientID <= 0)
+                    spFailedRequestWrapper.ClientID = null;
+                else
+                    spFailedRequestWrapper.ClientID = clientID;
+
+                spFailedRequestWrapper.RecievedSendUrl = httpGetPostRequest.RequestUrl;
+
+                spFailedRequestWrapper.RecievedDate = DateTime.Now;
+
+                spFailedRequestWrapper.RecievedContent = httpGetPostRequest.RequestData;
+
+                spFailedRequestWrapper.RecievedIP = httpGetPostRequest.RequestIp;
+
+                spFailedRequestWrapper.FailedMessage = errormessgae;
+
+                Save(spFailedRequestWrapper);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫", e);
+            }
+        }
     }
 }

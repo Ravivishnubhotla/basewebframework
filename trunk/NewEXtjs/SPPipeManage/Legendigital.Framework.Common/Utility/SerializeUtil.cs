@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Legendigital.Framework.Common.Utility
 {
@@ -62,6 +63,17 @@ namespace Legendigital.Framework.Common.Utility
 
         public static string ToJson<T>(T obj)
         {
+            return JsonConvert.SerializeObject(obj);
+            //DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
+            //MemoryStream ms = new MemoryStream();
+            //ds.WriteObject(ms, obj);
+            //string strJSON = Encoding.UTF8.GetString(ms.ToArray());
+            //ms.Close();
+            //return strJSON;
+        }
+
+        public static string ToJson2<T>(T obj)
+        {
             DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
             MemoryStream ms = new MemoryStream();
             ds.WriteObject(ms, obj);
@@ -72,6 +84,18 @@ namespace Legendigital.Framework.Common.Utility
 
         public static T JsonDeserialize<T>(string sJson) where T : class
         {
+            return JsonConvert.DeserializeObject<T>(sJson);
+            //DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
+            //MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(sJson));
+            //T obj = (T)ds.ReadObject(ms);
+
+            //ms.Close();
+            //return obj;
+        }
+
+        public static T JsonDeserialize2<T>(string sJson) where T : class
+        {
+            //return JsonConvert.DeserializeObject<T>(sJson);
             DataContractJsonSerializer ds = new DataContractJsonSerializer(typeof(T));
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(sJson));
             T obj = (T)ds.ReadObject(ms);
@@ -79,6 +103,9 @@ namespace Legendigital.Framework.Common.Utility
             ms.Close();
             return obj;
         }
+
+
+
 
 
 

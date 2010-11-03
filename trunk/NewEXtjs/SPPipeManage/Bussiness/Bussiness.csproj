@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\ChannelStatus.cs" />
+    <Compile Include="Commons\HttpGetPostRequest.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs" />
     <Compile Include="DataContracts\Tables\SPChannelFiltersDataContract.cs" />

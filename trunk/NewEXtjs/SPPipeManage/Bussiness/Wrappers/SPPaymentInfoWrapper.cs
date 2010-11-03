@@ -230,24 +230,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-	    private string values;
-
 	    public string Values
 	    {
 	        get
 	        {
+                if (string.IsNullOrEmpty(this.RequestContent))
+                    return "";
+
+	            string values;
+
+                if (this.RequestContent.Trim().StartsWith("["))
+                {
+                    values =
+                        SerializeUtil.ToJson(GetValues(SerializeUtil.JsonDeserialize2<Hashtable>(this.RequestContent)));
+                }
+                else
+                {
+                    values =
+                  SerializeUtil.ToJson(GetValues(SerializeUtil.JsonDeserialize<Hashtable>(this.RequestContent)));              
+                }
 	            return values;
 	        }
-            set
-            {
-                values = value;
-            }
+
 	    }
 
-        public void SetHBValues(Hashtable hashtable)
-        {
-            values = SerializeUtil.ToJson(hashtable);
-        }
+ 
 
 	    public Hashtable GetValues(Hashtable hashtable)
 	    {
