@@ -17,61 +17,50 @@ namespace Legendigital.Common.Web.AppClass
         StateReport
     }
 
-
-
     public class SPRecievedHandler : IHttpHandler
     {
         protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
-
 
         public void ProcessRequest(HttpContext context)
         {
             try
             {
-                Hashtable requestData = SPChannelWrapper.GetRequestValue(context);
+                HttpGetPostRequest httpGetPostRequest = new HttpGetPostRequest(context.Request);
 
-                string recievdData = JsonConvert.SerializeObject(requestData);
-
-                string fileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
-
-                if (string.IsNullOrEmpty(fileName))
+                //检测是否存在ashx
+                if (string.IsNullOrEmpty(httpGetPostRequest.RequestFileName))
                 {
-                    logger.Warn("请求失败：没有指定ashx路径。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
-
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：没有指定ashx路径。\n", 0, 0);
+                    LogWarnInfo(httpGetPostRequest, "请求失败：没有指定ashx路径。\n",0,0);
 
                     return;
                 }
 
-                fileName = fileName.Substring(0, fileName.Length - ("Recieved").Length);
-
-
-                SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(fileName);
+                SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(httpGetPostRequest.GetChannelCode());
 
                 //如果没有找到通道
                 if (channel == null)
                 {
-                    logger.Warn("处理请求失败：无法找到对应的通道。\n" + "请求信息：\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：无法找到对应的通道。\n", 0, 0);
+                    LogWarnInfo(httpGetPostRequest, "处理请求失败：无法找到对应的通道。\n", 0, 0);
+
                     return;
                 }
-
+                //如果通道未能运行
                 if (channel.CStatus != ChannelStatus.Run)
                 {
-                    logger.Warn("请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n请求信息：\n", channel.Id, 0);
+                    LogWarnInfo(httpGetPostRequest, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n", channel.Id, 0);
+
                     context.Response.Write(channel.GetFailedCode());
+
                     return;
                 }
-
+                //如果通道是监视通道，记录请求。
                 if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
                 {
-                    SPMonitoringRequestWrapper.SaveRequest(context.Request, GetRealIP(), recievdData, channel.Id);
+                    SPMonitoringRequestWrapper.SaveRequest(httpGetPostRequest, channel.Id);
                 }
-
+                //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
                 {
-
                     RequestError requestError1 = new RequestError();
 
                     bool result1 = false;
@@ -79,15 +68,15 @@ namespace Legendigital.Common.Web.AppClass
                     if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
                     {
                         //报告状态请求
-                        if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestReportTypeValue))
+                        if (httpGetPostRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestReportTypeValue))
                         {
-                            if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                            if (httpGetPostRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
                             {
-                                result1 = channel.RecState(SPChannelWrapper.GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                result1 = channel.RecState(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                             }
                             else
                             {
-                                channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+                                channel.SaveStatReport(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(context));
 
@@ -95,15 +84,13 @@ namespace Legendigital.Common.Web.AppClass
                             }
                         }
                         //发送数据请求
-                        else if (IsRequestContainValues(requestData, channel.RequestTypeParamName, channel.RequestDataTypeValue))
+                        else if (httpGetPostRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestDataTypeValue))
                         {
-                            result1 = channel.ProcessStateRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            result1 = channel.ProcessStateRequest(httpGetPostRequest, out requestError1);
                         }
                         else
                         {
-                            SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "未知类型请求", channel.Id, 0);
-
-                            logger.Warn("未知类型请求:" + GetRequestInfo(context.Request));
+                            LogWarnInfo(httpGetPostRequest, "未知类型请求", channel.Id, 0);
 
                             context.Response.Write(channel.GetFailedCode());
 
@@ -112,22 +99,22 @@ namespace Legendigital.Common.Web.AppClass
                     }
                     else
                     {
-                        if (requestData.ContainsKey(channel.StatParamsName.ToLower()))
+                        if (httpGetPostRequest.RequestParams.ContainsKey(channel.StatParamsName.ToLower()))
                         {
-                            if (IsRequestContainValues(requestData, channel.StatParamsName, channel.StatParamsValues))
+                            if (httpGetPostRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
                             {
                                 if (channel.StatSendOnce.HasValue && channel.StatSendOnce.Value)
                                 {
-                                    result1 = channel.ProcessRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                                    result1 = channel.ProcessRequest(httpGetPostRequest, out requestError1);
                                 }
                                 else
                                 {
-                                    result1 = channel.RecState(SPChannelWrapper.GetRequestValue(context), recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                    result1 = channel.RecState(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                                 }
                             }
                             else
                             {
-                                channel.SaveStatReport(requestData, recievdData, context.Request.Url.Query, requestData[channel.StatParamsName.ToLower()].ToString());
+                                channel.SaveStatReport(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(context));
 
@@ -136,114 +123,85 @@ namespace Legendigital.Common.Web.AppClass
                         }
                         else
                         {
-                            result1 = channel.ProcessStateRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError1);
+                            result1 = channel.ProcessStateRequest(httpGetPostRequest, out requestError1);
                         }
                     }
 
+                    //正确数据返回OK
                     if (result1)
                     {
                         context.Response.Write(channel.GetOkCode(context));
                         return;
                     }
-                    else
+
+                    
+
+                    //重复数据返回OK
+                    if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
                     {
                         logger.Warn(requestError1.ErrorMessage);
-
-                        SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError1.ErrorMessage, channel.Id, 0);
-
-                        context.Response.Write(channel.GetFailedCode());
-
+                        context.Response.Write(channel.GetOkCode(context));
                         return;
                     }
+
+                    //其他错误类型记录错误请求
+                    LogWarnInfo(httpGetPostRequest, requestError1.ErrorMessage, channel.Id, 0);
+
+                    context.Response.Write(channel.GetFailedCode());
+
+                    return;
+            
                 }
-
-
 
                 RequestError requestError;
 
-                bool result = channel.ProcessRequest(SPChannelWrapper.GetRequestValue(context), GetRealIP(), recievdData, context.Request, out requestError);
+                bool result = channel.ProcessRequest(httpGetPostRequest, out requestError);
 
                 if (result)
-                    context.Response.Write(channel.GetOkCode(context));
-                else
                 {
-                    logger.Warn(requestError.ErrorMessage);
-
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, requestError.ErrorMessage, channel.Id, 0);
-
-                    context.Response.Write(channel.GetFailedCode());
+                    context.Response.Write(channel.GetOkCode(context));
+                    
+                    return;
                 }
 
+                //重复数据返回OK
+                if (requestError.ErrorType == RequestErrorType.RepeatLinkID)
+                {
+                    logger.Warn(requestError.ErrorMessage);
+                    context.Response.Write(channel.GetOkCode(context));
+                    return;
+                }
+
+                LogWarnInfo(httpGetPostRequest, requestError.ErrorMessage, channel.Id, 0);
+
+                context.Response.Write(channel.GetFailedCode());
+ 
             }
             catch (Exception ex)
             {
-                logger.Error("处理请求失败:\n" + "请求信息:\n" + GetRequestInfo(context.Request), ex);
-
                 try
                 {
-                    Hashtable recivedata = SPChannelWrapper.GetRequestValue(context);
+                    HttpGetPostRequest failRequest = new HttpGetPostRequest(context.Request);
 
-                    string recievdData = JsonConvert.SerializeObject(recivedata);
+                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message + "\n请求信息:\n" + failRequest.RequestData;
 
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), recievdData, "处理请求失败：" + ex.Message + "\n", 0, 0);
+                    logger.Error(errorMessage, ex);
+
+                    SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
                 }
                 catch (Exception e)
                 {
-                    logger.Error("失败请求保存失败.\n" + "请求信息系:\n" + GetRequestInfo(context.Request));
-                    SPFailedRequestWrapper.SaveFailedRequest(context.Request, GetRealIP(), GetRequestInfo(context.Request), "请求错误:" + e.Message + "\n", 0, 0);
-                }
-
-
-
-                return;
-            }
-        }
-
-
-        private bool IsRequestContainValues(Hashtable requestData, string fieldName, string value)
-        {
-            return requestData.ContainsKey(fieldName.ToLower()) && requestData[fieldName.ToLower()].ToString().ToLower().Trim().Contains(value.ToLower().Trim());
-        }
-
-        private string GetRequestInfo(HttpRequest request)
-        {
-            Hashtable hb = new Hashtable();
-
-            foreach (string key in request.Params.Keys)
-            {
-                if (!string.IsNullOrEmpty(key))
-                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
-            }
-
-            return JsonConvert.SerializeObject(hb);
-        }
-
-
-
-
-
-        public static string GetRealIP()
-        {
-            string ip = string.Empty;
-            try
-            {
-                if (HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null)
-                {
-                    ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
-                }
-                else
-                {
-                    ip = HttpContext.Current.Request.UserHostAddress;
+                    logger.Error("处理请求失败:\n错误信息：" + e.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                logger.Error("获取IP错误:", ex);
-            }
-            return ip;
         }
 
+        private void LogWarnInfo(HttpGetPostRequest httpGetPostRequest,string errorInfo,int channelID,int clientID)
+        {
+            logger.Warn(errorInfo + "请求信息：\n" + httpGetPostRequest.RequestData);
 
+            SPFailedRequestWrapper.SaveFailedRequest(httpGetPostRequest, errorInfo, channelID, clientID);
+        }
 
 
         public bool IsReusable
