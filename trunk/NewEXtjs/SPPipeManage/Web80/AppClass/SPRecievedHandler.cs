@@ -183,9 +183,9 @@ namespace Legendigital.Common.Web.AppClass
                 {
                     IHttpRequest failRequest = new HttpGetPostRequest(context.Request);
 
-                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message + "\n请求信息:\n" + failRequest.RequestData;
+                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message ;
 
-                    logger.Error(errorMessage, ex);
+                    logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
                 }
