@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" ValidateRequest="false"
     CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
 
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
@@ -338,7 +338,7 @@
     </ext:ViewPort>
     <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false">
+        Resizable="true" Modal="true" ShowOnLoad="false"  AutoScroll=true>
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>

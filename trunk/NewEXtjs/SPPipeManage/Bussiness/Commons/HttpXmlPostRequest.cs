@@ -116,7 +116,14 @@ namespace LD.SPPipeManage.Bussiness.Commons
             foreach (XmlNode subnode in node.ChildNodes)
             {
                 hb.Add(subnode.Name, subnode.InnerText);
-            } 
+            }
+
+
+            foreach (string key in request.Params.Keys)
+            {
+                if (!string.IsNullOrEmpty(key))
+                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+            }
 
             return hb;
         }

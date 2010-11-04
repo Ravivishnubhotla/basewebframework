@@ -65,7 +65,7 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:FormPanel ID="FormPanel1" runat="server" Frame="true" Title="发送测试数据">
+                    <ext:FormPanel ID="FormPanel1" runat="server" Frame="true" Title="发送测试数据"  AutoScroll=true>
                         <Body>
                             <ext:FormLayout ID="FormLayout1" runat="server">
                                 <Anchors>
