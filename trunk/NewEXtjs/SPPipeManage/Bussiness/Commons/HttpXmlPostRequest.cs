@@ -5,13 +5,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Xml;
 using Legendigital.Framework.Common.Utility;
 
 namespace LD.SPPipeManage.Bussiness.Commons
 {
     [Serializable]
-    public class HttpGetPostRequest : IHttpRequest
+    public class HttpXmlPostRequest : IHttpRequest
     {
+        public const string XmlNodeName = "message";
+
+
         private Hashtable requestParams;
 
         private string requestData;
@@ -61,9 +65,9 @@ namespace LD.SPPipeManage.Bussiness.Commons
         }
 
 
-        public HttpGetPostRequest(HttpRequest request)
+        public HttpXmlPostRequest(HttpRequest request)
         {
-            requestParams = PraseHttpGetPostRequestValue(request);
+            requestParams = PraseHttpXmlRequestValue(request);
 
             requestData = SerializeUtil.ToJson(requestParams);
 
@@ -96,17 +100,42 @@ namespace LD.SPPipeManage.Bussiness.Commons
             return ip;
         }
 
-        public static Hashtable PraseHttpGetPostRequestValue(HttpRequest request)
+        public static Hashtable PraseHttpXmlRequestValue(HttpRequest request)
         {
+            XmlDocument xmldoc = new XmlDocument();
+
+            xmldoc.LoadXml(GetXmlPostValueFromRequest(request));
+
             Hashtable hb = new Hashtable();
 
-            foreach (string key in request.Params.Keys)
+            XmlNode node = xmldoc.SelectSingleNode(XmlNodeName);
+
+            if (node == null)
+                return hb;
+
+            foreach (XmlNode subnode in node.ChildNodes)
             {
-                if (!string.IsNullOrEmpty(key))
-                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
-            }
+                hb.Add(subnode.Name, subnode.InnerText);
+            } 
 
             return hb;
+        }
+
+
+        public static string GetXmlPostValueFromRequest(HttpRequest request)
+        {
+            StringBuilder fileContent = new StringBuilder();
+
+            using (StreamReader sr = new StreamReader(request.InputStream))
+            {
+                String line;
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    fileContent.Append(line + "\n");
+                }
+            }
+            return fileContent.ToString();
         }
 
  

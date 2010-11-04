@@ -314,7 +314,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return GetMappedParamValueFromRequest(GetRequestValue(requestContext), fieldName, GetFieldMappings());
         }
 
-        public bool ProcessRequest(HttpGetPostRequest httpGetPostRequest,
+        public bool ProcessRequest(IHttpRequest httpGetPostRequest,
                            out RequestError error)
         {
             error = new RequestError();
@@ -768,12 +768,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return requestValues[queryKey].ToString();
         }
 
-        public string GetOkCode(HttpContext context)
-        {
-            if (this.OkMessage == null)
-                return "";
-            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context,"linkid"));
-        }
+
 
 
         public DataTable BuildChannelRecordTable()
@@ -813,18 +808,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             SPStatReportWrapper.Save(statReport);
         }
 
-        public void SaveStatReport(HttpGetPostRequest httpGetPostRequest, string stat)
+        public void SaveStatReport(IHttpRequest httpRequest, string stat)
         {
             Hashtable fieldMappings = GetFieldMappings();
 
-            string linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
+            string linkid = GetMappedParamValueFromRequest(httpRequest.RequestParams, "linkid", fieldMappings);
 
             var statReport = new SPStatReportWrapper();
             statReport.ChannelID = Id;
             statReport.LinkID = linkid;
             statReport.CreateDate = DateTime.Now;
-            statReport.QueryString = httpGetPostRequest.RequestQueryString;
-            statReport.RequestContent = httpGetPostRequest.RequestData;
+            statReport.QueryString = httpRequest.RequestQueryString;
+            statReport.RequestContent = httpRequest.RequestData;
             statReport.Stat = stat;
 
             SPStatReportWrapper.Save(statReport);
@@ -996,7 +991,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public bool ProcessStateRequest(HttpGetPostRequest httpGetPostReques, out RequestError error)
+        public bool ProcessStateRequest(IHttpRequest httpGetPostReques, out RequestError error)
         {
             error = new RequestError();
             error.ErrorType = RequestErrorType.NoError;
@@ -1260,7 +1255,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         }
 
-        public bool RecState(HttpGetPostRequest httpGetPostRequest, string stat, out RequestError error)
+        public bool RecState(IHttpRequest httpGetPostRequest, string stat, out RequestError error)
         {
             Hashtable fieldMappings = GetFieldMappings();
 
@@ -1402,11 +1397,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return hb;
         }
+
         public string GetFailedCode()
         {
             if(string.IsNullOrEmpty(this.FailedMessage))
                 return "";
             return this.FailedMessage.Trim().ToLower();
+        }
+
+        public string GetOkCode(HttpContext context)
+        {
+            if (this.OkMessage == null)
+                return "";
+            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context, "linkid"));
+        }
+
+        public string GetOkCode(IHttpRequest httpRequest)
+        {
+            if (this.OkMessage == null)
+                return "";
+            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context, "linkid"));
         }
     }
 }

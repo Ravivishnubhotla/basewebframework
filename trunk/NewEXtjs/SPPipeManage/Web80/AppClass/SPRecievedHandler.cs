@@ -25,29 +25,29 @@ namespace Legendigital.Common.Web.AppClass
         {
             try
             {
-                HttpGetPostRequest httpGetPostRequest = new HttpGetPostRequest(context.Request);
+                IHttpRequest httpRequest = new HttpGetPostRequest(context.Request);
 
                 //检测是否存在ashx
-                if (string.IsNullOrEmpty(httpGetPostRequest.RequestFileName))
+                if (string.IsNullOrEmpty(httpRequest.RequestFileName))
                 {
-                    LogWarnInfo(httpGetPostRequest, "请求失败：没有指定ashx路径。\n",0,0);
+                    LogWarnInfo(httpRequest, "请求失败：没有指定ashx路径。\n", 0, 0);
 
                     return;
                 }
 
-                SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(httpGetPostRequest.GetChannelCode());
+                SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(httpRequest.GetChannelCode());
 
                 //如果没有找到通道
                 if (channel == null)
                 {
-                    LogWarnInfo(httpGetPostRequest, "处理请求失败：无法找到对应的通道。\n", 0, 0);
+                    LogWarnInfo(httpRequest, "处理请求失败：无法找到对应的通道。\n", 0, 0);
 
                     return;
                 }
                 //如果通道未能运行
                 if (channel.CStatus != ChannelStatus.Run)
                 {
-                    LogWarnInfo(httpGetPostRequest, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n", channel.Id, 0);
+                    LogWarnInfo(httpRequest, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n", channel.Id, 0);
 
                     context.Response.Write(channel.GetFailedCode());
 
@@ -56,7 +56,7 @@ namespace Legendigital.Common.Web.AppClass
                 //如果通道是监视通道，记录请求。
                 if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
                 {
-                    SPMonitoringRequestWrapper.SaveRequest(httpGetPostRequest, channel.Id);
+                    SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
                 //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
@@ -68,15 +68,15 @@ namespace Legendigital.Common.Web.AppClass
                     if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
                     {
                         //报告状态请求
-                        if (httpGetPostRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestReportTypeValue))
+                        if (httpRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestReportTypeValue))
                         {
-                            if (httpGetPostRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
+                            if (httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
                             {
-                                result1 = channel.RecState(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                result1 = channel.RecState(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                             }
                             else
                             {
-                                channel.SaveStatReport(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(context));
 
@@ -84,13 +84,13 @@ namespace Legendigital.Common.Web.AppClass
                             }
                         }
                         //发送数据请求
-                        else if (httpGetPostRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestDataTypeValue))
+                        else if (httpRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestDataTypeValue))
                         {
-                            result1 = channel.ProcessStateRequest(httpGetPostRequest, out requestError1);
+                            result1 = channel.ProcessStateRequest(httpRequest, out requestError1);
                         }
                         else
                         {
-                            LogWarnInfo(httpGetPostRequest, "未知类型请求", channel.Id, 0);
+                            LogWarnInfo(httpRequest, "未知类型请求", channel.Id, 0);
 
                             context.Response.Write(channel.GetFailedCode());
 
@@ -99,22 +99,22 @@ namespace Legendigital.Common.Web.AppClass
                     }
                     else
                     {
-                        if (httpGetPostRequest.RequestParams.ContainsKey(channel.StatParamsName.ToLower()))
+                        if (httpRequest.RequestParams.ContainsKey(channel.StatParamsName.ToLower()))
                         {
-                            if (httpGetPostRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
+                            if (httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
                             {
                                 if (channel.StatSendOnce.HasValue && channel.StatSendOnce.Value)
                                 {
-                                    result1 = channel.ProcessRequest(httpGetPostRequest, out requestError1);
+                                    result1 = channel.ProcessRequest(httpRequest, out requestError1);
                                 }
                                 else
                                 {
-                                    result1 = channel.RecState(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
+                                    result1 = channel.RecState(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                                 }
                             }
                             else
                             {
-                                channel.SaveStatReport(httpGetPostRequest, httpGetPostRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(context));
 
@@ -123,7 +123,7 @@ namespace Legendigital.Common.Web.AppClass
                         }
                         else
                         {
-                            result1 = channel.ProcessStateRequest(httpGetPostRequest, out requestError1);
+                            result1 = channel.ProcessStateRequest(httpRequest, out requestError1);
                         }
                     }
 
@@ -145,7 +145,7 @@ namespace Legendigital.Common.Web.AppClass
                     }
 
                     //其他错误类型记录错误请求
-                    LogWarnInfo(httpGetPostRequest, requestError1.ErrorMessage, channel.Id, 0);
+                    LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
                     context.Response.Write(channel.GetFailedCode());
 
@@ -155,7 +155,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 RequestError requestError;
 
-                bool result = channel.ProcessRequest(httpGetPostRequest, out requestError);
+                bool result = channel.ProcessRequest(httpRequest, out requestError);
 
                 if (result)
                 {
@@ -172,7 +172,7 @@ namespace Legendigital.Common.Web.AppClass
                     return;
                 }
 
-                LogWarnInfo(httpGetPostRequest, requestError.ErrorMessage, channel.Id, 0);
+                LogWarnInfo(httpRequest, requestError.ErrorMessage, channel.Id, 0);
 
                 context.Response.Write(channel.GetFailedCode());
  
@@ -181,7 +181,7 @@ namespace Legendigital.Common.Web.AppClass
             {
                 try
                 {
-                    HttpGetPostRequest failRequest = new HttpGetPostRequest(context.Request);
+                    IHttpRequest failRequest = new HttpGetPostRequest(context.Request);
 
                     string errorMessage = "处理请求失败:\n错误信息：" + ex.Message + "\n请求信息:\n" + failRequest.RequestData;
 
@@ -196,11 +196,11 @@ namespace Legendigital.Common.Web.AppClass
             }
         }
 
-        private void LogWarnInfo(HttpGetPostRequest httpGetPostRequest,string errorInfo,int channelID,int clientID)
+        private void LogWarnInfo(IHttpRequest httpRequest, string errorInfo, int channelID, int clientID)
         {
-            logger.Warn(errorInfo + "请求信息：\n" + httpGetPostRequest.RequestData);
+            logger.Warn(errorInfo + "请求信息：\n" + httpRequest.RequestData);
 
-            SPFailedRequestWrapper.SaveFailedRequest(httpGetPostRequest, errorInfo, channelID, clientID);
+            SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
         }
 
 
