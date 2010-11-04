@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using LD.SPPipeManage.Bussiness.Commons;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -1398,25 +1399,54 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return hb;
         }
 
-        public string GetFailedCode()
+        public string GetFailedCode(IHttpRequest httpRequest)
         {
             if(string.IsNullOrEmpty(this.FailedMessage))
                 return "";
-            return this.FailedMessage.Trim().ToLower();
-        }
 
-        public string GetOkCode(HttpContext context)
-        {
-            if (this.OkMessage == null)
-                return "";
-            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context, "linkid"));
+            if (!FailedMessage.Contains("{$"))
+                return this.FailedMessage.Trim().ToLower();
+
+            Regex regex = new Regex(@"(?<={\$).*?(?=})");
+
+            MatchCollection mc = regex.Matches(OkMessage);
+
+            string rmessage = FailedMessage;
+
+            foreach (Match match in mc)
+            {
+                if (!httpRequest.RequestParams.ContainsKey(match.Value))
+                    rmessage = rmessage.Replace("{$" + match.Value + "}", "");
+                else
+                    rmessage = rmessage.Replace("{$" + match.Value + "}", httpRequest.RequestParams[match.Value].ToString());
+            }
+
+            return rmessage;
         }
 
         public string GetOkCode(IHttpRequest httpRequest)
         {
-            if (this.OkMessage == null)
+            if (string.IsNullOrEmpty(OkMessage))
                 return "";
-            return this.OkMessage.Replace("{$linkid}", this.GetRequsetValue(context, "linkid"));
+
+            if (!OkMessage.Contains("{$"))
+                return OkMessage;
+
+            Regex regex = new Regex(@"(?<={\$).*?(?=})");
+
+            MatchCollection mc = regex.Matches(OkMessage);
+
+            string okmessage = OkMessage;
+
+            foreach (Match match in mc)
+            {
+                if(!httpRequest.RequestParams.ContainsKey(match.Value))
+                    okmessage = okmessage.Replace("{$" + match.Value + "}", "");
+                else
+                    okmessage = okmessage.Replace("{$" + match.Value + "}", httpRequest.RequestParams[match.Value].ToString());
+            }
+
+            return okmessage;
         }
     }
 }

@@ -11,21 +11,15 @@ using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.AppClass
 {
-    public enum RequestType
+    public class SPXmlHandler : IHttpHandler
     {
-        Normal,
-        StateReport
-    }
-
-    public class SPRecievedHandler : IHttpHandler
-    {
-        protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
+        protected static ILog logger = LogManager.GetLogger(typeof(SPXmlHandler));
 
         public void ProcessRequest(HttpContext context)
         {
             try
             {
-                IHttpRequest httpRequest = new HttpGetPostRequest(context.Request);
+                IHttpRequest httpRequest = new HttpXmlPostRequest(context.Request);
 
                 //检测是否存在ashx
                 if (string.IsNullOrEmpty(httpRequest.RequestFileName))
@@ -134,7 +128,7 @@ namespace Legendigital.Common.Web.AppClass
                         return;
                     }
 
-                    
+
 
                     //重复数据返回OK
                     if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
@@ -150,7 +144,7 @@ namespace Legendigital.Common.Web.AppClass
                     context.Response.Write(channel.GetFailedCode(httpRequest));
 
                     return;
-            
+
                 }
 
                 RequestError requestError;
@@ -160,7 +154,7 @@ namespace Legendigital.Common.Web.AppClass
                 if (result)
                 {
                     context.Response.Write(channel.GetOkCode(httpRequest));
-                    
+
                     return;
                 }
 
@@ -175,13 +169,13 @@ namespace Legendigital.Common.Web.AppClass
                 LogWarnInfo(httpRequest, requestError.ErrorMessage, channel.Id, 0);
 
                 context.Response.Write(channel.GetFailedCode(httpRequest));
- 
+
             }
             catch (Exception ex)
             {
                 try
                 {
-                    IHttpRequest failRequest = new HttpGetPostRequest(context.Request);
+                    IHttpRequest failRequest = new HttpXmlPostRequest(context.Request);
 
                     string errorMessage = "处理请求失败:\n错误信息：" + ex.Message + "\n请求信息:\n" + failRequest.RequestData;
 
