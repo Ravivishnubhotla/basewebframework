@@ -128,7 +128,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
 	    }
 
-        public static void SaveRequest(HttpGetPostRequest httpGetPostRequest, int channelID)
+        public static void SaveRequest(IHttpRequest httpRequest, int channelID)
         {
             try
             {
@@ -141,13 +141,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
-                spFailedRequestWrapper.RecievedSendUrl = httpGetPostRequest.RequestUrl;
+                spFailedRequestWrapper.RecievedSendUrl = httpRequest.RequestUrl;
 
                 spFailedRequestWrapper.RecievedDate = DateTime.Now;
 
-                spFailedRequestWrapper.RecievedContent = httpGetPostRequest.RequestData;
+                spFailedRequestWrapper.RecievedContent = httpRequest.RequestData;
 
-                spFailedRequestWrapper.RecievedIP = httpGetPostRequest.RequestIp;
+                spFailedRequestWrapper.RecievedIP = httpRequest.RequestIp;
 
                 Save(spFailedRequestWrapper);
             }
