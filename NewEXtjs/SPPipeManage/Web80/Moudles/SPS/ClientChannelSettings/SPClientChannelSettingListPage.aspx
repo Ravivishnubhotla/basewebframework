@@ -200,7 +200,7 @@
                                             <Click Handler="ShowAddSPClientChannelSettingForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加" Icon="ApplicationAdd">
+                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加指令" Icon="ApplicationAdd">
                                         <Listeners>
                                             <Click Handler="ShowSPClientChannelSettingPatchAddForm();" />
                                         </Listeners>

@@ -132,6 +132,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public bool IsEnable
+        {
+            get
+            {
+                if (!Disable.HasValue)
+                {
+                    return true;
+                }
+                return !Disable.Value;
+            }
+        }
+
         public string ChannelClientRuleMatch
         {
             get

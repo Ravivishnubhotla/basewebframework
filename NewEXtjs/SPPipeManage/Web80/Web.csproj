@@ -145,6 +145,9 @@
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
@@ -517,6 +520,27 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx.designer.cs">
       <DependentUpon>ClientViewRecordListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx.cs">
+      <DependentUpon>SPClientAddToGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx.designer.cs">
+      <DependentUpon>SPClientAddToGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx.cs">
+      <DependentUpon>SPClientChangeLoginID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx.designer.cs">
+      <DependentUpon>SPClientChangeLoginID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx.cs">
+      <DependentUpon>SPClientChangeLoginUserPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx.designer.cs">
+      <DependentUpon>SPClientChangeLoginUserPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>

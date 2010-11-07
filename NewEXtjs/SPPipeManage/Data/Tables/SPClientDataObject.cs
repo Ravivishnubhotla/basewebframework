@@ -28,5 +28,14 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindListByQueryBuilder(queryGenerator);
         }
+
+        public List<SPClientEntity> FindAllNotInClientGroup(SPClientGroupEntity spClientGroupEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPClientEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(Or(Not(PROPERTY_SPCLIENTGROUPID.Eq(spClientGroupEntity)), PROPERTY_SPCLIENTGROUPID.IsNull()));
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

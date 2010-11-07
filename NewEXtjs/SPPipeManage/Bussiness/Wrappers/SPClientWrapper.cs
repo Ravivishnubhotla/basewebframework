@@ -294,5 +294,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.GetAllDefaultClient());       
 
 	    }
+
+        public static List<SPClientWrapper> FindAllNotInClientGroup(int clientGroupId)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllNotInClientGroup(clientGroupId));   
+        }
     }
 }

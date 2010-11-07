@@ -185,7 +185,7 @@ namespace Legendigital.Common.Web.AppClass
                 }
                 catch (Exception e)
                 {
-                    logger.Error("处理请求失败:\n错误信息：" + e.Message);
+                    logger.Error("处理请求失败:\n错误信息：" + e.Message + HttpXmlPostRequest.GetXmlPostValueFromRequest(context.Request));
                 }
             }
         }
