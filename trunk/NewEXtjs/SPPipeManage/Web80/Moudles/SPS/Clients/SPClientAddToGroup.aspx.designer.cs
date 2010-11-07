@@ -7,19 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
+namespace Legendigital.Common.Web.Moudles.SPS.Clients {
     
     
-    public partial class UCSPClientChannelSettingPatchAdd1 {
+    public partial class SPClientAddToGroup {
         
         /// <summary>
-        /// winSPChannelClientSetingQuickAdd control.
+        /// ScriptManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSPChannelClientSetingQuickAdd;
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
+        /// storeSClienAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSClienAdd;
+        
+        /// <summary>
+        /// viewPortMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
         
         /// <summary>
         /// fitLayoutMain control.
@@ -31,102 +49,66 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// formSPChannelClientSetingQuickAdd control.
+        /// FormPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formSPChannelClientSetingQuickAdd;
+        protected global::Coolite.Ext.Web.FormPanel FormPanel1;
         
         /// <summary>
-        /// FormLayoutSPSendClientParams control.
+        /// FormLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayoutSPSendClientParams;
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
         
         /// <summary>
-        /// txtLoginID control.
+        /// lblClientGroupName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtLoginID;
+        protected global::Coolite.Ext.Web.Label lblClientGroupName;
         
         /// <summary>
-        /// cmbCodeType control.
+        /// cmbClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cmbCodeType;
+        protected global::Coolite.Ext.Web.ComboBox cmbClientID;
         
         /// <summary>
-        /// txtCode control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtCode;
+        protected global::Coolite.Ext.Web.Button btnSave;
         
         /// <summary>
-        /// numOrderIndex control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField numOrderIndex;
+        protected global::Coolite.Ext.Web.Button btnCancel;
         
         /// <summary>
-        /// txtChannelCode control.
+        /// hidClientGroupID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtChannelCode;
-        
-        /// <summary>
-        /// chkHasSubCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkHasSubCode;
-        
-        /// <summary>
-        /// txtSubCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtSubCode;
-        
-        /// <summary>
-        /// btnSaveSPSendClientParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSPSendClientParams;
-        
-        /// <summary>
-        /// btnCancelSPSendClientParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSPSendClientParams;
+        protected global::Coolite.Ext.Web.Hidden hidClientGroupID;
     }
 }

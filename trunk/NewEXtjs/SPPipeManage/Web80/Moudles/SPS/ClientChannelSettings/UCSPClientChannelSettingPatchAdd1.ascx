@@ -1,7 +1,25 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientChannelSettingPatchAdd1.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingPatchAdd1" %>
+<script type="text/javascript">
+    function ChangeCodeType(codeType, chkHasSubCode, numOrderIndex, txtSubCode) {
+        if(codeType=="1")
+        {
+            chkHasSubCode.hide();
+            txtSubCode.hide();
+            numOrderIndex.setValue("1");
+            chkHasSubCode.setValue(false);         
+        }
+        else
+        {
+            chkHasSubCode.show();
+            txtSubCode.show();
+            numOrderIndex.setValue("1");
+            chkHasSubCode.setValue(true);                  
+        }
+    }
+</script>
 <ext:Window ID="winSPChannelClientSetingQuickAdd" runat="server" Icon="ApplicationAdd"
-    Title="新建下家参数" ConstrainHeader="true" Width="400" Height="330" AutoShow="false"
+    Title="快速添加指令" ConstrainHeader="true" Width="450" Height="330" AutoShow="false"
     Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -12,16 +30,40 @@
                         LabelWidth="100">
                         <Anchors>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtLoginID" runat="server" FieldLabel="登陆ID" AllowBlank="True" />
+                                <ext:TextField ID="txtLoginID" runat="server" FieldLabel="登陆ID" AllowBlank="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtCode" runat="server" FieldLabel="指令" AllowBlank="True" />
+                                <ext:ComboBox ID="cmbCodeType" Editable="false" runat="server" FieldLabel="指令类型"
+                                    AllowBlank="false" SelectedIndex="0">
+                                    <Items>
+                                        <ext:ListItem Value="1" Text="精准指令"></ext:ListItem>
+                                        <ext:ListItem Value="2" Text="模糊指令"></ext:ListItem>
+                                    </Items>
+                                    <Listeners>
+                                        <Select Handler="ChangeCodeType(#{cmbCodeType}.getValue(),#{chkHasSubCode},#{numOrderIndex},#{txtSubCode});" />
+                                    </Listeners>
+                                </ext:ComboBox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" />
+                                <ext:TextField ID="txtCode" runat="server" FieldLabel="指令" AllowBlank="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextArea ID="txtChannelCode" runat="server" FieldLabel="通道号" AllowBlank="True" />
+                                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="指令序号" AllowBlank="false" Text="1" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道号" AllowBlank="false" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkHasSubCode" runat="server" FieldLabel="是否包含子指令" Checked="false"
+                                    Hidden="true">
+                                    <Listeners>
+                                    <Check Handler="if (#{chkHasSubCode}.getValue()){#{txtSubCode}.setVisible(true);}else{#{txtSubCode}.setVisible(false);}" />
+                                    </Listeners>
+                                </ext:Checkbox>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" Note="多个指令使用|分隔，例：( 1|2|3 )"
+                                    Hidden="true" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

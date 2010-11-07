@@ -133,15 +133,13 @@ namespace LD.SPPipeManage.Bussiness.Commons
         {
             StringBuilder fileContent = new StringBuilder();
 
-            using (StreamReader sr = new StreamReader(request.InputStream))
+            using (StreamReader sr = new StreamReader(request.InputStream, request.ContentEncoding))
             {
-                String line;
 
-                while ((line = sr.ReadLine()) != null)
-                {
-                    fileContent.Append(line + "\n");
-                }
+                fileContent.Append(sr.ReadToEnd());
+                sr.Close();
             }
+
             return fileContent.ToString();
         }
 

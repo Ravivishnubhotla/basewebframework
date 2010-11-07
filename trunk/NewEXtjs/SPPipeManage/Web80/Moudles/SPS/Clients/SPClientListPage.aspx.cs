@@ -17,6 +17,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 return;
 
             this.gridPanelSPClient.Reload();
+
+            this.btnAddToClientGroup.Hidden  = (ClientGroupID <= 0);
+
+            if (ClientGroupID>0)
+            {
+                this.winSPClientAddToGroup.Title = "添加下家到下家组'" + SPClientGroupWrapper.FindById(ClientGroupID).Name + "'";
+
+                this.winSPClientAddToGroup.AutoLoad.Params.Clear();
+
+                this.winSPClientAddToGroup.AutoLoad.Params.Add(new Parameter("ClientGroupID", ClientGroupID.ToString(), ParameterMode.Value));
+            }
+
+
         }
 
         public int ClientGroupID
@@ -30,6 +43,27 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
         }
 
+
+        [AjaxMethod]
+        public void RemoveFromGroup(int id)
+        {
+            try
+            {
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
+
+                clientWrapper.SPClientGroupID = null;
+
+                SPClientWrapper.Update(clientWrapper);
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
 
         [AjaxMethod]
         public void DeleteRecord(int id)
@@ -52,6 +86,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 return;
             }
         }
+
+
 
         protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
         {

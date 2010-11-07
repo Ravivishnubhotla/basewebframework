@@ -351,7 +351,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winChannelClientSettings" runat="server" Title="Window" Frame="true"
-        Width="950" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Width="980" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">

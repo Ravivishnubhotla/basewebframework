@@ -41,6 +41,28 @@
         
         }
 
+
+
+        function ShowAddToSPClientGroup() {
+                
+                var win = <%= this.winSPClientAddToGroup.ClientID %>;
+        
+                win.show();   
+
+        }
+
+                function CloseAddToSPClientGroup() {
+                
+                var win = <%= this.winSPClientAddToGroup.ClientID %>;
+        
+                win.hide();   
+
+        }
+
+
+
+
+
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
@@ -58,17 +80,17 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选下家 ? ',
+                Ext.MessageBox.confirm('警告','确认要将所选下家从下家组中移除 ? ',
                     function(e) {
                         if (e == 'yes')
-                            Coolite.AjaxMethods.DeleteRecord(
+                            Coolite.AjaxMethods.RemoveFromGroup(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除下家！',RefreshSPClientData);            
+                                                                        Ext.Msg.alert('操作成功', '成功把下家从下家组中移除！',RefreshSPClientData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -166,6 +188,11 @@
                                             <Click Handler="ShowAddSPClientForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='btnAddToClientGroup' runat="server" Text="添加到下家组" Icon="ApplicationAdd">
+                                        <Listeners>
+                                            <Click Handler="ShowAddToSPClientGroup();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPClient}.reload();" />
@@ -202,8 +229,8 @@
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
-                                            <ToolTip Text="删除" />
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组">
+                                            <ToolTip Text="移出下家组" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden="true">
                                             <ToolTip Text="参数管理" />
@@ -229,4 +256,18 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winSPClientAddToGroup" runat="server" Title="添加到下家组" Frame="true"
+        Width="320" ConstrainHeader="true" Height="240" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="SPClientAddToGroup.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

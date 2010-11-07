@@ -6,6 +6,7 @@ using System.Text;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
+using Legendigital.Framework.Common.Utility;
 using NHibernate;
 using NHibernate.Collection;
 using NHibernate.Criterion;
@@ -33,6 +34,14 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             catch (Exception ex)
             {
                 Logger.Error("Save Object Failed:", ex);
+                try
+                {
+                    Logger.Error("Save Object Data:" + SerializeUtil.Serialize(instance), ex);
+                }
+                catch  
+                {
+ 
+                }
                 throw new DataException("Could not perform Save for " + typeof(DomainType).Name, ex);
             }
         }
@@ -50,6 +59,14 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             catch (Exception ex)
             {
                 Logger.Error("Update Object Failed:", ex);
+                try
+                {
+                    Logger.Error("Update Object Data:" + SerializeUtil.Serialize(instance), ex);
+                }
+                catch
+                {
+
+                }
                 throw new DataException("Could not perform Update for " + typeof(DomainType).Name, ex);
             }
         }
@@ -67,6 +84,14 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             catch (Exception ex)
             {
                 Logger.Error("SaveOrUpdate Object Failed:", ex);
+                try
+                {
+                    Logger.Error("SaveOrUpdate Object Data:" + SerializeUtil.Serialize(instance), ex);
+                }
+                catch
+                {
+
+                }
                 throw new DataException("Could not perform SaveOrUpdate for " + typeof(DomainType).Name, ex);
             }
         }
