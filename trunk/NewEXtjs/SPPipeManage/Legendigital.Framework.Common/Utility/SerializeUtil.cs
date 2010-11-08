@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Json;
@@ -102,6 +103,31 @@ namespace Legendigital.Framework.Common.Utility
 
             ms.Close();
             return obj;
+        }
+
+
+        public static string SerializeToText<T>(T obj)
+        {
+            Type t = obj.GetType();//获得该类的Type
+
+            StringBuilder sb = new StringBuilder();
+ 
+            foreach (PropertyInfo property in t.GetProperties())
+            {
+                if(property.CanRead)
+                {
+                    string sval = "";
+
+                    object val = property.GetValue(obj, null);
+
+                    if(val!=null)
+                        sval = val.ToString();
+
+                    sb.AppendLine(string.Format("{0}:{1}", property.Name, sval));
+                }
+            }
+
+            return sb.ToString();
         }
 
 

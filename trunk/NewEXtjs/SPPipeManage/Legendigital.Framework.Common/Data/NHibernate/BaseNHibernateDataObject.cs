@@ -36,7 +36,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                 Logger.Error("Save Object Failed:", ex);
                 try
                 {
-                    Logger.Error("Save Object Data:" + SerializeUtil.Serialize(instance), ex);
+                    Logger.Error("Save Object Data:" + SerializeUtil.SerializeToText(instance), ex);
                 }
                 catch  
                 {
@@ -61,7 +61,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                 Logger.Error("Update Object Failed:", ex);
                 try
                 {
-                    Logger.Error("Update Object Data:" + SerializeUtil.Serialize(instance), ex);
+                    Logger.Error("Update Object Data:" + SerializeUtil.SerializeToText(instance), ex);
                 }
                 catch
                 {

@@ -19,6 +19,8 @@ namespace Legendigital.Common.Web.AppClass
         {
             try
             {
+                logger.Error("xml=====" + HttpXmlPostRequest.GetXmlPostValueFromRequest(context.Request));
+
                 IHttpRequest httpRequest = new HttpXmlPostRequest(context.Request);
 
                 //检测是否存在ashx
