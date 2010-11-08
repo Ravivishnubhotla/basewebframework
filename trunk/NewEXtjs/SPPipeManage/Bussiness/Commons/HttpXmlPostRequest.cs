@@ -65,9 +65,9 @@ namespace LD.SPPipeManage.Bussiness.Commons
         }
 
 
-        public HttpXmlPostRequest(HttpRequest request)
+        public HttpXmlPostRequest(HttpRequest request, string xmlString)
         {
-            requestParams = PraseHttpXmlRequestValue(request);
+            requestParams = PraseHttpXmlRequestValue(request, xmlString);
 
             requestData = SerializeUtil.ToJson(requestParams);
 
@@ -100,11 +100,11 @@ namespace LD.SPPipeManage.Bussiness.Commons
             return ip;
         }
 
-        public static Hashtable PraseHttpXmlRequestValue(HttpRequest request)
+        public static Hashtable PraseHttpXmlRequestValue(HttpRequest request, string xml)
         {
             XmlDocument xmldoc = new XmlDocument();
 
-            xmldoc.LoadXml(GetXmlPostValueFromRequest(request));
+            xmldoc.LoadXml(xml);
 
             Hashtable hb = new Hashtable();
 
@@ -119,11 +119,11 @@ namespace LD.SPPipeManage.Bussiness.Commons
             }
 
 
-            foreach (string key in request.Params.Keys)
-            {
-                if (!string.IsNullOrEmpty(key))
-                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
-            }
+            //foreach (string key in request.Params.Keys)
+            //{
+            //    if (!string.IsNullOrEmpty(key) && !hb.ContainsKey(key.ToLower()))
+            //        hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+            //}
 
             return hb;
         }
@@ -155,7 +155,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         public string GetChannelCode()
         {
-            return this.requestFileName.Substring(0, this.requestFileName.Length - ("Recieved").Length);
+            return this.requestFileName.Substring(0, this.requestFileName.Length - ("Xml").Length);
         }
     }
 }

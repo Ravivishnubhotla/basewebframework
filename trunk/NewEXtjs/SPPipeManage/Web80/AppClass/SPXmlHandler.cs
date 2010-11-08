@@ -15,13 +15,17 @@ namespace Legendigital.Common.Web.AppClass
     {
         protected static ILog logger = LogManager.GetLogger(typeof(SPXmlHandler));
 
+        private string xmlString = string.Empty;
+
         public void ProcessRequest(HttpContext context)
         {
             try
             {
-                logger.Error("xml=====" + HttpXmlPostRequest.GetXmlPostValueFromRequest(context.Request));
+                xmlString = HttpXmlPostRequest.GetXmlPostValueFromRequest(context.Request);
 
-                IHttpRequest httpRequest = new HttpXmlPostRequest(context.Request);
+                //logger.Error(xmlString);
+
+                IHttpRequest httpRequest = new HttpXmlPostRequest(context.Request, xmlString);
 
                 //检测是否存在ashx
                 if (string.IsNullOrEmpty(httpRequest.RequestFileName))
@@ -177,17 +181,17 @@ namespace Legendigital.Common.Web.AppClass
             {
                 try
                 {
-                    IHttpRequest failRequest = new HttpXmlPostRequest(context.Request);
+                    IHttpRequest failRequest = new HttpXmlPostRequest(context.Request, xmlString);
 
-                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message + "\n请求信息:\n" + failRequest.RequestData;
+                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message ;
 
-                    logger.Error(errorMessage, ex);
+                    logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
                 }
                 catch (Exception e)
                 {
-                    logger.Error("处理请求失败:\n错误信息：" + e.Message + HttpXmlPostRequest.GetXmlPostValueFromRequest(context.Request));
+                    logger.Error("处理请求失败:\n错误信息：" + e.Message + xmlString);
                 }
             }
         }
