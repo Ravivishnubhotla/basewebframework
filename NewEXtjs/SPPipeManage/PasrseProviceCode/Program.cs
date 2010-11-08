@@ -1,90 +1,116 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace PasrseProviceCode
 {
     public class Program
     {
+        public const string XmlNodeName = "message";
+
         static void Main(string[] args)
         {
-            string connstring = "Initial Catalog=SPSManage;server=ATOM\\SQLEXPRESS;uid=SPSManage;pwd=SPSManage;";
 
-            using (SqlConnection cnn = new SqlConnection(connstring))
+            string aaa = File.ReadAllText("1.xml");
+
+            XmlDocument xmldoc = new XmlDocument();
+
+            xmldoc.LoadXml(aaa);
+
+            Hashtable hb = new Hashtable();
+
+            XmlNode node = xmldoc.SelectSingleNode(XmlNodeName);
+
+            foreach (XmlNode subnode in node.ChildNodes)
             {
-                cnn.Open();
-
-
-                DataSet ds1 = GetDs(cnn,"[s1]");
-
-
-                DataSet ds2 = GetDs(cnn, "[s2]");
-
-
-                SortedList<string,HashSet<string>> nameCodes = new SortedList<string, HashSet<string>>();
-
-                List<string> names = new List<string>();
-
-                GetData(ds1, nameCodes, names);
-
-                GetData(ds2, nameCodes, names);
-
-                StringBuilder sb = new StringBuilder();
-
-
-
-                foreach (var name in names)
-                {
-                    string province = "";
-                    string city = "";
-
-                    if (name.Contains("-"))
-                    {
-                        province = name.Split('-')[0].Trim();
-                        city = name.Split('-')[1].Trim();
-                    }
-                    else
-                    {
-                        province = name.Trim();
-                        city = "";
-                    }
-
-
-                    foreach (string mobileN in nameCodes[name])
-                    {
-
-                        string phonePrefix = mobileN;
-
-
-                        Console.WriteLine(province + ":" + city + ":" + phonePrefix);
-
-
-                        using (SqlCommand cmd = new SqlCommand("INSERT INTO [SPPhoneArea] ([Province],[City],[PhonePrefix]) VALUES (@Province, @City,@PhonePrefix)", cnn))
-                        {
-                            cmd.Parameters.Add("@Province", SqlDbType.NVarChar).Value = province;
-                            cmd.Parameters.Add("@City", SqlDbType.NVarChar).Value = city;
-                            cmd.Parameters.Add("@PhonePrefix", SqlDbType.NVarChar).Value = phonePrefix;
-
-                            cmd.ExecuteNonQuery();
-                        }
-
-
-                    }
-                }
-
-                //Console.WriteLine(sb.ToString());
-
-
-
-                cnn.Close();
-
-
-                Console.ReadKey();
+                hb.Add(subnode.Name, subnode.InnerText);
             }
+
+
+ 
+
+ 
+
+            //string connstring = "Initial Catalog=SPSManage;server=ATOM\\SQLEXPRESS;uid=SPSManage;pwd=SPSManage;";
+
+            //using (SqlConnection cnn = new SqlConnection(connstring))
+            //{
+            //    cnn.Open();
+
+
+            //    DataSet ds1 = GetDs(cnn,"[s1]");
+
+
+            //    DataSet ds2 = GetDs(cnn, "[s2]");
+
+
+            //    SortedList<string,HashSet<string>> nameCodes = new SortedList<string, HashSet<string>>();
+
+            //    List<string> names = new List<string>();
+
+            //    GetData(ds1, nameCodes, names);
+
+            //    GetData(ds2, nameCodes, names);
+
+            //    StringBuilder sb = new StringBuilder();
+
+
+
+            //    foreach (var name in names)
+            //    {
+            //        string province = "";
+            //        string city = "";
+
+            //        if (name.Contains("-"))
+            //        {
+            //            province = name.Split('-')[0].Trim();
+            //            city = name.Split('-')[1].Trim();
+            //        }
+            //        else
+            //        {
+            //            province = name.Trim();
+            //            city = "";
+            //        }
+
+
+            //        foreach (string mobileN in nameCodes[name])
+            //        {
+
+            //            string phonePrefix = mobileN;
+
+
+            //            Console.WriteLine(province + ":" + city + ":" + phonePrefix);
+
+
+            //            using (SqlCommand cmd = new SqlCommand("INSERT INTO [SPPhoneArea] ([Province],[City],[PhonePrefix]) VALUES (@Province, @City,@PhonePrefix)", cnn))
+            //            {
+            //                cmd.Parameters.Add("@Province", SqlDbType.NVarChar).Value = province;
+            //                cmd.Parameters.Add("@City", SqlDbType.NVarChar).Value = city;
+            //                cmd.Parameters.Add("@PhonePrefix", SqlDbType.NVarChar).Value = phonePrefix;
+
+            //                cmd.ExecuteNonQuery();
+            //            }
+
+
+            //        }
+            //    }
+
+            //    //Console.WriteLine(sb.ToString());
+
+
+
+            //    cnn.Close();
+
+
+            //    Console.ReadKey();
+            //}
 
 
 
