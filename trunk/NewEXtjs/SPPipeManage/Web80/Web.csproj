@@ -134,6 +134,7 @@
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx" />
     <Content Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx" />
@@ -356,6 +357,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelSettingAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingChangeClientAndUser.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingChangeClientAndUser.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx.cs">
       <DependentUpon>UCSPClientChannelSettingEdit.ascx</DependentUpon>

@@ -7,10 +7,19 @@
     TagPrefix="uc2" %>
 <%@ Register Src="UCSPClientChannelSettingPatchAdd1.ascx" TagName="UCSPClientChannelSettingPatchAdd1"
     TagPrefix="uc3" %>
+<%@ Register Src="UCSPClientChannelSettingChangeClientAndUser.ascx" TagName="UCSPClientChannelSettingChangeClientAndUser"
+    TagPrefix="uc4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
+
+       var template = '<span style="color:{0};">{1}</span>';
+
+        var change = function (value) {
+            return String.format(template, (value) ? 'green' : 'red', FormatBool(value));
+        }
+
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
         var FormatBool = function(value) {
@@ -72,10 +81,10 @@
 
         function prepareToolbar(grid, toolbar, rowIndex, record){
             if(record.get("SyncData")!=null && record.get("SyncData")){
-                toolbar.items.itemAt(1).show();
+                toolbar.items.itemAt(0).items.itemAt(1).show();
             }
             else{
-                toolbar.items.itemAt(1).hide();
+                toolbar.items.itemAt(0).items.itemAt(1).hide();
             }
         }
 
@@ -83,6 +92,20 @@
 
             if (cmd == "cmdEdit") {
                 Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
+            if (cmd == "cmdChangeClientUser") {
+                Coolite.AjaxMethods.UCSPClientChannelSettingChangeClientAndUser.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
@@ -177,6 +200,7 @@
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OrderIndex" />
+                    <ext:RecordField Name="IsEnable" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -186,6 +210,7 @@
     <uc1:UCSPClientChannelSettingAdd ID="UCSPClientChannelSettingAdd1" runat="server" />
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <uc3:UCSPClientChannelSettingPatchAdd1 ID="UCSPClientChannelSettingPatchAdd11" runat="server" />
+    <uc4:UCSPClientChannelSettingChangeClientAndUser ID="UCSPClientChannelSettingChangeClientAndUser1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -232,28 +257,31 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="序号" Width="30">
                                 </ext:Column>
+                                <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="false"
+                                    Width="30">
+                                    <Renderer Fn="change" />
+                                </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
                                     Sortable="false">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
                                     Sortable="false">
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道下家设置管理" Width="160">
+                                <ext:CommandColumn Header="设置管理" Width="50">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数">
-                                            <ToolTip Text="设置同步参数" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试">
-                                            <ToolTip Text="测试" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
-                                            <ToolTip Text="删除" />
+                                        <ext:GridCommand Icon="Cog" Text="设置" ToolTip-Text="通道下家设置">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
+                                                    <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" Hidden="true" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试" />
+                                                    <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true" />
+                                                    <ext:MenuCommand Icon="UserGo" CommandName="cmdChangeClientUser" Text="更换下家用户" />
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Menu" />
                                         </ext:GridCommand>
                                     </Commands>
-                                    <PrepareToolbar Fn="prepareToolbar" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>

@@ -8,6 +8,7 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
@@ -20,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPClientChannelSycnParamsEntity> GetAllEnableParams(SPClientChannelSettingEntity entity);
         List<SPClientChannelSettingEntity> GetAllNeedRendSetting();
         List<SPClientChannelSettingEntity> GetSettingByClient(SPClientEntity spClientEntity);
+        void ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -69,6 +71,48 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public List<SPClientChannelSettingEntity> GetSettingByClient(SPClientEntity spClientEntity)
         {
             return this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.GetSettingByClient(spClientEntity);
+        }
+                [Transaction(ReadOnly = false)]
+        public void ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId)
+        {
+            SPClientEntity mainclientEntity = new SPClientEntity();
+            mainclientEntity.Name = oldClientEntity.ChannelID.Name + userLoginId;
+            mainclientEntity.Description = oldClientEntity.ChannelID.Name + userLoginId;
+            mainclientEntity.UserID = userId;
+            mainclientEntity.IsDefaultClient = false;
+            mainclientEntity.Alias = "";
+
+            this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(mainclientEntity);
+
+            SPClientChannelSettingEntity mainChannelClient = new SPClientChannelSettingEntity();
+
+            mainChannelClient.Name = oldClientEntity.ChannelID.Name + userLoginId;
+            mainChannelClient.Description = oldClientEntity.ChannelID.Name + userLoginId;
+            mainChannelClient.ChannelID = oldClientEntity.ChannelID;
+            mainChannelClient.ClinetID = mainclientEntity;
+            mainChannelClient.InterceptRate = oldClientEntity.InterceptRate;
+            mainChannelClient.InterceptRateType = oldClientEntity.InterceptRateType;
+            mainChannelClient.OrderIndex = oldClientEntity.OrderIndex;
+            mainChannelClient.UpRate = oldClientEntity.UpRate;
+            mainChannelClient.DownRate = oldClientEntity.DownRate;
+            mainChannelClient.CommandColumn = oldClientEntity.CommandColumn;
+            mainChannelClient.CommandType = oldClientEntity.CommandType;
+            mainChannelClient.CommandCode = oldClientEntity.CommandCode;
+            mainChannelClient.SyncData = oldClientEntity.SyncData;
+            mainChannelClient.ChannelCode = oldClientEntity.ChannelCode;
+            mainChannelClient.Disable = false;
+            mainChannelClient.FailedMessage = oldClientEntity.FailedMessage;
+            mainChannelClient.OkMessage = oldClientEntity.FailedMessage;
+            mainChannelClient.SyncDataUrl = oldClientEntity.SyncDataUrl;
+            mainChannelClient.SyncType = oldClientEntity.SyncType;
+
+            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
+
+            oldClientEntity.Disable = true;
+
+            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(oldClientEntity);
+
+
         }
     }
 }

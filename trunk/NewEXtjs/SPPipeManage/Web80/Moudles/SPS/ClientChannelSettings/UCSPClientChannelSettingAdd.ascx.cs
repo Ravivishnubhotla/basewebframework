@@ -69,6 +69,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
+                obj.Disable = this.chkDisable.Checked;
 
                 obj.ChannelCode = this.txtChannleCode.Text.Trim();
 
