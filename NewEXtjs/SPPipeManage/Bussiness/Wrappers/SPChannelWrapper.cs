@@ -712,10 +712,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public List<SPClientChannelSettingWrapper> GetAllClientChannelSetting()
         {
-            return SPClientChannelSettingWrapper.GetSettingByChannel(this);
-            //List<SPClientChannelSettingWrapper> clientChannelSettingWrappers =
-            //    SPClientChannelSettingWrapper.GetSettingByChannel(this);
-            //return clientChannelSettingWrappers.FindAll(p => (p.IsEnable));
+            //return SPClientChannelSettingWrapper.GetSettingByChannel(this);
+            List<SPClientChannelSettingWrapper> clientChannelSettingWrappers =
+                SPClientChannelSettingWrapper.GetSettingByChannel(this);
+            return clientChannelSettingWrappers.FindAll(p => (p.IsEnable));
         }
 
         private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,

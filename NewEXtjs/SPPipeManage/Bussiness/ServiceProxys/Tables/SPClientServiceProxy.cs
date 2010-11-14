@@ -107,6 +107,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainChannelClient.CommandCode = code;
             mainChannelClient.SyncData = false;
             mainChannelClient.ChannelCode = channelCode;
+            mainChannelClient.Disable = false;
 
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
 
@@ -118,6 +119,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 subClientEntity.UserID = codeUserId.UserID;
                 subClientEntity.IsDefaultClient = false;
                 subClientEntity.Alias = "";
+
 
 
                 this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
@@ -138,6 +140,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 subChannelClient.CommandCode = code + codeUserId.Code;
                 subChannelClient.SyncData = false;
                 subChannelClient.ChannelCode = channelCode;
+                subChannelClient.Disable = false;
 
                 this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(subChannelClient);           
             }

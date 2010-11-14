@@ -543,5 +543,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.GetSettingByClient(spClientWrapper.entity));
         }
+
+        public void ChangeClientUser(string clientName, string clientAlias, string userLoginId, int userID)
+        {
+            businessProxy.ChangeClientUser(this.entity, clientName, clientAlias, userLoginId, userID);
+        }
     }
 }

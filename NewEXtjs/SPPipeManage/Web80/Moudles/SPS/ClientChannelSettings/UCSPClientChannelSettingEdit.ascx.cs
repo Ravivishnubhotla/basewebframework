@@ -86,6 +86,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.fsAllowSycnData.Collapsed = !this.fsAllowSycnData.CheckboxToggle;
 
+                    this.chkDisable.Checked = obj.Disable.HasValue && obj.Disable.Value;
+
 
                     if (obj.SyncData.HasValue && obj.SyncData.Value)
                     {
@@ -161,7 +163,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
                 obj.CommandCode = this.txtCommandCode.Text.Trim();
-
+                obj.Disable = this.chkDisable.Checked;
                 obj.ChannelCode = this.txtChannleCode.Text.Trim();
 
 
