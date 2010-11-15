@@ -11,6 +11,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
     public partial class ClientGroupViewRecord : SPClientGroupViewPage
     {
+        protected DateTime GetDT()
+        {
+            switch (System.DateTime.Now.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return System.DateTime.Now.AddDays(-7);
+                case DayOfWeek.Tuesday:
+                    return System.DateTime.Now.AddDays(-8);
+                case DayOfWeek.Wednesday:
+                    return System.DateTime.Now.AddDays(-9);
+                case DayOfWeek.Thursday:
+                    return System.DateTime.Now.AddDays(-10);
+                case DayOfWeek.Friday:
+                    return System.DateTime.Now.AddDays(-11);
+                case DayOfWeek.Saturday:
+                    return System.DateTime.Now.AddDays(-12);
+                case DayOfWeek.Sunday:
+                    return System.DateTime.Now.AddDays(-13);
+
+            }
+
+            return DateTime.Now;
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
@@ -21,6 +46,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             this.dfReportEndDate.DateField.Value = System.DateTime.Now;
 
             this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-7);
+
+            this.dfReportStartDate.DateField.MinDate = GetDT();
 
             storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
@@ -106,17 +133,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             List<SPPaymentInfoWrapper> list = null;
 
+            DateTime startDate = Convert.ToDateTime(this.dfReportStartDate.DateField.Value);
+
+            if (startDate < GetDT())
+            {
+                startDate = GetDT();
+            }
+
             if (SPClientID > 0)
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndClientIDAndDateNoIntercept(SPClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndClientIDAndDateNoIntercept(SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
             else
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(SPClientGroupID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
                    
-
-
             store1.DataSource = list;
             e.TotalCount = recordCount;
 

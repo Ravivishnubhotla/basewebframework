@@ -12,6 +12,30 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
     public partial class ClientGroupViewDaySum : SPClientGroupViewPage
     {
+        protected DateTime GetDT()
+        {
+            switch (System.DateTime.Now.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return System.DateTime.Now.AddDays(-7);
+                case DayOfWeek.Tuesday:
+                    return System.DateTime.Now.AddDays(-8);
+                case DayOfWeek.Wednesday:
+                    return System.DateTime.Now.AddDays(-9);
+                case DayOfWeek.Thursday:
+                    return System.DateTime.Now.AddDays(-10);
+                case DayOfWeek.Friday:
+                    return System.DateTime.Now.AddDays(-11);
+                case DayOfWeek.Saturday:
+                    return System.DateTime.Now.AddDays(-12);
+                case DayOfWeek.Sunday:
+                    return System.DateTime.Now.AddDays(-13);
+
+            }
+
+            return DateTime.Now;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
@@ -20,6 +44,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-10).Date;
 
             this.dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1).Date;
+
+            this.dfReportStartDate.DateField.MinDate = GetDT();
 
             this.dfReportEndDate.DateField.Value = System.DateTime.Now.AddDays(-1).Date;
 
@@ -39,13 +65,21 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
         {
             DataTable tb = null;
 
+            DateTime startDate = Convert.ToDateTime(this.dfReportStartDate.DateField.Value);
+
+            if (startDate < GetDT())
+            {
+                startDate = GetDT();
+            }
+
+
             if(SPClientID>0)
             {
-                tb = SPDayReportWrapper.GetCountReportByClientID(this.SPClientID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
+                tb = SPDayReportWrapper.GetCountReportByClientID(this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));
             }
             else
             {
-                tb = SPDayReportWrapper.GetCountReportByClientGroupID(this.SPClientGroupID, Convert.ToDateTime(this.dfReportStartDate.DateField.Value), Convert.ToDateTime(this.dfReportEndDate.DateField.Value));             
+                tb = SPDayReportWrapper.GetCountReportByClientGroupID(this.SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value));             
             }
 
               
