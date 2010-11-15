@@ -85,6 +85,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.ComboBox cmbClientID;
         
         /// <summary>
+        /// tbProviceChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ToolbarButton tbProviceChart;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.GridView GridView1;
+        
+        /// <summary>
+        /// winRrovinceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winRrovinceReport;
         
         /// <summary>
         /// hidId control.

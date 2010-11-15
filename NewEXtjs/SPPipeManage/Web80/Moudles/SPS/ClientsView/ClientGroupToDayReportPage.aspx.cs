@@ -23,6 +23,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
+            winRrovinceReport.AutoLoad.Params.Clear();
+
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("ChannleID", "0", ParameterMode.Value));
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("ClientID", "0", ParameterMode.Value));
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("StartDate", System.DateTime.Now.ToShortDateString(), ParameterMode.Value));
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("EndDate", System.DateTime.Now.ToShortDateString(), ParameterMode.Value));
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("DataType", "downcountdetail", ParameterMode.Value));
+            winRrovinceReport.AutoLoad.Params.Add(new Parameter("IsClientShow", "1", ParameterMode.Value));
+
             this.hidId.Text = id.ToString();
         }
 
