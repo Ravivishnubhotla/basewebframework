@@ -104,7 +104,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             return col1;
         }
 
+        public int ChannelID
+        {
+            get
+            {
+                int channelID = 0;
 
+                return channelID;
+            }
+        }
 
 
         protected void store1_Refresh(object sender, StoreRefreshDataEventArgs e)
@@ -140,13 +148,20 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 startDate = GetDT();
             }
 
+            string province = "";
+
+            if (this.cmbProvince.SelectedItem != null)
+            {
+                province = this.cmbProvince.SelectedItem.Value;
+            }
+
             if (SPClientID > 0)
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndClientIDAndDateNoIntercept(SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID,SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
             else
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
                    
             store1.DataSource = list;
