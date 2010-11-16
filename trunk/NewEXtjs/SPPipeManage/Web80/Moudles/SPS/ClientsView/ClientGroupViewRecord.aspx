@@ -10,23 +10,24 @@
     <script type="text/javascript">
         function ShowProviceChart(channleValue, tbProviceChart) {
             if (channleValue != null && channleValue != '') {
-                tbProviceChart.hide();
+                tbProviceChart.show();
             }
             else {
                 tbProviceChart.hide();           
             }
         }
 
-        function showProvince(clientID,storeClient,dfReportStartDate,dfReportEndDate) { 
+        function showProvince(clientID,storeClient) { 
                 var win = <%= this.winRrovinceReport.ClientID %>;
- 
+                var dtpStart = <%= this.dfReportStartDate.ClientID %>;
+                var dtpEnd = <%= this.dfReportEndDate.ClientID %>;
                 win.autoLoad.params.ChannleID = storeClient.getById(clientID).data.DefaultChannelID;
                 win.autoLoad.params.ClientID = clientID;
-                win.autoLoad.params.StartDate = dfReportStartDate.getValue();
-                win.autoLoad.params.EndDate = dfReportEndDate.getValue();
+                win.autoLoad.params.StartDate = dtpStart.component.getValue();
+                win.autoLoad.params.EndDate = dtpEnd.component.getValue();
                 win.autoLoad.params.DataType = "downcountdetail";
                 win.autoLoad.params.IsClientShow = "1"; 
-            //win.show(); 
+                win.show(); 
         }
     </script>
     <ext:Hidden ID="hidId" runat="server">
@@ -91,7 +92,7 @@
                                         <Listeners>
                                             <Select Handler="this.triggers[0].show();ShowProviceChart(this.getValue(),#{tbProviceChart});" />
                                             <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
-                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide();ShowProviceChart(this.getValue(),#{tbProviceChart},#{dfReportStartDate},#{dfReportEndDate}); }" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide();ShowProviceChart(this.getValue(),#{tbProviceChart}); }" />
                                         </Listeners>
                                     </ext:ComboBox>
                                     <ext:ToolbarTextItem Text="日期从">
