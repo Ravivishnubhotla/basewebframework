@@ -23,6 +23,8 @@
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
                     <ext:RecordField Name="Province" />
+                                        <ext:RecordField Name="Ywid" />
+                    <ext:RecordField Name="Cpid" />
                     <ext:RecordField Name="SSycnDataUrl" />          
                     <ext:RecordField Name="CreateDate" Type="Date" />
                 </Fields>
@@ -111,15 +113,19 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true"
-                                    Width="20">
+<ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true" Width="60"
+                                    >
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false">
-                                </ext:Column>                     
-                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
-                                    Width="20">
+                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false" Width="30">
+                                </ext:Column>
+                                <ext:Column ColumnID="colYwid" DataIndex="Ywid" Header="上行内容" Sortable="false" Width="60">
+                                </ext:Column>
+                                <ext:Column ColumnID="colCpid" DataIndex="Cpid" Header="长号码" Sortable="false" Width="60">
+                                </ext:Column>
+                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"  Width="80"
+                                     >
                                     <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
                                 </ext:Column>
                             </Columns>

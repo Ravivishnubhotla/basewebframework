@@ -67,6 +67,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Legendigital.Common.Web.Moudles.SPS.Clients.UCSPSendClientParamsClone UCSPSendClientParamsClone1;
         
         /// <summary>
+        /// hidSearchText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidSearchText;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ToolbarButton btnAddToClientGroup;
+        
+        /// <summary>
+        /// txtSreachName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtSreachName;
         
         /// <summary>
         /// btnRefresh control.

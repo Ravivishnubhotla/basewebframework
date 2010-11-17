@@ -293,5 +293,46 @@ namespace LD.SPPipeManage.Data.Tables
 
 
         }
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(List<SPClientEntity> spClientEntities, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.In(spClientEntities));
+
+
+            if (startDate == DateTime.MinValue)
+                startDate = DateTime.Now;
+
+
+            if (endDate == DateTime.MinValue)
+                endDate = DateTime.Now;
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                if (province.Equals("NULL"))
+                {
+                    queryBuilder.AddWhereClause(PROPERTY_PROVINCE.Eq(""));
+                }
+                else
+                {
+                    queryBuilder.AddWhereClause(PROPERTY_PROVINCE.Eq(province));
+                }
+            }
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+        }
     }
 }
