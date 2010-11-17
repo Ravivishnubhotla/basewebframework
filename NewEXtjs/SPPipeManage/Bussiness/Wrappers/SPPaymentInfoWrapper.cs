@@ -596,5 +596,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 	    }
+
+	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate,string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount )
+	    {
+            return
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(spClientGroupID,
+                                                                                                  startDate,
+                                                                                                  endDate, province,
+                                                                                                  sortFieldName, isdesc,
+                                                                                                  pageIndex, limit,
+                                                                                                  out recordCount));	        
+
+	    }
     }
 }

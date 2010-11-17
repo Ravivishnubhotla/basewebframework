@@ -6,6 +6,7 @@ using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Clients
 {
@@ -18,18 +19,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
             this.gridPanelSPClient.Reload();
 
-            this.btnAddToClientGroup.Hidden  = (ClientGroupID <= 0);
+            this.btnAddToClientGroup.Hidden = (ClientGroupID <= 0);
 
-            if (ClientGroupID>0)
+            if (ClientGroupID > 0)
             {
                 this.winSPClientAddToGroup.Title = "添加下家到下家组'" + SPClientGroupWrapper.FindById(ClientGroupID).Name + "'";
 
                 this.winSPClientAddToGroup.AutoLoad.Params.Clear();
 
-                this.winSPClientAddToGroup.AutoLoad.Params.Add(new Parameter("ClientGroupID", ClientGroupID.ToString(), ParameterMode.Value));
+                this.winSPClientAddToGroup.AutoLoad.Params.Add(new Parameter("ClientGroupID", ClientGroupID.ToString(),
+                                                                             ParameterMode.Value));
+
+                this.txtSreachName.Hide();
             }
-
-
         }
 
         public int ClientGroupID
@@ -112,14 +114,28 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             else
                 pageIndex = startIndex / limit;
 
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+
+            string clientName = "";
+
+            if(!string.IsNullOrEmpty(this.txtSreachName.Text.Trim()))
+            {
+                clientName = this.txtSreachName.Text.Trim();
+
+                queryFilters.Add(new QueryFilter(SPClientWrapper.PROPERTY_NAME_NAME, clientName, FilterFunction.Contains));
+            }
+
+
+
+            
 
             if (ClientGroupID>0)
             {
-                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderByAndFilterAndSPClientGroupID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit,SPClientGroupWrapper.FindById(this.ClientGroupID), out recordCount);
+                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderByAndFilterAndSPClientGroupID(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, SPClientGroupWrapper.FindById(this.ClientGroupID), out recordCount);
             }
             else
             {
-                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);               
+                storeSPClient.DataSource = SPClientWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);               
             }
 
 

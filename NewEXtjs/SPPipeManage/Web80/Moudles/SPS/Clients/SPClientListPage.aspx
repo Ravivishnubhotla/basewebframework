@@ -174,6 +174,8 @@
     <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" />
     <uc3:UCClientParamsSetting ID="UCClientParamsSetting1" runat="server" />
     <uc5:UCSPSendClientParamsClone ID="UCSPSendClientParamsClone1" runat="server" />
+    <ext:Hidden ID="hidSearchText" runat="server">
+    </ext:Hidden>
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -193,9 +195,14 @@
                                             <Click Handler="ShowAddToSPClientGroup();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:TextField ID="txtSreachName" runat="server" EmptyText="输入下家名" />
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查找" Icon="Find">
                                         <Listeners>
-                                            <Click Handler="#{storeSPClient}.reload();" />
+                                            <Click Handler="#{hidSearchText}.setValue(#{txtSreachName}.getValue());#{storeSPClient}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                 </Items>
