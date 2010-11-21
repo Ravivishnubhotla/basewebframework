@@ -134,15 +134,33 @@ namespace Legendigital.Common.Web.Services
         }
 
 
+        [WebMethod]
+        public bool CheckPaymentNeedSend(int id)
+        {
+            SPPaymentInfoWrapper spPaymentInfoWrapper = SPPaymentInfoWrapper.FindById(id);
 
+            if(spPaymentInfoWrapper==null)
+                return false;
+
+            if (spPaymentInfoWrapper.SucesssToSend.HasValue && spPaymentInfoWrapper.SucesssToSend.Value)
+            {
+                return false;
+            }
+
+            if (spPaymentInfoWrapper.SycnRetryTimes.HasValue && spPaymentInfoWrapper.SycnRetryTimes.Value>1)
+            {
+                return false;
+            }
+
+            return true;
+
+        }
 
 
         [WebMethod]
         public void UpdatePaymentSend(int id, bool isSendOk, string sendUrl, int sycnRetryTimes)
         {
             SPPaymentInfoWrapper spPaymentInfoWrapper = SPPaymentInfoWrapper.FindById(id);
-
-   
 
             if (spPaymentInfoWrapper.IsIntercept.HasValue && spPaymentInfoWrapper.IsIntercept.Value)
                 return;

@@ -44,6 +44,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_CHANNELINFO = "ChannelInfo";
 		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
 		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
+		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		
         #endregion
 	
@@ -79,6 +80,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _channelInfo;
 		private bool? _statSendOnce;
 		private bool? _isMonitoringRequest;
+		private bool? _isDisable;
 		
 		#endregion
 
@@ -118,6 +120,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channelInfo = null;
 			_statSendOnce = null;
 			_isMonitoringRequest = null;
+			_isDisable = null;
 		}
 		#endregion
 
@@ -594,6 +597,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsDisable
+		{
+			get { return _isDisable; }
+
+			set	
+			{
+				_isDisable = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -630,6 +647,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ChannelInfo = wrapper.ChannelInfo;
 			this.StatSendOnce = wrapper.StatSendOnce;
 			this.IsMonitoringRequest = wrapper.IsMonitoringRequest;
+			this.IsDisable = wrapper.IsDisable;
 		}
 		
 		
@@ -666,6 +684,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ChannelInfo = this.ChannelInfo;
 			wrapper.StatSendOnce = this.StatSendOnce;
 			wrapper.IsMonitoringRequest = this.IsMonitoringRequest;
+			wrapper.IsDisable = this.IsDisable;
 		
 		return wrapper;
         }

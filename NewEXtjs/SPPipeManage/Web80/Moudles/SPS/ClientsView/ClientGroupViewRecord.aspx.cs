@@ -13,26 +13,26 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
     {
         protected DateTime GetDT()
         {
-            switch (System.DateTime.Now.DayOfWeek)
+            switch (System.DateTime.Now.Date.DayOfWeek)
             {
                 case DayOfWeek.Monday:
-                    return System.DateTime.Now.AddDays(-7);
+                    return System.DateTime.Now.Date.AddDays(-7);
                 case DayOfWeek.Tuesday:
-                    return System.DateTime.Now.AddDays(-8);
+                    return System.DateTime.Now.Date.AddDays(-8);
                 case DayOfWeek.Wednesday:
-                    return System.DateTime.Now.AddDays(-9);
+                    return System.DateTime.Now.Date.AddDays(-9);
                 case DayOfWeek.Thursday:
-                    return System.DateTime.Now.AddDays(-10);
+                    return System.DateTime.Now.Date.AddDays(-10);
                 case DayOfWeek.Friday:
-                    return System.DateTime.Now.AddDays(-11);
+                    return System.DateTime.Now.Date.AddDays(-11);
                 case DayOfWeek.Saturday:
-                    return System.DateTime.Now.AddDays(-12);
+                    return System.DateTime.Now.Date.AddDays(-12);
                 case DayOfWeek.Sunday:
-                    return System.DateTime.Now.AddDays(-13);
+                    return System.DateTime.Now.Date.AddDays(-13);
 
             }
 
-            return DateTime.Now;
+            return DateTime.Now.Date;
         }
 
 
@@ -43,9 +43,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             int id = this.ClientGroupID;
 
-            this.dfReportEndDate.DateField.Value = System.DateTime.Now;
+            this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
-            this.dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-7);
+            this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date.AddDays(-7);
 
             this.dfReportStartDate.DateField.MinDate = GetDT();
 

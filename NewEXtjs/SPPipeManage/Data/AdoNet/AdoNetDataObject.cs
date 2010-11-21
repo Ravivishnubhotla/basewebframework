@@ -1025,9 +1025,9 @@ namespace LD.SPPipeManage.Data.AdoNet
         {
             ReportResult reportResult = new ReportResult();
 
-            reportResult.ReportDate = DateTime.Now;
+            reportResult.ReportDate = DateTime.Now.Date;
 
-            string filterSql = string.Format(" ReportDate='{0}' ", dateTime);
+            string filterSql = string.Format(" ReportDate='{0}' ", dateTime.Date);
 
             reportResult.TotalCount = ExecuteSumFormDataTable("UpTotalCount", filterSql, dCountReportForMaster);
             reportResult.DownCount = ExecuteSumFormDataTable("DownTotalCount", filterSql, dCountReportForMaster);

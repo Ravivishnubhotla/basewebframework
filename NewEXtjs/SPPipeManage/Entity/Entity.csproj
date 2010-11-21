@@ -95,6 +95,10 @@
     <Compile Include="Tables\SPClientChannelSettingEntity.Designer.cs">
       <DependentUpon>SPClientChannelSettingEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientChannelSettingFiltersEntity.cs" />
+    <Compile Include="Tables\SPClientChannelSettingFiltersEntity.Designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPClientChannelSycnParamsEntity.cs" />
     <Compile Include="Tables\SPClientChannelSycnParamsEntity.Designer.cs">
       <DependentUpon>SPClientChannelSycnParamsEntity.cs</DependentUpon>
@@ -220,6 +224,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelFiltersMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPMonitoringRequestMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSettingFiltersMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

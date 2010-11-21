@@ -203,6 +203,12 @@ namespace SPSSiteTask
 
                     string progress = string.Format("({0}/{1})", i, titalCOunt);
 
+                    if (!client.CheckPaymentNeedSend(spsSendUrlEntity.PaymentID))
+                    {
+                        logger.Error(string.Format(progress + "请求已发送略过，ID{0}", spsSendUrlEntity.PaymentID));
+                        continue;
+                    }
+
                     if (string.IsNullOrEmpty(spsSendUrlEntity.SendUrl))
                     {
                         logger.Error(string.Format(progress + "请求略过，ID{0}", spsSendUrlEntity.PaymentID));

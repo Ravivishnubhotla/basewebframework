@@ -40,6 +40,7 @@
 		<property column="ChannelInfo" type="string" name="ChannelInfo"   length="2147483646" />	
 		<property column="StatSendOnce" type="Boolean" name="StatSendOnce"   />	
 		<property column="IsMonitoringRequest" type="Boolean" name="IsMonitoringRequest"   />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 
 
 
