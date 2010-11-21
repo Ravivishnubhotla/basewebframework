@@ -58,6 +58,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="CheckPaymentNeedSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckPaymentNeedSendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckPaymentNeedSendResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="UpdatePaymentSend">
         <s:complexType>
           <s:sequence>
@@ -91,6 +105,12 @@
   <wsdl:message name="GetAllClientChannelNeedSendHistoryDataSoapOut">
     <wsdl:part name="parameters" element="tns:GetAllClientChannelNeedSendHistoryDataResponse" />
   </wsdl:message>
+  <wsdl:message name="CheckPaymentNeedSendSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckPaymentNeedSend" />
+  </wsdl:message>
+  <wsdl:message name="CheckPaymentNeedSendSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckPaymentNeedSendResponse" />
+  </wsdl:message>
   <wsdl:message name="UpdatePaymentSendSoapIn">
     <wsdl:part name="parameters" element="tns:UpdatePaymentSend" />
   </wsdl:message>
@@ -109,6 +129,10 @@
     <wsdl:operation name="GetAllClientChannelNeedSendHistoryData">
       <wsdl:input message="tns:GetAllClientChannelNeedSendHistoryDataSoapIn" />
       <wsdl:output message="tns:GetAllClientChannelNeedSendHistoryDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPaymentNeedSend">
+      <wsdl:input message="tns:CheckPaymentNeedSendSoapIn" />
+      <wsdl:output message="tns:CheckPaymentNeedSendSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePaymentSend">
       <wsdl:input message="tns:UpdatePaymentSendSoapIn" />
@@ -137,6 +161,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllClientChannelNeedSendHistoryData">
       <soap:operation soapAction="http://tempuri.org/GetAllClientChannelNeedSendHistoryData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPaymentNeedSend">
+      <soap:operation soapAction="http://tempuri.org/CheckPaymentNeedSend" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -176,6 +209,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllClientChannelNeedSendHistoryData">
       <soap12:operation soapAction="http://tempuri.org/GetAllClientChannelNeedSendHistoryData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPaymentNeedSend">
+      <soap12:operation soapAction="http://tempuri.org/CheckPaymentNeedSend" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

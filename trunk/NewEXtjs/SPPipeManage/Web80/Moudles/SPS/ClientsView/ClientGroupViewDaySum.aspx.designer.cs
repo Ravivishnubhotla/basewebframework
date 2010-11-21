@@ -137,5 +137,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winRrovinceReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winRrovinceReport;
     }
 }

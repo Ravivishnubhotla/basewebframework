@@ -54,6 +54,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELINFO = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELINFO);
 		public static readonly Property PROPERTY_STATSENDONCE = Property.ForName(SPChannelEntity.PROPERTY_NAME_STATSENDONCE);
 		public static readonly Property PROPERTY_ISMONITORINGREQUEST = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORINGREQUEST);
+		public static readonly Property PROPERTY_ISDISABLE = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE);
       
 		#region 子类集合字段查询字段
 	
@@ -130,6 +131,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "StatSendOnce":
                     return typeof (bool);
                 case "IsMonitoringRequest":
+                    return typeof (bool);
+                case "IsDisable":
                     return typeof (bool);
           }
 			return typeof(string);

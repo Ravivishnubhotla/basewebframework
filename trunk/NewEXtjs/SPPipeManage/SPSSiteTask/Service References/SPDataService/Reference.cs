@@ -133,6 +133,9 @@ namespace SPSSiteTask.SPDataService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllClientChannelNeedSendHistoryData", ReplyAction="*")]
         SPSSiteTask.SPDataService.GetAllClientChannelNeedSendHistoryDataResponse GetAllClientChannelNeedSendHistoryData(SPSSiteTask.SPDataService.GetAllClientChannelNeedSendHistoryDataRequest request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/CheckPaymentNeedSend", ReplyAction="*")]
+        bool CheckPaymentNeedSend(int id);
+        
         // CODEGEN: Generating message contract since element name sendUrl from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdatePaymentSend", ReplyAction="*")]
         SPSSiteTask.SPDataService.UpdatePaymentSendResponse UpdatePaymentSend(SPSSiteTask.SPDataService.UpdatePaymentSendRequest request);
@@ -422,6 +425,10 @@ namespace SPSSiteTask.SPDataService {
             inValue.Body.endDate = endDate;
             SPSSiteTask.SPDataService.GetAllClientChannelNeedSendHistoryDataResponse retVal = ((SPSSiteTask.SPDataService.SPDataServiceSoap)(this)).GetAllClientChannelNeedSendHistoryData(inValue);
             return retVal.Body.GetAllClientChannelNeedSendHistoryDataResult;
+        }
+        
+        public bool CheckPaymentNeedSend(int id) {
+            return base.Channel.CheckPaymentNeedSend(id);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

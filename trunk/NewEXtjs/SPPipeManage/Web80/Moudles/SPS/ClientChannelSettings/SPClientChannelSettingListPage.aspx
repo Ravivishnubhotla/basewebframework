@@ -88,6 +88,24 @@
             }
         }
 
+
+        var showCommands=function(grid, toolbar, rowIndex, record)
+        {
+      
+            if(record.data.SyncData!=null && record.data.SyncData)
+            {
+             toolbar.items.items[0].menu.items.items[1].show();
+             toolbar.items.items[0].menu.items.items[2].show();
+            }
+            
+            else{
+             toolbar.items.items[0].menu.items.items[1].hide();
+             toolbar.items.items[0].menu.items.items[2].hide();
+        
+            }
+               
+        }
+
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
@@ -210,7 +228,8 @@
     <uc1:UCSPClientChannelSettingAdd ID="UCSPClientChannelSettingAdd1" runat="server" />
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <uc3:UCSPClientChannelSettingPatchAdd1 ID="UCSPClientChannelSettingPatchAdd11" runat="server" />
-    <uc4:UCSPClientChannelSettingChangeClientAndUser ID="UCSPClientChannelSettingChangeClientAndUser1" runat="server" />
+    <uc4:UCSPClientChannelSettingChangeClientAndUser ID="UCSPClientChannelSettingChangeClientAndUser1"
+        runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -247,9 +266,9 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true" Hidden="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
+                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true"  Hidden="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
@@ -262,10 +281,10 @@
                                     <Renderer Fn="change" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
-                                    Sortable="false">
+                                    Sortable="false" Width="120">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
-                                    Sortable="false">
+                                    Sortable="false" Width="120">
                                 </ext:Column>
                                 <ext:CommandColumn Header="设置管理" Width="50">
                                     <Commands>
@@ -273,7 +292,7 @@
                                             <Menu>
                                                 <Items>
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
-                                                    <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" Hidden="true" />
+                                                    <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" />
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试" />
                                                     <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true" />
                                                     <ext:MenuCommand Icon="UserGo" CommandName="cmdChangeClientUser" Text="更换下家用户" />
@@ -282,6 +301,7 @@
                                             <ToolTip Text="Menu" />
                                         </ext:GridCommand>
                                     </Commands>
+                                    <PrepareToolbar Fn="showCommands" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>

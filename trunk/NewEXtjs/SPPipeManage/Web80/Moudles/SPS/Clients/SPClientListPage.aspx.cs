@@ -44,6 +44,32 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             }
 
         }
+        
+
+        [AjaxMethod]
+        public void LockLoginUser(int id,bool isLock)
+        {
+            try
+            {
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
+
+                SystemUserWrapper user = SystemUserWrapper.FindById(clientWrapper.UserID);
+
+                if (user != null)
+                {
+                    user.IsLockedOut = !user.IsLockedOut;
+                    SystemUserWrapper.Update(user);
+                }
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
 
 
         [AjaxMethod]

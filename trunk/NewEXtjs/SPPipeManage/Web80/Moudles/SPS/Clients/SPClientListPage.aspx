@@ -11,12 +11,36 @@
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
+       var template = '<span style="color:{0};">{1}</span>';
+
+        var change = function (value) {
+            return String.format(template, (value) ? 'red' : 'green', FormatBool(value));
+        }
+
+
+                var showCommands=function(grid, toolbar, rowIndex, record)
+        {
+      
+            if(record.data.UserIsLocked!=null && record.data.UserIsLocked)
+            {
+             toolbar.items.items[0].menu.items.items[2].hide();
+             toolbar.items.items[0].menu.items.items[3].show();
+            }
+            
+            else{
+             toolbar.items.items[0].menu.items.items[2].show();
+             toolbar.items.items[0].menu.items.items[3].hide();
+        
+            }
+               
+        }
+ 
 
         var FormatBool = function(value) {
             if (value)
-                return '是';
+                return '锁定';
             else
-                return '否';
+                return '正常';
         }
 
         function RefreshSPClientList() {
@@ -101,6 +125,59 @@
                     }
                     );
             }
+
+
+
+
+            if (cmd == "cmdLock") {
+                Ext.MessageBox.confirm('警告','确认要将所选下家登录用户锁定 ? ',
+                    function(e) {
+                        if (e == 'yes')
+                            Coolite.AjaxMethods.LockLoginUser(
+                                                                id.id,true,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '成功把下家登录用户锁定！',RefreshSPClientData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            }
+
+
+            if (cmd == "cmdUnlock") {
+                Ext.MessageBox.confirm('警告','确认要将所选下家登录用户解锁 ? ',
+                    function(e) {
+                        if (e == 'yes')
+                            Coolite.AjaxMethods.LockLoginUser(
+                                                                id.id,false,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '成功把下家登录用户解锁！',RefreshSPClientData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            }
+
+
+
             
                         if (cmd == "cmdParams") {
                 Coolite.AjaxMethods.UCClientParamsSetting.Show(id.id,
@@ -163,6 +240,7 @@
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="UserLoginID" />
+                    <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="ClientGroupName" />
                 </Fields>
             </ext:JsonReader>
@@ -231,22 +309,29 @@
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组"
                                     Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colUserIsLocked" DataIndex="UserIsLocked" Header="用户状态" Sortable="false"
+                                    Width="50">
+                                    <Renderer Fn="change" />
+                                </ext:Column>
                                 <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组">
-                                            <ToolTip Text="移出下家组" />
-                                        </ext:GridCommand>
+                                        <ext:SplitCommand Icon="cog" CommandName="Split" Text="下家管理">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
+                                                    <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组"/>
+                                                    <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户"/>
+                                                    <ext:MenuCommand CommandName="cmdUnlock" Icon="LockOpen" Text="解锁用户"/>
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Split" />
+                                        </ext:SplitCommand>
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden="true">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ControlRecord" CommandName="cmdParamsClone" Hidden="true"
-                                            Text="参数复制">
-                                            <ToolTip Text="参数复制" />
-                                        </ext:GridCommand>
+                                        
                                     </Commands>
+                                                                        <PrepareToolbar Fn="showCommands" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>

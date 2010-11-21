@@ -129,6 +129,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public bool UserIsLocked
+        {
+            get
+            {
+                if (this.UserID != null && this.UserID > 0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                    if (user != null)
+                        return user.IsLockedOut;
+                }
+                return false;
+            }
+        }
+
 
 
 	    public string DisplayName

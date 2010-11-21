@@ -137,6 +137,10 @@
     <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.Designer.cs">
       <DependentUpon>SPChannelServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingFiltersServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingFiltersServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.Designer.cs">
       <DependentUpon>SPClientChannelSettingServiceProxy.cs</DependentUpon>
@@ -225,6 +229,10 @@
     <Compile Include="Wrappers\SPChannelWrapper.cs" />
     <Compile Include="Wrappers\SPChannelWrapper.Designer.cs">
       <DependentUpon>SPChannelWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientChannelSettingFiltersWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSettingFiltersWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPClientChannelSettingWrapper.cs" />
     <Compile Include="Wrappers\SPClientChannelSettingWrapper.Designer.cs">

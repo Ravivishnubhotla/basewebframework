@@ -38,6 +38,13 @@ namespace Legendigital.Common.Web.MainPage
                 return;
             }
 
+            if (userWrapper.IsLockedOut)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "登录失败,用户被锁定！";
+                return;
+            }
+
 
             if (Membership.ValidateUser(username, password))
             {

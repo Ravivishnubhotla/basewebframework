@@ -163,6 +163,7 @@
     <Compile Include="AppClass\SPClientGroupViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AppClass\SPNoEncodeHandler.cs" />
     <Compile Include="AppClass\SPXmlHandler.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>

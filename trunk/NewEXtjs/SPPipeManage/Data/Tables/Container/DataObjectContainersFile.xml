@@ -24,6 +24,9 @@
  <object id="SPClientChannelSettingDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPClientChannelSettingFiltersDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingFiltersDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPClientChannelSycnParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSycnParamsDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -85,6 +88,7 @@
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
     <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
+    <property name="SPClientChannelSettingFiltersDataObjectInstance" ref="SPClientChannelSettingFiltersDataObjectIocID"/>
     <property name="SPClientChannelSycnParamsDataObjectInstance" ref="SPClientChannelSycnParamsDataObjectIocID"/>
     <property name="SPClientGroupDataObjectInstance" ref="SPClientGroupDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>

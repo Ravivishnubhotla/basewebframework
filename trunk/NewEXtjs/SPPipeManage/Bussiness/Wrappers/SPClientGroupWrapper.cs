@@ -99,6 +99,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        public bool UserIsLocked
+        {
+            get
+            {
+                if (this.UserID != null && this.UserID > 0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                    if (user != null)
+                        return user.IsLockedOut;
+                }
+                return false;
+            }
+        }
 
         public string ClientList
 	    {
