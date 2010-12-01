@@ -76,6 +76,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
                 obj.StatParamsValues = txtStatValues.Text.Trim();
+                obj.IsDisable = false;
                 
 
                 Membership.CreateUser(loginID, "123456", loginID + "@163.com");

@@ -103,6 +103,15 @@
              toolbar.items.items[0].menu.items.items[2].hide();
         
             }
+
+            if(record.data.CommandType=="3")
+            {
+                 toolbar.items.items[0].menu.items.items[3].show();        
+            }
+            else
+            {
+                 toolbar.items.items[0].menu.items.items[3].hide();      
+            }
                
         }
 
@@ -120,6 +129,23 @@
                                                                                }
                                                                 }              
                 );
+            }
+
+           if (cmd == "cmdAddSubCode") {
+                Ext.MessageBox.prompt('添加子指令','子指令:',function(button,text){ 
+                    Coolite.AjaxMethods.UCSPClientChannelSettingPatchAdd1.ShowAddSub(id.id,text,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+                } );
+                
             }
 
             if (cmd == "cmdChangeClientUser") {
@@ -239,7 +265,7 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
+                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd" Hidden=true>
                                         <Listeners>
                                             <Click Handler="ShowAddSPClientChannelSettingForm();" />
                                         </Listeners>
@@ -268,7 +294,8 @@
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true" Hidden="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true"  Hidden="true">
+                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true"
+                                    Hidden="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
@@ -293,7 +320,10 @@
                                                 <Items>
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
                                                     <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" />
+
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试" />
+
+                                                                                                        <ext:MenuCommand Icon="ScriptAdd" CommandName="cmdAddSubCode" Text="添加子指令" />
                                                     <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true" />
                                                     <ext:MenuCommand Icon="UserGo" CommandName="cmdChangeClientUser" Text="更换下家用户" />
                                                 </Items>

@@ -150,6 +150,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 if (dayReportEntity == null)
                 {
                     dayReportEntity = new SPDayReportEntity();
+                    dayReportEntity.ChannelID = channelID;
+                    dayReportEntity.ClientID = clientID;
                 }
  
                 dayReportEntity.UpTotalCount = totalCount;

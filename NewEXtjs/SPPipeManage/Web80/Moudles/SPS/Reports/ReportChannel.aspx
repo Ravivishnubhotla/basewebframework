@@ -173,7 +173,7 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:Checkbox ID="chkFilterNoCount" Checked=false runat="server">
+                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
                                         <Listeners>
                                             <Check Handler="#{Store1}.reload();" />
                                         </Listeners>

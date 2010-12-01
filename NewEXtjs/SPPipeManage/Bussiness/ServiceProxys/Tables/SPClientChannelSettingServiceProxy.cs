@@ -98,13 +98,13 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainChannelClient.CommandColumn = oldClientEntity.CommandColumn;
             mainChannelClient.CommandType = oldClientEntity.CommandType;
             mainChannelClient.CommandCode = oldClientEntity.CommandCode;
-            mainChannelClient.SyncData = oldClientEntity.SyncData;
+            mainChannelClient.SyncData = false;
             mainChannelClient.ChannelCode = oldClientEntity.ChannelCode;
             mainChannelClient.Disable = false;
-            mainChannelClient.FailedMessage = oldClientEntity.FailedMessage;
-            mainChannelClient.OkMessage = oldClientEntity.FailedMessage;
-            mainChannelClient.SyncDataUrl = oldClientEntity.SyncDataUrl;
-            mainChannelClient.SyncType = oldClientEntity.SyncType;
+            mainChannelClient.FailedMessage = "failed";
+            mainChannelClient.OkMessage = "ok";
+            mainChannelClient.SyncDataUrl = "";
+            mainChannelClient.SyncType = "2";
 
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
 

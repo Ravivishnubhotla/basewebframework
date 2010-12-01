@@ -324,5 +324,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindAllNotInClientGroup(clientGroupId));   
         }
+
+        public static void QuickAdd(string loginId, string code, SPChannelWrapper channelWrapper, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType)
+	    {
+            businessProxy.QuickAdd(loginId, code, channelWrapper.entity, mainloginuserId, codeUserIds, channelCode, orderIndex, hasSubCode, codeType);
+	    }
     }
 }
