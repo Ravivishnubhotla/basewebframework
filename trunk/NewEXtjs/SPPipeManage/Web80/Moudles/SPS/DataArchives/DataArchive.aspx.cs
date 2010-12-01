@@ -24,9 +24,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
 
             dfEnd.Value = System.DateTime.Now.AddDays(-1);
 
-            DateField1.MaxDate = System.DateTime.Now.AddDays(-1);
+            //DateField1.MaxDate = System.DateTime.Now.AddDays(-1);
 
-            DateField2.Value = System.DateTime.Now.AddDays(-1);
+            //DateField2.Value = System.DateTime.Now.AddDays(-1);
 
 
             //string dbsizestring = SPDayReportWrapper.GetDbSizeString();
@@ -59,59 +59,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.DataArchives
             }
         }
 
-        protected void StartLongAction2(object sender, AjaxEventArgs e)
-        {
-            Server.ScriptTimeout = 30000;
 
-            try
-            {
-                int channelID = Convert.ToInt32(cmbChannelID.SelectedItem.Value);
-
-                int clientID = Convert.ToInt32(cmbClientID.SelectedItem.Value);
-
-                List<SPPaymentInfoWrapper> paymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(channelID, clientID, Convert.ToDateTime(this.DateField1.Value), Convert.ToDateTime(this.DateField2.Value),2000);
-
-                foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in paymentInfos)
-                {
-                    spPaymentInfoWrapper.ReSend();
-                }
-
-                //Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                //Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
-                //return;
-
-
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
-            }
-        }
-
-
-        protected void btnResendAll_Click(object sender, AjaxEventArgs e)
-        {
-            Server.ScriptTimeout = 30000;
-
-            try
-            {
-                SPPaymentInfoWrapper.RendAllData(DateTime.Now.AddDays(-1));
-
-                //Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                //Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + paymentInfos.Count.ToString();
-                //return;
-
-
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
-                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message;
-            }
-        }
 
         
 

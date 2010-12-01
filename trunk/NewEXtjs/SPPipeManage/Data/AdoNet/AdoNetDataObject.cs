@@ -162,7 +162,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataSet GetAllClientChannel()
         {
-            string sql = "Select * from view_ClientChannel";
+            string sql = "select ChannelID,ClinetID as ClientID from dbo.SPClientChannelSetting group by ChannelID,ClinetID";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 

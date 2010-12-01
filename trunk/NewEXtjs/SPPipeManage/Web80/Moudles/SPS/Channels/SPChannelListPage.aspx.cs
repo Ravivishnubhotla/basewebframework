@@ -4,6 +4,7 @@ using System.Linq;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Channels
 {
@@ -75,7 +76,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             else
                 pageIndex = startIndex / limit;
 
-            storeSPChannel.DataSource = SPChannelWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+
+            queryFilters.Add(new QueryFilter(SPChannelWrapper.PROPERTY_NAME_ISDISABLE,"false",FilterFunction.EqualTo));
+
+            storeSPChannel.DataSource = SPChannelWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);
             e.TotalCount = recordCount;
 
             storeSPChannel.DataBind();
