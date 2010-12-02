@@ -65,6 +65,7 @@ namespace Legendigital.Common.Web.AppClass
 
                     bool result1 = false;
 
+                    //分类型请求
                     if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
                     {
                         //报告状态请求

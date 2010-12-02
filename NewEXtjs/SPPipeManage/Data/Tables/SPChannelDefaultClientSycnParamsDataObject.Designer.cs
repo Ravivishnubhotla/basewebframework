@@ -56,6 +56,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_STATSENDONCE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatSendOnce");
 		public static readonly Property PROPERTY_CHANNELID_ISMONITORINGREQUEST = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitoringRequest");
 		public static readonly Property PROPERTY_CHANNELID_ISDISABLE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable");
+		public static readonly Property PROPERTY_CHANNELID_REPORTIDPARAMS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportIDParams");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPChannelDefaultClientSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPChannelDefaultClientSycnParamsEntity.PROPERTY_NAME_TITLE);

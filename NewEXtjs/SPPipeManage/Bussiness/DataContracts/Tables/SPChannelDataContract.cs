@@ -45,6 +45,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
 		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
+		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
 		
         #endregion
 	
@@ -81,6 +82,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _statSendOnce;
 		private bool? _isMonitoringRequest;
 		private bool? _isDisable;
+		private string _reportIDParams;
 		
 		#endregion
 
@@ -120,7 +122,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channelInfo = null;
 			_statSendOnce = null;
 			_isMonitoringRequest = null;
-			_isDisable = null;
+			_isDisable = false;
+			_reportIDParams = null;
 		}
 		#endregion
 
@@ -611,6 +614,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ReportIDParams
+		{
+			get { return _reportIDParams; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ReportIDParams", value, value.ToString());
+				_reportIDParams = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -648,6 +668,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.StatSendOnce = wrapper.StatSendOnce;
 			this.IsMonitoringRequest = wrapper.IsMonitoringRequest;
 			this.IsDisable = wrapper.IsDisable;
+			this.ReportIDParams = wrapper.ReportIDParams;
 		}
 		
 		
@@ -685,6 +706,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.StatSendOnce = this.StatSendOnce;
 			wrapper.IsMonitoringRequest = this.IsMonitoringRequest;
 			wrapper.IsDisable = this.IsDisable;
+			wrapper.ReportIDParams = this.ReportIDParams;
 		
 		return wrapper;
         }
