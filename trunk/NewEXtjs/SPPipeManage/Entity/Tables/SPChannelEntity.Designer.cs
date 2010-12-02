@@ -45,6 +45,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
 		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
+		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
 		
         #endregion
 	
@@ -84,6 +85,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _statSendOnce;
 		private bool? _isMonitoringRequest;
 		private bool? _isDisable;
+		private string _reportIDParams;
 		
 		#endregion
 
@@ -123,7 +125,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelInfo = null;
 			_statSendOnce = null;
 			_isMonitoringRequest = null;
-			_isDisable = null;
+			_isDisable = false;
+			_reportIDParams = null;
 		}
 		#endregion
 
@@ -131,7 +134,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues, bool? hasFilters, string channelInfo, bool? statSendOnce, bool? isMonitoringRequest, bool? isDisable)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues, bool? hasFilters, string channelInfo, bool? statSendOnce, bool? isMonitoringRequest, bool? isDisable, string reportIDParams)
 		{
 			_id = id;
 			_name = name;
@@ -164,6 +167,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_statSendOnce = statSendOnce;
 			_isMonitoringRequest = isMonitoringRequest;
 			_isDisable = isDisable;
+			_reportIDParams = reportIDParams;
 		}
 		#endregion     
 	
@@ -651,6 +655,23 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isDisable != value); _isDisable = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ReportIDParams
+		{
+			get { return _reportIDParams; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ReportIDParams", value, value.ToString());
+				_isChanged |= (_reportIDParams != value); _reportIDParams = value;
 			}
 		}
 		/// <summary>

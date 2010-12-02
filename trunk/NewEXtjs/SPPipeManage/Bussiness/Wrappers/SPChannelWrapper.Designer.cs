@@ -98,6 +98,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
 		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
+		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
 		
         #endregion
 
@@ -535,6 +536,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.IsDisable = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ReportIDParams
+		{
+			get
+			{
+				return entity.ReportIDParams;
+			}
+			set
+			{
+				entity.ReportIDParams = value;
 			}
 		}
 		#endregion 

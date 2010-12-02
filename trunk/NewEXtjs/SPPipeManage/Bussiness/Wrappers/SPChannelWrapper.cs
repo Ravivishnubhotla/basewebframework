@@ -1263,7 +1263,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             Hashtable fieldMappings = GetFieldMappings();
 
-            string linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
+            string linkid = "";
+
+            if (!string.IsNullOrEmpty(this.ReportIDParams))
+            {
+                if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
+                    linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
+            }
+            else
+            {
+                linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
+            }
+
+            
 
             var statReport = new SPStatReportWrapper();
             statReport.ChannelID = Id;
