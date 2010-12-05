@@ -608,5 +608,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                                                                                                   out recordCount));	        
 
 	    }
+
+        public static List<SPPaymentInfoWrapper> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount)
+	    {
+            return
+                ConvertToWrapperList(businessProxy.FindAllNotSendData(clientChannelId, starDate, endDate, maxRetryCount));	
+	    }
+
+	    public static int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate)
+	    {
+            return businessProxy.GetGetAllClientChannelIDNeed(startDate, endDate);
+	    }
     }
 }

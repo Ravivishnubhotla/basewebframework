@@ -1146,6 +1146,18 @@ namespace LD.SPPipeManage.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
- 
+
+        public DataSet GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate)
+        {
+            string sql = "Select ChannleClientID from dbo.SPPaymentInfo where CreateDate> @startDate and CreateDate < @endDate and IsSycnData = 1 and SucesssToSend = 0 and IsIntercept =0 group by ChannleClientID";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
     }
 }

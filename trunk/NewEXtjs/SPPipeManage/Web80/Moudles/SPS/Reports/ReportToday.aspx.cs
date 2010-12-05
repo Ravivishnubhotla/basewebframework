@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using ScriptManager = Coolite.Ext.Web.ScriptManager;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
@@ -25,6 +26,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         protected void Store1_RefreshData(object sender, StoreRefreshDataEventArgs e)
         {
             bindData();
+        }
+
+        //,int channelID,int clinetID,int newintercept,int oldIntercept,int totalcont
+        [AjaxMethod]
+        public void ChangeInterceptCount(string dateTime)
+        {
+            try
+            {
+
+                ScriptManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.AjaxSuccess = false;
+                ScriptManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
         }
 
 

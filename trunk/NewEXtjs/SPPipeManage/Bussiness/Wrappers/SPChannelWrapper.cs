@@ -816,6 +816,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             Hashtable fieldMappings = GetFieldMappings();
 
+            //string linkid = "";
+
+            //if (!string.IsNullOrEmpty(this.ReportIDParams))
+            //{
+            //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
+            //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
+            //}
+            //else
+            //{
+            //    linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
+            //}
+
             string linkid = GetMappedParamValueFromRequest(httpRequest.RequestParams, "linkid", fieldMappings);
 
             var statReport = new SPStatReportWrapper();
@@ -1265,15 +1277,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             string linkid = "";
 
-            if (!string.IsNullOrEmpty(this.ReportIDParams))
-            {
-                if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
-                    linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
-            }
-            else
-            {
+            //if (!string.IsNullOrEmpty(this.ReportIDParams))
+            //{
+            //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
+            //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
+            //}
+            //else
+            //{
                 linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
-            }
+            //}
 
             
 

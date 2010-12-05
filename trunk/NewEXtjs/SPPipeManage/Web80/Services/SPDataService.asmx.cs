@@ -27,8 +27,64 @@ namespace Legendigital.Common.Web.Services
         }
 
         [WebMethod]
+        public string GetAllClientChannelSendWebDomain(int clientChannleID)
+        {
+            SPClientChannelSettingWrapper channelSettingWrapper = SPClientChannelSettingWrapper.FindById(clientChannleID);
+
+            if (channelSettingWrapper == null)
+                return "";
+
+            if (string.IsNullOrEmpty(channelSettingWrapper.SyncDataUrl))
+                return "";
+
+            Uri uri = new Uri(channelSettingWrapper.SyncDataUrl);
+
+            return uri.Host;
+        }
+
+        [WebMethod]
+        public int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate)
+        {
+            this.Server.ScriptTimeout = 360;
+            return SPPaymentInfoWrapper.GetGetAllClientChannelIDNeed(startDate.Date, endDate.Date);
+        }
+
+        [WebMethod]
+        public List<SPSSendUrlEntity> GetSSendUrlByClientChannelIDAndDate(DateTime startDate, DateTime endDate, int ClientChannelID, int maxRetryCount)
+        {
+            this.Server.ScriptTimeout = 360;
+
+            List<SPPaymentInfoWrapper> spReSendPaymentInfos = SPPaymentInfoWrapper.FindAllNotSendData(ClientChannelID, startDate.Date, endDate.Date, maxRetryCount);
+
+            return ChangePaymentToUrl(spReSendPaymentInfos);
+        }
+
+        private List<SPSSendUrlEntity> ChangePaymentToUrl(List<SPPaymentInfoWrapper> spReSendPaymentInfos)
+        {
+            List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
+
+            foreach (SPPaymentInfoWrapper reSendPaymentInfo in spReSendPaymentInfos)
+            {
+                if (!reSendPaymentInfo.IsIntercept.HasValue)
+                    continue;
+
+                if (reSendPaymentInfo.IsIntercept.Value)
+                    continue;
+
+
+                SPSSendUrlEntity sendUrlEntity = PaymentToSendUrlEntity(reSendPaymentInfo);
+
+                sendUrlEntities.Add(sendUrlEntity);
+            }
+
+            return sendUrlEntities;
+        }
+
+        [WebMethod]
         public List<SPSSendUrlEntity> GetAllClientChannelNeedSendData(int maxDataCount, int maxAllDataCount)
         {
+            this.Server.ScriptTimeout = 360;
+
             List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
 
             List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
@@ -50,14 +106,7 @@ namespace Legendigital.Common.Web.Services
                         continue;
 
 
-                    SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
-                    sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
-                    sendUrlEntity.ClientID = channelSetting.ClinetID.Id;
-                    sendUrlEntity.ChannelID = channelSetting.ChannelID.Id;
-                    sendUrlEntity.SycnRetryTimes = (reSendPaymentInfo.SycnRetryTimes.HasValue
-                                                        ? reSendPaymentInfo.SycnRetryTimes.Value
-                                                        : 0);
-                    sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
+                    SPSSendUrlEntity sendUrlEntity = PaymentToSendUrlEntity(reSendPaymentInfo);
 
                     sendUrlEntities.Add(sendUrlEntity);
 
@@ -73,11 +122,25 @@ namespace Legendigital.Common.Web.Services
             return sendUrlEntities;
         }
 
+        private SPSSendUrlEntity PaymentToSendUrlEntity(SPPaymentInfoWrapper reSendPaymentInfo)
+        {
+            SPSSendUrlEntity sendUrlEntity = new SPSSendUrlEntity();
+            sendUrlEntity.PaymentID = reSendPaymentInfo.Id;
+            sendUrlEntity.ClientID = reSendPaymentInfo.ClientID.Id;
+            sendUrlEntity.ChannelID = reSendPaymentInfo.ChannelID.Id;
+            sendUrlEntity.SycnRetryTimes = (reSendPaymentInfo.SycnRetryTimes.HasValue
+                                                ? reSendPaymentInfo.SycnRetryTimes.Value
+                                                : 0);
+            sendUrlEntity.SendUrl = reSendPaymentInfo.ReBuildUrl();
+            return sendUrlEntity;
+        }
 
 
         [WebMethod]
         public List<SPSSendUrlEntity> GetAllClientChannelNeedSendHistoryData(int maxDataCount, int maxAllDataCount,DateTime startDate,DateTime endDate)
         {
+            this.Server.ScriptTimeout = 360;
+
             List<SPSSendUrlEntity> sendUrlEntities = new List<SPSSendUrlEntity>();
 
             List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();

@@ -334,5 +334,31 @@ namespace LD.SPPipeManage.Data.Tables
 
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
         }
+
+        public List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime startDate, DateTime endDate,int maxRetryCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            if (startDate == DateTime.MinValue)
+                startDate = DateTime.Now.Date;
+
+
+            if (endDate == DateTime.MinValue)
+                endDate = DateTime.Now.Date;
+
+            queryBuilder.AddWhereClause(PROPERTY_CHANNLECLIENTID.Eq(clientChannelId));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.AddDays(1).Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+            queryBuilder.AddWhereClause(PROPERTY_SUCESSSTOSEND.Eq(false));
+            queryBuilder.AddWhereClause(PROPERTY_ISSYCNDATA.Eq(true));
+
+            queryBuilder.AddWhereClause(Or(PROPERTY_SYCNRETRYTIMES.IsNull(), PROPERTY_SYCNRETRYTIMES.Lt(maxRetryCount)));
+
+            return this.FindListByQueryBuilder(queryBuilder);
+        }
     }
 }

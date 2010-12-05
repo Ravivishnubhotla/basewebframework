@@ -12,18 +12,54 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllClientChannelNeedSendData">
+      <s:element name="GetAllClientChannelSendWebDomain">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="maxDataCount" type="s:int" />
-            <s:element minOccurs="1" maxOccurs="1" name="maxAllDataCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="clientChannleID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetAllClientChannelNeedSendDataResponse">
+      <s:element name="GetAllClientChannelSendWebDomainResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAllClientChannelNeedSendDataResult" type="tns:ArrayOfSPSSendUrlEntity" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClientChannelSendWebDomainResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGetAllClientChannelIDNeed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGetAllClientChannelIDNeedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGetAllClientChannelIDNeedResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSSendUrlByClientChannelIDAndDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="ClientChannelID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxRetryCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSSendUrlByClientChannelIDAndDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSSendUrlByClientChannelIDAndDateResult" type="tns:ArrayOfSPSSendUrlEntity" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -41,6 +77,21 @@
           <s:element minOccurs="1" maxOccurs="1" name="PaymentID" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:element name="GetAllClientChannelNeedSendData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="maxDataCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxAllDataCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClientChannelNeedSendDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClientChannelNeedSendDataResult" type="tns:ArrayOfSPSSendUrlEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAllClientChannelNeedSendHistoryData">
         <s:complexType>
           <s:sequence>
@@ -93,6 +144,24 @@
   <wsdl:message name="ConnectSoapOut">
     <wsdl:part name="parameters" element="tns:ConnectResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllClientChannelSendWebDomainSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClientChannelSendWebDomain" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientChannelSendWebDomainSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClientChannelSendWebDomainResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGetAllClientChannelIDNeedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGetAllClientChannelIDNeed" />
+  </wsdl:message>
+  <wsdl:message name="GetGetAllClientChannelIDNeedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGetAllClientChannelIDNeedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSSendUrlByClientChannelIDAndDateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSSendUrlByClientChannelIDAndDate" />
+  </wsdl:message>
+  <wsdl:message name="GetSSendUrlByClientChannelIDAndDateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSSendUrlByClientChannelIDAndDateResponse" />
+  </wsdl:message>
   <wsdl:message name="GetAllClientChannelNeedSendDataSoapIn">
     <wsdl:part name="parameters" element="tns:GetAllClientChannelNeedSendData" />
   </wsdl:message>
@@ -122,6 +191,18 @@
       <wsdl:input message="tns:ConnectSoapIn" />
       <wsdl:output message="tns:ConnectSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelSendWebDomain">
+      <wsdl:input message="tns:GetAllClientChannelSendWebDomainSoapIn" />
+      <wsdl:output message="tns:GetAllClientChannelSendWebDomainSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGetAllClientChannelIDNeed">
+      <wsdl:input message="tns:GetGetAllClientChannelIDNeedSoapIn" />
+      <wsdl:output message="tns:GetGetAllClientChannelIDNeedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSSendUrlByClientChannelIDAndDate">
+      <wsdl:input message="tns:GetSSendUrlByClientChannelIDAndDateSoapIn" />
+      <wsdl:output message="tns:GetSSendUrlByClientChannelIDAndDateSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllClientChannelNeedSendData">
       <wsdl:input message="tns:GetAllClientChannelNeedSendDataSoapIn" />
       <wsdl:output message="tns:GetAllClientChannelNeedSendDataSoapOut" />
@@ -143,6 +224,33 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Connect">
       <soap:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelSendWebDomain">
+      <soap:operation soapAction="http://tempuri.org/GetAllClientChannelSendWebDomain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGetAllClientChannelIDNeed">
+      <soap:operation soapAction="http://tempuri.org/GetGetAllClientChannelIDNeed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSSendUrlByClientChannelIDAndDate">
+      <soap:operation soapAction="http://tempuri.org/GetSSendUrlByClientChannelIDAndDate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -191,6 +299,33 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Connect">
       <soap12:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientChannelSendWebDomain">
+      <soap12:operation soapAction="http://tempuri.org/GetAllClientChannelSendWebDomain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGetAllClientChannelIDNeed">
+      <soap12:operation soapAction="http://tempuri.org/GetGetAllClientChannelIDNeed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSSendUrlByClientChannelIDAndDate">
+      <soap12:operation soapAction="http://tempuri.org/GetSSendUrlByClientChannelIDAndDate" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

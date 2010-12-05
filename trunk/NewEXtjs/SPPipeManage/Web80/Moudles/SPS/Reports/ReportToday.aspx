@@ -2,7 +2,6 @@
     CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
     <script type="text/javascript">
         var template = '<span style="color:{0};">{1}</span>';
 
@@ -18,7 +17,9 @@
             return (rec.data.TotalCount > 0);
         }
 
- 
+         var RefreshReportData = function(btn) {
+            <%= this.Store1.ClientID %>.reload();
+        };
 
 
         var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
@@ -26,10 +27,43 @@
                 command.hidden = false;
                 command.hideMode = 'display';
             }
+
         };
 
 
         var gridCommand = function(command, record, row, col) {
+    
+ 
+
+
+             if (command == 'InterceptCountChange')  {
+                var title = "修改通道‘"+record.data.ChannelName+"’-下家‘"+record.data.ClientName+"' "+record.data.ReportDate.dateFormat('Y/m/d')+" 扣量,原扣量："+record.data.InterceptCount.toString();
+                Ext.MessageBox.prompt(
+                                        title,
+                                        '新的扣量:',
+                                        function(button,text){ 
+                                                                if(button=="ok")
+                                                                {
+                                                                        Coolite.AjaxMethods.ChangeInterceptCount(
+                                                                                    record.data.ReportDate,
+                                                                                    {
+                                                                                        failure: function(msg) {
+                                                                                            Ext.Msg.alert('操作失败', msg,RefreshReportData);
+                                                                                        },
+                                                                                        success: function(result) { 
+                                                                                            Ext.Msg.alert('操作成功', '成功修改扣量！',RefreshReportData);            
+                                                                                        },
+                                                                                        eventMask: {
+                                                                                            showMask: true,
+                                                                                            msg: '加载中...'
+                                                                                        }
+                                                                                    });                                      
+                                                                }
+                                                             } 
+                                      );
+             }
+
+
             if (command == 'TotalCountDetail'||command == 'InterceptCountDetail'||command == 'DownCountDetail'||command == 'DownSycnCountDetail')  {
                 
                 
@@ -73,7 +107,6 @@
         };
 
     </script>
-
     <ext:Store ID="Store1" runat="server" OnRefreshData="Store1_RefreshData">
         <Reader>
             <ext:JsonReader ReaderID="ReportID">
@@ -192,6 +225,9 @@
                                     <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="InterceptCountDetail" Hidden="true">
                                             <ToolTip Text="显示所有明细数据" />
+                                        </ext:ImageCommand>
+                                        <ext:ImageCommand Icon="TableEdit" CommandName="InterceptCountChange" Hidden="true">
+                                            <ToolTip Text="手动修改扣量" />
                                         </ext:ImageCommand>
                                     </Commands>
                                     <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
