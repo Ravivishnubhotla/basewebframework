@@ -32,6 +32,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDate(int clientId, DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllDefaultClientPaymentByOrderByDate(DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount);
+        int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -208,6 +210,25 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    sortFieldName, isdesc,
                                                                                    pageIndex, limit,
                                                                                    out recordCount);
+        }
+
+        public List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount)
+        {
+            return this.SelfDataObj.FindAllNotSendData(clientChannelId, starDate, endDate, maxRetryCount);
+        }
+
+        public int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate)
+        {
+            DataSet ds = this.AdoNetDb.GetGetAllClientChannelIDNeed(startDate, endDate);
+
+            List<int> ids = new List<int>();
+
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                ids.Add((int)(row["ChannleClientID"]));
+            }
+
+            return ids.ToArray();
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -125,9 +126,117 @@ namespace SPSSiteTask
                 case "-rhsr":
                     ReSendAllSendHistoryNoSendRequest();
                     break;
+                case "-rsrtt":
+                    ReSendNoSendRequestThreads(System.DateTime.Now.Date, System.DateTime.Now.Date,3);
+                    break;
+                case "-rhsrtt":
+                    DateTime endDate = System.DateTime.Now.AddDays(-1);
+                    DateTime startDate = endDate.AddDays(-1 * historyDateCount);
+                    ReSendNoSendRequestThreads(startDate.Date, endDate.Date, 3);
+                    break;
             }
 
             EndApplication(); 
+        }
+
+ 
+
+        private static void ReSendNoSendRequestThreads(DateTime startDate,DateTime endDate,int reyTryCount)
+        {
+            ThreadPool.SetMaxThreads(15, 15);
+
+            System.Threading.WaitCallback waitCallback = new WaitCallback(SendRequest);
+
+            ArrayOfInt clientChannleIDs = client.GetGetAllClientChannelIDNeed(startDate.Date, endDate.Date);
+
+            List<SendTask> allSendTask = new List<SendTask>();
+
+            Hashtable hashtable = new Hashtable();
+
+            foreach (int clientChannleID in clientChannleIDs)
+            {
+                if(clientChannleID!=391)
+                {
+                    continue;
+                }
+
+                string host = "";
+
+                try
+                {
+                    host = client.GetAllClientChannelSendWebDomain(clientChannleID);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error("获取host失败！", ex);
+                }
+
+                if (!hashtable.ContainsKey(host))
+                {
+                    SendTask sendTask = new SendTask();
+                    sendTask.IsEnd = false;
+                    sendTask.StartDate = startDate.Date;
+                    sendTask.EndDate = endDate.Date;
+                    sendTask.ChanneClientIds = new List<int>();
+                    sendTask.Host = host;
+                    allSendTask.Add(sendTask);
+                    hashtable.Add(host, sendTask);
+                }
+
+                ((SendTask)hashtable[host]).ChanneClientIds.Add(clientChannleID);
+            }
+
+            foreach (DictionaryEntry dictionaryEntry in hashtable)
+            {
+                ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
+            }
+
+            while (allSendTask.Exists(p=>!p.IsEnd))
+            {
+                Thread.Sleep(5000);
+            }
+        }
+
+        private static void SendRequest(object request)
+        {
+            SendTask sendTask = request as SendTask;
+
+            if (sendTask == null)
+                throw new AbandonedMutexException(" sendTask is null ");
+
+            logger.Info("批量发送" + sendTask.Host + "开始");
+
+            try
+            {
+                foreach (int channeClientId in sendTask.ChanneClientIds)
+                {
+                    try
+                    {
+                        logger.Info("批量发送" + channeClientId.ToString() + "开始");
+
+                        List<SPSSendUrlEntity> sendUrlEntities =
+                            client.GetSSendUrlByClientChannelIDAndDate(sendTask.StartDate, sendTask.EndDate,
+                                                                       channeClientId, 2);
+
+                        PatchSend(sendUrlEntities);
+
+                        logger.Info("批量发送" + channeClientId.ToString() + "结束");
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.Error("批量发送请求数据失败！", ex);
+                    }   
+                }
+
+                logger.Info("批量发送" + sendTask.Host + "开始");
+
+                sendTask.IsEnd = true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error("批量发送请求数据失败！", ex);
+                sendTask.IsEnd = true;
+            }
         }
 
         private static void ReSendAllSendHistoryNoSendRequest()

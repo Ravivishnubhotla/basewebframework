@@ -15,6 +15,13 @@ namespace SPSSiteTask.SPDataService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfInt", Namespace="http://tempuri.org/", ItemName="int")]
+    [System.SerializableAttribute()]
+    public class ArrayOfInt : System.Collections.Generic.List<int> {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SPSSendUrlEntity", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class SPSSendUrlEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -125,6 +132,18 @@ namespace SPSSiteTask.SPDataService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Connect", ReplyAction="*")]
         bool Connect();
         
+        // CODEGEN: Generating message contract since element name GetAllClientChannelSendWebDomainResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllClientChannelSendWebDomain", ReplyAction="*")]
+        SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainResponse GetAllClientChannelSendWebDomain(SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetGetAllClientChannelIDNeedResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetGetAllClientChannelIDNeed", ReplyAction="*")]
+        SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedResponse GetGetAllClientChannelIDNeed(SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequest request);
+        
+        // CODEGEN: Generating message contract since element name GetSSendUrlByClientChannelIDAndDateResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetSSendUrlByClientChannelIDAndDate", ReplyAction="*")]
+        SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateResponse GetSSendUrlByClientChannelIDAndDate(SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequest request);
+        
         // CODEGEN: Generating message contract since element name GetAllClientChannelNeedSendDataResult from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllClientChannelNeedSendData", ReplyAction="*")]
         SPSSiteTask.SPDataService.GetAllClientChannelNeedSendDataResponse GetAllClientChannelNeedSendData(SPSSiteTask.SPDataService.GetAllClientChannelNeedSendDataRequest request);
@@ -139,6 +158,226 @@ namespace SPSSiteTask.SPDataService {
         // CODEGEN: Generating message contract since element name sendUrl from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdatePaymentSend", ReplyAction="*")]
         SPSSiteTask.SPDataService.UpdatePaymentSendResponse UpdatePaymentSend(SPSSiteTask.SPDataService.UpdatePaymentSendRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllClientChannelSendWebDomainRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllClientChannelSendWebDomain", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequestBody Body;
+        
+        public GetAllClientChannelSendWebDomainRequest() {
+        }
+        
+        public GetAllClientChannelSendWebDomainRequest(SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllClientChannelSendWebDomainRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int clientChannleID;
+        
+        public GetAllClientChannelSendWebDomainRequestBody() {
+        }
+        
+        public GetAllClientChannelSendWebDomainRequestBody(int clientChannleID) {
+            this.clientChannleID = clientChannleID;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllClientChannelSendWebDomainResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllClientChannelSendWebDomainResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainResponseBody Body;
+        
+        public GetAllClientChannelSendWebDomainResponse() {
+        }
+        
+        public GetAllClientChannelSendWebDomainResponse(SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetAllClientChannelSendWebDomainResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string GetAllClientChannelSendWebDomainResult;
+        
+        public GetAllClientChannelSendWebDomainResponseBody() {
+        }
+        
+        public GetAllClientChannelSendWebDomainResponseBody(string GetAllClientChannelSendWebDomainResult) {
+            this.GetAllClientChannelSendWebDomainResult = GetAllClientChannelSendWebDomainResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetGetAllClientChannelIDNeedRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetGetAllClientChannelIDNeed", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequestBody Body;
+        
+        public GetGetAllClientChannelIDNeedRequest() {
+        }
+        
+        public GetGetAllClientChannelIDNeedRequest(SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetGetAllClientChannelIDNeedRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public System.DateTime startDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.DateTime endDate;
+        
+        public GetGetAllClientChannelIDNeedRequestBody() {
+        }
+        
+        public GetGetAllClientChannelIDNeedRequestBody(System.DateTime startDate, System.DateTime endDate) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetGetAllClientChannelIDNeedResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetGetAllClientChannelIDNeedResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedResponseBody Body;
+        
+        public GetGetAllClientChannelIDNeedResponse() {
+        }
+        
+        public GetGetAllClientChannelIDNeedResponse(SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetGetAllClientChannelIDNeedResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public SPSSiteTask.SPDataService.ArrayOfInt GetGetAllClientChannelIDNeedResult;
+        
+        public GetGetAllClientChannelIDNeedResponseBody() {
+        }
+        
+        public GetGetAllClientChannelIDNeedResponseBody(SPSSiteTask.SPDataService.ArrayOfInt GetGetAllClientChannelIDNeedResult) {
+            this.GetGetAllClientChannelIDNeedResult = GetGetAllClientChannelIDNeedResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSSendUrlByClientChannelIDAndDateRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSSendUrlByClientChannelIDAndDate", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequestBody Body;
+        
+        public GetSSendUrlByClientChannelIDAndDateRequest() {
+        }
+        
+        public GetSSendUrlByClientChannelIDAndDateRequest(SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetSSendUrlByClientChannelIDAndDateRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public System.DateTime startDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public System.DateTime endDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
+        public int ClientChannelID;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=3)]
+        public int maxRetryCount;
+        
+        public GetSSendUrlByClientChannelIDAndDateRequestBody() {
+        }
+        
+        public GetSSendUrlByClientChannelIDAndDateRequestBody(System.DateTime startDate, System.DateTime endDate, int ClientChannelID, int maxRetryCount) {
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.ClientChannelID = ClientChannelID;
+            this.maxRetryCount = maxRetryCount;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetSSendUrlByClientChannelIDAndDateResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetSSendUrlByClientChannelIDAndDateResponse", Namespace="http://tempuri.org/", Order=0)]
+        public SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateResponseBody Body;
+        
+        public GetSSendUrlByClientChannelIDAndDateResponse() {
+        }
+        
+        public GetSSendUrlByClientChannelIDAndDateResponse(SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetSSendUrlByClientChannelIDAndDateResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public System.Collections.Generic.List<SPSSiteTask.SPDataService.SPSSendUrlEntity> GetSSendUrlByClientChannelIDAndDateResult;
+        
+        public GetSSendUrlByClientChannelIDAndDateResponseBody() {
+        }
+        
+        public GetSSendUrlByClientChannelIDAndDateResponseBody(System.Collections.Generic.List<SPSSiteTask.SPDataService.SPSSendUrlEntity> GetSSendUrlByClientChannelIDAndDateResult) {
+            this.GetSSendUrlByClientChannelIDAndDateResult = GetSSendUrlByClientChannelIDAndDateResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -395,6 +634,49 @@ namespace SPSSiteTask.SPDataService {
         
         public bool Connect() {
             return base.Channel.Connect();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainResponse SPSSiteTask.SPDataService.SPDataServiceSoap.GetAllClientChannelSendWebDomain(SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequest request) {
+            return base.Channel.GetAllClientChannelSendWebDomain(request);
+        }
+        
+        public string GetAllClientChannelSendWebDomain(int clientChannleID) {
+            SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequest inValue = new SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequest();
+            inValue.Body = new SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainRequestBody();
+            inValue.Body.clientChannleID = clientChannleID;
+            SPSSiteTask.SPDataService.GetAllClientChannelSendWebDomainResponse retVal = ((SPSSiteTask.SPDataService.SPDataServiceSoap)(this)).GetAllClientChannelSendWebDomain(inValue);
+            return retVal.Body.GetAllClientChannelSendWebDomainResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedResponse SPSSiteTask.SPDataService.SPDataServiceSoap.GetGetAllClientChannelIDNeed(SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequest request) {
+            return base.Channel.GetGetAllClientChannelIDNeed(request);
+        }
+        
+        public SPSSiteTask.SPDataService.ArrayOfInt GetGetAllClientChannelIDNeed(System.DateTime startDate, System.DateTime endDate) {
+            SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequest inValue = new SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequest();
+            inValue.Body = new SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedRequestBody();
+            inValue.Body.startDate = startDate;
+            inValue.Body.endDate = endDate;
+            SPSSiteTask.SPDataService.GetGetAllClientChannelIDNeedResponse retVal = ((SPSSiteTask.SPDataService.SPDataServiceSoap)(this)).GetGetAllClientChannelIDNeed(inValue);
+            return retVal.Body.GetGetAllClientChannelIDNeedResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateResponse SPSSiteTask.SPDataService.SPDataServiceSoap.GetSSendUrlByClientChannelIDAndDate(SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequest request) {
+            return base.Channel.GetSSendUrlByClientChannelIDAndDate(request);
+        }
+        
+        public System.Collections.Generic.List<SPSSiteTask.SPDataService.SPSSendUrlEntity> GetSSendUrlByClientChannelIDAndDate(System.DateTime startDate, System.DateTime endDate, int ClientChannelID, int maxRetryCount) {
+            SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequest inValue = new SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequest();
+            inValue.Body = new SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateRequestBody();
+            inValue.Body.startDate = startDate;
+            inValue.Body.endDate = endDate;
+            inValue.Body.ClientChannelID = ClientChannelID;
+            inValue.Body.maxRetryCount = maxRetryCount;
+            SPSSiteTask.SPDataService.GetSSendUrlByClientChannelIDAndDateResponse retVal = ((SPSSiteTask.SPDataService.SPDataServiceSoap)(this)).GetSSendUrlByClientChannelIDAndDate(inValue);
+            return retVal.Body.GetSSendUrlByClientChannelIDAndDateResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
