@@ -28,6 +28,8 @@ namespace SPSSiteTask
 
         private static int historyDateCount = 2;
 
+        private static int sendClientChannelID = 0;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -75,6 +77,8 @@ namespace SPSSiteTask
             maxAllDataCount = ReadAppConfigInt("MaxAllDataCount", maxAllDataCount);
 
             historyDateCount = ReadAppConfigInt("HistoryDateCount", historyDateCount);
+
+            sendClientChannelID = ReadAppConfigInt("SendClientChannelID", sendClientChannelID);
 
 
             string[] cmds;
@@ -155,9 +159,12 @@ namespace SPSSiteTask
 
             foreach (int clientChannleID in clientChannleIDs)
             {
-                if(clientChannleID!=391)
+                if (sendClientChannelID != 0)
                 {
-                    continue;
+                    if (clientChannleID != sendClientChannelID)
+                    {
+                        continue;
+                    }
                 }
 
                 string host = "";
@@ -189,6 +196,7 @@ namespace SPSSiteTask
             foreach (DictionaryEntry dictionaryEntry in hashtable)
             {
                 ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
+                Thread.Sleep(60000);
             }
 
             while (allSendTask.Exists(p=>!p.IsEnd))
