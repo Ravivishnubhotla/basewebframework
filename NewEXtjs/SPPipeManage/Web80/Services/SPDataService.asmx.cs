@@ -105,7 +105,6 @@ namespace Legendigital.Common.Web.Services
                     if (reSendPaymentInfo.IsIntercept.Value)
                         continue;
 
-
                     SPSSendUrlEntity sendUrlEntity = PaymentToSendUrlEntity(reSendPaymentInfo);
 
                     sendUrlEntities.Add(sendUrlEntity);
@@ -114,8 +113,6 @@ namespace Legendigital.Common.Web.Services
 
                     if(dataCount>=maxAllDataCount)
                         return sendUrlEntities;
-
-
                 }
             }
 
@@ -204,6 +201,11 @@ namespace Legendigital.Common.Web.Services
 
             if(spPaymentInfoWrapper==null)
                 return false;
+
+            if (spPaymentInfoWrapper.IsIntercept.HasValue && spPaymentInfoWrapper.IsIntercept.Value)
+            {
+                return false;
+            }
 
             if (spPaymentInfoWrapper.SucesssToSend.HasValue && spPaymentInfoWrapper.SucesssToSend.Value)
             {
