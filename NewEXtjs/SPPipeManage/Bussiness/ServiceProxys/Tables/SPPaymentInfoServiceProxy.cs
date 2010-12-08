@@ -34,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount);
         int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate);
+        void UpdateRecordAndReport(DayliyReport dayReport, SPClientChannelSettingEntity spClientChannelSettingEntity, int newIntercept);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -229,6 +230,50 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
 
             return ids.ToArray();
+        }
+
+
+        [Transaction(ReadOnly = false)]
+        public void UpdateRecordAndReport(DayliyReport dayReport, SPClientChannelSettingEntity spClientChannelSettingEntity, int newIntercept)
+        {
+            if (newIntercept < 0)
+                return;
+            if (newIntercept > dayReport.TotalCount)
+                return;
+
+            int newCount = dayReport.InterceptCount - newIntercept;
+
+            if (newCount == 0)
+                return;
+
+            string sql = "";
+
+            if(newCount<0)
+            {
+                sql = string.Format("Update SPPaymentInfo set IsIntercept = 1 where ID In (select Top {0} id from dbo.SPPaymentInfo where ChannleClientID = {1} and CreateDate > '{2}' and CreateDate < '{3}' and IsIntercept = 0)", newCount * -1, spClientChannelSettingEntity.Id, dayReport.ReportDate.Date, dayReport.ReportDate.Date.AddDays(1));
+            }
+            else
+            {
+                sql = string.Format("Update SPPaymentInfo set IsIntercept = 0 where ID In (select Top {0} id from dbo.SPPaymentInfo where ChannleClientID = {1} and CreateDate > '{2}' and CreateDate < '{3}' and IsIntercept = 1)", newCount, spClientChannelSettingEntity.Id, dayReport.ReportDate.Date, dayReport.ReportDate.Date.AddDays(1));             
+            }
+
+            this.AdoNetDb.ExecuteNoQuery(sql,CommandType.Text);
+
+            if(dayReport.ReportDate.Date<System.DateTime.Now)
+            {
+                SPDayReportEntity spDayReportEntity =
+                    this.DataObjectsContainerIocID.SPDayReportDataObjectInstance.FindReportByChannelIDChannelIDAndDate(spClientChannelSettingEntity.ChannelID.Id, spClientChannelSettingEntity.ClinetID.Id, dayReport.ReportDate.Date);
+
+ 
+
+                spDayReportEntity.InterceptTotalCount = newIntercept;
+                spDayReportEntity.DownTotalCount = dayReport.TotalCount - newIntercept;
+                this.DataObjectsContainerIocID.SPDayReportDataObjectInstance.Update(spDayReportEntity);
+
+
+            }
+
+
         }
 
 

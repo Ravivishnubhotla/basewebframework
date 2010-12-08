@@ -329,5 +329,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             businessProxy.QuickAdd(loginId, code, channelWrapper.entity, mainloginuserId, codeUserIds, channelCode, orderIndex, hasSubCode, codeType);
 	    }
+
+
+        public DayliyReport GetDayReport(DateTime dateTime)
+	    {
+	        return SPDayReportWrapper.GetDayReport(dateTime.Date,this);
+	    }
     }
 }

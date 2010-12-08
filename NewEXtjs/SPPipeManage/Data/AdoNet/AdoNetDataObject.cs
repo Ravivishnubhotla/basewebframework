@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Text;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using LD.SPPipeManage.Entity.CustomTyoe;
 using Spring.Data.Common;
 
@@ -27,7 +28,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             DataRow dr = GetFristDataRowFromDataTable(dt);
 
             if (dr != null && dr.Table.Columns.Count >= columnIndex + 1)
-                return (T) dr[columnIndex];
+                return (T)dr[columnIndex];
             return default(T);
         }
 
@@ -58,7 +59,7 @@ namespace LD.SPPipeManage.Data.AdoNet
         #endregion
 
 
-        public string BuildSelectPageSql(string selectField,string tableName,string where,string orderBy,int pageIndex,int pageSize)
+        public string BuildSelectPageSql(string selectField, string tableName, string where, string orderBy, int pageIndex, int pageSize)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -67,11 +68,11 @@ namespace LD.SPPipeManage.Data.AdoNet
             subquery.AppendFormat("SELECT {0},ROW_NUMBER() OVER({1}) AS RowNumber FROM {2} {3} ", selectField, orderBy,
                                   tableName, where);
 
-            int startIndex = (pageIndex - 1)*pageSize+1;
+            int startIndex = (pageIndex - 1) * pageSize + 1;
 
 
             sb.AppendFormat(
-                "SELECT {0},RowNumber FROM ({1}) AS RowNumberTableSource WHERE  RowNumber BETWEEN {2} AND {3} ", selectField, subquery.ToString(), startIndex, pageIndex*pageSize);
+                "SELECT {0},RowNumber FROM ({1}) AS RowNumberTableSource WHERE  RowNumber BETWEEN {2} AND {3} ", selectField, subquery.ToString(), startIndex, pageIndex * pageSize);
 
 
             return sb.ToString();
@@ -90,7 +91,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataTable ExcutePageResult(string selectField, string tableName, string where, string orderBy, int pageIndex, int pageSize)
         {
-            string sql = BuildSelectPageSql(selectField,tableName, where, orderBy, pageIndex, pageSize);
+            string sql = BuildSelectPageSql(selectField, tableName, where, orderBy, pageIndex, pageSize);
 
             return this.ExecuteDataSet(sql, CommandType.Text, this.CreateNewDbParameters()).Tables[0];
 
@@ -112,7 +113,7 @@ namespace LD.SPPipeManage.Data.AdoNet
         public DataSet GetAllNOReportData(int year, int month, int day)
         {
             string sql = "Select * from wiew_NoPayReport where CYear = @year and  CMonth =  @month and  CDay=@day";
- 
+
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("year", year.ToString());
@@ -242,7 +243,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportDt.Columns.Add(new DataColumn("ChannelID", typeof(int)));
             reportDt.Columns.Add(new DataColumn("ClientID", typeof(int)));
             reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
-            
+
 
             reportDt.AcceptChanges();
 
@@ -265,8 +266,8 @@ namespace LD.SPPipeManage.Data.AdoNet
                                   reportResult.DownCount,
                                   reportResult.InterceptCount,
                                   reportResult.DownSycnCount,
-                                  reportResult.InterceptRate, 
-                                  (int)rowChannelClient["ChannelID"], 
+                                  reportResult.InterceptRate,
+                                  (int)rowChannelClient["ChannelID"],
                                   (int)rowChannelClient["ClientID"],
                                   date);
             }
@@ -303,10 +304,10 @@ namespace LD.SPPipeManage.Data.AdoNet
             if (drs.Length <= 0)
                 return 0;
 
-            if (drs[0][field]==System.DBNull.Value)
+            if (drs[0][field] == System.DBNull.Value)
                 return 0;
 
-            return (int) drs[0][field];
+            return (int)drs[0][field];
         }
 
         private DataTable GetDaySumReport(DateTime date)
@@ -328,13 +329,13 @@ namespace LD.SPPipeManage.Data.AdoNet
         {
             string sql = "";
 
-            if(channelId!=0)
+            if (channelId != 0)
             {
                 sql = "SELECT ClientID, ChannelID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord Where (ChannelID = @ChannelID) AND (ClientID = @ClientID) GROUP BY ClientID, ChannelID, CHour  ";
             }
             else
             {
-                sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID =  @ClientID GROUP BY ClientID, ChannelID, CHour   ";              
+                sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID =  @ClientID GROUP BY ClientID, ChannelID, CHour   ";
             }
 
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -357,9 +358,9 @@ namespace LD.SPPipeManage.Data.AdoNet
             DataTable reportDt = new DataTable();
 
 
-            DataColumn dc = new DataColumn("RID",typeof(int));
+            DataColumn dc = new DataColumn("RID", typeof(int));
             reportDt.Columns.Add(dc);
-            reportDt.PrimaryKey = new DataColumn[]{dc};
+            reportDt.PrimaryKey = new DataColumn[] { dc };
 
             reportDt.Columns.Add(new DataColumn("ReportDate", typeof(DateTime)));
             reportDt.Columns.Add(new DataColumn("ChannelName", typeof(string)));
@@ -394,10 +395,10 @@ namespace LD.SPPipeManage.Data.AdoNet
 
                     ReportResult reportResult = GetReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], i, dCountReportForMaster);
 
-                    reportDt.Rows.Add(j,i.Date,
+                    reportDt.Rows.Add(j, i.Date,
                                       rowChannelClient["ChannelName"],
                                       reportResult.DownCount,
-                                      reportResult.DownSycnCount,decimal.Zero);
+                                      reportResult.DownSycnCount, decimal.Zero);
                 }
             }
 
@@ -586,7 +587,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             DataTable dsTodayTotalCount = GetTodayTotalCount();
             DataTable dsTodayDownCount = GetTodayDownCount();
             DataTable dsTodayInterceptCount = GetTodayInterceptCount();
-            DataTable dsTodayDownSycnCount = GetTodayDownSycnCount();    
+            DataTable dsTodayDownSycnCount = GetTodayDownSycnCount();
 
             foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
@@ -595,16 +596,16 @@ namespace LD.SPPipeManage.Data.AdoNet
                 ReportResult reportResult = GetTodayReportResult((int)rowChannelClient["ClientID"], (int)rowChannelClient["ChannelID"], dsTodayTotalCount, dsTodayDownCount, dsTodayInterceptCount, dsTodayDownSycnCount);
 
                 reportDt.Rows.Add(j, System.DateTime.Now.Date,
-                                  rowChannelClient["ChannelName"], 
+                                  rowChannelClient["ChannelName"],
                                   rowChannelClient["ClientName"],
                                   rowChannelClient["ChannelName"] + " - " + rowChannelClient["ClientName"],
-                                  reportResult.TotalCount, 
-                                  reportResult.DownCount, 
+                                  reportResult.TotalCount,
+                                  reportResult.DownCount,
                                   reportResult.InterceptCount,
                                   reportResult.DownSycnCount,
                                   reportResult.InterceptRate,
                                   (int)rowChannelClient["ChannelID"],
-                                  (int)rowChannelClient["ClientID"],System.DBNull.Value);
+                                  (int)rowChannelClient["ClientID"], System.DBNull.Value);
             }
 
             return reportDt;
@@ -623,10 +624,10 @@ namespace LD.SPPipeManage.Data.AdoNet
             reportResult.InterceptCount = ExecuteScalarFormDataTable("InterceptCount", filterSql, dsTodayInterceptCount);
             reportResult.DownSycnCount = ExecuteScalarFormDataTable("DownSycnCount", filterSql, dsTodayDownSycnCount);
 
-            if (reportResult.TotalCount==0)
+            if (reportResult.TotalCount == 0)
                 reportResult.InterceptRate = 0;
             else
-                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount*100) / (decimal)(reportResult.TotalCount);
+                reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
 
 
             return reportResult;
@@ -714,7 +715,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
 
 
-        public decimal CountInterceptRate(int clientID,int channelID)
+        public decimal CountInterceptRate(int clientID, int channelID)
         {
             string procName = "CountInterceptRate";
 
@@ -738,7 +739,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                 interceptRate = (int)result;
             }
 
-            return Convert.ToDecimal(interceptRate)/100;
+            return Convert.ToDecimal(interceptRate) / 100;
         }
 
 
@@ -851,7 +852,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             foreach (DataRow rowChannelClient in dtChannelClient.Rows)
             {
-                if (channelId>0)
+                if (channelId > 0)
                 {
                     if ((int)rowChannelClient["ChannelID"] != channelId)
                         continue;
@@ -871,29 +872,29 @@ namespace LD.SPPipeManage.Data.AdoNet
                                       reportResult.DownCount,
                                       reportResult.InterceptCount,
                                       reportResult.DownSycnCount,
-                                      reportResult.InterceptRate,i.Date);
+                                      reportResult.InterceptRate, i.Date);
                 }
             }
 
             return reportDt;
         }
 
-        private ReportResult GetReportResult(int clientID, int channelID,DateTime dateTime, DataTable dCountReportForMaster)
+        private ReportResult GetReportResult(int clientID, int channelID, DateTime dateTime, DataTable dCountReportForMaster)
         {
             ReportResult reportResult = new ReportResult();
 
             reportResult.ReportDate = DateTime.Now;
 
             string filterSql = string.Format(" ReportDate='{0}' ", dateTime);
-            
-            if(channelID>0)
+
+            if (channelID > 0)
             {
-                filterSql += string.Format(" And  channelId = {0} ",channelID);
+                filterSql += string.Format(" And  channelId = {0} ", channelID);
             }
 
             if (clientID > 0)
             {
-                filterSql += string.Format(" And  clientID = {0} ",clientID);
+                filterSql += string.Format(" And  clientID = {0} ", clientID);
             }
 
             reportResult.TotalCount = ExecuteSumFormDataTable("UpTotalCount", filterSql, dCountReportForMaster);
@@ -930,7 +931,7 @@ namespace LD.SPPipeManage.Data.AdoNet
         {
             string sql = "SELECT * from [view_PaymentReportSum] where ReportDate>=@startDate and ReportDate<=@enddate ";
 
-            if(channelId>0)
+            if (channelId > 0)
             {
                 sql += " And  channelId = @channelId ";
             }
@@ -964,7 +965,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             string sql = "";
 
             sql = "SELECT ClientID, CHour, COUNT(*) AS Total FROM ClientToDayPaymentRecord where ClientID in (SELECT  [ID] FROM  [SPClient] where [SPClientGroupID] = @SPClientGroupID) GROUP BY ClientID, CHour   ";
-            
+
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("SPClientGroupID", clientGroupID);
@@ -1016,7 +1017,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                                     reportResult.DownCount,
                                     reportResult.DownSycnCount, decimal.Zero);
             }
-   
+
 
             return reportDt;
         }
@@ -1040,7 +1041,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                 reportResult.InterceptRate = (decimal)(reportResult.InterceptCount * 100) / (decimal)(reportResult.TotalCount);
 
 
-            return reportResult;   
+            return reportResult;
 
         }
 
@@ -1054,9 +1055,9 @@ namespace LD.SPPipeManage.Data.AdoNet
             dbParameters.AddWithValue("startDate", startDateTime.Date);
 
             dbParameters.AddWithValue("enddate", enddateTime.AddDays(1).Date);
- 
+
             dbParameters.AddWithValue("clientID", clientID);
-   
+
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
@@ -1113,7 +1114,7 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
-        public DataTable CountDataByProvince(int channelID,int clientID, DateTime startDateTime, DateTime enddateTime,string dataType)
+        public DataTable CountDataByProvince(int channelID, int clientID, DateTime startDateTime, DateTime enddateTime, string dataType)
         {
             string sql = "select IsNull(Province,'Î´ÖªÊ¡·Ý') as ProvinceName,COUNT(*) as DataCount from SPPaymentInfo where ChannelID = @ChannelID and  ClientID =@ClientID and CreateDate>=@startDate and CreateDate<=@enddate {0} group by Province";
 
@@ -1130,7 +1131,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                     break;
                 case "DownSycn":
                     sql = string.Format(sql, " and IsIntercept = 0 and SucesssToSend =1 ");
-                    break;       
+                    break;
             }
 
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -1158,6 +1159,52 @@ namespace LD.SPPipeManage.Data.AdoNet
             dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
+
+        public DayliyReport GetDayReport(int channelID, int clientID, DateTime reportDate)
+        {
+            if (reportDate.Date == System.DateTime.Now.Date)
+            {
+                DataTable dsTodayTotalCount = GetTodayTotalCount();
+                DataTable dsTodayDownCount = GetTodayDownCount();
+                DataTable dsTodayInterceptCount = GetTodayInterceptCount();
+                DataTable dsTodayDownSycnCount = GetTodayDownSycnCount();
+
+                ReportResult reportResult = GetTodayReportResult(clientID, channelID, dsTodayTotalCount, dsTodayDownCount, dsTodayInterceptCount, dsTodayDownSycnCount);
+
+                DayliyReport dayliyReport = new DayliyReport();
+
+                dayliyReport.ReportDate = reportDate.Date;
+
+                dayliyReport.SPClientID = clientID;
+                dayliyReport.InterceptCount = reportResult.InterceptCount;
+                dayliyReport.SycnCount = reportResult.DownSycnCount;
+                dayliyReport.DownCount = reportResult.DownCount;
+                dayliyReport.TotalCount = reportResult.TotalCount;
+
+                return dayliyReport;
+            }
+            else
+            {
+                DataTable dsDaySumReport = GetDaySumReport(reportDate.Date);
+
+                ReportResult reportResult = GetTodayReportResult(clientID, channelID, dsDaySumReport);
+
+                DayliyReport dayliyReport = new DayliyReport();
+
+                dayliyReport.ReportDate = reportDate.Date;
+
+                dayliyReport.SPClientID = clientID;
+                dayliyReport.InterceptCount = reportResult.InterceptCount;
+                dayliyReport.SycnCount = reportResult.DownSycnCount;
+                dayliyReport.DownCount = reportResult.DownCount;
+                dayliyReport.TotalCount = reportResult.TotalCount;
+
+                return dayliyReport;
+
+            }
+
+
         }
     }
 }

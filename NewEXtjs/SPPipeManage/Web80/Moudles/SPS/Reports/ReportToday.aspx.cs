@@ -30,10 +30,33 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         //,int channelID,int clinetID,int newintercept,int oldIntercept,int totalcont
         [AjaxMethod]
-        public void ChangeInterceptCount(string dateTime)
+        public void ChangeInterceptCount(string dateTime,int clientID,string newIntercept)
         {
             try
             {
+                //SPClientWrapper clientWrapper = SPClientWrapper.FindById(clientID);
+
+                //int newInterceptCount = Convert.ToInt32(newIntercept);
+
+                //DateTime date = Convert.ToDateTime(dateTime);
+
+                //DayliyReport dayReport = clientWrapper.GetDayReport(date);
+
+                //if (newInterceptCount<0)
+                //{
+                //    ScriptManager.AjaxSuccess = false;
+                //    ScriptManager.AjaxErrorMessage = "扣量不得小于0";
+                //    return;
+                //}
+
+                //if (newInterceptCount > dayReport.TotalCount)
+                //{
+                //    ScriptManager.AjaxSuccess = false;
+                //    ScriptManager.AjaxErrorMessage = "扣量不得大于当日总量：" + dayReport.TotalCount.ToString();
+                //    return;
+                //}
+
+                //SPPaymentInfoWrapper.UpdateRecordAndReport(dayReport);
 
                 ScriptManager.AjaxSuccess = true;
             }
