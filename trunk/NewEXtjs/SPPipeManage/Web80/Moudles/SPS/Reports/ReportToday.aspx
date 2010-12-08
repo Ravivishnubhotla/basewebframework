@@ -45,7 +45,7 @@
                                                                 if(button=="ok")
                                                                 {
                                                                         Coolite.AjaxMethods.ChangeInterceptCount(
-                                                                                    record.data.ReportDate,
+                                                                                    record.data.ReportDate.dateFormat('Y/m/d'),record.data.ClientID,text,
                                                                                     {
                                                                                         failure: function(msg) {
                                                                                             Ext.Msg.alert('操作失败', msg,RefreshReportData);
@@ -226,7 +226,7 @@
                                         <ext:ImageCommand Icon="Table" CommandName="InterceptCountDetail" Hidden="true">
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
-                                        <ext:ImageCommand Icon="TableEdit" CommandName="InterceptCountChange" Hidden="true">
+                                        <ext:ImageCommand Icon="TableEdit" CommandName="InterceptCountChange">
                                             <ToolTip Text="手动修改扣量" />
                                         </ext:ImageCommand>
                                     </Commands>

@@ -34,7 +34,7 @@
                                                 </ext:DateField>
                                                 <ext:Button ID="btnArchive" runat="server" Text="开始生成报表">
                                                     <AjaxEvents>
-                                                        <Click OnEvent="StartLongAction" Success="Ext.MessageBox.alert('操作成功', '成功的手动生成报表.',callback);function callback(id) {};">
+                                                        <Click Timeout="300000" OnEvent="StartLongAction" Success="Ext.MessageBox.alert('操作成功', '成功的手动生成报表.',callback);function callback(id) {};">
                                                             <EventMask ShowMask="true" Msg="处理中..." />
                                                             <Confirmation ConfirmRequest="true" Message="确认进行手动生成报表？" Title="确认操作" />
                                                         </Click>

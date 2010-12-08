@@ -749,6 +749,10 @@
       <Project>{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}</Project>
       <Name>Bussiness</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
       <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
       <Name>Common</Name>

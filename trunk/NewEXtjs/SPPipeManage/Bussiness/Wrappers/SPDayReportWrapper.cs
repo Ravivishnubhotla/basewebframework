@@ -215,5 +215,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetProvinceCountReport(channleId, clientId, startDate, endDate, dType);
 	    }
+
+        public static DayliyReport GetDayReport(DateTime dateTime, SPClientWrapper clientWrapper)
+        {
+            return businessProxy.GetDayReport(dateTime, clientWrapper.DefaultClientChannelSetting.entity);
+        }
     }
 }

@@ -619,5 +619,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetGetAllClientChannelIDNeed(startDate, endDate);
 	    }
+
+	    public static void UpdateRecordAndReport(DayliyReport dayReport,SPClientWrapper spClientWrapper, int newIntercept)
+	    {
+            businessProxy.UpdateRecordAndReport(dayReport, spClientWrapper.DefaultClientChannelSetting.entity, newIntercept);
+
+
+	    }
     }
 }

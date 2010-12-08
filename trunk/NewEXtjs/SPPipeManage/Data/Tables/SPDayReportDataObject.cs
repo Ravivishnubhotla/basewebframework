@@ -21,5 +21,7 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindSingleEntityByQueryBuilder(queryGenerator);
         }
+
+ 
     }
 }
