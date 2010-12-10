@@ -239,6 +239,11 @@ namespace SPSSiteTask
             {
                 Thread.Sleep(5000);
             }
+
+            if(startDate.Date != endDate.Date)
+            {
+                //update report
+            }
         }
 
         private static void SendRequest(object request)
