@@ -241,5 +241,17 @@ namespace Legendigital.Common.Web.Services
 
             SPPaymentInfoWrapper.Update(spPaymentInfoWrapper);
         }
+
+        [WebMethod]
+        public void ReGenerateDayReport(DateTime reportDate)
+        {
+            SPDayReportWrapper.ReGenerateDayReport(reportDate.Date);
+        }
+
+        [WebMethod]
+        public void ReGenerateDayReport(DateTime startDate,DateTime endDate)
+        {
+            SPDayReportWrapper.ReGenerateDayReport(startDate.Date, endDate.Date);
+        }
     }
 }

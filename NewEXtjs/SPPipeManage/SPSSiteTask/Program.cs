@@ -30,6 +30,10 @@ namespace SPSSiteTask
 
         private static int sendClientChannelID = 0;
 
+        private static string multithreadWebSite = "";
+
+        private static int multithreadWebSiteTaskCount = 3;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -80,7 +84,25 @@ namespace SPSSiteTask
 
             sendClientChannelID = ReadAppConfigInt("SendClientChannelID", sendClientChannelID);
 
+            multithreadWebSite = ReadAppConfigString("MultithreadWebSite", multithreadWebSite);
 
+            multithreadWebSiteTaskCount = ReadAppConfigInt("MultithreadWebSiteTaskCount", multithreadWebSiteTaskCount);
+
+            if (multithreadWebSiteTaskCount <= 0)
+                multithreadWebSiteTaskCount = 3;
+
+            string[] multithreadWebSites = multithreadWebSite.Split(("|").ToCharArray());
+
+            SortedList<string, int> multiWebSites = new SortedList<string, int>();
+
+            foreach (string multiWebSite in multithreadWebSites)
+            {
+                if(!multiWebSites.ContainsKey(multiWebSite))
+                {
+                    multiWebSites.Add(multiWebSite, multithreadWebSiteTaskCount);
+                }
+            }
+     
             string[] cmds;
 
             if (!string.IsNullOrEmpty(debugCmd))
@@ -131,21 +153,21 @@ namespace SPSSiteTask
                     ReSendAllSendHistoryNoSendRequest();
                     break;
                 case "-rsrtt":
-                    ReSendNoSendRequestThreads(System.DateTime.Now.Date, System.DateTime.Now.Date,3);
+                    ReSendNoSendRequestThreads(System.DateTime.Now.Date, System.DateTime.Now.Date, 3, multiWebSites);
                     break;
                 case "-rhsrtt":
                     DateTime endDate = System.DateTime.Now.AddDays(-1);
                     DateTime startDate = endDate.AddDays(-1 * historyDateCount);
-                    ReSendNoSendRequestThreads(startDate.Date, endDate.Date, 3);
+                    ReSendNoSendRequestThreads(startDate.Date, endDate.Date, 3, multiWebSites);
                     break;
             }
 
             EndApplication(); 
         }
 
- 
 
-        private static void ReSendNoSendRequestThreads(DateTime startDate,DateTime endDate,int reyTryCount)
+
+        private static void ReSendNoSendRequestThreads(DateTime startDate, DateTime endDate, int reyTryCount, SortedList<string, int> multiWebSites)
         {
             ThreadPool.SetMaxThreads(15, 15);
 
@@ -193,8 +215,22 @@ namespace SPSSiteTask
                 ((SendTask)hashtable[host]).ChanneClientIds.Add(clientChannleID);
             }
 
+ 
+
             foreach (DictionaryEntry dictionaryEntry in hashtable)
             {
+                if (multiWebSites.ContainsKey(dictionaryEntry.Key.ToString()) && multiWebSites[dictionaryEntry.Key.ToString()]<=0)
+                {
+
+                    ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
+
+                    multiWebSites[dictionaryEntry.Key.ToString()] = multiWebSites[dictionaryEntry.Key.ToString()] - 1;
+             
+                    Thread.Sleep(60000);
+
+                    continue;
+
+                }
                 ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
                 Thread.Sleep(60000);
             }
