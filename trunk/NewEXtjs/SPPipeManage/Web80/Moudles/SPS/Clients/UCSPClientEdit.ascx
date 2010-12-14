@@ -29,7 +29,7 @@
     }
 </script>
 <ext:Window ID="winSPClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑下家"
-    ConstrainHeader="true" Width="600" Height="250" AutoShow="false" Maximizable="true"
+    ConstrainHeader="true" Width="600" Height="270" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -56,7 +56,7 @@
                                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="False"
+                                <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="True"
                                     StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local"
                                     ForceSelection="true" TriggerAction="All" DisplayField="Name" ValueField="Id"
                                     EmptyText="请选择下家组">
@@ -69,6 +69,10 @@
                                         <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                     </Listeners>
                                 </ext:ComboBox>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="numPrice" FieldLabel="通道价格" runat="server" AllowDecimals="true" DecimalPrecision="2">
+                                </ext:NumberField>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Hidden ID="hidClientGroupID" runat="server">

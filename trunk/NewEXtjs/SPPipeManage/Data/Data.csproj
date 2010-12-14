@@ -131,6 +131,10 @@
     <Compile Include="Tables\SPClientGroupDataObject.Designer.cs">
       <DependentUpon>SPClientGroupDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientPriceDataObject.cs" />
+    <Compile Include="Tables\SPClientPriceDataObject.Designer.cs">
+      <DependentUpon>SPClientPriceDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>

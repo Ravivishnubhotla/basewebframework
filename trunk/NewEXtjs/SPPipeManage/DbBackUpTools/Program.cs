@@ -47,7 +47,7 @@ namespace DbBackUpTools
 
                         using (SqlCommand sqlCommand = new SqlCommand(sql, connection))
                         {
-                            sqlCommand.CommandTimeout = 300;
+                            sqlCommand.CommandTimeout = 3000;
                             sqlCommand.CommandType = CommandType.Text;
                             sqlCommand.ExecuteNonQuery();
                         }

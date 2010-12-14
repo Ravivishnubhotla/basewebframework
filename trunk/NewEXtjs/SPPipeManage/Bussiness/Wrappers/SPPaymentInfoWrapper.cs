@@ -136,8 +136,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    }
 
-
-
         public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             if(channelId==0)

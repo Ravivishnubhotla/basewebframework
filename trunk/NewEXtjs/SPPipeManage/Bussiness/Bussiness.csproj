@@ -153,6 +153,10 @@
     <Compile Include="ServiceProxys\Tables\SPClientGroupServiceProxy.Designer.cs">
       <DependentUpon>SPClientGroupServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientPriceServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientPriceServiceProxy.Designer.cs">
+      <DependentUpon>SPClientPriceServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
@@ -245,6 +249,10 @@
     <Compile Include="Wrappers\SPClientGroupWrapper.cs" />
     <Compile Include="Wrappers\SPClientGroupWrapper.Designer.cs">
       <DependentUpon>SPClientGroupWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientPriceWrapper.cs" />
+    <Compile Include="Wrappers\SPClientPriceWrapper.Designer.cs">
+      <DependentUpon>SPClientPriceWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPClientWrapper.cs" />
     <Compile Include="Wrappers\SPClientWrapper.Designer.cs">

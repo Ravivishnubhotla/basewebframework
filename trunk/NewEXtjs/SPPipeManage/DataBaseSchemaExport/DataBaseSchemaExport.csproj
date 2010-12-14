@@ -58,10 +58,15 @@
       <Project>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
