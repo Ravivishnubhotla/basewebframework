@@ -335,5 +335,33 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
 	        return SPDayReportWrapper.GetDayReport(dateTime.Date,this);
 	    }
+
+        public decimal Price
+        {
+            get
+            {
+                if(SPClientGroupID==null)
+                {
+                    return SPClientPriceWrapper.GetClientPrice(this.Id);
+                }
+                else
+                {
+                    return SPClientPriceWrapper.GetClientGroupPrice(this.Id, SPClientGroupID.Id);                
+                }
+            }
+        }
+
+
+	    public void SetClientPrice(decimal price)
+	    {
+            if (SPClientGroupID == null)
+            {
+                SPClientPriceWrapper.SetClientPrice(this.Id, price);
+            }
+            else
+            {
+                SPClientPriceWrapper.SetClientGroupPrice(this.Id, SPClientGroupID.Id, price);
+            }
+	    }
     }
 }

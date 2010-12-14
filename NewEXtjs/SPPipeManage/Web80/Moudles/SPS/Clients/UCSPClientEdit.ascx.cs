@@ -60,6 +60,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     if (obj.SPClientGroupID != null)
                         this.hidClientGroupID.Text = obj.SPClientGroupID.Id.ToString();
 
+                    numPrice.Text = obj.Price.ToString("N2");
+
 
                     hidId.Text = id.ToString();
 
@@ -92,8 +94,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 obj.Description = this.txtDescription.Text.Trim();
                 if (ClientGroupID <= 0)
                 {
-                    obj.SPClientGroupID =
-                        SPClientGroupWrapper.FindById(Convert.ToInt32(this.cmbClientGroupID.SelectedItem.Value));
+                    if (this.cmbClientGroupID.SelectedItem!=null)
+                    {
+                        obj.SPClientGroupID =
+                            SPClientGroupWrapper.FindById(Convert.ToInt32(this.cmbClientGroupID.SelectedItem.Value));
+                    }
                 }
                 else
                 {
@@ -101,6 +106,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 }
 
                 SPClientWrapper.Update(obj);
+
+                obj.SetClientPrice(Convert.ToDecimal(numPrice.Value));
 
                 winSPClientEdit.Hide();
                 

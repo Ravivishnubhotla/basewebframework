@@ -259,12 +259,13 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             this.AdoNetDb.ExecuteNoQuery(sql,CommandType.Text);
 
-            if(dayReport.ReportDate.Date<System.DateTime.Now)
+            if(dayReport.ReportDate.Date<System.DateTime.Now.Date)
             {
                 SPDayReportEntity spDayReportEntity =
                     this.DataObjectsContainerIocID.SPDayReportDataObjectInstance.FindReportByChannelIDChannelIDAndDate(spClientChannelSettingEntity.ChannelID.Id, spClientChannelSettingEntity.ClinetID.Id, dayReport.ReportDate.Date);
 
- 
+                if (spDayReportEntity == null)
+                    return;
 
                 spDayReportEntity.InterceptTotalCount = newIntercept;
                 spDayReportEntity.DownTotalCount = dayReport.TotalCount - newIntercept;

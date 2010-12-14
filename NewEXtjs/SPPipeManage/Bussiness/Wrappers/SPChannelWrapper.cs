@@ -437,10 +437,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     }
                 }
                 else
+                {
+                    paymentInfo.IsSycnData = false;
                     paymentInfo.SucesssToSend = false;
+                }
+
             }
             else
             {
+                paymentInfo.IsSycnData = false;
                 paymentInfo.SucesssToSend = false;
             }
 

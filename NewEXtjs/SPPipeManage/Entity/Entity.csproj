@@ -112,6 +112,10 @@
     <Compile Include="Tables\SPClientGroupEntity.Designer.cs">
       <DependentUpon>SPClientGroupEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPClientPriceEntity.cs" />
+    <Compile Include="Tables\SPClientPriceEntity.Designer.cs">
+      <DependentUpon>SPClientPriceEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportEntity.cs" />
     <Compile Include="Tables\SPDayReportEntity.Designer.cs">
       <DependentUpon>SPDayReportEntity.cs</DependentUpon>
@@ -228,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSettingFiltersMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPClientPriceMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

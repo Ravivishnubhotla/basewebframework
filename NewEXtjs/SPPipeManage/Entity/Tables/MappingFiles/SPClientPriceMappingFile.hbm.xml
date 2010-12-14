@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPClientPriceEntity,LD.SPPipeManage.Entity" table="SPClientPrice" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="SPClientID" type="int" name="SPClientID"   />	
+		<property column="SPClientGroupID" type="int" name="SPClientGroupID"   />	
+		<property column="Price" type="Decimal" name="Price"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

@@ -242,6 +242,7 @@
                     <ext:RecordField Name="UserLoginID" />
                     <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="ClientGroupName" />
+                    <ext:RecordField Name="Price" Type="Float" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -301,6 +302,8 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="通道价格" Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Hidden="true" Sortable="true">
                                 </ext:Column>
@@ -319,9 +322,9 @@
                                             <Menu>
                                                 <Items>
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
-                                                    <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组"/>
-                                                    <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户"/>
-                                                    <ext:MenuCommand CommandName="cmdUnlock" Icon="LockOpen" Text="解锁用户"/>
+                                                    <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组" />
+                                                    <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户" />
+                                                    <ext:MenuCommand CommandName="cmdUnlock" Icon="LockOpen" Text="解锁用户" />
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Split" />
@@ -329,9 +332,8 @@
                                         <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden="true">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
-                                        
                                     </Commands>
-                                                                        <PrepareToolbar Fn="showCommands" />
+                                    <PrepareToolbar Fn="showCommands" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
