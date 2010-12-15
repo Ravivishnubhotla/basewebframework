@@ -51,6 +51,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPClientPriceServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPClientPriceServiceProxy, LD.SPPipeManage.Bussiness">
+    <property name="SelfDataObj" ref="SPClientPriceDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPDayReportServiceProxyIocID" type="LD.SPPipeManage.Bussiness.ServiceProxys.Tables.SPDayReportServiceProxy, LD.SPPipeManage.Bussiness">
     <property name="SelfDataObj" ref="SPDayReportDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -135,6 +140,7 @@
     <property name="SPClientChannelSettingFiltersServiceProxyInstance" ref="SPClientChannelSettingFiltersServiceProxyIocID"/>
     <property name="SPClientChannelSycnParamsServiceProxyInstance" ref="SPClientChannelSycnParamsServiceProxyIocID"/>
     <property name="SPClientGroupServiceProxyInstance" ref="SPClientGroupServiceProxyIocID"/>
+    <property name="SPClientPriceServiceProxyInstance" ref="SPClientPriceServiceProxyIocID"/>
     <property name="SPDayReportServiceProxyInstance" ref="SPDayReportServiceProxyIocID"/>
     <property name="SPFailedRequestServiceProxyInstance" ref="SPFailedRequestServiceProxyIocID"/>
     <property name="SPInterceptRateServiceProxyInstance" ref="SPInterceptRateServiceProxyIocID"/>

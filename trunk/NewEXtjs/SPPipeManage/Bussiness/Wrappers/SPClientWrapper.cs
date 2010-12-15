@@ -304,7 +304,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 SPClientChannelSettingWrapper.FindAllByClinetID(this);
 
             if (clientChannelSettingWrappers != null && clientChannelSettingWrappers.Count > 0)
-                return clientChannelSettingWrappers[0];
+                return clientChannelSettingWrappers.Find(p => !(p.Disable.HasValue  && p.Disable.Value));
             else
                 return null;
         }
