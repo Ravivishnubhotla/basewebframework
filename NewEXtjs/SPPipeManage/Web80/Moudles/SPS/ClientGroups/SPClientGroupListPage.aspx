@@ -55,6 +55,23 @@
             }
 
 
+                               if (cmd == "cmdClientGroupPriceReport") {
+
+                var win = <%= this.winClientGroupPriceReport.ClientID %>;
+                
+
+                win.setTitle(" 下家组 "+id.data.Name+"  " + " 结算报表 ");
+                
+                //win.autoLoad.url = '../ClientChannelSettings/SPClientChannelSettingListPage.aspx';
+                
+                win.autoLoad.params.ClientGroupID = id.data.Id;
+        
+                win.show();    
+            }
+
+
+            
+
                                     if (cmd == "cmdClientManage") {
 
                 var win = <%= this.winClientmanage.ClientID %>;
@@ -170,6 +187,9 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理">
                                             <ToolTip Text="下家管理" />
                                         </ext:GridCommand>
+                                        <ext:GridCommand Icon=Money CommandName="cmdClientGroupPriceReport" Text="结算报表">
+                                            <ToolTip Text="结算报表" />
+                                        </ext:GridCommand>              
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>
@@ -200,6 +220,20 @@
         ConstrainHeader="true" Height="480" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
         <AutoLoad Url="../Clients/SPClientListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+        <ext:Window ID="winClientGroupPriceReport" runat="server" Title="Window" Frame="true" Width="850"
+        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Clients/SPClientGroupReport.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">

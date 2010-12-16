@@ -494,182 +494,182 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request,
-                                   out RequestError error)
-        {
-            error = new RequestError();
-            error.ErrorType = RequestErrorType.NoError;
-            error.ErrorMessage = "";
-            error.ChannelID = Id;
+        //public bool ProcessRequest(Hashtable hashtable, string ip, string query, HttpRequest request,
+        //                           out RequestError error)
+        //{
+        //    error = new RequestError();
+        //    error.ErrorType = RequestErrorType.NoError;
+        //    error.ErrorMessage = "";
+        //    error.ChannelID = Id;
 
-            Hashtable fieldMappings = GetFieldMappings();
+        //    Hashtable fieldMappings = GetFieldMappings();
 
-            string cpid = GetMappedParamValueFromRequest(hashtable, "cpid", fieldMappings);
-            string mid = GetMappedParamValueFromRequest(hashtable, "mid", fieldMappings);
-            string mobile = GetMappedParamValueFromRequest(hashtable, "mobile", fieldMappings);
-            string port = GetMappedParamValueFromRequest(hashtable, "port", fieldMappings);
-            string ywid = GetMappedParamValueFromRequest(hashtable, "ywid", fieldMappings);
-            string msg = GetMappedParamValueFromRequest(hashtable, "msg", fieldMappings);
-            string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
-            string dest = GetMappedParamValueFromRequest(hashtable, "dest", fieldMappings);
-            string price = GetMappedParamValueFromRequest(hashtable, "price", fieldMappings);
-            string extendfield1 = GetMappedParamValueFromRequest(hashtable, "extendfield1", fieldMappings);
-            string extendfield2 = GetMappedParamValueFromRequest(hashtable, "extendfield2", fieldMappings);
-            string extendfield3 = GetMappedParamValueFromRequest(hashtable, "extendfield3", fieldMappings);
-            string extendfield4 = GetMappedParamValueFromRequest(hashtable, "extendfield4", fieldMappings);
-            string extendfield5 = GetMappedParamValueFromRequest(hashtable, "extendfield5", fieldMappings);
-            string extendfield6 = GetMappedParamValueFromRequest(hashtable, "extendfield6", fieldMappings);
-            string extendfield7 = GetMappedParamValueFromRequest(hashtable, "extendfield7", fieldMappings);
-            string extendfield8 = GetMappedParamValueFromRequest(hashtable, "extendfield8", fieldMappings);
-            string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
-
-
-            if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
-            {
-                linkid = Guid.NewGuid().ToString();
-            }
-
-            if (string.IsNullOrEmpty(linkid))
-            {
-                error.ErrorType = RequestErrorType.NoLinkID;
-                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
-
-                return false;
-            }
-
-            string content = query;
+        //    string cpid = GetMappedParamValueFromRequest(hashtable, "cpid", fieldMappings);
+        //    string mid = GetMappedParamValueFromRequest(hashtable, "mid", fieldMappings);
+        //    string mobile = GetMappedParamValueFromRequest(hashtable, "mobile", fieldMappings);
+        //    string port = GetMappedParamValueFromRequest(hashtable, "port", fieldMappings);
+        //    string ywid = GetMappedParamValueFromRequest(hashtable, "ywid", fieldMappings);
+        //    string msg = GetMappedParamValueFromRequest(hashtable, "msg", fieldMappings);
+        //    string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
+        //    string dest = GetMappedParamValueFromRequest(hashtable, "dest", fieldMappings);
+        //    string price = GetMappedParamValueFromRequest(hashtable, "price", fieldMappings);
+        //    string extendfield1 = GetMappedParamValueFromRequest(hashtable, "extendfield1", fieldMappings);
+        //    string extendfield2 = GetMappedParamValueFromRequest(hashtable, "extendfield2", fieldMappings);
+        //    string extendfield3 = GetMappedParamValueFromRequest(hashtable, "extendfield3", fieldMappings);
+        //    string extendfield4 = GetMappedParamValueFromRequest(hashtable, "extendfield4", fieldMappings);
+        //    string extendfield5 = GetMappedParamValueFromRequest(hashtable, "extendfield5", fieldMappings);
+        //    string extendfield6 = GetMappedParamValueFromRequest(hashtable, "extendfield6", fieldMappings);
+        //    string extendfield7 = GetMappedParamValueFromRequest(hashtable, "extendfield7", fieldMappings);
+        //    string extendfield8 = GetMappedParamValueFromRequest(hashtable, "extendfield8", fieldMappings);
+        //    string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
 
 
-            Hashtable exparams = GetEXParamsValue(hashtable);
+        //    if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
+        //    {
+        //        linkid = Guid.NewGuid().ToString();
+        //    }
 
-            SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable,
-                                                                                                   fieldMappings);
+        //    if (string.IsNullOrEmpty(linkid))
+        //    {
+        //        error.ErrorType = RequestErrorType.NoLinkID;
+        //        error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
 
-            if (channelSetting == null)
-            {
-                error.ErrorType = RequestErrorType.NoChannelClientSetting;
-                error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
+        //        return false;
+        //    }
 
-                //SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
-
-                return false;
-            }
-
-
-            SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
-
-            paymentInfo.ChannelID = this;
-            paymentInfo.ClientID = channelSetting.ClinetID;
-            paymentInfo.ChannleClientID = channelSetting.Id;
-            paymentInfo.Cpid = cpid;
-            paymentInfo.Mid = mid;
-            paymentInfo.MobileNumber = mobile;
-            paymentInfo.Port = port;
-            paymentInfo.Ywid = ywid;
-            paymentInfo.Message = msg;
-            paymentInfo.Linkid = linkid;
-            paymentInfo.Dest = dest;
-            paymentInfo.Price = price;
-            paymentInfo.ExtendField1 = extendfield1;
-            paymentInfo.ExtendField2 = extendfield2;
-            paymentInfo.ExtendField3 = extendfield3;
-            paymentInfo.ExtendField4 = extendfield4;
-            paymentInfo.ExtendField5 = extendfield5;
-            paymentInfo.ExtendField6 = extendfield6;
-            paymentInfo.ExtendField7 = extendfield7;
-            paymentInfo.ExtendField8 = extendfield8;
-            paymentInfo.ExtendField9 = extendfield9;
-            paymentInfo.Ip = ip;
-            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
-            paymentInfo.CreateDate = DateTime.Now;
-            paymentInfo.RequestContent = content;
+        //    string content = query;
 
 
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-            {
-                try
-                {
-                    PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    if (phoneAreaInfo != null)
-                    {
-                        paymentInfo.Province = phoneAreaInfo.Province;
-                        paymentInfo.City = phoneAreaInfo.City;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex.Message);
-                }
-            }
+        //    Hashtable exparams = GetEXParamsValue(hashtable);
 
-            paymentInfo.IsSycnData = false;
+        //    SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable,
+        //                                                                                           fieldMappings);
 
-            if (!paymentInfo.IsIntercept.Value)
-            {
-                if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
-                {
-                    paymentInfo.IsSycnData = true;
-                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
-                    {
-                        paymentInfo.SucesssToSend = false;
-                    }
-                    else
-                    {
-                        paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
-                    }
-                }
-                else
-                    paymentInfo.SucesssToSend = false;
-            }
-            else
-            {
-                paymentInfo.SucesssToSend = false;
-            }
+        //    if (channelSetting == null)
+        //    {
+        //        error.ErrorType = RequestErrorType.NoChannelClientSetting;
+        //        error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
 
-            try
-            {
-                PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
+        //        //SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
 
-                var uniqueKeyNames = new List<string>();
+        //        return false;
+        //    }
 
-                List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
 
-                foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-                {
-                    if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-                        uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-                }
+        //    SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
 
-                if (!uniqueKeyNames.Contains("linkid"))
-                {
-                    uniqueKeyNames.Add("linkid");
-                }
+        //    paymentInfo.ChannelID = this;
+        //    paymentInfo.ClientID = channelSetting.ClinetID;
+        //    paymentInfo.ChannleClientID = channelSetting.Id;
+        //    paymentInfo.Cpid = cpid;
+        //    paymentInfo.Mid = mid;
+        //    paymentInfo.MobileNumber = mobile;
+        //    paymentInfo.Port = port;
+        //    paymentInfo.Ywid = ywid;
+        //    paymentInfo.Message = msg;
+        //    paymentInfo.Linkid = linkid;
+        //    paymentInfo.Dest = dest;
+        //    paymentInfo.Price = price;
+        //    paymentInfo.ExtendField1 = extendfield1;
+        //    paymentInfo.ExtendField2 = extendfield2;
+        //    paymentInfo.ExtendField3 = extendfield3;
+        //    paymentInfo.ExtendField4 = extendfield4;
+        //    paymentInfo.ExtendField5 = extendfield5;
+        //    paymentInfo.ExtendField6 = extendfield6;
+        //    paymentInfo.ExtendField7 = extendfield7;
+        //    paymentInfo.ExtendField8 = extendfield8;
+        //    paymentInfo.ExtendField9 = extendfield9;
+        //    paymentInfo.Ip = ip;
+        //    paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
+        //    paymentInfo.CreateDate = DateTime.Now;
+        //    paymentInfo.RequestContent = content;
 
-                bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
 
-                if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
-                {
-                    error.ErrorType = RequestErrorType.RepeatLinkID;
-                    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
-                    error.ClientID = channelSetting.ClinetID.Id;
-                    //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .",
-                    //                                         Id, 0);
+        //    if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+        //    {
+        //        try
+        //        {
+        //            PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+        //            if (phoneAreaInfo != null)
+        //            {
+        //                paymentInfo.Province = phoneAreaInfo.Province;
+        //                paymentInfo.City = phoneAreaInfo.City;
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            Logger.Error(ex.Message);
+        //        }
+        //    }
 
-                    return false;
-                }
+        //    paymentInfo.IsSycnData = false;
 
-                error.ErrorType = RequestErrorType.NoError;
-                error.ErrorMessage = "";
+        //    if (!paymentInfo.IsIntercept.Value)
+        //    {
+        //        if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+        //        {
+        //            paymentInfo.IsSycnData = true;
+        //            if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+        //            {
+        //                paymentInfo.SucesssToSend = false;
+        //            }
+        //            else
+        //            {
+        //                paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
+        //            }
+        //        }
+        //        else
+        //            paymentInfo.SucesssToSend = false;
+        //    }
+        //    else
+        //    {
+        //        paymentInfo.SucesssToSend = false;
+        //    }
 
-                return true;
-            }
-            catch (Exception ex)
-            {
-                error.ErrorType = RequestErrorType.DataSaveError;
-                error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
-                return false;
-            }
-        }
+        //    try
+        //    {
+        //        PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
+
+        //        var uniqueKeyNames = new List<string>();
+
+        //        List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
+
+        //        foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
+        //        {
+        //            if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
+        //                uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
+        //        }
+
+        //        if (!uniqueKeyNames.Contains("linkid"))
+        //        {
+        //            uniqueKeyNames.Add("linkid");
+        //        }
+
+        //        bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
+
+        //        if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
+        //        {
+        //            error.ErrorType = RequestErrorType.RepeatLinkID;
+        //            error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
+        //            error.ClientID = channelSetting.ClinetID.Id;
+        //            //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .",
+        //            //                                         Id, 0);
+
+        //            return false;
+        //        }
+
+        //        error.ErrorType = RequestErrorType.NoError;
+        //        error.ErrorMessage = "";
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        error.ErrorType = RequestErrorType.DataSaveError;
+        //        error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
+        //        return false;
+        //    }
+        //}
 
         public List<SPChannelParamsWrapper> GetAllShowParams()
         {
