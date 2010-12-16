@@ -274,21 +274,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public bool CaculteIsIntercept()
+
+        private bool CaculteRandom(int rate)
         {
-            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
-
-            //if (rate < Convert.ToDecimal(this.InterceptRate))
-            //    return true;
-            //else
-            //    return false;
-
-
             Random random = new Random(unchecked((int)DateTime.Now.Ticks));
 
             int result = random.Next(0, 100);
 
-            return (result <= this.InterceptRate);
+            return (result <= rate);
+        }
+
+        public bool CaculteIsIntercept()
+        {
+            //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
+            //    return false;
+
+            int interceptRate = 0;
+
+            if(this.InterceptRate.HasValue)
+            {
+                interceptRate = this.InterceptRate.Value;
+            }
+
+            if(interceptRate==0)
+                return false;
+
+            decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+
+            if (rate < Convert.ToDecimal(interceptRate))
+                return CaculteRandom(interceptRate + 50);
+            else
+                return false;
         }
 
         private decimal GetToDayRate(int clinetID, int channelID)
