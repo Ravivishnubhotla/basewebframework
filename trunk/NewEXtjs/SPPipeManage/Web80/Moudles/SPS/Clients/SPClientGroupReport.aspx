@@ -58,7 +58,8 @@
                                     Width="20">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colDownCount" DataIndex="DownCount" Header="点播数" Sortable="true"
+                               
+                                <ext:Column ColumnID="colDownCount" DataIndex="DownCount" Header="点播数"   Sortable="true"
                                     Width="20">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDownSycnCount" DataIndex="DownSycnCount" Header="结算价格"

@@ -223,19 +223,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    public static DataTable GetClientGroupPriceReport(int clientGroupId, DateTime startDate, DateTime endDate)
 	    {
-	        List<SPClientWrapper> spClientWrappers =
-	            SPClientWrapper.FindAllBySPClientGroupID(SPClientGroupWrapper.FindById(clientGroupId));
-
-
-            List<SPClientChannelSettingWrapper> clientChannelSettingWrappers = new List<SPClientChannelSettingWrapper>();
-
-            foreach (SPClientWrapper spClientWrapper in spClientWrappers)
-	        {
-                clientChannelSettingWrappers.Add(spClientWrapper.DefaultClientChannelSetting);
-	        }
-
-
-            return businessProxy.GetClientGroupPriceReport(SPClientChannelSettingWrapper.ConvertToEntityList(clientChannelSettingWrappers), startDate, endDate);
+            return businessProxy.GetClientGroupPriceReport(clientGroupId, startDate, endDate);
 	    }
     }
 }
