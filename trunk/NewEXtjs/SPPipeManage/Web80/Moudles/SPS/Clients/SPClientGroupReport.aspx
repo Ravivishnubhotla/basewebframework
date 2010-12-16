@@ -9,9 +9,9 @@
                     <ext:RecordField Name="RID" Type="int" />
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientName" />
-                    <ext:RecordField Name="DownCount" Type="Int" />
+                    <ext:RecordField Name="DownTotalCount" Type="Int" />
                     <ext:RecordField Name="Price" Type="Float" />
-                    <ext:RecordField Name="Amout" Type="Float" />
+                    <ext:RecordField Name="Amount" Type="Float" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -58,14 +58,16 @@
                                     Width="20">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                                 </ext:Column>
-                               
-                                <ext:Column ColumnID="colDownCount" DataIndex="DownCount" Header="点播数"   Sortable="true"
+                                <ext:Column ColumnID="colClientName" DataIndex="ClientName" Header="通道名称" Sortable="true"
+                                    Width="20">
+                                    </ext:Column>    
+                                <ext:Column ColumnID="colDownTotalCount" DataIndex="DownTotalCount" Header="点播数"   Sortable="true"
                                     Width="20">
                                 </ext:Column>
-                                <ext:Column ColumnID="colDownSycnCount" DataIndex="DownSycnCount" Header="结算价格"
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="结算价格"
                                     Sortable="true" Width="20">
                                 </ext:Column>
-                                 <ext:Column ColumnID="colDownSycnCount" DataIndex="DownSycnCount" Header="总计"
+                                 <ext:Column ColumnID="colAmount" DataIndex="Amount" Header="总计"
                                     Sortable="true" Width="20">
                                 </ext:Column>
                             </Columns>
@@ -73,7 +75,7 @@
                         <LoadMask ShowMask="true" />
  
                         <BottomBar>
-                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="store1"
+                            <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="100" StoreID="store1"
                                 DisplayInfo="true" DisplayMsg="显示记录 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的记录" />
                         </BottomBar>
                     </ext:GridPanel>
