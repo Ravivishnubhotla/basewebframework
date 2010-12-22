@@ -2,7 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
-    <ext:Store ID="store1" runat="server" AutoLoad="true" OnRefreshData="store1_Refresh">
+        <%--<p>Limitations of ajax file downloading: success/failure events don't fired. Therefore the mask is impossible.</p>--%>
+    <ext:Store ID="store1" runat="server" AutoLoad="true" OnRefreshData="store1_Refresh"  OnSubmitData="storeData_Submit">
         <Reader>
             <ext:JsonReader ReaderID="RID">
                 <Fields>
@@ -15,6 +16,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+                <AjaxEventConfig IsUpload="true" />
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -40,6 +42,11 @@
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                                                        <ext:ToolbarButton ID='btnAdd' runat="server" Text="导出" Icon="PageExcel">
+                                        <Listeners>
+                                            <Click Handler="#{gridPanelSPClientChannelSetting}.submitData(false);" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                 </Items>

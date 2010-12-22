@@ -136,6 +136,27 @@
       <s:element name="UpdatePaymentSendResponse">
         <s:complexType />
       </s:element>
+      <s:element name="ReGenerateDayReportByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="reportDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReGenerateDayReportByDateResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReGenerateDayReportByDateRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReGenerateDayReportByDateRangeResponse">
+        <s:complexType />
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="ConnectSoapIn">
@@ -186,6 +207,18 @@
   <wsdl:message name="UpdatePaymentSendSoapOut">
     <wsdl:part name="parameters" element="tns:UpdatePaymentSendResponse" />
   </wsdl:message>
+  <wsdl:message name="ReGenerateDayReportByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:ReGenerateDayReportByDate" />
+  </wsdl:message>
+  <wsdl:message name="ReGenerateDayReportByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:ReGenerateDayReportByDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReGenerateDayReportByDateRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:ReGenerateDayReportByDateRange" />
+  </wsdl:message>
+  <wsdl:message name="ReGenerateDayReportByDateRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:ReGenerateDayReportByDateRangeResponse" />
+  </wsdl:message>
   <wsdl:portType name="SPDataServiceSoap">
     <wsdl:operation name="Connect">
       <wsdl:input message="tns:ConnectSoapIn" />
@@ -218,6 +251,14 @@
     <wsdl:operation name="UpdatePaymentSend">
       <wsdl:input message="tns:UpdatePaymentSendSoapIn" />
       <wsdl:output message="tns:UpdatePaymentSendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDate">
+      <wsdl:input message="tns:ReGenerateDayReportByDateSoapIn" />
+      <wsdl:output message="tns:ReGenerateDayReportByDateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDateRange">
+      <wsdl:input message="tns:ReGenerateDayReportByDateRangeSoapIn" />
+      <wsdl:output message="tns:ReGenerateDayReportByDateRangeSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SPDataServiceSoap" type="tns:SPDataServiceSoap">
@@ -294,6 +335,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDate">
+      <soap:operation soapAction="http://tempuri.org/ReGenerateDayReportByDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDateRange">
+      <soap:operation soapAction="http://tempuri.org/ReGenerateDayReportByDateRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SPDataServiceSoap12" type="tns:SPDataServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -362,6 +421,24 @@
     </wsdl:operation>
     <wsdl:operation name="UpdatePaymentSend">
       <soap12:operation soapAction="http://tempuri.org/UpdatePaymentSend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDate">
+      <soap12:operation soapAction="http://tempuri.org/ReGenerateDayReportByDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReGenerateDayReportByDateRange">
+      <soap12:operation soapAction="http://tempuri.org/ReGenerateDayReportByDateRange" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
