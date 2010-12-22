@@ -243,13 +243,13 @@ namespace Legendigital.Common.Web.Services
         }
 
         [WebMethod]
-        public void ReGenerateDayReport(DateTime reportDate)
+        public void ReGenerateDayReportByDate(DateTime reportDate)
         {
             SPDayReportWrapper.ReGenerateDayReport(reportDate.Date);
         }
 
         [WebMethod]
-        public void ReGenerateDayReport(DateTime startDate,DateTime endDate)
+        public void ReGenerateDayReportByDateRange(DateTime startDate,DateTime endDate)
         {
             SPDayReportWrapper.ReGenerateDayReport(startDate.Date, endDate.Date);
         }

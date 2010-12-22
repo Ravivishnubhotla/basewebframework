@@ -146,6 +146,8 @@
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\Excel.xsl" />
+    <Content Include="Moudles\SPS\Clients\Excel.xsl" />
     <Content Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx" />
@@ -161,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
+    <Compile Include="AppClass\SP0025Handler.cs" />
     <Compile Include="AppClass\SPClientGroupViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

@@ -219,18 +219,18 @@ namespace SPSSiteTask
 
             foreach (DictionaryEntry dictionaryEntry in hashtable)
             {
-                if (multiWebSites.ContainsKey(dictionaryEntry.Key.ToString()) && multiWebSites[dictionaryEntry.Key.ToString()]<=0)
-                {
+                //if (multiWebSites.ContainsKey(dictionaryEntry.Key.ToString()) && multiWebSites[dictionaryEntry.Key.ToString()]<=0)
+                //{
 
-                    ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
+                //    ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
 
-                    multiWebSites[dictionaryEntry.Key.ToString()] = multiWebSites[dictionaryEntry.Key.ToString()] - 1;
+                //    multiWebSites[dictionaryEntry.Key.ToString()] = multiWebSites[dictionaryEntry.Key.ToString()] - 1;
              
-                    Thread.Sleep(60000);
+                //    Thread.Sleep(60000);
 
-                    continue;
+                //    continue;
 
-                }
+                //}
                 ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
                 Thread.Sleep(60000);
             }

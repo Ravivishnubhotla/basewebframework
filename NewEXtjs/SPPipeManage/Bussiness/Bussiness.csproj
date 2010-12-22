@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Commons\ChannelStatus.cs" />
     <Compile Include="Commons\HttpGetPostRequest.cs" />
+    <Compile Include="Commons\HttpSP0025PostRequest.cs" />
     <Compile Include="Commons\HttpXmlPostRequest.cs" />
     <Compile Include="Commons\IHttpRequest.cs" />
     <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />

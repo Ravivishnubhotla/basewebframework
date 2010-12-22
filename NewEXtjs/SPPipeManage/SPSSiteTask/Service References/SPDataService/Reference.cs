@@ -158,6 +158,12 @@ namespace SPSSiteTask.SPDataService {
         // CODEGEN: Generating message contract since element name sendUrl from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/UpdatePaymentSend", ReplyAction="*")]
         SPSSiteTask.SPDataService.UpdatePaymentSendResponse UpdatePaymentSend(SPSSiteTask.SPDataService.UpdatePaymentSendRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReGenerateDayReportByDate", ReplyAction="*")]
+        void ReGenerateDayReportByDate(System.DateTime reportDate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReGenerateDayReportByDateRange", ReplyAction="*")]
+        void ReGenerateDayReportByDateRange(System.DateTime startDate, System.DateTime endDate);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -726,6 +732,14 @@ namespace SPSSiteTask.SPDataService {
             inValue.Body.sendUrl = sendUrl;
             inValue.Body.sycnRetryTimes = sycnRetryTimes;
             SPSSiteTask.SPDataService.UpdatePaymentSendResponse retVal = ((SPSSiteTask.SPDataService.SPDataServiceSoap)(this)).UpdatePaymentSend(inValue);
+        }
+        
+        public void ReGenerateDayReportByDate(System.DateTime reportDate) {
+            base.Channel.ReGenerateDayReportByDate(reportDate);
+        }
+        
+        public void ReGenerateDayReportByDateRange(System.DateTime startDate, System.DateTime endDate) {
+            base.Channel.ReGenerateDayReportByDateRange(startDate, endDate);
         }
     }
 }

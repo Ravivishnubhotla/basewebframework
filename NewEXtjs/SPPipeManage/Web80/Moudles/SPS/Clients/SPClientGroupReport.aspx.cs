@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml;
+using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 
@@ -48,6 +50,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
             store1.DataSource = tb;
             store1.DataBind();
+        }
+
+        protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
+        {
+
+
+            XmlNode xml = e.Xml;
+
+            this.Response.Clear();
+
+
+            this.Response.ContentType = "application/vnd.ms-excel";
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
+            XslCompiledTransform xtExcel = new XslCompiledTransform();
+            xtExcel.Load(Server.MapPath("Excel.xsl"));
+            xtExcel.Transform(xml, null, Response.OutputStream);
+
+
+            this.Response.End();
         }
     }
 }
