@@ -175,7 +175,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         public string GetChannelCode()
         {
-            return this.requestFileName.Substring(0, this.requestFileName.Length - ("Recieved").Length);
+            return this.requestFileName.Substring(0, this.requestFileName.Length - ("SP025H").Length);
         }
     }
 }
