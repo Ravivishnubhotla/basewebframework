@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmailSettingsEntity,Legendigital.Framework.Common" table="SystemEmailSettings" lazy="true"  >
+
+<id name="EmailSettingID" column="EmailSettingID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Descriprsion" type="string" name="Descriprsion"   length="4000" />	
+		<property column="Host" type="string" name="Host"   length="400" />	
+		<property column="Port" type="string" name="Port"   length="400" />	
+		<property column="SSL" type="Boolean" name="Ssl"   />	
+		<property column="FromEmail" type="string" name="FromEmail"   length="400" />	
+		<property column="FromName" type="string" name="FromName"   length="400" />	
+		<property column="LoginEmail" type="string" name="LoginEmail"   length="400" />	
+		<property column="LoginPassword" type="string" name="LoginPassword"   length="400" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
+		<property column="IsDefault" type="Boolean" name="IsDefault"   />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

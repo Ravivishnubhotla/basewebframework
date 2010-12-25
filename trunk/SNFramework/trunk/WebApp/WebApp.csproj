@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6207A1E5-E7A5-49D1-A396-F094C0657845}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Legendigital.Common.WebApp</RootNamespace>
+    <AssemblyName>Legendigital.Common.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.2, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net">
+      <HintPath>..\ThirdsDll\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net.Utilities">
+      <HintPath>..\ThirdsDll\Ext.Net.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.2.2.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\ThirdsDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Services, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=1.3.1.20711, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Installs\InstallWizard.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Installs\InstallWizard.aspx.cs">
+      <DependentUpon>InstallWizard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Installs\InstallWizard.aspx.designer.cs">
+      <DependentUpon>InstallWizard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\UCChangeMySetting.ascx.cs">
+      <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\UCChangeMySetting.ascx.designer.cs">
+      <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.designer.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\BaseAdminMasterPage.Master.cs">
+      <DependentUpon>BaseAdminMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masters\BaseAdminMasterPage.Master.designer.cs">
+      <DependentUpon>BaseAdminMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.cs">
+      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.designer.cs">
+      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.cs">
+      <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.designer.cs">
+      <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx.cs">
+      <DependentUpon>UCSystemConfigAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx.cs">
+      <DependentUpon>UCSystemConfigEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx.designer.cs">
+      <DependentUpon>SystemDepartmentListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.cs">
+      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDepartmentAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.cs">
+      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDepartmentEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.designer.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx.cs">
+      <DependentUpon>SystemEmailSettingsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx.designer.cs">
+      <DependentUpon>SystemEmailSettingsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx.cs">
+      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx.cs">
+      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.designer.cs">
+      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx.cs">
+      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx.cs">
+      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx.cs">
+      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx.cs">
+      <DependentUpon>SystemMoudleListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx.designer.cs">
+      <DependentUpon>SystemMoudleListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx.cs">
+      <DependentUpon>UCSystemMoudleAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemMoudleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.cs">
+      <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.cs">
+      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.designer.cs">
+      <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.cs">
+      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.cs">
+      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.cs">
+      <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.designer.cs">
+      <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx.cs">
+      <DependentUpon>SystemRoleAssignedMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx.designer.cs">
+      <DependentUpon>SystemRoleAssignedMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx.cs">
+      <DependentUpon>SystemRoleAssignedPrivilege.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx.designer.cs">
+      <DependentUpon>SystemRoleAssignedPrivilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx.designer.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx.cs">
+      <DependentUpon>SystemSettingEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx.designer.cs">
+      <DependentUpon>SystemSettingEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.cs">
+      <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.designer.cs">
+      <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.cs">
+      <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.designer.cs">
+      <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx.cs">
+      <DependentUpon>SystemUserAssignedRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx.designer.cs">
+      <DependentUpon>SystemUserAssignedRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx.cs">
+      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.cs">
+      <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPage\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\DataConfig.xml" />
+    <Content Include="Config\Log4Net.xml" />
+    <Content Include="Css\css.css" />
+    <Content Include="images\collapse-all.gif" />
+    <Content Include="images\expand-all.gif" />
+    <Content Include="images\layout-browser-hd-bg.gif" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\user.png" />
+    <Content Include="MainPage\Default.aspx" />
+    <Content Include="MainPage\Login.aspx" />
+    <Content Include="Masters\AdminMaster.Master" />
+    <Content Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
+    <Content Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
+    <Content Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\bg.gif" />
+    <Content Include="MainPage\UCChangeMySetting.ascx" />
+    <Content Include="MainPage\UCChangePassword.ascx" />
+    <Content Include="Masters\BaseAdminMasterPage.Master" />
+    <Content Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx" />
+    <Content Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx" />
+    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx" />
+    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx" />
+    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx" />
+    <Content Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx" />
+    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx" />
+    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx" />
+    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx" />
+    <Content Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
+    <Content Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />
+    <Content Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx" />
+    <Content Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx" />
+    <Content Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx" />
+    <Content Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
+    <Content Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
+    <Content Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx" />
+    <Content Include="TestPage\WebForm1.aspx" />
+    <Content Include="TestPage\WebForm2.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Browsers\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="App_LocalResources\" />
+    <Folder Include="App_Themes\Default\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>7030</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
