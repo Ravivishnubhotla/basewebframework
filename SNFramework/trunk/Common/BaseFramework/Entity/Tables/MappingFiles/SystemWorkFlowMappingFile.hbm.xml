@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemWorkFlowEntity,Legendigital.Framework.Common" table="SystemWorkFlow" lazy="true"  >
+
+<id name="WorkFlowID" column="WorkFlowID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="20" />	
+		<property column="Code" type="string" name="Code"   length="20" />	
+		<property column="Description" type="string" name="Description"   length="20" />	
+		<property column="IsSystemFlow" type="string" name="IsSystemFlow"   length="20" />	
+		<property column="IsDelete" type="string" name="IsDelete"   length="20" />	
+		<property column="IsEnable" type="string" name="IsEnable"   length="20" />	
+
+
+
+
+</class>
+</hibernate-mapping>

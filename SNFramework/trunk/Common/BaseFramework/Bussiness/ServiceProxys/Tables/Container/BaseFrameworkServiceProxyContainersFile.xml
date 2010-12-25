@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架服务层容器配置文件
+  </description>
+  <!-- 服务层类 -->
+  <object id="SystemApplicationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemApplicationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemApplicationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemConfigServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemConfigServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemConfigDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemDepartmentServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDepartmentServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemDepartmentDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemDictionaryServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDictionaryServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemDictionaryDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemEmailQueueServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailQueueServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemEmailQueueDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemEmailSettingsServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailSettingsServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemEmailSettingsDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemEmailTemplateServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailTemplateServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemEmailTemplateDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemLogServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemLogServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemLogDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemMenuServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMenuServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemMenuDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemMoudleServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMoudleServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemMoudleDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemMoudleFieldServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMoudleFieldServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemMoudleFieldDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemOperationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemOperationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemOperationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemPersonalizationSettingsServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPersonalizationSettingsServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemPersonalizationSettingsDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemPrivilegeServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemPrivilegeDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemPrivilegeInRolesServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeInRolesServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemPrivilegeInRolesDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemPrivilegeParameterServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeParameterServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemPrivilegeParameterDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemResourcesServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemResourcesServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemResourcesDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemRoleServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemRoleDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemRoleApplicationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleApplicationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemRoleApplicationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemRoleMenuRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleMenuRelationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemRoleMenuRelationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemSettingServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemSettingServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemSettingDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemShortMessageServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemShortMessageServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemShortMessageDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserGroupServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserGroupDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserGroupRoleRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupRoleRelationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserGroupRoleRelationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserGroupUserRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupUserRelationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserGroupUserRelationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserProfileServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserProfileServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserProfileDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserProfilePropertysServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserProfilePropertysServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserProfilePropertysDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemUserRoleRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserRoleRelationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemUserRoleRelationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemViewServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemViewServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemViewDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemViewItemServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemViewItemServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemViewItemDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemWorkFlowServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemWorkFlowServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemWorkFlowDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemWorkFlowStepServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemWorkFlowStepServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemWorkFlowStepDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+
+
+
+
+<object id="BaseFrameworkServiceProxyContainerIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer, Legendigital.Framework.Common">
+    <property name="SystemApplicationServiceProxyInstance" ref="SystemApplicationServiceProxyIocID"/>
+    <property name="SystemConfigServiceProxyInstance" ref="SystemConfigServiceProxyIocID"/>
+    <property name="SystemDepartmentServiceProxyInstance" ref="SystemDepartmentServiceProxyIocID"/>
+    <property name="SystemDictionaryServiceProxyInstance" ref="SystemDictionaryServiceProxyIocID"/>
+    <property name="SystemEmailQueueServiceProxyInstance" ref="SystemEmailQueueServiceProxyIocID"/>
+    <property name="SystemEmailSettingsServiceProxyInstance" ref="SystemEmailSettingsServiceProxyIocID"/>
+    <property name="SystemEmailTemplateServiceProxyInstance" ref="SystemEmailTemplateServiceProxyIocID"/>
+    <property name="SystemLogServiceProxyInstance" ref="SystemLogServiceProxyIocID"/>
+    <property name="SystemMenuServiceProxyInstance" ref="SystemMenuServiceProxyIocID"/>
+    <property name="SystemMoudleServiceProxyInstance" ref="SystemMoudleServiceProxyIocID"/>
+    <property name="SystemMoudleFieldServiceProxyInstance" ref="SystemMoudleFieldServiceProxyIocID"/>
+    <property name="SystemOperationServiceProxyInstance" ref="SystemOperationServiceProxyIocID"/>
+    <property name="SystemPersonalizationSettingsServiceProxyInstance" ref="SystemPersonalizationSettingsServiceProxyIocID"/>
+    <property name="SystemPrivilegeServiceProxyInstance" ref="SystemPrivilegeServiceProxyIocID"/>
+    <property name="SystemPrivilegeInRolesServiceProxyInstance" ref="SystemPrivilegeInRolesServiceProxyIocID"/>
+    <property name="SystemPrivilegeParameterServiceProxyInstance" ref="SystemPrivilegeParameterServiceProxyIocID"/>
+    <property name="SystemResourcesServiceProxyInstance" ref="SystemResourcesServiceProxyIocID"/>
+    <property name="SystemRoleServiceProxyInstance" ref="SystemRoleServiceProxyIocID"/>
+    <property name="SystemRoleApplicationServiceProxyInstance" ref="SystemRoleApplicationServiceProxyIocID"/>
+    <property name="SystemRoleMenuRelationServiceProxyInstance" ref="SystemRoleMenuRelationServiceProxyIocID"/>
+    <property name="SystemSettingServiceProxyInstance" ref="SystemSettingServiceProxyIocID"/>
+    <property name="SystemShortMessageServiceProxyInstance" ref="SystemShortMessageServiceProxyIocID"/>
+    <property name="SystemUserServiceProxyInstance" ref="SystemUserServiceProxyIocID"/>
+    <property name="SystemUserGroupServiceProxyInstance" ref="SystemUserGroupServiceProxyIocID"/>
+    <property name="SystemUserGroupRoleRelationServiceProxyInstance" ref="SystemUserGroupRoleRelationServiceProxyIocID"/>
+    <property name="SystemUserGroupUserRelationServiceProxyInstance" ref="SystemUserGroupUserRelationServiceProxyIocID"/>
+    <property name="SystemUserProfileServiceProxyInstance" ref="SystemUserProfileServiceProxyIocID"/>
+    <property name="SystemUserProfilePropertysServiceProxyInstance" ref="SystemUserProfilePropertysServiceProxyIocID"/>
+    <property name="SystemUserRoleRelationServiceProxyInstance" ref="SystemUserRoleRelationServiceProxyIocID"/>
+    <property name="SystemViewServiceProxyInstance" ref="SystemViewServiceProxyIocID"/>
+    <property name="SystemViewItemServiceProxyInstance" ref="SystemViewItemServiceProxyIocID"/>
+    <property name="SystemWorkFlowServiceProxyInstance" ref="SystemWorkFlowServiceProxyIocID"/>
+    <property name="SystemWorkFlowStepServiceProxyInstance" ref="SystemWorkFlowStepServiceProxyIocID"/>
+
+
+
+</object>
+
+<tx:attribute-driven />
+</objects>
