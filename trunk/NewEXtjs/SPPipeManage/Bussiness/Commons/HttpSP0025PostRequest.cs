@@ -123,7 +123,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
                     string saveValue = request.Params[key.ToLower()];
 
-                    if (savekey.Contains(":"))
+                    if (savekey.ToLower().Equals("msg") || savekey.ToLower().Equals("msg:"))
                     {
                         saveValue = parserEncodeValue(saveValue, encodeType);
                         savekey = savekey.Replace(":", "");
@@ -141,16 +141,10 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         private static string parserEncodeValue(string saveValue, string encodeType)
         {
-            if (string.IsNullOrEmpty(encodeType))
-                return saveValue;
+            //if (string.IsNullOrEmpty(encodeType))
+            //    return saveValue;
 
-            switch (encodeType)
-            {
-                case "0":
-                    return Encoding.ASCII.GetString(ConvertHexToBytes(saveValue));
-                    break;
-            }
-            return saveValue;
+            return Encoding.ASCII.GetString(ConvertHexToBytes(saveValue));
         }
 
         public static byte[] ConvertHexToBytes(string value)
