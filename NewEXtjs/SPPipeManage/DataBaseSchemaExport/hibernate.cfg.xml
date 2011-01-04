@@ -15,6 +15,6 @@
       NHibernate.ByteCode.Castle.ProxyFactoryFactory,
       NHibernate.ByteCode.Castle
     </property>
-    <mapping assembly="Legendigital.Framework.Common"/>
+    <mapping assembly="LD.SPPipeManage.Entity"/>
   </session-factory>
 </hibernate-configuration>

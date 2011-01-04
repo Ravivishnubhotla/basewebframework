@@ -20,7 +20,7 @@ namespace DataBaseSchemaExport
             
             string[] sqls = cfg.GenerateSchemaCreationScript(new MySQL5Dialect());
 
-            File.WriteAllText("MySQL5.sql", string.Join(";\n", sqls));
+            File.WriteAllText("MySQL5SP.sql", string.Join(";\n", sqls));
 
             Console.WriteLine("OK");
         }

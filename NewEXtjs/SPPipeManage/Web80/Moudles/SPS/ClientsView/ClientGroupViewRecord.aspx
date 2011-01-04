@@ -150,6 +150,10 @@
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
                                     </ext:DateFieldMenuItem>
+                                    <ext:ToolbarTextItem Text="手机号码">
+                                    </ext:ToolbarTextItem>
+                                    <ext:TextField ID="txtMoblie" runat="server">
+                                    </ext:TextField>
                                     <ext:ToolbarButton ID='tbProviceChart' runat="server" Text="省份分布" Icon="ChartBar"
                                         Hidden="true">
                                         <Listeners>
