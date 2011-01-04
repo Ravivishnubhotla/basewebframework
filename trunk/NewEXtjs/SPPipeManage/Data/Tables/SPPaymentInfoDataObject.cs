@@ -248,7 +248,7 @@ namespace LD.SPPipeManage.Data.Tables
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
         }
 
-        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(SPClientEntity clientEntity, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(SPClientEntity clientEntity, DateTime startDate, DateTime endDate, string province, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
         {
 
             var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
@@ -279,6 +279,11 @@ namespace LD.SPPipeManage.Data.Tables
                 }
             }
 
+            if (!string.IsNullOrEmpty(phone))
+            {
+                queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.Like(phone, MatchMode.Start));
+            }
+
             queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
 
             AddDefaultOrderByToQueryGenerator(sortFieldName, isdesc, queryBuilder);
@@ -294,7 +299,7 @@ namespace LD.SPPipeManage.Data.Tables
 
         }
 
-        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(List<SPClientEntity> spClientEntities, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(List<SPClientEntity> spClientEntities, DateTime startDate, DateTime endDate, string province, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
         {
             var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
 
@@ -318,6 +323,11 @@ namespace LD.SPPipeManage.Data.Tables
                 {
                     queryBuilder.AddWhereClause(PROPERTY_PROVINCE.Eq(province));
                 }
+            }
+
+            if (!string.IsNullOrEmpty(phone))
+            {
+                queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.Like(phone,MatchMode.Start));
             }
 
             queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));

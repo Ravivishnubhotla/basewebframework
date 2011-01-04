@@ -121,6 +121,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
         
         /// <summary>
+        /// txtMoblie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtMoblie;
+        
+        /// <summary>
         /// tbProviceChart control.
         /// </summary>
         /// <remarks>

@@ -11,29 +11,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 {
     public partial class ClientGroupViewRecord : SPClientGroupViewPage
     {
-        protected DateTime GetDT()
-        {
-            switch (System.DateTime.Now.Date.DayOfWeek)
-            {
-                case DayOfWeek.Monday:
-                    return System.DateTime.Now.Date.AddDays(-7);
-                case DayOfWeek.Tuesday:
-                    return System.DateTime.Now.Date.AddDays(-8);
-                case DayOfWeek.Wednesday:
-                    return System.DateTime.Now.Date.AddDays(-9);
-                case DayOfWeek.Thursday:
-                    return System.DateTime.Now.Date.AddDays(-10);
-                case DayOfWeek.Friday:
-                    return System.DateTime.Now.Date.AddDays(-11);
-                case DayOfWeek.Saturday:
-                    return System.DateTime.Now.Date.AddDays(-12);
-                case DayOfWeek.Sunday:
-                    return System.DateTime.Now.Date.AddDays(-13);
-
-            }
-
-            return DateTime.Now.Date;
-        }
+ 
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -47,7 +25,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date.AddDays(-7);
 
-            this.dfReportStartDate.DateField.MinDate = GetDT();
+            SPClientGroupWrapper spClientGroupWrapper = SPClientGroupWrapper.FindById(this.ClientGroupID);
+
+            this.dfReportStartDate.DateField.MinDate = spClientGroupWrapper.GetDT();
 
             storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
@@ -143,9 +123,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             DateTime startDate = Convert.ToDateTime(this.dfReportStartDate.DateField.Value);
 
-            if (startDate < GetDT())
+            SPClientGroupWrapper spClientGroupWrapper = SPClientGroupWrapper.FindById(this.ClientGroupID);
+
+            if (startDate < spClientGroupWrapper.GetDT())
             {
-                startDate = GetDT();
+                startDate = spClientGroupWrapper.GetDT();
             }
 
             string province = "";
@@ -155,13 +137,20 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 province = this.cmbProvince.SelectedItem.Value;
             }
 
+            string phone = "";
+
+            if(!string.IsNullOrEmpty(this.txtMoblie.Text.Trim()))
+            {
+                phone = this.txtMoblie.Text.Trim();
+            }
+
             if (SPClientID > 0)
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID,SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
             else
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
                    
             store1.DataSource = list;

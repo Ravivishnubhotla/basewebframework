@@ -28,10 +28,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         bool InsertPayment(SPPaymentInfoEntity paymentInfo, List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType);
         List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDateNoIntercept(int spClientID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
-        List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllByOrderByAndClientIDAndDate(int clientId, DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllDefaultClientPaymentByOrderByDate(DateTime startDate, DateTime endDate, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
-        List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province,string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount);
         int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate);
         void UpdateRecordAndReport(DayliyReport dayReport, SPClientChannelSettingEntity spClientChannelSettingEntity, int newIntercept);
@@ -154,7 +154,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    out recordCount);
         }
 
-        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+ 
+
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province,string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
         {
             SPClientGroupEntity clientGroupEntity = this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(spClientGroupID);
 
@@ -164,7 +166,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return this.SelfDataObj.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(spClientEntities,
                                                                                    startDate,
-                                                                                   endDate, province,
+                                                                                   endDate, province, phone,
                                                                                    sortFieldName, isdesc,
                                                                                    pageIndex, limit,
                                                                                    out recordCount);
@@ -199,7 +201,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                    out recordCount);
         }
 
-        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int spClientId, DateTime startDate, DateTime endDate, string province,string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
         {
             SPClientEntity clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(spClientId);
 
@@ -207,7 +209,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return this.SelfDataObj.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(clientEntity,
                                                                                    startDate,
-                                                                                   endDate,province,
+                                                                                   endDate, province, phone,
                                                                                    sortFieldName, isdesc,
                                                                                    pageIndex, limit,
                                                                                    out recordCount);

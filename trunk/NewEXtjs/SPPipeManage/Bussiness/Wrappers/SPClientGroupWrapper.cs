@@ -99,6 +99,37 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+        public DateTime GetDT()
+        {
+            int dayCount = 7;
+
+            if (this.Id == 3)
+            {
+                dayCount = 14;
+            }
+
+            switch (System.DateTime.Now.Date.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return System.DateTime.Now.Date.AddDays(-1 * dayCount);
+                case DayOfWeek.Tuesday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 1));
+                case DayOfWeek.Wednesday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 2));
+                case DayOfWeek.Thursday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 3));
+                case DayOfWeek.Friday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 4));
+                case DayOfWeek.Saturday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 5));
+                case DayOfWeek.Sunday:
+                    return System.DateTime.Now.Date.AddDays(-1 * (dayCount + 6));
+            }
+
+            return DateTime.Now.Date;
+        }
+
+
         public bool UserIsLocked
         {
             get
