@@ -368,6 +368,8 @@ namespace LD.SPPipeManage.Data.Tables
 
             queryBuilder.AddWhereClause(Or(PROPERTY_SYCNRETRYTIMES.IsNull(), PROPERTY_SYCNRETRYTIMES.Lt(maxRetryCount)));
 
+            queryBuilder.AddOrderBy(PROPERTY_ID.Asc());
+
             return this.FindListByQueryBuilder(queryBuilder);
         }
     }

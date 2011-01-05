@@ -232,12 +232,12 @@ namespace SPSSiteTask
 
                 //}
                 ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
-                Thread.Sleep(60000);
+                Thread.Sleep(10000);
             }
 
             while (allSendTask.Exists(p=>!p.IsEnd))
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(2000);
             }
 
             if(startDate.Date != endDate.Date)
