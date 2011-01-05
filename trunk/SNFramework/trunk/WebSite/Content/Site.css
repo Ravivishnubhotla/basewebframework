@@ -1,0 +1,156 @@
+﻿BODY {
+	SCROLLBAR-FACE-COLOR: #fff0f5; SCROLLBAR-HIGHLIGHT-COLOR: #fff0f5; SCROLLBAR-SHADOW-COLOR: #c71585; SCROLLBAR-3DLIGHT-COLOR: #d8bfd8; SCROLLBAR-ARROW-COLOR: #ffc0cb; SCROLLBAR-TRACK-COLOR: #ffc0cb; FONT-FAMILY: arial,verdana,sans-serif; SCROLLBAR-DARKSHADOW-COLOR: #d8bfd8
+}
+SELECT {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #cccccc; PADDING-BOTTOM: 1px; BORDER-TOP-COLOR: #cccccc; PADDING-TOP: 1px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #e6e6e6
+}
+OPTION {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #cccccc; PADDING-BOTTOM: 1px; BORDER-TOP-COLOR: #cccccc; PADDING-TOP: 1px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #e6e6e6
+}
+INPUT {
+	BORDER-TOP-WIDTH: 1px; PADDING-RIGHT: 1px; PADDING-LEFT: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 9pt; BORDER-LEFT-COLOR: #cccccc; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #cccccc; PADDING-BOTTOM: 1px; BORDER-TOP-COLOR: #cccccc; PADDING-TOP: 1px; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #e6e6e6
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 140%
+}
+TD.text3 {
+	FONT-SIZE: 12px; COLOR: #ffffff; LINE-HEIGHT: 150%
+}
+.img01 {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.bginput {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #000000 1px solid; COLOR: #000000; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: "MS Shell Dlg", "Tahoma", "sans-serif", "宋体"; BACKGROUND-COLOR: #e7e7e7
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #373d55; TEXT-DECORATION: none
+}
+A:active {
+	FONT-SIZE: 12px; COLOR: #373d55; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #373d55; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: red; TEXT-DECORATION: none
+}
+A.blue:link {
+	FONT-SIZE: 12px; COLOR: blue; TEXT-DECORATION: underline
+}
+A.blue:active {
+	FONT-SIZE: 12px; COLOR: blue; TEXT-DECORATION: underline
+}
+A.blue:visited {
+	FONT-SIZE: 12px; COLOR: blue; TEXT-DECORATION: underline
+}
+A.blue:hover {
+	FONT-SIZE: 12px; COLOR: red; TEXT-DECORATION: underline
+}
+A.blue1:link {
+	FONT-SIZE: 12px; COLOR: #cafafa
+}
+A.blue1:active {
+	FONT-SIZE: 12px; COLOR: #cafafa
+}
+A.blue1:visited {
+	FONT-SIZE: 12px; COLOR: #cafafa
+}
+A.blue1:hover {
+	FONT-SIZE: 12px; COLOR: yellow
+}
+A.org:link {
+	FONT-SIZE: 12px; COLOR: #ff7800
+}
+A.org:active {
+	FONT-SIZE: 12px; COLOR: #ff7800
+}
+A.org:visited {
+	FONT-SIZE: 12px; COLOR: #ff7800
+}
+A.org:hover {
+	FONT-SIZE: 12px; COLOR: red
+}
+A.white:link {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+A.white:active {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+A.white:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+A.white:hover {
+	FONT-SIZE: 12px; COLOR: yellow
+}
+A.006CAA:link {
+	FONT-SIZE: 12px; COLOR: #006caa
+}
+A.006CAA:active {
+	FONT-SIZE: 12px; COLOR: #006caa
+}
+A.006CAA:visited {
+	FONT-SIZE: 12px; COLOR: #006caa
+}
+A.006CAA:hover {
+	FONT-SIZE: 12px; COLOR: red
+}
+A.nav2:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav2:active {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav2:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav2:hover {
+	FONT-SIZE: 12px; COLOR: #ffff00; TEXT-DECORATION: none
+}
+A.p14:link {
+	FONT-SIZE: 14px; COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+A.p14:active {
+	FONT-SIZE: 14px; COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+A.p14:visited {
+	FONT-SIZE: 14px; COLOR: #3a3a3a; TEXT-DECORATION: none
+}
+A.p14:hover {
+	FONT-SIZE: 14px; COLOR: red; TEXT-DECORATION: none
+}
+A.ora14:link {
+	FONT-SIZE: 14px; COLOR: #ff7800; TEXT-DECORATION: none
+}
+A.ora14:active {
+	FONT-SIZE: 14px; COLOR: #ff7800; TEXT-DECORATION: none
+}
+A.ora14:visited {
+	FONT-SIZE: 14px; COLOR: #ff7800; TEXT-DECORATION: none
+}
+A.ora14:hover {
+	FONT-SIZE: 14px; COLOR: red; TEXT-DECORATION: none
+}
+.filter1 {
+	FILTER: Glow(Color=#00B4E5, Strength=3)
+}
+.filter2 {
+	FILTER: Glow(Color=#485B79, Strength=3)
+}
+.filter3 {
+	FILTER: Glow(Color=#ffffff, Strength=3)
+}
+TD.bottom {
+	FONT-SIZE: 12px
+}
+A.bottom:link {
+	FONT-SIZE: 12px; COLOR: #3a3a3a
+}
+A.bottom:active {
+	FONT-SIZE: 12px; COLOR: #3a3a3a
+}
+A.bottom:visited {
+	FONT-SIZE: 12px; COLOR: #3a3a3a
+}
+A.bottom:hover {
+	FONT-SIZE: 12px; COLOR: red
+}
