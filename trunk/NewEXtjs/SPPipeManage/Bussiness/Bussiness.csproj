@@ -218,6 +218,8 @@
     <Compile Include="ServiceProxys\Tables\SPUperServiceProxy.Designer.cs">
       <DependentUpon>SPUperServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="UrlSender\UrlSender.cs" />
+    <Compile Include="UrlSender\UrlSendTask.cs" />
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">

@@ -35,6 +35,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllNotSendData(int clientChannelId, DateTime starDate, DateTime endDate, int maxRetryCount);
         int[] GetGetAllClientChannelIDNeed(DateTime startDate, DateTime endDate);
         void UpdateRecordAndReport(DayliyReport dayReport, SPClientChannelSettingEntity spClientChannelSettingEntity, int newIntercept);
+        void UpdateUrlSuccessSend(int id, string url);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -272,11 +273,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 spDayReportEntity.InterceptTotalCount = newIntercept;
                 spDayReportEntity.DownTotalCount = dayReport.TotalCount - newIntercept;
                 this.DataObjectsContainerIocID.SPDayReportDataObjectInstance.Update(spDayReportEntity);
-
-
             }
+        }
 
-
+        public void UpdateUrlSuccessSend(int id, string url)
+        {
+            AdoNetDb.UpdateUrlSuccessSend(id, url);
         }
 
 
