@@ -1223,5 +1223,18 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];  
         }
+
+        public void UpdateUrlSuccessSend(int id, string url)
+        {
+            string sql = "update dbo.SPPaymentInfo set SucesssToSend =1 ,sSycnDataUrl=@sSycnDataUrl where ID=@ID and IsIntercept=0 and IsSycnData=1";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("sSycnDataUrl", url);
+
+            dbParameters.AddWithValue("ID", id);
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
     }
 }

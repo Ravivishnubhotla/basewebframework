@@ -624,5 +624,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 	    }
+
+
+        public static void UpdateUrlSuccessSend(int id,string url)
+        {
+            businessProxy.UpdateUrlSuccessSend(id, url);
+        }
     }
 }
