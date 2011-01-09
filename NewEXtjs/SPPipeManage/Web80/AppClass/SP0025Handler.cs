@@ -28,6 +28,8 @@ namespace Legendigital.Common.Web.AppClass
 
                 SPChannelWrapper channel = SPChannelWrapper.GetChannelByPath(httpRequest.GetChannelCode());
 
+                bool isReportRequest = false;
+
                 //如果没有找到通道
                 if (channel == null)
                 {
@@ -64,6 +66,7 @@ namespace Legendigital.Common.Web.AppClass
                         {
                             if (httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
                             {
+                                isReportRequest = true;
                                 result1 = channel.RecState(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
                             }
                             else
@@ -122,6 +125,11 @@ namespace Legendigital.Common.Web.AppClass
                     //正确数据返回OK
                     if (result1)
                     {
+                        if (isReportRequest)
+                        {
+                            context.Response.Write(string.Format("received commandid={0}", context.Request["commandid"]));
+                            return;                   
+                        }
                         context.Response.Write(channel.GetOkCode(httpRequest));
                         return;
                     }
