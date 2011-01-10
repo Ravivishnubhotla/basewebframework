@@ -154,3 +154,15 @@ A.bottom:visited {
 A.bottom:hover {
 	FONT-SIZE: 12px; COLOR: red
 }
+
+.btn
+{
+border-right: #000000 1px solid; 
+border-top: #000000 1px solid; 
+font-size: 9pt;
+ background: #f0f0f0; 
+ border-left: #000000 1px solid; 
+ width: 40px; 
+ border-bottom: #000000 1px solid;
+height: 20px
+}
