@@ -1,0 +1,26 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Web.Masters.Site" %>
+<%@ Register src="../UserControls/Sites/UCFooter.ascx" tagname="UCFooter" tagprefix="uc1" %>
+<%@ Register src="../UserControls/Sites/UCHeader.ascx" tagname="UCHeader" tagprefix="uc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>一夜吧交友网</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=gb2312" />
+    <meta content="一夜吧交友网" name="description" />
+    <meta content="一夜吧交友网" name="keywords" />
+    <link href="../css/site.css" type="text/css" rel="stylesheet" />
+    <script src="../js/city-1.0.0.js" type="text/javascript"></script>
+        <script src="../js/jquery-1.4.1.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body text="#000000" bgcolor="#ffbbff" topmargin="10" marginheight="0" marginwidth="0">
+    <form id="form1" runat="server">
+   
+    <uc2:UCHeader ID="UCHeader1" runat="server" />
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    <uc1:UCFooter ID="UCFooter1" runat="server" />
+    </form>
+</body>
+</html>
