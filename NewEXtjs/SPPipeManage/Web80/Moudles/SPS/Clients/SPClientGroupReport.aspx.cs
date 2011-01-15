@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using System.Text;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Clients
 {
@@ -60,8 +61,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
             this.Response.Clear();
 
-
+            this.Response.Charset = "GB2312";
             this.Response.ContentType = "application/vnd.ms-excel";
+            this.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
             this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
             XslCompiledTransform xtExcel = new XslCompiledTransform();
             xtExcel.Load(Server.MapPath("Excel.xsl"));

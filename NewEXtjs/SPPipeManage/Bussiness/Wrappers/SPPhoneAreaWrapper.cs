@@ -118,5 +118,25 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return phoneAreaInfo;
         }
+
+        public static SortedList<string, PhoneAreaInfo> GetAllPhoneInfos_Key()
+        {
+            List<SPPhoneAreaWrapper> spPhoneAreaWrappers = FindAll();
+
+            SortedList<string, PhoneAreaInfo> phoneinfos = new SortedList<string, PhoneAreaInfo>();
+
+            foreach (SPPhoneAreaWrapper item in spPhoneAreaWrappers)
+	        {
+                if (!phoneinfos.ContainsKey(item.PhonePrefix))
+                { 
+                    PhoneAreaInfo phonearea = new PhoneAreaInfo();
+                    phonearea.City = item.City;
+                    phonearea.Province = item.Province;
+                    phoneinfos.Add(item.PhonePrefix, phonearea);
+                }
+	        }
+
+            return phoneinfos;
+        }
     }
 }

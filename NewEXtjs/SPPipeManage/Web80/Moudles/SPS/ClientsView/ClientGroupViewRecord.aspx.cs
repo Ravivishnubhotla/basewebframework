@@ -23,7 +23,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             this.dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
-            this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date.AddDays(-7);
+            this.dfReportStartDate.DateField.Value = System.DateTime.Now.Date;
 
             SPClientGroupWrapper spClientGroupWrapper = SPClientGroupWrapper.FindById(this.ClientGroupID);
 

@@ -77,6 +77,37 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         protected void bindData()
         {
             DataTable dt = SPDayReportWrapper.GetAllTodayReport(this.chkFilterNoCount.Checked);
+
+            dt.Columns.Add(new DataColumn("ClientGroupName"));
+            dt.Columns.Add(new DataColumn("SetInterceptRate"));
+            dt.Columns.Add(new DataColumn("ChannelClientCode"));
+
+            
+
+            dt.AcceptChanges();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                SPClientWrapper  client  = SPClientWrapper.FindById((int)item["ClientID"]);
+
+                if (client == null)
+                {
+                    item["ChannelClientID"] = 0;
+                    item["ClientGroupName"] = "";
+                    item["SetInterceptRate"] = "";
+                    item["ChannelClientCode"] = "";
+                }
+                else
+                {
+                    item["ChannelClientID"] = client.DefaultClientChannelSetting.Id;
+                    item["ClientGroupName"] = client.ClientGroupName;
+                    item["SetInterceptRate"] = client.DefaultClientChannelSetting.InterceptRate;
+                    item["ChannelClientCode"] = client.DefaultClientChannelSetting.ChannelClientCode;
+                }
+            }
+
+
+
             Store1.DataSource = dt;
             Store1.DataBind();
 

@@ -22,6 +22,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.Store Store1;
         
         /// <summary>
+        /// UCSPClientChannelSettingEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingEdit UCSPClientChannelSettingEdit1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

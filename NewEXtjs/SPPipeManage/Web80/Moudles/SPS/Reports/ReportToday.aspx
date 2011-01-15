@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
 
+<%@ Register Src="../ClientChannelSettings/UCSPClientChannelSettingEdit.ascx" TagName="UCSPClientChannelSettingEdit"
+    TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
         var template = '<span style="color:{0};">{1}</span>';
@@ -13,9 +15,25 @@
             return formatFloat(value, 2).toString() + "%";
         };
 
+        var showPerent = function(value) {
+            return value.toString() + "%";
+        };
+        
+
         var filterfn = function(rec, id) {
             return (rec.data.TotalCount > 0);
         }
+
+
+        function AllValidate(frm1,frm2,frm3)
+        {
+            return frm1.getForm().isValid()&&frm2.getForm().isValid()&&frm3.getForm().isValid();
+        }
+
+
+        var RefreshSPClientChannelSettingData = function(btn) {
+            <%= this.Store1.ClientID %>.reload();
+        };
 
          var RefreshReportData = function(btn) {
             <%= this.Store1.ClientID %>.reload();
@@ -33,7 +51,19 @@
 
         var gridCommand = function(command, record, row, col) {
     
- 
+             if (command == "cmdEditChannelClient") {
+                Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(record.data.ChannelClientID,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
 
 
              if (command == 'InterceptCountChange')  {
@@ -117,17 +147,23 @@
                     <ext:RecordField Name="InterceptCount" Type="Int" />
                     <ext:RecordField Name="DownSycnCount" Type="Int" />
                     <ext:RecordField Name="InterceptRate" Type="Float" />
+                    <ext:RecordField Name="SetInterceptRate" Type="Float" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelID" Type="Int" />
                     <ext:RecordField Name="ClientID" Type="Int" />
+                    <ext:RecordField Name="ChannelClientID" Type="Int" />
                     <ext:RecordField Name="ReportDate" Type="Date" />
+                    <ext:RecordField Name="ClientGroupName" />
+                    <ext:RecordField Name="ChannelClientCode" />
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -210,7 +246,12 @@
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="下家组"
+                                    Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colChannelID" DataIndex="ChannelClientCode" Header="指令" Sortable="true" Width="120">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="点播数(条)" Sortable="true">
                                     <Commands>
@@ -249,8 +290,20 @@
                                     </Commands>
                                     <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣量率" Sortable="true">
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="实扣率"  Width="50" Sortable="true">
                                     <Renderer Fn="decimalFormat" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="SetInterceptRate" Header="扣率"
+                                    Sortable="true" Width="30">
+                                    <Renderer Fn="showPerent" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colChannelClient" DataIndex="cmdEditChannelClient" Header="设置"
+                                    Sortable="true" Width="30">
+                                    <Commands>
+                                        <ext:ImageCommand Icon="Cog" CommandName="cmdEditChannelClient">
+                                            <ToolTip Text="设置" />
+                                        </ext:ImageCommand>
+                                    </Commands>
                                 </ext:Column>
                             </Columns>
                         </ColumnModel>
