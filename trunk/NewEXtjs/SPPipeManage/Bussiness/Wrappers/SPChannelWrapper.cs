@@ -410,6 +410,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 try
                 {
                     PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    //PhoneAreaInfo phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     if (phoneAreaInfo != null)
                     {
                         paymentInfo.Province = phoneAreaInfo.Province;
@@ -1121,6 +1122,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 try
                 {
                     PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    //PhoneAreaInfo phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     if (phoneAreaInfo != null)
                     {
                         paymentInfo.Province = phoneAreaInfo.Province;
