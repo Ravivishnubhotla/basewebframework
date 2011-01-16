@@ -65,9 +65,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             this.Response.ContentType = "application/vnd.ms-excel";
             this.Response.ContentEncoding = System.Text.Encoding.GetEncoding("GB2312");
             this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
-            XslCompiledTransform xtExcel = new XslCompiledTransform();
+            XslCompiledTransform xtExcel = new XslCompiledTransform(); 
             xtExcel.Load(Server.MapPath("Excel.xsl"));
-            xtExcel.Transform(xml, null, Response.OutputStream);
+            string temp = "";
+            System.IO.Stream str = new System.IO.MemoryStream();
+
+            xtExcel.Transform(xml, null, str);
+
+            str.Flush();
+            str.Position = 0;
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(str, System.Text.Encoding.GetEncoding("GB2312")))
+            {
+                temp = sr.ReadToEnd();
+            };
+
+
+            temp = temp.Replace("encoding=\"utf-8\"", "encoding=\"GB2312\"");
+
+
+            this.Response.Write(temp);
 
 
             this.Response.End();

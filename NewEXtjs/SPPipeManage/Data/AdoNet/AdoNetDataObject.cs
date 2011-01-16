@@ -1211,7 +1211,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataTable GetClientGroupPriceReport(int clientChannelSettingEntitys, DateTime startDate, DateTime endDate)
         {
-            string sql = "Select * from dbo.vw_ClientGroupAmountReport where ReportDate> @startDate and ReportDate < @endDate and  SPClientGroupID = @SPClientGroupID and DownTotalCount>0";
+            string sql = "SELECT ReportID, ReportDate, UpTotalCount, InterceptTotalCount, DownTotalCount, DownSuccess, ClientID, ChannelID, SPClientGroupID, Price, Amount, ClientName, ClientAliasName FROM vw_ClientGroupAmountReport where ReportDate> @startDate and ReportDate < @endDate and  SPClientGroupID = @SPClientGroupID and DownTotalCount>0";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 

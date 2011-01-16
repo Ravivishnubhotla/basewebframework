@@ -231,9 +231,9 @@
         </Listeners>
     </ext:Window>
         <ext:Window ID="winClientGroupPriceReport" runat="server" Title="Window" Frame="true" Width="850"
-        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
+        ConstrainHeader="true" Height="390" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
-        <AutoLoad Url="../Clients/SPClientGroupReport.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+        <AutoLoad Url="../Clients/SPClientGroupReportContainer.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
