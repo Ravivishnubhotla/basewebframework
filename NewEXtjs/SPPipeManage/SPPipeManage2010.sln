@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
 		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
 		ThirdsDll\Microsoft.ReportViewer.Common.dll = ThirdsDll\Microsoft.ReportViewer.Common.dll
+		ThirdsDll\Microsoft.ReportViewer.ProcessingObjectModel.dll = ThirdsDll\Microsoft.ReportViewer.ProcessingObjectModel.dll
 		ThirdsDll\Microsoft.ReportViewer.WebForms.dll = ThirdsDll\Microsoft.ReportViewer.WebForms.dll
 		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
 		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
