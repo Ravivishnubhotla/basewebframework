@@ -237,6 +237,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
@@ -316,12 +330,16 @@
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\Excel.xsl" />
+    <Content Include="Moudles\SPS\Clients\Blank.htm" />
     <Content Include="Moudles\SPS\Clients\Excel.xsl" />
     <Content Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientGroupReport.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientReportContainer.aspx" />
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
@@ -731,6 +749,20 @@
     <Compile Include="Moudles\SPS\Clients\SPClientGroupReport.aspx.designer.cs">
       <DependentUpon>SPClientGroupReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx.cs">
+      <DependentUpon>SPClientGroupReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportContainer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.cs">
+      <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>
     </Compile>
@@ -750,6 +782,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.designer.cs">
       <DependentUpon>SPClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientReportContainer.aspx.cs">
+      <DependentUpon>SPClientReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientReportContainer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientsHandler.ashx.cs">
       <DependentUpon>SPClientsHandler.ashx</DependentUpon>
@@ -1019,6 +1058,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Clients\SPClientsHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\Report2.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
