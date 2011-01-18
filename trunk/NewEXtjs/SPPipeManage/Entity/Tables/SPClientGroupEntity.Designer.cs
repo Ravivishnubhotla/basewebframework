@@ -18,6 +18,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMOURL = "DefaultSycnMoUrl";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
 		
         #endregion
 	
@@ -30,6 +32,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _name;
 		private string _description;
 		private int? _userID;
+		private string _defaultSycnMoUrl;
+		private string _defaultSycnMRUrl;
 		
 		#endregion
 
@@ -43,6 +47,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_name = null;
 			_description = null;
 			_userID = null;
+			_defaultSycnMoUrl = null;
+			_defaultSycnMRUrl = null;
 		}
 		#endregion
 
@@ -50,12 +56,14 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientGroupEntity( int id, string name, string description, int? userID)
+		public SPClientGroupEntity( int id, string name, string description, int? userID, string defaultSycnMoUrl, string defaultSycnMRUrl)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
 			_userID = userID;
+			_defaultSycnMoUrl = defaultSycnMoUrl;
+			_defaultSycnMRUrl = defaultSycnMRUrl;
 		}
 		#endregion     
 	
@@ -120,6 +128,40 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_userID != value); _userID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DefaultSycnMoUrl
+		{
+			get { return _defaultSycnMoUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for DefaultSycnMoUrl", value, value.ToString());
+				_isChanged |= (_defaultSycnMoUrl != value); _defaultSycnMoUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DefaultSycnMRUrl
+		{
+			get { return _defaultSycnMRUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for DefaultSycnMRUrl", value, value.ToString());
+				_isChanged |= (_defaultSycnMRUrl != value); _defaultSycnMRUrl = value;
 			}
 		}
 		/// <summary>

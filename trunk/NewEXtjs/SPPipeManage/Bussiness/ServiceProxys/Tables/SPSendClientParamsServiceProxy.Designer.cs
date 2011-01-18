@@ -41,12 +41,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	
 		public List<SPSendClientParamsEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity _clientID, out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_ClientID_SPClientEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPClientEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientID, out recordCount);
         }
 		
 		public List<SPSendClientParamsEntity> FindAllByClientID(SPClientEntity _clientID)
         {
-			return this.SelfDataObj.GetList_By_ClientID_SPClientEntity(_clientID);
+			return this.SelfDataObj.GetList_By_SPClientEntity(_clientID);
         }
 
 

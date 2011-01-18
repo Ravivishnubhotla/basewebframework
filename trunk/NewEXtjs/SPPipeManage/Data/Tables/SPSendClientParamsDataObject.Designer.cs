@@ -80,7 +80,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPSendClientParamsEntity> GetList_By_ClientID_SPClientEntity(SPClientEntity fkentity)
+		public List<SPSendClientParamsEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -90,7 +90,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPSendClientParamsEntity> GetPageList_By_ClientID_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
+        public List<SPSendClientParamsEntity> GetPageList_By_SPClientEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

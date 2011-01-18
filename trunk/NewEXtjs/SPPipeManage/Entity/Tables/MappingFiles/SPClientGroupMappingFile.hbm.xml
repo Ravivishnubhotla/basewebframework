@@ -14,6 +14,8 @@
 		<property column="Name" type="string" name="Name"   length="400" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="UserID" type="int" name="UserID"   />	
+		<property column="DefaultSycnMoUrl" type="string" name="DefaultSycnMoUrl"   length="1000" />	
+		<property column="DefaultSycnMRUrl" type="string" name="DefaultSycnMRUrl"   length="1000" />	
 
 
 

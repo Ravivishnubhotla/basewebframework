@@ -17,6 +17,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_NAME = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_NAME);
 		public static readonly Property PROPERTY_DESCRIPTION = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DESCRIPTION);
 		public static readonly Property PROPERTY_USERID = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_USERID);
+		public static readonly Property PROPERTY_DEFAULTSYCNMOURL = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DEFAULTSYCNMOURL);
+		public static readonly Property PROPERTY_DEFAULTSYCNMRURL = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DEFAULTSYCNMRURL);
       
 		#region 子类集合字段查询字段
 	
@@ -42,6 +44,10 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "UserID":
                     return typeof (int);
+                case "DefaultSycnMoUrl":
+                    return typeof (string);
+                case "DefaultSycnMRUrl":
+                    return typeof (string);
           }
 			return typeof(string);
         }
