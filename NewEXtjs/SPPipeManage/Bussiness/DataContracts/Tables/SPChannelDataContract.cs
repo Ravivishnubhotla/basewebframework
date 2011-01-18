@@ -46,6 +46,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_ISMONITORINGREQUEST = "IsMonitoringRequest";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
+		public static readonly string PROPERTY_NAME_CHANNEDATA = "ChanneData";
 		
         #endregion
 	
@@ -83,6 +84,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private bool? _isMonitoringRequest;
 		private bool? _isDisable;
 		private string _reportIDParams;
+		private string _channeData;
 		
 		#endregion
 
@@ -124,6 +126,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_isMonitoringRequest = null;
 			_isDisable = false;
 			_reportIDParams = null;
+			_channeData = null;
 		}
 		#endregion
 
@@ -631,6 +634,23 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChanneData
+		{
+			get { return _channeData; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 2147483646)
+					throw new ArgumentOutOfRangeException("Invalid value for ChanneData", value, value.ToString());
+				_channeData = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -669,6 +689,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.IsMonitoringRequest = wrapper.IsMonitoringRequest;
 			this.IsDisable = wrapper.IsDisable;
 			this.ReportIDParams = wrapper.ReportIDParams;
+			this.ChanneData = wrapper.ChanneData;
 		}
 		
 		
@@ -707,6 +728,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.IsMonitoringRequest = this.IsMonitoringRequest;
 			wrapper.IsDisable = this.IsDisable;
 			wrapper.ReportIDParams = this.ReportIDParams;
+			wrapper.ChanneData = this.ChanneData;
 		
 		return wrapper;
         }

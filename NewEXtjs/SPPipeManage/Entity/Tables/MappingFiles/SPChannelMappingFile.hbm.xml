@@ -42,6 +42,7 @@
 		<property column="IsMonitoringRequest" type="Boolean" name="IsMonitoringRequest"   />	
 		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 		<property column="ReportIDParams" type="string" name="ReportIDParams"   length="100" />	
+		<property column="ChanneData" type="string" name="ChanneData"   length="2147483646" />	
 
 
 

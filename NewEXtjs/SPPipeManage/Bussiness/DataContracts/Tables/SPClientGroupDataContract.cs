@@ -18,6 +18,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMOURL = "DefaultSycnMoUrl";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
 		
         #endregion
 	
@@ -27,6 +29,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _name;
 		private string _description;
 		private int? _userID;
+		private string _defaultSycnMoUrl;
+		private string _defaultSycnMRUrl;
 		
 		#endregion
 
@@ -40,6 +44,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_name = null;
 			_description = null;
 			_userID = null;
+			_defaultSycnMoUrl = null;
+			_defaultSycnMRUrl = null;
 		}
 		#endregion
 
@@ -107,6 +113,40 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string DefaultSycnMoUrl
+		{
+			get { return _defaultSycnMoUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for DefaultSycnMoUrl", value, value.ToString());
+				_defaultSycnMoUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string DefaultSycnMRUrl
+		{
+			get { return _defaultSycnMRUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for DefaultSycnMRUrl", value, value.ToString());
+				_defaultSycnMRUrl = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -117,6 +157,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Name = wrapper.Name;
 			this.Description = wrapper.Description;
 			this.UserID = wrapper.UserID;
+			this.DefaultSycnMoUrl = wrapper.DefaultSycnMoUrl;
+			this.DefaultSycnMRUrl = wrapper.DefaultSycnMRUrl;
 		}
 		
 		
@@ -127,6 +169,8 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Name = this.Name;
 			wrapper.Description = this.Description;
 			wrapper.UserID = this.UserID;
+			wrapper.DefaultSycnMoUrl = this.DefaultSycnMoUrl;
+			wrapper.DefaultSycnMRUrl = this.DefaultSycnMRUrl;
 		
 		return wrapper;
         }

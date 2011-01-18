@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -9,8 +10,10 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
+
+
 	[Serializable]
-    public partial class SPChannelDefaultClientSycnParamsWrapper
+    public partial class SPChannelDefaultClientSycnParamsWrapper  
     {
         #region Static Common Data Operation
 		

@@ -43,22 +43,22 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	
 		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity _channelID, out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_ChannelID_SPChannelEntity(orderByColumnName, isDesc, pageIndex, pageSize,_channelID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPChannelEntity(orderByColumnName, isDesc, pageIndex, pageSize,_channelID, out recordCount);
         }
 		
 		public List<SPPaymentInfoEntity> FindAllByChannelID(SPChannelEntity _channelID)
         {
-			return this.SelfDataObj.GetList_By_ChannelID_SPChannelEntity(_channelID);
+			return this.SelfDataObj.GetList_By_SPChannelEntity(_channelID);
         }
 	
 		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity _clientID, out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_ClientID_SPClientEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPClientEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientID, out recordCount);
         }
 		
 		public List<SPPaymentInfoEntity> FindAllByClientID(SPClientEntity _clientID)
         {
-			return this.SelfDataObj.GetList_By_ClientID_SPClientEntity(_clientID);
+			return this.SelfDataObj.GetList_By_SPClientEntity(_clientID);
         }
 
 

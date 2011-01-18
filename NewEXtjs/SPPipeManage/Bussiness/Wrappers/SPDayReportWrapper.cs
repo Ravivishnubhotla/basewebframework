@@ -225,5 +225,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetClientGroupPriceReport(clientGroupId, startDate, endDate);
 	    }
+
+	    public static DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate)
+	    {
+            return businessProxy.GetDayCountReportForMaster( startDate, endDate);
+	    }
     }
 }

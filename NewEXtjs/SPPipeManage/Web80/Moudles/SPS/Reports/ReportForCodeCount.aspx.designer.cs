@@ -10,7 +10,7 @@
 namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     
     
-    public partial class ReportChannel {
+    public partial class ReportForCodeCount {
         
         /// <summary>
         /// Store1 control.
@@ -137,24 +137,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ToolbarTextItem txtDownSycnCount;
-        
-        /// <summary>
-        /// ToolbarTextItem2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem2;
-        
-        /// <summary>
-        /// chkFilterNoCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkFilterNoCount;
         
         /// <summary>
         /// GroupingView1 control.

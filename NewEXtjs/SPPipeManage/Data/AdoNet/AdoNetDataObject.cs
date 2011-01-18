@@ -1221,7 +1221,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             dbParameters.AddWithValue("SPClientGroupID", clientChannelSettingEntitys);
 
-            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];  
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
         public void UpdateUrlSuccessSend(int id, string url)
@@ -1235,6 +1235,20 @@ namespace LD.SPPipeManage.Data.AdoNet
             dbParameters.AddWithValue("ID", id);
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+
+        public DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate)
+        {
+            string sql = "SELECT * FROM View_DayReport where ReportDate>= @startDate and ReportDate < @endDate";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
     }
 }

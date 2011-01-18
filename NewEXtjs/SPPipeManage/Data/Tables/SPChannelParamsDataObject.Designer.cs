@@ -58,6 +58,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_ISMONITORINGREQUEST = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitoringRequest");
 		public static readonly Property PROPERTY_CHANNELID_ISDISABLE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable");
 		public static readonly Property PROPERTY_CHANNELID_REPORTIDPARAMS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportIDParams");
+		public static readonly Property PROPERTY_CHANNELID_CHANNEDATA = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChanneData");
 		#endregion
 		public static readonly Property PROPERTY_PARAMSMAPPINGNAME = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_TITLE);
@@ -106,7 +107,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPChannelParamsEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
+		public List<SPChannelParamsEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -116,7 +117,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPChannelParamsEntity> GetPageList_By_ChannelID_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
+        public List<SPChannelParamsEntity> GetPageList_By_SPChannelEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

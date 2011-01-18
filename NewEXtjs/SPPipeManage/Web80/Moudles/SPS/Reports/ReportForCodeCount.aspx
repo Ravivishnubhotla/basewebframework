@@ -1,6 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="ReportChannel.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportChannel" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ReportForCodeCount.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportForCodeCount" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
@@ -10,55 +8,9 @@
             return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
         }
 
-        var decimalFormat = function(value) {
+        var decimalFormat = function (value) {
             return formatFloat(value, 2).toString() + "%";
         };
-
-        var filterfn = function(rec, id) {
-            return (rec.data.TotalCount > 0);
-        }
-
-
-
-//        var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
-//            if (command.command == 'TotalCountDetail' && record.data.TotalCount > 0) {
-//                if (record.data.TotalCount == 9421) {
-//                    alert(record);
-//                }
-//                command.hidden = false;
-//                command.hideMode = 'display'; //you can try 'visibility' also                
-//            }
-//        };
-
-
-//        var prepareCellCommandDownCount = function(grid, command, record, row, col, value) {
-//            if (command.command == 'DownCountDetail' && record.data.DownCount > 0) {
-//                if (row > 0) {
-//                    command.hidden = false;
-//                    command.hideMode = 'display'; //you can try 'visibility' also
-//                }
-//                else {
-//                    alert('111');
-//                }
-
-//            }
-//        };
-
-
-//        var prepareCellCommandInterceptCount = function(grid, command, record, row, col, value) {
-//        if (command.command == 'InterceptCountDetail' && record.data.InterceptCount > 0) {
-//            command.hidden = false;
-//                command.hideMode = 'display'; //you can try 'visibility' also                
-//            }
-//        };
-
-
-//        var prepareCellCommandDownSycnCount = function(grid, command, record, row, col, value) {
-//        if (command.command == 'DownSycnCountDetail' && record.data.DownSycnCount > 0) {
-//            command.hidden = false;
-//                command.hideMode = 'display'; //you can try 'visibility' also                
-//            }
-//        };
     </script>
 
 
@@ -80,7 +32,7 @@
             </ext:JsonReader>
         </Reader>
         <Listeners>
-            <Load Handler="#{txtTotalCount}.setText('总点播数(条)：'+this.sum('TotalCount'));#{txtInterceptCount}.setText('总扣量数(条)：'+this.sum('InterceptCount'));#{txtDownCount}.setText('总转发下家数(条)：'+this.sum('DownCount'));#{txtDownSycnCount}.setText('总同步下家数(条)：'+this.sum('DownSycnCount'));if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(filterfn);} else {#{Store1}.clearFilter();}" />
+            <Load Handler="#{txtTotalCount}.setText('总点播数(条)：'+this.sum('TotalCount'));#{txtInterceptCount}.setText('总扣量数(条)：'+this.sum('InterceptCount'));#{txtDownCount}.setText('总转发下家数(条)：'+this.sum('DownCount'));#{txtDownSycnCount}.setText('总同步下家数(条)：'+this.sum('DownSycnCount'));" />
         </Listeners>
         <AjaxEventConfig Timeout="300000"></AjaxEventConfig>
     </ext:Store>
@@ -150,17 +102,6 @@
                                     </ext:ToolbarTextItem>
                                                                         <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
-                                                                        <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" runat="server" Text="不显示0流量的通道">
-                                    </ext:ToolbarTextItem>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:Checkbox ID="chkFilterNoCount" Checked="true" runat="server">
-                                        <Listeners>
-                                            <Check Handler="#{Store1}.reload();" />
-                                        </Listeners>
-                                    </ext:Checkbox>
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
                                     

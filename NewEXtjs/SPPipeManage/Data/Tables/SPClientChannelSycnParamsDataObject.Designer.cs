@@ -85,7 +85,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPClientChannelSycnParamsEntity> GetList_By_ClientChannelSettingID_SPClientChannelSettingEntity(SPClientChannelSettingEntity fkentity)
+		public List<SPClientChannelSycnParamsEntity> GetList_By_SPClientChannelSettingEntity(SPClientChannelSettingEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientChannelSycnParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -95,7 +95,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPClientChannelSycnParamsEntity> GetPageList_By_ClientChannelSettingID_SPClientChannelSettingEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientChannelSettingEntity fkentity, out int recordCount)
+        public List<SPClientChannelSycnParamsEntity> GetPageList_By_SPClientChannelSettingEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientChannelSettingEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPClientChannelSycnParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

@@ -343,6 +343,7 @@
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -911,6 +912,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.designer.cs">
       <DependentUpon>ReportDayTotal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportForCodeCount.aspx.cs">
+      <DependentUpon>ReportForCodeCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportForCodeCount.aspx.designer.cs">
+      <DependentUpon>ReportForCodeCount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.cs">
       <DependentUpon>ReportToday.aspx</DependentUpon>

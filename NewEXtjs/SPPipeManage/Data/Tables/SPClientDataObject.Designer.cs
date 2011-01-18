@@ -33,6 +33,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_NAME = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Name");
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_DESCRIPTION = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".Description");
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_USERID = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".UserID");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_DEFAULTSYCNMOURL = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".DefaultSycnMoUrl");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_DEFAULTSYCNMRURL = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".DefaultSycnMRUrl");
 		#endregion
 		public static readonly Property PROPERTY_ISDEFAULTCLIENT = Property.ForName(SPClientEntity.PROPERTY_NAME_ISDEFAULTCLIENT);
 		public static readonly Property PROPERTY_ALIAS = Property.ForName(SPClientEntity.PROPERTY_NAME_ALIAS);
@@ -81,7 +83,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPClientEntity> GetList_By_SPClientGroupID_SPClientGroupEntity(SPClientGroupEntity fkentity)
+		public List<SPClientEntity> GetList_By_SPClientGroupEntity(SPClientGroupEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -91,7 +93,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPClientEntity> GetPageList_By_SPClientGroupID_SPClientGroupEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupEntity fkentity, out int recordCount)
+        public List<SPClientEntity> GetPageList_By_SPClientGroupEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

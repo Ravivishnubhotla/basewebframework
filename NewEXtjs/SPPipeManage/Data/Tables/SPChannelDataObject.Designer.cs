@@ -56,6 +56,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_ISMONITORINGREQUEST = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORINGREQUEST);
 		public static readonly Property PROPERTY_ISDISABLE = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE);
 		public static readonly Property PROPERTY_REPORTIDPARAMS = Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTIDPARAMS);
+		public static readonly Property PROPERTY_CHANNEDATA = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNEDATA);
       
 		#region 子类集合字段查询字段
 	
@@ -137,11 +138,13 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "ReportIDParams":
                     return typeof (string);
+                case "ChanneData":
+                    return typeof (string);
           }
 			return typeof(string);
         }
 		
-		public List<SPChannelEntity> GetList_By_UperID_SPUperEntity(SPUperEntity fkentity)
+		public List<SPChannelEntity> GetList_By_SPUperEntity(SPUperEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -151,7 +154,7 @@ namespace LD.SPPipeManage.Data.Tables
 		}
 		
 		
-        public List<SPChannelEntity> GetPageList_By_UperID_SPUperEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity fkentity, out int recordCount)
+        public List<SPChannelEntity> GetPageList_By_SPUperEntity(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity fkentity, out int recordCount)
         {
             NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 

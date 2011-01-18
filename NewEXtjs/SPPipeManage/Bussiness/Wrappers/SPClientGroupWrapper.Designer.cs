@@ -71,6 +71,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMOURL = "DefaultSycnMoUrl";
+		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
 		
         #endregion
 
@@ -130,6 +132,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.UserID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DefaultSycnMoUrl
+		{
+			get
+			{
+				return entity.DefaultSycnMoUrl;
+			}
+			set
+			{
+				entity.DefaultSycnMoUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DefaultSycnMRUrl
+		{
+			get
+			{
+				return entity.DefaultSycnMRUrl;
+			}
+			set
+			{
+				entity.DefaultSycnMRUrl = value;
 			}
 		}
 		#endregion 

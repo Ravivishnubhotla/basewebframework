@@ -29,13 +29,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             int channleID = 0;
 
-            if (this.cmbChannelID.SelectedItem!=null)
-            {
-                if (!string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
-                    channleID = int.Parse(this.cmbChannelID.SelectedItem.Value);
-                else
-                    channleID = 0;
-            }
+            //if (this.cmbChannelID.SelectedItem!=null)
+            //{
+            //    if (!string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value))
+            //        channleID = int.Parse(this.cmbChannelID.SelectedItem.Value);
+            //    else
+            //        channleID = 0;
+            //}
 
             DataTable dt = SPDayReportWrapper.GetCountReportForMaster(channleID, (DateTime)dfReportStartDate.DateField.Value, (DateTime)dfReportEndDate.DateField.Value);
 

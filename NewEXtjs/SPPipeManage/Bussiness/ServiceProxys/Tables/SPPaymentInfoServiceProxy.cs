@@ -144,7 +144,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             SPClientGroupEntity clientGroupEntity = this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(spClientGroupID);
 
             List<SPClientEntity> spClientEntities =
-                this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupID_SPClientGroupEntity
+                this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupEntity
                     (clientGroupEntity);
 
             return this.SelfDataObj.FindAllByOrderByAndSPClientIDsAndDateNoIntercept(spClientEntities,
@@ -162,7 +162,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             SPClientGroupEntity clientGroupEntity = this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(spClientGroupID);
 
             List<SPClientEntity> spClientEntities =
-                this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupID_SPClientGroupEntity
+                this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupEntity
                     (clientGroupEntity);
 
             return this.SelfDataObj.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(spClientEntities,
