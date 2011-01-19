@@ -343,7 +343,9 @@
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChange.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -906,6 +908,13 @@
     <Compile Include="Moudles\SPS\Reports\ReportClient.aspx.designer.cs">
       <DependentUpon>ReportClient.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChange.aspx.cs">
+      <DependentUpon>ReportDataChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChange.aspx.designer.cs">
+      <DependentUpon>ReportDataChange.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.cs">
       <DependentUpon>ReportDayTotal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -926,6 +935,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.designer.cs">
       <DependentUpon>ReportToday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.cs">
+      <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.designer.cs">
+      <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Upers\SPUperListPage.aspx.cs">
       <DependentUpon>SPUperListPage.aspx</DependentUpon>

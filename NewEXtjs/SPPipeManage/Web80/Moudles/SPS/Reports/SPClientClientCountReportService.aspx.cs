@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Microsoft.Reporting.WebForms;
-using System.Data;
-using System.Data.SqlClient;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Microsoft.Reporting.WebForms;
 
-namespace Legendigital.Common.Web.Moudles.SPS.Clients
+namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
-    public partial class SPClientGroupReportService : System.Web.UI.Page
+    public partial class SPClientClientCountReportService : System.Web.UI.Page
     {
-        public int ClientGroupID
+        public int ChannleClientSettingID
         {
             get
             {
-                if (this.Request.QueryString["ClientGroupID"] == null)
+                if (this.Request.QueryString["ChannleClientSettingID"] == null)
                     return 0;
-                return Convert.ToInt32(this.Request.QueryString["ClientGroupID"]);
+                return Convert.ToInt32(this.Request.QueryString["ChannleClientSettingID"]);
             }
         }
 
@@ -43,6 +43,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             }
         }
 
+        private void BindData()
+        {
+            DataTable tb = SPDayReportWrapper.GetDataCountReport(ChannleClientSettingID, StartDate.Date, EndDate.Date);
+
+
+            ReportDataSource rds = new ReportDataSource("DataSet1", tb);
+            ReportViewer1.LocalReport.DataSources.Clear();
+            ReportViewer1.LocalReport.DataSources.Add(rds);
+            ReportViewer1.LocalReport.Refresh();
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -53,19 +63,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             BindData();
         }
 
-        private void BindData()
-        {
-            DataTable tb = SPDayReportWrapper.GetClientGroupPriceReport(ClientGroupID, StartDate.Date, EndDate.Date);
-
-
-            ReportDataSource rds = new ReportDataSource("DataSet1", tb);
-            ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(rds);
-            ReportViewer1.LocalReport.Refresh();
-        }
-
-
-        protected void ReportViewer1_ReportRefresh(object sender, System.ComponentModel.CancelEventArgs e)
+        protected void ReportViewer1_ReportRefresh(object sender, CancelEventArgs e)
         {
             BindData();
         }
