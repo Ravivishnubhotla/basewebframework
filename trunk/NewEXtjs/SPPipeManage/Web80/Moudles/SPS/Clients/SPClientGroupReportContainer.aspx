@@ -25,15 +25,14 @@
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
                                     </ext:DateFieldMenuItem>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
-                                    <AjaxEvents>
-                    <Click OnEvent="btnRefresh_Click" />
-                </AjaxEvents>
+                                        <AjaxEvents>
+                                            <Click OnEvent="btnRefresh_Click" />
+                                        </AjaxEvents>
                                     </ext:ToolbarButton>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
-                        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache=true ShowMask="true" />
-
+                        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" ShowMask="true" />
                     </ext:Panel>
                 </Items>
             </ext:FitLayout>
