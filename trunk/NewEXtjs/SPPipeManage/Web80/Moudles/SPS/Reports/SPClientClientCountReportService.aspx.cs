@@ -45,13 +45,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         private void BindData()
         {
-            DataTable tb = SPDayReportWrapper.GetDataCountReport(ChannleClientSettingID, StartDate.Date, EndDate.Date);
+            //DataTable tb = SPDayReportWrapper.GetDataCountReport(ChannleClientSettingID, StartDate.Date, EndDate.Date);
 
 
-            ReportDataSource rds = new ReportDataSource("DataSet1", tb);
-            ReportViewer1.LocalReport.DataSources.Clear();
-            ReportViewer1.LocalReport.DataSources.Add(rds);
-            ReportViewer1.LocalReport.Refresh();
+            //ReportDataSource rds = new ReportDataSource("DataSet1", tb);
+            //ReportViewer1.LocalReport.DataSources.Clear();
+            //ReportViewer1.LocalReport.DataSources.Add(rds);
+            //ReportViewer1.LocalReport.Refresh();
         }
 
         protected void Page_Load(object sender, EventArgs e)
