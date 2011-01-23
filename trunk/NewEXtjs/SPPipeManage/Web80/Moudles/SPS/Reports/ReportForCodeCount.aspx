@@ -27,6 +27,7 @@
                     <ext:RecordField Name="InterceptRate" Type="Float" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="SPClientGroupName" />
                     <ext:RecordField Name="ReportDate" Type="Date" DateFormat="Y-m-dTh:i:s" />
                 </Fields>
             </ext:JsonReader>
@@ -120,6 +121,10 @@
                                     Groupable="true" Hideable="false" SummaryType="None" Sortable="false">
                                 </ext:GroupingSummaryColumn>
                                 <ext:GroupingSummaryColumn ColumnID="colClinetID" Header="下家" DataIndex="ClientName"
+                                    Groupable="true" Hideable="false" SummaryType="None" Sortable="false">
+                                    <SummaryRenderer Handler="return '总计';" />
+                                </ext:GroupingSummaryColumn>
+                                <ext:GroupingSummaryColumn ColumnID="colSPClientGroupID" Header="下家组" DataIndex="SPClientGroupName"
                                     Groupable="true" Hideable="false" SummaryType="None" Sortable="false">
                                     <SummaryRenderer Handler="return '总计';" />
                                 </ext:GroupingSummaryColumn>

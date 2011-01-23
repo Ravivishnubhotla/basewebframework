@@ -39,6 +39,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DayliyReport GetDayReport(DateTime dateTime, SPClientChannelSettingEntity spClientChannelSettingEntity);
         DataTable GetClientGroupPriceReport(int clientGroupId, DateTime startDate, DateTime endDate);
         DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate);
+        DataTable GetReportDataChange(int reportClientChannleId, DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -205,6 +206,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate)
         {
             return this.AdoNetDb.GetDayCountReportForMaster(startDate, endDate);
+        }
+
+        public DataTable GetReportDataChange(int reportClientChannleId, DateTime startDate, DateTime endDate)
+        {
+            return this.AdoNetDb.GetReportDataChange(reportClientChannleId, startDate, endDate);
         }
 
         public string GetDbSize()

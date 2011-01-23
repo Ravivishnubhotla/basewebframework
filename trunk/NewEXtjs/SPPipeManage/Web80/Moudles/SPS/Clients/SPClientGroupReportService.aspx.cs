@@ -49,7 +49,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             if (this.IsPostBack)
                 return;
 
-            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("Report2.rdl");
+            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("SPClientGroupAmountReport.rdl");
             BindData();
         }
 
@@ -61,6 +61,28 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(rds);
+
+            SPClientGroupWrapper clientGroupWrapper = SPClientGroupWrapper.FindById(ClientGroupID);
+
+
+            ReportParameter rpName = new ReportParameter();
+            rpName.Name = "ReportClientGroupName";
+            rpName.Values.Add(clientGroupWrapper.Name);
+
+            ReportParameter rpStartDate = new ReportParameter();
+            rpStartDate.Name = "ReportStartDate";
+            rpStartDate.Values.Add(StartDate.ToShortDateString());
+
+            ReportParameter rpEndDate = new ReportParameter();
+            rpEndDate.Name = "ReportEndDate";
+            rpEndDate.Values.Add(EndDate.ToShortDateString());
+
+
+            ReportViewer1.LocalReport.SetParameters(
+             new ReportParameter[] { rpName, rpStartDate, rpEndDate });
+
+
+
             ReportViewer1.LocalReport.Refresh();
         }
 

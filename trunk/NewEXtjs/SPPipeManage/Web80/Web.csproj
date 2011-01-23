@@ -344,6 +344,7 @@
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDataChange.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChangeService.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
     <Content Include="Services\SPDataService.asmx" />
@@ -915,6 +916,13 @@
     <Compile Include="Moudles\SPS\Reports\ReportDataChange.aspx.designer.cs">
       <DependentUpon>ReportDataChange.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChangeService.aspx.cs">
+      <DependentUpon>ReportDataChangeService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChangeService.aspx.designer.cs">
+      <DependentUpon>ReportDataChangeService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.cs">
       <DependentUpon>ReportDayTotal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1085,6 +1093,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Clients\Report2.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientGroupAmountReport.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChange.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
