@@ -132,6 +132,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

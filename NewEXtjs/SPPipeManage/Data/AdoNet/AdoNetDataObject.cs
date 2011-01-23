@@ -1212,7 +1212,7 @@ namespace LD.SPPipeManage.Data.AdoNet
         public DataTable GetClientGroupPriceReport(int clientChannelSettingEntitys, DateTime startDate, DateTime endDate)
         {
             string sql = "SELECT ReportID, ReportDate, UpTotalCount, InterceptTotalCount, DownTotalCount, DownSuccess, ClientID, ChannelID, SPClientGroupID, Price, Amount, ClientAliasName, ClientName FROM vw_ClientGroupAmountReport WHERE (SPClientGroupID = @SPClientGroupID) AND (ReportDate >= @startDate) AND  (ReportDate <@endDate)";
-            
+
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("startDate", startDate.Date);
@@ -1247,6 +1247,39 @@ namespace LD.SPPipeManage.Data.AdoNet
             dbParameters.AddWithValue("startDate", startDate.Date);
 
             dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+
+        public DataTable GetReportDataChange(int reportClientChannleId, DateTime startDate, DateTime endDate)
+        {
+            string sql = @"SELECT SPDayReport.ReportDate, SPDayReport.UpTotalCount, 
+      SPDayReport.InterceptTotalCount, SPDayReport.DownTotalCount, 
+      SPDayReport.DownSuccess
+FROM SPDayReport INNER JOIN
+      SPClientChannelSetting ON 
+      SPDayReport.ChannelID = SPClientChannelSetting.ChannelID AND 
+      SPDayReport.ClientID = SPClientChannelSetting.ClinetID
+WHERE (SPClientChannelSetting.ID = @ReportClientChannleID) AND 
+      (SPDayReport.ReportDate >= @StartDate) AND 
+      (SPDayReport.ReportDate <= @EndDate)
+UNION
+SELECT DATEADD(day, 1, @EndDate) AS ReportDate, 
+      dbo.GetTodayTotalByClientChannleID(@ReportClientChannleID) AS UpTotalCount, 
+      dbo.GetTodayInterceptByClientChannleID(@ReportClientChannleID) 
+      AS InterceptTotalCount, 
+      dbo.GetTodayDownByClientChannleID(@ReportClientChannleID) AS DownTotalCount, 
+      dbo.GetTodayDownSycnByClientChannleID(@ReportClientChannleID) 
+      AS DownSuccess";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ReportClientChannleID", reportClientChannleId);
+
+            dbParameters.AddWithValue("StartDate", startDate.Date);
+
+            dbParameters.AddWithValue("EndDate", endDate.Date);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }

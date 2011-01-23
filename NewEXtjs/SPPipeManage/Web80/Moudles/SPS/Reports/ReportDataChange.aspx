@@ -17,7 +17,8 @@
             </ext:JsonReader>
         </Reader>
         <Listeners>
-            <Load Handler="if(#{storeSPChannel}.data.items.length>0) {#{cmbChannelID}.setValue(#{storeSPChannel}.data.items[0].data.Id);};" />
+            <Load Handler="if(#{storeSPChannel}.data.items.length>0) {#{cmbChannelID}.setValue(#{storeSPChannel}.data.items[0].data.Id); #{cmbChannelID}.fireEvent('select'); 
+            };" />
         </Listeners>
     </ext:Store>
     <ext:Store ID="storeSPChannelClientSetting" runat="server" AutoLoad="false" OnRefreshData="storeSPChannelClientSetting_Refresh">
@@ -91,14 +92,6 @@
 				</Html>
                                         </Template>
                                     </ext:ComboBox>
-                                    <ext:ToolbarTextItem Text="日期从">
-                                    </ext:ToolbarTextItem>
-                                    <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
-                                    </ext:DateFieldMenuItem>
-                                    <ext:ToolbarTextItem Text="到">
-                                    </ext:ToolbarTextItem>
-                                    <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
-                                    </ext:DateFieldMenuItem>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <AjaxEvents>
                                             <Click OnEvent="btnRefresh_Click" />

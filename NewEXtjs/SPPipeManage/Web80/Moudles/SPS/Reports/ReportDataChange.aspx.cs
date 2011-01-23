@@ -20,13 +20,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             if (Ext.IsAjaxRequest)
                 return;
 
-            dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+            //dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
 
-            dfReportEndDate.DateField.Value = System.DateTime.Now.AddDays(-1);
+            //dfReportEndDate.DateField.Value = System.DateTime.Now.AddDays(-1);
 
-            dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+            //dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
 
-            dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-8);
+            //dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-8);
         }
 
 
@@ -37,9 +37,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
             this.ReportPanel.AutoLoad.Params.Clear();
             this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", cmbCode.SelectedItem.Value.ToString()));
-            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("StartDate", dfReportStartDate.DateField.SelectedDate.ToShortDateString()));
-            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("EndDate", dfReportEndDate.DateField.SelectedDate.ToShortDateString()));
-            this.ReportPanel.AutoLoad.Url = "SPClientClientCountReportService.aspx";
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("StartDate", System.DateTime.Now.Date.AddDays(-2).ToShortDateString()));
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("EndDate", System.DateTime.Now.Date.AddDays(-1).ToShortDateString()));
+            this.ReportPanel.AutoLoad.Url = "ReportDataChangeService.aspx";
             this.ReportPanel.LoadContent();
         }
 
