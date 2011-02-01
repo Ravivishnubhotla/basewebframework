@@ -409,8 +409,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 try
                 {
-                    PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    //PhoneAreaInfo phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    PhoneAreaInfo phoneAreaInfo = null;
+                    try
+                    {
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch (Exception)
+                    {
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    }
                     if (phoneAreaInfo != null)
                     {
                         paymentInfo.Province = phoneAreaInfo.Province;
@@ -1121,7 +1128,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 try
                 {
-                    PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    PhoneAreaInfo phoneAreaInfo = null;
+                    try
+                    {
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch
+                    {
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    }
+                    //PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
                     //PhoneAreaInfo phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     if (phoneAreaInfo != null)
                     {

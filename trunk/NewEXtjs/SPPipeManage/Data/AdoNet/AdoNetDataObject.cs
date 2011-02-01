@@ -1283,5 +1283,14 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+
+        public DataTable GetAllPhoneAreaData()
+        {
+            string sql = @"SELECT  * from  SPPhoneArea";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }
