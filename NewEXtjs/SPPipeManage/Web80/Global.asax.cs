@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using Common.Logging;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Common.Web.Jobs;
 using Quartz;
 
@@ -20,7 +21,10 @@ namespace Legendigital.Common.Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            
+            //if (HttpContext.Current.Cache[PhoneCache.PhoneInfos_Key] == null)
+            //{
+            //    HttpContext.Current.Cache[PhoneCache.PhoneInfos_Key] = SPPhoneAreaWrapper.GetAllPhoneInfos_Key();
+            //}
 
 
         }

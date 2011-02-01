@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -121,22 +122,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static SortedList<string, PhoneAreaInfo> GetAllPhoneInfos_Key()
         {
-            List<SPPhoneAreaWrapper> spPhoneAreaWrappers = FindAll();
+            //List<SPPhoneAreaWrapper> spPhoneAreaWrappers = FindAll();
+
+            DataTable dt = SPPhoneAreaWrapper.GetAllPhoneAreaData();
 
             SortedList<string, PhoneAreaInfo> phoneinfos = new SortedList<string, PhoneAreaInfo>();
 
-            foreach (SPPhoneAreaWrapper item in spPhoneAreaWrappers)
+            foreach (DataRow item in dt.Rows)
 	        {
-                if (!phoneinfos.ContainsKey(item.PhonePrefix))
+                if (!phoneinfos.ContainsKey(item["PhonePrefix"].ToString()))
                 { 
                     PhoneAreaInfo phonearea = new PhoneAreaInfo();
-                    phonearea.City = item.City;
-                    phonearea.Province = item.Province;
-                    phoneinfos.Add(item.PhonePrefix, phonearea);
+                    phonearea.City = item["City"].ToString();
+                    phonearea.Province = item["Province"].ToString();
+                    phoneinfos.Add(item["PhonePrefix"].ToString(), phonearea);
                 }
 	        }
 
             return phoneinfos;
         }
+
+        private static DataTable GetAllPhoneAreaData()
+	    {
+            return businessProxy.GetAllPhoneAreaData();
+	    }
     }
 }
