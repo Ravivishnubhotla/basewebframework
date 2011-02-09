@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		public static readonly string PROPERTY_NAME_QUERYSTRING = "QueryString";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
+		public static readonly string PROPERTY_NAME_ISPAYOK = "IsPayOk";
 		
         #endregion
 	
@@ -33,6 +34,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _queryString;
 		private string _requestContent;
 		private DateTime? _createDate;
+		private bool? _isPayOk;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_queryString = null;
 			_requestContent = null;
 			_createDate = null;
+			_isPayOk = null;
 		}
 		#endregion
 
@@ -127,7 +130,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 1200)
 					throw new ArgumentOutOfRangeException("Invalid value for QueryString", value, value.ToString());
 				_queryString = value;
 			}
@@ -164,6 +167,20 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsPayOk
+		{
+			get { return _isPayOk; }
+
+			set	
+			{
+				_isPayOk = value;
+			}
+		}
+
 		
 		#endregion 
 
@@ -177,6 +194,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.QueryString = wrapper.QueryString;
 			this.RequestContent = wrapper.RequestContent;
 			this.CreateDate = wrapper.CreateDate;
+			this.IsPayOk = wrapper.IsPayOk;
 		}
 		
 		
@@ -190,6 +208,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.QueryString = this.QueryString;
 			wrapper.RequestContent = this.RequestContent;
 			wrapper.CreateDate = this.CreateDate;
+			wrapper.IsPayOk = this.IsPayOk;
 		
 		return wrapper;
         }

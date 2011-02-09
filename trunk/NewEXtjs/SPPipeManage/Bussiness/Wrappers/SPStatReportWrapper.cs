@@ -97,5 +97,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public static SPStatReportWrapper FindByChannelIDAndLinkIDAndReportOk(int channelID, string linkid)
+	    {
+            return ConvertEntityToWrapper(businessProxy.FindByChannelIDAndLinkIDAndReportOk(channelID, linkid));
+	    }
     }
 }

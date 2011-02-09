@@ -74,6 +74,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_QUERYSTRING = "QueryString";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
+		public static readonly string PROPERTY_NAME_ISPAYOK = "IsPayOk";
 		
         #endregion
 
@@ -175,6 +176,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.CreateDate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsPayOk
+		{
+			get
+			{
+				return entity.IsPayOk;
+			}
+			set
+			{
+				entity.IsPayOk = value;
 			}
 		}
 		#endregion 
