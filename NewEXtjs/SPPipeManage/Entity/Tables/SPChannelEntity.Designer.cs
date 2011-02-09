@@ -127,7 +127,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelInfo = null;
 			_statSendOnce = null;
 			_isMonitoringRequest = null;
-			_isDisable = false;
+			_isDisable = null;
 			_reportIDParams = null;
 			_channeData = null;
 		}
@@ -425,7 +425,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
 				_isChanged |= (_okMessage != value); _okMessage = value;
 			}
@@ -442,7 +442,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
 				_isChanged |= (_failedMessage != value); _failedMessage = value;
 			}

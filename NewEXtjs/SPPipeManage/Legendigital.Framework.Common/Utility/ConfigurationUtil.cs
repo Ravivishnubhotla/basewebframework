@@ -18,5 +18,22 @@ namespace Legendigital.Framework.Common.Utility
             }
             return defaultValue;
         }
+
+
+        public static string ReadStringAppSetting(string appKey, string defaultValue)
+        {
+             if (System.Configuration.ConfigurationManager.AppSettings[appKey]==null)
+             {
+                 return defaultValue;
+             }
+            return System.Configuration.ConfigurationManager.AppSettings[appKey];
+        }
+
+        public static int ReadIntAppSetting(string appKey, int defaultValue)
+        {
+            return Convert.ToInt32(ReadStringAppSetting(appKey, defaultValue.ToString()));
+        }
+
+
     }
 }

@@ -14,9 +14,10 @@
 		<property column="ChannelID" type="int" name="ChannelID"   not-null="true"  />	
 		<property column="Stat" type="string" name="Stat"   length="100" />	
 		<property column="LinkID" type="string" name="LinkID"   length="200" />	
-		<property column="QueryString" type="string" name="QueryString"   length="600" />	
+		<property column="QueryString" type="string" name="QueryString"   length="1200" />	
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="IsPayOk" type="Boolean" name="IsPayOk"   />	
 
 
 

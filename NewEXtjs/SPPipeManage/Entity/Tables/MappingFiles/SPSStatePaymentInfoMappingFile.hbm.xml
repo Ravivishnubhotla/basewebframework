@@ -20,7 +20,7 @@
 		<property column="RequestID" type="int" name="RequestID"   />	
 		<property column="Cpid" type="string" name="Cpid"   length="600" />	
 		<property column="Mid" type="string" name="Mid"   length="600" />	
-		<property column="Port" type="string" name="Port"   not-null="true"  length="600" />	
+		<property column="Port" type="string" name="Port"   length="600" />	
 		<property column="Ywid" type="string" name="Ywid"   length="600" />	
 		<property column="Linkid" type="string" name="Linkid"   length="600" />	
 		<property column="Dest" type="string" name="Dest"   length="600" />	
@@ -36,7 +36,7 @@
 		<property column="ExtendField7" type="string" name="ExtendField7"   length="400" />	
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="400" />	
 		<property column="ExtendField9" type="string" name="ExtendField9"   length="400" />	
-		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
+		<property column="IsReport" type="Boolean" name="IsReport"   />	
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="City" type="string" name="City"   length="40" />	
 		<property column="Province" type="string" name="Province"   length="40" />	

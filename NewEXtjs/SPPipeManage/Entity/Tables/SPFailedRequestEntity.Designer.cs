@@ -57,7 +57,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_channelID = null;
 			_clientID = null;
 			_failedMessage = null;
-			_isProcessed = null;
+			_isProcessed = false;
 		}
 		#endregion
 
