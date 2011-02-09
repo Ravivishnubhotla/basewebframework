@@ -763,26 +763,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return macthClientChannelSetting;
         }
 
-        private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting,
-                                                                         Hashtable requestValues,
-                                                                         Hashtable fieldMappings)
-        {
-            string columnName = "ywid";
+        //private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting,
+        //                                                                 Hashtable requestValues,
+        //                                                                 Hashtable fieldMappings)
+        //{
+        //    string columnName = "ywid";
 
-            if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
-            {
-                columnName = channelSetting.CommandColumn;
-            }
+        //    if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
+        //    {
+        //        columnName = channelSetting.CommandColumn;
+        //    }
 
-            string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
+        //    string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
 
-            if (channelSetting.MatchByYWID(ywid))
-            {
-                return channelSetting;
-            }
+        //    if (channelSetting.MatchByYWID(ywid))
+        //    {
+        //        return channelSetting;
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
         public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName,
                                                             Hashtable fieldMappings)
@@ -827,22 +827,24 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return record;
         }
 
-        public void SaveStatReport(Hashtable hashtable, string recievdData, string query, string stat)
-        {
-            Hashtable fieldMappings = GetFieldMappings();
+        //public void SaveStatReport(Hashtable hashtable, string recievdData, string query, string stat)
+        //{
+        //    Hashtable fieldMappings = GetFieldMappings();
 
-            string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
+        //    string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
 
-            var statReport = new SPStatReportWrapper();
-            statReport.ChannelID = Id;
-            statReport.LinkID = linkid;
-            statReport.CreateDate = DateTime.Now;
-            statReport.QueryString = query;
-            statReport.RequestContent = recievdData;
-            statReport.Stat = stat;
+        //    var statReport = new SPStatReportWrapper();
+        //    statReport.ChannelID = Id;
+        //    statReport.LinkID = linkid;
+        //    statReport.CreateDate = DateTime.Now;
+        //    statReport.QueryString = query;
+        //    statReport.RequestContent = recievdData;
+        //    statReport.IsPayOk = false;
 
-            SPStatReportWrapper.Save(statReport);
-        }
+        //    statReport.Stat = stat;
+
+        //    SPStatReportWrapper.Save(statReport);
+        //}
 
         public void SaveStatReport(IHttpRequest httpRequest, string stat)
         {
@@ -1187,7 +1189,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 error.ErrorType = RequestErrorType.NoError;
                 error.ErrorMessage = "";
 
-                return true;
+                SPStatReportWrapper spStatReportWrapper =
+                    SPStatReportWrapper.FindByChannelIDAndLinkIDAndReportOk(this.Id, linkid);
+
+                bool findOkReport = (spStatReportWrapper!=null);
+
+                if (findOkReport)
+                {
+                    return ProcessStatPayment(error, httpGetPostReques, linkid, paymentInfo);
+                }
+                else
+                {
+                    return true;
+                }
+
+
             }
             catch (Exception ex)
             {
@@ -1315,25 +1331,25 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public bool RecState(IHttpRequest httpGetPostRequest, string stat, out RequestError error)
         {
+            error = new RequestError();
+            error.ErrorType = RequestErrorType.NoError;
+            error.ErrorMessage = "";
+            error.ChannelID = Id;
+
+
             Hashtable fieldMappings = GetFieldMappings();
 
             string linkid = "";
 
-            //if (!string.IsNullOrEmpty(this.ReportIDParams))
-            //{
-            //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
-            //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
-            //}
-            //else
-            //{
-                linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
-            //}
+            linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
 
-            
 
-            var statReport = new SPStatReportWrapper();
+            //保存状态报告
+            SPStatReportWrapper statReport = new SPStatReportWrapper();
+
             statReport.ChannelID = Id;
             statReport.LinkID = linkid;
+            statReport.IsPayOk = this.CheckReportIsOk(stat);
             statReport.CreateDate = DateTime.Now;
             statReport.QueryString = httpGetPostRequest.RequestQueryString;
             statReport.RequestContent = httpGetPostRequest.RequestData;
@@ -1341,25 +1357,28 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             SPStatReportWrapper.Save(statReport);
 
-            SPSStatePaymentInfoWrapper statepaymentInfo = SPSStatePaymentInfoWrapper.FindByChannelIDAndLinkID(Id, linkid);
-
-            error = new RequestError();
-            error.ErrorType = RequestErrorType.NoError;
-            error.ErrorMessage = "";
-            error.ChannelID = Id;
-
-
-            if (statepaymentInfo == null)
+            //如果状态报告OK，检查是否存在记录，存在记录立即报告
+            if (!(statReport.IsPayOk.HasValue && statReport.IsPayOk.Value))
             {
-                error.ErrorType = RequestErrorType.NoReportData;
-                error.ErrorMessage = "没有linkid为“" + linkid + "”找到状态报告数据";
-                return false;
+                return true;
             }
 
+            SPSStatePaymentInfoWrapper statepaymentInfo = SPSStatePaymentInfoWrapper.FindByChannelIDAndLinkID(Id, linkid);
 
+           
+            if (statepaymentInfo == null)
+            {
+                return true;
+            }
 
-            SPClientChannelSettingWrapper channelSetting =
-                SPClientChannelSettingWrapper.FindById(statepaymentInfo.ChannleClientID);
+            //存在数据的话立即报告
+
+            return ProcessStatPayment(error, httpGetPostRequest, linkid, statepaymentInfo);
+        }
+
+        private bool ProcessStatPayment(RequestError error, IHttpRequest httpGetPostRequest, string linkid, SPSStatePaymentInfoWrapper statepaymentInfo)
+        {
+            SPClientChannelSettingWrapper channelSetting = SPClientChannelSettingWrapper.FindById(statepaymentInfo.ChannleClientID);
 
             SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
 
@@ -1394,7 +1413,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.IsSycnData = false;
 
             UrlSendTask sendTask = null;
-  
+
             if (!paymentInfo.IsIntercept.Value)
             {
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
@@ -1470,9 +1489,36 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
                 return false;
             }
-
-
         }
+
+        public bool IsReportChannel
+        {
+            get { return (this.RecStatReport.HasValue && this.RecStatReport.Value); }
+        }
+
+        public bool IsTypeReuquestReportChannel
+        {
+            get { return (this.HasRequestTypeParams.HasValue && this.HasRequestTypeParams.Value); }
+        }
+
+        private bool CheckReportIsOk(string stat)
+        {
+            //如果状态报告通道
+            if (IsReportChannel)
+            {
+                return stat.ToLower().Trim().Equals(this.StatParamsValues.ToLower().Trim());
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        //public void GetStatValueFormRequest()
+        //{
+
+        //}
+
 
         public void RefreshChannelInfo()
         {

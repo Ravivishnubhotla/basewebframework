@@ -80,7 +80,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		private string _extendField7;
 		private string _extendField8;
 		private string _extendField9;
-		private bool _isReport;
+		private bool? _isReport;
 		private string _requestContent;
 		private string _city;
 		private string _province;
@@ -108,7 +108,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_requestID = null;
 			_cpid = null;
 			_mid = null;
-			_port = String.Empty;
+			_port = null;
 			_ywid = null;
 			_linkid = null;
 			_dest = null;
@@ -124,7 +124,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_extendField7 = null;
 			_extendField8 = null;
 			_extendField9 = null;
-			_isReport = false;
+			_isReport = null;
 			_requestContent = null;
 			_city = null;
 			_province = null;
@@ -563,7 +563,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public bool IsReport
+		public bool? IsReport
 		{
 			get { return _isReport; }
 

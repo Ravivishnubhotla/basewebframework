@@ -12,6 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -367,6 +368,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public DateTime GetDT()
         {
             int dayCount = 7;
+
+
+            try
+            {
+                dayCount = ConfigurationUtil.ReadIntAppSetting("ClientViewRecordDay", dayCount);
+            }
+            catch (Exception e)
+            {
+                
+            }
 
             switch (System.DateTime.Now.Date.DayOfWeek)
             {

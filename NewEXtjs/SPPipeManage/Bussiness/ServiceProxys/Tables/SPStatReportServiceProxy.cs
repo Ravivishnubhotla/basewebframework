@@ -13,13 +13,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPStatReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPStatReportEntity>
     {
-
-
+	    SPStatReportEntity FindByChannelIDAndLinkIDAndReportOk(int channelId, string linkid);
     }
 
     internal partial class SPStatReportServiceProxy : ISPStatReportServiceProxy
     {
-
-
+        public SPStatReportEntity FindByChannelIDAndLinkIDAndReportOk(int channelId, string linkid)
+        {
+            return this.SelfDataObj.FindByChannelIDAndLinkIDAndReportOk(channelId, linkid);
+        }
     }
 }

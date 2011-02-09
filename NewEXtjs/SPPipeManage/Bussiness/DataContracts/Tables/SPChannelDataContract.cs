@@ -124,7 +124,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			_channelInfo = null;
 			_statSendOnce = null;
 			_isMonitoringRequest = null;
-			_isDisable = false;
+			_isDisable = null;
 			_reportIDParams = null;
 			_channeData = null;
 		}
@@ -380,7 +380,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
 				_okMessage = value;
 			}
@@ -397,7 +397,7 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
 				_failedMessage = value;
 			}

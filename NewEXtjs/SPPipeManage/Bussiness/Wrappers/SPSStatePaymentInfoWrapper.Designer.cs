@@ -474,7 +474,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool IsReport
+		public bool? IsReport
 		{
 			get
 			{
