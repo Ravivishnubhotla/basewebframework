@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_QUERYSTRING = "QueryString";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
+		public static readonly string PROPERTY_NAME_ISPAYOK = "IsPayOk";
 		
         #endregion
 	
@@ -36,6 +37,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _queryString;
 		private string _requestContent;
 		private DateTime? _createDate;
+		private bool? _isPayOk;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_queryString = null;
 			_requestContent = null;
 			_createDate = null;
+			_isPayOk = null;
 		}
 		#endregion
 
@@ -59,7 +62,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPStatReportEntity( int id, int channelID, string stat, string linkID, string queryString, string requestContent, DateTime? createDate)
+		public SPStatReportEntity( int id, int channelID, string stat, string linkID, string queryString, string requestContent, DateTime? createDate, bool? isPayOk)
 		{
 			_id = id;
 			_channelID = channelID;
@@ -68,6 +71,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_queryString = queryString;
 			_requestContent = requestContent;
 			_createDate = createDate;
+			_isPayOk = isPayOk;
 		}
 		#endregion     
 	
@@ -146,7 +150,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 1200)
 					throw new ArgumentOutOfRangeException("Invalid value for QueryString", value, value.ToString());
 				_isChanged |= (_queryString != value); _queryString = value;
 			}
@@ -180,6 +184,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_createDate != value); _createDate = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsPayOk
+		{
+			get { return _isPayOk; }
+
+			set	
+			{
+				_isChanged |= (_isPayOk != value); _isPayOk = value;
 			}
 		}
 		/// <summary>

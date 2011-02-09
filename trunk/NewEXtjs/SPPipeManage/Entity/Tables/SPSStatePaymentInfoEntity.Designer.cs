@@ -83,7 +83,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _extendField7;
 		private string _extendField8;
 		private string _extendField9;
-		private bool _isReport;
+		private bool? _isReport;
 		private string _requestContent;
 		private string _city;
 		private string _province;
@@ -111,7 +111,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_requestID = null;
 			_cpid = null;
 			_mid = null;
-			_port = String.Empty;
+			_port = null;
 			_ywid = null;
 			_linkid = null;
 			_dest = null;
@@ -127,7 +127,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField7 = null;
 			_extendField8 = null;
 			_extendField9 = null;
-			_isReport = false;
+			_isReport = null;
 			_requestContent = null;
 			_city = null;
 			_province = null;
@@ -143,7 +143,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSStatePaymentInfoEntity( int id, string mobileNumber, int? channelID, int? clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
+		public SPSStatePaymentInfoEntity( int id, string mobileNumber, int? channelID, int? clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool? isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -610,7 +610,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool IsReport
+		public virtual bool? IsReport
 		{
 			get { return _isReport; }
 

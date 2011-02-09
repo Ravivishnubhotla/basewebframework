@@ -20,6 +20,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_QUERYSTRING = Property.ForName(SPStatReportEntity.PROPERTY_NAME_QUERYSTRING);
 		public static readonly Property PROPERTY_REQUESTCONTENT = Property.ForName(SPStatReportEntity.PROPERTY_NAME_REQUESTCONTENT);
 		public static readonly Property PROPERTY_CREATEDATE = Property.ForName(SPStatReportEntity.PROPERTY_NAME_CREATEDATE);
+		public static readonly Property PROPERTY_ISPAYOK = Property.ForName(SPStatReportEntity.PROPERTY_NAME_ISPAYOK);
       
 		#region 子类集合字段查询字段
 	
@@ -51,6 +52,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "CreateDate":
                     return typeof (DateTime);
+                case "IsPayOk":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

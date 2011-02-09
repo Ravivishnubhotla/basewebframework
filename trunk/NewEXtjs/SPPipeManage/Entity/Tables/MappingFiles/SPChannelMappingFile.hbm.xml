@@ -25,8 +25,8 @@
 		<property column="Status" type="int" name="Status"   />	
 		<property column="CreateTime" type="DateTime" name="CreateTime"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
-		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
-		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="400" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="400" />	
 		<many-to-one column="UperID" name="UperID" class="LD.SPPipeManage.Entity.Tables.SPUperEntity,LD.SPPipeManage.Entity" />		
 		<property column="ChannelCodeParamsName" type="string" name="ChannelCodeParamsName"   length="100" />	
 		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	

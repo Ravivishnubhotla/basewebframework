@@ -11,5 +11,17 @@ namespace LD.SPPipeManage.Data.Tables
 {
     public partial class SPStatReportDataObject
     {
+        public SPStatReportEntity FindByChannelIDAndLinkIDAndReportOk(int channelId, string linkid)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPStatReportEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(linkid));
+
+            queryBuilder.AddWhereClause(PROPERTY_ISPAYOK.Eq(true));
+
+            return this.FindSingleEntityByQueryBuilder(queryBuilder);
+        }
     }
 }

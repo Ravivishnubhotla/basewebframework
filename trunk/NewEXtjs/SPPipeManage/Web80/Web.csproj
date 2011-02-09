@@ -343,6 +343,7 @@
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
+    <Content Include="Moudles\SPS\Reports\RecordSearch.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDataChange.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDataChangeService.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
@@ -894,6 +895,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\DetailRecordView.aspx.designer.cs">
       <DependentUpon>DetailRecordView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\RecordSearch.aspx.cs">
+      <DependentUpon>RecordSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\RecordSearch.aspx.designer.cs">
+      <DependentUpon>RecordSearch.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.cs">
       <DependentUpon>ReportChannel.aspx</DependentUpon>
