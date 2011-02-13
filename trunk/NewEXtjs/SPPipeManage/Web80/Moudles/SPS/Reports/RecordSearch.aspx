@@ -2,7 +2,7 @@
     CodeBehind="RecordSearch.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.RecordSearch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:Store ID="store1" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="store1_Refresh">
+    <ext:Store ID="store1" runat="server" AutoLoad="false" RemoteSort="true" OnRefreshData="store1_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="30" Mode="Raw" />
