@@ -452,12 +452,21 @@ namespace SPSSiteTask
 
                 if (webResponse.StatusCode == HttpStatusCode.OK)
                 {
+                
                     StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
 
                     string responseText = sr.ReadToEnd();
 
+                    bool result = responseText.Trim().ToLower().Equals(okMessage);
+
+                    if (!result)
+                        errorMessage = responseText;
+
                     return responseText.Trim().ToLower().Equals(okMessage);
                 }
+
+
+                errorMessage = "web error Status:" + webResponse.StatusCode.ToString();
 
                 return false;
             }
