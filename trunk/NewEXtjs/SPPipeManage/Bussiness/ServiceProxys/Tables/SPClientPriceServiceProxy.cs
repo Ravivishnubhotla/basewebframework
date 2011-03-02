@@ -7,6 +7,7 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
@@ -51,6 +52,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return spClientPrice.Price.Value;
         }
 
+        [Transaction(ReadOnly = false)]
         public void SetClientPrice(int clientid, decimal price)
         {
             SPClientPriceEntity spClientPrice = this.SelfDataObj.GetClientPriceByClientID(clientid);
@@ -71,6 +73,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 
+        [Transaction(ReadOnly = false)]
         public void SetClientGroupPrice(int clientid, int clientGroupid, decimal price)
         {
             SPClientPriceEntity spClientPrice = this.SelfDataObj.GetClientPriceByClientID(clientid, clientGroupid);

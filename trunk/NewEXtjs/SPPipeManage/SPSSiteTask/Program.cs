@@ -32,6 +32,8 @@ namespace SPSSiteTask
 
         private static string multithreadWebSite = "";
 
+        private static string repeatLinkIDCode = "";
+
         private static int multithreadWebSiteTaskCount = 3;
 
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
@@ -85,6 +87,8 @@ namespace SPSSiteTask
             sendClientChannelID = ReadAppConfigInt("SendClientChannelID", sendClientChannelID);
 
             multithreadWebSite = ReadAppConfigString("MultithreadWebSite", multithreadWebSite);
+
+            repeatLinkIDCode = ReadAppConfigString("RepeatLinkIDCode", repeatLinkIDCode);
 
             multithreadWebSiteTaskCount = ReadAppConfigInt("MultithreadWebSiteTaskCount", multithreadWebSiteTaskCount);
 
@@ -457,12 +461,16 @@ namespace SPSSiteTask
 
                     string responseText = sr.ReadToEnd();
 
-                    bool result = responseText.Trim().ToLower().Equals(okMessage);
+                    List<string> repeatCode = new List<string>();
+                    
+                    repeatCode.AddRange(repeatLinkIDCode.Split(("|").ToCharArray())) ;
+
+                    bool result = responseText.Trim().ToLower().Equals(okMessage) || repeatCode.Contains(responseText.Trim());
 
                     if (!result)
                         errorMessage = responseText;
 
-                    return responseText.Trim().ToLower().Equals(okMessage);
+                    return result;
                 }
 
 

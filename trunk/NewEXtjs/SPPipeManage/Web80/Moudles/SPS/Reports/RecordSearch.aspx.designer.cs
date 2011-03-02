@@ -13,6 +13,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     public partial class RecordSearch {
         
         /// <summary>
+        /// ScriptManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
         /// store1 control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Store store1;
+        
+        /// <summary>
+        /// storeSPChannel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSPChannel;
+        
+        /// <summary>
+        /// storeSPChannelClientSetting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSPChannelClientSetting;
         
         /// <summary>
         /// viewPortMain control.
@@ -40,13 +67,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.FormPanel pnlSeach;
         
         /// <summary>
-        /// FormLayoutSPChannel control.
+        /// frmSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayoutSPChannel;
+        protected global::Coolite.Ext.Web.FormLayout frmSearch;
         
         /// <summary>
         /// cmbProvince control.
@@ -56,6 +83,60 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ComboBox cmbProvince;
+        
+        /// <summary>
+        /// cmbChannelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
+        
+        /// <summary>
+        /// cmbCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbCode;
+        
+        /// <summary>
+        /// txtPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextArea txtPhone;
+        
+        /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnSearch;
+        
+        /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnReset;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button Button1;
         
         /// <summary>
         /// gridPanelSPClientChannelSetting control.

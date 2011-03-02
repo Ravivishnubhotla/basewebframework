@@ -29,7 +29,7 @@ namespace Legendigital.Common.Web.Jobs
 
             try
             {
-                SPDayReportWrapper.GenerateDayReport(DateTime.Now.AddDays(-1));
+                SPDayReportWrapper.ReGenerateDayReport(DateTime.Now.AddDays(-1));
 
                 logger.Info("日报表任务成功。。。");
             }

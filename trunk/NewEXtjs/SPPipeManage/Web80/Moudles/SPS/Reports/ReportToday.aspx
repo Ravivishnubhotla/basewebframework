@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
 
+<%@ Register Src="UCResetSycTimes.ascx" TagName="UCResetSycTimes" TagPrefix="uc1" %>
+<%@ Register Src="UCResetIntercept.ascx" TagName="UCResetIntercept" TagPrefix="uc3" %>
 <%@ Register Src="../ClientChannelSettings/UCSPClientChannelSettingEdit.ascx" TagName="UCSPClientChannelSettingEdit"
     TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -45,6 +47,32 @@
                 command.hidden = false;
                 command.hideMode = 'display';
             }
+            if(command.command == 'ReSend')
+            {
+                if(record.data.IsSycnData&&(record.data.DownCount!=record.data.DownSycnCount))
+                {
+                    command.hidden = false;
+                    command.hideMode = 'display';  
+                }
+                else{
+                    command.hidden = true;
+                    command.hideMode = 'display';  
+                }
+            }
+
+
+            if(command.command == 'InterceptReset')
+            {
+                if(record.data.IsSycnData&&(record.data.InterceptCount > 0))
+                {
+                    command.hidden = false;
+                    command.hideMode = 'display';  
+                }
+                else{
+                    command.hidden = true;
+                    command.hideMode = 'display';  
+                }
+            }
 
         };
 
@@ -53,6 +81,36 @@
     
              if (command == "cmdEditChannelClient") {
                 Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(record.data.ChannelClientID,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
+
+                         if (command == "ReSend") {
+                Coolite.AjaxMethods.UCResetSycTimes.Show(record.data.ChannelClientID,record.data.DownCount,record.data.DownSycnCount,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
+
+                                     if (command == "InterceptReset") {
+                Coolite.AjaxMethods.UCResetIntercept.Show(record.data.ChannelClientID,record.data.TotalCount,record.data.InterceptCount,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg);
@@ -156,6 +214,7 @@
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
+                    <ext:RecordField Name="IsSycnData" Type=Boolean />
                     
                 </Fields>
             </ext:JsonReader>
@@ -163,6 +222,10 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc1:UCResetSycTimes ID="UCResetSycTimes1" runat="server" />
+
+        <uc3:UCResetIntercept ID="UCResetIntercept1" runat="server" />
+    
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
@@ -251,7 +314,8 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelID" DataIndex="ChannelClientCode" Header="指令" Sortable="true" Width="120">
+                                <ext:Column ColumnID="colChannelID" DataIndex="ChannelClientCode" Header="指令" Sortable="true"
+                                    Width="120">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="点播数(条)" Sortable="true">
                                     <Commands>
@@ -270,6 +334,9 @@
                                         <ext:ImageCommand Icon="TableEdit" CommandName="InterceptCountChange">
                                             <ToolTip Text="手动修改扣量" />
                                         </ext:ImageCommand>
+                                        <ext:ImageCommand Icon=TableGo CommandName="InterceptReset">
+                                            <ToolTip Text="取消扣量并同步下家" />
+                                        </ext:ImageCommand>
                                     </Commands>
                                     <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
@@ -284,13 +351,17 @@
                                 <ext:Column ColumnID="colDownSuccess" DataIndex="DownSycnCount" Header="同步下家数(条)"
                                     Sortable="true">
                                     <Commands>
+                                        <ext:ImageCommand Icon="TableLightning" CommandName="ReSend">
+                                            <ToolTip Text="重新发送所有数据" />
+                                        </ext:ImageCommand>
                                         <ext:ImageCommand Icon="Table" CommandName="DownSycnCountDetail" Hidden="true">
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
                                     </Commands>
                                     <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="实扣率"  Width="50" Sortable="true">
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="实扣率" Width="50"
+                                    Sortable="true">
                                     <Renderer Fn="decimalFormat" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="SetInterceptRate" Header="扣率"

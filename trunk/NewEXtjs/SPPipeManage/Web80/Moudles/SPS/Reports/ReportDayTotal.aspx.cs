@@ -78,7 +78,40 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         private void BindData()
         {
-            DataTable dt = SPDayReportWrapper.GetDayliyReport(Convert.ToDateTime(dfReportDate.DateField.Value));
+            //DataTable dt = SPDayReportWrapper.GetDayliyReport(Convert.ToDateTime(dfReportDate.DateField.Value));
+
+            DataTable dt = SPDayReportWrapper.GetDayCountReportForMaster((DateTime)dfReportDate.DateField.Value, (DateTime)dfReportDate.DateField.Value);
+
+            if (dt.Columns["SPClientGroupName"] == null)
+            {
+                dt.Columns.Add("SPClientGroupName");
+            }
+
+            foreach (DataRow dataRow in dt.Rows)
+            {
+                if (dataRow["ClientID"] == System.DBNull.Value || dataRow["ClientID"].Equals(0))
+                {
+                    dataRow["SPClientGroupName"] = "";
+                }
+                else
+                {
+                    SPClientWrapper clientWrapper = SPClientWrapper.FindById((int)dataRow["ClientID"]);
+
+                    if (clientWrapper != null)
+                    {
+                        dataRow["SPClientGroupName"] = clientWrapper.ClientGroupName;
+                    }
+                    else
+                    {
+                        dataRow["SPClientGroupName"] = "";
+                    }
+                }
+            }
+
+
+            this.Store1.DataSource = dt;
+            this.Store1.DataBind();
+
 
             this.Store1.DataSource = dt;
             this.Store1.DataBind();

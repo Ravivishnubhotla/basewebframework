@@ -302,7 +302,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
 
             if (rate < Convert.ToDecimal(interceptRate))
-                return CaculteRandom(interceptRate + 50);
+                return CaculteRandom(Math.Min(interceptRate + 50,80));
             else
                 return false;
         }
@@ -563,6 +563,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public void ChangeClientUser(string clientName, string clientAlias, string userLoginId, int userID)
         {
             businessProxy.ChangeClientUser(this.entity, clientName, clientAlias, userLoginId, userID);
+        }
+
+        public void ResetAllSycnCount(DateTime date)
+        {
+            businessProxy.ResetAllSycnCount(this.entity, date);
+        }
+
+        public int GetSycnFailedCount(DateTime date)
+        {
+            return businessProxy.GetSycnFailedCount(this.entity, date);
+        }
+
+        public void ResetIntercept(DateTime date, int dataCount)
+        {
+            businessProxy.ResetIntercept(this.entity, date, dataCount);
         }
     }
 }

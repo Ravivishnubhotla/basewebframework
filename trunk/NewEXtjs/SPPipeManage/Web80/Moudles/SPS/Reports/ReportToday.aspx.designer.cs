@@ -22,6 +22,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.Store Store1;
         
         /// <summary>
+        /// UCResetSycTimes1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.Reports.UCResetSycTimes UCResetSycTimes1;
+        
+        /// <summary>
+        /// UCResetIntercept1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.Reports.UCResetIntercept UCResetIntercept1;
+        
+        /// <summary>
         /// UCSPClientChannelSettingEdit1 control.
         /// </summary>
         /// <remarks>

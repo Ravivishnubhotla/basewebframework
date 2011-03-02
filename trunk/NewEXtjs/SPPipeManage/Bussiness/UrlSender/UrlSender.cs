@@ -31,6 +31,10 @@ namespace LD.SPPipeManage.Bussiness.UrlSender
                 {
                     UpdatePaymentSendSuccessAndUrl(sendTask.SendUrl, sendTask.PaymentID);
                 }
+                else
+                {
+                    Console.WriteLine(errorMessage);
+                }
 
             }
             catch (Exception ex)
@@ -65,8 +69,17 @@ namespace LD.SPPipeManage.Bussiness.UrlSender
 
                     string responseText = sr.ReadToEnd();
 
-                    return responseText.Trim().ToLower().Equals(okMessage);
+                    bool result = responseText.Trim().ToLower().Equals(okMessage);
+
+                    if (!result)
+                    {
+                        errorMessage = responseText;
+                    }
+
+                    return result;
                 }
+
+                errorMessage = "web error Status:" + webResponse.StatusCode.ToString();
 
                 return false;
             }

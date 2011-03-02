@@ -372,5 +372,51 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindListByQueryBuilder(queryBuilder);
         }
+
+        public List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(SPChannelEntity channelId, int clientChannelId, List<string> phones, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+
+            if (channelId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            if (clientChannelId>0)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNLECLIENTID.Eq(clientChannelId));
+
+            if (phones != null && phones.Count>0)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.In(phones));         
+            }
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryBuilder);
+
+            queryBuilder.SetFirstResult((pageIndex - 1) * limit);
+
+            queryBuilder.SetMaxResults(limit);
+
+            return FindListByPageByQueryBuilder(queryBuilder, out recordCount);
+        }
+
+        public List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneList(SPChannelEntity channelId, int clientChannelId, List<string> phones)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+
+            if (channelId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            if (clientChannelId > 0)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNLECLIENTID.Eq(clientChannelId));
+
+            if (phones != null && phones.Count > 0)
+            {
+                queryBuilder.AddWhereClause(PROPERTY_MOBILENUMBER.In(phones));
+            }
+
+            queryBuilder.AddOrderBy(PROPERTY_ID.Asc());
+
+            return FindListByQueryBuilder(queryBuilder);
+        }
     }
 }
