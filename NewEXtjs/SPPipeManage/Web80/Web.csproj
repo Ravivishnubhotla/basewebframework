@@ -348,6 +348,9 @@
     <Content Include="Moudles\SPS\Reports\ReportDataChangeService.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
+    <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
+    <Content Include="Moudles\SPS\Reports\UCResetIntercept.ascx" />
+    <Content Include="Moudles\SPS\Reports\UCResetSycTimes.ascx" />
     <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\TextLogList.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\UCFileView.ascx" />
@@ -961,6 +964,27 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.designer.cs">
       <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.cs">
+      <DependentUpon>UCMovePayment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.designer.cs">
+      <DependentUpon>UCMovePayment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCResetIntercept.ascx.cs">
+      <DependentUpon>UCResetIntercept.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCResetIntercept.ascx.designer.cs">
+      <DependentUpon>UCResetIntercept.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCResetSycTimes.ascx.cs">
+      <DependentUpon>UCResetSycTimes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCResetSycTimes.ascx.designer.cs">
+      <DependentUpon>UCResetSycTimes.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Upers\SPUperListPage.aspx.cs">
       <DependentUpon>SPUperListPage.aspx</DependentUpon>

@@ -1,25 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
-<ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="false">
-    <Proxy>
-        <ext:HttpProxy Method="GET" Url="../ClientGroups/SPChannelGroupHandle.ashx" />
-    </Proxy>
-    <Reader>
-        <ext:JsonReader Root="datas" TotalProperty="total">
-            <Fields>
-                <ext:RecordField Name="Id" Type="int" Mapping="Id" />
-                <ext:RecordField Name="Name" Mapping="Name" />
-            </Fields>
-        </ext:JsonReader>
-    </Reader>
-    <BaseParams>
-        <ext:Parameter Name="DataType" Mode="Value" Value="GetAllClientGroup">
-        </ext:Parameter>
-    </BaseParams>
+
+    <ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="true" OnRefreshData="storeSPChannelGroup_Refresh">
+        <Reader>
+            <ext:JsonReader>
+                <Fields>
+                    <ext:RecordField Name="Id" Type="Int" />
+                    <ext:RecordField Name="Name" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
     <Listeners>
         <Load Handler="if (GetGroupID()!='') {#{cmbClientGroupID}.setValue(GetGroupID());} #{formPanelSPClientEdit}.setDisabled(false);" />
     </Listeners>
-</ext:Store>
+    </ext:Store>
+
+
+ 
 <script type="text/javascript">
     function GetGroupID() {
         var hidClientGroupID = <%=  hidClientGroupID.ClientID %>;

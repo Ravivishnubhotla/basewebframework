@@ -5,7 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%--<p>Limitations of ajax file downloading: success/failure events don't fired. Therefore the mask is impossible.</p>--%>
-    <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh" OnSubmitData="storeData_Submit">
+    <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh"
+        OnSubmitData="storeData_Submit">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="30" Mode="Raw" />
@@ -19,7 +20,8 @@
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
                 <Items>
-                    <ext:GridPanel ID="GridPanel1" Header="false" runat="server" StripeRows="true" TrackMouseOver="true">
+                    <ext:GridPanel ID="GridPanel1" Header="false" runat="server" StripeRows="true" TrackMouseOver="true"
+                        AutoScroll="true">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
@@ -39,7 +41,7 @@
                         <ColumnModel ID="ColumnModel1" runat="server">
                         </ColumnModel>
                         <View>
-                            <ext:GridView ID="GridView1" runat="server" AutoFill="true" />
+                            <ext:GridView ID="GridView1" runat="server" />
                         </View>
                         <SelectionModel>
                             <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true" />

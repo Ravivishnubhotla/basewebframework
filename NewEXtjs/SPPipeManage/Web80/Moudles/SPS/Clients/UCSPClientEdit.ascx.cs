@@ -121,6 +121,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
  
         }
+
+        protected void storeSPChannelGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            this.storeSPChannelGroup.DataSource = SPClientGroupWrapper.FindAll();
+            this.storeSPChannelGroup.DataBind();
+        }
     }
 }
  

@@ -104,8 +104,7 @@
                 {
                     datatypeName = '同步下家';
                 }                
-                
-                
+
                 win.setTitle(" 通道 "+record.data.ChannelName+"  " + " 下家 "+record.data.ClientName+"  " + datatypeName + " 明细数据 ");
                 
                 win.autoLoad.url = 'DetailRecordView.aspx';
@@ -117,8 +116,6 @@
                 win.autoLoad.params.DataType = command;           
                 win.show();              
                 
-                
-                //alert(win);
             }
 
         };
@@ -138,6 +135,7 @@
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelID" Type="Int" />
                     <ext:RecordField Name="ClientID" Type="Int" />
+                    <ext:RecordField Name="SPClientGroupName" />
                     <ext:RecordField Name="ReportDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>

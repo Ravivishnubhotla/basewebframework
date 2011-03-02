@@ -22,6 +22,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPClientChannelSettingEntity> GetAllNeedRendSetting();
         List<SPClientChannelSettingEntity> GetSettingByClient(SPClientEntity spClientEntity);
         void ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId);
+        void ResetAllSycnCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
+        int GetSycnFailedCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
+        void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -113,6 +116,21 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(oldClientEntity);
 
 
+        }
+
+        public void ResetAllSycnCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date)
+        {
+            this.AdoNetDb.ResetAllSycnCount(spClientChannelSettingEntity.Id, date);
+        }
+
+        public int GetSycnFailedCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date)
+        {
+            return this.AdoNetDb.GetSycnFailedCount(spClientChannelSettingEntity.Id, date);
+        }
+
+        public void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount)
+        {
+            this.AdoNetDb.ResetIntercept(spClientChannelSettingEntity.Id, date, dataCount);
         }
     }
 }

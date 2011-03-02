@@ -2,6 +2,11 @@
     CodeBehind="RecordSearch.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.RecordSearch" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSPChannel}.reload();" />
+        </Listeners>
+    </ext:ScriptManagerProxy>
     <ext:Store ID="store1" runat="server" AutoLoad="false" RemoteSort="true" OnRefreshData="store1_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
@@ -26,19 +31,70 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+                <BaseParams>
+            <ext:Parameter Name="ChannelID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
+            <ext:Parameter Name="ChannelClientID" Value="#{cmbCode}.getValue()" Mode="Raw" />
+            <ext:Parameter Name="txtPhone" Value="#{txtPhone}.getValue()" Mode="Raw" />
+        </BaseParams>
     </ext:Store>
+    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="false" OnRefreshData="storeSPChannel_Refresh">
+        <Reader>
+            <ext:JsonReader ReaderID="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
+    <ext:Store ID="storeSPChannelClientSetting" runat="server" AutoLoad="false" OnRefreshData="storeSPChannelClientSetting_Refresh">
+        <Reader>
+            <ext:JsonReader ReaderID="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ChannelClientCode" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Name="ChannelID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
+        </BaseParams>
+    </ext:Store>
+    <style type="text/css">
+        .list-item
+        {
+            font: normal 11px tahoma, arial, helvetica, sans-serif;
+            padding: 3px 10px 3px 10px;
+            border: 1px solid #fff;
+            border-bottom: 1px solid #eeeeee;
+            white-space: normal;
+            color: #555;
+        }
+        
+        .list-item h3
+        {
+            display: block;
+            font: inherit;
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:BorderLayout runat="server">
                 <North CollapseMode="Default" Collapsible="true">
-                    <ext:FormPanel ID="pnlSeach" runat="server" Title="检索条件" AutoScroll="true" Height="300" Frame=true>
+                    <ext:FormPanel ID="pnlSeach" runat="server" Title="检索条件" AutoScroll="true" Height="300"
+                        Frame="true">
                         <Body>
-                            <ext:FormLayout ID="FormLayoutSPChannel" runat="server" LabelSeparator=":" LabelWidth="100">
+                            <ext:FormLayout ID="frmSearch" runat="server" LabelSeparator=":" LabelWidth="100">
                                 <Anchors>
                                     <ext:Anchor Horizontal="95%">
-                                        <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" AllowBlank="True" FieldLabel="省份" TriggerAction="All">
+                                        <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" AllowBlank="True" FieldLabel="省份"
+                                            TriggerAction="All" Hidden="true">
                                             <Items>
                                                 <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                                 <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
@@ -82,15 +138,72 @@
                                             </Listeners>
                                         </ext:ComboBox>
                                     </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
+                                            FieldLabel="通道" TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name"
+                                            ValueField="Id" TriggerAction="All">
+                                            <Triggers>
+                                                <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                            </Triggers>
+                                            <Listeners>
+                                                <Select Handler="this.triggers[0].show();#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();" />
+                                                <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                                <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                            </Listeners>
+                                        </ext:ComboBox>
+                                    </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:ComboBox ID="cmbCode" runat="server" AllowBlank="true" StoreID="storeSPChannelClientSetting"
+                                            FieldLabel="指令" TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name"
+                                            ValueField="Id" ItemSelector="div.list-item" TriggerAction="All">
+                                            <Template ID="Template2" runat="server">
+                <Html>
+					<tpl for=".">
+						<div class="list-item">
+							 <h3>{ClientName}</h3>
+							 {ChannelClientCode}
+						</div>
+					</tpl>
+				</Html>
+                                            </Template>
+                                            <Triggers>
+                                                <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                            </Triggers>
+                                            <Listeners>
+                                                <Select Handler="this.triggers[0].show();" />
+                                                <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                                <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                            </Listeners>
+                                        </ext:ComboBox>
+                                    </ext:Anchor>
+                                    <ext:Anchor Horizontal="95%">
+                                        <ext:TextArea ID="txtPhone" runat="server" FieldLabel="手机号码" Height="170">
+                                        </ext:TextArea>
+                                    </ext:Anchor>
                                 </Anchors>
                             </ext:FormLayout>
                         </Body>
+                        <Buttons>
+                            <ext:Button ID="btnSearch" runat="server" Text="搜索" Icon="Find">
+                            <Listeners>
+                            <Click Handler="#{store1}.reload();" />
+                            </Listeners>
+                            </ext:Button>
+                            <ext:Button ID="btnReset" runat="server" Text="重置" Icon="Cancel">
+                            <Listeners>
+                            <Click Handler="#{pnlSeach}.getForm().reset();#{store1}.removeAll()" />
+                            </Listeners>
+                            </ext:Button>
+                                                        <ext:Button ID="Button1" runat="server" Text="导出查询结果" Icon=PageExcel  AutoPostBack="true" OnClick="ToExcel" >
+ 
+                            </ext:Button>
+                        </Buttons>
                     </ext:FormPanel>
                 </North>
                 <Center>
                     <ext:GridPanel ID="gridPanelSPClientChannelSetting" runat="server" StoreID="store1"
                         StripeRows="true" Title="检索结果" Icon="Table" AutoExpandColumn="colRequestContent"
-                        AutoScroll="true" AutoWidth=true>
+                        AutoScroll="true" AutoWidth="true">
                         <View>
                             <ext:GridView ID="GridView1">
                                 <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
@@ -100,20 +213,17 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true"
-                                     >
+                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false"
-                                    >
+                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colYwid" DataIndex="Ywid" Header="上行内容" Sortable="false" >
+                                <ext:Column ColumnID="colYwid" DataIndex="Ywid" Header="上行内容" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCpid" DataIndex="Cpid" Header="长号码" Sortable="false" >
+                                <ext:Column ColumnID="colCpid" DataIndex="Cpid" Header="长号码" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
-                                     >
+                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
                                 </ext:Column>
                             </Columns>

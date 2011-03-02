@@ -81,6 +81,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             dt.Columns.Add(new DataColumn("ClientGroupName"));
             dt.Columns.Add(new DataColumn("SetInterceptRate"));
             dt.Columns.Add(new DataColumn("ChannelClientCode"));
+            dt.Columns.Add(new DataColumn("IsSycnData",typeof(bool)));
 
             
 
@@ -96,6 +97,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["ClientGroupName"] = "";
                     item["SetInterceptRate"] = "";
                     item["ChannelClientCode"] = "";
+                    item["IsSycnData"] = false;
                 }
                 else
                 {
@@ -103,6 +105,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["ClientGroupName"] = client.ClientGroupName;
                     item["SetInterceptRate"] = client.DefaultClientChannelSetting.InterceptRate;
                     item["ChannelClientCode"] = client.DefaultClientChannelSetting.ChannelClientCode;
+                    item["IsSycnData"] = client.DefaultClientChannelSetting.SyncData.HasValue && client.DefaultClientChannelSetting.SyncData.Value;
                 }
             }
 

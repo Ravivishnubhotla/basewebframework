@@ -1292,5 +1292,52 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             DbParameters dbParameters = this.CreateNewDbParameters();
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+
+        public void ResetAllSycnCount(int clientChannelid, DateTime date)
+        {
+            string sql = "update SPPaymentInfo set  SycnRetryTimes=0 where ChannleClientID = @ChannleClientID and CreateDate>@startDate and CreateDate < @endDate and IsIntercept = 0 and SucesssToSend = 0   and IsSycnData=1   ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelid);
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("enddate", date.AddDays(1).Date);
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+        public int GetSycnFailedCount(int clientChannelid, DateTime date)
+        {
+            string sql = "select Count(*) from dbo.SPPaymentInfo where ChannleClientID = @ChannleClientID and CreateDate>@startDate and CreateDate < @endDate and IsIntercept = 0 and SucesssToSend = 0   and IsSycnData=1 and SycnRetryTimes >0";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelid);
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("enddate", date.AddDays(1).Date);
+
+            return (int)this.ExecuteScalar(sql, CommandType.Text, dbParameters);
+        }
+
+
+        public void ResetIntercept(int clientChannelid, DateTime date, int dataCount)
+        {
+            string sql = "update SPPaymentInfo set  IsSycnData=1,IsIntercept = 0 where id in (select Top " + dataCount.ToString() + " id from SPPaymentInfo  where ChannleClientID = @ChannleClientID and CreateDate>@startDate and CreateDate < @endDate and IsIntercept = 1 order by CreateDate asc )   ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelid);
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("enddate", date.AddDays(1).Date);
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
     }
 }

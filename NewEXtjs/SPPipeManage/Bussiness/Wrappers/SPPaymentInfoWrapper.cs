@@ -206,6 +206,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 dr["CreateDate"] = spPaymentInfoWrappers[i].CreateDate;
                 dr["Province"] = spPaymentInfoWrappers[i].Province;
                 dr["City"] = spPaymentInfoWrappers[i].City;
+                dr["SycnRetryTimes"] = spPaymentInfoWrappers[i].SycnRetryTimes;
+                dr["IsSycnData"] = spPaymentInfoWrappers[i].IsSycnData;
+                dr["SucesssToSend"] = spPaymentInfoWrappers[i].SucesssToSend;
                 dr["SendUrl"] = spPaymentInfoWrappers[i].SSycnDataUrl;
 
                 foreach (string field in SPChannelWrapper.fields)
@@ -629,6 +632,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static void UpdateUrlSuccessSend(int id,string url)
         {
             businessProxy.UpdateUrlSuccessSend(id, url);
+        }
+
+        public static List<SPPaymentInfoWrapper> FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(int channelId, int clientChannelId, List<string> phones, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount)
+        {
+            return
+                ConvertToWrapperList(businessProxy.FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(channelId, clientChannelId, phones, sortFieldName, isDesc, pageIndex, limit, out recordCount));	
+        }
+
+        public static List<SPPaymentInfoWrapper> FindAllByChannelIDAndClientChannelIDAndPhoneList(int channelId, int clientChannelId, List<string> phones)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByChannelIDAndClientChannelIDAndPhoneList(channelId, clientChannelId, phones));	
         }
     }
 }

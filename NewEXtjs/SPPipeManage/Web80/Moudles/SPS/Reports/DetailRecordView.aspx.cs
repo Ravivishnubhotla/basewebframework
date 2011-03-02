@@ -20,9 +20,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             if (Ext.IsAjaxRequest)
                 return;
 
-            //SetTitle();
+            SPClientWrapper spClientWrapper = SPClientWrapper.FindById(this.SPClientID);
 
-            storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID)));
+            SPClientChannelSettingWrapper clientChannelSettingWrapper = spClientWrapper.DefaultClientChannelSetting;
+
+            bool isSycnData = (clientChannelSettingWrapper != null && clientChannelSettingWrapper.SyncData.HasValue &&
+                               clientChannelSettingWrapper.SyncData.Value);
+
+            storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID), isSycnData));
 
             this.GridPanel1.StoreID = "storeData";
 
@@ -51,7 +56,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
 
 
-        private DataReader GetJsonReaderByDataTable(SPChannelWrapper channelWrapper)
+        private DataReader GetJsonReaderByDataTable(SPChannelWrapper channelWrapper, bool isSycnData)
         {
             JsonReader reader = new JsonReader();
 
@@ -63,6 +68,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             reader.Fields.Add("CreateDate", RecordFieldType.Date);
             reader.Fields[reader.Fields.Count - 1].Mapping = "CreateDate";
             this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCreateDate", "日期", false, "CreateDate", "Ext.util.Format.dateRenderer('n/d/Y H:i:s A')", RendererFormat.None));
+            this.GridPanel1.ColumnModel.Columns[this.GridPanel1.ColumnModel.Columns.Count - 1].Width = 150;
 
             reader.Fields.Add("Province", RecordFieldType.String);
             reader.Fields[reader.Fields.Count - 1].Mapping = "Province";
@@ -72,8 +78,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             reader.Fields[reader.Fields.Count - 1].Mapping = "City";
             this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colCity", "城市", false, "City", "", RendererFormat.None));
 
+            if(isSycnData)
+            {
 
-            
+                reader.Fields.Add("IsSycnData", RecordFieldType.String);
+                reader.Fields[reader.Fields.Count - 1].Mapping = "IsSycnData";
+                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colIsSycnData", "同步", false, "IsSycnData", "", RendererFormat.None));
+
+                reader.Fields.Add("SucesssToSend", RecordFieldType.String);
+                reader.Fields[reader.Fields.Count - 1].Mapping = "SucesssToSend";
+                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colSucesssToSend", "成功", false, "SucesssToSend", "", RendererFormat.None));
+
+                reader.Fields.Add("SycnRetryTimes", RecordFieldType.String);
+                reader.Fields[reader.Fields.Count - 1].Mapping = "SycnRetryTimes";
+                this.GridPanel1.ColumnModel.Columns.Add(NewColumn("colSycnRetryTimes", "重试", false, "SycnRetryTimes", "", RendererFormat.None));
+
+            }
 
             List<SPChannelParamsWrapper> channelParams = channelWrapper.GetAllShowParams();
 
@@ -220,8 +240,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
             DataTable dt = SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(ChannleID, this.SPClientID, Convert.ToDateTime(this.StartDate), Convert.ToDateTime(this.EndDate), DType, "CreateDate", true, pageIndex, limit, out recordCount);
 
+            SPClientWrapper spClientWrapper = SPClientWrapper.FindById(this.SPClientID);
+
+            SPClientChannelSettingWrapper clientChannelSettingWrapper = spClientWrapper.DefaultClientChannelSetting;
+
+            bool isSycnData = (clientChannelSettingWrapper != null && clientChannelSettingWrapper.SyncData.HasValue &&
+                               clientChannelSettingWrapper.SyncData.Value); 
+
             if (storeData.Reader.Count == 0)
-                storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID)));
+                storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID), isSycnData));
 
             storeData.DataSource = dt;
             e.TotalCount = recordCount;
