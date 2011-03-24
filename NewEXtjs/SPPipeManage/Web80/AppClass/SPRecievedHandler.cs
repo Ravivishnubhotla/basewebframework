@@ -21,6 +21,8 @@ namespace Legendigital.Common.Web.AppClass
     {
         protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
 
+        private bool saveLogFailedRequestToDb = false;
+
         public void ProcessRequest(HttpContext context)
         {
             try
@@ -44,6 +46,9 @@ namespace Legendigital.Common.Web.AppClass
 
                     return;
                 }
+
+                saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
+
                 //如果通道未能运行
                 if (channel.CStatus != ChannelStatus.Run)
                 {
@@ -188,7 +193,8 @@ namespace Legendigital.Common.Web.AppClass
 
                     logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
-                    SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
+                    if (saveLogFailedRequestToDb)
+                        SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
                 }
                 catch (Exception e)
                 {
@@ -201,7 +207,8 @@ namespace Legendigital.Common.Web.AppClass
         {
             logger.Warn(errorInfo + "请求信息：\n" + httpRequest.RequestData);
 
-            SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
+            if (saveLogFailedRequestToDb)
+                SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
         }
 
 

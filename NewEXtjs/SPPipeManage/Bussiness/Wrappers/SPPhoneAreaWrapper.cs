@@ -120,13 +120,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return phoneAreaInfo;
         }
 
-        public static SortedList<string, PhoneAreaInfo> GetAllPhoneInfos_Key()
+        public static Dictionary<string, PhoneAreaInfo> GetAllPhoneInfos_Key()
         {
             //List<SPPhoneAreaWrapper> spPhoneAreaWrappers = FindAll();
 
             DataTable dt = SPPhoneAreaWrapper.GetAllPhoneAreaData();
 
-            SortedList<string, PhoneAreaInfo> phoneinfos = new SortedList<string, PhoneAreaInfo>();
+            Dictionary<string, PhoneAreaInfo> phoneinfos = new Dictionary<string, PhoneAreaInfo>();
 
             foreach (DataRow item in dt.Rows)
 	        {

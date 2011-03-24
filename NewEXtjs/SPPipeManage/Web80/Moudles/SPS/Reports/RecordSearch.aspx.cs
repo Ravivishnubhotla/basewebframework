@@ -62,7 +62,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             List<string> phones = new List<string>();
             if (!string.IsNullOrEmpty(this.txtPhone.Text.Trim()))
             {
-                string[] arrays = this.txtPhone.Text.Trim().Replace("\r\n", "|").Split('|');
+                string[] arrays = this.txtPhone.Text.Trim().Replace("\r\n", "\n").Replace("\n", "|").Split('|');
 
                 foreach (string line in arrays)
                 {

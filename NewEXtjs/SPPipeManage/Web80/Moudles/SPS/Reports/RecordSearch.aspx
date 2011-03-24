@@ -31,7 +31,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
-                <BaseParams>
+        <BaseParams>
             <ext:Parameter Name="ChannelID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
             <ext:Parameter Name="ChannelClientID" Value="#{cmbCode}.getValue()" Mode="Raw" />
             <ext:Parameter Name="txtPhone" Value="#{txtPhone}.getValue()" Mode="Raw" />
@@ -86,7 +86,7 @@
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:BorderLayout runat="server">
-                <North CollapseMode="Default" Collapsible="true">
+                <North CollapseMode="Default" Collapsible="true" Split="true">
                     <ext:FormPanel ID="pnlSeach" runat="server" Title="检索条件" AutoScroll="true" Height="300"
                         Frame="true">
                         <Body>
@@ -185,17 +185,17 @@
                         </Body>
                         <Buttons>
                             <ext:Button ID="btnSearch" runat="server" Text="搜索" Icon="Find">
-                            <Listeners>
-                            <Click Handler="#{store1}.reload();" />
-                            </Listeners>
+                                <Listeners>
+                                    <Click Handler="#{store1}.reload();" />
+                                </Listeners>
                             </ext:Button>
                             <ext:Button ID="btnReset" runat="server" Text="重置" Icon="Cancel">
-                            <Listeners>
-                            <Click Handler="#{pnlSeach}.getForm().reset();#{store1}.removeAll()" />
-                            </Listeners>
+                                <Listeners>
+                                    <Click Handler="#{pnlSeach}.getForm().reset();#{store1}.removeAll()" />
+                                </Listeners>
                             </ext:Button>
-                                                        <ext:Button ID="Button1" runat="server" Text="导出查询结果" Icon=PageExcel  AutoPostBack="true" OnClick="ToExcel" >
- 
+                            <ext:Button ID="Button1" runat="server" Text="导出查询结果" Icon="PageExcel" AutoPostBack="true"
+                                OnClick="ToExcel">
                             </ext:Button>
                         </Buttons>
                     </ext:FormPanel>
