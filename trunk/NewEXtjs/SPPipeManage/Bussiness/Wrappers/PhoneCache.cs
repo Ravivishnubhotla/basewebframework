@@ -10,14 +10,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
     {
         public const string PhoneInfos_Key = "PhoneInfos";
 
-        public static SortedList<string, PhoneAreaInfo> PhoneInfos
+        public static Dictionary<string, PhoneAreaInfo> PhoneInfos
         {
             get { 
                 if(HttpContext.Current.Cache[PhoneInfos_Key]==null)
                 {
                     HttpContext.Current.Cache[PhoneInfos_Key] = SPPhoneAreaWrapper.GetAllPhoneInfos_Key();
                 }
-                return HttpContext.Current.Cache[PhoneInfos_Key] as SortedList<string, PhoneAreaInfo>;
+                return HttpContext.Current.Cache[PhoneInfos_Key] as Dictionary<string, PhoneAreaInfo>;
             }
         }
 

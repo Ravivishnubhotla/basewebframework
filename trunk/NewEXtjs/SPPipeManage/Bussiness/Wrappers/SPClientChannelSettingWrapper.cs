@@ -224,6 +224,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return this.MatchByYWID(ywid);
         }
 
+        public bool IsMacthSPCode(Hashtable requestValues, Hashtable fieldMappings,string cpid)
+        {
+            string columnName = "cpid";
+
+            if (!string.IsNullOrEmpty(cpid))
+            {
+                columnName = this.CommandColumn;
+            }
+
+            string spcode = SPChannelWrapper.GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
+
+            return spcode.Trim().ToLower().Equals(this.ChannelCode);
+        }
+
 
 
 
@@ -284,10 +298,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return (result <= rate);
         }
 
+        public const int AddRate = 30;
+        public const int MaxInterceptRate = 75;
+
         public bool CaculteIsIntercept()
         {
             //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
             //    return false;
+
+            
 
             int interceptRate = 0;
 
@@ -296,15 +315,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 interceptRate = this.InterceptRate.Value;
             }
 
-            if(interceptRate==0)
-                return false;
+            return CaculteRandom(interceptRate);
 
-            decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+            //if(interceptRate==0)
+            //    return false;
 
-            if (rate < Convert.ToDecimal(interceptRate))
-                return CaculteRandom(Math.Min(interceptRate + 50,80));
-            else
-                return false;
+            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+
+            //if (rate < Convert.ToDecimal(interceptRate))
+            //{
+            //    return CaculteRandom(Math.Min(interceptRate + AddRate, MaxInterceptRate));
+            //}
+            //else
+            //{
+            //    return false;
+            //}
         }
 
         private decimal GetToDayRate(int clinetID, int channelID)
