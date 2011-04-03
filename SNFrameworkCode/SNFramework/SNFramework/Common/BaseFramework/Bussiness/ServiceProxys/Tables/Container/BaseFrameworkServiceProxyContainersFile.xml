@@ -8,167 +8,134 @@
   <!-- 服务层类 -->
   <object id="SystemApplicationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemApplicationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemApplicationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemConfigServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemConfigServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemConfigDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemDepartmentServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDepartmentServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemDepartmentDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemDictionaryServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDictionaryServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemDictionaryDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemEmailQueueServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailQueueServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemEmailQueueDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemEmailSettingsServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailSettingsServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemEmailSettingsDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemEmailTemplateServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailTemplateServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemEmailTemplateDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemLogServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemLogServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemLogDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemMenuServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMenuServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemMenuDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemMoudleServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMoudleServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemMoudleDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemMoudleFieldServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemMoudleFieldServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemMoudleFieldDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemOperationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemOperationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemOperationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemPersonalizationSettingsServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPersonalizationSettingsServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPersonalizationSettingsDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemPrivilegeServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPrivilegeDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemPrivilegeInRolesServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeInRolesServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPrivilegeInRolesDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemPrivilegeParameterServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeParameterServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPrivilegeParameterDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemResourcesServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemResourcesServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemResourcesDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemRoleServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemRoleDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemRoleApplicationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleApplicationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemRoleApplicationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemRoleMenuRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemRoleMenuRelationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemRoleMenuRelationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemSettingServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemSettingServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemSettingDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemShortMessageServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemShortMessageServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemShortMessageDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserGroupServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserGroupDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserGroupRoleRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupRoleRelationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserGroupRoleRelationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserGroupUserRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserGroupUserRelationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserGroupUserRelationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserProfileServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserProfileServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserProfileDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserProfilePropertysServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserProfilePropertysServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserProfilePropertysDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemUserRoleRelationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserRoleRelationServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserRoleRelationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemViewServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemViewServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemViewDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemViewItemServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemViewItemServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemViewItemDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemWorkFlowServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemWorkFlowServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemWorkFlowDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemWorkFlowStepServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemWorkFlowStepServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemWorkFlowStepDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
 

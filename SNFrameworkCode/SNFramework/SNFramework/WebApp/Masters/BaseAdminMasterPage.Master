@@ -1,0 +1,90 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="BaseAdminMasterPage.master.cs"
+    Inherits="Legendigital.Common.WebApp.Masters.BaseAdminMasterPage" %>
+
+
+<%@ Register src="../MainPage/UCChangePassword.ascx" tagname="UCChangePassword" tagprefix="uc1" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <style type="text/css">
+        body
+        {
+            font-family: 'lucida grande' ,tahoma,arial,sans-serif;
+            font-size: 11px;
+            margin: 0;
+        }
+        .menu
+        {
+            background-image: url(/images/bg.gif);
+            height: 25px;
+            line-height: 25px;
+            border: 1px #8db2e3 solid;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .south
+        {
+            text-align: center;
+            background-color: #DFE8F6;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <ext:ResourceManager ID="ResourceManager1" runat="server" />
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+    <ext:Viewport ID="ViewPort2" runat="server" Layout="fit">
+        <content>
+            <ext:Panel ID="Panel3" runat="server" Header="false" Layout="fit">
+                <TopBar>
+                    <ext:Toolbar ID="Toolbar2" runat="server">
+                        <Items>
+                            <ext:Button ID="MenuButton" runat="server" Text="Home Page" Icon="House">
+                            </ext:Button>
+                            <ext:ToolbarFill></ext:ToolbarFill>
+                            <ext:ToolbarTextItem Text="Weclome:"></ext:ToolbarTextItem>
+                            <ext:ToolbarSpacer></ext:ToolbarSpacer>
+                            <ext:ToolbarTextItem ID="lblUser" Text=""></ext:ToolbarTextItem>
+                            <ext:ToolbarSpacer></ext:ToolbarSpacer>
+                            <ext:ToolbarSeparator></ext:ToolbarSeparator>                       
+                            <ext:Button Icon="UserKey" Text="Change Password" runat="server">
+                                <Listeners>
+                                    <Click Handler="#{winChangePassword}.show();" />
+                                </Listeners>
+                            </ext:Button>
+                            <ext:Button ID="btnExit" Icon="UserGo" Text="Logout" runat="server">
+                                <DirectEvents>
+                                    <Click OnEvent="btnExit_Click" Failure="Ext.Msg.show({ 
+                                        title:   'Logout Error', 
+                                        msg:     result.errorMessage, 
+                                        buttons: Ext.Msg.OK, 
+                                        icon:    Ext.MessageBox.ERROR 
+                                     });" Success="window.location.href='Login.aspx'">
+                                        <EventMask ShowMask="true" Msg="sign out..." />
+                                        <Confirmation ConfirmRequest="true" Message="Are your sure to sign out?" Title="Warning" />
+                                    </Click>
+                                </DirectEvents>
+                            </ext:Button>
+                            
+                        </Items>
+                    </ext:Toolbar>
+                </TopBar>
+                <Content>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </Content>
+            </ext:Panel>
+        </content>
+    </ext:Viewport>
+ 
+    <uc1:UCChangePassword ID="UCChangePassword1" runat="server" />
+ 
+    </form>
+</body>
+</html>
