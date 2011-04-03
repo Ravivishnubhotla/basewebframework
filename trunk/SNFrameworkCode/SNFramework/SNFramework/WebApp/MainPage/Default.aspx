@@ -9,19 +9,16 @@
     </ext:ResourceManagerProxy>
 
     <script type="text/javascript">
-        var loadPage = function(mtab, node) {
+        var loadPage = function (mtab, node) {
             if (node.attributes.isCategory != "False" && node.attributes.isCategory != null)
                 return;
-            //var tab = mtab.getComponent(node.id);
+            var tab = mtab.getComponent(node.id);
 
-            mtab.removeAll();
-
-
-            //if (tab) {
-            //mtab.setActiveTab(tab);
-            //} else {
-            createTab(mtab, node);
-            //}
+            if (tab) {
+                mtab.setActiveTab(tab);
+            } else {
+                createTab(mtab, node);
+            }
         }
         function createTab(mtab, node) {
 
@@ -34,7 +31,7 @@
                 title: tabname,
                 autoLoad: {
                     showMask: true,
-                    maskMsg: 'Loading...',
+                    maskMsg: '加载中...',
                     scripts: true,
                     mode: "iframe",
                     url: taburl

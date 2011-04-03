@@ -11,7 +11,7 @@
             <ext:Panel ID="Panel1" runat="server" Title="System Setting" Frame="true"  
                 Layout="Center">
                 <Items>
-                    <ext:Panel ID="Panel2" runat="server" Title="Inner Centered Panel" Width="500" Frame="true"
+                    <ext:Panel ID="Panel2" runat="server" Title="System Setting Information" Width="500" Frame="true"
                         AutoHeight="true">
                         <Content>
                             <ext:FormPanel ID="formPanelSystemSettingEdit" runat="server" Frame="true" Header="false"
