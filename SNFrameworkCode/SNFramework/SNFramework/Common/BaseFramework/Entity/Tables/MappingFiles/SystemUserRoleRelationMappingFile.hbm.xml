@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserRoleRelationEntity,Legendigital.Framework.Common" table="SystemUserRoleRelation" lazy="true"  >
+
+<id name="UserRoleID" column="UserRole_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="User_ID" name="UserID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserEntity,Legendigital.Framework.Common" />		
+		<many-to-one column="Role_ID" name="RoleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleEntity,Legendigital.Framework.Common" />		
+
+
+
+
+</class>
+</hibernate-mapping>

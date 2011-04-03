@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserEntity,Legendigital.Framework.Common" table="SystemUser" lazy="true"  >
+
+<id name="UserID" column="User_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="User_LoginID" type="string" name="UserLoginID"   not-null="true"  length="100" />	
+		<property column="User_Name" type="string" name="UserName"   not-null="true"  length="100" />	
+		<property column="User_Email" type="string" name="UserEmail"   not-null="true"  length="100" />	
+		<property column="User_Password" type="string" name="UserPassword"   not-null="true"  length="100" />	
+		<property column="User_Status" type="string" name="UserStatus"   not-null="true"  length="100" />	
+		<property column="User_Create_Date" type="DateTime" name="UserCreateDate"   not-null="true"  />	
+		<property column="User_Type" type="string" name="UserType"   not-null="true"  length="100" />	
+		<many-to-one column="Department_ID" name="DepartmentID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDepartmentEntity,Legendigital.Framework.Common" />		
+		<property column="MobilePIN" type="string" name="MobilePIN"   length="100" />	
+		<property column="PasswordFormat" type="int" name="PasswordFormat"   not-null="true"  />	
+		<property column="PasswordQuestion" type="string" name="PasswordQuestion"   length="510" />	
+		<property column="PasswordAnswer" type="string" name="PasswordAnswer"   length="510" />	
+		<property column="Comments" type="string" name="Comments"   length="6000" />	
+		<property column="IsApproved" type="Boolean" name="IsApproved"   not-null="true"  />	
+		<property column="IsLockedOut" type="Boolean" name="IsLockedOut"   not-null="true"  />	
+		<property column="LastActivityDate" type="DateTime" name="LastActivityDate"   not-null="true"  />	
+		<property column="LastLoginDate" type="DateTime" name="LastLoginDate"   not-null="true"  />	
+		<property column="LastLockedOutDate" type="DateTime" name="LastLockedOutDate"   not-null="true"  />	
+		<property column="LastPasswordChangeDate" type="DateTime" name="LastPasswordChangeDate"   not-null="true"  />	
+		<property column="FailedPwdAttemptCnt" type="int" name="FailedPwdAttemptCnt"   not-null="true"  />	
+		<property column="FailedPwdAttemptWndStart" type="DateTime" name="FailedPwdAttemptWndStart"   not-null="true"  />	
+		<property column="FailedPwdAnsAttemptCnt" type="int" name="FailedPwdAnsAttemptCnt"   not-null="true"  />	
+		<property column="FailedPwdAnsAttemptWndStart" type="DateTime" name="FailedPwdAnsAttemptWndStart"   not-null="true"  />	
+		<property column="IsNeedChgPwd" type="Boolean" name="IsNeedChgPwd"   not-null="true"  />	
+		<property column="PasswordSalt" type="string" name="PasswordSalt"   length="256" />	
+		<property column="LoweredEmail" type="string" name="LoweredEmail"   length="256" />	
+
+
+
+
+</class>
+</hibernate-mapping>

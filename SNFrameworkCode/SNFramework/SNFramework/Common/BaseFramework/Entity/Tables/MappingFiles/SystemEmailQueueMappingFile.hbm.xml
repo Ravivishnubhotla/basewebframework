@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmailQueueEntity,Legendigital.Framework.Common" table="SystemEmailQueue" lazy="true"  >
+
+<id name="QueueID" column="QueueID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Title" type="string" name="Title"   length="400" />	
+		<property column="Body" type="string" name="Body"   length="2147483646" />	
+		<property column="FromAddress" type="string" name="FromAddress"   length="400" />	
+		<property column="FromName" type="string" name="FromName"   length="400" />	
+		<property column="ToAddresss" type="string" name="ToAddresss"   length="2147483646" />	
+		<property column="ToNames" type="string" name="ToNames"   length="2147483646" />	
+		<property column="CCAddresss" type="string" name="CCAddresss"   length="2147483646" />	
+		<property column="CCNames" type="string" name="CCNames"   length="2147483646" />	
+		<property column="BCCAddresss" type="string" name="BCCAddresss"   length="2147483646" />	
+		<property column="BCCNames" type="string" name="BCCNames"   length="2147483646" />	
+		<property column="EmailTemplateID" type="int" name="EmailTemplateID"   />	
+		<property column="Statues" type="string" name="Statues"   length="400" />	
+		<property column="SendRetry" type="int" name="SendRetry"   />	
+		<property column="MaxRetryTime" type="int" name="MaxRetryTime"   />	
+		<property column="MailLog" type="string" name="MailLog"   length="2147483646" />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="SendDate" type="DateTime" name="SendDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
