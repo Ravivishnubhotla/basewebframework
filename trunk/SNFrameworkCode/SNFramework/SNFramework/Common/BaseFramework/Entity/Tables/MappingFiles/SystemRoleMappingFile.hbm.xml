@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleEntity,Legendigital.Framework.Common" table="SystemRole" lazy="true"  >
+
+<id name="RoleID" column="Role_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Role_Name" type="string" name="RoleName"   length="100" />	
+		<property column="Role_Code" type="string" name="RoleCode"   length="400" />	
+		<property column="Role_Description" type="string" name="RoleDescription"   length="4000" />	
+		<property column="Role_IsSystemRole" type="Boolean" name="RoleIsSystemRole"   />	
+		<property column="Role_Type" type="string" name="RoleType"   length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="LastUpdateBy" type="int" name="LastUpdateBy"   />	
+		<property column="LastUpdateDate" type="DateTime" name="LastUpdateDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

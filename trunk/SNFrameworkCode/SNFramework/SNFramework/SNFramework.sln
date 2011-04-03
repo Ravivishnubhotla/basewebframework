@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{E1A1894E-5D31-44BF-A49E-9F56F8EB082B}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdsDll\AjaxControlToolkit.dll = ThirdsDll\AjaxControlToolkit.dll
+		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
+		ThirdsDll\AspNetPager.dll = ThirdsDll\AspNetPager.dll
+		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
+		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
+		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
+		ThirdsDll\Ext.Net.Utilities.dll = ThirdsDll\Ext.Net.Utilities.dll
+		ThirdsDll\ICSharpCode.SharpZipLib.dll = ThirdsDll\ICSharpCode.SharpZipLib.dll
+		ThirdsDll\Iesi.Collections.dll = ThirdsDll\Iesi.Collections.dll
+		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
+		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
+		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
+		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
+		ThirdsDll\NVelocity.dll = ThirdsDll\NVelocity.dll
+		ThirdsDll\Quartz.dll = ThirdsDll\Quartz.dll
+		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
+		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
+		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
+		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
+		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
+		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		WebDebug|Any CPU = WebDebug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.ActiveCfg = WebDebug|Any CPU
+		{320F2DF6-8BE6-470A-B320-CDC547F483F9}.WebDebug|Any CPU.Build.0 = WebDebug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
