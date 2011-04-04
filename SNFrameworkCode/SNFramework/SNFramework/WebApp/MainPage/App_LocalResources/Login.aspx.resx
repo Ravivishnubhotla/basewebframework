@@ -117,27 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BorderLayout1Resource1.FieldLabel" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnLoginResource1.DirectEvents.Click.EventMask.Msg" xml:space="preserve">
-    <value>Checking user,Please waiting......</value>
-  </data>
-  <data name="btnLoginResource1.FieldLabel" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnLoginResource1.OverflowText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnLoginResource1.Text" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="btnLoginResource1.ToggleGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnLoginResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="Ext.Net" name="Ext.Net, Version=1.0.4111.34636, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87" />
   <data name="btnLoginResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
     <value>Qtip</value>
@@ -145,130 +124,43 @@
   <data name="btnLoginResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
     <value>Submit</value>
   </data>
-  <data name="btnResetResource1.FieldLabel" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnResetResource1.OverflowText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnResetResource1.Text" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="btnResetResource1.ToggleGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="btnResetResource1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="btnResetResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
     <value>Qtip</value>
   </data>
   <data name="btnResetResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
     <value>Reset</value>
   </data>
-  <data name="extwinLoginResource1.AutoLoad.MaskCls" xml:space="preserve">
-    <value />
+  <data name="msgBtnLoginText" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="extwinLoginResource1.AutoLoad.MaskMsg" xml:space="preserve">
-    <value />
+  <data name="msgBtnResetText" xml:space="preserve">
+    <value>Reset</value>
   </data>
-  <data name="extwinLoginResource1.FieldLabel" xml:space="preserve">
-    <value />
+  <data name="msgCheckUserInfo" xml:space="preserve">
+    <value>Checking user,Please waiting......</value>
   </data>
-  <data name="extwinLoginResource1.Title" xml:space="preserve">
-    <value>IGL Shipment Request</value>
+  <data name="msgLoginError" xml:space="preserve">
+    <value>ShowError('Login Error',result.errorMessage);</value>
   </data>
-  <data name="PageResource1.Title" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Panel1Resource1.AutoLoad.MaskCls" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Panel1Resource1.AutoLoad.MaskMsg" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Panel1Resource1.FieldLabel" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Panel1Resource1.Title" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlLoginResource1.AutoLoad.MaskCls" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlLoginResource1.AutoLoad.MaskMsg" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlLoginResource1.FieldLabel" xml:space="preserve">
-    <value />
-  </data>
-  <data name="pnlLoginResource1.Title" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.BlankText" xml:space="preserve">
-    <value>Please enter password!</value>
-  </data>
-  <data name="txtPassWordResource1.EmptyText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.FieldLabel" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="txtPassWordResource1.InvalidText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.MaxLengthText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.MinLengthText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.RawText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.RegexText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtPassWordResource1.VtypeText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.BlankText" xml:space="preserve">
-    <value>Please enter login id!</value>
-  </data>
-  <data name="txtUserNameResource1.EmptyText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.FieldLabel" xml:space="preserve">
-    <value>Login ID</value>
-  </data>
-  <data name="txtUserNameResource1.InvalidText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.MaxLengthText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.MinLengthText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.RawText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.RegexText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="txtUserNameResource1.VtypeText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LoginFailedUserLockError" xml:space="preserve">
+  <data name="msgLoginFailedUserLockError" xml:space="preserve">
     <value>Login failed! The user is locked, please contact administrator.</value>
   </data>
-  <data name="LoginFailedUserPasswordError" xml:space="preserve">
+  <data name="msgLoginFailedUserPasswordError" xml:space="preserve">
     <value>Login failed , User name or password error!</value>
+  </data>
+  <data name="msgPnlLoginTitle" xml:space="preserve">
+    <value>Base Framework System</value>
+  </data>
+  <data name="msgtxtPassWordBlankText" xml:space="preserve">
+    <value>Please enter password!</value>
+  </data>
+  <data name="msgtxtPassWordFieldLabel" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="msgtxtUserNameBlankText" xml:space="preserve">
+    <value>Please enter login id!</value>
+  </data>
+  <data name="msgtxtUserNameFieldLabel" xml:space="preserve">
+    <value>Login ID</value>
   </data>
 </root>

@@ -117,50 +117,191 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BorderLayout1Resource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnExitResource1.DirectEvents.Click.EventMask.Msg" xml:space="preserve">
+    <value>Log off...</value>
+  </data>
+  <data name="btnExitResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnExitResource1.OverflowText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnExitResource1.Text" xml:space="preserve">
+    <value>Log off</value>
+  </data>
+  <data name="btnExitResource1.ToggleGroup" xml:space="preserve">
+    <value />
+  </data>
+  <data name="btnExitResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="Ext.Net" name="Ext.Net, Version=1.0.4111.34636, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87" />
-  <data name="btnLoginResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
+  <data name="btnExitResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
     <value>Qtip</value>
   </data>
-  <data name="btnLoginResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
-    <value>Submit</value>
+  <data name="btnExitResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
+    <value>Button</value>
   </data>
-  <data name="btnResetResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
-    <value>Qtip</value>
+  <data name="ButtonResource1.FieldLabel" xml:space="preserve">
+    <value />
   </data>
-  <data name="btnResetResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
-    <value>Reset</value>
+  <data name="ButtonResource1.OverflowText" xml:space="preserve">
+    <value />
   </data>
-  <data name="msgBtnLoginText" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="msgBtnResetText" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="msgCheckUserInfo" xml:space="preserve">
-    <value>Checking user,Please waiting......</value>
-  </data>
-  <data name="msgLoginError" xml:space="preserve">
-    <value>ShowError('Login Error',result.errorMessage);</value>
-  </data>
-  <data name="msgLoginFailedUserLockError" xml:space="preserve">
-    <value>Login failed! The user is locked, please contact administrator.</value>
-  </data>
-  <data name="msgLoginFailedUserPasswordError" xml:space="preserve">
-    <value>Login failed , User name or password error!</value>
-  </data>
-  <data name="msgPnlLoginTitle" xml:space="preserve">
-    <value>Base Framework System</value>
-  </data>
-  <data name="msgtxtPassWordBlankText" xml:space="preserve">
-    <value>Please enter password!</value>
-  </data>
-  <data name="msgtxtPassWordFieldLabel" xml:space="preserve">
+  <data name="ButtonResource1.Text" xml:space="preserve">
     <value>Password</value>
   </data>
-  <data name="msgtxtUserNameBlankText" xml:space="preserve">
-    <value>Please enter login id!</value>
+  <data name="ButtonResource1.ToggleGroup" xml:space="preserve">
+    <value />
   </data>
-  <data name="msgtxtUserNameFieldLabel" xml:space="preserve">
-    <value>Login ID</value>
+  <data name="ButtonResource1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ButtonResource1.ToolTipType" type="Ext.Net.ToolTipType, Ext.Net">
+    <value>Qtip</value>
+  </data>
+  <data name="ButtonResource1.Type" type="Ext.Net.ButtonType, Ext.Net">
+    <value>Button</value>
+  </data>
+  <data name="cbThemeResource1.BlankText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.EmptyText" xml:space="preserve">
+    <value>Select a Themes</value>
+  </data>
+  <data name="cbThemeResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.InvalidText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.LoadingText" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="cbThemeResource1.MaxLengthText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.MinLengthText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.RawText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.RegexText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.ValueNotFoundText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="cbThemeResource1.VtypeText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblTodayResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblUserResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblWelcomeResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftPanelResource1.AutoLoad.MaskCls" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftPanelResource1.AutoLoad.MaskMsg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftPanelResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LeftPanelResource1.Title" xml:space="preserve">
+    <value>Menus</value>
+  </data>
+  <data name="locCopyRightResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="locSystemNameResource1.Text" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainTabsResource1.AutoLoad.MaskCls" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainTabsResource1.AutoLoad.MaskMsg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainTabsResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MainTabsResource1.Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PageResource1.Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Panel2Resource1.AutoLoad.MaskCls" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Panel2Resource1.AutoLoad.MaskMsg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Panel2Resource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Panel2Resource1.Title" xml:space="preserve">
+    <value>Main Area</value>
+  </data>
+  <data name="regionFooterResource1.AutoLoad.MaskCls" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionFooterResource1.AutoLoad.MaskMsg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionFooterResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionFooterResource1.Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionHeaderResource1.AutoLoad.MaskCls" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionHeaderResource1.AutoLoad.MaskMsg" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionHeaderResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="regionHeaderResource1.Title" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Toolbar1Resource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolbarFillResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolbarSpacerResource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolbarSpacerResource2.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ToolbarTextItem1Resource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ViewPort1Resource1.FieldLabel" xml:space="preserve">
+    <value />
+  </data>
+  <data name="LableThemes" xml:space="preserve">
+    <value>Themes:</value>
+  </data>
+  <data name="ToolbarTextItem1.Text" xml:space="preserve">
+    <value>Themes:</value>
   </data>
 </root>

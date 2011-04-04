@@ -66,9 +66,9 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarFill>
                                     </ext:ToolbarFill>
-                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="Themes:" />
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:LableThemes %>" />
                                     <ext:ComboBox ID="cbTheme" runat="server" EmptyText="Select a Themes" Width="80"
-                                        Editable="false" TypeAhead="true">
+                                        Editable="false" TypeAhead="true" meta:resourcekey="cbThemeResource1">
                                         <Items>
                                             <ext:ListItem Text="Default" Value="Default" />
                                             <ext:ListItem Text="Gray" Value="Gray" />

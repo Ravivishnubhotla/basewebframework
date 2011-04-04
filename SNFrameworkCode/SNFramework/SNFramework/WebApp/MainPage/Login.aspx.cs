@@ -37,7 +37,7 @@ namespace Legendigital.Common.WebApp.MainPage
             if (userWrapper == null)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserPasswordError").ToString();
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString();
                 return;
             }
 
@@ -50,7 +50,7 @@ namespace Legendigital.Common.WebApp.MainPage
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserLockError").ToString();
+                    ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserLockError").ToString();
                     return;
                 }
             }
@@ -59,7 +59,7 @@ namespace Legendigital.Common.WebApp.MainPage
             if (!Membership.ValidateUser(loginID, password))
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserPasswordError").ToString();
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString();
                 return;
             }
 
