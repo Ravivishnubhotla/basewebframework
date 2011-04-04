@@ -67,6 +67,15 @@ namespace Legendigital.Common.WebApp.MainPage {
         protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
+        /// lblWelcome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarTextItem lblWelcome;
+        
+        /// <summary>
         /// lblUser control.
         /// </summary>
         /// <remarks>
