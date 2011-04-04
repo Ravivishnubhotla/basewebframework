@@ -6,6 +6,16 @@
   <script type="text/javascript">
       if (parent.location.href != self.location.href)
           parent.location.href = '<%= this.ResolveUrl("~/MainPage/Default.aspx") %>';
+
+
+      function ShowError(etitle,emessage) {
+          Ext.Msg.show({
+              title: etitle,
+              msg: emessage,
+              buttons: Ext.Msg.OK,
+              icon: Ext.MessageBox.ERROR
+          });
+      }
 </script> 
     <style type="text/css">
         .LoginID
@@ -32,7 +42,7 @@
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
     <ext:Window ID="extwinLogin" runat="server" Width="295" ButtonAlign="Right" Height="285"
-        Title="IGL Shipment Request" Draggable="false" Closable="false" Maximizable="false" Modal="true" Icon="UserKey"
+        Title="<%$ Resources:msgPnlLoginTitle %>"  Draggable="false" Closable="false" Maximizable="false" Modal="true" Icon="UserKey"
         Resizable="false">
         <content>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
@@ -49,12 +59,12 @@
                             <ext:Parameter Name="MsgTarget" Value="side" />
                         </Defaults>
                         <Items>
-                            <ext:TextField ID="txtUserName" runat="server"  FieldLabel="Login ID" AllowBlank="false"
-                                Cls="LoginID" BlankText="Please enter login id!"
-                                AnchorHorizontal="95%" meta:resourcekey="txtUserNameResource1">
+                            <ext:TextField ID="txtUserName" runat="server"  FieldLabel="<%$ Resources:msgtxtUserNameFieldLabel %>" AllowBlank="false"
+                                Cls="LoginID" BlankText="<%$ Resources:msgtxtUserNameBlankText %>"
+                                AnchorHorizontal="95%" >
                             </ext:TextField>
-                            <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="Password"
-                                Cls="Password" AllowBlank="false" BlankText="Please enter password!" AnchorHorizontal="95%" meta:resourcekey="txtPassWordResource1">
+                            <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="<%$ Resources:msgtxtPassWordFieldLabel %>"
+                                Cls="Password" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>" AnchorHorizontal="95%" >
                             </ext:TextField>
                         </Items>
                     </ext:FormPanel>
@@ -62,20 +72,15 @@
             </ext:BorderLayout>
         </content>
         <buttons>
-            <ext:Button ID="btnLogin" runat="server" Text="Login" Type="Submit" Icon="Accept"  meta:resourcekey="btnLoginResource1">
+            <ext:Button ID="btnLogin" runat="server" Text="<%$ Resources:msgBtnLoginText %>" Type="Submit" Icon="Accept"  >
                 <DirectEvents>
                     <Click OnEvent="BtnLogin_Click" Before="return #{pnlLogin}.getForm().isValid();"
-                        Failure="Ext.Msg.show({ 
-                            title:   'Login Error', 
-                            msg:     result.errorMessage, 
-                            buttons: Ext.Msg.OK, 
-                            icon:    Ext.MessageBox.ERROR 
-                         });">
-                        <EventMask ShowMask="true" Msg="Checking user,Please waiting......" />
+                        Failure="<%$ Resources:msgLoginError %>">
+                        <EventMask ShowMask="true" Msg="<%$ Resources:msgCheckUserInfo %>" />
                     </Click>
                 </DirectEvents>
             </ext:Button>
-            <ext:Button ID="btnReset" runat="server" Text="Reset" Type="Reset" Icon="ArrowRefreshSmall"  meta:resourcekey="btnResetResource1">
+            <ext:Button ID="btnReset" runat="server" Text="<%$ Resources:msgBtnResetText %>" Type="Reset" Icon="ArrowRefreshSmall" >
                 <Listeners>
                     <Click Handler="#{pnlLogin}.getForm().reset();" />
                 </Listeners>
