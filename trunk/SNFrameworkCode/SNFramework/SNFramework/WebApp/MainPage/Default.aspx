@@ -7,7 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var loadPage = function (mtab, node) {
             if (node.attributes.isCategory != "False" && node.attributes.isCategory != null)
@@ -41,7 +40,6 @@
             mtab.setActiveTab(tab);
         }
     </script>
-
     <ext:Viewport ID="ViewPort1" runat="server">
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
@@ -56,11 +54,11 @@
                         <BottomBar>
                             <ext:Toolbar ID="Toolbar1" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem Text="Welcome">
+                                    <ext:ToolbarTextItem ID="lblWelcome" runat="server" Text="Welcome">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="lblUser" Text="<b>Super Admin</b>">
+                                    <ext:ToolbarTextItem ID="lblUser" runat="server" Text="<b>Super Admin</b>">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
@@ -81,7 +79,6 @@
                                             <Select Handler="Ext.net.DirectMethods.GetThemeUrl(
                                                                                                 #{cbTheme}.getValue(), {
                                                                         success: function(result) {
-                                                                        var rooturl = '<%= this.re %>'
                                                                             Ext.net.ResourceMgr.setTheme(result);
                                                                             #{MainTabs}.items.each(function(el) {
                                                                                 if (!Ext.isEmpty(el.iframe)) {
@@ -96,12 +93,12 @@
             });" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:Button Icon="UserKey" Text="Password" runat=server>
+                                    <ext:Button Icon="UserKey" Text="Password" runat="server">
                                         <Listeners>
                                             <Click Handler="#{winChangePassword}.show();" />
                                         </Listeners>
                                     </ext:Button>
-                                    <ext:Button ID="btnExit" Icon="UserGo" Text="Log off" runat=server>
+                                    <ext:Button ID="btnExit" Icon="UserGo" Text="Log off" runat="server">
                                         <DirectEvents>
                                             <Click OnEvent="btnExit_Click" Failure="Ext.Msg.show({ 
                             title:   'System Errror', 
@@ -123,7 +120,8 @@
                     <ext:Panel runat="server" ID="regionFooter" AutoHeight="true" Border="true" Header="false"
                         BodyBorder="false">
                         <Content>
-                            <div class="menu south"><asp:Localize ID="locCopyRight" runat="server"></asp:Localize></div>
+                            <div class="menu south">
+                                <asp:Localize ID="locCopyRight" runat="server"></asp:Localize></div>
                         </Content>
                     </ext:Panel>
                 </South>
