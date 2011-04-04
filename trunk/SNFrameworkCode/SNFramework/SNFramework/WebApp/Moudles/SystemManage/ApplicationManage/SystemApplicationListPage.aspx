@@ -56,7 +56,7 @@
 
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('Warning','Are you sure delete the record ?',
+                Ext.MessageBox.confirm('Warning','Are you sure you want to delete this record?',
                     function(e) {
                         if (e == 'yes')
                            Ext.net.DirectMethods.DeleteRecord(
@@ -66,7 +66,7 @@
                                                                         Ext.Msg.alert('Operation failed', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete the record!',RefreshData);            
+                                                                        Ext.Msg.alert('Operation successful', 'Delete the record successful!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -137,8 +137,6 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="SystemApplicationID" Header="ID" Sortable="true" Width="50">
-                        </ext:Column>
                         <ext:Column DataIndex="SystemApplicationName" Header="Name" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colSystemApplicationDescription" DataIndex="SystemApplicationDescription"
@@ -146,7 +144,7 @@
                         </ext:Column>
                         <ext:Column DataIndex="SystemApplicationUrl" Header="Url">
                         </ext:Column>
-                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="Is System Application"
+                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="System Application"
                             Width="80">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>

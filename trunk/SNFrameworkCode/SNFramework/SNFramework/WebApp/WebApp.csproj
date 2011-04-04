@@ -123,6 +123,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="TestPage\WebForm3.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -538,19 +539,12 @@
       <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestPage\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="TestPage\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TestPage\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TestPage\WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestPage\WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="TestPage\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -625,8 +619,6 @@
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx" />
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx" />
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx" />
-    <Content Include="TestPage\WebForm1.aspx" />
-    <Content Include="TestPage\WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\logo.JPG" />
@@ -643,6 +635,18 @@
     <Folder Include="App_Themes\Default\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestPage\App_LocalResources\WebForm3.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainPage\App_LocalResources\Login.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainPage\App_LocalResources\Login.aspx.zh-CHS.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -5,9 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{E1A1894E-5D31-44BF-A49E-9F56F8EB082B}"
 	ProjectSection(SolutionItems) = preProject
-		ThirdsDll\AjaxControlToolkit.dll = ThirdsDll\AjaxControlToolkit.dll
 		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
-		ThirdsDll\AspNetPager.dll = ThirdsDll\AspNetPager.dll
 		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
 		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
 		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
@@ -24,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
 		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Scheduling.Quartz.dll = ThirdsDll\Spring.Scheduling.Quartz.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll

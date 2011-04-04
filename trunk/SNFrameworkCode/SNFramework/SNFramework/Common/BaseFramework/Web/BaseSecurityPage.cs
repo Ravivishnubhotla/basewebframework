@@ -90,15 +90,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
             return false;
         }
 
-        //    protected override void InitializeCulture()
-    //    {
-    //        Thread.CurrentThread.CurrentCulture =
-    //CultureInfo.CreateSpecificCulture("zh-CN");
-    //        Thread.CurrentThread.CurrentUICulture = new
-    //            CultureInfo("zh-CN");
+        protected override void InitializeCulture()
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CHS");
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("zh-CN");
 
-    //        base.InitializeCulture();
-    //    }
+            base.InitializeCulture();
+        }
 
         //protected override void OnPreInit(System.EventArgs e)
         //{
@@ -108,10 +106,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
 
 
 
-        protected override void OnLoadComplete(EventArgs e)
-        {
-            base.OnLoadComplete(e);
-        }
+ 
 
 
     }
