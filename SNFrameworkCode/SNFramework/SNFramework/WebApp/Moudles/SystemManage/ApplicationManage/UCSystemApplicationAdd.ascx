@@ -5,8 +5,8 @@
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemApplicationAdd" runat="server" Frame="true" Header="false"
-            MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
-            Layout="Form">
+            MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="130"
+            AutoScroll="true" Layout="Form">
             <Items>
                 <ext:TextField ID="txtSystemApplicationName" runat="server" FieldLabel="Name" AllowBlank="false"
                     AnchorHorizontal="95%" />
@@ -15,7 +15,7 @@
                 <ext:TextField ID="txtSystemApplicationUrl" runat="server" FieldLabel="Url" AllowBlank="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSystemApplicationIsSystemApplication" runat="server" Checked="true"
-                    FieldLabel="Is System Application" AnchorHorizontal="95%">
+                    FieldLabel="System Application" AnchorHorizontal="95%">
                 </ext:Checkbox>
             </Items>
         </ext:FormPanel>

@@ -51,10 +51,10 @@
                         <Items>
                             <ext:TextField ID="txtUserName" runat="server"  FieldLabel="Login ID" AllowBlank="false"
                                 Cls="LoginID" BlankText="Please enter login id!"
-                                AnchorHorizontal="95%">
+                                AnchorHorizontal="95%" meta:resourcekey="txtUserNameResource1">
                             </ext:TextField>
                             <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="Password"
-                                Cls="Password" AllowBlank="false" BlankText="Please enter password!" AnchorHorizontal="95%">
+                                Cls="Password" AllowBlank="false" BlankText="Please enter password!" AnchorHorizontal="95%" meta:resourcekey="txtPassWordResource1">
                             </ext:TextField>
                         </Items>
                     </ext:FormPanel>
@@ -62,7 +62,7 @@
             </ext:BorderLayout>
         </content>
         <buttons>
-            <ext:Button ID="btnLogin" runat="server" Text="Login" Type="Submit" Icon="Accept">
+            <ext:Button ID="btnLogin" runat="server" Text="Login" Type="Submit" Icon="Accept"  meta:resourcekey="btnLoginResource1">
                 <DirectEvents>
                     <Click OnEvent="BtnLogin_Click" Before="return #{pnlLogin}.getForm().isValid();"
                         Failure="Ext.Msg.show({ 
@@ -75,7 +75,7 @@
                     </Click>
                 </DirectEvents>
             </ext:Button>
-            <ext:Button ID="btnReset" runat="server" Text="Reset" Type="Reset" Icon="ArrowRefreshSmall">
+            <ext:Button ID="btnReset" runat="server" Text="Reset" Type="Reset" Icon="ArrowRefreshSmall"  meta:resourcekey="btnResetResource1">
                 <Listeners>
                     <Click Handler="#{pnlLogin}.getForm().reset();" />
                 </Listeners>

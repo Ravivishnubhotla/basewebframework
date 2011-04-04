@@ -37,7 +37,7 @@
         <ext:Button ID="btnSaveSystemSetting" runat="server" Text="Edit" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemSettingEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemSetting_Click" Success="Ext.MessageBox.alert('Operation successful', ' Update SystemSetting Success',callback);function callback(id) { };
+                    OnEvent="btnSaveSystemSetting_Click" Success="Ext.MessageBox.alert('Operation successful', 'System Setting Updated Successful',callback);function callback(id) { };
 " Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>

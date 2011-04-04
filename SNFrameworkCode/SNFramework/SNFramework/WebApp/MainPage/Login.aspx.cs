@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -35,7 +37,7 @@ namespace Legendigital.Common.WebApp.MainPage
             if (userWrapper == null)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Login failed , User name or password error!";
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserPasswordError").ToString();
                 return;
             }
 
@@ -48,7 +50,7 @@ namespace Legendigital.Common.WebApp.MainPage
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "Login failed! The user is locked, please contact administrator.";
+                    ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserLockError").ToString();
                     return;
                 }
             }
@@ -57,7 +59,7 @@ namespace Legendigital.Common.WebApp.MainPage
             if (!Membership.ValidateUser(loginID, password))
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Login failed , User name or password error!";
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("LoginFailedUserPasswordError").ToString();
                 return;
             }
 
