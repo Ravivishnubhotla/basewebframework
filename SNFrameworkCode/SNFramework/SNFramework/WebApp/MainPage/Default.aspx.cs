@@ -21,7 +21,7 @@ namespace Legendigital.Common.WebApp.MainPage
             this.Session["Ext.Net.Theme"] = Ext.Net.Theme.Default;
             this.cbTheme.SelectedItem.Value = this.ResourceManagerProxy1.Theme.ToString();
             this.lblUser.Text = string.Format("<b>{0}</b>", this.Context.User.Identity.Name.ToString());
-            this.lblToday.Text = string.Format("Date:{0:D}", System.DateTime.Now);
+            this.lblToday.Text = string.Format(GetLocalResourceObject("msgDateInfo").ToString(), System.DateTime.Now);
 
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 

@@ -92,8 +92,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
 
         protected override void InitializeCulture()
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CHS");
-            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("zh-CN");
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CHS");
+            //Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("zh-CN");
 
             base.InitializeCulture();
         }

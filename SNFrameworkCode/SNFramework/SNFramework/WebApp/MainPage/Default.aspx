@@ -30,7 +30,7 @@
                 title: tabname,
                 autoLoad: {
                     showMask: true,
-                    maskMsg: '加载中...',
+                    maskMsg: '<%= GetLocalResourceObject("msgLoadingText").ToString() %>',
                     scripts: true,
                     mode: "iframe",
                     url: taburl
@@ -39,6 +39,35 @@
             }));
             mtab.setActiveTab(tab);
         }
+
+        function ShowError(etitle, emessage) {
+            Ext.Msg.show({
+                title: etitle,
+                msg: emessage,
+                buttons: Ext.Msg.OK,
+                icon: Ext.MessageBox.ERROR
+            });
+        }
+
+        function changeTheme(cbTheme,mainTabs,loadingMessage) {
+
+        Ext.net.DirectMethods.GetThemeUrl(cbTheme.getValue(), {
+                                                                        success: function(result) {
+                                                                            Ext.net.ResourceMgr.setTheme(result);
+                                                                            mainTabs.items.each(function (el) {
+                                                                                if (!Ext.isEmpty(el.iframe)) {
+                                                                                    el.iframe.dom.contentWindow.Ext.net.ResourceMgr.setTheme(result);
+                                                                                }
+                                                                            });
+                                                                        },
+                    eventMask: {
+                        showMask: true,
+                        msg: loadingMessage
+                    }
+            });
+        
+        }
+
     </script>
     <ext:Viewport ID="ViewPort1" runat="server">
         <Items>
@@ -54,11 +83,11 @@
                         <BottomBar>
                             <ext:Toolbar ID="Toolbar1" runat="server">
                                 <Items>
-                                    <ext:ToolbarTextItem ID="lblWelcome" runat="server" Text="Welcome">
+                                    <ext:ToolbarTextItem ID="lblWelcome" runat="server" Text="<%$ Resources:msglblWelcome %>">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="lblUser" runat="server" Text="<b>Super Admin</b>">
+                                    <ext:ToolbarTextItem ID="lblUser" runat="server" Text="<%$ Resources:msglblSuperAdmin %>">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
@@ -66,8 +95,8 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarFill>
                                     </ext:ToolbarFill>
-                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:LableThemes %>" />
-                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="Select a Themes" Width="80"
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:msgToolbarTextItemThemsText %>" />
+                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="<%$ Resources:msgCbThemeEmptyText %>" Width="80"
                                         Editable="false" TypeAhead="true" meta:resourcekey="cbThemeResource1">
                                         <Items>
                                             <ext:ListItem Text="Default" Value="Default" />
@@ -76,38 +105,19 @@
                                             <ext:ListItem Text="Access" Value="Access" />
                                         </Items>
                                         <Listeners>
-                                            <Select Handler="Ext.net.DirectMethods.GetThemeUrl(
-                                                                                                #{cbTheme}.getValue(), {
-                                                                        success: function(result) {
-                                                                            Ext.net.ResourceMgr.setTheme(result);
-                                                                            #{MainTabs}.items.each(function(el) {
-                                                                                if (!Ext.isEmpty(el.iframe)) {
-                                                                                    el.iframe.dom.contentWindow.Ext.net.ResourceMgr.setTheme(result);
-                                                                                }
-                                                                            });
-                                                                        },
-                    eventMask: {
-                        showMask: true,
-                        msg: 'Changing Themes ...'
-                    }
-            });" />
+                                            <Select Handler="<%$ Resources:msgChangeThemes %>" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:Button Icon="UserKey" Text="Password" runat="server">
+                                    <ext:Button Icon="UserKey" Text="<%$ Resources:msgButtonChangePasswordText %>" runat="server">
                                         <Listeners>
                                             <Click Handler="#{winChangePassword}.show();" />
                                         </Listeners>
                                     </ext:Button>
-                                    <ext:Button ID="btnExit" Icon="UserGo" Text="Log off" runat="server">
+                                    <ext:Button ID="btnExit" Icon="UserGo" Text="<%$ Resources:msgBtnExitText %>" runat="server">
                                         <DirectEvents>
-                                            <Click OnEvent="btnExit_Click" Failure="Ext.Msg.show({ 
-                            title:   'System Errror', 
-                            msg:     result.errorMessage, 
-                            buttons: Ext.Msg.OK, 
-                            icon:    Ext.MessageBox.ERROR 
-                         });" Success="window.location.href='Login.aspx'">
-                                                <EventMask ShowMask="true" Msg="Log off..." />
-                                                <Confirmation ConfirmRequest="true" Message="Are you sure log off ?" Title="Warning" />
+                                            <Click OnEvent="btnExit_Click" Failure="<%$ Resources:msgLogoffError %>" Success="window.location.href='Login.aspx'">
+                                                <EventMask ShowMask="true" Msg="<%$ Resources:msgEventMaskLogOff %>" />
+                                                <Confirmation ConfirmRequest="true" Message="<%$ Resources:msgLogoffWarningMessage %>" Title="<%$ Resources:msgLogoffWarningTitle %>" />
                                             </Click>
                                         </DirectEvents>
                                     </ext:Button>
@@ -126,13 +136,13 @@
                     </ext:Panel>
                 </South>
                 <West Collapsible="true" Split="true">
-                    <ext:Panel ID="LeftPanel" runat="server" Title="Menus" Width="175" Layout="Accordion">
+                    <ext:Panel ID="LeftPanel" runat="server" Title="<%$ Resources:msgLeftPanelTitle %>" Width="175" Layout="Accordion">
                         <Items>
                         </Items>
                     </ext:Panel>
                 </West>
                 <Center>
-                    <ext:Panel ID="Panel2" runat="server" Title="Main Area" Layout="Fit">
+                    <ext:Panel ID="Panel2" runat="server" Title="<%$ Resources:msgPanel2Title %>" Layout="Fit">
                         <Items>
                             <ext:TabPanel ID="MainTabs" runat="server" Border="false">
                                 <Items>

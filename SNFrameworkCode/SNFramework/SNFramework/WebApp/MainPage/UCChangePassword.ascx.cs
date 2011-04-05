@@ -20,17 +20,20 @@ namespace Legendigital.Common.WebApp.MainPage
 
         protected void btnChangePassword_Click(object sender, DirectEventArgs e)
         {
+            
+            
+
             if (!Membership.Provider.ValidateUser(this.ParentPage.CurrentLoginUser.UserLoginID, this.txtPassword.Text.Trim()))
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Password is invalid!";
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgPasswordInvalid").ToString();
                 return;
             }
 
             if (!((NHibernateMembershipProvider)Membership.Provider).ChangePassword(this.ParentPage.CurrentLoginUser.UserLoginID, this.txtNewPassword.Text.Trim()))
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Change Password Failed!";
+                ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgPasswordChangeFailed").ToString();
                 return;
             }
 
