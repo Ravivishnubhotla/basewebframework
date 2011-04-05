@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Resources;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage
 {
@@ -43,7 +44,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message : " + ex.Message;
+                ResourceManager.AjaxErrorMessage = this.GetGlobalResourceObject("GlobalResource","msgErrorMsg").ToString() + ex.Message;
                 return;
             }
 
