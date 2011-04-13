@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgBtnLoginText" value="登陆" />
+  <add name="msgBtnResetText" value="重置" />
+  <add name="msgCheckUserInfo" value="用户验证中，请稍候......" />
+  <add name="msgLoginError" value="ShowError('登陆错误',result.errorMessage);" />
+  <add name="msgLoginFailedUserLockError" value="登陆失败，登录用户已被锁定，请联系管理员。" />
+  <add name="msgLoginFailedUserPasswordError" value="登陆失败，登陆ID或者密码错误！" />
+  <add name="msgPnlLoginTitle" value="基础框架平台" />
+  <add name="msgtxtPassWordBlankText" value="请输入密码！" />
+  <add name="msgtxtPassWordFieldLabel" value="密码" />
+  <add name="msgtxtUserNameBlankText" value="请输入登陆ID！" />
+  <add name="msgtxtUserNameFieldLabel" value="登陆ID" />
+</resources>

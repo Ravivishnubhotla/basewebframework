@@ -130,8 +130,6 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colSystemConfigID" DataIndex="SystemConfigID" Header="ID" Sortable="true">
-                                </ext:Column>
 		<ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="Key" Sortable="true">
                                 </ext:Column>			
 		<ext:Column ColumnID="colConfigValue" DataIndex="ConfigValue" Header="Value" Sortable="true">

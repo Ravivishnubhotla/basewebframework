@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgBtnExitText" value="注销" />
+  <add name="msgButtonChangePasswordText" value="更改密码" />
+  <add name="msgCbThemeEmptyText" value="选择主题" />
+  <add name="msgChangeThemes" value="changeTheme(#{cbTheme},#{MainTabs},'主题更换中....');" />
+  <add name="msgDateInfo" value="当前日期 : {0:D}" />
+  <add name="msgEventMaskLogOff" value="注销中..." />
+  <add name="msglblSuperAdmin" value="&lt;b&gt;超级管理员&lt;/b&gt;" />
+  <add name="msglblWelcome" value="欢迎" />
+  <add name="msgLeftPanelTitle" value="菜单" />
+  <add name="msgLoadingText" value="加载中..." />
+  <add name="msgLogoffError" value="ShowError('系统错误',result.errorMessage);" />
+  <add name="msgLogoffWarningMessage" value="确定要退出系统?" />
+  <add name="msgLogoffWarningTitle" value="警告" />
+  <add name="msgPanel2Title" value="主工作区" />
+  <add name="msgToolbarTextItemThemsText" value="主题:" />
+</resources>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgErrorMsg" value="Error Message :" />
+</resources>

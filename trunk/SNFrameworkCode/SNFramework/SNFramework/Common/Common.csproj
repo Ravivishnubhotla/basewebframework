@@ -259,6 +259,13 @@
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
     <Compile Include="Images\PdfProcessing.cs" />
+    <Compile Include="Resources\FileResourceManager.cs" />
+    <Compile Include="Resources\XmlResourceManager.cs" />
+    <Compile Include="Resources\XmlResourceProvider.cs" />
+    <Compile Include="Resources\XmlResourceProviderFactory.cs" />
+    <Compile Include="Resources\XmlResourceReader.cs" />
+    <Compile Include="Resources\XmlResourceSet.cs" />
+    <Compile Include="Resources\XmlResourceWriter.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
     <Compile Include="SevenZip\Common\CRC.cs" />
     <Compile Include="SevenZip\Common\InBuffer.cs" />
@@ -849,7 +856,6 @@
   <ItemGroup>
     <Folder Include="BaseFramework\Data\Views\" />
     <Folder Include="BaseFramework\Entity\Views\MappingFiles\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

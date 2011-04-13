@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="btnSaveSystemSettingEventMaskMsg" value="Saving,Please waiting....." />
+  <add name="btnSaveSystemSettingText" value="Edit" />
+  <add name="Panel1Title" value="System Setting" />
+  <add name="Panel2Title" value="System Setting Information" />
+  <add name="SaveFailedScript" value="Ext.Msg.alert('Operation Failed', result.errorMessage);" />
+  <add name="SaveOkScript" value="Ext.MessageBox.alert('Operation successful', 'System Setting Updated Successful',callback);function callback(id) { };" />
+  <add name="txtSystemDescriptionFieldLabel" value="Description" />
+  <add name="txtSystemLisenceFieldLabel" value="Lisence" />
+  <add name="txtSystemNameFieldLabel" value="Name" />
+  <add name="txtSystemUrlFieldLabel" value="Url" />
+  <add name="txtSystemVersionFieldLabel" value="Version" />
+</resources>
