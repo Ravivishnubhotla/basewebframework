@@ -34,20 +34,20 @@
         }
         .x-plain-body
         {
-            background: #FFFFFF url('<%= this.ResolveUrl("~/images/logo.jpg") %>') no-repeat;
+            background: #FFFFFF url('<%= this.ResolveUrl("~/images/logo.png") %>') no-repeat;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-    <ext:Window ID="extwinLogin" runat="server" Width="295" ButtonAlign="Right" Height="285"
+    <ext:Window ID="extwinLogin" runat="server" Width="360" ButtonAlign="Right" Height="255"
         Title="<%$ Resources:msgPnlLoginTitle %>"  Draggable="false" Closable="false" Maximizable="false" Modal="true" Icon="UserKey"
         Resizable="false">
         <content>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <North> 
-                    <ext:Panel ID="Panel1" runat="server" Header="false" BaseCls="x-plain-body" Height="140px">
+                    <ext:Panel ID="Panel1" runat="server" Header="false" BaseCls="x-plain-body" Height="110px">
                         <Content>
                         </Content>
                     </ext:Panel>
@@ -61,10 +61,10 @@
                         <Items>
                             <ext:TextField ID="txtUserName" runat="server"  FieldLabel="<%$ Resources:msgtxtUserNameFieldLabel %>" AllowBlank="false"
                                 Cls="LoginID" BlankText="<%$ Resources:msgtxtUserNameBlankText %>"
-                                AnchorHorizontal="95%" >
+                                AnchorHorizontal="92%" >
                             </ext:TextField>
                             <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="<%$ Resources:msgtxtPassWordFieldLabel %>"
-                                Cls="Password" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>" AnchorHorizontal="95%" >
+                                Cls="Password" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>" AnchorHorizontal="92%" >
                             </ext:TextField>
                         </Items>
                     </ext:FormPanel>

@@ -97,7 +97,7 @@
                                     </ext:ToolbarFill>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:msgToolbarTextItemThemsText %>" />
                                     <ext:ComboBox ID="cbTheme" runat="server" EmptyText="<%$ Resources:msgCbThemeEmptyText %>" Width="80"
-                                        Editable="false" TypeAhead="true" meta:resourcekey="cbThemeResource1">
+                                        Editable="false" TypeAhead="true" >
                                         <Items>
                                             <ext:ListItem Text="Default" Value="Default" />
                                             <ext:ListItem Text="Gray" Value="Gray" />

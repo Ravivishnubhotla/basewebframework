@@ -4,7 +4,6 @@
 <%@ Register Src="UCSystemMenuEdit.ascx" TagName="UCSystemMenuEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSystemMenuManualResort.ascx" TagName="UCSystemMenuManualResort"
     TagPrefix="uc3" %>
-<%----%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
@@ -174,7 +173,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="#{storeSystemApplication}.reload();" />
+            <DocumentReady Handler="alert('111');#{storeSystemApplication}.reload();" />
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" OnRefreshData="storeSystemApplication_Refresh">

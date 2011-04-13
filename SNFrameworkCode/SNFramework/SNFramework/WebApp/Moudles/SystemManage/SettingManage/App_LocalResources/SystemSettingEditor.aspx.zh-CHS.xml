@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="btnSaveSystemSettingEventMaskMsg" value="保存中,请稍候....." />
+  <add name="btnSaveSystemSettingText" value="编辑" />
+  <add name="Panel1Title" value="系统设置" />
+  <add name="Panel2Title" value="系统设置" />
+  <add name="SaveFailedScript" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
+  <add name="SaveOkScript" value="Ext.MessageBox.alert('操作成功l', '系统设置更新成功',callback);function callback(id) { };" />
+  <add name="txtSystemDescriptionFieldLabel" value="描述" />
+  <add name="txtSystemLisenceFieldLabel" value="版权信息" />
+  <add name="txtSystemNameFieldLabel" value="名称" />
+  <add name="txtSystemUrlFieldLabel" value="链接" />
+  <add name="txtSystemVersionFieldLabel" value="版本" />
+</resources>
+ 

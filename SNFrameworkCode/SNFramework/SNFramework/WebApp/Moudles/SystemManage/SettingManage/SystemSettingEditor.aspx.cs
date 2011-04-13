@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Resources;
+
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage
 {
