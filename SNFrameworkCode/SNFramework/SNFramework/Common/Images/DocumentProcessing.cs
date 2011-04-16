@@ -10,24 +10,25 @@ namespace Legendigital.Framework.Common.Images
     {
         public static int GetDocumentPageCount(byte[] fileContent,string fileName)
         {
-            string fileext = Path.GetExtension(fileName).ToLower();
 
-            switch (fileext)
+            string fileExt = Path.GetExtension(fileName);
+
+            if (string.IsNullOrEmpty(fileExt))
+                throw new ArgumentException(" fileName invalidate.");
+
+            switch (fileExt.ToLower())
             {
                 case ".pdf":
                     return PdfProcessing.CalculatePageSize(fileContent);
-                    break;
                 case ".jpg":
                 case ".jpeg":
                 case ".bmp":
                 case ".gif":
                 case ".png":
                     return 1;
-                    break;
                 case ".tif":
                 case ".tiff":
                     return ImageProcessing.GetTifPageCountByFile(fileContent);
-                    break;
             }
 
             return 1;
@@ -35,24 +36,24 @@ namespace Legendigital.Framework.Common.Images
 
         public static byte[][] SplitDocumentToPage(byte[] fileContent, string fileName)
         {
-            string fileext = Path.GetExtension(fileName).ToLower();
+            string fileExt = Path.GetExtension(fileName);
 
-            switch (fileext)
+            if (string.IsNullOrEmpty(fileExt))
+                throw new ArgumentException(" fileName invalidate.");
+
+            switch (fileExt.ToLower())
             {
                 case ".pdf":
                     return PdfProcessing.SplitImageFile(fileContent);
-                    break;
                 case ".jpg":
                 case ".jpeg":
                 case ".bmp":
                 case ".gif":
                 case ".png":
                     return new byte[][] { fileContent };
-                    break;
                 case ".tif":
                 case ".tiff":
                     return ImageProcessing.SplitImageFile(fileContent);
-                    break;
             }
 
             return new byte[][] { fileContent };

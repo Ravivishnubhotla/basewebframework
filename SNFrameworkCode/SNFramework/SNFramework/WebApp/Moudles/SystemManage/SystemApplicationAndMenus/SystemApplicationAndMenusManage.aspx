@@ -4,100 +4,76 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-    <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" RemotePaging="true"
-        RemoteSort="true" OnRefreshData="storeSystemApplication_Refresh">
-        <AutoLoadParams>
-            <ext:Parameter Name="start" Value="0" Mode="Raw" />
-            <ext:Parameter Name="limit" Value="20" Mode="Raw" />
-        </AutoLoadParams>
-        <Proxy>
-            <ext:PageProxy />
-        </Proxy>
-        <Reader>
-            <ext:JsonReader IDProperty="SystemApplicationID">
-                <Fields>
-                    <ext:RecordField Name="SystemApplicationID" />
-                    <ext:RecordField Name="SystemApplicationName" />
-                    <ext:RecordField Name="SystemApplicationDescription" />
-                    <ext:RecordField Name="SystemApplicationUrl" Type="String" />
-                    <ext:RecordField Name="SystemApplicationIsSystemApplication" Type="Boolean" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
-            <ext:Panel ID="Panel2" runat="server" Title="系统应用管理" Region="West" Layout="border"
+            <ext:Panel ID="Panel2" runat="server" Title="系统应用管理" Region="West" Layout="FitLayout"
                 Width="300" Split="true">
                 <Items>
-                    <ext:Panel ID="Panel1" runat="server" Title="Settings" Border="false" Region="Center"
-                        Padding="6" Icon="FolderWrench" Layout="fit">
+                    <ext:Panel ID="Panel1" runat="server" Title="Settings" Frame="true" Icon="ApplicationOsxCascade"
+                        Layout="fit">
                         <Items>
-                            <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true"
-                                Title="System Application" Icon="Table" AutoExpandColumn="colSystemApplicationDescription">
-                                <TopBar>
-                                    <ext:Toolbar ID="tbTop" runat="server">
-                                        <Items>
-                                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="ApplicationAdd">
-                                                <Listeners>
-                                                    <Click Handler="showAddForm();" />
-                                                </Listeners>
-                                            </ext:Button>
-                                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
-                                                <Listeners>
-                                                    <Click Handler="#{storeSystemApplication}.reload();" />
-                                                </Listeners>
-                                            </ext:Button>
-                                        </Items>
-                                    </ext:Toolbar>
-                                </TopBar>
-                                <View>
-                                    <ext:GridView ForceFit="true" ID="GridView1">
-                                        <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
-                                    </ext:GridView>
-                                </View>
+                            <ext:GridPanel ID="GridPanel1" runat="server" StripeRows="true" Title="Array Grid"
+                                Width="600" Height="290" AutoExpandColumn="Company">
+                                <Store>
+                                    <ext:Store ID="Store1" runat="server" OnRefreshData="MyData_Refresh">
+                                        <Reader>
+                                            <ext:ArrayReader>
+                                                <Fields>
+                                                    <ext:RecordField Name="company" />
+                                                    <ext:RecordField Name="price" Type="Float" />
+                                                    <ext:RecordField Name="change" Type="Float" />
+                                                    <ext:RecordField Name="pctChange" Type="Float" />
+                                                    <ext:RecordField Name="lastChange" Type="Date" />
+                                                </Fields>
+                                            </ext:ArrayReader>
+                                        </Reader>
+                                    </ext:Store>
+                                </Store>
                                 <ColumnModel ID="ColumnModel1" runat="server">
                                     <Columns>
-                                        <ext:RowNumbererColumn>
-                                        </ext:RowNumbererColumn>
-                                        <ext:Column DataIndex="SystemApplicationName" Header="Name" Sortable="true">
+                                        <ext:RowNumbererColumn />
+                                        <ext:Column ColumnID="Company" Header="Company" Width="160" DataIndex="company" />
+                                        <ext:Column Header="Price" Width="75" DataIndex="price">
+                                            <Renderer Format="UsMoney" />
                                         </ext:Column>
-                                        <ext:Column ColumnID="colSystemApplicationDescription" DataIndex="SystemApplicationDescription"
-                                            Header="Description">
+                                        <ext:Column Header="Change" Width="75" DataIndex="change">
+                                            <Renderer Fn="change" />
                                         </ext:Column>
-                                        <ext:Column DataIndex="SystemApplicationUrl" Header="Url">
+                                        <ext:Column Header="Change" Width="75" DataIndex="pctChange">
+                                            <Renderer Fn="pctChange" />
                                         </ext:Column>
-                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="System Application"
-                                            Width="80">
-                                            <Renderer Fn="FormatBool" />
-                                        </ext:Column>
-                                        <ext:CommandColumn Width="60">
-                                            <Commands>
-                                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
-                                                    <ToolTip Text="Edit" />
-                                                </ext:GridCommand>
-                                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
-                                                    <ToolTip Text="Delete" />
-                                                </ext:GridCommand>
-                                            </Commands>
-                                        </ext:CommandColumn>
+                                        <ext:DateColumn Header="Last Updated" Width="85" DataIndex="lastChange" Format="H:mm:ss" />
                                     </Columns>
                                 </ColumnModel>
+                                <SelectionModel>
+                                    <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" />
+                                </SelectionModel>
                                 <LoadMask ShowMask="true" />
                                 <BottomBar>
-                                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemApplication"
-                                        DisplayInfo="true" DisplayMsg="Displaying records {0} - {1} total: {2}" EmptyMsg="No matched record" />
+                                    <ext:PagingToolbar ID="PagingToolbar1" runat="server" PageSize="10">
+                                        <Items>
+                                            <ext:Label ID="Label1" runat="server" Text="Page size:" />
+                                            <ext:ToolbarSpacer ID="ToolbarSpacer1" runat="server" Width="10" />
+                                            <ext:ComboBox ID="ComboBox1" runat="server" Width="80">
+                                                <Items>
+                                                    <ext:ListItem Text="1" />
+                                                    <ext:ListItem Text="2" />
+                                                    <ext:ListItem Text="10" />
+                                                    <ext:ListItem Text="20" />
+                                                </Items>
+                                                <SelectedItem Value="10" />
+                                                <Listeners>
+                                                    <Select Handler="#{PagingToolbar1}.pageSize = parseInt(this.getValue()); #{PagingToolbar1}.doLoad();" />
+                                                </Listeners>
+                                            </ext:ComboBox>
+                                        </Items>
+                                    </ext:PagingToolbar>
                                 </BottomBar>
-                                <Listeners>
-                                    <Command Handler="processcmd(command, record);" />
-                                </Listeners>
                             </ext:GridPanel>
                         </Items>
                     </ext:Panel>
-                    <ext:Panel ID="Panel4" runat="server" Title="Settings" Border="false" Region="South"
-                        Padding="6" Icon="FolderWrench" Html="Some settings in here" />
                 </Items>
             </ext:Panel>
             <ext:TabPanel ID="TabPanel1" runat="server" Region="Center">

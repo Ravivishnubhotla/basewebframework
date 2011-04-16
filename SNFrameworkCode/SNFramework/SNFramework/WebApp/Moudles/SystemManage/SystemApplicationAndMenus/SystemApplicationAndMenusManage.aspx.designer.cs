@@ -22,15 +22,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
-        /// storeSystemApplication control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store storeSystemApplication;
-        
-        /// <summary>
         /// Viewport1 control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Panel Panel1;
+        
+        /// <summary>
         /// GridPanel1 control.
         /// </summary>
         /// <remarks>
@@ -58,58 +58,58 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.GridPanel GridPanel1;
         
         /// <summary>
-        /// tbTop control.
+        /// Store1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Store Store1;
         
         /// <summary>
-        /// btnAdd control.
+        /// RowSelectionModel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
         
         /// <summary>
-        /// btnRefresh control.
+        /// PagingToolbar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.PagingToolbar PagingToolbar1;
         
         /// <summary>
-        /// GridView1 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.Label Label1;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// ToolbarSpacer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.ToolbarSpacer ToolbarSpacer1;
         
         /// <summary>
-        /// Panel4 control.
+        /// ComboBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel4;
+        protected global::Ext.Net.ComboBox ComboBox1;
         
         /// <summary>
         /// TabPanel1 control.

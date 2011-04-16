@@ -142,6 +142,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\WebUIHelper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -645,12 +646,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
+    <Folder Include="Moudles\SystemManage\ConfigManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="TestPage\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

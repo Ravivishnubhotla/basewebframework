@@ -173,7 +173,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="alert('111');#{storeSystemApplication}.reload();" />
+            <DocumentReady Handler="#{storeSystemApplication}.reload();" />
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" OnRefreshData="storeSystemApplication_Refresh">

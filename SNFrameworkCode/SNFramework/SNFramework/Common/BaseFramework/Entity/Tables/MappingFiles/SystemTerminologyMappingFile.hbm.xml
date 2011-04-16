@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTerminologyEntity,Legendigital.Framework.Common" table="SystemTerminology" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Code" type="string" name="Code"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="Text" type="string" name="Text"   length="4000" />	
+		<property column="LanguageType" type="string" name="LanguageType"   length="20" />	
+
+
+
+
+</class>
+</hibernate-mapping>
