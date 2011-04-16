@@ -71,6 +71,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                 menuWrapper.ApplicationID = SystemApplicationWrapper.FindById(int.Parse(this.hidApplicationID.Text));
                 menuWrapper.MenuIsSystemMenu = this.chkMenuIsSystemMenu.Checked;
                 menuWrapper.MenuIsEnable = this.chkMenuIsEnable.Checked;
+                menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
 
                 if (this.hidPMenuID.Text.Trim() != "")
                 {
@@ -86,14 +87,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
 
                 if (!menuWrapper.MenuIsCategory)
                 {
-                    menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
                     menuWrapper.MenuUrl = this.txtMenuUrl.Text.Trim();
                     menuWrapper.MenuType = this.cmbMenuType.SelectedItem.Value;
                     menuWrapper.MenuUrlTarget = this.cmbMenuUrlTarget.SelectedItem.Value;
                 }
                 else
                 {
-                    menuWrapper.MenuIconUrl = "";
                     menuWrapper.MenuUrl = "";
                     menuWrapper.MenuType = "1";
                     menuWrapper.MenuUrlTarget = "1";

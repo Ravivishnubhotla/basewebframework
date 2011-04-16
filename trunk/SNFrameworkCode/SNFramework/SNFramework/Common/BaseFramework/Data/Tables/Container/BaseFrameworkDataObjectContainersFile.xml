@@ -72,6 +72,9 @@
  <object id="SystemShortMessageDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemShortMessageDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemTerminologyDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTerminologyDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemUserDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -134,6 +137,7 @@
     <property name="SystemRoleMenuRelationDataObjectInstance" ref="SystemRoleMenuRelationDataObjectIocID"/>
     <property name="SystemSettingDataObjectInstance" ref="SystemSettingDataObjectIocID"/>
     <property name="SystemShortMessageDataObjectInstance" ref="SystemShortMessageDataObjectIocID"/>
+    <property name="SystemTerminologyDataObjectInstance" ref="SystemTerminologyDataObjectIocID"/>
     <property name="SystemUserDataObjectInstance" ref="SystemUserDataObjectIocID"/>
     <property name="SystemUserGroupDataObjectInstance" ref="SystemUserGroupDataObjectIocID"/>
     <property name="SystemUserGroupRoleRelationDataObjectInstance" ref="SystemUserGroupRoleRelationDataObjectIocID"/>

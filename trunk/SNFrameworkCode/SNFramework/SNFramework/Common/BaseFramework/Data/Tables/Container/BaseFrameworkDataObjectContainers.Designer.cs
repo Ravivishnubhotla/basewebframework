@@ -32,6 +32,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemRoleMenuRelationDataObject SystemRoleMenuRelationDataObjectInstance { set; get; }
       public SystemSettingDataObject SystemSettingDataObjectInstance { set; get; }
       public SystemShortMessageDataObject SystemShortMessageDataObjectInstance { set; get; }
+      public SystemTerminologyDataObject SystemTerminologyDataObjectInstance { set; get; }
       public SystemUserDataObject SystemUserDataObjectInstance { set; get; }
       public SystemUserGroupDataObject SystemUserGroupDataObjectInstance { set; get; }
       public SystemUserGroupRoleRelationDataObject SystemUserGroupRoleRelationDataObjectInstance { set; get; }

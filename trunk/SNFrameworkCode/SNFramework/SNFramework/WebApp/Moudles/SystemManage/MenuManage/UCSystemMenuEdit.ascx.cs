@@ -51,13 +51,14 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                     this.txtMenuDescription.Text = menu.MenuDescription;
                     this.chkMenuIsSystemMenu.Checked = (menu.MenuIsSystemMenu.HasValue ? menu.MenuIsSystemMenu.Value : false);
                     this.chkMenuIsEnable.Checked = (menu.MenuIsEnable.HasValue ? menu.MenuIsEnable.Value : false);
+                    this.txtMenuIconUrl.Text = menu.MenuIconUrl;
 
                     this.fsMenuIsCategory.Collapsed = menu.MenuIsCategory;
 
 
                     if (!menu.MenuIsCategory)
                     {
-                        this.txtMenuIconUrl.Text = menu.MenuIconUrl;
+
                         this.txtMenuUrl.Text = menu.MenuUrl;
                         if (string.IsNullOrEmpty(menu.MenuType))
                             this.cmbMenuType.SelectedIndex = 0;
@@ -70,7 +71,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                     }
                     else
                     {
-                        this.txtMenuIconUrl.Text = "";
                         this.txtMenuUrl.Text = "";
                         this.cmbMenuType.SelectedIndex = 0;
                         this.cmbMenuUrlTarget.SelectedIndex = 0;
@@ -114,29 +114,28 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                 menuWrapper.ApplicationID = SystemApplicationWrapper.FindById(int.Parse(this.hidApplicationID.Text));
                 menuWrapper.MenuIsSystemMenu = this.chkMenuIsSystemMenu.Checked;
                 menuWrapper.MenuIsEnable = this.chkMenuIsEnable.Checked;
+                menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
 
                 if (this.hidPMenuID.Text.Trim() != "")
                 {
-                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(int.Parse(this.hidPMenuID.Text.Trim()), int.Parse(this.hidApplicationID.Text));
+                    //menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(int.Parse(this.hidPMenuID.Text.Trim()), int.Parse(this.hidApplicationID.Text));
                     menuWrapper.ParentMenuID = SystemMenuWrapper.FindById(int.Parse(this.hidPMenuID.Text.Trim()));
                 }
                 else
                 {
-                    menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0, int.Parse(this.hidApplicationID.Text));
+                    //menuWrapper.MenuOrder = SystemMenuWrapper.GetNewMaxMenuOrder(0, int.Parse(this.hidApplicationID.Text));
                 }
 
                 menuWrapper.MenuIsCategory = this.fsMenuIsCategory.Collapsed;
 
                 if (!menuWrapper.MenuIsCategory)
                 {
-                    menuWrapper.MenuIconUrl = this.txtMenuIconUrl.Text.Trim();
                     menuWrapper.MenuUrl = this.txtMenuUrl.Text.Trim();
                     menuWrapper.MenuType = this.cmbMenuType.SelectedItem.Value;
                     menuWrapper.MenuUrlTarget = this.cmbMenuUrlTarget.SelectedItem.Value;
                 }
                 else
                 {
-                    menuWrapper.MenuIconUrl = "";
                     menuWrapper.MenuUrl = "";
                     menuWrapper.MenuType = "1";
                     menuWrapper.MenuUrlTarget = "1";

@@ -23,12 +23,12 @@
                             AnchorHorizontal="95%" />
                         <ext:Checkbox ID="chkMenuIsEnable" runat="server" FieldLabel="Enable" Checked="true"
                             AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtMenuIconUrl" runat="server" FieldLabel="Menu icon" AnchorHorizontal="95%" />
                     </Items>
                 </ext:FieldSet>
                 <ext:FieldSet ID="fsMenuIsCategory" runat="server" CheckboxToggle="true" Title="Is Nav"
                     LabelSeparator=":" LabelWidth="100" AutoHeight="true" Collapsed="true" Layout="form">
                     <Items>
-                        <ext:TextField ID="txtMenuIconUrl" runat="server" FieldLabel="Menu icon" AnchorHorizontal="95%" />
                         <ext:TextField ID="txtMenuUrl" runat="server" FieldLabel="Menu link" AnchorHorizontal="95%" />
                         <ext:ComboBox ID="cmbMenuUrlTarget" Editable="false" runat="server" FieldLabel="Link Type"
                             SelectedIndex="0" AnchorHorizontal="95%">

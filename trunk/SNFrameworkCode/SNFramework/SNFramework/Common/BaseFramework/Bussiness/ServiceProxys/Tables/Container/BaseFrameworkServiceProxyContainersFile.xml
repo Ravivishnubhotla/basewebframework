@@ -94,6 +94,10 @@
     <property name="SelfDataObj" ref="SystemShortMessageDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemTerminologyServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemTerminologyServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemTerminologyDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemUserServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemUserServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemUserDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
@@ -165,6 +169,7 @@
     <property name="SystemRoleMenuRelationServiceProxyInstance" ref="SystemRoleMenuRelationServiceProxyIocID"/>
     <property name="SystemSettingServiceProxyInstance" ref="SystemSettingServiceProxyIocID"/>
     <property name="SystemShortMessageServiceProxyInstance" ref="SystemShortMessageServiceProxyIocID"/>
+    <property name="SystemTerminologyServiceProxyInstance" ref="SystemTerminologyServiceProxyIocID"/>
     <property name="SystemUserServiceProxyInstance" ref="SystemUserServiceProxyIocID"/>
     <property name="SystemUserGroupServiceProxyInstance" ref="SystemUserGroupServiceProxyIocID"/>
     <property name="SystemUserGroupRoleRelationServiceProxyInstance" ref="SystemUserGroupRoleRelationServiceProxyIocID"/>

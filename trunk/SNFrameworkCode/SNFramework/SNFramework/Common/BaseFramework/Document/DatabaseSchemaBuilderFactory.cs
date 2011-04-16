@@ -16,7 +16,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Document
             {
                 case DatabaseType.MSSQL:
                     return _mssqlDataBaseSchemaBulider;
-                    break;
                 case DatabaseType.MYSQL:
                     break;
                 case DatabaseType.ORACLE:
