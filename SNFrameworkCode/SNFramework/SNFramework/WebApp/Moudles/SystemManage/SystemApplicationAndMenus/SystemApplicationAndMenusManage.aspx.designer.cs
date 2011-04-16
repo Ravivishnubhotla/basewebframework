@@ -22,6 +22,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
+        /// storeSystemApplication control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeSystemApplication;
+        
+        /// <summary>
         /// Viewport1 control.
         /// </summary>
         /// <remarks>
@@ -29,15 +38,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Viewport Viewport1;
-        
-        /// <summary>
-        /// Panel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
         /// Panel1 control.
@@ -49,6 +49,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
+        /// BorderLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.BorderLayout BorderLayout1;
+        
+        /// <summary>
         /// GridPanel1 control.
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.GridPanel GridPanel1;
-        
-        /// <summary>
-        /// Store1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store Store1;
         
         /// <summary>
         /// RowSelectionModel1 control.
@@ -85,48 +85,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.PagingToolbar PagingToolbar1;
         
         /// <summary>
-        /// Label1 control.
+        /// TreePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label Label1;
-        
-        /// <summary>
-        /// ToolbarSpacer1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ToolbarSpacer ToolbarSpacer1;
-        
-        /// <summary>
-        /// ComboBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox ComboBox1;
-        
-        /// <summary>
-        /// TabPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TabPanel TabPanel1;
-        
-        /// <summary>
-        /// Panel5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Panel Panel5;
+        protected global::Ext.Net.TreePanel TreePanel1;
     }
 }
