@@ -5,9 +5,8 @@
 <%@ Register Src="UCSystemApplicationEdit.ascx" TagName="UCSystemApplicationEdit"
     TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var rooturl = '<%=this.ResolveUrl("~/")%>';
 
@@ -80,7 +79,6 @@
         }
 
     </script>
-
     <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" RemotePaging="true"
         RemoteSort="true" OnRefreshData="storeSystemApplication_Refresh">
         <AutoLoadParams>
@@ -95,7 +93,7 @@
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" />
-                                        <ext:RecordField Name="LocaLocalizationName" />
+                    <ext:RecordField Name="LocaLocalizationName" />
                     <ext:RecordField Name="SystemApplicationDescription" />
                     <ext:RecordField Name="SystemApplicationUrl" Type="String" />
                     <ext:RecordField Name="SystemApplicationIsSystemApplication" Type="Boolean" />
@@ -108,7 +106,6 @@
     <uc1:UCSystemApplicationAdd ID="UCSystemApplicationAdd1" runat="server" />
     <uc2:UCSystemApplicationEdit ID="UCSystemApplicationEdit2" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="Fit">
-    
         <Items>
             <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true"
                 Title="System Application" Icon="Table" AutoExpandColumn="colSystemApplicationDescription">
@@ -131,7 +128,6 @@
                 <View>
                     <ext:GridView ForceFit="true" ID="GridView1">
                         <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
-               
                     </ext:GridView>
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">

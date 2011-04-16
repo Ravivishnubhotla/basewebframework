@@ -5,75 +5,126 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
+using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using TreeNode = Ext.Net.TreeNode;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus
 {
-    public partial class SystemApplicationAndMenusManage : System.Web.UI.Page
+    public partial class SystemApplicationAndMenusManage : BaseSecurityPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (X.IsAjaxRequest)
                 return;
-
-             this.BindData();
+            this.GridPanel1.Reload();
         }
 
-            protected void MyData_Refresh(object sender, StoreRefreshDataEventArgs e)
+
+        protected void RowSelect(object sender, DirectEventArgs e)
+        {
+            int recordID = Convert.ToInt32(e.ExtraParams["RecordID"]);
+
+            SystemApplicationWrapper applicationWrapper = SystemApplicationWrapper.FindById(recordID);
+
+            if (applicationWrapper != null)
             {
-                this.BindData();   
+                this.TreePanel1.Title = applicationWrapper.LocaLocalizationName + " - 子菜单管理";
+
+                List<NavMenu> menus = SystemMenuWrapper.GetNavMenuByApplication(applicationWrapper);
+
+     
+
+                Ext.Net.TreeNode root = new TreeNode();
+                root.Text = applicationWrapper.LocaLocalizationName;
+                root.Icon = Icon.Folder;
+                this.TreePanel1.Root.
+                                this.TreePanel1.SetRootNode(root);
+
+                if (!(menus == null || menus.Count == 0))
+                {
+                    foreach (var menu in menus)
+                    {
+                        TreeNode mainNode = new TreeNode();
+                        mainNode.Text = menu.Name;
+                        mainNode.NodeID = menu.Id;
+                        WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
+                        //if (menu.IsCategory)
+                        //    mainNode.Icon = Icon.Folder;
+                        //else
+                        //    mainNode.Icon = Icon.ApplicationForm;
+                        mainNode.CustomAttributes.Add(new ConfigItem("IsGroup", "1", ParameterMode.Value));
+                        mainNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
+                        GenerateSubTreeNode(mainNode, menu);
+                        root.Nodes.lo
+                    }
+
+                }
+
+
+ 
             }
 
 
-    private void BindData()
-    {
-        var store = this.GridPanel1.GetStore();
-        
-        store.DataSource = this.Data;
-        store.DataBind(); 
-    }
-
-    private object[] Data
-    {
-        get
-        {
-            DateTime now = DateTime.Now;
-
-            return new object[]
-            {
-                new object[] { "3m Co", 71.72, 0.02, 0.03, now },
-                new object[] { "Alcoa Inc", 29.01, 0.42, 1.47, now },
-                new object[] { "Altria Group Inc", 83.81, 0.28, 0.34, now },
-                new object[] { "American Express Company", 52.55, 0.01, 0.02, now },
-                new object[] { "American International Group, Inc.", 64.13, 0.31, 0.49, now },
-                new object[] { "AT&T Inc.", 31.61, -0.48, -1.54, now },
-                new object[] { "Boeing Co.", 75.43, 0.53, 0.71, now },
-                new object[] { "Caterpillar Inc.", 67.27, 0.92, 1.39, now },
-                new object[] { "Citigroup, Inc.", 49.37, 0.02, 0.04, now },
-                new object[] { "E.I. du Pont de Nemours and Company", 40.48, 0.51, 1.28, now },
-                new object[] { "Exxon Mobil Corp", 68.1, -0.43, -0.64, now },
-                new object[] { "General Electric Company", 34.14, -0.08, -0.23, now },
-                new object[] { "General Motors Corporation", 30.27, 1.09, 3.74, now },
-                new object[] { "Hewlett-Packard Co.", 36.53, -0.03, -0.08, now },
-                new object[] { "Honeywell Intl Inc", 38.77, 0.05, 0.13, now },
-                new object[] { "Intel Corporation", 19.88, 0.31, 1.58, now },
-                new object[] { "International Business Machines", 81.41, 0.44, 0.54, now },
-                new object[] { "Johnson & Johnson", 64.72, 0.06, 0.09, now },
-                new object[] { "JP Morgan & Chase & Co", 45.73, 0.07, 0.15, now },
-                new object[] { "McDonald\"s Corporation", 36.76, 0.86, 2.40, now },
-                new object[] { "Merck & Co., Inc.", 40.96, 0.41, 1.01, now },
-                new object[] { "Microsoft Corporation", 25.84, 0.14, 0.54, now },
-                new object[] { "Pfizer Inc", 27.96, 0.4, 1.45, now },
-                new object[] { "The Coca-Cola Company", 45.07, 0.26, 0.58, now },
-                new object[] { "The Home Depot, Inc.", 34.64, 0.35, 1.02, now },
-                new object[] { "The Procter & Gamble Company", 61.91, 0.01, 0.02, now },
-                new object[] { "United Technologies Corporation", 63.26, 0.55, 0.88, now },
-                new object[] { "Verizon Communications", 35.57, 0.39, 1.11, now },
-                new object[] { "Wal-Mart Stores, Inc.", 45.45, 0.73, 1.63, now }
-            };
         }
-    }
+
+        private void GenerateSubTreeNode(TreeNode mainNode, NavMenu menu)
+        {
+            foreach (var sMenu in menu.SubMenus)
+            {
+                TreeNode subNode = new TreeNode();
+                subNode.Text = sMenu.Name;
+                subNode.NodeID = sMenu.Id;
+                WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
+                //if (sMenu.IsCategory)
+                //    subNode.Icon = Icon.Folder;
+                //else
+                //    subNode.Icon = Icon.ApplicationForm;
+                subNode.CustomAttributes.Add(new ConfigItem("IsGroup", (sMenu.IsCategory ? "1" : "0"), ParameterMode.Value));
+                subNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
+                GenerateSubTreeNode(subNode, sMenu);
+                mainNode.Nodes.Add(subNode);
+            }
+        }
+
+        protected void storeSystemApplication_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+
+            string sortFieldName = "";
+            if (e.Sort != null)
+                sortFieldName = e.Sort;
+
+            int startIndex = 0;
+
+            if (e.Start > -1)
+            {
+                startIndex = e.Start;
+            }
+
+            int limit = 10;
+
+            int pageIndex = 1;
+
+            if ((startIndex % limit) == 0)
+                pageIndex = startIndex / limit + 1;
+            else
+                pageIndex = startIndex / limit;
+
+            PageQueryParams pageQueryParams = new PageQueryParams();
+            pageQueryParams.PageSize = limit;
+            pageQueryParams.PageIndex = pageIndex;
+
+            storeSystemApplication.DataSource = SystemApplicationWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            e.Total = pageQueryParams.RecordCount;
+
+            storeSystemApplication.DataBind();
+
+        }
+ 
+
         [DirectMethod()]
         public void DeleteRecord(int id)
         {
@@ -125,6 +176,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         //    storeSystemApplication.DataBind();
 
         //}
- 
+
     }
 }
