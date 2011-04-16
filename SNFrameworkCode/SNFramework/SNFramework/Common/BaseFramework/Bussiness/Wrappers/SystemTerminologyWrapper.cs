@@ -96,5 +96,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
+        public static string GetLocalizationName(string name, string localizationType)
+        {
+            name = name.Trim();
+
+            if (!name.StartsWith("[L]"))
+                return name;
+
+            string localName = GetLocalizationNameByTypeAndCode(localizationType, name.Replace("[L]",""));
+
+            if (string.IsNullOrEmpty(localName))
+                return name;
+
+            return localName;
+        }
+
+	    private static string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode)
+	    {
+	        return businessProxy.GetLocalizationNameByTypeAndCode(localizationType, localizationCode);
+	    }
+
+
+ 
+
+
     }
 }

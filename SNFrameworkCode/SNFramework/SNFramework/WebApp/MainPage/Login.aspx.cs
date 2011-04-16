@@ -23,7 +23,7 @@ namespace Legendigital.Common.WebApp.MainPage
 
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
-            extwinLogin.Title = settingWrapper.SystemName + " " + settingWrapper.SystemVersion;
+            extwinLogin.Title = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
         }
 
         protected void BtnLogin_Click(object sender, DirectEventArgs e)

@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Threading;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
@@ -95,6 +97,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public static SystemSettingWrapper GetCurrentSystemSetting()
         {
             return businessProxy.GetCurrentSystemSetting();
+        }
+
+        public string LocaLocalizationName
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.SystemName, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
+        }
+
+
+        public string LocaLocalizationLisence
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.SystemLisence, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
         }
     }
 }

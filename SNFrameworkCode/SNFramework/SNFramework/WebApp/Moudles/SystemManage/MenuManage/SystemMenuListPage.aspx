@@ -182,6 +182,7 @@
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" />
+                    <ext:RecordField Name="LocaLocalizationName" />
                     <ext:RecordField Name="SystemApplicationDescription" />
                     <ext:RecordField Name="SystemApplicationUrl" Type="String" />
                     <ext:RecordField Name="SystemApplicationIsSystemApplication" Type="Boolean" />
@@ -235,7 +236,7 @@
                                         <Items>
                                             <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="Application: " />
                                             <ext:ComboBox ID="cbApplication" runat="server" EmptyText="Select application" AutoWidth="true"
-                                                Editable="false" TypeAhead="true" StoreID="storeSystemApplication" DisplayField="SystemApplicationName"
+                                                Editable="false" TypeAhead="true" StoreID="storeSystemApplication" DisplayField="LocaLocalizationName"
                                                 ValueField="SystemApplicationID" ForceSelection="true" SelectOnFocus="true">
                                                 <Listeners>
                                                     <Select Handler="RefreshList(#{cbApplication},#{TreePanel1});" />

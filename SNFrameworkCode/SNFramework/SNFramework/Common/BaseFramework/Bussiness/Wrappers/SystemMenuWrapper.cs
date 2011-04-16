@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Threading;
 using System.Web;
 using System.Web.UI.WebControls;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -15,6 +16,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	[Serializable]
     public partial class SystemMenuWrapper
     {
+        public string LocaLocalizationName
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.MenuName, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
+        }
+
+
         #region Static Common Data Operation
 		
 		public static void Save(SystemMenuWrapper obj)
@@ -147,7 +157,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 {
                     NavMenu groupMenu = new NavMenu();
                     groupMenu.Id = gmenu.MenuID.ToString();
-                    groupMenu.Name = gmenu.MenuName;
+                    groupMenu.Name = gmenu.LocaLocalizationName;
                     groupMenu.NavUrl = gmenu.MenuUrl;
                     groupMenu.IsCategory = gmenu.MenuIsCategory;
                     groupMenu.Icon = gmenu.MenuIconUrl;
@@ -317,7 +327,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 {
                     NavMenu subMenu = new NavMenu();
                     subMenu.Id = itemMenu.MenuID.ToString();
-                    subMenu.Name = itemMenu.MenuName;
+                    subMenu.Name = itemMenu.LocaLocalizationName;
                     subMenu.NavUrl = itemMenu.MenuUrl;
                     subMenu.IsCategory = itemMenu.MenuIsCategory;
                     subMenu.Icon = itemMenu.MenuIconUrl;

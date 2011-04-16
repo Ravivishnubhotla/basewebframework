@@ -24,5 +24,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindListByQueryBuilder(queryGenerator);
         }
+
+        public List<SystemApplicationEntity> FindedApplicationsByCode(string code)
+        {
+            NHibernateDynamicQueryGenerator<SystemApplicationEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_SYSTEMAPPLICATIONCODE.Eq(code));
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

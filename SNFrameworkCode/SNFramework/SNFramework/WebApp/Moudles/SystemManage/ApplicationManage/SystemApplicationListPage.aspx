@@ -95,6 +95,7 @@
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" />
+                                        <ext:RecordField Name="LocaLocalizationName" />
                     <ext:RecordField Name="SystemApplicationDescription" />
                     <ext:RecordField Name="SystemApplicationUrl" Type="String" />
                     <ext:RecordField Name="SystemApplicationIsSystemApplication" Type="Boolean" />
@@ -137,7 +138,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="SystemApplicationName" Header="Name" Sortable="true">
+                        <ext:Column DataIndex="LocaLocalizationName" Header="Name" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colSystemApplicationDescription" DataIndex="SystemApplicationDescription"
                             Header="Description">

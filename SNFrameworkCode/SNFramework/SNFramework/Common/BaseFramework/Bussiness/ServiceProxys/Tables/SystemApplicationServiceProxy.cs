@@ -26,7 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {
         public SystemApplicationWrapper CreateOrLoadApplication(string configValue)
         {
-            List<SystemApplicationEntity> listApplication = SelfDataObj.FindedApplicationsByName(configValue);
+            List<SystemApplicationEntity> listApplication = SelfDataObj.FindedApplicationsByCode(configValue);
             if (listApplication.Count > 0)
                 return new SystemApplicationWrapper(listApplication[0]);
             else
