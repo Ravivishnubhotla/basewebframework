@@ -1,11 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuEdit.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage.UCSystemMenuEdit" %>
 <ext:Window ID="winSystemMenuEdit" runat="server" Icon="ApplicationEdit" Title="System Menu Edit"
-    Width="600" Height="460" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="600" Height="460" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"  AutoScroll=true
     Layout="fit">
     <Content>
-        <ext:FormPanel ID="formPanelSystemMenuEdit" runat="server" Frame="true" Header="false"
-            MonitorValid="true" BodyStyle="padding:5px;">
+        <ext:FormPanel ID="formPanelSystemMenuEdit" runat="server" Frame="true" Header="false"  
+            MonitorValid="true" BodyStyle="padding:5px;" AutoScroll=true>
             <Items>
                 <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="false" Header="false"
                     AutoHeight="true" Collapsed="false" LabelWidth="75" Layout="Form">
@@ -54,7 +54,7 @@
         <ext:Button ID="btnSaveSystemMenu" runat="server" Text="Edit" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMenuEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemMenu_Click" Success="Ext.MessageBox.alert('Operation successful.', 'Update menu success.',callback);function callback(id) { #{formPanelSystemMenuEdit}.getForm().reset();RefreshTreeList1(); };
+                    OnEvent="btnSaveSystemMenu_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update menu success.',callback);function callback(id) { #{formPanelSystemMenuEdit}.getForm().reset();RefreshTreeList1(); };
 " Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemMenuAdd.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage.UCSystemMenuAdd" %>
 <ext:Window ID="winSystemMenuAdd" runat="server" Icon="ApplicationAdd" Title="Add system menu"
-    Width="600" Height="460" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="600" Height="460" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll=true
     Layout="fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemMenuAdd" runat="server" Frame="true" Header="false"

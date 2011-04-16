@@ -13,13 +13,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 {
 	public interface ISystemTerminologyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemTerminologyEntity> ,ISystemTerminologyServiceProxyDesigner
     {
-
-
+	    string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode);
     }
 
     public partial class SystemTerminologyServiceProxy : ISystemTerminologyServiceProxy
     {
+        public string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode)
+        {
+            SystemTerminologyEntity systemTerminologyEntity =
+                this.SelfDataObj.GetLocalizationNameByTypeAndCode(localizationType, localizationCode);
 
+            if (systemTerminologyEntity == null)
+                return "";
 
+            return systemTerminologyEntity.Text;
+        }
     }
 }

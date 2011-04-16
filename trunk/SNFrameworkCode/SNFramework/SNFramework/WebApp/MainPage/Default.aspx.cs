@@ -26,8 +26,8 @@ namespace Legendigital.Common.WebApp.MainPage
 
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
-            locSystemName.Text = settingWrapper.SystemName + " " + settingWrapper.SystemVersion;
-            locCopyRight.Text = settingWrapper.SystemLisence;
+            locSystemName.Text = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
+            locCopyRight.Text = settingWrapper.LocaLocalizationLisence;
 
             InitLeftMenu();
         }
