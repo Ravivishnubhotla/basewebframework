@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-    <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="true" RemotePaging="true"
+    <ext:Store ID="storeSystemApplication" runat="server" AutoLoad="false" RemotePaging="true"
         RemoteSort="true" OnRefreshData="storeSystemApplication_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
@@ -39,6 +39,37 @@
             else
                 return '否';
         }
+
+        function SelectApplication(app, tree) {
+            tree.setTitle(app.data.LocaLocalizationName + " 子菜单管理");
+
+
+            Ext.net.DirectMethods.GetTreeNodes(
+                                                app.id.toString(),
+                                                {
+                                                    failure: function (msg) {
+                                                        Ext.Msg.alert('Operation failed', msg);
+                                                    },
+                                                    success: function (result) {
+                                                        var nodes = eval(result);
+                                                        if (nodes.length > 0) {
+                                                            tree.initChildren(nodes);
+                                                        }
+                                                        else {
+                                                            tree.getRootNode().removeChildren();
+                                                        }
+
+                                                    },
+                                                    eventMask: {
+                                                        showMask: true,
+                                                        msg: '加载中......',
+                                                        target: 'customtarget',
+                                                        customTarget: '<%= TreePanel1.ClientID %>.el'
+                                                    }
+                                                }
+                                             );
+        }
+
     </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
@@ -61,14 +92,9 @@
                                 </ColumnModel>
                                 <SelectionModel>
                                     <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true">
-                                        <DirectEvents>
-                                            <RowSelect OnEvent="RowSelect" Buffer="100">
-                                                <EventMask ShowMask="true" Target="CustomTarget" CustomTarget="#{TreePanel1}" />
-                                                <ExtraParams>
-                                                    <ext:Parameter Name="RecordID" Value="this.getSelected().id" Mode="Raw" />
-                                                </ExtraParams>
-                                            </RowSelect>
-                                        </DirectEvents>
+                                        <Listeners>
+                                            <RowSelect Buffer="100" Handler="SelectApplication(this.getSelected(),#{TreePanel1});" />
+                                        </Listeners>
                                     </ext:RowSelectionModel>
                                 </SelectionModel>
                                 <LoadMask ShowMask="true" />
@@ -78,8 +104,48 @@
                             </ext:GridPanel>
                         </West>
                         <Center>
-                            <ext:TreePanel ID="TreePanel1" runat="server" Title="菜单管理" AutoScroll="true" Frame="true" RootVisible=false>
-                                <Root>
+                            <ext:TreePanel ID="TreePanel1" runat="server" Title="菜单管理" AutoScroll="true" Frame="true"
+                                RootVisible="false">
+                                     <TopBar>
+                                     <ext:Toolbar ID="ToolBar1" runat="server">
+                                        <Items>
+                                            <ext:Button ID="ToolbarButton1" runat="server" Icon="Add" Text="Add root menu">
+                                                <Listeners>
+                                                    <Click Handler="ShowAddForm(#{cbApplication}.getValue(),'');" />
+                                                </Listeners>
+                                            </ext:Button>
+                                            <ext:Button ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="Root menu sort">
+                                                <Listeners>
+                                                    <Click Handler="showReorderForm(0,#{storeSubMenus},#{cbApplication}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
+                                                </Listeners>
+                                            </ext:Button>
+                                            <ext:Button ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="Root menu auto sort">
+                                                <Listeners>
+                                                    <Click Handler="AutoReorder(0,#{cbApplication}.getValue());" />
+                                                </Listeners>
+                                            </ext:Button>
+                                            <ext:Button ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="Expand all">
+                                                <Listeners>
+                                                    <Click Handler="#{TreePanel1}.root.expand(true);" />
+                                                </Listeners>
+                                                <ToolTips>
+                                                    <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="Expand All" />
+                                                </ToolTips>
+                                            </ext:Button>
+                                            <ext:Button ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="Collapse all">
+                                                <Listeners>
+                                                    <Click Handler="#{TreePanel1}.root.collapse(true);" />
+                                                </Listeners>
+                                                <ToolTips>
+                                                    <ext:ToolTip ID="ToolTip2" IDMode="Ignore" runat="server" Html="Collapse All" />
+                                                </ToolTips>
+                                            </ext:Button>
+                                            <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
+                                        </Items>
+                                    </ext:Toolbar>
+                                     
+                                     </TopBar>                              
+                                <Root >
                                     <ext:TreeNode Text="Root" Expanded="true">
                                         <Nodes>
                                             <ext:TreeNode Text="Folder 1" Qtip="Rows dropped here will be appended to the folder">

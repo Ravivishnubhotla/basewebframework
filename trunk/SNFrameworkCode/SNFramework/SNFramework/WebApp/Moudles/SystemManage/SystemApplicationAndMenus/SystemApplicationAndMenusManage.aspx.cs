@@ -11,6 +11,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using TreeNode = Ext.Net.TreeNode;
+using TreeNodeCollection = Ext.Net.TreeNodeCollection;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus
 {
@@ -24,51 +25,49 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         }
 
 
-        protected void RowSelect(object sender, DirectEventArgs e)
+        [DirectMethod]
+        public string GetTreeNodes(string selectNodeID)
         {
-            int recordID = Convert.ToInt32(e.ExtraParams["RecordID"]);
+            int applicationid = int.Parse(selectNodeID);
 
-            SystemApplicationWrapper applicationWrapper = SystemApplicationWrapper.FindById(recordID);
+            SystemApplicationWrapper applicationWrapper = SystemApplicationWrapper.FindById(applicationid);
 
             if (applicationWrapper != null)
             {
-                this.TreePanel1.Title = applicationWrapper.LocaLocalizationName + " - 子菜单管理";
-
                 List<NavMenu> menus = SystemMenuWrapper.GetNavMenuByApplication(applicationWrapper);
 
-     
-
-                Ext.Net.TreeNode root = new TreeNode();
-                root.Text = applicationWrapper.LocaLocalizationName;
-                root.Icon = Icon.Folder;
-                this.TreePanel1.Root.
-                                this.TreePanel1.SetRootNode(root);
-
-                if (!(menus == null || menus.Count == 0))
-                {
-                    foreach (var menu in menus)
-                    {
-                        TreeNode mainNode = new TreeNode();
-                        mainNode.Text = menu.Name;
-                        mainNode.NodeID = menu.Id;
-                        WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
-                        //if (menu.IsCategory)
-                        //    mainNode.Icon = Icon.Folder;
-                        //else
-                        //    mainNode.Icon = Icon.ApplicationForm;
-                        mainNode.CustomAttributes.Add(new ConfigItem("IsGroup", "1", ParameterMode.Value));
-                        mainNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
-                        GenerateSubTreeNode(mainNode, menu);
-                        root.Nodes.lo
-                    }
-
-                }
-
-
- 
+                return BuildTree(menus, applicationWrapper.SystemApplicationName).ToJson();
             }
 
+            return "";
+        }
 
+        private TreeNodeCollection BuildTree(List<NavMenu> menus, string rootName)
+        {
+            TreeNodeCollection nodes = new TreeNodeCollection();
+
+            TreeNode root = new TreeNode();
+            root.Text = rootName;
+            root.Icon = Icon.Folder;
+
+            nodes.Add(root);
+
+            if (menus == null || menus.Count == 0)
+                return nodes;
+
+            foreach (var menu in menus)
+            {
+                TreeNode mainNode = new TreeNode();
+                mainNode.Text = menu.Name;
+                mainNode.NodeID = menu.Id;
+                WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
+                mainNode.CustomAttributes.Add(new ConfigItem("IsGroup", "1", ParameterMode.Value));
+                mainNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
+                GenerateSubTreeNode(mainNode, menu);
+                root.Nodes.Add(mainNode);
+            }
+
+            return nodes;
         }
 
         private void GenerateSubTreeNode(TreeNode mainNode, NavMenu menu)
@@ -79,10 +78,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
                 subNode.Text = sMenu.Name;
                 subNode.NodeID = sMenu.Id;
                 WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
-                //if (sMenu.IsCategory)
-                //    subNode.Icon = Icon.Folder;
-                //else
-                //    subNode.Icon = Icon.ApplicationForm;
                 subNode.CustomAttributes.Add(new ConfigItem("IsGroup", (sMenu.IsCategory ? "1" : "0"), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
                 GenerateSubTreeNode(subNode, sMenu);
