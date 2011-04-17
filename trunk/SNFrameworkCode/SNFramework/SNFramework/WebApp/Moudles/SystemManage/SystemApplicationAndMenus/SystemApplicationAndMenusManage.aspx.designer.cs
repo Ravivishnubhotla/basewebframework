@@ -31,6 +31,51 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.Store storeSystemApplication;
         
         /// <summary>
+        /// UCSystemApplicationAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemApplicationAdd UCSystemApplicationAdd1;
+        
+        /// <summary>
+        /// UCSystemApplicationEdit2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemApplicationEdit UCSystemApplicationEdit2;
+        
+        /// <summary>
+        /// UCSystemMenuAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemMenuAdd UCSystemMenuAdd1;
+        
+        /// <summary>
+        /// UCSystemMenuEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemMenuEdit UCSystemMenuEdit1;
+        
+        /// <summary>
+        /// UCSystemMenuManualResort1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemMenuManualResort UCSystemMenuManualResort1;
+        
+        /// <summary>
         /// Viewport1 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +110,42 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.GridPanel GridPanel1;
+        
+        /// <summary>
+        /// tbTop control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar tbTop;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnAdd;
+        
+        /// <summary>
+        /// btnRefresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnRefresh;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
         /// RowSelectionModel1 control.
@@ -103,13 +184,22 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         protected global::Ext.Net.Toolbar ToolBar1;
         
         /// <summary>
-        /// ToolbarButton1 control.
+        /// ToolbarTextItem1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button ToolbarButton1;
+        protected global::Ext.Net.ToolbarTextItem ToolbarTextItem1;
+        
+        /// <summary>
+        /// tbAddRootMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button tbAddRootMenu;
         
         /// <summary>
         /// ToolbarButton2 control.
@@ -173,5 +263,77 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.ToolbarFill ToolbarFill1;
+        
+        /// <summary>
+        /// StatusBar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.StatusBar StatusBar1;
+        
+        /// <summary>
+        /// cmenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Menu cmenu;
+        
+        /// <summary>
+        /// addItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem addItem;
+        
+        /// <summary>
+        /// editItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem editItem;
+        
+        /// <summary>
+        /// deleteItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem deleteItem;
+        
+        /// <summary>
+        /// sortItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem sortItem;
+        
+        /// <summary>
+        /// autoSortItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MenuItem autoSortItem;
+        
+        /// <summary>
+        /// hidSelectAppID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidSelectAppID;
     }
 }

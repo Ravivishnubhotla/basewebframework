@@ -121,6 +121,8 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\GlobalResource.en-US.xml" />
+    <Content Include="App_GlobalResources\GlobalResource.zh-CHS.xml" />
     <Content Include="App_GlobalResources\GlobalResource.xml" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -137,6 +139,11 @@
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\SystemApplicationAndMenusManage.aspx" />
+    <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationAdd.ascx" />
+    <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationEdit.ascx" />
+    <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx" />
+    <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx" />
+    <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -488,6 +495,41 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\SystemApplicationAndMenusManage.aspx.designer.cs">
       <DependentUpon>SystemApplicationAndMenusManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationAdd.ascx.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationEdit.ascx.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemApplicationEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx.cs">
+      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx.cs">
+      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx.cs">
+      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx.designer.cs">
+      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.cs">
       <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>

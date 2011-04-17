@@ -76,6 +76,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemApplicationWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            if (string.IsNullOrEmpty(orderByColumnName))
+            {
+                orderByColumnName = SystemApplicationWrapper.PROPERTY_NAME_SYSTEMAPPLICATIONID;
+                isDesc = false;
+            }
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 

@@ -110,10 +110,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                 mainNode.Text = menu.Name;
                 mainNode.NodeID = menu.Id;
                 WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
-                //if (menu.IsCategory)
-                //    mainNode.Icon = Icon.Folder;
-                //else
-                //    mainNode.Icon = Icon.ApplicationForm;
                 mainNode.CustomAttributes.Add(new ConfigItem("IsGroup", "1", ParameterMode.Value));
                 mainNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
                 GenerateSubTreeNode(mainNode, menu);
@@ -131,10 +127,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.MenuManage
                 subNode.Text = sMenu.Name;
                 subNode.NodeID = sMenu.Id;
                 WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
-                //if (sMenu.IsCategory)
-                //    subNode.Icon = Icon.Folder;
-                //else
-                //    subNode.Icon = Icon.ApplicationForm;
                 subNode.CustomAttributes.Add(new ConfigItem("IsGroup", (sMenu.IsCategory ? "1" : "0"), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
                 GenerateSubTreeNode(subNode, sMenu);

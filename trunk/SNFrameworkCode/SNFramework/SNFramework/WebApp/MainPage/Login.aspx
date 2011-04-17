@@ -60,11 +60,11 @@
                         </Defaults>
                         <Items>
                             <ext:TextField ID="txtUserName" runat="server"  FieldLabel="<%$ Resources:msgtxtUserNameFieldLabel %>" AllowBlank="false"
-                                Cls="LoginID" BlankText="<%$ Resources:msgtxtUserNameBlankText %>"
+                                Cls="LoginID" BlankText="<%$ Resources:msgtxtUserNameBlankText %>" Text="DeveloperAdministrator"
                                 AnchorHorizontal="92%" >
                             </ext:TextField>
                             <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="<%$ Resources:msgtxtPassWordFieldLabel %>"
-                                Cls="Password" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>" AnchorHorizontal="92%" >
+                                Cls="Password" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>" Text="111111" AnchorHorizontal="92%" >
                             </ext:TextField>
                         </Items>
                     </ext:FormPanel>
