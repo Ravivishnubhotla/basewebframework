@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgAdd" value="添加" />
+  <add name="msgEdit" value="编辑" />
+  <add name="msgReload" value="刷新" />
+  <add name="msgDelete" value="删除" />
+  <add name="msgErrorMsg" value="系统错误，错误信息:" />
+</resources>

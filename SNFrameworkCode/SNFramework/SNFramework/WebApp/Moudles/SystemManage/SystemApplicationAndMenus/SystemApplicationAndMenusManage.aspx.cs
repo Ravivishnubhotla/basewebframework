@@ -26,6 +26,49 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
 
 
         [DirectMethod]
+        public void DeleteMenu(string smenuID)
+        {
+
+            try
+            {
+                int menuID = int.Parse(smenuID);
+
+                SystemMenuWrapper.DeleteByID(menuID);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(e.Message);
+                return;
+            }
+
+        }
+
+        [DirectMethod]
+        public void AutoMaticSortSubItems(string appid, string pmenuID)
+        {
+            try
+            {
+                int menuID = int.Parse(pmenuID);
+
+                int iappID = int.Parse(appid);
+
+                SystemMenuWrapper.AutoMaticSortSubItems(iappID, menuID);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(e.Message);
+                return;
+            }
+
+        }
+
+        [DirectMethod]
         public string GetTreeNodes(string selectNodeID)
         {
             int applicationid = int.Parse(selectNodeID);
