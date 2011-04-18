@@ -115,20 +115,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         static SystemTerminologyWrapper()
         {
-            languages = new Dictionary<string, Dictionary<string, string>>();
+            InitData();
+        }
 
-            List<SystemTerminologyWrapper> systemTerminologyWrappers = SystemTerminologyWrapper.FindAll();
+	    private static void InitData()
+	    {
+	        languages = new Dictionary<string, Dictionary<string, string>>();
 
-            foreach (SystemTerminologyWrapper systemTerminologyWrapper in systemTerminologyWrappers)
-            {
-                if(!languages.ContainsKey(systemTerminologyWrapper.Code))
-                {
-                    Dictionary<string, string> dictionary = new Dictionary<string, string>();
-                    languages.Add(systemTerminologyWrapper.Code,new Dictionary<string, string>());
+	        List<SystemTerminologyWrapper> systemTerminologyWrappers = SystemTerminologyWrapper.FindAll();
 
-                }
-                languages[systemTerminologyWrapper.Code].Add(systemTerminologyWrapper.LanguageType,systemTerminologyWrapper.Text);
-            }
+	        foreach (SystemTerminologyWrapper systemTerminologyWrapper in systemTerminologyWrappers)
+	        {
+	            if(!languages.ContainsKey(systemTerminologyWrapper.Code))
+	            {
+	                Dictionary<string, string> dictionary = new Dictionary<string, string>();
+	                languages.Add(systemTerminologyWrapper.Code,new Dictionary<string, string>());
+
+	            }
+	            languages[systemTerminologyWrapper.Code].Add(systemTerminologyWrapper.LanguageType,systemTerminologyWrapper.Text);
+	        }
+	    }
+
+
+        public static void ResetData()
+        {
+            InitData();
         }
 
 	    private static string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode)
