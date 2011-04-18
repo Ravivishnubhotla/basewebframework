@@ -135,6 +135,9 @@
     <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.zh-CHS.xml" />

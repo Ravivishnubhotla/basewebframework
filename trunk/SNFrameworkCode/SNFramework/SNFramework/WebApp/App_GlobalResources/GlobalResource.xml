@@ -2,7 +2,22 @@
 <resources>
   <add name="msgAdd" value="Add" />
   <add name="msgEdit" value="Edit" />
-  <add name="msgReload" value="Reload" />
+  <add name="msgRefresh" value="Refresh" />
   <add name="msgDelete" value="Delete" />
+  <add name="msgCancel" value="Cancel" />
+  <add name="msgSearch" value="Search" />
+  <add name="msgManage" value="Manage" />
+  <add name="msgAction" value="Action" />
+  <add name="msgDataAction" value="Data Action" />
+  <add name="msgPageInfo" value="Show record {0} - {1} total {2}" />
+  <add name="msgNoRecordInfo" value="No matched record" /> 
   <add name="msgErrorMsg" value="Error Message :" />
+  <add name="msgTrue" value="Yes" />
+  <add name="msgFalse" value="No" />
+  <add name="msgOpFailed" value="Operation failed" />
+  <add name="msgOpSuccessful" value="Operation Successful" />
+  <add name="msgProcessing" value="Processing..." />
+  <add name="msgWarning" value="warning" />
+  <add name="msgDeleteWarning" value="Are you sure delete this record?" />
+  <add name="msgDeleteSuccessful" value="Delete record successful!" />
 </resources>

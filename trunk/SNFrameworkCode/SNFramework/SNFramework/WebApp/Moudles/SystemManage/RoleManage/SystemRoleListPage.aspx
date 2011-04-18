@@ -3,20 +3,17 @@
 
 <%@ Register Src="UCSystemRoleAdd.ascx" TagName="UCSystemRoleAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemRoleEdit.ascx" TagName="UCSystemRoleEdit" TagPrefix="uc2" %>
- 
- 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var rooturl = '<%=this.ResolveUrl("~/")%>';
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
      function CloseWinAssignedMenu()
@@ -42,11 +39,11 @@
                 Ext.net.DirectMethods.UCSystemRoleAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 });    
         
@@ -58,11 +55,11 @@
                 Ext.net.DirectMethods.UCSystemRoleEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -79,7 +76,7 @@
 
             if (cmd == "cmdDelete") 
             {
-                    Ext.MessageBox.confirm('warning','Are you sure delete system role?',
+                    Ext.MessageBox.confirm('warning','Are you sure delete this record?',
                         function(e) 
                         {
                             if (e == 'yes')
@@ -87,14 +84,14 @@
                                                                     id.id,
                                                                     {
                                                                         failure: function(msg) {
-                                                                            Ext.Msg.alert('Operation failed', msg);
+                                                                            Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                         },
                                                                         success: function(result) { 
-                                                                            Ext.Msg.alert('Operation Successful', 'Delete system role successful!',RefreshData);            
+                                                                            Ext.Msg.alert('Operation Successful', 'Delete record successful!',RefreshData);            
                                                                         },
                                                                         eventMask: {
                                                                                     showMask: true,
-                                                                                    msg: 'Processing...'
+                                                                                    msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                         }
                                                                     }
                                                                 );
@@ -119,7 +116,6 @@
      }
 
     </script>
-
     <ext:Store ID="storeSystemRole" runat="server" AutoLoad="true" RemoteSort="true"
         OnRefreshData="storeSystemRole_Refresh">
         <AutoLoadParams>
@@ -141,8 +137,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemRoleAdd ID="UCSystemRoleAdd1" runat="server" />
     <uc2:UCSystemRoleEdit ID="UCSystemRoleEdit1" runat="server" />
- 
- 
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemRole" runat="server" StoreID="storeSystemRole"
@@ -150,14 +144,16 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
+                                Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnSearch' runat="server" Text="Search" Icon="Find">
+                            <ext:Button ID='btnSearch' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>" Icon="Find">
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
+                                Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemRole}.reload();" />
                                 </Listeners>
@@ -185,23 +181,19 @@
                             Width="90">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn Header="System Role Management" Width="200">
+                        <ext:CommandColumn Width="80" Header="管理">
                             <Commands>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
-                                    <ToolTip Text="Edit" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
-                                    <ToolTip Text="Delete" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdAssignedApp" Text="Assign Application">
-                                    <ToolTip Text="Assigned Apply" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" Text="Assign Menu">
-                                    <ToolTip Text="Menu Permission" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="GroupKey" CommandName="cmdAssignedPermission" Text="Assign Permission">
-                                    <ToolTip Text="System Permission" />
-                                </ext:GridCommand>
+                                <ext:SplitCommand Text="操作" ToolTip-Text="数据操作">
+                                    <Menu EnableScrolling="true" ShowSeparator="true">
+                                        <Items>
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
+                                            <ext:MenuCommand Text="Assign Application" Icon="ApplicationEdit" CommandName="cmdAssignedApp" />
+                                            <ext:MenuCommand Text="Assign Menu" Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" />
+                                            <ext:MenuCommand Text="Assign Permission" Icon="GroupKey" CommandName="cmdAssignedPermission" />
+                                        </Items>
+                                    </Menu>
+                                </ext:SplitCommand>
                             </Commands>
                         </ext:CommandColumn>
                     </Columns>
@@ -209,7 +201,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemRole"
-                        DisplayInfo="true" DisplayMsg="Show System Role {0} - {1} total {2}" EmptyMsg="No matched recordSystem Role" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -217,7 +209,7 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-        <ext:Window ID="winAssignedMenu" runat="server" Title="Window" Frame="true" Width="700"
+    <ext:Window ID="winAssignedMenu" runat="server" Title="Window" Frame="true" Width="700"
         ConstrainHeader="true" Height="500" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="SystemRoleAssignedMenu.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
@@ -245,7 +237,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-        <ext:Window ID="winAssignedPermission" runat="server" Title="Window" Frame="true"
+    <ext:Window ID="winAssignedPermission" runat="server" Title="Window" Frame="true"
         Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SystemRoleAssignedPrivilege.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
@@ -259,5 +251,4 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    
 </asp:Content>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgAssignApplicationTitle" value="Role '{0}' Assign Application" />
+  <add name="msgAssignMenuTitle" value="Role '{0}' Assign Menu " />
+  <add name="msgAssignPermissionTitle" value="Role '{0}' Assign Permission " />
+</resources>
+

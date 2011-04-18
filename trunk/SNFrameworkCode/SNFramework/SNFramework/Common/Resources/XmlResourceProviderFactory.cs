@@ -13,7 +13,7 @@ namespace Legendigital.Framework.Common.Resources
         public override IResourceProvider CreateGlobalResourceProvider(string classKey)
         {
 
-            string directory = HttpContext.Current.Server.MapPath("GlobalResources");
+            string directory = HttpContext.Current.Server.MapPath("~/App_GlobalResources");
 
             return new XmlResourceProvider(directory, classKey);
 

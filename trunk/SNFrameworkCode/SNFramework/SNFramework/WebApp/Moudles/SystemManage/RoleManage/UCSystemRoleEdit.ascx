@@ -19,7 +19,7 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemRole" runat="server" Text="编辑" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemRole" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemRoleEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemRole_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了系统角色。',callback);function callback(id) {#{formPanelSystemRoleEdit}.getForm().reset();#{storeSystemRole}.reload(); };
@@ -28,7 +28,7 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemRole" runat="server" Text="取消" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemRole" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemRoleEdit}.hide();" />
             </Listeners>
