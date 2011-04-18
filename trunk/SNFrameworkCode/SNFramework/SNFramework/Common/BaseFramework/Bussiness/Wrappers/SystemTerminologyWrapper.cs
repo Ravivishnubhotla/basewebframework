@@ -111,9 +111,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return localName;
         }
 
+        private static Dictionary<string, Dictionary<string, string>> languages;
+
+        static SystemTerminologyWrapper()
+        {
+            languages = new Dictionary<string, Dictionary<string, string>>();
+
+            List<SystemTerminologyWrapper> systemTerminologyWrappers = SystemTerminologyWrapper.FindAll();
+
+            foreach (SystemTerminologyWrapper systemTerminologyWrapper in systemTerminologyWrappers)
+            {
+                if(!languages.ContainsKey(systemTerminologyWrapper.Code))
+                {
+                    Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                    languages.Add(systemTerminologyWrapper.Code,new Dictionary<string, string>());
+
+                }
+                languages[systemTerminologyWrapper.Code].Add(systemTerminologyWrapper.LanguageType,systemTerminologyWrapper.Text);
+            }
+        }
+
 	    private static string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode)
 	    {
-	        return businessProxy.GetLocalizationNameByTypeAndCode(localizationType, localizationCode);
+            if (languages.ContainsKey(localizationCode) && languages[localizationCode].ContainsKey(localizationType))
+                return languages[localizationCode][localizationType];
+	        return "";
 	    }
 
 
