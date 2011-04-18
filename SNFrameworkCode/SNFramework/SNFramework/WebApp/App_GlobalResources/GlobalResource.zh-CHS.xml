@@ -2,7 +2,22 @@
 <resources>
   <add name="msgAdd" value="添加" />
   <add name="msgEdit" value="编辑" />
-  <add name="msgReload" value="刷新" />
+  <add name="msgRefresh" value="刷新" />
   <add name="msgDelete" value="删除" />
-  <add name="msgErrorMsg" value="系统错误，错误信息:" />
+  <add name="msgCancel" value="取消" />
+  <add name="msgSearch" value="搜索" />
+  <add name="msgManage" value="管理" />
+  <add name="msgAction" value="操作" />
+  <add name="msgDataAction" value="数据操作" />
+  <add name="msgPageInfo" value="显示记录 {0} - {1} 共 {2}" />
+  <add name="msgNoRecordInfo" value="没有匹配的记录" />
+  <add name="msgErrorMsg" value="错误信息:" />
+  <add name="msgTrue" value="是" />
+  <add name="msgFalse" value="否" />
+  <add name="msgOpFailed" value="操作失败" />
+  <add name="msgOpSuccessful" value="操作成功" />
+  <add name="msgProcessing" value="处理中..." />
+  <add name="msgWarning" value="警告" />
+  <add name="msgDeleteWarning" value="确认要删除该条数据？" />
+  <add name="msgDeleteSuccessful" value="删除数据成功！" />
 </resources>

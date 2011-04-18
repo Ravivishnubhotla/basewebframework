@@ -15,7 +15,7 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemRole" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSaveSystemRole" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemRoleAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemRole_Click" Success="Ext.MessageBox.alert('Operation successful', 'Success Added System Role',callback);function callback(id) {#{formPanelSystemRoleAdd}.getForm().reset();#{storeSystemRole}.reload(); };
@@ -24,7 +24,7 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemRole" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemRole" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemRoleAdd}.hide();" />
             </Listeners>
