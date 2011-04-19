@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <add name="msgAssignApplicationTitle" value="Role '{0}' Assign Application" />
-  <add name="msgAssignMenuTitle" value="Role '{0}' Assign Menu " />
-  <add name="msgAssignPermissionTitle" value="Role '{0}' Assign Permission " />
+  <add name="msgGridTitle" value="System Role Management" />
+  <add name="msgAssignApplicationTitle" value="Role \'{0}\' Assign Application" />
+  <add name="msgAssignMenuTitle" value="Role \'{0}\' Assign Menu " />
+  <add name="msgAssignPermissionTitle" value="Role \'{0}\' Assign Permission " />
+  <add name="msgAssignApplicationBtnText" value="Assign Application" />
+  <add name="msgAssignMenuBtnText" value="Assign Menu" />
+  <add name="msgAssignPermissionBtnText" value="Assign Permission" />
+  <add name="msgcolRoleName" value="Name" />
+  <add name="msgcolRoleDescription" value="Description" />
+  <add name="msgcolIsSystemRole" value="System Role" />
 </resources>
 

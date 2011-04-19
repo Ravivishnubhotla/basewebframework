@@ -103,7 +103,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             if (!name.StartsWith("[L]"))
                 return name;
 
-            string localName = GetLocalizationNameByTypeAndCode(localizationType, name.Replace("[L]",""));
+            string localName = GetLocalizationNameByTypeAndCode(localizationType.ToLower(), name.Replace("[L]", ""));
 
             if (string.IsNullOrEmpty(localName))
                 return name;
@@ -132,7 +132,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	                languages.Add(systemTerminologyWrapper.Code,new Dictionary<string, string>());
 
 	            }
-	            languages[systemTerminologyWrapper.Code].Add(systemTerminologyWrapper.LanguageType,systemTerminologyWrapper.Text);
+	            languages[systemTerminologyWrapper.Code].Add(systemTerminologyWrapper.LanguageType.ToLower(),systemTerminologyWrapper.Text);
 	        }
 	    }
 
