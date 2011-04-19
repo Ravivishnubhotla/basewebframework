@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Assign Applcations" />
+  <add name="msgFormAvailableApplcations" value="Available Applcations" />
+  <add name="msgFormAssignedApplcations" value="Assigned Applcations" />
+  <add name="msgcolName" value="Name" />
+</resources>

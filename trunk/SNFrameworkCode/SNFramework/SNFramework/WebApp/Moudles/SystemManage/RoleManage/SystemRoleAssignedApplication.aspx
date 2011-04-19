@@ -12,7 +12,7 @@
                             {
                                failure: function(msg) 
                                {
-                                    Ext.Msg.alert('Operation failed', msg, null);
+                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, null);
                                },
                                success: function(result) 
                                { 
@@ -23,7 +23,7 @@
                                eventMask: 
                                {
                                    showMask: true,
-                                   msg: 'Processing...'
+                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                }
                             }              
                 );
@@ -104,17 +104,17 @@
     </ext:Store>
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:Panel ID="Panel1" Title="System Application Assign" runat="server" Frame="true">
+            <ext:Panel ID="Panel1" Title="<%$ Resources:msgFormTitle %>" runat="server" Frame="true">
                 <Items>
                     <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
                         <Columns>
                             <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" Title="Available Applcations"
-                                    Frame="true" StoreID="storeNotAssigned" AutoExpandColumn="columnName">
+                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" Title="<%$ Resources:msgFormAvailableApplcations %>"
+                                    Frame="true" StoreID="storeNotAssigned" AutoExpandColumn="columnName" AutoScroll=true>
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="LocaLocalizationName" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -185,14 +185,14 @@
                                 </ext:Panel>
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel2" Title="Assigned Applcations" Frame="true"
-                                    EnableDragDrop="false" StoreID="storeAssigned" AutoExpandColumn="columnName">
+                                <ext:GridPanel runat="server" ID="GridPanel2" Title="<%$ Resources:msgFormAssignedApplcations %>" Frame="true"
+                                    EnableDragDrop="false" StoreID="storeAssigned" AutoExpandColumn="columnName" AutoScroll=true>
                                     <Listeners>
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="LocaLocalizationName" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -205,12 +205,12 @@
                     </ext:ColumnLayout>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btnSave" runat="server" Text="Save" Icon="Disk">
+                    <ext:Button ID="btnSave" runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>" Icon="Disk">
                         <Listeners>
                             <Click Handler="btSave_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)))" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="Cancel" Icon="Cancel">
+                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
                         <Listeners>
                             <Click Handler="parent.CloseWinAssignedApplication();" />
                         </Listeners>

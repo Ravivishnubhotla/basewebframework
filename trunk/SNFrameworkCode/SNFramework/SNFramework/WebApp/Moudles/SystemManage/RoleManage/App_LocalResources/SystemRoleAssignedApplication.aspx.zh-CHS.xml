@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="角色分配应用" />
+  <add name="msgFormAvailableApplcations" value="可用应用" />
+  <add name="msgFormAssignedApplcations" value="分配菜单" />
+  <add name="msgcolName" value="名称" />
+</resources>
