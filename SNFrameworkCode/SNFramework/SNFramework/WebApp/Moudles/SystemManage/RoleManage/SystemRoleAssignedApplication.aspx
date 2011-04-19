@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemRoleAssignedApplication.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage.SystemRoleAssignedApplication" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SystemRoleAssignedApplication.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage.SystemRoleAssignedApplication" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server" />
-
     <script type="text/javascript">
              function btSave_Click(json)
             {
@@ -79,13 +80,13 @@
                 }
            };
     </script>
-
     <ext:Store runat="server" ID="storeNotAssigned" AutoLoad="true" OnRefreshData="storeNotAssigned_RefreshData">
         <Reader>
             <ext:JsonReader>
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
+                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -96,6 +97,7 @@
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
+                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -112,7 +114,7 @@
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="SystemApplicationName" />
+                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -190,7 +192,7 @@
                                     <ColumnModel ID="ColumnModel2" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="SystemApplicationName" />
+                                            <ext:Column ColumnID="columnName" Header="Application Name" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -218,4 +220,3 @@
         </Items>
     </ext:Viewport>
 </asp:Content>
-

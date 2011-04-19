@@ -20,4 +20,6 @@
   <add name="msgWarning" value="warning" />
   <add name="msgDeleteWarning" value="Are you sure delete this record?" />
   <add name="msgDeleteSuccessful" value="Delete record successful!" />
+  <add name="msgSavingWaiting" value="saving,Please waiting...." />
+  <add name="msgShowError" value="Ext.Msg.alert('Operation Failed', result.errorMessage);" />
 </resources>

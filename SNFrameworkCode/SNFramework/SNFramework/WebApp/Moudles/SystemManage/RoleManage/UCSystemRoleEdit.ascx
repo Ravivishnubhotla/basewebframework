@@ -23,8 +23,8 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemRoleEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemRole_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了系统角色。',callback);function callback(id) {#{formPanelSystemRoleEdit}.getForm().reset();#{storeSystemRole}.reload(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>

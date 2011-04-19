@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="添加角色" />
+  <add name="msgFiledRoleNameTitle" value="名称" />
+  <add name="msgFiledIsSystemRoleTitle" value="是否系统角色" />
+  <add name="msgFiledDescriptionTitle" value="描述" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加角色成功',callback);function callback(id) {#{formPanelSystemRoleAdd}.getForm().reset();#{storeSystemRole}.reload(); };" />
+</resources>

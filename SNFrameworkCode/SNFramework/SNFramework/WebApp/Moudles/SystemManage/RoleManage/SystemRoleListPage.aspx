@@ -70,13 +70,13 @@
             {
                  var win = <%= winAssignedApplication.ClientID %>;
               win.autoLoad.params.RoleID = id.id;
-              win.setTitle("Role '" + id.data.RoleName + "' Assign Application ");
+              win.setTitle(String.format('<%= GetLocalResourceObject("msgAssignApplicationTitle").ToString() %>',id.data.RoleName));
               win.show();            
             }
 
             if (cmd == "cmdDelete") 
             {
-                    Ext.MessageBox.confirm('warning','Are you sure delete this record?',
+                    Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                         function(e) 
                         {
                             if (e == 'yes')
@@ -87,7 +87,7 @@
                                                                             Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                         },
                                                                         success: function(result) { 
-                                                                            Ext.Msg.alert('Operation Successful', 'Delete record successful!',RefreshData);            
+                                                                            Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);            
                                                                         },
                                                                         eventMask: {
                                                                                     showMask: true,
@@ -102,7 +102,7 @@
             {
                var win = <%= winAssignedMenu.ClientID %>;
               win.autoLoad.params.RoleID = id.id;
-              win.setTitle("Role '" + id.data.RoleName + "' Assign Menu ");
+              win.setTitle(String.format('<%= GetLocalResourceObject("msgAssignMenuTitle").ToString() %>',id.data.RoleName));
               win.show();
             }
            
@@ -110,7 +110,7 @@
             {
                var win = <%= winAssignedPermission.ClientID %>;
               win.autoLoad.params.RoleID = id.id;
-              win.setTitle("Role '" + id.data.RoleName + "' Assign Permission");
+              win.setTitle(String.format('<%= GetLocalResourceObject("msgAssignPermissionTitle").ToString() %>',id.data.RoleName));
               win.show();
            }
      }
@@ -140,7 +140,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemRole" runat="server" StoreID="storeSystemRole"
-                StripeRows="true" Title="System Role Management" Icon="Table" AutoExpandColumn="colRoleDescription">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon="Table" AutoExpandColumn="colRoleDescription">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
@@ -172,25 +172,25 @@
                         </ext:RowNumbererColumn>
                         <ext:Column DataIndex="RoleID" Header="ID" Sortable="true" Width="50">
                         </ext:Column>
-                        <ext:Column DataIndex="RoleName" Header="Role Name" Sortable="true">
+                        <ext:Column DataIndex="RoleName" Header="<%$ Resources:msgcolRoleName %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colRoleDescription" DataIndex="RoleDescription" Header="RoleDescription"
+                        <ext:Column ColumnID="colRoleDescription" DataIndex="RoleDescription" Header="<%$ Resources:msgcolRoleDescription %>"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column DataIndex="RoleIsSystemRole" Header="Is System Role" Sortable="true"
+                        <ext:Column DataIndex="RoleIsSystemRole" Header="<%$ Resources:msgcolIsSystemRole %>" Sortable="true"
                             Width="90">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn Width="80" Header="管理">
+                        <ext:CommandColumn Width="80" Header="<%$ Resources : GlobalResource, msgManage  %>">
                             <Commands>
-                                <ext:SplitCommand Text="操作" ToolTip-Text="数据操作">
+                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" ToolTip-Text="<%$ Resources : GlobalResource, msgDataAction  %>">
                                     <Menu EnableScrolling="true" ShowSeparator="true">
                                         <Items>
                                             <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
                                             <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
-                                            <ext:MenuCommand Text="Assign Application" Icon="ApplicationEdit" CommandName="cmdAssignedApp" />
-                                            <ext:MenuCommand Text="Assign Menu" Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" />
-                                            <ext:MenuCommand Text="Assign Permission" Icon="GroupKey" CommandName="cmdAssignedPermission" />
+                                            <ext:MenuCommand Text="<%$ Resources:msgAssignApplicationBtnText %>" Icon="ApplicationEdit" CommandName="cmdAssignedApp" />
+                                            <ext:MenuCommand Text="<%$ Resources:msgAssignMenuBtnText %>" Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" />
+                                            <ext:MenuCommand Text="<%$ Resources:msgAssignPermissionBtnText %>" Icon="GroupKey" CommandName="cmdAssignedPermission" />
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
