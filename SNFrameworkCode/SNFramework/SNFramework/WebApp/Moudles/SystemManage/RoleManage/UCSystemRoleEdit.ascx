@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemRoleEdit.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage.UCSystemRoleEdit" %>
-<ext:Window ID="winSystemRoleEdit" runat="server" Icon="ApplicationEdit" Title="编辑系统角色"
+<ext:Window ID="winSystemRoleEdit" runat="server" Icon="ApplicationEdit" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true"  Layout="fit">
     <Content>
@@ -9,11 +9,11 @@
             <Items>
                 <ext:Hidden ID="hidSystemRoleID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtRoleName" runat="server" FieldLabel="角色名" AllowBlank="True"
+                <ext:TextField ID="txtRoleName" runat="server" FieldLabel="<%$ Resources:msgFiledRoleNameTitle %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtRoleDescription" runat="server" FieldLabel="描述" AllowBlank="True"
+                <ext:TextArea ID="txtRoleDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkRoleIsSystemRole" runat="server" FieldLabel="是否为系统角色" Checked="false"
+                <ext:Checkbox ID="chkRoleIsSystemRole" runat="server" FieldLabel="<%$ Resources:msgFiledIsSystemRoleTitle %>" Checked="false"
                     AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
@@ -22,8 +22,7 @@
         <ext:Button ID="btnSaveSystemRole" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemRoleEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemRole_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了系统角色。',callback);function callback(id) {#{formPanelSystemRoleEdit}.getForm().reset();#{storeSystemRole}.reload(); };
-" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    OnEvent="btnSaveSystemRole_Click" Success="<%$ Resources:msgUpdateScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>

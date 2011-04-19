@@ -224,7 +224,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winAssignedApplication" runat="server" Title="Window" Frame="true"
-        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SystemRoleAssignedApplication.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
