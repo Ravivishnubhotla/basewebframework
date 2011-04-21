@@ -149,7 +149,7 @@
                                                                     <Click Handler="SystemApplicationSelector.add(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources:msgcolAddTitle %>" Html="<%$ Resources:msgcolAddDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
@@ -157,7 +157,7 @@
                                                                     <Click Handler="SystemApplicationSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources:msgcolAddAllTitle %>" Html="<%$ Resources:msgcolAddAllDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
@@ -165,7 +165,7 @@
                                                                     <Click Handler="SystemApplicationSelector.remove(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources:msgcolRemoveTitle %>" Html="<%$ Resources:msgcolRemoveDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
@@ -173,7 +173,7 @@
                                                                     <Click Handler="SystemApplicationSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources:msgcolRemoveAllTitle %>" Html="<%$ Resources:msgcolRemoveAllDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                         </Items>

@@ -135,7 +135,9 @@
     <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
-    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.en-US.xml" />

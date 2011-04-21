@@ -13,6 +13,7 @@
   <add name="msgPageInfo" value="Show record {0} - {1} total {2}" />
   <add name="msgNoRecordInfo" value="No matched record" /> 
   <add name="msgErrorMsg" value="Error Message :" />
+  <add name="msgServerErrorMsg" value="Error Message : {0}" />
   <add name="msgTrue" value="Yes" />
   <add name="msgFalse" value="No" />
   <add name="msgOpFailed" value="Operation failed" />

@@ -28,7 +28,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(this.GetGlobalResourceObject("GlobalResource", "msgServerErrorMsg").ToString(), ex.Message);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(this.GetGlobalResourceObject("GlobalResource", "msgServerErrorMsg").ToString(), ex.Message);
             }
         }
     }

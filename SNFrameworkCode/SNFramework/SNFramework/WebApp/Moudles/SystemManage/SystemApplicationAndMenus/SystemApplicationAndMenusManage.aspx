@@ -4,7 +4,6 @@
 <%@ Register Src="UCSystemApplicationAdd.ascx" TagName="UCSystemApplicationAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemApplicationEdit.ascx" TagName="UCSystemApplicationEdit"
     TagPrefix="uc2" %>
-
 <%@ Register Src="UCSystemMenuAdd.ascx" TagName="UCSystemMenuAdd" TagPrefix="uc3" %>
 <%@ Register Src="UCSystemMenuEdit.ascx" TagName="UCSystemMenuEdit" TagPrefix="uc4" %>
 <%@ Register Src="UCSystemMenuManualResort.ascx" TagName="UCSystemMenuManualResort"
@@ -46,6 +45,12 @@
                 return '是';
             else
                 return '否';
+        }
+
+ 
+
+        function dragOver(dragOverEvent) { 
+            return (dragOverEvent.point != 'append') && (dragOverEvent.dropNode.getDepth()==dragOverEvent.target.getDepth());
         }
 
         function AutoReorder(id,appID)
@@ -292,7 +297,7 @@
     </script>
     <uc1:UCSystemApplicationAdd ID="UCSystemApplicationAdd1" runat="server" />
     <uc2:UCSystemApplicationEdit ID="UCSystemApplicationEdit2" runat="server" />
-        <uc3:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
+    <uc3:UCSystemMenuAdd ID="UCSystemMenuAdd1" runat="server" />
     <uc4:UCSystemMenuEdit ID="UCSystemMenuEdit1" runat="server" />
     <uc5:UCSystemMenuManualResort ID="UCSystemMenuManualResort1" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
@@ -301,7 +306,7 @@
                 <Items>
                     <ext:BorderLayout ID="BorderLayout1" runat="server">
                         <West Split="true" Collapsible="true">
-                            <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true"
+                            <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true" 
                                 Title="系统应用管理" Width="430" Frame="true" AutoScroll="true" AutoExpandColumn="colLocaLocalizationName">
                                 <TopBar>
                                     <ext:Toolbar ID="tbTop" runat="server">
@@ -365,7 +370,8 @@
                             </ext:GridPanel>
                         </West>
                         <Center>
-                            <ext:TreePanel ID="TreePanel1" runat="server" Title="菜单管理" AutoScroll="true" RootVisible="false">
+                            <ext:TreePanel ID="TreePanel1" runat="server" Title="菜单管理" AutoScroll="true" RootVisible="false"  EnableDD=true
+                               >
                                 <TopBar>
                                     <ext:Toolbar ID="ToolBar1" runat="server">
                                         <Items>
@@ -415,9 +421,11 @@
                                     <ext:StatusBar ID="StatusBar1" runat="server" />
                                 </BottomBar>
                                 <Listeners>
+                                    <NodeDragOver Fn="dragOver" />
                                     <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cmenu},e.getPoint());" />
                                     <Click Handler="#{StatusBar1}.setStatus({text: '当前选中节点: <b>' + node.text + '</b>', clear: false});" />
                                 </Listeners>
+   
                             </ext:TreePanel>
                         </Center>
                     </ext:BorderLayout>
@@ -454,7 +462,6 @@
             </ext:MenuItem>
         </Items>
     </ext:Menu>
-
-                    <ext:Hidden ID="hidSelectAppID" runat="server">
-                </ext:Hidden>
+    <ext:Hidden ID="hidSelectAppID" runat="server">
+    </ext:Hidden>
 </asp:Content>
