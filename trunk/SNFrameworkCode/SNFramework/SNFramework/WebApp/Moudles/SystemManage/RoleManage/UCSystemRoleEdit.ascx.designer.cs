@@ -49,6 +49,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         protected global::Ext.Net.TextField txtRoleName;
         
         /// <summary>
+        /// txtRoleCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtRoleCode;
+        
+        /// <summary>
         /// txtRoleDescription control.
         /// </summary>
         /// <remarks>

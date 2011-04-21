@@ -3,6 +3,7 @@
   <add name="msgFormTitle" value="System Role Add" />
   <add name="msgFiledRoleNameTitle" value="Name" />
   <add name="msgFiledIsSystemRoleTitle" value="System Role" />
+  <add name="msgFiledRoleCodeTitle" value="Code" />
   <add name="msgFiledDescriptionTitle" value="Description" />
   <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Success Added System Role',callback);function callback(id) {#{formPanelSystemRoleAdd}.getForm().reset();#{storeSystemRole}.reload(); };" />
 </resources>

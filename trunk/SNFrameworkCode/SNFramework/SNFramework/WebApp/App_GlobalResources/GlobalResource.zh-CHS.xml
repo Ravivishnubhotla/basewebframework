@@ -13,6 +13,7 @@
   <add name="msgPageInfo" value="显示记录 {0} - {1} 共 {2}" />
   <add name="msgNoRecordInfo" value="没有匹配的记录" />
   <add name="msgErrorMsg" value="错误信息:" />
+  <add name="msgServerErrorMsg" value="错误信息 : {0}" />
   <add name="msgTrue" value="是" />
   <add name="msgFalse" value="否" />
   <add name="msgOpFailed" value="操作失败" />

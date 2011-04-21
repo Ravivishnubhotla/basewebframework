@@ -27,7 +27,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(this.GetGlobalResourceObject("GlobalResource", "msgServerErrorMsg").ToString(), ex.Message);
             }
         }
 
@@ -37,6 +37,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
             {
                 SystemRoleWrapper obj = new SystemRoleWrapper();
                 obj.RoleName = this.txtRoleName.Text.Trim();
+                obj.RoleCode = this.txtRoleCode.Text.Trim();
                 obj.RoleDescription = this.txtRoleDescription.Text.Trim();
                 obj.RoleIsSystemRole = this.chkRoleIsSystemRole.Checked;
 
@@ -49,7 +50,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(this.GetGlobalResourceObject("GlobalResource", "msgServerErrorMsg").ToString(), ex.Message);
             }
         }
     }

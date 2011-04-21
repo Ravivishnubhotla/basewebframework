@@ -4,4 +4,12 @@
   <add name="msgFormAvailableApplcations" value="Available Applcations" />
   <add name="msgFormAssignedApplcations" value="Assigned Applcations" />
   <add name="msgcolName" value="Name" />
+  <add name="msgcolAddTitle" value="Add" />
+  <add name="msgcolAddDescription" value="Add Selected Application" />
+  <add name="msgcolAddAllTitle" value="Add All" />
+  <add name="msgcolAddAllDescription" value="Add All Applications" />
+  <add name="msgcolRemoveTitle" value="Remove" />
+  <add name="msgcolRemoveDescription" value="Remove Selected Application" />
+  <add name="msgcolRemoveAllTitle" value="Remove All" />
+  <add name="msgcolRemoveAllDescription" value="Remove All Application" />
 </resources>

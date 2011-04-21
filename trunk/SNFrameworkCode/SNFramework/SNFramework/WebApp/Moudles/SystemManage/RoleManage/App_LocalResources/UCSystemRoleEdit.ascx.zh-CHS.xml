@@ -3,6 +3,7 @@
   <add name="msgFormTitle" value="编辑角色" />
   <add name="msgFiledRoleNameTitle" value="名称" />
   <add name="msgFiledIsSystemRoleTitle" value="是否系统角色" />
+  <add name="msgFiledRoleCodeTitle" value="编码" />
   <add name="msgFiledDescriptionTitle" value="描述" />
   <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功', '更新角色成功',callback);function callback(id) {#{formPanelSystemRoleAdd}.getForm().reset();#{storeSystemRole}.reload(); };" />
 </resources>

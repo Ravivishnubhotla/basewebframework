@@ -127,6 +127,7 @@
                 <Fields>
                     <ext:RecordField Name="RoleID" Type="int" />
                     <ext:RecordField Name="RoleName" />
+                                        <ext:RecordField Name="RoleCode" />
                     <ext:RecordField Name="RoleDescription" />
                     <ext:RecordField Name="RoleIsSystemRole" Type="Boolean" />
                 </Fields>
@@ -173,6 +174,8 @@
                         <ext:Column DataIndex="RoleID" Header="ID" Sortable="true" Width="50">
                         </ext:Column>
                         <ext:Column DataIndex="RoleName" Header="<%$ Resources:msgcolRoleName %>" Sortable="true">
+                        </ext:Column>
+                                                <ext:Column DataIndex="RoleCode" Header="<%$ Resources:msgcolRoleCode %>" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colRoleDescription" DataIndex="RoleDescription" Header="<%$ Resources:msgcolRoleDescription %>"
                             Sortable="true">

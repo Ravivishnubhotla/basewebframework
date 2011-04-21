@@ -8,6 +8,7 @@
   <add name="msgAssignMenuBtnText" value="Assign Menu" />
   <add name="msgAssignPermissionBtnText" value="Assign Permission" />
   <add name="msgcolRoleName" value="Name" />
+  <add name="msgcolRoleCode" value="Code" />
   <add name="msgcolRoleDescription" value="Description" />
   <add name="msgcolIsSystemRole" value="System Role" />
 </resources>
