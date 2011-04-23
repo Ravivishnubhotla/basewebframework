@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="添加配置" />
+  <add name="msgFiledKeyTitle" value="键" />
+  <add name="msgFiledDescriptionTitle" value="描述" />
+  <add name="msgFiledValueTitle" value="值" />
+  <add name="msgFiledSortIndexTitle" value="排序号" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加配置成功！',callback);function callback(id) {#{formPanelSystemConfigAdd}.getForm().reset();#{storeSystemConfig}.reload(); };" />
+</resources>

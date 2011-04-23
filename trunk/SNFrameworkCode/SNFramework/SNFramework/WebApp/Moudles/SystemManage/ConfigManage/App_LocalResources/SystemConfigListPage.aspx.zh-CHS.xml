@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="配置管理" />
+  <add name="msgcolKey" value="键" />
+  <add name="msgcolValue" value="值" />
+  <add name="msgcolDescription" value="描述" />
+  <add name="msgcolSortIndex" value="排序号" />
+</resources>
+

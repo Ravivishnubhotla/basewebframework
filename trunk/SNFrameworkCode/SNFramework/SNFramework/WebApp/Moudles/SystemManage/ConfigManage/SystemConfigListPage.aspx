@@ -10,9 +10,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
 
@@ -24,11 +24,11 @@
                 Ext.net.DirectMethods.UCSystemConfigAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 });    
         
@@ -40,32 +40,32 @@
                 Ext.net.DirectMethods.UCSystemConfigEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the system config ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete system config successful!',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -104,16 +104,16 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemConfig" runat="server" StoreID="storeSystemConfig"
-                StripeRows="true" Title="System Config Management" Icon="Table">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon=Cog>
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemConfig}.reload();" />
                                 </Listeners>
@@ -130,22 +130,22 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-		<ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="Key" Sortable="true">
+		<ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="<%$ Resources:msgcolKey %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colConfigValue" DataIndex="ConfigValue" Header="Value" Sortable="true">
+		<ext:Column ColumnID="colConfigValue" DataIndex="ConfigValue" Header="<%$ Resources:msgcolValue %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colConfigDescription" DataIndex="ConfigDescription" Header="Description" Sortable="true">
+		<ext:Column ColumnID="colConfigDescription" DataIndex="ConfigDescription" Header="<%$ Resources:msgcolDescription %>" Sortable="true">
                                 </ext:Column>			
-				<ext:Column ColumnID="colSortIndex" DataIndex="SortIndex" Header="Sort Index" Sortable="true">
+				<ext:Column ColumnID="colSortIndex" DataIndex="SortIndex" Header="<%$ Resources:msgcolSortIndex %>" Sortable="true">
                                 </ext:Column>
  
-                        <ext:CommandColumn Header="System Config Management" Width="160">
+                        <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
                             <Commands>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
-                                    <ToolTip Text="Edit" />
+                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
                                 </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete" >
-                                    <ToolTip Text="Delete" />
+                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>" >
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgDelete  %>" />
                                 </ext:GridCommand>
                             </Commands>
                         </ext:CommandColumn>
@@ -154,7 +154,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemConfig"
-                        DisplayInfo="true" DisplayMsg="Show system config {0} - {1} total {2}" EmptyMsg="No matched record system config" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
