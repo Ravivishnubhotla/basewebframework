@@ -129,7 +129,7 @@
                             <Click Handler="btSave_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)))" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="Cancel" Icon="Cancel">
+                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
                         <Listeners>
                             <Click Handler="parent.CloseWinAssignedPermission();" />
                         </Listeners>
@@ -155,7 +155,7 @@
                                eventMask: 
                                {
                                    showMask: true,
-                                   msg: 'Processing...'
+                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                }
                             }              
                 );
