@@ -22,16 +22,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemDepartment" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemDepartment" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemDepartmentAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemDepartment_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add System Deparentment Success',callback);function callback(id) {#{formPanelSystemDepartmentAdd}.getForm().reset();RefreshTreeList1(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemDepartment" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemDepartment" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemDepartmentAdd}.getForm().reset();#{winSystemDepartmentAdd}.hide();" />
             </Listeners>
