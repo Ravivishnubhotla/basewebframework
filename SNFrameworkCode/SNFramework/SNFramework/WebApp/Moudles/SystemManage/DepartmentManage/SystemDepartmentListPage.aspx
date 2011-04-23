@@ -82,7 +82,7 @@
 
 
         function DeleteData(id) {
-                        Ext.MessageBox.confirm('Warning','Are your sure to delete department?',
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are your sure to delete department?',
                     function(e) {
                         if (e == 'yes')
             Ext.net.DirectMethods.DeleteData(
