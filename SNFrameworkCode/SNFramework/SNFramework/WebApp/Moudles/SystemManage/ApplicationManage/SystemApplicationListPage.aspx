@@ -12,9 +12,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'Yes';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'No';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
         var RefreshData = function(btn) {
@@ -25,11 +25,11 @@
                Ext.net.DirectMethods.UCSystemApplicationAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation successful', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 });    
         
@@ -41,11 +41,11 @@
                 Ext.net.DirectMethods.UCSystemApplicationEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -55,21 +55,21 @@
 
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('Warning','Are you sure you want to delete this record?',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure you want to delete this record?',
                     function(e) {
                         if (e == 'yes')
                            Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete the record successful!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -112,12 +112,12 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="ApplicationAdd">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="ApplicationAdd">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemApplication}.reload();" />
                                 </Listeners>
@@ -148,10 +148,10 @@
                         <ext:CommandColumn Width="60">
                             <Commands>
                                 <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
-                                    <ToolTip Text="Edit" />
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
                                 </ext:GridCommand>
                                 <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
-                                    <ToolTip Text="Delete" />
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgDelete  %>" />
                                 </ext:GridCommand>
                             </Commands>
                         </ext:CommandColumn>
