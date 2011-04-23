@@ -42,7 +42,7 @@
                                             <Select Handler="cb_SelectChanged(#{TreePanel1},this,record, index);" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                                    <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSystemApplication}.reload();" />
                                         </Listeners>
@@ -61,7 +61,7 @@
                             <Click Handler="btn_Save(#{TreePanel1},#{winSystemRoleAssignedMenu},#{cbApplication})" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="btnCancelSystemRoleAssignedMenu" runat="server" Text="Cancel" Icon="Cancel">
+                    <ext:Button ID="btnCancelSystemRoleAssignedMenu" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
                         <Listeners>
                             <Click Handler="parent.CloseWinAssignedMenu();" />
                         </Listeners>
@@ -88,7 +88,7 @@
             Ext.net.DirectMethods.GetMenuById(app_id,
                                                                {
                                                                    failure: function(msg) {
-                                                                       Ext.Msg.alert('Operation failed', msg);
+                                                                       Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                    },
                                                                    success: function(result) {
                                                                        var nodes = eval(result);
@@ -102,7 +102,7 @@
                                                                    eventMask:
                                                                {
                                                                    showMask: true,
-                                                                   msg: 'Processing...'
+                                                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                }
                                                                }
                                                              );
@@ -112,7 +112,7 @@
                                                              cbapp.getValue(), getParas(tree),
                                                             {
                                                                 failure: function(msg) {
-                                                                    Ext.Msg.alert('Operation failed', msg);
+                                                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                 },
                                                                 success: function(result) {
                                                                 Ext.MessageBox.alert('Operation successful', 'System Role Assigned menu successfully.', function(btn) { parent.CloseWinAssignedMenu(); });
@@ -120,7 +120,7 @@
                                                                 eventMask:
                                                                  {
                                                                      showMask: true,
-                                                                     msg: 'Processing...'
+                                                                     msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                  }
                                                             }
                                                         );
