@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="添加部门" />
+  <add name="msglblParentMenuName" value="父部门" />
+  <add name="msgtxtDepartmentNameCn" value="名称" />
+  <add name="msgtxtDepartmentNameEn" value="编码" />
+  <add name="msgtxtDepartmentDecription" value="描述" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加部门成功！',callback);function callback(id) {#{formPanelSystemDepartmentAdd}.getForm().reset();RefreshTreeList1(); };" />
+</resources>
