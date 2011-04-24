@@ -223,11 +223,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
 
-        public string DisplayNameRoleType
-        {
-            get { return SysDictionaryWrapper.ParseUserRoleTypeDictionaryKey(this.RoleType); }
 
-        }
 
 	    public static SystemRoleWrapper GetRoleByName(string roleName)
 	    {

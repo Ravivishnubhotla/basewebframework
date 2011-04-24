@@ -26,6 +26,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISINLISTPAGE = "IsInListPage";
 		public static readonly string PROPERTY_NAME_ISINSINGLEPAGE = "IsInSinglePage";
 		public static readonly string PROPERTY_NAME_OPERATIONORDER = "OperationOrder";
+		public static readonly string PROPERTY_NAME_ISCOMMONOPERATION = "IsCommonOperation";
+		public static readonly string PROPERTY_NAME_RESOURCEID = "ResourceID";
 		
         #endregion
 	
@@ -45,6 +47,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _isInListPage;
 		private bool _isInSinglePage;
 		private int _operationOrder;
+		private bool? _isCommonOperation;
+		private int? _resourceID;
 		
 		#endregion
 
@@ -65,6 +69,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isInListPage = false;
 			_isInSinglePage = false;
 			_operationOrder = 9999;
+			_isCommonOperation = null;
+			_resourceID = null;
 		}
 		#endregion
 
@@ -72,7 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemOperationEntity( int operationID, string operationNameCn, string operationNameEn, string operationDescription, bool isSystemOperation, bool isCanSingleOperation, bool isCanMutilOperation, bool isEnable, bool isInListPage, bool isInSinglePage, int operationOrder)
+		public SystemOperationEntity( int operationID, string operationNameCn, string operationNameEn, string operationDescription, bool isSystemOperation, bool isCanSingleOperation, bool isCanMutilOperation, bool isEnable, bool isInListPage, bool isInSinglePage, int operationOrder, bool? isCommonOperation, int? resourceID)
 		{
 			_operationID = operationID;
 			_operationNameCn = operationNameCn;
@@ -85,6 +91,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isInListPage = isInListPage;
 			_isInSinglePage = isInSinglePage;
 			_operationOrder = operationOrder;
+			_isCommonOperation = isCommonOperation;
+			_resourceID = resourceID;
 		}
 		#endregion     
 	
@@ -250,6 +258,34 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_operationOrder != value); _operationOrder = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsCommonOperation
+		{
+			get { return _isCommonOperation; }
+
+			set	
+			{
+				_isChanged |= (_isCommonOperation != value); _isCommonOperation = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ResourceID
+		{
+			get { return _resourceID; }
+
+			set	
+			{
+				_isChanged |= (_resourceID != value); _resourceID = value;
 			}
 		}
 		/// <summary>

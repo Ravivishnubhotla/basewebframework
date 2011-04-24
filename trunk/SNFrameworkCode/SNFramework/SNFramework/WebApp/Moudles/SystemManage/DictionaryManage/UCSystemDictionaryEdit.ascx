@@ -1,53 +1,51 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemDictionaryEdit.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryEdit" %>
-<ext:Window ID="winSystemDictionaryEdit" runat="server" Icon="ApplicationEdit" Title="EditSystem Dictionary"
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemDictionaryEdit.ascx.cs"
+    Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryEdit" %>
+<ext:Window ID="winSystemDictionaryEdit" runat="server" Icon="ApplicationEdit" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
-    ConstrainHeader="true" Resizable="true"  Layout="fit">
+    ConstrainHeader="true" Resizable="true" Layout="fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemDictionaryEdit" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" Layout="form" LabelSeparator=":"
             LabelWidth="100">
             <Items>
-			
-			 <ext:Hidden ID="hidSystemDictionaryID" runat="server" AnchorHorizontal="95%">
+                <ext:Hidden ID="hidSystemDictionaryID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-			
-									
-						<ext:TextField ID="txtSystemDictionaryCategoryID" runat="server" FieldLabel="Category Name" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="Key" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="Value" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSystemDictionaryDesciption" runat="server" FieldLabel="Description" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSystemDictionaryOrder" runat="server" FieldLabel="Order Index" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					                                         
-                                            <ext:Checkbox ID="chkSystemDictionaryIsEnable" runat="server" FieldLabel="Is Enable" Checked="false"  AnchorHorizontal="95%"/>
-                                       
-
+                <ext:ComboBox ID="cmbGroup" runat="server" StoreID="storeGroup" Editable="true" TypeAhead="true"
+                    FieldLabel="<%$ Resources:msgFiledCategory %>" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Name"
+                    AllowBlank="True" ForceSelection="false" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryDesciption" runat="server" FieldLabel="<%$ Resources:msgFiledDescription %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryOrder" runat="server" FieldLabel="<%$ Resources:msgFiledOrder %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkSystemDictionaryIsEnable" runat="server" FieldLabel="<%$ Resources:msgFiledIsEnable %>"
+                    Checked="false" AnchorHorizontal="95%" />
+                                     <ext:Checkbox ID="chkSystemDictionaryIsSystem" runat="server" FieldLabel="<%$ Resources:msgFiledIsSystem %>"
+                    Checked="false" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>"
+            Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemDictionaryEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemDictionary_Click" Success="Ext.MessageBox.alert('Operation successful', 'Success upadted System Dictionary。',callback);function callback(id) {#{formPanelSystemDictionaryEdit}.getForm().reset();#{storeSystemDictionary}.reload(); };
-" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    OnEvent="btnSaveSystemDictionary_Click" Success="<%$ Resources:msgUpdateScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+            Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemDictionaryEdit}.hide();" />
             </Listeners>
         </ext:Button>
     </Buttons>
+    <Listeners>
+        <BeforeShow Handler="#{storeGroup}.reload();" />
+    </Listeners>
 </ext:Window>
-

@@ -21,6 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION = "SystemDictionaryDesciption";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYORDER = "SystemDictionaryOrder";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISENABLE = "SystemDictionaryIsEnable";
+		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISSYSTEM = "SystemDictionaryIsSystem";
 		
         #endregion
 	
@@ -36,6 +37,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemDictionaryDesciption;
 		private int? _systemDictionaryOrder;
 		private bool? _systemDictionaryIsEnable;
+		private bool? _systemDictionaryIsSystem;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemDictionaryDesciption = null;
 			_systemDictionaryOrder = null;
 			_systemDictionaryIsEnable = null;
+			_systemDictionaryIsSystem = null;
 		}
 		#endregion
 
@@ -59,7 +62,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDictionaryEntity( int systemDictionaryID, string systemDictionaryCategoryID, string systemDictionaryKey, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable)
+		public SystemDictionaryEntity( int systemDictionaryID, string systemDictionaryCategoryID, string systemDictionaryKey, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable, bool? systemDictionaryIsSystem)
 		{
 			_systemDictionaryID = systemDictionaryID;
 			_systemDictionaryCategoryID = systemDictionaryCategoryID;
@@ -68,6 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemDictionaryDesciption = systemDictionaryDesciption;
 			_systemDictionaryOrder = systemDictionaryOrder;
 			_systemDictionaryIsEnable = systemDictionaryIsEnable;
+			_systemDictionaryIsSystem = systemDictionaryIsSystem;
 		}
 		#endregion     
 	
@@ -180,6 +184,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemDictionaryIsEnable != value); _systemDictionaryIsEnable = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? SystemDictionaryIsSystem
+		{
+			get { return _systemDictionaryIsSystem; }
+
+			set	
+			{
+				_isChanged |= (_systemDictionaryIsSystem != value); _systemDictionaryIsSystem = value;
 			}
 		}
 		/// <summary>

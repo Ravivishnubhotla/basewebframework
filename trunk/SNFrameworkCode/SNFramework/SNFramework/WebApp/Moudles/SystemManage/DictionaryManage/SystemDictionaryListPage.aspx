@@ -11,9 +11,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
 
@@ -52,7 +52,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete the record ?System Dictionary ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %> ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -62,7 +62,7 @@
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete successfulSystem Dictionary！',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -108,7 +108,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeSystemDictionary"
-                StripeRows="true" Title="System DictionaryManagement" Icon="Table">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
@@ -134,23 +134,23 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colSystemDictionaryID" DataIndex="SystemDictionaryID" Header="Primary Key" Sortable="true">
+				<ext:Column ColumnID="colSystemDictionaryID" DataIndex="SystemDictionaryID" Header="<%$ Resources:msgcolID %>" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colSystemDictionaryCategoryID" DataIndex="SystemDictionaryCategoryID" Header="Category Name" Sortable="true">
+		<ext:Column ColumnID="colSystemDictionaryCategoryID" DataIndex="SystemDictionaryCategoryID" Header="<%$ Resources:msgcolCategoryID %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colSystemDictionaryKey" DataIndex="SystemDictionaryKey" Header="Key" Sortable="true">
+		<ext:Column ColumnID="colSystemDictionaryKey" DataIndex="SystemDictionaryKey" Header="<%$ Resources:msgcolKey %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colSystemDictionaryValue" DataIndex="SystemDictionaryValue" Header="Value" Sortable="true">
+		<ext:Column ColumnID="colSystemDictionaryValue" DataIndex="SystemDictionaryValue" Header="<%$ Resources:msgcolValue %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colSystemDictionaryDesciption" DataIndex="SystemDictionaryDesciption" Header="Description" Sortable="true">
+		<ext:Column ColumnID="colSystemDictionaryDesciption" DataIndex="SystemDictionaryDesciption" Header="<%$ Resources:msgcolDesciption %>" Sortable="true">
                                 </ext:Column>			
-				<ext:Column ColumnID="colSystemDictionaryOrder" DataIndex="SystemDictionaryOrder" Header="Order Index" Sortable="true">
+				<ext:Column ColumnID="colSystemDictionaryOrder" DataIndex="SystemDictionaryOrder" Header="<%$ Resources:msgcolOrder %>" Sortable="true">
                                 </ext:Column>
-				<ext:Column ColumnID="colSystemDictionaryIsEnable" DataIndex="SystemDictionaryIsEnable" Header="Is Enable" Sortable="true">
+				<ext:Column ColumnID="colSystemDictionaryIsEnable" DataIndex="SystemDictionaryIsEnable" Header="<%$ Resources:msgcolIsEnable %>" Sortable="true">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
  
-                        <ext:CommandColumn Header="System DictionaryManagement" Width="160">
+                        <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
                             <Commands>
                                 <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                     <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
@@ -165,7 +165,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemDictionary"
-                        DisplayInfo="true" DisplayMsg="ShowSystem Dictionary {0} - {1} total {2}" EmptyMsg="No matched recordSystem Dictionary" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>"/>
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

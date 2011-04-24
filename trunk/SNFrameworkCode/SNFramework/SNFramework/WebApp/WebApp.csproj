@@ -153,6 +153,14 @@
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
       <SubType>Designer</SubType>
@@ -721,12 +729,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
-    <Folder Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="TestPage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.en-US.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

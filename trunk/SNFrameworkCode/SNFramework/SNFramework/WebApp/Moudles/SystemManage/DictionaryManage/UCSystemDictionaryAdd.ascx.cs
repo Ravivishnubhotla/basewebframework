@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 
@@ -40,18 +41,18 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             try
             {
                 SystemDictionaryWrapper obj = new SystemDictionaryWrapper();
-                obj.SystemDictionaryCategoryID = this.txtSystemDictionaryCategoryID.Text.Trim();
+
+                obj.SystemDictionaryCategoryID = this.cmbGroup.Text.Trim();
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();
                 obj.SystemDictionaryOrder = Convert.ToInt32(this.txtSystemDictionaryOrder.Text.Trim());
                 obj.SystemDictionaryIsEnable = this.chkSystemDictionaryIsEnable.Checked;
-
-
-
-
+                obj.SystemDictionaryIsSystem = this.chkSystemDictionaryIsSystem.Checked;
 
                 SystemDictionaryWrapper.Save(obj);
+
+                SysDictionaryWrapper.RefreshCache();
 
                 winSystemDictionaryAdd.Hide();
 
@@ -61,6 +62,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "ErrorMessage：" + ex.Message;
             }
+        }
+
+        protected void storeGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            storeGroup.DataSource = SysDictionaryWrapper.GetAllGroup();
+            storeGroup.DataBind();
         }
     }
 

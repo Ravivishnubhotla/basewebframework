@@ -79,6 +79,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISINLISTPAGE = "IsInListPage";
 		public static readonly string PROPERTY_NAME_ISINSINGLEPAGE = "IsInSinglePage";
 		public static readonly string PROPERTY_NAME_OPERATIONORDER = "OperationOrder";
+		public static readonly string PROPERTY_NAME_ISCOMMONOPERATION = "IsCommonOperation";
+		public static readonly string PROPERTY_NAME_RESOURCEID = "ResourceID";
 		
         #endregion
 
@@ -236,6 +238,34 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.OperationOrder = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsCommonOperation
+		{
+			get
+			{
+				return entity.IsCommonOperation;
+			}
+			set
+			{
+				entity.IsCommonOperation = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ResourceID
+		{
+			get
+			{
+				return entity.ResourceID;
+			}
+			set
+			{
+				entity.ResourceID = value;
 			}
 		}
 		#endregion 

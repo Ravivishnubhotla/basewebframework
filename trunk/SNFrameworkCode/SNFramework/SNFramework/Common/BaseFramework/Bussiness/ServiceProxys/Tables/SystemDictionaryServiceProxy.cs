@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -21,6 +22,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         string ParseDictionaryValueByCategoryNameAndKey(string categoryName, string key);
         [OperationContract]
         List<string> GetAllCategoryNames();
+
+        List<SystemDictionaryEntity> FindAllByGroupIdAndOrder();
     }
 
     public partial class SystemDictionaryServiceProxy : ISystemDictionaryServiceProxy
@@ -43,6 +46,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         public List<string> GetAllCategoryNames()
         {
             return this.SelfDataObj.GetAllCategoryNames();
+        }
+
+        public List<SystemDictionaryEntity> FindAllByGroupIdAndOrder()
+        {
+            return this.SelfDataObj.FindAllByGroupIdAndOrder();
         }
     }
 }

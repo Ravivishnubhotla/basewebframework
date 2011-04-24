@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
@@ -28,6 +29,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             try
             {
                 SystemDictionaryWrapper.DeleteByID(id);
+
+                SysDictionaryWrapper.RefreshCache();
 
                 ResourceManager.AjaxSuccess = true;
             }

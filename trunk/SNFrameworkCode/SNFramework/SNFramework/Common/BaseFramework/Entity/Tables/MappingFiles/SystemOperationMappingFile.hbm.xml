@@ -21,6 +21,8 @@
 		<property column="IsInListPage" type="Boolean" name="IsInListPage"   not-null="true"  />	
 		<property column="IsInSinglePage" type="Boolean" name="IsInSinglePage"   not-null="true"  />	
 		<property column="Operation_Order" type="int" name="OperationOrder"   not-null="true"  />	
+		<property column="IsCommonOperation" type="Boolean" name="IsCommonOperation"   />	
+		<property column="ResourceID" type="int" name="ResourceID"   />	
 
 
 

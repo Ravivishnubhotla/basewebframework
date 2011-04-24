@@ -365,17 +365,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.FindAuthenticatedUserAll(pageIndex, pageSize, out totalRecords));
         }
 
-        /// <summary>
-        /// 用户类型显示名
-        /// </summary>
-        public string DisplayNameUserType
-        {
-            get { return SysDictionaryWrapper.ParseUserRoleTypeDictionaryKey(this.UserType); }
-        }
-
-
-
-
+  
         public static SystemRoleWrapper GetUserMaxRoleTypeRole(SystemUserWrapper userWrapper)
         {
             return SystemRoleWrapper.ConvertEntityToWrapper(businessProxy.GetUserMaxRoleTypeRole(userWrapper.entity));

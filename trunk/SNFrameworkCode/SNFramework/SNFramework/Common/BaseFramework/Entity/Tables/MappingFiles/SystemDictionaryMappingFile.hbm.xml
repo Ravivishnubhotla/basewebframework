@@ -17,6 +17,7 @@
 		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="4000" />	
 		<property column="SystemDictionary_Order" type="int" name="SystemDictionaryOrder"   />	
 		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	
+		<property column="SystemDictionary_IsSystem" type="Boolean" name="SystemDictionaryIsSystem"   />	
 
 
 

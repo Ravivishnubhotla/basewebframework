@@ -40,13 +40,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.Hidden hidSystemDictionaryID;
         
         /// <summary>
-        /// txtSystemDictionaryCategoryID control.
+        /// cmbGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSystemDictionaryCategoryID;
+        protected global::Ext.Net.ComboBox cmbGroup;
         
         /// <summary>
         /// txtSystemDictionaryKey control.
@@ -92,6 +92,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Checkbox chkSystemDictionaryIsEnable;
+        
+        /// <summary>
+        /// chkSystemDictionaryIsSystem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkSystemDictionaryIsSystem;
         
         /// <summary>
         /// btnSaveSystemDictionary control.

@@ -125,5 +125,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    {
             return businessProxy.GetAllCategoryNames();
 	    }
+
+	    public static List<SystemDictionaryWrapper> FindAllByGroupIdAndOrder()
+	    {
+            return ConvertToWrapperList(businessProxy.FindAllByGroupIdAndOrder());
+	    }
     }
 }

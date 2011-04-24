@@ -25,6 +25,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISINLISTPAGE = new BoolProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_ISINLISTPAGE));		
 		public static readonly BoolProperty PROPERTY_ISINSINGLEPAGE = new BoolProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_ISINSINGLEPAGE));		
 		public static readonly IntProperty PROPERTY_OPERATIONORDER = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_OPERATIONORDER));		
+		public static readonly BoolProperty PROPERTY_ISCOMMONOPERATION = new BoolProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_ISCOMMONOPERATION));		
+		public static readonly IntProperty PROPERTY_RESOURCEID = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_RESOURCEID));		
       
 		#region 子类集合字段查询字段
 	
@@ -63,6 +65,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "IsInSinglePage":
                     return typeof (bool);
                 case "OperationOrder":
+                    return typeof (int);
+                case "IsCommonOperation":
+                    return typeof (bool);
+                case "ResourceID":
                     return typeof (int);
           }
 			return typeof(string);

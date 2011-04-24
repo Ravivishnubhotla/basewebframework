@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="添加字典" />
+  <add name="msgFiledCategory" value="字典分组" />
+  <add name="msgFiledKey" value="键" />
+  <add name="msgFiledValue" value="值" />
+  <add name="msgFiledDescription" value="描述" />
+  <add name="msgFiledOrder" value="排序号" />
+  <add name="msgFiledIsEnable" value="是否启用" />
+  <add name="msgFiledIsSystem" value="是否系统字典" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加字典成功！',callback);function callback(id) {#{formPanelSystemDictionaryAdd}.getForm().reset();#{storeSystemDictionary}.reload(); };" />
+</resources>
