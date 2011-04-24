@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemDepartmentAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage.UCSystemDepartmentAdd" %>
-<ext:Window ID="winSystemDepartmentAdd" runat="server" Icon="ApplicationAdd" Title="Add System department"
+<ext:Window ID="winSystemDepartmentAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -8,15 +8,15 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="120"
             AutoScroll="true" Layout="Form">
             <Items>
-                <ext:Label ID="lblParentMenuName" runat="server" FieldLabel="Parent Department" AnchorHorizontal="95%">
+                <ext:Label ID="lblParentMenuName" runat="server" FieldLabel="<%$ Resources:msglblParentMenuName %>" AnchorHorizontal="95%">
                 </ext:Label>
                 <ext:Hidden ID="hidParentDepartmentID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtDepartmentNameCn" runat="server" FieldLabel="Name" AllowBlank="False"
+                <ext:TextField ID="txtDepartmentNameCn" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentNameCn %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtDepartmentNameEn" runat="server" FieldLabel="Code" AllowBlank="False"
+                <ext:TextField ID="txtDepartmentNameEn" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentNameEn %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtDepartmentDecription" runat="server" FieldLabel="Description"
+                <ext:TextArea ID="txtDepartmentDecription" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentDecription %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
@@ -25,8 +25,7 @@
         <ext:Button ID="btnSavelSystemDepartment" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemDepartmentAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemDepartment_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add System Deparentment Success',callback);function callback(id) {#{formPanelSystemDepartmentAdd}.getForm().reset();RefreshTreeList1(); };
-" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    OnEvent="btnSaveSystemDepartment_Click" Success="<%$ Resources:msgAddScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>

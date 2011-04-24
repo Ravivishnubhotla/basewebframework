@@ -25,7 +25,7 @@
             Ext.net.DirectMethods.GetTreeNodes(
                                                 {
                                                     failure: function(msg) {
-                                                        Ext.Msg.alert('Operation failed.', msg);
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                     },
                                                     success: function(result) {
                                                         var nodes = eval(result);
@@ -38,7 +38,7 @@
                                                     },
                                                     eventMask: {
                                                         showMask: true,
-                                                        msg: 'Loading......'
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                     }
                                                 }
                                              );
@@ -55,11 +55,11 @@
                Ext.net.DirectMethods.UCSystemDepartmentEdit.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed.', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Loading...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                                }
                                                                 }   
                 );
@@ -71,32 +71,32 @@
                                                         pid,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('Operation failed.', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
-                                                                msg: 'Loading......'
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                             }
                                                         });
         }
 
 
         function DeleteData(id) {
-                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are your sure to delete department?',
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
             Ext.net.DirectMethods.DeleteData(
                                                         id,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('Operation failed.', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             success: function(result) {
-                                                                Ext.Msg.alert('Operation Success.', 'Delete department Successful!', RefreshData);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>', RefreshData);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
-                                                                msg: 'Processing......'
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                             }
                                                         });
                     }
@@ -117,24 +117,24 @@
     </ext:ResourceManagerProxy>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="copyItems" runat="server" Text="Add sub department" Icon="Add">
+            <ext:MenuItem ID="copyItems" runat="server" Text="<%$ Resources:msgMenuAddSub %>" Icon="Add">
                 <Listeners>
                     <Click Handler="ShowAddForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="editItems" runat="server" Text="Edit department" Icon="Anchor">
+            <ext:MenuItem ID="editItems" runat="server" Text="<%$ Resources:msgMenuEdit %>" Icon="Anchor">
                 <Listeners>
                     <Click Handler="ShowEditForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItems" runat="server" Text="Delete department" Icon="Delete">
+            <ext:MenuItem ID="deleteItems" runat="server" Text="<%$ Resources:msgMenuDelete %>" Icon="Delete">
                             <Listeners>
                     <Click Handler="DeleteData(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem1" runat="server" Text="Sub department sort" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem1" runat="server" Text="<%$ Resources:msgMenuSortSub %>" Icon="SortAscending">
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem2" runat="server" Text="Sub department autosort" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem2" runat="server" Text="<%$ Resources:msgMenuSortSubAuto %>" Icon="SortAscending">
             </ext:MenuItem>
         </Items>
     </ext:Menu>
@@ -142,25 +142,25 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
-                    <ext:Panel ID="WestPanel" runat="server" Title="System department manage" Width="300" Layout="fit">
+                    <ext:Panel ID="WestPanel" runat="server" Icon=UserHome Title="<%$ Resources:msgGridTitle %>" Width="300" Layout="fit">
                         <Content>
                             <ext:TreePanel ID="TreePanel1" runat="server" Header="false" RootVisible="false"
                                 AutoScroll="true">
                                 <TopBar>
                                     <ext:Toolbar ID="ToolBar1" runat="server">
                                         <Items>
-                                            <ext:Button ID="Button1" runat="server" Icon="Add" Text="Add root department">
+                                            <ext:Button ID="Button1" runat="server" Icon="Add" Text="<%$ Resources:msgToolbarAddRoot %>">
                                                 <Listeners>
                                                     <Click Handler="ShowAddForm(0);" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="Button2" runat="server" Icon="SortAscending" Text="Root department sort">
+                                            <ext:Button ID="Button2" runat="server" Icon="SortAscending" Text="<%$ Resources:msgToolbarSortRoot %>">
                                             </ext:Button>
-                                            <ext:Button ID="Button5" runat="server" Icon="SortAscending" Text="Root department autosort">
+                                            <ext:Button ID="Button5" runat="server" Icon="SortAscending" Text="<%$ Resources:msgToolbarSortRootAuto %>">
                                             </ext:Button>
-                                            <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="Expand all">
+                                            <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="<%$ Resources:msgToolbarExpandAll %>">
                                             </ext:Button>
-                                            <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="Collapse all">
+                                            <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="<%$ Resources:msgToolbarCollapse %>">
                                             </ext:Button>
                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                         </Items>
@@ -175,7 +175,7 @@
                                 </BottomBar>
                                 <Listeners>
                                     <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cmenu},e.getPoint());" />
-                                    <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '</b>', clear: true});" />
+                                    <Click Handler="<%$ Resources:scriptShowNode %>" />
                                 </Listeners>
                             </ext:TreePanel>
                         </Content>
