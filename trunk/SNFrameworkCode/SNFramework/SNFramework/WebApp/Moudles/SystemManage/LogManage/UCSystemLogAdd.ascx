@@ -45,16 +45,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemLog" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemLog" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemLogAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSystemLog_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Success Added SystemLog。',callback);function callback(id) {#{formPanelSystemLogAdd}.getForm().reset();#{storeSystemLog}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemLog" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemLog" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemLogAdd}.hide();" />
             </Listeners>

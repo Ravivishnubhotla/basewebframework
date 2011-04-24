@@ -30,7 +30,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelChangePassword}.getForm().isValid()) return false;"
                     OnEvent="btnChangePassword_Click" Success="Ext.MessageBox.alert('Operation OK', 'Suceess To Change Password.',callback);function callback(id) { #{winChangePassword}.hide();#{formPanelChangePassword}.getForm().reset(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="Saving Data,Please waiting......" />
                 </Click>
             </DirectEvents>

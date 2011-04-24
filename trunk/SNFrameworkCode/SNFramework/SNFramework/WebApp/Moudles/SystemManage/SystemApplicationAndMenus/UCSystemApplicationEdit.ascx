@@ -31,11 +31,11 @@
                 <Click Before="if(!#{formPanelSystemApplicationEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemApplication_Click" Success="Ext.MessageBox.alert('操作成功','修改系统成功',callback);function callback(id) { #{storeSystemApplication}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving....." />
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="取消" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemApplicationEdit}.hide();" />
             </Listeners>

@@ -21,16 +21,16 @@
         </ext:FormPanel>
     </content>
     <buttons>
-        <ext:Button ID="btnSaveSystemUser" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemUser" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemUserEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemUser_Click" Success="Ext.MessageBox.alert('Operation Successful', 'Edit System User Successful',callback);function callback(id) {#{formPanelSystemUserEdit}.getForm().reset();#{storeSystemUser}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemUser" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemUser" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemUserEdit}.hide();" />
             </Listeners>

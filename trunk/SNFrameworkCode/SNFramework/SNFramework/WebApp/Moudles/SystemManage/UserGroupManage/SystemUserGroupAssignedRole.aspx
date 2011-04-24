@@ -128,7 +128,7 @@
                             <Click Handler="Button5_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)),#{Window1})" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="Cancel" Icon="Cancel">
+                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
                         <Listeners>
                             <Click Handler="RoleSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
                         </Listeners>
@@ -155,7 +155,7 @@
                                eventMask: 
                                {
                                    showMask: true,
-                                   msg: 'Processing...'
+                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                }
                             }              
                 );

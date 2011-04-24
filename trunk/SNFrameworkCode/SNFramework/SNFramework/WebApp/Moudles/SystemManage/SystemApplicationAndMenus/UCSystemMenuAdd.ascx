@@ -51,16 +51,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemMenu" runat="server" Text="添加" Icon="Add">
+        <ext:Button ID="btnSaveSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMenuAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemMenu_Click" Success="Ext.MessageBox.alert('操作成功', '添加菜单成功.',callback);function callback(id) { #{formPanelSystemMenuAdd}.getForm().reset();ReloadMenus(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="取消" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemMenuAdd}.hide();" />
             </Listeners>

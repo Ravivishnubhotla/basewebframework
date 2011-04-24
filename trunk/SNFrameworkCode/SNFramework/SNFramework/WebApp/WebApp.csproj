@@ -135,6 +135,25 @@
     <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -702,8 +721,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
-    <Folder Include="Moudles\SystemManage\ConfigManage\App_LocalResources\" />
+    <Folder Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
+    <Folder Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\" />
+    <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="TestPage\" />
   </ItemGroup>

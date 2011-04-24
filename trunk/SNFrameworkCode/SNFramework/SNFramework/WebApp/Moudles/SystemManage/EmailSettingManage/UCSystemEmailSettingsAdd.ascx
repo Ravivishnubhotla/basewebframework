@@ -30,16 +30,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemEmailSettings" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemEmailSettings" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemEmailSettingsAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemEmailSettings_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSystemEmailSettingsAdd}.getForm().reset();#{storeSystemEmailSettings}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemEmailSettings" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemEmailSettings" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemEmailSettingsAdd}.getForm().reset();#{winSystemEmailSettingsAdd}.hide();" />
             </Listeners>

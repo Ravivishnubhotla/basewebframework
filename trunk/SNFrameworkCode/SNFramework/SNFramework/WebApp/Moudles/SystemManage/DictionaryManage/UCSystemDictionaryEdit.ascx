@@ -34,16 +34,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemDictionary" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemDictionaryEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemDictionary_Click" Success="Ext.MessageBox.alert('Operation successful', 'Success upadted System Dictionary。',callback);function callback(id) {#{formPanelSystemDictionaryEdit}.getForm().reset();#{storeSystemDictionary}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemDictionary" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemDictionaryEdit}.hide();" />
             </Listeners>

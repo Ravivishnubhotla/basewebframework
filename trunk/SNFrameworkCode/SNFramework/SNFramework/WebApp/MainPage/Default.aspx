@@ -28,6 +28,7 @@
             var tab = mtab.add(new Ext.Panel({
                 id: tabid,
                 title: tabname,
+                iconCls: node.attributes.iconCls,
                 autoLoad: {
                     showMask: true,
                     maskMsg: '<%= GetLocalResourceObject("msgLoadingText").ToString() %>',

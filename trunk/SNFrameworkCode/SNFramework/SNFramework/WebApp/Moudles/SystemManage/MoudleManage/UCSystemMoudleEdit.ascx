@@ -35,16 +35,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemMoudle" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemMoudle" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMoudleEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemMoudle_Click" Success="Ext.MessageBox.alert('Operation successful', 'Success upadted System Moudle。',callback);function callback(id) {#{formPanelSystemMoudleEdit}.getForm().reset();#{storeSystemMoudle}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMoudle" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemMoudle" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemMoudleEdit}.hide();" />
             </Listeners>
