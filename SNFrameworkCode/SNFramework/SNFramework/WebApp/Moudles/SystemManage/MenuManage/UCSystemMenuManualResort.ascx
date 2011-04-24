@@ -60,7 +60,7 @@
                 <Click Handler="SaveNewOrder(Ext.encode(#{MultiSelect1}.getValues()),#{winSystemMenuManualResort},#{storeSubMenus});" />
             </Listeners>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="Cancel" Icon="BulletCross">
+        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="BulletCross">
             <Listeners>
                 <Click Handler="#{winSystemMenuManualResort}.hide();" />
             </Listeners>
