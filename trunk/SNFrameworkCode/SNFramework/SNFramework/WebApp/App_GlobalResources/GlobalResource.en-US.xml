@@ -19,6 +19,7 @@
   <add name="msgOpFailed" value="Operation failed" />
   <add name="msgOpSuccessful" value="Operation Successful" />
   <add name="msgProcessing" value="Processing..." />
+  <add name="msgLoading" value="Loading..." />
   <add name="msgWarning" value="warning" />
   <add name="msgDeleteWarning" value="Are you sure delete this record?" />
   <add name="msgDeleteSuccessful" value="Delete record successful!" />

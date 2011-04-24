@@ -19,6 +19,7 @@
   <add name="msgOpFailed" value="操作失败" />
   <add name="msgOpSuccessful" value="操作成功" />
   <add name="msgProcessing" value="处理中..." />
+  <add name="msgLoading" value="加载中..." />
   <add name="msgWarning" value="警告" />
   <add name="msgDeleteWarning" value="确认要删除该条数据？" />
   <add name="msgDeleteSuccessful" value="删除数据成功！" />
