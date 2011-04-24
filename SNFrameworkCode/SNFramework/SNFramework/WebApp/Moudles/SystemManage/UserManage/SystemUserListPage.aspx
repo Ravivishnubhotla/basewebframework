@@ -12,9 +12,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'Yes';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'No';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
         
         var FormatLocked = function(value) {
@@ -38,7 +38,7 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                     }
                                                                 });
 
@@ -49,11 +49,11 @@
                 Ext.net.DirectMethods.UCSystemUserEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -61,21 +61,21 @@
 
             if (cmd == "cmdDelete") 
             {
-                Ext.MessageBox.confirm('warning','Are you sure delete System User ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete System User ? ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation Successful', 'Delete successfulSystem User!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -90,7 +90,7 @@
                                                                 {
                                                                     failure: function(msg) 
                                                                     {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) 
                                                                     { 
@@ -98,7 +98,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                             );
@@ -111,7 +111,7 @@
                                                                 {
                                                                     failure: function(msg) 
                                                                     {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) 
                                                                     { 
@@ -119,7 +119,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                             );
@@ -132,7 +132,7 @@
                                                                 {
                                                                     failure: function(msg) 
                                                                     {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) 
                                                                     { 
@@ -140,7 +140,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                             );
@@ -188,12 +188,12 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemUser}.reload();" />
                                 </Listeners>
@@ -236,9 +236,9 @@
                                 <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>

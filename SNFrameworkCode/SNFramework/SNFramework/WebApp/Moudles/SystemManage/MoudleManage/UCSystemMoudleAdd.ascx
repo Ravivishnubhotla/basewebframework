@@ -30,16 +30,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemMoudle" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemMoudle" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMoudleAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSystemMoudle_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Success AddedSystem Moudle。',callback);function callback(id) {#{formPanelSystemMoudleAdd}.getForm().reset();#{storeSystemMoudle}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMoudle" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemMoudle" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemMoudleAdd}.hide();" />
             </Listeners>

@@ -26,16 +26,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemUserGroup" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemUserGroup" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemUserGroupEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemUserGroup_Click" Success="Ext.MessageBox.alert('Operation successful', 'Success upadted User Group。',callback);function callback(id) {#{formPanelSystemUserGroupEdit}.getForm().reset();#{storeSystemUserGroup}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemUserGroup" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemUserGroup" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemUserGroupEdit}.getForm().reset();#{winSystemUserGroupEdit}.hide();" />
             </Listeners>

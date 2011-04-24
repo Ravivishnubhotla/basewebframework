@@ -35,16 +35,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemEmailTemplate" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemEmailTemplateEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemEmailTemplate_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSystemEmailTemplateEdit}.getForm().reset();#{storeSystemEmailTemplate}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemEmailTemplate" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemEmailTemplateEdit}.getForm().reset();#{winSystemEmailTemplateEdit}.hide();" />
             </Listeners>

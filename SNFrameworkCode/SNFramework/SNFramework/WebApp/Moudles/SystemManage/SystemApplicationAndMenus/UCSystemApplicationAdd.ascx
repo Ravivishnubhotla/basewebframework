@@ -22,12 +22,12 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemApplication" runat="server" Text="添加" Icon="Add">
+        <ext:Button ID="btnSaveSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemApplicationAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemApplication_Click" Success="Ext.MessageBox.alert('操作成功', '添加应用成功！',callback);function callback(id) {#{formPanelSystemApplicationAdd}.getForm().reset();#{storeSystemApplication}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving....." />
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                     <ExtraParams>
                         <ext:Parameter Name="frmValues" Value="Ext.encode(#{formPanelSystemApplicationAdd}.getForm().getFieldValues(false, 'dataIndex'))"
                             Mode="Raw">
@@ -36,7 +36,7 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="取消" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemApplicationAdd}.hide();" />
             </Listeners>

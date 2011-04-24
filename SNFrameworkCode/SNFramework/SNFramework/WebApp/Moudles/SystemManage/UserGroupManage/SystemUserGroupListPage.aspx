@@ -9,9 +9,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
 
@@ -23,11 +23,11 @@
                 Ext.net.DirectMethods.UCSystemUserGroupAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 });    
         
@@ -39,11 +39,11 @@
                 Ext.net.DirectMethods.UCSystemUserGroupEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -51,21 +51,21 @@
 
             if (cmd == "cmdDelete") 
             {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ?User Group ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete the record ?User Group ? ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete successfulUser Group！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -122,12 +122,12 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemUserGroup}.reload();" />
                                 </Listeners>
@@ -155,11 +155,11 @@
  
                         <ext:CommandColumn Header="Management" Width="160">
                             <Commands>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
-                                    <ToolTip Text="Edit" />
+                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
                                 </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
-                                    <ToolTip Text="Delete" />
+                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
+                                    <ToolTip Text="<%$ Resources : GlobalResource, msgDelete  %>" />
                                 </ext:GridCommand>
                                 <ext:GridCommand Icon="ApplicationAdd" CommandName="cmdAssignedRole" Text="Assigned Role">
                                     <ToolTip Text="AssignedRole" />
@@ -171,7 +171,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemUserGroup"
-                        DisplayInfo="true" DisplayMsg="Show records {0} - {1} total {2}" EmptyMsg="No matched record" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="No matched record" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

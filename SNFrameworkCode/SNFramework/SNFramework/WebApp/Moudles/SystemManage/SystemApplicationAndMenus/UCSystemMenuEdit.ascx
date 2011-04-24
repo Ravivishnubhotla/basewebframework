@@ -61,7 +61,7 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="取消" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemMenuEdit}.hide();" />
             </Listeners>

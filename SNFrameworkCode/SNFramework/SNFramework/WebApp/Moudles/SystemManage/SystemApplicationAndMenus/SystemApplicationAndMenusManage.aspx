@@ -66,7 +66,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }); 
         
@@ -97,7 +97,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Loading...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                                }
                                                                 }); 
                                                                   

@@ -39,16 +39,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemPrivilege" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemPrivilege" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemPrivilegeAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSystemPrivilege_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Success AddedSystem Permission',callback);function callback(id) {#{formPanelSystemPrivilegeAdd}.getForm().reset();#{storeSystemPrivilege}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemPrivilege" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemPrivilege" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemPrivilegeAdd}.hide();" />
             </Listeners>

@@ -132,7 +132,7 @@
                         <Click Handler="btn55_Click(#{GridPanel2},#{Window1})" />
                     </Listeners>
                 </ext:Button>
-                <ext:Button ID="Button6" runat="server" Text="Cancel" Icon="Cancel">
+                <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
                     <Listeners>
                         <Click Handler="parent.CloseWinAssignedUserRole();" />
                     </Listeners>
@@ -158,7 +158,7 @@
                                eventMask: 
                                {
                                    showMask: true,
-                                   msg: 'Processing...'
+                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                }
                             }              
                 );
