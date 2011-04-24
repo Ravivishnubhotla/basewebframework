@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using NHibernate.Criterion;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
@@ -57,6 +58,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
             //Distinct PRIVILEGECATEGORY zi
             return this.FindListByProjection<string>(dynamicQueryGenerator, GetDistinctProperty(PROPERTY_SYSTEMDICTIONARYCATEGORYID.CriterionProperty));
+        }
+
+        public List<SystemDictionaryEntity> FindAllByGroupIdAndOrder()
+        {
+            NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYISENABLE.Eq(true));
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Asc());
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYORDER.Asc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+
         }
     }
 }

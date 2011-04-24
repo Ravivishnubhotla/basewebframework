@@ -21,6 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYDESCIPTION = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION));		
 		public static readonly IntProperty PROPERTY_SYSTEMDICTIONARYORDER = new IntProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYORDER));		
 		public static readonly BoolProperty PROPERTY_SYSTEMDICTIONARYISENABLE = new BoolProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYISENABLE));		
+		public static readonly BoolProperty PROPERTY_SYSTEMDICTIONARYISSYSTEM = new BoolProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYISSYSTEM));		
       
 		#region 子类集合字段查询字段
 	
@@ -51,6 +52,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "SystemDictionaryOrder":
                     return typeof (int);
                 case "SystemDictionaryIsEnable":
+                    return typeof (bool);
+                case "SystemDictionaryIsSystem":
                     return typeof (bool);
           }
 			return typeof(string);

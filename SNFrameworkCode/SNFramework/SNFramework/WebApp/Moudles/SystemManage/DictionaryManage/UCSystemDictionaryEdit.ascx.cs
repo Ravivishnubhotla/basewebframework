@@ -28,13 +28,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
                 if (obj != null)
                 {
-                    this.txtSystemDictionaryCategoryID.Text = obj.SystemDictionaryCategoryID.ToString();
+                    this.cmbGroup.Text = obj.SystemDictionaryCategoryID.ToString();
                     this.txtSystemDictionaryKey.Text = obj.SystemDictionaryKey.ToString();
                     this.txtSystemDictionaryValue.Text = obj.SystemDictionaryValue.ToString();
                     this.txtSystemDictionaryDesciption.Text = obj.SystemDictionaryDesciption.ToString();
                     this.txtSystemDictionaryOrder.Text = obj.SystemDictionaryOrder.ToString();
                     this.chkSystemDictionaryIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SystemDictionaryIsEnable);
-
+                    this.chkSystemDictionaryIsSystem.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SystemDictionaryIsSystem);
 
                     hidSystemDictionaryID.Text = id.ToString();
                     winSystemDictionaryEdit.Show();
@@ -60,12 +60,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             try
             {
                 SystemDictionaryWrapper obj = SystemDictionaryWrapper.FindById(int.Parse(hidSystemDictionaryID.Text.Trim()));
-                obj.SystemDictionaryCategoryID = this.txtSystemDictionaryCategoryID.Text.Trim();
+
+                obj.SystemDictionaryCategoryID = this.cmbGroup.Text.Trim();
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();
                 obj.SystemDictionaryOrder = Convert.ToInt32(this.txtSystemDictionaryOrder.Text.Trim());
                 obj.SystemDictionaryIsEnable = this.chkSystemDictionaryIsEnable.Checked;
+                obj.SystemDictionaryIsSystem = this.chkSystemDictionaryIsSystem.Checked;
+
 
 
                 SystemDictionaryWrapper.Update(obj);

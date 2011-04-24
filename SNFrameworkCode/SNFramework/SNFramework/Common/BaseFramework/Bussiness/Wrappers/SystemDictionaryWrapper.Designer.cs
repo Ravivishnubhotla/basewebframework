@@ -75,6 +75,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION = "SystemDictionaryDesciption";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYORDER = "SystemDictionaryOrder";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISENABLE = "SystemDictionaryIsEnable";
+		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISSYSTEM = "SystemDictionaryIsSystem";
 		
         #endregion
 
@@ -176,6 +177,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemDictionaryIsEnable = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? SystemDictionaryIsSystem
+		{
+			get
+			{
+				return entity.SystemDictionaryIsSystem;
+			}
+			set
+			{
+				entity.SystemDictionaryIsSystem = value;
 			}
 		}
 		#endregion 

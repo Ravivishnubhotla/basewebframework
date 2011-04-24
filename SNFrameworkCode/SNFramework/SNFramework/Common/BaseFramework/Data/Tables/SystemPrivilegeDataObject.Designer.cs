@@ -33,6 +33,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_OPERATIONID_ISINLISTPAGE = new BoolProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".IsInListPage"));
 		public static readonly BoolProperty PROPERTY_OPERATIONID_ISINSINGLEPAGE = new BoolProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".IsInSinglePage"));
 		public static readonly IntProperty PROPERTY_OPERATIONID_OPERATIONORDER = new IntProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".OperationOrder"));
+		public static readonly BoolProperty PROPERTY_OPERATIONID_ISCOMMONOPERATION = new BoolProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".IsCommonOperation"));
+		public static readonly IntProperty PROPERTY_OPERATIONID_RESOURCEID = new IntProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".ResourceID"));
 		#endregion
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_RESOURCESID));
 		#region resourcesID字段外键查询字段

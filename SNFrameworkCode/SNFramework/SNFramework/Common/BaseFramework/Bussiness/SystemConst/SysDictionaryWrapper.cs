@@ -4,39 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Web.UI.WebControls;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.BaseFramework.Utility;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
 {
     public class SysDictionaryWrapper
     {
-        public const string Dictionary_Key_UserRoleType = "UserRoleType";
+        private static Dictionary<string, Dictionary<string,string>>  dictionarys = new Dictionary<string, Dictionary<string, string>>();
 
-        public static List<SystemDictionaryWrapper> UserRoleTypeDictionary
+        static  SysDictionaryWrapper()
         {
-            get
+            InitData();
+        }
+
+        private static void InitData()
+        {
+            dictionarys = new Dictionary<string, Dictionary<string, string>>();
+
+            List<SystemDictionaryWrapper> dictionaryWrappers = SystemDictionaryWrapper.FindAllByGroupIdAndOrder();
+
+            foreach (SystemDictionaryWrapper dictionaryWrapper in dictionaryWrappers)
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_UserRoleType);
+                if(!dictionarys.ContainsKey(dictionaryWrapper.SystemDictionaryCategoryID))
+                {
+                    dictionarys.Add(dictionaryWrapper.SystemDictionaryCategoryID,new Dictionary<string, string>());
+                }
+                dictionarys[dictionaryWrapper.SystemDictionaryCategoryID].Add(dictionaryWrapper.SystemDictionaryKey,dictionaryWrapper.SystemDictionaryValue);
             }
         }
 
-        public static string ParseUserRoleTypeDictionaryKey(string key)
+        public static void RefreshCache()
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_UserRoleType, key);
+            InitData();
         }
 
-        public static void BindDictionaryToListControl(ListControl list, string categoryName)
+        public static List<NameListItem> GetAllGroup()
         {
-            list.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(categoryName);
-            list.DataTextField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYVALUE;
-            list.DataValueField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYKEY;
-            list.DataBind();
-
-            if (list.Items.Count > 0)
+            List<NameListItem> nameListItems = new List<NameListItem>();
+            
+            foreach (KeyValuePair<string,Dictionary<string, string>> nameListItem in dictionarys)
             {
-                list.SelectedIndex = 0;
+                nameListItems.Add(new NameListItem() { Name = nameListItem.Key});
             }
+
+            return nameListItems;
         }
 
+
+
     }
-    }
+}

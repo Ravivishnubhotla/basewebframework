@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="字段管理" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolCategoryID" value="分组名" />
+  <add name="msgcolKey" value="键" />
+  <add name="msgcolValue" value="值" />
+  <add name="msgcolDesciption" value="描述" />
+  <add name="msgcolOrder" value="排序号" />
+  <add name="msgcolIsEnable" value="是否可用" />
+</resources>
