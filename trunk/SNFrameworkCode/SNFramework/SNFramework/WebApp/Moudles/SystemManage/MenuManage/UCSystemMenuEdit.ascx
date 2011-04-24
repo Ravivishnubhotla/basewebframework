@@ -51,16 +51,16 @@
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemMenu" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMenuEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemMenu_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update menu success.',callback);function callback(id) { #{formPanelSystemMenuEdit}.getForm().reset();RefreshTreeList1(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemMenuEdit}.hide();" />
             </Listeners>

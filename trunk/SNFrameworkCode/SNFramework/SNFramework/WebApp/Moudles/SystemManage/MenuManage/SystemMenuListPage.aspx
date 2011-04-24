@@ -13,7 +13,7 @@
                                                 cmb.getValue(),
                                                 {
                                                     failure: function(msg) {
-                                                        Ext.Msg.alert('Operation failed', msg);
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                     },
                                                     success: function(result) {
                                                         var nodes = eval(result);
@@ -27,7 +27,7 @@
                                                     },
                                                     eventMask: {
                                                         showMask: true,
-                                                        msg: 'Loading......'
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                     }
                                                 }
                                              );
@@ -40,14 +40,14 @@
                         Ext.net.DirectMethods.AutoMaticSortSubItems(appID,id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     success: function(result) {
                                                                         RefreshTreeList1();
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }); 
         
@@ -73,14 +73,14 @@
                 Ext.net.DirectMethods.UCSystemMenuManualResort.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     success: function(result) {
                                                                         stores.reload();
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Loading...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                                }
                                                                 }); 
                                                                   
@@ -116,11 +116,11 @@
                Ext.net.DirectMethods.UCSystemMenuEdit.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Loading...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                                }
                                                                 }   
                 );
@@ -133,25 +133,25 @@
                                                         parentmenuID,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('Operation failed', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
-                                                                msg: 'Loading......'
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                             }
                                                         });
 
         }
 
         function DeleteMenu(menuID) {
-                        Ext.MessageBox.confirm('Warning','Are you sure to delete selected Menu?',
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure to delete selected Menu?',
                     function(e) {
                         if (e == 'yes')
             Ext.net.DirectMethods.DeleteMenu(
                                                         menuID,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('Operation failed', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             success: function(result) {
                                                                 Ext.Msg.alert('Operation successful', 'Delete menu successful!', RefreshData);
