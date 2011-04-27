@@ -128,7 +128,6 @@ public class GeneratedTemplate : DotNetScriptTemplate
 				{
 					CreateBussinessClassFile(table,config);	
 					CreateBussinessDesignerClassFile(table,config);
-					GenerateWCFClass(table,config);
 				}
 			}
 
@@ -212,75 +211,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	}
 	
 	
-	private void GenerateWCFClass(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
-	{
-%>using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using <%= config.GenerateBussinessEncapsulationClassNameSpace %>;
-
-namespace <%= config.GenerateWCFDataContractClassNameSpace %>
-{
-	/// <summary>
-	///	<%= config.GenerateClassDescription(table) %>
-	/// </summary>
-	[DataContract]
-	public class <%= config.GenerateWCFClassName(table) %>
-	{
-<% 		BuildWCFPublicConst(table,config); 		
-%>	
-<% 		BuildWCFPrivateMembers(table,config); 		
-%>
-<% 		BuildWCFDefaultConstructor(table,config); 		
-%>
-<% 		BuildWCFPublicAccessors(table,config); 		
-%>
-
-        public void FromWrapper(<%= config.GenerateBussinessEncapsulationClassName(table) %> wrapper)
-		{
-<%		foreach( IColumn column in table.Columns )
-		{
-			if(column.IsInForeignKey && !column.IsInPrimaryKey)
-			{
-%>			this.<%= config.GenerateEntityPorpertyName(column) %> = (wrapper.<%= config.GenerateEntityPorpertyName(column) %>!=null) ? wrapper.<%= config.GenerateEntityPorpertyName(column) %>.<%= config.GenerateEntityPorpertyName(column.ForeignKeys[0].PrimaryTable.PrimaryKeys[0]) %> : 0 ; 
-<%		    }
-			else
-			{
-%>			this.<%= config.GenerateEntityPorpertyName(column) %> = wrapper.<%= config.GenerateEntityPorpertyName(column) %>;
-<%		    }
-
-}
-%>		}
-		
-		
-		public <%= config.GenerateBussinessEncapsulationClassName(table) %> ToWrapper()
-        {
-			<%= config.GenerateBussinessEncapsulationClassName(table) %> wrapper = new <%= config.GenerateBussinessEncapsulationClassName(table) %>();
-<%		foreach( IColumn column in table.Columns )
-		{
-			if(column.IsInForeignKey && !column.IsInPrimaryKey)
-			{
-%>			wrapper.<%= config.GenerateEntityPorpertyName(column) %> =  (this.<%= config.GenerateEntityPorpertyName(column) %>==null) ? null : <%= config.GenerateBussinessEncapsulationClassName(column.ForeignKeys[0].PrimaryTable) %>.FindById(this.<%= config.GenerateEntityPorpertyName(column) %>);
-<%		    }
-			else
-			{
-%>			wrapper.<%= config.GenerateEntityPorpertyName(column) %> = this.<%= config.GenerateEntityPorpertyName(column) %>;
-<%		    }
-
-}
-%>		
-		return wrapper;
-        }
-
-
-
-   }
-}
-<%
-	output.saveEnc(config.GenerateWCFClassFilePath(table),"o","uft8");
-	output.clear();
-	}
-	
+ 	
 
 	
 	//生成实体类
@@ -1696,19 +1627,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
         #endregion
 <%	}
 
-	private void BuildWCFPublicConst(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-%>        #region 公共常量
-
-		public static readonly string CLASS_FULL_NAME = "<%= config.GenerateWCFDataContractClassNameSpace %>.<%= config.GenerateWCFClassName(table) %>";
-<%		foreach( IColumn column in table.Columns )
-		{	
-%>		public static readonly string PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(column).ToUpper() %> = "<%= config.GenerateEntityPorpertyName(column) %>";
-<%		}
-%>		
-        #endregion
-<%	}
-
+ 
 	private void CreateSubClassListrefence(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{
 %>        #region 子类列表引用
@@ -1758,22 +1677,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
    }
    
    
-   	private void BuildWCFPrivateMembers(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-		if( table.Columns.Count > 0 )
-		{
-%>        #region 私有成员变量
-		
-<%		
-		foreach( IColumn column in table.Columns )
-		{
-%>		private <%= config.GenerateWCFClassMemberType(column) %> <%= config.GenerateEntityMemberName(column) %>;
-<%		}	
-%>		
-		#endregion
-<%		}  
-   }
-   
+    
    private string ParseDefaultValue(string value)
    {
 		if(value.ToUpper()=="GETDATE")
@@ -1799,21 +1703,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 		#endregion
 <%	}
 
-	private void BuildWCFDefaultConstructor(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-%>		#region 构造函数
-		/// <summary>
-		/// 默认构造函数
-		/// </summary>
-		public <%= config.GenerateWCFClassName(table) %>()
-		{
-<%		foreach( IColumn column in table.Columns )
-		{
-%>			<%= config.GenerateEntityMemberName(column) %> = <%= ParseDefaultValue(config.GenerateWCFClassDefaultValue(column)) %>;
-<%		}
-%>		}
-		#endregion
-<%	}
+ 
    
 
 	private void BuildPublicAccessors(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
@@ -1871,41 +1761,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 	
 	
 	
-	private void BuildWCFPublicAccessors(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-		if( table.Columns.Count > 0 )
-		{
-%>	    #region 公共属性
-<%			
-			foreach( IColumn column in table.Columns )
-			{
-			%>
-		/// <summary>
-		/// <%= column.Description %>
-		/// </summary>
-		[DataMember]
-		public <%= config.GenerateWCFClassPorpertyType(column) %> <%= config.GenerateEntityPorpertyName(column) %>
-		{
-			get { return <%= config.GenerateEntityMemberName(column) %>; }
-<%				if( !config.IsReadOnlyClass )
-				{
-%>
-			set	
-			{
-<%             if ( column.CharacterOctetLength > 0 && !( config.IsCreateFKeyClassrefence && column.IsInForeignKey ))  {                                           %>
-				if( value != null && value.Length > <%= column.CharacterOctetLength.ToString() %>)
-					throw new ArgumentOutOfRangeException("Invalid value for <%= config.GenerateEntityPorpertyName(column) %>", value, value.ToString());
-<%				}
-%>				<%= config.GenerateEntityMemberName(column) %> = value;
-			}
-<%				}
-%>		}
-<%				}
-%>
-		
-		#endregion 
-<%		}
-	}
+ 
 
 	private void BuildEqualsHashCodeOverrides(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{

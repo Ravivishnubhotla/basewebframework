@@ -733,6 +733,7 @@
     <Folder Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
+    <Folder Include="Moudles\SystemManage\UserManage\App_LocalResources\" />
     <Folder Include="TestPage\" />
   </ItemGroup>
   <ItemGroup>
