@@ -108,9 +108,9 @@
                 <Items>
                     <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
                         <Columns>
-                            <ext:LayoutColumn ColumnWidth="0.5">
+                            <ext:LayoutColumn ColumnWidth="0.33">
                                 <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" Title="<%$ Resources:msgFormAvailableApplcations %>"
-                                    Frame="true" StoreID="storeNotAssigned" AutoExpandColumn="columnName" AutoScroll=true>
+                                    Frame="true" StoreID="storeNotAssigned" AutoExpandColumn="columnName" AutoScroll="true">
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
@@ -149,7 +149,8 @@
                                                                     <Click Handler="SystemApplicationSelector.add(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources:msgcolAddTitle %>" Html="<%$ Resources:msgcolAddDescription %>" />
+                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources:msgcolAddTitle %>"
+                                                                        Html="<%$ Resources:msgcolAddDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
@@ -157,7 +158,8 @@
                                                                     <Click Handler="SystemApplicationSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources:msgcolAddAllTitle %>" Html="<%$ Resources:msgcolAddAllDescription %>" />
+                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources:msgcolAddAllTitle %>"
+                                                                        Html="<%$ Resources:msgcolAddAllDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
@@ -165,7 +167,8 @@
                                                                     <Click Handler="SystemApplicationSelector.remove(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources:msgcolRemoveTitle %>" Html="<%$ Resources:msgcolRemoveDescription %>" />
+                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources:msgcolRemoveTitle %>"
+                                                                        Html="<%$ Resources:msgcolRemoveDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
@@ -173,7 +176,8 @@
                                                                     <Click Handler="SystemApplicationSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources:msgcolRemoveAllTitle %>" Html="<%$ Resources:msgcolRemoveAllDescription %>" />
+                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources:msgcolRemoveAllTitle %>"
+                                                                        Html="<%$ Resources:msgcolRemoveAllDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                         </Items>
@@ -184,9 +188,10 @@
                                     </Items>
                                 </ext:Panel>
                             </ext:LayoutColumn>
-                            <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel2" Title="<%$ Resources:msgFormAssignedApplcations %>" Frame="true"
-                                    EnableDragDrop="false" StoreID="storeAssigned" AutoExpandColumn="columnName" AutoScroll=true>
+                            <ext:LayoutColumn ColumnWidth="0.33">
+                                <ext:GridPanel runat="server" ID="GridPanel2" Title="<%$ Resources:msgFormAssignedApplcations %>"
+                                    Frame="true" EnableDragDrop="false" StoreID="storeAssigned" AutoExpandColumn="columnName"
+                                    AutoScroll="true">
                                     <Listeners>
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
@@ -201,16 +206,118 @@
                                     <SaveMask ShowMask="true" />
                                 </ext:GridPanel>
                             </ext:LayoutColumn>
+                            <ext:LayoutColumn ColumnWidth="0.33">
+                                <ext:TreePanel ID="TreePanel1" runat="server" UseArrows="true" Title="菜单" AutoScroll="true"
+                                    Animate="true" EnableDD="true" Frame="true">
+                                              <Root>
+                <ext:TreeNode Text="Composers" Expanded="true">
+                    <Nodes>
+                        <ext:TreeNode Text="Beethoven" Icon="UserGray">
+                            <Nodes>
+                                <ext:TreeNode Text="Concertos">
+                                    <Nodes>
+                                        <ext:TreeNode Text="No. 1 - C" Icon="Music" />
+                                        <ext:TreeNode Text="No. 2 - B-Flat Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 3 - C Minor" Icon="Music" />
+                                        <ext:TreeNode Text="No. 4 - G Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 5 - E-Flat Major" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Quartets">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Six String Quartets" Icon="Music" />
+                                        <ext:TreeNode Text="Three String Quartets" Icon="Music" />
+                                        <ext:TreeNode Text="Grosse Fugue for String Quartets" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Sonatas">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Sonata in A Minor" Icon="Music" />
+                                        <ext:TreeNode Text="sonata in F Major" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Symphonies">
+                                    <Nodes>
+                                        <ext:TreeNode Text="No. 1 - C Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 2 - D Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 3 - E-Flat Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 4 - B-Flat Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 5 - C Minor" Icon="Music" />
+                                        <ext:TreeNode Text="No. 6 - F Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 7 - A Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 8 - F Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 9 - D Minor" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                            </Nodes>
+                        </ext:TreeNode>
+                        <ext:TreeNode Text="Brahms" Icon="UserGray">
+                            <Nodes>
+                                <ext:TreeNode Text="Concertos">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Violin Concerto" Icon="Music" />
+                                        <ext:TreeNode Text="Double Concerto - A Minor" Icon="Music" />
+                                        <ext:TreeNode Text="Piano Concerto No. 1 - D Minor" Icon="Music" />
+                                        <ext:TreeNode Text="Piano Concerto No. 2 - B-Flat Major" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Quartets">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Piano Quartet No. 1 - G Minor" Icon="Music" />
+                                        <ext:TreeNode Text="Piano Quartet No. 2 - A Major" Icon="Music" />
+                                        <ext:TreeNode Text="Piano Quartet No. 3 - C Minor" Icon="Music" />
+                                        <ext:TreeNode Text="Piano Quartet No. 3 - B-Flat Minor" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Sonatas">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Two Sonatas for Clarinet - F Minor" Icon="Music" />
+                                        <ext:TreeNode Text="Two Sonatas for Clarinet - E-Flat Major" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                                <ext:TreeNode Text="Symphonies">
+                                    <Nodes>
+                                        <ext:TreeNode Text="No. 1 - C Minor" Icon="Music" />
+                                        <ext:TreeNode Text="No. 2 - D Minor" Icon="Music" />
+                                        <ext:TreeNode Text="No. 3 - F Major" Icon="Music" />
+                                        <ext:TreeNode Text="No. 4 - E Minor" Icon="Music" />
+                                    </Nodes>
+                                </ext:TreeNode>
+                            </Nodes>
+                        </ext:TreeNode>
+                        <ext:TreeNode Text="Mozart" Icon="UserGray">
+                            <Nodes>
+                                <ext:TreeNode Text="Concertos">
+                                    <Nodes>
+                                        <ext:TreeNode Text="Piano Concerto No. 12" Icon="Music"  />
+                                        <ext:TreeNode Text="Piano Concerto No. 17" Icon="Music"  />
+                                        <ext:TreeNode Text="Clarinet Concerto" Icon="Music"  />
+                                        <ext:TreeNode Text="Violin Concerto No. 5" Icon="Music"  />
+                                        <ext:TreeNode Text="Violin Concerto No. 4" Icon="Music"  />
+                                    </Nodes>
+                                </ext:TreeNode>
+                            </Nodes>
+                        </ext:TreeNode>
+                    </Nodes>
+                </ext:TreeNode>
+            </Root>
+                                    <Listeners>
+                                        <CheckChange Handler="checkNode(node,checked);" />
+                                    </Listeners>
+                                </ext:TreePanel>
+                            </ext:LayoutColumn>
                         </Columns>
                     </ext:ColumnLayout>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btnSave" runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>" Icon="Disk">
+                    <ext:Button ID="btnSave" runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>"
+                        Icon="Disk">
                         <Listeners>
                             <Click Handler="btSave_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)))" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
+                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+                        Icon="Cancel">
                         <Listeners>
                             <Click Handler="parent.CloseWinAssignedApplication();" />
                         </Listeners>

@@ -220,6 +220,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         protected global::Ext.Net.RowSelectionModel RowSelectionModel2;
         
         /// <summary>
+        /// TreePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TreePanel TreePanel1;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
