@@ -153,7 +153,9 @@
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.xml" />
-    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.en-US.xml" />

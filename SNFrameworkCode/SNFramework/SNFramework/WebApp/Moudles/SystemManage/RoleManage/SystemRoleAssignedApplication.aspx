@@ -6,83 +6,112 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server" />
     <script type="text/javascript">
-             function btSave_Click(json)
-            {
-                Ext.net.DirectMethods.Save_RoleApplication(json,
+        function btSave_Click(json) {
+            Ext.net.DirectMethods.Save_RoleApplication(json,
                             {
-                               failure: function(msg) 
-                               {
+                                failure: function (msg) {
                                     Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, null);
-                               },
-                               success: function(result) 
-                               { 
-                                  //  Ext.Msg.alert('Operation Successful', 'Save successful System Permission!',function(btn){ });    
+                                },
+                                success: function (result) {
+                                    //  Ext.Msg.alert('Operation Successful', 'Save successful System Permission!',function(btn){ });    
                                     parent.CloseWinAssignedApplication();
-                                           
-                               },
-                               eventMask: 
+
+                                },
+                                eventMask:
                                {
                                    showMask: true,
                                    msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                }
-                            }              
+                            }
                 );
-         }
+        }
+          
+          
+                function LoadMenus(appid,tree)
+        {
+            var hidSelectAppID = <%= hidSelectAppID.ClientID %>;
+
+            hidSelectAppID.setValue(appid);
+
+            Ext.net.DirectMethods.GetTreeNodes(
+                                                appid,
+                                                {
+                                                    failure: function (msg) {
+                                                        Ext.Msg.alert('操作失败', msg);
+                                                    },
+                                                    success: function (result) {
+                                                        var nodes = eval(result);
+                                                        if (nodes.length > 0) {
+                                                            tree.initChildren(nodes);
+                                                            tree.root.expand(true);
+                                                        }
+                                                        else {
+                                                            tree.getRootNode().removeChildren();
+                                                        }
+
+                                                    },
+                                                    eventMask: {
+                                                        showMask: true,
+                                                        msg: '加载中......',
+                                                        target: 'customtarget',
+                                                        customTarget: '<%= TreePanel1.ClientID %>.el'
+                                                    }
+                                                }
+                                             );    
+        }
+
+        function SelectApplication(app, tree) {
             
-            var SystemApplicationSelector = 
-            {
-            add : function (source, destination) {
-                source = source || GridPanel1;
-                destination = destination || GridPanel2;
-                if (source.hasSelection()) {
-                    var records = source.selModel.getSelections();
-                    source.deleteSelected();
-                    Ext.each(records, function(record){
-                        destination.store.addSorted(record);                    
-                    });                   
-                }
-            },
-            addAll : function (source, destination) {
-                source = source || GridPanel1;
-                destination = destination || GridPanel2;
-                var records = source.store.getRange();
-                source.store.removeAll();
-                Ext.each(records, function(record){
-                    destination.store.addSorted(record);                    
-                });                 
-            },
-                addByName: function(name) 
-                {
-                    if (!Ext.isEmpty(name)) 
-                    {
-                        var GridPanel1= <%= GridPanel1.ClientID %>;
-                        var GridPanel2= <%= GridPanel2.ClientID %>;
-                        var result = Store1.query("Name", name);
-                        if (!Ext.isEmpty(result.items)) {
-                            GridPanel2.store.add(result.items[0]);
-                            GridPanel1.store.remove(result.items[0]);
-                        }
-                    }
-                },
-                addByNames: function(name) 
-                {
-                    for (var i = 0; i < name.length; i++) {
-                        this.addByName(name[i]);
-                    }
-                },
-                remove: function(source, destination) 
-                {
-                    this.add(destination, source);
-                },
-                removeAll: function(source, destination) 
-                {
-                    this.addAll(destination, source);
-                }
-           };
+            tree.setTitle(app.data.LocaLocalizationName + " 子菜单管理");
+
+            //var hidSelectAppID = <%= hidSelectAppID.ClientID %>;
+
+            //hidSelectAppID.setValue(app.id.toString());
+
+            LoadMenus(app.id,tree)
+
+        }
+
+
+         function SaveMenus(tree, appid) {
+            Ext.net.DirectMethods.SaveApplicationAssignedMenus(
+                                                             appid, getParas(tree),
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                                },
+                                                                success: function(result) {
+                                                                    Ext.MessageBox.alert('Operation successful', 'System Role Assigned menu successfully.', function(btn) { parent.CloseWinAssignedMenu(); });
+                                                                },
+                                                                eventMask:
+                                                                 {
+                                                                     showMask: true,
+                                                                     msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                 }
+                                                            }
+                                                        );
+        }
+
+        function getParas(tree) {
+                 var selNodes = tree.getChecked();
+                 var arrys = [];
+                 Ext.each(selNodes, function(node) {
+                     arrys.push(node.attributes.MenuID);
+                 });
+                 return arrys.toString();
+             }
+        
+        
+        function checkNode(node, checked) {
+            for (var i = 0; i < node.childNodes.length; i++) {
+                node.childNodes[i].ui.toggleCheck(checked);
+            }
+        }  
+    
     </script>
     <ext:Store runat="server" ID="storeNotAssigned" AutoLoad="true" OnRefreshData="storeNotAssigned_RefreshData">
         <Reader>
-            <ext:JsonReader>
+            <ext:JsonReader IDProperty="SystemApplicationID">
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
@@ -93,7 +122,7 @@
     </ext:Store>
     <ext:Store runat="server" ID="storeAssigned" OnRefreshData="storeAssigned_RefreshData">
         <Reader>
-            <ext:JsonReader>
+            <ext:JsonReader IDProperty="SystemApplicationID">
                 <Fields>
                     <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
                     <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
@@ -101,6 +130,9 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+            <Load Handler="if(#{storeAssigned}.data.items.length>0) {#{GridPanel2}.getSelectionModel().selectFirstRow(); }" />
+        </Listeners>
     </ext:Store>
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
@@ -118,7 +150,8 @@
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
-                                        <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" />
+                                        <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true">
+                                        </ext:RowSelectionModel>
                                     </SelectionModel>
                                     <View>
                                         <ext:GridView ForceFit="true" ID="GridView1">
@@ -144,37 +177,65 @@
                                                     <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
                                                         Padding="5">
                                                         <Items>
-                                                            <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
-                                                                <Listeners>
-                                                                    <Click Handler="SystemApplicationSelector.add(#{GridPanel1}, #{GridPanel2});" />
-                                                                </Listeners>
+                                                            <ext:Button ID="btnAdd" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
+                                                                <DirectEvents>
+                                                                    <Click OnEvent="btnAdd_Click" Success="#{GridPanel1}.reload();#{GridPanel2}.reload();"
+                                                                        Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="addItem" Mode="Raw" Value="Ext.encode(#{GridPanel1}.getRowsValues({selectedOnly : true}))">
+                                                                            </ext:Parameter>
+                                                                        </ExtraParams>
+                                                                        <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgProcessing  %>" />
+                                                                    </Click>
+                                                                </DirectEvents>
                                                                 <ToolTips>
                                                                     <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources:msgcolAddTitle %>"
                                                                         Html="<%$ Resources:msgcolAddDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
-                                                            <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
-                                                                <Listeners>
-                                                                    <Click Handler="SystemApplicationSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
-                                                                </Listeners>
+                                                            <ext:Button ID="btnAddAll" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
+                                                                <DirectEvents>
+                                                                    <Click OnEvent="btnAdd_Click" Success="#{GridPanel1}.reload();#{GridPanel2}.reload();"
+                                                                        Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="addItem" Mode="Raw" Value="Ext.encode(#{GridPanel1}.getRowsValues())">
+                                                                            </ext:Parameter>
+                                                                        </ExtraParams>
+                                                                        <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgProcessing  %>" />
+                                                                    </Click>
+                                                                </DirectEvents>
                                                                 <ToolTips>
                                                                     <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources:msgcolAddAllTitle %>"
                                                                         Html="<%$ Resources:msgcolAddAllDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
-                                                            <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
-                                                                <Listeners>
-                                                                    <Click Handler="SystemApplicationSelector.remove(#{GridPanel1}, #{GridPanel2});" />
-                                                                </Listeners>
+                                                            <ext:Button ID="btnRemove" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
+                                                                <DirectEvents>
+                                                                    <Click OnEvent="btnRemove_Click" Success="#{GridPanel1}.reload();#{GridPanel2}.reload();"
+                                                                        Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="removeItem" Mode="Raw" Value="Ext.encode(#{GridPanel2}.getRowsValues({selectedOnly : true}))">
+                                                                            </ext:Parameter>
+                                                                        </ExtraParams>
+                                                                        <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgProcessing  %>" />
+                                                                    </Click>
+                                                                </DirectEvents>
                                                                 <ToolTips>
                                                                     <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources:msgcolRemoveTitle %>"
                                                                         Html="<%$ Resources:msgcolRemoveDescription %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
-                                                                <Listeners>
-                                                                    <Click Handler="SystemApplicationSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
-                                                                </Listeners>
+                                                                <DirectEvents>
+                                                                    <Click OnEvent="btnRemove_Click" Success="#{GridPanel1}.reload();#{GridPanel2}.reload();"
+                                                                        Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                                                                        <ExtraParams>
+                                                                            <ext:Parameter Name="removeItem" Mode="Raw" Value="Ext.encode(#{GridPanel2}.getRowsValues())">
+                                                                            </ext:Parameter>
+                                                                        </ExtraParams>
+                                                                        <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgProcessing  %>" />
+                                                                    </Click>
+                                                                </DirectEvents>
                                                                 <ToolTips>
                                                                     <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources:msgcolRemoveAllTitle %>"
                                                                         Html="<%$ Resources:msgcolRemoveAllDescription %>" />
@@ -201,109 +262,33 @@
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
-                                        <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" />
+                                        <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" SingleSelect="true">
+                                            <Listeners>
+                                                <RowSelect Buffer="100" Handler="SelectApplication(this.getSelected(),#{TreePanel1});" />
+                                            </Listeners>
+                                        </ext:RowSelectionModel>
                                     </SelectionModel>
                                     <SaveMask ShowMask="true" />
                                 </ext:GridPanel>
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.33">
                                 <ext:TreePanel ID="TreePanel1" runat="server" UseArrows="true" Title="菜单" AutoScroll="true"
-                                    Animate="true" EnableDD="true" Frame="true">
-                                              <Root>
-                <ext:TreeNode Text="Composers" Expanded="true">
-                    <Nodes>
-                        <ext:TreeNode Text="Beethoven" Icon="UserGray">
-                            <Nodes>
-                                <ext:TreeNode Text="Concertos">
-                                    <Nodes>
-                                        <ext:TreeNode Text="No. 1 - C" Icon="Music" />
-                                        <ext:TreeNode Text="No. 2 - B-Flat Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 3 - C Minor" Icon="Music" />
-                                        <ext:TreeNode Text="No. 4 - G Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 5 - E-Flat Major" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Quartets">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Six String Quartets" Icon="Music" />
-                                        <ext:TreeNode Text="Three String Quartets" Icon="Music" />
-                                        <ext:TreeNode Text="Grosse Fugue for String Quartets" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Sonatas">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Sonata in A Minor" Icon="Music" />
-                                        <ext:TreeNode Text="sonata in F Major" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Symphonies">
-                                    <Nodes>
-                                        <ext:TreeNode Text="No. 1 - C Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 2 - D Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 3 - E-Flat Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 4 - B-Flat Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 5 - C Minor" Icon="Music" />
-                                        <ext:TreeNode Text="No. 6 - F Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 7 - A Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 8 - F Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 9 - D Minor" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                            </Nodes>
-                        </ext:TreeNode>
-                        <ext:TreeNode Text="Brahms" Icon="UserGray">
-                            <Nodes>
-                                <ext:TreeNode Text="Concertos">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Violin Concerto" Icon="Music" />
-                                        <ext:TreeNode Text="Double Concerto - A Minor" Icon="Music" />
-                                        <ext:TreeNode Text="Piano Concerto No. 1 - D Minor" Icon="Music" />
-                                        <ext:TreeNode Text="Piano Concerto No. 2 - B-Flat Major" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Quartets">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Piano Quartet No. 1 - G Minor" Icon="Music" />
-                                        <ext:TreeNode Text="Piano Quartet No. 2 - A Major" Icon="Music" />
-                                        <ext:TreeNode Text="Piano Quartet No. 3 - C Minor" Icon="Music" />
-                                        <ext:TreeNode Text="Piano Quartet No. 3 - B-Flat Minor" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Sonatas">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Two Sonatas for Clarinet - F Minor" Icon="Music" />
-                                        <ext:TreeNode Text="Two Sonatas for Clarinet - E-Flat Major" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                                <ext:TreeNode Text="Symphonies">
-                                    <Nodes>
-                                        <ext:TreeNode Text="No. 1 - C Minor" Icon="Music" />
-                                        <ext:TreeNode Text="No. 2 - D Minor" Icon="Music" />
-                                        <ext:TreeNode Text="No. 3 - F Major" Icon="Music" />
-                                        <ext:TreeNode Text="No. 4 - E Minor" Icon="Music" />
-                                    </Nodes>
-                                </ext:TreeNode>
-                            </Nodes>
-                        </ext:TreeNode>
-                        <ext:TreeNode Text="Mozart" Icon="UserGray">
-                            <Nodes>
-                                <ext:TreeNode Text="Concertos">
-                                    <Nodes>
-                                        <ext:TreeNode Text="Piano Concerto No. 12" Icon="Music"  />
-                                        <ext:TreeNode Text="Piano Concerto No. 17" Icon="Music"  />
-                                        <ext:TreeNode Text="Clarinet Concerto" Icon="Music"  />
-                                        <ext:TreeNode Text="Violin Concerto No. 5" Icon="Music"  />
-                                        <ext:TreeNode Text="Violin Concerto No. 4" Icon="Music"  />
-                                    </Nodes>
-                                </ext:TreeNode>
-                            </Nodes>
-                        </ext:TreeNode>
-                    </Nodes>
-                </ext:TreeNode>
-            </Root>
+                                    RootVisible="false" Frame="true">
+                                    <Root>
+                                        <ext:TreeNode Text="Composers" Expanded="true">
+                                        </ext:TreeNode>
+                                    </Root>
                                     <Listeners>
                                         <CheckChange Handler="checkNode(node,checked);" />
                                     </Listeners>
+                                    <Buttons>
+                                        <ext:Button ID="btnSaveMenus" runat="server" Text="保存菜单分配"
+                                            Icon="Disk">
+                                            <Listeners>
+                                                <Click Handler="SaveMenus(#{TreePanel1},#{hidSelectAppID}.getValue());" />
+                                            </Listeners>
+                                        </ext:Button>
+                                    </Buttons>
                                 </ext:TreePanel>
                             </ext:LayoutColumn>
                         </Columns>
@@ -326,4 +311,6 @@
             </ext:Panel>
         </Items>
     </ext:Viewport>
+    <ext:Hidden ID="hidSelectAppID" runat="server">
+    </ext:Hidden>
 </asp:Content>

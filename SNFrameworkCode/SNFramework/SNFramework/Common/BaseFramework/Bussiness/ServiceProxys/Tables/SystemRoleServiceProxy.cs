@@ -35,7 +35,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         [OperationContract]
         void PatchAssignRoleMenusInApplication(SystemRoleEntity roleEntity, SystemApplicationEntity applicationEntity, string[] assignedMenuIDS);
         [OperationContract]
-        void PatchAssignRoleApplications(SystemRoleEntity roleEntity, List<string> applicationIDs);
+        void PatchSetRoleApplications(SystemRoleEntity roleEntity, List<string> applicationIDs);
         [OperationContract]
         List<SystemApplicationEntity> GetRoleAssignedApplications(SystemRoleEntity roleEntity);
         [OperationContract]
@@ -46,6 +46,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemPrivilegeInRolesEntity> GetRoleAssignedPrivilegesInRole(SystemRoleEntity systemRoleEntity);
 
         SystemRoleEntity GetRoleByName(string roleName);
+        void PatchAssignRoleApplications(SystemRoleEntity entity, List<int> applicationIDs);
+        void PatchRemoveRoleApplications(SystemRoleEntity systemRoleEntity, List<int> removeAppIDs);
     }
 
     public partial class SystemRoleServiceProxy : ISystemRoleServiceProxy
@@ -190,7 +192,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         /// <param name="roleEntity"></param>
         /// <param name="applicationIDs"></param>
         [Transaction(TransactionPropagation.Required)]
-        public void PatchAssignRoleApplications(SystemRoleEntity roleEntity, List<string> applicationIDs)
+        public void PatchSetRoleApplications(SystemRoleEntity roleEntity, List<string> applicationIDs)
         {
             //获取所有的应用
             List<SystemApplicationEntity> allapplications =
@@ -285,6 +287,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {
             return
                 this.DataObjectsContainerIocID.SystemRoleDataObjectInstance.GetRoleByName(roleName);
+        }
+
+        [Transaction(TransactionPropagation.Required)]
+        public void PatchAssignRoleApplications(SystemRoleEntity roleEntity, List<int> applicationIDs)
+        {
+            foreach (int applicationid in applicationIDs)
+            {
+                SystemApplicationEntity applicationEntity =
+                    this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(applicationid);
+
+                if(applicationEntity!=null)
+                {
+                    SystemRoleApplicationEntity systemRoleApplicationEntity = this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.GetRelationByRoleAndApplication(roleEntity, applicationEntity);
+                
+                    if(systemRoleApplicationEntity==null)
+                    {
+                        systemRoleApplicationEntity = new SystemRoleApplicationEntity();
+                        systemRoleApplicationEntity.ApplicationID = applicationEntity;
+                        systemRoleApplicationEntity.RoleID = roleEntity;
+
+                        this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.Save(systemRoleApplicationEntity);
+                    }
+                }
+
+            }
+        }
+        [Transaction(TransactionPropagation.Required)]
+        public void PatchRemoveRoleApplications(SystemRoleEntity roleEntity, List<int> removeAppIDs)
+        {
+            foreach (int applicationid in removeAppIDs)
+            {
+                SystemApplicationEntity applicationEntity =
+                    this.DataObjectsContainerIocID.SystemApplicationDataObjectInstance.Load(applicationid);
+
+                if (applicationEntity != null)
+                {
+                    SystemRoleApplicationEntity systemRoleApplicationEntity = this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.GetRelationByRoleAndApplication(roleEntity, applicationEntity);
+
+                    if (systemRoleApplicationEntity != null)
+                    {
+                        this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.Delete(systemRoleApplicationEntity);
+                    }
+                }
+
+            }
         }
 
         public List<SystemApplicationEntity> GetRoleAssignedApplications(SystemRoleEntity roleEntity)
