@@ -1,0 +1,18 @@
+﻿<resources>
+  <add name="msgFormTitle" value="添加邮件配置" />
+  <add name="msgFiledID" value="主键" />
+  <add name="msgFiledName" value="名称" />
+  <add name="msgFiledCode" value="编码" />
+  <add name="msgFiledDescription" value="描述" />
+  <add name="msgFiledHost" value="服务器地址" />
+  <add name="msgFiledPort" value="端口" />
+  <add name="msgFiledSSL" value="SSL" />
+  <add name="msgFiledFromEmail" value="发送账号" />
+  <add name="msgFiledFromName" value="发送名" />
+  <add name="msgFiledLoginEmail" value="邮件帐号" />
+  <add name="msgFiledLoginPassword" value="帐号密码" />
+  <add name="msgFiledIsEnable" value="是否可用" />
+  <add name="msgFiledIsDefault" value="默认" />E:\Projects\SNFramework\WebApp\Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加邮件配置成功' ,callback);function callback(id) {#{winSystemEmailSettingsAdd}.getForm().reset();#{storeSystemEmailSettings}.reload(); };" />
+</resources>
+
