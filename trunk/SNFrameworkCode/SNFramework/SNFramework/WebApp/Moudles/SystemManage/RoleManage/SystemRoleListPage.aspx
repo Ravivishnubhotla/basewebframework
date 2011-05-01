@@ -16,10 +16,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
-     function CloseWinAssignedMenu()
-     {
-        <%= winAssignedMenu.ClientID %>.hide();
-     }
+ 
      
      function CloseWinAssignedApplication()
      {
@@ -98,13 +95,7 @@
                         }
                     );
             }
-            if (cmd == "cmdAssignedMenu") 
-            {
-               var win = <%= winAssignedMenu.ClientID %>;
-              win.autoLoad.params.RoleID = id.id;
-              win.setTitle(String.format('<%= GetLocalResourceObject("msgAssignMenuTitle").ToString() %>',id.data.RoleName));
-              win.show();
-            }
+
            
             if (cmd == "cmdAssignedPermission") 
             {
@@ -192,7 +183,6 @@
                                             <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
                                             <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
                                             <ext:MenuCommand Text="<%$ Resources:msgAssignApplicationBtnText %>" Icon="ApplicationEdit" CommandName="cmdAssignedApp" />
-                                            <ext:MenuCommand Text="<%$ Resources:msgAssignMenuBtnText %>" Icon="ApplicationFormEdit" CommandName="cmdAssignedMenu" />
                                             <ext:MenuCommand Text="<%$ Resources:msgAssignPermissionBtnText %>" Icon="GroupKey" CommandName="cmdAssignedPermission" />
                                         </Items>
                                     </Menu>
@@ -212,20 +202,6 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    <ext:Window ID="winAssignedMenu" runat="server" Title="Window" Frame="true" Width="700"
-        ConstrainHeader="true" Height="500" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" Hidden="true">
-        <AutoLoad Url="SystemRoleAssignedMenu.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
-            ReloadOnEvent="true" ShowMask="true">
-            <Params>
-                <ext:Parameter Name="RoleID" Mode="Raw" Value="0">
-                </ext:Parameter>
-            </Params>
-        </AutoLoad>
-        <Listeners>
-            <Hide Handler="this.clearContent();" />
-        </Listeners>
-    </ext:Window>
     <ext:Window ID="winAssignedApplication" runat="server" Title="Window" Frame="true"
         Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">

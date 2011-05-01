@@ -55,7 +55,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemMenuAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemMenu_Click" Success="Ext.MessageBox.alert('操作成功', '添加菜单成功.',callback);function callback(id) { #{formPanelSystemMenuAdd}.getForm().reset();ReloadMenus(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>

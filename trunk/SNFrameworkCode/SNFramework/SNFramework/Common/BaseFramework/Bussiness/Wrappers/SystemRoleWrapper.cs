@@ -144,7 +144,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
         }
 
-        public static void PatchAssignRoleApplications(SystemRoleWrapper role, List<string> applicationIDs)
+        public static void PatchSetRoleApplications(SystemRoleWrapper role, List<string> applicationIDs)
+        {
+            if (role == null)
+                throw new ArgumentNullException("role");
+            if (applicationIDs == null)
+                throw new ArgumentNullException("applicationIDs");
+
+            businessProxy.PatchSetRoleApplications(role.entity, applicationIDs);
+        }
+
+        public static void PatchAssignRoleApplications(SystemRoleWrapper role, List<int> applicationIDs)
         {
             if (role == null)
                 throw new ArgumentNullException("role");
@@ -228,6 +238,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    public static SystemRoleWrapper GetRoleByName(string roleName)
 	    {
 	        return ConvertEntityToWrapper(businessProxy.GetRoleByName(roleName));
+	    }
+
+        public static void PatchRemoveRoleApplications(SystemRoleWrapper role, List<int> removeAppIDs)
+	    {
+            if (role == null)
+                throw new ArgumentNullException("role");
+            if (removeAppIDs == null)
+                throw new ArgumentNullException("removeAppIDs");
+
+            businessProxy.PatchRemoveRoleApplications(role.entity, removeAppIDs);
 	    }
     }
 }
