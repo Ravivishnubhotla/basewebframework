@@ -49,15 +49,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage {
         protected global::Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage.UCSystemEmailSettingsEdit UCSystemEmailSettingsEdit1;
         
         /// <summary>
-        /// UCSystemEmailSettingsView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage.UCSystemEmailSettingsView UCSystemEmailSettingsView1;
-        
-        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

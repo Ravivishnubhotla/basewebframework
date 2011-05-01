@@ -163,7 +163,15 @@
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
       <SubType>Designer</SubType>
     </Content>

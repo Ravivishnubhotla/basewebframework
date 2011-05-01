@@ -11,5 +11,5 @@
   <add name="msgcolFromName" value="From Name" />
   <add name="msgcolLoginEmail" value="Email Account" />
   <add name="msgcolIsEnable" value="Enable" />
-  <add name="msgcolIsDefault" value="Default" /> 
+  <add name="msgcolIsDefault" value="Default" />
 </resources>
