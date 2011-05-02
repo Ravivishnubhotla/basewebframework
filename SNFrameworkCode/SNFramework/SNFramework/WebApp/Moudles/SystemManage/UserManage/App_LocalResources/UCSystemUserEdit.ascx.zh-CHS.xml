@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="用户编辑" />
+  <add name="msgFieldUserLoginID" value="登录ID" />
+  <add name="msgFieldUserName" value="名称" />
+  <add name="msgFieldUserEmail" value="邮件" />
+  <add name="msgFieldUserPassword" value="密码" />
+  <add name="msgFieldComments" value="备注" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功', '编辑用户成功',callback);function callback(id) {#{formPanelSystemUserEdit}.getForm().reset();#{storeSystemUser}.reload(); };" />
+</resources>
+

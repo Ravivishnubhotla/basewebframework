@@ -49,6 +49,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserEdit UCSystemUserEdit1;
         
         /// <summary>
+        /// UCSystemUserChangePwd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserChangePwd UCSystemUserChangePwd1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

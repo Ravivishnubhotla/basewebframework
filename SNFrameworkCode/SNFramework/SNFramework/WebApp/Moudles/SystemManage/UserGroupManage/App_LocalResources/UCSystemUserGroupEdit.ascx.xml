@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System User Group Add" />
+  <add name="msgcolGroupID" value="Primary Key" />
+  <add name="msgcolGroupNameCn" value="Name" />
+  <add name="msgcolGroupNameEn" value="Code" />
+  <add name="msgcolGroupDescription" value="Description" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Success upadted User Group。',callback);function callback(id) {#{formPanelSystemUserGroupEdit}.getForm().reset();#{storeSystemUserGroup}.reload(); };" />
+</resources>
+

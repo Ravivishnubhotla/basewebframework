@@ -206,6 +206,27 @@
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -753,7 +774,7 @@
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
-    <Folder Include="Moudles\SystemManage\UserManage\App_LocalResources\" />
+    <Folder Include="Moudles\SystemManage\SystemApplicationAndMenus\App_LocalResources\" />
     <Folder Include="TestPage\" />
   </ItemGroup>
   <ItemGroup>
