@@ -82,7 +82,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtBodyTemplate;
+        protected global::Ext.Net.HtmlEditor txtBodyTemplate;
         
         /// <summary>
         /// chkIsHtmlEmail control.

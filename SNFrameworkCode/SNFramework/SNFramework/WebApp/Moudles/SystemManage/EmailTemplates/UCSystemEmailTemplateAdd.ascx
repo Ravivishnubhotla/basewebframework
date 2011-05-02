@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemEmailTemplateAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates.UCSystemEmailTemplateAdd" %>
 <ext:Window ID="winSystemEmailTemplateAdd" runat="server" Icon="ApplicationAdd" Title="SystemEmailTemplate Add "
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="680" Height="300" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemEmailTemplateAdd" runat="server" Frame="true" Header="false"
@@ -21,18 +21,19 @@
                 </ext:ComboBox>
                 <ext:TextArea ID="txtTitleTemplate" runat="server" FieldLabel="TitleTemplate" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtBodyTemplate" runat="server" FieldLabel="BodyTemplate" AllowBlank="True"
+                <ext:HtmlEditor ID="txtBodyTemplate" runat="server" FieldLabel="BodyTemplate" 
                     AnchorHorizontal="95%" />
+  
                 <ext:Checkbox ID="chkIsHtmlEmail" runat="server" FieldLabel="IsHtmlEmail" Checked="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="IsEnable" Checked="false"
                     AnchorHorizontal="95%" />
- 
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
+        <ext:Button ID="btnSavelSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
+            Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemEmailTemplateAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemEmailTemplate_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSystemEmailTemplateAdd}.getForm().reset();#{storeSystemEmailTemplate}.reload(); };
@@ -41,7 +42,8 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemEmailTemplate" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+            Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemEmailTemplateAdd}.getForm().reset();#{winSystemEmailTemplateAdd}.hide();" />
             </Listeners>

@@ -103,6 +103,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
+        /// txtSystemDictionaryKey control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSystemDictionaryKey;
+        
+        /// <summary>
         /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>
@@ -110,5 +119,14 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// RowEditor1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.RowEditor RowEditor1;
     }
 }
