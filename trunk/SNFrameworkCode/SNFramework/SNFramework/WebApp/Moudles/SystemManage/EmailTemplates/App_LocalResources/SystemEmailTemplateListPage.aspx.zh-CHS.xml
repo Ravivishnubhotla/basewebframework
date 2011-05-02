@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="邮件模版管理" />
+  <add name="msgcolEmailTemplateID" value="主键" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgcolCode" value="编码" />
+  <add name="msgcolDescription" value="描述" />
+  <add name="msgcolTemplateType" value="模版类型" />
+  <add name="msgcolTitleTemplate" value="标题模版" />
+  <add name="msgcolIsHtmlEmail" value="Html模版" />
+  <add name="msgcolIsEnable" value="可用" />
+</resources>
