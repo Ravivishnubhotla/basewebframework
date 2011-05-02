@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemEmailTemplateEdit.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates.UCSystemEmailTemplateEdit" %>
 <ext:Window ID="winSystemEmailTemplateEdit" runat="server" Icon="ApplicationEdit"
-    Title="Edit SystemEmailTemplate" Width="400" Height="270" AutoShow="false" Maximizable="true"
-    Modal="true" Hidden="true" AutoScroll="true" ConstrainHeader="true" Resizable="true"
+    Title="Edit SystemEmailTemplate" Width="680" Height="300" AutoShow="false" Maximizable="true"
+    Modal="true" Hidden="true" AutoScroll="true" ConstrainHeader="true" Resizable="true" 
     Layout="fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemEmailTemplateEdit" runat="server" Frame="true"
@@ -24,7 +24,7 @@
                 </ext:ComboBox>
                 <ext:TextArea ID="txtTitleTemplate" runat="server" FieldLabel="TitleTemplate" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtBodyTemplate" runat="server" FieldLabel="BodyTemplate" AllowBlank="True"
+                <ext:HtmlEditor ID="txtBodyTemplate" runat="server" FieldLabel="BodyTemplate" 
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkIsHtmlEmail" runat="server" FieldLabel="IsHtmlEmail" Checked="false"
                     AnchorHorizontal="95%" />
