@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SystemUserListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.SystemUserListPage" %>
+
 <%@ Register Src="UCSystemUserAdd.ascx" TagName="UCSystemUserAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemUserEdit.ascx" TagName="UCSystemUserEdit" TagPrefix="uc2" %>
-
+<%@ Register Src="UCSystemUserChangePwd.ascx" TagName="UCSystemUserChangePwd" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var rooturl = '<%=this.ResolveUrl("~/")%>';
 
@@ -16,12 +16,14 @@
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
+
+        
         
         var FormatLocked = function(value) {
             if (value)
-                return 'Locked';
+                return '<%= this.GetLocalResourceObject("msgLocked") %>';
             else
-                return '';
+                return '<%= this.GetLocalResourceObject("msgNormal") %>';
         }
 
         function processcmd(cmd, id) {
@@ -30,11 +32,17 @@
             alert(id);
         }
 
+
+        var RefreshData = function(btn) {
+            <%= this.storeSystemUser.ClientID %>.reload();
+        };
+        
+
         function showAddForm() {
             Ext.net.DirectMethods.UCSystemUserAdd.Show(
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg, RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
@@ -61,7 +69,7 @@
 
             if (cmd == "cmdDelete") 
             {
-                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete System User ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -71,7 +79,7 @@
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation Successful', 'Delete successfulSystem User!',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);             
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -148,8 +156,26 @@
         }
 
 
-    </script>
 
+                var IntailLockedOut=function(grid, toolbar, rowIndex, record)
+        {
+      
+            if(record.data.IsLockedOut)
+            {
+             toolbar.items.items[0].menu.items.items[4].hide();
+             toolbar.items.items[0].menu.items.items[5].show();
+            }
+            
+            else{
+             toolbar.items.items[0].menu.items.items[4].show();
+             toolbar.items.items[0].menu.items.items[5].hide();
+        
+            }
+               
+        }
+
+
+    </script>
     <ext:Store ID="storeSystemUser" runat="server" AutoLoad="true" RemoteSort="true"
         OnRefreshData="storeSystemUser_Refresh">
         <AutoLoadParams>
@@ -178,13 +204,13 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <uc1:UCSystemUserAdd ID="UCSystemUserAdd1" runat="server" />
+    <uc1:UCSystemUserAdd ID="UCSystemUserAdd1" runat="server" />
     <uc2:UCSystemUserEdit ID="UCSystemUserEdit1" runat="server" />
- 
+    <uc3:UCSystemUserChangePwd ID="UCSystemUserChangePwd1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemUser" runat="server" StoreID="storeSystemUser"
-                StripeRows="true" Title="System User Management" Icon="Table">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
@@ -210,47 +236,58 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="Login ID" Sortable="true">
+                        <ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="<%$ Resources:msgcolUserLoginID %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserName" DataIndex="UserName" Header="Name" Sortable="true">
+                        <ext:Column ColumnID="colUserName" DataIndex="UserName" Header="<%$ Resources:msgcolUserName %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="Email" Sortable="true">
+                        <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="<%$ Resources:msgcolUserEmail %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="Status" Sortable="true"
+                        <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="<%$ Resources:msgcolUserStatus %>" Sortable="true"
                             Width="35">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="Create Date"
+                        <ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="<%$ Resources:msgcolUserCreateDate %>"
                             Sortable="true" Width="60">
                             <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                         </ext:Column>
-                        <ext:Column ColumnID="colComments" DataIndex="Comments" Header="Comments" Sortable="true"
-                            Width="60">
+                        <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="<%$ Resources:msgcolIsApproved %>" Sortable="true"
+                            Width="35">
+                            <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="Locked" Sortable="true"
+                        <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="<%$ Resources:msgcolIsLockedOut %>" Sortable="true"
                             Width="35">
                             <Renderer Fn="FormatLocked" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="System User Management" Width="60"
+                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>" Width="50"
                             DataIndex="IsLockedOut">
                             <Commands>
-                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" >
                                     <Menu>
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Key" CommandName="cmdChangePassword" Text="<%$ Resources:msgChangePassword %>">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Application" CommandName="cmdApplyRole" Text="<%$ Resources:msgAssignedPassword %>"
+                                                Hidden="true">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Lock" CommandName="btnLock" Text="<%$ Resources:msgLock %>">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="LockOpen" CommandName="btnUnlock" Text="<%$ Resources:msgunLock %>">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
                             </Commands>
+                            <PrepareToolbar Fn="IntailLockedOut" />
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemUser"
-                        DisplayInfo="true" DisplayMsg="Show system user {0} - {1} total{2}" EmptyMsg="No matched record system user" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>"  />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -258,5 +295,4 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    
 </asp:Content>

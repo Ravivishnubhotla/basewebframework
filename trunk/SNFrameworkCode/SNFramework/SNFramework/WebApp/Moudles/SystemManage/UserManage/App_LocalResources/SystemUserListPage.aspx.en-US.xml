@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System User Management" />
+  <add name="msgLocked" value="Locked" />
+  <add name="msgNormal" value="Normal" />
+  <add name="msgcolID" value="Primary Key" />
+  <add name="msgcolUserLoginID" value="Login ID" />
+  <add name="msgcolUserName" value="Name" />
+  <add name="msgcolUserEmail" value="Email" />
+  <add name="msgcolUserStatus" value="Status" />
+  <add name="msgcolUserCreateDate" value="Date Created" />
+  <add name="msgcolIsApproved" value="Approved" />
+  <add name="msgcolIsLockedOut" value="Locked" />
+  <add name="msgChangePassword" value="Change Password" />
+  <add name="msgAssignedPassword" value="Assign Role" />
+  <add name="msgLock" value="Lock" />
+  <add name="msgunLock" value="UnLock" />
+</resources>
+

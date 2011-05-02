@@ -51,7 +51,7 @@
 
             if (cmd == "cmdDelete") 
             {
-                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete the record ?User Group ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -61,7 +61,7 @@
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete successfulUser Group！',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);          
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -76,7 +76,7 @@
             if (cmd == "cmdAssignedRole") {
                var win = <%= winAssignedUserRole.ClientID %>;
               win.autoLoad.params.UserID = id.id;
-              win.setTitle("User Group '" + id.data.GroupNameCn + "' Assign Role ");
+              win.setTitle(String.format("<%= GetLocalResourceObject("msgwinAssignedUserRoleTitle").ToString() %>",id.data.GroupNameCn));
               win.show();
             }
         }
@@ -118,7 +118,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemUserGroup" runat="server" StoreID="storeSystemUserGroup"
-                StripeRows="true" Title="User GroupManagement" Icon="Table">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
@@ -144,16 +144,16 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colGroupID" DataIndex="GroupID" Header="ID" Sortable="true">
+				<ext:Column ColumnID="colGroupID" DataIndex="GroupID" Header="<%$ Resources:msgcolGroupID %>" Sortable="true">
                                 </ext:Column>
-		<ext:Column ColumnID="colGroupNameCn" DataIndex="GroupNameCn" Header="User Group Name" Sortable="true">
+		<ext:Column ColumnID="colGroupNameCn" DataIndex="GroupNameCn" Header="<%$ Resources:msgcolGroupNameCn %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colGroupNameEn" DataIndex="GroupNameEn" Header="User Group Code" Sortable="true">
+		<ext:Column ColumnID="colGroupNameEn" DataIndex="GroupNameEn" Header="<%$ Resources:msgcolGroupNameEn %>" Sortable="true">
                                 </ext:Column>			
-		<ext:Column ColumnID="colGroupDescription" DataIndex="GroupDescription" Header="User Group Description" Sortable="true">
+		<ext:Column ColumnID="colGroupDescription" DataIndex="GroupDescription" Header="<%$ Resources:msgcolGroupDescription %>" Sortable="true">
                                 </ext:Column>			
  
-                        <ext:CommandColumn Header="Management" Width="160">
+                        <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
                             <Commands>
                                 <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                     <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
@@ -161,8 +161,8 @@
                                 <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                     <ToolTip Text="<%$ Resources : GlobalResource, msgDelete  %>" />
                                 </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationAdd" CommandName="cmdAssignedRole" Text="Assigned Role">
-                                    <ToolTip Text="AssignedRole" />
+                                <ext:GridCommand Icon="ApplicationAdd" CommandName="cmdAssignedRole" Text="<%$ Resources : msgCmdAssignedRoleText   %>">
+                                    <ToolTip Text="<%$ Resources : msgCmdAssignedRoleText   %>" />
                                 </ext:GridCommand>
                             </Commands>
                         </ext:CommandColumn>
@@ -171,7 +171,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemUserGroup"
-                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="No matched record" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

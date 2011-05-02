@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="用户组更新" />
+  <add name="msgcolGroupID" value="主键" />
+  <add name="msgcolGroupNameCn" value="名称" />
+  <add name="msgcolGroupNameEn" value="编码" />
+  <add name="msgcolGroupDescription" value="描述" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功', '更新用户组成功。',callback);function callback(id) {#{formPanelSystemUserGroupEdit}.getForm().reset();#{storeSystemUserGroup}.reload(); };" />
+</resources>
+

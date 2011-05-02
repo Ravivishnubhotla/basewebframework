@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="Change Password" />
+  <add name="msgFieldNewPassword" value="New Password" />
+  <add name="msgFieldRePassword" value="Confrim Password" />
+  <add name="msgFieldNewPasswordBlankText" value="Please input new password!" />
+  <add name="msgFieldRePasswordBlankText" value="Please input confirm new password!" />
+  <add name="msgFieldRePasswordInvalidText" value="The Confirm New Password must match the New Password entry." />
+  <add name="msgbtnChangePassword" value="Change Password" />
+  <add name="msgChangePasswordScript" value="Ext.MessageBox.alert('Operation OK', 'Suceess To Change Password.',callback);function callback(id) { #{winChangePassword}.hide();#{formPanelChangePassword}.getForm().reset(); };" />
+</resources>
+

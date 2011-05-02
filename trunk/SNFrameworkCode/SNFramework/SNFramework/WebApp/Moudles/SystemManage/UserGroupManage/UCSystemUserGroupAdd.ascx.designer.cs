@@ -55,7 +55,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtGroupDescription;
+        protected global::Ext.Net.TextArea txtGroupDescription;
         
         /// <summary>
         /// btnSavelSystemUserGroup control.

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="添加用户" />
+  <add name="msgFieldUserLoginID" value="登录ID" />
+  <add name="msgFieldUserName" value="用户名称" />
+  <add name="msgFieldUserEmail" value="Email" />
+  <add name="msgFieldUserPassword" value="密码" />
+  <add name="msgFieldComments" value="备注" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '成功添加用户',callback);function callback(id) {#{formPanelSystemUserAdd}.getForm().reset();#{storeSystemUser}.reload(); };" />
+</resources>
+
