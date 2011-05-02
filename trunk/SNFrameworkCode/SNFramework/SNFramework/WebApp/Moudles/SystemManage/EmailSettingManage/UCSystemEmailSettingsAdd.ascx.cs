@@ -37,7 +37,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage
             try
             {
                 SystemEmailSettingsWrapper obj = new SystemEmailSettingsWrapper();
-          obj.Name = this.txtName.Text.Trim();        	
+          obj.Name = this.txtName.Text.Trim();
+          obj.Code = this.txtCode.Text.Trim();        	
           obj.Descriprsion = this.txtDescriprsion.Text.Trim();        	
           obj.Host = this.txtHost.Text.Trim();        	
           obj.Port = this.txtPort.Text.Trim();

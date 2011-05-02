@@ -30,6 +30,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage
                 if (obj != null)
                 {
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
+                    this.txtCode.Text = obj.Code;    
                     this.txtDescriprsion.Text = ValueConvertUtil.ConvertStringValue(obj.Descriprsion);
                     this.txtHost.Text = ValueConvertUtil.ConvertStringValue(obj.Host);
                     this.txtPort.Text = ValueConvertUtil.ConvertStringValue(obj.Port);
@@ -72,6 +73,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage
             {
                 SystemEmailSettingsWrapper obj = SystemEmailSettingsWrapper.FindById(int.Parse(hidEmailSettingID.Text.Trim()));
                 obj.Name = this.txtName.Text.Trim();
+                obj.Code = this.txtCode.Text.Trim();    
                 obj.Descriprsion = this.txtDescriprsion.Text.Trim();
                 obj.Host = this.txtHost.Text.Trim();
                 obj.Port = this.txtPort.Text.Trim();

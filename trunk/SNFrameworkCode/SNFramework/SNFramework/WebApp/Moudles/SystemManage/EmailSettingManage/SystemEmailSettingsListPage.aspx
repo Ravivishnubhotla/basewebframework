@@ -107,6 +107,7 @@
                 <Fields>
                     <ext:RecordField Name="EmailSettingID" Type="int" />
                     <ext:RecordField Name="Name" />
+                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Descriprsion" />
                     <ext:RecordField Name="Host" />
                     <ext:RecordField Name="Port" />

@@ -1,1 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Email Settings Update" />
+  <add name="msgFiledID" value="Primary Key" />
+  <add name="msgFiledName" value="Name" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledHost" value="Host" />
+  <add name="msgFiledPort" value="Port" />
+  <add name="msgFiledSSL" value="SSL" />
+  <add name="msgFiledFromEmail" value="From Email" />
+  <add name="msgFiledFromName" value="From Name" />
+  <add name="msgFiledLoginEmail" value="Email Account" />
+  <add name="msgFiledLoginPassword" value="Email Password" />
+  <add name="msgFiledIsEnable" value="Enable" />
+  <add name="msgFiledIsDefault" value="Default" />
+  <add name="msgUpdateScript" value="#{formPanelSystemEmailSettingsEdit}.getForm().reset();Ext.MessageBox.alert('Operation successful', 'Update a record success',RefreshData); " />
+</resources>
