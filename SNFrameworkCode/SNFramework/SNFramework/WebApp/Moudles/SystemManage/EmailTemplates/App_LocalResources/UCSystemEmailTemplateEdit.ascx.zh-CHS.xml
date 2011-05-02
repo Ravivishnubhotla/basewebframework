@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="邮件模版编辑" />
+  <add name="msgFiledEmailTemplateID" value="主键" />
+  <add name="msgFiledName" value="名称" />
+  <add name="msgFiledCode" value="编码" />
+  <add name="msgFiledDescription" value="描述" />
+  <add name="msgFiledTemplateType" value="模版类型" />
+  <add name="msgFiledTitleTemplate" value="标题模版" />
+  <add name="msgFiledBodyTemplate" value="内容模版" />
+  <add name="msgFiledIsHtmlEmail" value="支持HTML" />
+  <add name="msgFiledIsEnable" value="可用" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功', '更新邮件模版成功',callback);function callback(id) {#{formPanelSystemEmailTemplateEdit}.getForm().reset();#{storeSystemEmailTemplate}.reload(); };" />
+</resources>

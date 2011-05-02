@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System Email Template Management" />
+  <add name="msgcolEmailTemplateID" value="Primary Key" />
+  <add name="msgcolName" value="Name" />
+  <add name="msgcolCode" value="Code" />
+  <add name="msgcolDescription" value="Description" />
+  <add name="msgcolTemplateType" value="Template Type" />
+  <add name="msgcolTitleTemplate" value="Title Template" />
+  <add name="msgcolIsHtmlEmail" value="Html Template" />
+  <add name="msgcolIsEnable" value="Is Enable" />
+</resources>

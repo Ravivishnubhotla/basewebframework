@@ -49,15 +49,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates {
         protected global::Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates.UCSystemEmailTemplateEdit UCSystemEmailTemplateEdit1;
         
         /// <summary>
-        /// UCSystemEmailTemplateView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates.UCSystemEmailTemplateView UCSystemEmailTemplateView1;
-        
-        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>
