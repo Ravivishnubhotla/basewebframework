@@ -1,4 +1,5 @@
-﻿<resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
   <add name="msgFormTitle" value="添加邮件配置" />
   <add name="msgFiledID" value="主键" />
   <add name="msgFiledName" value="名称" />
@@ -12,7 +13,7 @@
   <add name="msgFiledLoginEmail" value="邮件帐号" />
   <add name="msgFiledLoginPassword" value="帐号密码" />
   <add name="msgFiledIsEnable" value="是否可用" />
-  <add name="msgFiledIsDefault" value="默认" />E:\Projects\SNFramework\WebApp\Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx
-  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加邮件配置成功' ,callback);function callback(id) {#{winSystemEmailSettingsAdd}.getForm().reset();#{storeSystemEmailSettings}.reload(); };" />
+  <add name="msgFiledIsDefault" value="默认" /> 
+  <add name="msgAddScript" value="#{formPanelSystemEmailSettingsAdd}.getForm().reset();Ext.MessageBox.alert('操作成功', '添加邮件配置成功' ,RefreshData);" />
 </resources>
 

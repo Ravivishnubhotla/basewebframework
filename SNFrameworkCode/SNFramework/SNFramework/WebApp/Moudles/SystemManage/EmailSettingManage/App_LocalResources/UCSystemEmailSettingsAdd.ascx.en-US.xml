@@ -1,4 +1,5 @@
-﻿<resources>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
   <add name="msgFormTitle" value="System Email Settings Add" />
   <add name="msgFiledID" value="Primary Key" />
   <add name="msgFiledName" value="Name" />
@@ -13,5 +14,5 @@
   <add name="msgFiledLoginPassword" value="Email Password" />
   <add name="msgFiledIsEnable" value="Enable" />
   <add name="msgFiledIsDefault" value="Default" />
-  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add a System Email Settings success' ,callback);function callback(id) {#{winSystemEmailSettingsAdd}.getForm().reset();#{storeSystemEmailSettings}.reload(); };" />
+  <add name="msgAddScript" value="#{formPanelSystemEmailSettingsAdd}.getForm().reset();Ext.MessageBox.alert('Operation successful', 'Add a System Email Settings success' ,RefreshData);" />
 </resources>

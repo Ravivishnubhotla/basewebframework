@@ -23,6 +23,6 @@
   <add name="msgWarning" value="警告" />
   <add name="msgDeleteWarning" value="确认要删除该条数据？" />
   <add name="msgDeleteSuccessful" value="删除数据成功！" />
-  <add name="msgSavingWaiting" value="数据保存中,请稍候g...." />
+  <add name="msgSavingWaiting" value="数据保存中,请稍候...." />
   <add name="msgShowError" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
 </resources>
