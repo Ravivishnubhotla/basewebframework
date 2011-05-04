@@ -140,6 +140,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+                <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
         <Listeners>
             <Load Handler="if(#{chkFilterNoCount}.getValue()) {#{Store1}.filterBy(filterfn);} else {#{Store1}.clearFilter();}" />
         </Listeners>

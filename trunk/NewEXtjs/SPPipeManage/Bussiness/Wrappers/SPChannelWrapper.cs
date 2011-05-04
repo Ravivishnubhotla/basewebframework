@@ -583,30 +583,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                                                                        where (cc.IsMacth(requestValues, fieldMappings))
                                                                        orderby cc.OrderIndex descending
                                                                        select cc).FirstOrDefault();
+            if (macthClientChannelSetting == null)
+                return null;
 
-            return macthClientChannelSetting;
 
-            //int orderIndex = macthClientChannelSetting.OrderIndex.HasValue?macthClientChannelSetting.OrderIndex.Value:0;
+            //return macthClientChannelSetting;
 
-            //List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in clientChannelSettings
-            //                                                                     where
-            //                                                                         (cc.IsMacth(requestValues,
-            //                                                                                     fieldMappings) &&
-            //                                                                          macthClientChannelSetting.
-            //                                                                              OrderIndex == orderIndex)
-            //                                                                     select cc).ToList();
-            //if (allmacthClientChannelSettings.Count <= 0)
-            //{
-            //    return null;
-            //}
-            //else if (allmacthClientChannelSettings.Count<=1)
-            //{
-            //    return allmacthClientChannelSettings[0];
-            //}
-            //else
-            //{
-            //    return allmacthClientChannelSettings.Find(p=>(p.IsMacth(requestValues,fieldMappings)))
-            //}
+            int orderIndex = macthClientChannelSetting.OrderIndex.HasValue?macthClientChannelSetting.OrderIndex.Value:0;
+
+            List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in clientChannelSettings
+                                                                                 where
+                                                                                     (cc.IsMacth(requestValues,
+                                                                                                 fieldMappings) &&
+                                                                                      cc.OrderIndex == orderIndex)
+                                                                                 select cc).ToList();
+            if (allmacthClientChannelSettings.Count <= 0)
+            {
+                return null;
+            }
+            else if (allmacthClientChannelSettings.Count<=1)
+            {
+                return allmacthClientChannelSettings[0];
+            }
+            else
+            {
+                return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings,"cpid")));
+            }
 
             //return macthClientChannelSetting;
         }
@@ -741,156 +743,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.QuickAdd(spChannelWrapper.entity, linkPName, mobilePName, spCodePName, moPName, userID);
         }
 
-        //public bool ProcessStateRequest(Hashtable hashtable, string ip, string recievdData, HttpRequest httpRequest, out RequestError error)
-        //{
-        //    error = new RequestError();
-        //    error.ErrorType = RequestErrorType.NoError;
-        //    error.ErrorMessage = "";
-        //    error.ChannelID = Id;
-
-        //    Hashtable fieldMappings = GetFieldMappings();
-
-        //    string cpid = GetMappedParamValueFromRequest(hashtable, "cpid", fieldMappings);
-        //    string mid = GetMappedParamValueFromRequest(hashtable, "mid", fieldMappings);
-        //    string mobile = GetMappedParamValueFromRequest(hashtable, "mobile", fieldMappings);
-        //    string port = GetMappedParamValueFromRequest(hashtable, "port", fieldMappings);
-        //    string ywid = GetMappedParamValueFromRequest(hashtable, "ywid", fieldMappings);
-        //    string msg = GetMappedParamValueFromRequest(hashtable, "msg", fieldMappings);
-        //    string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
-        //    string dest = GetMappedParamValueFromRequest(hashtable, "dest", fieldMappings);
-        //    string price = GetMappedParamValueFromRequest(hashtable, "price", fieldMappings);
-        //    string extendfield1 = GetMappedParamValueFromRequest(hashtable, "extendfield1", fieldMappings);
-        //    string extendfield2 = GetMappedParamValueFromRequest(hashtable, "extendfield2", fieldMappings);
-        //    string extendfield3 = GetMappedParamValueFromRequest(hashtable, "extendfield3", fieldMappings);
-        //    string extendfield4 = GetMappedParamValueFromRequest(hashtable, "extendfield4", fieldMappings);
-        //    string extendfield5 = GetMappedParamValueFromRequest(hashtable, "extendfield5", fieldMappings);
-        //    string extendfield6 = GetMappedParamValueFromRequest(hashtable, "extendfield6", fieldMappings);
-        //    string extendfield7 = GetMappedParamValueFromRequest(hashtable, "extendfield7", fieldMappings);
-        //    string extendfield8 = GetMappedParamValueFromRequest(hashtable, "extendfield8", fieldMappings);
-        //    string extendfield9 = GetMappedParamValueFromRequest(hashtable, "extendfield9", fieldMappings);
-
-
-        //    if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
-        //    {
-        //        linkid = Guid.NewGuid().ToString();
-        //    }
-
-        //    if (string.IsNullOrEmpty(linkid))
-        //    {
-        //        error.ErrorType = RequestErrorType.NoLinkID;
-        //        error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
-
-        //        return false;
-        //    }
-
-        //    string content = recievdData;
-
-
-        //    Hashtable exparams = GetEXParamsValue(hashtable);
-
-        //    SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(hashtable,
-        //                                                                                           fieldMappings);
-
-        //    if (channelSetting == null)
-        //    {
-        //        error.ErrorType = RequestErrorType.NoChannelClientSetting;
-        //        error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
-
-        //        return false;
-        //    }
-
-
-        //    SPSStatePaymentInfoWrapper paymentInfo = new SPSStatePaymentInfoWrapper();
-
-        //    paymentInfo.ChannelID = this.Id;
-        //    paymentInfo.ClientID = channelSetting.ClinetID.Id;
-        //    paymentInfo.ChannleClientID = channelSetting.Id;
-        //    paymentInfo.Cpid = cpid;
-        //    paymentInfo.Mid = mid;
-        //    paymentInfo.MobileNumber = mobile;
-        //    paymentInfo.Port = port;
-        //    paymentInfo.Ywid = ywid;
-        //    paymentInfo.Message = msg;
-        //    paymentInfo.Linkid = linkid;
-        //    paymentInfo.Dest = dest;
-        //    paymentInfo.Price = price;
-        //    paymentInfo.ExtendField1 = extendfield1;
-        //    paymentInfo.ExtendField2 = extendfield2;
-        //    paymentInfo.ExtendField3 = extendfield3;
-        //    paymentInfo.ExtendField4 = extendfield4;
-        //    paymentInfo.ExtendField5 = extendfield5;
-        //    paymentInfo.ExtendField6 = extendfield6;
-        //    paymentInfo.ExtendField7 = extendfield7;
-        //    paymentInfo.ExtendField8 = extendfield8;
-        //    paymentInfo.ExtendField9 = extendfield9;
-        //    paymentInfo.Ip = ip;
-        //    paymentInfo.IsIntercept = false;
-        //    paymentInfo.CreateDate = DateTime.Now;
-        //    paymentInfo.RequestContent = content;
-
-
-        //    if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-        //    {
-        //        try
-        //        {
-        //            PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-        //            if (phoneAreaInfo != null)
-        //            {
-        //                paymentInfo.Province = phoneAreaInfo.Province;
-        //                paymentInfo.City = phoneAreaInfo.City;
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Logger.Error(ex.Message);
-        //        }
-        //    }
-
-        //    paymentInfo.IsSycnData = false;
-
-           
-        //    try
-        //    {
-        //        PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
-
-        //        var uniqueKeyNames = new List<string>();
-
-        //        List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
-
-        //        foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-        //        {
-        //            if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-        //                uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-        //        }
-
-        //        if (!uniqueKeyNames.Contains("linkid"))
-        //        {
-        //            uniqueKeyNames.Add("linkid");
-        //        }
-
-        //        bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
-
-        //        if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
-        //        {
-        //            error.ErrorType = RequestErrorType.RepeatLinkID;
-        //            error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
-        //            error.ClientID = channelSetting.ClinetID.Id;
-
-        //            return false;
-        //        }
-
-        //        error.ErrorType = RequestErrorType.NoError;
-        //        error.ErrorMessage = "";
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        error.ErrorType = RequestErrorType.DataSaveError;
-        //        error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
-        //        return false;
-        //    }
-        //}
 
         public bool ProcessStateRequest(IHttpRequest httpGetPostReques, out RequestError error)
         {
@@ -990,8 +842,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     {
                         phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
                     }
-                    //PhoneAreaInfo phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    //PhoneAreaInfo phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     if (phoneAreaInfo != null)
                     {
                         paymentInfo.Province = phoneAreaInfo.Province;

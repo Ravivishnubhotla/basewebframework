@@ -230,7 +230,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (!string.IsNullOrEmpty(cpid))
             {
-                columnName = this.CommandColumn;
+                columnName = cpid;
             }
 
             string spcode = SPChannelWrapper.GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
@@ -545,7 +545,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         private void BulidParams(NameValueCollection queryString, string key, string value)
         {
-            queryString.Add(key, HttpUtility.UrlEncode(value));
+            queryString.Add(key,value);
         }
 
 

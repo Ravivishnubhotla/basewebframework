@@ -137,6 +137,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 province = this.cmbProvince.SelectedItem.Value;
             }
 
+            string city = "";
+
+            if (!string.IsNullOrEmpty(this.txtCity.Text.Trim()))
+            {
+                city = this.txtCity.Text.Trim();
+            }
+
             string phone = "";
 
             if(!string.IsNullOrEmpty(this.txtMoblie.Text.Trim()))
@@ -146,11 +153,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
 
             if (SPClientID > 0)
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, city, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
             else
             {
-                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+                list = SPPaymentInfoWrapper.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(SPClientGroupID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, city, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
             }
                    
             store1.DataSource = list;

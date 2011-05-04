@@ -85,6 +85,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         protected global::Coolite.Ext.Web.ComboBox cmbProvince;
         
         /// <summary>
+        /// txtCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtCity;
+        
+        /// <summary>
         /// dfReportStartDate control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
+        
+        /// <summary>
+        /// txtMoblie control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtMoblie;
         
         /// <summary>
         /// btnRefresh control.

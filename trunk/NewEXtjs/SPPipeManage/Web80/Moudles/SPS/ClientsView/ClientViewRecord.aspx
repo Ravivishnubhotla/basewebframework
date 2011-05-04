@@ -19,10 +19,10 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="MobileNumber" />
-                    <ext:RecordField Name="RequestContent" />
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
                     <ext:RecordField Name="Province" />
+                                        <ext:RecordField Name="City" />
                                         <ext:RecordField Name="Ywid" />
                     <ext:RecordField Name="Cpid" />
                     <ext:RecordField Name="SSycnDataUrl" />          
@@ -30,6 +30,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+         <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -88,6 +89,10 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
+                                                                        <ext:ToolbarTextItem Text="地市">
+                                    </ext:ToolbarTextItem>
+                                    <ext:TextField ID="txtCity" runat="server">
+                                    </ext:TextField>
                                     <ext:ToolbarTextItem Text="日期从">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
@@ -96,6 +101,10 @@
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
                                     </ext:DateFieldMenuItem>
+                                                                        <ext:ToolbarTextItem Text="手机号码">
+                                    </ext:ToolbarTextItem>
+                                    <ext:TextField ID="txtMoblie" runat="server">
+                                    </ext:TextField>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <Listeners>
                                             <Click Handler="#{Store1}.reload();" />
@@ -118,7 +127,9 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false" Width="30">
+                                <ext:Column ColumnID="colProvince" DataIndex="Province" Header="省份" Sortable="false" Width="30">
+                                </ext:Column>
+                                                                <ext:Column ColumnID="colCity" DataIndex="City" Header="地市" Sortable="false" Width="30">
                                 </ext:Column>
                                 <ext:Column ColumnID="colYwid" DataIndex="Ywid" Header="上行内容" Sortable="false" Width="60">
                                 </ext:Column>

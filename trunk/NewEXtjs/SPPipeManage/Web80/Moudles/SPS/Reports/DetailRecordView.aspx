@@ -11,7 +11,7 @@
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="30" Mode="Raw" />
         </AutoLoadParams>
-        <AjaxEventConfig IsUpload="true" />
+        <AjaxEventConfig IsUpload="true"  Timeout="120000" />
         <Proxy>
             <ext:DataSourceProxy />
         </Proxy>

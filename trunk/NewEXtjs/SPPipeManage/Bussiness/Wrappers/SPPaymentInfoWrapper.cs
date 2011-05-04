@@ -584,26 +584,45 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         }
 
-        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(int channleID, int spClientId, DateTime startDate, DateTime endDate, string province, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(
+                                                                                                                        int channleID, 
+                                                                                                                        int spClientId, 
+                                                                                                                        DateTime startDate, 
+                                                                                                                        DateTime endDate, 
+                                                                                                                        string province, 
+                                                                                                                        string city, 
+                                                                                                                        string phone, 
+                                                                                                                        string sortFieldName, 
+                                                                                                                        bool isdesc, 
+                                                                                                                        int pageIndex, 
+                                                                                                                        int limit, 
+                                                                                                                        out int recordCount
+                                                                                                                     )
 	    {
-            return
-     ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(spClientId,
-                                                                                       startDate,
-                                                                                       endDate, province, phone,
-                                                                                       sortFieldName, isdesc,
-                                                                                       pageIndex, limit,
-                                                                                       out recordCount)); 
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(
+                                                                                                                            spClientId,
+                                                                                                                            startDate,
+                                                                                                                            endDate, 
+                                                                                                                            province, 
+                                                                                                                            city,
+                                                                                                                            phone,
+                                                                                                                            sortFieldName, 
+                                                                                                                            isdesc,
+                                                                                                                            pageIndex, 
+                                                                                                                            limit,
+                                                                                                                            out recordCount)
+                                                                                                                          ); 
 
 
 
 	    }
 
-        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(int spClientGroupID, DateTime startDate, DateTime endDate, string province,string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
 	    {
             return
                 ConvertToWrapperList(businessProxy.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(spClientGroupID,
                                                                                                   startDate,
-                                                                                                  endDate, province, phone,
+                                                                                                  endDate, province, city, phone,
                                                                                                   sortFieldName, isdesc,
                                                                                                   pageIndex, limit,
                                                                                                   out recordCount));	        

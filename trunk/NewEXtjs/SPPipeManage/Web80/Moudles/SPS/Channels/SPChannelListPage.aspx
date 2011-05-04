@@ -206,8 +206,6 @@
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
                     <ext:RecordField Name="InterfaceUrl" />
-                    <ext:RecordField Name="ParamsList" />
-                    <ext:RecordField Name="ChannelInfo" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -243,7 +241,7 @@
                                             <Click Handler="ReloadAllChannelInfo();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                      
+ 
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPChannel}.reload();" />
@@ -325,10 +323,7 @@
                                 <Template ID="Template1" runat="server">
                     <br />
                         <p><b>描述：</b> {Description}</p>
-                        <p><b>接口链接：</b> {InterfaceUrl}</p>
-                        <p><b>通道列表：</b><br /> {ParamsList}</p>
-                        <p><b>指令下家列表：</b><br /> {ChannelInfo}</p>
-                        
+                        <p><b>接口链接：</b> {InterfaceUrl}</p>                        
                                 </Template>
                             </ext:RowExpander>
                         </Plugins>

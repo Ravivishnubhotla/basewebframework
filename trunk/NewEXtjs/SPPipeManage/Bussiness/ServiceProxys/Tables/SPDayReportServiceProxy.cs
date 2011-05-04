@@ -203,6 +203,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetClientGroupPriceReport(clientChannelSettingEntitys, startDate, endDate);
         }
 
+        [Transaction(IsolationLevel.ReadUncommitted)]
         public DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate)
         {
             return this.AdoNetDb.GetDayCountReportForMaster(startDate, endDate);
@@ -252,6 +253,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetCountReportForMaster(channelId, startDateTime, enddateTime);
         }
 
+        [Transaction(IsolationLevel.ReadUncommitted)]
         public DataTable GetAllTodayReport(bool filterZeroCountChannel)
         {
             return this.AdoNetDb.GetAllTodayReport(filterZeroCountChannel);
