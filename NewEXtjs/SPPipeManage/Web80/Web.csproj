@@ -20,6 +20,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -340,6 +341,7 @@
     <Content Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCClientChangePwd.ascx" />
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
@@ -803,6 +805,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientsHandler.ashx.cs">
       <DependentUpon>SPClientsHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientChangePwd.ascx.cs">
+      <DependentUpon>UCClientChangePwd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientChangePwd.ascx.designer.cs">
+      <DependentUpon>UCClientChangePwd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.cs">
       <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>

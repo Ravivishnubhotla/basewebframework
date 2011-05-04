@@ -215,10 +215,10 @@
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="IsSycnData" Type=Boolean />
-                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
+         <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

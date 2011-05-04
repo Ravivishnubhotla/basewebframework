@@ -60,10 +60,10 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="MobileNumber" />
-                    <ext:RecordField Name="RequestContent" />
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
                     <ext:RecordField Name="Province" />
+                    <ext:RecordField Name="City" />
                     <ext:RecordField Name="Ywid" />
                     <ext:RecordField Name="Cpid" />
                     <ext:RecordField Name="SSycnDataUrl" />
@@ -71,6 +71,8 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -142,6 +144,10 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
+                                    <ext:ToolbarTextItem Text="地市">
+                                    </ext:ToolbarTextItem>
+                                    <ext:TextField ID="txtCity" runat="server">
+                                    </ext:TextField>
                                     <ext:ToolbarTextItem Text="日期从">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
@@ -177,19 +183,22 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true" Width="60"
-                                    >
+                                <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true"
+                                    Width="60">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colRequestContent" DataIndex="Province" Header="省份" Sortable="false" Width="30">
+                                <ext:Column ColumnID="colProvince" DataIndex="Province" Header="省份" Sortable="false"
+                                    Width="30">
+                                </ext:Column>
+                                <ext:Column ColumnID="colCity" DataIndex="City" Header="地市" Sortable="false" Width="30">
                                 </ext:Column>
                                 <ext:Column ColumnID="colYwid" DataIndex="Ywid" Header="上行内容" Sortable="false" Width="60">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCpid" DataIndex="Cpid" Header="长号码" Sortable="false" Width="60">
                                 </ext:Column>
-                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"  Width="80"
-                                     >
+                                <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true"
+                                    Width="80">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
                                 </ext:Column>
                             </Columns>

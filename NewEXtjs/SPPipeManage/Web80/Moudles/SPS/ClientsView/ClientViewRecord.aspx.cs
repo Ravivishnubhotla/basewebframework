@@ -109,7 +109,21 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
                 province = this.cmbProvince.SelectedItem.Value;
             }
 
-            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province ,"", sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
+            string city = "";
+
+            if (!string.IsNullOrEmpty(this.txtCity.Text.Trim()))
+            {
+                city = this.txtCity.Text.Trim();
+            }
+
+            string phone = "";
+
+            if (!string.IsNullOrEmpty(this.txtMoblie.Text.Trim()))
+            {
+                phone = this.txtMoblie.Text.Trim();
+            }
+
+            List<SPPaymentInfoWrapper> list = SPPaymentInfoWrapper.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept(ChannelID, this.SPClientID, startDate, Convert.ToDateTime(this.dfReportEndDate.DateField.Value), province, city, phone, sortFieldName, (e.Dir == Coolite.Ext.Web.SortDirection.DESC), pageIndex, limit, out recordCount);
 
             store1.DataSource = list;
             e.TotalCount = recordCount;
