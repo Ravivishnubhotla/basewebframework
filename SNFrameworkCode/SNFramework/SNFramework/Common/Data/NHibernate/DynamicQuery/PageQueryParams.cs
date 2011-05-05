@@ -10,6 +10,9 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int RecordCount { get; set; }
+        public string OrderByColumnName { get; set; }
+        public bool IsDesc { get; set; }
+ 
         public int PageCount
         {
             get
@@ -40,7 +43,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
         }
 
 
-        public PageQueryParams(int fristRecord, int maxRecord)
+        public PageQueryParams(int fristRecord, int maxRecord, string orderByColumnName, bool isDesc)
         {
             PageIndex = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fristRecord) / Convert.ToDouble(maxRecord)));
 
@@ -48,6 +51,10 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
                 PageIndex = 1;
 
             PageSize = maxRecord;
+
+            OrderByColumnName = orderByColumnName;
+
+            IsDesc = isDesc;
         }
 
 

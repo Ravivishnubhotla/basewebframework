@@ -5,6 +5,9 @@
 <%@ Register Src="UCSystemDictionaryEdit.ascx" TagName="UCSystemDictionaryEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeGroup}.reload();" />
+        </Listeners>
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -99,6 +102,7 @@
             </ext:JsonReader>
         </Reader>
     </ext:Store>
+ 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemDictionaryAdd ID="UCSystemDictionaryAdd1" runat="server" />
@@ -142,8 +146,8 @@
                         </ext:Column>
                         <ext:Column ColumnID="colSystemDictionaryKey" DataIndex="SystemDictionaryKey" Header="<%$ Resources:msgcolKey %>"
                             Sortable="true">
-                             <Editor>
-                             <ext:TextField ID="txtSystemDictionaryKey" runat="server" AllowBlank="false" />
+                            <Editor>
+                                <ext:TextField ID="txtSystemDictionaryKey" runat="server" AllowBlank="false" />
                             </Editor>
                         </ext:Column>
                         <ext:Column ColumnID="colSystemDictionaryValue" DataIndex="SystemDictionaryValue"
@@ -181,8 +185,13 @@
                     <Command Handler="processcmd(command, record);" />
                 </Listeners>
                 <Plugins>
-                    <ext:RowEditor ID="RowEditor1" runat="server" SaveText="Update" CancelText="Cancel" >
-                    </ext:RowEditor>
+                    <ext:GridFilters runat="server" ID="GridFilters1">
+                        <Filters>
+                            <ext:ListFilter DataIndex="SystemDictionaryCategoryID" StoreID="storeGroup"
+                                LabelField="Name">
+                            </ext:ListFilter>
+                        </Filters>
+                    </ext:GridFilters>
                 </Plugins>
             </ext:GridPanel>
         </Items>
