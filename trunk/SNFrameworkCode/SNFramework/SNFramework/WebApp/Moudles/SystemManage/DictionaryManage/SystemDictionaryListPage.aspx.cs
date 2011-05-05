@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
@@ -42,9 +43,84 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             }
         }
 
+
+        private List<QueryFilter> GetQueryFilter(StoreRefreshDataEventArgs e)
+        {
+            string s = e.Parameters[this.GridFilters1.ParamPrefix];
+
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+
+            if (string.IsNullOrEmpty(s))
+            {
+                return queryFilters;
+            }
+
+
+
+            FilterConditions fc = new FilterConditions(s);
+
+
+
+            foreach (FilterCondition condition in fc.Conditions)
+            {
+                Comparison comparison = condition.Comparison;
+                string field = condition.Name;
+                FilterType type = condition.FilterType;
+
+ 
+                switch (condition.FilterType)
+                {
+                    case FilterType.Boolean:
+
+                        break;
+                    case FilterType.Date:
+
+                        break;
+                    case FilterType.List:
+
+                        List<string> inValues  = new List<string>();
+
+                        foreach (string s1 in condition.ValuesList)
+                        {
+                            inValues.Add(s1);
+                        }
+
+                        if(inValues.Count>0)
+                        {
+                            QueryFilter filter = new QueryFilter(SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID, string.Join(",",inValues.ToArray()),FilterFunction.In);
+                            queryFilters.Add(filter);
+                        }
+
+
+ 
+                        break;
+                    case FilterType.Numeric:
+
+                        break;
+                    case FilterType.String:
+ 
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+
+            }
+
+            return queryFilters;
+
+        }
+
+
+
         protected void storeSystemDictionary_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-  
+
+
+
+            List<QueryFilter> queryFilters = GetQueryFilter(e);
+
+
             string sortFieldName = "";
             if (e.Sort != null)
                 sortFieldName = e.Sort;
@@ -69,7 +145,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
-            storeSystemDictionary.DataSource = SystemDictionaryWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            storeSystemDictionary.DataSource = SystemDictionaryWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemDictionary.DataBind();

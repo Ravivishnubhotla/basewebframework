@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -125,6 +126,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    {
             return businessProxy.GetAllCategoryNames();
 	    }
+
+        public static List<NameItem> GetAllCategoryNameItems()
+        {
+            List<string> names = GetAllCategoryNames();
+            List<NameItem> nameItems = new List<NameItem>();
+            foreach (string name in names)
+            {
+                nameItems.Add(new NameItem() { Name = name });
+            }
+            return nameItems;
+        }
 
 	    public static List<SystemDictionaryWrapper> FindAllByGroupIdAndOrder()
 	    {

@@ -19,6 +19,8 @@
         NotIsEmpty,
         IsNull,
         NotIsNull,
-        Custom
+        Custom,
+        In,
+        NotIn
     }
 }

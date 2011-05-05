@@ -85,6 +85,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
+        /// cmbGroupFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbGroupFilter;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>
@@ -121,12 +130,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
         
         /// <summary>
-        /// RowEditor1 control.
+        /// GridFilters1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.RowEditor RowEditor1;
+        protected global::Ext.Net.GridFilters GridFilters1;
     }
 }

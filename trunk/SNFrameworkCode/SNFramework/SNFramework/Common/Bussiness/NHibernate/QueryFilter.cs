@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,14 +42,13 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         {
             get
             {
-                string[] spValues = FilterValue1.Split(("").ToCharArray());
+                string[] spValues = FilterValue.Split(("|").ToCharArray());
                 if (spValues.Length >= 2)
                 {
                     return spValues[0];
                 }
                 return filterValue;
             }
-
         }
         /// <summary>
         /// 值2：Between类型时使用
@@ -57,13 +57,30 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         {
             get
             {
-                string[] spValues = FilterValue1.Split(("").ToCharArray());
+                string[] spValues = FilterValue.Split(("|").ToCharArray());
                 if (spValues.Length >= 2)
                 {
                     return filterValue.Substring(spValues[0].Length, filterValue.Length - spValues[0].Length);
                 }
                 return filterValue;
             }
+        }
+
+
+        public ArrayList GetFilterArrays(Type fieldType)
+        {
+
+            string[] spValues = FilterValue.Split((",").ToCharArray());
+
+                ArrayList al = new ArrayList();
+
+                foreach (string spValue in spValues)
+                {
+                    al.Add(Convert.ChangeType(spValue, fieldType));
+                }
+
+                return al;
+        
         }
 
         /// <summary>
@@ -122,6 +139,8 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
                     return Property.ForName(this.filterFieldName).IsNull();
                 case FilterFunction.NotIsNull:
                     return Property.ForName(this.filterFieldName).IsNotNull();
+                case FilterFunction.In:
+                    return Property.ForName(this.filterFieldName).In(GetFilterArrays(fieldType));
                 default :
                     return null;
             }
