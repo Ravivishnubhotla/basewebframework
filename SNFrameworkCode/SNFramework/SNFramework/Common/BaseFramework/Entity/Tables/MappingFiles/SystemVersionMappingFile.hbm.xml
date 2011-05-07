@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemVersionEntity,Legendigital.Framework.Common" table="SystemVersion" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="OldVersion" type="string" name="OldVersion"   length="4000" />	
+		<property column="NewVersion" type="string" name="NewVersion"   length="4000" />	
+		<property column="OldChangeFileld" type="string" name="OldChangeFileld"   length="4000" />	
+		<property column="NewChangeFileld" type="string" name="NewChangeFileld"   length="4000" />	
+		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
+		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

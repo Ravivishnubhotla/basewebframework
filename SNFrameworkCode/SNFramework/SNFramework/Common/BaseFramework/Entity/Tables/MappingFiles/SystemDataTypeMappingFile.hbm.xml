@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDataTypeEntity,Legendigital.Framework.Common" table="SystemDataType" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="TableName" type="string" name="TableName"   length="40" />	
+		<property column="IDFieldName" type="string" name="IDFieldName"   length="40" />	
+		<property column="ClassFullName" type="string" name="ClassFullName"   length="100" />	
+		<property column="AssemblyName" type="string" name="AssemblyName"   length="40" />	
+		<property column="LoadMethodName" type="string" name="LoadMethodName"   length="100" />	
+		<property column="SaveMethodName" type="string" name="SaveMethodName"   length="100" />	
+		<property column="UpdateMethodName" type="string" name="UpdateMethodName"   length="100" />	
+		<property column="DeleteMethodName" type="string" name="DeleteMethodName"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>
