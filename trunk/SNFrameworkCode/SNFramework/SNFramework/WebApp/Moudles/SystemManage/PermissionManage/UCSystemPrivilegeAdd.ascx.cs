@@ -44,7 +44,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                 obj.DefaultValue = this.txtDefaultValue.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.PrivilegeOrder = Convert.ToInt32(this.txtPrivilegeOrder.Text.Trim());
-                obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
+                //obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
                 obj.PrivilegeType = this.txtPrivilegeType.Text.Trim();
 
 

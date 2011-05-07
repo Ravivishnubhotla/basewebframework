@@ -26,7 +26,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISINSINGLEPAGE = new BoolProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_ISINSINGLEPAGE));		
 		public static readonly IntProperty PROPERTY_OPERATIONORDER = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_OPERATIONORDER));		
 		public static readonly BoolProperty PROPERTY_ISCOMMONOPERATION = new BoolProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_ISCOMMONOPERATION));		
-		public static readonly IntProperty PROPERTY_RESOURCEID = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_RESOURCEID));		
+		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCEID = new EntityProperty<SystemResourcesEntity>(Property.ForName(SystemOperationEntity.PROPERTY_NAME_RESOURCEID));
+		#region resourceID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemOperationEntity> InClude_ResourceID_Query(NHibernateDynamicQueryGenerator<SystemOperationEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemOperationEntity.PROPERTY_NAME_RESOURCEID, PROPERTY_RESOURCEID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_RESOURCEID_ALIAS_NAME = "ResourceID_SystemOperationEntity_Alias";
+		public static readonly IntProperty PROPERTY_RESOURCEID_RESOURCESID = new IntProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesID"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_RESOURCESNAMECN = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesNameCn"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_RESOURCESNAMEEN = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesNameEn"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_RESOURCESDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesDescription"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_RESOURCESTYPE = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesType"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_RESOURCESLIMITEXPRESSION = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesLimitExpression"));
+		public static readonly BoolProperty PROPERTY_RESOURCEID_RESOURCESISRELATEUSER = new BoolProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesIsRelateUser"));
+		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_RESOURCEID_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".MoudleID"));
+		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCEID_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ParentResourcesID"));
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -73,6 +89,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SystemOperationEntity> GetList_By_ResourceID_SystemResourcesEntity(SystemResourcesEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemOperationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_RESOURCEID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemOperationEntity> GetPageList_By_ResourceID_SystemResourcesEntity(string orderByColumnName, bool isDesc, SystemResourcesEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemOperationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_RESOURCEID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		

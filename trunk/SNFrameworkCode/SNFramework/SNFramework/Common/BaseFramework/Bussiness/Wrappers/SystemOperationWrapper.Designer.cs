@@ -257,15 +257,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ResourceID
+		public SystemResourcesWrapper ResourceID
 		{
 			get
 			{
-				return entity.ResourceID;
+				return SystemResourcesWrapper.ConvertEntityToWrapper(entity.ResourceID) ;
 			}
 			set
 			{
-				entity.ResourceID = value;
+				entity.ResourceID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 
@@ -275,6 +275,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SystemOperationWrapper> FindAllByOrderByAndFilterAndResourceID(string orderByColumnName, bool isDesc,   SystemResourcesWrapper resourceID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndResourceID(orderByColumnName, isDesc,   resourceID.entity, pageQueryParams));
+        }
+
+        public static List<SystemOperationWrapper> FindAllByResourceID(SystemResourcesWrapper resourceID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByResourceID(resourceID.entity));
+        }
+		
 
 
 

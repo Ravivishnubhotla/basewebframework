@@ -22,9 +22,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LOGUSER = "LogUser";
 		public static readonly string PROPERTY_NAME_LOGDESCRPTION = "LogDescrption";
 		public static readonly string PROPERTY_NAME_LOGREQUESTINFO = "LogRequestInfo";
-		public static readonly string PROPERTY_NAME_LOGRELATEMOUDLEID = "LogRelateMoudleID";
-		public static readonly string PROPERTY_NAME_LOGRELATEMOUDLEDATAID = "LogRelateMoudleDataID";
+		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
+		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERID = "LogRelateUserID";
+		public static readonly string PROPERTY_NAME_LOGRELATEUSERNAME = "LogRelateUserName";
 		public static readonly string PROPERTY_NAME_LOGRELATEDATETIME = "LogRelateDateTime";
 		
         #endregion
@@ -42,9 +43,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _logUser;
 		private string _logDescrption;
 		private string _logRequestInfo;
-		private int? _logRelateMoudleID;
-		private int? _logRelateMoudleDataID;
+		private int? _parentDataID;
+		private string _parentDataType;
 		private int? _logRelateUserID;
+		private string _logRelateUserName;
 		private DateTime? _logRelateDateTime;
 		
 		#endregion
@@ -63,9 +65,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_logUser = String.Empty;
 			_logDescrption = String.Empty;
 			_logRequestInfo = null;
-			_logRelateMoudleID = null;
-			_logRelateMoudleDataID = null;
+			_parentDataID = null;
+			_parentDataType = null;
 			_logRelateUserID = null;
+			_logRelateUserName = null;
 			_logRelateDateTime = null;
 		}
 		#endregion
@@ -74,7 +77,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemLogEntity( int logID, string logLevel, string logType, DateTime logDate, string logSource, string logUser, string logDescrption, string logRequestInfo, int? logRelateMoudleID, int? logRelateMoudleDataID, int? logRelateUserID, DateTime? logRelateDateTime)
+		public SystemLogEntity( int logID, string logLevel, string logType, DateTime logDate, string logSource, string logUser, string logDescrption, string logRequestInfo, int? parentDataID, string parentDataType, int? logRelateUserID, string logRelateUserName, DateTime? logRelateDateTime)
 		{
 			_logID = logID;
 			_logLevel = logLevel;
@@ -84,9 +87,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_logUser = logUser;
 			_logDescrption = logDescrption;
 			_logRequestInfo = logRequestInfo;
-			_logRelateMoudleID = logRelateMoudleID;
-			_logRelateMoudleDataID = logRelateMoudleDataID;
+			_parentDataID = parentDataID;
+			_parentDataType = parentDataType;
 			_logRelateUserID = logRelateUserID;
+			_logRelateUserName = logRelateUserName;
 			_logRelateDateTime = logRelateDateTime;
 		}
 		#endregion     
@@ -118,7 +122,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 20)
 					throw new ArgumentOutOfRangeException("Invalid value for LogLevel", value, value.ToString());
 				_isChanged |= (_logLevel != value); _logLevel = value;
 			}
@@ -135,7 +139,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 20)
 					throw new ArgumentOutOfRangeException("Invalid value for LogType", value, value.ToString());
 				_isChanged |= (_logType != value); _logType = value;
 			}
@@ -166,7 +170,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 60)
 					throw new ArgumentOutOfRangeException("Invalid value for LogSource", value, value.ToString());
 				_isChanged |= (_logSource != value); _logSource = value;
 			}
@@ -183,7 +187,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for LogUser", value, value.ToString());
 				_isChanged |= (_logUser != value); _logUser = value;
 			}
@@ -200,7 +204,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 1600)
 					throw new ArgumentOutOfRangeException("Invalid value for LogDescrption", value, value.ToString());
 				_isChanged |= (_logDescrption != value); _logDescrption = value;
 			}
@@ -217,7 +221,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for LogRequestInfo", value, value.ToString());
 				_isChanged |= (_logRequestInfo != value); _logRequestInfo = value;
 			}
@@ -227,13 +231,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// Log_RelateMoudleID
 		/// </summary>
 		[DataMember]
-		public virtual int? LogRelateMoudleID
+		public virtual int? ParentDataID
 		{
-			get { return _logRelateMoudleID; }
+			get { return _parentDataID; }
 
 			set	
 			{
-				_isChanged |= (_logRelateMoudleID != value); _logRelateMoudleID = value;
+				_isChanged |= (_parentDataID != value); _parentDataID = value;
 			}
 		}
 
@@ -241,13 +245,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// Log_RelateMoudleDataID
 		/// </summary>
 		[DataMember]
-		public virtual int? LogRelateMoudleDataID
+		public virtual string ParentDataType
 		{
-			get { return _logRelateMoudleDataID; }
+			get { return _parentDataType; }
 
 			set	
 			{
-				_isChanged |= (_logRelateMoudleDataID != value); _logRelateMoudleDataID = value;
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ParentDataType", value, value.ToString());
+				_isChanged |= (_parentDataType != value); _parentDataType = value;
 			}
 		}
 
@@ -262,6 +269,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_logRelateUserID != value); _logRelateUserID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LogRelateUserName
+		{
+			get { return _logRelateUserName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for LogRelateUserName", value, value.ToString());
+				_isChanged |= (_logRelateUserName != value); _logRelateUserName = value;
 			}
 		}
 

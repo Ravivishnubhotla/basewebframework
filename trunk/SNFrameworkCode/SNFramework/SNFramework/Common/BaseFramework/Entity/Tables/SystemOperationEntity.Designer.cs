@@ -48,7 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _isInSinglePage;
 		private int _operationOrder;
 		private bool? _isCommonOperation;
-		private int? _resourceID;
+		private SystemResourcesEntity _resourceID;
 		
 		#endregion
 
@@ -78,7 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemOperationEntity( int operationID, string operationNameCn, string operationNameEn, string operationDescription, bool isSystemOperation, bool isCanSingleOperation, bool isCanMutilOperation, bool isEnable, bool isInListPage, bool isInSinglePage, int operationOrder, bool? isCommonOperation, int? resourceID)
+		public SystemOperationEntity( int operationID, string operationNameCn, string operationNameEn, string operationDescription, bool isSystemOperation, bool isCanSingleOperation, bool isCanMutilOperation, bool isEnable, bool isInListPage, bool isInSinglePage, int operationOrder, bool? isCommonOperation, SystemResourcesEntity resourceID)
 		{
 			_operationID = operationID;
 			_operationNameCn = operationNameCn;
@@ -279,7 +279,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? ResourceID
+		public virtual SystemResourcesEntity ResourceID
 		{
 			get { return _resourceID; }
 

@@ -32,6 +32,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_MAILLOG = "MailLog";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_SENDCONFIG = "SendConfig";
 		public static readonly string PROPERTY_NAME_SENDDATE = "SendDate";
 		
         #endregion
@@ -52,13 +53,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _cCNames;
 		private string _bCCAddresss;
 		private string _bCCNames;
-		private int? _emailTemplateID;
+		private int _emailTemplateID;
 		private string _statues;
 		private int? _sendRetry;
 		private int? _maxRetryTime;
 		private string _mailLog;
 		private DateTime? _createDate;
 		private int? _createBy;
+		private string _sendConfig;
 		private DateTime? _sendDate;
 		
 		#endregion
@@ -80,13 +82,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_cCNames = null;
 			_bCCAddresss = null;
 			_bCCNames = null;
-			_emailTemplateID = null;
+			_emailTemplateID = 0;
 			_statues = null;
 			_sendRetry = null;
 			_maxRetryTime = null;
 			_mailLog = null;
 			_createDate = null;
 			_createBy = null;
+			_sendConfig = null;
 			_sendDate = null;
 		}
 		#endregion
@@ -95,7 +98,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemEmailQueueEntity( int queueID, string title, string body, string fromAddress, string fromName, string toAddresss, string toNames, string cCAddresss, string cCNames, string bCCAddresss, string bCCNames, int? emailTemplateID, string statues, int? sendRetry, int? maxRetryTime, string mailLog, DateTime? createDate, int? createBy, DateTime? sendDate)
+		public SystemEmailQueueEntity( int queueID, string title, string body, string fromAddress, string fromName, string toAddresss, string toNames, string cCAddresss, string cCNames, string bCCAddresss, string bCCNames, int emailTemplateID, string statues, int? sendRetry, int? maxRetryTime, string mailLog, DateTime? createDate, int? createBy, string sendConfig, DateTime? sendDate)
 		{
 			_queueID = queueID;
 			_title = title;
@@ -115,6 +118,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_mailLog = mailLog;
 			_createDate = createDate;
 			_createBy = createBy;
+			_sendConfig = sendConfig;
 			_sendDate = sendDate;
 		}
 		#endregion     
@@ -309,7 +313,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? EmailTemplateID
+		public virtual int EmailTemplateID
 		{
 			get { return _emailTemplateID; }
 
@@ -406,6 +410,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SendConfig
+		{
+			get { return _sendConfig; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 20)
+					throw new ArgumentOutOfRangeException("Invalid value for SendConfig", value, value.ToString());
+				_isChanged |= (_sendConfig != value); _sendConfig = value;
 			}
 		}
 

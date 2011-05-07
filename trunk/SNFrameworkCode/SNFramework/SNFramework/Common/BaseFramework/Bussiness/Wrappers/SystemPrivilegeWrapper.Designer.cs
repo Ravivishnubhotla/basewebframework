@@ -76,7 +76,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DEFAULTVALUE = "DefaultValue";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_PRIVILEGEORDER = "PrivilegeOrder";
-		public static readonly string PROPERTY_NAME_PRIVILEGECATEGORY = "PrivilegeCategory";
 		public static readonly string PROPERTY_NAME_PRIVILEGETYPE = "PrivilegeType";
 		
         #endregion
@@ -193,20 +192,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.PrivilegeOrder = value;
-			}
-		}
-		/// <summary>
-		/// permission Category
-		/// </summary>		
-		public string PrivilegeCategory
-		{
-			get
-			{
-				return entity.PrivilegeCategory;
-			}
-			set
-			{
-				entity.PrivilegeCategory = value;
 			}
 		}
 		/// <summary>

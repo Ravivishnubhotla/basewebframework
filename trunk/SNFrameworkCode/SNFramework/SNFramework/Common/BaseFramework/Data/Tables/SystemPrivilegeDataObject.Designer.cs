@@ -34,7 +34,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_OPERATIONID_ISINSINGLEPAGE = new BoolProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".IsInSinglePage"));
 		public static readonly IntProperty PROPERTY_OPERATIONID_OPERATIONORDER = new IntProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".OperationOrder"));
 		public static readonly BoolProperty PROPERTY_OPERATIONID_ISCOMMONOPERATION = new BoolProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".IsCommonOperation"));
-		public static readonly IntProperty PROPERTY_OPERATIONID_RESOURCEID = new IntProperty(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".ResourceID"));
+		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_OPERATIONID_RESOURCEID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_OPERATIONID_ALIAS_NAME + ".ResourceID"));
 		#endregion
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_RESOURCESID));
 		#region resourcesID字段外键查询字段
@@ -48,17 +48,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_RESOURCESID_RESOURCESNAMEEN = new StringProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesNameEn"));
 		public static readonly StringProperty PROPERTY_RESOURCESID_RESOURCESDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesDescription"));
 		public static readonly StringProperty PROPERTY_RESOURCESID_RESOURCESTYPE = new StringProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesType"));
-		public static readonly StringProperty PROPERTY_RESOURCESID_RESOURCESCATEGORY = new StringProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesCategory"));
 		public static readonly StringProperty PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION = new StringProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesLimitExpression"));
 		public static readonly BoolProperty PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = new BoolProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesIsRelateUser"));
 		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_RESOURCESID_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".MoudleID"));
+		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCESID_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ParentResourcesID"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PRIVILEGECNNAME = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGECNNAME));		
 		public static readonly StringProperty PROPERTY_PRIVILEGEENNAME = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGEENNAME));		
 		public static readonly StringProperty PROPERTY_DEFAULTVALUE = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_DEFAULTVALUE));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly IntProperty PROPERTY_PRIVILEGEORDER = new IntProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGEORDER));		
-		public static readonly StringProperty PROPERTY_PRIVILEGECATEGORY = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGECATEGORY));		
 		public static readonly StringProperty PROPERTY_PRIVILEGETYPE = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGETYPE));		
       
 		#region 子类集合字段查询字段
@@ -93,8 +92,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "PrivilegeOrder":
                     return typeof (int);
-                case "PrivilegeCategory":
-                    return typeof (string);
                 case "PrivilegeType":
                     return typeof (string);
           }

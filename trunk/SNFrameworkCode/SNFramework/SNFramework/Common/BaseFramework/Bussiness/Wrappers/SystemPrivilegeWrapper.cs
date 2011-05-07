@@ -99,41 +99,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
 
-	    public static List<SystemPrivilegeWrapper> GetAllPrivilegeForListPage(string categoryName)
-        {
-            return ConvertToWrapperList(businessProxy.GetAllPrivilegeForListPage(categoryName));
-        }
-
-        public static List<SystemPrivilegeWrapper> GetAllPrivilegeByCategoryByUserID(string categoryName, int userID)
-        {
-            return ConvertToWrapperList(businessProxy.GetAllPrivilegeByCategoryByUserID(categoryName, userID));
-        }
+ 
 
         public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
         }
 
-        public static List<string> GetAllCategoryNames()
-        {
-            return businessProxy.GetAllCategoryNames();
-        }
+ 
 
         public const string ColumnName_CategoryName = "CategoryName";
         public const string TableName_CategoryName = "CategoryNames";
 
-        public static DataTable GetAllCategoryNamesTable()
-        {
-            DataTable dt = new DataTable(TableName_CategoryName);
-            dt.Columns.Add(new DataColumn(ColumnName_CategoryName, typeof(string)));
-            dt.AcceptChanges();
-            List<string> categoryNames = GetAllCategoryNames();
-            for (int i = 0; i < categoryNames.Count; i++)
-            {
-                dt.Rows.Add(categoryNames[i]);
-            }
-            dt.AcceptChanges();
-            return dt;
-        }
+ 
     }
 }

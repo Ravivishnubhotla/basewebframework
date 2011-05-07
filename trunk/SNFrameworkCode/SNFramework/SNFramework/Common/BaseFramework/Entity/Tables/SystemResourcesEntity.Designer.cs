@@ -19,10 +19,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_RESOURCESNAMEEN = "ResourcesNameEn";
 		public static readonly string PROPERTY_NAME_RESOURCESDESCRIPTION = "ResourcesDescription";
 		public static readonly string PROPERTY_NAME_RESOURCESTYPE = "ResourcesType";
-		public static readonly string PROPERTY_NAME_RESOURCESCATEGORY = "ResourcesCategory";
 		public static readonly string PROPERTY_NAME_RESOURCESLIMITEXPRESSION = "ResourcesLimitExpression";
 		public static readonly string PROPERTY_NAME_RESOURCESISRELATEUSER = "ResourcesIsRelateUser";
 		public static readonly string PROPERTY_NAME_MOUDLEID = "MoudleID";
+		public static readonly string PROPERTY_NAME_PARENTRESOURCESID = "ParentResourcesID";
 		
         #endregion
 	
@@ -36,10 +36,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _resourcesNameEn;
 		private string _resourcesDescription;
 		private string _resourcesType;
-		private string _resourcesCategory;
 		private string _resourcesLimitExpression;
 		private bool _resourcesIsRelateUser;
 		private SystemMoudleEntity _moudleID;
+		private SystemResourcesEntity _parentResourcesID;
 		
 		#endregion
 
@@ -54,10 +54,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_resourcesNameEn = String.Empty;
 			_resourcesDescription = null;
 			_resourcesType = null;
-			_resourcesCategory = null;
 			_resourcesLimitExpression = null;
 			_resourcesIsRelateUser = false;
 			_moudleID = null;
+			_parentResourcesID = null;
 		}
 		#endregion
 
@@ -65,17 +65,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemResourcesEntity( int resourcesID, string resourcesNameCn, string resourcesNameEn, string resourcesDescription, string resourcesType, string resourcesCategory, string resourcesLimitExpression, bool resourcesIsRelateUser, SystemMoudleEntity moudleID)
+		public SystemResourcesEntity( int resourcesID, string resourcesNameCn, string resourcesNameEn, string resourcesDescription, string resourcesType, string resourcesLimitExpression, bool resourcesIsRelateUser, SystemMoudleEntity moudleID, SystemResourcesEntity parentResourcesID)
 		{
 			_resourcesID = resourcesID;
 			_resourcesNameCn = resourcesNameCn;
 			_resourcesNameEn = resourcesNameEn;
 			_resourcesDescription = resourcesDescription;
 			_resourcesType = resourcesType;
-			_resourcesCategory = resourcesCategory;
 			_resourcesLimitExpression = resourcesLimitExpression;
 			_resourcesIsRelateUser = resourcesIsRelateUser;
 			_moudleID = moudleID;
+			_parentResourcesID = parentResourcesID;
 		}
 		#endregion     
 	
@@ -164,23 +164,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		}
 
 		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string ResourcesCategory
-		{
-			get { return _resourcesCategory; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ResourcesCategory", value, value.ToString());
-				_isChanged |= (_resourcesCategory != value); _resourcesCategory = value;
-			}
-		}
-
-		/// <summary>
 		/// ??????
 		/// </summary>
 		[DataMember]
@@ -222,6 +205,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_moudleID != value); _moudleID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SystemResourcesEntity ParentResourcesID
+		{
+			get { return _parentResourcesID; }
+
+			set	
+			{
+				_isChanged |= (_parentResourcesID != value); _parentResourcesID = value;
 			}
 		}
 		/// <summary>

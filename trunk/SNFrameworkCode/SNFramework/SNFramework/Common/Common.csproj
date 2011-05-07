@@ -161,6 +161,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailTemplateServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.Designer.cs">
+      <DependentUpon>SystemTaskServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.Designer.cs">
       <DependentUpon>SystemTerminologyServiceProxy.cs</DependentUpon>
@@ -189,6 +193,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.Designer.cs">
       <DependentUpon>SystemEmailTemplateWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.Designer.cs">
+      <DependentUpon>SystemTaskWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.Designer.cs">
       <DependentUpon>SystemTerminologyWrapper.cs</DependentUpon>
@@ -216,6 +224,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.Designer.cs">
       <DependentUpon>SystemEmailTemplateDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.Designer.cs">
+      <DependentUpon>SystemTaskDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.Designer.cs">
@@ -249,6 +261,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.Designer.cs">
       <DependentUpon>SystemEmailTemplateEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.Designer.cs">
+      <DependentUpon>SystemTaskEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.Designer.cs">
@@ -894,6 +910,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTerminologyMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTaskMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

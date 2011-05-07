@@ -18,9 +18,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_SHORTMESSAGETITLE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGETITLE));		
 		public static readonly StringProperty PROPERTY_SHORTMESSAGECATEGORY = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGECATEGORY));		
 		public static readonly StringProperty PROPERTY_SHORTMESSAGECONTENT = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGECONTENT));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGESENDER = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDER));		
+		public static readonly StringProperty PROPERTY_SHORTMESSAGESENDERNAMR = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDERNAMR));		
 		public static readonly DateTimeProperty PROPERTY_SHORTMESSAGESENDDATE = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDDATE));		
-		public static readonly IntProperty PROPERTY_SHORTMESSAGERECEIVERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGERECEIVERID));		
+		public static readonly IntProperty PROPERTY_SHORTMESSAGESENDUSERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDUSERID));		
+		public static readonly IntProperty PROPERTY_SHORTMESSAGERECEIVERUSERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID));		
 		public static readonly BoolProperty PROPERTY_SHORTMESSAGEISREAD = new BoolProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGEISREAD));		
       
 		#region 子类集合字段查询字段
@@ -47,11 +48,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "ShortMessageContent":
                     return typeof (string);
-                case "ShortMessageSender":
+                case "ShortMessageSenderNamr":
                     return typeof (string);
                 case "ShortMessageSendDate":
                     return typeof (DateTime);
-                case "ShortMessageReceiverID":
+                case "ShortMessageSendUserID":
+                    return typeof (int);
+                case "ShortMessageReceiverUserID":
                     return typeof (int);
                 case "ShortMessageIsRead":
                     return typeof (bool);

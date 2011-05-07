@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTaskEntity,Legendigital.Framework.Common" table="SystemTask" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Title" type="string" name="Title"   length="400" />	
+		<property column="TaskContent" type="string" name="TaskContent"   length="4000" />	
+		<property column="AssignedUserID" type="int" name="AssignedUserID"   />	
+		<property column="Status" type="string" name="Status"   length="20" />	
+		<property column="DateDue" type="DateTime" name="DateDue"   />	
+		<property column="IsDateDue" type="Boolean" name="IsDateDue"   />	
+		<property column="DateStart" type="DateTime" name="DateStart"   />	
+		<property column="IsDateStart" type="Boolean" name="IsDateStart"   />	
+		<property column="Priority" type="string" name="Priority"   length="20" />	
+		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
+		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

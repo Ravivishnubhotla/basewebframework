@@ -32,6 +32,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_MAILLOG = new StringProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_MAILLOG));		
 		public static readonly DateTimeProperty PROPERTY_CREATEDATE = new DateTimeProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_CREATEDATE));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly StringProperty PROPERTY_SENDCONFIG = new StringProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_SENDCONFIG));		
 		public static readonly DateTimeProperty PROPERTY_SENDDATE = new DateTimeProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_SENDDATE));		
       
 		#region 子类集合字段查询字段
@@ -86,6 +87,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (DateTime);
                 case "CreateBy":
                     return typeof (int);
+                case "SendConfig":
+                    return typeof (string);
                 case "SendDate":
                     return typeof (DateTime);
           }

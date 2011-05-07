@@ -21,13 +21,14 @@
 		<property column="CCNames" type="string" name="CCNames"   length="2147483646" />	
 		<property column="BCCAddresss" type="string" name="BCCAddresss"   length="2147483646" />	
 		<property column="BCCNames" type="string" name="BCCNames"   length="2147483646" />	
-		<property column="EmailTemplateID" type="int" name="EmailTemplateID"   />	
+		<property column="EmailTemplateID" type="int" name="EmailTemplateID"   not-null="true"  />	
 		<property column="Statues" type="string" name="Statues"   length="400" />	
 		<property column="SendRetry" type="int" name="SendRetry"   />	
 		<property column="MaxRetryTime" type="int" name="MaxRetryTime"   />	
 		<property column="MailLog" type="string" name="MailLog"   length="2147483646" />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="SendConfig" type="string" name="SendConfig"   length="20" />	
 		<property column="SendDate" type="DateTime" name="SendDate"   />	
 
 

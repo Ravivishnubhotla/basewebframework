@@ -86,6 +86,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_MAILLOG = "MailLog";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_SENDCONFIG = "SendConfig";
 		public static readonly string PROPERTY_NAME_SENDDATE = "SendDate";
 		
         #endregion
@@ -249,7 +250,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? EmailTemplateID
+		public int EmailTemplateID
 		{
 			get
 			{
@@ -342,6 +343,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SendConfig
+		{
+			get
+			{
+				return entity.SendConfig;
+			}
+			set
+			{
+				entity.SendConfig = value;
 			}
 		}
 		/// <summary>
