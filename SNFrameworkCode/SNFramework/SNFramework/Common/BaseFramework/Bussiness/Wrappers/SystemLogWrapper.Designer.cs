@@ -76,9 +76,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LOGUSER = "LogUser";
 		public static readonly string PROPERTY_NAME_LOGDESCRPTION = "LogDescrption";
 		public static readonly string PROPERTY_NAME_LOGREQUESTINFO = "LogRequestInfo";
-		public static readonly string PROPERTY_NAME_LOGRELATEMOUDLEID = "LogRelateMoudleID";
-		public static readonly string PROPERTY_NAME_LOGRELATEMOUDLEDATAID = "LogRelateMoudleDataID";
+		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
+		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERID = "LogRelateUserID";
+		public static readonly string PROPERTY_NAME_LOGRELATEUSERNAME = "LogRelateUserName";
 		public static readonly string PROPERTY_NAME_LOGRELATEDATETIME = "LogRelateDateTime";
 		
         #endregion
@@ -200,29 +201,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// Log_RelateMoudleID
 		/// </summary>		
-		public int? LogRelateMoudleID
+		public int? ParentDataID
 		{
 			get
 			{
-				return entity.LogRelateMoudleID;
+				return entity.ParentDataID;
 			}
 			set
 			{
-				entity.LogRelateMoudleID = value;
+				entity.ParentDataID = value;
 			}
 		}
 		/// <summary>
 		/// Log_RelateMoudleDataID
 		/// </summary>		
-		public int? LogRelateMoudleDataID
+		public string ParentDataType
 		{
 			get
 			{
-				return entity.LogRelateMoudleDataID;
+				return entity.ParentDataType;
 			}
 			set
 			{
-				entity.LogRelateMoudleDataID = value;
+				entity.ParentDataType = value;
 			}
 		}
 		/// <summary>
@@ -237,6 +238,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.LogRelateUserID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LogRelateUserName
+		{
+			get
+			{
+				return entity.LogRelateUserName;
+			}
+			set
+			{
+				entity.LogRelateUserName = value;
 			}
 		}
 		/// <summary>

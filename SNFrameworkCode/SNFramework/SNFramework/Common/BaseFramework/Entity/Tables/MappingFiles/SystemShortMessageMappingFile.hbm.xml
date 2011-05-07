@@ -14,9 +14,10 @@
 		<property column="ShortMessage_Title" type="string" name="ShortMessageTitle"   not-null="true"  length="400" />	
 		<property column="ShortMessage_Category" type="string" name="ShortMessageCategory"   length="400" />	
 		<property column="ShortMessage_Content" type="string" name="ShortMessageContent"   length="8000" />	
-		<property column="ShortMessage_Sender" type="string" name="ShortMessageSender"   length="400" />	
+		<property column="ShortMessage_SenderNamr" type="string" name="ShortMessageSenderNamr"   length="100" />	
 		<property column="ShortMessage_Send_Date" type="DateTime" name="ShortMessageSendDate"   not-null="true"  />	
-		<property column="ShortMessage_Receiver_ID" type="int" name="ShortMessageReceiverID"   not-null="true"  />	
+		<property column="ShortMessage_Send_UserID" type="int" name="ShortMessageSendUserID"   />	
+		<property column="ShortMessage_Receiver_UserID" type="int" name="ShortMessageReceiverUserID"   not-null="true"  />	
 		<property column="ShortMessage_IsRead" type="Boolean" name="ShortMessageIsRead"   not-null="true"  />	
 
 

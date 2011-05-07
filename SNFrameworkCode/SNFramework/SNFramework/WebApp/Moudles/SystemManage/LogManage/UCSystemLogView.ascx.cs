@@ -39,8 +39,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
                     this.lblLogUser.Text = obj.LogUser.ToString();
                     this.lblLogDescrption.Text = obj.LogDescrption.ToString();
                     this.lblLogRequestInfo.Text = obj.LogRequestInfo.ToString();
-                    this.lblLogRelateMoudleID.Text = obj.LogRelateMoudleID.ToString();
-                    this.lblLogRelateMoudleDataID.Text = obj.LogRelateMoudleDataID.ToString();
+                    //this.lblLogRelateMoudleID.Text = obj.LogRelateMoudleID.ToString();
+                    //this.lblLogRelateMoudleDataID.Text = obj.LogRelateMoudleDataID.ToString();
                     this.lblLogRelateUserID.Text = obj.LogRelateUserID.ToString();
                     this.lblLogRelateDateTime.Text = obj.LogRelateDateTime.ToString();
 

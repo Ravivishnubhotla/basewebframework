@@ -16,27 +16,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
     public interface ISystemPrivilegeServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPrivilegeEntity>, ISystemPrivilegeServiceProxyDesigner
     {
-        [OperationContract]
-        List<SystemPrivilegeEntity> GetAllPrivilegeForListPage(string categoryName);
-        [OperationContract]
-        List<string> GetAllCategoryNames();
+ 
         [OperationContract]
         SystemPrivilegeEntity FindByPermissionCode(string permissionCode);
-        [OperationContract]
-        List<SystemPrivilegeEntity> GetAllPrivilegeByCategoryByUserID(string categoryName, int userId);
+ 
     }
 
     public partial class SystemPrivilegeServiceProxy : ISystemPrivilegeServiceProxy
     {
-        public List<SystemPrivilegeEntity> GetAllPrivilegeForListPage(string categoryName)
-        {
-            return this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.GetAllPrivilegeForListPage(categoryName);
-        }
-
-        public List<string> GetAllCategoryNames()
-        {
-            return this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.GetAllCategoryNames();
-        }
+ 
 
         public SystemPrivilegeEntity FindByPermissionCode(string permissionCode)
         {
@@ -44,15 +32,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         }
 
 
-        public List<SystemPrivilegeEntity> GetAllPrivilegeByCategoryByUserID(string categoryName, int userId)
-        {
-            SystemUserEntity userEntity = this.DataObjectsContainerIocID.SystemUserDataObjectInstance.Load(userId);
-
-            //管理员直接具备所有的权限
-            if (userEntity != null && userEntity.UserLoginID == SystemUserWrapper.DEV_USER_ID)
-                return this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.GetAllPrivilegeForListPage(categoryName);
-
-            return this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.GetAllPrivilegeByCategoryByUserID(categoryName, userEntity);
-        }
+ 
     }
 }

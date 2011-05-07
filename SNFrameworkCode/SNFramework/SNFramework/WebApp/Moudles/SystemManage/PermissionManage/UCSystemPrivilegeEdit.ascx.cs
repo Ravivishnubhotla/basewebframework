@@ -34,7 +34,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                     this.txtDefaultValue.Text = obj.DefaultValue.ToString();
                     this.txtDescription.Text = obj.Description.ToString();
                     this.txtPrivilegeOrder.Text = obj.PrivilegeOrder.ToString();
-                    this.txtPrivilegeCategory.Text = obj.PrivilegeCategory.ToString();
+                    //this.txtPrivilegeCategory.Text = obj.PrivilegeCategory.ToString();
                     this.txtPrivilegeType.Text = obj.PrivilegeType.ToString();
 
 
@@ -73,7 +73,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                 obj.DefaultValue = this.txtDefaultValue.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.PrivilegeOrder = Convert.ToInt32(this.txtPrivilegeOrder.Text.Trim());
-                obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
+                //obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
                 obj.PrivilegeType = this.txtPrivilegeType.Text.Trim();
 
 

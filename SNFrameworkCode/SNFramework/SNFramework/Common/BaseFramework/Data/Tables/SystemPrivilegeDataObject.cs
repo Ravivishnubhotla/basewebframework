@@ -13,35 +13,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemPrivilegeDataObject
     {
-        /// <summary>
-        /// 根据类别名获取权限
-        /// </summary>
-        /// <param name="categoryName"></param>
-        /// <returns></returns>
-        public List<SystemPrivilegeEntity> GetAllPrivilegeForListPage(string categoryName)
-        {
-            NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
-            if (!string.IsNullOrEmpty(categoryName))
-                dynamicQueryGenerator.AddWhereClause(PROPERTY_PRIVILEGECATEGORY.Eq(categoryName));
-
-            dynamicQueryGenerator.AddOrderBy(PROPERTY_PRIVILEGECATEGORY.Asc());
-
-            dynamicQueryGenerator.AddOrderBy(PROPERTY_PRIVILEGEORDER.Asc());
-
-            return this.FindListByQueryBuilder(dynamicQueryGenerator);
-        }
-        /// <summary>
-        /// 获取所有的权限类别
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetAllCategoryNames()
-        {
-            NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            //Distinct PRIVILEGECATEGORY zi
-            return this.FindListByProjection<string>(dynamicQueryGenerator, GetDistinctProperty(PROPERTY_PRIVILEGECATEGORY.CriterionProperty));
-        }
+ 
 
         /// <summary>
         ///  通过权限代码获取权限

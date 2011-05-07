@@ -18,9 +18,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SHORTMESSAGETITLE = "ShortMessageTitle";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECATEGORY = "ShortMessageCategory";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECONTENT = "ShortMessageContent";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDER = "ShortMessageSender";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDERNAMR = "ShortMessageSenderNamr";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDDATE = "ShortMessageSendDate";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERID = "ShortMessageReceiverID";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDUSERID = "ShortMessageSendUserID";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID = "ShortMessageReceiverUserID";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGEISREAD = "ShortMessageIsRead";
 		
         #endregion
@@ -34,9 +35,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _shortMessageTitle;
 		private string _shortMessageCategory;
 		private string _shortMessageContent;
-		private string _shortMessageSender;
+		private string _shortMessageSenderNamr;
 		private DateTime _shortMessageSendDate;
-		private int _shortMessageReceiverID;
+		private int? _shortMessageSendUserID;
+		private int _shortMessageReceiverUserID;
 		private bool _shortMessageIsRead;
 		
 		#endregion
@@ -51,9 +53,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_shortMessageTitle = String.Empty;
 			_shortMessageCategory = null;
 			_shortMessageContent = null;
-			_shortMessageSender = null;
+			_shortMessageSenderNamr = null;
 			_shortMessageSendDate = DateTime.MinValue;
-			_shortMessageReceiverID = 0;
+			_shortMessageSendUserID = null;
+			_shortMessageReceiverUserID = 0;
 			_shortMessageIsRead = false;
 		}
 		#endregion
@@ -62,15 +65,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemShortMessageEntity( int shortMessageID, string shortMessageTitle, string shortMessageCategory, string shortMessageContent, string shortMessageSender, DateTime shortMessageSendDate, int shortMessageReceiverID, bool shortMessageIsRead)
+		public SystemShortMessageEntity( int shortMessageID, string shortMessageTitle, string shortMessageCategory, string shortMessageContent, string shortMessageSenderNamr, DateTime shortMessageSendDate, int? shortMessageSendUserID, int shortMessageReceiverUserID, bool shortMessageIsRead)
 		{
 			_shortMessageID = shortMessageID;
 			_shortMessageTitle = shortMessageTitle;
 			_shortMessageCategory = shortMessageCategory;
 			_shortMessageContent = shortMessageContent;
-			_shortMessageSender = shortMessageSender;
+			_shortMessageSenderNamr = shortMessageSenderNamr;
 			_shortMessageSendDate = shortMessageSendDate;
-			_shortMessageReceiverID = shortMessageReceiverID;
+			_shortMessageSendUserID = shortMessageSendUserID;
+			_shortMessageReceiverUserID = shortMessageReceiverUserID;
 			_shortMessageIsRead = shortMessageIsRead;
 		}
 		#endregion     
@@ -146,16 +150,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string ShortMessageSender
+		public virtual string ShortMessageSenderNamr
 		{
-			get { return _shortMessageSender; }
+			get { return _shortMessageSenderNamr; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ShortMessageSender", value, value.ToString());
-				_isChanged |= (_shortMessageSender != value); _shortMessageSender = value;
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ShortMessageSenderNamr", value, value.ToString());
+				_isChanged |= (_shortMessageSenderNamr != value); _shortMessageSenderNamr = value;
 			}
 		}
 
@@ -177,13 +181,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int ShortMessageReceiverID
+		public virtual int? ShortMessageSendUserID
 		{
-			get { return _shortMessageReceiverID; }
+			get { return _shortMessageSendUserID; }
 
 			set	
 			{
-				_isChanged |= (_shortMessageReceiverID != value); _shortMessageReceiverID = value;
+				_isChanged |= (_shortMessageSendUserID != value); _shortMessageSendUserID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int ShortMessageReceiverUserID
+		{
+			get { return _shortMessageReceiverUserID; }
+
+			set	
+			{
+				_isChanged |= (_shortMessageReceiverUserID != value); _shortMessageReceiverUserID = value;
 			}
 		}
 

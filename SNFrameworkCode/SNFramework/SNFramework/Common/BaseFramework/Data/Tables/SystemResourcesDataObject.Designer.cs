@@ -19,7 +19,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_RESOURCESNAMEEN = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESNAMEEN));		
 		public static readonly StringProperty PROPERTY_RESOURCESDESCRIPTION = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESDESCRIPTION));		
 		public static readonly StringProperty PROPERTY_RESOURCESTYPE = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESTYPE));		
-		public static readonly StringProperty PROPERTY_RESOURCESCATEGORY = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESCATEGORY));		
 		public static readonly StringProperty PROPERTY_RESOURCESLIMITEXPRESSION = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESLIMITEXPRESSION));		
 		public static readonly BoolProperty PROPERTY_RESOURCESISRELATEUSER = new BoolProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_RESOURCESISRELATEUSER));		
 		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_MOUDLEID));
@@ -37,6 +36,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly EntityProperty<SystemApplicationEntity> PROPERTY_MOUDLEID_APPLICATIONID = new EntityProperty<SystemApplicationEntity>(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".ApplicationID"));
 		public static readonly BoolProperty PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = new BoolProperty(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".MoudleIsSystemMoudle"));
 		#endregion
+		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_PARENTRESOURCESID));
       
 		#region 子类集合字段查询字段
 	
@@ -64,13 +64,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "ResourcesType":
                     return typeof (string);
-                case "ResourcesCategory":
-                    return typeof (string);
                 case "ResourcesLimitExpression":
                     return typeof (string);
                 case "ResourcesIsRelateUser":
                     return typeof (bool);
                 case "MoudleID":
+                    return typeof (int);
+                case "ParentResourcesID":
                     return typeof (int);
           }
 			return typeof(string);

@@ -22,9 +22,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_LOGUSER = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGUSER));		
 		public static readonly StringProperty PROPERTY_LOGDESCRPTION = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGDESCRPTION));		
 		public static readonly StringProperty PROPERTY_LOGREQUESTINFO = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGREQUESTINFO));		
-		public static readonly IntProperty PROPERTY_LOGRELATEMOUDLEID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEMOUDLEID));		
-		public static readonly IntProperty PROPERTY_LOGRELATEMOUDLEDATAID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEMOUDLEDATAID));		
+		public static readonly IntProperty PROPERTY_PARENTDATAID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_PARENTDATAID));		
+		public static readonly StringProperty PROPERTY_PARENTDATATYPE = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_PARENTDATATYPE));		
 		public static readonly IntProperty PROPERTY_LOGRELATEUSERID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEUSERID));		
+		public static readonly StringProperty PROPERTY_LOGRELATEUSERNAME = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEUSERNAME));		
 		public static readonly DateTimeProperty PROPERTY_LOGRELATEDATETIME = new DateTimeProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEDATETIME));		
       
 		#region 子类集合字段查询字段
@@ -59,12 +60,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "LogRequestInfo":
                     return typeof (string);
-                case "LogRelateMoudleID":
+                case "ParentDataID":
                     return typeof (int);
-                case "LogRelateMoudleDataID":
-                    return typeof (int);
+                case "ParentDataType":
+                    return typeof (string);
                 case "LogRelateUserID":
                     return typeof (int);
+                case "LogRelateUserName":
+                    return typeof (string);
                 case "LogRelateDateTime":
                     return typeof (DateTime);
           }

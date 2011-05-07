@@ -39,39 +39,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         }
 
 
-        public List<SystemPrivilegeEntity> GetAllPrivilegeByCategoryByUserID(string categoryName, SystemUserEntity userEntity)
-        {
-            NHibernateDynamicQueryGenerator<SystemPrivilegeInRolesEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.In(QueryObjects.GetUserAssignedRoles(userEntity)));
-
-            if(!string.IsNullOrEmpty(categoryName))
-            {
-                InClude_PrivilegeID_Query(dynamicQueryGenerator);
-                dynamicQueryGenerator.AddWhereClause(PROPERTY_PRIVILEGEID_PRIVILEGECATEGORY.Eq(categoryName));
-            }
-
-            return this.FindListByProjection<SystemPrivilegeEntity>(dynamicQueryGenerator, GetDistinctProperty(PROPERTY_PRIVILEGEID.CriterionProperty));
-
-            //string hql = string.Format("select rp.PrivilegeID from {1} rp where rp.RoleID in (select ur.RoleID from {0} ur where ur.UserID = :userID)", SystemUserRoleRelationEntity.CLASS_FULL_NAME, SystemPrivilegeInRolesEntity.CLASS_FULL_NAME);
-
-            //if (!string.IsNullOrEmpty(categoryName))
-            //{
-            //    hql += " and (rp.PrivilegeID.PrivilegeCategory = :categoryName)";
-            //}
-
-
-            //var parameters = new NhibernateParameterCollection();
-
-            //parameters.AddParameter("userID", userEntity, NHibernateUtil.Entity(typeof(SystemUserEntity)));
-
-            //if (!string.IsNullOrEmpty(categoryName))
-            //{
-            //    parameters.AddParameter("categoryName", categoryName, NHibernateUtil.Entity(typeof(string)));
-            //}
-
-            //return this.FindAllWithCustomQuery(hql, parameters);
-        }
+ 
 
         /// <summary>
         /// 获取角色权限对应关系

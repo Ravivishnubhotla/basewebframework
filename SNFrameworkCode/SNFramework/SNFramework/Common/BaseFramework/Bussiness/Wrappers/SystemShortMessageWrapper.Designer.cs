@@ -72,9 +72,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SHORTMESSAGETITLE = "ShortMessageTitle";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECATEGORY = "ShortMessageCategory";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECONTENT = "ShortMessageContent";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDER = "ShortMessageSender";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDERNAMR = "ShortMessageSenderNamr";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDDATE = "ShortMessageSendDate";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERID = "ShortMessageReceiverID";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDUSERID = "ShortMessageSendUserID";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID = "ShortMessageReceiverUserID";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGEISREAD = "ShortMessageIsRead";
 		
         #endregion
@@ -140,15 +141,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageSender
+		public string ShortMessageSenderNamr
 		{
 			get
 			{
-				return entity.ShortMessageSender;
+				return entity.ShortMessageSenderNamr;
 			}
 			set
 			{
-				entity.ShortMessageSender = value;
+				entity.ShortMessageSenderNamr = value;
 			}
 		}
 		/// <summary>
@@ -168,15 +169,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int ShortMessageReceiverID
+		public int? ShortMessageSendUserID
 		{
 			get
 			{
-				return entity.ShortMessageReceiverID;
+				return entity.ShortMessageSendUserID;
 			}
 			set
 			{
-				entity.ShortMessageReceiverID = value;
+				entity.ShortMessageSendUserID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int ShortMessageReceiverUserID
+		{
+			get
+			{
+				return entity.ShortMessageReceiverUserID;
+			}
+			set
+			{
+				entity.ShortMessageReceiverUserID = value;
 			}
 		}
 		/// <summary>

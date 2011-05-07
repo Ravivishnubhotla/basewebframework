@@ -48,7 +48,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_PRIVILEGEID_DEFAULTVALUE = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".DefaultValue"));
 		public static readonly StringProperty PROPERTY_PRIVILEGEID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".Description"));
 		public static readonly IntProperty PROPERTY_PRIVILEGEID_PRIVILEGEORDER = new IntProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeOrder"));
-		public static readonly StringProperty PROPERTY_PRIVILEGEID_PRIVILEGECATEGORY = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeCategory"));
 		public static readonly StringProperty PROPERTY_PRIVILEGEID_PRIVILEGETYPE = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeType"));
 		#endregion
 		public static readonly StringProperty PROPERTY_BIZPARAMETER = new StringProperty(Property.ForName(SystemPrivilegeParameterEntity.PROPERTY_NAME_BIZPARAMETER));		

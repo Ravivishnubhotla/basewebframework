@@ -22,7 +22,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEFAULTVALUE = "DefaultValue";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_PRIVILEGEORDER = "PrivilegeOrder";
-		public static readonly string PROPERTY_NAME_PRIVILEGECATEGORY = "PrivilegeCategory";
 		public static readonly string PROPERTY_NAME_PRIVILEGETYPE = "PrivilegeType";
 		
         #endregion
@@ -40,7 +39,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _defaultValue;
 		private string _description;
 		private int _privilegeOrder;
-		private string _privilegeCategory;
 		private string _privilegeType;
 		
 		#endregion
@@ -59,7 +57,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_defaultValue = null;
 			_description = null;
 			_privilegeOrder = 0;
-			_privilegeCategory = null;
 			_privilegeType = null;
 		}
 		#endregion
@@ -68,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemPrivilegeEntity( int privilegeID, SystemOperationEntity operationID, SystemResourcesEntity resourcesID, string privilegeCnName, string privilegeEnName, string defaultValue, string description, int privilegeOrder, string privilegeCategory, string privilegeType)
+		public SystemPrivilegeEntity( int privilegeID, SystemOperationEntity operationID, SystemResourcesEntity resourcesID, string privilegeCnName, string privilegeEnName, string defaultValue, string description, int privilegeOrder, string privilegeType)
 		{
 			_privilegeID = privilegeID;
 			_operationID = operationID;
@@ -78,7 +75,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_defaultValue = defaultValue;
 			_description = description;
 			_privilegeOrder = privilegeOrder;
-			_privilegeCategory = privilegeCategory;
 			_privilegeType = privilegeType;
 		}
 		#endregion     
@@ -206,23 +202,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_privilegeOrder != value); _privilegeOrder = value;
-			}
-		}
-
-		/// <summary>
-		/// permission Category
-		/// </summary>
-		[DataMember]
-		public virtual string PrivilegeCategory
-		{
-			get { return _privilegeCategory; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for PrivilegeCategory", value, value.ToString());
-				_isChanged |= (_privilegeCategory != value); _privilegeCategory = value;
 			}
 		}
 

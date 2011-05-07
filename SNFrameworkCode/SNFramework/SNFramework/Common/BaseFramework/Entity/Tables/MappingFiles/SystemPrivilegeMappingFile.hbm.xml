@@ -18,7 +18,6 @@
 		<property column="DefaultValue" type="string" name="DefaultValue"   length="4000" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="PrivilegeOrder" type="int" name="PrivilegeOrder"   not-null="true"  />	
-		<property column="PrivilegeCategory" type="string" name="PrivilegeCategory"   length="400" />	
 		<property column="PrivilegeType" type="string" name="PrivilegeType"   length="400" />	
 
 

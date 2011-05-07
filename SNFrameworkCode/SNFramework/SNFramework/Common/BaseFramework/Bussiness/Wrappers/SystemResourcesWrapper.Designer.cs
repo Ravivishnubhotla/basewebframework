@@ -73,10 +73,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_RESOURCESNAMEEN = "ResourcesNameEn";
 		public static readonly string PROPERTY_NAME_RESOURCESDESCRIPTION = "ResourcesDescription";
 		public static readonly string PROPERTY_NAME_RESOURCESTYPE = "ResourcesType";
-		public static readonly string PROPERTY_NAME_RESOURCESCATEGORY = "ResourcesCategory";
 		public static readonly string PROPERTY_NAME_RESOURCESLIMITEXPRESSION = "ResourcesLimitExpression";
 		public static readonly string PROPERTY_NAME_RESOURCESISRELATEUSER = "ResourcesIsRelateUser";
 		public static readonly string PROPERTY_NAME_MOUDLEID = "MoudleID";
+		public static readonly string PROPERTY_NAME_PARENTRESOURCESID = "ParentResourcesID";
 		
         #endregion
 
@@ -153,20 +153,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 		}
 		/// <summary>
-		/// 
-		/// </summary>		
-		public string ResourcesCategory
-		{
-			get
-			{
-				return entity.ResourcesCategory;
-			}
-			set
-			{
-				entity.ResourcesCategory = value;
-			}
-		}
-		/// <summary>
 		/// ??????
 		/// </summary>		
 		public string ResourcesLimitExpression
@@ -206,6 +192,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.MoudleID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SystemResourcesWrapper ParentResourcesID
+		{
+			get
+			{
+				return SystemResourcesWrapper.ConvertEntityToWrapper(entity.ParentResourcesID) ;
+			}
+			set
+			{
+				entity.ParentResourcesID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 

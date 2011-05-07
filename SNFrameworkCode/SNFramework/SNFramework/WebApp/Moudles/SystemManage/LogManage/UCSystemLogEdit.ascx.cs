@@ -36,8 +36,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
                     this.txtLogUser.Text = obj.LogUser.ToString();
                     this.txtLogDescrption.Text = obj.LogDescrption.ToString();
                     this.txtLogRequestInfo.Text = obj.LogRequestInfo.ToString();
-                    this.txtLogRelateMoudleID.Text = obj.LogRelateMoudleID.ToString();
-                    this.txtLogRelateMoudleDataID.Text = obj.LogRelateMoudleDataID.ToString();
+                    //this.txtLogRelateMoudleID.Text = obj.LogRelateMoudleID.ToString();
+                    //this.txtLogRelateMoudleDataID.Text = obj.LogRelateMoudleDataID.ToString();
                     this.txtLogRelateUserID.Text = obj.LogRelateUserID.ToString();
                     this.txtLogRelateDateTime.Text = obj.LogRelateDateTime.ToString();
 
@@ -77,8 +77,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
                 obj.LogUser = this.txtLogUser.Text.Trim();
                 obj.LogDescrption = this.txtLogDescrption.Text.Trim();
                 obj.LogRequestInfo = this.txtLogRequestInfo.Text.Trim();
-                obj.LogRelateMoudleID = Convert.ToInt32(this.txtLogRelateMoudleID.Text.Trim());
-                obj.LogRelateMoudleDataID = Convert.ToInt32(this.txtLogRelateMoudleDataID.Text.Trim());
+                //obj.LogRelateMoudleID = Convert.ToInt32(this.txtLogRelateMoudleID.Text.Trim());
+                //obj.LogRelateMoudleDataID = Convert.ToInt32(this.txtLogRelateMoudleDataID.Text.Trim());
                 obj.LogRelateUserID = Convert.ToInt32(this.txtLogRelateUserID.Text.Trim());
                 obj.LogRelateDateTime = UIHelper.SaftGetDateTime(this.txtLogRelateDateTime.Text.Trim());
 
