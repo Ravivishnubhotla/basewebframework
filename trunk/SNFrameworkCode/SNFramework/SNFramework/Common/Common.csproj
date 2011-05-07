@@ -149,6 +149,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.Designer.cs">
+      <DependentUpon>SystemDataTypeServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailQueueServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailQueueServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailQueueServiceProxy.cs</DependentUpon>
@@ -168,6 +172,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.Designer.cs">
       <DependentUpon>SystemTerminologyServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.Designer.cs">
+      <DependentUpon>SystemVersionServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowServiceProxy.Designer.cs">
@@ -213,6 +221,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.Designer.cs">
       <DependentUpon>SystemConfigDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.Designer.cs">
+      <DependentUpon>SystemDataTypeDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemEmailQueueDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemEmailQueueDataObject.Designer.cs">
       <DependentUpon>SystemEmailQueueDataObject.cs</DependentUpon>
@@ -233,6 +245,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.Designer.cs">
       <DependentUpon>SystemTerminologyDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.Designer.cs">
+      <DependentUpon>SystemVersionDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowDataObject.Designer.cs">
       <DependentUpon>SystemWorkFlowDataObject.cs</DependentUpon>
@@ -249,6 +265,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.Designer.cs">
       <DependentUpon>SystemConfigEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.Designer.cs">
+      <DependentUpon>SystemDataTypeEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailQueueEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailQueueEntity.Designer.cs">
@@ -269,6 +289,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.Designer.cs">
       <DependentUpon>SystemTerminologyEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.Designer.cs">
+      <DependentUpon>SystemVersionEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowEntity.Designer.cs">
@@ -913,6 +937,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTaskMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDataTypeMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemVersionMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
