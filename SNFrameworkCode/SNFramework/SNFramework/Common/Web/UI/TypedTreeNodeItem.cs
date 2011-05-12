@@ -9,6 +9,7 @@ namespace Legendigital.Framework.Common.Web.UI
     {
         private string id;
         private string name;
+        private string code;
         private TypedTreeNodeItem<T> parentNode;
         private List<TypedTreeNodeItem<T>> subNodes = new List<TypedTreeNodeItem<T>>();
         private T dataitem;
@@ -18,6 +19,13 @@ namespace Legendigital.Framework.Common.Web.UI
             get { return id; }
             set { id = value; }
         }
+
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
+
 
         public string Name
         {

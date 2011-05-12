@@ -12,6 +12,9 @@
  <object id="SystemConfigDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemConfigDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemDataTypeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDataTypeDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemDepartmentDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDepartmentDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -72,6 +75,9 @@
  <object id="SystemShortMessageDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemShortMessageDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemTaskDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTaskDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemTerminologyDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTerminologyDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -96,6 +102,9 @@
  <object id="SystemUserRoleRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserRoleRelationDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemVersionDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemVersionDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemViewDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemViewDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -117,6 +126,7 @@
 <object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
     <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
     <property name="SystemConfigDataObjectInstance" ref="SystemConfigDataObjectIocID"/>
+    <property name="SystemDataTypeDataObjectInstance" ref="SystemDataTypeDataObjectIocID"/>
     <property name="SystemDepartmentDataObjectInstance" ref="SystemDepartmentDataObjectIocID"/>
     <property name="SystemDictionaryDataObjectInstance" ref="SystemDictionaryDataObjectIocID"/>
     <property name="SystemEmailQueueDataObjectInstance" ref="SystemEmailQueueDataObjectIocID"/>
@@ -137,6 +147,7 @@
     <property name="SystemRoleMenuRelationDataObjectInstance" ref="SystemRoleMenuRelationDataObjectIocID"/>
     <property name="SystemSettingDataObjectInstance" ref="SystemSettingDataObjectIocID"/>
     <property name="SystemShortMessageDataObjectInstance" ref="SystemShortMessageDataObjectIocID"/>
+    <property name="SystemTaskDataObjectInstance" ref="SystemTaskDataObjectIocID"/>
     <property name="SystemTerminologyDataObjectInstance" ref="SystemTerminologyDataObjectIocID"/>
     <property name="SystemUserDataObjectInstance" ref="SystemUserDataObjectIocID"/>
     <property name="SystemUserGroupDataObjectInstance" ref="SystemUserGroupDataObjectIocID"/>
@@ -145,6 +156,7 @@
     <property name="SystemUserProfileDataObjectInstance" ref="SystemUserProfileDataObjectIocID"/>
     <property name="SystemUserProfilePropertysDataObjectInstance" ref="SystemUserProfilePropertysDataObjectIocID"/>
     <property name="SystemUserRoleRelationDataObjectInstance" ref="SystemUserRoleRelationDataObjectIocID"/>
+    <property name="SystemVersionDataObjectInstance" ref="SystemVersionDataObjectIocID"/>
     <property name="SystemViewDataObjectInstance" ref="SystemViewDataObjectIocID"/>
     <property name="SystemViewItemDataObjectInstance" ref="SystemViewItemDataObjectIocID"/>
     <property name="SystemWorkFlowDataObjectInstance" ref="SystemWorkFlowDataObjectIocID"/>

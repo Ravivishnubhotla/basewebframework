@@ -187,7 +187,7 @@
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\ReSourcesManage\PageResourcesManage.aspx" />
+    <Content Include="Moudles\SystemManage\PermissionManage\SystemResourcesAndPriviliege.aspx" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -542,6 +542,13 @@
     <Compile Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.designer.cs">
       <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\SystemResourcesAndPriviliege.aspx.cs">
+      <DependentUpon>SystemResourcesAndPriviliege.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\PermissionManage\SystemResourcesAndPriviliege.aspx.designer.cs">
+      <DependentUpon>SystemResourcesAndPriviliege.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx.cs">
       <DependentUpon>UCSystemPrivilegeAdd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -555,13 +562,6 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx.designer.cs">
       <DependentUpon>UCSystemPrivilegeEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ReSourcesManage\PageResourcesManage.aspx.cs">
-      <DependentUpon>PageResourcesManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ReSourcesManage\PageResourcesManage.aspx.designer.cs">
-      <DependentUpon>PageResourcesManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.cs">
       <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
@@ -813,6 +813,7 @@
     <Folder Include="App_Themes\Default\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
+    <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="Moudles\SystemManage\SystemApplicationAndMenus\App_LocalResources\" />
     <Folder Include="TestPage\" />

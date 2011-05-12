@@ -2,17 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Web.UI;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemResourcesWrapper
-    {
+    public partial class SystemResourcesWrapper : TreeItemWrapper<SystemResourcesWrapper>
+	{
         #region Static Common Data Operation
 		
 		public static void Save(SystemResourcesWrapper obj)
@@ -92,5 +94,39 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		#endregion
 
-    }
+	    public override List<SystemResourcesWrapper> FindAllItems()
+	    {
+	        return SystemResourcesWrapper.FindAll();
+	    }
+
+	    protected override bool CheckIsRoot(SystemResourcesWrapper obj)
+	    {
+	        return (obj.ParentResourcesID == null);
+	    }
+
+        protected override TypedTreeNodeItem<SystemResourcesWrapper> GetTreeNodeItemByDataItem(SystemResourcesWrapper item, TypedTreeNodeItem<SystemResourcesWrapper> parentNode)
+	    {
+            TypedTreeNodeItem<SystemResourcesWrapper> node = new TypedTreeNodeItem<SystemResourcesWrapper>();
+            node.Id = item.ResourcesID.ToString();
+            node.Name = item.ResourcesNameCn;
+            node.Code = item.ResourcesNameEn;
+            node.DataItem = item.ParentResourcesID;
+            node.ParentNode = parentNode;
+	        return node;
+	    }
+
+        public static List<TypedTreeNodeItem<SystemResourcesWrapper>> GetAllTreeNodesItems()
+	    {
+            return new SystemResourcesWrapper().GetAllTreeItems();
+	    }
+
+	    protected override bool CheckGetSubItems(SystemResourcesWrapper subitem, SystemResourcesWrapper mainItem)
+	    {
+            return (subitem.ParentResourcesID != null) && (subitem.ParentResourcesID.ResourcesID == mainItem.ResourcesID);
+	    }
+
+
+	}
+
+ 
 }

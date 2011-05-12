@@ -5,12 +5,60 @@ using System.Web;
 using System.Web.UI;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework;
+using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Common.WebApp.AppCode
 {
     public static class WebUIHelper
     {
- 
+
+
+
+        public static TreeNodeCollection BuildTree<T>(List<TypedTreeNodeItem<T>> items, string rootName, Icon treeIcon)
+        {
+            TreeNodeCollection nodes = new TreeNodeCollection();
+
+            TreeNode root = new TreeNode();
+            root.Text = rootName;
+            root.Icon = treeIcon;
+
+            nodes.Add(root);
+
+            if (items == null || items.Count == 0)
+                return nodes;
+
+            foreach (TypedTreeNodeItem<T> item in items)
+            {
+                TreeNode mainNode = new TreeNode();
+                mainNode.Text = item.Name;
+                mainNode.NodeID = item.Id;
+
+                mainNode.Icon = treeIcon;
+
+                mainNode.CustomAttributes.Add(new ConfigItem("ID", item.Id, ParameterMode.Value));
+                GenerateSubTreeNode(mainNode, item, treeIcon);
+                root.Nodes.Add(mainNode);
+            }
+
+            return nodes;
+        }
+
+
+        private static void GenerateSubTreeNode<T>(TreeNode mainNode, TypedTreeNodeItem<T> item, Icon treeIcon)
+        {
+            foreach (TypedTreeNodeItem<T> sitem in item.SubNodes)
+            {
+                TreeNode subNode = new TreeNode();
+                subNode.Text = sitem.Name;
+                subNode.NodeID = sitem.Id;
+
+                subNode.Icon = treeIcon;
+
+                mainNode.CustomAttributes.Add(new ConfigItem("ID", item.Id, ParameterMode.Value));
+                GenerateSubTreeNode(subNode, sitem, treeIcon);
+                mainNode.Nodes.Add(subNode);
+            }
+        }
 
 
 

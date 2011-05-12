@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
+    <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigServiceProxy.cs</DependentUpon>
@@ -189,6 +190,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.Designer.cs">
       <DependentUpon>SystemConfigWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.Designer.cs">
+      <DependentUpon>SystemDataTypeWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailQueueWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailQueueWrapper.Designer.cs">
       <DependentUpon>SystemEmailQueueWrapper.cs</DependentUpon>
@@ -208,6 +213,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.Designer.cs">
       <DependentUpon>SystemTerminologyWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.Designer.cs">
+      <DependentUpon>SystemVersionWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowStepWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowStepWrapper.Designer.cs">

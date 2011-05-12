@@ -12,6 +12,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemConfigServiceProxy SystemConfigServiceProxyInstance
         {get; set;}
+		public ISystemDataTypeServiceProxy SystemDataTypeServiceProxyInstance
+        {get; set;}
 		public ISystemDepartmentServiceProxy SystemDepartmentServiceProxyInstance
         {get; set;}
 		public ISystemDictionaryServiceProxy SystemDictionaryServiceProxyInstance
@@ -52,6 +54,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemShortMessageServiceProxy SystemShortMessageServiceProxyInstance
         {get; set;}
+		public ISystemTaskServiceProxy SystemTaskServiceProxyInstance
+        {get; set;}
 		public ISystemTerminologyServiceProxy SystemTerminologyServiceProxyInstance
         {get; set;}
 		public ISystemUserServiceProxy SystemUserServiceProxyInstance
@@ -67,6 +71,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		public ISystemUserProfilePropertysServiceProxy SystemUserProfilePropertysServiceProxyInstance
         {get; set;}
 		public ISystemUserRoleRelationServiceProxy SystemUserRoleRelationServiceProxyInstance
+        {get; set;}
+		public ISystemVersionServiceProxy SystemVersionServiceProxyInstance
         {get; set;}
 		public ISystemViewServiceProxy SystemViewServiceProxyInstance
         {get; set;}
