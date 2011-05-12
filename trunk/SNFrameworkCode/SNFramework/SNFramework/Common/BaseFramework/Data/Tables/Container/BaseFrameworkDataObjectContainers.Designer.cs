@@ -12,6 +12,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
 
       public SystemApplicationDataObject SystemApplicationDataObjectInstance { set; get; }
       public SystemConfigDataObject SystemConfigDataObjectInstance { set; get; }
+      public SystemDataTypeDataObject SystemDataTypeDataObjectInstance { set; get; }
       public SystemDepartmentDataObject SystemDepartmentDataObjectInstance { set; get; }
       public SystemDictionaryDataObject SystemDictionaryDataObjectInstance { set; get; }
       public SystemEmailQueueDataObject SystemEmailQueueDataObjectInstance { set; get; }
@@ -32,6 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemRoleMenuRelationDataObject SystemRoleMenuRelationDataObjectInstance { set; get; }
       public SystemSettingDataObject SystemSettingDataObjectInstance { set; get; }
       public SystemShortMessageDataObject SystemShortMessageDataObjectInstance { set; get; }
+      public SystemTaskDataObject SystemTaskDataObjectInstance { set; get; }
       public SystemTerminologyDataObject SystemTerminologyDataObjectInstance { set; get; }
       public SystemUserDataObject SystemUserDataObjectInstance { set; get; }
       public SystemUserGroupDataObject SystemUserGroupDataObjectInstance { set; get; }
@@ -40,6 +42,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemUserProfileDataObject SystemUserProfileDataObjectInstance { set; get; }
       public SystemUserProfilePropertysDataObject SystemUserProfilePropertysDataObjectInstance { set; get; }
       public SystemUserRoleRelationDataObject SystemUserRoleRelationDataObjectInstance { set; get; }
+      public SystemVersionDataObject SystemVersionDataObjectInstance { set; get; }
       public SystemViewDataObject SystemViewDataObjectInstance { set; get; }
       public SystemViewItemDataObject SystemViewItemDataObjectInstance { set; get; }
       public SystemWorkFlowDataObject SystemWorkFlowDataObjectInstance { set; get; }
