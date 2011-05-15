@@ -79,5 +79,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public List<SystemPrivilegeInRolesEntity> GetRoleAssignedPermissionsByResources(SystemRoleEntity role, SystemResourcesEntity resources)
+        {
+            NHibernateDynamicQueryGenerator<SystemPrivilegeInRolesEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.Eq(role));
+
+            InClude_PrivilegeID_Query(dynamicQueryGenerator);
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_PRIVILEGEID_RESOURCESID.Eq(resources));
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_PRIVILEGEID_PRIVILEGEORDER.Asc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

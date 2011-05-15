@@ -4,8 +4,40 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server" />
+    <ext:Store runat="server" ID="storeNotAssigned" AutoLoad="false" OnRefreshData="storeNotAssigned_RefreshData">
+        <Reader>
+            <ext:JsonReader IDProperty="SystemApplicationID">
+                <Fields>
+                    <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
+                    <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
+                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
+    <ext:Store runat="server" ID="storeAssigned" AutoLoad="false" OnRefreshData="storeAssigned_RefreshData">
+        <Reader>
+            <ext:JsonReader IDProperty="SystemApplicationID">
+                <Fields>
+                    <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
+                    <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
+                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <Listeners>
+            <Load Handler="if(#{storeAssigned}.data.items.length>0) {#{GridPanel2}.getSelectionModel().selectFirstRow(); }" />
+        </Listeners>
+    </ext:Store>
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+    <Listeners>
+        <DocumentReady Handler="#{storeNotAssigned}.reload();#{storeAssigned}.reload();" />
+    </Listeners>
+    </ext:ResourceManagerProxy>
     <script type="text/javascript">
+
+
+
         function btSave_Click(json) {
             Ext.net.DirectMethods.Save_RoleApplication(json,
                             {
@@ -109,31 +141,6 @@
         }  
     
     </script>
-    <ext:Store runat="server" ID="storeNotAssigned" AutoLoad="true" OnRefreshData="storeNotAssigned_RefreshData">
-        <Reader>
-            <ext:JsonReader IDProperty="SystemApplicationID">
-                <Fields>
-                    <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
-                    <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
-                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>
-    <ext:Store runat="server" ID="storeAssigned" OnRefreshData="storeAssigned_RefreshData">
-        <Reader>
-            <ext:JsonReader IDProperty="SystemApplicationID">
-                <Fields>
-                    <ext:RecordField Name="SystemApplicationID" Mapping="SystemApplicationID" />
-                    <ext:RecordField Name="SystemApplicationName" Mapping="SystemApplicationName" />
-                    <ext:RecordField Name="LocaLocalizationName" Mapping="LocaLocalizationName" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-        <Listeners>
-            <Load Handler="if(#{storeAssigned}.data.items.length>0) {#{GridPanel2}.getSelectionModel().selectFirstRow(); }" />
-        </Listeners>
-    </ext:Store>
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:Panel ID="Panel1" Title="<%$ Resources:msgFormTitle %>" runat="server" Frame="true">
@@ -282,8 +289,7 @@
                                         <CheckChange Handler="checkNode(node,checked);" />
                                     </Listeners>
                                     <Buttons>
-                                        <ext:Button ID="btnSaveMenus" runat="server" Text="保存菜单分配"
-                                            Icon="Disk">
+                                        <ext:Button ID="btnSaveMenus" runat="server" Text="保存菜单分配" Icon="Disk">
                                             <Listeners>
                                                 <Click Handler="SaveMenus(#{TreePanel1},#{hidSelectAppID}.getValue());" />
                                             </Listeners>

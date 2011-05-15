@@ -322,27 +322,6 @@
     <Compile Include="Moudles\Installs\SystemConfig.aspx.designer.cs">
       <DependentUpon>SystemConfig.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.cs">
-      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx.designer.cs">
-      <DependentUpon>SystemApplicationListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.cs">
-      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemApplicationAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.cs">
-      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemApplicationEdit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.cs">
       <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -490,34 +469,6 @@
     <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
       <DependentUpon>UCSystemLogView.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.cs">
-      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx.designer.cs">
-      <DependentUpon>SystemMenuListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx.cs">
-      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemMenuAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx.cs">
-      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemMenuEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx.cs">
-      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx.designer.cs">
-      <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx.cs">
       <DependentUpon>SystemMoudleListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -601,13 +552,6 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.designer.cs">
       <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx.cs">
-      <DependentUpon>SystemRoleAssignedMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx.designer.cs">
-      <DependentUpon>SystemRoleAssignedMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx.cs">
       <DependentUpon>SystemRoleAssignedPrivilege.aspx</DependentUpon>
@@ -771,9 +715,6 @@
     <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
     <Content Include="Masters\AdminMaster.Master" />
-    <Content Include="Moudles\SystemManage\ApplicationManage\SystemApplicationListPage.aspx" />
-    <Content Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationAdd.ascx" />
-    <Content Include="Moudles\SystemManage\ApplicationManage\UCSystemApplicationEdit.ascx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -803,10 +744,6 @@
     <Content Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx" />
     <Content Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx" />
     <Content Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx" />
-    <Content Include="Moudles\SystemManage\MenuManage\SystemMenuListPage.aspx" />
-    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuAdd.ascx" />
-    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuEdit.ascx" />
-    <Content Include="Moudles\SystemManage\MenuManage\UCSystemMenuManualResort.ascx" />
     <Content Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
     <Content Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />
     <Content Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx" />
@@ -814,7 +751,6 @@
     <Content Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeAdd.ascx" />
     <Content Include="Moudles\SystemManage\PermissionManage\UCSystemPrivilegeEdit.ascx" />
     <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx" />
-    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedMenu.aspx" />
     <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx" />
     <Content Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx" />
     <Content Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />

@@ -217,7 +217,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winAssignedPermission" runat="server" Title="Window" Frame="true"
-        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Width="750" ConstrainHeader="true" Height="390" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SystemRoleAssignedPrivilege.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">

@@ -48,6 +48,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemRoleEntity GetRoleByName(string roleName);
         void PatchAssignRoleApplications(SystemRoleEntity entity, List<int> applicationIDs);
         void PatchRemoveRoleApplications(SystemRoleEntity systemRoleEntity, List<int> removeAppIDs);
+        List<string> GetRoleAssignedPermissionsByResources(SystemRoleEntity role, SystemResourcesEntity resources);
+        void PatchAssignRolePermissionsByResourcse(SystemRoleEntity roleEntity, List<string> assignedPermissionIDs, int selectResourceId);
     }
 
     public partial class SystemRoleServiceProxy : ISystemRoleServiceProxy
@@ -276,6 +278,55 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             }
         }
 
+        public void PatchAssignRolePermissionsByResourcse(SystemRoleEntity roleEntity, List<string> assignedPermissionIDs, int selectResourceId)
+        {
+            SystemResourcesEntity resourcesEntity = this.DataObjectsContainerIocID.SystemResourcesDataObjectInstance.Load(selectResourceId);
+
+
+            //获取所有的权限
+            List<SystemPrivilegeEntity> allPrivileges =
+                this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.
+                    GetList_By_ResourcesID_SystemResourcesEntity(resourcesEntity);
+
+            //遍历所有的权限)))
+            foreach (SystemPrivilegeEntity privilegesEntity in allPrivileges)
+            {
+                //查找是否存在对应关系
+                SystemPrivilegeInRolesEntity systemPrivilegeInRolesEntity = this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.GetRelationByRoleAndPrivilege(roleEntity, privilegesEntity);
+                //检查是否需要保存
+                if (assignedPermissionIDs.Contains(privilegesEntity.PrivilegeID.ToString()))
+                {
+                    //添加或修改对应关系
+                    if (systemPrivilegeInRolesEntity == null)
+                    {
+                        systemPrivilegeInRolesEntity = new SystemPrivilegeInRolesEntity();
+                    }
+                    systemPrivilegeInRolesEntity.RoleID = roleEntity;
+                    systemPrivilegeInRolesEntity.PrivilegeID = privilegesEntity;
+                    systemPrivilegeInRolesEntity.CreateTime = System.DateTime.Now;
+                    systemPrivilegeInRolesEntity.UpdateTime = System.DateTime.Now;
+                    systemPrivilegeInRolesEntity.ExpiryTime = System.DateTime.Now.AddYears(20);
+                    systemPrivilegeInRolesEntity.EnableParameter = true;
+                    systemPrivilegeInRolesEntity.EnableType = "";
+                    systemPrivilegeInRolesEntity.PrivilegeRoleValueType = "string";
+                    systemPrivilegeInRolesEntity.PrivilegeRoleValue = null;
+                    this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.SaveOrUpdate(systemPrivilegeInRolesEntity);
+                }
+                else
+                {
+                    //删除对应Application下面对应的菜单角色对应关系
+
+                    //如果不需要保存则删除已存在的对应关系
+                    if (systemPrivilegeInRolesEntity != null)
+                    {
+                        this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.Delete(systemPrivilegeInRolesEntity);
+                    }
+
+
+                }
+            }
+        }
+
         public List<SystemPrivilegeInRolesEntity> GetRoleAssignedPrivilegesInRole(SystemRoleEntity systemRoleEntity)
         {
             return
@@ -313,6 +364,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
             }
         }
+
+
+
+
         [Transaction(TransactionPropagation.Required)]
         public void PatchRemoveRoleApplications(SystemRoleEntity roleEntity, List<int> removeAppIDs)
         {
@@ -333,6 +388,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
             }
         }
+
+        public List<string> GetRoleAssignedPermissionsByResources(SystemRoleEntity role, SystemResourcesEntity resources)
+        {
+            List<SystemPrivilegeInRolesEntity> roleAssigedPermission = this.DataObjectsContainerIocID.SystemPrivilegeInRolesDataObjectInstance.GetRoleAssignedPermissionsByResources(role, resources);
+        
+            List<string> roleAssigedPermissionIDs = new List<string>();
+
+            foreach (SystemPrivilegeInRolesEntity privilegeInRolesEntity in roleAssigedPermission)
+            {
+                roleAssigedPermissionIDs.Add(privilegeInRolesEntity.PrivilegeID.PrivilegeID.ToString());
+            }
+
+            return roleAssigedPermissionIDs;
+
+        }
+
+
 
         public List<SystemApplicationEntity> GetRoleAssignedApplications(SystemRoleEntity roleEntity)
         {
