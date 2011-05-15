@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemPrivilegeEdit.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage.UCSystemPrivilegeEdit" %>
 <ext:Window ID="winSystemPrivilegeEdit" runat="server" Icon="ApplicationEdit" Title="EditSystem Permission"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="400" Height="310" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemPrivilegeEdit" runat="server" Frame="true" Header="false"
@@ -10,10 +10,10 @@
             <Items>
                 <ext:Hidden ID="hidPrivilegeID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:NumberField ID="radnumOperationID" runat="server" FieldLabel="Operation ID"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:NumberField ID="radnumResourcesID" runat="server" FieldLabel="Resources ID"
-                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:ComboBox ID="cmbOperationID" runat="server" StoreID="storeSystemOperation" Editable="true"
+                    TypeAhead="true" FieldLabel="Operation" Mode="Local" TriggerAction="All" DisplayField="OperationNameCn"
+                    ValueField="OperationID" AllowBlank="False" ForceSelection="false" AnchorHorizontal="95%" />
+                <ext:DisplayField ID="lblResourcesName" runat="server" AnchorHorizontal="95%"></ext:DisplayField>
                 <ext:TextField ID="txtPrivilegeCnName" runat="server" FieldLabel="Name" AllowBlank="False"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtPrivilegeEnName" runat="server" FieldLabel="Code" AllowBlank="False"
@@ -43,4 +43,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+            <Listeners>
+        <BeforeShow Handler="#{storeSystemOperation}.reload();" />
+    </Listeners>
 </ext:Window>

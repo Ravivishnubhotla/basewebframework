@@ -40,22 +40,22 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage {
         protected global::Ext.Net.Hidden hidPrivilegeID;
         
         /// <summary>
-        /// radnumOperationID control.
+        /// cmbOperationID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField radnumOperationID;
+        protected global::Ext.Net.ComboBox cmbOperationID;
         
         /// <summary>
-        /// radnumResourcesID control.
+        /// lblResourcesName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField radnumResourcesID;
+        protected global::Ext.Net.DisplayField lblResourcesName;
         
         /// <summary>
         /// txtPrivilegeCnName control.
