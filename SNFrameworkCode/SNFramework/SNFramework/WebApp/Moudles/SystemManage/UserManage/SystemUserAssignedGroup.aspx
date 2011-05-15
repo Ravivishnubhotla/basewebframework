@@ -2,8 +2,12 @@
     CodeBehind="SystemUserAssignedGroup.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.SystemUserAssignedGroup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server" />
-    <ext:Store runat="server" ID="Store1" AutoLoad="true" OnRefreshData="Store1_OnRefreshData">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{Store1}.reload();#{Store2}.reload();" />
+        </Listeners>
+    </ext:ResourceManagerProxy>
+    <ext:Store runat="server" ID="Store1" OnRefreshData="Store1_OnRefreshData">
         <Reader>
             <ext:JsonReader>
                 <Fields>
@@ -32,7 +36,7 @@
                     <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
                         <Columns>
                             <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1">
+                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1"  Title="可分配用户组" Frame="true">
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
                                             <ext:Column ColumnID="columnID" Header="GroupID" DataIndex="id" />
@@ -60,51 +64,55 @@
                                 <ext:Panel ID="Panel2" runat="server" Width="35" BodyStyle="background-color: transparent;"
                                     Border="false" Layout="Anchor">
                                     <Items>
-                                        <ext:Panel ID="Panel3" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                            AnchorVertical="40%" />
-                                        <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                            Padding="5">
-                                            <Items>
-                                                <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="GroupSelector.add(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="GroupSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="GroupSelector.remove(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="GroupSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                            </Items>
-                                        </ext:Panel>
+                                        <ext:VBoxLayout ID="VBoxLayout1" runat="server" Align="Stretch" Pack="Center">
+                                            <BoxItems>
+                                                <ext:BoxItem>
+                                                    <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
+                                                        Padding="5"  >
+                                                        <Items>
+                                                            <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
+                                                                <Listeners>
+                                                                    <Click Handler="GroupSelector.add(#{GridPanel1}, #{GridPanel2});" />
+                                                                </Listeners>
+                                                                <ToolTips>
+                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                                </ToolTips>
+                                                            </ext:Button>
+                                                            <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
+                                                                <Listeners>
+                                                                    <Click Handler="GroupSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
+                                                                </Listeners>
+                                                                <ToolTips>
+                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                                </ToolTips>
+                                                            </ext:Button>
+                                                            <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
+                                                                <Listeners>
+                                                                    <Click Handler="GroupSelector.remove(#{GridPanel1}, #{GridPanel2});" />
+                                                                </Listeners>
+                                                                <ToolTips>
+                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                                </ToolTips>
+                                                            </ext:Button>
+                                                            <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
+                                                                <Listeners>
+                                                                    <Click Handler="GroupSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
+                                                                </Listeners>
+                                                                <ToolTips>
+                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                                </ToolTips>
+                                                            </ext:Button>
+                                                        </Items>
+                                                    </ext:Panel>
+                                                </ext:BoxItem>
+                                            </BoxItems>
+                                        </ext:VBoxLayout>
                                     </Items>
                                 </ext:Panel>
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.5">
                                 <ext:GridPanel runat="server" ID="GridPanel2" EnableDragDrop="false" AutoExpandColumn="columnID"
-                                    StoreID="Store2">
+                                    StoreID="Store2"   Title="已分配用户组" Frame="true">
                                     <Listeners>
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
@@ -128,7 +136,8 @@
                             <Click Handler="Button5_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)),#{Window1})" />
                         </Listeners>
                     </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
+                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+                        Icon="Cancel">
                         <Listeners>
                             <Click Handler="parent.CloseWinAssignedUserGroup();" />
                         </Listeners>
@@ -137,7 +146,6 @@
             </ext:Panel>
         </Items>
     </ext:Viewport>
-
     <script type="text/javascript">
             function Button5_Click(json,Window1)
             {
@@ -215,5 +223,4 @@
             
  
     </script>
-
 </asp:Content>

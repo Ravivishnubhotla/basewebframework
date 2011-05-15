@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage
@@ -82,7 +83,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
-            storeSystemUser.DataSource = SystemUserWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+
+            queryFilters.Add(new QueryFilter(SystemUserWrapper.PROPERTY_NAME_USERLOGINID, SystemUserWrapper.DEV_USER_ID,FilterFunction.NotEqualTo));
+
+            storeSystemUser.DataSource = SystemUserWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
             e.Total = recordCount;
 
             storeSystemUser.DataBind();

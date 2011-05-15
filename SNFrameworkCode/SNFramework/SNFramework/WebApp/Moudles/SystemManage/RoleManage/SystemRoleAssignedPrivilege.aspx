@@ -219,45 +219,49 @@
                                         <ext:Panel ID="Panel2" runat="server" Width="35" BodyStyle="background-color: transparent;"
                                             Border="false" Layout="Anchor">
                                             <Items>
-                                                <ext:Panel ID="Panel3" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                                    AnchorVertical="40%" />
-                                                <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                                    Padding="5">
-                                                    <Items>
-                                                        <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
-                                                            <Listeners>
-                                                                <Click Handler="PrivilegeSelector.add();" />
-                                                            </Listeners>
-                                                            <ToolTips>
-                                                                <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
-                                                            </ToolTips>
-                                                        </ext:Button>
-                                                        <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
-                                                            <Listeners>
-                                                                <Click Handler="PrivilegeSelector.addAll();" />
-                                                            </Listeners>
-                                                            <ToolTips>
-                                                                <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
-                                                            </ToolTips>
-                                                        </ext:Button>
-                                                        <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
-                                                            <Listeners>
-                                                                <Click Handler="PrivilegeSelector.remove(#{GridPanel1}, #{GridPanel2});" />
-                                                            </Listeners>
-                                                            <ToolTips>
-                                                                <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
-                                                            </ToolTips>
-                                                        </ext:Button>
-                                                        <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
-                                                            <Listeners>
-                                                                <Click Handler="PrivilegeSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
-                                                            </Listeners>
-                                                            <ToolTips>
-                                                                <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
-                                                            </ToolTips>
-                                                        </ext:Button>
-                                                    </Items>
-                                                </ext:Panel>
+                                                <ext:VBoxLayout ID="VBoxLayout1" runat="server" Align="Stretch" Pack="Center">
+                                                    <BoxItems>
+                                                        <ext:BoxItem>
+                                                            <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
+                                                                Padding="5">
+                                                                <Items>
+                                                                    <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
+                                                                        <Listeners>
+                                                                            <Click Handler="PrivilegeSelector.add();" />
+                                                                        </Listeners>
+                                                                        <ToolTips>
+                                                                            <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                                        </ToolTips>
+                                                                    </ext:Button>
+                                                                    <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
+                                                                        <Listeners>
+                                                                            <Click Handler="PrivilegeSelector.addAll();" />
+                                                                        </Listeners>
+                                                                        <ToolTips>
+                                                                            <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                                        </ToolTips>
+                                                                    </ext:Button>
+                                                                    <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
+                                                                        <Listeners>
+                                                                            <Click Handler="PrivilegeSelector.remove(#{GridPanel1}, #{GridPanel2});" />
+                                                                        </Listeners>
+                                                                        <ToolTips>
+                                                                            <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                                        </ToolTips>
+                                                                    </ext:Button>
+                                                                    <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
+                                                                        <Listeners>
+                                                                            <Click Handler="PrivilegeSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
+                                                                        </Listeners>
+                                                                        <ToolTips>
+                                                                            <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                                        </ToolTips>
+                                                                    </ext:Button>
+                                                                </Items>
+                                                            </ext:Panel>
+                                                        </ext:BoxItem>
+                                                    </BoxItems>
+                                                </ext:VBoxLayout>
                                             </Items>
                                         </ext:Panel>
                                     </ext:LayoutColumn>

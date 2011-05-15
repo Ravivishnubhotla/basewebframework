@@ -112,13 +112,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
-        /// Panel3 control.
+        /// VBoxLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel3;
+        protected global::Ext.Net.VBoxLayout VBoxLayout1;
         
         /// <summary>
         /// Panel4 control.

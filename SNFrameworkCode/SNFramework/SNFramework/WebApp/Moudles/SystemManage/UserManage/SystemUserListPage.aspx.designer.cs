@@ -119,5 +119,23 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winAssignedRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winAssignedRole;
+        
+        /// <summary>
+        /// winAssignedGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winAssignedGroup;
     }
 }
