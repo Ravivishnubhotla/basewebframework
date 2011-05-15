@@ -10,8 +10,8 @@
             <Items>
                 <ext:Hidden ID="hidDepartmentID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:Label ID="lblParentMenuName" runat="server" FieldLabel="<%$ Resources:msglblParentMenuName %>" AnchorHorizontal="95%">
-                </ext:Label>
+                <ext:DisplayField ID="lblParentMenuName" runat="server" FieldLabel="<%$ Resources:msglblParentMenuName %>" AnchorHorizontal="95%">
+                </ext:DisplayField>
                 <ext:TextField ID="txtDepartmentNameCn" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentNameCn %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtDepartmentNameEn" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentNameEn %>" AllowBlank="False"

@@ -9,6 +9,7 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Data.Tables;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
@@ -19,7 +20,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
  
         [OperationContract]
         SystemPrivilegeEntity FindByPermissionCode(string permissionCode);
- 
+
+        void QuickGeneratePrivilege(SystemResourcesEntity entity);
     }
 
     public partial class SystemPrivilegeServiceProxy : ISystemPrivilegeServiceProxy
@@ -31,7 +33,42 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             return this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.GetByCode(permissionCode);
         }
 
+        public SystemPrivilegeEntity FindBySystemResourcesEntity(SystemResourcesEntity entity)
+        {
+            return this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.FindBySystemResourcesEntity(entity);
+        }
 
- 
+        [Transaction(ReadOnly = false)]
+        public void QuickGeneratePrivilege(SystemResourcesEntity resourcesEntity)
+        {
+            List<SystemOperationEntity> ops =
+                this.DataObjectsContainerIocID.SystemOperationDataObjectInstance.
+                    GetList_By_ResourceID_SystemResourcesEntity(resourcesEntity);
+
+            int i = 1;
+
+            foreach (SystemOperationEntity operationEntity in ops)
+            {
+                SystemPrivilegeEntity privilegeEntity = this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.FindBySystemOperation(operationEntity);
+
+                if(privilegeEntity==null)
+                {                    
+                    privilegeEntity = new SystemPrivilegeEntity();
+                    privilegeEntity.ResourcesID = resourcesEntity;
+                    privilegeEntity.OperationID = operationEntity;
+                }
+
+                privilegeEntity.PrivilegeEnName = resourcesEntity.ResourcesNameEn + operationEntity.OperationNameEn;
+                privilegeEntity.PrivilegeCnName = resourcesEntity.ResourcesNameCn + operationEntity.OperationNameCn;
+                privilegeEntity.Description = "";
+                privilegeEntity.PrivilegeOrder = i;
+
+                this.DataObjectsContainerIocID.SystemPrivilegeDataObjectInstance.SaveOrUpdate(privilegeEntity);
+
+                i++;
+
+            }
+
+        }
     }
 }

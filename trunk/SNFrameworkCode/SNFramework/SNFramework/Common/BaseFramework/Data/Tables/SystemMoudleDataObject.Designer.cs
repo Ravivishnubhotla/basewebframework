@@ -32,8 +32,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationDescription"));
 		public static readonly StringProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationUrl"));
 		public static readonly BoolProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = new BoolProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationIsSystemApplication"));
+		public static readonly IntProperty PROPERTY_APPLICATIONID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
 		public static readonly BoolProperty PROPERTY_MOUDLEISSYSTEMMOUDLE = new BoolProperty(Property.ForName(SystemMoudleEntity.PROPERTY_NAME_MOUDLEISSYSTEMMOUDLE));		
+		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemMoudleEntity.PROPERTY_NAME_ORDERINDEX));		
       
 		#region 子类集合字段查询字段
 	
@@ -65,6 +67,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "MoudleIsSystemMoudle":
                     return typeof (bool);
+                case "OrderIndex":
+                    return typeof (int);
           }
 			return typeof(string);
         }

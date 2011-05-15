@@ -35,8 +35,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".MoudleDescription"));
 		public static readonly EntityProperty<SystemApplicationEntity> PROPERTY_MOUDLEID_APPLICATIONID = new EntityProperty<SystemApplicationEntity>(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".ApplicationID"));
 		public static readonly BoolProperty PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = new BoolProperty(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".MoudleIsSystemMoudle"));
+		public static readonly IntProperty PROPERTY_MOUDLEID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_MOUDLEID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_PARENTRESOURCESID));
+		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_ORDERINDEX));		
       
 		#region 子类集合字段查询字段
 	
@@ -71,6 +73,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "MoudleID":
                     return typeof (int);
                 case "ParentResourcesID":
+                    return typeof (int);
+                case "OrderIndex":
                     return typeof (int);
           }
 			return typeof(string);

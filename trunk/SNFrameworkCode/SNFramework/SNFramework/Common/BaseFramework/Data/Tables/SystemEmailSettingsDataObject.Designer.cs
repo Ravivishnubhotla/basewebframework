@@ -29,6 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISDEFAULT = new BoolProperty(Property.ForName(SystemEmailSettingsEntity.PROPERTY_NAME_ISDEFAULT));		
 		public static readonly DateTimeProperty PROPERTY_CREATEDATE = new DateTimeProperty(Property.ForName(SystemEmailSettingsEntity.PROPERTY_NAME_CREATEDATE));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemEmailSettingsEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemEmailSettingsEntity.PROPERTY_NAME_ORDERINDEX));		
       
 		#region 子类集合字段查询字段
 	
@@ -75,6 +76,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "CreateDate":
                     return typeof (DateTime);
                 case "CreateBy":
+                    return typeof (int);
+                case "OrderIndex":
                     return typeof (int);
           }
 			return typeof(string);

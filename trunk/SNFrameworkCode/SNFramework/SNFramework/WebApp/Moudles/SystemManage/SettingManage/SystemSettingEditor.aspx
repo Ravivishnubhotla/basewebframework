@@ -6,6 +6,12 @@
     </ext:ResourceManagerProxy>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<style type="text/css">
+.HiLight
+{
+ background-color:Red;    
+}
+</style>
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:Panel ID="Panel1" runat="server" Icon="ServerWrench" Title="<%$ Resources:Panel1Title %>"
@@ -19,7 +25,7 @@
                                 <Items>
                                     <ext:Hidden ID="hidId" runat="server" AnchorHorizontal="95%">
                                     </ext:Hidden>
-                                    <ext:TextField ID="txtSystemName" runat="server" FieldLabel="<%$ Resources:txtSystemNameFieldLabel %>"
+                                    <ext:TextField ID="txtSystemName" runat="server"  FieldLabel="<%$ Resources:txtSystemNameFieldLabel %>"
                                         AllowBlank="False" AnchorHorizontal="95%" />
                                     <ext:TextArea ID="txtSystemDescription" runat="server" FieldLabel="<%$ Resources:txtSystemDescriptionFieldLabel %>"
                                         AllowBlank="True" AnchorHorizontal="95%" />

@@ -74,6 +74,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONDESCRIPTION = "SystemApplicationDescription";
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONURL = "SystemApplicationUrl";
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 
@@ -161,6 +162,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemApplicationIsSystemApplication = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? OrderIndex
+		{
+			get
+			{
+				return entity.OrderIndex;
+			}
+			set
+			{
+				entity.OrderIndex = value;
 			}
 		}
 		#endregion 

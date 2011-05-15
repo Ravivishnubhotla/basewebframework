@@ -8,8 +8,8 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="120"
             AutoScroll="true" Layout="Form">
             <Items>
-                <ext:Label ID="lblParentMenuName" runat="server" FieldLabel="<%$ Resources:msglblParentMenuName %>" AnchorHorizontal="95%">
-                </ext:Label>
+                <ext:DisplayField ID="lblParentMenuName" runat="server" FieldLabel="<%$ Resources:msglblParentMenuName %>" AnchorHorizontal="95%">
+                </ext:DisplayField>
                 <ext:Hidden ID="hidParentDepartmentID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
                 <ext:TextField ID="txtDepartmentNameCn" runat="server" FieldLabel="<%$ Resources:msgtxtDepartmentNameCn %>" AllowBlank="False"

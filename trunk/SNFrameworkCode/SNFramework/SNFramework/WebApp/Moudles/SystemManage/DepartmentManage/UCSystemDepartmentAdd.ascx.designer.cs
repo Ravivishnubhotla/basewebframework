@@ -37,7 +37,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblParentMenuName;
+        protected global::Ext.Net.DisplayField lblParentMenuName;
         
         /// <summary>
         /// hidParentDepartmentID control.

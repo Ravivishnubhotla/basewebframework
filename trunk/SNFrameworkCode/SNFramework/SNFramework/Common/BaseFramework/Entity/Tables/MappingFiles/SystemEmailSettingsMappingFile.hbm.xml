@@ -25,6 +25,7 @@
 		<property column="IsDefault" type="Boolean" name="IsDefault"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 
 
 

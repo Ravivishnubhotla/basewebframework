@@ -31,11 +31,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                     this.radnumResourcesID.Value = obj.ResourcesID.ToString();
                     this.txtPrivilegeCnName.Text = obj.PrivilegeCnName.ToString();
                     this.txtPrivilegeEnName.Text = obj.PrivilegeEnName.ToString();
-                    this.txtDefaultValue.Text = obj.DefaultValue.ToString();
+
                     this.txtDescription.Text = obj.Description.ToString();
                     this.txtPrivilegeOrder.Text = obj.PrivilegeOrder.ToString();
                     //this.txtPrivilegeCategory.Text = obj.PrivilegeCategory.ToString();
-                    this.txtPrivilegeType.Text = obj.PrivilegeType.ToString();
+
 
 
 
@@ -70,11 +70,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                 obj.ResourcesID = null;
                 obj.PrivilegeCnName = this.txtPrivilegeCnName.Text.Trim();
                 obj.PrivilegeEnName = this.txtPrivilegeEnName.Text.Trim();
-                obj.DefaultValue = this.txtDefaultValue.Text.Trim();
+
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.PrivilegeOrder = Convert.ToInt32(this.txtPrivilegeOrder.Text.Trim());
                 //obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
-                obj.PrivilegeType = this.txtPrivilegeType.Text.Trim();
+
 
 
                 SystemPrivilegeWrapper.Update(obj);

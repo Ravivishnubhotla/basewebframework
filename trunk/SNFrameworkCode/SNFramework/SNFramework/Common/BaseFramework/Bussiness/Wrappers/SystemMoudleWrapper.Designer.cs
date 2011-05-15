@@ -75,6 +75,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_MOUDLEDESCRIPTION = "MoudleDescription";
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		public static readonly string PROPERTY_NAME_MOUDLEISSYSTEMMOUDLE = "MoudleIsSystemMoudle";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 
@@ -176,6 +177,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.MoudleIsSystemMoudle = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? OrderIndex
+		{
+			get
+			{
+				return entity.OrderIndex;
+			}
+			set
+			{
+				entity.OrderIndex = value;
 			}
 		}
 		#endregion 

@@ -28,6 +28,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationDescription"));
 		public static readonly StringProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationUrl"));
 		public static readonly BoolProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = new BoolProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationIsSystemApplication"));
+		public static readonly IntProperty PROPERTY_APPLICATIONID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
 		public static readonly EntityProperty<SystemUserEntity> PROPERTY_USERID = new EntityProperty<SystemUserEntity>(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_USERID));
 		#region userId字段外键查询字段

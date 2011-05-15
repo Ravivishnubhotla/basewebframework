@@ -39,12 +39,13 @@
             <Load Handler="#{GridPanel1}.getSelectionModel().selectFirstRow();" />
         </Listeners>
     </ext:Store>
+
     <script type="text/javascript">
-        var FormatBool = function (value) {
+        var FormatBool = function(value) {
             if (value)
-                return '是';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return '否';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
  

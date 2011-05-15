@@ -52,6 +52,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = new BoolProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ResourcesIsRelateUser"));
 		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_RESOURCESID_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".MoudleID"));
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCESID_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".ParentResourcesID"));
+		public static readonly IntProperty PROPERTY_RESOURCESID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_RESOURCESID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PRIVILEGECNNAME = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGECNNAME));		
 		public static readonly StringProperty PROPERTY_PRIVILEGEENNAME = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGEENNAME));		

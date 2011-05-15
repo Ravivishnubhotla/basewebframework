@@ -41,11 +41,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
                 obj.ResourcesID = null;
                 obj.PrivilegeCnName = this.txtPrivilegeCnName.Text.Trim();
                 obj.PrivilegeEnName = this.txtPrivilegeEnName.Text.Trim();
-                obj.DefaultValue = this.txtDefaultValue.Text.Trim();
+
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.PrivilegeOrder = Convert.ToInt32(this.txtPrivilegeOrder.Text.Trim());
                 //obj.PrivilegeCategory = this.txtPrivilegeCategory.Text.Trim();
-                obj.PrivilegeType = this.txtPrivilegeType.Text.Trim();
+
 
 
 

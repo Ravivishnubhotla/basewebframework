@@ -52,5 +52,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             return this.FindAllWithCustomQuery(hql, parameters);
         }
 
+        public SystemPrivilegeEntity FindBySystemResourcesEntity(SystemResourcesEntity entity)
+        {
+            NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_RESOURCESID.Eq(entity));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
+
+        public SystemPrivilegeEntity FindBySystemOperation(SystemOperationEntity operationEntity)
+        {
+            NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_OPERATIONID.Eq(operationEntity));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

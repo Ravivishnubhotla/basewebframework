@@ -96,8 +96,25 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion
 
 
+        public string OperationName
+	    {
+	        get
+	        {
+                if (this.OperationID == null)
+                    return "";
+                return this.OperationID.OperationNameCn;
+	        }
+	    }
 
-
+	    public string ResourceName
+	    {
+	        get
+	        {
+                if (this.ResourcesID == null)
+                    return "";
+	            return this.ResourcesID.ResourcesNameCn;
+	        }
+	    }
 
  
 
@@ -111,6 +128,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public const string ColumnName_CategoryName = "CategoryName";
         public const string TableName_CategoryName = "CategoryNames";
 
- 
+
+	    public static void QuickGeneratePrivilege(int resourceid)
+	    {
+            SystemResourcesWrapper systemResourcesWrapper = SystemResourcesWrapper.FindById(resourceid);
+
+            if (systemResourcesWrapper != null)
+            {
+                businessProxy.QuickGeneratePrivilege(systemResourcesWrapper.entity);
+            }
+	    }
     }
 }

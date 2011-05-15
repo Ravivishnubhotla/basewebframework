@@ -11,5 +11,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemOperationDataObject
     {
+        public SystemOperationEntity FindByResourceAndCode(SystemResourcesEntity entity, string operationNameEn)
+        {
+            NHibernateDynamicQueryGenerator<SystemOperationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_RESOURCEID.Eq(entity));
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_OPERATIONNAMEEN.Eq(operationNameEn));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
