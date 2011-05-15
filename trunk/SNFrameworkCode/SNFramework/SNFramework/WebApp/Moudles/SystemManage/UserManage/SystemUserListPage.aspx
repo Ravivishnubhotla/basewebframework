@@ -26,11 +26,7 @@
                 return '<%= this.GetLocalResourceObject("msgNormal") %>';
         }
 
-        function processcmd(cmd, id) {
-
-            alert(cmd);
-            alert(id);
-        }
+ 
 
 
         var RefreshData = function(btn) {
@@ -134,26 +130,31 @@
             }
             if (cmd == "cmdApplyRole") 
             {
-                            Ext.net.DirectMethods.UCSystemUserAssignedRole.Show
-                            (
-                                                                id.id,
-                                                                {
-                                                                    failure: function(msg) 
-                                                                    {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
-                                                                    },
-                                                                    success: function(result) 
-                                                                    { 
-                                                                       //Ext.Msg.alert('Operation Successful', 'Delete successfulSystem User!',RefreshData);            
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
-                                                                }
-                            );
+                 var win = <%= winAssignedRole.ClientID %>;
+              win.autoLoad.params.UserID = id.id;
+              win.setTitle(String.format("user '{0}' assigned role",id.data.UserName));
+              win.show();     
+            }
+
+                        if (cmd == "cmdApplyGroup") 
+            {
+                 var win = <%= winAssignedGroup.ClientID %>;
+              win.autoLoad.params.UserID = id.id;
+              win.setTitle(String.format("user '{0}' assigned group",id.data.UserName));
+              win.show();     
             }
         }
+
+
+             function CloseWinAssignedUserRole()
+     {
+        <%= winAssignedRole.ClientID %>.hide();
+     }
+     
+          function CloseWinAssignedUserGroup()
+     {
+        <%= winAssignedGroup.ClientID %>.hide();
+     }
 
 
 
@@ -162,13 +163,13 @@
       
             if(record.data.IsLockedOut)
             {
-             toolbar.items.items[0].menu.items.items[4].hide();
-             toolbar.items.items[0].menu.items.items[5].show();
+             toolbar.items.items[0].menu.items.items[3].hide();
+             toolbar.items.items[0].menu.items.items[4].show();
             }
             
             else{
-             toolbar.items.items[0].menu.items.items[4].show();
-             toolbar.items.items[0].menu.items.items[5].hide();
+             toolbar.items.items[0].menu.items.items[3].show();
+             toolbar.items.items[0].menu.items.items[4].hide();
         
             }
                
@@ -214,12 +215,14 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
+                                Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
+                                Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemUser}.reload();" />
                                 </Listeners>
@@ -236,31 +239,34 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="<%$ Resources:msgcolUserLoginID %>" Sortable="true">
+                        <ext:Column ColumnID="colUserLoginID" DataIndex="UserLoginID" Header="<%$ Resources:msgcolUserLoginID %>"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserName" DataIndex="UserName" Header="<%$ Resources:msgcolUserName %>" Sortable="true">
+                        <ext:Column ColumnID="colUserName" DataIndex="UserName" Header="<%$ Resources:msgcolUserName %>"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="<%$ Resources:msgcolUserEmail %>" Sortable="true">
+                        <ext:Column ColumnID="colUserEmail" DataIndex="UserEmail" Header="<%$ Resources:msgcolUserEmail %>"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="<%$ Resources:msgcolUserStatus %>" Sortable="true"
-                            Width="35">
+                        <ext:Column ColumnID="colUserStatus" DataIndex="UserStatus" Header="<%$ Resources:msgcolUserStatus %>"
+                            Sortable="true" Width="35">
                         </ext:Column>
                         <ext:Column ColumnID="colUserCreateDate" DataIndex="UserCreateDate" Header="<%$ Resources:msgcolUserCreateDate %>"
                             Sortable="true" Width="60">
                             <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="<%$ Resources:msgcolIsApproved %>" Sortable="true"
-                            Width="35">
+                        <ext:Column ColumnID="colIsApproved" DataIndex="IsApproved" Header="<%$ Resources:msgcolIsApproved %>"
+                            Sortable="true" Width="35">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="<%$ Resources:msgcolIsLockedOut %>" Sortable="true"
-                            Width="35">
+                        <ext:Column ColumnID="colIsLockedOut" DataIndex="IsLockedOut" Header="<%$ Resources:msgcolIsLockedOut %>"
+                            Sortable="true" Width="35">
                             <Renderer Fn="FormatLocked" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>" Width="50"
-                            DataIndex="IsLockedOut">
+                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>"
+                            Width="50" DataIndex="IsLockedOut">
                             <Commands>
-                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" >
+                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>">
                                     <Menu>
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
@@ -269,12 +275,13 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="Key" CommandName="cmdChangePassword" Text="<%$ Resources:msgChangePassword %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="Application" CommandName="cmdApplyRole" Text="<%$ Resources:msgAssignedPassword %>"
-                                                Hidden="true">
-                                            </ext:MenuCommand>
                                             <ext:MenuCommand Icon="Lock" CommandName="btnLock" Text="<%$ Resources:msgLock %>">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="LockOpen" CommandName="btnUnlock" Text="<%$ Resources:msgunLock %>">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Application" CommandName="cmdApplyRole" Text="分配角色">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Group" CommandName="cmdApplyGroup" Text="分配用户组">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -287,7 +294,8 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemUser"
-                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>"  />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>"
+                        EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -295,4 +303,32 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winAssignedRole" runat="server" Title="Window" Frame="true" Width="600"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="SystemUserAssignedRole.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="UserID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winAssignedGroup" runat="server" Title="Window" Frame="true" Width="600"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="SystemUserAssignedGroup.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="UserID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

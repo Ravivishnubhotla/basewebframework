@@ -27,8 +27,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage
         {
             if (X.IsAjaxRequest)
                 return;
-            GridPanel1.Reload();
-            GridPanel2.Reload();
         }
 
         protected void Store1_OnRefreshData(object sender, StoreRefreshDataEventArgs e)
@@ -62,11 +60,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage
         {
             try
             {
-                KeyValuePair<string, string>[] selectIDs = JSON.Deserialize<KeyValuePair<string, string>[]>(json);
+                List<SystemUserGroupWrapper> selectIDs = JSON.Deserialize<List<SystemUserGroupWrapper>>(json);
                 List<String> list = new List<string>();
-                foreach (KeyValuePair<string, string> row in selectIDs)
+                foreach (SystemUserGroupWrapper row in selectIDs)
                 {
-                    list.Add(row.Key);
+                    list.Add(row.GroupID.ToString());
                 }
                 SystemUserWrapper.PatchAssignUserUserGroups(SystemUserWrapper.FindById(UserID), list);
             }
