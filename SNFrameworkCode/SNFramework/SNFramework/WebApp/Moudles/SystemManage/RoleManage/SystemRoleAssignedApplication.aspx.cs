@@ -20,8 +20,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
         {
             if (X.IsAjaxRequest)
                 return;
-            GridPanel1.Reload();
-            GridPanel2.Reload();
+ 
         }
 
 

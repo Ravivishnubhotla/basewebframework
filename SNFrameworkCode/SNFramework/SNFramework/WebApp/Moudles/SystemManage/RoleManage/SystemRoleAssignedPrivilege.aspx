@@ -2,8 +2,122 @@
     CodeBehind="SystemRoleAssignedPrivilege.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage.SystemRoleAssignedPrivilege" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server" />
-    <ext:Store runat="server" ID="Store1" AutoLoad="true" OnRefreshData="Store1_OnRefreshData">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="RefreshList(#{treeMain});" />
+        </Listeners>
+    </ext:ResourceManagerProxy>
+    <script type="text/javascript">
+ 
+ var PrivilegeSelector = {
+            add : function (source, destination) {
+                source = source || <%= this.GridPanel1.ClientID %>;
+                destination = destination || <%= this.GridPanel2.ClientID %>;
+                if (source.hasSelection()) {
+                    var records = source.selModel.getSelections();
+                    source.deleteSelected();
+                    Ext.each(records, function(record){
+                        destination.store.addSorted(record);                    
+                    });                   
+                }
+            },
+            addAll : function (source, destination) {
+                source = source || <%= this.GridPanel1.ClientID %>;
+                destination = destination || <%= this.GridPanel2.ClientID %>;
+                var records = source.store.getRange();
+                source.store.removeAll();
+                Ext.each(records, function(record){
+                    destination.store.addSorted(record);                    
+                });                 
+            },
+            addByName : function (name) {
+                if (!Ext.isEmpty(name)) {
+                    var result = Store1.query("Name", name);
+                    if (!Ext.isEmpty(result.items)) {
+                        <%= this.GridPanel1.ClientID %>.store.remove(result.items[0]);
+                        <%= this.GridPanel2.ClientID %>.store.add(result.items[0]);                        
+                    }
+                }
+            },
+            addByNames : function (name) {
+                for (var i = 0; i < name.length; i++) {
+                    this.addByName(name[i]);
+                }
+            },
+            remove : function (source, destination) {
+                this.add(destination, source);
+            },
+            removeAll : function (source, destination) {
+                this.addAll(destination, source);
+            }
+        };
+ 
+ 
+     function RefreshTreeList1() {
+            RefreshList(<%= this.treeMain.ClientID %>);
+        }
+
+ 
+         function SelectResources(node,hid,pnl)
+        {
+            hid.setValue(node.attributes.id.toString());
+            pnl.setTitle(node.text+' 操作权限管理');
+            pnl.setDisabled(!(node!=null&&node.attributes.id!=null&&node.attributes.id>0));
+            <%= this.Store1.ClientID %>.reload();
+            <%= this.Store2.ClientID %>.reload();
+        }
+
+
+        function RefreshList(treepanel) {
+            Ext.net.DirectMethods.GetTreeNodes(
+                                                {
+                                                    failure: function(msg) {
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                    },
+                                                    success: function(result) {
+                                                        var nodes = eval(result);
+                                                        if (nodes.length > 0) {
+                                                            treepanel.initChildren(nodes);
+                                                        }
+                                                        else {
+                                                            treepanel.getRootNode().removeChildren();
+                                                        }
+                                                    },
+                                                    eventMask: {
+                                                        showMask: true,
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
+                                                    }
+                                                }
+                                             );
+
+        }
+    </script>
+    <script type="text/javascript">
+        function btSave_Click(json, rid) {
+            Ext.net.DirectMethods.Save_RolePermission(json, rid,
+                            {
+                                failure: function (msg) {
+                                    Ext.Msg.alert('Operation failed', msg, null);
+                                },
+                                success: function (result) {
+                                    Ext.Msg.alert('Operation Successful', 'Save successful System Permission!', function (btn) { parent.CloseWinAssignedPermission(); });
+                                },
+                                eventMask:
+                               {
+                                   showMask: true,
+                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                               }
+                            }
+                );
+        }
+            
+        
+    </script>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <ext:Hidden ID="hidSelectResourceID" runat="server">
+    </ext:Hidden>
+    <ext:Store runat="server" ID="Store1" OnRefreshData="Store1_OnRefreshData">
         <Reader>
             <ext:JsonReader>
                 <Fields>
@@ -12,6 +126,10 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <BaseParams>
+            <ext:Parameter Value="#{hidSelectResourceID}.getValue()" Mode="Raw" Name="SelectResourceID">
+            </ext:Parameter>
+        </BaseParams>
     </ext:Store>
     <ext:Store runat="server" ID="Store2" OnRefreshData="Store2_OnRefreshData">
         <Reader>
@@ -22,190 +140,164 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <BaseParams>
+            <ext:Parameter Value="#{hidSelectResourceID}.getValue()" Mode="Raw" Name="SelectResourceID">
+            </ext:Parameter>
+        </BaseParams>
     </ext:Store>
-</asp:Content>
- 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:Panel ID="Panel1" Title="System Application Assign" runat="server" Frame="true">
-                <Items>
-                    <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
-                        <Columns>
-                            <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1">
-                                    <ColumnModel ID="ColumnModel1" runat="server">
-                                        <Columns>
-                                            <ext:Column ColumnID="columnID" Header="ID" DataIndex="id" Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Name" DataIndex="name" />
-                                        </Columns>
-                                    </ColumnModel>
-                                    <SelectionModel>
-                                        <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" />
-                                    </SelectionModel>
-                                    <Plugins>
-                                        <ext:GridFilters ID="GridFilters1" runat="server" Local="true">
-                                            <Filters>
-                                                <ext:StringFilter DataIndex="name" />
-                                            </Filters>
-                                        </ext:GridFilters>
-                                    </Plugins>
-                                    <View>
-                                        <ext:GridView ForceFit="true" ID="GridView1">
-                                            <GetRowClass FormatHandler="False"></GetRowClass>
-                                        </ext:GridView>
-                                    </View>
-                                </ext:GridPanel>
-                            </ext:LayoutColumn>
-                            <ext:LayoutColumn>
-                                <ext:Panel ID="Panel2" runat="server" Width="35" BodyStyle="background-color: transparent;"
-                                    Border="false" Layout="Anchor">
-                                    <Items>
-                                        <ext:Panel ID="Panel3" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                            AnchorVertical="40%" />
-                                        <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
-                                            Padding="5">
+            <ext:BorderLayout ID="BorderLayout1" runat="server">
+                <Center>
+                    <ext:Panel ID="Panel5" Title="选择资源" Frame="true" runat="server" Layout="fit">
+                        <Content>
+                            <ext:TreePanel ID="treeMain" runat="server" Header="false" RootVisible="false" AutoScroll="true">
+                                <TopBar>
+                                    <ext:Toolbar ID="ToolBar1" runat="server">
+                                        <Items>
+                                            <ext:Button ID="Button7" runat="server" IconCls="icon-expand-all" Text="展开全部">
+                                                <Listeners>
+                                                    <Click Handler="#{treeMain}.root.expand(true);" />
+                                                </Listeners>
+                                            </ext:Button>
+                                            <ext:Button ID="Button8" runat="server" IconCls="icon-collapse-all" Text="收起全部">
+                                                <Listeners>
+                                                    <Click Handler="#{treeMain}.root.collapse(true);" />
+                                                </Listeners>
+                                            </ext:Button>
+                                            <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
+                                        </Items>
+                                    </ext:Toolbar>
+                                </TopBar>
+                                <Root>
+                                    <ext:TreeNode Text="System menu" Expanded="true" Icon="Folder">
+                                    </ext:TreeNode>
+                                </Root>
+                                <BottomBar>
+                                    <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
+                                </BottomBar>
+                                <Listeners>
+                                    <Click Handler="#{StatusBar1}.setStatus({text: '当前选中节点: <b>' + node.text + '</b>', clear: false});SelectResources(node,#{hidSelectResourceID},#{pnlEast});" />
+                                </Listeners>
+                            </ext:TreePanel>
+                        </Content>
+                    </ext:Panel>
+                </Center>
+                <East Split="true" Collapsible="true">
+                    <ext:Panel ID="pnlEast" Title="分配权限" Width="390" runat="server" Frame="true" Disabled="true">
+                        <Items>
+                            <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
+                                <Columns>
+                                    <ext:LayoutColumn ColumnWidth="0.5">
+                                        <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1"
+                                            Frame="true" Title="可分配权限">
+                                            <ColumnModel ID="ColumnModel1" runat="server">
+                                                <Columns>
+                                                    <ext:Column ColumnID="columnID" Header="ID" DataIndex="id" Width="30" />
+                                                    <ext:Column ColumnID="columnName" Header="Name" DataIndex="name" />
+                                                </Columns>
+                                            </ColumnModel>
+                                            <SelectionModel>
+                                                <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" />
+                                            </SelectionModel>
+                                            <Plugins>
+                                                <ext:GridFilters ID="GridFilters1" runat="server" Local="true">
+                                                    <Filters>
+                                                        <ext:StringFilter DataIndex="name" />
+                                                    </Filters>
+                                                </ext:GridFilters>
+                                            </Plugins>
+                                            <LoadMask ShowMask="true" />
+                                            <View>
+                                                <ext:GridView ForceFit="true" ID="GridView1">
+                                                    <GetRowClass FormatHandler="False"></GetRowClass>
+                                                </ext:GridView>
+                                            </View>
+                                        </ext:GridPanel>
+                                    </ext:LayoutColumn>
+                                    <ext:LayoutColumn>
+                                        <ext:Panel ID="Panel2" runat="server" Width="35" BodyStyle="background-color: transparent;"
+                                            Border="false" Layout="Anchor">
                                             <Items>
-                                                <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="PrivilegeSelector.add(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="PrivilegeSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="PrivilegeSelector.remove(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
-                                                <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
-                                                    <Listeners>
-                                                        <Click Handler="PrivilegeSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
-                                                    </Listeners>
-                                                    <ToolTips>
-                                                        <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
-                                                    </ToolTips>
-                                                </ext:Button>
+                                                <ext:Panel ID="Panel3" runat="server" Border="false" BodyStyle="background-color: transparent;"
+                                                    AnchorVertical="40%" />
+                                                <ext:Panel ID="Panel4" runat="server" Border="false" BodyStyle="background-color: transparent;"
+                                                    Padding="5">
+                                                    <Items>
+                                                        <ext:Button ID="Button1" runat="server" Icon="ResultsetNext" StyleSpec="margin-bottom:2px;">
+                                                            <Listeners>
+                                                                <Click Handler="PrivilegeSelector.add();" />
+                                                            </Listeners>
+                                                            <ToolTips>
+                                                                <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                            </ToolTips>
+                                                        </ext:Button>
+                                                        <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
+                                                            <Listeners>
+                                                                <Click Handler="PrivilegeSelector.addAll();" />
+                                                            </Listeners>
+                                                            <ToolTips>
+                                                                <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                            </ToolTips>
+                                                        </ext:Button>
+                                                        <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
+                                                            <Listeners>
+                                                                <Click Handler="PrivilegeSelector.remove(#{GridPanel1}, #{GridPanel2});" />
+                                                            </Listeners>
+                                                            <ToolTips>
+                                                                <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                            </ToolTips>
+                                                        </ext:Button>
+                                                        <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
+                                                            <Listeners>
+                                                                <Click Handler="PrivilegeSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
+                                                            </Listeners>
+                                                            <ToolTips>
+                                                                <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                            </ToolTips>
+                                                        </ext:Button>
+                                                    </Items>
+                                                </ext:Panel>
                                             </Items>
                                         </ext:Panel>
-                                    </Items>
-                                </ext:Panel>
-                            </ext:LayoutColumn>
-                            <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel2" EnableDragDrop="false" AutoExpandColumn="columnID"
-                                    StoreID="Store2">
-                                    <Listeners>
-                                    </Listeners>
-                                    <ColumnModel ID="ColumnModel2" runat="server">
-                                        <Columns>
-                                            <ext:Column ColumnID="columnID" Header="ID" DataIndex="id"  Width="30" />
-                                            <ext:Column ColumnID="columnName" Header="Name" DataIndex="name" />
-                                        </Columns>
-                                    </ColumnModel>
-                                    <SelectionModel>
-                                        <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" />
-                                    </SelectionModel>
-                                    <SaveMask ShowMask="true" />
-                                </ext:GridPanel>
-                            </ext:LayoutColumn>
-                        </Columns>
-                    </ext:ColumnLayout>
-                </Items>
-                <Buttons>
-                    <ext:Button ID="btnSave" runat="server" Text="Save" Icon="Disk">
-                        <Listeners>
-                            <Click Handler="btSave_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)))" />
-                        </Listeners>
-                    </ext:Button>
-                    <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
-                        <Listeners>
-                            <Click Handler="parent.CloseWinAssignedPermission();" />
-                        </Listeners>
-                    </ext:Button>
-                </Buttons>
-            </ext:Panel>
+                                    </ext:LayoutColumn>
+                                    <ext:LayoutColumn ColumnWidth="0.5">
+                                        <ext:GridPanel runat="server" ID="GridPanel2" EnableDragDrop="false" AutoExpandColumn="columnID"
+                                            Frame="true" Title="已分配权限" StoreID="Store2">
+                                            <Listeners>
+                                            </Listeners>
+                                            <ColumnModel ID="ColumnModel2" runat="server">
+                                                <Columns>
+                                                    <ext:Column ColumnID="columnID" Header="ID" DataIndex="id" Width="30" />
+                                                    <ext:Column ColumnID="columnName" Header="Name" DataIndex="name" />
+                                                </Columns>
+                                            </ColumnModel>
+                                            <LoadMask ShowMask="true" />
+                                            <SelectionModel>
+                                                <ext:RowSelectionModel ID="RowSelectionModel2" runat="server" />
+                                            </SelectionModel>
+                                            <SaveMask ShowMask="true" />
+                                        </ext:GridPanel>
+                                    </ext:LayoutColumn>
+                                </Columns>
+                            </ext:ColumnLayout>
+                        </Items>
+                        <Buttons>
+                            <ext:Button ID="btnSave" runat="server" Text="Save" Icon="Disk">
+                                <Listeners>
+                                    <Click Handler="btSave_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)),#{hidSelectResourceID}.getValue())" />
+                                </Listeners>
+                            </ext:Button>
+                            <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+                                Icon="Cancel">
+                                <Listeners>
+                                    <Click Handler="parent.CloseWinAssignedPermission();" />
+                                </Listeners>
+                            </ext:Button>
+                        </Buttons>
+                    </ext:Panel>
+                </East>
+            </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-
-    <script type="text/javascript">
-            function Button5_Click(json,Window1)
-            {
-                Ext.net.DirectMethods.Save_RolePermission(json,
-                            {
-                               failure: function(msg) 
-                               {
-                                    Ext.Msg.alert('Operation failed', msg, null);
-                               },
-                               success: function(result) 
-                               { 
-                                    Ext.Msg.alert('Operation Successful', 'Save successful System Permission!', function(btn) { parent.CloseWinAssignedPermission(); });            
-                               },
-                               eventMask: 
-                               {
-                                   showMask: true,
-                                   msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                               }
-                            }              
-                );
-         }
-            
-            var PrivilegeSelector = 
-            {
-                add: function(source, destination) {
-                    source = source || GridPanel1;
-                    destination = destination || GridPanel2;
-                    if (source.hasSelection()) {
-                        destination.store.add(source.selModel.getSelections());
-                        source.deleteSelected();
-                    }
-                },
-                addAll: function(source, destination) 
-                {
-                    source = source || GridPanel1;
-                    destination = destination || GridPanel2;
-                    destination.store.add(source.store.getRange());
-                    source.store.removeAll();
-                },
-                addByName: function(name) 
-                {
-                    if (!Ext.isEmpty(name)) 
-                    {
-                        var GridPanel1= <%= GridPanel1.ClientID %>;
-                        var GridPanel2= <%= GridPanel2.ClientID %>;
-                        var result = Store1.query("Name", name);
-                        if (!Ext.isEmpty(result.items)) {
-                            GridPanel2.store.add(result.items[0]);
-                            GridPanel1.store.remove(result.items[0]);
-                        }
-                    }
-                },
-                addByNames: function(name) 
-                {
-                    for (var i = 0; i < name.length; i++) {
-                        this.addByName(name[i]);
-                    }
-                },
-                remove: function(source, destination) 
-                {
-                    this.add(destination, source);
-                },
-                removeAll: function(source, destination) 
-                {
-                    this.addAll(destination, source);
-                }
-           };
-    </script>
-
 </asp:Content>

@@ -13,15 +13,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
     public partial class SystemRoleAssignedApplication {
         
         /// <summary>
-        /// ResourceManagerProxy1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
-        
-        /// <summary>
         /// storeNotAssigned control.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Store storeAssigned;
+        
+        /// <summary>
+        /// ResourceManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
         /// viewPortMain control.

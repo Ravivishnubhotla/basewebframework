@@ -174,6 +174,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.PatchAssignRolePermissions(role.entity, assignedPermissionIDs);
         }
 
+        public static void PatchAssignRolePermissionsByResourcse(SystemRoleWrapper role, List<string> assignedPermissionIDs, int selectResourceId)
+        {
+            if (role == null)
+                throw new ArgumentNullException("role");
+            if (assignedPermissionIDs == null)
+                throw new ArgumentNullException("assignedPermissionIDs");
+            if (selectResourceId <= 0)
+                throw new ArgumentNullException("selectResourceId");
+
+            businessProxy.PatchAssignRolePermissionsByResourcse(role.entity, assignedPermissionIDs, selectResourceId);
+        }
+
         public static List<string> GetRoleAssignedApplicationIDs(SystemRoleWrapper role)
         {
             if (role == null)
@@ -249,5 +261,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             businessProxy.PatchRemoveRoleApplications(role.entity, removeAppIDs);
 	    }
+
+
+
+	    public static List<string> GetRoleAssignedPermissionsByResources(SystemRoleWrapper systemRoleWrapper, SystemResourcesWrapper resourcesWrapper)
+	    {
+            return businessProxy.GetRoleAssignedPermissionsByResources(systemRoleWrapper.entity, resourcesWrapper.entity);
+	    }
+
+
     }
 }
