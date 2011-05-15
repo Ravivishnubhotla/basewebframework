@@ -76,22 +76,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage {
         protected global::Ext.Net.TextField txtPrivilegeEnName;
         
         /// <summary>
-        /// txtDefaultValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtDefaultValue;
-        
-        /// <summary>
         /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtDescription;
+        protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
         /// txtPrivilegeOrder control.
@@ -100,25 +91,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtPrivilegeOrder;
-        
-        /// <summary>
-        /// txtPrivilegeCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtPrivilegeCategory;
-        
-        /// <summary>
-        /// txtPrivilegeType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtPrivilegeType;
+        protected global::Ext.Net.NumberField txtPrivilegeOrder;
         
         /// <summary>
         /// btnSaveSystemPrivilege control.

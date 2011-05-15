@@ -20,6 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_SYSTEMAPPLICATIONDESCRIPTION = new StringProperty(Property.ForName(SystemApplicationEntity.PROPERTY_NAME_SYSTEMAPPLICATIONDESCRIPTION));		
 		public static readonly StringProperty PROPERTY_SYSTEMAPPLICATIONURL = new StringProperty(Property.ForName(SystemApplicationEntity.PROPERTY_NAME_SYSTEMAPPLICATIONURL));		
 		public static readonly BoolProperty PROPERTY_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = new BoolProperty(Property.ForName(SystemApplicationEntity.PROPERTY_NAME_SYSTEMAPPLICATIONISSYSTEMAPPLICATION));		
+		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemApplicationEntity.PROPERTY_NAME_ORDERINDEX));		
       
 		#region 子类集合字段查询字段
 	
@@ -49,6 +50,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "SystemApplicationIsSystemApplication":
                     return typeof (bool);
+                case "OrderIndex":
+                    return typeof (int);
           }
 			return typeof(string);
         }

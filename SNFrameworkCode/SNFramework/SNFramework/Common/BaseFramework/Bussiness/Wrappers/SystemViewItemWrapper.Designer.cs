@@ -74,6 +74,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDESCRIPTION = "SystemViewItemDescription";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDISPLAYFORMAT = "SystemViewItemDisplayFormat";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWID = "SystemViewID";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 
@@ -161,6 +162,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemViewID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? OrderIndex
+		{
+			get
+			{
+				return entity.OrderIndex;
+			}
+			set
+			{
+				entity.OrderIndex = value;
 			}
 		}
 		#endregion 

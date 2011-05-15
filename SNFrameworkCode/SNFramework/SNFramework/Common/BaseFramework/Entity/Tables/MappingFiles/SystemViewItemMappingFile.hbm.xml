@@ -16,6 +16,7 @@
 		<property column="SystemViewItem_Description" type="string" name="SystemViewItemDescription"   length="4000" />	
 		<property column="SystemViewItem_DisplayFormat" type="string" name="SystemViewItemDisplayFormat"   length="4000" />	
 		<many-to-one column="SystemView_ID" name="SystemViewID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemViewEntity,Legendigital.Framework.Common" />		
+		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 
 
 

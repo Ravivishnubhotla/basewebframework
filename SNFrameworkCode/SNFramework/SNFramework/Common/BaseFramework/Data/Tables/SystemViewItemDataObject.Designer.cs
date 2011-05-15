@@ -31,7 +31,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN = new StringProperty(Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".SystemViewNameEn"));
 		public static readonly EntityProperty<SystemApplicationEntity> PROPERTY_SYSTEMVIEWID_APPLICATIONID = new EntityProperty<SystemApplicationEntity>(Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".ApplicationID"));
 		public static readonly StringProperty PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".SystemViewDescription"));
+		public static readonly IntProperty PROPERTY_SYSTEMVIEWID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_SYSTEMVIEWID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
+		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemViewItemEntity.PROPERTY_NAME_ORDERINDEX));		
       
 		#region 子类集合字段查询字段
 	
@@ -60,6 +62,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "SystemViewItemDisplayFormat":
                     return typeof (string);
                 case "SystemViewID":
+                    return typeof (int);
+                case "OrderIndex":
                     return typeof (int);
           }
 			return typeof(string);

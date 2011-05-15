@@ -88,6 +88,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_SENDCONFIG = "SendConfig";
 		public static readonly string PROPERTY_NAME_SENDDATE = "SendDate";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 
@@ -371,6 +372,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SendDate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? OrderIndex
+		{
+			get
+			{
+				return entity.OrderIndex;
+			}
+			set
+			{
+				entity.OrderIndex = value;
 			}
 		}
 		#endregion 

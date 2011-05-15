@@ -494,25 +494,21 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				case "string":
 					return "this."+controlID+"."+controlValue+".Trim()";
 				case "DateTime":
-					if(!cfg.IsUseTelerikControl1)
-						return "UIHelper.SaftGetDateTime(this."+controlID+"."+controlValue+".Trim())";
-					else
-						return "this."+controlID+"."+controlValue;						
+ 
+					return "UIHelper.SaftGetDateTime(this."+controlID+"."+controlValue+".Trim())";
+ 					
 				case "int":
-					if(!cfg.IsUseTelerikControl1)
+ 
 						return "Convert.ToInt32(this."+controlID+"."+controlValue+".Trim())";
-					else
-						return "this."+controlID+"."+controlValue;		
+ 
 				case "double":
-					if(!cfg.IsUseTelerikControl1)
+ 
 						return "Convert.ToDouble(this."+controlID+"."+controlValue+".Trim())";
-					else
-						return "this."+controlID+"."+controlValue;	
+ 
 				case "decimal":
-					if(!cfg.IsUseTelerikControl1)
+ 
 						return "Convert.ToDecimal(this."+controlID+"."+controlValue+".Trim())";
-					else
-						return "this."+controlID+"."+controlValue;	
+ 
 				default:
 					return "this."+controlID+"."+controlValue+"";
 			}

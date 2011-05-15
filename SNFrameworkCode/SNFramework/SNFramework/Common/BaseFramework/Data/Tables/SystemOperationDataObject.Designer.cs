@@ -42,6 +42,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_RESOURCEID_RESOURCESISRELATEUSER = new BoolProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ResourcesIsRelateUser"));
 		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_RESOURCEID_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".MoudleID"));
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCEID_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ParentResourcesID"));
+		public static readonly IntProperty PROPERTY_RESOURCEID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".OrderIndex"));
 		#endregion
       
 		#region 子类集合字段查询字段

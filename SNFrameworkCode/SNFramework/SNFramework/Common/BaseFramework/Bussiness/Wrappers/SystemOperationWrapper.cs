@@ -93,5 +93,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		#endregion
 
+	    public static void QuickPatchAddOperation(int resourceid)
+	    {
+	        SystemResourcesWrapper systemResourcesWrapper = SystemResourcesWrapper.FindById(resourceid);
+
+            if(systemResourcesWrapper!=null)
+            {
+                businessProxy.QuickPatchAddOperation(systemResourcesWrapper.entity);
+            }
+	    }
+
+
     }
 }

@@ -30,6 +30,7 @@
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="SendConfig" type="string" name="SendConfig"   length="20" />	
 		<property column="SendDate" type="DateTime" name="SendDate"   />	
+		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 
 
 

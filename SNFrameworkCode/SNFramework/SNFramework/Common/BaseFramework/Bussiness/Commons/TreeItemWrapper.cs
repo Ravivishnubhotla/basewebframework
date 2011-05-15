@@ -25,6 +25,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
             List<T> allItems = FindAllItems();
 
+            if (allItems == null || allItems.Count <= 0)
+                return nodes;
+
             List<T> topItems = allItems.FindAll(p => (CheckIsRoot(p)));
 
             foreach (T topItem in topItems)

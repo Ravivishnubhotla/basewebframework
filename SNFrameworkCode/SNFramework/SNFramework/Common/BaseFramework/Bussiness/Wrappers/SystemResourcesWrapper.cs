@@ -101,6 +101,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 	    protected override bool CheckIsRoot(SystemResourcesWrapper obj)
 	    {
+            if(obj==null)
+                return false;
 	        return (obj.ParentResourcesID == null);
 	    }
 
