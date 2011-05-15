@@ -19,16 +19,20 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
         }
 
         [DirectMethod]
-        public void Show()
+        public void Show(int rid)
         {
             try
             {
+                this.lblResourcesName.Text = SystemResourcesWrapper.FindById(rid).ResourcesNameCn;
+
+                this.hidResourcesID.Value = rid;
+
                 this.winSystemPrivilegeAdd.Show();
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message ：" + ex.Message;
             }
         }
 
@@ -37,8 +41,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
             try
             {
                 SystemPrivilegeWrapper obj = new SystemPrivilegeWrapper();
-                obj.OperationID = null;
-                obj.ResourcesID = null;
+                obj.OperationID = SystemOperationWrapper.FindById(Convert.ToInt32(this.cmbOperationID.SelectedItem.Value));
+                obj.ResourcesID = SystemResourcesWrapper.FindById(Convert.ToInt32(this.hidResourcesID.Value));
                 obj.PrivilegeCnName = this.txtPrivilegeCnName.Text.Trim();
                 obj.PrivilegeEnName = this.txtPrivilegeEnName.Text.Trim();
 

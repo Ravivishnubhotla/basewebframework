@@ -27,8 +27,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
 
                 if (obj != null)
                 {
-                    this.radnumOperationID.Value = obj.OperationID.ToString();
-                    this.radnumResourcesID.Value = obj.ResourcesID.ToString();
+                    this.cmbOperationID.SetValue(obj.OperationID.OperationID);
+                    this.lblResourcesName.Text = obj.ResourcesID.ResourcesNameCn;
                     this.txtPrivilegeCnName.Text = obj.PrivilegeCnName.ToString();
                     this.txtPrivilegeEnName.Text = obj.PrivilegeEnName.ToString();
 
@@ -66,8 +66,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
             try
             {
                 SystemPrivilegeWrapper obj = SystemPrivilegeWrapper.FindById(int.Parse(hidPrivilegeID.Text.Trim()));
-                obj.OperationID = null;
-                obj.ResourcesID = null;
+                obj.OperationID = SystemOperationWrapper.FindById(Convert.ToInt32(this.cmbOperationID.SelectedItem.Value));
                 obj.PrivilegeCnName = this.txtPrivilegeCnName.Text.Trim();
                 obj.PrivilegeEnName = this.txtPrivilegeEnName.Text.Trim();
 

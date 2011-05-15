@@ -127,6 +127,20 @@
                                                         });
         }
 
+        function showAddSystemPrivilegeForm(rid) {
+            Ext.net.DirectMethods.UCSystemPrivilegeAdd.Show(
+                                                        rid,
+                                                        {
+                                                            failure: function(msg) {
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
+                                                            }
+                                                        });
+        }
+
         function QuickPatchAdd(rid) {
                     Ext.net.DirectMethods.QuickPatchAddOperation(
                                                         rid,
@@ -254,6 +268,49 @@
             }
         }
 
+
+                        function processPrivilegecmd(cmd, id) {
+
+            if (cmd == "cmdEdit") {
+                Ext.net.DirectMethods.UCSystemPrivilegeEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('Operation failed', msg,RefreshSystemPrivilegeData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: 'Processing...'
+                                                                               }
+                                                                }              
+                );
+            }
+			
+ 
+
+            if (cmd == "cmdDelete") {
+                Ext.MessageBox.confirm('warning','Are you sure delete the Privilege ? ',
+                    function(e) {
+                        if (e == 'yes')
+                            Ext.net.DirectMethods.DeleteSystemPrivilegeRecord(
+                                                                id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshSystemPrivilegeData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: 'Processing ......'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            }
+        }
+
   
     
     </script>
@@ -302,9 +359,7 @@
             <ext:JsonReader IDProperty="PrivilegeID">
                 <Fields>
                     <ext:RecordField Name="PrivilegeID" Type="int" />
- 
                     <ext:RecordField Name="OperationName" />
-                    
                     <ext:RecordField Name="PrivilegeCnName" />
                     <ext:RecordField Name="PrivilegeEnName" />
                     <ext:RecordField Name="Description" />
@@ -325,7 +380,7 @@
     <uc4:UCSystemOperationEdit ID="UCSystemOperationEdit1" runat="server" />
     <uc5:UCSystemPrivilegeAdd ID="UCSystemPrivilegeAdd1" runat="server" />
     <uc6:UCSystemPrivilegeEdit ID="UCSystemPrivilegeEdit1" runat="server" />
-        <ext:Hidden ID="hidSelectResourceID" runat="server">
+    <ext:Hidden ID="hidSelectResourceID" runat="server">
     </ext:Hidden>
     <ext:Menu ID="cResource" runat="server">
         <Items>
@@ -363,8 +418,14 @@
                                                 </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="展开全部">
+                                                <Listeners>
+                                                    <Click Handler="#{treeMain}.root.expand(true);" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="收起全部">
+                                                <Listeners>
+                                                    <Click Handler="#{treeMain}.root.collapse(true);" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                         </Items>
@@ -391,8 +452,6 @@
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                            
-           
                                     <ext:Panel ID="Tab1" Title="操作管理" Icon="UserMature" runat="server" Layout="FitLayout">
                                         <Items>
                                             <ext:GridPanel ID="gridPanelSystemOperation" runat="server" StoreID="storeSystemOperation"
@@ -483,9 +542,9 @@
                                                 </Listeners>
                                             </ext:GridPanel>
                                         </Items>
-                                     <Listeners>
-                                     <BeforeShow Handler="if(#{hidSelectResourceID}.getValue()!=''){ RefreshOperationDataList();};" />
-                                     </Listeners>
+                                        <Listeners>
+                                            <BeforeShow Handler="if(#{hidSelectResourceID}.getValue()!=''){ RefreshOperationDataList();};" />
+                                        </Listeners>
                                     </ext:Panel>
                                     <ext:Panel ID="Tab2" Title="权限管理" Icon="UserKey" runat="server" Layout="FitLayout">
                                         <Items>
@@ -497,7 +556,7 @@
                                                             <ext:Button ID='Button2' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
                                                                 Icon="Add">
                                                                 <Listeners>
-                                                                    <Click Handler="showAddForm();" />
+                                                                    <Click Handler="showAddSystemPrivilegeForm(#{hidSelectResourceID}.getValue());" />
                                                                 </Listeners>
                                                             </ext:Button>
                                                             <ext:Button ID='btnQuickGenerate' runat="server" Text="Quick Generate" Icon="Add">
@@ -523,8 +582,7 @@
                                                     <Columns>
                                                         <ext:RowNumbererColumn>
                                                         </ext:RowNumbererColumn>
-                                                        <ext:Column ColumnID="colOperationID" DataIndex="OperationName" Header="Operation"
-                                                            >
+                                                        <ext:Column ColumnID="colOperationID" DataIndex="OperationName" Header="Operation">
                                                         </ext:Column>
                                                         <ext:Column ColumnID="colPrivilegeCnName" DataIndex="PrivilegeCnName" Header="Name"
                                                             Sortable="true">
@@ -532,7 +590,6 @@
                                                         <ext:Column ColumnID="colPrivilegeEnName" DataIndex="PrivilegeEnName" Header="Code"
                                                             Sortable="true">
                                                         </ext:Column>
- 
                                                         <ext:Column ColumnID="colPrivilegeOrder" DataIndex="PrivilegeOrder" Header="Order"
                                                             Width="50" Sortable="true">
                                                         </ext:Column>
@@ -562,9 +619,9 @@
                                                 </Listeners>
                                             </ext:GridPanel>
                                         </Items>
-                                                                             <Listeners>
-                                     <BeforeShow Handler="if(#{hidSelectResourceID}.getValue()!=''){RefreshSystemPrivilegeDataList();};" />
-                                     </Listeners>
+                                        <Listeners>
+                                            <BeforeShow Handler="if(#{hidSelectResourceID}.getValue()!=''){RefreshSystemPrivilegeDataList();};" />
+                                        </Listeners>
                                     </ext:Panel>
                                 </Items>
                             </ext:TabPanel>
@@ -574,5 +631,4 @@
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-
 </asp:Content>

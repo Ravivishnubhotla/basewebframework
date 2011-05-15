@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemDepartmentListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage.SystemDepartmentListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SystemDepartmentListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage.SystemDepartmentListPage" %>
 
 <%@ Register Src="UCSystemDepartmentAdd.ascx" TagName="UCSystemDepartmentAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemDepartmentEdit.ascx" TagName="UCSystemDepartmentEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
     <script type="text/javascript">
 
         function RefreshTreeList1() {
@@ -105,7 +105,6 @@
         }   
     
     </script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemDepartmentAdd ID="UCSystemDepartmentAdd1" runat="server" />
@@ -117,7 +116,8 @@
     </ext:ResourceManagerProxy>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="copyItems" runat="server" Text="<%$ Resources:msgMenuAddSub %>" Icon="Add">
+            <ext:MenuItem ID="copyItems" runat="server" Text="<%$ Resources:msgMenuAddSub %>"
+                Icon="Add">
                 <Listeners>
                     <Click Handler="ShowAddForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
@@ -127,14 +127,17 @@
                     <Click Handler="ShowEditForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItems" runat="server" Text="<%$ Resources:msgMenuDelete %>" Icon="Delete">
-                            <Listeners>
+            <ext:MenuItem ID="deleteItems" runat="server" Text="<%$ Resources:msgMenuDelete %>"
+                Icon="Delete">
+                <Listeners>
                     <Click Handler="DeleteData(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem1" runat="server" Text="<%$ Resources:msgMenuSortSub %>" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem1" runat="server" Text="<%$ Resources:msgMenuSortSub %>"
+                Icon="SortAscending">
             </ext:MenuItem>
-            <ext:MenuItem ID="MenuItem2" runat="server" Text="<%$ Resources:msgMenuSortSubAuto %>" Icon="SortAscending">
+            <ext:MenuItem ID="MenuItem2" runat="server" Text="<%$ Resources:msgMenuSortSubAuto %>"
+                Icon="SortAscending">
             </ext:MenuItem>
         </Items>
     </ext:Menu>
@@ -142,7 +145,8 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
-                    <ext:Panel ID="WestPanel" runat="server" Icon=UserHome Title="<%$ Resources:msgGridTitle %>" Width="300" Layout="fit">
+                    <ext:Panel ID="WestPanel" runat="server" Icon="UserHome" Title="<%$ Resources:msgGridTitle %>"
+                        Width="300" Layout="fit">
                         <Content>
                             <ext:TreePanel ID="TreePanel1" runat="server" Header="false" RootVisible="false"
                                 AutoScroll="true">
@@ -155,12 +159,24 @@
                                                 </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button2" runat="server" Icon="SortAscending" Text="<%$ Resources:msgToolbarSortRoot %>">
+                                                                                            <Listeners>
+                                                    <Click Handler="showReorderForm(0,#{hidSelectAppID}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button5" runat="server" Icon="SortAscending" Text="<%$ Resources:msgToolbarSortRootAuto %>">
+                                                                                            <Listeners>
+                                                    <Click Handler="AutoReorder(0,#{hidSelectAppID}.getValue())" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="<%$ Resources:msgToolbarExpandAll %>">
+                                                <Listeners>
+                                                    <Click Handler="#{TreePanel1}.root.expand(true);" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="<%$ Resources:msgToolbarCollapse %>">
+                                                <Listeners>
+                                                    <Click Handler="#{TreePanel1}.root.collapse(true);" />
+                                                </Listeners>
                                             </ext:Button>
                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
                                         </Items>
