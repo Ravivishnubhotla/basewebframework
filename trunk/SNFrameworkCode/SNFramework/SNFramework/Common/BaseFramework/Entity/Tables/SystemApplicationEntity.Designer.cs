@@ -20,6 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONDESCRIPTION = "SystemApplicationDescription";
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONURL = "SystemApplicationUrl";
 		public static readonly string PROPERTY_NAME_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -34,6 +35,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemApplicationDescription;
 		private string _systemApplicationUrl;
 		private bool? _systemApplicationIsSystemApplication;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemApplicationDescription = null;
 			_systemApplicationUrl = null;
 			_systemApplicationIsSystemApplication = false;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -56,7 +59,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemApplicationEntity( int systemApplicationID, string systemApplicationName, string systemApplicationCode, string systemApplicationDescription, string systemApplicationUrl, bool? systemApplicationIsSystemApplication)
+		public SystemApplicationEntity( int systemApplicationID, string systemApplicationName, string systemApplicationCode, string systemApplicationDescription, string systemApplicationUrl, bool? systemApplicationIsSystemApplication, int? orderIndex)
 		{
 			_systemApplicationID = systemApplicationID;
 			_systemApplicationName = systemApplicationName;
@@ -64,6 +67,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemApplicationDescription = systemApplicationDescription;
 			_systemApplicationUrl = systemApplicationUrl;
 			_systemApplicationIsSystemApplication = systemApplicationIsSystemApplication;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -162,6 +166,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemApplicationIsSystemApplication != value); _systemApplicationIsSystemApplication = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

@@ -25,6 +25,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEFIELDSIZE = "SystemMoudleFieldSize";
 		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEFIELDDESCRIPTION = "SystemMoudleFieldDescription";
 		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEID = "SystemMoudleID";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -44,6 +45,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _systemMoudleFieldSize;
 		private string _systemMoudleFieldDescription;
 		private SystemMoudleEntity _systemMoudleID;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -64,6 +66,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemMoudleFieldSize = null;
 			_systemMoudleFieldDescription = null;
 			_systemMoudleID = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -71,7 +74,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemMoudleFieldEntity( int systemMoudleFieldID, string systemMoudleFieldNameEn, string systemMoudleFieldNameCn, string systemMoudleFieldNameDb, string systemMoudleFieldType, bool? systemMoudleFieldIsRequired, string systemMoudleFieldDefaultValue, bool? systemMoudleFieldIsKeyField, int? systemMoudleFieldSize, string systemMoudleFieldDescription, SystemMoudleEntity systemMoudleID)
+		public SystemMoudleFieldEntity( int systemMoudleFieldID, string systemMoudleFieldNameEn, string systemMoudleFieldNameCn, string systemMoudleFieldNameDb, string systemMoudleFieldType, bool? systemMoudleFieldIsRequired, string systemMoudleFieldDefaultValue, bool? systemMoudleFieldIsKeyField, int? systemMoudleFieldSize, string systemMoudleFieldDescription, SystemMoudleEntity systemMoudleID, int? orderIndex)
 		{
 			_systemMoudleFieldID = systemMoudleFieldID;
 			_systemMoudleFieldNameEn = systemMoudleFieldNameEn;
@@ -84,6 +87,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemMoudleFieldSize = systemMoudleFieldSize;
 			_systemMoudleFieldDescription = systemMoudleFieldDescription;
 			_systemMoudleID = systemMoudleID;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -258,6 +262,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemMoudleID != value); _systemMoudleID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

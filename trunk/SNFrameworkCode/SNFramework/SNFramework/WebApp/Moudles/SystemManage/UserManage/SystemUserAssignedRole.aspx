@@ -132,9 +132,9 @@
                     </ext:ColumnLayout>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btn55" runat="server" Text="Save Selected Roles" Icon="Disk">
+                    <ext:Button ID="btn55" runat="server" Text="保存" Icon="Disk">
                         <Listeners>
-                            <Click Handler="btn55_Click(#{GridPanel2},#{Window1})" />
+                            <Click Handler="btn55_Click(#{GridPanel2})" />
                         </Listeners>
                     </ext:Button>
                     <ext:Button ID="Button6" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
@@ -148,7 +148,7 @@
         </Items>
     </ext:Viewport>
     <script type="text/javascript">
-            function btn55_Click(GridPanel2,Window1)
+            function btn55_Click(GridPanel2)
             {
                 var json = Ext.encode(GridPanel2.getRowsValues(false));
                 Ext.net.DirectMethods.Save_UserRole(json,

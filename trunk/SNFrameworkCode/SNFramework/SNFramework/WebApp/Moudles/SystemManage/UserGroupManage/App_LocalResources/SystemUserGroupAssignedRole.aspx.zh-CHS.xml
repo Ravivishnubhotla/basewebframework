@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="角色分配应用" />
+  <add name="msgFormAvailableApplcations" value="可用应用" />
+  <add name="msgFormAssignedApplcations" value="分配菜单" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgcolAddTitle" value="分配" />
+  <add name="msgcolAddDescription" value="分配选中应用" />
+  <add name="msgcolAddAllTitle" value="分配所有" />
+  <add name="msgcolAddAllDescription" value="分配所有应用" />
+  <add name="msgcolRemoveTitle" value="移除" />
+  <add name="msgcolRemoveDescription" value="移除选中应用" />
+  <add name="msgcolRemoveAllTitle" value="移除所有" />
+  <add name="msgcolRemoveAllDescription" value="移除所有应用" />
+</resources>

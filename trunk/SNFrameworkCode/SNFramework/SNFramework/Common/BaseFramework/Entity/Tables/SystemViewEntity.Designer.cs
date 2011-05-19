@@ -19,6 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWNAMEEN = "SystemViewNameEn";
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWDESCRIPTION = "SystemViewDescription";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -32,6 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemViewNameEn;
 		private SystemApplicationEntity _applicationID;
 		private string _systemViewDescription;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -46,6 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemViewNameEn = null;
 			_applicationID = null;
 			_systemViewDescription = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -53,13 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemViewEntity( int systemViewID, string systemViewNameCn, string systemViewNameEn, SystemApplicationEntity applicationID, string systemViewDescription)
+		public SystemViewEntity( int systemViewID, string systemViewNameCn, string systemViewNameEn, SystemApplicationEntity applicationID, string systemViewDescription, int? orderIndex)
 		{
 			_systemViewID = systemViewID;
 			_systemViewNameCn = systemViewNameCn;
 			_systemViewNameEn = systemViewNameEn;
 			_applicationID = applicationID;
 			_systemViewDescription = systemViewDescription;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -141,6 +145,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 4000)
 					throw new ArgumentOutOfRangeException("Invalid value for SystemViewDescription", value, value.ToString());
 				_isChanged |= (_systemViewDescription != value); _systemViewDescription = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

@@ -20,6 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDESCRIPTION = "SystemViewItemDescription";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMDISPLAYFORMAT = "SystemViewItemDisplayFormat";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWID = "SystemViewID";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -34,6 +35,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _systemViewItemDescription;
 		private string _systemViewItemDisplayFormat;
 		private SystemViewEntity _systemViewID;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -49,6 +51,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemViewItemDescription = null;
 			_systemViewItemDisplayFormat = null;
 			_systemViewID = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -56,7 +59,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemViewItemEntity( int systemViewItemID, string systemViewItemNameEn, string systemViewItemNameCn, string systemViewItemDescription, string systemViewItemDisplayFormat, SystemViewEntity systemViewID)
+		public SystemViewItemEntity( int systemViewItemID, string systemViewItemNameEn, string systemViewItemNameCn, string systemViewItemDescription, string systemViewItemDisplayFormat, SystemViewEntity systemViewID, int? orderIndex)
 		{
 			_systemViewItemID = systemViewItemID;
 			_systemViewItemNameEn = systemViewItemNameEn;
@@ -64,6 +67,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemViewItemDescription = systemViewItemDescription;
 			_systemViewItemDisplayFormat = systemViewItemDisplayFormat;
 			_systemViewID = systemViewID;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -162,6 +166,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemViewID != value); _systemViewID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

@@ -48,11 +48,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage
         {
             try
             {
-                KeyValuePair<string, string>[] selectIDs = JSON.Deserialize<KeyValuePair<string, string>[]>(json);
+                List<SystemRoleWrapper> selectIDs = JSON.Deserialize<List<SystemRoleWrapper>>(json);
+ 
                 List<String> list = new List<string>();
-                foreach (KeyValuePair<string, string> row in selectIDs)
+                foreach (SystemRoleWrapper row in selectIDs)
                 {
-                    list.Add(row.Key);
+                    list.Add(row.RoleID.ToString());
                 }
                 SystemUserGroupWrapper.PatchAssignUserGroupRoles(SystemUserGroupWrapper.FindById(UserGroupID), list);
             }

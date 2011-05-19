@@ -21,6 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_MOUDLEDESCRIPTION = "MoudleDescription";
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		public static readonly string PROPERTY_NAME_MOUDLEISSYSTEMMOUDLE = "MoudleIsSystemMoudle";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -36,6 +37,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _moudleDescription;
 		private SystemApplicationEntity _applicationID;
 		private bool _moudleIsSystemMoudle;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -52,6 +54,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_moudleDescription = String.Empty;
 			_applicationID = null;
 			_moudleIsSystemMoudle = false;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -59,7 +62,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemMoudleEntity( int moudleID, string moudleNameCn, string moudleNameEn, string moudleNameDb, string moudleDescription, SystemApplicationEntity applicationID, bool moudleIsSystemMoudle)
+		public SystemMoudleEntity( int moudleID, string moudleNameCn, string moudleNameEn, string moudleNameDb, string moudleDescription, SystemApplicationEntity applicationID, bool moudleIsSystemMoudle, int? orderIndex)
 		{
 			_moudleID = moudleID;
 			_moudleNameCn = moudleNameCn;
@@ -68,6 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_moudleDescription = moudleDescription;
 			_applicationID = applicationID;
 			_moudleIsSystemMoudle = moudleIsSystemMoudle;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -180,6 +184,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_moudleIsSystemMoudle != value); _moudleIsSystemMoudle = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

@@ -23,6 +23,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_RESOURCESISRELATEUSER = "ResourcesIsRelateUser";
 		public static readonly string PROPERTY_NAME_MOUDLEID = "MoudleID";
 		public static readonly string PROPERTY_NAME_PARENTRESOURCESID = "ParentResourcesID";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -40,6 +41,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _resourcesIsRelateUser;
 		private SystemMoudleEntity _moudleID;
 		private SystemResourcesEntity _parentResourcesID;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -58,6 +60,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_resourcesIsRelateUser = false;
 			_moudleID = null;
 			_parentResourcesID = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -65,7 +68,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemResourcesEntity( int resourcesID, string resourcesNameCn, string resourcesNameEn, string resourcesDescription, string resourcesType, string resourcesLimitExpression, bool resourcesIsRelateUser, SystemMoudleEntity moudleID, SystemResourcesEntity parentResourcesID)
+		public SystemResourcesEntity( int resourcesID, string resourcesNameCn, string resourcesNameEn, string resourcesDescription, string resourcesType, string resourcesLimitExpression, bool resourcesIsRelateUser, SystemMoudleEntity moudleID, SystemResourcesEntity parentResourcesID, int? orderIndex)
 		{
 			_resourcesID = resourcesID;
 			_resourcesNameCn = resourcesNameCn;
@@ -76,6 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_resourcesIsRelateUser = resourcesIsRelateUser;
 			_moudleID = moudleID;
 			_parentResourcesID = parentResourcesID;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -219,6 +223,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_parentResourcesID != value); _parentResourcesID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>
