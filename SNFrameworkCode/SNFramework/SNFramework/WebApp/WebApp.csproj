@@ -215,6 +215,9 @@
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.zh-CHS.xml" />
@@ -779,6 +782,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
+    <Folder Include="Moudles\SPS\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />

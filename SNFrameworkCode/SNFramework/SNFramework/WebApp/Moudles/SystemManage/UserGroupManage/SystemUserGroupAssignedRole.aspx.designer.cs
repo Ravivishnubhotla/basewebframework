@@ -112,13 +112,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage {
         protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
-        /// Panel3 control.
+        /// VBoxLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel3;
+        protected global::Ext.Net.VBoxLayout VBoxLayout1;
         
         /// <summary>
         /// Panel4 control.
@@ -130,13 +130,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage {
         protected global::Ext.Net.Panel Panel4;
         
         /// <summary>
-        /// Button1 control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button Button1;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
         /// ToolTip1 control.
@@ -148,13 +148,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage {
         protected global::Ext.Net.ToolTip ToolTip1;
         
         /// <summary>
-        /// Button2 control.
+        /// btnAddAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button Button2;
+        protected global::Ext.Net.Button btnAddAll;
         
         /// <summary>
         /// ToolTip2 control.
@@ -166,13 +166,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage {
         protected global::Ext.Net.ToolTip ToolTip2;
         
         /// <summary>
-        /// Button3 control.
+        /// btnRemove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button Button3;
+        protected global::Ext.Net.Button btnRemove;
         
         /// <summary>
         /// ToolTip3 control.

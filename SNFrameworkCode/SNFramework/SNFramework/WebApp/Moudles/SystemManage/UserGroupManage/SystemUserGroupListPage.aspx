@@ -1,9 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemUserGroupListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage.SystemUserGroupListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SystemUserGroupListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.UserGroupManage.SystemUserGroupListPage" %>
+
 <%@ Register Src="UCSystemUserGroupAdd.ascx" TagName="UCSystemUserGroupAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemUserGroupEdit.ascx" TagName="UCSystemUserGroupEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server"></ext:ResourceManagerProxy>
-
+    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+    </ext:ResourceManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -75,37 +77,35 @@
             
             if (cmd == "cmdAssignedRole") {
                var win = <%= winAssignedUserRole.ClientID %>;
-              win.autoLoad.params.UserID = id.id;
+              win.autoLoad.params.UserGroupID = id.id;
               win.setTitle(String.format("<%= GetLocalResourceObject("msgwinAssignedUserRoleTitle").ToString() %>",id.data.GroupNameCn));
               win.show();
             }
         }
         
         
-     function CloseWinAssignedUserRole()
+     function CloseWinAssignedRole()
      {
         <%= winAssignedUserRole.ClientID %>.hide();
      }
 
     </script>
-
-    <ext:Store ID="storeSystemUserGroup" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSystemUserGroup_Refresh">
+    <ext:Store ID="storeSystemUserGroup" runat="server" AutoLoad="true" RemoteSort="true"
+        RemotePaging="true" OnRefreshData="storeSystemUserGroup_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="20" Mode="Raw" />
         </AutoLoadParams>
-		 <Proxy>
+        <Proxy>
             <ext:PageProxy />
         </Proxy>
         <Reader>
             <ext:JsonReader IDProperty="GroupID">
                 <Fields>
-					<ext:RecordField Name="GroupID" Type="int" />
-		<ext:RecordField Name="GroupNameCn" />			
-		<ext:RecordField Name="GroupNameEn" />			
-		<ext:RecordField Name="GroupDescription" />			
- 
+                    <ext:RecordField Name="GroupID" Type="int" />
+                    <ext:RecordField Name="GroupNameCn" />
+                    <ext:RecordField Name="GroupNameEn" />
+                    <ext:RecordField Name="GroupDescription" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -113,8 +113,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemUserGroupAdd ID="UCSystemUserGroupAdd1" runat="server" />
-    <uc2:UCSystemUserGroupEdit ID="UCSystemUserGroupEdit1" runat="server" /> 
- 
+    <uc2:UCSystemUserGroupEdit ID="UCSystemUserGroupEdit1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemUserGroup" runat="server" StoreID="storeSystemUserGroup"
@@ -122,12 +121,14 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
+                                Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
+                                Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemUserGroup}.reload();" />
                                 </Listeners>
@@ -144,26 +145,31 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colGroupID" DataIndex="GroupID" Header="<%$ Resources:msgcolGroupID %>" Sortable="true">
-                                </ext:Column>
-		<ext:Column ColumnID="colGroupNameCn" DataIndex="GroupNameCn" Header="<%$ Resources:msgcolGroupNameCn %>" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colGroupNameEn" DataIndex="GroupNameEn" Header="<%$ Resources:msgcolGroupNameEn %>" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colGroupDescription" DataIndex="GroupDescription" Header="<%$ Resources:msgcolGroupDescription %>" Sortable="true">
-                                </ext:Column>			
- 
-                        <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
+                        <ext:Column ColumnID="colGroupID" DataIndex="GroupID" Header="<%$ Resources:msgcolGroupID %>"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colGroupNameCn" DataIndex="GroupNameCn" Header="<%$ Resources:msgcolGroupNameCn %>"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colGroupNameEn" DataIndex="GroupNameEn" Header="<%$ Resources:msgcolGroupNameEn %>"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colGroupDescription" DataIndex="GroupDescription" Header="<%$ Resources:msgcolGroupDescription %>"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:CommandColumn Width="80" Header="<%$ Resources : GlobalResource, msgManage  %>">
                             <Commands>
-                                <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
-                                    <ToolTip Text="<%$ Resources : GlobalResource, msgEdit  %>" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
-                                    <ToolTip Text="<%$ Resources : GlobalResource, msgDelete  %>" />
-                                </ext:GridCommand>
-                                <ext:GridCommand Icon="ApplicationAdd" CommandName="cmdAssignedRole" Text="<%$ Resources : msgCmdAssignedRoleText   %>">
-                                    <ToolTip Text="<%$ Resources : msgCmdAssignedRoleText   %>" />
-                                </ext:GridCommand>
+                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" ToolTip-Text="<%$ Resources : GlobalResource, msgDataAction  %>">
+                                    <Menu EnableScrolling="true" ShowSeparator="true">
+                                        <Items>
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit"
+                                                CommandName="cmdEdit" />
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete"
+                                                CommandName="cmdDelete" />
+                                            <ext:MenuCommand Text="分配角色" Icon="group" CommandName="cmdAssignedRole" />
+                                        </Items>
+                                    </Menu>
+                                </ext:SplitCommand>
                             </Commands>
                         </ext:CommandColumn>
                     </Columns>
@@ -171,7 +177,8 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemUserGroup"
-                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>"
+                        EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -179,9 +186,8 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    
-       <ext:Window ID="winAssignedUserRole" runat="server" Title="Window" Frame="true" Width="700"
-        ConstrainHeader="true" Height="500" Maximizable="true" Closable="true" Resizable="true"
+    <ext:Window ID="winAssignedUserRole" runat="server" Title="Window" Frame="true" Width="700"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="SystemUserGroupAssignedRole.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">

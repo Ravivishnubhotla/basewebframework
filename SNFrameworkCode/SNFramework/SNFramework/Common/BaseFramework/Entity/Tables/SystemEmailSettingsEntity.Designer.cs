@@ -29,6 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISDEFAULT = "IsDefault";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -52,6 +53,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool? _isDefault;
 		private DateTime? _createDate;
 		private int? _createBy;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -76,6 +78,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isDefault = null;
 			_createDate = null;
 			_createBy = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -83,7 +86,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemEmailSettingsEntity( int emailSettingID, string name, string code, string descriprsion, string host, string port, bool? ssl, string fromEmail, string fromName, string loginEmail, string loginPassword, bool? isEnable, bool? isDefault, DateTime? createDate, int? createBy)
+		public SystemEmailSettingsEntity( int emailSettingID, string name, string code, string descriprsion, string host, string port, bool? ssl, string fromEmail, string fromName, string loginEmail, string loginPassword, bool? isEnable, bool? isDefault, DateTime? createDate, int? createBy, int? orderIndex)
 		{
 			_emailSettingID = emailSettingID;
 			_name = name;
@@ -100,6 +103,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isDefault = isDefault;
 			_createDate = createDate;
 			_createBy = createBy;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -339,6 +343,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>

@@ -34,6 +34,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_SENDCONFIG = "SendConfig";
 		public static readonly string PROPERTY_NAME_SENDDATE = "SendDate";
+		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
 	
@@ -62,6 +63,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _createBy;
 		private string _sendConfig;
 		private DateTime? _sendDate;
+		private int? _orderIndex;
 		
 		#endregion
 
@@ -91,6 +93,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_createBy = null;
 			_sendConfig = null;
 			_sendDate = null;
+			_orderIndex = null;
 		}
 		#endregion
 
@@ -98,7 +101,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemEmailQueueEntity( int queueID, string title, string body, string fromAddress, string fromName, string toAddresss, string toNames, string cCAddresss, string cCNames, string bCCAddresss, string bCCNames, int emailTemplateID, string statues, int? sendRetry, int? maxRetryTime, string mailLog, DateTime? createDate, int? createBy, string sendConfig, DateTime? sendDate)
+		public SystemEmailQueueEntity( int queueID, string title, string body, string fromAddress, string fromName, string toAddresss, string toNames, string cCAddresss, string cCNames, string bCCAddresss, string bCCNames, int emailTemplateID, string statues, int? sendRetry, int? maxRetryTime, string mailLog, DateTime? createDate, int? createBy, string sendConfig, DateTime? sendDate, int? orderIndex)
 		{
 			_queueID = queueID;
 			_title = title;
@@ -120,6 +123,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_createBy = createBy;
 			_sendConfig = sendConfig;
 			_sendDate = sendDate;
+			_orderIndex = orderIndex;
 		}
 		#endregion     
 	
@@ -441,6 +445,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_sendDate != value); _sendDate = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? OrderIndex
+		{
+			get { return _orderIndex; }
+
+			set	
+			{
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 		/// <summary>
