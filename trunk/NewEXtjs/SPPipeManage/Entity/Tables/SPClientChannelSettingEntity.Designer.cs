@@ -34,6 +34,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		public static readonly string PROPERTY_NAME_CHANNELCODE = "ChannelCode";
+		public static readonly string PROPERTY_NAME_ALLOWFILTER = "AllowFilter";
+		public static readonly string PROPERTY_NAME_ALLOWANDDISABLEAREA = "AllowAndDisableArea";
+		public static readonly string PROPERTY_NAME_SETTLEMENTPERIOD = "SettlementPeriod";
+		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
+		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
+		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
+		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		
         #endregion
 	
@@ -62,6 +69,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _syncType;
 		private int? _orderIndex;
 		private string _channelCode;
+		private bool? _allowFilter;
+		private string _allowAndDisableArea;
+		private string _settlementPeriod;
+		private string _dayLimit;
+		private string _monthLimit;
+		private string _sendText;
+		private string _getway;
 		
 		#endregion
 
@@ -91,6 +105,13 @@ namespace LD.SPPipeManage.Entity.Tables
 			_syncType = null;
 			_orderIndex = 1;
 			_channelCode = null;
+			_allowFilter = false;
+			_allowAndDisableArea = null;
+			_settlementPeriod = null;
+			_dayLimit = null;
+			_monthLimit = null;
+			_sendText = null;
+			_getway = null;
 		}
 		#endregion
 
@@ -98,7 +119,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway)
 		{
 			_id = id;
 			_name = name;
@@ -120,6 +141,13 @@ namespace LD.SPPipeManage.Entity.Tables
 			_syncType = syncType;
 			_orderIndex = orderIndex;
 			_channelCode = channelCode;
+			_allowFilter = allowFilter;
+			_allowAndDisableArea = allowAndDisableArea;
+			_settlementPeriod = settlementPeriod;
+			_dayLimit = dayLimit;
+			_monthLimit = monthLimit;
+			_sendText = sendText;
+			_getway = getway;
 		}
 		#endregion     
 	
@@ -435,6 +463,122 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ChannelCode", value, value.ToString());
 				_isChanged |= (_channelCode != value); _channelCode = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? AllowFilter
+		{
+			get { return _allowFilter; }
+
+			set	
+			{
+				_isChanged |= (_allowFilter != value); _allowFilter = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string AllowAndDisableArea
+		{
+			get { return _allowAndDisableArea; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for AllowAndDisableArea", value, value.ToString());
+				_isChanged |= (_allowAndDisableArea != value); _allowAndDisableArea = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SettlementPeriod
+		{
+			get { return _settlementPeriod; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for SettlementPeriod", value, value.ToString());
+				_isChanged |= (_settlementPeriod != value); _settlementPeriod = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DayLimit
+		{
+			get { return _dayLimit; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for DayLimit", value, value.ToString());
+				_isChanged |= (_dayLimit != value); _dayLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string MonthLimit
+		{
+			get { return _monthLimit; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for MonthLimit", value, value.ToString());
+				_isChanged |= (_monthLimit != value); _monthLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SendText
+		{
+			get { return _sendText; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for SendText", value, value.ToString());
+				_isChanged |= (_sendText != value); _sendText = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Getway
+		{
+			get { return _getway; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for Getway", value, value.ToString());
+				_isChanged |= (_getway != value); _getway = value;
 			}
 		}
 		/// <summary>

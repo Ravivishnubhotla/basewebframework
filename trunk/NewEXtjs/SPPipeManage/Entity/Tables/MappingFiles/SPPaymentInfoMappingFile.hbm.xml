@@ -11,35 +11,35 @@
 </id>
 
 
-		<property column="MobileNumber" type="string" name="MobileNumber"   length="400" />	
+		<property column="MobileNumber" type="string" name="MobileNumber"   length="40" />	
 		<many-to-one column="ChannelID" name="ChannelID" class="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" />		
 		<many-to-one column="ClientID" name="ClientID" class="LD.SPPipeManage.Entity.Tables.SPClientEntity,LD.SPPipeManage.Entity" />		
-		<property column="Message" type="string" name="Message"   length="4000" />	
+		<property column="Message" type="string" name="Message"   length="160" />	
 		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
 		<property column="RequestID" type="int" name="RequestID"   />	
-		<property column="Cpid" type="string" name="Cpid"   length="600" />	
-		<property column="Mid" type="string" name="Mid"   length="600" />	
-		<property column="Port" type="string" name="Port"   not-null="true"  length="600" />	
-		<property column="Ywid" type="string" name="Ywid"   length="600" />	
-		<property column="Linkid" type="string" name="Linkid"   length="600" />	
-		<property column="Dest" type="string" name="Dest"   length="600" />	
-		<property column="Price" type="string" name="Price"   length="100" />	
-		<property column="IP" type="string" name="Ip"   length="100" />	
+		<property column="Cpid" type="string" name="Cpid"   length="160" />	
+		<property column="Mid" type="string" name="Mid"   length="160" />	
+		<property column="Port" type="string" name="Port"   not-null="true"  length="160" />	
+		<property column="Ywid" type="string" name="Ywid"   length="160" />	
+		<property column="Linkid" type="string" name="Linkid"   length="160" />	
+		<property column="Dest" type="string" name="Dest"   length="160" />	
+		<property column="Price" type="string" name="Price"   length="160" />	
+		<property column="IP" type="string" name="Ip"   length="40" />	
 		<property column="SucesssToSend" type="Boolean" name="SucesssToSend"   />	
-		<property column="ExtendField1" type="string" name="ExtendField1"   length="400" />	
-		<property column="ExtendField2" type="string" name="ExtendField2"   length="400" />	
-		<property column="ExtendField3" type="string" name="ExtendField3"   length="400" />	
-		<property column="ExtendField4" type="string" name="ExtendField4"   length="400" />	
-		<property column="ExtendField5" type="string" name="ExtendField5"   length="400" />	
-		<property column="ExtendField6" type="string" name="ExtendField6"   length="400" />	
-		<property column="ExtendField7" type="string" name="ExtendField7"   length="400" />	
-		<property column="ExtendField8" type="string" name="ExtendField8"   length="400" />	
-		<property column="ExtendField9" type="string" name="ExtendField9"   length="400" />	
+		<property column="ExtendField1" type="string" name="ExtendField1"   length="100" />	
+		<property column="ExtendField2" type="string" name="ExtendField2"   length="100" />	
+		<property column="ExtendField3" type="string" name="ExtendField3"   length="100" />	
+		<property column="ExtendField4" type="string" name="ExtendField4"   length="100" />	
+		<property column="ExtendField5" type="string" name="ExtendField5"   length="100" />	
+		<property column="ExtendField6" type="string" name="ExtendField6"   length="100" />	
+		<property column="ExtendField7" type="string" name="ExtendField7"   length="100" />	
+		<property column="ExtendField8" type="string" name="ExtendField8"   length="100" />	
+		<property column="ExtendField9" type="string" name="ExtendField9"   length="100" />	
 		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
-		<property column="City" type="string" name="City"   length="40" />	
-		<property column="Province" type="string" name="Province"   length="40" />	
+		<property column="City" type="string" name="City"   length="20" />	
+		<property column="Province" type="string" name="Province"   length="20" />	
 		<property column="IsTestData" type="Boolean" name="IsTestData"   />	
 		<property column="ChannleClientID" type="int" name="ChannleClientID"   />	
 		<property column="IsSycnData" type="Boolean" name="IsSycnData"   />	

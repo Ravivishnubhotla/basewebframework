@@ -9,7 +9,6 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
-using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
@@ -21,7 +20,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     {
     }
 
-    internal partial class SPChannelFiltersServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelFiltersEntity>
+
+    internal partial class SPChannelFiltersServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelFiltersEntity> , ISPChannelFiltersServiceProxyDesigner
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -37,9 +37,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 
-
-
-
+		
+		
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

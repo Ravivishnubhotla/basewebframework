@@ -174,13 +174,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPClientGroupWrapper> ConvertToWrapperList(List<SPClientGroupEntity> entitylist)

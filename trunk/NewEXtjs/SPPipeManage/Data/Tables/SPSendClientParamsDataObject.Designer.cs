@@ -80,7 +80,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPSendClientParamsEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
+				public List<SPSendClientParamsEntity> GetList_By_SPClientEntity(SPClientEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPSendClientParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -106,6 +106,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

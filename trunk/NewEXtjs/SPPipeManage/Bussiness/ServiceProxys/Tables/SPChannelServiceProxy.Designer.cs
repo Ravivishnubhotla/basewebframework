@@ -9,7 +9,6 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
-using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
@@ -19,11 +18,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
     public interface ISPChannelServiceProxyDesigner
     {
-		List<SPChannelEntity> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity _uperID, out int recordCount);
+		List<SPChannelEntity> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    SPUperEntity _uperID, out int recordCount);
 		List<SPChannelEntity> FindAllByUperID(SPUperEntity _uperID);
     }
 
-    internal partial class SPChannelServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelEntity>
+
+    internal partial class SPChannelServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelEntity> , ISPChannelServiceProxyDesigner
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -39,9 +39,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 	
-		public List<SPChannelEntity> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperEntity _uperID, out int recordCount)
+		public List<SPChannelEntity> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     SPUperEntity _uperID,  out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPUperEntity(orderByColumnName, isDesc, pageIndex, pageSize,_uperID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPUperEntity(orderByColumnName, isDesc,pageIndex, pageSize,_uperID, out recordCount);
         }
 		
 		public List<SPChannelEntity> FindAllByUperID(SPUperEntity _uperID)
@@ -49,9 +49,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 			return this.SelfDataObj.GetList_By_SPUperEntity(_uperID);
         }
 
-
-
-
+		
+		
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

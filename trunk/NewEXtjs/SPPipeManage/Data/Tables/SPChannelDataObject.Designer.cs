@@ -144,7 +144,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPChannelEntity> GetList_By_SPUperEntity(SPUperEntity fkentity)
+				public List<SPChannelEntity> GetList_By_SPUperEntity(SPUperEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -170,6 +170,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

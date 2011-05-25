@@ -128,7 +128,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 				{
 					CreateBussinessClassFile(table,config);	
 					CreateBussinessDesignerClassFile(table,config);
-					GenerateWCFClass(table,config);
+ 
 				}
 			}
 
@@ -180,9 +180,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 			CreateServiceProxyContainerClassFile(config);
 			CreateServiceProxyContainerDesignerClassFile(generationTablesArray.ToArray(),config,dataBase);
 			GenerateSpringIocBussinessXmlFile(generationTablesArray.ToArray(),config,dataBase);
-			GenerateWCFSpringIocBussinessXmlFile(generationTablesArray.ToArray(),config,dataBase);
-			GenerateWCFSpringIocWebConfigRefrence(generationTablesArray.ToArray(),config,dataBase);
-			GenerateWCFSpringIocWCFSVC(generationTablesArray.ToArray(),config,dataBase);
+ 
 			
 			
 		}
@@ -212,74 +210,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	}
 	
 	
-	private void GenerateWCFClass(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
-	{
-%>using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using <%= config.GenerateBussinessEncapsulationClassNameSpace %>;
-
-namespace <%= config.GenerateWCFDataContractClassNameSpace %>
-{
-	/// <summary>
-	///	<%= config.GenerateClassDescription(table) %>
-	/// </summary>
-	[DataContract]
-	public class <%= config.GenerateWCFClassName(table) %>
-	{
-<% 		BuildWCFPublicConst(table,config); 		
-%>	
-<% 		BuildWCFPrivateMembers(table,config); 		
-%>
-<% 		BuildWCFDefaultConstructor(table,config); 		
-%>
-<% 		BuildWCFPublicAccessors(table,config); 		
-%>
-
-        public void FromWrapper(<%= config.GenerateBussinessEncapsulationClassName(table) %> wrapper)
-		{
-<%		foreach( IColumn column in table.Columns )
-		{
-			if(column.IsInForeignKey && !column.IsInPrimaryKey)
-			{
-%>			this.<%= config.GenerateEntityPorpertyName(column) %> = (wrapper.<%= config.GenerateEntityPorpertyName(column) %>!=null) ? wrapper.<%= config.GenerateEntityPorpertyName(column) %>.<%= config.GenerateEntityPorpertyName(column.ForeignKeys[0].PrimaryTable.PrimaryKeys[0]) %> : 0 ; 
-<%		    }
-			else
-			{
-%>			this.<%= config.GenerateEntityPorpertyName(column) %> = wrapper.<%= config.GenerateEntityPorpertyName(column) %>;
-<%		    }
-
-}
-%>		}
-		
-		
-		public <%= config.GenerateBussinessEncapsulationClassName(table) %> ToWrapper()
-        {
-			<%= config.GenerateBussinessEncapsulationClassName(table) %> wrapper = new <%= config.GenerateBussinessEncapsulationClassName(table) %>();
-<%		foreach( IColumn column in table.Columns )
-		{
-			if(column.IsInForeignKey && !column.IsInPrimaryKey)
-			{
-%>			wrapper.<%= config.GenerateEntityPorpertyName(column) %> =  (this.<%= config.GenerateEntityPorpertyName(column) %>==null) ? null : <%= config.GenerateBussinessEncapsulationClassName(column.ForeignKeys[0].PrimaryTable) %>.FindById(this.<%= config.GenerateEntityPorpertyName(column) %>);
-<%		    }
-			else
-			{
-%>			wrapper.<%= config.GenerateEntityPorpertyName(column) %> = this.<%= config.GenerateEntityPorpertyName(column) %>;
-<%		    }
-
-}
-%>		
-		return wrapper;
-        }
-
-
-
-   }
-}
-<%
-	output.saveEnc(config.GenerateWCFClassFilePath(table),"o","uft8");
-	output.clear();
-	}
+ 
 	
 
 	
@@ -418,6 +349,44 @@ namespace <%= config.DataObjectNameSpace %>
 %>          }
 			return typeof(string);
         }
+		
+		<%			foreach( IColumn field in table.Columns ){
+			if(field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>		public List<<%= config.GenerateEntityClassName(table) %>> GetList_By_<%= config.GenerateEntityClassName(pTable) %>(<%= config.GenerateEntityClassName(pTable) %> fkentity)
+		{
+			NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<<%= config.GenerateEntityClassName(table) %>> GetPageList_By_<%= config.GenerateEntityClassName(pTable) %>(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, <%= config.GenerateEntityClassName(pTable) %> fkentity, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            dynamicQueryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            dynamicQueryGenerator.SetMaxResults(pageSize);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, out recordCount);
+        }		
+		
+<%					}			
+				}
+				}
+%>
+		
+		
+		
     }
 }
 <%	    output.saveEnc(config.GenerateeDataObjectDesignerClassFilePath(table),"o","uft8");
@@ -559,11 +528,7 @@ using <%= config.BaseEntityObjectNameSpace %>;
 namespace <%= config.ServiceProxyNameSpace %>
 {
     [ServiceContract(Namespace = "http://<%= config.ServiceProxyNameSpace %>")]
-	public interface <%= config.GenerateBaseServiceProxyInterfaceClassName(table) %> : IBaseSpringNHibernateEntityServiceProxy<<%= config.GenerateEntityClassName(table) %>>
-    {
-
-
-    }
+ 
 
     internal class <%= config.GenerateBaseServiceProxyClassName(table) %> : <%= config.GenerateServiceProxyClassName(table) %>
     {
@@ -593,7 +558,23 @@ using <%= config.DataObjectContainerIoCClassNameSpace %>;
 
 namespace <%= config.ServiceProxyNameSpace %>
 {
-    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> : <%= config.RootServiceProxyClassName %><<%= config.GenerateEntityClassName(table) %>>
+
+    public interface <%= config.GenerateServiceProxyInterfaceClassName(table) %>Designer
+    {
+<%			foreach( IColumn field in table.Columns ){
+			if(field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>		List<<%= config.GenerateEntityClassName(table) %>> FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    <%= config.GenerateEntityPorpertyType(field) %> <%= config.GenerateEntityMemberName(field) %>, out int recordCount);
+		List<<%= config.GenerateEntityClassName(table) %>> FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateEntityPorpertyType(field) %> <%= config.GenerateEntityMemberName(field) %>);
+<%					}			
+				}
+				}
+%>    }
+
+
+    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> : <%= config.RootServiceProxyClassName %><<%= config.GenerateEntityClassName(table) %>> , <%= config.GenerateServiceProxyInterfaceClassName(table) %>Designer
     {
 		public <%= config.DataObjectContainerIoCClassName %> DataObjectsContainerIocID { set; get; }
 	
@@ -608,6 +589,26 @@ namespace <%= config.ServiceProxyNameSpace %>
                 return (<%= config.GenerateDataObjectClassName(table) %>)selfDataObject;
             }
         }
+<%			foreach( IColumn field in table.Columns ){
+			if(field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>	
+		public List<<%= config.GenerateEntityClassName(table) %>> FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     <%= config.GenerateEntityPorpertyType(field) %> <%= config.GenerateEntityMemberName(field) %>,  out int recordCount)
+        {
+			return this.SelfDataObj.GetPageList_By_<%= config.GenerateEntityClassName(pTable) %>(orderByColumnName, isDesc,pageIndex, pageSize,<%= config.GenerateEntityMemberName(field) %>, out recordCount);
+        }
+		
+		public List<<%= config.GenerateEntityClassName(table) %>> FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateEntityPorpertyType(field) %> <%= config.GenerateEntityMemberName(field) %>)
+        {
+			return this.SelfDataObj.GetList_By_<%= config.GenerateEntityClassName(pTable) %>(<%= config.GenerateEntityMemberName(field) %>);
+        }
+<%					}			
+				}
+				}
+%>
+		
 		
 <%=		if(this.IsSupportAdo){
 %>        public AdoNetDataObject AdoNetDb { set; get; }		
@@ -816,7 +817,30 @@ if( config.IsCreateSubClassListrefence )
 %>
 
 
+        #region "FKQuery"
+<%			foreach( IColumn field in table.Columns ){
+			if(field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>		
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    <%= config.GenerateBussinessEncapsulationClassName(pTable) %> <%= config.GenerateEntityParamsName(field) %>,  out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(orderByColumnName, isDesc,pageIndex, pageSize,   <%= config.GenerateEntityParamsName(field) %>.entity,out recordCount));
+        }
 
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateBussinessEncapsulationClassName(pTable) %> <%= config.GenerateEntityParamsName(field) %>)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateEntityParamsName(field) %>.entity));
+        }
+		
+<%					}			
+				}
+				}
+%>
+
+
+        #endregion
 
         #region Static Common Data Operation
 		
@@ -1420,99 +1444,10 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 	
 	
 	
-			//生成Spring的xml容器配置文件
-	private void GenerateWCFSpringIocBussinessXmlFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
-	{
-%><?xml version="1.0" encoding="utf-8" ?>
-<objects xmlns="http://www.springframework.net">
-  <!-- 供主程序配置文件引用 -->
-  <description>
-    Spring.Net框架WCF服务层容器配置文件
-  </description>
-  <!-- 服务层类 -->
-<%foreach(ITable table in tables) {
-%> <object id="<%= config.GenerateServiceProxyClassName(table) %>IocID"
-			type="<%= config.ServiceProxyNameSpace %>.<%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.BussinessAssembleName %>"
-			factory-object="<%= config.GenerateServiceProxyClassName(table) %>ChannelFactory"
-			factory-method="CreateChannel" />
-	<object id="<%= config.GenerateServiceProxyClassName(table) %>ChannelFactory"
-			type="System.ServiceModel.ChannelFactory&lt;<%= config.ServiceProxyNameSpace %>.<%= config.GenerateServiceProxyInterfaceClassName(table) %>>, System.ServiceModel">
-		<constructor-arg name="endpointConfigurationName" value="WCF<%= config.GenerateServiceProxyClassName(table) %>Endpoint" />
-	</object>
-<%}
-%>
-
-<object id="<%= config.GenerateServiceProxyContainerClassName %>IocID" type="<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>, <%= config.BussinessAssembleName %>">
-<%foreach(ITable table in tables) {
-%>    <property name="<%= config.GenerateServiceProxyClassName(table) %>Instance" ref="<%= config.GenerateServiceProxyClassName(table) %>IocID"/>
-<%}%>
-<%	if(config.IsEnbaleGenerateBaseCode) {
-		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
-%>    <property name="<%= config.GenerateBaseServiceProxyClassName(table) %>Instance" ref="<%= config.GenerateBaseServiceProxyClassName(table) %>IocID"/>
-<%		}
-	}
-%>
-</object>
-</objects>
-<%
-		string savefilepath = Path.Combine(config.SelectGenerateServiceProxyContainerClassXmlFilePath,"WCF"+config.GenerateServiceProxyContainerXMLFileName + ".xml");
-	    output.saveEnc(savefilepath,"o","uft8");
-		output.clear();
-	}
+ 
 	
 	
-	
-		private void GenerateWCFSpringIocWebConfigRefrence( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
-	{
-%><%foreach(ITable table in tables) {
-%> 			<endpoint name="WCF<%= config.GenerateServiceProxyClassName(table) %>Endpoint"
-				address="http://localhost:2306/<%= config.GenerateServiceProxyClassName(table) %>IocID.svc"
-				binding="basicHttpBinding" bindingConfiguration="basicHttpBinding1"
-				contract="<%= config.ServiceProxyNameSpace %>.<%= config.GenerateServiceProxyInterfaceClassName(table) %>" />		
-<%}
-%>
-
-
-
-
-
-
-
-
-
-<%		
-		foreach(ITable table in tables) {
-%> 			<service name="<%= config.GenerateServiceProxyClassName(table) %>IocID" behaviorConfiguration="DefaultBehavior">
-				<endpoint address="" binding="basicHttpBinding" contract="<%= config.ServiceProxyNameSpace %>.<%= config.GenerateServiceProxyInterfaceClassName(table) %>"/>
-				<endpoint address="mex" binding="mexHttpBinding" contract="IMetadataExchange"/>
-			</service>				
-<%}
-%><%		string savefilepath = Path.Combine(config.SelectGenerateServiceProxyContainerClassXmlFilePath,"WCFWebConfig.xml");
-	    output.saveEnc(savefilepath,"o","uft8");
-		output.clear();
-	}
-	
-	
-
-		private void GenerateWCFSpringIocWCFSVC( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
-	{
-				string BindBeginTag = "<"+"%";
-			string BindEndTag =  "%"+">";
-	
-	
-%>
-<%foreach(ITable table in tables) {
-%><%=BindBeginTag%>@ ServiceHost Language="C#" Debug="true" Service="<%= config.GenerateServiceProxyClassName(table) %>IocID" Factory="Spring.ServiceModel.Activation.ServiceHostFactory" <%=BindEndTag%> 
-<% string savefilepath = Path.Combine(config.SelectGenerateServiceProxyContainerClassXmlFilePath,config.GenerateServiceProxyClassName(table)+"IocID.svc");
-	output.saveEnc(savefilepath,"o","uft8");
-	output.clear();
-}
-%>
-<%
-		
-	    
-	}
-	
+	 
 	
 	private void BuildNHibernateProperties(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{
@@ -1584,19 +1519,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
         #endregion
 <%	}
 
-	private void BuildWCFPublicConst(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-%>        #region 公共常量
-
-		public static readonly string CLASS_FULL_NAME = "<%= config.GenerateWCFDataContractClassNameSpace %>.<%= config.GenerateWCFClassName(table) %>";
-<%		foreach( IColumn column in table.Columns )
-		{	
-%>		public static readonly string PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(column).ToUpper() %> = "<%= config.GenerateEntityPorpertyName(column) %>";
-<%		}
-%>		
-        #endregion
-<%	}
-
+ 
 	private void CreateSubClassListrefence(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{
 %>        #region 子类列表引用
@@ -1646,21 +1569,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
    }
    
    
-   	private void BuildWCFPrivateMembers(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-		if( table.Columns.Count > 0 )
-		{
-%>        #region 私有成员变量
-		
-<%		
-		foreach( IColumn column in table.Columns )
-		{
-%>		private <%= config.GenerateWCFClassMemberType(column) %> <%= config.GenerateEntityMemberName(column) %>;
-<%		}	
-%>		
-		#endregion
-<%		}  
-   }
+  
    
    private string ParseDefaultValue(string value)
    {
@@ -1687,21 +1596,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 		#endregion
 <%	}
 
-	private void BuildWCFDefaultConstructor(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-%>		#region 构造函数
-		/// <summary>
-		/// 默认构造函数
-		/// </summary>
-		public <%= config.GenerateWCFClassName(table) %>()
-		{
-<%		foreach( IColumn column in table.Columns )
-		{
-%>			<%= config.GenerateEntityMemberName(column) %> = <%= ParseDefaultValue(config.GenerateWCFClassDefaultValue(column)) %>;
-<%		}
-%>		}
-		#endregion
-<%	}
+ 
    
 
 	private void BuildPublicAccessors(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
@@ -1759,41 +1654,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 	
 	
 	
-	private void BuildWCFPublicAccessors(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-		if( table.Columns.Count > 0 )
-		{
-%>	    #region 公共属性
-<%			
-			foreach( IColumn column in table.Columns )
-			{
-			%>
-		/// <summary>
-		/// <%= column.Description %>
-		/// </summary>
-		[DataMember]
-		public <%= config.GenerateWCFClassPorpertyType(column) %> <%= config.GenerateEntityPorpertyName(column) %>
-		{
-			get { return <%= config.GenerateEntityMemberName(column) %>; }
-<%				if( !config.IsReadOnlyClass )
-				{
-%>
-			set	
-			{
-<%             if ( column.CharacterOctetLength > 0 && !( config.IsCreateFKeyClassrefence && column.IsInForeignKey ))  {                                           %>
-				if( value != null && value.Length > <%= column.CharacterOctetLength.ToString() %>)
-					throw new ArgumentOutOfRangeException("Invalid value for <%= config.GenerateEntityPorpertyName(column) %>", value, value.ToString());
-<%				}
-%>				<%= config.GenerateEntityMemberName(column) %> = value;
-			}
-<%				}
-%>		}
-<%				}
-%>
-		
-		#endregion 
-<%		}
-	}
+ 
 
 	private void BuildEqualsHashCodeOverrides(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{
@@ -1903,23 +1764,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 	
 	
 	
-		private void BuildWCFFullConstructor(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
-	{
-%>		#region 全构造函数
-		/// <summary>
-		/// 全构造函数
-		/// </summary>
-		public <%= config.GenerateEntityClassName(table) %>(<%= config.GenerateNhibernateAllColumnParams(table) %>)
-		{
-<%		foreach( IColumn column in table.Columns )
-		{
-%>			<%= config.GenerateEntityMemberName(column) %> = <%= config.GenerateEntityParamsName(column) %>;
-<%		}
-%>		}
-		#endregion     
-<%	}
-
-	
+ 
 	
 	
 	

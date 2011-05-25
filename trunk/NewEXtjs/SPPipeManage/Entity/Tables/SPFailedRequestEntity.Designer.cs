@@ -154,7 +154,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 1000)
+				if( value != null && value.Length > 1200)
 					throw new ArgumentOutOfRangeException("Invalid value for RecievedSendUrl", value, value.ToString());
 				_isChanged |= (_recievedSendUrl != value); _recievedSendUrl = value;
 			}

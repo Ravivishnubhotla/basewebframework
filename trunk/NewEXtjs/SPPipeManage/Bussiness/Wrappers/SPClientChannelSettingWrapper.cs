@@ -120,6 +120,36 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string DayLimitAndMonthLimit
+        {
+            get
+            {
+                string dayl = "";
+                if (this.DayLimit != null)
+                {
+                    dayl = this.DayLimit;
+                }
+                string monthl = "";
+                if (this.MonthLimit != null)
+                {
+                    monthl = this.MonthLimit;
+                }
+                return string.Format("{0}/{1}", dayl, monthl);
+            }
+        }
+
+        public string ClientGroupName
+        {
+            get
+            {
+                if (this.ClinetID != null && this.ClinetID.SPClientGroupID!=null)
+                {
+                    return this.ClinetID.ClientGroupName;
+                }
+                return "";
+            }
+        }
+
         public string ChannelName
         {
             get
@@ -603,6 +633,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public void ResetIntercept(DateTime date, int dataCount)
         {
             businessProxy.ResetIntercept(this.entity, date, dataCount);
+        }
+
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, isDesc, channleId, province, port, pageIndex, pageSize, out   recordCount)) ;
         }
     }
 }

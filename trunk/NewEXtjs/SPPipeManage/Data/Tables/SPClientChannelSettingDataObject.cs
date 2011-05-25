@@ -41,5 +41,31 @@ namespace LD.SPPipeManage.Data.Tables
 
             return this.FindListByQueryBuilder(queryGenerator);
         }
+
+        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, SPChannelEntity channelEntity, string province, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            if (channelEntity!=null)
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channelEntity));
+
+            queryGenerator.AddWhereClause(Or(PROPERTY_DISABLE.IsNull(), PROPERTY_DISABLE.Eq(false)));
+
+            if (!string.IsNullOrEmpty(province))
+                queryGenerator.AddWhereClause(PROPERTY_ALLOWANDDISABLEAREA.Like(province,MatchMode.Anywhere));
+
+            if (!string.IsNullOrEmpty(port))
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELCODE.Like(port, MatchMode.Start));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryGenerator);
+
+            queryGenerator.SetFirstResult((pageIndex-1)*pageSize);
+
+            queryGenerator.SetMaxResults(pageSize);
+
+            List<SPClientChannelSettingEntity> results = FindListByPageByQueryBuilder(queryGenerator, out recordCount);
+
+            return results;
+        }
     }
 }

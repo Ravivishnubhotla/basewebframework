@@ -609,13 +609,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPSStatePaymentInfoWrapper> ConvertToWrapperList(List<SPSStatePaymentInfoEntity> entitylist)

@@ -9,7 +9,6 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
-using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
@@ -19,11 +18,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
     public interface ISPClientServiceProxyDesigner
     {
-		List<SPClientEntity> FindAllByOrderByAndFilterAndSPClientGroupID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupEntity _sPClientGroupID, out int recordCount);
+		List<SPClientEntity> FindAllByOrderByAndFilterAndSPClientGroupID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    SPClientGroupEntity _sPClientGroupID, out int recordCount);
 		List<SPClientEntity> FindAllBySPClientGroupID(SPClientGroupEntity _sPClientGroupID);
     }
 
-    internal partial class SPClientServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientEntity>
+
+    internal partial class SPClientServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientEntity> , ISPClientServiceProxyDesigner
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -39,9 +39,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 	
-		public List<SPClientEntity> FindAllByOrderByAndFilterAndSPClientGroupID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientGroupEntity _sPClientGroupID, out int recordCount)
+		public List<SPClientEntity> FindAllByOrderByAndFilterAndSPClientGroupID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     SPClientGroupEntity _sPClientGroupID,  out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPClientGroupEntity(orderByColumnName, isDesc, pageIndex, pageSize,_sPClientGroupID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPClientGroupEntity(orderByColumnName, isDesc,pageIndex, pageSize,_sPClientGroupID, out recordCount);
         }
 		
 		public List<SPClientEntity> FindAllBySPClientGroupID(SPClientGroupEntity _sPClientGroupID)
@@ -49,9 +49,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 			return this.SelfDataObj.GetList_By_SPClientGroupEntity(_sPClientGroupID);
         }
 
-
-
-
+		
+		
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

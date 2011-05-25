@@ -316,9 +316,17 @@
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx" />
     <Content Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx" />
@@ -535,12 +543,40 @@
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx.designer.cs">
       <DependentUpon>SPClientChannelParamsManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingFiltersListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.cs">
       <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.designer.cs">
       <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingNewInChannelListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingNewInChannelListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingNewInClientGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingNewInClientGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx.cs">
+      <DependentUpon>SPCodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx.designer.cs">
+      <DependentUpon>SPCodeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx.cs">
       <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
@@ -563,6 +599,13 @@
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelSettingAdd.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingBaseEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingBaseEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx.cs">
       <DependentUpon>UCSPClientChannelSettingChangeClientAndUser.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -576,6 +619,27 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelSettingEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingInfoEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingInfoEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx.cs">
       <DependentUpon>UCSPClientChannelSettingPatchAdd1.ascx</DependentUpon>
@@ -1162,6 +1226,9 @@
   <ItemGroup>
     <Content Include="Moudles\SPS\Clients\SPClientGroupAmountReport.rdl" />
     <Content Include="Moudles\SPS\Reports\ReportDataChange.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

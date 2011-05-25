@@ -245,9 +245,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region "FKQuery"
 		
-        public static List<SPChannelParamsWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
+        public static List<SPChannelParamsWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    SPChannelWrapper channelID,  out int recordCount)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc, pageIndex, pageSize, channelID.entity, out recordCount));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc,pageIndex, pageSize,   channelID.entity,out recordCount));
         }
 
         public static List<SPChannelParamsWrapper> FindAllByChannelID(SPChannelWrapper channelID)
@@ -259,13 +259,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #endregion
-
-
-
-
-
-
-
 
         #region Static Common Data Operation
 		

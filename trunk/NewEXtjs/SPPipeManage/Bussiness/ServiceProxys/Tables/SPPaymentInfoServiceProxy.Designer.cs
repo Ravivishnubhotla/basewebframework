@@ -9,7 +9,6 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
-using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
@@ -19,13 +18,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
     public interface ISPPaymentInfoServiceProxyDesigner
     {
-		List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity _channelID, out int recordCount);
+		List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    SPChannelEntity _channelID, out int recordCount);
 		List<SPPaymentInfoEntity> FindAllByChannelID(SPChannelEntity _channelID);
-		List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity _clientID, out int recordCount);
+		List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    SPClientEntity _clientID, out int recordCount);
 		List<SPPaymentInfoEntity> FindAllByClientID(SPClientEntity _clientID);
     }
 
-    internal partial class SPPaymentInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity>
+
+    internal partial class SPPaymentInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPPaymentInfoEntity> , ISPPaymentInfoServiceProxyDesigner
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -41,9 +41,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
         }
 	
-		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelEntity _channelID, out int recordCount)
+		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     SPChannelEntity _channelID,  out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPChannelEntity(orderByColumnName, isDesc, pageIndex, pageSize,_channelID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPChannelEntity(orderByColumnName, isDesc,pageIndex, pageSize,_channelID, out recordCount);
         }
 		
 		public List<SPPaymentInfoEntity> FindAllByChannelID(SPChannelEntity _channelID)
@@ -51,9 +51,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 			return this.SelfDataObj.GetList_By_SPChannelEntity(_channelID);
         }
 	
-		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientEntity _clientID, out int recordCount)
+		public List<SPPaymentInfoEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     SPClientEntity _clientID,  out int recordCount)
         {
-			return this.SelfDataObj.GetPageList_By_SPClientEntity(orderByColumnName, isDesc, pageIndex, pageSize,_clientID, out recordCount);
+			return this.SelfDataObj.GetPageList_By_SPClientEntity(orderByColumnName, isDesc,pageIndex, pageSize,_clientID, out recordCount);
         }
 		
 		public List<SPPaymentInfoEntity> FindAllByClientID(SPClientEntity _clientID)
@@ -61,9 +61,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 			return this.SelfDataObj.GetList_By_SPClientEntity(_clientID);
         }
 
-
-
-
+		
+		
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		

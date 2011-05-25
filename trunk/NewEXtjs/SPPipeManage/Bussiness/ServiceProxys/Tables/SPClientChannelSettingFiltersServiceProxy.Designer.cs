@@ -9,7 +9,6 @@ using LD.SPPipeManage.Data.Tables;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Data.Tables.Container;
 using LD.SPPipeManage.Data.AdoNet;
-using   LD.SPPipeManage.Data.Tables.Container;
 
 
 
@@ -19,9 +18,12 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
     public interface ISPClientChannelSettingFiltersServiceProxyDesigner
     {
+		List<SPClientChannelSettingFiltersEntity> FindAllByOrderByAndFilterAndClientChannelSettingID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize,    SPClientChannelSettingEntity _clientChannelSettingID, out int recordCount);
+		List<SPClientChannelSettingFiltersEntity> FindAllByClientChannelSettingID(SPClientChannelSettingEntity _clientChannelSettingID);
     }
 
-    internal partial class SPClientChannelSettingFiltersServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingFiltersEntity>
+
+    internal partial class SPClientChannelSettingFiltersServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientChannelSettingFiltersEntity> , ISPClientChannelSettingFiltersServiceProxyDesigner
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -36,10 +38,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 return (SPClientChannelSettingFiltersDataObject)selfDataObject;
             }
         }
+	
+		public List<SPClientChannelSettingFiltersEntity> FindAllByOrderByAndFilterAndClientChannelSettingID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,     SPClientChannelSettingEntity _clientChannelSettingID,  out int recordCount)
+        {
+			return this.SelfDataObj.GetPageList_By_SPClientChannelSettingEntity(orderByColumnName, isDesc,pageIndex, pageSize,_clientChannelSettingID, out recordCount);
+        }
+		
+		public List<SPClientChannelSettingFiltersEntity> FindAllByClientChannelSettingID(SPClientChannelSettingEntity _clientChannelSettingID)
+        {
+			return this.SelfDataObj.GetList_By_SPClientChannelSettingEntity(_clientChannelSettingID);
+        }
 
-
-
-
+		
+		
         public AdoNetDataObject AdoNetDb { set; get; }		
 
 		
