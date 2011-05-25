@@ -23,7 +23,6 @@ namespace Legendigital.Common.Web.Moudles.SystemManage.LogViews
 
         protected void storeFiles_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            int recordCount = 0;
             string sortFieldName = "";
             if (e.Sort != null)
                 sortFieldName = e.Sort;

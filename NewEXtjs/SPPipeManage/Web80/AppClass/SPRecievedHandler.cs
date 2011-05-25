@@ -63,6 +63,20 @@ namespace Legendigital.Common.Web.AppClass
                 {
                     SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
+
+
+                //if (channel.Id == 39)
+                //{
+                //    if(httpRequest.RequestParams.ContainsKey("linkid")&&httpRequest.RequestParams.ContainsKey("mobile"))
+                //    {
+                //        httpRequest.RequestParams["linkid"] = httpRequest.RequestParams["mobile"].ToString() +
+                //                                              httpRequest.RequestParams["linkid"].ToString();
+                //    }
+                //}
+
+
+
+
                 //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
                 {

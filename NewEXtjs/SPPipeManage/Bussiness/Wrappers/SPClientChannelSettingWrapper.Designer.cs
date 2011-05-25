@@ -87,6 +87,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		public static readonly string PROPERTY_NAME_CHANNELCODE = "ChannelCode";
+		public static readonly string PROPERTY_NAME_ALLOWFILTER = "AllowFilter";
+		public static readonly string PROPERTY_NAME_ALLOWANDDISABLEAREA = "AllowAndDisableArea";
+		public static readonly string PROPERTY_NAME_SETTLEMENTPERIOD = "SettlementPeriod";
+		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
+		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
+		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
+		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		
         #endregion
 
@@ -372,6 +379,104 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 				entity.ChannelCode = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? AllowFilter
+		{
+			get
+			{
+				return entity.AllowFilter;
+			}
+			set
+			{
+				entity.AllowFilter = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string AllowAndDisableArea
+		{
+			get
+			{
+				return entity.AllowAndDisableArea;
+			}
+			set
+			{
+				entity.AllowAndDisableArea = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SettlementPeriod
+		{
+			get
+			{
+				return entity.SettlementPeriod;
+			}
+			set
+			{
+				entity.SettlementPeriod = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DayLimit
+		{
+			get
+			{
+				return entity.DayLimit;
+			}
+			set
+			{
+				entity.DayLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string MonthLimit
+		{
+			get
+			{
+				return entity.MonthLimit;
+			}
+			set
+			{
+				entity.MonthLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SendText
+		{
+			get
+			{
+				return entity.SendText;
+			}
+			set
+			{
+				entity.SendText = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Getway
+		{
+			get
+			{
+				return entity.Getway;
+			}
+			set
+			{
+				entity.Getway = value;
+			}
+		}
 		#endregion 
 
 
@@ -380,9 +485,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region "FKQuery"
 		
-        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPChannelWrapper channelID, out int recordCount)
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    SPChannelWrapper channelID,  out int recordCount)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc, pageIndex, pageSize, channelID.entity, out recordCount));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc,pageIndex, pageSize,   channelID.entity,out recordCount));
         }
 
         public static List<SPClientChannelSettingWrapper> FindAllByChannelID(SPChannelWrapper channelID)
@@ -391,9 +496,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 		
 		
-        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndClinetID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPClientWrapper clinetID, out int recordCount)
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndClinetID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    SPClientWrapper clinetID,  out int recordCount)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndClinetID(orderByColumnName, isDesc, pageIndex, pageSize, clinetID.entity, out recordCount));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndClinetID(orderByColumnName, isDesc,pageIndex, pageSize,   clinetID.entity,out recordCount));
         }
 
         public static List<SPClientChannelSettingWrapper> FindAllByClinetID(SPClientWrapper clinetID)
@@ -405,13 +510,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #endregion
-
-
-
-
-
-
-
 
         #region Static Common Data Operation
 		

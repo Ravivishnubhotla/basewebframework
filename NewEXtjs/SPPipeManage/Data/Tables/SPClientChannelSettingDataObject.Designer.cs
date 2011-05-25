@@ -92,6 +92,13 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_SYNCTYPE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SYNCTYPE);
 		public static readonly Property PROPERTY_ORDERINDEX = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ORDERINDEX);
 		public static readonly Property PROPERTY_CHANNELCODE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_CHANNELCODE);
+		public static readonly Property PROPERTY_ALLOWFILTER = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ALLOWFILTER);
+		public static readonly Property PROPERTY_ALLOWANDDISABLEAREA = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_ALLOWANDDISABLEAREA);
+		public static readonly Property PROPERTY_SETTLEMENTPERIOD = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SETTLEMENTPERIOD);
+		public static readonly Property PROPERTY_DAYLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DAYLIMIT);
+		public static readonly Property PROPERTY_MONTHLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_MONTHLIMIT);
+		public static readonly Property PROPERTY_SENDTEXT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SENDTEXT);
+		public static readonly Property PROPERTY_GETWAY = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_GETWAY);
       
 		#region 子类集合字段查询字段
 	
@@ -149,11 +156,25 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (int);
                 case "ChannelCode":
                     return typeof (string);
+                case "AllowFilter":
+                    return typeof (bool);
+                case "AllowAndDisableArea":
+                    return typeof (string);
+                case "SettlementPeriod":
+                    return typeof (string);
+                case "DayLimit":
+                    return typeof (string);
+                case "MonthLimit":
+                    return typeof (string);
+                case "SendText":
+                    return typeof (string);
+                case "Getway":
+                    return typeof (string);
           }
 			return typeof(string);
         }
 		
-		public List<SPClientChannelSettingEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+				public List<SPClientChannelSettingEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -204,6 +225,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

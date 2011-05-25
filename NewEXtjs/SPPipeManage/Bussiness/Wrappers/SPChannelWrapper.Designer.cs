@@ -575,9 +575,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #region "FKQuery"
 		
-        public static List<SPChannelWrapper> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, SPUperWrapper uperID, out int recordCount)
+        public static List<SPChannelWrapper> FindAllByOrderByAndFilterAndUperID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    SPUperWrapper uperID,  out int recordCount)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUperID(orderByColumnName, isDesc, pageIndex, pageSize, uperID.entity, out recordCount));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUperID(orderByColumnName, isDesc,pageIndex, pageSize,   uperID.entity,out recordCount));
         }
 
         public static List<SPChannelWrapper> FindAllByUperID(SPUperWrapper uperID)
@@ -589,13 +589,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #endregion
-
-
-
-
-
-
-
 
         #region Static Common Data Operation
 		

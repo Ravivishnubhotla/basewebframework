@@ -159,13 +159,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPChannelFiltersWrapper> ConvertToWrapperList(List<SPChannelFiltersEntity> entitylist)

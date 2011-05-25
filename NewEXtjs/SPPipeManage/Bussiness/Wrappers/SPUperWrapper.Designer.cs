@@ -144,13 +144,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPUperWrapper> ConvertToWrapperList(List<SPUperEntity> entitylist)

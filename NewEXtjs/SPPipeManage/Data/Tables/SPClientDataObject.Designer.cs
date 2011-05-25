@@ -83,7 +83,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPClientEntity> GetList_By_SPClientGroupEntity(SPClientGroupEntity fkentity)
+				public List<SPClientEntity> GetList_By_SPClientGroupEntity(SPClientGroupEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -109,6 +109,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

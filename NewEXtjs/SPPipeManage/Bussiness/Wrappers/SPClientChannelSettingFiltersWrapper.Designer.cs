@@ -151,15 +151,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ClientChannelSettingID
+		public SPClientChannelSettingWrapper ClientChannelSettingID
 		{
 			get
 			{
-				return entity.ClientChannelSettingID;
+				return SPClientChannelSettingWrapper.ConvertEntityToWrapper(entity.ClientChannelSettingID) ;
 			}
 			set
 			{
-				entity.ClientChannelSettingID = value;
+				entity.ClientChannelSettingID = ((value == null) ? null : value.entity);
 			}
 		}
 		#endregion 
@@ -169,17 +169,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SPClientChannelSettingFiltersWrapper> FindAllByOrderByAndFilterAndClientChannelSettingID(string orderByColumnName, bool isDesc,int pageIndex, int pageSize,    SPClientChannelSettingWrapper clientChannelSettingID,  out int recordCount)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndClientChannelSettingID(orderByColumnName, isDesc,pageIndex, pageSize,   clientChannelSettingID.entity,out recordCount));
+        }
+
+        public static List<SPClientChannelSettingFiltersWrapper> FindAllByClientChannelSettingID(SPClientChannelSettingWrapper clientChannelSettingID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByClientChannelSettingID(clientChannelSettingID.entity));
+        }
+		
 
 
 
         #endregion
-
-
-
-
-
-
-
 
         #region Static Common Data Operation
 		

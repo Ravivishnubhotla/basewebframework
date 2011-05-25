@@ -210,7 +210,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for MobileNumber", value, value.ToString());
 				_isChanged |= (_mobileNumber != value); _mobileNumber = value;
 			}
@@ -255,7 +255,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Message", value, value.ToString());
 				_isChanged |= (_message != value); _message = value;
 			}
@@ -314,7 +314,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Cpid", value, value.ToString());
 				_isChanged |= (_cpid != value); _cpid = value;
 			}
@@ -331,7 +331,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Mid", value, value.ToString());
 				_isChanged |= (_mid != value); _mid = value;
 			}
@@ -348,7 +348,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Port", value, value.ToString());
 				_isChanged |= (_port != value); _port = value;
 			}
@@ -365,7 +365,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Ywid", value, value.ToString());
 				_isChanged |= (_ywid != value); _ywid = value;
 			}
@@ -382,7 +382,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Linkid", value, value.ToString());
 				_isChanged |= (_linkid != value); _linkid = value;
 			}
@@ -399,7 +399,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 600)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Dest", value, value.ToString());
 				_isChanged |= (_dest != value); _dest = value;
 			}
@@ -416,7 +416,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 160)
 					throw new ArgumentOutOfRangeException("Invalid value for Price", value, value.ToString());
 				_isChanged |= (_price != value); _price = value;
 			}
@@ -433,7 +433,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for Ip", value, value.ToString());
 				_isChanged |= (_ip != value); _ip = value;
 			}
@@ -464,7 +464,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField1", value, value.ToString());
 				_isChanged |= (_extendField1 != value); _extendField1 = value;
 			}
@@ -481,7 +481,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField2", value, value.ToString());
 				_isChanged |= (_extendField2 != value); _extendField2 = value;
 			}
@@ -498,7 +498,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField3", value, value.ToString());
 				_isChanged |= (_extendField3 != value); _extendField3 = value;
 			}
@@ -515,7 +515,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField4", value, value.ToString());
 				_isChanged |= (_extendField4 != value); _extendField4 = value;
 			}
@@ -532,7 +532,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField5", value, value.ToString());
 				_isChanged |= (_extendField5 != value); _extendField5 = value;
 			}
@@ -549,7 +549,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField6", value, value.ToString());
 				_isChanged |= (_extendField6 != value); _extendField6 = value;
 			}
@@ -566,7 +566,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField7", value, value.ToString());
 				_isChanged |= (_extendField7 != value); _extendField7 = value;
 			}
@@ -583,7 +583,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField8", value, value.ToString());
 				_isChanged |= (_extendField8 != value); _extendField8 = value;
 			}
@@ -600,7 +600,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ExtendField9", value, value.ToString());
 				_isChanged |= (_extendField9 != value); _extendField9 = value;
 			}
@@ -648,7 +648,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 40)
+				if( value != null && value.Length > 20)
 					throw new ArgumentOutOfRangeException("Invalid value for City", value, value.ToString());
 				_isChanged |= (_city != value); _city = value;
 			}
@@ -665,7 +665,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 40)
+				if( value != null && value.Length > 20)
 					throw new ArgumentOutOfRangeException("Invalid value for Province", value, value.ToString());
 				_isChanged |= (_province != value); _province = value;
 			}

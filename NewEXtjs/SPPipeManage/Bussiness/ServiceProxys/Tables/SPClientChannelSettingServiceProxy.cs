@@ -25,6 +25,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         void ResetAllSycnCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         int GetSycnFailedCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount);
+
+ 
+        List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -131,6 +134,20 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount)
         {
             this.AdoNetDb.ResetIntercept(spClientChannelSettingEntity.Id, date, dataCount);
+        }
+
+        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            SPChannelEntity channelEntity = null;
+
+            if(channleId>0)
+                channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channleId);
+
+            return this.SelfDataObj.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, isDesc,
+                                                                                     channelEntity, province, port,
+                                                                                     pageIndex, pageSize,
+                                                                                     out recordCount);
+        
         }
     }
 }

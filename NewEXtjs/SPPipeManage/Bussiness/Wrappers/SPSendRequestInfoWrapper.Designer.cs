@@ -189,13 +189,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
-
         #region Static Common Data Operation
 		
 		internal static List<SPSendRequestInfoWrapper> ConvertToWrapperList(List<SPSendRequestInfoEntity> entitylist)

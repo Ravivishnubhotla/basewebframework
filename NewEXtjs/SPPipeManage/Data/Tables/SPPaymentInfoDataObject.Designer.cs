@@ -198,7 +198,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPPaymentInfoEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
+				public List<SPPaymentInfoEntity> GetList_By_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPPaymentInfoEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -249,6 +249,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

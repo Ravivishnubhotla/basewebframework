@@ -33,7 +33,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _filterType;
 		private string _filterValue;
 		private bool? _isEnable;
-		private int? _clientChannelSettingID;
+		private SPClientChannelSettingEntity _clientChannelSettingID;
 		
 		#endregion
 
@@ -56,7 +56,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingFiltersEntity( int id, string paramsName, string filterType, string filterValue, bool? isEnable, int? clientChannelSettingID)
+		public SPClientChannelSettingFiltersEntity( int id, string paramsName, string filterType, string filterValue, bool? isEnable, SPClientChannelSettingEntity clientChannelSettingID)
 		{
 			_id = id;
 			_paramsName = paramsName;
@@ -152,7 +152,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? ClientChannelSettingID
+		public virtual SPClientChannelSettingEntity ClientChannelSettingID
 		{
 			get { return _clientChannelSettingID; }
 

@@ -45,6 +45,13 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SYNCTYPE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SyncType");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_ORDERINDEX = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".OrderIndex");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_CHANNELCODE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".ChannelCode");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_ALLOWFILTER = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".AllowFilter");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_ALLOWANDDISABLEAREA = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".AllowAndDisableArea");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SETTLEMENTPERIOD = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SettlementPeriod");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DAYLIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DayLimit");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_MONTHLIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".MonthLimit");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SENDTEXT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SendText");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_GETWAY = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".Getway");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_TITLE);
@@ -85,7 +92,7 @@ namespace LD.SPPipeManage.Data.Tables
 			return typeof(string);
         }
 		
-		public List<SPClientChannelSycnParamsEntity> GetList_By_SPClientChannelSettingEntity(SPClientChannelSettingEntity fkentity)
+				public List<SPClientChannelSycnParamsEntity> GetList_By_SPClientChannelSettingEntity(SPClientChannelSettingEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPClientChannelSycnParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -111,6 +118,7 @@ namespace LD.SPPipeManage.Data.Tables
         }		
 		
 
+		
 		
 		
     }

@@ -30,6 +30,13 @@
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 		<property column="ChannelCode" type="string" name="ChannelCode"   length="100" />	
+		<property column="AllowFilter" type="Boolean" name="AllowFilter"   />	
+		<property column="AllowAndDisableArea" type="string" name="AllowAndDisableArea"   length="600" />	
+		<property column="SettlementPeriod" type="string" name="SettlementPeriod"   length="40" />	
+		<property column="DayLimit" type="string" name="DayLimit"   length="40" />	
+		<property column="MonthLimit" type="string" name="MonthLimit"   length="40" />	
+		<property column="SendText" type="string" name="SendText"   length="600" />	
+		<property column="Getway" type="string" name="Getway"   length="40" />	
 
 
 
