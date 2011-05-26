@@ -158,6 +158,8 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+                <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
     <uc5:UCSPClientChannelSettingInfoEdit ID="UCSPClientChannelSettingInfoEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">

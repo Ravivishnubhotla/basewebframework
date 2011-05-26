@@ -201,36 +201,55 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (DefaultClientChannelSetting == null)
                     return "";
 
-                if (DefaultClientChannelSetting.CommandType == "4")
-                    return "";
-                if (DefaultClientChannelSetting.CommandType == "5")
-                    return "";
-                if (DefaultClientChannelSetting.CommandType == "6")
-                    return "";
-                if (DefaultClientChannelSetting.CommandType == "7")
-                    return "";
-
-                string channelCode = "";
-                string cmdCode = "";
-
-                if (!string.IsNullOrEmpty(DefaultClientChannelSetting.ChannelCode))
-                    channelCode = DefaultClientChannelSetting.ChannelCode;
-
-                if (!string.IsNullOrEmpty(DefaultClientChannelSetting.CommandCode))
-                    cmdCode = DefaultClientChannelSetting.CommandCode;
-
-                string cmdType = "";
-
-                if (DefaultClientChannelSetting.CommandType == "1" )
-                    cmdType = "精准";
-                if (DefaultClientChannelSetting.CommandType == "2")
-                    cmdType = "精准";
-                if (DefaultClientChannelSetting.CommandType == "3")
-                    cmdType = "模糊";
-
-                return string.Format("发送 {0} 到 {1} ({2})", cmdCode, channelCode, cmdType);
+                return DefaultClientChannelSetting.ChannelClientCode;
             }
         }
+
+        public string AllowAndDisableArea
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                return DefaultClientChannelSetting.AllowAndDisableArea;
+            }
+        }
+
+        public string SendText
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                return DefaultClientChannelSetting.SendText;
+            }
+        }
+
+        public string Getway
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                return DefaultClientChannelSetting.Getway;
+            }
+        }
+
+        public string DayLimitAndMonthLimit
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+
+                return DefaultClientChannelSetting.DayLimitAndMonthLimit;
+            }
+        }
+
+        
 
 
         public string InterfaceList
