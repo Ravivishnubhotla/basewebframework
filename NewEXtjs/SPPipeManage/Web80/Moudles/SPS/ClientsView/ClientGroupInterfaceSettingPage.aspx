@@ -44,6 +44,9 @@
 
   
         }
+                function columnWrap(val){
+    return '<div style="white-space:normal !important;">'+ val +'</div>';
+}
 
     </script>
     <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" OnRefreshData="storeSPClient_Refresh">
@@ -51,20 +54,22 @@
             <ext:JsonReader ReaderID="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
-                    <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Alias" />
-                    <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
-                    <ext:RecordField Name="UserID" Type="int" />
-                    <ext:RecordField Name="UserLoginID" />
-                    <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="SPCode" />
                     <ext:RecordField Name="InterfaceList" />
                     <ext:RecordField Name="SyncDataUrl" />
                     <ext:RecordField Name="DisplayName" />
+                    <ext:RecordField Name="AllowAndDisableArea" />
+                    <ext:RecordField Name="SettlementPeriod" />
+                    <ext:RecordField Name="DayLimitAndMonthLimit" />
+                    <ext:RecordField Name="SendText" />
+                    <ext:RecordField Name="Getway" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -97,19 +102,34 @@
                                 <ext:Column ColumnID="colChannelID" DataIndex="DisplayName" Header="通道名称" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="SPCode" Header="指令" Sortable="true">
+                                   <Renderer Fn="columnWrap" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="SyncDataUrl" Header="同步地址" Sortable="true">
+                                   <Renderer Fn="columnWrap" />
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="160">
+                                <ext:Column ColumnID="colAllowAndDisableArea" DataIndex="AllowAndDisableArea" Header="开通省份"
+                                    Sortable="false" Width="120">
+                                    <Renderer Fn="columnWrap" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colSendText" DataIndex="SendText" Header="下发语" Sortable="false"
+                                    Wrap="true" Width="120">
+                                    <Renderer Fn="columnWrap" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colGetway" DataIndex="Getway" Header="运营商" Sortable="false">
+                                </ext:Column>
+                                <ext:Column ColumnID="colDayLimitAndMonthLimit" DataIndex="DayLimitAndMonthLimit"
+                                    Header="日限月限" Sortable="false">
+                                </ext:Column>
+                                <ext:CommandColumn Header="通道管理" Width="50">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdParamsEdit" Text="编辑通道名称">
-                                            <ToolTip Text="编辑通道名称" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步地址">
-                                            <ToolTip Text="设置同步地址" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdTest" Text="发送测试数据">
-                                            <ToolTip Text="发送测试数据" />
+                                        <ext:GridCommand Icon="Cog" Text="设置" ToolTip-Text="指令设置">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="发送测试数据" />
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Menu" />
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>

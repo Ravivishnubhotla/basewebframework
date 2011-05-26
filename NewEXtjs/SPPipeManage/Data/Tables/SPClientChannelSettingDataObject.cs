@@ -55,7 +55,7 @@ namespace LD.SPPipeManage.Data.Tables
                 queryGenerator.AddWhereClause(PROPERTY_ALLOWANDDISABLEAREA.Like(province,MatchMode.Anywhere));
 
             if (!string.IsNullOrEmpty(port))
-                queryGenerator.AddWhereClause(PROPERTY_CHANNELCODE.Like(port, MatchMode.Start));
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELCODE.Like(port, MatchMode.Anywhere));
 
             AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryGenerator);
 
