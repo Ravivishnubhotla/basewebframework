@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" ValidateRequest="false"
-    CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    ValidateRequest="false" CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelListPage" %>
 
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
@@ -209,7 +209,8 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
-        <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -236,12 +237,11 @@
                                             <Click Handler="ShowSPChannelQuickAdd();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                                            <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload">
+                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="ReloadAllChannelInfo();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
- 
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPChannel}.reload();" />
@@ -261,13 +261,15 @@
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份"   Hidden="true" Sortable="true">
+                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Hidden="true" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true"  Hidden="true">
+                                <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true"
+                                    Hidden="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Hidden="true" Sortable="true" Width="50">
+                                <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Hidden="true" Sortable="true"
+                                    Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Hidden="true"
                                     Sortable="true">
@@ -298,14 +300,10 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配">
                                             <ToolTip Text="指令分配" />
                                         </ext:GridCommand>
-
-
-                                       <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams" Text="默认下发参数">
+                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
+                                            Text="默认下发参数">
                                             <ToolTip Text="默认下发参数" />
                                         </ext:GridCommand>
-
-
-
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>
@@ -334,7 +332,7 @@
     </ext:ViewPort>
     <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false"  AutoScroll=true>
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>
@@ -360,9 +358,9 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-        <ext:Window ID="winChannelDefaultSendParams" runat="server" Title="Window" Frame="true"
+    <ext:Window ID="winChannelDefaultSendParams" runat="server" Title="Window" Frame="true"
         Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll=true>
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>

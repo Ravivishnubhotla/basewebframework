@@ -211,11 +211,35 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if(!string.IsNullOrEmpty(this.ChannelCode))
                     spcode = this.ChannelCode;
 
+                string provinceLimit = "";
+
+                if (this.CommandType == "1" && this.AllowFilter.HasValue && this.AllowFilter.Value && this.Filters != null && this.Filters.Count > 0)
+                {
+                    provinceLimit = " (";
+
+                    int i = 0;
+
+                    foreach (SPClientChannelSettingFiltersWrapper settingFilter in this.Filters)
+                    {
+                        provinceLimit += settingFilter.FilterValue;
+
+                        if (i < this.Filters.Count - 1)
+                        {
+                            provinceLimit += ",";
+                        }
+
+                        i++;
+                    }
+
+                    provinceLimit += ")";
+                }
+
+
                 if (this.CommandType == "1")
-                    return this.CommandCode + " (精准) 到 " + spcode;
+                    return this.CommandCode + " (精准) 到 " + spcode + provinceLimit;
 
                 if (this.CommandType == "3")
-                    return this.CommandCode + " (模糊) 到 " + spcode;
+                    return this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
  
                 return columnName + " " + this.CommandTypeName + " " + this.CommandCode;
             }
@@ -270,7 +294,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
+        public bool IsMacthByYWID(string ywid)
+        {
+            return this.MatchByYWID(ywid);
+        }
 
+        public bool IsMacthSPCode(string cpid)
+        {
+            return cpid.Trim().ToLower().Equals(this.ChannelCode);
+        }
         public bool MatchByYWID(string ywid)
         {
             switch (this.CommandType)
@@ -638,6 +670,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount)
         {
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, isDesc, channleId, province, port, pageIndex, pageSize, out   recordCount)) ;
+        }
+
+
+        private List<SPClientChannelSettingFiltersWrapper> filters;
+
+        public List<SPClientChannelSettingFiltersWrapper> Filters
+        {
+            get
+            {
+                if (filters == null)
+                    filters = SPClientChannelSettingFiltersWrapper.FindAllByClientChannelSettingID(this);
+                return filters;
+            }
+        }
+
+
+        public bool InArea(PhoneAreaInfo phoneAreaInfo)
+        {
+            if (Filters == null || Filters.Count <= 0)
+                return false;
+
+            List<SPClientChannelSettingFiltersWrapper> filters =
+                SPClientChannelSettingFiltersWrapper.FindAllByClientChannelSettingID(this);
+
+            return filters.Exists(p => p.ParamsName.Trim().ToLower() == "province" && p.FilterValue == phoneAreaInfo.Province);
         }
     }
 }

@@ -112,6 +112,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.Label txtShowCode;
         
         /// <summary>
+        /// lblChanneCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblChanneCode;
+        
+        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -217,7 +226,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtChannleCode;
+        protected global::Coolite.Ext.Web.Hidden txtChannleCode;
         
         /// <summary>
         /// fsAllowSycnData control.
