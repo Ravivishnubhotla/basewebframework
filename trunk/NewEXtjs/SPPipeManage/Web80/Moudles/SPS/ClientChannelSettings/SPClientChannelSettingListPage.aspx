@@ -9,6 +9,8 @@
     TagPrefix="uc3" %>
 <%@ Register Src="UCSPClientChannelSettingChangeClientAndUser.ascx" TagName="UCSPClientChannelSettingChangeClientAndUser"
     TagPrefix="uc4" %>
+<%@ Register Src="UCSPClientChannelSettingBaseEdit.ascx" TagName="UCSPClientChannelSettingBaseEdit"
+    TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -104,6 +106,15 @@
         
             }
 
+            if(record.data.CommandType=="1" && record.data.AllowFilter!=null && record.data.AllowFilter)
+            {
+                 toolbar.items.items[0].menu.items.items[7].show();        
+            }
+            else
+            {
+                 toolbar.items.items[0].menu.items.items[7].hide();      
+            }
+
             if(record.data.CommandType=="3")
             {
                  toolbar.items.items[0].menu.items.items[3].show();        
@@ -130,6 +141,24 @@
                                                                 }              
                 );
             }
+
+            if (cmd == "cmdSetCode") {
+                Coolite.AjaxMethods.UCSPClientChannelSettingBaseEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
+            
+
+            
 
            if (cmd == "cmdAddSubCode") {
                 Ext.MessageBox.prompt('添加子指令','子指令:',function(button,text){ 
@@ -200,6 +229,20 @@
                 win.show();    
             }  
 
+                      if (cmd == "cmdProvinceFilter") {
+
+                var win = <%= this.winFilterManage.ClientID %>;
+                
+
+                win.setTitle("  "+id.data.Name + "  " + " 省份过滤设置 ");
+                
+                win.autoLoad.url = 'SPClientChannelSettingFiltersListPage.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+        
+                win.show();    
+            }  
+
             if (cmd == "cmdParamsEdit") {
                 
                 var win = <%= this.winParamsEdit.ClientID %>;
@@ -245,6 +288,7 @@
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OrderIndex" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
+                    <ext:RecordField Name="AllowFilter" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -256,6 +300,7 @@
     <uc3:UCSPClientChannelSettingPatchAdd1 ID="UCSPClientChannelSettingPatchAdd11" runat="server" />
     <uc4:UCSPClientChannelSettingChangeClientAndUser ID="UCSPClientChannelSettingChangeClientAndUser1"
         runat="server" />
+    <uc5:UCSPClientChannelSettingBaseEdit ID="UCSPClientChannelSettingBaseEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -265,7 +310,7 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd" Hidden=true>
+                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd" Hidden="true">
                                         <Listeners>
                                             <Click Handler="ShowAddSPClientChannelSettingForm();" />
                                         </Listeners>
@@ -320,12 +365,12 @@
                                                 <Items>
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
                                                     <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" />
-
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试" />
-
-                                                                                                        <ext:MenuCommand Icon="ScriptAdd" CommandName="cmdAddSubCode" Text="添加子指令" />
+                                                    <ext:MenuCommand Icon="ScriptAdd" CommandName="cmdAddSubCode" Text="添加子指令" />
                                                     <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true" />
                                                     <ext:MenuCommand Icon="UserGo" CommandName="cmdChangeClientUser" Text="更换下家用户" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetCode" Text="设置" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdProvinceFilter" Text="省份过滤" />
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Menu" />
@@ -349,6 +394,20 @@
         </Body>
     </ext:ViewPort>
     <ext:Window ID="winParamsEdit" runat="server" Title="Window" Frame="true" Width="640"
+        ConstrainHeader="true" Height="450" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winFilterManage" runat="server" Title="Window" Frame="true" Width="640"
         ConstrainHeader="true" Height="450" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"

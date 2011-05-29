@@ -362,8 +362,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Hashtable exparams = GetEXParamsValue(httpGetPostRequest.RequestParams);
 
+            PhoneAreaInfo phoneAreaInfo = null;
+
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    try
+                    {
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch (Exception)
+                    {
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+
+
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostRequest.RequestParams,
-                                                                                                   fieldMappings);
+                                                                                                   fieldMappings,phoneAreaInfo);
 
             if (channelSetting == null)
             {
@@ -403,32 +425,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
-
-
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            if (phoneAreaInfo != null)
             {
-                try
-                {
-                    PhoneAreaInfo phoneAreaInfo = null;
-                    try
-                    {
-                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
-                    }
-                    catch (Exception)
-                    {
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    }
-                    if (phoneAreaInfo != null)
-                    {
-                        paymentInfo.Province = phoneAreaInfo.Province;
-                        paymentInfo.City = phoneAreaInfo.City;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex.Message);
-                }
+                paymentInfo.Province = phoneAreaInfo.Province;
+                paymentInfo.City = phoneAreaInfo.City;
             }
+
+
+
 
             paymentInfo.IsSycnData = false;
 
@@ -574,24 +578,84 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return clientChannelSettingWrappers.FindAll(p => (p.IsEnable));
         }
 
-        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,
-                                                                                      Hashtable fieldMappings)
+        private SPClientChannelSettingWrapper FindDefaultClientChannelSetting(List<SPClientChannelSettingWrapper> clientChannelSettings)
         {
-            List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
+            return (from cc in clientChannelSettings
+                    where (string.IsNullOrEmpty(cc.CommandCode) && cc.CommandType == "7" && cc.OrderIndex == 0)
+                    select cc).FirstOrDefault();
+        }
 
-            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in clientChannelSettings
+        private bool CheckClientChannelSettingHasFilters(List<SPClientChannelSettingWrapper> allEnableClientChannelSettings)
+        {
+            SPClientChannelSettingWrapper clientChannelSettingWrapper =
+                allEnableClientChannelSettings.Find(p => (p.CommandType == "1" &&p.AllowFilter.HasValue && p.AllowFilter.Value));
+
+            return (clientChannelSettingWrapper != null);
+        }
+
+        private List<SPClientChannelSettingWrapper> FindMatchedClientChannelSettingHasFilters(List<SPClientChannelSettingWrapper> allEnableClientChannelSettings,string ywid,string cpid)
+        {
+            List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters =
+                allEnableClientChannelSettings.FindAll(p => (p.CommandType == "1" && p.AllowFilter.HasValue && p.AllowFilter.Value) && p.IsMacthByYWID(ywid) && p.IsMacthSPCode(cpid));
+
+            return findMatchedClientChannelSettingHasFilters;
+        }
+
+        private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,
+                                                                                      Hashtable fieldMappings, PhoneAreaInfo phoneAreaInfo)
+        {
+            List<SPClientChannelSettingWrapper> allEnableClientChannelSettings = GetAllClientChannelSetting();
+
+            SPClientChannelSettingWrapper defaultClientChannelSetting =
+                FindDefaultClientChannelSetting(allEnableClientChannelSettings);
+
+
+            if(CheckClientChannelSettingHasFilters(allEnableClientChannelSettings))
+            {
+                string cpid = GetMappedParamValueFromRequest(requestValues, "cpid", fieldMappings);
+                string ywid = GetMappedParamValueFromRequest(requestValues, "ywid", fieldMappings);
+
+        
+
+                List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters = FindMatchedClientChannelSettingHasFilters(allEnableClientChannelSettings, ywid, cpid);
+
+                if (findMatchedClientChannelSettingHasFilters != null && findMatchedClientChannelSettingHasFilters.Count>0)
+                {
+                    SPClientChannelSettingWrapper macthedYWIDAndProvinceClientChannelSettingWrapper = null;
+
+                    if(phoneAreaInfo!=null)
+                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo)));
+
+                    if (macthedYWIDAndProvinceClientChannelSettingWrapper != null)
+                        return macthedYWIDAndProvinceClientChannelSettingWrapper;
+
+                    foreach (SPClientChannelSettingWrapper findMatchedClientChannelSettingHasFilter in findMatchedClientChannelSettingHasFilters)
+                    {
+                        if(findMatchedClientChannelSettingHasFilter.Filters!=null && findMatchedClientChannelSettingHasFilter.Filters.Count>0)
+                        {
+                            allEnableClientChannelSettings.Remove(findMatchedClientChannelSettingHasFilter);
+                        }
+                    }
+
+                }
+            }
+
+
+
+
+            
+
+            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in allEnableClientChannelSettings
                                                                        where (cc.IsMacth(requestValues, fieldMappings))
                                                                        orderby cc.OrderIndex descending
                                                                        select cc).FirstOrDefault();
             if (macthClientChannelSetting == null)
-                return null;
+                return defaultClientChannelSetting;
 
-
-            //return macthClientChannelSetting;
 
             int orderIndex = macthClientChannelSetting.OrderIndex.HasValue?macthClientChannelSetting.OrderIndex.Value:0;
 
-            List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in clientChannelSettings
+            List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in allEnableClientChannelSettings
                                                                                  where
                                                                                      (cc.IsMacth(requestValues,
                                                                                                  fieldMappings) &&
@@ -599,7 +663,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                                                                                  select cc).ToList();
             if (allmacthClientChannelSettings.Count <= 0)
             {
-                return null;
+                return defaultClientChannelSetting;
             }
             else if (allmacthClientChannelSettings.Count<=1)
             {
@@ -609,8 +673,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings,"cpid")));
             }
-
-            //return macthClientChannelSetting;
         }
 
         //private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting,
@@ -788,8 +850,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Hashtable exparams = GetEXParamsValue(httpGetPostReques.RequestParams);
 
+            PhoneAreaInfo phoneAreaInfo = null;
+
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    
+                    try
+                    {
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch
+                    {
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+
+
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostReques.RequestParams,
-                                                                                                   fieldMappings);
+                                                                                                   fieldMappings, phoneAreaInfo);
 
             if (channelSetting == null)
             {
@@ -827,32 +913,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.IsIntercept = false;
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostReques.RequestData;
-
-
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            if (phoneAreaInfo != null)
             {
-                try
-                {
-                    PhoneAreaInfo phoneAreaInfo = null;
-                    try
-                    {
-                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
-                    }
-                    catch
-                    {
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    }
-                    if (phoneAreaInfo != null)
-                    {
-                        paymentInfo.Province = phoneAreaInfo.Province;
-                        paymentInfo.City = phoneAreaInfo.City;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex.Message);
-                }
+                paymentInfo.Province = phoneAreaInfo.Province;
+                paymentInfo.City = phoneAreaInfo.City;
             }
+
+
 
             paymentInfo.IsSycnData = false;
 

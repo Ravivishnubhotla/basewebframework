@@ -1,8 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientChannelSettingBaseEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingBaseEdit" %>
 <ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"
-    Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false" Maximizable="true"
- ConstrainHeader=true   Modal="true" ShowOnLoad="false" AutoScroll="true">
+    Title="设置指令信息" Width="640" Height="460" AutoShow="false" Maximizable="true" ConstrainHeader="true"
+    Modal="true" ShowOnLoad="false" AutoScroll="true">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
@@ -27,6 +27,10 @@
                                                 </ext:Anchor>
                                                 <ext:Anchor Horizontal="95%">
                                                     <ext:Label ID="txtShowCode" runat="server" FieldLabel="指令" AllowBlank="False" />
+                                                </ext:Anchor>
+                                                <ext:Anchor Horizontal="95%">
+                                                    <ext:Label ID="lblChanneCode" runat="server" FieldLabel="通道号" AllowBlank="true">
+                                                    </ext:Label>
                                                 </ext:Anchor>
                                             </Anchors>
                                         </ext:FormLayout>
@@ -71,8 +75,8 @@
                                                                     </ext:Checkbox>
                                                                 </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
-                                                                    <ext:TextField ID="txtChannleCode" runat="server" FieldLabel="通道号" AllowBlank="true">
-                                                                    </ext:TextField>
+                                                                    <ext:Hidden ID="txtChannleCode" runat="server" FieldLabel="通道号" AllowBlank="true">
+                                                                    </ext:Hidden>
                                                                 </ext:Anchor>
                                                             </Anchors>
                                                         </ext:FormLayout>
@@ -134,5 +138,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-
 </ext:Window>

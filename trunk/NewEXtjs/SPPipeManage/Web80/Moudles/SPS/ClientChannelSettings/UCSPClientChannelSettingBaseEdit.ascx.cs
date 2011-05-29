@@ -47,6 +47,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.txtShowCode.Text = obj.ChannelClientCode;
 
+
                     if (obj.Name != null)
                         this.txtName.Text = obj.Name.ToString();
                     else
@@ -57,6 +58,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                         this.txtDescription.Text = obj.Description.ToString();
                     else
                         this.txtDescription.Text = "";
+
+                    this.lblChanneCode.Text = obj.ChannelCode; 
 
                     if (obj.ChannelCode != null)
                         this.txtChannleCode.Text = obj.ChannelCode.ToString();
@@ -77,7 +80,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.chkDisable.Checked = obj.Disable.HasValue && obj.Disable.Value;
 
-                    //this.chkAllowFilter.Checked = obj.AllowFilter.HasValue && obj.AllowFilter.Value;
+                    this.chkAllowFilter.Checked = obj.AllowFilter.HasValue && obj.AllowFilter.Value;
 
                     if (obj.SyncData.HasValue && obj.SyncData.Value)
                     {
@@ -145,7 +148,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.InterceptRate = Convert.ToInt32(this.txtInterceptRate.Text.Trim());
                 obj.UpRate = 0;
                 obj.DownRate = 0;
-                //obj.AllowFilter = this.chkAllowFilter.Checked;
+                obj.AllowFilter = this.chkAllowFilter.Checked;
                 obj.Disable = this.chkDisable.Checked;
                 obj.ChannelCode = this.txtChannleCode.Text.Trim();
 
