@@ -143,15 +143,7 @@
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
                         </Listeners>
-                        <Plugins>
-                            <ext:RowExpander ID="RowExpander1" runat="server" Collapsed="false">
-                                <Template ID="Template1" runat="server">
-                        <p><b>通道接口文档：</b><br /> {InterfaceList}</p>
  
-                        
-                                </Template>
-                            </ext:RowExpander>
-                        </Plugins>
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>

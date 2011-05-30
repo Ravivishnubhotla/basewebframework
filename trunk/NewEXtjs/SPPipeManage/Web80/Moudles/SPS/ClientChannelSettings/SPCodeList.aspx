@@ -158,7 +158,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
-                <AjaxEventConfig Timeout="120000">
+        <AjaxEventConfig Timeout="120000">
         </AjaxEventConfig>
     </ext:Store>
     <uc5:UCSPClientChannelSettingInfoEdit ID="UCSPClientChannelSettingInfoEdit1" runat="server" />
@@ -211,6 +211,11 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
                                     Sortable="false" Width="120">
+                                </ext:Column>
+                                <ext:Column ColumnID="colClientName" DataIndex="ClientName" Header="下家名" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="下家组"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colAllowAndDisableArea" DataIndex="AllowAndDisableArea" Header="开通省份"
                                     Sortable="false" Width="120">
