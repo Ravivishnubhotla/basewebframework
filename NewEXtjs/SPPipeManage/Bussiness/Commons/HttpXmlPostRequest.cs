@@ -13,7 +13,13 @@ namespace LD.SPPipeManage.Bussiness.Commons
     [Serializable]
     public class HttpXmlPostRequest : IHttpRequest
     {
-        public const string XmlNodeName = "message";
+        private string xmlNodeName;
+
+        public string XmlNodeName
+        {
+            get { return xmlNodeName; }
+            set { xmlNodeName = value; }
+        }
 
 
         private Hashtable requestParams;
@@ -65,9 +71,11 @@ namespace LD.SPPipeManage.Bussiness.Commons
         }
 
 
-        public HttpXmlPostRequest(HttpRequest request, string xmlString)
+        public HttpXmlPostRequest(HttpRequest request, string xmlString, string xmlNodeName)
         {
-            requestParams = PraseHttpXmlRequestValue(request, xmlString);
+            this.xmlNodeName = xmlNodeName;
+
+            requestParams = PraseHttpXmlRequestValue(request, xmlString,xmlNodeName);
 
             requestData = SerializeUtil.ToJson(requestParams);
 
@@ -100,7 +108,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
             return ip;
         }
 
-        public static Hashtable PraseHttpXmlRequestValue(HttpRequest request, string xml)
+        public static Hashtable PraseHttpXmlRequestValue(HttpRequest request, string xml, string xmlNodeName)
         {
             XmlDocument xmldoc = new XmlDocument();
 
@@ -108,7 +116,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
             Hashtable hb = new Hashtable();
 
-            XmlNode node = xmldoc.SelectSingleNode(XmlNodeName);
+            XmlNode node = xmldoc.SelectSingleNode(xmlNodeName);
 
             if (node == null)
                 return hb;

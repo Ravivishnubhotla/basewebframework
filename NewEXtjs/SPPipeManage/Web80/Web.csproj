@@ -376,12 +376,14 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppClass\SPNoEncodeHandler.cs" />
+    <Compile Include="AppClass\SPXml2Handler.cs" />
     <Compile Include="AppClass\SPXmlHandler.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AppClass\SPRecievedHandler.cs" />
     <Compile Include="AppClass\SPTestSendHandle.cs" />
+    <Compile Include="AppClass\SPXmlRecievedHandler.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
