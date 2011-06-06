@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
-using Common.Logging;
-using LD.SPPipeManage.Bussiness.Commons;
-using LD.SPPipeManage.Bussiness.Wrappers;
-using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.AppClass
 {
-    public class SPXmlHandler : SPXmlRecievedHandler
+    public class SPXml2Handler : SPXmlRecievedHandler
     {
         protected override string GetXmlNodeName()
         {
-            return "message";
+            return "hk-cp";
         }
 
         protected override string GetChannelCodeName(HttpContext context)
         {
             string requestFileName = Path.GetFileNameWithoutExtension(context.Request.PhysicalPath);
-            return requestFileName.Substring(0, requestFileName.Length - ("Xml").Length);
+            return requestFileName.Substring(0, requestFileName.Length - ("Xml2").Length);
         }
     }
 }

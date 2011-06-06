@@ -81,6 +81,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeBak", "CodeBak", "{0C8E
 		CodeBak\channelcodebak.txt = CodeBak\channelcodebak.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendDataWinTools", "SendDataWinTools\SendDataWinTools.csproj", "{B7161CA9-9A99-4412-9B59-8F32B101C9B4}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -594,6 +596,34 @@ Global
 		{A3799C78-D7D4-45F1-A54C-62699587ED67}.X86Release|x64.ActiveCfg = Release|x86
 		{A3799C78-D7D4-45F1-A54C-62699587ED67}.X86Release|x86.ActiveCfg = Release|x86
 		{A3799C78-D7D4-45F1-A54C-62699587ED67}.X86Release|x86.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|Itanium.ActiveCfg = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|x64.ActiveCfg = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|x86.ActiveCfg = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Debug|x86.Build.0 = Debug|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|Any CPU.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|Itanium.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|x64.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|x86.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.Release|x86.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|Any CPU.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|Itanium.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|Mixed Platforms.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|x64.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|x86.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X64Release|x86.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|Any CPU.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|Itanium.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|Mixed Platforms.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|Mixed Platforms.Build.0 = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|x64.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|x86.ActiveCfg = Release|x86
+		{B7161CA9-9A99-4412-9B59-8F32B101C9B4}.X86Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
