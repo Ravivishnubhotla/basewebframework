@@ -478,22 +478,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
 
-                var uniqueKeyNames = new List<string>();
+ 
 
-                List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
-
-                foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-                {
-                    if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-                        uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-                }
-
-                if (!uniqueKeyNames.Contains("linkid"))
-                {
-                    uniqueKeyNames.Add("linkid");
-                }
-
-                bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
+                bool result = paymentInfo.InsertPayment(out errorType);
 
                 if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
                 {
@@ -928,22 +915,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
 
-                var uniqueKeyNames = new List<string>();
+ 
 
-                List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
-
-                foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-                {
-                    if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-                        uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-                }
-
-                if (!uniqueKeyNames.Contains("linkid"))
-                {
-                    uniqueKeyNames.Add("linkid");
-                }
-
-                bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
+                bool result = paymentInfo.InsertPayment(  out errorType);
 
                 if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
                 {
@@ -1214,22 +1188,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
 
-                var uniqueKeyNames = new List<string>();
-
-                List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
-
-                foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-                {
-                    if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-                        uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-                }
-
-                if (!uniqueKeyNames.Contains("linkid"))
-                {
-                    uniqueKeyNames.Add("linkid");
-                }
-
-                bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
+                bool result = paymentInfo.InsertPayment(out errorType);
 
                 if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
                 {

@@ -22,6 +22,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientsView
             storeSPClient.BaseParams.Add(new Parameter("ClientGroupID", id.ToString(), ParameterMode.Value));
 
             this.hidId.Text = id.ToString();
+
+            gridPanelSPClientChannelSetting.Reload();
         }
 
         public int SPClientGroupID

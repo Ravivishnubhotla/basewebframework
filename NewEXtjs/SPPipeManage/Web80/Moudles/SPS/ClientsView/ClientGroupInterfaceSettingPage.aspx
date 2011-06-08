@@ -3,9 +3,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
-        <Listeners>
-            <DocumentReady Handler="RefreshSPClientList();" />
-        </Listeners>
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -69,6 +66,7 @@
             </ext:JsonReader>
         </Reader>
         <AjaxEventConfig Timeout="120000">
+            <EventMask ShowMask="true" />
         </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
@@ -82,9 +80,13 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                    <ext:ToolbarTextItem Text="端口号">
+                                    </ext:ToolbarTextItem>
+                                    <ext:TextField ID="txtPort" runat="server">
+                                    </ext:TextField>
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Find">
                                         <Listeners>
-                                            <Click Handler="RefreshSPClientList();" />
+                                            <Click Handler="#{storeSPClient}.filter('DisplayName',#{txtPort}.getValue());" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                 </Items>
@@ -102,10 +104,10 @@
                                 <ext:Column ColumnID="colChannelID" DataIndex="DisplayName" Header="通道名称" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="SPCode" Header="指令" Sortable="true">
-                                   <Renderer Fn="columnWrap" />
+                                    <Renderer Fn="columnWrap" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="SyncDataUrl" Header="同步地址" Sortable="true">
-                                   <Renderer Fn="columnWrap" />
+                                    <Renderer Fn="columnWrap" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colAllowAndDisableArea" DataIndex="AllowAndDisableArea" Header="开通省份"
                                     Sortable="false" Width="120">
@@ -143,7 +145,6 @@
                         <Listeners>
                             <Command Handler="processcmd(command, record);" />
                         </Listeners>
- 
                     </ext:GridPanel>
                 </Items>
             </ext:FitLayout>
