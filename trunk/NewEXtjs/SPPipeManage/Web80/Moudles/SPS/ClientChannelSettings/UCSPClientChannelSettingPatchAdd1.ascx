@@ -2,19 +2,17 @@
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingPatchAdd1" %>
 <script type="text/javascript">
     function ChangeCodeType(codeType, chkHasSubCode, numOrderIndex, txtSubCode) {
-        if(codeType=="1")
-        {
+        if (codeType == "1") {
             chkHasSubCode.hide();
             txtSubCode.hide();
             numOrderIndex.setValue("1");
-            chkHasSubCode.setValue(false);         
+            chkHasSubCode.setValue(false);
         }
-        else
-        {
+        else {
             chkHasSubCode.show();
             txtSubCode.show();
             numOrderIndex.setValue("1");
-            chkHasSubCode.setValue(true);                  
+            chkHasSubCode.setValue(true);
         }
     }
 </script>
@@ -24,7 +22,7 @@
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formSPChannelClientSetingQuickAdd" runat="server" Frame="true"
-                Header="false" MonitorValid="true" BodyStyle="padding:5px;">
+                AutoScroll="true" Header="false" MonitorValid="true" BodyStyle="padding:5px;">
                 <Body>
                     <ext:FormLayout ID="FormLayoutSPSendClientParams" runat="server" LabelSeparator=":"
                         LabelWidth="100">
@@ -48,7 +46,8 @@
                                 <ext:TextField ID="txtCode" runat="server" FieldLabel="指令" AllowBlank="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="指令序号" AllowBlank="false" Text="1" />
+                                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="指令序号" AllowBlank="false"
+                                    Text="1" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtChannelCode" runat="server" FieldLabel="通道号" AllowBlank="false" />
@@ -57,13 +56,28 @@
                                 <ext:Checkbox ID="chkHasSubCode" runat="server" FieldLabel="是否包含子指令" Checked="false"
                                     Hidden="true">
                                     <Listeners>
-                                    <Check Handler="if (#{chkHasSubCode}.getValue()){#{txtSubCode}.setVisible(true);}else{#{txtSubCode}.setVisible(false);}" />
+                                        <Check Handler="if (#{chkHasSubCode}.getValue()){#{txtSubCode}.setVisible(true);}else{#{txtSubCode}.setVisible(false);}" />
                                     </Listeners>
                                 </ext:Checkbox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" Note="多个指令使用|分隔，例：( 1|2|3 )"
                                     Hidden="true" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtAllowAndDisableArea" runat="server" FieldLabel="开通省份/屏蔽地市" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:TextArea ID="txtSendText" runat="server" FieldLabel="下发语" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

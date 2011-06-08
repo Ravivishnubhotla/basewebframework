@@ -383,6 +383,7 @@
     </Compile>
     <Compile Include="UrlSender\UrlSender.cs" />
     <Compile Include="UrlSender\UrlSendTask.cs" />
+    <Compile Include="Wrappers\LinkIDQueryCache.cs" />
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="Wrappers\PhoneCache.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />

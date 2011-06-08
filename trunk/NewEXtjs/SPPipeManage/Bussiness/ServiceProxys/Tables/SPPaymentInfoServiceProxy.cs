@@ -38,6 +38,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         void UpdateUrlSuccessSend(int id, string url);
         List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(int channelId, int clientChannelId, List<string> phones, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneList(int channelId, int clientChannelId, List<string> phones);
+        bool CheckHasLinkIDAndChannelID(SPPaymentInfoEntity entity);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -307,6 +308,15 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 spChannelEntity = DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
 
             return this.SelfDataObj.FindAllByChannelIDAndClientChannelIDAndPhoneList(spChannelEntity, clientChannelId, phones);
+        }
+
+
+        [Transaction(IsolationLevel.ReadUncommitted)]
+        public bool CheckHasLinkIDAndChannelID(SPPaymentInfoEntity paymentInfo)
+        {
+            SPPaymentInfoEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.CheckChannleLinkIDIsExist(paymentInfo.ChannelID, paymentInfo);
+
+            return (spPaymentInfoEntity != null);
         }
     }
  }

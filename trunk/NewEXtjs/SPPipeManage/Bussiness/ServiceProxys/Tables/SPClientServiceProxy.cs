@@ -22,7 +22,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds,string channelCode);
         List<SPClientEntity> GetAllDefaultClient();
         List<SPClientEntity> FindAllNotInClientGroup(int clientGroupId);
-        void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType);
+        void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText);
+ 
     }
 
     internal partial class SPClientServiceProxy : ISPClientServiceProxy
@@ -159,7 +160,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.SelfDataObj.FindAllNotInClientGroup(this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(clientGroupId));
         }
 
-        public void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType)
+ 
+
+        public void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText)
         {
             SPClientEntity mainclientEntity = new SPClientEntity();
             mainclientEntity.Name = channelEntity.Name + loginId;
@@ -197,6 +200,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainChannelClient.SyncData = false;
             mainChannelClient.ChannelCode = channelCode;
             mainChannelClient.Disable = false;
+            mainChannelClient.AllowAndDisableArea = allowAndDisableArea;
+            mainChannelClient.Getway = getway;
+            mainChannelClient.DayLimit = dayLimit;
+            mainChannelClient.MonthLimit = monthLimit;
+            mainChannelClient.SendText = sendText;
+           
+
+
 
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
 
@@ -230,6 +241,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 subChannelClient.SyncData = false;
                 subChannelClient.ChannelCode = channelCode;
                 subChannelClient.Disable = false;
+                subChannelClient.AllowAndDisableArea = allowAndDisableArea;
+                subChannelClient.Getway = getway;
+                subChannelClient.DayLimit = dayLimit;
+                subChannelClient.MonthLimit = monthLimit;
+                subChannelClient.SendText = sendText;
 
                 this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(subChannelClient);
             }

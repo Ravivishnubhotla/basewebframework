@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -420,9 +421,39 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
  
 
-        internal bool InsertPayment(List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType)
+        internal bool InsertPayment(out PaymentInfoInsertErrorType errorType)
         {
-            return businessProxy.InsertPayment(this.entity, uniqueKeyNames, out errorType);
+            errorType = PaymentInfoInsertErrorType.NoError;
+
+            if (this.CheckHasLinkIDAndChannelID())
+            {
+                errorType = PaymentInfoInsertErrorType.RepeatLinkID;
+
+                return false;
+            }
+
+            try
+            {
+                businessProxy.Save(this.entity);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Exception innerEx = ex;
+
+                while (innerEx.InnerException !=null)
+                {
+                    innerEx = innerEx.InnerException;
+                }
+
+                if (innerEx is SqlException && ((SqlException)innerEx).Number==2601)
+                {
+                    errorType = PaymentInfoInsertErrorType.RepeatLinkID;
+                    return false;
+                }
+
+                throw ex;
+            }
         }
 
 
@@ -663,5 +694,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindAllByChannelIDAndClientChannelIDAndPhoneList(channelId, clientChannelId, phones));	
         }
+
+
+	    public bool CheckHasLinkIDAndChannelID()
+	    {
+	        return businessProxy.CheckHasLinkIDAndChannelID(this.entity);
+	    }
     }
 }

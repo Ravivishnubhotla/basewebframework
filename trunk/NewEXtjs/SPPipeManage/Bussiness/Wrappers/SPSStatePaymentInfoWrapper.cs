@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
@@ -97,14 +98,54 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-	    public bool InsertPayment(List<string> uniqueKeyNames, out PaymentInfoInsertErrorType errorType)
+	    public bool InsertPayment(out PaymentInfoInsertErrorType errorType)
 	    {
-            return businessProxy.InsertPayment(this.entity, uniqueKeyNames, out errorType);
+            errorType = PaymentInfoInsertErrorType.NoError;
+
+            if (this.CheckHasLinkIDAndChannelID())
+            {
+                errorType = PaymentInfoInsertErrorType.RepeatLinkID;
+
+                return false;
+            }
+
+            try
+            {
+                businessProxy.Save(this.entity);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Exception innerEx = ex;
+
+                while (innerEx.InnerException != null)
+                {
+                    innerEx = innerEx.InnerException;
+                }
+
+                if (innerEx is SqlException && ((SqlException)innerEx).Number == 2601)
+                {
+                    errorType = PaymentInfoInsertErrorType.RepeatLinkID;
+                    return false;
+                }
+
+                throw ex;
+            }
+
+
+            //return businessProxy.InsertPayment(this.entity, uniqueKeyNames, out errorType);
 	    }
 
 	    public static SPSStatePaymentInfoWrapper FindByChannelIDAndLinkID(int channelID, string linkid)
 	    {
             return ConvertEntityToWrapper(businessProxy.FindByChannelIDAndLinkID(channelID, linkid));
 	    }
+
+        public bool CheckHasLinkIDAndChannelID()
+        {
+            return businessProxy.CheckHasLinkIDAndChannelID(this.entity);
+        }
+
+
     }
 }
