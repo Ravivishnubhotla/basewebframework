@@ -352,11 +352,25 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 linkid = Guid.NewGuid().ToString();
             }
 
-            if (string.IsNullOrEmpty(linkid))
+            try
             {
-                error.ErrorType = RequestErrorType.NoLinkID;
-                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
+                if (string.IsNullOrEmpty(linkid))
+                {
+                    error.ErrorType = RequestErrorType.NoLinkID;
+                    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
 
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+
+            if(LinkIDQueryCache.CheckLinkIDIsExisted(linkid,this.Id))
+            {
+                error.ErrorType = RequestErrorType.RepeatLinkID;
+                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID (缓存检查) .";
                 return false;
             }
 
@@ -425,6 +439,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
+
             if (phoneAreaInfo != null)
             {
                 paymentInfo.Province = phoneAreaInfo.Province;
@@ -455,10 +470,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                         sendTask.SendUrl = channelSetting.BulidUrl(paymentInfo);
                         sendTask.OkMessage = channelSetting.OkMessage;
-
-
-
-                        //paymentInfo.SucesssToSend = channelSetting.SendMsg(paymentInfo);
                     }
                 }
                 else
@@ -485,7 +496,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
                 {
                     error.ErrorType = RequestErrorType.RepeatLinkID;
-                    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
+                    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID（查询排重 异常排重） .";
                     error.ClientID = channelSetting.ClinetID.Id;
                     //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .",
                     //                                         Id, 0);
@@ -495,6 +506,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 error.ErrorType = RequestErrorType.NoError;
                 error.ErrorMessage = "";
+                try
+                {
+                    LinkIDQueryCache.AddLinkIDs(linkid, this.Id);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
 
                 if (sendTask!=null)
                 {
@@ -835,6 +854,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return false;
             }
 
+            //if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
+            //{
+            //    error.ErrorType = RequestErrorType.RepeatLinkID;
+            //    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
+            //    return false;
+            //}
+
             Hashtable exparams = GetEXParamsValue(httpGetPostReques.RequestParams);
 
             PhoneAreaInfo phoneAreaInfo = null;
@@ -900,6 +926,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.IsIntercept = false;
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostReques.RequestData;
+
             if (phoneAreaInfo != null)
             {
                 paymentInfo.Province = phoneAreaInfo.Province;
@@ -930,7 +957,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 error.ErrorType = RequestErrorType.NoError;
                 error.ErrorMessage = "";
-
+ 
                 SPStatReportWrapper spStatReportWrapper =
                     SPStatReportWrapper.FindByChannelIDAndLinkIDAndReportOk(this.Id, linkid);
 

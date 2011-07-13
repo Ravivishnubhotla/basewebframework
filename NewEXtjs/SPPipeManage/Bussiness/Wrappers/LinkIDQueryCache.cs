@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Common.Logging;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
+
+
     public static class LinkIDQueryCache
     {
+
+        private static ILog logger = LogManager.GetLogger(typeof(LinkIDQueryCache));
+
         public static HashSet<string> cachedLinkIDs;
 
         private static void GetDbCachedLinkIDs()
@@ -26,7 +32,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public const int MaxCacheItems = 600000;
+        public const int MaxCacheItems = 10;
 
         public static void AddLinkIDs(string linkid, int channelid)
         {
@@ -46,9 +52,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     GetDbCachedLinkIDs();
                 }
             }
-            catch 
+            catch(Exception ex) 
             {
-                 
+                 logger.Error(ex);
             }
         }
 
@@ -65,8 +71,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 return CachedLinkIDs.Contains(key);
             }
-            catch
+            catch(Exception ex) 
             {
+                logger.Error(ex);
                 return false;
             }
         }
