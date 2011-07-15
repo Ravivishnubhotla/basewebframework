@@ -67,7 +67,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 //if (channel.Id == 39)
                 //{
-                //    if(httpRequest.RequestParams.ContainsKey("linkid")&&httpRequest.RequestParams.ContainsKey("mobile"))
+                //    if (httpRequest.RequestParams.ContainsKey("linkid"))
                 //    {
                 //        httpRequest.RequestParams["linkid"] = httpRequest.RequestParams["mobile"].ToString() +
                 //                                              httpRequest.RequestParams["linkid"].ToString();

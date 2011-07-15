@@ -76,6 +76,29 @@ namespace LD.SPPipeManage.Bussiness.Commons
             requestQueryString = request.Url.Query;
         }
 
+        public HttpGetPostRequest(IHttpRequest request)
+        {
+            requestParams = new Hashtable();
+
+            foreach (DictionaryEntry dictionaryEntry in request.RequestParams)
+            {
+                requestParams.Add(dictionaryEntry.Key, dictionaryEntry.Value);
+            }
+
+            requestData = SerializeUtil.ToJson(requestParams);
+
+            requestIP = request.RequestIp;
+
+            requestFileName = request.RequestFileName;
+
+            requestUrl = request.RequestUrl;
+
+            requestQueryString = request.RequestQueryString;
+        }
+
+
+
+
         public static string GetIP(HttpRequest request)
         {
             string ip = string.Empty;

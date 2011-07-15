@@ -300,6 +300,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.FindByAlias(fileName));
         }
 
+        public static SPChannelWrapper FindByAlias(string alias)
+        {
+            return ConvertEntityToWrapper(businessProxy.FindByAlias(alias));
+        }
+
         public static Hashtable GetRequestValue(HttpContext requestContext)
         {
             Hashtable hb = new Hashtable();
