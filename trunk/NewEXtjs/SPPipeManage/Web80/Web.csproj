@@ -365,6 +365,8 @@
     <Content Include="Moudles\SystemManage\LogViews\TextLogList.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\UCFileView.ascx" />
     <Content Include="Services\SPDataService.asmx" />
+    <Content Include="SPSInterface\IVRChannel.aspx" />
+    <Content Include="SPSInterface\IVRXLChannel.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1210,7 +1212,6 @@
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SPS\MonitorRequestView\" />
     <Folder Include="Moudles\SPS\SPChannelFilters\" />
-    <Folder Include="SPSInterface\" />
     <Folder Include="SPSTestInterface\" />
   </ItemGroup>
   <ItemGroup>

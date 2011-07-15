@@ -20,6 +20,19 @@ namespace DataSendTools
 
         static void Main(string[] args)
         {
+
+            //DateTime startdate = Convert.ToDateTime("2011-07-15 10:01:00");
+            //DateTime enddate = Convert.ToDateTime("2011-07-15 10:02:02");
+
+            //int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble((enddate - startdate).TotalSeconds) / 60));
+
+            //Console.WriteLine(feetime);
+
+            //Console.WriteLine(startdate.ToString("yyMMddhhmmss"));
+
+            //return;
+
+
             DataSet ds = GetData(ConfigurationManager.AppSettings["selectSQL"]);
 
             string sendUrlTemplate = ConfigurationManager.AppSettings["sendUrl"];
