@@ -15,46 +15,54 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public static HashSet<string> cachedLinkIDs;
 
+        private static readonly object obj = new object();
+
         private static void GetDbCachedLinkIDs()
         {
             cachedLinkIDs = new HashSet<string>();
         }
 
-        private static HashSet<string> CachedLinkIDs 
+        private static HashSet<string> CachedLinkIDs
         {
             get
             {
                 if (cachedLinkIDs == null)
                 {
-                    GetDbCachedLinkIDs();
+                    lock (obj)
+                    {
+                        GetDbCachedLinkIDs();
+                    }
                 }
                 return cachedLinkIDs;
             }
         }
 
-        public const int MaxCacheItems = 10;
+        public const int MaxCacheItems = 200000;
 
         public static void AddLinkIDs(string linkid, int channelid)
         {
 
             try
             {
-                string key = GetKey(channelid, linkid);
-
-                if(!CachedLinkIDs.Contains(key))
+                lock (obj)
                 {
-                    CachedLinkIDs.Add(key);
-                }
+                    string key = GetKey(channelid, linkid);
+
+                    if (!CachedLinkIDs.Contains(key))
+                    {
+                        CachedLinkIDs.Add(key);
+                    }
 
 
-                if (CachedLinkIDs.Count > MaxCacheItems)
-                {
-                    GetDbCachedLinkIDs();
+                    if (CachedLinkIDs.Count > MaxCacheItems)
+                    {
+                        GetDbCachedLinkIDs();
+                    }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                 logger.Error(ex);
+                logger.Error(ex);
             }
         }
 
@@ -71,7 +79,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 return CachedLinkIDs.Contains(key);
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 logger.Error(ex);
                 return false;
