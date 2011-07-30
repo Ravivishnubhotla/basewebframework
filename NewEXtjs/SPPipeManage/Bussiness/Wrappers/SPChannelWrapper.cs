@@ -859,6 +859,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return false;
             }
 
+            if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
+            {
+                error.ErrorType = RequestErrorType.RepeatLinkID;
+                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID (缓存检查) .";
+                return false;
+            }
+
             //if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
             //{
             //    error.ErrorType = RequestErrorType.RepeatLinkID;
@@ -1117,6 +1124,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
 
+            if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
+            {
+                error.ErrorType = RequestErrorType.RepeatLinkID;
+                error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID (缓存检查) .";
+                return false;
+            }
+
 
             //保存状态报告
             SPStatReportWrapper statReport = new SPStatReportWrapper();
@@ -1233,6 +1247,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 error.ErrorType = RequestErrorType.NoError;
                 error.ErrorMessage = "";
+
+                try
+                {
+                    LinkIDQueryCache.AddLinkIDs(linkid, this.Id);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
 
                 if (sendTask != null)
                 {

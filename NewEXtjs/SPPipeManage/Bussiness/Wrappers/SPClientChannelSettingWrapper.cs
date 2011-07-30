@@ -611,7 +611,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
+        public NameValueCollection GetAllSendParams()
+        {
+            NameValueCollection sendParams = new NameValueCollection();
 
+            List<SPClientChannelSycnParamsWrapper> clientFieldMappings = this.GetFieldMappings();
+
+            if (clientFieldMappings.Count > 0)
+            {
+                foreach (SPClientChannelSycnParamsWrapper clientFieldMapping in clientFieldMappings)
+                {
+                    sendParams.Add(clientFieldMapping.Name, clientFieldMapping.MappingParams);
+                }
+            }
+            else
+            {
+                List<SPChannelDefaultClientSycnParamsWrapper> channelFieldMappings = this.ChannelID.GetAllEnableDefaultSendParams();
+
+                foreach (SPChannelDefaultClientSycnParamsWrapper channelDefaultClientSycnParam in channelFieldMappings)
+                {
+                    sendParams.Add(channelDefaultClientSycnParam.Name, channelDefaultClientSycnParam.MappingParams);
+                }
+            }
+
+            return sendParams;
+        }
 
 
 

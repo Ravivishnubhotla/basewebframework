@@ -313,6 +313,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
@@ -522,6 +523,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx.cs">
+      <DependentUpon>SPChannelClientSendClientTestRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx.designer.cs">
+      <DependentUpon>SPChannelClientSendClientTestRequestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx.cs">
       <DependentUpon>SPChannelClientSendTestRequestForm.aspx</DependentUpon>

@@ -98,11 +98,13 @@
             {
              toolbar.items.items[0].menu.items.items[1].show();
              toolbar.items.items[0].menu.items.items[2].show();
+                toolbar.items.items[0].menu.items.items[8].show();
             }
             
             else{
              toolbar.items.items[0].menu.items.items[1].hide();
              toolbar.items.items[0].menu.items.items[2].hide();
+                toolbar.items.items[0].menu.items.items[8].hide();
         
             }
 
@@ -223,6 +225,21 @@
                 win.setTitle("  "+id.data.Name + "  " + " 发送模拟数据 ");
                 
                 win.autoLoad.url = 'SPChannelClientSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+        
+                win.show();    
+            } 
+            
+            
+           if (cmd == "cmdTestClient") {
+
+                var win = <%= this.WindwinSendClientTestRequestFormow1.ClientID %>;
+                
+
+                win.setTitle("  "+id.data.Name + "  " + " 下家发送模拟数据 ");
+                
+                win.autoLoad.url = 'SPChannelClientSendClientTestRequestForm.aspx';
                 
                 win.autoLoad.params.ChannleClientID = id.data.Id;
         
@@ -365,12 +382,13 @@
                                                 <Items>
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
                                                     <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置同步参数" />
-                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="测试" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="通道测试" />
                                                     <ext:MenuCommand Icon="ScriptAdd" CommandName="cmdAddSubCode" Text="添加子指令" />
                                                     <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true" />
                                                     <ext:MenuCommand Icon="UserGo" CommandName="cmdChangeClientUser" Text="更换下家用户" />
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetCode" Text="设置" />
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdProvinceFilter" Text="省份过滤" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTestClient" Text="下家测试" />
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Menu" />
@@ -422,6 +440,20 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+        <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
