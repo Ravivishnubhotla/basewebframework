@@ -383,6 +383,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             PhoneAreaInfo phoneAreaInfo = null;
 
+#if DEBUG 
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+ 
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+ 
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+#else
             if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
             {
                 try
@@ -401,6 +416,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     Logger.Error(ex.Message);
                 }
             }
+#endif
+
+
 
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostRequest.RequestParams,

@@ -49,7 +49,7 @@
             }
             if(command.command == 'ReSend')
             {
-                if(record.data.IsSycnData&&(record.data.DownCount!=record.data.DownSycnCount))
+                if(record.data.IsSycnData)
                 {
                     command.hidden = false;
                     command.hideMode = 'display';  
@@ -95,7 +95,7 @@
 
 
                          if (command == "ReSend") {
-                Coolite.AjaxMethods.UCResetSycTimes.Show(record.data.ChannelClientID,record.data.DownCount,record.data.DownSycnCount,
+                Coolite.AjaxMethods.UCResetSycTimes.Show(record.data.ChannelClientID,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg);

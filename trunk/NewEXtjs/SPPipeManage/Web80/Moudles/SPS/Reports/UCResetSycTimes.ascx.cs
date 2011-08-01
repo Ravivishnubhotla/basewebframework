@@ -18,7 +18,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         }
 
         [AjaxMethod]
-        public void Show(int clientChannleID, int downCount, int downSycnCount)
+        public void Show(int clientChannleID)
         {
             try
             {
@@ -26,11 +26,41 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                 this.hidClientChannelID.Text = clientChannleID.ToString(); 
                 this.lblChannleName.Text = obj.ChannelName;
                 this.lblClientName.Text = obj.ClientName;
+
+
+                int downCount = SPPaymentInfoWrapper.FindAllPaymentCountByDateAndType(System.DateTime.Now.Date,
+                                                                System.DateTime.Now.Date,
+                                                                clientChannleID,
+                                                                DataType.Down.ToString());
+
+                int downSycnCount = SPPaymentInfoWrapper.FindAllPaymentCountByDateAndType(System.DateTime.Now.Date,
+                                                                System.DateTime.Now.Date,
+                                                                clientChannleID,
+                                                                DataType.Intercept.ToString());
+
+
+                int downNotSycn = SPPaymentInfoWrapper.FindAllPaymentCountByDateAndType(System.DateTime.Now.Date,
+                                                System.DateTime.Now.Date,
+                                                clientChannleID,
+                                                DataType.DownNotSycn.ToString());
+
+                int sycnFailed = SPPaymentInfoWrapper.FindAllPaymentCountByDateAndType(System.DateTime.Now.Date,
+                                System.DateTime.Now.Date,
+                                clientChannleID,
+                                DataType.SycnFailed.ToString());
+ 
+
+
                 this.lblDownCount.Text = downCount.ToString();
                 this.lblSycnCount.Text = downSycnCount.ToString();
-                this.lblSycnFailedCount.Text = obj.GetSycnFailedCount(System.DateTime.Now.Date).ToString();
-                this.btnResetSycTimes.Disabled = !(obj.SyncData.HasValue && obj.SyncData.Value);
-                
+                this.lblDownNotSycnCount.Text = downNotSycn.ToString();
+                this.lblSycnFailedCount.Text = sycnFailed.ToString();
+
+                this.btnReSendDown.Disabled = (downCount <=0);
+                this.btnReSendSycn.Disabled = (downSycnCount <= 0);
+                this.btnReSendDownNotSycn.Disabled = (downNotSycn <= 0);
+                this.btnReSendSycnFailed.Disabled = (sycnFailed <= 0);
+
                 this.winResetSycTimes.Show();
             }
             catch (Exception ex)
