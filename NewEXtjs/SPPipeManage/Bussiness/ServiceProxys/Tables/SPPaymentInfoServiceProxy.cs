@@ -39,6 +39,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(int channelId, int clientChannelId, List<string> phones, string sortFieldName, bool isDesc, int pageIndex, int limit, out int recordCount);
         List<SPPaymentInfoEntity> FindAllByChannelIDAndClientChannelIDAndPhoneList(int channelId, int clientChannelId, List<string> phones);
         bool CheckHasLinkIDAndChannelID(SPPaymentInfoEntity entity);
+
+        DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType, int limit);
+
+        int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -317,6 +321,18 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             SPPaymentInfoEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPPaymentInfoDataObjectInstance.CheckChannleLinkIDIsExist(paymentInfo.ChannelID, paymentInfo);
 
             return (spPaymentInfoEntity != null);
+        }
+
+
+        public DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType, int limit)
+        {
+            return AdoNetDb.FindAllPaymentIDByDateAndType(startDate, endDate, channleClientID, dataType, limit);
+        }
+
+
+        public int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType)
+        {
+            return AdoNetDb.FindAllPaymentCountByDateAndType(startDate, endDate, channleClientID, dataType);
         }
     }
  }

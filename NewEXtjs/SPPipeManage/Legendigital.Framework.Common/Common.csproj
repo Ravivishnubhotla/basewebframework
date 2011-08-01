@@ -892,11 +892,13 @@
     <Compile Include="Web\Designer\GridViewExtenderDesigner.cs" />
     <Compile Include="Web\Designer\GridViewIDConverter.cs" />
     <Compile Include="Web\Handler\DocumentViewHandler.cs" />
+    <Compile Include="Web\Request\WebRequestResult.cs" />
     <Compile Include="Web\UI\GridViewAddRowExtender.cs" />
     <Compile Include="Web\UI\GridViewSortExtender.cs" />
     <Compile Include="Web\UI\SuperWebTreeNode.cs" />
     <Compile Include="Web\UI\TreeViewExenter.cs" />
     <Compile Include="Web\UI\TypedTreeNodeItem.cs" />
+    <Compile Include="Web\Request\WebRequestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemApplicationMappingFile.hbm.xml" />

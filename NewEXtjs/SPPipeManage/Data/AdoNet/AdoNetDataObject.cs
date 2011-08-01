@@ -127,6 +127,90 @@ namespace LD.SPPipeManage.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
         }
 
+        public int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType)
+        {
+
+            string sql = "Select Count(*) from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and  ChannleClientID = @ChannleClientID ";
+
+            switch (dataType)
+            {
+                case "All":
+                    break;
+                case "Intercept":
+                    sql += " AND IsIntercept = 1 ";
+                    break;
+                case "Down":
+                    sql += " AND IsIntercept = 0 ";
+                    break;
+                case "DownSycn":
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
+                    break;
+                case "DownNotSycn":
+                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+                    break;
+                case "SycnFailed":
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            dbParameters.AddWithValue("ChannleClientID", channleClientID);
+
+            return this.ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType,int limit)
+        {
+            string top = "";
+
+            if(limit!=int.MaxValue)
+            {
+                top = " TOP " + limit.ToString();
+            }
+
+
+            string sql = "Select " + top + " ID from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and  ChannleClientID = @ChannleClientID ";
+
+            switch (dataType)
+            {
+                case "All":
+                    break;
+                case "Intercept":
+                    sql += " AND IsIntercept = 1 ";
+                    break;
+                case "Down":
+                    sql += " AND IsIntercept = 0 ";
+                    break;
+                case "DownSycn":
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
+                    break;
+                case "DownNotSycn":
+                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+                    break;
+                case "SycnFailed":
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+            
+            
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            dbParameters.AddWithValue("ChannleClientID", channleClientID);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
+        }
+
+
         public void ClearAllReportedData(DateTime date)
         {
             string sql = "update SPPaymentInfo set  IsReport = 1  where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and  IsReport = 0";

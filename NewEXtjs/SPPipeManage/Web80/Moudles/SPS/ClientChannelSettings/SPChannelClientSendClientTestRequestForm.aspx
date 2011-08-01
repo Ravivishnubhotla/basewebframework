@@ -11,25 +11,35 @@
 
         function SubmitUrl(surl, lbl) {
             lbl.setText(surl);
-            //Ext.Msg.alert('操作', surl);
-            Ext.Ajax.request({
-                url: surl,
-                method: "GET",
-                success: function (response, opts) {
-
-                    var lblOkMessage = <%= lblOkMessage.ClientID %>;
+            Coolite.AjaxMethods.SubmitUrl(surl,
+                                                                {
+                                                                    failure: function (msg) {
+                                                                        Ext.Msg.alert('请求失败', msg);
+                                                                    },
+                                                                    success: function (result) {
+                                                                    var lblOkMessage = <%= lblOkMessage.ClientID %>;
                     
-                    var rtext = response.responseText.toLowerCase();
-                    if (Ext.util.Format.trim(rtext.toLowerCase()) == Ext.util.Format.trim(lblOkMessage.getText().toLowerCase()))
-                        Ext.Msg.alert('消息', '请求成功，响应字符串："' + response.responseText + '"');
+                    var rtext = result.toLowerCase();
+                    if (Ext.util.Format.trim(rtext.toLowerCase()) == Ext.util.Format.trim(lblOkMessage.getText().toLowerCase())) {
+                        Ext.Msg.alert('消息', '请求成功，响应字符串："' + result + '"');
+                        var btnRefreshData = <%= btnRefreshData.ClientID %>;
+                        btnRefreshData.fireEvent("click");
+                    }
+                                                                        
                     else
-                        Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
-                    //alert(response.responseText);
-                },
-                failure: function () {
-                    alert('请求失败！');
-                }
-            });
+                        Ext.Msg.alert('消息', '请求失败，响应字符串："' + result + '"');                            
+                                                                    },
+                                                                    eventMask: {
+                                                                        showMask: true,
+                                                                        msg: '发送请求中...'
+                                                                    }
+                                                                }
+                                                            );            
+            
+            
+            
+            
+ 
 
         }
 

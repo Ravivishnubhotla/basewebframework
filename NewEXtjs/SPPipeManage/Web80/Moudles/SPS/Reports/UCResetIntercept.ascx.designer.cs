@@ -13,6 +13,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     public partial class UCResetIntercept {
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManager1;
+        
+        /// <summary>
         /// winResetIntercept control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,33 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Hidden hidClientChannelID;
+        
+        /// <summary>
+        /// hidClientID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidClientID;
+        
+        /// <summary>
+        /// hidChannelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidChannelID;
+        
+        /// <summary>
+        /// hidMaxChangeCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidMaxChangeCount;
         
         /// <summary>
         /// lblChannleName control.
@@ -103,6 +139,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.NumberField numMaxCount;
         
         /// <summary>
+        /// lblMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblMessage;
+        
+        /// <summary>
         /// btnResetIntercept control.
         /// </summary>
         /// <remarks>
@@ -119,5 +164,50 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Button btnCancelResetIntercept;
+        
+        /// <summary>
+        /// TaskManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TaskManager TaskManager1;
+        
+        /// <summary>
+        /// winProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winProgress;
+        
+        /// <summary>
+        /// FormLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
+        
+        /// <summary>
+        /// prgProcess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ProgressBar prgProcess;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnCancel;
     }
 }

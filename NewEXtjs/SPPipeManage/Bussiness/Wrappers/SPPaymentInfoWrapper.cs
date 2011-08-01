@@ -12,6 +12,7 @@ using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Utility;
 using Spring.Data.NHibernate.Support;
+using LD.SPPipeManage.Bussiness.UrlSender;
 
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
@@ -21,7 +22,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         All,
         Intercept,
         Down,
-        DownSycn
+        DownSycn,
+        DownNotSycn,
+        SycnFailed
     }
 
 
@@ -137,7 +140,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 	    }
 
-        public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        public static int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType)
+        {
+            return businessProxy.FindAllPaymentCountByDateAndType(startDate, endDate, channleClientID, dataType);
+        }
+
+	    public static DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType, int limit)
+        {
+            return businessProxy.FindAllPaymentIDByDateAndType(startDate,   endDate,   channleClientID,   dataType,   limit);
+        }
+
+
+	    public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             if(channelId==0)
                 throw new ArgumentException(" channelId not allow 0.");
@@ -180,7 +194,28 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         }
 
-        public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate
+
+
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDate
+    (int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            if (channelId == 0)
+                throw new ArgumentException(" channelId not allow 0.");
+
+            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelId);
+
+            return ConvertToWrapperList(businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+                                                                                                  startDateTime,
+                                                                                                  enddateTime, dataType,
+                                                                                                  sortFieldName, isDesc,
+                                                                                                  pageIndex, pageSize,
+                                                                                                  out recordCount));
+
+ 
+
+        }
+ 
+	    public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate
             (int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             if (channelId == 0)
@@ -419,9 +454,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return macthClientChannelSetting;
         }
 
- 
+        public UrlSendTask BulidSendTask()
+        {
+            UrlSendTask sendTask = new UrlSendTask();
 
-        internal bool InsertPayment(out PaymentInfoInsertErrorType errorType)
+            sendTask.SendUrl = this.ClientID.DefaultClientChannelSetting.BulidUrl(this);
+            sendTask.OkMessage = this.ClientID.DefaultClientChannelSetting.OkMessage;
+            sendTask.PaymentID = this.Id;
+
+            return sendTask;
+        }
+
+
+
+	    internal bool InsertPayment(out PaymentInfoInsertErrorType errorType)
         {
             errorType = PaymentInfoInsertErrorType.NoError;
 

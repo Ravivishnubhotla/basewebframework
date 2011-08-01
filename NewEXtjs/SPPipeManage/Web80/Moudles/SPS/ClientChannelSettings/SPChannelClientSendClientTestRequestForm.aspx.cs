@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Utility;
+using Legendigital.Framework.Common.Web.Request;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 {
@@ -46,27 +47,27 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 txt.ID = "txt" + sendParamKey;
                 txt.FieldLabel = sendParamKey;
 
-                if (sendParams[sendParamKey] == "linkid")
+                if (sendParams[sendParamKey] == "linkid" || sendParamKey == "linkid")
                 {
                     txt.Value = "test" + Guid.NewGuid().ToString();
 
                     hidLinkIDeName.Text = txt.ClientID;
                 }
 
-                if (sendParams[sendParamKey] == "mobile")
+                if (sendParams[sendParamKey] == "mobile" || sendParamKey == "mobile")
                 {
                     txt.Value = "135" + StringUtil.GetRandNumber(8);
 
                     hidMobileName.Text = txt.ClientID;
                 }
 
-                if (sendParams[sendParamKey] == "cpid")
+                if (sendParams[sendParamKey] == "cpid" || sendParamKey == "spCode")
                 {
                     if (!string.IsNullOrEmpty(settingWrapper.ChannelCode))
                         txt.Value = settingWrapper.ChannelCode;
                 }
 
-                if (sendParams[sendParamKey] == "ywid")
+                if (sendParams[sendParamKey] == "ywid" || sendParamKey == "mo")
                 {
                     if (!string.IsNullOrEmpty(settingWrapper.CommandCode))
                         txt.Value = settingWrapper.CommandCode;
@@ -89,6 +90,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             spMessage.Mo = "";
             spMessage.SPCode = "";
             return spMessage;
+        }
+
+
+        [AjaxMethod]
+        public string SubmitUrl(string url)
+        {
+            WebRequestResult result = WebRequestHelper.SendRequest(url, 10000);
+
+            if(result.IsSuccess)
+            {
+                return result.ResponseText;
+            }
+            else
+            {
+                return result.ErrorMessage;            
+            }
         }
     }
 }
