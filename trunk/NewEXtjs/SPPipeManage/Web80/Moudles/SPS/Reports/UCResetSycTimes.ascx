@@ -86,7 +86,7 @@
         </ext:Button>
     </Buttons>
 </ext:Window>
-<ext:TaskManager ID="TaskManager2" runat="server">
+<%--<ext:TaskManager ID="TaskManager2" runat="server">
     <Tasks>
         <ext:Task TaskID="longactionprogress" Interval="1000" AutoRun="false" OnStart="
                         #{btnResetIntercept}.setDisabled(true);" OnStop="
@@ -116,4 +116,4 @@
             </AjaxEvents>
         </ext:Button>
     </Buttons>
-</ext:Window>
+</ext:Window>--%>
