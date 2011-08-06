@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
-
-<%@ Register Src="UCResetSycTimes.ascx" TagName="UCResetSycTimes" TagPrefix="uc1" %>
-<%@ Register Src="UCResetIntercept.ascx" TagName="UCResetIntercept" TagPrefix="uc3" %>
 <%@ Register Src="../ClientChannelSettings/UCSPClientChannelSettingEdit.ascx" TagName="UCSPClientChannelSettingEdit"
     TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -40,6 +37,16 @@
          var RefreshReportData = function(btn) {
             <%= this.Store1.ClientID %>.reload();
         };
+         
+         
+                 function CloseInterceptReset()
+        {
+                var win = <%= this.winResetIntercept.ClientID %>;
+                
+ 
+                                         
+                win.hide();   
+        }
 
 
         var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
@@ -94,33 +101,33 @@
             }
 
 
-                         if (command == "ReSend") {
-                Coolite.AjaxMethods.UCResetSycTimes.Show(record.data.ChannelClientID,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '加载中...'
-                                                                               }
-                                                                }              
-                );
+            if (command == "ReSend") {
+                             
+                             
+                var win = <%= this.winReSendData.ClientID %>;
+                
+                win.setTitle("取消扣除的数据");
+                
+                win.autoLoad.url = 'ReSendData.aspx';
+                
+                win.autoLoad.params.ClientChannelID = record.data.ChannelClientID;
+                                         
+                win.show(); 
             }
 
 
-                                     if (command == "InterceptReset") {
-                Coolite.AjaxMethods.UCResetIntercept.Show(record.data.ChannelClientID,record.data.TotalCount,record.data.InterceptCount,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '加载中...'
-                                                                               }
-                                                                }              
-                );
+           if (command == "InterceptReset") {
+                                         
+                var win = <%= this.winResetIntercept.ClientID %>;
+                
+                win.setTitle("取消扣除的数据");
+                
+                win.autoLoad.url = 'ResetInterceptToSycn.aspx';
+                
+                win.autoLoad.params.ClientChannelID = record.data.ChannelClientID;
+                                         
+                win.show();                      
+                                         
             }
 
 
@@ -214,18 +221,15 @@
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
-                    <ext:RecordField Name="IsSycnData" Type=Boolean />
+                    <ext:RecordField Name="IsSycnData" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
-         <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCResetSycTimes ID="UCResetSycTimes1" runat="server" />
-
-        <uc3:UCResetIntercept ID="UCResetIntercept1" runat="server" />
-    
     <uc2:UCSPClientChannelSettingEdit ID="UCSPClientChannelSettingEdit1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
@@ -334,7 +338,7 @@
                                         <ext:ImageCommand Icon="TableEdit" CommandName="InterceptCountChange">
                                             <ToolTip Text="手动修改扣量" />
                                         </ext:ImageCommand>
-                                        <ext:ImageCommand Icon=TableGo CommandName="InterceptReset">
+                                        <ext:ImageCommand Icon="TableGo" CommandName="InterceptReset">
                                             <ToolTip Text="取消扣量并同步下家" />
                                         </ext:ImageCommand>
                                     </Commands>
@@ -387,6 +391,34 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winReSendData" runat="server" Icon="TableGo" Title="重新发送数据" Frame="true"
+        Width="640" ConstrainHeader="true" Height="220" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winResetIntercept" runat="server" Icon="TableGo" Title="取消扣量同步下家"
+        Frame="true" Width="640" ConstrainHeader="true" Height="320" Maximizable="true"
+        Closable="true" Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
     <ext:Window ID="Window1" runat="server" Title="Window" Frame="true" Width="640" ConstrainHeader="true"
         Height="480" Maximizable="true" Closable="true" Resizable="true" Modal="true"
         ShowOnLoad="false">

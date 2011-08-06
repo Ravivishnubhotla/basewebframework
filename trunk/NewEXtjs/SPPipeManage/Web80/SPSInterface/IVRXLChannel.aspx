@@ -63,9 +63,9 @@
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
-		request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
+		    request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
 
-		request.RequestParams.Add("feetime",feetime.ToString());
+		    request.RequestParams.Add("feetime",feetime.ToString());
 
                 request.RequestParams.Add("fcount","1");
 
