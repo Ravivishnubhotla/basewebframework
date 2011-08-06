@@ -49,7 +49,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 if (sendParams[sendParamKey] == "linkid" || sendParamKey == "linkid")
                 {
-                    txt.Value = "test" + Guid.NewGuid().ToString();
+                    txt.Value = "99999" + StringUtil.GetRandNumber(15);
 
                     hidLinkIDeName.Text = txt.ClientID;
                 }
@@ -85,7 +85,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
         public SPMessage GetTestSPMessage()
         {
             SPMessage spMessage = new SPMessage();
-            spMessage.LinkID = "test" + Guid.NewGuid().ToString();
+            spMessage.LinkID = "99999" + StringUtil.GetRandNumber(15);
             spMessage.Mobile = "135" + StringUtil.GetRandNumber(8);
             spMessage.Mo = "";
             spMessage.SPCode = "";

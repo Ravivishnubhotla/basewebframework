@@ -10,25 +10,16 @@
 namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     
     
-    public partial class ReportToday {
+    public partial class ResetInterceptToSycn {
         
         /// <summary>
-        /// Store1 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Store Store1;
-        
-        /// <summary>
-        /// UCSPClientChannelSettingEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingEdit UCSPClientChannelSettingEdit1;
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManager1;
         
         /// <summary>
         /// viewPortMain control.
@@ -49,129 +40,174 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPClientChannelSetting control.
+        /// formResetIntercept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPClientChannelSetting;
+        protected global::Coolite.Ext.Web.FormPanel formResetIntercept;
         
         /// <summary>
-        /// tbTop control.
+        /// FormLayoutResetIntercept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar tbTop;
+        protected global::Coolite.Ext.Web.FormLayout FormLayoutResetIntercept;
         
         /// <summary>
-        /// btnExport control.
+        /// hidClientChannelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnExport;
+        protected global::Coolite.Ext.Web.Hidden hidClientChannelID;
         
         /// <summary>
-        /// btnRefresh control.
+        /// hidClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
+        protected global::Coolite.Ext.Web.Hidden hidClientID;
         
         /// <summary>
-        /// ToolbarTextItem1 control.
+        /// hidChannelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem1;
+        protected global::Coolite.Ext.Web.Hidden hidChannelID;
         
         /// <summary>
-        /// chkFilterNoCount control.
+        /// hidMaxChangeCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkFilterNoCount;
+        protected global::Coolite.Ext.Web.Hidden hidMaxChangeCount;
         
         /// <summary>
-        /// txtTotalCount control.
+        /// lblChannleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem txtTotalCount;
+        protected global::Coolite.Ext.Web.Label lblChannleName;
         
         /// <summary>
-        /// txtInterceptCount control.
+        /// lblClientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem txtInterceptCount;
+        protected global::Coolite.Ext.Web.Label lblClientName;
         
         /// <summary>
-        /// txtDownCount control.
+        /// lblDownCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownCount;
+        protected global::Coolite.Ext.Web.Label lblDownCount;
         
         /// <summary>
-        /// txtDownSycnCount control.
+        /// lblSycnCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownSycnCount;
+        protected global::Coolite.Ext.Web.Label lblSycnCount;
         
         /// <summary>
-        /// GridView1 control.
+        /// numMaxCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
+        protected global::Coolite.Ext.Web.NumberField numMaxCount;
         
         /// <summary>
-        /// winReSendData control.
+        /// btnResetIntercept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winReSendData;
+        protected global::Coolite.Ext.Web.Button btnResetIntercept;
         
         /// <summary>
-        /// winResetIntercept control.
+        /// btnCancelResetIntercept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winResetIntercept;
+        protected global::Coolite.Ext.Web.Button btnCancelResetIntercept;
         
         /// <summary>
-        /// Window1 control.
+        /// hidChannelClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window Window1;
+        protected global::Coolite.Ext.Web.Hidden hidChannelClientID;
+        
+        /// <summary>
+        /// TaskManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TaskManager TaskManager1;
+        
+        /// <summary>
+        /// winProgress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winProgress;
+        
+        /// <summary>
+        /// FormLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
+        
+        /// <summary>
+        /// prgProcess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ProgressBar prgProcess;
+        
+        /// <summary>
+        /// btnCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnCancel;
     }
 }

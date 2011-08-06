@@ -358,10 +358,10 @@
     <Content Include="Moudles\SPS\Reports\ReportDataChange.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDataChangeService.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReSendData.aspx" />
+    <Content Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
     <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
-    <Content Include="Moudles\SPS\Reports\UCResetIntercept.ascx" />
-    <Content Include="Moudles\SPS\Reports\UCResetSycTimes.ascx" />
     <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\TextLogList.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\UCFileView.ascx" />
@@ -373,6 +373,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppClass\PageResend.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
     <Compile Include="AppClass\SP0025Handler.cs" />
     <Compile Include="AppClass\SPClientGroupViewPage.cs">
@@ -387,6 +390,9 @@
     <Compile Include="AppClass\SPRecievedHandler.cs" />
     <Compile Include="AppClass\SPTestSendHandle.cs" />
     <Compile Include="AppClass\SPXmlRecievedHandler.cs" />
+    <Compile Include="AppClass\UCLongActionOp.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1043,6 +1049,20 @@
     <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.designer.cs">
       <DependentUpon>ReportToday.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReSendData.aspx.cs">
+      <DependentUpon>ReSendData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReSendData.aspx.designer.cs">
+      <DependentUpon>ReSendData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx.cs">
+      <DependentUpon>ResetInterceptToSycn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx.designer.cs">
+      <DependentUpon>ResetInterceptToSycn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.cs">
       <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1056,20 +1076,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.designer.cs">
       <DependentUpon>UCMovePayment.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Reports\UCResetIntercept.ascx.cs">
-      <DependentUpon>UCResetIntercept.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Reports\UCResetIntercept.ascx.designer.cs">
-      <DependentUpon>UCResetIntercept.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Reports\UCResetSycTimes.ascx.cs">
-      <DependentUpon>UCResetSycTimes.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Reports\UCResetSycTimes.ascx.designer.cs">
-      <DependentUpon>UCResetSycTimes.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Upers\SPUperListPage.aspx.cs">
       <DependentUpon>SPUperListPage.aspx</DependentUpon>
