@@ -67,6 +67,19 @@
                 }
             }
 
+            
+//            if(command.command == 'InterceptCountChange')
+//            {
+//                if(!record.data.IsSycnData)
+//                {
+//                    command.hidden = false;
+//                    command.hideMode = 'display';  
+//                }
+//                else{
+//                    command.hidden = true;
+//                    command.hideMode = 'display';  
+//                }
+//            }
 
             if(command.command == 'InterceptReset')
             {
