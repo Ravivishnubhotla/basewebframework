@@ -7,6 +7,7 @@ using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -238,8 +239,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (this.CommandType == "1")
                     return this.CommandCode + " (精准) 到 " + spcode + provinceLimit;
 
+                if (this.CommandType == "2")
+                    return "包含" + this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
+
                 if (this.CommandType == "3")
                     return this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
+
+                if (this.CommandType == "4")
+                    return "结尾" + this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
+
+                if (this.CommandType == "5")
+                    return "正则" + this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
+
+                if (this.CommandType == "6")
+                    return "自定义" + this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
  
                 return columnName + " " + this.CommandTypeName + " " + this.CommandCode;
             }
@@ -316,9 +329,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 case "4":
                     return ywid.ToLower().EndsWith(this.CommandCode.ToLower());
                 case "5":
-                    return false;
+                    return Regex.IsMatch(ywid.ToLower(), this.CommandCode.ToLower());
                 case "6":
-                    return false;
+                    string newRegCommandCode = this.CommandCode.ToLower().Replace("*", "[S]*").Replace("?", "[S]{1}");
+                    return Regex.IsMatch(ywid.ToLower(), newRegCommandCode,RegexOptions.IgnoreCase);
                 case "7":
                     return true;
             }

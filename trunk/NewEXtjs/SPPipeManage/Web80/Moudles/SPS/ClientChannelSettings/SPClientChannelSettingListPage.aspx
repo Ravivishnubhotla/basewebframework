@@ -96,14 +96,14 @@
       
             if(record.data.SyncData!=null && record.data.SyncData)
             {
-             toolbar.items.items[0].menu.items.items[1].show();
-             toolbar.items.items[0].menu.items.items[2].show();
+                toolbar.items.items[0].menu.items.items[1].show();
+                //toolbar.items.items[0].menu.items.items[2].show();
                 toolbar.items.items[0].menu.items.items[8].show();
             }
             
             else{
-             toolbar.items.items[0].menu.items.items[1].hide();
-             toolbar.items.items[0].menu.items.items[2].hide();
+                toolbar.items.items[0].menu.items.items[1].hide();
+                //toolbar.items.items[0].menu.items.items[2].hide();
                 toolbar.items.items[0].menu.items.items[8].hide();
         
             }
