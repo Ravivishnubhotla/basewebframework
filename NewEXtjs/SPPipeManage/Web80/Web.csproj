@@ -369,6 +369,7 @@
     <Content Include="Services\SPDataService.asmx" />
     <Content Include="SPSInterface\IVRChannel.aspx" />
     <Content Include="SPSInterface\IVRXLChannel.aspx" />
+    <Content Include="SPSInterface\SCIVRChannel.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
