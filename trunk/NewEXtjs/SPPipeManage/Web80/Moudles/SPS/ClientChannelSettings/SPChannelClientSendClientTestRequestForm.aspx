@@ -9,8 +9,11 @@
             return frmValues.replace(/"/g, '').replace(/ctl00_ContentPlaceHolder1_txt/g, '');
         }
 
-        function SubmitUrl(surl, lbl) {
-            lbl.setText(surl);
+        function SubmitUrl(surl,params, lbl) {
+	    if(surl.indexOf('?')>-1)
+		surl = surl + "&" + params;    
+   	    else
+		surl = surl + "?" + params;   
             Coolite.AjaxMethods.SubmitUrl(surl,
                                                                 {
                                                                     failure: function (msg) {
@@ -112,7 +115,7 @@
                             </ext:Button>
                             <ext:Button ID="btnSPClientSendRequest" runat="server" Text="发送" Icon="TelephoneGo">
                                 <Listeners>
-                                    <Click Handler=" SubmitUrl(#{txtClientSycnUrl}.getText()+'?'+GetParams(Ext.encode(#{FormPanel1}.getForm().getValues(true))),#{lblClientSendUrl});" />
+                                    <Click Handler=" SubmitUrl(#{txtClientSycnUrl}.getText(),GetParams(Ext.encode(#{FormPanel1}.getForm().getValues(true))),#{lblClientSendUrl});" />
                                 </Listeners>
                             </ext:Button>
                         </Buttons>
