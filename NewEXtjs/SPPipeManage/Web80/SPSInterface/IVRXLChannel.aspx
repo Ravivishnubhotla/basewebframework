@@ -59,7 +59,7 @@
 
                 request.RequestParams.Add("spywid", request.RequestParams["extdata"]);
 
-                result1 = channel.ProcessRequest(httpRequest, out requestError1);
+                result1 = channel.ProcessRequest(request, out requestError1);
             }
 
 

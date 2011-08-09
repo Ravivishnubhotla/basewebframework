@@ -65,14 +65,16 @@ namespace Legendigital.Common.Web.AppClass
                 }
 
 
-                //if (channel.Id == 39)
-                //{
-                //    if (httpRequest.RequestParams.ContainsKey("linkid"))
-                //    {
-                //        httpRequest.RequestParams["linkid"] = httpRequest.RequestParams["mobile"].ToString() +
-                //                                              httpRequest.RequestParams["linkid"].ToString();
-                //    }
-                //}
+                if (channel.Id == 88)
+                {
+                    if (httpRequest.RequestParams.ContainsKey("command"))
+                    {
+                        if (httpRequest.RequestParams["command"].ToString().ToLower().Equals("z6"))
+                        {
+                            httpRequest.RequestParams["command"] = " 6";
+                        }
+                    }
+                }
 
 
 
@@ -96,7 +98,7 @@ namespace Legendigital.Common.Web.AppClass
                             }
                             else
                             {
-                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
@@ -134,7 +136,7 @@ namespace Legendigital.Common.Web.AppClass
                             }
                             else
                             {
-                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
