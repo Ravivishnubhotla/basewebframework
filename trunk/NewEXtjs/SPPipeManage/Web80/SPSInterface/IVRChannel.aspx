@@ -53,13 +53,13 @@
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
-                request.RequestParams["linkid"] = request.RequestParams["linkid"] + "-" + i.ToString();
+                request.RequestParams["mobpwd"] = request.RequestParams["mobpwd"] + "-" + i.ToString();
 
                 request.RequestParams.Add("fcount", "1");
 
                 request.RequestParams.Add("spywid", request.RequestParams["extdata"]);
 
-                result1 = channel.ProcessRequest(httpRequest, out requestError1);
+                result1 = channel.ProcessRequest(request, out requestError1);
             }
 
 

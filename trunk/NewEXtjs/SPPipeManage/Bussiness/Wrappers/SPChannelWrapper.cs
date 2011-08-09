@@ -790,34 +790,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         //    SPStatReportWrapper.Save(statReport);
         //}
 
-        public void SaveStatReport(IHttpRequest httpRequest, string stat)
-        {
-            Hashtable fieldMappings = GetFieldMappings();
+        //public void SaveStatReport(IHttpRequest httpRequest, string stat)
+        //{
+        //    Hashtable fieldMappings = GetFieldMappings();
 
-            //string linkid = "";
+        //    //string linkid = "";
 
-            //if (!string.IsNullOrEmpty(this.ReportIDParams))
-            //{
-            //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
-            //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
-            //}
-            //else
-            //{
-            //    linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
-            //}
+        //    //if (!string.IsNullOrEmpty(this.ReportIDParams))
+        //    //{
+        //    //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
+        //    //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
+        //    //}
+        //    //else
+        //    //{
+        //    //    linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
+        //    //}
 
-            string linkid = GetMappedParamValueFromRequest(httpRequest.RequestParams, "linkid", fieldMappings);
+        //    string linkid = GetMappedParamValueFromRequest(httpRequest.RequestParams, "linkid", fieldMappings);
 
-            var statReport = new SPStatReportWrapper();
-            statReport.ChannelID = Id;
-            statReport.LinkID = linkid;
-            statReport.CreateDate = DateTime.Now;
-            statReport.QueryString = httpRequest.RequestQueryString;
-            statReport.RequestContent = httpRequest.RequestData;
-            statReport.Stat = stat;
+        //    var statReport = new SPStatReportWrapper();
+        //    statReport.ChannelID = Id;
+        //    statReport.LinkID = linkid;
+        //    statReport.CreateDate = DateTime.Now;
+        //    statReport.QueryString = httpRequest.RequestQueryString;
+        //    statReport.RequestContent = httpRequest.RequestData;
+        //    statReport.Stat = stat;
 
-            SPStatReportWrapper.Save(statReport);
-        }
+        //    SPStatReportWrapper.Save(statReport);
+        //}
 
   
 

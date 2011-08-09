@@ -162,7 +162,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 else
                     obj.CommandColumn = "";
                 obj.CommandType = this.cmbCommandType.SelectedItem.Value.ToString();
-                obj.CommandCode = this.txtCommandCode.Text.Trim();
+                obj.CommandCode = this.txtCommandCode.Text;
                 obj.Disable = this.chkDisable.Checked;
                 obj.ChannelCode = this.txtChannleCode.Text.Trim();
 

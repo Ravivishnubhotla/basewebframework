@@ -76,7 +76,7 @@ namespace Legendigital.Common.Web.AppClass
                             }
                             else
                             {
-                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
@@ -114,7 +114,7 @@ namespace Legendigital.Common.Web.AppClass
                             }
                             else
                             {
-                                channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                                //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
