@@ -8,7 +8,7 @@
 
   <!-- Database and NHibernate Configuration  -->
 
-  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate21">
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate32">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="MappingAssemblies">
       <list>
@@ -29,7 +29,7 @@
     <property name="ExposeTransactionAwareSessionFactory" value="true" />
   </object>
   <object id="transactionManager"
-		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate21">
+		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate32">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>

@@ -91,5 +91,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		
 		#endregion
+
+
+        //public void LogWrapperOp(int id,string title,string content,DateTime logTime)
+        //{
+
+        //}
     }
 }
