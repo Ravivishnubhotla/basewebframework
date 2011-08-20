@@ -26,6 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_PRIORITY = "Priority";
 		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
+		public static readonly string PROPERTY_NAME_ISFINISHED = "IsFinished";
 		
         #endregion
 	
@@ -46,6 +47,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _priority;
 		private int? _parentDataID;
 		private string _parentDataType;
+		private bool? _isFinished;
 		
 		#endregion
 
@@ -67,6 +69,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_priority = null;
 			_parentDataID = null;
 			_parentDataType = null;
+			_isFinished = null;
 		}
 		#endregion
 
@@ -74,7 +77,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemTaskEntity( int id, string title, string taskContent, int? assignedUserID, string status, DateTime? dateDue, bool? isDateDue, DateTime? dateStart, bool? isDateStart, string priority, int? parentDataID, string parentDataType)
+		public SystemTaskEntity( int id, string title, string taskContent, int? assignedUserID, string status, DateTime? dateDue, bool? isDateDue, DateTime? dateStart, bool? isDateStart, string priority, int? parentDataID, string parentDataType, bool? isFinished)
 		{
 			_id = id;
 			_title = title;
@@ -88,6 +91,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_priority = priority;
 			_parentDataID = parentDataID;
 			_parentDataType = parentDataType;
+			_isFinished = isFinished;
 		}
 		#endregion     
 	
@@ -273,6 +277,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for ParentDataType", value, value.ToString());
 				_isChanged |= (_parentDataType != value); _parentDataType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsFinished
+		{
+			get { return _isFinished; }
+
+			set	
+			{
+				_isChanged |= (_isFinished != value); _isFinished = value;
 			}
 		}
 		/// <summary>

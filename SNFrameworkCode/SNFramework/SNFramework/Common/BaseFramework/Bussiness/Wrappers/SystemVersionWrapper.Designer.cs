@@ -75,6 +75,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NEWCHANGEFILELD = "NewChangeFileld";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
 		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
+		public static readonly string PROPERTY_NAME_CHANGEDATE = "ChangeDate";
+		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
+		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
+		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
 
@@ -176,6 +180,62 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.ParentDataID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? ChangeDate
+		{
+			get
+			{
+				return entity.ChangeDate;
+			}
+			set
+			{
+				entity.ChangeDate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ChangeUserID
+		{
+			get
+			{
+				return entity.ChangeUserID;
+			}
+			set
+			{
+				entity.ChangeUserID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ChangeUserName
+		{
+			get
+			{
+				return entity.ChangeUserName;
+			}
+			set
+			{
+				entity.ChangeUserName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Comment
+		{
+			get
+			{
+				return entity.Comment;
+			}
+			set
+			{
+				entity.Comment = value;
 			}
 		}
 		#endregion 

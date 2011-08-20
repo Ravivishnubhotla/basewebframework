@@ -22,6 +22,7 @@
 		<property column="Priority" type="string" name="Priority"   length="20" />	
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
+		<property column="IsFinished" type="Boolean" name="IsFinished"   />	
 
 
 

@@ -17,6 +17,10 @@
 		<property column="NewChangeFileld" type="string" name="NewChangeFileld"   length="4000" />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
+		<property column="ChangeDate" type="DateTime" name="ChangeDate"   />	
+		<property column="ChangeUserID" type="int" name="ChangeUserID"   />	
+		<property column="ChangeUserName" type="int" name="ChangeUserName"   />	
+		<property column="Comment" type="string" name="Comment"   length="400" />	
 
 
 
