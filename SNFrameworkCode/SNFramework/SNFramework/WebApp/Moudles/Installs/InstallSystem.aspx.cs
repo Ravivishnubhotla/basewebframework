@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Legendigital.Common.WebApp.Moudles.Installs
 {
-    public partial class InstallDataBase : System.Web.UI.Page
+    public partial class InstallSystem : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
