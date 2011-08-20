@@ -35,6 +35,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Temp
 		Code Templates\SN数据访问代码.zeus = Code Templates\SN数据访问代码.zeus
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Entity", "SPS.Entity\SPS.Entity.csproj", "{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Data", "SPS.Data\SPS.Data.csproj", "{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Bussiness", "SPS.Bussiness\SPS.Bussiness.csproj", "{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -58,6 +64,24 @@ Global
 		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
