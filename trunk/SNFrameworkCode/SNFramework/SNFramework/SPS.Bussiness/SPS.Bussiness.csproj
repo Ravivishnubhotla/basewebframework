@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPS.Bussiness</RootNamespace>
     <AssemblyName>SPS.Bussiness</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +32,173 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate32">
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate32.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
+      <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelFiltersServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelSycnParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientCodeRelationServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientCodeRelationServiceProxy.Designer.cs">
+      <DependentUpon>SPClientCodeRelationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientCodeSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientCodeSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPClientCodeSycnParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.Designer.cs">
+      <DependentUpon>SPCodeFilterServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.Designer.cs">
+      <DependentUpon>SPCodeServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
+      <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
+      <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.Designer.cs">
+      <DependentUpon>SPMonitoringRequestServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.Designer.cs">
+      <DependentUpon>SPPhoneAreaServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPRecordExtendInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPRecordExtendInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPRecordExtendInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPRecordServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPRecordServiceProxy.Designer.cs">
+      <DependentUpon>SPRecordServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSClientServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSClientServiceProxy.Designer.cs">
+      <DependentUpon>SPSClientServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.Designer.cs">
+      <DependentUpon>SPUpperServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.Designer.cs">
+      <DependentUpon>SPChannelFiltersWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelSycnParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelWrapper.Designer.cs">
+      <DependentUpon>SPChannelWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientCodeRelationWrapper.cs" />
+    <Compile Include="Wrappers\SPClientCodeRelationWrapper.Designer.cs">
+      <DependentUpon>SPClientCodeRelationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientCodeSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPClientCodeSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPClientCodeSycnParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPCodeFilterWrapper.cs" />
+    <Compile Include="Wrappers\SPCodeFilterWrapper.Designer.cs">
+      <DependentUpon>SPCodeFilterWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPCodeWrapper.cs" />
+    <Compile Include="Wrappers\SPCodeWrapper.Designer.cs">
+      <DependentUpon>SPCodeWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPDayReportWrapper.cs" />
+    <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">
+      <DependentUpon>SPDayReportWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMemoWrapper.cs" />
+    <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
+      <DependentUpon>SPMemoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.cs" />
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.Designer.cs">
+      <DependentUpon>SPMonitoringRequestWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPPhoneAreaWrapper.cs" />
+    <Compile Include="Wrappers\SPPhoneAreaWrapper.Designer.cs">
+      <DependentUpon>SPPhoneAreaWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPRecordExtendInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPRecordExtendInfoWrapper.Designer.cs">
+      <DependentUpon>SPRecordExtendInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPRecordWrapper.cs" />
+    <Compile Include="Wrappers\SPRecordWrapper.Designer.cs">
+      <DependentUpon>SPRecordWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSClientWrapper.cs" />
+    <Compile Include="Wrappers\SPSClientWrapper.Designer.cs">
+      <DependentUpon>SPSClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPUpperWrapper.cs" />
+    <Compile Include="Wrappers\SPUpperWrapper.Designer.cs">
+      <DependentUpon>SPUpperWrapper.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ServiceProxys\Tables\Container\ServiceProxyContainersFile.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SPS.Data\SPS.Data.csproj">
+      <Project>{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}</Project>
+      <Name>SPS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SPS.Entity\SPS.Entity.csproj">
+      <Project>{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}</Project>
+      <Name>SPS.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

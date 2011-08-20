@@ -31,8 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Templates", "{6510D54F-B017-443F-A2AF-B7A9A0173BD4}"
 	ProjectSection(SolutionItems) = preProject
+		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
 		Code Templates\ExtJs表现层模版.zeus = Code Templates\ExtJs表现层模版.zeus
 		Code Templates\SN数据访问代码.zeus = Code Templates\SN数据访问代码.zeus
+		Code Templates\SPS.dat = Code Templates\SPS.dat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Entity", "SPS.Entity\SPS.Entity.csproj", "{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}"

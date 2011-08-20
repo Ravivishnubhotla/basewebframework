@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPS.Data</RootNamespace>
     <AssemblyName>SPS.Data</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +32,114 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\ThirdsDll\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate32">
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate32.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdoNet\AdoNetDataObject.cs" />
+    <Compile Include="AdoNet\AdoNetDataObject.Designer.cs">
+      <DependentUpon>AdoNetDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tables\Container\DataObjectContainers.cs" />
+    <Compile Include="Tables\Container\DataObjectContainers.Designer.cs">
+      <DependentUpon>DataObjectContainers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPChannelDataObject.cs" />
+    <Compile Include="Tables\SPChannelDataObject.Designer.cs">
+      <DependentUpon>SPChannelDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPChannelFiltersDataObject.cs" />
+    <Compile Include="Tables\SPChannelFiltersDataObject.Designer.cs">
+      <DependentUpon>SPChannelFiltersDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPChannelParamsDataObject.cs" />
+    <Compile Include="Tables\SPChannelParamsDataObject.Designer.cs">
+      <DependentUpon>SPChannelParamsDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPChannelSycnParamsDataObject.cs" />
+    <Compile Include="Tables\SPChannelSycnParamsDataObject.Designer.cs">
+      <DependentUpon>SPChannelSycnParamsDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPClientCodeRelationDataObject.cs" />
+    <Compile Include="Tables\SPClientCodeRelationDataObject.Designer.cs">
+      <DependentUpon>SPClientCodeRelationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPClientCodeSycnParamsDataObject.cs" />
+    <Compile Include="Tables\SPClientCodeSycnParamsDataObject.Designer.cs">
+      <DependentUpon>SPClientCodeSycnParamsDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPCodeDataObject.cs" />
+    <Compile Include="Tables\SPCodeDataObject.Designer.cs">
+      <DependentUpon>SPCodeDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPCodeFilterDataObject.cs" />
+    <Compile Include="Tables\SPCodeFilterDataObject.Designer.cs">
+      <DependentUpon>SPCodeFilterDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPDayReportDataObject.cs" />
+    <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
+      <DependentUpon>SPDayReportDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPMemoDataObject.cs" />
+    <Compile Include="Tables\SPMemoDataObject.Designer.cs">
+      <DependentUpon>SPMemoDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPMonitoringRequestDataObject.cs" />
+    <Compile Include="Tables\SPMonitoringRequestDataObject.Designer.cs">
+      <DependentUpon>SPMonitoringRequestDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPPhoneAreaDataObject.cs" />
+    <Compile Include="Tables\SPPhoneAreaDataObject.Designer.cs">
+      <DependentUpon>SPPhoneAreaDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPRecordDataObject.cs" />
+    <Compile Include="Tables\SPRecordDataObject.Designer.cs">
+      <DependentUpon>SPRecordDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPRecordExtendInfoDataObject.cs" />
+    <Compile Include="Tables\SPRecordExtendInfoDataObject.Designer.cs">
+      <DependentUpon>SPRecordExtendInfoDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPSClientDataObject.cs" />
+    <Compile Include="Tables\SPSClientDataObject.Designer.cs">
+      <DependentUpon>SPSClientDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPUpperDataObject.cs" />
+    <Compile Include="Tables\SPUpperDataObject.Designer.cs">
+      <DependentUpon>SPUpperDataObject.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Container\DataObjectContainersFile.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SPS.Entity\SPS.Entity.csproj">
+      <Project>{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}</Project>
+      <Name>SPS.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AdoNet\Container\AdoNetDataObjectContainersFile.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,6 +23,7 @@
     <property name="MappingAssemblies">
       <list>
         <value>Legendigital.Framework.Common</value>
+        <value>SPS.Entity</value>
       </list>
     </property>
     <property name="HibernateProperties">

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPRecordExtendInfoEntity,SPS.Entity" table="SPRecordExtendInfo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="RecordID" name="RecordID" class="SPS.Entity.Tables.SPRecordEntity,SPS.Entity" />		
+		<property column="IP" type="string" name="Ip"   length="40" />	
+		<property column="sSycnDataUrl" type="string" name="SSycnDataUrl"   length="600" />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
+		<property column="ExtendField1" type="string" name="ExtendField1"   length="100" />	
+		<property column="ExtendField2" type="string" name="ExtendField2"   length="100" />	
+		<property column="ExtendField3" type="string" name="ExtendField3"   length="100" />	
+		<property column="ExtendField4" type="string" name="ExtendField4"   length="100" />	
+		<property column="ExtendField5" type="string" name="ExtendField5"   length="100" />	
+		<property column="ExtendField6" type="string" name="ExtendField6"   length="100" />	
+		<property column="ExtendField8" type="string" name="ExtendField8"   length="100" />	
+		<property column="ExtendField7" type="string" name="ExtendField7"   length="100" />	
+		<property column="ExtendField9" type="string" name="ExtendField9"   length="100" />	
+		<property column="ExtendField10" type="string" name="ExtendField10"   length="100" />	
+		<property column="State" type="string" name="State"   length="40" />	
+
+
+
+
+</class>
+</hibernate-mapping>
