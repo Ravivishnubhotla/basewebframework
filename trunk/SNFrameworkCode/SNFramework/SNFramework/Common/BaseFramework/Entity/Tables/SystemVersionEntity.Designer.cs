@@ -21,6 +21,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_NEWCHANGEFILELD = "NewChangeFileld";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
 		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
+		public static readonly string PROPERTY_NAME_CHANGEDATE = "ChangeDate";
+		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
+		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
+		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
 	
@@ -36,6 +40,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _newChangeFileld;
 		private string _parentDataType;
 		private int? _parentDataID;
+		private DateTime? _changeDate;
+		private int? _changeUserID;
+		private int? _changeUserName;
+		private string _comment;
 		
 		#endregion
 
@@ -52,6 +60,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_newChangeFileld = null;
 			_parentDataType = null;
 			_parentDataID = null;
+			_changeDate = null;
+			_changeUserID = null;
+			_changeUserName = null;
+			_comment = null;
 		}
 		#endregion
 
@@ -59,7 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemVersionEntity( int id, string oldVersion, string newVersion, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID)
+		public SystemVersionEntity( int id, string oldVersion, string newVersion, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID, DateTime? changeDate, int? changeUserID, int? changeUserName, string comment)
 		{
 			_id = id;
 			_oldVersion = oldVersion;
@@ -68,6 +80,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_newChangeFileld = newChangeFileld;
 			_parentDataType = parentDataType;
 			_parentDataID = parentDataID;
+			_changeDate = changeDate;
+			_changeUserID = changeUserID;
+			_changeUserName = changeUserName;
+			_comment = comment;
 		}
 		#endregion     
 	
@@ -183,6 +199,65 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_parentDataID != value); _parentDataID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? ChangeDate
+		{
+			get { return _changeDate; }
+
+			set	
+			{
+				_isChanged |= (_changeDate != value); _changeDate = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChangeUserID
+		{
+			get { return _changeUserID; }
+
+			set	
+			{
+				_isChanged |= (_changeUserID != value); _changeUserID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? ChangeUserName
+		{
+			get { return _changeUserName; }
+
+			set	
+			{
+				_isChanged |= (_changeUserName != value); _changeUserName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Comment
+		{
+			get { return _comment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Comment", value, value.ToString());
+				_isChanged |= (_comment != value); _comment = value;
 			}
 		}
 		/// <summary>

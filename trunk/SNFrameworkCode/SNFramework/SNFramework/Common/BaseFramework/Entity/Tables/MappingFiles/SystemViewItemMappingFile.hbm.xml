@@ -15,7 +15,7 @@
 		<property column="SystemViewItem_NameCn" type="string" name="SystemViewItemNameCn"   length="400" />	
 		<property column="SystemViewItem_Description" type="string" name="SystemViewItemDescription"   length="4000" />	
 		<property column="SystemViewItem_DisplayFormat" type="string" name="SystemViewItemDisplayFormat"   length="4000" />	
-		<many-to-one column="SystemView_ID" name="SystemViewID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemViewEntity,Legendigital.Framework.Common" />		
+		<!-- more than one foreign column is mapped to SystemView_ID - you're on your own. -->		
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 
 

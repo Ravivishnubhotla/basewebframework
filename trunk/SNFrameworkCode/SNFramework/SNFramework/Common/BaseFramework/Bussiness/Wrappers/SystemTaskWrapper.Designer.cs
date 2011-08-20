@@ -80,6 +80,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PRIORITY = "Priority";
 		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
+		public static readonly string PROPERTY_NAME_ISFINISHED = "IsFinished";
 		
         #endregion
 
@@ -251,6 +252,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.ParentDataType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsFinished
+		{
+			get
+			{
+				return entity.IsFinished;
+			}
+			set
+			{
+				entity.IsFinished = value;
 			}
 		}
 		#endregion 

@@ -17,8 +17,8 @@
 		<property column="Resources_Type" type="string" name="ResourcesType"   length="400" />	
 		<property column="Resources_LimitExpression" type="string" name="ResourcesLimitExpression"   length="4000" />	
 		<property column="Resources_IsRelateUser" type="Boolean" name="ResourcesIsRelateUser"   not-null="true"  />	
-		<many-to-one column="MoudleID" name="MoudleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMoudleEntity,Legendigital.Framework.Common" />		
-		<many-to-one column="ParentResources_ID" name="ParentResourcesID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemResourcesEntity,Legendigital.Framework.Common" />		
+		<!-- more than one foreign column is mapped to MoudleID - you're on your own. -->		
+		<!-- more than one foreign column is mapped to ParentResources_ID - you're on your own. -->		
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 
 

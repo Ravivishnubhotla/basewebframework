@@ -72,11 +72,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SHORTMESSAGETITLE = "ShortMessageTitle";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECATEGORY = "ShortMessageCategory";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGECONTENT = "ShortMessageContent";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDERNAMR = "ShortMessageSenderNamr";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDERNAME = "ShortMessageSenderName";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGETONAME = "ShortMessageToName";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDDATE = "ShortMessageSendDate";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDUSERID = "ShortMessageSendUserID";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID = "ShortMessageReceiverUserID";
 		public static readonly string PROPERTY_NAME_SHORTMESSAGEISREAD = "ShortMessageIsRead";
+		public static readonly string PROPERTY_NAME_SHORTMESSAGETYPE = "ShortMessageType";
 		
         #endregion
 
@@ -141,15 +143,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageSenderNamr
+		public string ShortMessageSenderName
 		{
 			get
 			{
-				return entity.ShortMessageSenderNamr;
+				return entity.ShortMessageSenderName;
 			}
 			set
 			{
-				entity.ShortMessageSenderNamr = value;
+				entity.ShortMessageSenderName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ShortMessageToName
+		{
+			get
+			{
+				return entity.ShortMessageToName;
+			}
+			set
+			{
+				entity.ShortMessageToName = value;
 			}
 		}
 		/// <summary>
@@ -206,6 +222,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.ShortMessageIsRead = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ShortMessageType
+		{
+			get
+			{
+				return entity.ShortMessageType;
+			}
+			set
+			{
+				entity.ShortMessageType = value;
 			}
 		}
 		#endregion 
