@@ -11,8 +11,8 @@
 </id>
 
 
-		<!-- more than one foreign column is mapped to Role_ID - you're on your own. -->		
-		<!-- more than one foreign column is mapped to UserGroup_ID - you're on your own. -->		
+		<many-to-one column="Role_ID" name="RoleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleEntity,Legendigital.Framework.Common" />		
+		<many-to-one column="UserGroup_ID" name="UserGroupID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserGroupEntity,Legendigital.Framework.Common" />		
 
 
 
