@@ -23,7 +23,6 @@
     <property name="MappingAssemblies">
       <list>
         <value>Legendigital.Framework.Common</value>
-        <value>Legendigital.KippQuote.Entity</value>
       </list>
     </property>
     <property name="HibernateProperties">
