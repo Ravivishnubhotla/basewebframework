@@ -26,6 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_PRIORITY = new StringProperty(Property.ForName(SystemTaskEntity.PROPERTY_NAME_PRIORITY));		
 		public static readonly IntProperty PROPERTY_PARENTDATAID = new IntProperty(Property.ForName(SystemTaskEntity.PROPERTY_NAME_PARENTDATAID));		
 		public static readonly StringProperty PROPERTY_PARENTDATATYPE = new StringProperty(Property.ForName(SystemTaskEntity.PROPERTY_NAME_PARENTDATATYPE));		
+		public static readonly BoolProperty PROPERTY_ISFINISHED = new BoolProperty(Property.ForName(SystemTaskEntity.PROPERTY_NAME_ISFINISHED));		
       
 		#region 子类集合字段查询字段
 	
@@ -67,6 +68,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "ParentDataType":
                     return typeof (string);
+                case "IsFinished":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

@@ -21,6 +21,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_NEWCHANGEFILELD = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_NEWCHANGEFILELD));		
 		public static readonly StringProperty PROPERTY_PARENTDATATYPE = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_PARENTDATATYPE));		
 		public static readonly IntProperty PROPERTY_PARENTDATAID = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_PARENTDATAID));		
+		public static readonly DateTimeProperty PROPERTY_CHANGEDATE = new DateTimeProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEDATE));		
+		public static readonly IntProperty PROPERTY_CHANGEUSERID = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERID));		
+		public static readonly IntProperty PROPERTY_CHANGEUSERNAME = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERNAME));		
+		public static readonly StringProperty PROPERTY_COMMENT = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_COMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -52,6 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "ParentDataID":
                     return typeof (int);
+                case "ChangeDate":
+                    return typeof (DateTime);
+                case "ChangeUserID":
+                    return typeof (int);
+                case "ChangeUserName":
+                    return typeof (int);
+                case "Comment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

@@ -22,7 +22,7 @@
 		<property column="IsInSinglePage" type="Boolean" name="IsInSinglePage"   not-null="true"  />	
 		<property column="Operation_Order" type="int" name="OperationOrder"   not-null="true"  />	
 		<property column="IsCommonOperation" type="Boolean" name="IsCommonOperation"   />	
-		<!-- more than one foreign column is mapped to ResourceID - you're on your own. -->		
+		<many-to-one column="ResourceID" name="ResourceID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemResourcesEntity,Legendigital.Framework.Common" />		
 
 
 

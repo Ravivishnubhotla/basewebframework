@@ -37,7 +37,7 @@
         <entry key="use_outer_join" value="true"/>
         <entry key="show_sql" value="false"/>
         <!--自动建表(反向映射)-->
-        <entry key="hbm2ddl.auto" value="${hbm2ddl.auto}"/>
+        <!--<entry key="hbm2ddl.auto" value="${hbm2ddl.auto}"/>-->
         <!--超时时间-->
         <entry key="command_timeout" value="60"/>
         <entry key="query.substitutions" value="true 1, false 0, yes 'Y', no 'N'"/>
