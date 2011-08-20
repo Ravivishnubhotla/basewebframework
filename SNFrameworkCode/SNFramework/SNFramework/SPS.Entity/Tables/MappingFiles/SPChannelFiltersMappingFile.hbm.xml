@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPChannelFiltersEntity,SPS.Entity" table="SPChannelFilters" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
+		<property column="ParamsName" type="string" name="ParamsName"   length="100" />	
+		<property column="FilterType" type="string" name="FilterType"   length="100" />	
+		<property column="FilterValue" type="string" name="FilterValue"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

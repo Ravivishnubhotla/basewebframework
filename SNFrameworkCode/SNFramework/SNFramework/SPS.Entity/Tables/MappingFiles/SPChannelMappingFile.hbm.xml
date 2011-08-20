@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" table="SPChannel" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="OtherRecieved" type="Boolean" name="OtherRecieved"   />	
+		<property column="RecievedName" type="string" name="RecievedName"   length="100" />	
+		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	
+		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
+		<property column="DataOkMessage" type="string" name="DataOkMessage"   length="400" />	
+		<property column="DataFailedMessage" type="string" name="DataFailedMessage"   length="400" />	
+		<property column="ReportOkMessage" type="string" name="ReportOkMessage"   length="400" />	
+		<property column="ReportFailedMessage" type="string" name="ReportFailedMessage"   length="400" />	
+		<property column="StatSendOnce" type="Boolean" name="StatSendOnce"   />	
+		<property column="TypeRequest" type="Boolean" name="TypeRequest"   />	
+		<property column="DataParamName" type="string" name="DataParamName"   length="400" />	
+		<property column="DataParamValue" type="string" name="DataParamValue"   length="400" />	
+		<property column="ReportParamName" type="string" name="ReportParamName"   length="400" />	
+		<property column="ReportParamValue" type="string" name="ReportParamValue"   length="400" />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
+		<property column="StatusParamName" type="string" name="StatusParamName"   length="400" />	
+		<property column="StatusParamValue" type="string" name="StatusParamValue"   length="400" />	
+		<property column="Price" type="Decimal" name="Price"   />	
+		<property column="DefaultRate" type="Decimal" name="DefaultRate"   />	
+		<property column="HasStatReport" type="Boolean" name="HasStatReport"   />	
+		<property column="ChannelDetailInfo" type="string" name="ChannelDetailInfo"   length="2147483646" />	
+		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
+
+
+
+
+</class>
+</hibernate-mapping>

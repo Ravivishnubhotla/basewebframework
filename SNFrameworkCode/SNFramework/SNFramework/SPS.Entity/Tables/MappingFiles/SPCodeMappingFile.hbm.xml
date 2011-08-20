@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" table="SPCode" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="400" />	
+		<property column="Code" type="string" name="Code"   length="400" />	
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="MO" type="string" name="Mo"   length="100" />	
+		<property column="MOType" type="string" name="MOType"   length="100" />	
+		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="SPCode" type="string" name="SPCode"   length="100" />	
+		<property column="Province" type="string" name="Province"   length="100" />	
+		<property column="DisableCity" type="string" name="DisableCity"   length="100" />	
+		<property column="IsDiable" type="Boolean" name="IsDiable"   />	
+		<property column="SPType" type="string" name="SPType"   length="100" />	
+		<property column="CodeLength" type="int" name="CodeLength"   />	
+		<property column="DayLimit" type="int" name="DayLimit"   />	
+		<property column="MonthLimit" type="int" name="MonthLimit"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

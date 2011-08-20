@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPMemoEntity,SPS.Entity" table="SPMemo" lazy="true"  >
+
+<id name="Id" column="ID" type="Decimal" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Title" type="string" name="Title"   length="400" />	
+		<property column="TextContent" type="string" name="TextContent"   length="2147483646" />	
+		<property column="PublishDate" type="DateTime" name="PublishDate"   />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" table="SPUpper" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Code" type="string" name="Code"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

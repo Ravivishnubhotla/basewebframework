@@ -732,6 +732,10 @@
       <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SPS.Bussiness\SPS.Bussiness.csproj">
+      <Project>{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}</Project>
+      <Name>SPS.Bussiness</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\bg.gif" />

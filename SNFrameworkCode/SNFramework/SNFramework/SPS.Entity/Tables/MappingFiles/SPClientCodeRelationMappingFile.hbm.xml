@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPClientCodeRelationEntity,SPS.Entity" table="SPClientCodeRelation" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="CodeID" name="CodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
+		<many-to-one column="ClientID" name="ClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
+		<property column="InterceptRate" type="Decimal" name="InterceptRate"   />	
+		<property column="RecieveDataUrl" type="string" name="RecieveDataUrl"   length="400" />	
+		<property column="SyncData" type="Boolean" name="SyncData"   />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
+		<property column="SyncType" type="string" name="SyncType"   length="100" />	
+		<property column="StartDate" type="DateTime" name="StartDate"   />	
+		<property column="EndDate" type="DateTime" name="EndDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
