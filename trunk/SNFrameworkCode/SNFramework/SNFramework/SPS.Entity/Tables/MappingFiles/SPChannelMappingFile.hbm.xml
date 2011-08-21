@@ -15,6 +15,7 @@
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="Code" type="string" name="Code"   length="100" />	
 		<property column="OtherRecieved" type="Boolean" name="OtherRecieved"   />	
+		<property column="OtherRecievedUrl" type="string" name="OtherRecievedUrl"   length="400" />	
 		<property column="RecievedName" type="string" name="RecievedName"   length="100" />	
 		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	
 		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   />	
@@ -37,6 +38,8 @@
 		<property column="HasStatReport" type="Boolean" name="HasStatReport"   />	
 		<property column="ChannelDetailInfo" type="string" name="ChannelDetailInfo"   length="2147483646" />	
 		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
+		<property column="IsIVR" type="Boolean" name="IsIVR"   />	
+		<property column="IsLogRequest" type="Boolean" name="IsLogRequest"   />	
 
 
 

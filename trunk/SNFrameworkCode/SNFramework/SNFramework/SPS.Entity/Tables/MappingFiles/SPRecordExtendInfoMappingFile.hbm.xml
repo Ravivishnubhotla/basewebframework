@@ -26,6 +26,7 @@
 		<property column="ExtendField9" type="string" name="ExtendField9"   length="100" />	
 		<property column="ExtendField10" type="string" name="ExtendField10"   length="100" />	
 		<property column="State" type="string" name="State"   length="40" />	
+		<property column="FeeTime" type="string" name="FeeTime"   length="6" />	
 
 
 
