@@ -574,7 +574,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
             }
         }
     }
@@ -672,7 +672,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
                 return;
             }
 
@@ -737,7 +737,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
 				    if (column.IsAutoKey)
 						continue;
-%>              	this.<%= GetLableControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = <%= GetControlValueString(table,tableUIGenerationParamsListArray[i]) %>;          	
+%>              	this.<%= GetLableControlName(tableUIGenerationParamsListArray[i]) %>.Text = <%= GetControlValueString(table,tableUIGenerationParamsListArray[i]) %>;          	
 <%				}%> 
 
 
@@ -759,7 +759,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                 catch (Exception ex)
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
                     return;
                 }
             }
