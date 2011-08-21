@@ -171,6 +171,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx" />
@@ -179,6 +180,9 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
     <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
@@ -370,6 +374,13 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx.designer.cs">
       <DependentUpon>SPChannelParamsListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.cs">
       <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -425,6 +436,27 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx.designer.cs">
       <DependentUpon>UCSPChannelParamsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsView.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.cs">
       <DependentUpon>UCSPChannelView.ascx</DependentUpon>
