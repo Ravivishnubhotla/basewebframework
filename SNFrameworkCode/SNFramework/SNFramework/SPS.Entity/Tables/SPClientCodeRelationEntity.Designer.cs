@@ -25,6 +25,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
+		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		
         #endregion
 	
@@ -44,6 +45,7 @@ namespace SPS.Entity.Tables
 		private string _syncType;
 		private DateTime? _startDate;
 		private DateTime? _endDate;
+		private bool? _isEnable;
 		
 		#endregion
 
@@ -64,6 +66,7 @@ namespace SPS.Entity.Tables
 			_syncType = null;
 			_startDate = null;
 			_endDate = null;
+			_isEnable = null;
 		}
 		#endregion
 
@@ -71,7 +74,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal? interceptRate, string recieveDataUrl, bool? syncData, string okMessage, string failedMessage, string syncType, DateTime? startDate, DateTime? endDate)
+		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal? interceptRate, string recieveDataUrl, bool? syncData, string okMessage, string failedMessage, string syncType, DateTime? startDate, DateTime? endDate, bool? isEnable)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -84,6 +87,7 @@ namespace SPS.Entity.Tables
 			_syncType = syncType;
 			_startDate = startDate;
 			_endDate = endDate;
+			_isEnable = isEnable;
 		}
 		#endregion     
 	
@@ -252,6 +256,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_endDate != value); _endDate = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsEnable
+		{
+			get { return _isEnable; }
+
+			set	
+			{
+				_isChanged |= (_isEnable != value); _isEnable = value;
 			}
 		}
 		/// <summary>

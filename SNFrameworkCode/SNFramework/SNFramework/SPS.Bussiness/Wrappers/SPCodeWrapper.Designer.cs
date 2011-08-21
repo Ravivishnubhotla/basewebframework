@@ -84,6 +84,9 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CODELENGTH = "CodeLength";
 		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
+		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
 		
         #endregion
 
@@ -311,6 +314,48 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.MonthLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public decimal? Price
+		{
+			get
+			{
+				return entity.Price;
+			}
+			set
+			{
+				entity.Price = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SendText
+		{
+			get
+			{
+				return entity.SendText;
+			}
+			set
+			{
+				entity.SendText = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasFilters
+		{
+			get
+			{
+				return entity.HasFilters;
+			}
+			set
+			{
+				entity.HasFilters = value;
 			}
 		}
 		#endregion 

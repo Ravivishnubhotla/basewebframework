@@ -30,6 +30,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD10 = "ExtendField10";
 		public static readonly string PROPERTY_NAME_STATE = "State";
+		public static readonly string PROPERTY_NAME_FEETIME = "FeeTime";
 		
         #endregion
 	
@@ -54,6 +55,7 @@ namespace SPS.Entity.Tables
 		private string _extendField9;
 		private string _extendField10;
 		private string _state;
+		private string _feeTime;
 		
 		#endregion
 
@@ -79,6 +81,7 @@ namespace SPS.Entity.Tables
 			_extendField9 = null;
 			_extendField10 = null;
 			_state = null;
+			_feeTime = null;
 		}
 		#endregion
 
@@ -86,7 +89,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state)
+		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime)
 		{
 			_id = id;
 			_recordID = recordID;
@@ -104,6 +107,7 @@ namespace SPS.Entity.Tables
 			_extendField9 = extendField9;
 			_extendField10 = extendField10;
 			_state = state;
+			_feeTime = feeTime;
 		}
 		#endregion     
 	
@@ -372,6 +376,23 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for State", value, value.ToString());
 				_isChanged |= (_state != value); _state = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string FeeTime
+		{
+			get { return _feeTime; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 6)
+					throw new ArgumentOutOfRangeException("Invalid value for FeeTime", value, value.ToString());
+				_isChanged |= (_feeTime != value); _feeTime = value;
 			}
 		}
 		/// <summary>

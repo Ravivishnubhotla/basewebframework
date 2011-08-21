@@ -30,6 +30,9 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CODELENGTH = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CODELENGTH));		
 		public static readonly IntProperty PROPERTY_DAYLIMIT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYLIMIT));		
 		public static readonly IntProperty PROPERTY_MONTHLIMIT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MONTHLIMIT));		
+		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PRICE));		
+		public static readonly StringProperty PROPERTY_SENDTEXT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SENDTEXT));		
+		public static readonly BoolProperty PROPERTY_HASFILTERS = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASFILTERS));		
       
 		#region 子类集合字段查询字段
 	
@@ -79,6 +82,12 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "MonthLimit":
                     return typeof (int);
+                case "Price":
+                    return typeof (decimal);
+                case "SendText":
+                    return typeof (string);
+                case "HasFilters":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

@@ -38,6 +38,9 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CODEID_CODELENGTH = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CodeLength"));
 		public static readonly IntProperty PROPERTY_CODEID_DAYLIMIT = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".DayLimit"));
 		public static readonly IntProperty PROPERTY_CODEID_MONTHLIMIT = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".MonthLimit"));
+		public static readonly DecimalProperty PROPERTY_CODEID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Price"));
+		public static readonly StringProperty PROPERTY_CODEID_SENDTEXT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".SendText"));
+		public static readonly BoolProperty PROPERTY_CODEID_HASFILTERS = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasFilters"));
 		#endregion
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_CLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_CLIENTID));
 		#region clientID字段外键查询字段
@@ -67,6 +70,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCTYPE));		
 		public static readonly DateTimeProperty PROPERTY_STARTDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_STARTDATE));		
 		public static readonly DateTimeProperty PROPERTY_ENDDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ENDDATE));		
+		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ISENABLE));		
       
 		#region 子类集合字段查询字段
 	
@@ -106,6 +110,8 @@ namespace SPS.Data.Tables
                     return typeof (DateTime);
                 case "EndDate":
                     return typeof (DateTime);
+                case "IsEnable":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

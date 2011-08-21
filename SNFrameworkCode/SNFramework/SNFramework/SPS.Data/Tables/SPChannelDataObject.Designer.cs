@@ -18,7 +18,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_NAME));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CODE));		
-		public static readonly BoolProperty PROPERTY_OTHERRECIEVED = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_OTHERRECIEVED));		
+		public static readonly StringProperty PROPERTY_RECIEVEDURL = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_RECIEVEDURL));		
 		public static readonly StringProperty PROPERTY_RECIEVEDNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_RECIEVEDNAME));		
 		public static readonly BoolProperty PROPERTY_ISALLOWNULLLINKID = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISALLOWNULLLINKID));		
 		public static readonly BoolProperty PROPERTY_ISMONITORREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORREQUEST));		
@@ -53,6 +53,9 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_UPPERID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Description"));
 		public static readonly DateTimeProperty PROPERTY_UPPERID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateDate"));
 		#endregion
+		public static readonly BoolProperty PROPERTY_ISLOGREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISLOGREQUEST));		
+		public static readonly StringProperty PROPERTY_CHANNELTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELTYPE));		
+		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELSTATUS));		
       
 		#region 子类集合字段查询字段
 	
@@ -78,8 +81,8 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "Code":
                     return typeof (string);
-                case "OtherRecieved":
-                    return typeof (bool);
+                case "RecievedUrl":
+                    return typeof (string);
                 case "RecievedName":
                     return typeof (string);
                 case "IsAllowNullLinkID":
@@ -124,6 +127,12 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "UpperID":
                     return typeof (int);
+                case "IsLogRequest":
+                    return typeof (bool);
+                case "ChannelType":
+                    return typeof (string);
+                case "ChannelStatus":
+                    return typeof (string);
           }
 			return typeof(string);
         }

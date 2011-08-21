@@ -31,8 +31,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
-                    this.chkOtherRecieved.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.OtherRecieved);
-                    this.txtOtherRecievedUrl.Text = ValueConvertUtil.ConvertStringValue(obj.OtherRecievedUrl);
                     this.txtRecievedName.Text = ValueConvertUtil.ConvertStringValue(obj.RecievedName);
                     this.chkIsAllowNullLinkID.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsAllowNullLinkID);
                     this.chkIsMonitorRequest.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsMonitorRequest);
@@ -55,7 +53,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.chkHasStatReport.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.HasStatReport);
                     this.txtChannelDetailInfo.Text = ValueConvertUtil.ConvertStringValue(obj.ChannelDetailInfo);
                     //this.ddlUpperID.SelectedValue = obj.UpperID.ToString();
-                    this.chkIsIVR.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsIVR);
+
                     this.chkIsLogRequest.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsLogRequest);
 
 
@@ -90,8 +88,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
-                obj.OtherRecieved = this.chkOtherRecieved.Checked;
-                obj.OtherRecievedUrl = this.txtOtherRecievedUrl.Text.Trim();
+
                 obj.RecievedName = this.txtRecievedName.Text.Trim();
                 obj.IsAllowNullLinkID = this.chkIsAllowNullLinkID.Checked;
                 obj.IsMonitorRequest = this.chkIsMonitorRequest.Checked;
@@ -114,7 +111,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.HasStatReport = this.chkHasStatReport.Checked;
                 obj.ChannelDetailInfo = this.txtChannelDetailInfo.Text.Trim();
                 //obj.UpperID = Convert.ToInt32(this.ddlUpperID.SelectedValue.Trim());
-                obj.IsIVR = this.chkIsIVR.Checked;
                 obj.IsLogRequest = this.chkIsLogRequest.Checked;
 
 

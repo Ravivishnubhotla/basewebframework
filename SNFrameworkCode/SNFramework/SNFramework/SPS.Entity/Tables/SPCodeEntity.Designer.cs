@@ -30,6 +30,9 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CODELENGTH = "CodeLength";
 		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
+		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
 		
         #endregion
 	
@@ -54,6 +57,9 @@ namespace SPS.Entity.Tables
 		private int? _codeLength;
 		private int? _dayLimit;
 		private int? _monthLimit;
+		private decimal? _price;
+		private string _sendText;
+		private bool? _hasFilters;
 		
 		#endregion
 
@@ -79,6 +85,9 @@ namespace SPS.Entity.Tables
 			_codeLength = null;
 			_dayLimit = null;
 			_monthLimit = null;
+			_price = null;
+			_sendText = null;
+			_hasFilters = null;
 		}
 		#endregion
 
@@ -86,7 +95,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, int? channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool? isDiable, string sPType, int? codeLength, int? dayLimit, int? monthLimit)
+		public SPCodeEntity( int id, string name, string description, string code, int? channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool? isDiable, string sPType, int? codeLength, int? dayLimit, int? monthLimit, decimal? price, string sendText, bool? hasFilters)
 		{
 			_id = id;
 			_name = name;
@@ -104,6 +113,9 @@ namespace SPS.Entity.Tables
 			_codeLength = codeLength;
 			_dayLimit = dayLimit;
 			_monthLimit = monthLimit;
+			_price = price;
+			_sendText = sendText;
+			_hasFilters = hasFilters;
 		}
 		#endregion     
 	
@@ -357,6 +369,51 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_monthLimit != value); _monthLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual decimal? Price
+		{
+			get { return _price; }
+
+			set	
+			{
+				_isChanged |= (_price != value); _price = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SendText
+		{
+			get { return _sendText; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4000)
+					throw new ArgumentOutOfRangeException("Invalid value for SendText", value, value.ToString());
+				_isChanged |= (_sendText != value); _sendText = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasFilters
+		{
+			get { return _hasFilters; }
+
+			set	
+			{
+				_isChanged |= (_hasFilters != value); _hasFilters = value;
 			}
 		}
 		/// <summary>
