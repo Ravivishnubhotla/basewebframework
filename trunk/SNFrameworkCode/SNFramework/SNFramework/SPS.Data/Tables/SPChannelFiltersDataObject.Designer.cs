@@ -26,7 +26,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_CHANNELID_NAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CHANNELID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CODE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Code"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_OTHERRECIEVED = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OtherRecieved"));
+		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDURL = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedUrl"));
 		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedName"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISALLOWNULLLINKID = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISMONITORREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitorRequest"));
@@ -49,6 +49,9 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_CHANNELID_HASSTATREPORT = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasStatReport"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELDETAILINFO = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelDetailInfo"));
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_CHANNELID_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UpperID"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISLOGREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsLogRequest"));
+		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelType"));
+		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelStatus"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PARAMSNAME = new StringProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_PARAMSNAME));		
 		public static readonly StringProperty PROPERTY_FILTERTYPE = new StringProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_FILTERTYPE));		

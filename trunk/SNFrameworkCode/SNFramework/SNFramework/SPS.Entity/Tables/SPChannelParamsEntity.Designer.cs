@@ -24,6 +24,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
+		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
 		
         #endregion
 	
@@ -42,6 +43,7 @@ namespace SPS.Entity.Tables
 		private string _paramsMappingName;
 		private string _title;
 		private bool? _showInClientGrid;
+		private string _paramsValue;
 		
 		#endregion
 
@@ -61,6 +63,7 @@ namespace SPS.Entity.Tables
 			_paramsMappingName = null;
 			_title = null;
 			_showInClientGrid = true;
+			_paramsValue = null;
 		}
 		#endregion
 
@@ -68,7 +71,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid)
+		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid, string paramsValue)
 		{
 			_id = id;
 			_name = name;
@@ -80,6 +83,7 @@ namespace SPS.Entity.Tables
 			_paramsMappingName = paramsMappingName;
 			_title = title;
 			_showInClientGrid = showInClientGrid;
+			_paramsValue = paramsValue;
 		}
 		#endregion     
 	
@@ -172,7 +176,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 400)
+				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for ParamsType", value, value.ToString());
 				_isChanged |= (_paramsType != value); _paramsType = value;
 			}
@@ -237,6 +241,23 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_showInClientGrid != value); _showInClientGrid = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ParamsValue
+		{
+			get { return _paramsValue; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsValue", value, value.ToString());
+				_isChanged |= (_paramsValue != value); _paramsValue = value;
 			}
 		}
 		/// <summary>

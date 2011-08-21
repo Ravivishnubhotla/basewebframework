@@ -18,7 +18,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_OTHERRECIEVED = "OtherRecieved";
+		public static readonly string PROPERTY_NAME_RECIEVEDURL = "RecievedUrl";
 		public static readonly string PROPERTY_NAME_RECIEVEDNAME = "RecievedName";
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
@@ -41,6 +41,9 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_HASSTATREPORT = "HasStatReport";
 		public static readonly string PROPERTY_NAME_CHANNELDETAILINFO = "ChannelDetailInfo";
 		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
+		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
+		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		
         #endregion
 	
@@ -53,7 +56,7 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _description;
 		private string _code;
-		private bool? _otherRecieved;
+		private string _recievedUrl;
 		private string _recievedName;
 		private bool? _isAllowNullLinkID;
 		private bool? _isMonitorRequest;
@@ -76,6 +79,9 @@ namespace SPS.Entity.Tables
 		private bool? _hasStatReport;
 		private string _channelDetailInfo;
 		private SPUpperEntity _upperID;
+		private bool? _isLogRequest;
+		private string _channelType;
+		private string _channelStatus;
 		
 		#endregion
 
@@ -89,7 +95,7 @@ namespace SPS.Entity.Tables
 			_name = null;
 			_description = null;
 			_code = null;
-			_otherRecieved = null;
+			_recievedUrl = null;
 			_recievedName = null;
 			_isAllowNullLinkID = null;
 			_isMonitorRequest = null;
@@ -112,6 +118,9 @@ namespace SPS.Entity.Tables
 			_hasStatReport = null;
 			_channelDetailInfo = null;
 			_upperID = null;
+			_isLogRequest = null;
+			_channelType = null;
+			_channelStatus = null;
 		}
 		#endregion
 
@@ -119,13 +128,13 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string code, bool? otherRecieved, string recievedName, bool? isAllowNullLinkID, bool? isMonitorRequest, bool? isDisable, string dataOkMessage, string dataFailedMessage, string reportOkMessage, string reportFailedMessage, bool? statSendOnce, bool? typeRequest, string dataParamName, string dataParamValue, string reportParamName, string reportParamValue, bool? hasFilters, string statusParamName, string statusParamValue, decimal? price, decimal? defaultRate, bool? hasStatReport, string channelDetailInfo, SPUpperEntity upperID)
+		public SPChannelEntity( int id, string name, string description, string code, string recievedUrl, string recievedName, bool? isAllowNullLinkID, bool? isMonitorRequest, bool? isDisable, string dataOkMessage, string dataFailedMessage, string reportOkMessage, string reportFailedMessage, bool? statSendOnce, bool? typeRequest, string dataParamName, string dataParamValue, string reportParamName, string reportParamValue, bool? hasFilters, string statusParamName, string statusParamValue, decimal? price, decimal? defaultRate, bool? hasStatReport, string channelDetailInfo, SPUpperEntity upperID, bool? isLogRequest, string channelType, string channelStatus)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
 			_code = code;
-			_otherRecieved = otherRecieved;
+			_recievedUrl = recievedUrl;
 			_recievedName = recievedName;
 			_isAllowNullLinkID = isAllowNullLinkID;
 			_isMonitorRequest = isMonitorRequest;
@@ -148,6 +157,9 @@ namespace SPS.Entity.Tables
 			_hasStatReport = hasStatReport;
 			_channelDetailInfo = channelDetailInfo;
 			_upperID = upperID;
+			_isLogRequest = isLogRequest;
+			_channelType = channelType;
+			_channelStatus = channelStatus;
 		}
 		#endregion     
 	
@@ -222,13 +234,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? OtherRecieved
+		public virtual string RecievedUrl
 		{
-			get { return _otherRecieved; }
+			get { return _recievedUrl; }
 
 			set	
 			{
-				_isChanged |= (_otherRecieved != value); _otherRecieved = value;
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for RecievedUrl", value, value.ToString());
+				_isChanged |= (_recievedUrl != value); _recievedUrl = value;
 			}
 		}
 
@@ -573,6 +588,54 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_upperID != value); _upperID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsLogRequest
+		{
+			get { return _isLogRequest; }
+
+			set	
+			{
+				_isChanged |= (_isLogRequest != value); _isLogRequest = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelType
+		{
+			get { return _channelType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelType", value, value.ToString());
+				_isChanged |= (_channelType != value); _channelType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelStatus
+		{
+			get { return _channelStatus; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelStatus", value, value.ToString());
+				_isChanged |= (_channelStatus != value); _channelStatus = value;
 			}
 		}
 		/// <summary>

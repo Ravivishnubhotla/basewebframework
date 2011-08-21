@@ -79,6 +79,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
+		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		
         #endregion
 
@@ -236,6 +237,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.EndDate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsEnable
+		{
+			get
+			{
+				return entity.IsEnable;
+			}
+			set
+			{
+				entity.IsEnable = value;
 			}
 		}
 		#endregion 

@@ -29,7 +29,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_CHANNELID_NAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CHANNELID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CODE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Code"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_OTHERRECIEVED = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".OtherRecieved"));
+		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDURL = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedUrl"));
 		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedName"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISALLOWNULLLINKID = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISMONITORREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitorRequest"));
@@ -52,9 +52,14 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_CHANNELID_HASSTATREPORT = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasStatReport"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELDETAILINFO = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelDetailInfo"));
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_CHANNELID_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UpperID"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISLOGREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsLogRequest"));
+		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelType"));
+		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelStatus"));
 		#endregion
 		public static readonly StringProperty PROPERTY_MAPPINGPARAMS = new StringProperty(Property.ForName(SPChannelSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS));		
 		public static readonly StringProperty PROPERTY_TITLE = new StringProperty(Property.ForName(SPChannelSycnParamsEntity.PROPERTY_NAME_TITLE));		
+		public static readonly StringProperty PROPERTY_PARAMSVALUE = new StringProperty(Property.ForName(SPChannelSycnParamsEntity.PROPERTY_NAME_PARAMSVALUE));		
+		public static readonly StringProperty PROPERTY_PARAMSTYPE = new StringProperty(Property.ForName(SPChannelSycnParamsEntity.PROPERTY_NAME_PARAMSTYPE));		
       
 		#region 子类集合字段查询字段
 	
@@ -85,6 +90,10 @@ namespace SPS.Data.Tables
                 case "MappingParams":
                     return typeof (string);
                 case "Title":
+                    return typeof (string);
+                case "ParamsValue":
+                    return typeof (string);
+                case "ParamsType":
                     return typeof (string);
           }
 			return typeof(string);

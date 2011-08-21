@@ -39,8 +39,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
-                obj.OtherRecieved = this.chkOtherRecieved.Checked;
-                obj.OtherRecievedUrl = this.txtOtherRecievedUrl.Text.Trim();
                 obj.RecievedName = this.txtRecievedName.Text.Trim();
                 obj.IsAllowNullLinkID = this.chkIsAllowNullLinkID.Checked;
                 obj.IsMonitorRequest = this.chkIsMonitorRequest.Checked;
@@ -63,7 +61,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.HasStatReport = this.chkHasStatReport.Checked;
                 obj.ChannelDetailInfo = this.txtChannelDetailInfo.Text.Trim();
                 //obj.UpperID = Convert.ToInt32(this.ddlUpperID.SelectedValue.Trim());
-                obj.IsIVR = this.chkIsIVR.Checked;
                 obj.IsLogRequest = this.chkIsLogRequest.Checked;
 
 

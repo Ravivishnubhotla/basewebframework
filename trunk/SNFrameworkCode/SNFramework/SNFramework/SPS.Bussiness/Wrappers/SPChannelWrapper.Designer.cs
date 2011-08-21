@@ -72,7 +72,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_OTHERRECIEVED = "OtherRecieved";
+		public static readonly string PROPERTY_NAME_RECIEVEDURL = "RecievedUrl";
 		public static readonly string PROPERTY_NAME_RECIEVEDNAME = "RecievedName";
 		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
 		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
@@ -95,6 +95,9 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_HASSTATREPORT = "HasStatReport";
 		public static readonly string PROPERTY_NAME_CHANNELDETAILINFO = "ChannelDetailInfo";
 		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
+		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
+		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		
         #endregion
 
@@ -159,15 +162,15 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? OtherRecieved
+		public string RecievedUrl
 		{
 			get
 			{
-				return entity.OtherRecieved;
+				return entity.RecievedUrl;
 			}
 			set
 			{
-				entity.OtherRecieved = value;
+				entity.RecievedUrl = value;
 			}
 		}
 		/// <summary>
@@ -476,6 +479,48 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.UpperID = ((value == null) ? null : value.entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsLogRequest
+		{
+			get
+			{
+				return entity.IsLogRequest;
+			}
+			set
+			{
+				entity.IsLogRequest = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ChannelType
+		{
+			get
+			{
+				return entity.ChannelType;
+			}
+			set
+			{
+				entity.ChannelType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ChannelStatus
+		{
+			get
+			{
+				return entity.ChannelStatus;
+			}
+			set
+			{
+				entity.ChannelStatus = value;
 			}
 		}
 		#endregion 

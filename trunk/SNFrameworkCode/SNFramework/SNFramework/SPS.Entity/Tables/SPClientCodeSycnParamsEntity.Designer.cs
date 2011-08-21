@@ -22,6 +22,8 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
+		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		
         #endregion
 	
@@ -38,6 +40,8 @@ namespace SPS.Entity.Tables
 		private SPCodeEntity _codeID;
 		private string _mappingParams;
 		private string _title;
+		private string _paramsValue;
+		private string _paramsType;
 		
 		#endregion
 
@@ -55,6 +59,8 @@ namespace SPS.Entity.Tables
 			_codeID = null;
 			_mappingParams = null;
 			_title = null;
+			_paramsValue = null;
+			_paramsType = null;
 		}
 		#endregion
 
@@ -62,7 +68,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPCodeEntity codeID, string mappingParams, string title)
+		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPCodeEntity codeID, string mappingParams, string title, string paramsValue, string paramsType)
 		{
 			_id = id;
 			_name = name;
@@ -72,6 +78,8 @@ namespace SPS.Entity.Tables
 			_codeID = codeID;
 			_mappingParams = mappingParams;
 			_title = title;
+			_paramsValue = paramsValue;
+			_paramsType = paramsType;
 		}
 		#endregion     
 	
@@ -198,6 +206,40 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for Title", value, value.ToString());
 				_isChanged |= (_title != value); _title = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ParamsValue
+		{
+			get { return _paramsValue; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsValue", value, value.ToString());
+				_isChanged |= (_paramsValue != value); _paramsValue = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ParamsType
+		{
+			get { return _paramsType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsType", value, value.ToString());
+				_isChanged |= (_paramsType != value); _paramsType = value;
 			}
 		}
 		/// <summary>

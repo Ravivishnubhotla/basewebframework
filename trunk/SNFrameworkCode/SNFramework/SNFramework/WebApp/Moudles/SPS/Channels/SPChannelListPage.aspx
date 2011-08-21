@@ -107,8 +107,7 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
-                    <ext:RecordField Name="OtherRecieved" Type="Boolean" />
-                    <ext:RecordField Name="OtherRecievedUrl" />
+                    <ext:RecordField Name="RecievedUrl" />
                     <ext:RecordField Name="RecievedName" />
                     <ext:RecordField Name="IsAllowNullLinkID" Type="Boolean" />
                     <ext:RecordField Name="IsMonitorRequest" Type="Boolean" />
@@ -131,7 +130,6 @@
                     <ext:RecordField Name="HasStatReport" Type="Boolean" />
                     <ext:RecordField Name="ChannelDetailInfo" />
                     <ext:RecordField Name="UpperID" Type="int" />
-                    <ext:RecordField Name="IsIVR" Type="Boolean" />
                     <ext:RecordField Name="IsLogRequest" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
@@ -217,7 +215,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannel"
-                        DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="No matched SPChannel" />
+                        DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的通道" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

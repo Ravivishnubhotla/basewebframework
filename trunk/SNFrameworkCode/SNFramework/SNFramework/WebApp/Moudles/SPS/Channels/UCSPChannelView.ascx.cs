@@ -36,8 +36,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.lblName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.lblDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     this.lblCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
-                    this.lblOtherRecieved.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.OtherRecieved).ToString();
-                    this.lblOtherRecievedUrl.Text = ValueConvertUtil.ConvertStringValue(obj.OtherRecievedUrl);
+
                     this.lblRecievedName.Text = ValueConvertUtil.ConvertStringValue(obj.RecievedName);
                     this.lblIsAllowNullLinkID.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsAllowNullLinkID).ToString();
                     this.lblIsMonitorRequest.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsMonitorRequest).ToString();
@@ -60,7 +59,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.lblHasStatReport.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.HasStatReport).ToString();
                     this.lblChannelDetailInfo.Text = ValueConvertUtil.ConvertStringValue(obj.ChannelDetailInfo);
                     this.lblUpperID.Text = obj.UpperID.ToString();
-                    this.lblIsIVR.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsIVR).ToString();
                     this.lblIsLogRequest.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsLogRequest).ToString();         	
  
 

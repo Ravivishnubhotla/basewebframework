@@ -78,6 +78,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PARAMSMAPPINGNAME = "ParamsMappingName";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_SHOWINCLIENTGRID = "ShowInClientGrid";
+		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
 		
         #endregion
 
@@ -221,6 +222,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.ShowInClientGrid = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ParamsValue
+		{
+			get
+			{
+				return entity.ParamsValue;
+			}
+			set
+			{
+				entity.ParamsValue = value;
 			}
 		}
 		#endregion 

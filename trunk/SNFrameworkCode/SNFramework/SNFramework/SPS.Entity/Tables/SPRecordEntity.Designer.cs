@@ -180,7 +180,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 40)
+				if( value != null && value.Length > 30)
 					throw new ArgumentOutOfRangeException("Invalid value for Mobile", value, value.ToString());
 				_isChanged |= (_mobile != value); _mobile = value;
 			}
@@ -214,7 +214,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 20)
+				if( value != null && value.Length > 12)
 					throw new ArgumentOutOfRangeException("Invalid value for Province", value, value.ToString());
 				_isChanged |= (_province != value); _province = value;
 			}
@@ -231,7 +231,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 20)
+				if( value != null && value.Length > 16)
 					throw new ArgumentOutOfRangeException("Invalid value for City", value, value.ToString());
 				_isChanged |= (_city != value); _city = value;
 			}

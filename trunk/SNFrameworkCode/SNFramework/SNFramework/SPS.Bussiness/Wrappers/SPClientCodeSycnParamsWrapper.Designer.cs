@@ -76,6 +76,8 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
 		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
+		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
 		
         #endregion
 
@@ -191,6 +193,34 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.Title = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ParamsValue
+		{
+			get
+			{
+				return entity.ParamsValue;
+			}
+			set
+			{
+				entity.ParamsValue = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ParamsType
+		{
+			get
+			{
+				return entity.ParamsType;
+			}
+			set
+			{
+				entity.ParamsType = value;
 			}
 		}
 		#endregion 
