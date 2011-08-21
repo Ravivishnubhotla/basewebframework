@@ -13,10 +13,10 @@
 
 		<property column="LinkID" type="string" name="LinkID"   length="100" />	
 		<property column="MO" type="string" name="Mo"   length="100" />	
-		<property column="Mobile" type="string" name="Mobile"   length="40" />	
+		<property column="Mobile" type="string" name="Mobile"   length="30" />	
 		<property column="SpNumber" type="string" name="SpNumber"   length="40" />	
-		<property column="Province" type="string" name="Province"   length="20" />	
-		<property column="City" type="string" name="City"   length="20" />	
+		<property column="Province" type="string" name="Province"   length="12" />	
+		<property column="City" type="string" name="City"   length="16" />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
 		<property column="IsReport" type="Boolean" name="IsReport"   />	
 		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	

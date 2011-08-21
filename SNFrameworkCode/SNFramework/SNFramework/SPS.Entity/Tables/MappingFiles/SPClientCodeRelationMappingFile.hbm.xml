@@ -21,6 +21,7 @@
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
 
 
 
