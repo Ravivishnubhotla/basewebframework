@@ -188,6 +188,18 @@
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
+    <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeFilterAdd.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeFilterEdit.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh-CHS.xml" />
@@ -492,6 +504,90 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPSClientView.ascx.designer.cs">
       <DependentUpon>UCSPSClientView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.cs">
+      <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.cs">
+      <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.cs">
+      <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.designer.cs">
+      <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx.cs">
+      <DependentUpon>UCSPCodeEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx.designer.cs">
+      <DependentUpon>UCSPCodeEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterAdd.ascx.cs">
+      <DependentUpon>UCSPCodeFilterAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterAdd.ascx.designer.cs">
+      <DependentUpon>UCSPCodeFilterAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterEdit.ascx.cs">
+      <DependentUpon>UCSPCodeFilterEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterEdit.ascx.designer.cs">
+      <DependentUpon>UCSPCodeFilterEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx.cs">
+      <DependentUpon>UCSPCodeFilterView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx.designer.cs">
+      <DependentUpon>UCSPCodeFilterView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeView.ascx.cs">
+      <DependentUpon>UCSPCodeView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeView.ascx.designer.cs">
+      <DependentUpon>UCSPCodeView.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.cs">
       <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
@@ -955,7 +1051,6 @@
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
     <Folder Include="Moudles\SPS\ClientView\" />
-    <Folder Include="Moudles\SPS\Codes\" />
     <Folder Include="Moudles\SPS\Data\" />
     <Folder Include="Moudles\SPS\Reports\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
