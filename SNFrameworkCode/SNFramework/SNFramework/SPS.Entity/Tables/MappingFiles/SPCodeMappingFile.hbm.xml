@@ -26,6 +26,9 @@
 		<property column="CodeLength" type="int" name="CodeLength"   />	
 		<property column="DayLimit" type="int" name="DayLimit"   />	
 		<property column="MonthLimit" type="int" name="MonthLimit"   />	
+		<property column="Price" type="Decimal" name="Price"   />	
+		<property column="SendText" type="string" name="SendText"   length="4000" />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
 
 
 
