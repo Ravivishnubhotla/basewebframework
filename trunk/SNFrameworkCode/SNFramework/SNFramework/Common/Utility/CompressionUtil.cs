@@ -95,7 +95,7 @@ namespace Legendigital.Framework.Common.Utility
             byte[] bytData = Encoding.Unicode.GetBytes(stringToCompress);
 
             return Compress(bytData, compressionProvider);
-            ;
+            ; 
         }
 
         public string DeCompress(string stringToDecompress, CompressionType compressionProvider)
