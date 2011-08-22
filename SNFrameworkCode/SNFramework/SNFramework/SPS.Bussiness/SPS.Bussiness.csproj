@@ -46,9 +46,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAdapter\CSVFileAdapter.cs" />
+    <Compile Include="DataAdapter\DataBaseAdapter.cs" />
+    <Compile Include="DataAdapter\HttpGetPostAdapter.cs" />
+    <Compile Include="DataAdapter\HttpXmlPostAdapter.cs" />
+    <Compile Include="DataAdapter\IDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
@@ -200,6 +206,7 @@
       <Name>SPS.Entity</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
