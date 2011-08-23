@@ -43,6 +43,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Data", "SPS.Data\SPS.Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Bussiness", "SPS.Bussiness\SPS.Bussiness.csproj", "{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseScript", "DataBaseScript", "{3F5DCF76-D508-406F-9A54-B6FB4D030300}"
+	ProjectSection(SolutionItems) = preProject
+		DataBaseScript\CreateDB.sql = DataBaseScript\CreateDB.sql
+		DataBaseScript\InitDb.sql = DataBaseScript\InitDb.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
