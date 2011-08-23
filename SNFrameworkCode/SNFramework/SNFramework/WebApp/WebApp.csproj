@@ -167,6 +167,7 @@
     <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
+    <Content Include="Moudles\Installs\InstallDB.aspx" />
     <Content Include="Moudles\Installs\InstallSystem.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
@@ -219,6 +220,8 @@
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -231,6 +234,12 @@
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.xml" />
@@ -359,6 +368,13 @@
     </Compile>
     <Compile Include="Masters\BaseAdminMasterPage.Master.designer.cs">
       <DependentUpon>BaseAdminMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\Installs\InstallDB.aspx.cs">
+      <DependentUpon>InstallDB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\Installs\InstallDB.aspx.designer.cs">
+      <DependentUpon>InstallDB.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\Installs\InstallSystem.aspx.cs">
       <DependentUpon>InstallSystem.aspx</DependentUpon>
@@ -660,6 +676,20 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.designer.cs">
       <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryPatchAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryPatchAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryPatchEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryPatchEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx.cs">
       <DependentUpon>SystemEmailSettingsListPage.aspx</DependentUpon>

@@ -25,4 +25,6 @@
   <add name="msgDeleteSuccessful" value="删除数据成功！" />
   <add name="msgSavingWaiting" value="数据保存中,请稍候...." />
   <add name="msgShowError" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
+  <add name="msgPatchAdd" value="批量添加" />
+  <add name="msgPatchEdit" value="批量编辑" />
 </resources>

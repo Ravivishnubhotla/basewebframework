@@ -3,6 +3,13 @@
 
 <%@ Register Src="UCSystemDictionaryAdd.ascx" TagName="UCSystemDictionaryAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemDictionaryEdit.ascx" TagName="UCSystemDictionaryEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSystemDictionaryPatchAdd.ascx" TagName="UCSystemDictionaryPatchAdd" TagPrefix="uc3" %>
+<%@ Register Src="UCSystemDictionaryPatchEdit.ascx" TagName="UCSystemDictionaryPatchEdit" TagPrefix="uc5" %>
+
+
+
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
@@ -26,6 +33,34 @@
         
         function showAddForm() {
                 Ext.net.DirectMethods.UCSystemDictionaryAdd.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                });    
+        
+        }
+        
+        function showPatchAddForm() {
+                Ext.net.DirectMethods.UCSystemDictionaryPatchAdd.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                });    
+        
+        }
+        
+                function showPatchEditForm() {
+                Ext.net.DirectMethods.UCSystemDictionaryPatchEdit.Show( 
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
@@ -107,6 +142,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemDictionaryAdd ID="UCSystemDictionaryAdd1" runat="server" />
     <uc2:UCSystemDictionaryEdit ID="UCSystemDictionaryEdit1" runat="server" />
+    <uc3:UCSystemDictionaryPatchAdd ID="UCSystemDictionaryPatchAdd1" runat="server" />
+    <uc5:UCSystemDictionaryPatchEdit ID="UCSystemDictionaryPatchEdit1" runat="server" />
+
+    
+    
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeSystemDictionary"
@@ -118,6 +158,18 @@
                                 Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
+                                </Listeners>
+                            </ext:Button>
+                            <ext:Button ID='btnPatchAdd' runat="server" Text="<%$ Resources : GlobalResource, msgPatchAdd  %>"
+                                Icon="Add">
+                                <Listeners>
+                                    <Click Handler="showPatchAddForm();" />
+                                </Listeners>
+                            </ext:Button>
+                            <ext:Button ID='btnPatchEdit' runat="server" Text="<%$ Resources : GlobalResource, msgPatchEdit  %>"
+                                Icon="ApplicationEdit">
+                                <Listeners>
+                                    <Click Handler="showPatchEditForm();" />
                                 </Listeners>
                             </ext:Button>
                             <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
