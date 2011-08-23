@@ -142,5 +142,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    {
             return ConvertToWrapperList(businessProxy.FindAllByGroupIdAndOrder());
 	    }
+
+	    public static void PatchAdd(string category, bool hasValue, string categoryItems)
+	    {
+            businessProxy.PatchAdd(category, hasValue, categoryItems);
+	    }
+
+ 
     }
 }

@@ -73,5 +73,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
 
         }
+
+        public SystemDictionaryEntity FindMaxOrderItemByCategory(string category)
+        {
+            NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Eq(category));
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYORDER.Desc());
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

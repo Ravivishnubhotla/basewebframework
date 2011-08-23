@@ -9,6 +9,7 @@ using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Data.Tables;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
@@ -24,6 +25,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<string> GetAllCategoryNames();
 
         List<SystemDictionaryEntity> FindAllByGroupIdAndOrder();
+        void PatchAdd(string category, bool hasValue, string categoryItems);
     }
 
     public partial class SystemDictionaryServiceProxy : ISystemDictionaryServiceProxy
@@ -51,6 +53,75 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         public List<SystemDictionaryEntity> FindAllByGroupIdAndOrder()
         {
             return this.SelfDataObj.FindAllByGroupIdAndOrder();
+        }
+
+        [Transaction(ReadOnly = false)]
+        public void PatchAdd(string category, bool hasValue, string categoryItems)
+        {
+            int orderIndex = 0;
+
+            orderIndex = FindMaxOrderByCategory(category);
+
+            List<string> items = new List<string>();
+
+            if (!string.IsNullOrEmpty(categoryItems))
+            {
+                string[] arrays = categoryItems.Trim().Replace("\r\n", "\n").Replace("\n", "@").Split('@');
+
+                foreach (string line in arrays)
+                {
+                    if (!string.IsNullOrEmpty(line.Trim()))
+                    {
+                        items.Add(line);
+                    }
+                }
+            }
+
+            foreach (string item in items)
+            {
+                orderIndex++;
+
+                string key = "";
+
+                string value = "";
+
+                if(hasValue)
+                {
+                    key = item.Split('|')[0];
+                    value = item.Split('|')[1];
+                }
+                else
+                {
+                    key = item;
+                    value = item;                    
+                }
+
+                SystemDictionaryEntity obj = new SystemDictionaryEntity();
+
+                obj.SystemDictionaryCategoryID = category;
+                obj.SystemDictionaryKey = key;
+                obj.SystemDictionaryValue = value;
+                obj.SystemDictionaryDesciption = "";
+                obj.SystemDictionaryOrder = orderIndex;
+                obj.SystemDictionaryIsEnable = true;
+                obj.SystemDictionaryIsSystem = false;
+
+                this.DataObjectsContainerIocID.SystemDictionaryDataObjectInstance.Save(obj);
+
+            }
+        }
+
+        public int FindMaxOrderByCategory(string category)
+        {
+            SystemDictionaryEntity systemDictionary = this.SelfDataObj.FindMaxOrderItemByCategory(category);
+
+            if (systemDictionary == null)
+                return 0;
+
+            if (systemDictionary.SystemDictionaryOrder == null)
+                return 0;
+
+            return systemDictionary.SystemDictionaryOrder.Value;
         }
     }
 }
