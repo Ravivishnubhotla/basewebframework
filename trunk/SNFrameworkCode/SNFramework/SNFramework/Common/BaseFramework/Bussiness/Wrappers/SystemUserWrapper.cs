@@ -22,8 +22,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
     [Serializable]
     public partial class SystemUserWrapper
     {
-        public const string DEV_USER_ID = "DeveloperAdministrator";
-        public const string SYS_USER_ID = "SystemAdministrator";
+        public static string DEV_USER_ID = "DeveloperAdministrator";
+        public static string SYS_USER_ID = "SystemAdministrator";
 
         #region Static Common Data Operation
 
@@ -134,11 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #endregion
 
-
-
         internal static readonly ISystemPrivilegeServiceProxy systemPrivilegeParameterServiceProxy = ((BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(BaseFrameworkServiceProxyContainer)))).SystemPrivilegeServiceProxyInstance;
-
-
 
         private IList applications = null;
 
@@ -422,11 +418,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
             catch (Exception)
             {
-
                 return false;
             }
-
-
         }
 
 
