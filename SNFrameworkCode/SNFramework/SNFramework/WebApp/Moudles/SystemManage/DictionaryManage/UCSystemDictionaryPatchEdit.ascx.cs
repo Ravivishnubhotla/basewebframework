@@ -35,6 +35,10 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
                 SystemDictionaryWrapper up = SystemDictionaryWrapper.FindById(systemDictionaryWrapper.SystemDictionaryID);
 
                 up.SystemDictionaryKey = systemDictionaryWrapper.SystemDictionaryKey;
+                up.SystemDictionaryValue = systemDictionaryWrapper.SystemDictionaryValue;
+                up.SystemDictionaryDesciption = systemDictionaryWrapper.SystemDictionaryDesciption;
+                up.SystemDictionaryIsEnable = systemDictionaryWrapper.SystemDictionaryIsEnable;
+                up.SystemDictionaryOrder = systemDictionaryWrapper.SystemDictionaryOrder;
 
                 SystemDictionaryWrapper.Update(up);
             }

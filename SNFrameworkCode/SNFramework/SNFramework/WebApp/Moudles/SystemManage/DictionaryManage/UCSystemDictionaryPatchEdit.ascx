@@ -42,7 +42,7 @@
                         <ext:Button ID='btnSave' runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>"
                             Icon="ApplicationEdit">
                             <DirectEvents>
-                                <Click OnEvent="SubmitSelection" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                                <Click OnEvent="SubmitSelection" Failure="<%$ Resources : GlobalResource, msgShowError  %>" Success="#{storeFilterSystemDictionary}.commitChanges();#{storeFilterSystemDictionary}.reload();#{storeSystemDictionary}.reload();"> 
                                     <ExtraParams>
                                         <ext:Parameter Name="Values" Value="Ext.encode(getDirValues(#{gridPanelSystemDictionary}))"
                                             Mode="Raw" />
