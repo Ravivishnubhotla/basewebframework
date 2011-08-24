@@ -17,7 +17,7 @@ namespace Legendigital.Common.WebApp.MainPage
         {
             if (X.IsAjaxRequest)
                 return;
-
+            
 
             this.Session["Ext.Net.Theme"] = Ext.Net.Theme.Default;
             this.cbTheme.SelectedItem.Value = this.ResourceManagerProxy1.Theme.ToString();
