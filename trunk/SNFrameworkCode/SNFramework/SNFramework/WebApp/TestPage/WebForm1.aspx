@@ -29,13 +29,13 @@
                 <Items>
                     <ext:Panel ID="Panel1" runat="server" Title="短信通道(SP)" Frame="true"  Layout="Fit" >
                         <Items>
-                            <ext:TableLayout ID="TableLayout1" runat="server" Columns="3" ColumnWidth="0.33">
+                            <ext:TableLayout ID="TableLayout1" runat="server" Columns="3" ColumnWidth="0.33" >
                                 <Cells>
                                     <ext:Cell>
-                                        <ext:TextField ID="txtLinkParamsName" runat="server" FieldLabel="LinkID字段" AllowBlank="True" AnchorHorizontal="98%"  />
+                                        <ext:TextField ID="txtLinkParamsName" runat="server" FieldLabel="LinkID字段" AllowBlank="True"  AnchorHorizontal="85%"  />
                                     </ext:Cell>
                                     <ext:Cell>
-                                        <ext:TextField ID="txtMobileParamsName" runat="server" FieldLabel="Mobile字段" AllowBlank="True"  AnchorHorizontal="98%" />
+                                         <ext:TextField ID="txtMobileParamsName" runat="server"  FieldLabel="Mobile字段" AllowBlank="True"  AnchorHorizontal="98%" />
                                     </ext:Cell>
                                     <ext:Cell>
                                         <ext:TextField ID="txtSPcodeParamsName" runat="server" FieldLabel="SPcode字段" AllowBlank="True"  AnchorHorizontal="98%" />
