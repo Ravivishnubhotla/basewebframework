@@ -12,7 +12,7 @@ namespace Legendigital.Common.WebApp
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            this.Application["Ext.Net.LicenseKey"] = "Nzc5MzE4ODUsMSw5OTk5LTEyLTMx";
         }
 
         protected void Session_Start(object sender, EventArgs e)
