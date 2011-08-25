@@ -55,11 +55,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Ext.Net, Version=1.0.4168.40137, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net, Version=1.1.0.41789, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Ext.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Ext.Net.Utilities, Version=1.0.0.40132, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
+    <Reference Include="Ext.Net.Utilities, Version=1.1.0.41784, Culture=neutral, PublicKeyToken=2c34ac34702a3c23, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Ext.Net.Utilities.dll</HintPath>
     </Reference>
