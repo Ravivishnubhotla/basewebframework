@@ -22,13 +22,13 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.Viewport Viewport1;
         
         /// <summary>
-        /// WizardPanel control.
+        /// formChannelParamsSeting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel WizardPanel;
+        protected global::Ext.Net.Panel formChannelParamsSeting;
         
         /// <summary>
         /// Toolbar1 control.
@@ -49,13 +49,13 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.ComboBox cmbChannelType;
         
         /// <summary>
-        /// Panel1 control.
+        /// pnlParamsSP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
+        protected global::Ext.Net.Panel pnlParamsSP;
         
         /// <summary>
         /// TableLayout1 control.
@@ -103,6 +103,42 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.TextField txtMoParamsName;
         
         /// <summary>
+        /// txtState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtState;
+        
+        /// <summary>
+        /// txtCreateDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtCreateDate;
+        
+        /// <summary>
+        /// txtProvince control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtProvince;
+        
+        /// <summary>
+        /// txtCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtCity;
+        
+        /// <summary>
         /// txtExtend1 control.
         /// </summary>
         /// <remarks>
@@ -121,22 +157,265 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.TextField txtExtend2;
         
         /// <summary>
-        /// Panel2 control.
+        /// txtExtend3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
+        protected global::Ext.Net.TextField txtExtend3;
         
         /// <summary>
-        /// Panel3 control.
+        /// txtExtend4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel3;
+        protected global::Ext.Net.TextField txtExtend4;
+        
+        /// <summary>
+        /// txtExtend5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend5;
+        
+        /// <summary>
+        /// txtExtend6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend6;
+        
+        /// <summary>
+        /// txtExtend7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend7;
+        
+        /// <summary>
+        /// txtExtend8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend8;
+        
+        /// <summary>
+        /// txtExtend9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend9;
+        
+        /// <summary>
+        /// txtExtend10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtExtend10;
+        
+        /// <summary>
+        /// pnlParamsIVR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Panel pnlParamsIVR;
+        
+        /// <summary>
+        /// TableLayout2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TableLayout TableLayout2;
+        
+        /// <summary>
+        /// txtIVRLinkID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRLinkID;
+        
+        /// <summary>
+        /// txtIVRMobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRMobile;
+        
+        /// <summary>
+        /// txtIVRSPCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRSPCode;
+        
+        /// <summary>
+        /// txtIVRFeetime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRFeetime;
+        
+        /// <summary>
+        /// txtIVRStartTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRStartTime;
+        
+        /// <summary>
+        /// txtIVREndTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVREndTime;
+        
+        /// <summary>
+        /// TextField7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField TextField7;
+        
+        /// <summary>
+        /// TextField8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField TextField8;
+        
+        /// <summary>
+        /// txtIVRExtend1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend1;
+        
+        /// <summary>
+        /// txtIVRExtend2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend2;
+        
+        /// <summary>
+        /// txtIVRExtend3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend3;
+        
+        /// <summary>
+        /// txtIVRExtend4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend4;
+        
+        /// <summary>
+        /// txtIVRExtend5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend5;
+        
+        /// <summary>
+        /// txtIVRExtend6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend6;
+        
+        /// <summary>
+        /// txtIVRExtend7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend7;
+        
+        /// <summary>
+        /// txtIVRExtend8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend8;
+        
+        /// <summary>
+        /// txtIVRExtend9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend9;
+        
+        /// <summary>
+        /// txtIVRExtend10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtIVRExtend10;
+        
+        /// <summary>
+        /// pnlParamsCustom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Panel pnlParamsCustom;
         
         /// <summary>
         /// btnPrev control.

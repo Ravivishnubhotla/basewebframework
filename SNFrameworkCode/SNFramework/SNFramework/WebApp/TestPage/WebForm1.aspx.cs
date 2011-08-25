@@ -14,37 +14,6 @@ namespace Legendigital.Common.WebApp.TestPage
         {
 
         }
-
-        protected void Next_Click(object sender, DirectEventArgs e)
-        {
-            int index = int.Parse(e.ExtraParams["index"]);
-
-            if ((index + 1) < this.WizardPanel.Items.Count)
-            {
-                this.WizardPanel.ActiveIndex = index + 1;
-            }
-
-            this.CheckButtons();
-        }
-
-        protected void Prev_Click(object sender, DirectEventArgs e)
-        {
-            int index = int.Parse(e.ExtraParams["index"]);
-
-            if ((index - 1) >= 0)
-            {
-                this.WizardPanel.ActiveIndex = index - 1;
-            }
-
-            this.CheckButtons();
-        }
-
-        private void CheckButtons()
-        {
-            int index = this.WizardPanel.ActiveIndex;
-
-            this.btnNext.Disabled = index == (this.WizardPanel.Items.Count - 1);
-            this.btnPrev.Disabled = index == 0;
-        }
+ 
     }
 }
