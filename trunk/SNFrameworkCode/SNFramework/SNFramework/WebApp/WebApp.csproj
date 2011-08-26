@@ -310,6 +310,7 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
     <Content Include="TestPage\WebForm1.aspx" />
+    <Content Include="TestPage\WebForm2.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1005,6 +1006,13 @@
     </Compile>
     <Compile Include="TestPage\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
