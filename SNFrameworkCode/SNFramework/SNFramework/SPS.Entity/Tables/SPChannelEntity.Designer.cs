@@ -16,34 +16,36 @@ namespace SPS.Entity.Tables
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPChannelEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
-		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_RECIEVEDURL = "RecievedUrl";
-		public static readonly string PROPERTY_NAME_RECIEVEDNAME = "RecievedName";
-		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
-		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
-		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_DATAOKMESSAGE = "DataOkMessage";
 		public static readonly string PROPERTY_NAME_DATAFAILEDMESSAGE = "DataFailedMessage";
+		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_DATAADAPTERTYPE = "DataAdapterType";
+		public static readonly string PROPERTY_NAME_DATAADAPTERURL = "DataAdapterUrl";
+		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
+		public static readonly string PROPERTY_NAME_IVRFEETIMETYPE = "IVRFeeTimeType";
+		public static readonly string PROPERTY_NAME_ISSTATEREPORT = "IsStateReport";
+		public static readonly string PROPERTY_NAME_STATEREPORTTYPE = "StateReportType";
 		public static readonly string PROPERTY_NAME_REPORTOKMESSAGE = "ReportOkMessage";
 		public static readonly string PROPERTY_NAME_REPORTFAILEDMESSAGE = "ReportFailedMessage";
-		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
-		public static readonly string PROPERTY_NAME_TYPEREQUEST = "TypeRequest";
-		public static readonly string PROPERTY_NAME_DATAPARAMNAME = "DataParamName";
-		public static readonly string PROPERTY_NAME_DATAPARAMVALUE = "DataParamValue";
-		public static readonly string PROPERTY_NAME_REPORTPARAMNAME = "ReportParamName";
-		public static readonly string PROPERTY_NAME_REPORTPARAMVALUE = "ReportParamValue";
+		public static readonly string PROPERTY_NAME_STATEREPORTPARAMNAME = "StateReportParamName";
+		public static readonly string PROPERTY_NAME_STATEREPORTPARAMVALUE = "StateReportParamValue";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMSTATEREPORTVALUE = "RequestTypeParamStateReportValue";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMDATAREPORTVALUE = "RequestTypeParamDataReportValue";
 		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
-		public static readonly string PROPERTY_NAME_STATUSPARAMNAME = "StatusParamName";
-		public static readonly string PROPERTY_NAME_STATUSPARAMVALUE = "StatusParamValue";
+		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
+		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
+		public static readonly string PROPERTY_NAME_ISPARAMSCONVERT = "IsParamsConvert";
+		public static readonly string PROPERTY_NAME_ISAUTOLINKID = "IsAutoLinkID";
+		public static readonly string PROPERTY_NAME_AUTOLINKIDFIELDS = "AutoLinkIDFields";
+		public static readonly string PROPERTY_NAME_LOGREQUESTTYPE = "LogRequestType";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_DEFAULTRATE = "DefaultRate";
-		public static readonly string PROPERTY_NAME_HASSTATREPORT = "HasStatReport";
 		public static readonly string PROPERTY_NAME_CHANNELDETAILINFO = "ChannelDetailInfo";
 		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
-		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
-		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
 		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
+		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		
         #endregion
 	
@@ -54,34 +56,36 @@ namespace SPS.Entity.Tables
 		
 		private int _id;
 		private string _name;
-		private string _description;
 		private string _code;
-		private string _recievedUrl;
-		private string _recievedName;
-		private bool? _isAllowNullLinkID;
-		private bool? _isMonitorRequest;
-		private bool? _isDisable;
 		private string _dataOkMessage;
 		private string _dataFailedMessage;
+		private string _description;
+		private string _dataAdapterType;
+		private string _dataAdapterUrl;
+		private string _channelType;
+		private string _iVRFeeTimeType;
+		private bool? _isStateReport;
+		private string _stateReportType;
 		private string _reportOkMessage;
 		private string _reportFailedMessage;
-		private bool? _statSendOnce;
-		private bool? _typeRequest;
-		private string _dataParamName;
-		private string _dataParamValue;
-		private string _reportParamName;
-		private string _reportParamValue;
+		private string _stateReportParamName;
+		private string _stateReportParamValue;
+		private string _requestTypeParamName;
+		private string _requestTypeParamStateReportValue;
+		private string _requestTypeParamDataReportValue;
 		private bool? _hasFilters;
-		private string _statusParamName;
-		private string _statusParamValue;
+		private bool? _isMonitorRequest;
+		private bool? _isLogRequest;
+		private bool? _isParamsConvert;
+		private bool? _isAutoLinkID;
+		private string _autoLinkIDFields;
+		private string _logRequestType;
 		private decimal? _price;
 		private decimal? _defaultRate;
-		private bool? _hasStatReport;
 		private string _channelDetailInfo;
 		private SPUpperEntity _upperID;
-		private bool? _isLogRequest;
-		private string _channelType;
 		private string _channelStatus;
+		private bool? _isDisable;
 		
 		#endregion
 
@@ -93,34 +97,36 @@ namespace SPS.Entity.Tables
 		{
 			_id = 0;
 			_name = null;
-			_description = null;
 			_code = null;
-			_recievedUrl = null;
-			_recievedName = null;
-			_isAllowNullLinkID = null;
-			_isMonitorRequest = null;
-			_isDisable = null;
 			_dataOkMessage = null;
 			_dataFailedMessage = null;
+			_description = null;
+			_dataAdapterType = null;
+			_dataAdapterUrl = null;
+			_channelType = null;
+			_iVRFeeTimeType = null;
+			_isStateReport = null;
+			_stateReportType = null;
 			_reportOkMessage = null;
 			_reportFailedMessage = null;
-			_statSendOnce = null;
-			_typeRequest = null;
-			_dataParamName = null;
-			_dataParamValue = null;
-			_reportParamName = null;
-			_reportParamValue = null;
+			_stateReportParamName = null;
+			_stateReportParamValue = null;
+			_requestTypeParamName = null;
+			_requestTypeParamStateReportValue = null;
+			_requestTypeParamDataReportValue = null;
 			_hasFilters = null;
-			_statusParamName = null;
-			_statusParamValue = null;
+			_isMonitorRequest = null;
+			_isLogRequest = null;
+			_isParamsConvert = null;
+			_isAutoLinkID = null;
+			_autoLinkIDFields = null;
+			_logRequestType = null;
 			_price = null;
 			_defaultRate = null;
-			_hasStatReport = null;
 			_channelDetailInfo = null;
 			_upperID = null;
-			_isLogRequest = null;
-			_channelType = null;
 			_channelStatus = null;
+			_isDisable = null;
 		}
 		#endregion
 
@@ -128,38 +134,40 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string code, string recievedUrl, string recievedName, bool? isAllowNullLinkID, bool? isMonitorRequest, bool? isDisable, string dataOkMessage, string dataFailedMessage, string reportOkMessage, string reportFailedMessage, bool? statSendOnce, bool? typeRequest, string dataParamName, string dataParamValue, string reportParamName, string reportParamValue, bool? hasFilters, string statusParamName, string statusParamValue, decimal? price, decimal? defaultRate, bool? hasStatReport, string channelDetailInfo, SPUpperEntity upperID, bool? isLogRequest, string channelType, string channelStatus)
+		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable)
 		{
 			_id = id;
 			_name = name;
-			_description = description;
 			_code = code;
-			_recievedUrl = recievedUrl;
-			_recievedName = recievedName;
-			_isAllowNullLinkID = isAllowNullLinkID;
-			_isMonitorRequest = isMonitorRequest;
-			_isDisable = isDisable;
 			_dataOkMessage = dataOkMessage;
 			_dataFailedMessage = dataFailedMessage;
+			_description = description;
+			_dataAdapterType = dataAdapterType;
+			_dataAdapterUrl = dataAdapterUrl;
+			_channelType = channelType;
+			_iVRFeeTimeType = iVRFeeTimeType;
+			_isStateReport = isStateReport;
+			_stateReportType = stateReportType;
 			_reportOkMessage = reportOkMessage;
 			_reportFailedMessage = reportFailedMessage;
-			_statSendOnce = statSendOnce;
-			_typeRequest = typeRequest;
-			_dataParamName = dataParamName;
-			_dataParamValue = dataParamValue;
-			_reportParamName = reportParamName;
-			_reportParamValue = reportParamValue;
+			_stateReportParamName = stateReportParamName;
+			_stateReportParamValue = stateReportParamValue;
+			_requestTypeParamName = requestTypeParamName;
+			_requestTypeParamStateReportValue = requestTypeParamStateReportValue;
+			_requestTypeParamDataReportValue = requestTypeParamDataReportValue;
 			_hasFilters = hasFilters;
-			_statusParamName = statusParamName;
-			_statusParamValue = statusParamValue;
+			_isMonitorRequest = isMonitorRequest;
+			_isLogRequest = isLogRequest;
+			_isParamsConvert = isParamsConvert;
+			_isAutoLinkID = isAutoLinkID;
+			_autoLinkIDFields = autoLinkIDFields;
+			_logRequestType = logRequestType;
 			_price = price;
 			_defaultRate = defaultRate;
-			_hasStatReport = hasStatReport;
 			_channelDetailInfo = channelDetailInfo;
 			_upperID = upperID;
-			_isLogRequest = isLogRequest;
-			_channelType = channelType;
 			_channelStatus = channelStatus;
+			_isDisable = isDisable;
 		}
 		#endregion     
 	
@@ -200,23 +208,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string Description
-		{
-			get { return _description; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 4000)
-					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
-				_isChanged |= (_description != value); _description = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual string Code
 		{
 			get { return _code; }
@@ -227,82 +218,6 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for Code", value, value.ToString());
 				_isChanged |= (_code != value); _code = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string RecievedUrl
-		{
-			get { return _recievedUrl; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for RecievedUrl", value, value.ToString());
-				_isChanged |= (_recievedUrl != value); _recievedUrl = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string RecievedName
-		{
-			get { return _recievedName; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for RecievedName", value, value.ToString());
-				_isChanged |= (_recievedName != value); _recievedName = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? IsAllowNullLinkID
-		{
-			get { return _isAllowNullLinkID; }
-
-			set	
-			{
-				_isChanged |= (_isAllowNullLinkID != value); _isAllowNullLinkID = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? IsMonitorRequest
-		{
-			get { return _isMonitorRequest; }
-
-			set	
-			{
-				_isChanged |= (_isMonitorRequest != value); _isMonitorRequest = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? IsDisable
-		{
-			get { return _isDisable; }
-
-			set	
-			{
-				_isChanged |= (_isDisable != value); _isDisable = value;
 			}
 		}
 
@@ -344,6 +259,122 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual string Description
+		{
+			get { return _description; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4000)
+					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
+				_isChanged |= (_description != value); _description = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DataAdapterType
+		{
+			get { return _dataAdapterType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for DataAdapterType", value, value.ToString());
+				_isChanged |= (_dataAdapterType != value); _dataAdapterType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DataAdapterUrl
+		{
+			get { return _dataAdapterUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for DataAdapterUrl", value, value.ToString());
+				_isChanged |= (_dataAdapterUrl != value); _dataAdapterUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelType
+		{
+			get { return _channelType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelType", value, value.ToString());
+				_isChanged |= (_channelType != value); _channelType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string IVRFeeTimeType
+		{
+			get { return _iVRFeeTimeType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for IVRFeeTimeType", value, value.ToString());
+				_isChanged |= (_iVRFeeTimeType != value); _iVRFeeTimeType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsStateReport
+		{
+			get { return _isStateReport; }
+
+			set	
+			{
+				_isChanged |= (_isStateReport != value); _isStateReport = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string StateReportType
+		{
+			get { return _stateReportType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for StateReportType", value, value.ToString());
+				_isChanged |= (_stateReportType != value); _stateReportType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual string ReportOkMessage
 		{
 			get { return _reportOkMessage; }
@@ -378,13 +409,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? StatSendOnce
+		public virtual string StateReportParamName
 		{
-			get { return _statSendOnce; }
+			get { return _stateReportParamName; }
 
 			set	
 			{
-				_isChanged |= (_statSendOnce != value); _statSendOnce = value;
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for StateReportParamName", value, value.ToString());
+				_isChanged |= (_stateReportParamName != value); _stateReportParamName = value;
 			}
 		}
 
@@ -392,13 +426,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? TypeRequest
+		public virtual string StateReportParamValue
 		{
-			get { return _typeRequest; }
+			get { return _stateReportParamValue; }
 
 			set	
 			{
-				_isChanged |= (_typeRequest != value); _typeRequest = value;
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for StateReportParamValue", value, value.ToString());
+				_isChanged |= (_stateReportParamValue != value); _stateReportParamValue = value;
 			}
 		}
 
@@ -406,16 +443,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string DataParamName
+		public virtual string RequestTypeParamName
 		{
-			get { return _dataParamName; }
+			get { return _requestTypeParamName; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for DataParamName", value, value.ToString());
-				_isChanged |= (_dataParamName != value); _dataParamName = value;
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeParamName", value, value.ToString());
+				_isChanged |= (_requestTypeParamName != value); _requestTypeParamName = value;
 			}
 		}
 
@@ -423,16 +460,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string DataParamValue
+		public virtual string RequestTypeParamStateReportValue
 		{
-			get { return _dataParamValue; }
+			get { return _requestTypeParamStateReportValue; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for DataParamValue", value, value.ToString());
-				_isChanged |= (_dataParamValue != value); _dataParamValue = value;
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeParamStateReportValue", value, value.ToString());
+				_isChanged |= (_requestTypeParamStateReportValue != value); _requestTypeParamStateReportValue = value;
 			}
 		}
 
@@ -440,33 +477,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string ReportParamName
+		public virtual string RequestTypeParamDataReportValue
 		{
-			get { return _reportParamName; }
+			get { return _requestTypeParamDataReportValue; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ReportParamName", value, value.ToString());
-				_isChanged |= (_reportParamName != value); _reportParamName = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string ReportParamValue
-		{
-			get { return _reportParamValue; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ReportParamValue", value, value.ToString());
-				_isChanged |= (_reportParamValue != value); _reportParamValue = value;
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for RequestTypeParamDataReportValue", value, value.ToString());
+				_isChanged |= (_requestTypeParamDataReportValue != value); _requestTypeParamDataReportValue = value;
 			}
 		}
 
@@ -488,16 +508,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string StatusParamName
+		public virtual bool? IsMonitorRequest
 		{
-			get { return _statusParamName; }
+			get { return _isMonitorRequest; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for StatusParamName", value, value.ToString());
-				_isChanged |= (_statusParamName != value); _statusParamName = value;
+				_isChanged |= (_isMonitorRequest != value); _isMonitorRequest = value;
 			}
 		}
 
@@ -505,16 +522,75 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string StatusParamValue
+		public virtual bool? IsLogRequest
 		{
-			get { return _statusParamValue; }
+			get { return _isLogRequest; }
+
+			set	
+			{
+				_isChanged |= (_isLogRequest != value); _isLogRequest = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsParamsConvert
+		{
+			get { return _isParamsConvert; }
+
+			set	
+			{
+				_isChanged |= (_isParamsConvert != value); _isParamsConvert = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsAutoLinkID
+		{
+			get { return _isAutoLinkID; }
+
+			set	
+			{
+				_isChanged |= (_isAutoLinkID != value); _isAutoLinkID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string AutoLinkIDFields
+		{
+			get { return _autoLinkIDFields; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for StatusParamValue", value, value.ToString());
-				_isChanged |= (_statusParamValue != value); _statusParamValue = value;
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for AutoLinkIDFields", value, value.ToString());
+				_isChanged |= (_autoLinkIDFields != value); _autoLinkIDFields = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LogRequestType
+		{
+			get { return _logRequestType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for LogRequestType", value, value.ToString());
+				_isChanged |= (_logRequestType != value); _logRequestType = value;
 			}
 		}
 
@@ -543,20 +619,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultRate != value); _defaultRate = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? HasStatReport
-		{
-			get { return _hasStatReport; }
-
-			set	
-			{
-				_isChanged |= (_hasStatReport != value); _hasStatReport = value;
 			}
 		}
 
@@ -595,37 +657,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsLogRequest
-		{
-			get { return _isLogRequest; }
-
-			set	
-			{
-				_isChanged |= (_isLogRequest != value); _isLogRequest = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string ChannelType
-		{
-			get { return _channelType; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 40)
-					throw new ArgumentOutOfRangeException("Invalid value for ChannelType", value, value.ToString());
-				_isChanged |= (_channelType != value); _channelType = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual string ChannelStatus
 		{
 			get { return _channelStatus; }
@@ -636,6 +667,20 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for ChannelStatus", value, value.ToString());
 				_isChanged |= (_channelStatus != value); _channelStatus = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsDisable
+		{
+			get { return _isDisable; }
+
+			set	
+			{
+				_isChanged |= (_isDisable != value); _isDisable = value;
 			}
 		}
 		/// <summary>

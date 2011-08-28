@@ -71,12 +71,16 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
-		public static readonly string PROPERTY_NAME_RECIEVEDATAURL = "RecieveDataUrl";
+		public static readonly string PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING = "UseClientDefaultSycnSetting";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
-		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
+		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
+		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
+		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
@@ -130,6 +134,20 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public decimal? Price
+		{
+			get
+			{
+				return entity.Price;
+			}
+			set
+			{
+				entity.Price = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public decimal? InterceptRate
 		{
 			get
@@ -144,15 +162,15 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string RecieveDataUrl
+		public bool? UseClientDefaultSycnSetting
 		{
 			get
 			{
-				return entity.RecieveDataUrl;
+				return entity.UseClientDefaultSycnSetting;
 			}
 			set
 			{
-				entity.RecieveDataUrl = value;
+				entity.UseClientDefaultSycnSetting = value;
 			}
 		}
 		/// <summary>
@@ -172,29 +190,29 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string OkMessage
+		public bool? SycnResendFailedData
 		{
 			get
 			{
-				return entity.OkMessage;
+				return entity.SycnResendFailedData;
 			}
 			set
 			{
-				entity.OkMessage = value;
+				entity.SycnResendFailedData = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string FailedMessage
+		public string SycnRetryTimes
 		{
 			get
 			{
-				return entity.FailedMessage;
+				return entity.SycnRetryTimes;
 			}
 			set
 			{
-				entity.FailedMessage = value;
+				entity.SycnRetryTimes = value;
 			}
 		}
 		/// <summary>
@@ -209,6 +227,48 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SyncType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SycnDataUrl
+		{
+			get
+			{
+				return entity.SycnDataUrl;
+			}
+			set
+			{
+				entity.SycnDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SycnOkMessage
+		{
+			get
+			{
+				return entity.SycnOkMessage;
+			}
+			set
+			{
+				entity.SycnOkMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SycnFailedMessage
+		{
+			get
+			{
+				return entity.SycnFailedMessage;
+			}
+			set
+			{
+				entity.SycnFailedMessage = value;
 			}
 		}
 		/// <summary>

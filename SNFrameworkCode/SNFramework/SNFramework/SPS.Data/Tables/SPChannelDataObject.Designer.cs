@@ -16,29 +16,32 @@ namespace SPS.Data.Tables
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ID));		
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_NAME));		
-		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CODE));		
-		public static readonly StringProperty PROPERTY_RECIEVEDURL = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_RECIEVEDURL));		
-		public static readonly StringProperty PROPERTY_RECIEVEDNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_RECIEVEDNAME));		
-		public static readonly BoolProperty PROPERTY_ISALLOWNULLLINKID = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISALLOWNULLLINKID));		
-		public static readonly BoolProperty PROPERTY_ISMONITORREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORREQUEST));		
-		public static readonly BoolProperty PROPERTY_ISDISABLE = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE));		
 		public static readonly StringProperty PROPERTY_DATAOKMESSAGE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAOKMESSAGE));		
 		public static readonly StringProperty PROPERTY_DATAFAILEDMESSAGE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAFAILEDMESSAGE));		
+		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DESCRIPTION));		
+		public static readonly StringProperty PROPERTY_DATAADAPTERTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAADAPTERTYPE));		
+		public static readonly StringProperty PROPERTY_DATAADAPTERURL = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAADAPTERURL));		
+		public static readonly StringProperty PROPERTY_CHANNELTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELTYPE));		
+		public static readonly StringProperty PROPERTY_IVRFEETIMETYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_IVRFEETIMETYPE));		
+		public static readonly BoolProperty PROPERTY_ISSTATEREPORT = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISSTATEREPORT));		
+		public static readonly StringProperty PROPERTY_STATEREPORTTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATEREPORTTYPE));		
 		public static readonly StringProperty PROPERTY_REPORTOKMESSAGE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTOKMESSAGE));		
 		public static readonly StringProperty PROPERTY_REPORTFAILEDMESSAGE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTFAILEDMESSAGE));		
-		public static readonly BoolProperty PROPERTY_STATSENDONCE = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATSENDONCE));		
-		public static readonly BoolProperty PROPERTY_TYPEREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_TYPEREQUEST));		
-		public static readonly StringProperty PROPERTY_DATAPARAMNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAPARAMNAME));		
-		public static readonly StringProperty PROPERTY_DATAPARAMVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAPARAMVALUE));		
-		public static readonly StringProperty PROPERTY_REPORTPARAMNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTPARAMNAME));		
-		public static readonly StringProperty PROPERTY_REPORTPARAMVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTPARAMVALUE));		
+		public static readonly StringProperty PROPERTY_STATEREPORTPARAMNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATEREPORTPARAMNAME));		
+		public static readonly StringProperty PROPERTY_STATEREPORTPARAMVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATEREPORTPARAMVALUE));		
+		public static readonly StringProperty PROPERTY_REQUESTTYPEPARAMNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEPARAMNAME));		
+		public static readonly StringProperty PROPERTY_REQUESTTYPEPARAMSTATEREPORTVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEPARAMSTATEREPORTVALUE));		
+		public static readonly StringProperty PROPERTY_REQUESTTYPEPARAMDATAREPORTVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REQUESTTYPEPARAMDATAREPORTVALUE));		
 		public static readonly BoolProperty PROPERTY_HASFILTERS = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_HASFILTERS));		
-		public static readonly StringProperty PROPERTY_STATUSPARAMNAME = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATUSPARAMNAME));		
-		public static readonly StringProperty PROPERTY_STATUSPARAMVALUE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATUSPARAMVALUE));		
+		public static readonly BoolProperty PROPERTY_ISMONITORREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISMONITORREQUEST));		
+		public static readonly BoolProperty PROPERTY_ISLOGREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISLOGREQUEST));		
+		public static readonly BoolProperty PROPERTY_ISPARAMSCONVERT = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISPARAMSCONVERT));		
+		public static readonly BoolProperty PROPERTY_ISAUTOLINKID = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISAUTOLINKID));		
+		public static readonly StringProperty PROPERTY_AUTOLINKIDFIELDS = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_AUTOLINKIDFIELDS));		
+		public static readonly StringProperty PROPERTY_LOGREQUESTTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_LOGREQUESTTYPE));		
 		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_PRICE));		
 		public static readonly DecimalProperty PROPERTY_DEFAULTRATE = new DecimalProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DEFAULTRATE));		
-		public static readonly BoolProperty PROPERTY_HASSTATREPORT = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_HASSTATREPORT));		
 		public static readonly StringProperty PROPERTY_CHANNELDETAILINFO = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELDETAILINFO));		
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(SPChannelEntity.PROPERTY_NAME_UPPERID));
 		#region upperID字段外键查询字段
@@ -53,9 +56,8 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_UPPERID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Description"));
 		public static readonly DateTimeProperty PROPERTY_UPPERID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateDate"));
 		#endregion
-		public static readonly BoolProperty PROPERTY_ISLOGREQUEST = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISLOGREQUEST));		
-		public static readonly StringProperty PROPERTY_CHANNELTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELTYPE));		
 		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELSTATUS));		
+		public static readonly BoolProperty PROPERTY_ISDISABLE = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE));		
       
 		#region 子类集合字段查询字段
 	
@@ -77,62 +79,66 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "Name":
                     return typeof (string);
-                case "Description":
-                    return typeof (string);
                 case "Code":
                     return typeof (string);
-                case "RecievedUrl":
-                    return typeof (string);
-                case "RecievedName":
-                    return typeof (string);
-                case "IsAllowNullLinkID":
-                    return typeof (bool);
-                case "IsMonitorRequest":
-                    return typeof (bool);
-                case "IsDisable":
-                    return typeof (bool);
                 case "DataOkMessage":
                     return typeof (string);
                 case "DataFailedMessage":
+                    return typeof (string);
+                case "Description":
+                    return typeof (string);
+                case "DataAdapterType":
+                    return typeof (string);
+                case "DataAdapterUrl":
+                    return typeof (string);
+                case "ChannelType":
+                    return typeof (string);
+                case "IVRFeeTimeType":
+                    return typeof (string);
+                case "IsStateReport":
+                    return typeof (bool);
+                case "StateReportType":
                     return typeof (string);
                 case "ReportOkMessage":
                     return typeof (string);
                 case "ReportFailedMessage":
                     return typeof (string);
-                case "StatSendOnce":
-                    return typeof (bool);
-                case "TypeRequest":
-                    return typeof (bool);
-                case "DataParamName":
+                case "StateReportParamName":
                     return typeof (string);
-                case "DataParamValue":
+                case "StateReportParamValue":
                     return typeof (string);
-                case "ReportParamName":
+                case "RequestTypeParamName":
                     return typeof (string);
-                case "ReportParamValue":
+                case "RequestTypeParamStateReportValue":
+                    return typeof (string);
+                case "RequestTypeParamDataReportValue":
                     return typeof (string);
                 case "HasFilters":
                     return typeof (bool);
-                case "StatusParamName":
+                case "IsMonitorRequest":
+                    return typeof (bool);
+                case "IsLogRequest":
+                    return typeof (bool);
+                case "IsParamsConvert":
+                    return typeof (bool);
+                case "IsAutoLinkID":
+                    return typeof (bool);
+                case "AutoLinkIDFields":
                     return typeof (string);
-                case "StatusParamValue":
+                case "LogRequestType":
                     return typeof (string);
                 case "Price":
                     return typeof (decimal);
                 case "DefaultRate":
                     return typeof (decimal);
-                case "HasStatReport":
-                    return typeof (bool);
                 case "ChannelDetailInfo":
                     return typeof (string);
                 case "UpperID":
                     return typeof (int);
-                case "IsLogRequest":
-                    return typeof (bool);
-                case "ChannelType":
-                    return typeof (string);
                 case "ChannelStatus":
                     return typeof (string);
+                case "IsDisable":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

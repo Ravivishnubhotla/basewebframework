@@ -35,11 +35,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
                     this.lblName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.lblDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
-                    this.lblRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
-                    this.lblUserID.Text = obj.UserID.ToString();
-                    //this.lblSyncData.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
-                    this.lblOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
-                    this.lblFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
+                    //this.lblRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
+                    //this.lblUserID.Text = obj.UserID.ToString();
+                    ////this.lblSyncData.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
+                    //this.lblOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
+                    //this.lblFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
                     this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
                     this.lblAlias.Text = ValueConvertUtil.ConvertStringValue(obj.Alias);
                     this.lblInterceptRate.Text = obj.InterceptRate.ToString();

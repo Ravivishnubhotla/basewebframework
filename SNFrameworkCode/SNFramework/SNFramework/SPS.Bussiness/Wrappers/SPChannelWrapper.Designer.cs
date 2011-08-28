@@ -70,34 +70,36 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPChannelEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
-		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_RECIEVEDURL = "RecievedUrl";
-		public static readonly string PROPERTY_NAME_RECIEVEDNAME = "RecievedName";
-		public static readonly string PROPERTY_NAME_ISALLOWNULLLINKID = "IsAllowNullLinkID";
-		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
-		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_DATAOKMESSAGE = "DataOkMessage";
 		public static readonly string PROPERTY_NAME_DATAFAILEDMESSAGE = "DataFailedMessage";
+		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_DATAADAPTERTYPE = "DataAdapterType";
+		public static readonly string PROPERTY_NAME_DATAADAPTERURL = "DataAdapterUrl";
+		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
+		public static readonly string PROPERTY_NAME_IVRFEETIMETYPE = "IVRFeeTimeType";
+		public static readonly string PROPERTY_NAME_ISSTATEREPORT = "IsStateReport";
+		public static readonly string PROPERTY_NAME_STATEREPORTTYPE = "StateReportType";
 		public static readonly string PROPERTY_NAME_REPORTOKMESSAGE = "ReportOkMessage";
 		public static readonly string PROPERTY_NAME_REPORTFAILEDMESSAGE = "ReportFailedMessage";
-		public static readonly string PROPERTY_NAME_STATSENDONCE = "StatSendOnce";
-		public static readonly string PROPERTY_NAME_TYPEREQUEST = "TypeRequest";
-		public static readonly string PROPERTY_NAME_DATAPARAMNAME = "DataParamName";
-		public static readonly string PROPERTY_NAME_DATAPARAMVALUE = "DataParamValue";
-		public static readonly string PROPERTY_NAME_REPORTPARAMNAME = "ReportParamName";
-		public static readonly string PROPERTY_NAME_REPORTPARAMVALUE = "ReportParamValue";
+		public static readonly string PROPERTY_NAME_STATEREPORTPARAMNAME = "StateReportParamName";
+		public static readonly string PROPERTY_NAME_STATEREPORTPARAMVALUE = "StateReportParamValue";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMNAME = "RequestTypeParamName";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMSTATEREPORTVALUE = "RequestTypeParamStateReportValue";
+		public static readonly string PROPERTY_NAME_REQUESTTYPEPARAMDATAREPORTVALUE = "RequestTypeParamDataReportValue";
 		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
-		public static readonly string PROPERTY_NAME_STATUSPARAMNAME = "StatusParamName";
-		public static readonly string PROPERTY_NAME_STATUSPARAMVALUE = "StatusParamValue";
+		public static readonly string PROPERTY_NAME_ISMONITORREQUEST = "IsMonitorRequest";
+		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
+		public static readonly string PROPERTY_NAME_ISPARAMSCONVERT = "IsParamsConvert";
+		public static readonly string PROPERTY_NAME_ISAUTOLINKID = "IsAutoLinkID";
+		public static readonly string PROPERTY_NAME_AUTOLINKIDFIELDS = "AutoLinkIDFields";
+		public static readonly string PROPERTY_NAME_LOGREQUESTTYPE = "LogRequestType";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_DEFAULTRATE = "DefaultRate";
-		public static readonly string PROPERTY_NAME_HASSTATREPORT = "HasStatReport";
 		public static readonly string PROPERTY_NAME_CHANNELDETAILINFO = "ChannelDetailInfo";
 		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
-		public static readonly string PROPERTY_NAME_ISLOGREQUEST = "IsLogRequest";
-		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
 		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
+		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		
         #endregion
 
@@ -134,20 +136,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string Description
-		{
-			get
-			{
-				return entity.Description;
-			}
-			set
-			{
-				entity.Description = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public string Code
 		{
 			get
@@ -157,76 +145,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.Code = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string RecievedUrl
-		{
-			get
-			{
-				return entity.RecievedUrl;
-			}
-			set
-			{
-				entity.RecievedUrl = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string RecievedName
-		{
-			get
-			{
-				return entity.RecievedName;
-			}
-			set
-			{
-				entity.RecievedName = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? IsAllowNullLinkID
-		{
-			get
-			{
-				return entity.IsAllowNullLinkID;
-			}
-			set
-			{
-				entity.IsAllowNullLinkID = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? IsMonitorRequest
-		{
-			get
-			{
-				return entity.IsMonitorRequest;
-			}
-			set
-			{
-				entity.IsMonitorRequest = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? IsDisable
-		{
-			get
-			{
-				return entity.IsDisable;
-			}
-			set
-			{
-				entity.IsDisable = value;
 			}
 		}
 		/// <summary>
@@ -260,6 +178,104 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string Description
+		{
+			get
+			{
+				return entity.Description;
+			}
+			set
+			{
+				entity.Description = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DataAdapterType
+		{
+			get
+			{
+				return entity.DataAdapterType;
+			}
+			set
+			{
+				entity.DataAdapterType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DataAdapterUrl
+		{
+			get
+			{
+				return entity.DataAdapterUrl;
+			}
+			set
+			{
+				entity.DataAdapterUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ChannelType
+		{
+			get
+			{
+				return entity.ChannelType;
+			}
+			set
+			{
+				entity.ChannelType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string IVRFeeTimeType
+		{
+			get
+			{
+				return entity.IVRFeeTimeType;
+			}
+			set
+			{
+				entity.IVRFeeTimeType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsStateReport
+		{
+			get
+			{
+				return entity.IsStateReport;
+			}
+			set
+			{
+				entity.IsStateReport = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string StateReportType
+		{
+			get
+			{
+				return entity.StateReportType;
+			}
+			set
+			{
+				entity.StateReportType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string ReportOkMessage
 		{
 			get
@@ -288,85 +304,71 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? StatSendOnce
+		public string StateReportParamName
 		{
 			get
 			{
-				return entity.StatSendOnce;
+				return entity.StateReportParamName;
 			}
 			set
 			{
-				entity.StatSendOnce = value;
+				entity.StateReportParamName = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? TypeRequest
+		public string StateReportParamValue
 		{
 			get
 			{
-				return entity.TypeRequest;
+				return entity.StateReportParamValue;
 			}
 			set
 			{
-				entity.TypeRequest = value;
+				entity.StateReportParamValue = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string DataParamName
+		public string RequestTypeParamName
 		{
 			get
 			{
-				return entity.DataParamName;
+				return entity.RequestTypeParamName;
 			}
 			set
 			{
-				entity.DataParamName = value;
+				entity.RequestTypeParamName = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string DataParamValue
+		public string RequestTypeParamStateReportValue
 		{
 			get
 			{
-				return entity.DataParamValue;
+				return entity.RequestTypeParamStateReportValue;
 			}
 			set
 			{
-				entity.DataParamValue = value;
+				entity.RequestTypeParamStateReportValue = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ReportParamName
+		public string RequestTypeParamDataReportValue
 		{
 			get
 			{
-				return entity.ReportParamName;
+				return entity.RequestTypeParamDataReportValue;
 			}
 			set
 			{
-				entity.ReportParamName = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string ReportParamValue
-		{
-			get
-			{
-				return entity.ReportParamValue;
-			}
-			set
-			{
-				entity.ReportParamValue = value;
+				entity.RequestTypeParamDataReportValue = value;
 			}
 		}
 		/// <summary>
@@ -386,29 +388,85 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string StatusParamName
+		public bool? IsMonitorRequest
 		{
 			get
 			{
-				return entity.StatusParamName;
+				return entity.IsMonitorRequest;
 			}
 			set
 			{
-				entity.StatusParamName = value;
+				entity.IsMonitorRequest = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string StatusParamValue
+		public bool? IsLogRequest
 		{
 			get
 			{
-				return entity.StatusParamValue;
+				return entity.IsLogRequest;
 			}
 			set
 			{
-				entity.StatusParamValue = value;
+				entity.IsLogRequest = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsParamsConvert
+		{
+			get
+			{
+				return entity.IsParamsConvert;
+			}
+			set
+			{
+				entity.IsParamsConvert = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsAutoLinkID
+		{
+			get
+			{
+				return entity.IsAutoLinkID;
+			}
+			set
+			{
+				entity.IsAutoLinkID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string AutoLinkIDFields
+		{
+			get
+			{
+				return entity.AutoLinkIDFields;
+			}
+			set
+			{
+				entity.AutoLinkIDFields = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LogRequestType
+		{
+			get
+			{
+				return entity.LogRequestType;
+			}
+			set
+			{
+				entity.LogRequestType = value;
 			}
 		}
 		/// <summary>
@@ -442,20 +500,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? HasStatReport
-		{
-			get
-			{
-				return entity.HasStatReport;
-			}
-			set
-			{
-				entity.HasStatReport = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public string ChannelDetailInfo
 		{
 			get
@@ -484,34 +528,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsLogRequest
-		{
-			get
-			{
-				return entity.IsLogRequest;
-			}
-			set
-			{
-				entity.IsLogRequest = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string ChannelType
-		{
-			get
-			{
-				return entity.ChannelType;
-			}
-			set
-			{
-				entity.ChannelType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public string ChannelStatus
 		{
 			get
@@ -521,6 +537,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.ChannelStatus = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsDisable
+		{
+			get
+			{
+				return entity.IsDisable;
+			}
+			set
+			{
+				entity.IsDisable = value;
 			}
 		}
 		#endregion 

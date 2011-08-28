@@ -17,15 +17,18 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_RECIEVEDATAURL = "RecieveDataUrl";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_OKMESSAGE = "OkMessage";
-		public static readonly string PROPERTY_NAME_FAILEDMESSAGE = "FailedMessage";
+		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
+		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
+		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
+		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
 		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
+		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
 		
         #endregion
 	
@@ -37,15 +40,18 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private string _name;
 		private string _description;
-		private string _recieveDataUrl;
 		private int? _userID;
 		private bool? _syncData;
-		private string _okMessage;
-		private string _failedMessage;
+		private bool? _sycnResendFailedData;
+		private string _sycnRetryTimes;
 		private string _syncType;
+		private string _sycnDataUrl;
+		private string _sycnOkMessage;
+		private string _sycnFailedMessage;
 		private string _alias;
 		private decimal? _interceptRate;
 		private decimal? _defaultPrice;
+		private int? _defaultShowRecordDays;
 		
 		#endregion
 
@@ -58,15 +64,18 @@ namespace SPS.Entity.Tables
 			_id = 0;
 			_name = null;
 			_description = null;
-			_recieveDataUrl = null;
 			_userID = null;
 			_syncData = null;
-			_okMessage = null;
-			_failedMessage = null;
+			_sycnResendFailedData = null;
+			_sycnRetryTimes = null;
 			_syncType = null;
+			_sycnDataUrl = null;
+			_sycnOkMessage = null;
+			_sycnFailedMessage = null;
 			_alias = null;
 			_interceptRate = null;
 			_defaultPrice = null;
+			_defaultShowRecordDays = null;
 		}
 		#endregion
 
@@ -74,20 +83,23 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, string recieveDataUrl, int? userID, bool? syncData, string okMessage, string failedMessage, string syncType, string alias, decimal? interceptRate, decimal? defaultPrice)
+		public SPSClientEntity( int id, string name, string description, int? userID, bool? syncData, bool? sycnResendFailedData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
-			_recieveDataUrl = recieveDataUrl;
 			_userID = userID;
 			_syncData = syncData;
-			_okMessage = okMessage;
-			_failedMessage = failedMessage;
+			_sycnResendFailedData = sycnResendFailedData;
+			_sycnRetryTimes = sycnRetryTimes;
 			_syncType = syncType;
+			_sycnDataUrl = sycnDataUrl;
+			_sycnOkMessage = sycnOkMessage;
+			_sycnFailedMessage = sycnFailedMessage;
 			_alias = alias;
 			_interceptRate = interceptRate;
 			_defaultPrice = defaultPrice;
+			_defaultShowRecordDays = defaultShowRecordDays;
 		}
 		#endregion     
 	
@@ -145,23 +157,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string RecieveDataUrl
-		{
-			get { return _recieveDataUrl; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for RecieveDataUrl", value, value.ToString());
-				_isChanged |= (_recieveDataUrl != value); _recieveDataUrl = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int? UserID
 		{
 			get { return _userID; }
@@ -190,16 +185,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string OkMessage
+		public virtual bool? SycnResendFailedData
 		{
-			get { return _okMessage; }
+			get { return _sycnResendFailedData; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for OkMessage", value, value.ToString());
-				_isChanged |= (_okMessage != value); _okMessage = value;
+				_isChanged |= (_sycnResendFailedData != value); _sycnResendFailedData = value;
 			}
 		}
 
@@ -207,16 +199,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string FailedMessage
+		public virtual string SycnRetryTimes
 		{
-			get { return _failedMessage; }
+			get { return _sycnRetryTimes; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for FailedMessage", value, value.ToString());
-				_isChanged |= (_failedMessage != value); _failedMessage = value;
+				if( value != null && value.Length > 20)
+					throw new ArgumentOutOfRangeException("Invalid value for SycnRetryTimes", value, value.ToString());
+				_isChanged |= (_sycnRetryTimes != value); _sycnRetryTimes = value;
 			}
 		}
 
@@ -234,6 +226,57 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
 				_isChanged |= (_syncType != value); _syncType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SycnDataUrl
+		{
+			get { return _sycnDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for SycnDataUrl", value, value.ToString());
+				_isChanged |= (_sycnDataUrl != value); _sycnDataUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SycnOkMessage
+		{
+			get { return _sycnOkMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SycnOkMessage", value, value.ToString());
+				_isChanged |= (_sycnOkMessage != value); _sycnOkMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SycnFailedMessage
+		{
+			get { return _sycnFailedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SycnFailedMessage", value, value.ToString());
+				_isChanged |= (_sycnFailedMessage != value); _sycnFailedMessage = value;
 			}
 		}
 
@@ -279,6 +322,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultPrice != value); _defaultPrice = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? DefaultShowRecordDays
+		{
+			get { return _defaultShowRecordDays; }
+
+			set	
+			{
+				_isChanged |= (_defaultShowRecordDays != value); _defaultShowRecordDays = value;
 			}
 		}
 		/// <summary>

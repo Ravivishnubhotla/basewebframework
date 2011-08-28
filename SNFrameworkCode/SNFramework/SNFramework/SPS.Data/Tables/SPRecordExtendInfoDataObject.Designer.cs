@@ -57,6 +57,8 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_EXTENDFIELD10 = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_EXTENDFIELD10));		
 		public static readonly StringProperty PROPERTY_STATE = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_STATE));		
 		public static readonly StringProperty PROPERTY_FEETIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_FEETIME));		
+		public static readonly StringProperty PROPERTY_STARTTIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_STARTTIME));		
+		public static readonly StringProperty PROPERTY_ENDTIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ENDTIME));		
       
 		#region 子类集合字段查询字段
 	
@@ -107,6 +109,10 @@ namespace SPS.Data.Tables
                 case "State":
                     return typeof (string);
                 case "FeeTime":
+                    return typeof (string);
+                case "StartTime":
+                    return typeof (string);
+                case "EndTime":
                     return typeof (string);
           }
 			return typeof(string);

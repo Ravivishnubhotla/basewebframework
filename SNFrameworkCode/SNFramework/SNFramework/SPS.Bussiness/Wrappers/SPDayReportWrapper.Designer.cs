@@ -71,8 +71,6 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
-		public static readonly string PROPERTY_NAME_TOTALOKCOUNT = "TotalOkCount";
-		public static readonly string PROPERTY_NAME_TOTALFAILEDCOUNT = "TotalFailedCount";
 		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
@@ -125,34 +123,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.TotalCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? TotalOkCount
-		{
-			get
-			{
-				return entity.TotalOkCount;
-			}
-			set
-			{
-				entity.TotalOkCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? TotalFailedCount
-		{
-			get
-			{
-				return entity.TotalFailedCount;
-			}
-			set
-			{
-				entity.TotalFailedCount = value;
 			}
 		}
 		/// <summary>
