@@ -172,6 +172,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx" />
@@ -403,6 +404,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx.designer.cs">
       <DependentUpon>SPChannelParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx.cs">
+      <DependentUpon>SPChannelQuickAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx.designer.cs">
+      <DependentUpon>SPChannelQuickAdd.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.cs">
       <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>

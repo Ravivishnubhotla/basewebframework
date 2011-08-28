@@ -64,6 +64,10 @@
     <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.Designer.cs">
       <DependentUpon>SPChannelFiltersServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsConvertServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsConvertServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelParamsConvertServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
       <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
@@ -87,6 +91,10 @@
     <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.Designer.cs">
       <DependentUpon>SPCodeFilterServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPCodeParamsConvertServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCodeParamsConvertServiceProxy.Designer.cs">
+      <DependentUpon>SPCodeParamsConvertServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.Designer.cs">
@@ -128,6 +136,10 @@
     <Compile Include="Wrappers\SPChannelFiltersWrapper.Designer.cs">
       <DependentUpon>SPChannelFiltersWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\SPChannelParamsConvertWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelParamsConvertWrapper.Designer.cs">
+      <DependentUpon>SPChannelParamsConvertWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
@@ -151,6 +163,10 @@
     <Compile Include="Wrappers\SPCodeFilterWrapper.cs" />
     <Compile Include="Wrappers\SPCodeFilterWrapper.Designer.cs">
       <DependentUpon>SPCodeFilterWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPCodeParamsConvertWrapper.cs" />
+    <Compile Include="Wrappers\SPCodeParamsConvertWrapper.Designer.cs">
+      <DependentUpon>SPCodeParamsConvertWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPCodeWrapper.cs" />
     <Compile Include="Wrappers\SPCodeWrapper.Designer.cs">

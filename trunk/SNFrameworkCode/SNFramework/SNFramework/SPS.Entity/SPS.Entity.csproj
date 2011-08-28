@@ -47,6 +47,10 @@
     <Compile Include="Tables\SPChannelFiltersEntity.Designer.cs">
       <DependentUpon>SPChannelFiltersEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPChannelParamsConvertEntity.cs" />
+    <Compile Include="Tables\SPChannelParamsConvertEntity.Designer.cs">
+      <DependentUpon>SPChannelParamsConvertEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelParamsEntity.cs" />
     <Compile Include="Tables\SPChannelParamsEntity.Designer.cs">
       <DependentUpon>SPChannelParamsEntity.cs</DependentUpon>
@@ -70,6 +74,10 @@
     <Compile Include="Tables\SPCodeFilterEntity.cs" />
     <Compile Include="Tables\SPCodeFilterEntity.Designer.cs">
       <DependentUpon>SPCodeFilterEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPCodeParamsConvertEntity.cs" />
+    <Compile Include="Tables\SPCodeParamsConvertEntity.Designer.cs">
+      <DependentUpon>SPCodeParamsConvertEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPDayReportEntity.cs" />
     <Compile Include="Tables\SPDayReportEntity.Designer.cs">
@@ -121,6 +129,10 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPRecordMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSClientMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPUpperMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsConvertMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPCodeParamsConvertMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

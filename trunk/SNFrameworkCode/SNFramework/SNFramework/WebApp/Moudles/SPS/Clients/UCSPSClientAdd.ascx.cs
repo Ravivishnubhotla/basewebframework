@@ -38,11 +38,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 SPSClientWrapper obj = new SPSClientWrapper();
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
-                obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());
-                obj.SyncData = this.chkSyncData.Checked;
-                obj.OkMessage = this.txtOkMessage.Text.Trim();
-                obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
+                //obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());
+                //obj.SyncData = this.chkSyncData.Checked;
+                //obj.OkMessage = this.txtOkMessage.Text.Trim();
+                //obj.FailedMessage = this.txtFailedMessage.Text.Trim();
                 obj.SyncType = this.txtSyncType.Text.Trim();
                 obj.Alias = this.txtAlias.Text.Trim();
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());

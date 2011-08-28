@@ -30,11 +30,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 {
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
-                    this.txtRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
+                    //this.txtRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
                     this.txtUserID.Text = obj.UserID.ToString();
                     this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
-                    this.txtOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
-                    this.txtFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
+                    //this.txtOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
+                    //this.txtFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
                     this.txtSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
                     this.txtAlias.Text = ValueConvertUtil.ConvertStringValue(obj.Alias);
                     this.txtInterceptRate.Text = obj.InterceptRate.ToString();
@@ -71,11 +71,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 SPSClientWrapper obj = SPSClientWrapper.FindById(int.Parse(hidId.Text.Trim()));
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
+                //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
                 obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());
                 obj.SyncData = this.chkSyncData.Checked;
-                obj.OkMessage = this.txtOkMessage.Text.Trim();
-                obj.FailedMessage = this.txtFailedMessage.Text.Trim();
+                //obj.OkMessage = this.txtOkMessage.Text.Trim();
+                //obj.FailedMessage = this.txtFailedMessage.Text.Trim();
                 obj.SyncType = this.txtSyncType.Text.Trim();
                 obj.Alias = this.txtAlias.Text.Trim();
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());

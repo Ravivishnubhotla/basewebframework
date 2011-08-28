@@ -31,6 +31,8 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD10 = "ExtendField10";
 		public static readonly string PROPERTY_NAME_STATE = "State";
 		public static readonly string PROPERTY_NAME_FEETIME = "FeeTime";
+		public static readonly string PROPERTY_NAME_STARTTIME = "StartTime";
+		public static readonly string PROPERTY_NAME_ENDTIME = "EndTime";
 		
         #endregion
 	
@@ -56,6 +58,8 @@ namespace SPS.Entity.Tables
 		private string _extendField10;
 		private string _state;
 		private string _feeTime;
+		private string _startTime;
+		private string _endTime;
 		
 		#endregion
 
@@ -82,6 +86,8 @@ namespace SPS.Entity.Tables
 			_extendField10 = null;
 			_state = null;
 			_feeTime = null;
+			_startTime = null;
+			_endTime = null;
 		}
 		#endregion
 
@@ -89,7 +95,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime)
+		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime)
 		{
 			_id = id;
 			_recordID = recordID;
@@ -108,6 +114,8 @@ namespace SPS.Entity.Tables
 			_extendField10 = extendField10;
 			_state = state;
 			_feeTime = feeTime;
+			_startTime = startTime;
+			_endTime = endTime;
 		}
 		#endregion     
 	
@@ -393,6 +401,40 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 6)
 					throw new ArgumentOutOfRangeException("Invalid value for FeeTime", value, value.ToString());
 				_isChanged |= (_feeTime != value); _feeTime = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string StartTime
+		{
+			get { return _startTime; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for StartTime", value, value.ToString());
+				_isChanged |= (_startTime != value); _startTime = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string EndTime
+		{
+			get { return _endTime; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for EndTime", value, value.ToString());
+				_isChanged |= (_endTime != value); _endTime = value;
 			}
 		}
 		/// <summary>

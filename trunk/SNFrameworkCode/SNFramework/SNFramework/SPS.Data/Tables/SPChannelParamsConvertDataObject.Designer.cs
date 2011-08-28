@@ -11,22 +11,22 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace SPS.Data.Tables
 {
-    public partial class SPChannelParamsDataObject : BaseNHibernateDataObject<SPChannelParamsEntity>
+    public partial class SPChannelParamsConvertDataObject : BaseNHibernateDataObject<SPChannelParamsConvertEntity>
     {
 		#region Expression Query Property (标准查询字段)
-		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ID));		
-		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_NAME));		
-		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_DESCRIPTION));		
-		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ISENABLE));		
-		public static readonly BoolProperty PROPERTY_ISREQUIRED = new BoolProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_ISREQUIRED));		
-		public static readonly StringProperty PROPERTY_PARAMSTYPE = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSTYPE));		
-		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_CHANNELID));
+		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_ID));		
+		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_NAME));		
+		public static readonly StringProperty PROPERTY_PARAMSVALUE = new StringProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_PARAMSVALUE));		
+		public static readonly StringProperty PROPERTY_PARAMSCONVERTTO = new StringProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_PARAMSCONVERTTO));		
+		public static readonly StringProperty PROPERTY_PARAMSCONVERTTYPE = new StringProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_PARAMSCONVERTTYPE));		
+		public static readonly StringProperty PROPERTY_PARAMSCONVERTCONDITION = new StringProperty(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_PARAMSCONVERTCONDITION));		
+		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(SPChannelParamsConvertEntity.PROPERTY_NAME_CHANNELID));
 		#region channelID字段外键查询字段
-        public static NHibernateDynamicQueryGenerator<SPChannelParamsEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPChannelParamsEntity> queryGenerator)
+        public static NHibernateDynamicQueryGenerator<SPChannelParamsConvertEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPChannelParamsConvertEntity> queryGenerator)
         {
-            return queryGenerator.AddAlians(SPChannelParamsEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
+            return queryGenerator.AddAlians(SPChannelParamsConvertEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
         }
-        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPChannelParamsEntity_Alias";
+        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPChannelParamsConvertEntity_Alias";
 		public static readonly IntProperty PROPERTY_CHANNELID_ID = new IntProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Id"));
 		public static readonly StringProperty PROPERTY_CHANNELID_NAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CODE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Code"));
@@ -60,10 +60,6 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable"));
 		#endregion
-		public static readonly StringProperty PROPERTY_PARAMSMAPPINGNAME = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSMAPPINGNAME));		
-		public static readonly StringProperty PROPERTY_TITLE = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_TITLE));		
-		public static readonly BoolProperty PROPERTY_SHOWINCLIENTGRID = new BoolProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_SHOWINCLIENTGRID));		
-		public static readonly StringProperty PROPERTY_PARAMSVALUE = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_PARAMSVALUE));		
       
 		#region 子类集合字段查询字段
 	
@@ -85,31 +81,23 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "Name":
                     return typeof (string);
-                case "Description":
+                case "ParamsValue":
                     return typeof (string);
-                case "IsEnable":
-                    return typeof (bool);
-                case "IsRequired":
-                    return typeof (bool);
-                case "ParamsType":
+                case "ParamsConvertTo":
+                    return typeof (string);
+                case "ParamsConvertType":
+                    return typeof (string);
+                case "ParamsConvertCondition":
                     return typeof (string);
                 case "ChannelID":
                     return typeof (int);
-                case "ParamsMappingName":
-                    return typeof (string);
-                case "Title":
-                    return typeof (string);
-                case "ShowInClientGrid":
-                    return typeof (bool);
-                case "ParamsValue":
-                    return typeof (string);
           }
 			return typeof(string);
         }
 		
-		public List<SPChannelParamsEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
+		public List<SPChannelParamsConvertEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
 		{
-			NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+			NHibernateDynamicQueryGenerator<SPChannelParamsConvertEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
 
@@ -117,9 +105,9 @@ namespace SPS.Data.Tables
 		}
 		
 		
-        public List<SPChannelParamsEntity> GetPageList_By_ChannelID_SPChannelEntity(string orderByColumnName, bool isDesc, SPChannelEntity fkentity, PageQueryParams pageQueryParams)
+        public List<SPChannelParamsConvertEntity> GetPageList_By_ChannelID_SPChannelEntity(string orderByColumnName, bool isDesc, SPChannelEntity fkentity, PageQueryParams pageQueryParams)
         {
-            NHibernateDynamicQueryGenerator<SPChannelParamsEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+            NHibernateDynamicQueryGenerator<SPChannelParamsConvertEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(fkentity));
 

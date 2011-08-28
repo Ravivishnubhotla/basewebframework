@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.TestPage {
+namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
     
     
-    public partial class WebForm1 {
+    public partial class SPChannelQuickAdd {
         
         /// <summary>
         /// Viewport1 control.
@@ -688,6 +688,51 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.TextField TextField13;
         
         /// <summary>
+        /// CompositeField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.CompositeField CompositeField1;
+        
+        /// <summary>
+        /// DisplayField4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField DisplayField4;
+        
+        /// <summary>
+        /// TextField6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField TextField6;
+        
+        /// <summary>
+        /// DisplayField5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField DisplayField5;
+        
+        /// <summary>
+        /// TextField9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField TextField9;
+        
+        /// <summary>
         /// cpTypeReportSetting control.
         /// </summary>
         /// <remarks>
@@ -859,21 +904,21 @@ namespace Legendigital.Common.WebApp.TestPage {
         protected global::Ext.Net.Checkbox Checkbox4;
         
         /// <summary>
-        /// btnPrev control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnPrev;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
-        /// btnNext control.
+        /// btnClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnNext;
+        protected global::Ext.Net.Button btnClose;
     }
 }

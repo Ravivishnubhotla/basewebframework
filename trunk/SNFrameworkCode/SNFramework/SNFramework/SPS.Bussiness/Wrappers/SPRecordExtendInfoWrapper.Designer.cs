@@ -85,6 +85,8 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_EXTENDFIELD10 = "ExtendField10";
 		public static readonly string PROPERTY_NAME_STATE = "State";
 		public static readonly string PROPERTY_NAME_FEETIME = "FeeTime";
+		public static readonly string PROPERTY_NAME_STARTTIME = "StartTime";
+		public static readonly string PROPERTY_NAME_ENDTIME = "EndTime";
 		
         #endregion
 
@@ -326,6 +328,34 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.FeeTime = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string StartTime
+		{
+			get
+			{
+				return entity.StartTime;
+			}
+			set
+			{
+				entity.StartTime = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string EndTime
+		{
+			get
+			{
+				return entity.EndTime;
+			}
+			set
+			{
+				entity.EndTime = value;
 			}
 		}
 		#endregion 

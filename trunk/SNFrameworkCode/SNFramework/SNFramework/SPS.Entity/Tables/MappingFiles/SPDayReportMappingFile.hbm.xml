@@ -13,8 +13,6 @@
 
 		<property column="ReportDate" type="DateTime" name="ReportDate"   />	
 		<property column="TotalCount" type="int" name="TotalCount"   />	
-		<property column="TotalOkCount" type="int" name="TotalOkCount"   />	
-		<property column="TotalFailedCount" type="int" name="TotalFailedCount"   />	
 		<property column="InterceptCount" type="int" name="InterceptCount"   />	
 		<property column="DownTotalCount" type="int" name="DownTotalCount"   />	
 		<property column="DownSuccess" type="int" name="DownSuccess"   />	

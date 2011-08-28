@@ -12,34 +12,36 @@
 
 
 		<property column="Name" type="string" name="Name"   length="100" />	
-		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="Code" type="string" name="Code"   length="100" />	
-		<property column="RecievedUrl" type="string" name="RecievedUrl"   length="400" />	
-		<property column="RecievedName" type="string" name="RecievedName"   length="100" />	
-		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	
-		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   />	
-		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 		<property column="DataOkMessage" type="string" name="DataOkMessage"   length="400" />	
 		<property column="DataFailedMessage" type="string" name="DataFailedMessage"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="DataAdapterType" type="string" name="DataAdapterType"   length="100" />	
+		<property column="DataAdapterUrl" type="string" name="DataAdapterUrl"   length="400" />	
+		<property column="ChannelType" type="string" name="ChannelType"   length="40" />	
+		<property column="IVRFeeTimeType" type="string" name="IVRFeeTimeType"   length="40" />	
+		<property column="IsStateReport" type="Boolean" name="IsStateReport"   />	
+		<property column="StateReportType" type="string" name="StateReportType"   length="40" />	
 		<property column="ReportOkMessage" type="string" name="ReportOkMessage"   length="400" />	
 		<property column="ReportFailedMessage" type="string" name="ReportFailedMessage"   length="400" />	
-		<property column="StatSendOnce" type="Boolean" name="StatSendOnce"   />	
-		<property column="TypeRequest" type="Boolean" name="TypeRequest"   />	
-		<property column="DataParamName" type="string" name="DataParamName"   length="400" />	
-		<property column="DataParamValue" type="string" name="DataParamValue"   length="400" />	
-		<property column="ReportParamName" type="string" name="ReportParamName"   length="400" />	
-		<property column="ReportParamValue" type="string" name="ReportParamValue"   length="400" />	
+		<property column="StateReportParamName" type="string" name="StateReportParamName"   length="40" />	
+		<property column="StateReportParamValue" type="string" name="StateReportParamValue"   length="40" />	
+		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   length="40" />	
+		<property column="RequestTypeParamStateReportValue" type="string" name="RequestTypeParamStateReportValue"   length="40" />	
+		<property column="RequestTypeParamDataReportValue" type="string" name="RequestTypeParamDataReportValue"   length="40" />	
 		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
-		<property column="StatusParamName" type="string" name="StatusParamName"   length="400" />	
-		<property column="StatusParamValue" type="string" name="StatusParamValue"   length="400" />	
+		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   />	
+		<property column="IsLogRequest" type="Boolean" name="IsLogRequest"   />	
+		<property column="IsParamsConvert" type="Boolean" name="IsParamsConvert"   />	
+		<property column="IsAutoLinkID" type="Boolean" name="IsAutoLinkID"   />	
+		<property column="AutoLinkIDFields" type="string" name="AutoLinkIDFields"   length="600" />	
+		<property column="LogRequestType" type="string" name="LogRequestType"   length="40" />	
 		<property column="Price" type="Decimal" name="Price"   />	
 		<property column="DefaultRate" type="Decimal" name="DefaultRate"   />	
-		<property column="HasStatReport" type="Boolean" name="HasStatReport"   />	
 		<property column="ChannelDetailInfo" type="string" name="ChannelDetailInfo"   length="2147483646" />	
 		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
-		<property column="IsLogRequest" type="Boolean" name="IsLogRequest"   />	
-		<property column="ChannelType" type="string" name="ChannelType"   length="40" />	
 		<property column="ChannelStatus" type="string" name="ChannelStatus"   length="40" />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 
 
 

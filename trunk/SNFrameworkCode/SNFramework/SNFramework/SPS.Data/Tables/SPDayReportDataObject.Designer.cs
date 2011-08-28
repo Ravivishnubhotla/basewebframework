@@ -17,8 +17,6 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_ID));		
 		public static readonly DateTimeProperty PROPERTY_REPORTDATE = new DateTimeProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_REPORTDATE));		
 		public static readonly IntProperty PROPERTY_TOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALCOUNT));		
-		public static readonly IntProperty PROPERTY_TOTALOKCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALOKCOUNT));		
-		public static readonly IntProperty PROPERTY_TOTALFAILEDCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALFAILEDCOUNT));		
 		public static readonly IntProperty PROPERTY_INTERCEPTCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTCOUNT));		
 		public static readonly IntProperty PROPERTY_DOWNTOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNTOTALCOUNT));		
 		public static readonly IntProperty PROPERTY_DOWNSUCCESS = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSUCCESS));		
@@ -32,15 +30,18 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_ID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Id"));
 		public static readonly StringProperty PROPERTY_CLIENTID_NAME = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CLIENTID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description"));
-		public static readonly StringProperty PROPERTY_CLIENTID_RECIEVEDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl"));
 		public static readonly IntProperty PROPERTY_CLIENTID_USERID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData"));
-		public static readonly StringProperty PROPERTY_CLIENTID_OKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".OkMessage"));
-		public static readonly StringProperty PROPERTY_CLIENTID_FAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage"));
+		public static readonly BoolProperty PROPERTY_CLIENTID_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnResendFailedData"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNRETRYTIMES = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnRetryTimes"));
 		public static readonly StringProperty PROPERTY_CLIENTID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnDataUrl"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnOkMessage"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnFailedMessage"));
 		public static readonly StringProperty PROPERTY_CLIENTID_ALIAS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
+		public static readonly IntProperty PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
 		#endregion
 		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CHANNELID));
 		#region channelID字段外键查询字段
@@ -51,34 +52,36 @@ namespace SPS.Data.Tables
         public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPDayReportEntity_Alias";
 		public static readonly IntProperty PROPERTY_CHANNELID_ID = new IntProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Id"));
 		public static readonly StringProperty PROPERTY_CHANNELID_NAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Name"));
-		public static readonly StringProperty PROPERTY_CHANNELID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CODE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Code"));
-		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDURL = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedUrl"));
-		public static readonly StringProperty PROPERTY_CHANNELID_RECIEVEDNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RecievedName"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_ISALLOWNULLLINKID = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAllowNullLinkID"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_ISMONITORREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitorRequest"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable"));
 		public static readonly StringProperty PROPERTY_CHANNELID_DATAOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataOkMessage"));
 		public static readonly StringProperty PROPERTY_CHANNELID_DATAFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataFailedMessage"));
+		public static readonly StringProperty PROPERTY_CHANNELID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Description"));
+		public static readonly StringProperty PROPERTY_CHANNELID_DATAADAPTERTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataAdapterType"));
+		public static readonly StringProperty PROPERTY_CHANNELID_DATAADAPTERURL = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataAdapterUrl"));
+		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelType"));
+		public static readonly StringProperty PROPERTY_CHANNELID_IVRFEETIMETYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IVRFeeTimeType"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISSTATEREPORT = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsStateReport"));
+		public static readonly StringProperty PROPERTY_CHANNELID_STATEREPORTTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StateReportType"));
 		public static readonly StringProperty PROPERTY_CHANNELID_REPORTOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportOkMessage"));
 		public static readonly StringProperty PROPERTY_CHANNELID_REPORTFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportFailedMessage"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_STATSENDONCE = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatSendOnce"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_TYPEREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".TypeRequest"));
-		public static readonly StringProperty PROPERTY_CHANNELID_DATAPARAMNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataParamName"));
-		public static readonly StringProperty PROPERTY_CHANNELID_DATAPARAMVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DataParamValue"));
-		public static readonly StringProperty PROPERTY_CHANNELID_REPORTPARAMNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportParamName"));
-		public static readonly StringProperty PROPERTY_CHANNELID_REPORTPARAMVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportParamValue"));
+		public static readonly StringProperty PROPERTY_CHANNELID_STATEREPORTPARAMNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StateReportParamName"));
+		public static readonly StringProperty PROPERTY_CHANNELID_STATEREPORTPARAMVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StateReportParamValue"));
+		public static readonly StringProperty PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RequestTypeParamName"));
+		public static readonly StringProperty PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RequestTypeParamStateReportValue"));
+		public static readonly StringProperty PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".RequestTypeParamDataReportValue"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_HASFILTERS = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasFilters"));
-		public static readonly StringProperty PROPERTY_CHANNELID_STATUSPARAMNAME = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatusParamName"));
-		public static readonly StringProperty PROPERTY_CHANNELID_STATUSPARAMVALUE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".StatusParamValue"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISMONITORREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsMonitorRequest"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISLOGREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsLogRequest"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISPARAMSCONVERT = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsParamsConvert"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISAUTOLINKID = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsAutoLinkID"));
+		public static readonly StringProperty PROPERTY_CHANNELID_AUTOLINKIDFIELDS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".AutoLinkIDFields"));
+		public static readonly StringProperty PROPERTY_CHANNELID_LOGREQUESTTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LogRequestType"));
 		public static readonly DecimalProperty PROPERTY_CHANNELID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".Price"));
 		public static readonly DecimalProperty PROPERTY_CHANNELID_DEFAULTRATE = new DecimalProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".DefaultRate"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_HASSTATREPORT = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasStatReport"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELDETAILINFO = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelDetailInfo"));
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_CHANNELID_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UpperID"));
-		public static readonly BoolProperty PROPERTY_CHANNELID_ISLOGREQUEST = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsLogRequest"));
-		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELTYPE = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelType"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelStatus"));
+		public static readonly BoolProperty PROPERTY_CHANNELID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable"));
 		#endregion
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_CODEID = new EntityProperty<SPCodeEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CODEID));
 		#region codeID字段外键查询字段
@@ -142,10 +145,6 @@ namespace SPS.Data.Tables
                 case "ReportDate":
                     return typeof (DateTime);
                 case "TotalCount":
-                    return typeof (int);
-                case "TotalOkCount":
-                    return typeof (int);
-                case "TotalFailedCount":
                     return typeof (int);
                 case "InterceptCount":
                     return typeof (int);

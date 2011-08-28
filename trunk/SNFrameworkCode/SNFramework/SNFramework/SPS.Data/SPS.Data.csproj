@@ -66,6 +66,10 @@
     <Compile Include="Tables\SPChannelFiltersDataObject.Designer.cs">
       <DependentUpon>SPChannelFiltersDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPChannelParamsConvertDataObject.cs" />
+    <Compile Include="Tables\SPChannelParamsConvertDataObject.Designer.cs">
+      <DependentUpon>SPChannelParamsConvertDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelParamsDataObject.cs" />
     <Compile Include="Tables\SPChannelParamsDataObject.Designer.cs">
       <DependentUpon>SPChannelParamsDataObject.cs</DependentUpon>
@@ -89,6 +93,10 @@
     <Compile Include="Tables\SPCodeFilterDataObject.cs" />
     <Compile Include="Tables\SPCodeFilterDataObject.Designer.cs">
       <DependentUpon>SPCodeFilterDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPCodeParamsConvertDataObject.cs" />
+    <Compile Include="Tables\SPCodeParamsConvertDataObject.Designer.cs">
+      <DependentUpon>SPCodeParamsConvertDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">

@@ -9,21 +9,18 @@ namespace SPS.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPDayReportEntity : ICloneable
+	public partial class SPChannelParamsConvertEntity : ICloneable
 	{
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPDayReportEntity";
+		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPChannelParamsConvertEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
-		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
-		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
-		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
-		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
-		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
-		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
+		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
+		public static readonly string PROPERTY_NAME_PARAMSCONVERTTO = "ParamsConvertTo";
+		public static readonly string PROPERTY_NAME_PARAMSCONVERTTYPE = "ParamsConvertType";
+		public static readonly string PROPERTY_NAME_PARAMSCONVERTCONDITION = "ParamsConvertCondition";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
-		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
-		public static readonly string PROPERTY_NAME_UPERID = "UperID";
 		
         #endregion
 	
@@ -33,15 +30,12 @@ namespace SPS.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _id;
-		private DateTime? _reportDate;
-		private int? _totalCount;
-		private int? _interceptCount;
-		private int? _downTotalCount;
-		private int? _downSuccess;
-		private SPSClientEntity _clientID;
+		private string _name;
+		private string _paramsValue;
+		private string _paramsConvertTo;
+		private string _paramsConvertType;
+		private string _paramsConvertCondition;
 		private SPChannelEntity _channelID;
-		private SPCodeEntity _codeID;
-		private SPUpperEntity _uperID;
 		
 		#endregion
 
@@ -49,18 +43,15 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SPDayReportEntity()
+		public SPChannelParamsConvertEntity()
 		{
 			_id = 0;
-			_reportDate = null;
-			_totalCount = null;
-			_interceptCount = null;
-			_downTotalCount = null;
-			_downSuccess = null;
-			_clientID = null;
+			_name = null;
+			_paramsValue = null;
+			_paramsConvertTo = null;
+			_paramsConvertType = null;
+			_paramsConvertCondition = null;
 			_channelID = null;
-			_codeID = null;
-			_uperID = null;
 		}
 		#endregion
 
@@ -68,18 +59,15 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int id, DateTime? reportDate, int? totalCount, int? interceptCount, int? downTotalCount, int? downSuccess, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
+		public SPChannelParamsConvertEntity( int id, string name, string paramsValue, string paramsConvertTo, string paramsConvertType, string paramsConvertCondition, SPChannelEntity channelID)
 		{
 			_id = id;
-			_reportDate = reportDate;
-			_totalCount = totalCount;
-			_interceptCount = interceptCount;
-			_downTotalCount = downTotalCount;
-			_downSuccess = downSuccess;
-			_clientID = clientID;
+			_name = name;
+			_paramsValue = paramsValue;
+			_paramsConvertTo = paramsConvertTo;
+			_paramsConvertType = paramsConvertType;
+			_paramsConvertCondition = paramsConvertCondition;
 			_channelID = channelID;
-			_codeID = codeID;
-			_uperID = uperID;
 		}
 		#endregion     
 	
@@ -103,13 +91,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? ReportDate
+		public virtual string Name
 		{
-			get { return _reportDate; }
+			get { return _name; }
 
 			set	
 			{
-				_isChanged |= (_reportDate != value); _reportDate = value;
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for Name", value, value.ToString());
+				_isChanged |= (_name != value); _name = value;
 			}
 		}
 
@@ -117,13 +108,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? TotalCount
+		public virtual string ParamsValue
 		{
-			get { return _totalCount; }
+			get { return _paramsValue; }
 
 			set	
 			{
-				_isChanged |= (_totalCount != value); _totalCount = value;
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsValue", value, value.ToString());
+				_isChanged |= (_paramsValue != value); _paramsValue = value;
 			}
 		}
 
@@ -131,13 +125,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? InterceptCount
+		public virtual string ParamsConvertTo
 		{
-			get { return _interceptCount; }
+			get { return _paramsConvertTo; }
 
 			set	
 			{
-				_isChanged |= (_interceptCount != value); _interceptCount = value;
+
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsConvertTo", value, value.ToString());
+				_isChanged |= (_paramsConvertTo != value); _paramsConvertTo = value;
 			}
 		}
 
@@ -145,13 +142,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownTotalCount
+		public virtual string ParamsConvertType
 		{
-			get { return _downTotalCount; }
+			get { return _paramsConvertType; }
 
 			set	
 			{
-				_isChanged |= (_downTotalCount != value); _downTotalCount = value;
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsConvertType", value, value.ToString());
+				_isChanged |= (_paramsConvertType != value); _paramsConvertType = value;
 			}
 		}
 
@@ -159,27 +159,16 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownSuccess
+		public virtual string ParamsConvertCondition
 		{
-			get { return _downSuccess; }
+			get { return _paramsConvertCondition; }
 
 			set	
 			{
-				_isChanged |= (_downSuccess != value); _downSuccess = value;
-			}
-		}
 
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual SPSClientEntity ClientID
-		{
-			get { return _clientID; }
-
-			set	
-			{
-				_isChanged |= (_clientID != value); _clientID = value;
+				if( value != null && value.Length > 1000)
+					throw new ArgumentOutOfRangeException("Invalid value for ParamsConvertCondition", value, value.ToString());
+				_isChanged |= (_paramsConvertCondition != value); _paramsConvertCondition = value;
 			}
 		}
 
@@ -194,34 +183,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_channelID != value); _channelID = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual SPCodeEntity CodeID
-		{
-			get { return _codeID; }
-
-			set	
-			{
-				_isChanged |= (_codeID != value); _codeID = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual SPUpperEntity UperID
-		{
-			get { return _uperID; }
-
-			set	
-			{
-				_isChanged |= (_uperID != value); _uperID = value;
 			}
 		}
 		/// <summary>
@@ -265,7 +226,7 @@ namespace SPS.Entity.Tables
 			
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			
-			SPDayReportEntity castObj = (SPDayReportEntity)obj;
+			SPChannelParamsConvertEntity castObj = (SPChannelParamsConvertEntity)obj;
 			
 			return ( castObj != null ) && ( this._id == castObj.Id );
 		}

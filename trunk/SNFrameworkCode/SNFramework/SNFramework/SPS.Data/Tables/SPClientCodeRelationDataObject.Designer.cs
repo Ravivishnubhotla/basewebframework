@@ -52,22 +52,29 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_ID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Id"));
 		public static readonly StringProperty PROPERTY_CLIENTID_NAME = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CLIENTID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Description"));
-		public static readonly StringProperty PROPERTY_CLIENTID_RECIEVEDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".RecieveDataUrl"));
 		public static readonly IntProperty PROPERTY_CLIENTID_USERID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData"));
-		public static readonly StringProperty PROPERTY_CLIENTID_OKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".OkMessage"));
-		public static readonly StringProperty PROPERTY_CLIENTID_FAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".FailedMessage"));
+		public static readonly BoolProperty PROPERTY_CLIENTID_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnResendFailedData"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNRETRYTIMES = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnRetryTimes"));
 		public static readonly StringProperty PROPERTY_CLIENTID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnDataUrl"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnOkMessage"));
+		public static readonly StringProperty PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnFailedMessage"));
 		public static readonly StringProperty PROPERTY_CLIENTID_ALIAS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
+		public static readonly IntProperty PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
 		#endregion
+		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_PRICE));		
 		public static readonly DecimalProperty PROPERTY_INTERCEPTRATE = new DecimalProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_INTERCEPTRATE));		
-		public static readonly StringProperty PROPERTY_RECIEVEDATAURL = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_RECIEVEDATAURL));		
+		public static readonly BoolProperty PROPERTY_USECLIENTDEFAULTSYCNSETTING = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING));		
 		public static readonly BoolProperty PROPERTY_SYNCDATA = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATA));		
-		public static readonly StringProperty PROPERTY_OKMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_OKMESSAGE));		
-		public static readonly StringProperty PROPERTY_FAILEDMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_FAILEDMESSAGE));		
+		public static readonly BoolProperty PROPERTY_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNRESENDFAILEDDATA));		
+		public static readonly StringProperty PROPERTY_SYCNRETRYTIMES = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCTYPE));		
+		public static readonly StringProperty PROPERTY_SYCNDATAURL = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNDATAURL));		
+		public static readonly StringProperty PROPERTY_SYCNOKMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNOKMESSAGE));		
+		public static readonly StringProperty PROPERTY_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNFAILEDMESSAGE));		
 		public static readonly DateTimeProperty PROPERTY_STARTDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_STARTDATE));		
 		public static readonly DateTimeProperty PROPERTY_ENDDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ENDDATE));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ISENABLE));		
@@ -94,17 +101,25 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "ClientID":
                     return typeof (int);
+                case "Price":
+                    return typeof (decimal);
                 case "InterceptRate":
                     return typeof (decimal);
-                case "RecieveDataUrl":
-                    return typeof (string);
+                case "UseClientDefaultSycnSetting":
+                    return typeof (bool);
                 case "SyncData":
                     return typeof (bool);
-                case "OkMessage":
-                    return typeof (string);
-                case "FailedMessage":
+                case "SycnResendFailedData":
+                    return typeof (bool);
+                case "SycnRetryTimes":
                     return typeof (string);
                 case "SyncType":
+                    return typeof (string);
+                case "SycnDataUrl":
+                    return typeof (string);
+                case "SycnOkMessage":
+                    return typeof (string);
+                case "SycnFailedMessage":
                     return typeof (string);
                 case "StartDate":
                     return typeof (DateTime);

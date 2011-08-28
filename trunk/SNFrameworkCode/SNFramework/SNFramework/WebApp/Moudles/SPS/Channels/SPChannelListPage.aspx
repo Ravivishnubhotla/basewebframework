@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SPChannelListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Channels.SPChannelListPage" %>
- 
+
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPChannelView.ascx" TagName="UCSPChannelView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -20,7 +20,18 @@
         var RefreshData = function(btn) {
             <%= this.storeSPChannel.ClientID %>.reload();
         };
+
+        function ShowQuickAdd() {
+              var win = <%= winQuickAddChannel.ClientID %>;
+              win.setTitle('快速添加通道');
+              win.show();
+            win.maximize();
+        }
         
+                  function CloseQuickAdd()
+     {
+        <%= winQuickAddChannel.ClientID %>.hide();
+     }
  
 
         function processcmd(cmd, id) {
@@ -94,28 +105,10 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
-                    <ext:RecordField Name="RecievedUrl" />
-                    <ext:RecordField Name="RecievedName" />
-                    <ext:RecordField Name="IsAllowNullLinkID" Type="Boolean" />
                     <ext:RecordField Name="IsMonitorRequest" Type="Boolean" />
                     <ext:RecordField Name="IsDisable" Type="Boolean" />
-                    <ext:RecordField Name="DataOkMessage" />
-                    <ext:RecordField Name="DataFailedMessage" />
-                    <ext:RecordField Name="ReportOkMessage" />
-                    <ext:RecordField Name="ReportFailedMessage" />
-                    <ext:RecordField Name="StatSendOnce" Type="Boolean" />
-                    <ext:RecordField Name="TypeRequest" Type="Boolean" />
-                    <ext:RecordField Name="DataParamName" />
-                    <ext:RecordField Name="DataParamValue" />
-                    <ext:RecordField Name="ReportParamName" />
-                    <ext:RecordField Name="ReportParamValue" />
-                    <ext:RecordField Name="HasFilters" Type="Boolean" />
-                    <ext:RecordField Name="StatusParamName" />
-                    <ext:RecordField Name="StatusParamValue" />
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="DefaultRate" Type="int" />
-                    <ext:RecordField Name="HasStatReport" Type="Boolean" />
-                    <ext:RecordField Name="ChannelDetailInfo" />
                     <ext:RecordField Name="UpperID" Type="int" />
                     <ext:RecordField Name="IsLogRequest" Type="Boolean" />
                 </Fields>
@@ -124,19 +117,18 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- 
     <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
     <uc3:UCSPChannelView ID="UCSPChannelView1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPChannel" runat="server" StoreID="storeSPChannel" StripeRows="true"
-                Title="SPChannel Management" Icon="Table">
+                Title="通道管理" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
                             <ext:Button ID='btnAdd' runat="server" Text="快速添加通道" Icon="Add">
                                 <Listeners>
-                                    <Click Handler="showQuickAddForm();" />
+                                    <Click Handler="ShowQuickAdd();" />
                                 </Listeners>
                             </ext:Button>
                             <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
@@ -174,11 +166,9 @@
                         </ext:Column>
                         <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colDefaultRate" DataIndex="DefaultRate" Header="扣率"
-                            Sortable="true">
+                        <ext:Column ColumnID="colDefaultRate" DataIndex="DefaultRate" Header="扣率" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colIsLogRequest" DataIndex="IsLogRequest" Header="日志"
-                            Sortable="true">
+                        <ext:Column ColumnID="colIsLogRequest" DataIndex="IsLogRequest" Header="日志" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
@@ -210,4 +200,14 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+        <ext:Window ID="winQuickAddChannel" runat="server" Title="Window" Frame="true"
+        Width="800" ConstrainHeader="true" Height="600" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPChannelQuickAdd.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

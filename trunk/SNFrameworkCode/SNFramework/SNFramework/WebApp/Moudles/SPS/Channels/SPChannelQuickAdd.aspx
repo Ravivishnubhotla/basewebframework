@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="WebForm1.aspx.cs" Inherits="Legendigital.Common.WebApp.TestPage.WebForm1" %>
+    CodeBehind="SPChannelQuickAdd.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Channels.SPChannelQuickAdd" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -319,7 +319,7 @@
                         </Items>
                     </ext:FieldSet>
                     <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="true" Title="数据状态报告设置"
-                        AutoHeight="true" Collapsed="false" LabelWidth="130" Layout="Form">
+                        AutoHeight="true" Collapsed="true" LabelWidth="130" Layout="Form">
                         <Items>
                             <ext:RadioGroup ID="rdgStateReportType" runat="server" AnchorHorizontal="98%" ColumnsWidths="100,150,200"
                                 FieldLabel="状态报告类型">
@@ -335,6 +335,14 @@
                             </ext:RadioGroup>
                             <ext:TextField ID="TextField1" runat="server" FieldLabel="状态报告参数" AnchorHorizontal="95%" />
                             <ext:TextField ID="TextField13" runat="server" FieldLabel="状态报告成功标示" AnchorHorizontal="95%" />
+                            <ext:CompositeField ID="CompositeField1" runat="server" FieldLabel="状态报告响应信息" AnchorHorizontal="95%">
+                                <Items>
+                                    <ext:DisplayField ID="DisplayField4" runat="server" Text="成功信息：" />
+                                    <ext:TextField ID="TextField6" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:DisplayField ID="DisplayField5" runat="server" Text="失败信息：" />
+                                    <ext:TextField ID="TextField9" runat="server" Width="80" AllowBlank="false" />
+                                </Items>
+                            </ext:CompositeField>
                             <ext:CompositeField ID="cpTypeReportSetting" runat="server" FieldLabel="分类型请求参数"
                                 Hidden="true" AnchorHorizontal="95%">
                                 <Items>
@@ -348,10 +356,10 @@
                             </ext:CompositeField>
                         </Items>
                     </ext:FieldSet>
-                    <ext:FieldSet ID="FieldSet2" runat="server" CheckboxToggle="true" Title="其他设置" AutoHeight="true"
+                    <ext:FieldSet ID="FieldSet2" runat="server" CheckboxToggle="false" Title="其他设置" AutoHeight="true"
                         Collapsed="false" LabelWidth="75" Layout="Form">
                         <Items>
-                            <ext:Container ID="Container7" runat="server" Layout="Column" Height="60" AnchorHorizontal="98%">
+                            <ext:Container ID="Container7" runat="server" Layout="Column" Height="46" AnchorHorizontal="98%">
                                 <Items>
                                     <ext:Container ID="Container8" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
@@ -387,13 +395,14 @@
                     </ext:FieldSet>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btnPrev" runat="server" Text="添加" Icon="Accept">
+                    <ext:Button ID="btnAdd" runat="server" Text="添加" Icon="Accept">
                         <DirectEvents>
                         </DirectEvents>
                     </ext:Button>
-                    <ext:Button ID="btnNext" runat="server" Text="取消" Icon="Decline">
-                        <DirectEvents>
-                        </DirectEvents>
+                    <ext:Button ID="btnClose" runat="server" Text="取消" Icon="Decline">
+                        <Listeners>
+                            <Click Handler="parent.CloseQuickAdd();"></Click>
+                        </Listeners>
                     </ext:Button>
                 </Buttons>
             </ext:FormPanel>
