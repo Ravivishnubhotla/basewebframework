@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -95,5 +96,15 @@ namespace SPS.Bussiness.Wrappers
         }
 			
 		#endregion
+
+        public void QuickAddSPChannel(SPChannelWrapper spChannel,Hashtable dataMapping)
+        {
+            
+        }
+
+        public void QuickAddIVRChannel(SPChannelWrapper spChannel, Hashtable dataMapping)
+        {
+
+        }
     }
 }
