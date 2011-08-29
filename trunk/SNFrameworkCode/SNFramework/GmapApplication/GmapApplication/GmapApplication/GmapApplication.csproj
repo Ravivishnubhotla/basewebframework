@@ -82,11 +82,13 @@
     <Content Include="LocationApp\LocatePlace.aspx" />
     <Content Include="LogAction\StartLongAction.aspx" />
     <Content Include="NewFolder1\WebForm1.aspx" />
+    <Content Include="PDFViewer\Blank.htm" />
     <Content Include="PDFViewer\FlexPaperViewer.swf" />
     <Content Include="PDFViewer\js\flexpaper_flash.js" />
     <Content Include="PDFViewer\js\flexpaper_flash_debug.js" />
     <Content Include="PDFViewer\js\jquery.js" />
     <Content Include="PDFViewer\Paper.swf" />
+    <Content Include="PDFViewer\PDFManage.aspx" />
     <Content Include="PDFViewer\PDFUploaderPage.aspx" />
     <Content Include="PDFViewer\PDFViewer.aspx" />
     <Content Include="PDFViewer\playerProductInstall.swf" />
@@ -172,6 +174,13 @@
     </Compile>
     <Compile Include="NewFolder1\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PDFViewer\PDFManage.aspx.cs">
+      <DependentUpon>PDFManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDFViewer\PDFManage.aspx.designer.cs">
+      <DependentUpon>PDFManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="PDFViewer\PDFSWFConvert.cs" />
     <Compile Include="PDFViewer\PDFUploaderPage.aspx.cs">
