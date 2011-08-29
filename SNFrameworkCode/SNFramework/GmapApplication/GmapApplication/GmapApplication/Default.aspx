@@ -88,7 +88,7 @@
                                     <ext:TreeNode Text="地址校正" Icon="MapLink" Href="LocationApp/AddAddress.aspx" />
                                     <ext:TreeNode Text="路径计算" Icon="MapLink" Href="Distance/DistanceQuery.aspx" />
                                     <ext:TreeNode Text="进度条操作" Icon="ClockGo" Href="LogAction/StartLongAction.aspx" />
-                                    <ext:TreeNode Text="PDF查看" Icon="PagePortrait" Href="PDFViewer/PDFViewer.aspx" />
+                                    <ext:TreeNode Text="PDF查看" Icon="PagePortrait" Href="PDFViewer/PDFManage.aspx" />
                                 </Nodes>
                             </ext:TreeNode>
                         </Root>
