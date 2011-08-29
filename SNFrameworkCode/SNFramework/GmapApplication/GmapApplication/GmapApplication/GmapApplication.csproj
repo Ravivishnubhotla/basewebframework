@@ -82,6 +82,14 @@
     <Content Include="LocationApp\LocatePlace.aspx" />
     <Content Include="LogAction\StartLongAction.aspx" />
     <Content Include="NewFolder1\WebForm1.aspx" />
+    <Content Include="PDFViewer\FlexPaperViewer.swf" />
+    <Content Include="PDFViewer\js\flexpaper_flash.js" />
+    <Content Include="PDFViewer\js\flexpaper_flash_debug.js" />
+    <Content Include="PDFViewer\js\jquery.js" />
+    <Content Include="PDFViewer\Paper.swf" />
+    <Content Include="PDFViewer\PDFUploaderPage.aspx" />
+    <Content Include="PDFViewer\PDFViewer.aspx" />
+    <Content Include="PDFViewer\playerProductInstall.swf" />
     <Content Include="Samples\FirstMap.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -165,6 +173,21 @@
     <Compile Include="NewFolder1\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PDFViewer\PDFSWFConvert.cs" />
+    <Compile Include="PDFViewer\PDFUploaderPage.aspx.cs">
+      <DependentUpon>PDFUploaderPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDFViewer\PDFUploaderPage.aspx.designer.cs">
+      <DependentUpon>PDFUploaderPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PDFViewer\PDFViewer.aspx.cs">
+      <DependentUpon>PDFViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PDFViewer\PDFViewer.aspx.designer.cs">
+      <DependentUpon>PDFViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Samples\FirstMap.aspx.cs">
       <DependentUpon>FirstMap.aspx</DependentUpon>
@@ -179,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="PDFViewer\Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExtJsAjax\GoogleMapService.ashx" />
