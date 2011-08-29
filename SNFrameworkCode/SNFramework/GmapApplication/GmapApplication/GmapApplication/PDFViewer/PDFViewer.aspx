@@ -28,7 +28,7 @@
             var fp = new FlexPaperViewer(
 						 'FlexPaperViewer',
 						 'viewerPlaceHolder', { config: {
-						     SwfFile: escape('<%= this.Request.QueryString["FileName"] %>.swf'),
+						     SwfFile: escape('Files/<%= this.Request.QueryString["FileName"] %>.swf'),
 						     Scale: 0.6,
 						     ZoomTransition: 'easeOut',
 						     ZoomTime: 0.5,
