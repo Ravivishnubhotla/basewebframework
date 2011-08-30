@@ -50,6 +50,10 @@
 
 						     localeChain: 'en_US'
 						 }
-						 });
+			});
+
+        function GetCurrPage() {
+            return getDocViewer().getCurrPage();
+        }
     </script>
 </asp:Content>
