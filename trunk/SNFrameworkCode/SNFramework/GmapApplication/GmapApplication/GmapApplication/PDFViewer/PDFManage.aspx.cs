@@ -34,13 +34,7 @@ namespace GmapApplication.PDFViewer
                 this.Panel3.AutoLoad.Params.Add(new Parameter("FileName",fileName));
                 this.Panel3.LoadContent();
 
-                X.Msg.Show(new MessageBoxConfig
-                {
-                    Buttons = MessageBox.Button.OK,
-                    Icon = MessageBox.Icon.INFO,
-                    Title = "Success",
-                    Message = "File " + fileName + ".pdf upload ok "
-                });
+ 
  
             }
 
