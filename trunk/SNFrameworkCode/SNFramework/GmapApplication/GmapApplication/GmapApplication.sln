@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmapApplication", "GmapApplication\GmapApplication.csproj", "{0F17546C-04FC-484E-B6F4-8AD57C528907}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{F319E79E-2669-49C2-B7C7-FA6061220211}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls\Ext.Net.dll = Dlls\Ext.Net.dll
+		Dlls\Ext.Net.Utilities.dll = Dlls\Ext.Net.Utilities.dll
+		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F17546C-04FC-484E-B6F4-8AD57C528907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F17546C-04FC-484E-B6F4-8AD57C528907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F17546C-04FC-484E-B6F4-8AD57C528907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F17546C-04FC-484E-B6F4-8AD57C528907}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
