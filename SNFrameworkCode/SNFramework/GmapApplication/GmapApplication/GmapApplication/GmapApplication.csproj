@@ -211,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="MongoDBSample\" />
     <Folder Include="PDFViewer\Files\" />
   </ItemGroup>
   <ItemGroup>
