@@ -15,6 +15,10 @@
 		<property column="TextContent" type="string" name="TextContent"   length="2147483646" />	
 		<property column="PublishDate" type="DateTime" name="PublishDate"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

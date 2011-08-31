@@ -14,9 +14,9 @@ using Spring.Transaction.Interceptor;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity> ,ISPChannelServiceProxyDesigner
+    public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity>, ISPChannelServiceProxyDesigner
     {
-	    void QuickAddSPChannel(SPChannelEntity channelEntity, string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10);
+        void QuickAddSPChannel(SPChannelEntity channelEntity, string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10);
         void QuickAddIVRChannel(SPChannelEntity channelEntity, string pIvrLinkId, string pIvrFeetime, string pIvrMobile, string pIvrspCode, string pIvrStartTime, string pIvrEndTime, string pIvrProvince, string pIvrCity, string pIvrExtend1, string pIvrExtend2, string pIvrExtend3, string pIvrExtend4, string pIvrExtend5, string pIvrExtend6, string pIvrExtend7, string pIvrExtend8, string pIvrExtend9, string pIvrExtend10);
     }
 
@@ -33,29 +33,39 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                 throw new ArgumentNullException("pMobile");
             if (string.IsNullOrEmpty(pMo))
                 throw new ArgumentNullException("pSpCode");
-            
+
             this.selfDataObject.Save(channelEntity);
 
-            SPSClientEntity spClientEntity =
+            SPSClientEntity defaultClient =
                 this.DataObjectsContainerIocID.SPSClientDataObjectInstance.FindDefaultClient();
 
-            if (spClientEntity==null)
+            if (defaultClient == null)
             {
                 int defaultSPClientuserID = SystemUserWrapper.QuickAddUser("defaultSPClient", "SPDownUser", "123456", "@163.com");
 
-                if (defaultSPClientuserID<0)
+                if (defaultSPClientuserID < 0)
                     throw new Exception("Create defaultSPClient failed");
 
-                SPSClientServiceProxy.NewDefaultSPClient(defaultSPClientuserID);
+                defaultClient = SPSClientServiceProxy.NewDefaultSPClient(defaultSPClientuserID);
 
-                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Save(spClientEntity);
+                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Save(defaultClient);
             }
 
-            SPChannelParamsEntity cpLinkId = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pLinkId,"唯一标识","linkid","1");
+            SPCodeEntity defaultCode = SPCodeServiceProxy.NewDefaultCode(channelEntity);
+
+            this.DataObjectsContainerIocID.SPCodeDataObjectInstance.Save(defaultCode);
+
+            SPClientCodeRelationEntity spClientCodeRelation = SPClientCodeRelationServiceProxy.NewDefaultCode(defaultClient,defaultCode)'
+
+            this.DataObjectsContainerIocID.SPClientCodeRelationDataObjectInstance.Save(spClientCodeRelation);
+
+
+
+            SPChannelParamsEntity cpLinkId = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pLinkId, "唯一标识", "linkid", "1");
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpLinkId);
 
-            SPChannelParamsEntity cpMo = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMo, "上行内容", "ywid", "1");
+            SPChannelParamsEntity cpMo = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMo, "上行内容", "mo", "1");
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpMo);
 
@@ -63,11 +73,11 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpMobile);
 
-            SPChannelParamsEntity cpSpCode = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pSpCode, "通道号码", "cpid", "1");
+            SPChannelParamsEntity cpSpCode = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pSpCode, "通道号码", "SpCode", "1");
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpSpCode);
 
-            if(!string.IsNullOrEmpty(pCreateDate))
+            if (!string.IsNullOrEmpty(pCreateDate))
             {
                 SPChannelParamsEntity cpCreateDate = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pCreateDate, "数据日期", "CreateDate", "1");
 
@@ -105,10 +115,83 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             if (!string.IsNullOrEmpty(pExtend2))
             {
-                SPChannelParamsEntity cpExtend2 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, "扩展2", "Extend2", "1");
+                SPChannelParamsEntity cpExtend2 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend2, "扩展2", "Extend2", "1");
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend2);
             }
+
+            if (!string.IsNullOrEmpty(pExtend3))
+            {
+                SPChannelParamsEntity cpExtend3 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend3, "扩展3", "Extend3", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend3);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend4))
+            {
+                SPChannelParamsEntity cpExtend4 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend4, "扩展4", "Extend4", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend4);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend5))
+            {
+                SPChannelParamsEntity cpExtend5 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend5, "扩展5", "Extend5", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend5);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend6))
+            {
+                SPChannelParamsEntity cpExtend6 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend6, "扩展6", "Extend6", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend6);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend7))
+            {
+                SPChannelParamsEntity cpExtend7 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend7, "扩展7", "Extend7", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend7);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend8))
+            {
+                SPChannelParamsEntity cpExtend8 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend8, "扩展8", "Extend8", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend8);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend9))
+            {
+                SPChannelParamsEntity cpExtend9 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, "扩展9", "Extend9", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend9);
+            }
+
+            if (!string.IsNullOrEmpty(pExtend10))
+            {
+                SPChannelParamsEntity cpExtend10 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend10, "扩展10", "Extend10", "1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend10);
+            }
+
+
+            SPChannelSycnParamsEntity linkidSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "linkid", "唯一标识", "linkid", "1");
+
+            this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(linkidSycnParam);
+
+            SPChannelSycnParamsEntity moSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "mo", "上行内容", "mo", "1");
+
+            this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(moSycnParam);
+
+            SPChannelSycnParamsEntity SpCodeSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "SpCode", "通道编码", "SpCode", "1");
+
+            this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(SpCodeSycnParam);
+
+            SPChannelSycnParamsEntity mobileSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "mobile", "手机号码", "mobile", "1");
+
+            this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(mobileSycnParam);
 
         }
 

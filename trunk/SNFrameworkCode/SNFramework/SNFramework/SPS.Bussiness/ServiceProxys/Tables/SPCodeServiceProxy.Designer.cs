@@ -20,6 +20,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     public interface ISPCodeServiceProxyDesigner
     {
+		List<SPCodeEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,   SPChannelEntity _channelID, PageQueryParams pageQueryParams);
+		List<SPCodeEntity> FindAllByChannelID(SPChannelEntity _channelID);
     }
 
     internal partial class SPCodeServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPCodeEntity>
@@ -36,6 +38,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 return (SPCodeDataObject)selfDataObject;
             }
+        }
+	
+		public List<SPCodeEntity> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,  SPChannelEntity _channelID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_ChannelID_SPChannelEntity(orderByColumnName, isDesc,_channelID, pageQueryParams);
+        }
+		
+		public List<SPCodeEntity> FindAllByChannelID(SPChannelEntity _channelID)
+        {
+			return this.SelfDataObj.GetList_By_ChannelID_SPChannelEntity(_channelID);
         }
 
 

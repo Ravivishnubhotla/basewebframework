@@ -14,7 +14,10 @@
 		<property column="Name" type="string" name="Name"   length="400" />	
 		<property column="Code" type="string" name="Code"   length="400" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
-		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

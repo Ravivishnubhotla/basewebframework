@@ -31,7 +31,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_CODEID_NAME = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CODEID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_CODEID_CODE = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Code"));
-		public static readonly IntProperty PROPERTY_CODEID_CHANNELID = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ChannelID"));
+		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CODEID_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ChannelID"));
 		public static readonly StringProperty PROPERTY_CODEID_MO = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Mo"));
 		public static readonly StringProperty PROPERTY_CODEID_MOTYPE = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".MOType"));
 		public static readonly IntProperty PROPERTY_CODEID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".OrderIndex"));
@@ -46,8 +46,16 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_CODEID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Price"));
 		public static readonly StringProperty PROPERTY_CODEID_SENDTEXT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".SendText"));
 		public static readonly BoolProperty PROPERTY_CODEID_HASFILTERS = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasFilters"));
+		public static readonly IntProperty PROPERTY_CODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
 		public static readonly StringProperty PROPERTY_DIRECTIONTYPE = new StringProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_DIRECTIONTYPE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_LASTMODIFYAT));		
       
 		#region 子类集合字段查询字段
 	
@@ -81,6 +89,14 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "DirectionType":
                     return typeof (string);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
           }
 			return typeof(string);
         }

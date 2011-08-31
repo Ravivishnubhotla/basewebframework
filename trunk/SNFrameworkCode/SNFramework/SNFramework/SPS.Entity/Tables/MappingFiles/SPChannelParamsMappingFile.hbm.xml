@@ -21,6 +21,10 @@
 		<property column="Title" type="string" name="Title"   length="400" />	
 		<property column="ShowInClientGrid" type="Boolean" name="ShowInClientGrid"   />	
 		<property column="ParamsValue" type="string" name="ParamsValue"   length="400" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

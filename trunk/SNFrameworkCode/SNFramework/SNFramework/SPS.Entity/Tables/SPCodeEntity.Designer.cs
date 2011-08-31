@@ -33,6 +33,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -45,7 +49,7 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _description;
 		private string _code;
-		private int? _channelID;
+		private SPChannelEntity _channelID;
 		private string _mo;
 		private string _mOType;
 		private int? _orderIndex;
@@ -60,6 +64,10 @@ namespace SPS.Entity.Tables
 		private decimal? _price;
 		private string _sendText;
 		private bool? _hasFilters;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -88,6 +96,10 @@ namespace SPS.Entity.Tables
 			_price = null;
 			_sendText = null;
 			_hasFilters = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -95,7 +107,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, int? channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool? isDiable, string sPType, int? codeLength, int? dayLimit, int? monthLimit, decimal? price, string sendText, bool? hasFilters)
+		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool? isDiable, string sPType, int? codeLength, int? dayLimit, int? monthLimit, decimal? price, string sendText, bool? hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -116,6 +128,10 @@ namespace SPS.Entity.Tables
 			_price = price;
 			_sendText = sendText;
 			_hasFilters = hasFilters;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -190,7 +206,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? ChannelID
+		public virtual SPChannelEntity ChannelID
 		{
 			get { return _channelID; }
 
@@ -414,6 +430,62 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_hasFilters != value); _hasFilters = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>

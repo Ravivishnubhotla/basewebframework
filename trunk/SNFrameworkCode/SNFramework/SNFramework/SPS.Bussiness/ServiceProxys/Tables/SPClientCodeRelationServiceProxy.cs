@@ -19,6 +19,18 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     internal partial class SPClientCodeRelationServiceProxy : ISPClientCodeRelationServiceProxy
     {
+        public static SPClientCodeRelationEntity NewDefaultCode(SPSClientEntity client,SPCodeEntity code)
+        {
+            SPClientCodeRelationEntity spClientCodeRelation = new SPClientCodeRelationEntity();
+
+            spClientCodeRelation.ClientID = client;
+            spClientCodeRelation.CodeID = code;
+            spClientCodeRelation.IsEnable = true;
+            spClientCodeRelation.InterceptRate = 0;
+            spClientCodeRelation.SyncData = false;
+
+            return spClientCodeRelation;
+        }
 
 
     }

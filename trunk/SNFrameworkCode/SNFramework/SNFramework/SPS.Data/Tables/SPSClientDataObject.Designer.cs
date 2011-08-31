@@ -30,6 +30,10 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_INTERCEPTRATE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_INTERCEPTRATE));		
 		public static readonly DecimalProperty PROPERTY_DEFAULTPRICE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTPRICE));		
 		public static readonly IntProperty PROPERTY_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTSHOWRECORDDAYS));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_LASTMODIFYAT));		
       
 		#region 子类集合字段查询字段
 	
@@ -79,6 +83,14 @@ namespace SPS.Data.Tables
                     return typeof (decimal);
                 case "DefaultShowRecordDays":
                     return typeof (int);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
           }
 			return typeof(string);
         }

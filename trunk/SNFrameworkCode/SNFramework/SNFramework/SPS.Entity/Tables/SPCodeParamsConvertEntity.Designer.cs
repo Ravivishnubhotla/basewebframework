@@ -22,6 +22,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARAMSCONVERTCONDITION = "ParamsConvertCondition";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
 		public static readonly string PROPERTY_NAME_DIRECTIONTYPE = "DirectionType";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -38,6 +42,10 @@ namespace SPS.Entity.Tables
 		private string _paramsConvertCondition;
 		private SPCodeEntity _codeID;
 		private string _directionType;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -55,6 +63,10 @@ namespace SPS.Entity.Tables
 			_paramsConvertCondition = null;
 			_codeID = null;
 			_directionType = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -62,7 +74,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeParamsConvertEntity( int id, string name, string paramsValue, string paramsConvertTo, string paramsConvertType, string paramsConvertCondition, SPCodeEntity codeID, string directionType)
+		public SPCodeParamsConvertEntity( int id, string name, string paramsValue, string paramsConvertTo, string paramsConvertType, string paramsConvertCondition, SPCodeEntity codeID, string directionType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -72,6 +84,10 @@ namespace SPS.Entity.Tables
 			_paramsConvertCondition = paramsConvertCondition;
 			_codeID = codeID;
 			_directionType = directionType;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -204,6 +220,62 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for DirectionType", value, value.ToString());
 				_isChanged |= (_directionType != value); _directionType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>

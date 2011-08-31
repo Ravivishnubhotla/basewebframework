@@ -19,6 +19,10 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_TEXTCONTENT = new StringProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_TEXTCONTENT));		
 		public static readonly DateTimeProperty PROPERTY_PUBLISHDATE = new DateTimeProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_PUBLISHDATE));		
 		public static readonly DateTimeProperty PROPERTY_CREATEDATE = new DateTimeProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_CREATEDATE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPMemoEntity.PROPERTY_NAME_LASTMODIFYAT));		
       
 		#region 子类集合字段查询字段
 	
@@ -45,6 +49,14 @@ namespace SPS.Data.Tables
                 case "PublishDate":
                     return typeof (DateTime);
                 case "CreateDate":
+                    return typeof (DateTime);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
                     return typeof (DateTime);
           }
 			return typeof(string);

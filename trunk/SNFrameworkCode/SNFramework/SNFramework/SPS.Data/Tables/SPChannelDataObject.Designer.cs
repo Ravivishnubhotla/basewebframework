@@ -55,10 +55,17 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_UPPERID_NAME = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_UPPERID_CODE = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Code"));
 		public static readonly StringProperty PROPERTY_UPPERID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Description"));
-		public static readonly DateTimeProperty PROPERTY_UPPERID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateDate"));
+		public static readonly IntProperty PROPERTY_UPPERID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_UPPERID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_UPPERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_UPPERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
 		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELSTATUS));		
 		public static readonly BoolProperty PROPERTY_ISDISABLE = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_LASTMODIFYAT));		
       
 		#region 子类集合字段查询字段
 	
@@ -142,6 +149,14 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "IsDisable":
                     return typeof (bool);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
           }
 			return typeof(string);
         }

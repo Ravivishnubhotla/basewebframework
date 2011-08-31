@@ -19,6 +19,10 @@
 		<property column="Title" type="string" name="Title"   length="400" />	
 		<property column="ParamsValue" type="string" name="ParamsValue"   length="400" />	
 		<property column="ParamsType" type="string" name="ParamsType"   length="40" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

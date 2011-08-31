@@ -72,7 +72,10 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 
@@ -137,15 +140,57 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateDate
+		public int? CreateBy
 		{
 			get
 			{
-				return entity.CreateDate;
+				return entity.CreateBy;
 			}
 			set
 			{
-				entity.CreateDate = value;
+				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? CreateAt
+		{
+			get
+			{
+				return entity.CreateAt;
+			}
+			set
+			{
+				entity.CreateAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? LastModifyBy
+		{
+			get
+			{
+				return entity.LastModifyBy;
+			}
+			set
+			{
+				entity.LastModifyBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? LastModifyAt
+		{
+			get
+			{
+				return entity.LastModifyAt;
+			}
+			set
+			{
+				entity.LastModifyAt = value;
 			}
 		}
 		#endregion 
