@@ -103,9 +103,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// </summary>
         /// <param name="categoryName">字典类别名</param>
         /// <returns></returns>
-        public static List<SystemDictionaryWrapper> GetDictionaryByCategoryName(string categoryName)
+        public static List<SystemDictionaryWrapper> GetDictionaryByCategoryName(string groupCode)
         {
-            return ConvertToWrapperList(businessProxy.GetDictionaryByCategoryName(categoryName));
+            return ConvertToWrapperList(businessProxy.GetDictionaryByGroupCode(groupCode));
         }
         /// <summary>
         /// 解析指定类别下的字典键值
@@ -113,30 +113,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// <param name="categoryName">字典类别名</param>
         /// <param name="key">键值</param>
         /// <returns></returns>
-        public static string ParseDictionaryValueByCategoryNameAndKey(string categoryName,string key)
+        public static string ParseDictionaryValueByCategoryNameAndKey(string groupCode, string key)
         {
-            return businessProxy.ParseDictionaryValueByCategoryNameAndKey(categoryName, key);
+            return businessProxy.ParseDictionaryValueByGroupCodeAndKey(groupCode, key);
         }
 
-        /// <summary>
-        /// 获取所有的字典类别名
-        /// </summary>
-        /// <returns></returns>
-	    public static List<string> GetAllCategoryNames()
-	    {
-            return businessProxy.GetAllCategoryNames();
-	    }
-
-        public static List<NameItem> GetAllCategoryNameItems()
-        {
-            List<string> names = GetAllCategoryNames();
-            List<NameItem> nameItems = new List<NameItem>();
-            foreach (string name in names)
-            {
-                nameItems.Add(new NameItem() { Name = name });
-            }
-            return nameItems;
-        }
+ 
+ 
 
 	    public static List<SystemDictionaryWrapper> FindAllByGroupIdAndOrder()
 	    {

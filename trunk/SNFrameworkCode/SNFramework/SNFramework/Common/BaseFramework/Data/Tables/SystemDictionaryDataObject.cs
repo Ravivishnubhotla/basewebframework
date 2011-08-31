@@ -17,11 +17,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         /// </summary>
         /// <param name="categoryName"></param>
         /// <returns></returns>
-        public IList<SystemDictionaryEntity> GetDictionaryByCategoryName(string categoryName)
+        public IList<SystemDictionaryEntity> GetDictionaryByGroupID(SystemDictionaryGroupEntity dictionaryGroup)
         {
             NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Eq(categoryName));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYGROUPID.Eq(dictionaryGroup));
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYISENABLE.Eq(true));
 
@@ -36,11 +36,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         /// <param name="categoryName"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public SystemDictionaryEntity GetDictionaryByCategoryNameAndKey(string categoryName,string key)
+        public SystemDictionaryEntity GetDictionaryByGroupIDAndKey(SystemDictionaryGroupEntity dictionaryGroup, string key)
         {
             NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Eq(categoryName));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYGROUPID.Eq(dictionaryGroup));
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYISENABLE.Eq(true));
 
@@ -48,17 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
         }
-
-        /// <summary>
-        /// 获取所有的字典类别
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetAllCategoryNames()
-        {
-            NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-            //Distinct PRIVILEGECATEGORY zi
-            return this.FindListByProjection<string>(dynamicQueryGenerator, GetDistinctProperty(PROPERTY_SYSTEMDICTIONARYCATEGORYID.CriterionProperty));
-        }
+ 
 
         public List<SystemDictionaryEntity> FindAllByGroupIdAndOrder()
         {
@@ -66,7 +56,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYISENABLE.Eq(true));
 
-            dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Asc());
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYGROUPID.Asc());
 
             dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYORDER.Asc());
 
@@ -74,15 +64,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
         }
 
-        public SystemDictionaryEntity FindMaxOrderItemByCategory(string category)
+        public SystemDictionaryEntity FindMaxOrderItemByGroupID(SystemDictionaryGroupEntity dictionaryGroup)
         {
             NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYCATEGORYID.Eq(category));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYGROUPID.Eq(dictionaryGroup));
 
             dynamicQueryGenerator.AddOrderBy(PROPERTY_SYSTEMDICTIONARYORDER.Desc());
 
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
         }
+ 
     }
 }

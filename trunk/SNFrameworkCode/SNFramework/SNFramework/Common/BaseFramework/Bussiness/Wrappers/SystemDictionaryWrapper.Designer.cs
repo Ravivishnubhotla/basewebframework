@@ -69,7 +69,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDictionaryEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYID = "SystemDictionaryID";
-		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID = "SystemDictionaryCategoryID";
+		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYGROUPID = "SystemDictionaryGroupID";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYKEY = "SystemDictionaryKey";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYVALUE = "SystemDictionaryValue";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION = "SystemDictionaryDesciption";
@@ -98,15 +98,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string SystemDictionaryCategoryID
+		public SystemDictionaryGroupWrapper SystemDictionaryGroupID
 		{
 			get
 			{
-				return entity.SystemDictionaryCategoryID;
+				return SystemDictionaryGroupWrapper.ConvertEntityToWrapper(entity.SystemDictionaryGroupID) ;
 			}
 			set
 			{
-				entity.SystemDictionaryCategoryID = value;
+				entity.SystemDictionaryGroupID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>
@@ -200,6 +200,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SystemDictionaryWrapper> FindAllByOrderByAndFilterAndSystemDictionaryGroupID(string orderByColumnName, bool isDesc,   SystemDictionaryGroupWrapper systemDictionaryGroupID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(orderByColumnName, isDesc,   systemDictionaryGroupID.entity, pageQueryParams));
+        }
+
+        public static List<SystemDictionaryWrapper> FindAllBySystemDictionaryGroupID(SystemDictionaryGroupWrapper systemDictionaryGroupID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllBySystemDictionaryGroupID(systemDictionaryGroupID.entity));
+        }
+		
 
 
 

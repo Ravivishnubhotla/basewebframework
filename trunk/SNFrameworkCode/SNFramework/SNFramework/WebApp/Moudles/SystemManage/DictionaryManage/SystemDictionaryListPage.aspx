@@ -127,7 +127,6 @@
             <ext:JsonReader IDProperty="SystemDictionaryID">
                 <Fields>
                     <ext:RecordField Name="SystemDictionaryID" Type="int" />
-                    <ext:RecordField Name="SystemDictionaryCategoryID" />
                     <ext:RecordField Name="SystemDictionaryKey" />
                     <ext:RecordField Name="SystemDictionaryValue" />
                     <ext:RecordField Name="SystemDictionaryDesciption" />
@@ -193,9 +192,6 @@
                         <ext:Column ColumnID="colSystemDictionaryID" DataIndex="SystemDictionaryID" Header="<%$ Resources:msgcolID %>"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colSystemDictionaryCategoryID" DataIndex="SystemDictionaryCategoryID"
-                            Header="<%$ Resources:msgcolCategoryID %>" Sortable="true">
-                        </ext:Column>
                         <ext:Column ColumnID="colSystemDictionaryKey" DataIndex="SystemDictionaryKey" Header="<%$ Resources:msgcolKey %>"
                             Sortable="true">
                             <Editor>
@@ -236,15 +232,6 @@
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
                 </Listeners>
-                <Plugins>
-                    <ext:GridFilters runat="server" ID="GridFilters1">
-                        <Filters>
-                            <ext:ListFilter DataIndex="SystemDictionaryCategoryID" StoreID="storeGroup"
-                                LabelField="Name">
-                            </ext:ListFilter>
-                        </Filters>
-                    </ext:GridFilters>
-                </Plugins>
             </ext:GridPanel>
         </Items>
     </ext:Viewport>

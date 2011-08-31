@@ -26,11 +26,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
 
             foreach (SystemDictionaryWrapper dictionaryWrapper in dictionaryWrappers)
             {
-                if(!dictionarys.ContainsKey(dictionaryWrapper.SystemDictionaryCategoryID))
+                if(!dictionarys.ContainsKey(dictionaryWrapper.SystemDictionaryGroupID.Code))
                 {
-                    dictionarys.Add(dictionaryWrapper.SystemDictionaryCategoryID,new Dictionary<string, string>());
+                    dictionarys.Add(dictionaryWrapper.SystemDictionaryGroupID.Code, new Dictionary<string, string>());
                 }
-                dictionarys[dictionaryWrapper.SystemDictionaryCategoryID].Add(dictionaryWrapper.SystemDictionaryKey,dictionaryWrapper.SystemDictionaryValue);
+                dictionarys[dictionaryWrapper.SystemDictionaryGroupID.Code].Add(dictionaryWrapper.SystemDictionaryKey, dictionaryWrapper.SystemDictionaryValue);
             }
         }
 

@@ -12,9 +12,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
 
       public SystemApplicationDataObject SystemApplicationDataObjectInstance { set; get; }
       public SystemConfigDataObject SystemConfigDataObjectInstance { set; get; }
+      public SystemConfigGroupDataObject SystemConfigGroupDataObjectInstance { set; get; }
       public SystemDataTypeDataObject SystemDataTypeDataObjectInstance { set; get; }
       public SystemDepartmentDataObject SystemDepartmentDataObjectInstance { set; get; }
       public SystemDictionaryDataObject SystemDictionaryDataObjectInstance { set; get; }
+      public SystemDictionaryGroupDataObject SystemDictionaryGroupDataObjectInstance { set; get; }
       public SystemEmailQueueDataObject SystemEmailQueueDataObjectInstance { set; get; }
       public SystemEmailSettingsDataObject SystemEmailSettingsDataObjectInstance { set; get; }
       public SystemEmailTemplateDataObject SystemEmailTemplateDataObjectInstance { set; get; }

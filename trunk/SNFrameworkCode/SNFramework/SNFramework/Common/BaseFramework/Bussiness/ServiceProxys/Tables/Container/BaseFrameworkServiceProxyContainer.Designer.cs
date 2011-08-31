@@ -12,11 +12,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemConfigServiceProxy SystemConfigServiceProxyInstance
         {get; set;}
+		public ISystemConfigGroupServiceProxy SystemConfigGroupServiceProxyInstance
+        {get; set;}
 		public ISystemDataTypeServiceProxy SystemDataTypeServiceProxyInstance
         {get; set;}
 		public ISystemDepartmentServiceProxy SystemDepartmentServiceProxyInstance
         {get; set;}
 		public ISystemDictionaryServiceProxy SystemDictionaryServiceProxyInstance
+        {get; set;}
+		public ISystemDictionaryGroupServiceProxy SystemDictionaryGroupServiceProxyInstance
         {get; set;}
 		public ISystemEmailQueueServiceProxy SystemEmailQueueServiceProxyInstance
         {get; set;}

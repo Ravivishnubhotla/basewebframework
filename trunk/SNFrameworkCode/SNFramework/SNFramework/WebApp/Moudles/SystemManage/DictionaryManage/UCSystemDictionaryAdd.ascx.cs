@@ -42,7 +42,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             {
                 SystemDictionaryWrapper obj = new SystemDictionaryWrapper();
 
-                obj.SystemDictionaryCategoryID = this.cmbGroup.Text.Trim();
+                //obj.SystemDictionaryCategoryID = this.cmbGroup.Text.Trim();
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();

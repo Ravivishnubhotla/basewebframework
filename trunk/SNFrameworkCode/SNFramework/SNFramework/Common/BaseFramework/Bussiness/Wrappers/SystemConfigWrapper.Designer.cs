@@ -71,8 +71,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMCONFIGID = "SystemConfigID";
 		public static readonly string PROPERTY_NAME_CONFIGKEY = "ConfigKey";
 		public static readonly string PROPERTY_NAME_CONFIGVALUE = "ConfigValue";
+		public static readonly string PROPERTY_NAME_CONFIGDATATYPE = "ConfigDataType";
 		public static readonly string PROPERTY_NAME_CONFIGDESCRIPTION = "ConfigDescription";
 		public static readonly string PROPERTY_NAME_SORTINDEX = "SortIndex";
+		public static readonly string PROPERTY_NAME_CONFIGGROUPID = "ConfigGroupID";
 		
         #endregion
 
@@ -123,6 +125,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string ConfigDataType
+		{
+			get
+			{
+				return entity.ConfigDataType;
+			}
+			set
+			{
+				entity.ConfigDataType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string ConfigDescription
 		{
 			get
@@ -148,6 +164,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 				entity.SortIndex = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SystemConfigGroupWrapper ConfigGroupID
+		{
+			get
+			{
+				return SystemConfigGroupWrapper.ConvertEntityToWrapper(entity.ConfigGroupID) ;
+			}
+			set
+			{
+				entity.ConfigGroupID = ((value == null) ? null : value.entity);
+			}
+		}
 		#endregion 
 
 
@@ -155,6 +185,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SystemConfigWrapper> FindAllByOrderByAndFilterAndConfigGroupID(string orderByColumnName, bool isDesc,   SystemConfigGroupWrapper configGroupID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndConfigGroupID(orderByColumnName, isDesc,   configGroupID.entity, pageQueryParams));
+        }
+
+        public static List<SystemConfigWrapper> FindAllByConfigGroupID(SystemConfigGroupWrapper configGroupID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByConfigGroupID(configGroupID.entity));
+        }
+		
 
 
 

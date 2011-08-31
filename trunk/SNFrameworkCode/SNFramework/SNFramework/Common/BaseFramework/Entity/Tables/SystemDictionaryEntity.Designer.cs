@@ -15,7 +15,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDictionaryEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYID = "SystemDictionaryID";
-		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID = "SystemDictionaryCategoryID";
+		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYGROUPID = "SystemDictionaryGroupID";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYKEY = "SystemDictionaryKey";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYVALUE = "SystemDictionaryValue";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION = "SystemDictionaryDesciption";
@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _systemDictionaryID;
-		private string _systemDictionaryCategoryID;
+		private SystemDictionaryGroupEntity _systemDictionaryGroupID;
 		private string _systemDictionaryKey;
 		private string _systemDictionaryValue;
 		private string _systemDictionaryDesciption;
@@ -48,7 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public SystemDictionaryEntity()
 		{
 			_systemDictionaryID = 0;
-			_systemDictionaryCategoryID = null;
+			_systemDictionaryGroupID = null;
 			_systemDictionaryKey = null;
 			_systemDictionaryValue = null;
 			_systemDictionaryDesciption = null;
@@ -62,10 +62,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDictionaryEntity( int systemDictionaryID, string systemDictionaryCategoryID, string systemDictionaryKey, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable, bool? systemDictionaryIsSystem)
+		public SystemDictionaryEntity( int systemDictionaryID, SystemDictionaryGroupEntity systemDictionaryGroupID, string systemDictionaryKey, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable, bool? systemDictionaryIsSystem)
 		{
 			_systemDictionaryID = systemDictionaryID;
-			_systemDictionaryCategoryID = systemDictionaryCategoryID;
+			_systemDictionaryGroupID = systemDictionaryGroupID;
 			_systemDictionaryKey = systemDictionaryKey;
 			_systemDictionaryValue = systemDictionaryValue;
 			_systemDictionaryDesciption = systemDictionaryDesciption;
@@ -95,16 +95,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string SystemDictionaryCategoryID
+		public virtual SystemDictionaryGroupEntity SystemDictionaryGroupID
 		{
-			get { return _systemDictionaryCategoryID; }
+			get { return _systemDictionaryGroupID; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for SystemDictionaryCategoryID", value, value.ToString());
-				_isChanged |= (_systemDictionaryCategoryID != value); _systemDictionaryCategoryID = value;
+				_isChanged |= (_systemDictionaryGroupID != value); _systemDictionaryGroupID = value;
 			}
 		}
 

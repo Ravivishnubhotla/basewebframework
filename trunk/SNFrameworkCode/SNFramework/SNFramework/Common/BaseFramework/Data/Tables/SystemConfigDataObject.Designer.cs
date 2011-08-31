@@ -17,8 +17,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_SYSTEMCONFIGID = new IntProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_SYSTEMCONFIGID));		
 		public static readonly StringProperty PROPERTY_CONFIGKEY = new StringProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_CONFIGKEY));		
 		public static readonly StringProperty PROPERTY_CONFIGVALUE = new StringProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_CONFIGVALUE));		
+		public static readonly StringProperty PROPERTY_CONFIGDATATYPE = new StringProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_CONFIGDATATYPE));		
 		public static readonly StringProperty PROPERTY_CONFIGDESCRIPTION = new StringProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_CONFIGDESCRIPTION));		
 		public static readonly IntProperty PROPERTY_SORTINDEX = new IntProperty(Property.ForName(SystemConfigEntity.PROPERTY_NAME_SORTINDEX));		
+		public static readonly EntityProperty<SystemConfigGroupEntity> PROPERTY_CONFIGGROUPID = new EntityProperty<SystemConfigGroupEntity>(Property.ForName(SystemConfigEntity.PROPERTY_NAME_CONFIGGROUPID));
+		#region configGroupID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemConfigEntity> InClude_ConfigGroupID_Query(NHibernateDynamicQueryGenerator<SystemConfigEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemConfigEntity.PROPERTY_NAME_CONFIGGROUPID, PROPERTY_CONFIGGROUPID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_CONFIGGROUPID_ALIAS_NAME = "ConfigGroupID_SystemConfigEntity_Alias";
+		public static readonly IntProperty PROPERTY_CONFIGGROUPID_ID = new IntProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".Id"));
+		public static readonly StringProperty PROPERTY_CONFIGGROUPID_NAME = new StringProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_CONFIGGROUPID_CODE = new StringProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_CONFIGGROUPID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".Description"));
+		public static readonly BoolProperty PROPERTY_CONFIGGROUPID_ISENABLE = new BoolProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".IsEnable"));
+		public static readonly BoolProperty PROPERTY_CONFIGGROUPID_ISSYSTEM = new BoolProperty(Property.ForName(PROPERTY_CONFIGGROUPID_ALIAS_NAME + ".IsSystem"));
+		#endregion
       
 		#region 子类集合字段查询字段
 	
@@ -42,13 +57,38 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "ConfigValue":
                     return typeof (string);
+                case "ConfigDataType":
+                    return typeof (string);
                 case "ConfigDescription":
                     return typeof (string);
                 case "SortIndex":
                     return typeof (int);
+                case "ConfigGroupID":
+                    return typeof (int);
           }
 			return typeof(string);
         }
+		
+		public List<SystemConfigEntity> GetList_By_ConfigGroupID_SystemConfigGroupEntity(SystemConfigGroupEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemConfigEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CONFIGGROUPID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemConfigEntity> GetPageList_By_ConfigGroupID_SystemConfigGroupEntity(string orderByColumnName, bool isDesc, SystemConfigGroupEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemConfigEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CONFIGGROUPID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		
