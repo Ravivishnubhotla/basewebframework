@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Web.Security;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
@@ -262,6 +263,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.PatchRemoveRoleApplications(role.entity, removeAppIDs);
 	    }
 
+
+	    public static SystemRoleWrapper GetRoleByCode(string roleCode)
+	    {
+            return ConvertEntityToWrapper(businessProxy.GetRoleByCode(roleCode));
+	    }
 
 
 	    public static List<string> GetRoleAssignedPermissionsByResources(SystemRoleWrapper systemRoleWrapper, SystemResourcesWrapper resourcesWrapper)
