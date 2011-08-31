@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Security;
+using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Providers;
@@ -24,6 +25,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
+
+ 
 
         #region Static Common Data Operation
 
@@ -416,9 +419,35 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 businessProxy.SaveFirstChangePassword(loginID, newPassword);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logger.Error(ex);
                 return false;
+            }
+        }
+
+        public static int QuickAddUser(string loginID, string roleCode,string defaultPassword,string defaultEmail)
+        {
+            try
+            {
+                Membership.CreateUser(loginID, defaultPassword, loginID + defaultEmail);
+
+                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(loginID);
+
+                user.UserName = loginID;
+
+                SystemUserWrapper.Update(user);
+
+                SystemRoleWrapper clientRole = SystemRoleWrapper.GetRoleByCode(roleCode);
+
+                SystemUserWrapper.PatchAssignUserRoles(user, new List<string> { clientRole.RoleID.ToString() });
+
+                return user.UserID;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+                return -1;
             }
         }
 

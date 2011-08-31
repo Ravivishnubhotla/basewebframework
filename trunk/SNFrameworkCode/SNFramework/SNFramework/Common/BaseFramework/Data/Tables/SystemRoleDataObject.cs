@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
 using NHibernate;
 using NHibernate.Criterion;
@@ -41,6 +42,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             NHibernateDynamicQueryGenerator<SystemRoleEntity> queryGenerator = this.GetNewQueryBuilder();
 
             queryGenerator.AddWhereClause(PROPERTY_ROLENAME.Eq(roleName));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
+
+        public SystemRoleEntity GetRoleByCode(string roleCode)
+        {
+            NHibernateDynamicQueryGenerator<SystemRoleEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_ROLECODE.Eq(roleCode));
 
             return this.FindSingleEntityByQueryBuilder(queryGenerator);
         }

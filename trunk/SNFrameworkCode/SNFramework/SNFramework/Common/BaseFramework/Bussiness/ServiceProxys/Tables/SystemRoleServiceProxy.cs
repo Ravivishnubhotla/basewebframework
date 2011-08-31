@@ -50,6 +50,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void PatchRemoveRoleApplications(SystemRoleEntity systemRoleEntity, List<int> removeAppIDs);
         List<string> GetRoleAssignedPermissionsByResources(SystemRoleEntity role, SystemResourcesEntity resources);
         void PatchAssignRolePermissionsByResourcse(SystemRoleEntity roleEntity, List<string> assignedPermissionIDs, int selectResourceId);
+        SystemRoleEntity GetRoleByCode(string roleCode);
     }
 
     public partial class SystemRoleServiceProxy : ISystemRoleServiceProxy
@@ -325,6 +326,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
                 }
             }
+        }
+
+        public SystemRoleEntity GetRoleByCode(string roleCode)
+        {
+            return this.DataObjectsContainerIocID.SystemRoleDataObjectInstance.GetRoleByCode(roleCode);
         }
 
         public List<SystemPrivilegeInRolesEntity> GetRoleAssignedPrivilegesInRole(SystemRoleEntity systemRoleEntity)
