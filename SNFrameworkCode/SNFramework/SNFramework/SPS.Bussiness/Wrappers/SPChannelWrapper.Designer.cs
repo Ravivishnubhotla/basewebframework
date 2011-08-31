@@ -78,6 +78,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DATAADAPTERURL = "DataAdapterUrl";
 		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
 		public static readonly string PROPERTY_NAME_IVRFEETIMETYPE = "IVRFeeTimeType";
+		public static readonly string PROPERTY_NAME_IVRTIMEFORMAT = "IVRTimeFormat";
 		public static readonly string PROPERTY_NAME_ISSTATEREPORT = "IsStateReport";
 		public static readonly string PROPERTY_NAME_STATEREPORTTYPE = "StateReportType";
 		public static readonly string PROPERTY_NAME_REPORTOKMESSAGE = "ReportOkMessage";
@@ -243,6 +244,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.IVRFeeTimeType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string IVRTimeFormat
+		{
+			get
+			{
+				return entity.IVRTimeFormat;
+			}
+			set
+			{
+				entity.IVRTimeFormat = value;
 			}
 		}
 		/// <summary>
