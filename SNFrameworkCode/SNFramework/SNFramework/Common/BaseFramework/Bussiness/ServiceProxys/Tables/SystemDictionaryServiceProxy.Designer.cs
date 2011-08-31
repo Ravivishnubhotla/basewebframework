@@ -18,6 +18,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     public interface ISystemDictionaryServiceProxyDesigner
     {
+		List<SystemDictionaryEntity> FindAllByOrderByAndFilterAndSystemDictionaryGroupID(string orderByColumnName, bool isDesc,   SystemDictionaryGroupEntity _systemDictionaryGroupID, PageQueryParams pageQueryParams);
+		List<SystemDictionaryEntity> FindAllBySystemDictionaryGroupID(SystemDictionaryGroupEntity _systemDictionaryGroupID);
     }
 
     public partial class SystemDictionaryServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemDictionaryEntity>
@@ -34,6 +36,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             {
                 return (SystemDictionaryDataObject)selfDataObject;
             }
+        }
+	
+		public List<SystemDictionaryEntity> FindAllByOrderByAndFilterAndSystemDictionaryGroupID(string orderByColumnName, bool isDesc,  SystemDictionaryGroupEntity _systemDictionaryGroupID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_SystemDictionaryGroupID_SystemDictionaryGroupEntity(orderByColumnName, isDesc,_systemDictionaryGroupID, pageQueryParams);
+        }
+		
+		public List<SystemDictionaryEntity> FindAllBySystemDictionaryGroupID(SystemDictionaryGroupEntity _systemDictionaryGroupID)
+        {
+			return this.SelfDataObj.GetList_By_SystemDictionaryGroupID_SystemDictionaryGroupEntity(_systemDictionaryGroupID);
         }
 
 

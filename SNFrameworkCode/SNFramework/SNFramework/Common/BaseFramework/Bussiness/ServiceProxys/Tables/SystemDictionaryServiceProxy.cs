@@ -18,26 +18,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     public interface ISystemDictionaryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemDictionaryEntity>, ISystemDictionaryServiceProxyDesigner
     {
         [OperationContract]
-        IList<SystemDictionaryEntity> GetDictionaryByCategoryName(string categoryName);
+        IList<SystemDictionaryEntity> GetDictionaryByGroupCode(string groupCode);
         [OperationContract]
-        string ParseDictionaryValueByCategoryNameAndKey(string categoryName, string key);
-        [OperationContract]
-        List<string> GetAllCategoryNames();
-
+        string ParseDictionaryValueByGroupCodeAndKey(string groupCode, string key);
         List<SystemDictionaryEntity> FindAllByGroupIdAndOrder();
-        void PatchAdd(string category, bool hasValue, string categoryItems);
+        void PatchAdd(string groupCode, bool hasValue, string categoryItems);
     }
 
     public partial class SystemDictionaryServiceProxy : ISystemDictionaryServiceProxy
     {
-        public IList<SystemDictionaryEntity> GetDictionaryByCategoryName(string categoryName)
+        public IList<SystemDictionaryEntity> GetDictionaryByGroupCode(string groupCode)
         {
-            return this.SelfDataObj.GetDictionaryByCategoryName(categoryName);
+            SystemDictionaryGroupEntity groupEntity =
+                this.DataObjectsContainerIocID.SystemDictionaryGroupDataObjectInstance.FindByCode(groupCode);
+
+            return this.SelfDataObj.GetDictionaryByGroupID(groupEntity);
         }
 
-        public string ParseDictionaryValueByCategoryNameAndKey(string categoryName, string key)
+        public string ParseDictionaryValueByGroupCodeAndKey(string groupCode, string key)
         {
-            SystemDictionaryEntity dictionaryEntity = this.SelfDataObj.GetDictionaryByCategoryNameAndKey(categoryName,
+            SystemDictionaryGroupEntity groupEntity =
+    this.DataObjectsContainerIocID.SystemDictionaryGroupDataObjectInstance.FindByCode(groupCode);
+
+            SystemDictionaryEntity dictionaryEntity = this.SelfDataObj.GetDictionaryByGroupIDAndKey(groupEntity,
                                                                                                          key);
             if(dictionaryEntity==null)
                 return key;
@@ -45,10 +48,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                 return dictionaryEntity.SystemDictionaryValue;
         }
 
-        public List<string> GetAllCategoryNames()
-        {
-            return this.SelfDataObj.GetAllCategoryNames();
-        }
+ 
 
         public List<SystemDictionaryEntity> FindAllByGroupIdAndOrder()
         {
@@ -56,11 +56,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         }
 
         [Transaction(ReadOnly = false)]
-        public void PatchAdd(string category, bool hasValue, string categoryItems)
+        public void PatchAdd(string groupCode, bool hasValue, string categoryItems)
         {
+            SystemDictionaryGroupEntity groupEntity =
+this.DataObjectsContainerIocID.SystemDictionaryGroupDataObjectInstance.FindByCode(groupCode);
+
             int orderIndex = 0;
 
-            orderIndex = FindMaxOrderByCategory(category);
+            orderIndex = FindMaxOrderByGroup(groupEntity);
 
             List<string> items = new List<string>();
 
@@ -98,7 +101,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
                 SystemDictionaryEntity obj = new SystemDictionaryEntity();
 
-                obj.SystemDictionaryCategoryID = category;
+                obj.SystemDictionaryGroupID = groupEntity;
                 obj.SystemDictionaryKey = key;
                 obj.SystemDictionaryValue = value;
                 obj.SystemDictionaryDesciption = "";
@@ -111,9 +114,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             }
         }
 
-        public int FindMaxOrderByCategory(string category)
+        public int FindMaxOrderByGroup(SystemDictionaryGroupEntity groupID)
         {
-            SystemDictionaryEntity systemDictionary = this.SelfDataObj.FindMaxOrderItemByCategory(category);
+            SystemDictionaryEntity systemDictionary = this.SelfDataObj.FindMaxOrderItemByGroupID(groupID);
 
             if (systemDictionary == null)
                 return 0;

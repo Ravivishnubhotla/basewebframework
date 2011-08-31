@@ -18,6 +18,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     public interface ISystemConfigServiceProxyDesigner
     {
+		List<SystemConfigEntity> FindAllByOrderByAndFilterAndConfigGroupID(string orderByColumnName, bool isDesc,   SystemConfigGroupEntity _configGroupID, PageQueryParams pageQueryParams);
+		List<SystemConfigEntity> FindAllByConfigGroupID(SystemConfigGroupEntity _configGroupID);
     }
 
     public partial class SystemConfigServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemConfigEntity>
@@ -34,6 +36,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             {
                 return (SystemConfigDataObject)selfDataObject;
             }
+        }
+	
+		public List<SystemConfigEntity> FindAllByOrderByAndFilterAndConfigGroupID(string orderByColumnName, bool isDesc,  SystemConfigGroupEntity _configGroupID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_ConfigGroupID_SystemConfigGroupEntity(orderByColumnName, isDesc,_configGroupID, pageQueryParams);
+        }
+		
+		public List<SystemConfigEntity> FindAllByConfigGroupID(SystemConfigGroupEntity _configGroupID)
+        {
+			return this.SelfDataObj.GetList_By_ConfigGroupID_SystemConfigGroupEntity(_configGroupID);
         }
 
 

@@ -52,7 +52,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		GenerateRoleNameClass(dsRoles.Tables[0]);
 		
-	    DataSet dsPermisions = DataAccessHelper.GetDataSetBySql("Select * from SystemPrivilege order by PrivilegeCategory asc,PrivilegeOrder asc");
+	    DataSet dsPermisions = DataAccessHelper.GetDataSetBySql("SELECT     dbo.SystemResources.Resources_NameEn, dbo.SystemResources.Resources_NameCn, dbo.SystemPrivilege.* FROM         dbo.SystemPrivilege INNER JOIN  dbo.SystemResources ON dbo.SystemPrivilege.Resources_ID = dbo.SystemResources.Resources_ID order by dbo.SystemPrivilege.Resources_ID asc,dbo.SystemPrivilege.PrivilegeOrder asc");
 		
 		GeneratePermissinNameClass(dsPermisions.Tables[0]);
 		
@@ -70,7 +70,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 %>		/// <summary>
         /// <%= dr["Role_Name"].ToString() %>
         /// </summary>
-		public const string ROLE_NAME_<%= utils.SetPascalCase(dr["Role_Name"].ToString()).ToUpper() %>	= "<%= dr["Role_Name"].ToString() %>";
+		public const string ROLE_NAME_<%= utils.SetPascalCase(dr["Role_Code"].ToString()).ToUpper() %>	= "<%= dr["Role_Code"].ToString() %>";
 <%     }
 
 %>   }
@@ -100,7 +100,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		#region KeyList
 <%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM SystemDictionary where SystemDictionary_CategoryID = '"+dr["CategoryName"].ToString()+"'");
 		 foreach(DataRow dr1 in dsDictionaryItems.Tables[0].Rows){
-%>			public const string Dictionary_<%=dr1["SystemDictionary_CategoryID"].ToString() %>_<%= dr1["SystemDictionary_Value"].ToString() %>_Key = "<%= dr1["SystemDictionary_Key"].ToString() %>";
+%>			public const string Dictionary_<%=dr1["SystemDictionary_CategoryID"].ToString() %>_<%= dr1["SystemDictionary_Key"].ToString() %>_Key = "<%= dr1["SystemDictionary_Value"].ToString() %>";
 <%		}
 %>		#endregion 
 		
@@ -145,7 +145,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 %>		/// <summary>
         /// <%= dr["PrivilegeEnName"].ToString() %>
         /// </summary>
-		public const string PERMISSION_NAME_<%= utils.SetPascalCase(dr["PrivilegeCategory"].ToString()).ToUpper() %>_<%= utils.SetPascalCase(dr["PrivilegeEnName"].ToString()).ToUpper() %>	= "<%= dr["PrivilegeEnName"].ToString() %>";
+		public const string PERMISSION_NAME_<%= utils.SetPascalCase(dr["Resources_NameEn"].ToString()).ToUpper() %>_<%= utils.SetPascalCase(dr["PrivilegeEnName"].ToString()).ToUpper() %>	= "<%= dr["PrivilegeEnName"].ToString() %>";
 <%     }
 
 %>   }

@@ -17,8 +17,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMCONFIGID = "SystemConfigID";
 		public static readonly string PROPERTY_NAME_CONFIGKEY = "ConfigKey";
 		public static readonly string PROPERTY_NAME_CONFIGVALUE = "ConfigValue";
+		public static readonly string PROPERTY_NAME_CONFIGDATATYPE = "ConfigDataType";
 		public static readonly string PROPERTY_NAME_CONFIGDESCRIPTION = "ConfigDescription";
 		public static readonly string PROPERTY_NAME_SORTINDEX = "SortIndex";
+		public static readonly string PROPERTY_NAME_CONFIGGROUPID = "ConfigGroupID";
 		
         #endregion
 	
@@ -30,8 +32,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int _systemConfigID;
 		private string _configKey;
 		private string _configValue;
+		private string _configDataType;
 		private string _configDescription;
 		private int? _sortIndex;
+		private SystemConfigGroupEntity _configGroupID;
 		
 		#endregion
 
@@ -44,8 +48,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemConfigID = 0;
 			_configKey = null;
 			_configValue = null;
+			_configDataType = null;
 			_configDescription = null;
 			_sortIndex = null;
+			_configGroupID = null;
 		}
 		#endregion
 
@@ -53,13 +59,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemConfigEntity( int systemConfigID, string configKey, string configValue, string configDescription, int? sortIndex)
+		public SystemConfigEntity( int systemConfigID, string configKey, string configValue, string configDataType, string configDescription, int? sortIndex, SystemConfigGroupEntity configGroupID)
 		{
 			_systemConfigID = systemConfigID;
 			_configKey = configKey;
 			_configValue = configValue;
+			_configDataType = configDataType;
 			_configDescription = configDescription;
 			_sortIndex = sortIndex;
+			_configGroupID = configGroupID;
 		}
 		#endregion     
 	
@@ -117,6 +125,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual string ConfigDataType
+		{
+			get { return _configDataType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 20)
+					throw new ArgumentOutOfRangeException("Invalid value for ConfigDataType", value, value.ToString());
+				_isChanged |= (_configDataType != value); _configDataType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual string ConfigDescription
 		{
 			get { return _configDescription; }
@@ -141,6 +166,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_sortIndex != value); _sortIndex = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SystemConfigGroupEntity ConfigGroupID
+		{
+			get { return _configGroupID; }
+
+			set	
+			{
+				_isChanged |= (_configGroupID != value); _configGroupID = value;
 			}
 		}
 		/// <summary>

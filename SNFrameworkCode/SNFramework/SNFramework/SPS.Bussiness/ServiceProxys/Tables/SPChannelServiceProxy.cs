@@ -55,7 +55,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPCodeDataObjectInstance.Save(defaultCode);
 
-            SPClientCodeRelationEntity spClientCodeRelation = SPClientCodeRelationServiceProxy.NewDefaultCode(defaultClient,defaultCode)'
+            SPClientCodeRelationEntity spClientCodeRelation =
+                SPClientCodeRelationServiceProxy.NewDefaultCode(defaultClient, defaultCode);
 
             this.DataObjectsContainerIocID.SPClientCodeRelationDataObjectInstance.Save(spClientCodeRelation);
 

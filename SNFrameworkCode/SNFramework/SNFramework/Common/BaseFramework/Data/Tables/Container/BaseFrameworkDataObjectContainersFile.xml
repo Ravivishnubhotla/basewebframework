@@ -12,6 +12,9 @@
  <object id="SystemConfigDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemConfigDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemConfigGroupDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemConfigGroupDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemDataTypeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDataTypeDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -19,6 +22,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemDictionaryDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDictionaryDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemDictionaryGroupDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDictionaryGroupDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemEmailQueueDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemEmailQueueDataObject, Legendigital.Framework.Common">
@@ -126,9 +132,11 @@
 <object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
     <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
     <property name="SystemConfigDataObjectInstance" ref="SystemConfigDataObjectIocID"/>
+    <property name="SystemConfigGroupDataObjectInstance" ref="SystemConfigGroupDataObjectIocID"/>
     <property name="SystemDataTypeDataObjectInstance" ref="SystemDataTypeDataObjectIocID"/>
     <property name="SystemDepartmentDataObjectInstance" ref="SystemDepartmentDataObjectIocID"/>
     <property name="SystemDictionaryDataObjectInstance" ref="SystemDictionaryDataObjectIocID"/>
+    <property name="SystemDictionaryGroupDataObjectInstance" ref="SystemDictionaryGroupDataObjectIocID"/>
     <property name="SystemEmailQueueDataObjectInstance" ref="SystemEmailQueueDataObjectIocID"/>
     <property name="SystemEmailSettingsDataObjectInstance" ref="SystemEmailSettingsDataObjectIocID"/>
     <property name="SystemEmailTemplateDataObjectInstance" ref="SystemEmailTemplateDataObjectIocID"/>

@@ -13,8 +13,10 @@
 
 		<property column="Config_Key" type="string" name="ConfigKey"   length="400" />	
 		<property column="Config_Value" type="string" name="ConfigValue"   length="400" />	
+		<property column="Config_DataType" type="string" name="ConfigDataType"   length="20" />	
 		<property column="Config_Description" type="string" name="ConfigDescription"   length="4000" />	
 		<property column="SortIndex" type="int" name="SortIndex"   />	
+		<many-to-one column="Config_GroupID" name="ConfigGroupID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemConfigGroupEntity,Legendigital.Framework.Common" />		
 
 
 

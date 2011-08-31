@@ -46,66 +46,66 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
         private List<QueryFilter> GetQueryFilter(StoreRefreshDataEventArgs e)
         {
-            string s = e.Parameters[this.GridFilters1.ParamPrefix];
+            //string s = e.Parameters[this.GridFilters1.ParamPrefix];
 
             List<QueryFilter> queryFilters = new List<QueryFilter>();
 
-            if (string.IsNullOrEmpty(s))
-            {
-                return queryFilters;
-            }
+            //if (string.IsNullOrEmpty(s))
+            //{
+            //    return queryFilters;
+            //}
 
 
 
-            FilterConditions fc = new FilterConditions(s);
+            //FilterConditions fc = new FilterConditions(s);
 
 
 
-            foreach (FilterCondition condition in fc.Conditions)
-            {
-                Comparison comparison = condition.Comparison;
-                string field = condition.Name;
-                FilterType type = condition.FilterType;
-
- 
-                switch (condition.FilterType)
-                {
-                    case FilterType.Boolean:
-
-                        break;
-                    case FilterType.Date:
-
-                        break;
-                    case FilterType.List:
-
-                        List<string> inValues  = new List<string>();
-
-                        foreach (string s1 in condition.ValuesList)
-                        {
-                            inValues.Add(s1);
-                        }
-
-                        if(inValues.Count>0)
-                        {
-                            QueryFilter filter = new QueryFilter(SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID, string.Join(",",inValues.ToArray()),FilterFunction.In);
-                            queryFilters.Add(filter);
-                        }
-
+            //foreach (FilterCondition condition in fc.Conditions)
+            //{
+            //    Comparison comparison = condition.Comparison;
+            //    string field = condition.Name;
+            //    FilterType type = condition.FilterType;
 
  
-                        break;
-                    case FilterType.Numeric:
+            //    switch (condition.FilterType)
+            //    {
+            //        case FilterType.Boolean:
 
-                        break;
-                    case FilterType.String:
+            //            break;
+            //        case FilterType.Date:
+
+            //            break;
+            //        case FilterType.List:
+
+            //            List<string> inValues  = new List<string>();
+
+            //            foreach (string s1 in condition.ValuesList)
+            //            {
+            //                inValues.Add(s1);
+            //            }
+
+            //            if(inValues.Count>0)
+            //            {
+            //                QueryFilter filter = new QueryFilter(SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID, string.Join(",",inValues.ToArray()),FilterFunction.In);
+            //                queryFilters.Add(filter);
+            //            }
+
+
  
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+            //            break;
+            //        case FilterType.Numeric:
+
+            //            break;
+            //        case FilterType.String:
+ 
+            //            break;
+            //        default:
+            //            throw new ArgumentOutOfRangeException();
+            //    }
 
 
-            }
+            //}
 
             return queryFilters;
 

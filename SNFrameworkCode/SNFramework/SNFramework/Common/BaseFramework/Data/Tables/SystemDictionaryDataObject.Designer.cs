@@ -15,7 +15,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_SYSTEMDICTIONARYID = new IntProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYID));		
-		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYCATEGORYID = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYCATEGORYID));		
+		public static readonly EntityProperty<SystemDictionaryGroupEntity> PROPERTY_SYSTEMDICTIONARYGROUPID = new EntityProperty<SystemDictionaryGroupEntity>(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYGROUPID));
+		#region systemDictionaryGroupID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemDictionaryEntity> InClude_SystemDictionaryGroupID_Query(NHibernateDynamicQueryGenerator<SystemDictionaryEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYGROUPID, PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias";
+		public static readonly IntProperty PROPERTY_SYSTEMDICTIONARYGROUPID_ID = new IntProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".Id"));
+		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYGROUPID_NAME = new StringProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYGROUPID_CODE = new StringProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".Description"));
+		public static readonly BoolProperty PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE = new BoolProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".IsEnable"));
+		public static readonly BoolProperty PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM = new BoolProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".IsSystem"));
+		#endregion
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYKEY = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYKEY));		
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYVALUE = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYVALUE));		
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYDESCIPTION = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION));		
@@ -41,8 +54,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "SystemDictionaryID":
                     return typeof (int);
-                case "SystemDictionaryCategoryID":
-                    return typeof (string);
+                case "SystemDictionaryGroupID":
+                    return typeof (int);
                 case "SystemDictionaryKey":
                     return typeof (string);
                 case "SystemDictionaryValue":
@@ -58,6 +71,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+		
+		public List<SystemDictionaryEntity> GetList_By_SystemDictionaryGroupID_SystemDictionaryGroupEntity(SystemDictionaryGroupEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYGROUPID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemDictionaryEntity> GetPageList_By_SystemDictionaryGroupID_SystemDictionaryGroupEntity(string orderByColumnName, bool isDesc, SystemDictionaryGroupEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemDictionaryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYSTEMDICTIONARYGROUPID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		

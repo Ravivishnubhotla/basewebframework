@@ -82,7 +82,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     obj.Name = this.txtName.Text.Trim();
                     obj.Description = this.txtDescription.Text.Trim();
                     obj.Code = this.txtCode.Text.Trim();
-                    obj.ChannelID = Convert.ToInt32(this.txtChannelID.Text.Trim());
+                    //obj.ChannelID = Convert.ToInt32(this.txtChannelID.Text.Trim());
                     //obj.MO = this.txtMO.Text.Trim();
                     obj.MOType = this.txtMOType.Text.Trim();
                     obj.OrderIndex = Convert.ToInt32(this.txtOrderIndex.Text.Trim());

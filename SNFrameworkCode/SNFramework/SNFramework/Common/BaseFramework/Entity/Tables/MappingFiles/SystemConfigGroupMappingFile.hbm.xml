@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemConfigGroupEntity,Legendigital.Framework.Common" table="SystemConfigGroup" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="1000" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
+		<property column="IsSystem" type="Boolean" name="IsSystem"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

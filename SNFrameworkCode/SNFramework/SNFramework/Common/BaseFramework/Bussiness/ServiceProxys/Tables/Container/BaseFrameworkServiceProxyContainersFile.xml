@@ -14,6 +14,10 @@
     <property name="SelfDataObj" ref="SystemConfigDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemConfigGroupServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemConfigGroupServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemConfigGroupDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemDataTypeServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDataTypeServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemDataTypeDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
@@ -24,6 +28,10 @@
   </object>
   <object id="SystemDictionaryServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDictionaryServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemDictionaryDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemDictionaryGroupServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDictionaryGroupServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemDictionaryGroupDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemEmailQueueServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemEmailQueueServiceProxy, Legendigital.Framework.Common">
@@ -161,9 +169,11 @@
 <object id="BaseFrameworkServiceProxyContainerIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer, Legendigital.Framework.Common">
     <property name="SystemApplicationServiceProxyInstance" ref="SystemApplicationServiceProxyIocID"/>
     <property name="SystemConfigServiceProxyInstance" ref="SystemConfigServiceProxyIocID"/>
+    <property name="SystemConfigGroupServiceProxyInstance" ref="SystemConfigGroupServiceProxyIocID"/>
     <property name="SystemDataTypeServiceProxyInstance" ref="SystemDataTypeServiceProxyIocID"/>
     <property name="SystemDepartmentServiceProxyInstance" ref="SystemDepartmentServiceProxyIocID"/>
     <property name="SystemDictionaryServiceProxyInstance" ref="SystemDictionaryServiceProxyIocID"/>
+    <property name="SystemDictionaryGroupServiceProxyInstance" ref="SystemDictionaryGroupServiceProxyIocID"/>
     <property name="SystemEmailQueueServiceProxyInstance" ref="SystemEmailQueueServiceProxyIocID"/>
     <property name="SystemEmailSettingsServiceProxyInstance" ref="SystemEmailSettingsServiceProxyIocID"/>
     <property name="SystemEmailTemplateServiceProxyInstance" ref="SystemEmailTemplateServiceProxyIocID"/>
