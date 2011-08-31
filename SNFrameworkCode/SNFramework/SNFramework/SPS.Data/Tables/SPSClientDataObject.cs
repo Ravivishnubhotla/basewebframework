@@ -11,5 +11,16 @@ namespace SPS.Data.Tables
 {
     public partial class SPSClientDataObject
     {
+        public SPSClientEntity FindDefaultClient()
+        {
+            NHibernateDynamicQueryGenerator<SPSClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(SPSClientDataObject.PROPERTY_ISDEFAULTCLIENT.Eq(true));
+            //指定排序规则
+            dynamicQueryGenerator.AddOrderBy(SPSClientDataObject.PROPERTY_ID.Desc());
+ 
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

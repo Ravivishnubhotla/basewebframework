@@ -15,6 +15,9 @@
  <object id="SPChannelParamsDataObjectIocID" type="SPS.Data.Tables.SPChannelParamsDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPChannelParamsConvertDataObjectIocID" type="SPS.Data.Tables.SPChannelParamsConvertDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPChannelSycnParamsDataObjectIocID" type="SPS.Data.Tables.SPChannelSycnParamsDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -28,6 +31,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPCodeFilterDataObjectIocID" type="SPS.Data.Tables.SPCodeFilterDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPCodeParamsConvertDataObjectIocID" type="SPS.Data.Tables.SPCodeParamsConvertDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPDayReportDataObjectIocID" type="SPS.Data.Tables.SPDayReportDataObject, SPS.Data">
@@ -64,11 +70,13 @@
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
     <property name="SPChannelFiltersDataObjectInstance" ref="SPChannelFiltersDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
+    <property name="SPChannelParamsConvertDataObjectInstance" ref="SPChannelParamsConvertDataObjectIocID"/>
     <property name="SPChannelSycnParamsDataObjectInstance" ref="SPChannelSycnParamsDataObjectIocID"/>
     <property name="SPClientCodeRelationDataObjectInstance" ref="SPClientCodeRelationDataObjectIocID"/>
     <property name="SPClientCodeSycnParamsDataObjectInstance" ref="SPClientCodeSycnParamsDataObjectIocID"/>
     <property name="SPCodeDataObjectInstance" ref="SPCodeDataObjectIocID"/>
     <property name="SPCodeFilterDataObjectInstance" ref="SPCodeFilterDataObjectIocID"/>
+    <property name="SPCodeParamsConvertDataObjectInstance" ref="SPCodeParamsConvertDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
     <property name="SPMonitoringRequestDataObjectInstance" ref="SPMonitoringRequestDataObjectIocID"/>
