@@ -72,29 +72,33 @@
                                 <Items>
                                     <ext:Container ID="Container2" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:TextField ID="TextField11" runat="server" FieldLabel="名称" AnchorHorizontal="95%" />
+                                            <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AnchorHorizontal="95%"
+                                                AllowBlank="false" />
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container5" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:TextField ID="TextField12" runat="server" FieldLabel="编码" AnchorHorizontal="95%" />
+                                            <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AnchorHorizontal="95%"
+                                                AllowBlank="false" />
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container6" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:TextField ID="TextField15" runat="server" FieldLabel="成功响应信息" AnchorHorizontal="95%" />
+                                            <ext:TextField ID="txtDataOkMessage" runat="server" FieldLabel="成功响应信息" Text="ok"
+                                                AnchorHorizontal="95%" AllowBlank="false" />
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container3" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:TextField ID="TextField14" runat="server" FieldLabel="失败响应信息" AnchorHorizontal="95%" />
+                                            <ext:TextField ID="txtDataFailedMessage" runat="server" FieldLabel="失败响应信息" Text="failed"
+                                                AnchorHorizontal="95%" AllowBlank="false" />
                                         </Items>
                                     </ext:Container>
                                 </Items>
                             </ext:Container>
                             <ext:Container ID="Container4" runat="server" Layout="Form" AnchorHorizontal="98%">
                                 <Items>
-                                    <ext:TextArea ID="HtmlEditor1" runat="server" Height="50" FieldLabel="描述" AnchorHorizontal="98%" />
+                                    <ext:TextArea ID="txtDescription" runat="server" Height="50" FieldLabel="描述" AnchorHorizontal="98%" />
                                 </Items>
                             </ext:Container>
                         </Items>
@@ -115,7 +119,7 @@
                                 </Listeners>
                             </ext:RadioGroup>
                             <ext:TextField ID="txtAdapterHandleName" runat="server" Hidden="true" Disabled="true"
-                                Text="HttpGetPostAdapter.ashx" FieldLabel="适配器地址" AnchorHorizontal="98%" />
+                                Text="HttpGetPostAdapter.ashx" FieldLabel="适配器地址" AnchorHorizontal="98%" AllowBlank="false" />
                         </Items>
                     </ext:FieldSet>
                     <ext:FieldSet ID="fsParams" runat="server" Height="225" CheckboxToggle="false" Title="通道参数设置"
@@ -247,11 +251,11 @@
                                                             LabelPad="10" FieldLabel="结束时间" AllowBlank="True" AnchorHorizontal="98%" />
                                                     </ext:Cell>
                                                     <ext:Cell>
-                                                        <ext:TextField ID="TextField7" runat="server" LabelWidth="80" LabelAlign="Right"
+                                                        <ext:TextField ID="txtIVRProvince" runat="server" LabelWidth="80" LabelAlign="Right"
                                                             LabelPad="10" FieldLabel="省份字段" AllowBlank="True" AnchorHorizontal="98%" />
                                                     </ext:Cell>
                                                     <ext:Cell>
-                                                        <ext:TextField ID="TextField8" runat="server" LabelWidth="80" LabelAlign="Right"
+                                                        <ext:TextField ID="txtIVRCity" runat="server" LabelWidth="80" LabelAlign="Right"
                                                             LabelPad="10" FieldLabel="地市字段" AllowBlank="True" />
                                                     </ext:Cell>
                                                     <ext:Cell>
@@ -306,7 +310,7 @@
                                                         </ext:ComboBox>
                                                     </ext:Cell>
                                                     <ext:Cell>
-                                                        <ext:TextField ID="TextField5" runat="server" LabelWidth="80" LabelAlign="Right"
+                                                        <ext:TextField ID="txtIVRTimeFormat" runat="server" LabelWidth="80" LabelAlign="Right"
                                                             LabelPad="10" FieldLabel="日期格式" AllowBlank="True" />
                                                     </ext:Cell>
                                                 </Cells>
@@ -318,7 +322,7 @@
                             </ext:Panel>
                         </Items>
                     </ext:FieldSet>
-                    <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="true" Title="数据状态报告设置"
+                    <ext:FieldSet ID="fsIsStateReport" runat="server" CheckboxToggle="true" Title="数据状态报告设置"
                         AutoHeight="true" Collapsed="true" LabelWidth="130" Layout="Form">
                         <Items>
                             <ext:RadioGroup ID="rdgStateReportType" runat="server" AnchorHorizontal="98%" ColumnsWidths="100,150,200"
@@ -333,25 +337,28 @@
                                     </Change>
                                 </Listeners>
                             </ext:RadioGroup>
-                            <ext:TextField ID="TextField1" runat="server" FieldLabel="状态报告参数" AnchorHorizontal="95%" />
-                            <ext:TextField ID="TextField13" runat="server" FieldLabel="状态报告成功标示" AnchorHorizontal="95%" />
+                            <ext:TextField ID="txtStateReportParamName" runat="server" FieldLabel="状态报告参数" AnchorHorizontal="95%" />
+                            <ext:TextField ID="txtStateReportParamValue" runat="server" FieldLabel="状态报告成功标示"
+                                AnchorHorizontal="95%" />
                             <ext:CompositeField ID="CompositeField1" runat="server" FieldLabel="状态报告响应信息" AnchorHorizontal="95%">
                                 <Items>
                                     <ext:DisplayField ID="DisplayField4" runat="server" Text="成功信息：" />
-                                    <ext:TextField ID="TextField6" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:TextField ID="txtReportOkMessage" runat="server" Width="80" AllowBlank="true" />
                                     <ext:DisplayField ID="DisplayField5" runat="server" Text="失败信息：" />
-                                    <ext:TextField ID="TextField9" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:TextField ID="txtReportFailedMessage" runat="server" Width="80" AllowBlank="true" />
                                 </Items>
                             </ext:CompositeField>
                             <ext:CompositeField ID="cpTypeReportSetting" runat="server" FieldLabel="分类型请求参数"
                                 Hidden="true" AnchorHorizontal="95%">
                                 <Items>
                                     <ext:DisplayField ID="DisplayField1" runat="server" Text="请求类型参数：" />
-                                    <ext:TextField ID="TextField2" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:TextField ID="txtRequestTypeParamName" runat="server" Width="80" AllowBlank="true" />
                                     <ext:DisplayField ID="DisplayField2" runat="server" Text="状态报告值：" />
-                                    <ext:TextField ID="TextField3" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:TextField ID="txtRequestTypeParamStateReportValue" runat="server" Width="80"
+                                        AllowBlank="true" />
                                     <ext:DisplayField ID="DisplayField3" runat="server" Text="数据请求值：" />
-                                    <ext:TextField ID="TextField4" runat="server" Width="80" AllowBlank="false" />
+                                    <ext:TextField ID="txtRequestTypeParamDataReportValue" runat="server" Width="80"
+                                        AllowBlank="true" />
                                 </Items>
                             </ext:CompositeField>
                         </Items>
@@ -363,30 +370,32 @@
                                 <Items>
                                     <ext:Container ID="Container8" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:Checkbox ID="Checkbox5" FieldLabel="请求参数转换" AnchorHorizontal="95%" runat="server" />
-                                            <ext:Checkbox ID="chkAutoLinkID" FieldLabel="自动生成LinkID" AnchorHorizontal="95%" runat="server">
+                                            <ext:Checkbox ID="chkIsParamsConvert" FieldLabel="请求参数转换" AnchorHorizontal="95%"
+                                                runat="server" />
+                                            <ext:Checkbox ID="chkIsAutoLinkID" FieldLabel="自动生成LinkID" AnchorHorizontal="95%"
+                                                runat="server">
                                                 <Listeners>
-                                                    <Check Handler="changeAutoLinkID(#{chkAutoLinkID},#{txtAutoLinkField});"></Check>
+                                                    <Check Handler="changeAutoLinkID(#{chkIsAutoLinkID},#{txtAutoLinkIDFields});"></Check>
                                                 </Listeners>
                                             </ext:Checkbox>
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container9" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:Checkbox ID="Checkbox2" FieldLabel="监控请求" AnchorHorizontal="95%" runat="server" />
-                                            <ext:TextField ID="txtAutoLinkField" FieldLabel="LinkID生成字段" Hidden="true" AnchorHorizontal="95%"
+                                            <ext:Checkbox ID="chkIsMonitorRequest" FieldLabel="监控请求" AnchorHorizontal="95%" runat="server" />
+                                            <ext:TextField ID="txtAutoLinkIDFields" FieldLabel="LinkID生成字段" Hidden="true" AnchorHorizontal="95%"
                                                 runat="server">
                                             </ext:TextField>
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container10" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:Checkbox ID="Checkbox3" FieldLabel="记录请求日志" AnchorHorizontal="95%" runat="server" />
+                                            <ext:Checkbox ID="chkIsLogRequest" FieldLabel="记录请求日志" AnchorHorizontal="95%" runat="server" />
                                         </Items>
                                     </ext:Container>
                                     <ext:Container ID="Container11" runat="server" Layout="Form" ColumnWidth=".25">
                                         <Items>
-                                            <ext:Checkbox ID="Checkbox4" FieldLabel="过滤请求" AnchorHorizontal="95%" runat="server" />
+                                            <ext:Checkbox ID="chkHasFilters" FieldLabel="过滤请求" AnchorHorizontal="95%" runat="server" />
                                         </Items>
                                     </ext:Container>
                                 </Items>
@@ -397,6 +406,11 @@
                 <Buttons>
                     <ext:Button ID="btnAdd" runat="server" Text="添加" Icon="Accept">
                         <DirectEvents>
+                            <Click Before="if(!#{panlQuickAddChannel}.getForm().isValid()) return false;" OnEvent="btnAdd_Click"
+                                Success="Ext.MessageBox.alert('操作成功', '快速添加通道成功！' ,callback);function callback(id) {#{panlQuickAddChannel}.getForm().reset();parent.RefreshSPChannelData();parent.CloseQuickAdd(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                                <EventMask ShowMask="true" Msg="数据保存中,请稍等....." />
+                            </Click>
                         </DirectEvents>
                     </ext:Button>
                     <ext:Button ID="btnClose" runat="server" Text="取消" Icon="Decline">

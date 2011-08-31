@@ -58,13 +58,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container2;
         
         /// <summary>
-        /// TextField11 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField11;
+        protected global::Ext.Net.TextField txtName;
         
         /// <summary>
         /// Container5 control.
@@ -76,13 +76,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container5;
         
         /// <summary>
-        /// TextField12 control.
+        /// txtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField12;
+        protected global::Ext.Net.TextField txtCode;
         
         /// <summary>
         /// Container6 control.
@@ -94,13 +94,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container6;
         
         /// <summary>
-        /// TextField15 control.
+        /// txtDataOkMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField15;
+        protected global::Ext.Net.TextField txtDataOkMessage;
         
         /// <summary>
         /// Container3 control.
@@ -112,13 +112,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container3;
         
         /// <summary>
-        /// TextField14 control.
+        /// txtDataFailedMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField14;
+        protected global::Ext.Net.TextField txtDataFailedMessage;
         
         /// <summary>
         /// Container4 control.
@@ -130,13 +130,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container4;
         
         /// <summary>
-        /// HtmlEditor1 control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea HtmlEditor1;
+        protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
         /// fsAdapter control.
@@ -490,22 +490,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.TextField txtIVREndTime;
         
         /// <summary>
-        /// TextField7 control.
+        /// txtIVRProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField7;
+        protected global::Ext.Net.TextField txtIVRProvince;
         
         /// <summary>
-        /// TextField8 control.
+        /// txtIVRCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField8;
+        protected global::Ext.Net.TextField txtIVRCity;
         
         /// <summary>
         /// txtIVRExtend1 control.
@@ -607,13 +607,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.ComboBox cmbIVRType;
         
         /// <summary>
-        /// TextField5 control.
+        /// txtIVRTimeFormat control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField5;
+        protected global::Ext.Net.TextField txtIVRTimeFormat;
         
         /// <summary>
         /// pnlParamsCustom control.
@@ -625,13 +625,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Panel pnlParamsCustom;
         
         /// <summary>
-        /// FieldSet1 control.
+        /// fsIsStateReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
+        protected global::Ext.Net.FieldSet fsIsStateReport;
         
         /// <summary>
         /// rdgStateReportType control.
@@ -670,22 +670,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Radio Radio3;
         
         /// <summary>
-        /// TextField1 control.
+        /// txtStateReportParamName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField1;
+        protected global::Ext.Net.TextField txtStateReportParamName;
         
         /// <summary>
-        /// TextField13 control.
+        /// txtStateReportParamValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField13;
+        protected global::Ext.Net.TextField txtStateReportParamValue;
         
         /// <summary>
         /// CompositeField1 control.
@@ -706,13 +706,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.DisplayField DisplayField4;
         
         /// <summary>
-        /// TextField6 control.
+        /// txtReportOkMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField6;
+        protected global::Ext.Net.TextField txtReportOkMessage;
         
         /// <summary>
         /// DisplayField5 control.
@@ -724,13 +724,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.DisplayField DisplayField5;
         
         /// <summary>
-        /// TextField9 control.
+        /// txtReportFailedMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField9;
+        protected global::Ext.Net.TextField txtReportFailedMessage;
         
         /// <summary>
         /// cpTypeReportSetting control.
@@ -751,13 +751,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.DisplayField DisplayField1;
         
         /// <summary>
-        /// TextField2 control.
+        /// txtRequestTypeParamName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField2;
+        protected global::Ext.Net.TextField txtRequestTypeParamName;
         
         /// <summary>
         /// DisplayField2 control.
@@ -769,13 +769,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.DisplayField DisplayField2;
         
         /// <summary>
-        /// TextField3 control.
+        /// txtRequestTypeParamStateReportValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField3;
+        protected global::Ext.Net.TextField txtRequestTypeParamStateReportValue;
         
         /// <summary>
         /// DisplayField3 control.
@@ -787,13 +787,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.DisplayField DisplayField3;
         
         /// <summary>
-        /// TextField4 control.
+        /// txtRequestTypeParamDataReportValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField4;
+        protected global::Ext.Net.TextField txtRequestTypeParamDataReportValue;
         
         /// <summary>
         /// FieldSet2 control.
@@ -823,22 +823,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container8;
         
         /// <summary>
-        /// Checkbox5 control.
+        /// chkIsParamsConvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox5;
+        protected global::Ext.Net.Checkbox chkIsParamsConvert;
         
         /// <summary>
-        /// chkAutoLinkID control.
+        /// chkIsAutoLinkID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkAutoLinkID;
+        protected global::Ext.Net.Checkbox chkIsAutoLinkID;
         
         /// <summary>
         /// Container9 control.
@@ -850,22 +850,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container9;
         
         /// <summary>
-        /// Checkbox2 control.
+        /// chkIsMonitorRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox2;
+        protected global::Ext.Net.Checkbox chkIsMonitorRequest;
         
         /// <summary>
-        /// txtAutoLinkField control.
+        /// txtAutoLinkIDFields control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtAutoLinkField;
+        protected global::Ext.Net.TextField txtAutoLinkIDFields;
         
         /// <summary>
         /// Container10 control.
@@ -877,13 +877,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container10;
         
         /// <summary>
-        /// Checkbox3 control.
+        /// chkIsLogRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox3;
+        protected global::Ext.Net.Checkbox chkIsLogRequest;
         
         /// <summary>
         /// Container11 control.
@@ -895,13 +895,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Container Container11;
         
         /// <summary>
-        /// Checkbox4 control.
+        /// chkHasFilters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox4;
+        protected global::Ext.Net.Checkbox chkHasFilters;
         
         /// <summary>
         /// btnAdd control.
