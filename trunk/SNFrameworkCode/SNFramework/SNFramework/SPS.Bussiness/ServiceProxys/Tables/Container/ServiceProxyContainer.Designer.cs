@@ -14,6 +14,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
         {get; set;}
+		public ISPChannelParamsConvertServiceProxy SPChannelParamsConvertServiceProxyInstance
+        {get; set;}
 		public ISPChannelSycnParamsServiceProxy SPChannelSycnParamsServiceProxyInstance
         {get; set;}
 		public ISPClientCodeRelationServiceProxy SPClientCodeRelationServiceProxyInstance
@@ -23,6 +25,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables.Container{
 		public ISPCodeServiceProxy SPCodeServiceProxyInstance
         {get; set;}
 		public ISPCodeFilterServiceProxy SPCodeFilterServiceProxyInstance
+        {get; set;}
+		public ISPCodeParamsConvertServiceProxy SPCodeParamsConvertServiceProxyInstance
         {get; set;}
 		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
         {get; set;}

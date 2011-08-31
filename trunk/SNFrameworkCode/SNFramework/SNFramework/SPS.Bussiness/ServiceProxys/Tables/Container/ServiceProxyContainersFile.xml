@@ -21,6 +21,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPChannelParamsConvertServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelParamsConvertServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPChannelParamsConvertDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPChannelSycnParamsServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelSycnParamsServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelSycnParamsDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -43,6 +48,11 @@
   </object>
   <object id="SPCodeFilterServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPCodeFilterServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPCodeFilterDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPCodeParamsConvertServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPCodeParamsConvertServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPCodeParamsConvertDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
@@ -94,11 +104,13 @@
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelFiltersServiceProxyInstance" ref="SPChannelFiltersServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
+    <property name="SPChannelParamsConvertServiceProxyInstance" ref="SPChannelParamsConvertServiceProxyIocID"/>
     <property name="SPChannelSycnParamsServiceProxyInstance" ref="SPChannelSycnParamsServiceProxyIocID"/>
     <property name="SPClientCodeRelationServiceProxyInstance" ref="SPClientCodeRelationServiceProxyIocID"/>
     <property name="SPClientCodeSycnParamsServiceProxyInstance" ref="SPClientCodeSycnParamsServiceProxyIocID"/>
     <property name="SPCodeServiceProxyInstance" ref="SPCodeServiceProxyIocID"/>
     <property name="SPCodeFilterServiceProxyInstance" ref="SPCodeFilterServiceProxyIocID"/>
+    <property name="SPCodeParamsConvertServiceProxyInstance" ref="SPCodeParamsConvertServiceProxyIocID"/>
     <property name="SPDayReportServiceProxyInstance" ref="SPDayReportServiceProxyIocID"/>
     <property name="SPMemoServiceProxyInstance" ref="SPMemoServiceProxyIocID"/>
     <property name="SPMonitoringRequestServiceProxyInstance" ref="SPMonitoringRequestServiceProxyIocID"/>
