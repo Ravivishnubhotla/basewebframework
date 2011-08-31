@@ -18,9 +18,10 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_NAME));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly IntProperty PROPERTY_USERID = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_USERID));		
+		public static readonly BoolProperty PROPERTY_ISDEFAULTCLIENT = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_ISDEFAULTCLIENT));		
 		public static readonly BoolProperty PROPERTY_SYNCDATA = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYNCDATA));		
 		public static readonly BoolProperty PROPERTY_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRESENDFAILEDDATA));		
-		public static readonly StringProperty PROPERTY_SYCNRETRYTIMES = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
+		public static readonly IntProperty PROPERTY_SYCNRETRYTIMES = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYNCTYPE));		
 		public static readonly StringProperty PROPERTY_SYCNDATAURL = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNDATAURL));		
 		public static readonly StringProperty PROPERTY_SYCNOKMESSAGE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNOKMESSAGE));		
@@ -54,12 +55,14 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "UserID":
                     return typeof (int);
+                case "IsDefaultClient":
+                    return typeof (bool);
                 case "SyncData":
                     return typeof (bool);
                 case "SycnResendFailedData":
                     return typeof (bool);
                 case "SycnRetryTimes":
-                    return typeof (string);
+                    return typeof (int);
                 case "SyncType":
                     return typeof (string);
                 case "SycnDataUrl":

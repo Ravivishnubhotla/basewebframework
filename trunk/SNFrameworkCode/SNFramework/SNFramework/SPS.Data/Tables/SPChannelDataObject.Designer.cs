@@ -24,6 +24,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_DATAADAPTERURL = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_DATAADAPTERURL));		
 		public static readonly StringProperty PROPERTY_CHANNELTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNELTYPE));		
 		public static readonly StringProperty PROPERTY_IVRFEETIMETYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_IVRFEETIMETYPE));		
+		public static readonly StringProperty PROPERTY_IVRTIMEFORMAT = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_IVRTIMEFORMAT));		
 		public static readonly BoolProperty PROPERTY_ISSTATEREPORT = new BoolProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_ISSTATEREPORT));		
 		public static readonly StringProperty PROPERTY_STATEREPORTTYPE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_STATEREPORTTYPE));		
 		public static readonly StringProperty PROPERTY_REPORTOKMESSAGE = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTOKMESSAGE));		
@@ -94,6 +95,8 @@ namespace SPS.Data.Tables
                 case "ChannelType":
                     return typeof (string);
                 case "IVRFeeTimeType":
+                    return typeof (string);
+                case "IVRTimeFormat":
                     return typeof (string);
                 case "IsStateReport":
                     return typeof (bool);
