@@ -19,7 +19,21 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     internal partial class SPChannelParamsServiceProxy : ISPChannelParamsServiceProxy
     {
+        public static SPChannelParamsEntity NewChannelParams(SPChannelEntity channelEntity, string name, string description, string paramsMappingName, string paramsType)
+        {
+            SPChannelParamsEntity paramsEntity = new SPChannelParamsEntity();
 
+            paramsEntity.ChannelID = channelEntity;
+            paramsEntity.Name = name;
+            paramsEntity.Title = name;
+            paramsEntity.Description = description;
+            paramsEntity.IsEnable = true;
+            paramsEntity.IsRequired = true;
+            paramsEntity.ParamsMappingName = paramsMappingName;
+            paramsEntity.ParamsType = paramsType;
+
+            return paramsEntity;
+        }
 
     }
 }
