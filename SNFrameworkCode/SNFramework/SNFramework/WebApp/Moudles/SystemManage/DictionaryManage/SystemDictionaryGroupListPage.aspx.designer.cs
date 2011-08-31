@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
+namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
     
     
-    public partial class SystemConfigListPage {
+    public partial class SystemDictionaryGroupListPage {
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -22,40 +22,40 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
         
         /// <summary>
-        /// storeSystemConfig control.
+        /// storeSystemDictionaryGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemConfig;
+        protected global::Ext.Net.Store storeSystemDictionaryGroup;
         
         /// <summary>
-        /// storeSystemConfigGroup control.
+        /// UCSystemDictionaryGroupAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemConfigGroup;
+        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupAdd1;
         
         /// <summary>
-        /// UCSystemConfigAdd1 control.
+        /// UCSystemDictionaryGroupEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigAdd UCSystemConfigAdd1;
+        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupEdit1;
         
         /// <summary>
-        /// UCSystemConfigEdit1 control.
+        /// UCSystemDictionaryGroupView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigEdit UCSystemConfigEdit1;
+        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupView1;
         
         /// <summary>
         /// viewPortMain control.
@@ -67,13 +67,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// gridPanelSystemConfig control.
+        /// gridPanelSystemDictionaryGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSystemConfig;
+        protected global::Ext.Net.GridPanel gridPanelSystemDictionaryGroup;
         
         /// <summary>
         /// tbTop control.

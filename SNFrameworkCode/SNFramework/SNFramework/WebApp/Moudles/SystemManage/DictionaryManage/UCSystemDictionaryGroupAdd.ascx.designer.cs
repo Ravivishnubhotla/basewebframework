@@ -7,117 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
+namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
     
     
-    public partial class SystemConfigListPage {
+    public partial class UCSystemDictionaryGroupAdd {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// winSystemDictionaryGroupAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.Window winSystemDictionaryGroupAdd;
         
         /// <summary>
-        /// storeSystemConfig control.
+        /// formPanelSystemDictionaryGroupAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemConfig;
+        protected global::Ext.Net.FormPanel formPanelSystemDictionaryGroupAdd;
         
         /// <summary>
-        /// storeSystemConfigGroup control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemConfigGroup;
+        protected global::Ext.Net.TextField txtName;
         
         /// <summary>
-        /// UCSystemConfigAdd1 control.
+        /// txtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigAdd UCSystemConfigAdd1;
+        protected global::Ext.Net.TextField txtCode;
         
         /// <summary>
-        /// UCSystemConfigEdit1 control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigEdit UCSystemConfigEdit1;
+        protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
-        /// viewPortMain control.
+        /// chkIsEnable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.Checkbox chkIsEnable;
         
         /// <summary>
-        /// gridPanelSystemConfig control.
+        /// chkIsSystem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSystemConfig;
+        protected global::Ext.Net.Checkbox chkIsSystem;
         
         /// <summary>
-        /// tbTop control.
+        /// btnSavelSystemDictionaryGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Button btnSavelSystemDictionaryGroup;
         
         /// <summary>
-        /// btnAdd control.
+        /// btnCancelSystemDictionaryGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
-        
-        /// <summary>
-        /// btnRefresh control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
-        
-        /// <summary>
-        /// PagingToolBar1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.Button btnCancelSystemDictionaryGroup;
     }
 }
