@@ -19,6 +19,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARAMSNAME = "ParamsName";
 		public static readonly string PROPERTY_NAME_FILTERTYPE = "FilterType";
 		public static readonly string PROPERTY_NAME_FILTERVALUE = "FilterValue";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -32,6 +36,10 @@ namespace SPS.Entity.Tables
 		private string _paramsName;
 		private string _filterType;
 		private string _filterValue;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -46,6 +54,10 @@ namespace SPS.Entity.Tables
 			_paramsName = null;
 			_filterType = null;
 			_filterValue = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -53,13 +65,17 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelFiltersEntity( int id, SPChannelEntity channelID, string paramsName, string filterType, string filterValue)
+		public SPChannelFiltersEntity( int id, SPChannelEntity channelID, string paramsName, string filterType, string filterValue, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_channelID = channelID;
 			_paramsName = paramsName;
 			_filterType = filterType;
 			_filterValue = filterValue;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -141,6 +157,62 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for FilterValue", value, value.ToString());
 				_isChanged |= (_filterValue != value); _filterValue = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>

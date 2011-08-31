@@ -17,6 +17,10 @@
 		<property column="ParamsConvertType" type="string" name="ParamsConvertType"   length="100" />	
 		<property column="ParamsConvertCondition" type="string" name="ParamsConvertCondition"   length="1000" />	
 		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

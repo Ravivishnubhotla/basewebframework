@@ -77,6 +77,10 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 
@@ -206,6 +210,62 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.ParamsType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? CreateBy
+		{
+			get
+			{
+				return entity.CreateBy;
+			}
+			set
+			{
+				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? CreateAt
+		{
+			get
+			{
+				return entity.CreateAt;
+			}
+			set
+			{
+				entity.CreateAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? LastModifyBy
+		{
+			get
+			{
+				return entity.LastModifyBy;
+			}
+			set
+			{
+				entity.LastModifyBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? LastModifyAt
+		{
+			get
+			{
+				return entity.LastModifyAt;
+			}
+			set
+			{
+				entity.LastModifyAt = value;
 			}
 		}
 		#endregion 

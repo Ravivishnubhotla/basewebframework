@@ -47,6 +47,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
 		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -88,6 +92,10 @@ namespace SPS.Entity.Tables
 		private SPUpperEntity _upperID;
 		private string _channelStatus;
 		private bool? _isDisable;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -130,6 +138,10 @@ namespace SPS.Entity.Tables
 			_upperID = null;
 			_channelStatus = null;
 			_isDisable = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -137,7 +149,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable)
+		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -172,6 +184,10 @@ namespace SPS.Entity.Tables
 			_upperID = upperID;
 			_channelStatus = channelStatus;
 			_isDisable = isDisable;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -702,6 +718,62 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isDisable != value); _isDisable = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>

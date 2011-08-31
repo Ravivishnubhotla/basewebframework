@@ -20,6 +20,20 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     internal partial class SPCodeServiceProxy : ISPCodeServiceProxy
     {
 
+        public static SPCodeEntity NewDefaultCode(SPChannelEntity channelEntity)
+        {
+            SPCodeEntity code = new SPCodeEntity();
 
+            code.Name = channelEntity.Name + "Ä¬ÈÏ±àÂë";
+            code.Description = channelEntity.Name + "Ä¬ÈÏ±àÂë";
+            code.ChannelID = channelEntity;
+            code.OrderIndex = 0;
+            code.Mo  = "";
+            code.MOType = "7";
+            code.HasFilters = false;
+            code.IsDiable = false;
+
+            return code;
+        }
     }
 }

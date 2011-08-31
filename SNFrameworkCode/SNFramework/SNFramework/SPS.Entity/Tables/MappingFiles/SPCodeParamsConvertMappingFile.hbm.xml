@@ -18,6 +18,10 @@
 		<property column="ParamsConvertCondition" type="string" name="ParamsConvertCondition"   length="400" />	
 		<many-to-one column="CodeID" name="CodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
 		<property column="DirectionType" type="string" name="DirectionType"   length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

@@ -15,6 +15,10 @@
 		<property column="ParamsName" type="string" name="ParamsName"   length="100" />	
 		<property column="FilterType" type="string" name="FilterType"   length="100" />	
 		<property column="FilterValue" type="string" name="FilterValue"   length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

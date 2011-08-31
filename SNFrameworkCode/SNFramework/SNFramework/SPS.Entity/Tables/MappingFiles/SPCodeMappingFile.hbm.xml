@@ -14,7 +14,7 @@
 		<property column="Name" type="string" name="Name"   length="100" />	
 		<property column="Description" type="string" name="Description"   length="400" />	
 		<property column="Code" type="string" name="Code"   length="400" />	
-		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
 		<property column="MO" type="string" name="Mo"   length="100" />	
 		<property column="MOType" type="string" name="MOType"   length="100" />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
@@ -29,6 +29,10 @@
 		<property column="Price" type="Decimal" name="Price"   />	
 		<property column="SendText" type="string" name="SendText"   length="4000" />	
 		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

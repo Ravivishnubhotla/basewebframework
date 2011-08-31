@@ -23,6 +23,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_TITLE = "Title";
 		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
 		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -40,6 +44,10 @@ namespace SPS.Entity.Tables
 		private string _title;
 		private string _paramsValue;
 		private string _paramsType;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -58,6 +66,10 @@ namespace SPS.Entity.Tables
 			_title = null;
 			_paramsValue = null;
 			_paramsType = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -65,7 +77,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelSycnParamsEntity( int id, string name, string description, bool? isEnable, SPChannelEntity channelID, string mappingParams, string title, string paramsValue, string paramsType)
+		public SPChannelSycnParamsEntity( int id, string name, string description, bool? isEnable, SPChannelEntity channelID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -76,6 +88,10 @@ namespace SPS.Entity.Tables
 			_title = title;
 			_paramsValue = paramsValue;
 			_paramsType = paramsType;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -222,6 +238,62 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for ParamsType", value, value.ToString());
 				_isChanged |= (_paramsType != value); _paramsType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>

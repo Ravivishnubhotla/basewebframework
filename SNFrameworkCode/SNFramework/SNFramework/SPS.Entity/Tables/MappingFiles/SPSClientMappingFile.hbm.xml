@@ -26,6 +26,10 @@
 		<property column="InterceptRate" type="Decimal" name="InterceptRate"   />	
 		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   />	
 		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

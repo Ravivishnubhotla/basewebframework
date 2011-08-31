@@ -18,7 +18,23 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     }
 
     internal partial class SPChannelSycnParamsServiceProxy : ISPChannelSycnParamsServiceProxy
-    {
+    {        
+        
+        
+        public static SPChannelSycnParamsEntity NewSPChannelSycnParams(SPChannelEntity channelEntity, string name, string description, string paramsMappingName, string paramsType)
+        {
+            SPChannelSycnParamsEntity moSendParamsEntity = new SPChannelSycnParamsEntity();
+
+            moSendParamsEntity.ChannelID = channelEntity;
+            moSendParamsEntity.Name = name;
+            moSendParamsEntity.Title = name;
+            moSendParamsEntity.Description = description;
+            moSendParamsEntity.IsEnable = true;
+            moSendParamsEntity.ParamsType = paramsType;
+            moSendParamsEntity.MappingParams = paramsMappingName;
+
+            return moSendParamsEntity;
+        }
 
 
     }

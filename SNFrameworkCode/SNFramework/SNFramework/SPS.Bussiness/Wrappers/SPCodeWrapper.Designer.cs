@@ -87,6 +87,10 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 
@@ -151,15 +155,15 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ChannelID
+		public SPChannelWrapper ChannelID
 		{
 			get
 			{
-				return entity.ChannelID;
+				return SPChannelWrapper.ConvertEntityToWrapper(entity.ChannelID) ;
 			}
 			set
 			{
-				entity.ChannelID = value;
+				entity.ChannelID = ((value == null) ? null : value.entity);
 			}
 		}
 		/// <summary>
@@ -358,6 +362,62 @@ namespace SPS.Bussiness.Wrappers
 				entity.HasFilters = value;
 			}
 		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? CreateBy
+		{
+			get
+			{
+				return entity.CreateBy;
+			}
+			set
+			{
+				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? CreateAt
+		{
+			get
+			{
+				return entity.CreateAt;
+			}
+			set
+			{
+				entity.CreateAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? LastModifyBy
+		{
+			get
+			{
+				return entity.LastModifyBy;
+			}
+			set
+			{
+				entity.LastModifyBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? LastModifyAt
+		{
+			get
+			{
+				return entity.LastModifyAt;
+			}
+			set
+			{
+				entity.LastModifyAt = value;
+			}
+		}
 		#endregion 
 
 
@@ -365,6 +425,17 @@ namespace SPS.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SPCodeWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,   SPChannelWrapper channelID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc,   channelID.entity, pageQueryParams));
+        }
+
+        public static List<SPCodeWrapper> FindAllByChannelID(SPChannelWrapper channelID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByChannelID(channelID.entity));
+        }
+		
 
 
 

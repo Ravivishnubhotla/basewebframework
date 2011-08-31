@@ -43,6 +43,10 @@
 		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
 		<property column="ChannelStatus" type="string" name="ChannelStatus"   length="40" />	
 		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 
 
 

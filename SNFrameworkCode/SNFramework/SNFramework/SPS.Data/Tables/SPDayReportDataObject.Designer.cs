@@ -43,6 +43,10 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
 		public static readonly IntProperty PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
+		public static readonly IntProperty PROPERTY_CLIENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_CLIENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
 		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CHANNELID));
 		#region channelID字段外键查询字段
@@ -84,6 +88,10 @@ namespace SPS.Data.Tables
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_CHANNELID_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".UpperID"));
 		public static readonly StringProperty PROPERTY_CHANNELID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly BoolProperty PROPERTY_CHANNELID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable"));
+		public static readonly IntProperty PROPERTY_CHANNELID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_CHANNELID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_CHANNELID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_CHANNELID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_CODEID = new EntityProperty<SPCodeEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CODEID));
 		#region codeID字段外键查询字段
@@ -96,7 +104,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_CODEID_NAME = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_CODEID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_CODEID_CODE = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Code"));
-		public static readonly IntProperty PROPERTY_CODEID_CHANNELID = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ChannelID"));
+		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CODEID_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ChannelID"));
 		public static readonly StringProperty PROPERTY_CODEID_MO = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Mo"));
 		public static readonly StringProperty PROPERTY_CODEID_MOTYPE = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".MOType"));
 		public static readonly IntProperty PROPERTY_CODEID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".OrderIndex"));
@@ -111,6 +119,10 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_CODEID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Price"));
 		public static readonly StringProperty PROPERTY_CODEID_SENDTEXT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".SendText"));
 		public static readonly BoolProperty PROPERTY_CODEID_HASFILTERS = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasFilters"));
+		public static readonly IntProperty PROPERTY_CODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
 		public static readonly EntityProperty<SPUpperEntity> PROPERTY_UPERID = new EntityProperty<SPUpperEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_UPERID));
 		#region uperID字段外键查询字段
@@ -123,7 +135,10 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_UPERID_NAME = new StringProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_UPERID_CODE = new StringProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Code"));
 		public static readonly StringProperty PROPERTY_UPERID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".Description"));
-		public static readonly DateTimeProperty PROPERTY_UPERID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateDate"));
+		public static readonly IntProperty PROPERTY_UPERID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_UPERID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_UPERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_UPERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".LastModifyAt"));
 		#endregion
       
 		#region 子类集合字段查询字段

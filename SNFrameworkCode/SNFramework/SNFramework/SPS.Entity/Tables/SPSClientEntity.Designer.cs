@@ -30,6 +30,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		
         #endregion
 	
@@ -54,6 +58,10 @@ namespace SPS.Entity.Tables
 		private decimal? _interceptRate;
 		private decimal? _defaultPrice;
 		private int? _defaultShowRecordDays;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
 		
 		#endregion
 
@@ -79,6 +87,10 @@ namespace SPS.Entity.Tables
 			_interceptRate = null;
 			_defaultPrice = null;
 			_defaultShowRecordDays = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
 		}
 		#endregion
 
@@ -86,7 +98,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays)
+		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -104,6 +116,10 @@ namespace SPS.Entity.Tables
 			_interceptRate = interceptRate;
 			_defaultPrice = defaultPrice;
 			_defaultShowRecordDays = defaultShowRecordDays;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
 		}
 		#endregion     
 	
@@ -351,6 +367,62 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultShowRecordDays != value); _defaultShowRecordDays = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
 			}
 		}
 		/// <summary>
