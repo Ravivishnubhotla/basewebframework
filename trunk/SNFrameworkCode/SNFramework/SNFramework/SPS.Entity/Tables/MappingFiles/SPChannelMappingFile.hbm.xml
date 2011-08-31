@@ -20,6 +20,7 @@
 		<property column="DataAdapterUrl" type="string" name="DataAdapterUrl"   length="400" />	
 		<property column="ChannelType" type="string" name="ChannelType"   length="40" />	
 		<property column="IVRFeeTimeType" type="string" name="IVRFeeTimeType"   length="40" />	
+		<property column="IVRTimeFormat" type="string" name="IVRTimeFormat"   length="40" />	
 		<property column="IsStateReport" type="Boolean" name="IsStateReport"   />	
 		<property column="StateReportType" type="string" name="StateReportType"   length="40" />	
 		<property column="ReportOkMessage" type="string" name="ReportOkMessage"   length="400" />	
