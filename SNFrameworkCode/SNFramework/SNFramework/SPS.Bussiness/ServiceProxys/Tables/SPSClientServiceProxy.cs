@@ -20,6 +20,23 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     internal partial class SPSClientServiceProxy : ISPSClientServiceProxy
     {
 
+        public static SPSClientEntity NewDefaultSPClient(int defaultSPClientuserID)
+        {
+            SPSClientEntity spClientEntity = new SPSClientEntity();
 
+            spClientEntity.Name = "默认下家";
+            spClientEntity.Description = "默认下家";
+            spClientEntity.UserID = defaultSPClientuserID;
+            spClientEntity.IsDefaultClient = true;
+            spClientEntity.Alias = "";
+            spClientEntity.DefaultPrice = 0;
+            spClientEntity.DefaultShowRecordDays = 100;
+            spClientEntity.InterceptRate = 0;
+            spClientEntity.SyncData = false;
+            spClientEntity.SycnResendFailedData = false;
+            spClientEntity.SycnRetryTimes = 0;
+
+            return spClientEntity;
+        }
     }
 }
