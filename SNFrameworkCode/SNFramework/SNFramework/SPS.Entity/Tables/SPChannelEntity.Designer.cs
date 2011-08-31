@@ -24,6 +24,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_DATAADAPTERURL = "DataAdapterUrl";
 		public static readonly string PROPERTY_NAME_CHANNELTYPE = "ChannelType";
 		public static readonly string PROPERTY_NAME_IVRFEETIMETYPE = "IVRFeeTimeType";
+		public static readonly string PROPERTY_NAME_IVRTIMEFORMAT = "IVRTimeFormat";
 		public static readonly string PROPERTY_NAME_ISSTATEREPORT = "IsStateReport";
 		public static readonly string PROPERTY_NAME_STATEREPORTTYPE = "StateReportType";
 		public static readonly string PROPERTY_NAME_REPORTOKMESSAGE = "ReportOkMessage";
@@ -64,6 +65,7 @@ namespace SPS.Entity.Tables
 		private string _dataAdapterUrl;
 		private string _channelType;
 		private string _iVRFeeTimeType;
+		private string _iVRTimeFormat;
 		private bool? _isStateReport;
 		private string _stateReportType;
 		private string _reportOkMessage;
@@ -105,6 +107,7 @@ namespace SPS.Entity.Tables
 			_dataAdapterUrl = null;
 			_channelType = null;
 			_iVRFeeTimeType = null;
+			_iVRTimeFormat = null;
 			_isStateReport = null;
 			_stateReportType = null;
 			_reportOkMessage = null;
@@ -134,7 +137,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable)
+		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable)
 		{
 			_id = id;
 			_name = name;
@@ -146,6 +149,7 @@ namespace SPS.Entity.Tables
 			_dataAdapterUrl = dataAdapterUrl;
 			_channelType = channelType;
 			_iVRFeeTimeType = iVRFeeTimeType;
+			_iVRTimeFormat = iVRTimeFormat;
 			_isStateReport = isStateReport;
 			_stateReportType = stateReportType;
 			_reportOkMessage = reportOkMessage;
@@ -337,6 +341,23 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for IVRFeeTimeType", value, value.ToString());
 				_isChanged |= (_iVRFeeTimeType != value); _iVRFeeTimeType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string IVRTimeFormat
+		{
+			get { return _iVRTimeFormat; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for IVRTimeFormat", value, value.ToString());
+				_isChanged |= (_iVRTimeFormat != value); _iVRTimeFormat = value;
 			}
 		}
 

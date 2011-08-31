@@ -18,6 +18,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
+		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
 		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
@@ -41,9 +42,10 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _description;
 		private int? _userID;
+		private bool? _isDefaultClient;
 		private bool? _syncData;
 		private bool? _sycnResendFailedData;
-		private string _sycnRetryTimes;
+		private int? _sycnRetryTimes;
 		private string _syncType;
 		private string _sycnDataUrl;
 		private string _sycnOkMessage;
@@ -65,6 +67,7 @@ namespace SPS.Entity.Tables
 			_name = null;
 			_description = null;
 			_userID = null;
+			_isDefaultClient = null;
 			_syncData = null;
 			_sycnResendFailedData = null;
 			_sycnRetryTimes = null;
@@ -83,12 +86,13 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int? userID, bool? syncData, bool? sycnResendFailedData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays)
+		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
 			_userID = userID;
+			_isDefaultClient = isDefaultClient;
 			_syncData = syncData;
 			_sycnResendFailedData = sycnResendFailedData;
 			_sycnRetryTimes = sycnRetryTimes;
@@ -171,6 +175,20 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual bool? IsDefaultClient
+		{
+			get { return _isDefaultClient; }
+
+			set	
+			{
+				_isChanged |= (_isDefaultClient != value); _isDefaultClient = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual bool? SyncData
 		{
 			get { return _syncData; }
@@ -199,15 +217,12 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string SycnRetryTimes
+		public virtual int? SycnRetryTimes
 		{
 			get { return _sycnRetryTimes; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 20)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnRetryTimes", value, value.ToString());
 				_isChanged |= (_sycnRetryTimes != value); _sycnRetryTimes = value;
 			}
 		}
