@@ -20,6 +20,10 @@
         var RefreshData = function(btn) {
             <%= this.storeSPChannel.ClientID %>.reload();
         };
+        
+        function RefreshSPChannelData() {
+            <%= this.storeSPChannel.ClientID %>.reload();
+        }
 
         function ShowQuickAdd() {
               var win = <%= winQuickAddChannel.ClientID %>;
