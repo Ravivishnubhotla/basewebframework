@@ -58,15 +58,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.Button btnSave;
         
         /// <summary>
-        /// cmbGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbGroup;
-        
-        /// <summary>
         /// gridPanelSystemDictionary control.
         /// </summary>
         /// <remarks>

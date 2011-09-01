@@ -8,7 +8,7 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             Layout="Form">
             <Items>
-                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="字典组"  runat="server"  AnchorHorizontal="95%" />
+                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="<%$ Resources:msgFiledCategory %>"  runat="server"  AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"

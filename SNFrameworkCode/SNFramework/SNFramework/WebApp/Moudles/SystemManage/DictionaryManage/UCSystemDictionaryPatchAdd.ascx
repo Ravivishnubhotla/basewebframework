@@ -9,10 +9,7 @@
             Header="false" MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":"
             LabelWidth="100" Layout="Form">
             <Items>
-                <ext:ComboBox ID="cmbGroup" runat="server" StoreID="storeGroup" Editable="true" TypeAhead="true"
-                    FieldLabel="<%$ Resources:msgFiledCategory %>" Mode="Local" TriggerAction="All"
-                    DisplayField="Name" ValueField="Name" AllowBlank="True" ForceSelection="false"
-                    AnchorHorizontal="95%" />
+                            <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="<%$ Resources:msgFiledCategory %>"  runat="server"  AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkHasValue" runat="server" FieldLabel="<%$ Resources:msgFiledIsHasValue %>"
                     Checked="false" AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtSystemDictionaryItems" runat="server" FieldLabel="<%$ Resources:msgFiledDictionaryItem %>"

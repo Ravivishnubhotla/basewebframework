@@ -51,6 +51,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
         {
             try
             {
+                gridPanelSystemDictionary.Title = "字典分组‘"+ DictionaryGroup.Name +"‘子项管理" ;
                 this.winSystemDictionaryPatchEdit.Show();
             }
             catch (Exception ex)
@@ -62,8 +63,22 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
         protected void storeFilterSystemDictionary_OnRefreshData(object sender, StoreRefreshDataEventArgs e)
         {
-            storeFilterSystemDictionary.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(this.cmbGroup.Text.Trim());
+            storeFilterSystemDictionary.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(DictionaryGroup.Code);
             storeFilterSystemDictionary.DataBind();
+        }
+
+
+        public SystemDictionaryGroupWrapper DictionaryGroup
+        {
+            get
+            {
+                if (this.Request.QueryString["DictionaryGroupID"] != null)
+                {
+                    return
+                        SystemDictionaryGroupWrapper.FindById(int.Parse(this.Request.QueryString["DictionaryGroupID"]));
+                }
+                return null;
+            }
         }
     }
 }

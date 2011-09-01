@@ -10,7 +10,7 @@
             <Items>
                 <ext:Hidden ID="hidSystemDictionaryID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="字典组"  runat="server"  AnchorHorizontal="95%"/>
+                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="<%$ Resources:msgFiledCategory %>"  runat="server"  AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"

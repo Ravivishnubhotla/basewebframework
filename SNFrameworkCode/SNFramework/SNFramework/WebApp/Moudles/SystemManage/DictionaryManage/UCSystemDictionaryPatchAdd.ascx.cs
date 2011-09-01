@@ -23,6 +23,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
         {
             try
             {
+                lblDictionaryGroup.Text = DictionaryGroup.Name;
                 this.winSystemDictionaryPatchAdd.Show();
             }
             catch (Exception ex)
@@ -36,7 +37,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
         {
             try
             {
-                SystemDictionaryWrapper.PatchAdd(this.cmbGroup.Text.Trim(), this.chkHasValue.Checked,
+                SystemDictionaryWrapper.PatchAdd(DictionaryGroup.Code, this.chkHasValue.Checked,
                                                  this.txtSystemDictionaryItems.Text.Trim());
 
                 SysDictionaryWrapper.RefreshCache();
@@ -64,6 +65,20 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "ErrorMessage：" + ex.Message;
+            }
+        }
+
+
+        public SystemDictionaryGroupWrapper DictionaryGroup
+        {
+            get
+            {
+                if (this.Request.QueryString["DictionaryGroupID"] != null)
+                {
+                    return
+                        SystemDictionaryGroupWrapper.FindById(int.Parse(this.Request.QueryString["DictionaryGroupID"]));
+                }
+                return null;
             }
         }
 
