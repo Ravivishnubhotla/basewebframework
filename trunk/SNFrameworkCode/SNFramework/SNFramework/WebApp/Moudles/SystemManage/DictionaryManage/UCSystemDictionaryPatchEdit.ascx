@@ -55,16 +55,8 @@
                 </ext:Toolbar>
             </TopBar>
             <Items>
-                <ext:ComboBox ID="cmbGroup" runat="server" StoreID="storeGroup" Editable="true" TypeAhead="true"
-                    FieldLabel="<%$ Resources:msgFiledCategory %>" Mode="Local" TriggerAction="All"
-                    DisplayField="Name" ValueField="Name" AllowBlank="True" ForceSelection="false"
-                    AnchorHorizontal="98%">
-                    <Listeners>
-                        <Select Handler="#{storeFilterSystemDictionary}.reload();"></Select>
-                    </Listeners>
-                </ext:ComboBox>
                 <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeFilterSystemDictionary" 
-                    Frame="true" AnchorVertical="93%" StripeRows="true" Title="<%$ Resources:msgGridTitle %>"
+                    Frame="true" AnchorVertical="93%" StripeRows="true"  
                     Icon="Table" AnchorHorizontal="98%">
                     <View>
                         <ext:GridView ForceFit="true" ID="GridView1">
@@ -120,6 +112,6 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <BeforeShow Handler="#{storeGroup}.reload();#{storeFilterSystemDictionary}.reload();" />
+        <BeforeShow Handler="#{storeFilterSystemDictionary}.reload();" />
     </Listeners>
 </ext:Window>
