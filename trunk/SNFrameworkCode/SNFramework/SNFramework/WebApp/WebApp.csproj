@@ -169,6 +169,7 @@
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
     <Content Include="Moudles\Installs\InstallDB.aspx" />
     <Content Include="Moudles\Installs\InstallSystem.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx" />
@@ -389,6 +390,13 @@
     </Compile>
     <Compile Include="Moudles\Installs\InstallSystem.aspx.designer.cs">
       <DependentUpon>InstallSystem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelEdit.aspx.cs">
+      <DependentUpon>SPChannelEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelEdit.aspx.designer.cs">
+      <DependentUpon>SPChannelEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx.cs">
       <DependentUpon>SPChannelFiltersListPage.aspx</DependentUpon>
