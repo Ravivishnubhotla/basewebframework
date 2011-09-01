@@ -28,7 +28,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
                 if (obj != null)
                 {
-                    //this.cmbGroup.Text = obj.SystemDictionaryCategoryID.ToString();
+
                     this.txtSystemDictionaryKey.Text = obj.SystemDictionaryKey.ToString();
                     this.txtSystemDictionaryValue.Text = obj.SystemDictionaryValue.ToString();
                     this.txtSystemDictionaryDesciption.Text = obj.SystemDictionaryDesciption.ToString();
@@ -61,7 +61,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             {
                 SystemDictionaryWrapper obj = SystemDictionaryWrapper.FindById(int.Parse(hidSystemDictionaryID.Text.Trim()));
 
-                //obj.SystemDictionaryCategoryID = this.cmbGroup.Text.Trim();
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();

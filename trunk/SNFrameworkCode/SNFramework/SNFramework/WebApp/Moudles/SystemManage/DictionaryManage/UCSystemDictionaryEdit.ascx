@@ -10,9 +10,7 @@
             <Items>
                 <ext:Hidden ID="hidSystemDictionaryID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:ComboBox ID="cmbGroup" runat="server" StoreID="storeGroup" Editable="true" TypeAhead="true"
-                    FieldLabel="<%$ Resources:msgFiledCategory %>" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Name"
-                    AllowBlank="True" ForceSelection="false" AnchorHorizontal="95%" />
+                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="字典组"  runat="server"  AnchorHorizontal="95%"/>
                 <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"
@@ -45,7 +43,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-    <Listeners>
-        <BeforeShow Handler="#{storeGroup}.reload();" />
-    </Listeners>
 </ext:Window>

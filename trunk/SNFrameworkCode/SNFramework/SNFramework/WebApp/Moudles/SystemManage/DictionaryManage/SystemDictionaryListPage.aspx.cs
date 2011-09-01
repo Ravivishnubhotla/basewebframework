@@ -118,7 +118,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
 
 
-            List<QueryFilter> queryFilters = GetQueryFilter(e);
+ 
 
 
             string sortFieldName = "";
@@ -145,11 +145,36 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
-            storeSystemDictionary.DataSource = SystemDictionaryWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            List<SystemDictionaryWrapper> datas = null;
+
+            if(DictionaryGroup!=null)
+            {
+                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), DictionaryGroup, pageQueryParams);
+            }
+            else
+            {
+                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilter(new List<QueryFilter>(), sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            }
+
+            storeSystemDictionary.DataSource = datas;
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemDictionary.DataBind();
 
+        }
+
+
+        public SystemDictionaryGroupWrapper DictionaryGroup
+        {
+            get
+            {
+                if(this.Request.QueryString["DictionaryGroupID"]!=null)
+                {
+                    return
+                        SystemDictionaryGroupWrapper.FindById(int.Parse(this.Request.QueryString["DictionaryGroupID"]));
+                }
+                return null;
+            }
         }
     }
 

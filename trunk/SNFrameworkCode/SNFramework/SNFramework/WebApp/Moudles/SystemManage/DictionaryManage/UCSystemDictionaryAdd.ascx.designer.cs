@@ -13,15 +13,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
     public partial class UCSystemDictionaryAdd {
         
         /// <summary>
-        /// storeGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store storeGroup;
-        
-        /// <summary>
         /// winSystemDictionaryAdd control.
         /// </summary>
         /// <remarks>
@@ -40,13 +31,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.FormPanel formPanelSystemDictionaryAdd;
         
         /// <summary>
-        /// cmbGroup control.
+        /// lblDictionaryGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbGroup;
+        protected global::Ext.Net.DisplayField lblDictionaryGroup;
         
         /// <summary>
         /// txtSystemDictionaryKey control.
