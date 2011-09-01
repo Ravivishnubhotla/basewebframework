@@ -112,6 +112,5 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <BeforeShow Handler="#{storeFilterSystemDictionary}.reload();" />
     </Listeners>
 </ext:Window>

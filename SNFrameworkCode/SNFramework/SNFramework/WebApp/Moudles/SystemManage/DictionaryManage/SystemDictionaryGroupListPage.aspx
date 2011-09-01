@@ -15,9 +15,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
 
@@ -133,16 +133,16 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemDictionaryGroup" runat="server" StoreID="storeSystemDictionaryGroup"
-                StripeRows="true" Title="SystemDictionaryGroup Management" Icon="Table">
+                StripeRows="true" Title="<%$ Resources:msgGridTitle %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSystemDictionaryGroup}.reload();" />
                                 </Listeners>
@@ -159,33 +159,29 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+                        <ext:Column ColumnID="colName" DataIndex="Name" Header="<%$ Resources:msgcolName %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
+                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="<%$ Resources:msgcolCode %>" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="Code" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDescription" DataIndex="Description" Header="Description"
+                        <ext:Column ColumnID="colDescription" Header="<%$ Resources:msgcolDescription %>" DataIndex="Description"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="IsEnable" Sortable="true">
+                        <ext:Column ColumnID="colIsEnable" Header="<%$ Resources:msgcolIsEnable %>" DataIndex="IsEnable" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsSystem" DataIndex="IsSystem" Header="IsSystem" Sortable="true">
+                        <ext:Column ColumnID="colIsSystem" Header="<%$ Resources:msgcolIsSystem %>" DataIndex="IsSystem" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
+                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>" Width="60">
                             <Commands>
-                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View" Hidden="true">
-                                            </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdAllItemManage" Text="管理字典项">
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdAllItemManage" Text="<%$ Resources:msgManageSub %>">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
