@@ -56,7 +56,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		GeneratePermissinNameClass(dsPermisions.Tables[0]);
 		
-		DataSet dsDictionaryCategory = DataAccessHelper.GetDataSetBySql("SELECT DISTINCT SystemDictionary_CategoryID AS CategoryName FROM SystemDictionary");
+		DataSet dsDictionaryCategory = DataAccessHelper.GetDataSetBySql("SELECT * FROM [SystemDictionaryGroup]");
 		
 		GenerateDictionaryWrapperClass(dsDictionaryCategory.Tables[0]);
 		
@@ -64,13 +64,13 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	
 	private void GenerateRoleNameClass(DataTable dt)
 	{
-%>    public static class RoleNameList
+%>    public static class RoleCodeList
     {
 <%		foreach(DataRow dr in dt.Rows){
 %>		/// <summary>
         /// <%= dr["Role_Name"].ToString() %>
         /// </summary>
-		public const string ROLE_NAME_<%= utils.SetPascalCase(dr["Role_Code"].ToString()).ToUpper() %>	= "<%= dr["Role_Code"].ToString() %>";
+		public const string ROLE_CODE_<%= utils.SetPascalCase(dr["Role_Code"].ToString()).ToUpper() %>	= "<%= dr["Role_Code"].ToString() %>";
 <%     }
 
 %>   }
@@ -80,27 +80,27 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	
 		private void GenerateDictionaryWrapperClass(DataTable dt)
 	{
-%>    public static class DictionaryWrapper
+%>    public static class DictionaryConst
     {
 <%		foreach(DataRow dr in dt.Rows){
-%>        public const string Dictionary_Key_<%= dr["CategoryName"].ToString() %> = "<%= dr["CategoryName"].ToString() %>";
+%>        public const string Dictionary_Key_<%= dr["Code"].ToString() %> = "<%= dr["Code"].ToString() %>";
 
-        public static List<SystemDictionaryWrapper> <%= dr["CategoryName"].ToString() %>Dictionary
+        public static List<SystemDictionaryWrapper> <%= dr["Code"].ToString() %>Dictionary
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_<%= dr["CategoryName"].ToString() %>);
+                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_<%= dr["Code"].ToString() %>);
             }
         }
 
-        public static string Parse<%= dr["CategoryName"].ToString() %>DictionaryKey(string key)
+        public static string Parse<%= dr["Code"].ToString() %>DictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_<%= dr["CategoryName"].ToString() %>, key); 
+            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_<%= dr["Code"].ToString() %>, key); 
         }
 		#region KeyList
-<%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM SystemDictionary where SystemDictionary_CategoryID = '"+dr["CategoryName"].ToString()+"'");
+<%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM SystemDictionary where SystemDictionary_GroupID = '"+dr["ID"].ToString()+"'");
 		 foreach(DataRow dr1 in dsDictionaryItems.Tables[0].Rows){
-%>			public const string Dictionary_<%=dr1["SystemDictionary_CategoryID"].ToString() %>_<%= dr1["SystemDictionary_Key"].ToString() %>_Key = "<%= dr1["SystemDictionary_Value"].ToString() %>";
+%>			public const string Dictionary_<%=dr["Code"].ToString() %>_<%= dr1["SystemDictionary_Value"].ToString() %>_Key = "<%= dr1["SystemDictionary_Key"].ToString() %>";
 <%		}
 %>		#endregion 
 		

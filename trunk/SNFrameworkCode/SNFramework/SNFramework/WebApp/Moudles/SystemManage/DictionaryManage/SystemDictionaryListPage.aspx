@@ -12,9 +12,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
-        <Listeners>
-            <DocumentReady Handler="#{storeGroup}.reload();" />
-        </Listeners>
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
