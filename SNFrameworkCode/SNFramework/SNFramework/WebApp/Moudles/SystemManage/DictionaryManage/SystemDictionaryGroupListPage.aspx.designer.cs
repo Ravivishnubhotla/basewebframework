@@ -37,7 +37,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupAdd1;
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryGroupAdd UCSystemDictionaryGroupAdd1;
         
         /// <summary>
         /// UCSystemDictionaryGroupEdit1 control.
@@ -46,7 +46,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupEdit1;
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryGroupEdit UCSystemDictionaryGroupEdit1;
         
         /// <summary>
         /// UCSystemDictionaryGroupView1 control.
@@ -55,7 +55,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl UCSystemDictionaryGroupView1;
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryGroupView UCSystemDictionaryGroupView1;
         
         /// <summary>
         /// viewPortMain control.
@@ -119,5 +119,14 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winDictionaryList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winDictionaryList;
     }
 }

@@ -1,11 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemDictionaryGroupListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.SystemDictionaryGroupListPage" %>
-<%@ Register Src="UCSystemDictionaryGroupAdd.ascx" TagName="UCSystemDictionaryGroupAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSystemDictionaryGroupEdit.ascx" TagName="UCSystemDictionaryGroupEdit" TagPrefix="uc2" %>
-<%@ Register Src="UCSystemDictionaryGroupView.ascx" TagName="UCSystemDictionaryGroupView" TagPrefix="uc3"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SystemDictionaryGroupListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.SystemDictionaryGroupListPage" %>
+
+<%@ Register Src="UCSystemDictionaryGroupAdd.ascx" TagName="UCSystemDictionaryGroupAdd"
+    TagPrefix="uc1" %>
+<%@ Register Src="UCSystemDictionaryGroupEdit.ascx" TagName="UCSystemDictionaryGroupEdit"
+    TagPrefix="uc2" %>
+<%@ Register Src="UCSystemDictionaryGroupView.ascx" TagName="UCSystemDictionaryGroupView"
+    TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -87,29 +91,36 @@
                     }
                     );
             }
+            
+
+            if (cmd == "cmdAllItemManage") {
+              var win = <%= winDictionaryList.ClientID %>;
+              win.autoLoad.params.DictionaryGroupID = id.id;
+              win.setTitle(String.format('编辑字典项"{0}"子项',id.data.Name));
+              win.show();          
+            }
+            
         }
 
     </script>
-
-    <ext:Store ID="storeSystemDictionaryGroup" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSystemDictionaryGroup_Refresh">
+    <ext:Store ID="storeSystemDictionaryGroup" runat="server" AutoLoad="true" RemoteSort="true"
+        RemotePaging="true" OnRefreshData="storeSystemDictionaryGroup_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
         </AutoLoadParams>
-		 <Proxy>
+        <Proxy>
             <ext:PageProxy />
         </Proxy>
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-					<ext:RecordField Name="ID" Type="int" />
-		<ext:RecordField Name="Name" />			
-		<ext:RecordField Name="Code" />			
-		<ext:RecordField Name="Description" />			
-				<ext:RecordField Name="IsEnable" Type="Boolean" />
-				<ext:RecordField Name="IsSystem" Type="Boolean" />
- 
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="Description" />
+                    <ext:RecordField Name="IsEnable" Type="Boolean" />
+                    <ext:RecordField Name="IsSystem" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -117,8 +128,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemDictionaryGroupAdd ID="UCSystemDictionaryGroupAdd1" runat="server" />
-    <uc2:UCSystemDictionaryGroupEdit ID="UCSystemDictionaryGroupEdit1" runat="server" /> 
-    <uc3:UCSystemDictionaryGroupView ID="UCSystemDictionaryGroupView1" runat="server" /> 	
+    <uc2:UCSystemDictionaryGroupEdit ID="UCSystemDictionaryGroupEdit1" runat="server" />
+    <uc3:UCSystemDictionaryGroupView ID="UCSystemDictionaryGroupView1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemDictionaryGroup" runat="server" StoreID="storeSystemDictionaryGroup"
@@ -148,42 +159,45 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
-                                </ext:Column>
-		<ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colCode" DataIndex="Code" Header="Code" Sortable="true">
-                                </ext:Column>			
-		<ext:Column ColumnID="colDescription" DataIndex="Description" Header="Description" Sortable="true">
-                                </ext:Column>			
-				<ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="IsEnable" Sortable="true">
-                                    <Renderer Fn="FormatBool" />
-                                </ext:Column>
-				<ext:Column ColumnID="colIsSystem" DataIndex="IsSystem" Header="IsSystem" Sortable="true">
-                                    <Renderer Fn="FormatBool" />
-                                </ext:Column>
- 
-                                <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
-                                    <Commands>
-                                    <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                        <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="Code" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colDescription" DataIndex="Description" Header="Description"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="IsEnable" Sortable="true">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colIsSystem" DataIndex="IsSystem" Header="IsSystem" Sortable="true">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
+                            <Commands>
+                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View"></ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View" Hidden="true">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdAllItemManage" Text="管理字典项">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
-                                   
-                                    </ext:SplitCommand>
-
-                                    </Commands>
-                                </ext:CommandColumn>
+                                </ext:SplitCommand>
+                            </Commands>
+                        </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemDictionaryGroup"
-                        DisplayInfo="true" DisplayMsg="Display SystemDictionaryGroups {0} - {1} total {2}" EmptyMsg="No matched SystemDictionaryGroup" />
+                        DisplayInfo="true" DisplayMsg="显示字典项 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的字典项目" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -191,5 +205,18 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winDictionaryList" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SystemDictionaryListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="DictionaryGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>
-

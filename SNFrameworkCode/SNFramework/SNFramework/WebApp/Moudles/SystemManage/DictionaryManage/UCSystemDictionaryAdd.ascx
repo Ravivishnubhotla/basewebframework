@@ -1,14 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemDictionaryAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage.UCSystemDictionaryAdd" %>
-<ext:Store runat="server" ID="storeGroup" AutoLoad="false" OnRefreshData="storeGroup_Refresh">
-    <Reader>
-        <ext:JsonReader IDProperty="Name">
-            <Fields>
-                <ext:RecordField Name="Name" Type="String" Mapping="Name" />
-            </Fields>
-        </ext:JsonReader>
-    </Reader>
-</ext:Store>
 <ext:Window ID="winSystemDictionaryAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -17,9 +8,7 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             Layout="Form">
             <Items>
-                <ext:ComboBox ID="cmbGroup" runat="server" StoreID="storeGroup" Editable="true" TypeAhead="true"
-                    FieldLabel="<%$ Resources:msgFiledCategory %>" Mode="Local" TriggerAction="All" DisplayField="Name" ValueField="Name"
-                    AllowBlank="True" ForceSelection="false" AnchorHorizontal="95%" />
+                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="字典组"  runat="server"  AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"
@@ -52,7 +41,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-    <Listeners>
-        <BeforeShow Handler="#{storeGroup}.reload();" />
-    </Listeners>
 </ext:Window>
