@@ -67,13 +67,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.Checkbox chkIsEnable;
         
         /// <summary>
-        /// txtIsSystem control.
+        /// chkIsSystem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField txtIsSystem;
+        protected global::Ext.Net.Checkbox chkIsSystem;
         
         /// <summary>
         /// btnSavelSystemConfigGroup control.

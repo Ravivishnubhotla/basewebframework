@@ -12,6 +12,18 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSystemConfigAdd")]
     public partial class UCSystemConfigAdd : System.Web.UI.UserControl
     {
+
+        protected void storeSystemConfigGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+
+
+            storeSystemConfigGroup.DataSource = SystemConfigGroupWrapper.FindAll();
+ 
+
+            storeSystemConfigGroup.DataBind();
+
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

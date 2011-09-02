@@ -31,6 +31,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
                     this.txtSystemDictionaryKey.Text = obj.SystemDictionaryKey.ToString();
                     this.txtSystemDictionaryValue.Text = obj.SystemDictionaryValue.ToString();
+                    this.txtSystemDictionaryCode.Text = obj.SystemDictionaryCode;
                     this.txtSystemDictionaryDesciption.Text = obj.SystemDictionaryDesciption.ToString();
                     this.txtSystemDictionaryOrder.Text = obj.SystemDictionaryOrder.ToString();
                     this.chkSystemDictionaryIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SystemDictionaryIsEnable);
@@ -63,6 +64,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
+                obj.SystemDictionaryCode = this.txtSystemDictionaryCode.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();
                 obj.SystemDictionaryOrder = Convert.ToInt32(this.txtSystemDictionaryOrder.Text.Trim());
                 obj.SystemDictionaryIsEnable = this.chkSystemDictionaryIsEnable.Checked;

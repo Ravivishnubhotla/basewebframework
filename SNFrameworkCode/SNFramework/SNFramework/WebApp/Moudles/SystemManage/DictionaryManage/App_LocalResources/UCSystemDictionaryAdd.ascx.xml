@@ -4,6 +4,7 @@
   <add name="msgFiledCategory" value="Category" />
   <add name="msgFiledKey" value="Key" />
   <add name="msgFiledValue" value="Value" />
+  <add name="msgFiledCode" value="Code" />
   <add name="msgFiledDescription" value="Description" />
   <add name="msgFiledOrder" value="View Order" />
   <add name="msgFiledIsEnable" value="Is Enable" />

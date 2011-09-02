@@ -42,7 +42,8 @@
                         <ext:Button ID='btnSave' runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>"
                             Icon="ApplicationEdit">
                             <DirectEvents>
-                                <Click OnEvent="SubmitSelection" Failure="<%$ Resources : GlobalResource, msgShowError  %>" Success="#{storeFilterSystemDictionary}.commitChanges();#{storeFilterSystemDictionary}.reload();#{storeSystemDictionary}.reload();"> 
+                                <Click OnEvent="SubmitSelection" Failure="<%$ Resources : GlobalResource, msgShowError  %>"
+                                    Success="#{storeFilterSystemDictionary}.commitChanges();#{storeFilterSystemDictionary}.reload();#{storeSystemDictionary}.reload();">
                                     <ExtraParams>
                                         <ext:Parameter Name="Values" Value="Ext.encode(getDirValues(#{gridPanelSystemDictionary}))"
                                             Mode="Raw" />
@@ -55,9 +56,8 @@
                 </ext:Toolbar>
             </TopBar>
             <Items>
-                <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeFilterSystemDictionary" 
-                    Frame="true" AnchorVertical="93%" StripeRows="true"  
-                    Icon="Table" AnchorHorizontal="98%">
+                <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeFilterSystemDictionary"
+                    Frame="true" AnchorVertical="93%" StripeRows="true" Icon="Table" AnchorHorizontal="98%">
                     <View>
                         <ext:GridView ForceFit="true" ID="GridView1">
                             <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
@@ -69,6 +69,12 @@
                                 Sortable="true">
                                 <Editor>
                                     <ext:TextField ID="txtSystemDictionaryKey" runat="server" AllowBlank="false" />
+                                </Editor>
+                            </ext:Column>
+                            <ext:Column ColumnID="colSystemDictionaryCode" DataIndex="SystemDictionaryCode"
+                                Header="<%$ Resources:msgcolCode %>" Sortable="true">
+                                <Editor>
+                                    <ext:TextField ID="txtSystemDictionaryCode" runat="server" AllowBlank="false" />
                                 </Editor>
                             </ext:Column>
                             <ext:Column ColumnID="colSystemDictionaryValue" DataIndex="SystemDictionaryValue"

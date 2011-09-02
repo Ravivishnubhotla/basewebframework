@@ -104,6 +104,14 @@ this.DataObjectsContainerIocID.SystemDictionaryGroupDataObjectInstance.FindByCod
                 obj.SystemDictionaryGroupID = groupEntity;
                 obj.SystemDictionaryKey = key;
                 obj.SystemDictionaryValue = value;
+                if (item.Split('|').Length>2)
+                {
+                    obj.SystemDictionaryCode = item.Split('|')[2];
+                }
+                else
+                {
+                    obj.SystemDictionaryCode = value;
+                }
                 obj.SystemDictionaryDesciption = "";
                 obj.SystemDictionaryOrder = orderIndex;
                 obj.SystemDictionaryIsEnable = true;
