@@ -4,6 +4,7 @@
   <add name="msgcolID" value="Primary Key" />
   <add name="msgcolCategoryID" value="Category" />
   <add name="msgcolKey" value="Key" />
+  <add name="msgcolCode" value="Code" />
   <add name="msgcolValue" value="Value" />
   <add name="msgcolDesciption" value="Description" />
   <add name="msgcolOrder" value="View Order" />

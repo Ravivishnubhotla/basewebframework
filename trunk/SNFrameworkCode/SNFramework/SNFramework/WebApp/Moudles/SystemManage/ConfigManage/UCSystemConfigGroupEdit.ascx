@@ -16,7 +16,7 @@
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="IsEnable" Checked="false"
                     AnchorHorizontal="95%" />
-                <ext:DisplayField ID="txtIsSystem" runat="server" FieldLabel="IsSystem" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkIsSystem" runat="server" FieldLabel="IsSystem" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>

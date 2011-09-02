@@ -13,6 +13,33 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
     public partial class UCSystemConfigAdd {
         
         /// <summary>
+        /// UCSystemConfigGroupAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigGroupAdd UCSystemConfigGroupAdd1;
+        
+        /// <summary>
+        /// UCSystemConfigGroupEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage.UCSystemConfigGroupEdit UCSystemConfigGroupEdit1;
+        
+        /// <summary>
+        /// storeSystemConfigGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeSystemConfigGroup;
+        
+        /// <summary>
         /// winSystemConfigAdd control.
         /// </summary>
         /// <remarks>
@@ -29,6 +56,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.FormPanel formPanelSystemConfigAdd;
+        
+        /// <summary>
+        /// cmbGroup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbGroup;
         
         /// <summary>
         /// txtConfigKey control.

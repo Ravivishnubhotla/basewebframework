@@ -32,7 +32,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
                     this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     this.chkIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable);
-                    //this.lblIsSystem.Value = obj.IsSystem.ToString();
+                    this.chkIsSystem.Value = obj.IsSystem.ToString();
 
 
 
@@ -67,7 +67,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
                 obj.Code = this.txtCode.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.IsEnable = this.chkIsEnable.Checked;
-                //obj.IsSystem = this.lblIsSystem.Value;
+                obj.IsSystem = this.chkIsSystem.Checked;
 
 
                 SystemConfigGroupWrapper.Update(obj);

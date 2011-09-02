@@ -22,6 +22,22 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
             this.gridPanelSystemConfig.Reload();
         }
 
+        [DirectMethod]
+        public void DeleteGroupRecord(int id)
+        {
+            try
+            {
+                SystemConfigGroupWrapper.DeleteByID(id);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
 
         [DirectMethod]
         public void DeleteRecord(int id)

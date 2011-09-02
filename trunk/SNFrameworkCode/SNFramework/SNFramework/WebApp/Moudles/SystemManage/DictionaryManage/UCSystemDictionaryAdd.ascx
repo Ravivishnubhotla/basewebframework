@@ -8,18 +8,21 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             Layout="Form">
             <Items>
-                <ext:DisplayField ID="lblDictionaryGroup"  FieldLabel="<%$ Resources:msgFiledCategory %>"  runat="server"  AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>" AllowBlank="True"
-                    AnchorHorizontal="95%" />
+                <ext:DisplayField ID="lblDictionaryGroup" FieldLabel="<%$ Resources:msgFiledCategory %>"
+                    runat="server" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryKey" runat="server" FieldLabel="<%$ Resources:msgFiledKey %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryCode" runat="server" FieldLabel="<%$ Resources:msgFiledCode %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSystemDictionaryValue" runat="server" FieldLabel="<%$ Resources:msgFiledValue %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryDesciption" runat="server" FieldLabel="<%$ Resources:msgFiledDescription %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSystemDictionaryOrder" runat="server" FieldLabel="<%$ Resources:msgFiledOrder %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSystemDictionaryIsEnable" runat="server" FieldLabel="<%$ Resources:msgFiledIsEnable %>"
                     Checked="false" AnchorHorizontal="95%" />
-                 <ext:Checkbox ID="chkSystemDictionaryIsSystem" runat="server" FieldLabel="<%$ Resources:msgFiledIsSystem %>"
+                <ext:Checkbox ID="chkSystemDictionaryIsSystem" runat="server" FieldLabel="<%$ Resources:msgFiledIsSystem %>"
                     Checked="false" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
@@ -29,7 +32,8 @@
             Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemDictionaryAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemDictionary_Click" Success="<%$ Resources : msgAddScript  %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    OnEvent="btnSaveSystemDictionary_Click" Success="<%$ Resources : msgAddScript  %>"
+                    Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>

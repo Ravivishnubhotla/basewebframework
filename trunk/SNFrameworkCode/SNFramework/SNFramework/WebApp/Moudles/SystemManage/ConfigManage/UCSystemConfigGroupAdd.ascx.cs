@@ -40,7 +40,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
                 obj.Code = this.txtCode.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.IsEnable = this.chkIsEnable.Checked;
-                //obj.IsSystem = this.lblIsSystem.Value;
+                obj.IsSystem = this.chkIsSystem.Checked;
 
 
 

@@ -3,13 +3,10 @@
 
 <%@ Register Src="UCSystemDictionaryAdd.ascx" TagName="UCSystemDictionaryAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSystemDictionaryEdit.ascx" TagName="UCSystemDictionaryEdit" TagPrefix="uc2" %>
-<%@ Register Src="UCSystemDictionaryPatchAdd.ascx" TagName="UCSystemDictionaryPatchAdd" TagPrefix="uc3" %>
-<%@ Register Src="UCSystemDictionaryPatchEdit.ascx" TagName="UCSystemDictionaryPatchEdit" TagPrefix="uc5" %>
-
-
-
-
-
+<%@ Register Src="UCSystemDictionaryPatchAdd.ascx" TagName="UCSystemDictionaryPatchAdd"
+    TagPrefix="uc3" %>
+<%@ Register Src="UCSystemDictionaryPatchEdit.ascx" TagName="UCSystemDictionaryPatchEdit"
+    TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -125,6 +122,7 @@
                 <Fields>
                     <ext:RecordField Name="SystemDictionaryID" Type="int" />
                     <ext:RecordField Name="SystemDictionaryKey" />
+                    <ext:RecordField Name="SystemDictionaryCode" />
                     <ext:RecordField Name="SystemDictionaryValue" />
                     <ext:RecordField Name="SystemDictionaryDesciption" />
                     <ext:RecordField Name="SystemDictionaryOrder" Type="int" />
@@ -133,16 +131,12 @@
             </ext:JsonReader>
         </Reader>
     </ext:Store>
- 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemDictionaryAdd ID="UCSystemDictionaryAdd1" runat="server" />
     <uc2:UCSystemDictionaryEdit ID="UCSystemDictionaryEdit1" runat="server" />
     <uc3:UCSystemDictionaryPatchAdd ID="UCSystemDictionaryPatchAdd1" runat="server" />
     <uc5:UCSystemDictionaryPatchEdit ID="UCSystemDictionaryPatchEdit1" runat="server" />
-
-    
-    
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemDictionary" runat="server" StoreID="storeSystemDictionary"
@@ -191,10 +185,12 @@
                         </ext:Column>
                         <ext:Column ColumnID="colSystemDictionaryKey" DataIndex="SystemDictionaryKey" Header="<%$ Resources:msgcolKey %>"
                             Sortable="true">
-                            <Editor>
-                                <ext:TextField ID="txtSystemDictionaryKey" runat="server" AllowBlank="false" />
-                            </Editor>
                         </ext:Column>
+                        <ext:Column ColumnID="colSystemDictionaryCode" DataIndex="SystemDictionaryCode" Header="<%$ Resources:msgcolCode %>"
+                            Sortable="true">
+                        </ext:Column>
+
+                        
                         <ext:Column ColumnID="colSystemDictionaryValue" DataIndex="SystemDictionaryValue"
                             Header="<%$ Resources:msgcolValue %>" Sortable="true">
                         </ext:Column>

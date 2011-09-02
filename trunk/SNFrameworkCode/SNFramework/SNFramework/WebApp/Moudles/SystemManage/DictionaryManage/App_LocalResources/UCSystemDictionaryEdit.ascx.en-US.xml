@@ -3,6 +3,7 @@
   <add name="msgFormTitle" value="System Dictionary Add" />
   <add name="msgFiledCategory" value="Category" />
   <add name="msgFiledKey" value="Key" />
+  <add name="msgFiledCode" value="Code" />
   <add name="msgFiledValue" value="Value" />
   <add name="msgFiledDescription" value="Description" />
   <add name="msgFiledOrder" value="View Order" />

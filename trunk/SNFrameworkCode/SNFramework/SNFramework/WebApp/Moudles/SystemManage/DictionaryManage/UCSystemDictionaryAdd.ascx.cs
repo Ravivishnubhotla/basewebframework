@@ -34,7 +34,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message：" + ex.Message;
             }
         }
 
@@ -45,6 +45,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
                 SystemDictionaryWrapper obj = new SystemDictionaryWrapper();
                 obj.SystemDictionaryGroupID = DictionaryGroup;
                 obj.SystemDictionaryKey = this.txtSystemDictionaryKey.Text.Trim();
+                obj.SystemDictionaryCode = this.txtSystemDictionaryCode.Text.Trim();
                 obj.SystemDictionaryValue = this.txtSystemDictionaryValue.Text.Trim();
                 obj.SystemDictionaryDesciption = this.txtSystemDictionaryDesciption.Text.Trim();
                 obj.SystemDictionaryOrder = Convert.ToInt32(this.txtSystemDictionaryOrder.Text.Trim());

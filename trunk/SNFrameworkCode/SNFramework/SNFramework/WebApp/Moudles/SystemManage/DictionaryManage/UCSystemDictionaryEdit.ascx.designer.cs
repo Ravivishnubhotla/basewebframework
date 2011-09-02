@@ -58,6 +58,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage {
         protected global::Ext.Net.TextField txtSystemDictionaryKey;
         
         /// <summary>
+        /// txtSystemDictionaryCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSystemDictionaryCode;
+        
+        /// <summary>
         /// txtSystemDictionaryValue control.
         /// </summary>
         /// <remarks>
