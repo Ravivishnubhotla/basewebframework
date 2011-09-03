@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
@@ -36,7 +37,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 channelWrapper.ChannelType = cmbChannelType.SelectedItem.Value;
 
-                if (channelWrapper.ChannelType=="1")
+                if (channelWrapper.ChannelType==DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
                 {
                     channelWrapper.IVRFeeTimeType = cmbIVRType.SelectedItem.Value;
                     channelWrapper.IVRTimeFormat = this.txtIVRTimeFormat.Text.Trim();
@@ -54,7 +55,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     channelWrapper.ReportOkMessage = this.txtReportOkMessage.Text.Trim();
                     channelWrapper.ReportFailedMessage = this.txtReportFailedMessage.Text.Trim();
 
-                    if(channelWrapper.StateReportType=="2")
+                    if (channelWrapper.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key)
                     {
                         channelWrapper.RequestTypeParamName = this.txtRequestTypeParamName.Text.Trim();
                         channelWrapper.RequestTypeParamDataReportValue = this.txtRequestTypeParamDataReportValue.Text.Trim();
@@ -76,7 +77,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 channelWrapper.HasFilters = this.chkHasFilters.Checked;
 
 
-                if(channelWrapper.ChannelType=="0")
+                if (channelWrapper.ChannelType == DictionaryConst.Dictionary_ChannelType_SPChannel_Key)
                 {
                     string pLinkID = this.txtLinkParamsName.Text.Trim();
                     string pMo = this.txtMoParamsName.Text.Trim();
@@ -97,7 +98,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     string pExtend10 = this.txtExtend10.Text.Trim();
                     channelWrapper.QuickAddSPChannel(pLinkID, pMo, pMobile, pSPCode, pCreateDate, pProvince, pCity, pExtend1, pExtend2, pExtend3, pExtend4, pExtend5, pExtend6, pExtend7, pExtend8, pExtend9,pExtend10);
                 }
-                else if (channelWrapper.ChannelType == "1")
+                else if (channelWrapper.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
                 {
                     string pIVRLinkID = this.txtIVRLinkID.Text.Trim();
                     string pIVRMobile = this.txtIVRMobile.Text.Trim();

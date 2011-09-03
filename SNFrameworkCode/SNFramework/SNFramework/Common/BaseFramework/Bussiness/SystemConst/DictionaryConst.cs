@@ -69,6 +69,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_SPField, key);
         }
         #region KeyList
+        ///主键
+        public const string Dictionary_SPField_LinkID_Key = "LinkID";
+        ///上行指令
+        public const string Dictionary_SPField_MO_Key = "MO";
+        ///手机号码
+        public const string Dictionary_SPField_Mobile_Key = "Mobile";
+        ///通道号码
+        public const string Dictionary_SPField_SpNumber_Key = "SpNumber";
+        ///省份
+        public const string Dictionary_SPField_Province_Key = "Province";
+        ///地市
+        public const string Dictionary_SPField_City_Key = "City";
+        ///创建日期
+        public const string Dictionary_SPField_CreateDate_Key = "CreateDate";
+        ///状态
+        public const string Dictionary_SPField_State_Key = "State";
+        ///计费时长
+        public const string Dictionary_SPField_FeeTime_Key = "FeeTime";
+        ///计费开始时间
+        public const string Dictionary_SPField_StartTime_Key = "StartTime";
+        ///计费结束时间
+        public const string Dictionary_SPField_EndTime_Key = "EndTime";
+        ///扩展字段1
+        public const string Dictionary_SPField_ExtendField1_Key = "ExtendField1";
+        ///扩展字段2
+        public const string Dictionary_SPField_ExtendField2_Key = "ExtendField2";
+        ///扩展字段3
+        public const string Dictionary_SPField_ExtendField3_Key = "ExtendField3";
+        ///扩展字段4
+        public const string Dictionary_SPField_ExtendField4_Key = "ExtendField4";
+        ///扩展字段5
+        public const string Dictionary_SPField_ExtendField5_Key = "ExtendField5";
+        ///扩展字段6
+        public const string Dictionary_SPField_ExtendField6_Key = "ExtendField6";
+        ///扩展字段7
+        public const string Dictionary_SPField_ExtendField7_Key = "ExtendField7";
+        ///扩展字段8
+        public const string Dictionary_SPField_ExtendField8_Key = "ExtendField8";
+        ///扩展字段9
+        public const string Dictionary_SPField_ExtendField9_Key = "ExtendField9";
+        ///扩展字段10
+        public const string Dictionary_SPField_ExtendField10_Key = "ExtendField10";
         #endregion
 
         public const string Dictionary_GroupCode_ChannelStatus = "ChannelStatus";
@@ -86,6 +128,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_ChannelStatus, key);
         }
         #region KeyList
+        ///正常
+        public const string Dictionary_ChannelStatus_Run_Key = "1";
+        ///暂停
+        public const string Dictionary_ChannelStatus_Stop_Key = "2";
         #endregion
 
         public const string Dictionary_GroupCode_ChannelDataAdapterType = "ChannelDataAdapterType";
@@ -103,6 +149,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_ChannelDataAdapterType, key);
         }
         #region KeyList
+        ///HttpGetPost适配器
+        public const string Dictionary_ChannelDataAdapterType_HttpGetPostAdapter_Key = "0";
+        ///XMLtPost适配器
+        public const string Dictionary_ChannelDataAdapterType_XMLAdapter_Key = "1";
+        ///自定义数据适配器
+        public const string Dictionary_ChannelDataAdapterType_CustomerAdapter_Key = "2";
         #endregion
 
         public const string Dictionary_GroupCode_ChannelType = "ChannelType";
@@ -120,6 +172,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_ChannelType, key);
         }
         #region KeyList
+        ///短信通道(SP)
+        public const string Dictionary_ChannelType_SPChannel_Key = "0";
+        ///声讯通道(IVR)
+        public const string Dictionary_ChannelType_IVRChannel_Key = "1";
+        ///自定义通道
+        public const string Dictionary_ChannelType_CustomerChannel_Key = "2";
         #endregion
 
         public const string Dictionary_GroupCode_ChannelStateReportType = "ChannelStateReportType";
@@ -137,6 +195,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_ChannelStateReportType, key);
         }
         #region KeyList
+        ///单次发送
+        public const string Dictionary_ChannelStateReportType_SendOnce_Key = "0";
+        ///双次发送
+        public const string Dictionary_ChannelStateReportType_SendTwice_Key = "1";
+        ///双次发送请求分类型
+        public const string Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key = "2";
         #endregion
 
         public const string Dictionary_GroupCode_System_DataType = "System_DataType";
@@ -169,5 +233,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
 
 
     }
+
 
 }
