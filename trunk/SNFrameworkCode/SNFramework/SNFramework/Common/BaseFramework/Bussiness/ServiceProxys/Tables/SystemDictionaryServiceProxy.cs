@@ -112,7 +112,7 @@ this.DataObjectsContainerIocID.SystemDictionaryGroupDataObjectInstance.FindByCod
                 {
                     obj.SystemDictionaryCode = value;
                 }
-                obj.SystemDictionaryDesciption = "";
+                obj.SystemDictionaryDesciption = obj.SystemDictionaryValue;
                 obj.SystemDictionaryOrder = orderIndex;
                 obj.SystemDictionaryIsEnable = true;
                 obj.SystemDictionaryIsSystem = false;
