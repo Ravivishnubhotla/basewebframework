@@ -107,6 +107,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.GetConfigByKey(key));
         }
 
+
+        public static string GetValueByConfigKey(string key, string defaultValue)
+        {
+            SystemConfigWrapper config = SystemConfigWrapper.GetConfigByKey(key);
+
+            if (config == null)
+            {
+                return defaultValue;
+            }
+            else
+            {
+                return config.ConfigValue;
+            }
+        }
+
         public string GroupName
         {
             get
