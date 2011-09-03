@@ -64,7 +64,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
         protected void storeFilterSystemDictionary_OnRefreshData(object sender, StoreRefreshDataEventArgs e)
         {
-            storeFilterSystemDictionary.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(DictionaryGroup.Code);
+            storeFilterSystemDictionary.DataSource = SystemDictionaryWrapper.GetDictionaryByGroupCode(DictionaryGroup.Code);
             storeFilterSystemDictionary.DataBind();
         }
 

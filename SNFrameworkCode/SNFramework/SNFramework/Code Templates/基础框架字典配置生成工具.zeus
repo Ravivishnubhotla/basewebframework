@@ -60,6 +60,10 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		GenerateDictionaryWrapperClass(dsDictionaryCategory.Tables[0]);
 		
+		DataSet dsConfigData = DataAccessHelper.GetDataSetBySql("SELECT    dbo.SystemConfig.*, ISNULL(dbo.SystemConfigGroup.Name, '') AS GroupName,  ISNULL(dbo.SystemConfigGroup.Code, '') AS GroupCode FROM dbo.SystemConfig LEFT OUTER JOIN dbo.SystemConfigGroup ON dbo.SystemConfig.Config_GroupID = dbo.SystemConfigGroup.ID ORDER BY GroupName");
+		
+		GenerateConfigWrapperClass(dsConfigData.Tables[0]);
+		
 	}
 	
 	private void GenerateRoleNameClass(DataTable dt)
@@ -77,61 +81,99 @@ public class GeneratedTemplate : DotNetScriptTemplate
 <%
     }
 	
+	private string GetDataType(string dataTypeValue)
+	{
+		if(dataTypeValue=="1")
+		{
+			return "string";
+		}
+		else if(dataTypeValue=="2")
+		{
+			return "int";
+		}
+		else if(dataTypeValue=="3")
+		{
+			return "decimal";
+		}
+		else if(dataTypeValue=="4")
+		{
+			return "datetime";
+		}
+		else if(dataTypeValue=="5")
+		{
+			return "bool";
+		}
+		return "string";
+	}
+	private void GenerateConfigWrapperClass(DataTable dt)
+	{
+%>    public static class SystemConfigConst
+    {
+<%		foreach(DataRow dr in dt.Rows){
+%>				public const string CFG_DEFAULT_VALUE_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>	= "<%= dr["Config_Value"].ToString() %>";
+<%     }
+
+%>  
+
+<%		foreach(DataRow dr in dt.Rows){
+%>				public const string CFG_KEY_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>	= "<%= dr["Config_Key"].ToString() %>";
+<%     }
+
+%>  
+
+<%		foreach(DataRow dr in dt.Rows){
+%>		public static <%= GetDataType(dr["Config_DataType"].ToString()) %> Config_<%= utils.SetPascalCase(dr["Config_Key"].ToString()) %>
+        {
+            get 
+            {
+<% if(dr["Config_DataType"].ToString()=="1") {
+%>				return SystemConfigWrapper.GetValueByConfigKey(CFG_KEY_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>, CFG_DEFAULT_VALUE_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>);
+<%} else {
+%>				return <%= GetDataType(dr["Config_DataType"].ToString()) %>.Parse(SystemConfigWrapper.GetValueByConfigKey(CFG_KEY_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>, CFG_DEFAULT_VALUE_<%= utils.SetPascalCase(dr["Config_Key"].ToString()).ToUpper() %>));
+<%} 
+%> }
+        }
+<%     }
+
+%>  
+
+
+}
+<%
+    }
+	
 	
 		private void GenerateDictionaryWrapperClass(DataTable dt)
 	{
 %>    public static class DictionaryConst
     {
 <%		foreach(DataRow dr in dt.Rows){
-%>        public const string Dictionary_Key_<%= dr["Code"].ToString() %> = "<%= dr["Code"].ToString() %>";
+%>        public const string Dictionary_GroupCode_<%= dr["Code"].ToString() %> = "<%= dr["Code"].ToString() %>";
 
         public static List<SystemDictionaryWrapper> <%= dr["Code"].ToString() %>Dictionary
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_<%= dr["Code"].ToString() %>);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_<%= dr["Code"].ToString() %>);
             }
         }
 
         public static string Parse<%= dr["Code"].ToString() %>DictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_<%= dr["Code"].ToString() %>, key); 
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_<%= dr["Code"].ToString() %>, key); 
         }
 		#region KeyList
 <%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM SystemDictionary where SystemDictionary_GroupID = '"+dr["ID"].ToString()+"'");
 		 foreach(DataRow dr1 in dsDictionaryItems.Tables[0].Rows){
-%>			public const string Dictionary_<%=dr["Code"].ToString() %>_<%= dr1["SystemDictionary_Value"].ToString() %>_Key = "<%= dr1["SystemDictionary_Key"].ToString() %>";
+%>			///<%= dr1["SystemDictionary_Value"].ToString() %>
+			public const string Dictionary_<%=dr["Code"].ToString() %>_<%= dr1["SystemDictionary_Code"].ToString() %>_Key = "<%= dr1["SystemDictionary_Key"].ToString() %>";
 <%		}
 %>		#endregion 
 		
 <%     }
 
 %>      
-        public static void BindDictionaryToListControl(ListControl list, string categoryName)
-        {
-            list.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(categoryName);
-            list.DataTextField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYVALUE;
-            list.DataValueField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYKEY;
-            list.DataBind();
-			
-            if(list.Items.Count>0)
-            {
-                list.SelectedIndex = 0;
-            }
-        }
-		
-		public static void BindDictionaryToListControl(RadComboBox list, string categoryName)
-        {
-            list.DataSource = SystemDictionaryWrapper.GetDictionaryByCategoryName(categoryName);
-            list.DataTextField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYVALUE;
-            list.DataValueField = SystemDictionaryWrapper.PROPERTY_NAME_SYSTEMDICTIONARYKEY;
-            list.DataBind();
-			
-            if(list.Items.Count>0)
-            {
-                list.SelectedIndex = 0;
-            }
-        }
+
 }
 <%
     }

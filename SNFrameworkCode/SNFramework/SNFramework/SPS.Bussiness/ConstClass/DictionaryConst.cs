@@ -15,13 +15,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_UserType);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_UserType);
             }
         }
 
         public static string ParseUserTypeDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_UserType, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_UserType, key);
         }
         #region KeyList
         public const string Dictionary_UserType_普通用户_Key = "1";
@@ -35,13 +35,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_RoleType);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_RoleType);
             }
         }
 
         public static string ParseRoleTypeDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_RoleType, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_RoleType, key);
         }
         #region KeyList
         public const string Dictionary_RoleType_普通角色_Key = "1";
@@ -55,13 +55,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_SPField);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_SPField);
             }
         }
 
         public static string ParseSPFieldDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_SPField, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_SPField, key);
         }
         #region KeyList
         #endregion
@@ -72,13 +72,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_ChannelStatus);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_ChannelStatus);
             }
         }
 
         public static string ParseChannelStatusDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_ChannelStatus, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_ChannelStatus, key);
         }
         #region KeyList
         #endregion
@@ -89,13 +89,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_ChannelDataAdapterType);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_ChannelDataAdapterType);
             }
         }
 
         public static string ParseChannelDataAdapterTypeDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_ChannelDataAdapterType, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_ChannelDataAdapterType, key);
         }
         #region KeyList
         #endregion
@@ -106,13 +106,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_ChannelType);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_ChannelType);
             }
         }
 
         public static string ParseChannelTypeDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_ChannelType, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_ChannelType, key);
         }
         #region KeyList
         #endregion
@@ -123,13 +123,13 @@ namespace SPS.Bussiness.ConstClass
         {
             get
             {
-                return SystemDictionaryWrapper.GetDictionaryByCategoryName(Dictionary_Key_ChannelStateReportType);
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_Key_ChannelStateReportType);
             }
         }
 
         public static string ParseChannelStateReportTypeDictionaryKey(string key)
         {
-            return SystemDictionaryWrapper.ParseDictionaryValueByCategoryNameAndKey(Dictionary_Key_ChannelStateReportType, key);
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_Key_ChannelStateReportType, key);
         }
         #region KeyList
         #endregion
