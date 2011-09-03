@@ -214,6 +214,8 @@
       <DependentUpon>SystemWorkFlowStepServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
+    <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.Designer.cs">
       <DependentUpon>SystemConfigGroupWrapper.cs</DependentUpon>
