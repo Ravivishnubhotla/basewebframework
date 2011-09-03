@@ -131,6 +131,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.PatchAdd(category, hasValue, categoryItems);
 	    }
 
+        public string DictionaryGroupName
+        {
+            get
+            {
+                if (this.SystemDictionaryGroupID == null)
+                    return "";
+                return SystemDictionaryGroupID.Name;
+            }
+        }
+
  
     }
 }

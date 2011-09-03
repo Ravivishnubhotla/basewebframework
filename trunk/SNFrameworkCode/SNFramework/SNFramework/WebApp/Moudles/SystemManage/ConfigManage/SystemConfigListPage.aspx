@@ -110,6 +110,7 @@
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="DictionaryGroupName" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Description" />
@@ -154,6 +155,9 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
+                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="DictionaryGroupName"
+                            Header="配置组" Sortable="false">
+                        </ext:Column>
                         <ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="<%$ Resources:msgcolKey %>"
                             Sortable="true">
                         </ext:Column>
