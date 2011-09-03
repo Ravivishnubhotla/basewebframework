@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
@@ -41,7 +42,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             if (defaultClient == null)
             {
-                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser("defaultSPClient", "SPDownUser", "123456", "@163.com");
+                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser(SystemConfigConst.Config_SpsDefaultClientname, RoleCodeList.ROLE_CODE_SPDOWNUSER, SystemConfigConst.Config_SysDefaultUserpass, SystemConfigConst.Config_SysDefaultUsermail);
 
                 if (defaultSPClientuserID < 0)
                     throw new Exception("Create defaultSPClient failed");
