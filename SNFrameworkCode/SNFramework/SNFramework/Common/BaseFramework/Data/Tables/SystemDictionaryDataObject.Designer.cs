@@ -30,6 +30,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM = new BoolProperty(Property.ForName(PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME + ".IsSystem"));
 		#endregion
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYKEY = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYKEY));		
+		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYCODE = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYCODE));		
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYVALUE = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYVALUE));		
 		public static readonly StringProperty PROPERTY_SYSTEMDICTIONARYDESCIPTION = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION));		
 		public static readonly IntProperty PROPERTY_SYSTEMDICTIONARYORDER = new IntProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYORDER));		
@@ -57,6 +58,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "SystemDictionaryGroupID":
                     return typeof (int);
                 case "SystemDictionaryKey":
+                    return typeof (string);
+                case "SystemDictionaryCode":
                     return typeof (string);
                 case "SystemDictionaryValue":
                     return typeof (string);

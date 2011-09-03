@@ -12,8 +12,9 @@
 
 
 		<many-to-one column="SystemDictionary_GroupID" name="SystemDictionaryGroupID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDictionaryGroupEntity,Legendigital.Framework.Common" />		
-		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="400" />	
-		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="4000" />	
+		<property column="SystemDictionary_Key" type="string" name="SystemDictionaryKey"   length="100" />	
+		<property column="SystemDictionary_Code" type="string" name="SystemDictionaryCode"   length="100" />	
+		<property column="SystemDictionary_Value" type="string" name="SystemDictionaryValue"   length="400" />	
 		<property column="SystemDictionary_Desciption" type="string" name="SystemDictionaryDesciption"   length="4000" />	
 		<property column="SystemDictionary_Order" type="int" name="SystemDictionaryOrder"   />	
 		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	

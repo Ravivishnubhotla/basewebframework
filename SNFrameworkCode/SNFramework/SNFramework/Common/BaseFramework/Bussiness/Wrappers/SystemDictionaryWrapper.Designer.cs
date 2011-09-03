@@ -71,6 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYID = "SystemDictionaryID";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYGROUPID = "SystemDictionaryGroupID";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYKEY = "SystemDictionaryKey";
+		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYCODE = "SystemDictionaryCode";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYVALUE = "SystemDictionaryValue";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYDESCIPTION = "SystemDictionaryDesciption";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYORDER = "SystemDictionaryOrder";
@@ -121,6 +122,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.SystemDictionaryKey = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SystemDictionaryCode
+		{
+			get
+			{
+				return entity.SystemDictionaryCode;
+			}
+			set
+			{
+				entity.SystemDictionaryCode = value;
 			}
 		}
 		/// <summary>
