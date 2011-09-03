@@ -5,6 +5,10 @@
 <%@ Register Src="UCSystemConfigEdit.ascx" TagName="UCSystemConfigEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSystemConfigGroup}.reload();#{storeDictionarySystemDataType}.reload();">
+            </DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -89,8 +93,10 @@
             <ext:JsonReader IDProperty="SystemConfigID">
                 <Fields>
                     <ext:RecordField Name="SystemConfigID" Type="int" />
+                    <ext:RecordField Name="GroupName" />
                     <ext:RecordField Name="ConfigKey" />
                     <ext:RecordField Name="ConfigValue" />
+                    <ext:RecordField Name="ConfigDataTypeName" />
                     <ext:RecordField Name="ConfigDescription" />
                     <ext:RecordField Name="SortIndex" Type="int" />
                 </Fields>
@@ -110,7 +116,6 @@
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="ID" Type="int" />
-                    <ext:RecordField Name="DictionaryGroupName" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Description" />
@@ -155,8 +160,8 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="DictionaryGroupName"
-                            Header="配置组" Sortable="false">
+                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="GroupName" Header="配置组"
+                            Sortable="false">
                         </ext:Column>
                         <ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="<%$ Resources:msgcolKey %>"
                             Sortable="true">
@@ -167,8 +172,8 @@
                         <ext:Column ColumnID="colConfigDescription" DataIndex="ConfigDescription" Header="<%$ Resources:msgcolDescription %>"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colSortIndex" DataIndex="SortIndex" Header="<%$ Resources:msgcolSortIndex %>"
-                            Sortable="true">
+                        <ext:Column ColumnID="colConfig_DataType" DataIndex="ConfigDataTypeName" Header="数据类型"
+                            Sortable="false">
                         </ext:Column>
                         <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
                             <Commands>

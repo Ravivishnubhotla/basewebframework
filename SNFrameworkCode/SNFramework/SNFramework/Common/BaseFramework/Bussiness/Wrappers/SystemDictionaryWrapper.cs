@@ -103,7 +103,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// </summary>
         /// <param name="categoryName">字典类别名</param>
         /// <returns></returns>
-        public static List<SystemDictionaryWrapper> GetDictionaryByCategoryName(string groupCode)
+        public static List<SystemDictionaryWrapper> GetDictionaryByGroupCode(string groupCode)
         {
             return ConvertToWrapperList(businessProxy.GetDictionaryByGroupCode(groupCode));
         }
@@ -113,7 +113,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// <param name="categoryName">字典类别名</param>
         /// <param name="key">键值</param>
         /// <returns></returns>
-        public static string ParseDictionaryValueByCategoryNameAndKey(string groupCode, string key)
+        public static string ParseDictionaryValueByGroupCodeAndKey(string groupCode, string key)
         {
             return businessProxy.ParseDictionaryValueByGroupCodeAndKey(groupCode, key);
         }
@@ -131,7 +131,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             businessProxy.PatchAdd(category, hasValue, categoryItems);
 	    }
 
-        public string DictionaryGroupName
+        public string GroupName
         {
             get
             {

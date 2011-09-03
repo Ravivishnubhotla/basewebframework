@@ -56,10 +56,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
 
 
                 SystemConfigWrapper obj = new SystemConfigWrapper();
+                if (this.cmbGroup.SelectedItem != null)
+                    obj.ConfigGroupID = SystemConfigGroupWrapper.FindById(int.Parse(this.cmbGroup.SelectedItem.Value));
+                else
+                    obj.ConfigGroupID = null;
                 obj.ConfigKey = this.txtConfigKey.Text.Trim();
                 obj.ConfigValue = this.txtConfigValue.Text.Trim();
                 obj.ConfigDescription = this.txtConfigDescription.Text.Trim();
-                obj.SortIndex = Convert.ToInt32(this.numSortIndex.Text.Trim());
+                obj.SortIndex = 1;
+                obj.ConfigDataType = this.cmbDataType.SelectedItem.Value;
 
 
 
@@ -75,6 +80,27 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "Error Message ：" + ex.Message;
             }
+        }
+
+        protected void storeDictionary_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            Store store = sender as Store;
+
+            string dictionaryGroupCode = e.Parameters["DictionaryGroupCode"];
+
+            List<SystemDictionaryWrapper> alldictionarys = SystemDictionaryWrapper.GetDictionaryByGroupCode(dictionaryGroupCode);
+
+            List<object[]> dictionaryItems = new List<object[]>();
+
+            foreach (SystemDictionaryWrapper systemDictionaryWrapper in alldictionarys)
+            {
+                dictionaryItems.Add(new object[] { systemDictionaryWrapper.SystemDictionaryKey, systemDictionaryWrapper.SystemDictionaryValue, systemDictionaryWrapper.SystemDictionaryCode });
+            }
+
+            store.DataSource = dictionaryItems;
+            store.DataBind(); 
+
+
         }
     }
 }

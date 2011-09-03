@@ -107,5 +107,26 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.GetConfigByKey(key));
         }
 
+        public string GroupName
+        {
+            get
+            {
+                if (this.ConfigGroupID == null)
+                    return "";
+                return ConfigGroupID.Name;
+            }
+        }
+
+
+        public string ConfigDataTypeName
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ConfigDataType))
+                    return "";
+                return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey("System_DataType", this.ConfigDataType);
+            }
+        }
+
     }
 }

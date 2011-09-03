@@ -40,6 +40,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.Store storeSystemConfigGroup;
         
         /// <summary>
+        /// storeDictionarySystemDataType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeDictionarySystemDataType;
+        
+        /// <summary>
         /// winSystemConfigAdd control.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.TextField txtConfigKey;
         
         /// <summary>
-        /// txtConfigValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtConfigValue;
-        
-        /// <summary>
         /// txtConfigDescription control.
         /// </summary>
         /// <remarks>
@@ -94,13 +94,22 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage {
         protected global::Ext.Net.TextArea txtConfigDescription;
         
         /// <summary>
-        /// numSortIndex control.
+        /// cmbDataType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numSortIndex;
+        protected global::Ext.Net.ComboBox cmbDataType;
+        
+        /// <summary>
+        /// txtConfigValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtConfigValue;
         
         /// <summary>
         /// btnSavelSystemConfig control.

@@ -81,6 +81,20 @@
         </ext:JsonReader>
     </Reader>
 </ext:Store>
+<ext:Store ID="storeDictionarySystemDataType" runat="server" OnRefreshData="storeDictionary_Refresh">
+    <Reader>
+        <ext:ArrayReader>
+            <Fields>
+                <ext:RecordField Name="Key" />
+                <ext:RecordField Name="Value" />
+                <ext:RecordField Name="Code" />
+            </Fields>
+        </ext:ArrayReader>
+    </Reader>
+    <BaseParams>
+        <ext:Parameter Name="DictionaryGroupCode" Value="System_DataType" Mode="Value" />
+    </BaseParams>
+</ext:Store>
 <ext:Window ID="winSystemConfigAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -105,12 +119,13 @@
                 </ext:ComboBox>
                 <ext:TextField ID="txtConfigKey" runat="server" FieldLabel="<%$ Resources:msgFiledKeyTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtConfigValue" runat="server" FieldLabel="<%$ Resources:msgFiledValueTitle %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtConfigDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:NumberField ID="numSortIndex" runat="server" FieldLabel="<%$ Resources:msgFiledSortIndexTitle %>"
-                    AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="数据类型" StoreID="storeDictionarySystemDataType"
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Value" ValueField="Key" AllowBlank="false">
+                </ext:ComboBox>
+                <ext:TextField ID="txtConfigValue" runat="server" FieldLabel="<%$ Resources:msgFiledValueTitle %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
@@ -132,6 +147,7 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <BeforeShow Handler="#{storeSystemConfigGroup}.reload();"></BeforeShow>
+        <BeforeShow Handler="#{storeSystemConfigGroup}.reload();#{storeDictionarySystemDataType}.reload();">
+        </BeforeShow>
     </Listeners>
 </ext:Window>
