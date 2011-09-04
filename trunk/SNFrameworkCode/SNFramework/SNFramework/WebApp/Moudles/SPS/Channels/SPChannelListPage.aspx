@@ -90,6 +90,43 @@
                     }
                     );
             }
+            
+ 
+            
+            if (cmd == "cmdManageParams") {
+              var win = <%= winChannelParamsManage.ClientID %>;
+              win.autoLoad.params.ChannelID = id.id;
+              win.setTitle(String.format('通道“{0}”接收参数管理',id.data.Name));
+              win.show();   
+            }
+            if (cmd == "cmdManageFilters") {
+              var win = <%= winChannelFiltersManage.ClientID %>;
+              win.autoLoad.params.ChannelID = id.id;
+              win.setTitle(String.format('通道“{0}”过滤条件管理',id.data.Name));
+              win.show();   
+            }
+            if (cmd == "cmdManageCoverts") {
+              var win = <%= winChannelFiltersManage.ClientID %>;
+              win.autoLoad.params.ChannelID = id.id;
+              win.setTitle(String.format('通道“{0}”数据转换管理',id.data.Name));
+              win.show();   
+            }           
+             if (cmd == "cmdManageSycns") {
+              var win = <%= winSycnParams.ClientID %>;
+              win.autoLoad.params.ChannelID = id.id;
+              win.setTitle(String.format('通道“{0}”同步参数管理',id.data.Name));
+              win.show();   
+            }    
+            
+                         if (cmd == "cmdManageCodes") {
+              var win = <%= winCodes.ClientID %>;
+              win.autoLoad.params.ChannelID = id.id;
+              win.setTitle(String.format('通道“{0}”代码管理',id.data.Name));
+              win.show();   
+            }    
+            
+                                                         
+                                            
         }
 
     </script>
@@ -105,7 +142,7 @@
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
@@ -152,7 +189,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="ID" Header="主键" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id" Width="30" Header="主键" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                         </ext:Column>
@@ -182,9 +219,19 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete" Hidden="true" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageParams" Text="接受参数管理">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageCodes" Text="代码管理">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageCoverts" Text="数据转换管理">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageFilters" Text="过滤条件管理">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageSycns" Text="同步参数管理">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -204,11 +251,67 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-        <ext:Window ID="winQuickAddChannel" runat="server" Title="Window" Frame="true"
-        Width="800" ConstrainHeader="true" Height="600" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" Hidden="true">
+    <ext:Window ID="winQuickAddChannel" runat="server" Title="Window" Frame="true" Width="800"
+        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
         <AutoLoad Url="SPChannelQuickAdd.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelParamsManage" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPChannelParamsListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelFiltersManage" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPChannelFiltersListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winSycnParams" runat="server" Title="Window" Frame="true" Width="700"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="SPChannelSycnParamsListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="700"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="../Codes/SPChannelCodeListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
         </AutoLoad>
         <Listeners>
             <Hide Handler="this.clearContent();" />

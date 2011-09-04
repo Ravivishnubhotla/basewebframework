@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
@@ -14,6 +15,19 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (X.IsAjaxRequest)
+                return;
+            //rdgSelectDataAdapter.Items.Clear();
+
+            //List<SystemDictionaryWrapper> items =
+            //    SystemDictionaryWrapper.GetDictionaryByGroupCode(
+            //        DictionaryConst.Dictionary_GroupCode_ChannelDataAdapterType);
+
+            //for (int i = 0; i < items.Count; i++)
+            //{
+            //    new Radio { ID = "rdaSelectDataAdapter" + i, BoxLabel = items[i].SystemDictionaryValue, InputValue = items[i].SystemDictionaryKey }.Render(rdgSelectDataAdapter,RenderMode.AddTo);        
+            //}
+
 
         }
 
@@ -75,6 +89,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 channelWrapper.IsMonitorRequest = this.chkIsMonitorRequest.Checked;
                 channelWrapper.IsParamsConvert = this.chkIsParamsConvert.Checked;
                 channelWrapper.HasFilters = this.chkHasFilters.Checked;
+
+ 
 
 
                 if (channelWrapper.ChannelType == DictionaryConst.Dictionary_ChannelType_SPChannel_Key)

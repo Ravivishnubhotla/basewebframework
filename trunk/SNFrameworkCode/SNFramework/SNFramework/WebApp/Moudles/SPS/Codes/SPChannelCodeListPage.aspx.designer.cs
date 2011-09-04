@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
+namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
     
     
-    public partial class SPChannelListPage {
+    public partial class SPChannelCodeListPage {
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -22,31 +22,40 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// storeSPCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPChannel;
+        protected global::Ext.Net.Store storeSPCode;
         
         /// <summary>
-        /// UCSPChannelEdit1 control.
+        /// UCSPCodeAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelEdit UCSPChannelEdit1;
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeAdd UCSPCodeAdd1;
         
         /// <summary>
-        /// UCSPChannelView1 control.
+        /// UCSPCodeEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelView UCSPChannelView1;
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeEdit UCSPCodeEdit1;
+        
+        /// <summary>
+        /// UCSPCodeView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeView UCSPCodeView1;
         
         /// <summary>
         /// viewPortMain control.
@@ -58,13 +67,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// gridPanelSPChannel control.
+        /// gridPanelSPCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPChannel;
+        protected global::Ext.Net.GridPanel gridPanelSPCode;
         
         /// <summary>
         /// tbTop control.
@@ -110,50 +119,5 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
-        
-        /// <summary>
-        /// winQuickAddChannel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winQuickAddChannel;
-        
-        /// <summary>
-        /// winChannelParamsManage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winChannelParamsManage;
-        
-        /// <summary>
-        /// winChannelFiltersManage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winChannelFiltersManage;
-        
-        /// <summary>
-        /// winSycnParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winSycnParams;
-        
-        /// <summary>
-        /// winCodes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winCodes;
     }
 }

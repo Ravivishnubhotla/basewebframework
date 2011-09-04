@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Web;
-using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Ext.Net;
 using SPS.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
-namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
+namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
 {
-    public partial class SPChannelFiltersListPage : BaseSecurityPage
+    public partial class SPChannelCodeListPage : BaseSecurityPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
 
 
-            this.gridPanelSPChannelFilters.Reload();
+            this.gridPanelSPCode.Reload();
         }
 
 
@@ -29,7 +29,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         {
             try
             {
-                SPChannelFiltersWrapper.DeleteByID(id);
+                SPCodeWrapper.DeleteByID(id);
 
                 ResourceManager.AjaxSuccess = true;
             }
@@ -41,7 +41,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
             }
         }
 
-        protected void storeSPChannelFilters_Refresh(object sender, StoreRefreshDataEventArgs e)
+        protected void storeSPCode_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             string sortFieldName = "";
             if (e.Sort != null)
@@ -68,12 +68,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
-            storeSPChannelFilters.DataSource = SPChannelFiltersWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
+            storeSPCode.DataSource = SPCodeWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
-            storeSPChannelFilters.DataBind();
+            storeSPCode.DataBind();
 
         }
+
+
 
         public SPChannelWrapper ChannelID
         {

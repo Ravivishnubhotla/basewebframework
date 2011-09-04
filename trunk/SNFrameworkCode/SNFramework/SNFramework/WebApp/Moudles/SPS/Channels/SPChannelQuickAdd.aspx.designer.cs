@@ -157,33 +157,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.RadioGroup rdgSelectDataAdapter;
         
         /// <summary>
-        /// Radio4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio4;
-        
-        /// <summary>
-        /// Radio5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio5;
-        
-        /// <summary>
-        /// Radio6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio6;
-        
-        /// <summary>
         /// txtAdapterHandleName control.
         /// </summary>
         /// <remarks>
