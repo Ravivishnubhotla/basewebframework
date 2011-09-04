@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="SPChannelParamsListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Channels.SPChannelParamsListPage" %>
+    CodeBehind="SPChannelCodeListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.SPChannelCodeListPage" %>
 
-<%@ Register Src="UCSPChannelParamsAdd.ascx" TagName="UCSPChannelParamsAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSPChannelParamsEdit.ascx" TagName="UCSPChannelParamsEdit" TagPrefix="uc2" %>
-<%@ Register Src="UCSPChannelParamsView.ascx" TagName="UCSPChannelParamsView" TagPrefix="uc3" %>
+<%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
+<%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -19,11 +19,11 @@
 
 
         var RefreshData = function(btn) {
-            <%= this.storeSPChannelParams.ClientID %>.reload();
+            <%= this.storeSPCode.ClientID %>.reload();
         };
         
         function showAddForm() {
-                Ext.net.DirectMethods.UCSPChannelParamsAdd.Show( 
+                Ext.net.DirectMethods.UCSPCodeAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -39,7 +39,7 @@
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
-                Ext.net.DirectMethods.UCSPChannelParamsEdit.Show(id.id,
+                Ext.net.DirectMethods.UCSPCodeEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -53,7 +53,7 @@
             }
 			
 			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSPChannelParamsView.Show(id.id,
+                Ext.net.DirectMethods.UCSPCodeView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -91,8 +91,8 @@
         }
 
     </script>
-    <ext:Store ID="storeSPChannelParams" runat="server" AutoLoad="true" RemoteSort="true"
-        RemotePaging="true" OnRefreshData="storeSPChannelParams_Refresh">
+    <ext:Store ID="storeSPCode" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
+        OnRefreshData="storeSPCode_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
@@ -103,41 +103,48 @@
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="ID" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
-                    <ext:RecordField Name="IsEnable" Type="Boolean" />
-                    <ext:RecordField Name="IsRequired" Type="Boolean" />
-                    <ext:RecordField Name="ParamsType" />
-                    <ext:RecordField Name="ChannelID" Type="int" />
-                    <ext:RecordField Name="ParamsMappingName" />
-                    <ext:RecordField Name="Title" />
-                    <ext:RecordField Name="ShowInClientGrid" Type="Boolean" />
-                    <ext:RecordField Name="ParamsValue" />
+                    <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="MO" />
+                    <ext:RecordField Name="MOType" />
+                    <ext:RecordField Name="OrderIndex" Type="int" />
+                    <ext:RecordField Name="SPCode" />
+                    <ext:RecordField Name="Province" />
+                    <ext:RecordField Name="DisableCity" />
+                    <ext:RecordField Name="IsDiable" Type="Boolean" />
+                    <ext:RecordField Name="SPType" />
+                    <ext:RecordField Name="CodeLength" Type="int" />
+                    <ext:RecordField Name="DayLimit" Type="int" />
+                    <ext:RecordField Name="MonthLimit" Type="int" />
+                    <ext:RecordField Name="Price" Type="int" />
+                    <ext:RecordField Name="SendText" />
+                    <ext:RecordField Name="HasFilters" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCSPChannelParamsAdd ID="UCSPChannelParamsAdd1" runat="server" />
-    <uc2:UCSPChannelParamsEdit ID="UCSPChannelParamsEdit1" runat="server" />
-    <uc3:UCSPChannelParamsView ID="UCSPChannelParamsView1" runat="server" />
+    <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
+    <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
+    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:GridPanel ID="gridPanelSPChannelParams" runat="server" StoreID="storeSPChannelParams"
-                StripeRows="true" Title="通道接受参数管理" Icon="Table">
+            <ext:GridPanel ID="gridPanelSPCode" runat="server" StoreID="storeSPCode" StripeRows="true"
+                Title="SPCode Management" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
                                 <Listeners>
-                                    <Click Handler="#{storeSPChannelParams}.reload();" />
+                                    <Click Handler="#{storeSPCode}.reload();" />
                                 </Listeners>
                             </ext:Button>
                         </Items>
@@ -152,26 +159,56 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colName" DataIndex="Name" Header="参数名" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colParamsMappingName" DataIndex="ParamsMappingName" Header="映射字段"
+                        <ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colDescription" DataIndex="Description" Header="Description"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="可用" Width="30" Sortable="true">
-                            <Renderer Fn="FormatBool" />
+                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="Code" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colIsRequired" DataIndex="IsRequired" Header="必须" Width="30"
+                        <ext:Column ColumnID="colMO" DataIndex="MO" Header="MO" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colMOType" DataIndex="MOType" Header="MOType" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="OrderIndex" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colSPCode" DataIndex="SPCode" Header="SPCode" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colProvince" DataIndex="Province" Header="Province" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colDisableCity" DataIndex="DisableCity" Header="DisableCity"
                             Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="IsDiable" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
+                        <ext:Column ColumnID="colSPType" DataIndex="SPType" Header="SPType" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colCodeLength" DataIndex="CodeLength" Header="CodeLength" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colDayLimit" DataIndex="DayLimit" Header="DayLimit" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colMonthLimit" DataIndex="MonthLimit" Header="MonthLimit" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="Price" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colSendText" DataIndex="SendText" Header="SendText" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="HasFilters" Sortable="true">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
                             <Commands>
-                                <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -182,8 +219,8 @@
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannelParams"
-                        DisplayInfo="true" DisplayMsg="显示接受参数 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的接受参数" />
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPCode"
+                        DisplayInfo="true" DisplayMsg="Display SPCodes {0} - {1} total {2}" EmptyMsg="No matched SPCode" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

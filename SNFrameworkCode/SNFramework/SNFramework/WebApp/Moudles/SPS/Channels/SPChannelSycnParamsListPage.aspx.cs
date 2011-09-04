@@ -68,11 +68,25 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
-            storeSPChannelSycnParams.DataSource = SPChannelSycnParamsWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            storeSPChannelSycnParams.DataSource = SPChannelSycnParamsWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSPChannelSycnParams.DataBind();
 
+        }
+
+
+        public SPChannelWrapper ChannelID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannelID"] != null)
+                {
+                    return
+                        SPChannelWrapper.FindById(int.Parse(this.Request.QueryString["ChannelID"]));
+                }
+                return null;
+            }
         }
     }
 

@@ -164,11 +164,9 @@
                         </ext:Column>
                         <ext:Column ColumnID="colAlias" DataIndex="Alias" Header="别名" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率"
-                            Sortable="true">
+                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultPrice" Header="价格"
-                            Sortable="true">
+                        <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultPrice" Header="价格" Sortable="true">
                         </ext:Column>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
                             <Commands>

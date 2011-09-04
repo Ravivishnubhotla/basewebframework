@@ -191,6 +191,7 @@
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
+    <Content Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeListPage.aspx" />
@@ -547,6 +548,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPSClientView.ascx.designer.cs">
       <DependentUpon>UCSPSClientView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.cs">
+      <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.cs">
       <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
