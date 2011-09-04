@@ -30,6 +30,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
+		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -58,6 +59,7 @@ namespace SPS.Entity.Tables
 		private DateTime? _startDate;
 		private DateTime? _endDate;
 		private bool? _isEnable;
+		private int? _sycnNotInterceptCount;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -87,6 +89,7 @@ namespace SPS.Entity.Tables
 			_startDate = null;
 			_endDate = null;
 			_isEnable = null;
+			_sycnNotInterceptCount = null;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -98,7 +101,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal? price, decimal? interceptRate, bool? useClientDefaultSycnSetting, bool? syncData, bool? sycnResendFailedData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, DateTime? startDate, DateTime? endDate, bool? isEnable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal? price, decimal? interceptRate, bool? useClientDefaultSycnSetting, bool? syncData, bool? sycnResendFailedData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, DateTime? startDate, DateTime? endDate, bool? isEnable, int? sycnNotInterceptCount, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -116,6 +119,7 @@ namespace SPS.Entity.Tables
 			_startDate = startDate;
 			_endDate = endDate;
 			_isEnable = isEnable;
+			_sycnNotInterceptCount = sycnNotInterceptCount;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -361,6 +365,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isEnable != value); _isEnable = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? SycnNotInterceptCount
+		{
+			get { return _sycnNotInterceptCount; }
+
+			set	
+			{
+				_isChanged |= (_sycnNotInterceptCount != value); _sycnNotInterceptCount = value;
 			}
 		}
 

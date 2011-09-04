@@ -172,6 +172,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx" />
@@ -180,6 +181,9 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelQuickAddChannel.ascx" />
@@ -187,7 +191,11 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
+    <Content Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationEdit.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationView.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
@@ -416,6 +424,13 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx.cs">
+      <DependentUpon>SPChannelParamsConvertListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelParamsConvertListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx.cs">
       <DependentUpon>SPChannelParamsListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -472,6 +487,27 @@
     <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.designer.cs">
       <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertView.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.cs">
       <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -521,12 +557,40 @@
     <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.designer.cs">
       <DependentUpon>UCSPChannelView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx.cs">
+      <DependentUpon>SPClientCodeRelationListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx.designer.cs">
+      <DependentUpon>SPClientCodeRelationListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.cs">
       <DependentUpon>SPSClientListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.designer.cs">
       <DependentUpon>SPSClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx.cs">
+      <DependentUpon>UCSPClientCodeRelationAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeRelationAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationEdit.ascx.cs">
+      <DependentUpon>UCSPClientCodeRelationEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeRelationEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationView.ascx.cs">
+      <DependentUpon>UCSPClientCodeRelationView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationView.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeRelationView.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx.cs">
       <DependentUpon>UCSPSClientAdd.ascx</DependentUpon>

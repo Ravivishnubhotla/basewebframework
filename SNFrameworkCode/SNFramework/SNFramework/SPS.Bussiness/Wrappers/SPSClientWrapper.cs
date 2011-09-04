@@ -6,6 +6,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 
 namespace SPS.Bussiness.Wrappers
@@ -95,6 +96,23 @@ namespace SPS.Bussiness.Wrappers
         }
 			
 		#endregion
+
+
+	    public string RelateUserLoginID
+	    {
+	        get
+	        {
+                if (this.UserID == null)
+                    return "";
+
+	            SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                if(user==null)
+                    return "";
+
+	            return user.UserLoginID;
+	        }
+	    }
 
     }
 }

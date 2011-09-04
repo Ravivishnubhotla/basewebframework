@@ -103,11 +103,13 @@
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
+                    <ext:RecordField Name="RelateUserLoginID"  />
+                    
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OkMessage" />
                     <ext:RecordField Name="FailedMessage" />
@@ -153,11 +155,11 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="ID" Header="主键" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id"  Width="30"  Header="主键" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colUserID" DataIndex="UserID" Header="关联用户ID" Sortable="true">
+                        <ext:Column ColumnID="colUserID" DataIndex="RelateUserLoginID" Header="关联用户ID" Sortable="false">
                         </ext:Column>
                         <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步" Sortable="true">
                             <Renderer Fn="FormatBool" />

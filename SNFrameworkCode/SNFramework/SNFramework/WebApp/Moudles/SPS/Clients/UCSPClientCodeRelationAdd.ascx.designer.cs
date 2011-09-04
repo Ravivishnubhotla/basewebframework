@@ -7,162 +7,225 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
+namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
     
     
-    public partial class SPChannelListPage {
+    public partial class UCSPClientCodeRelationAdd {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// winSPClientCodeRelationAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.Window winSPClientCodeRelationAdd;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// formPanelSPClientCodeRelationAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPChannel;
+        protected global::Ext.Net.FormPanel formPanelSPClientCodeRelationAdd;
         
         /// <summary>
-        /// UCSPChannelEdit1 control.
+        /// txtCodeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelEdit UCSPChannelEdit1;
+        protected global::Ext.Net.TextField txtCodeID;
         
         /// <summary>
-        /// UCSPChannelView1 control.
+        /// txtClientID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelView UCSPChannelView1;
+        protected global::Ext.Net.TextField txtClientID;
         
         /// <summary>
-        /// viewPortMain control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.TextField txtPrice;
         
         /// <summary>
-        /// gridPanelSPChannel control.
+        /// txtInterceptRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPChannel;
+        protected global::Ext.Net.TextField txtInterceptRate;
         
         /// <summary>
-        /// tbTop control.
+        /// chkUseClientDefaultSycnSetting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Checkbox chkUseClientDefaultSycnSetting;
         
         /// <summary>
-        /// btnAdd control.
+        /// chkSyncData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.Checkbox chkSyncData;
         
         /// <summary>
-        /// btnRefresh control.
+        /// chkSycnResendFailedData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.Checkbox chkSycnResendFailedData;
         
         /// <summary>
-        /// GridView1 control.
+        /// txtSycnRetryTimes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.TextField txtSycnRetryTimes;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// txtSyncType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.TextField txtSyncType;
         
         /// <summary>
-        /// winQuickAddChannel control.
+        /// txtSycnDataUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winQuickAddChannel;
+        protected global::Ext.Net.TextField txtSycnDataUrl;
         
         /// <summary>
-        /// winChannelParamsManage control.
+        /// txtSycnOkMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelParamsManage;
+        protected global::Ext.Net.TextField txtSycnOkMessage;
         
         /// <summary>
-        /// winChannelFiltersManage control.
+        /// txtSycnFailedMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelFiltersManage;
+        protected global::Ext.Net.TextField txtSycnFailedMessage;
         
         /// <summary>
-        /// winSycnParams control.
+        /// txtStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSycnParams;
+        protected global::Ext.Net.TextField txtStartDate;
         
         /// <summary>
-        /// winCodes control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winCodes;
+        protected global::Ext.Net.TextField txtEndDate;
         
         /// <summary>
-        /// winParamsConvert control.
+        /// chkIsEnable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winParamsConvert;
+        protected global::Ext.Net.Checkbox chkIsEnable;
+        
+        /// <summary>
+        /// txtSycnNotInterceptCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnNotInterceptCount;
+        
+        /// <summary>
+        /// txtCreateBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtCreateBy;
+        
+        /// <summary>
+        /// txtCreateAt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtCreateAt;
+        
+        /// <summary>
+        /// txtLastModifyBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtLastModifyBy;
+        
+        /// <summary>
+        /// txtLastModifyAt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtLastModifyAt;
+        
+        /// <summary>
+        /// btnSavelSPClientCodeRelation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnSavelSPClientCodeRelation;
+        
+        /// <summary>
+        /// btnCancelSPClientCodeRelation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelSPClientCodeRelation;
     }
 }

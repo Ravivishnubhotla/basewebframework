@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="SPChannelCodeListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.SPChannelCodeListPage" %>
+    CodeBehind="SPChannelParamsConvertListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Channels.SPChannelParamsConvertListPage" %>
 
-<%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
-<%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
+<%@ Register Src="UCSPChannelParamsConvertAdd.ascx" TagName="UCSPChannelParamsConvertAdd"
+    TagPrefix="uc1" %>
+<%@ Register Src="UCSPChannelParamsConvertEdit.ascx" TagName="UCSPChannelParamsConvertEdit"
+    TagPrefix="uc2" %>
+<%@ Register Src="UCSPChannelParamsConvertView.ascx" TagName="UCSPChannelParamsConvertView"
+    TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -19,11 +22,11 @@
 
 
         var RefreshData = function(btn) {
-            <%= this.storeSPCode.ClientID %>.reload();
+            <%= this.storeSPChannelParamsConvert.ClientID %>.reload();
         };
         
         function showAddForm() {
-                Ext.net.DirectMethods.UCSPCodeAdd.Show( 
+                Ext.net.DirectMethods.UCSPChannelParamsConvertAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -39,7 +42,7 @@
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
-                Ext.net.DirectMethods.UCSPCodeEdit.Show(id.id,
+                Ext.net.DirectMethods.UCSPChannelParamsConvertEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -53,7 +56,7 @@
             }
 			
 			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSPCodeView.Show(id.id,
+                Ext.net.DirectMethods.UCSPChannelParamsConvertView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
@@ -91,8 +94,8 @@
         }
 
     </script>
-    <ext:Store ID="storeSPCode" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSPCode_Refresh">
+    <ext:Store ID="storeSPChannelParamsConvert" runat="server" AutoLoad="true" RemoteSort="true"
+        RemotePaging="true" OnRefreshData="storeSPChannelParamsConvert_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
@@ -105,46 +108,39 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
-                    <ext:RecordField Name="Description" />
-                    <ext:RecordField Name="Code" />
-                    <ext:RecordField Name="MO" />
-                    <ext:RecordField Name="MOType" />
-                    <ext:RecordField Name="OrderIndex" Type="int" />
-                    <ext:RecordField Name="SPCode" />
-                    <ext:RecordField Name="Province" />
-                    <ext:RecordField Name="DisableCity" />
-                    <ext:RecordField Name="IsDiable" Type="Boolean" />
-                    <ext:RecordField Name="SPType" />
-                    <ext:RecordField Name="CodeLength" Type="int" />
-                    <ext:RecordField Name="DayLimit" Type="int" />
-                    <ext:RecordField Name="MonthLimit" Type="int" />
-                    <ext:RecordField Name="Price" Type="int" />
-                    <ext:RecordField Name="SendText" />
-                    <ext:RecordField Name="HasFilters" Type="Boolean" />
+                    <ext:RecordField Name="ParamsValue" />
+                    <ext:RecordField Name="ParamsConvertTo" />
+                    <ext:RecordField Name="ParamsConvertType" />
+                    <ext:RecordField Name="ParamsConvertCondition" />
+                    <ext:RecordField Name="ChannelID" Type="int" />
+                    <ext:RecordField Name="CreateBy" Type="int" />
+                    <ext:RecordField Name="CreateAt" Type="Date" />
+                    <ext:RecordField Name="LastModifyBy" Type="int" />
+                    <ext:RecordField Name="LastModifyAt" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
-    <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
-    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />
+    <uc1:UCSPChannelParamsConvertAdd ID="UCSPChannelParamsConvertAdd1" runat="server" />
+    <uc2:UCSPChannelParamsConvertEdit ID="UCSPChannelParamsConvertEdit1" runat="server" />
+    <uc3:UCSPChannelParamsConvertView ID="UCSPChannelParamsConvertView1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:GridPanel ID="gridPanelSPCode" runat="server" StoreID="storeSPCode" StripeRows="true"
-                Title="通道指令管理" Icon="Table">
+            <ext:GridPanel ID="gridPanelSPChannelParamsConvert" runat="server" StoreID="storeSPChannelParamsConvert"
+                StripeRows="true" Title="SPChannelParamsConvert Management" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
                                 <Listeners>
-                                    <Click Handler="#{storeSPCode}.reload();" />
+                                    <Click Handler="#{storeSPChannelParamsConvert}.reload();" />
                                 </Listeners>
                             </ext:Button>
                         </Items>
@@ -159,28 +155,42 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="Id" Header="主键" Width="30" Sortable="true">
+                        <ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="指令" Sortable="true">
+                        <ext:Column ColumnID="colParamsValue" DataIndex="ParamsValue" Header="ParamsValue"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="序位" Sortable="true">
+                        <ext:Column ColumnID="colParamsConvertTo" DataIndex="ParamsConvertTo" Header="ParamsConvertTo"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Sortable="true">
-                            <Renderer Fn="FormatBool" />
+                        <ext:Column ColumnID="colParamsConvertType" DataIndex="ParamsConvertType" Header="ParamsConvertType"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Sortable="true">
-                            <Renderer Fn="FormatBool" />
+                        <ext:Column ColumnID="colParamsConvertCondition" DataIndex="ParamsConvertCondition"
+                            Header="ParamsConvertCondition" Sortable="true">
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
+                        <ext:Column ColumnID="colChannelID" DataIndex="ChannelID" Header="ChannelID" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colCreateBy" DataIndex="CreateBy" Header="CreateBy" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colCreateAt" DataIndex="CreateAt" Header="CreateAt" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colLastModifyBy" DataIndex="LastModifyBy" Header="LastModifyBy"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colLastModifyAt" DataIndex="LastModifyAt" Header="LastModifyAt"
+                            Sortable="true">
+                        </ext:Column>
+                        <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
                             <Commands>
-                                <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
+                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -191,8 +201,9 @@
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPCode"
-                        DisplayInfo="true" DisplayMsg="显示指令 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的指令" />
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannelParamsConvert"
+                        DisplayInfo="true" DisplayMsg="Display SPChannelParamsConverts {0} - {1} total {2}"
+                        EmptyMsg="No matched SPChannelParamsConvert" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

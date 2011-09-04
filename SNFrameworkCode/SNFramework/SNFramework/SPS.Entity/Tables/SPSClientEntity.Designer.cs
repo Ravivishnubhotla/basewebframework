@@ -23,6 +23,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
 		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
 		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
@@ -51,6 +52,7 @@ namespace SPS.Entity.Tables
 		private bool? _sycnResendFailedData;
 		private int? _sycnRetryTimes;
 		private string _syncType;
+		private int? _sycnNotInterceptCount;
 		private string _sycnDataUrl;
 		private string _sycnOkMessage;
 		private string _sycnFailedMessage;
@@ -80,6 +82,7 @@ namespace SPS.Entity.Tables
 			_sycnResendFailedData = null;
 			_sycnRetryTimes = null;
 			_syncType = null;
+			_sycnNotInterceptCount = null;
 			_sycnDataUrl = null;
 			_sycnOkMessage = null;
 			_sycnFailedMessage = null;
@@ -98,7 +101,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -109,6 +112,7 @@ namespace SPS.Entity.Tables
 			_sycnResendFailedData = sycnResendFailedData;
 			_sycnRetryTimes = sycnRetryTimes;
 			_syncType = syncType;
+			_sycnNotInterceptCount = sycnNotInterceptCount;
 			_sycnDataUrl = sycnDataUrl;
 			_sycnOkMessage = sycnOkMessage;
 			_sycnFailedMessage = sycnFailedMessage;
@@ -257,6 +261,20 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
 				_isChanged |= (_syncType != value); _syncType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? SycnNotInterceptCount
+		{
+			get { return _sycnNotInterceptCount; }
+
+			set	
+			{
+				_isChanged |= (_sycnNotInterceptCount != value); _sycnNotInterceptCount = value;
 			}
 		}
 
