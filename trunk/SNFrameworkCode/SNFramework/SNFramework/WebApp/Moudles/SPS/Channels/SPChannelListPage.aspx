@@ -106,7 +106,7 @@
               win.show();   
             }
             if (cmd == "cmdManageCoverts") {
-              var win = <%= winChannelFiltersManage.ClientID %>;
+              var win = <%= winParamsConvert.ClientID %>;
               win.autoLoad.params.ChannelID = id.id;
               win.setTitle(String.format('通道“{0}”数据转换管理',id.data.Name));
               win.show();   
@@ -219,7 +219,7 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" Hidden="true" CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete"  CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
@@ -317,4 +317,22 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+    <ext:Window ID="winParamsConvert" runat="server" Title="winParamsConvert" Frame="true" Width="700"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="SPChannelParamsConvertListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
+
+
+    
 </asp:Content>

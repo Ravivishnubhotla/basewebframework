@@ -84,6 +84,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
+		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -315,6 +316,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.IsEnable = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? SycnNotInterceptCount
+		{
+			get
+			{
+				return entity.SycnNotInterceptCount;
+			}
+			set
+			{
+				entity.SycnNotInterceptCount = value;
 			}
 		}
 		/// <summary>

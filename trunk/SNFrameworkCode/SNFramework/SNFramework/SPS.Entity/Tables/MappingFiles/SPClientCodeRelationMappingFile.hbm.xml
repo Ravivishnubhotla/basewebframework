@@ -26,6 +26,7 @@
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
+		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

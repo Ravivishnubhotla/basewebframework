@@ -77,6 +77,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
+		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
 		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
 		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
@@ -217,6 +218,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SyncType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? SycnNotInterceptCount
+		{
+			get
+			{
+				return entity.SycnNotInterceptCount;
+			}
+			set
+			{
+				entity.SycnNotInterceptCount = value;
 			}
 		}
 		/// <summary>

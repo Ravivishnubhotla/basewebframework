@@ -338,14 +338,14 @@
                                 </Listeners>
                             </ext:RadioGroup>
                             <ext:TextField ID="txtStateReportParamName" runat="server" FieldLabel="状态报告参数" AnchorHorizontal="95%" />
-                            <ext:TextField ID="txtStateReportParamValue" runat="server" FieldLabel="状态报告成功标示"
+                            <ext:TextField ID="txtStateReportParamValue" runat="server" FieldLabel="状态报告成功标示"  Text="DELIVRD"
                                 AnchorHorizontal="95%" />
                             <ext:CompositeField ID="CompositeField1" runat="server" FieldLabel="状态报告响应信息" AnchorHorizontal="95%">
                                 <Items>
                                     <ext:DisplayField ID="DisplayField4" runat="server" Text="成功信息：" />
-                                    <ext:TextField ID="txtReportOkMessage" runat="server" Width="80" AllowBlank="true" />
+                                    <ext:TextField ID="txtReportOkMessage" runat="server" Width="80" Text="ok" AllowBlank="true" />
                                     <ext:DisplayField ID="DisplayField5" runat="server" Text="失败信息：" />
-                                    <ext:TextField ID="txtReportFailedMessage" runat="server" Width="80" AllowBlank="true" />
+                                    <ext:TextField ID="txtReportFailedMessage" runat="server" Width="80" Text="failed"  AllowBlank="true" />
                                 </Items>
                             </ext:CompositeField>
                             <ext:CompositeField ID="cpTypeReportSetting" runat="server" FieldLabel="分类型请求参数"

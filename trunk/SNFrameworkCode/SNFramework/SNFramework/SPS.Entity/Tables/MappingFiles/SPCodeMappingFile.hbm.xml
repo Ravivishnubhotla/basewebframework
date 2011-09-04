@@ -4,7 +4,7 @@
 <class name="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" table="SPCode" lazy="true"  >
 
 <id name="Id" column="ID" type="int" unsaved-value="0" >
-   <generator class="assigned">
+   <generator class="native">
 
 </generator>
 

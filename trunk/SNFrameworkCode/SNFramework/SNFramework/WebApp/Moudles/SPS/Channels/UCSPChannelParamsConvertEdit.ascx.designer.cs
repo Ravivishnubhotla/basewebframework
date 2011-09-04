@@ -10,159 +10,141 @@
 namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
     
     
-    public partial class SPChannelListPage {
+    public partial class UCSPChannelParamsConvertEdit {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// winSPChannelParamsConvertEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.Window winSPChannelParamsConvertEdit;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// formPanelSPChannelParamsConvertEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPChannel;
+        protected global::Ext.Net.FormPanel formPanelSPChannelParamsConvertEdit;
         
         /// <summary>
-        /// UCSPChannelEdit1 control.
+        /// hidId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelEdit UCSPChannelEdit1;
+        protected global::Ext.Net.Hidden hidId;
         
         /// <summary>
-        /// UCSPChannelView1 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Channels.UCSPChannelView UCSPChannelView1;
+        protected global::Ext.Net.TextField txtName;
         
         /// <summary>
-        /// viewPortMain control.
+        /// txtParamsValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.TextField txtParamsValue;
         
         /// <summary>
-        /// gridPanelSPChannel control.
+        /// txtParamsConvertTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPChannel;
+        protected global::Ext.Net.TextField txtParamsConvertTo;
         
         /// <summary>
-        /// tbTop control.
+        /// txtParamsConvertType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.TextField txtParamsConvertType;
         
         /// <summary>
-        /// btnAdd control.
+        /// txtParamsConvertCondition control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.TextField txtParamsConvertCondition;
         
         /// <summary>
-        /// btnRefresh control.
+        /// txtChannelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.TextField txtChannelID;
         
         /// <summary>
-        /// GridView1 control.
+        /// txtCreateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.TextField txtCreateBy;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// txtCreateAt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.TextField txtCreateAt;
         
         /// <summary>
-        /// winQuickAddChannel control.
+        /// txtLastModifyBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winQuickAddChannel;
+        protected global::Ext.Net.TextField txtLastModifyBy;
         
         /// <summary>
-        /// winChannelParamsManage control.
+        /// txtLastModifyAt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelParamsManage;
+        protected global::Ext.Net.TextField txtLastModifyAt;
         
         /// <summary>
-        /// winChannelFiltersManage control.
+        /// btnSaveSPChannelParamsConvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelFiltersManage;
+        protected global::Ext.Net.Button btnSaveSPChannelParamsConvert;
         
         /// <summary>
-        /// winSycnParams control.
+        /// btnCancelSPChannelParamsConvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSycnParams;
-        
-        /// <summary>
-        /// winCodes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winCodes;
-        
-        /// <summary>
-        /// winParamsConvert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winParamsConvert;
+        protected global::Ext.Net.Button btnCancelSPChannelParamsConvert;
     }
 }
