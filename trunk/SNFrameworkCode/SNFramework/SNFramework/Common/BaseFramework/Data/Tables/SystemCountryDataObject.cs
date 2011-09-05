@@ -12,5 +12,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemCountryDataObject
     {
+        public SystemCountryEntity FindByCode3(string code3)
+        {
+            NHibernateDynamicQueryGenerator<SystemCountryEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CODE3.Eq(code3));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

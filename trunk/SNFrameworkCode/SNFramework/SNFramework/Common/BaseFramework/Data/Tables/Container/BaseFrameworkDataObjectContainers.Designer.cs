@@ -11,8 +11,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
         }
 
       public SystemApplicationDataObject SystemApplicationDataObjectInstance { set; get; }
+      public SystemCityDataObject SystemCityDataObjectInstance { set; get; }
       public SystemConfigDataObject SystemConfigDataObjectInstance { set; get; }
       public SystemConfigGroupDataObject SystemConfigGroupDataObjectInstance { set; get; }
+      public SystemCountryDataObject SystemCountryDataObjectInstance { set; get; }
       public SystemDataTypeDataObject SystemDataTypeDataObjectInstance { set; get; }
       public SystemDepartmentDataObject SystemDepartmentDataObjectInstance { set; get; }
       public SystemDictionaryDataObject SystemDictionaryDataObjectInstance { set; get; }
@@ -29,6 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemPrivilegeDataObject SystemPrivilegeDataObjectInstance { set; get; }
       public SystemPrivilegeInRolesDataObject SystemPrivilegeInRolesDataObjectInstance { set; get; }
       public SystemPrivilegeParameterDataObject SystemPrivilegeParameterDataObjectInstance { set; get; }
+      public SystemProvinceDataObject SystemProvinceDataObjectInstance { set; get; }
       public SystemResourcesDataObject SystemResourcesDataObjectInstance { set; get; }
       public SystemRoleDataObject SystemRoleDataObjectInstance { set; get; }
       public SystemRoleApplicationDataObject SystemRoleApplicationDataObjectInstance { set; get; }
