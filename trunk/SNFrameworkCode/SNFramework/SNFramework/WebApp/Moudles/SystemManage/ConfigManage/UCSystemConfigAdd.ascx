@@ -81,18 +81,21 @@
         </ext:JsonReader>
     </Reader>
 </ext:Store>
-<ext:Store ID="storeDictionarySystemDataType" runat="server" OnRefreshData="storeDictionary_Refresh">
+<ext:Store ID="storeDictionarySystemDataType" runat="server" AutoLoad="false">
+    <Proxy>
+        <ext:HttpProxy Method="POST" Url="../DataService/DictionaryDataService.ashx" />
+    </Proxy>
     <Reader>
-        <ext:ArrayReader>
+        <ext:JsonReader Root="dictionarys" TotalProperty="total">
             <Fields>
                 <ext:RecordField Name="Key" />
                 <ext:RecordField Name="Value" />
                 <ext:RecordField Name="Code" />
             </Fields>
-        </ext:ArrayReader>
+        </ext:JsonReader>
     </Reader>
     <BaseParams>
-        <ext:Parameter Name="DictionaryGroupCode" Value="System_DataType" Mode="Value" />
+        <ext:Parameter Name="GroupCode" Value="System_DataType" Mode="Value" />
     </BaseParams>
 </ext:Store>
 <ext:Window ID="winSystemConfigAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
@@ -122,7 +125,8 @@
                 <ext:TextArea ID="txtConfigDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="数据类型" StoreID="storeDictionarySystemDataType"
-                    AnchorHorizontal="95%" Editable="false" DisplayField="Value" ValueField="Key" AllowBlank="false">
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Value" ValueField="Key"
+                    AllowBlank="false">
                 </ext:ComboBox>
                 <ext:TextField ID="txtConfigValue" runat="server" FieldLabel="<%$ Resources:msgFiledValueTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />

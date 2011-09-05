@@ -141,6 +141,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
         }
 
- 
+        public string Key
+	    {
+	        get { return this.SystemDictionaryKey; }
+	    }
+        public string Code
+        {
+            get { return this.SystemDictionaryCode; }
+        }
+        public string Value
+        {
+            get { return this.SystemDictionaryValue; }
+        }
+
     }
 }
