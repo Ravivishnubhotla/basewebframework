@@ -739,6 +739,9 @@
     <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx.designer.cs">
       <DependentUpon>UCSystemConfigGroupEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx.cs">
+      <DependentUpon>CountryProvinceCityDataService.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\DataService\DictionaryDataService.ashx.cs">
       <DependentUpon>DictionaryDataService.ashx</DependentUpon>
     </Compile>
@@ -1255,6 +1258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SystemManage\DataService\DictionaryDataService.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -10,9 +10,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {		
 		public ISystemApplicationServiceProxy SystemApplicationServiceProxyInstance
         {get; set;}
+		public ISystemCityServiceProxy SystemCityServiceProxyInstance
+        {get; set;}
 		public ISystemConfigServiceProxy SystemConfigServiceProxyInstance
         {get; set;}
 		public ISystemConfigGroupServiceProxy SystemConfigGroupServiceProxyInstance
+        {get; set;}
+		public ISystemCountryServiceProxy SystemCountryServiceProxyInstance
         {get; set;}
 		public ISystemDataTypeServiceProxy SystemDataTypeServiceProxyInstance
         {get; set;}
@@ -45,6 +49,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		public ISystemPrivilegeInRolesServiceProxy SystemPrivilegeInRolesServiceProxyInstance
         {get; set;}
 		public ISystemPrivilegeParameterServiceProxy SystemPrivilegeParameterServiceProxyInstance
+        {get; set;}
+		public ISystemProvinceServiceProxy SystemProvinceServiceProxyInstance
         {get; set;}
 		public ISystemResourcesServiceProxy SystemResourcesServiceProxyInstance
         {get; set;}

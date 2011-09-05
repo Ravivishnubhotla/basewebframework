@@ -9,10 +9,16 @@
  <object id="SystemApplicationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemApplicationDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemCityDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemCityDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemConfigDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemConfigDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemConfigGroupDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemConfigGroupDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemCountryDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemCountryDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemDataTypeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDataTypeDataObject, Legendigital.Framework.Common">
@@ -61,6 +67,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemPrivilegeParameterDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPrivilegeParameterDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemProvinceDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemProvinceDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemResourcesDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemResourcesDataObject, Legendigital.Framework.Common">
@@ -131,8 +140,10 @@
 
 <object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
     <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
+    <property name="SystemCityDataObjectInstance" ref="SystemCityDataObjectIocID"/>
     <property name="SystemConfigDataObjectInstance" ref="SystemConfigDataObjectIocID"/>
     <property name="SystemConfigGroupDataObjectInstance" ref="SystemConfigGroupDataObjectIocID"/>
+    <property name="SystemCountryDataObjectInstance" ref="SystemCountryDataObjectIocID"/>
     <property name="SystemDataTypeDataObjectInstance" ref="SystemDataTypeDataObjectIocID"/>
     <property name="SystemDepartmentDataObjectInstance" ref="SystemDepartmentDataObjectIocID"/>
     <property name="SystemDictionaryDataObjectInstance" ref="SystemDictionaryDataObjectIocID"/>
@@ -149,6 +160,7 @@
     <property name="SystemPrivilegeDataObjectInstance" ref="SystemPrivilegeDataObjectIocID"/>
     <property name="SystemPrivilegeInRolesDataObjectInstance" ref="SystemPrivilegeInRolesDataObjectIocID"/>
     <property name="SystemPrivilegeParameterDataObjectInstance" ref="SystemPrivilegeParameterDataObjectIocID"/>
+    <property name="SystemProvinceDataObjectInstance" ref="SystemProvinceDataObjectIocID"/>
     <property name="SystemResourcesDataObjectInstance" ref="SystemResourcesDataObjectIocID"/>
     <property name="SystemRoleDataObjectInstance" ref="SystemRoleDataObjectIocID"/>
     <property name="SystemRoleApplicationDataObjectInstance" ref="SystemRoleApplicationDataObjectIocID"/>

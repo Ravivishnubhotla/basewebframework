@@ -10,12 +10,20 @@
     <property name="SelfDataObj" ref="SystemApplicationDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemCityServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemCityServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemCityDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemConfigServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemConfigServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemConfigDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemConfigGroupServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemConfigGroupServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemConfigGroupDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemCountryServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemCountryServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemCountryDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemDataTypeServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemDataTypeServiceProxy, Legendigital.Framework.Common">
@@ -80,6 +88,10 @@
   </object>
   <object id="SystemPrivilegeParameterServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPrivilegeParameterServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPrivilegeParameterDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemProvinceServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemProvinceServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemProvinceDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemResourcesServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemResourcesServiceProxy, Legendigital.Framework.Common">
@@ -168,8 +180,10 @@
 
 <object id="BaseFrameworkServiceProxyContainerIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer, Legendigital.Framework.Common">
     <property name="SystemApplicationServiceProxyInstance" ref="SystemApplicationServiceProxyIocID"/>
+    <property name="SystemCityServiceProxyInstance" ref="SystemCityServiceProxyIocID"/>
     <property name="SystemConfigServiceProxyInstance" ref="SystemConfigServiceProxyIocID"/>
     <property name="SystemConfigGroupServiceProxyInstance" ref="SystemConfigGroupServiceProxyIocID"/>
+    <property name="SystemCountryServiceProxyInstance" ref="SystemCountryServiceProxyIocID"/>
     <property name="SystemDataTypeServiceProxyInstance" ref="SystemDataTypeServiceProxyIocID"/>
     <property name="SystemDepartmentServiceProxyInstance" ref="SystemDepartmentServiceProxyIocID"/>
     <property name="SystemDictionaryServiceProxyInstance" ref="SystemDictionaryServiceProxyIocID"/>
@@ -186,6 +200,7 @@
     <property name="SystemPrivilegeServiceProxyInstance" ref="SystemPrivilegeServiceProxyIocID"/>
     <property name="SystemPrivilegeInRolesServiceProxyInstance" ref="SystemPrivilegeInRolesServiceProxyIocID"/>
     <property name="SystemPrivilegeParameterServiceProxyInstance" ref="SystemPrivilegeParameterServiceProxyIocID"/>
+    <property name="SystemProvinceServiceProxyInstance" ref="SystemProvinceServiceProxyIocID"/>
     <property name="SystemResourcesServiceProxyInstance" ref="SystemResourcesServiceProxyIocID"/>
     <property name="SystemRoleServiceProxyInstance" ref="SystemRoleServiceProxyIocID"/>
     <property name="SystemRoleApplicationServiceProxyInstance" ref="SystemRoleApplicationServiceProxyIocID"/>

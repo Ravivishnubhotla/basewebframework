@@ -14,13 +14,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 {
 	public interface ISystemCountryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemCountryEntity> ,ISystemCountryServiceProxyDesigner
     {
-
-
+        SystemCountryEntity FindByCode3(string code3);
     }
 
     public partial class SystemCountryServiceProxy : ISystemCountryServiceProxy
     {
-
-
+        public SystemCountryEntity FindByCode3(string code3)
+        {
+            return this.SelfDataObj.FindByCode3(code3);
+        }
     }
 }
