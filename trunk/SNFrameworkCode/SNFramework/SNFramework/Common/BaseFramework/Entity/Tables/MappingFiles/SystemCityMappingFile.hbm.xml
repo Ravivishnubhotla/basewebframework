@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemCityEntity,Legendigital.Framework.Common" table="SystemCity" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="AbbrName" type="string" name="AbbrName"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<many-to-one column="ProvinceID" name="ProvinceID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemProvinceEntity,Legendigital.Framework.Common" />		
+		<property column="Capital" type="Boolean" name="Capital"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
