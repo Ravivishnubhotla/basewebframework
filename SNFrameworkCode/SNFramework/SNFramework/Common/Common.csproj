@@ -165,6 +165,10 @@
   <ItemGroup>
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.Designer.cs">
+      <DependentUpon>SystemCityServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigGroupServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigGroupServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigGroupServiceProxy.cs</DependentUpon>
@@ -172,6 +176,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCountryServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCountryServiceProxy.Designer.cs">
+      <DependentUpon>SystemCountryServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.Designer.cs">
@@ -192,6 +200,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailTemplateServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.Designer.cs">
+      <DependentUpon>SystemProvinceServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.Designer.cs">
@@ -216,6 +228,10 @@
     <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.Designer.cs">
+      <DependentUpon>SystemCityWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.Designer.cs">
       <DependentUpon>SystemConfigGroupWrapper.cs</DependentUpon>
@@ -223,6 +239,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.Designer.cs">
       <DependentUpon>SystemConfigWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCountryWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCountryWrapper.Designer.cs">
+      <DependentUpon>SystemCountryWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.Designer.cs">
@@ -244,6 +264,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.Designer.cs">
       <DependentUpon>SystemEmailTemplateWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.Designer.cs">
+      <DependentUpon>SystemProvinceWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.Designer.cs">
       <DependentUpon>SystemTaskWrapper.cs</DependentUpon>
@@ -264,6 +288,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.Designer.cs">
       <DependentUpon>SystemWorkFlowWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.Designer.cs">
+      <DependentUpon>SystemCityDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.Designer.cs">
       <DependentUpon>SystemConfigDataObject.cs</DependentUpon>
@@ -271,6 +299,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemConfigGroupDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemConfigGroupDataObject.Designer.cs">
       <DependentUpon>SystemConfigGroupDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemCountryDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemCountryDataObject.Designer.cs">
+      <DependentUpon>SystemCountryDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.Designer.cs">
@@ -291,6 +323,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.Designer.cs">
       <DependentUpon>SystemEmailTemplateDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.Designer.cs">
+      <DependentUpon>SystemProvinceDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.Designer.cs">
@@ -317,6 +353,10 @@
     <Compile Include="BaseFramework\Document\DataFileldType.cs" />
     <Compile Include="BaseFramework\Document\IDatabaseSchemaBuilder.cs" />
     <Compile Include="BaseFramework\Document\MSSQLDataBaseSchemaBulider.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.Designer.cs">
+      <DependentUpon>SystemCityEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.Designer.cs">
       <DependentUpon>SystemConfigEntity.cs</DependentUpon>
@@ -324,6 +364,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigGroupEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigGroupEntity.Designer.cs">
       <DependentUpon>SystemConfigGroupEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemCountryEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemCountryEntity.Designer.cs">
+      <DependentUpon>SystemCountryEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.Designer.cs">
@@ -344,6 +388,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.Designer.cs">
       <DependentUpon>SystemEmailTemplateEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.Designer.cs">
+      <DependentUpon>SystemProvinceEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.Designer.cs">
@@ -1008,6 +1056,11 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemConfigGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDictionaryGroupMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCityMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCountryMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemProvinceMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

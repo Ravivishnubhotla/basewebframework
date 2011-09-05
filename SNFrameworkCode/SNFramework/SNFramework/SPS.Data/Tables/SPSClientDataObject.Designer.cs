@@ -23,6 +23,7 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRESENDFAILEDDATA));		
 		public static readonly IntProperty PROPERTY_SYCNRETRYTIMES = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYNCTYPE));		
+		public static readonly IntProperty PROPERTY_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT));		
 		public static readonly StringProperty PROPERTY_SYCNDATAURL = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNDATAURL));		
 		public static readonly StringProperty PROPERTY_SYCNOKMESSAGE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNOKMESSAGE));		
 		public static readonly StringProperty PROPERTY_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNFAILEDMESSAGE));		
@@ -69,6 +70,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "SyncType":
                     return typeof (string);
+                case "SycnNotInterceptCount":
+                    return typeof (int);
                 case "SycnDataUrl":
                     return typeof (string);
                 case "SycnOkMessage":

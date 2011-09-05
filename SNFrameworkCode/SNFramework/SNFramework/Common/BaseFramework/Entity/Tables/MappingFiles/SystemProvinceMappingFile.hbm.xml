@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemProvinceEntity,Legendigital.Framework.Common" table="SystemProvince" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="AbbrName" type="string" name="AbbrName"   length="100" />	
+		<property column="SingleAbbrName" type="string" name="SingleAbbrName"   length="20" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<many-to-one column="CountryID" name="CountryID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemCountryEntity,Legendigital.Framework.Common" />		
+
+
+
+
+</class>
+</hibernate-mapping>

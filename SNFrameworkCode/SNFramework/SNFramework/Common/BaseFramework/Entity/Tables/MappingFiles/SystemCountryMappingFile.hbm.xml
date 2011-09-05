@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemCountryEntity,Legendigital.Framework.Common" table="SystemCountry" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="CodeNumber" type="string" name="CodeNumber"   length="20" />	
+		<property column="Code2" type="string" name="Code2"   length="4" />	
+		<property column="Code3" type="string" name="Code3"   length="6" />	
+		<property column="AbbrNameCN" type="string" name="AbbrNameCN"   length="60" />	
+		<property column="AbbrNameEN" type="string" name="AbbrNameEN"   length="100" />	
+		<property column="FullNameCn" type="string" name="FullNameCn"   length="160" />	
+		<property column="FullNameEn" type="string" name="FullNameEn"   length="160" />	
+
+
+
+
+</class>
+</hibernate-mapping>
