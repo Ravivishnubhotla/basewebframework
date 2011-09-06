@@ -223,15 +223,15 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageParams" Text="接受参数管理">
+                                            <ext:MenuCommand Icon="DatabaseGo" CommandName="cmdManageParams" Text="接受参数管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageCodes" Text="代码管理">
+                                            <ext:MenuCommand  Icon="Script" CommandName="cmdManageCodes" Text="代码管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageCoverts" Text="数据转换管理">
+                                            <ext:MenuCommand Icon="DatabaseRefresh" CommandName="cmdManageCoverts" Text="数据转换管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageFilters" Text="过滤条件管理">
+                                            <ext:MenuCommand Icon="DatabaseLightning" CommandName="cmdManageFilters" Text="过滤条件管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewList" CommandName="cmdManageSycns" Text="同步参数管理">
+                                            <ext:MenuCommand Icon="DatabaseLink" CommandName="cmdManageSycns" Text="同步参数管理">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -303,7 +303,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="700"
+    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="700" Icon="Script"
         ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="../Codes/SPChannelCodeListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"

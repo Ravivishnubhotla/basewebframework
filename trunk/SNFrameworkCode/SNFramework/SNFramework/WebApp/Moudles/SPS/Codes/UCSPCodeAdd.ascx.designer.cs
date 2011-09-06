@@ -13,6 +13,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
     public partial class UCSPCodeAdd {
         
         /// <summary>
+        /// storeMOType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeMOType;
+        
+        /// <summary>
         /// winSPCodeAdd control.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.TextArea txtSubCode;
         
         /// <summary>
-        /// txtAllowAndDisableArea control.
+        /// txtProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtAllowAndDisableArea;
+        protected global::Ext.Net.TextArea txtProvince;
+        
+        /// <summary>
+        /// txtDisableCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextArea txtDisableCity;
         
         /// <summary>
         /// txtGetway control.
@@ -119,24 +137,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextArea txtCodeSendText;
-        
-        /// <summary>
-        /// txtProvince control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtProvince;
-        
-        /// <summary>
-        /// txtDisableCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtDisableCity;
         
         /// <summary>
         /// txtPrice control.

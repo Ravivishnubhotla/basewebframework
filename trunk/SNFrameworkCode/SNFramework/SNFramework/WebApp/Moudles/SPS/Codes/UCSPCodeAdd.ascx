@@ -2,18 +2,35 @@
     Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeAdd" %>
 <script type="text/javascript">
     function ChangeCodeType(codeType, chkHasSubCode, txtSubCode) {
-        if (codeType == "1") {
-            chkHasSubCode.hide();
-            txtSubCode.hide();
-            chkHasSubCode.setValue(false);
-        }
-        else {
+        if (codeType == "2") {
             chkHasSubCode.show();
             txtSubCode.show();
             chkHasSubCode.setValue(true);
         }
+        else {
+            chkHasSubCode.hide();
+            txtSubCode.hide();
+            chkHasSubCode.setValue(false);
+        }
     }
 </script>
+    <ext:Store ID="storeMOType" runat="server" AutoLoad="false">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader Root="dictionarys" TotalProperty="total">
+                <Fields>
+                    <ext:RecordField Name="Key" />
+                    <ext:RecordField Name="Value" />
+                    <ext:RecordField Name="Code" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Name="GroupCode" Value="CodeType" Mode="Value" />
+        </BaseParams>
+    </ext:Store>
 <ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -23,17 +40,8 @@
             AutoScroll="true" Layout="Form">
             <Items>
                 <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
-                    SelectedIndex="0" AnchorHorizontal="95%">
-                    <Items>
-                        <ext:ListItem Value="1" Text="精准指令"></ext:ListItem>
-                        <ext:ListItem Value="2" Text="模糊指令"></ext:ListItem>
-                        <ext:ListItem Value="3" Text="结束指令"></ext:ListItem>
-                        <ext:ListItem Value="4" Text="包含指令"></ext:ListItem>
-                        <ext:ListItem Value="5" Text="正则指令"></ext:ListItem>
-                        <ext:ListItem Value="6" Text="自定义指令"></ext:ListItem>
-                        <ext:ListItem Value="7" Text="多条件指令"></ext:ListItem>
-                        <ext:ListItem Value="8" Text="表达式指令"></ext:ListItem>
-                    </Items>
+                    SelectedIndex="0" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
+                    ValueField="Key">
                     <Listeners>
                         <Select Handler="ChangeCodeType(#{cmbMOType}.getValue(),#{chkHasSubCode},#{txtSubCode});" />
                     </Listeners>
@@ -47,18 +55,19 @@
                     </Listeners>
                 </ext:Checkbox>
                 <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" Note="多个指令使用|分隔，例：( 1|2|3 )"
-                    Hidden="true"  AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtAllowAndDisableArea" runat="server" FieldLabel="开通省份/屏蔽地市" AllowBlank="True"  AnchorHorizontal="95%" />
-                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True"  AnchorHorizontal="95%" />
-                <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True"  AnchorHorizontal="95%" />
-                <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True"  AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtCodeSendText" runat="server" FieldLabel="下发语" AllowBlank="True"  AnchorHorizontal="95%" />
-                <ext:TextField ID="txtProvince" runat="server" FieldLabel="Province" AllowBlank="True"
+                    Hidden="true" AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtProvince" runat="server" FieldLabel="开通省份" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtDisableCity" runat="server" FieldLabel="DisableCity" AllowBlank="True"
+                <ext:TextArea ID="txtDisableCity" runat="server" FieldLabel="屏蔽地市" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtPrice" runat="server" FieldLabel="Price" AllowBlank="True"
+                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True"
                     AnchorHorizontal="95%" />
+                <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtCodeSendText" runat="server" FieldLabel="下发语" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtPrice" runat="server" FieldLabel="价格" AllowBlank="True" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
@@ -78,4 +87,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+    <Listeners>
+    <BeforeShow Handler="#{storeMOType}.reload();"></BeforeShow>
+    </Listeners>
 </ext:Window>
