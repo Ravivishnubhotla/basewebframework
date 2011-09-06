@@ -31,49 +31,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.FormPanel formPanelSPCodeAdd;
         
         /// <summary>
-        /// txtID control.
+        /// cmbMOType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtID;
-        
-        /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtName;
-        
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextArea txtDescription;
-        
-        /// <summary>
-        /// txtCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCode;
-        
-        /// <summary>
-        /// txtChannelID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtChannelID;
+        protected global::Ext.Net.ComboBox cmbMOType;
         
         /// <summary>
         /// txtMO control.
@@ -85,24 +49,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.TextField txtMO;
         
         /// <summary>
-        /// txtMOType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtMOType;
-        
-        /// <summary>
-        /// txtOrderIndex control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtOrderIndex;
-        
-        /// <summary>
         /// txtSPCode control.
         /// </summary>
         /// <remarks>
@@ -112,49 +58,40 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.TextField txtSPCode;
         
         /// <summary>
-        /// txtProvince control.
+        /// chkHasSubCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtProvince;
+        protected global::Ext.Net.Checkbox chkHasSubCode;
         
         /// <summary>
-        /// txtDisableCity control.
+        /// txtSubCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtDisableCity;
+        protected global::Ext.Net.TextArea txtSubCode;
         
         /// <summary>
-        /// chkIsDiable control.
+        /// txtAllowAndDisableArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsDiable;
+        protected global::Ext.Net.TextArea txtAllowAndDisableArea;
         
         /// <summary>
-        /// txtSPType control.
+        /// txtGetway control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSPType;
-        
-        /// <summary>
-        /// txtCodeLength control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCodeLength;
+        protected global::Ext.Net.TextField txtGetway;
         
         /// <summary>
         /// txtDayLimit control.
@@ -175,6 +112,33 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.TextField txtMonthLimit;
         
         /// <summary>
+        /// txtCodeSendText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextArea txtCodeSendText;
+        
+        /// <summary>
+        /// txtProvince control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtProvince;
+        
+        /// <summary>
+        /// txtDisableCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtDisableCity;
+        
+        /// <summary>
         /// txtPrice control.
         /// </summary>
         /// <remarks>
@@ -182,24 +146,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtPrice;
-        
-        /// <summary>
-        /// txtSendText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtSendText;
-        
-        /// <summary>
-        /// chkHasFilters control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkHasFilters;
         
         /// <summary>
         /// btnSavelSPCode control.

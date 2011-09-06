@@ -1,70 +1,64 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeAdd.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeAdd" %>
-<ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="SPCode Add "
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
-    ConstrainHeader="true" Resizable="true" Layout="Fit">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeAdd.ascx.cs"
+    Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeAdd" %>
+<script type="text/javascript">
+    function ChangeCodeType(codeType, chkHasSubCode, txtSubCode) {
+        if (codeType == "1") {
+            chkHasSubCode.hide();
+            txtSubCode.hide();
+            chkHasSubCode.setValue(false);
+        }
+        else {
+            chkHasSubCode.show();
+            txtSubCode.show();
+            chkHasSubCode.setValue(true);
+        }
+    }
+</script>
+<ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSPCodeAdd" runat="server" Frame="true" Header="false"
-            MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"  AutoScroll="true"
-            Layout="Form">
+            MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
+            AutoScroll="true" Layout="Form">
             <Items>
-			
-						<ext:TextField ID="txtID" runat="server" FieldLabel="ID" AllowBlank="False"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtName" runat="server" FieldLabel="Name" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					
-						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="Description" AllowBlank="True"  AnchorHorizontal="95%"/>
-                   
-			
-						<ext:TextField ID="txtCode" runat="server" FieldLabel="Code" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtChannelID" runat="server" FieldLabel="ChannelID" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtMO" runat="server" FieldLabel="MO" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtMOType" runat="server" FieldLabel="MOType" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtOrderIndex" runat="server" FieldLabel="OrderIndex" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSPCode" runat="server" FieldLabel="SPCode" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtProvince" runat="server" FieldLabel="Province" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtDisableCity" runat="server" FieldLabel="DisableCity" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					                                         
-                                            <ext:Checkbox ID="chkIsDiable" runat="server" FieldLabel="IsDiable" Checked="false"  AnchorHorizontal="95%"/>
-                                       
-			
-						<ext:TextField ID="txtSPType" runat="server" FieldLabel="SPType" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtCodeLength" runat="server" FieldLabel="CodeLength" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtDayLimit" runat="server" FieldLabel="DayLimit" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="MonthLimit" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtPrice" runat="server" FieldLabel="Price" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSendText" runat="server" FieldLabel="SendText" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					                                         
-                                            <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="HasFilters" Checked="false"  AnchorHorizontal="95%"/>
-                                       
-
+                <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
+                    SelectedIndex="0" AnchorHorizontal="95%">
+                    <Items>
+                        <ext:ListItem Value="1" Text="精准指令"></ext:ListItem>
+                        <ext:ListItem Value="2" Text="模糊指令"></ext:ListItem>
+                        <ext:ListItem Value="3" Text="结束指令"></ext:ListItem>
+                        <ext:ListItem Value="4" Text="包含指令"></ext:ListItem>
+                        <ext:ListItem Value="5" Text="正则指令"></ext:ListItem>
+                        <ext:ListItem Value="6" Text="自定义指令"></ext:ListItem>
+                        <ext:ListItem Value="7" Text="多条件指令"></ext:ListItem>
+                        <ext:ListItem Value="8" Text="表达式指令"></ext:ListItem>
+                    </Items>
+                    <Listeners>
+                        <Select Handler="ChangeCodeType(#{cmbMOType}.getValue(),#{chkHasSubCode},#{txtSubCode});" />
+                    </Listeners>
+                </ext:ComboBox>
+                <ext:TextField ID="txtMO" runat="server" FieldLabel="指令" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtSPCode" runat="server" FieldLabel="通道号" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkHasSubCode" runat="server" FieldLabel="是否包含子指令" Checked="false"
+                    Hidden="true">
+                    <Listeners>
+                        <Check Handler="if (#{chkHasSubCode}.getValue()){#{txtSubCode}.setVisible(true);}else{#{txtSubCode}.setVisible(false);}" />
+                    </Listeners>
+                </ext:Checkbox>
+                <ext:TextArea ID="txtSubCode" runat="server" FieldLabel="子指令" AllowBlank="True" Note="多个指令使用|分隔，例：( 1|2|3 )"
+                    Hidden="true"  AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtAllowAndDisableArea" runat="server" FieldLabel="开通省份/屏蔽地市" AllowBlank="True"  AnchorHorizontal="95%" />
+                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True"  AnchorHorizontal="95%" />
+                <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True"  AnchorHorizontal="95%" />
+                <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True"  AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtCodeSendText" runat="server" FieldLabel="下发语" AllowBlank="True"  AnchorHorizontal="95%" />
+                <ext:TextField ID="txtProvince" runat="server" FieldLabel="Province" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtDisableCity" runat="server" FieldLabel="DisableCity" AllowBlank="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtPrice" runat="server" FieldLabel="Price" AllowBlank="True"
+                    AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
@@ -85,4 +79,3 @@
         </ext:Button>
     </Buttons>
 </ext:Window>
-
