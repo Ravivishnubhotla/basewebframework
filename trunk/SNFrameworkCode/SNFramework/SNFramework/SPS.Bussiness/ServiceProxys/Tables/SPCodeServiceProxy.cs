@@ -5,6 +5,7 @@ using System.Text;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.ConstClass;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
 
@@ -29,7 +30,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             code.ChannelID = channelEntity;
             code.OrderIndex = 0;
             code.Mo  = "";
-            code.MOType = "7";
+            code.MOType = DictionaryConst.Dictionary_CodeType_CodeDefault_Key;
             code.HasFilters = false;
             code.IsDiable = false;
 
