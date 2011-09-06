@@ -36,6 +36,8 @@ namespace SPSSiteTask
 
         private static int multithreadWebSiteTaskCount = 3;
 
+        private static List<int> notSendClientChannelIDList;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -89,6 +91,17 @@ namespace SPSSiteTask
             multithreadWebSite = ReadAppConfigString("MultithreadWebSite", multithreadWebSite);
 
             repeatLinkIDCode = ReadAppConfigString("RepeatLinkIDCode", repeatLinkIDCode);
+
+            string notSendClientChannelIDListString = ReadAppConfigString("NotSendClientChannelIDList", "");
+
+            string[] notSendClientChannelIDLists = notSendClientChannelIDListString.Split(',');
+
+            notSendClientChannelIDList = new List<int>();
+
+            foreach (string notSendClientChannelIdList in notSendClientChannelIDLists)
+            {
+                notSendClientChannelIDList.Add(int.Parse(notSendClientChannelIdList));
+            }
 
             multithreadWebSiteTaskCount = ReadAppConfigInt("MultithreadWebSiteTaskCount", multithreadWebSiteTaskCount);
 
@@ -263,6 +276,13 @@ namespace SPSSiteTask
             {
                 foreach (int channeClientId in sendTask.ChanneClientIds)
                 {
+
+                    if (notSendClientChannelIDList.Contains(channeClientId))
+                    {
+                        logger.Info("指令" + channeClientId.ToString() + "略过。。。");
+                        continue;
+                    }
+
                     try
                     {
                         logger.Info("批量发送" + channeClientId.ToString() + "开始");

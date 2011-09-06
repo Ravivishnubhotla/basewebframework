@@ -80,6 +80,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
             queryFilters.Add(new QueryFilter(SPChannelWrapper.PROPERTY_NAME_ISDISABLE,"false",FilterFunction.EqualTo));
 
+            string sname = txtSreachName.Text.Trim();
+
+            if (!string.IsNullOrEmpty(sname))
+                queryFilters.Add(new QueryFilter(SPChannelWrapper.PROPERTY_NAME_NAME, sname, FilterFunction.Contains));
+
             storeSPChannel.DataSource = SPChannelWrapper.FindAllByOrderByAndFilter(queryFilters,sortFieldName, (e.Dir == SortDirection.DESC), pageIndex, limit, out recordCount);
             e.TotalCount = recordCount;
 
