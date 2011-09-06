@@ -235,7 +235,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\SPDataService\SPDataService.wsdl" />
     <None Include="Service References\SPDataService\SPSSiteTask.SPDataService.ArrayOfInt.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

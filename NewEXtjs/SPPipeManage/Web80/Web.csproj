@@ -1195,7 +1195,9 @@
     <Content Include="Moudles\SPS\Reports\ReportDayTotal.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\DataConfig.xml" />
+    <Content Include="Config\DataConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Css\css.css" />
     <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
   </ItemGroup>

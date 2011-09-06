@@ -242,6 +242,16 @@
                                             <Click Handler="ReloadAllChannelInfo();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:TextField ID="txtSreachName" runat="server" EmptyText="输入通道名" />
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarButton ID='ToolbarButton3' runat="server" Text="查找" Icon="Find">
+                                        <Listeners>
+                                            <Click Handler="#{storeSPChannel}.reload();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                         <Listeners>
                                             <Click Handler="#{storeSPChannel}.reload();" />
