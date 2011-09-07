@@ -9,6 +9,8 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
 using SPS.Data.Tables.Container;
+using SPS.Data.AdoNet;
+using   SPS.Data.Tables.Container;
 
 
 
@@ -39,6 +41,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
 
 
+        public AdoNetDataObject AdoNetDb { set; get; }		
 
 		
     }

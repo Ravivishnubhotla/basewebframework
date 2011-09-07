@@ -91,6 +91,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
 
@@ -253,7 +254,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsDiable
+		public bool IsDiable
 		{
 			get
 			{
@@ -295,7 +296,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DayLimit
+		public string DayLimit
 		{
 			get
 			{
@@ -309,7 +310,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? MonthLimit
+		public string MonthLimit
 		{
 			get
 			{
@@ -351,7 +352,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? HasFilters
+		public bool HasFilters
 		{
 			get
 			{
@@ -416,6 +417,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.LastModifyAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool HasParamsConvert
+		{
+			get
+			{
+				return entity.HasParamsConvert;
+			}
+			set
+			{
+				entity.HasParamsConvert = value;
 			}
 		}
 		#endregion 

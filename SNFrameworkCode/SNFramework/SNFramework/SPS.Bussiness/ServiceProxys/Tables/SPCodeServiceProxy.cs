@@ -29,10 +29,18 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             code.Description = channelEntity.Name + "Ä¬ÈÏ±àÂë";
             code.ChannelID = channelEntity;
             code.OrderIndex = 0;
+            code.Code = channelEntity.Code + "DefaultCode";
             code.Mo  = "";
             code.MOType = DictionaryConst.Dictionary_CodeType_CodeDefault_Key;
             code.HasFilters = false;
+            code.SPCode = "";
+            code.CodeLength = 0;
+            code.SPType = "";
             code.IsDiable = false;
+            code.DayLimit = "";
+            code.MonthLimit = "";
+            code.SendText = "";
+            code.Price = 0;
 
             return code;
         }
