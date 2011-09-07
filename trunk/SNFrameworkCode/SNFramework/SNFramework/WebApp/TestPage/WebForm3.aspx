@@ -54,6 +54,47 @@
                 <ext:Button runat="server" Text="Cancel" />
             </Buttons>
         </ext:FormPanel>
+
+
+
+                <ext:MultiCombo ID="MultiCombo2" runat="server" SelectionMode="Selection" Width="260">
+            <Items>
+                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+                                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+                                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+                                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+                                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+                                <ext:ListItem Text="Item 1" Value="1" />
+                <ext:ListItem Text="Item 2" Value="2" />
+                <ext:ListItem Text="Item 3" Value="3" />
+                <ext:ListItem Text="Item 4" Value="4" />
+                <ext:ListItem Text="Item 5" Value="5" />
+            </Items>
+            
+            <SelectedItems>
+ 
+            </SelectedItems>
+        </ext:MultiCombo>
     </form>
 </body>
 </html>
