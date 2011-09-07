@@ -38,5 +38,14 @@ namespace Legendigital.Common.WebApp.TestPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.FormPanel Panel2;
+        
+        /// <summary>
+        /// MultiCombo2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.MultiCombo MultiCombo2;
     }
 }
