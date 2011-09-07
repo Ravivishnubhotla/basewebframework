@@ -121,6 +121,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Window winQuickAddChannel;
         
         /// <summary>
+        /// winChannelEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winChannelEdit;
+        
+        /// <summary>
         /// winChannelParamsManage control.
         /// </summary>
         /// <remarks>
