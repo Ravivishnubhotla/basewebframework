@@ -72,8 +72,8 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISDIABLE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ISDIABLE));		
 		public static readonly StringProperty PROPERTY_SPTYPE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SPTYPE));		
 		public static readonly IntProperty PROPERTY_CODELENGTH = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CODELENGTH));		
-		public static readonly IntProperty PROPERTY_DAYLIMIT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYLIMIT));		
-		public static readonly IntProperty PROPERTY_MONTHLIMIT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MONTHLIMIT));		
+		public static readonly StringProperty PROPERTY_DAYLIMIT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYLIMIT));		
+		public static readonly StringProperty PROPERTY_MONTHLIMIT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MONTHLIMIT));		
 		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PRICE));		
 		public static readonly StringProperty PROPERTY_SENDTEXT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SENDTEXT));		
 		public static readonly BoolProperty PROPERTY_HASFILTERS = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASFILTERS));		
@@ -81,6 +81,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYBY));		
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly BoolProperty PROPERTY_HASPARAMSCONVERT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASPARAMSCONVERT));		
       
 		#region 子类集合字段查询字段
 	
@@ -127,9 +128,9 @@ namespace SPS.Data.Tables
                 case "CodeLength":
                     return typeof (int);
                 case "DayLimit":
-                    return typeof (int);
+                    return typeof (string);
                 case "MonthLimit":
-                    return typeof (int);
+                    return typeof (string);
                 case "Price":
                     return typeof (decimal);
                 case "SendText":
@@ -144,6 +145,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "LastModifyAt":
                     return typeof (DateTime);
+                case "HasParamsConvert":
+                    return typeof (bool);
           }
 			return typeof(string);
         }
