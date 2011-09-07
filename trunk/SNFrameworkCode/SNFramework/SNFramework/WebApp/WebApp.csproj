@@ -63,6 +63,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Ext.Net.Utilities.dll</HintPath>
     </Reference>
+    <Reference Include="Ext.Net.UX">
+      <HintPath>..\ThirdsDll\Ext.Net.UX.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Iesi.Collections.dll</HintPath>
@@ -331,6 +334,7 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
     <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="TestPage\WebForm2.aspx" />
+    <Content Include="TestPage\WebForm3.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1158,6 +1162,13 @@
     </Compile>
     <Compile Include="TestPage\WebForm2.aspx.designer.cs">
       <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage\WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -37,6 +37,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
 	
@@ -56,18 +57,19 @@ namespace SPS.Entity.Tables
 		private string _sPCode;
 		private string _province;
 		private string _disableCity;
-		private bool? _isDiable;
+		private bool _isDiable;
 		private string _sPType;
 		private int? _codeLength;
-		private int? _dayLimit;
-		private int? _monthLimit;
+		private string _dayLimit;
+		private string _monthLimit;
 		private decimal? _price;
 		private string _sendText;
-		private bool? _hasFilters;
+		private bool _hasFilters;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
+		private bool _hasParamsConvert;
 		
 		#endregion
 
@@ -82,24 +84,25 @@ namespace SPS.Entity.Tables
 			_description = null;
 			_code = null;
 			_channelID = null;
-			_mo = null;
-			_mOType = null;
+			_mo = String.Empty;
+			_mOType = String.Empty;
 			_orderIndex = null;
 			_sPCode = null;
 			_province = null;
 			_disableCity = null;
-			_isDiable = null;
+			_isDiable = false;
 			_sPType = null;
 			_codeLength = null;
 			_dayLimit = null;
 			_monthLimit = null;
 			_price = null;
 			_sendText = null;
-			_hasFilters = null;
+			_hasFilters = false;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
+			_hasParamsConvert = false;
 		}
 		#endregion
 
@@ -107,7 +110,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool? isDiable, string sPType, int? codeLength, int? dayLimit, int? monthLimit, decimal? price, string sendText, bool? hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, bool hasParamsConvert)
 		{
 			_id = id;
 			_name = name;
@@ -132,6 +135,7 @@ namespace SPS.Entity.Tables
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
+			_hasParamsConvert = hasParamsConvert;
 		}
 		#endregion     
 	
@@ -319,7 +323,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsDiable
+		public virtual bool IsDiable
 		{
 			get { return _isDiable; }
 
@@ -364,12 +368,15 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DayLimit
+		public virtual string DayLimit
 		{
 			get { return _dayLimit; }
 
 			set	
 			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for DayLimit", value, value.ToString());
 				_isChanged |= (_dayLimit != value); _dayLimit = value;
 			}
 		}
@@ -378,12 +385,15 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? MonthLimit
+		public virtual string MonthLimit
 		{
 			get { return _monthLimit; }
 
 			set	
 			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for MonthLimit", value, value.ToString());
 				_isChanged |= (_monthLimit != value); _monthLimit = value;
 			}
 		}
@@ -423,7 +433,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? HasFilters
+		public virtual bool HasFilters
 		{
 			get { return _hasFilters; }
 
@@ -486,6 +496,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool HasParamsConvert
+		{
+			get { return _hasParamsConvert; }
+
+			set	
+			{
+				_isChanged |= (_hasParamsConvert != value); _hasParamsConvert = value;
 			}
 		}
 		/// <summary>

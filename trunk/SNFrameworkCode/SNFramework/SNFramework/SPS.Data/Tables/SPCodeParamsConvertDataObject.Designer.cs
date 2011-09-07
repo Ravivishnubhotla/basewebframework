@@ -41,8 +41,8 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_CODEID_ISDIABLE = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".IsDiable"));
 		public static readonly StringProperty PROPERTY_CODEID_SPTYPE = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".SPType"));
 		public static readonly IntProperty PROPERTY_CODEID_CODELENGTH = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CodeLength"));
-		public static readonly IntProperty PROPERTY_CODEID_DAYLIMIT = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".DayLimit"));
-		public static readonly IntProperty PROPERTY_CODEID_MONTHLIMIT = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".MonthLimit"));
+		public static readonly StringProperty PROPERTY_CODEID_DAYLIMIT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".DayLimit"));
+		public static readonly StringProperty PROPERTY_CODEID_MONTHLIMIT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".MonthLimit"));
 		public static readonly DecimalProperty PROPERTY_CODEID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".Price"));
 		public static readonly StringProperty PROPERTY_CODEID_SENDTEXT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".SendText"));
 		public static readonly BoolProperty PROPERTY_CODEID_HASFILTERS = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasFilters"));
@@ -50,6 +50,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
 		public static readonly DateTimeProperty PROPERTY_CODEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly BoolProperty PROPERTY_CODEID_HASPARAMSCONVERT = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasParamsConvert"));
 		#endregion
 		public static readonly StringProperty PROPERTY_DIRECTIONTYPE = new StringProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_DIRECTIONTYPE));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeParamsConvertEntity.PROPERTY_NAME_CREATEBY));		
