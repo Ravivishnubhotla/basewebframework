@@ -14,7 +14,7 @@
         }
     }
 </script>
-    <ext:Store ID="storeMOType" runat="server" AutoLoad="false">
+<ext:store id="storeMOType" runat="server" autoload="false">
         <Proxy>
             <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
         </Proxy>
@@ -30,17 +30,17 @@
         <BaseParams>
             <ext:Parameter Name="GroupCode" Value="CodeType" Mode="Value" />
         </BaseParams>
-    </ext:Store>
-<ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
-    AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
+    </ext:store>
+<ext:window id="winSPCodeAdd" runat="server" icon="ApplicationAdd" title="快速添加指令"
+    width="400" height="270" autoshow="false" maximizable="true" modal="true" hidden="true"
+    autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSPCodeAdd" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             AutoScroll="true" Layout="Form">
             <Items>
                 <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
-                    SelectedIndex="0" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
+                    SelectedIndex="1" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
                     ValueField="Key">
                     <Listeners>
                         <Select Handler="ChangeCodeType(#{cmbMOType}.getValue(),#{chkHasSubCode},#{txtSubCode});" />
@@ -67,7 +67,9 @@
                     AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtCodeSendText" runat="server" FieldLabel="下发语" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtPrice" runat="server" FieldLabel="价格" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="价格" Text="1" AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤" Checked="false"  AnchorHorizontal="95%"/>
+                <ext:Checkbox ID="chkHasParamsConvert" runat="server" FieldLabel="是否转换" Checked="false"  AnchorHorizontal="95%"/>
             </Items>
         </ext:FormPanel>
     </Content>
@@ -90,4 +92,4 @@
     <Listeners>
     <BeforeShow Handler="#{storeMOType}.reload();"></BeforeShow>
     </Listeners>
-</ext:Window>
+</ext:window>

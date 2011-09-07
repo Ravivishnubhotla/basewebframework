@@ -92,8 +92,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     obj.IsDiable = this.chkIsDiable.Checked;
                     obj.SPType = this.txtSPType.Text.Trim();
                     obj.CodeLength = Convert.ToInt32(this.txtCodeLength.Text.Trim());
-                    obj.DayLimit = Convert.ToInt32(this.txtDayLimit.Text.Trim());
-                    obj.MonthLimit = Convert.ToInt32(this.txtMonthLimit.Text.Trim());
+                    obj.DayLimit =  this.txtDayLimit.Text.Trim();
+                    obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                     obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
                     obj.SendText = this.txtSendText.Text.Trim();
                     obj.HasFilters = this.chkHasFilters.Checked;
