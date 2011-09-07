@@ -4,11 +4,39 @@
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPChannelView.ascx" TagName="UCSPChannelView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
-    </ext:ResourceManagerProxy>
+    <ext:resourcemanagerproxy id="ScriptManagerProxy1" runat="server">
+    </ext:resourcemanagerproxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
+
+
+        var showCommands = function(grid, toolbar, rowIndex, record)
+        {
+
+            if (record.data.IsParamsConvert != null && record.data.IsParamsConvert)
+            {
+                toolbar.items.items[0].menu.items.items[6].show();
+            }
+
+            else {
+                toolbar.items.items[0].menu.items.items[6].hide();
+            }
+
+            if (record.data.HasFilters != null && record.data.HasFilters)
+            {
+                toolbar.items.items[0].menu.items.items[7].show();
+            }
+            else
+            {
+                toolbar.items.items[0].menu.items.items[7].hide();
+            }
+
+
+        };
+        
+        
+        
         var FormatBool = function(value) {
             if (value)
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
@@ -32,26 +60,26 @@
             win.maximize();
         }
         
-                  function CloseQuickAdd()
+     function CloseQuickAdd()
      {
         <%= winQuickAddChannel.ClientID %>.hide();
+     }
+                  
+     function CloseEdit()
+     {
+        <%= winChannelEdit.ClientID %>.hide();
      }
  
 
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
-                Ext.net.DirectMethods.UCSPChannelEdit.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
-                                                                }              
-                );
+ 
+               var win = <%= winChannelEdit.ClientID %>;
+               win.autoLoad.params.ChannelID = id.id;
+               win.setTitle('编辑通道');
+               win.show();
+               win.maximize();
             }
 			
 			            if (cmd == "cmdView") {
@@ -130,8 +158,8 @@
         }
 
     </script>
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSPChannel_Refresh">
+    <ext:store id="storeSPChannel" runat="server" autoload="true" remotesort="true" remotepaging="true"
+        onrefreshdata="storeSPChannel_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
@@ -152,15 +180,17 @@
                     <ext:RecordField Name="DefaultRate" Type="int" />
                     <ext:RecordField Name="UpperID" Type="int" />
                     <ext:RecordField Name="IsLogRequest" Type="Boolean" />
+                    <ext:RecordField Name="IsParamsConvert" Type="Boolean" />
+                    <ext:RecordField Name="HasFilters" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
-    </ext:Store>
+    </ext:store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
-    <uc3:UCSPChannelView ID="UCSPChannelView1" runat="server" />
-    <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
+    <uc2:ucspchanneledit id="UCSPChannelEdit1" runat="server" />
+    <uc3:ucspchannelview id="UCSPChannelView1" runat="server" />
+    <ext:viewport id="viewPortMain" runat="server" layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPChannel" runat="server" StoreID="storeSPChannel" StripeRows="true"
                 Title="通道管理" Icon="Table">
@@ -219,24 +249,26 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete"  CommandName="cmdDelete" Text="删除">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="DatabaseGo" CommandName="cmdManageParams" Text="接受参数管理">
+                                            </ext:MenuCommand>                                            
+                                            <ext:MenuCommand Icon="DatabaseLink" CommandName="cmdManageSycns" Text="同步参数管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand  Icon="Script" CommandName="cmdManageCodes" Text="代码管理">
+                                            <ext:MenuCommand Icon="Script" CommandName="cmdManageCodes" Text="代码管理">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="DatabaseRefresh" CommandName="cmdManageCoverts" Text="数据转换管理">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="DatabaseLightning" CommandName="cmdManageFilters" Text="过滤条件管理">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="DatabaseLink" CommandName="cmdManageSycns" Text="同步参数管理">
-                                            </ext:MenuCommand>
+
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
                             </Commands>
+                                                                <PrepareToolbar Fn="showCommands" />
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
@@ -250,20 +282,34 @@
                 </Listeners>
             </ext:GridPanel>
         </Items>
-    </ext:Viewport>
-    <ext:Window ID="winQuickAddChannel" runat="server" Title="Window" Frame="true" Width="800"
-        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" Hidden="true">
+    </ext:viewport>
+    <ext:window id="winQuickAddChannel" runat="server" title="Window" frame="true" width="800"
+        constrainheader="true" height="600" maximizable="true" closable="true" resizable="true"
+        modal="true" hidden="true">
         <AutoLoad Url="SPChannelQuickAdd.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
         </AutoLoad>
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-    <ext:Window ID="winChannelParamsManage" runat="server" Title="Window" Frame="true"
-        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" Hidden="true">
+    </ext:window>
+    <ext:window id="winChannelEdit" runat="server" title="Window" frame="true" width="800"
+        constrainheader="true" height="600" maximizable="true" closable="true" resizable="true"
+        modal="true" hidden="true">
+        <AutoLoad Url="SPChannelEdit.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:window>
+    <ext:window id="winChannelParamsManage" runat="server" title="Window" frame="true"
+        width="700" constrainheader="true" height="350" maximizable="true" closable="true"
+        resizable="true" modal="true" hidden="true">
         <AutoLoad Url="SPChannelParamsListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
@@ -274,10 +320,10 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-    <ext:Window ID="winChannelFiltersManage" runat="server" Title="Window" Frame="true"
-        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" Hidden="true">
+    </ext:window>
+    <ext:window id="winChannelFiltersManage" runat="server" title="Window" frame="true"
+        width="700" constrainheader="true" height="350" maximizable="true" closable="true"
+        resizable="true" modal="true" hidden="true">
         <AutoLoad Url="SPChannelFiltersListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
@@ -288,10 +334,10 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-    <ext:Window ID="winSycnParams" runat="server" Title="Window" Frame="true" Width="700"
-        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" Hidden="true">
+    </ext:window>
+    <ext:window id="winSycnParams" runat="server" title="Window" frame="true" width="700"
+        constrainheader="true" height="350" maximizable="true" closable="true" resizable="true"
+        modal="true" hidden="true">
         <AutoLoad Url="SPChannelSycnParamsListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
@@ -302,12 +348,12 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="700" Icon="Script"
-        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" Hidden="true">
-        <AutoLoad Url="../Codes/SPChannelCodeListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
-            ReloadOnEvent="true" ShowMask="true">
+    </ext:window>
+    <ext:window id="winCodes" runat="server" title="Window" frame="true" width="700"
+        icon="Script" constrainheader="true" height="350" maximizable="true" closable="true"
+        resizable="true" modal="true" hidden="true">
+        <AutoLoad Url="../Codes/SPChannelCodeListPage.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
                 </ext:Parameter>
@@ -316,12 +362,12 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-    <ext:Window ID="winParamsConvert" runat="server" Title="winParamsConvert" Frame="true" Width="700"
-        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" Hidden="true">
-        <AutoLoad Url="SPChannelParamsConvertListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
-            ReloadOnEvent="true" ShowMask="true">
+    </ext:window>
+    <ext:window id="winParamsConvert" runat="server" title="winParamsConvert" frame="true"
+        width="700" constrainheader="true" height="350" maximizable="true" closable="true"
+        resizable="true" modal="true" hidden="true">
+        <AutoLoad Url="SPChannelParamsConvertListPage.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
                 </ext:Parameter>
@@ -330,9 +376,5 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>
-
-
-
-    
+    </ext:window>
 </asp:Content>

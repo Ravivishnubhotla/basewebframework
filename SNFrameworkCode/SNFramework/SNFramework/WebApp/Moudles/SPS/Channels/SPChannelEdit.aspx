@@ -62,7 +62,7 @@
     </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
-            <ext:FormPanel ID="panlQuickAddChannel" runat="server" Title="快速添加通道" Frame="true"
+            <ext:FormPanel ID="panlQuickAddChannel" runat="server" Title="编辑通道" Frame="true"
                 AutoScroll="true">
                 <Items>
                     <ext:FieldSet ID="FieldSet3" runat="server" Title="通道基本信息" AutoHeight="true" LabelWidth="75"
@@ -106,28 +106,14 @@
                     <ext:FieldSet ID="fsAdapter" runat="server" CheckboxToggle="false" Title="数据接收适配器"
                         Layout="Form" LabelWidth="130">
                         <Items>
-                            <ext:RadioGroup ID="rdgSelectDataAdapter" runat="server" ColumnsWidths="150,150,150"
-                                AnchorHorizontal="98%" FieldLabel="选择数据接收适配器">
-                                <Items>
-                                    <ext:Radio ID="Radio4" runat="server" BoxLabel="HttpGetPost适配器" InputValue="0" Checked="true" />
-                                    <ext:Radio ID="Radio5" runat="server" BoxLabel="XMLPost适配器" InputValue="1" />
-                                    <ext:Radio ID="Radio6" runat="server" BoxLabel="自定义适配器" InputValue="2" />
-                                </Items>
-                                <Listeners>
-                                    <Change Handler="ChangeAdapter(#{rdgSelectDataAdapter},#{txtAdapterHandleName});">
-                                    </Change>
-                                </Listeners>
-                            </ext:RadioGroup>
+                            <ext:DisplayField ID="lblDataAdapterType" FieldLabel="数据接收适配器" AnchorHorizontal="98%"
+                                runat="server">
+                            </ext:DisplayField>
                             <ext:TextField ID="txtAdapterHandleName" runat="server" Hidden="true" Disabled="true"
                                 Text="HttpGetPostAdapter.ashx" FieldLabel="适配器地址" AnchorHorizontal="98%" AllowBlank="false" />
-                        </Items>
-                    </ext:FieldSet>
-                    <ext:FieldSet ID="fsParams" runat="server" Height="225" CheckboxToggle="false" Title="通道参数设置"
-                        Layout="Form" Frame="true">
-                        <Items>
                             <ext:DisplayField ID="lblChannelType" FieldLabel="通道类型" AnchorHorizontal="98%" runat="server">
                             </ext:DisplayField>
-                            <ext:ComboBox ID="cmbIVRType" FieldLabel="时长策略" AnchorHorizontal="98%  " runat="server"
+                            <ext:ComboBox ID="cmbIVRType" FieldLabel="时长策略" Hidden="true" AnchorHorizontal="98%  " runat="server"
                                 Editable="false" SelectedIndex="0">
                                 <Items>
                                     <ext:ListItem Text="不计算时长" Value="0" />
@@ -136,7 +122,7 @@
                                 <Listeners>
                                 </Listeners>
                             </ext:ComboBox>
-                            <ext:TextField ID="txtIVRTimeFormat" runat="server" AnchorHorizontal="98%" FieldLabel="日期格式"
+                            <ext:TextField ID="txtIVRTimeFormat" runat="server"  Hidden="true" AnchorHorizontal="98%" FieldLabel="日期格式"
                                 AllowBlank="True" />
                         </Items>
                     </ext:FieldSet>
@@ -222,10 +208,10 @@
                     </ext:FieldSet>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btnAdd" runat="server" Text="添加" Icon="Accept">
+                    <ext:Button ID="btnEdit" runat="server" Text="编辑" Icon="Accept">
                         <DirectEvents>
-                            <Click Before="if(!#{panlQuickAddChannel}.getForm().isValid()) return false;" OnEvent="btnAdd_Click"
-                                Success="Ext.MessageBox.alert('操作成功', '快速添加通道成功！' ,callback);function callback(id) {#{panlQuickAddChannel}.getForm().reset();parent.RefreshSPChannelData();parent.CloseQuickAdd(); };
+                            <Click Before="if(!#{panlQuickAddChannel}.getForm().isValid()) return false;" OnEvent="btnEdit_Click"
+                                Success="Ext.MessageBox.alert('操作成功', '编辑通道成功！' ,callback);function callback(id) {#{panlQuickAddChannel}.getForm().reset();parent.RefreshSPChannelData();parent.CloseEdit(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                                 <EventMask ShowMask="true" Msg="数据保存中,请稍等....." />
                             </Click>
@@ -233,7 +219,7 @@
                     </ext:Button>
                     <ext:Button ID="btnClose" runat="server" Text="取消" Icon="Decline">
                         <Listeners>
-                            <Click Handler="parent.CloseQuickAdd();"></Click>
+                            <Click Handler="parent.CloseEdit();"></Click>
                         </Listeners>
                     </ext:Button>
                 </Buttons>

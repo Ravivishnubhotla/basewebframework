@@ -148,40 +148,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.FieldSet fsAdapter;
         
         /// <summary>
-        /// rdgSelectDataAdapter control.
+        /// lblDataAdapterType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.RadioGroup rdgSelectDataAdapter;
-        
-        /// <summary>
-        /// Radio4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio4;
-        
-        /// <summary>
-        /// Radio5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio5;
-        
-        /// <summary>
-        /// Radio6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Radio Radio6;
+        protected global::Ext.Net.DisplayField lblDataAdapterType;
         
         /// <summary>
         /// txtAdapterHandleName control.
@@ -191,15 +164,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtAdapterHandleName;
-        
-        /// <summary>
-        /// fsParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.FieldSet fsParams;
         
         /// <summary>
         /// lblChannelType control.
@@ -508,13 +472,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Checkbox chkHasFilters;
         
         /// <summary>
-        /// btnAdd control.
+        /// btnEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.Button btnEdit;
         
         /// <summary>
         /// btnClose control.
