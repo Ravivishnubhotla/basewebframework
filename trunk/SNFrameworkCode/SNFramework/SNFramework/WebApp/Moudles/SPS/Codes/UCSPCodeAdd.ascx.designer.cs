@@ -40,6 +40,33 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.FormPanel formPanelSPCodeAdd;
         
         /// <summary>
+        /// txtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtName;
+        
+        /// <summary>
+        /// txtCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtCode;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextArea txtDescription;
+        
+        /// <summary>
         /// cmbMOType control.
         /// </summary>
         /// <remarks>
@@ -65,6 +92,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtSPCode;
+        
+        /// <summary>
+        /// numOrderIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numOrderIndex;
         
         /// <summary>
         /// chkHasSubCode control.
