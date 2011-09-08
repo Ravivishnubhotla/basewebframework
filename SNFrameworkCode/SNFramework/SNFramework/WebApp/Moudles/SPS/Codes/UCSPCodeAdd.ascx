@@ -39,6 +39,9 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             AutoScroll="true" Layout="Form">
             <Items>
+                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
                     SelectedIndex="1" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
                     ValueField="Key">
@@ -48,6 +51,7 @@
                 </ext:ComboBox>
                 <ext:TextField ID="txtMO" runat="server" FieldLabel="指令" AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSPCode" runat="server" FieldLabel="通道号" AllowBlank="True" AnchorHorizontal="95%" />
+                                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="价格" Text="1" DecimalPrecision="0" AllowBlank="false" AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkHasSubCode" runat="server" FieldLabel="是否包含子指令" Checked="false"
                     Hidden="true">
                     <Listeners>
@@ -77,8 +81,8 @@
         <ext:Button ID="btnSavelSPCode" runat="server" Text="Add" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPCodeAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPCode_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPCodeAdd}.getForm().reset();#{storeSPCode}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+                    Success="Ext.MessageBox.alert('操作成功', '添加指令成功' ,callback);function callback(id) {#{formPanelSPCodeAdd}.getForm().reset();#{storeSPCode}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

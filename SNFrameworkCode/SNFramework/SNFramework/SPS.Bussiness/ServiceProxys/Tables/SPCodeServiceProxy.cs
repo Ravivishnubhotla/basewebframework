@@ -14,8 +14,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPCodeServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPCodeEntity> ,ISPCodeServiceProxyDesigner
     {
-
-
+	    void QuickAddCode(SPCodeEntity codeEntity, bool hasSubCode, string subCode);
     }
 
     internal partial class SPCodeServiceProxy : ISPCodeServiceProxy
@@ -43,6 +42,52 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             code.Price = 0;
 
             return code;
+        }
+
+        public void QuickAddCode(SPCodeEntity codeEntity, bool hasSubCode, string subCode)
+        {
+            if (this.SelfDataObj.GetCodeByCode(codeEntity.Code)!=null)
+            {
+                throw new Exception("编码已存在！");
+            }
+            if (!codeEntity.HasFilters && this.SelfDataObj.GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(codeEntity.Mo, codeEntity.SPCode, codeEntity.MOType) != null)
+            {
+                throw new Exception("该指令已存在！");
+            }
+
+            this.SelfDataObj.Save(codeEntity);
+
+            if(codeEntity.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key && hasSubCode)
+            {
+                string[] subcodes = subCode.Split(("|").ToCharArray());
+                foreach (string subc in subcodes)
+                {
+                    SPCodeEntity subcode = new SPCodeEntity();
+
+                    subcode.Name = codeEntity.Name + subc;
+                    subcode.Description = codeEntity.Description;
+                    subcode.Code = codeEntity.Code + subc;
+                    subcode.ChannelID = codeEntity.ChannelID;
+                    subcode.Mo = codeEntity.Mo + subc;
+                    subcode.MOType = codeEntity.MOType;
+                    subcode.OrderIndex = codeEntity.OrderIndex + 1;
+                    subcode.SPCode = codeEntity.SPCode;
+                    subcode.Province = codeEntity.Province;
+                    subcode.DisableCity = codeEntity.DisableCity;
+                    subcode.IsDiable = false;
+                    subcode.SPType = "1";
+                    subcode.CodeLength = codeEntity.Mo.Length;
+                    subcode.DayLimit = codeEntity.DayLimit;
+                    subcode.MonthLimit = codeEntity.MonthLimit;
+                    subcode.Price = codeEntity.Price;
+                    subcode.SendText = codeEntity.SendText;
+                    subcode.HasFilters = codeEntity.HasFilters;
+                    subcode.HasParamsConvert = codeEntity.HasParamsConvert;
+
+                    this.SelfDataObj.Save(subcode);
+                }
+            }
+ 
         }
     }
 }

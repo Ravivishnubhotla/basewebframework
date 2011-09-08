@@ -29,26 +29,26 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
 
                     if (obj != null)
                     {
-                        //this.txtID.Text = obj.ID.ToString();
+                        this.hidId.Text = obj.Id.ToString();
                         this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                         this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                         this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
-                        this.txtChannelID.Text = obj.ChannelID.ToString();
-                        //this.txtMO.Text = ValueConvertUtil.ConvertStringValue(obj.MO);
-                        this.txtMOType.Text = ValueConvertUtil.ConvertStringValue(obj.MOType);
-                        this.txtOrderIndex.Text = obj.OrderIndex.ToString();
+ 
+                        this.txtMO.Text = ValueConvertUtil.ConvertStringValue(obj.Mo);
+                        this.cmbMOType.Value = ValueConvertUtil.ConvertStringValue(obj.MOType);
+                        this.numOrderIndex.Text = obj.OrderIndex.ToString();
                         this.txtSPCode.Text = ValueConvertUtil.ConvertStringValue(obj.SPCode);
                         this.txtProvince.Text = ValueConvertUtil.ConvertStringValue(obj.Province);
                         this.txtDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
-                        this.chkIsDiable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsDiable);
-                        this.txtSPType.Text = ValueConvertUtil.ConvertStringValue(obj.SPType);
-                        this.txtCodeLength.Text = obj.CodeLength.ToString();
+                        this.chkIsDiable.Checked = obj.IsDiable;
+ 
+ 
                         this.txtDayLimit.Text = obj.DayLimit.ToString();
                         this.txtMonthLimit.Text = obj.MonthLimit.ToString();
                         this.txtPrice.Text = obj.Price.ToString();
-                        this.txtSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
-                        this.chkHasFilters.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.HasFilters);
-
+                        this.txtCodeSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
+                        this.chkHasFilters.Checked = obj.HasFilters;
+                        this.chkHasParamsConvert.Checked = obj.HasParamsConvert;
 
 
 
@@ -61,14 +61,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     else
                     {
                         ResourceManager.AjaxSuccess = false;
-                        ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                        ResourceManager.AjaxErrorMessage = "Error Message:Data does not exist";
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
                     return;
                 }
             }
@@ -78,26 +78,25 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                 try
                 {
                     SPCodeWrapper obj = SPCodeWrapper.FindById(int.Parse(hidId.Text.Trim()));
-                    obj.Id = Convert.ToInt32(this.txtID.Text.Trim());
+                    obj.Id = Convert.ToInt32(this.hidId.Text.Trim());
                     obj.Name = this.txtName.Text.Trim();
                     obj.Description = this.txtDescription.Text.Trim();
                     obj.Code = this.txtCode.Text.Trim();
-                    //obj.ChannelID = Convert.ToInt32(this.txtChannelID.Text.Trim());
-                    //obj.MO = this.txtMO.Text.Trim();
-                    obj.MOType = this.txtMOType.Text.Trim();
-                    obj.OrderIndex = Convert.ToInt32(this.txtOrderIndex.Text.Trim());
+                    obj.Mo = this.txtMO.Text.Trim();
+                    obj.MOType = this.cmbMOType.SelectedItem.Value;
+                    obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
                     obj.SPCode = this.txtSPCode.Text.Trim();
                     obj.Province = this.txtProvince.Text.Trim();
                     obj.DisableCity = this.txtDisableCity.Text.Trim();
                     obj.IsDiable = this.chkIsDiable.Checked;
-                    obj.SPType = this.txtSPType.Text.Trim();
-                    obj.CodeLength = Convert.ToInt32(this.txtCodeLength.Text.Trim());
+
+                    obj.CodeLength = obj.Mo.Length;
                     obj.DayLimit =  this.txtDayLimit.Text.Trim();
                     obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                     obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                    obj.SendText = this.txtSendText.Text.Trim();
+                    obj.SendText = this.txtCodeSendText.Text.Trim();
                     obj.HasFilters = this.chkHasFilters.Checked;
-
+                    obj.HasParamsConvert = this.chkHasParamsConvert.Checked;
 
                     SPCodeWrapper.Update(obj);
 

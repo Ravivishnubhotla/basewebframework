@@ -11,5 +11,28 @@ namespace SPS.Data.Tables
 {
     public partial class SPCodeDataObject
     {
+        public SPCodeEntity GetCodeByCode(string code)
+        {
+            NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_CODE.Eq(code));
+ 
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
+
+        public SPCodeEntity GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(string mo, string spCode, string moType)
+        {
+            NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MO.Eq(mo));
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MOTYPE.Eq(moType));
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODE.Eq(spCode));
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_HASFILTERS.Eq(false));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
