@@ -253,7 +253,7 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="DatabaseGo" CommandName="cmdManageParams" Text="接受参数管理">
+                                            <ext:MenuCommand Icon="DatabaseGo" CommandName="cmdManageParams" Text="接收参数管理">
                                             </ext:MenuCommand>                                            
                                             <ext:MenuCommand Icon="DatabaseLink" CommandName="cmdManageSycns" Text="同步参数管理">
                                             </ext:MenuCommand>

@@ -1257,6 +1257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Browsers\" />
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
@@ -1268,6 +1269,7 @@
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="Moudles\SystemManage\SystemApplicationAndMenus\App_LocalResources\" />
+    <Folder Include="SPSInterface\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.en-US.xml" />
