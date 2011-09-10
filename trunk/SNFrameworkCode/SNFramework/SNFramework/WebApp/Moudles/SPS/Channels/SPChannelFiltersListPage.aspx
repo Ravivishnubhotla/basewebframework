@@ -12,9 +12,9 @@
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
-                return 'false';
+                return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
         }
 
 
