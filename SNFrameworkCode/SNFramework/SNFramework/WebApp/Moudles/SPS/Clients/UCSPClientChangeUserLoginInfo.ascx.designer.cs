@@ -10,123 +10,87 @@
 namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
     
     
-    public partial class SPSClientListPage {
+    public partial class UCSPClientChangeUserLoginInfo {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// winSPClientChangeUserLoginInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.Window winSPClientChangeUserLoginInfo;
         
         /// <summary>
-        /// storeSPSClient control.
+        /// formPanelSPClientChangeUserLoginInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPSClient;
+        protected global::Ext.Net.FormPanel formPanelSPClientChangeUserLoginInfo;
         
         /// <summary>
-        /// UCSPSClientAdd1 control.
+        /// hidId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientAdd UCSPSClientAdd1;
+        protected global::Ext.Net.Hidden hidId;
         
         /// <summary>
-        /// UCSPSClientEdit1 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientEdit UCSPSClientEdit1;
+        protected global::Ext.Net.DisplayField txtName;
         
         /// <summary>
-        /// UCSPSClientView1 control.
+        /// txtUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientView UCSPSClientView1;
+        protected global::Ext.Net.TextField txtUserID;
         
         /// <summary>
-        /// UCSPClientChangeUserLoginInfo1 control.
+        /// chkChangePassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientChangeUserLoginInfo UCSPClientChangeUserLoginInfo1;
+        protected global::Ext.Net.Checkbox chkChangePassword;
         
         /// <summary>
-        /// viewPortMain control.
+        /// txtUserPasword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.TextField txtUserPasword;
         
         /// <summary>
-        /// gridPanelSPSClient control.
+        /// btnSaveSPClientChangeUserLoginInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPSClient;
+        protected global::Ext.Net.Button btnSaveSPClientChangeUserLoginInfo;
         
         /// <summary>
-        /// tbTop control.
+        /// btnCancelSPClientChangeUserLoginInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
-        
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
-        
-        /// <summary>
-        /// btnRefresh control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
-        
-        /// <summary>
-        /// PagingToolBar1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.Button btnCancelSPClientChangeUserLoginInfo;
     }
 }

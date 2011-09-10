@@ -57,7 +57,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPClientCodeRelationAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSPClientCodeRelation_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPClientCodeRelationAdd}.getForm().reset();#{storeSPClientCodeRelation}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

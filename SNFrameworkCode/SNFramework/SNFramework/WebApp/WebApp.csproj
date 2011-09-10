@@ -196,6 +196,7 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
     <Content Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationView.ascx" />
@@ -574,6 +575,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.designer.cs">
       <DependentUpon>SPSClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx.cs">
+      <DependentUpon>UCSPClientChangeUserLoginInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx.designer.cs">
+      <DependentUpon>UCSPClientChangeUserLoginInfo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx.cs">
       <DependentUpon>UCSPClientCodeRelationAdd.ascx</DependentUpon>

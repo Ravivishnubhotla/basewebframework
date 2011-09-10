@@ -28,7 +28,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemResourcesAdd}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSystemResources_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a Resourcse success!' ,callback);function callback(id) {#{formPanelSystemResourcesAdd}.getForm().reset();RefreshTreeList1(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

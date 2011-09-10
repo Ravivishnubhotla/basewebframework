@@ -20,7 +20,6 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
@@ -49,7 +48,6 @@ namespace SPS.Entity.Tables
 		private int? _userID;
 		private bool? _isDefaultClient;
 		private bool? _syncData;
-		private bool? _sycnResendFailedData;
 		private int? _sycnRetryTimes;
 		private string _syncType;
 		private int? _sycnNotInterceptCount;
@@ -79,7 +77,6 @@ namespace SPS.Entity.Tables
 			_userID = null;
 			_isDefaultClient = null;
 			_syncData = null;
-			_sycnResendFailedData = null;
 			_sycnRetryTimes = null;
 			_syncType = null;
 			_sycnNotInterceptCount = null;
@@ -101,7 +98,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, bool? sycnResendFailedData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_name = name;
@@ -109,7 +106,6 @@ namespace SPS.Entity.Tables
 			_userID = userID;
 			_isDefaultClient = isDefaultClient;
 			_syncData = syncData;
-			_sycnResendFailedData = sycnResendFailedData;
 			_sycnRetryTimes = sycnRetryTimes;
 			_syncType = syncType;
 			_sycnNotInterceptCount = sycnNotInterceptCount;
@@ -216,20 +212,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_syncData != value); _syncData = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? SycnResendFailedData
-		{
-			get { return _sycnResendFailedData; }
-
-			set	
-			{
-				_isChanged |= (_sycnResendFailedData != value); _sycnResendFailedData = value;
 			}
 		}
 

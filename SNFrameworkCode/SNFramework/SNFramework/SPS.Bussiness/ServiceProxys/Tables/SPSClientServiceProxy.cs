@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -13,8 +15,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPSClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSClientEntity> ,ISPSClientServiceProxyDesigner
     {
-
-
+	    void QuickAdd(SPSClientEntity clientEntity, string loginId, string password);
     }
 
     internal partial class SPSClientServiceProxy : ISPSClientServiceProxy
@@ -33,10 +34,22 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             spClientEntity.DefaultShowRecordDays = 100;
             spClientEntity.InterceptRate = 0;
             spClientEntity.SyncData = false;
-            spClientEntity.SycnResendFailedData = false;
+ 
             spClientEntity.SycnRetryTimes = 0;
 
             return spClientEntity;
+        }
+
+        public void QuickAdd(SPSClientEntity clientEntity, string loginId, string password)
+        {
+            int spClientuserID = SystemUserWrapper.QuickAddUser(loginId, RoleCodeList.ROLE_CODE_SPDOWNUSER, password, loginId + SystemConfigConst.Config_SysDefaultUsermail);
+
+            if (spClientuserID < 0)
+                throw new Exception("Create sPClient failed");
+            clientEntity.UserID = spClientuserID;
+
+            SelfDataObj.Save(clientEntity);
+
         }
     }
 }

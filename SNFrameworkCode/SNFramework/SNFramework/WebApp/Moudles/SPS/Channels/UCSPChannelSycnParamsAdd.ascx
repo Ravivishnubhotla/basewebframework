@@ -40,7 +40,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPChannelSycnParamsAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPChannelSycnParams_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPChannelSycnParamsAdd}.getForm().reset();#{storeSPChannelSycnParams}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

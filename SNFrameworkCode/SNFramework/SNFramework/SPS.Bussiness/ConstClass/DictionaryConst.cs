@@ -282,6 +282,27 @@ namespace SPS.Bussiness.ConstClass
         public const string Dictionary_CodeType_CodeExpression_Key = "8";
         #endregion
 
+        public const string Dictionary_GroupCode_DataSycnType = "DataSycnType";
+
+        public static List<SystemDictionaryWrapper> DataSycnTypeDictionary
+        {
+            get
+            {
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_DataSycnType);
+            }
+        }
+
+        public static string ParseDataSycnTypeDictionaryKey(string key)
+        {
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_DataSycnType, key);
+        }
+        #region KeyList
+        ///异步同步
+        public const string Dictionary_DataSycnType_AsynType_Key = "1";
+        ///即时同步
+        public const string Dictionary_DataSycnType_SycnType_Key = "2";
+        #endregion
+
 
 
     }

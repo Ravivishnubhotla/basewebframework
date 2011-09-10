@@ -74,7 +74,6 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
@@ -176,20 +175,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SyncData = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? SycnResendFailedData
-		{
-			get
-			{
-				return entity.SycnResendFailedData;
-			}
-			set
-			{
-				entity.SycnResendFailedData = value;
 			}
 		}
 		/// <summary>

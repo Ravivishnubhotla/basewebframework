@@ -43,7 +43,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
                 obj.UseClientDefaultSycnSetting = this.chkUseClientDefaultSycnSetting.Checked;
                 obj.SyncData = this.chkSyncData.Checked;
-                obj.SycnResendFailedData = this.chkSycnResendFailedData.Checked;
+ 
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
                 obj.SyncType = this.txtSyncType.Text.Trim();
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();

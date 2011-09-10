@@ -43,7 +43,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPClientCodeSycnParamsAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPClientCodeSycnParams_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPClientCodeSycnParamsAdd}.getForm().reset();#{storeSPClientCodeSycnParams}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

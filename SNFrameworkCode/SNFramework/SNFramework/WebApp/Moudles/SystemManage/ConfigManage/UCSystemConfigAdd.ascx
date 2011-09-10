@@ -21,7 +21,7 @@
                                                                 id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshGroupData);            
@@ -41,7 +41,7 @@
                 Ext.net.DirectMethods.UCSystemConfigGroupEdit.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshGroupData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshGroupData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -55,7 +55,7 @@
         Ext.net.DirectMethods.UCSystemConfigGroupAdd.Show(
                                                                 {
                                                                     failure: function (msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg, RefreshGroupData);
+                                                                        Ext.Msg.alert('操作失败', msg, RefreshGroupData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,

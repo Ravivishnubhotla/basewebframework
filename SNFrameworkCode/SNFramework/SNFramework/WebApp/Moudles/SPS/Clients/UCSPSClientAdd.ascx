@@ -1,46 +1,48 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSClientAdd.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientAdd" %>
-<ext:Window ID="winSPSClientAdd" runat="server" Icon="ApplicationAdd" Title="SPSClient Add "
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
-    ConstrainHeader="true" Resizable="true" Layout="Fit">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSClientAdd.ascx.cs"
+    Inherits="Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientAdd" %>
+    <script type="text/javascript">
+        function ShowSycn(chkSyncData, txtRecieveDataUrl, txtOkMessage, txtFailedMessage) {
+            //alert(chkSyncData);
+            //alert(chkSyncData.getValue());
+            if(chkSyncData.getValue()) {
+                txtRecieveDataUrl.show();
+                txtOkMessage.show();
+                txtFailedMessage.show();
+            }
+            else {
+                txtRecieveDataUrl.hide();
+                txtOkMessage.hide();
+                txtFailedMessage.hide();                
+            }
+        }
+    </script>
+<ext:window id="winSPSClientAdd" runat="server" icon="ApplicationAdd" title="SPSClient Add "
+    width="400" height="270" autoshow="false" maximizable="true" modal="true" hidden="true"
+    autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSPSClientAdd" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"  AutoScroll="true"
             Layout="Form">
             <Items>
 			
-						<ext:TextField ID="txtName" runat="server" FieldLabel="Name" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					
-						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="Description" AllowBlank="True"  AnchorHorizontal="95%"/>
-                   
-			
-						<ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="RecieveDataUrl" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtUserID" runat="server" FieldLabel="UserID" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-					                                         
-                                            <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="SyncData" Checked="false"  AnchorHorizontal="95%"/>
-                                       
-			
-						<ext:TextField ID="txtOkMessage" runat="server" FieldLabel="OkMessage" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="FailedMessage" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtSyncType" runat="server" FieldLabel="SyncType" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtAlias" runat="server" FieldLabel="Alias" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtInterceptRate" runat="server" FieldLabel="InterceptRate" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-			
-						<ext:TextField ID="txtDefaultPrice" runat="server" FieldLabel="DefaultPrice" AllowBlank="True"  AnchorHorizontal="95%" />
-              
-
+						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="false"  AnchorHorizontal="95%" />
+						<ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="true"  AnchorHorizontal="95%"/>
+                        <ext:NumberField ID="txtInterceptRate" runat="server" FieldLabel="默认扣率" AllowBlank="false"  AnchorHorizontal="95%" />
+                        <ext:NumberField ID="txtNotInterceptCount" runat="server" FieldLabel="默认指令免扣数" AllowBlank="false"  AnchorHorizontal="95%" />
+                        <ext:NumberField ID="numShowDayRecord" runat="server" FieldLabel="默认数据保留天数" AllowBlank="false"  AnchorHorizontal="95%" />
+                        <ext:NumberField ID="txtDefaultPrice" runat="server" FieldLabel="默认价格" AllowBlank="false"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtUserID" runat="server" FieldLabel="登陆用户ID" AllowBlank="false"  AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtUserPasword" runat="server" FieldLabel="登陆用户密码" AllowBlank="false"  AnchorHorizontal="95%" />		 
+                        <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="是否同步数据" Checked="false"  AnchorHorizontal="95%">
+                        <Listeners>
+                        <Check  Handler="ShowSycn(#{chkSyncData},#{txtRecieveDataUrl},#{txtOkMessage},#{txtFailedMessage});"></Check>
+ 
+                        </Listeners>
+                        </ext:Checkbox>	                                         
+                        <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步地址" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
+ 
             </Items>
         </ext:FormPanel>
     </Content>
@@ -49,7 +51,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPSClient_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPSClientAdd}.getForm().reset();#{storeSPSClient}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>
@@ -60,4 +62,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-</ext:Window>
+</ext:window>

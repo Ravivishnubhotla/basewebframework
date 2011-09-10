@@ -51,7 +51,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPChannelParamsEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSPChannelParams_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPChannelParamsEdit}.getForm().reset();#{storeSPChannelParams}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

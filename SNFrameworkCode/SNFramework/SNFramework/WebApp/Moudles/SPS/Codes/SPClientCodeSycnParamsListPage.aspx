@@ -25,7 +25,7 @@
                 Ext.net.DirectMethods.UCSPClientCodeSycnParamsAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -41,7 +41,7 @@
                 Ext.net.DirectMethods.UCSPClientCodeSycnParamsEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -55,7 +55,7 @@
                 Ext.net.DirectMethods.UCSPClientCodeSycnParamsView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -73,7 +73,7 @@
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
