@@ -75,7 +75,6 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING = "UseClientDefaultSycnSetting";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
@@ -85,6 +84,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
+		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -139,7 +139,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public decimal? Price
+		public decimal Price
 		{
 			get
 			{
@@ -153,7 +153,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public decimal? InterceptRate
+		public decimal InterceptRate
 		{
 			get
 			{
@@ -167,7 +167,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? UseClientDefaultSycnSetting
+		public bool UseClientDefaultSycnSetting
 		{
 			get
 			{
@@ -181,7 +181,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? SyncData
+		public bool SyncData
 		{
 			get
 			{
@@ -190,20 +190,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SyncData = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool? SycnResendFailedData
-		{
-			get
-			{
-				return entity.SycnResendFailedData;
-			}
-			set
-			{
-				entity.SycnResendFailedData = value;
 			}
 		}
 		/// <summary>
@@ -307,7 +293,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsEnable
+		public bool IsEnable
 		{
 			get
 			{
@@ -321,7 +307,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? SycnNotInterceptCount
+		public int SycnNotInterceptCount
 		{
 			get
 			{
@@ -330,6 +316,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SycnNotInterceptCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DefaultShowRecordDays
+		{
+			get
+			{
+				return entity.DefaultShowRecordDays;
+			}
+			set
+			{
+				entity.DefaultShowRecordDays = value;
 			}
 		}
 		/// <summary>

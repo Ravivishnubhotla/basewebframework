@@ -20,7 +20,6 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_USERID = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_USERID));		
 		public static readonly BoolProperty PROPERTY_ISDEFAULTCLIENT = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_ISDEFAULTCLIENT));		
 		public static readonly BoolProperty PROPERTY_SYNCDATA = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYNCDATA));		
-		public static readonly BoolProperty PROPERTY_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRESENDFAILEDDATA));		
 		public static readonly IntProperty PROPERTY_SYCNRETRYTIMES = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYNCTYPE));		
 		public static readonly IntProperty PROPERTY_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT));		
@@ -63,8 +62,6 @@ namespace SPS.Data.Tables
                 case "IsDefaultClient":
                     return typeof (bool);
                 case "SyncData":
-                    return typeof (bool);
-                case "SycnResendFailedData":
                     return typeof (bool);
                 case "SycnRetryTimes":
                     return typeof (int);

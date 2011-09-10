@@ -16,7 +16,6 @@
 		<property column="UserID" type="int" name="UserID"   />	
 		<property column="IsDefaultClient" type="Boolean" name="IsDefaultClient"   />	
 		<property column="SyncData" type="Boolean" name="SyncData"   />	
-		<property column="SycnResendFailedData" type="Boolean" name="SycnResendFailedData"   />	
 		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	

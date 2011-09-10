@@ -35,7 +35,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.txtInterceptRate.Text = obj.InterceptRate.ToString();
                     this.chkUseClientDefaultSycnSetting.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.UseClientDefaultSycnSetting);
                     this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
-                    this.chkSycnResendFailedData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SycnResendFailedData);
+ 
                     this.txtSycnRetryTimes.Text = ValueConvertUtil.ConvertStringValue(obj.SycnRetryTimes);
                     this.txtSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
                     this.txtSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SycnDataUrl);
@@ -84,7 +84,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
                 obj.UseClientDefaultSycnSetting = this.chkUseClientDefaultSycnSetting.Checked;
                 obj.SyncData = this.chkSyncData.Checked;
-                obj.SycnResendFailedData = this.chkSycnResendFailedData.Checked;
+ 
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
                 obj.SyncType = this.txtSyncType.Text.Trim();
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();

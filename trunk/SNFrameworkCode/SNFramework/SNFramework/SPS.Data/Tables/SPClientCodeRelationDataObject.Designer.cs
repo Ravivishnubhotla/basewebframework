@@ -60,7 +60,6 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_USERID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_ISDEFAULTCLIENT = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".IsDefaultClient"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData"));
-		public static readonly BoolProperty PROPERTY_CLIENTID_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnResendFailedData"));
 		public static readonly IntProperty PROPERTY_CLIENTID_SYCNRETRYTIMES = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnRetryTimes"));
 		public static readonly StringProperty PROPERTY_CLIENTID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType"));
 		public static readonly IntProperty PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnNotInterceptCount"));
@@ -80,7 +79,6 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_INTERCEPTRATE = new DecimalProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_INTERCEPTRATE));		
 		public static readonly BoolProperty PROPERTY_USECLIENTDEFAULTSYCNSETTING = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING));		
 		public static readonly BoolProperty PROPERTY_SYNCDATA = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATA));		
-		public static readonly BoolProperty PROPERTY_SYCNRESENDFAILEDDATA = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNRESENDFAILEDDATA));		
 		public static readonly StringProperty PROPERTY_SYCNRETRYTIMES = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
 		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCTYPE));		
 		public static readonly StringProperty PROPERTY_SYCNDATAURL = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNDATAURL));		
@@ -90,6 +88,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_ENDDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ENDDATE));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ISENABLE));		
 		public static readonly IntProperty PROPERTY_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT));		
+		public static readonly IntProperty PROPERTY_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_DEFAULTSHOWRECORDDAYS));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -125,8 +124,6 @@ namespace SPS.Data.Tables
                     return typeof (bool);
                 case "SyncData":
                     return typeof (bool);
-                case "SycnResendFailedData":
-                    return typeof (bool);
                 case "SycnRetryTimes":
                     return typeof (string);
                 case "SyncType":
@@ -144,6 +141,8 @@ namespace SPS.Data.Tables
                 case "IsEnable":
                     return typeof (bool);
                 case "SycnNotInterceptCount":
+                    return typeof (int);
+                case "DefaultShowRecordDays":
                     return typeof (int);
                 case "CreateBy":
                     return typeof (int);

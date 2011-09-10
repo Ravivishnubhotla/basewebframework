@@ -42,7 +42,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             if (defaultClient == null)
             {
-                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser(SystemConfigConst.Config_SpsDefaultClientname, RoleCodeList.ROLE_CODE_SPDOWNUSER, SystemConfigConst.Config_SysDefaultUserpass, SystemConfigConst.Config_SysDefaultUsermail);
+                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser(SystemConfigConst.Config_SpsDefaultClientname, RoleCodeList.ROLE_CODE_SPDOWNUSER, SystemConfigConst.Config_SysDefaultUserpass, SystemConfigConst.Config_SpsDefaultClientname+SystemConfigConst.Config_SysDefaultUsermail);
 
                 if (defaultSPClientuserID < 0)
                     throw new Exception("Create defaultSPClient failed");

@@ -220,7 +220,7 @@
                 Ext.net.DirectMethods.UCSystemOperationEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshOperationData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshOperationData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -234,7 +234,7 @@
                 Ext.net.DirectMethods.UCSystemOperationView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshOperationData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshOperationData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -252,7 +252,7 @@
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshOperationData);            
@@ -275,7 +275,7 @@
                 Ext.net.DirectMethods.UCSystemPrivilegeEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshSystemPrivilegeData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSystemPrivilegeData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -295,7 +295,7 @@
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshSystemPrivilegeData);            

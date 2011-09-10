@@ -156,7 +156,7 @@
                             {
                                failure: function(msg) 
                                {
-                                    Ext.Msg.alert('Operation failed', msg, null);
+                                    Ext.Msg.alert('操作失败', msg, null);
                                },
                                success: function(result) 
                                { 

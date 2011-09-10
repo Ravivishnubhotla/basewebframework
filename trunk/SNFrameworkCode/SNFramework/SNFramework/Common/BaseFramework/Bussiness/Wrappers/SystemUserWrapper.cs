@@ -456,5 +456,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByExpcept(sortFieldName, isDesc, expceptUserLoginId, expceptRoleName, pageQueryParams));
         }
+
+ 
     }
 }

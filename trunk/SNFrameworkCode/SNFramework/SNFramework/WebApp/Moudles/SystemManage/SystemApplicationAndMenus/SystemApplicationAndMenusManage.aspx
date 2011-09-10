@@ -60,7 +60,7 @@
                         Ext.net.DirectMethods.AutoMaticSortSubItems(appID,id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshMenuData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshMenuData);
                                                                     },
                                                                     success: function(result) {
                                                                         ReloadMenus();
@@ -91,7 +91,7 @@
                 Ext.net.DirectMethods.UCSystemMenuManualResort.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshMenuData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshMenuData);
                                                                     },
                                                                     success: function(result) {
                                                                         ReloadMenus();

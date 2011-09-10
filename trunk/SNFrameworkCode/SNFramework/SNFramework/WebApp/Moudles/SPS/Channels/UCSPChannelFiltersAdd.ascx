@@ -28,7 +28,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPChannelFiltersAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPChannelFilters_Click"
                     Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPChannelFiltersAdd}.getForm().reset();#{storeSPChannelFilters}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

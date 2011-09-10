@@ -114,5 +114,9 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	    }
 
+	    public static void QuickAdd(SPSClientWrapper spsClientWrapper, string loginId, string password)
+	    {
+	        businessProxy.QuickAdd(spsClientWrapper.entity, loginId, password);
+	    }
     }
 }

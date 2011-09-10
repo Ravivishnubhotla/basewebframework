@@ -52,7 +52,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPCodeEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSPCode_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPCodeEdit}.getForm().reset();#{storeSPCode}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

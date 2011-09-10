@@ -33,7 +33,7 @@
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPChannelFiltersEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSPChannelFilters_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPChannelFiltersEdit}.getForm().reset();#{storeSPChannelFilters}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

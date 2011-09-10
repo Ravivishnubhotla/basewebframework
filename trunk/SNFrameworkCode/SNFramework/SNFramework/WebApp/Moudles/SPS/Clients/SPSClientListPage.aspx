@@ -4,6 +4,8 @@
 <%@ Register Src="UCSPSClientAdd.ascx" TagName="UCSPSClientAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPSClientEdit.ascx" TagName="UCSPSClientEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPSClientView.ascx" TagName="UCSPSClientView" TagPrefix="uc3" %>
+<%@ Register Src="UCSPClientChangeUserLoginInfo.ascx" TagName="UCSPClientChangeUserLoginInfo"
+    TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -26,7 +28,7 @@
                 Ext.net.DirectMethods.UCSPSClientAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -42,7 +44,21 @@
                 Ext.net.DirectMethods.UCSPSClientEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: 'Processing...'
+                                                                               }
+                                                                }              
+                );
+            }
+            
+                        if (cmd == "cmdChangeUserLoginInfo") {
+                Ext.net.DirectMethods.UCSPClientChangeUserLoginInfo.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -56,7 +72,7 @@
                 Ext.net.DirectMethods.UCSPSClientView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -74,7 +90,7 @@
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
@@ -108,13 +124,11 @@
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
-                    <ext:RecordField Name="RelateUserLoginID"  />
-                    
+                    <ext:RecordField Name="RelateUserLoginID" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OkMessage" />
                     <ext:RecordField Name="FailedMessage" />
                     <ext:RecordField Name="SyncType" />
-                    <ext:RecordField Name="Alias" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="DefaultPrice" Type="int" />
                 </Fields>
@@ -126,6 +140,7 @@
     <uc1:UCSPSClientAdd ID="UCSPSClientAdd1" runat="server" />
     <uc2:UCSPSClientEdit ID="UCSPSClientEdit1" runat="server" />
     <uc3:UCSPSClientView ID="UCSPSClientView1" runat="server" />
+    <uc5:UCSPClientChangeUserLoginInfo ID="UCSPClientChangeUserLoginInfo1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPSClient" runat="server" StoreID="storeSPSClient" StripeRows="true"
@@ -153,9 +168,7 @@
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:RowNumbererColumn>
-                        </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="Id"  Width="30"  Header="主键" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id" Width="30" Header="主键" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                         </ext:Column>
@@ -163,8 +176,6 @@
                         </ext:Column>
                         <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步" Sortable="true">
                             <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colAlias" DataIndex="Alias" Header="别名" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                         </ext:Column>
@@ -180,6 +191,8 @@
                                             <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="UserEdit" CommandName="cmdChangeUserLoginInfo" Text="编辑用户信息">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>

@@ -49,13 +49,40 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
-        /// txtRecieveDataUrl control.
+        /// txtInterceptRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtRecieveDataUrl;
+        protected global::Ext.Net.NumberField txtInterceptRate;
+        
+        /// <summary>
+        /// txtNotInterceptCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField txtNotInterceptCount;
+        
+        /// <summary>
+        /// numShowDayRecord control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numShowDayRecord;
+        
+        /// <summary>
+        /// txtDefaultPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField txtDefaultPrice;
         
         /// <summary>
         /// txtUserID control.
@@ -67,6 +94,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.TextField txtUserID;
         
         /// <summary>
+        /// txtUserPasword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtUserPasword;
+        
+        /// <summary>
         /// chkSyncData control.
         /// </summary>
         /// <remarks>
@@ -74,6 +110,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Checkbox chkSyncData;
+        
+        /// <summary>
+        /// txtRecieveDataUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtRecieveDataUrl;
         
         /// <summary>
         /// txtOkMessage control.
@@ -92,42 +137,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtFailedMessage;
-        
-        /// <summary>
-        /// txtSyncType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtSyncType;
-        
-        /// <summary>
-        /// txtAlias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtAlias;
-        
-        /// <summary>
-        /// txtInterceptRate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtInterceptRate;
-        
-        /// <summary>
-        /// txtDefaultPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtDefaultPrice;
         
         /// <summary>
         /// btnSavelSPSClient control.

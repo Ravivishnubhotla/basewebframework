@@ -30,17 +30,32 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 {
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
-                    //this.txtRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
-                    this.txtUserID.Text = obj.UserID.ToString();
-                    this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
-                    //this.txtOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
-                    //this.txtFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
-                    this.txtSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
-                    this.txtAlias.Text = ValueConvertUtil.ConvertStringValue(obj.Alias);
+
                     this.txtInterceptRate.Text = obj.InterceptRate.ToString();
                     this.txtDefaultPrice.Text = obj.DefaultPrice.ToString();
+                    this.txtNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
+                    this.numShowDayRecord.Text = obj.DefaultShowRecordDays.ToString();
 
+                    this.chkSyncData.Checked = obj.SyncData.HasValue && obj.SyncData.Value;
 
+                    if (obj.SyncData.HasValue && obj.SyncData.Value)
+                    {
+                        this.txtFailedMessage.Show();
+                        this.txtFailedMessage.Show();
+                        this.txtRecieveDataUrl.Show();
+                        this.txtFailedMessage.Text = obj.SycnFailedMessage;
+                        this.txtOkMessage.Text = obj.SycnOkMessage;
+                        this.txtRecieveDataUrl.Text = obj.SycnDataUrl;
+                    }
+                    else
+                    {
+                        this.txtFailedMessage.Hide();
+                        this.txtFailedMessage.Hide();
+                        this.txtRecieveDataUrl.Hide();
+                        this.txtFailedMessage.Text = "";
+                        this.txtOkMessage.Text = "";
+                        this.txtRecieveDataUrl.Text = "";                 
+                    }
 
 
                     hidId.Text = id.ToString();
@@ -52,14 +67,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                    ResourceManager.AjaxErrorMessage = "Error Message:Data does not exist";
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
                 return;
             }
         }
@@ -69,17 +84,28 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             try
             {
                 SPSClientWrapper obj = SPSClientWrapper.FindById(int.Parse(hidId.Text.Trim()));
+ 
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
-                obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());
-                obj.SyncData = this.chkSyncData.Checked;
-                //obj.OkMessage = this.txtOkMessage.Text.Trim();
-                //obj.FailedMessage = this.txtFailedMessage.Text.Trim();
-                obj.SyncType = this.txtSyncType.Text.Trim();
-                obj.Alias = this.txtAlias.Text.Trim();
+ 
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
                 obj.DefaultPrice = Convert.ToDecimal(this.txtDefaultPrice.Text.Trim());
+                obj.SycnNotInterceptCount = Convert.ToInt32(this.txtNotInterceptCount.Text.Trim());
+                obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
+                obj.SyncData = chkSyncData.Checked;
+
+                if (obj.SyncData != null && obj.SyncData.Value)
+                {
+                    obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
+                    obj.SycnOkMessage = txtOkMessage.Text.Trim();
+                    obj.SycnFailedMessage = txtFailedMessage.Text.Trim();
+                }
+                else
+                {
+                    obj.SycnDataUrl = "";
+                    obj.SycnOkMessage = "";
+                    obj.SycnFailedMessage = "";
+                }
 
 
                 SPSClientWrapper.Update(obj);

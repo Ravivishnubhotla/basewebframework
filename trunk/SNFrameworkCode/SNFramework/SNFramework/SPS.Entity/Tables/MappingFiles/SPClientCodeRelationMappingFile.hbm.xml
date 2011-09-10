@@ -13,20 +13,20 @@
 
 		<many-to-one column="CodeID" name="CodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
 		<many-to-one column="ClientID" name="ClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
-		<property column="Price" type="Decimal" name="Price"   />	
-		<property column="InterceptRate" type="Decimal" name="InterceptRate"   />	
-		<property column="UseClientDefaultSycnSetting" type="Boolean" name="UseClientDefaultSycnSetting"   />	
-		<property column="SyncData" type="Boolean" name="SyncData"   />	
-		<property column="SycnResendFailedData" type="Boolean" name="SycnResendFailedData"   />	
-		<property column="SycnRetryTimes" type="string" name="SycnRetryTimes"   length="20" />	
+		<property column="Price" type="Decimal" name="Price"   not-null="true"  />	
+		<property column="InterceptRate" type="Decimal" name="InterceptRate"   not-null="true"  />	
+		<property column="UseClientDefaultSycnSetting" type="Boolean" name="UseClientDefaultSycnSetting"   not-null="true"  />	
+		<property column="SyncData" type="Boolean" name="SyncData"   not-null="true"  />	
+		<property column="SycnRetryTimes" type="string" name="SycnRetryTimes"   not-null="true"  length="20" />	
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="SycnDataUrl" type="string" name="SycnDataUrl"   length="400" />	
 		<property column="SycnOkMessage" type="string" name="SycnOkMessage"   length="100" />	
 		<property column="SycnFailedMessage" type="string" name="SycnFailedMessage"   length="100" />	
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	
-		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
-		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   not-null="true"  />	
+		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   not-null="true"  />	
+		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   not-null="true"  />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

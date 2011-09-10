@@ -97,7 +97,7 @@
             Ext.net.DirectMethods.Save_RolePermission(json, rid,
                             {
                                 failure: function (msg) {
-                                    Ext.Msg.alert('Operation failed', msg, null);
+                                    Ext.Msg.alert('操作失败', msg, null);
                                 },
                                 success: function (result) {
                                     Ext.Msg.alert('Operation Successful', 'Save successful System Permission!', function (btn) { parent.CloseWinAssignedPermission(); });

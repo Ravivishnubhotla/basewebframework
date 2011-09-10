@@ -21,7 +21,6 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING = "UseClientDefaultSycnSetting";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_SYCNRESENDFAILEDDATA = "SycnResendFailedData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
 		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
@@ -31,6 +30,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
+		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -46,11 +46,10 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private SPCodeEntity _codeID;
 		private SPSClientEntity _clientID;
-		private decimal? _price;
-		private decimal? _interceptRate;
-		private bool? _useClientDefaultSycnSetting;
-		private bool? _syncData;
-		private bool? _sycnResendFailedData;
+		private decimal _price;
+		private decimal _interceptRate;
+		private bool _useClientDefaultSycnSetting;
+		private bool _syncData;
 		private string _sycnRetryTimes;
 		private string _syncType;
 		private string _sycnDataUrl;
@@ -58,8 +57,9 @@ namespace SPS.Entity.Tables
 		private string _sycnFailedMessage;
 		private DateTime? _startDate;
 		private DateTime? _endDate;
-		private bool? _isEnable;
-		private int? _sycnNotInterceptCount;
+		private bool _isEnable;
+		private int _sycnNotInterceptCount;
+		private int _defaultShowRecordDays;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -76,20 +76,20 @@ namespace SPS.Entity.Tables
 			_id = 0;
 			_codeID = null;
 			_clientID = null;
-			_price = null;
-			_interceptRate = null;
-			_useClientDefaultSycnSetting = null;
-			_syncData = null;
-			_sycnResendFailedData = null;
-			_sycnRetryTimes = null;
+			_price = 0;
+			_interceptRate = 0;
+			_useClientDefaultSycnSetting = false;
+			_syncData = false;
+			_sycnRetryTimes = String.Empty;
 			_syncType = null;
 			_sycnDataUrl = null;
 			_sycnOkMessage = null;
 			_sycnFailedMessage = null;
 			_startDate = null;
 			_endDate = null;
-			_isEnable = null;
-			_sycnNotInterceptCount = null;
+			_isEnable = false;
+			_sycnNotInterceptCount = 0;
+			_defaultShowRecordDays = 0;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -101,7 +101,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal? price, decimal? interceptRate, bool? useClientDefaultSycnSetting, bool? syncData, bool? sycnResendFailedData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, DateTime? startDate, DateTime? endDate, bool? isEnable, int? sycnNotInterceptCount, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal price, decimal interceptRate, bool useClientDefaultSycnSetting, bool syncData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, DateTime? startDate, DateTime? endDate, bool isEnable, int sycnNotInterceptCount, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -110,7 +110,6 @@ namespace SPS.Entity.Tables
 			_interceptRate = interceptRate;
 			_useClientDefaultSycnSetting = useClientDefaultSycnSetting;
 			_syncData = syncData;
-			_sycnResendFailedData = sycnResendFailedData;
 			_sycnRetryTimes = sycnRetryTimes;
 			_syncType = syncType;
 			_sycnDataUrl = sycnDataUrl;
@@ -120,6 +119,7 @@ namespace SPS.Entity.Tables
 			_endDate = endDate;
 			_isEnable = isEnable;
 			_sycnNotInterceptCount = sycnNotInterceptCount;
+			_defaultShowRecordDays = defaultShowRecordDays;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -175,7 +175,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual decimal? Price
+		public virtual decimal Price
 		{
 			get { return _price; }
 
@@ -189,7 +189,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual decimal? InterceptRate
+		public virtual decimal InterceptRate
 		{
 			get { return _interceptRate; }
 
@@ -203,7 +203,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? UseClientDefaultSycnSetting
+		public virtual bool UseClientDefaultSycnSetting
 		{
 			get { return _useClientDefaultSycnSetting; }
 
@@ -217,27 +217,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? SyncData
+		public virtual bool SyncData
 		{
 			get { return _syncData; }
 
 			set	
 			{
 				_isChanged |= (_syncData != value); _syncData = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? SycnResendFailedData
-		{
-			get { return _sycnResendFailedData; }
-
-			set	
-			{
-				_isChanged |= (_sycnResendFailedData != value); _sycnResendFailedData = value;
 			}
 		}
 
@@ -358,7 +344,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsEnable
+		public virtual bool IsEnable
 		{
 			get { return _isEnable; }
 
@@ -372,13 +358,27 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? SycnNotInterceptCount
+		public virtual int SycnNotInterceptCount
 		{
 			get { return _sycnNotInterceptCount; }
 
 			set	
 			{
 				_isChanged |= (_sycnNotInterceptCount != value); _sycnNotInterceptCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DefaultShowRecordDays
+		{
+			get { return _defaultShowRecordDays; }
+
+			set	
+			{
+				_isChanged |= (_defaultShowRecordDays != value); _defaultShowRecordDays = value;
 			}
 		}
 
