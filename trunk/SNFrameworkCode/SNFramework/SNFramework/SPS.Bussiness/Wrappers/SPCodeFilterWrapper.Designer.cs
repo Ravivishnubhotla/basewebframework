@@ -77,6 +77,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 
@@ -206,6 +207,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.LastModifyAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LastModifyComment
+		{
+			get
+			{
+				return entity.LastModifyComment;
+			}
+			set
+			{
+				entity.LastModifyComment = value;
 			}
 		}
 		#endregion 

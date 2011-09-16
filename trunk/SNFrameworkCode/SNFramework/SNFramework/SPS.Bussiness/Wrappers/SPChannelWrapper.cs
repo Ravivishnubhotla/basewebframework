@@ -15,27 +15,27 @@ namespace SPS.Bussiness.Wrappers
     {
         #region Static Common Data Operation
 		
-		public static void Save(SPChannelWrapper obj)
+		protected static void Save(SPChannelWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
 
-        public static void Update(SPChannelWrapper obj)
+        protected static void Update(SPChannelWrapper obj)
         {
             businessProxy.Update(obj.entity);
         }
 
-        public static void SaveOrUpdate(SPChannelWrapper obj)
+        protected static void SaveOrUpdate(SPChannelWrapper obj)
         {
             businessProxy.SaveOrUpdate(obj.entity);
         }
 
-        public static void DeleteAll()
+        protected static void DeleteAll()
         {
             businessProxy.DeleteAll();
         }
 
-        public static void DeleteByID(object id)
+        protected static void DeleteByID(object id)
         {
             businessProxy.DeleteByID(id);
         }
@@ -46,7 +46,7 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.PatchDeleteByIDs(ids);
         }
 
-        public static void Delete(SPChannelWrapper instance)
+        protected static void Delete(SPChannelWrapper instance)
         {
             businessProxy.Delete(instance.entity);
         }
@@ -121,6 +121,11 @@ namespace SPS.Bussiness.Wrappers
 	    public static SPChannelWrapper GetChannelByDataAdaptorUrl(string dataAdaptorUrl)
 	    {
             return ConvertEntityToWrapper(businessProxy.GetChannelByDataAdaptorUrl(dataAdaptorUrl));
+	    }
+
+	    public static void UpdateRecord(SPChannelWrapper spChannelWrapper, int userId, DateTime dateTime, string comment)
+	    {
+	        throw new NotImplementedException();
 	    }
     }
 }
