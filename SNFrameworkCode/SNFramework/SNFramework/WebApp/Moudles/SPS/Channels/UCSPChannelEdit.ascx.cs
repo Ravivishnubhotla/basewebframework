@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.Utility;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 {
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSPChannelEdit")]
-    public partial class UCSPChannelEdit : System.Web.UI.UserControl
+    public partial class UCSPChannelEdit : BaseUserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -114,7 +115,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.IsLogRequest = this.chkIsLogRequest.Checked;
 
 
-                SPChannelWrapper.Update(obj);
+                SPChannelWrapper.UpdateRecord(obj, this.ParentPage.CurrentLoginUser.UserID,System.DateTime.Now,"用户{0}于{1}时间编辑通道。");
 
                 winSPChannelEdit.Hide();
                 ResourceManager.AjaxSuccess = true;
