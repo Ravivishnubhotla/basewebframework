@@ -14,18 +14,18 @@ namespace SPS.Bussiness.Wrappers
     public partial class SPChannelWrapper
     {
         #region Static Common Data Operation
-		
-		protected static void Save(SPChannelWrapper obj)
+
+        public static void Save(SPChannelWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
 
-        protected static void Update(SPChannelWrapper obj)
+        public static void Update(SPChannelWrapper obj)
         {
             businessProxy.Update(obj.entity);
         }
 
-        protected static void SaveOrUpdate(SPChannelWrapper obj)
+        public static void SaveOrUpdate(SPChannelWrapper obj)
         {
             businessProxy.SaveOrUpdate(obj.entity);
         }
@@ -35,7 +35,7 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.DeleteAll();
         }
 
-        protected static void DeleteByID(object id)
+        public static void DeleteByID(object id)
         {
             businessProxy.DeleteByID(id);
         }
@@ -46,7 +46,7 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.PatchDeleteByIDs(ids);
         }
 
-        protected static void Delete(SPChannelWrapper instance)
+        public static void Delete(SPChannelWrapper instance)
         {
             businessProxy.Delete(instance.entity);
         }
