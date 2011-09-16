@@ -47,7 +47,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 channelWrapper.DataFailedMessage = this.txtDataFailedMessage.Text.Trim();
 
                 channelWrapper.DataAdapterType = ((Ext.Net.CheckboxBase)(rdgSelectDataAdapter.CheckedItems[0])).InputValue;
-                channelWrapper.DataAdapterUrl = this.txtAdapterHandleName.Text.Trim();
+
+                string handlerName = this.txtAdapterHandleName.Text.Trim();
+
+                if (handlerName.Contains("*"))
+                {
+                    handlerName = handlerName.Replace("*", channelWrapper.Code);
+                }
+
+                channelWrapper.DataAdapterUrl = handlerName;
 
                 channelWrapper.ChannelType = cmbChannelType.SelectedItem.Value;
 

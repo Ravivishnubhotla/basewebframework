@@ -117,5 +117,10 @@ namespace SPS.Bussiness.Wrappers
                                              pIvrExtend4, pIvrExtend5, pIvrExtend6, pIvrExtend7, pIvrExtend8, pIvrExtend9,
                                              pIvrExtend10);
 	    }
+
+	    public static SPChannelWrapper GetChannelByDataAdaptorUrl(string dataAdaptorUrl)
+	    {
+            return ConvertEntityToWrapper(businessProxy.GetChannelByDataAdaptorUrl(dataAdaptorUrl));
+	    }
     }
 }

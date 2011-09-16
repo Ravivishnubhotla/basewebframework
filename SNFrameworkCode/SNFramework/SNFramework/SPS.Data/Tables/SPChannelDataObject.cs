@@ -11,5 +11,14 @@ namespace SPS.Data.Tables
 {
     public partial class SPChannelDataObject
     {
+        public SPChannelEntity GetChannelByDataAdaptorUrl(string dataAdaptorUrl)
+        {
+            NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_DATAADAPTERURL.Eq(dataAdaptorUrl));
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
