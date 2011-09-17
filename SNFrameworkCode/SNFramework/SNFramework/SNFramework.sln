@@ -24,10 +24,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
 		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Data.NHibernate32.dll = ThirdsDll\Spring.Data.NHibernate32.dll
 		ThirdsDll\Spring.Scheduling.Quartz.dll = ThirdsDll\Spring.Scheduling.Quartz.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
+		ThirdsDll\Spring.Web.Extensions.dll = ThirdsDll\Spring.Web.Extensions.dll
+		ThirdsDll\Spring.Web.Mvc.dll = ThirdsDll\Spring.Web.Mvc.dll
 		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
 	EndProjectSection
 EndProject
