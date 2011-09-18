@@ -7,7 +7,7 @@ using System.Text;
 using System.Web;
 using Legendigital.Framework.Common.Utility;
 
-namespace Legendigital.Common.WebApp.AppCode
+namespace SPS.Bussiness.HttpUtils
 {
     public class HttpRequestLog
     {
@@ -82,7 +82,7 @@ namespace Legendigital.Common.WebApp.AppCode
 
             requestQueryString = request.Url.Query;
 
-            if (request.InputStream !=null)
+            if (request.InputStream != null)
                 requestPostFileData = GetXmlPostValueFromRequest(request);
         }
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -96,5 +97,33 @@ namespace SPS.Bussiness.Wrappers
 			
 		#endregion
 
+	    public static void SaveRequest(HttpRequestLog httpRequestLog, SPChannelWrapper channelID)
+	    {
+            try
+            {
+                SPMonitoringRequestWrapper spFailedRequestWrapper = new SPMonitoringRequestWrapper();
+
+                if (channelID == null)
+                    spFailedRequestWrapper.ChannelID = null;
+                else
+                    spFailedRequestWrapper.ChannelID = channelID;
+
+
+
+                spFailedRequestWrapper.RecievedSendUrl = httpRequestLog.RequestUrl;
+
+                spFailedRequestWrapper.RecievedDate = DateTime.Now;
+
+                spFailedRequestWrapper.RecievedContent = httpRequestLog.RequestData;
+
+                spFailedRequestWrapper.RecievedIP = httpRequestLog.RequestIp;
+
+                Save(spFailedRequestWrapper);
+            }
+            catch (Exception e)
+            {
+                Logger.Error("±£¥Ê ß∞‹«Î«Û ß∞‹£∫", e);
+            }
+	    }
     }
 }
