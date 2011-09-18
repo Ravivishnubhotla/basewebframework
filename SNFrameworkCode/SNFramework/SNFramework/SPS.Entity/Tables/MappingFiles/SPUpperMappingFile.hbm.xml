@@ -18,6 +18,7 @@
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
 		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

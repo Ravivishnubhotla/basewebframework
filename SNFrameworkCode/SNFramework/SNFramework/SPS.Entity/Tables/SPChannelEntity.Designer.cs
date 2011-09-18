@@ -51,6 +51,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -96,6 +97,7 @@ namespace SPS.Entity.Tables
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -142,6 +144,7 @@ namespace SPS.Entity.Tables
 			_createAt = null;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -149,7 +152,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -188,6 +191,7 @@ namespace SPS.Entity.Tables
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -774,6 +778,23 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

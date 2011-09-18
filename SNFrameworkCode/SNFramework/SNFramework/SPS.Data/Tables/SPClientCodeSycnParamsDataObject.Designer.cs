@@ -49,6 +49,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
 		public static readonly DateTimeProperty PROPERTY_CODEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_CODEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyComment"));
 		public static readonly BoolProperty PROPERTY_CODEID_HASPARAMSCONVERT = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".HasParamsConvert"));
 		#endregion
 		public static readonly StringProperty PROPERTY_MAPPINGPARAMS = new StringProperty(Property.ForName(SPClientCodeSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS));		
@@ -59,6 +60,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPClientCodeSycnParamsEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPClientCodeSycnParamsEntity.PROPERTY_NAME_LASTMODIFYBY));		
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPClientCodeSycnParamsEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPClientCodeSycnParamsEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -104,6 +106,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "LastModifyAt":
                     return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }
