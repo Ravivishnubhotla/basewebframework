@@ -339,6 +339,7 @@
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx" />
     <Content Include="Moudles\SPS\ClientsView\Excel.xsl" />
     <Content Include="Moudles\SPS\Clients\Blank.htm" />
     <Content Include="Moudles\SPS\Clients\Excel.xsl" />
@@ -775,6 +776,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientMemoView.aspx.designer.cs">
       <DependentUpon>ClientMemoView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx.cs">
+      <DependentUpon>ClientMobileReportView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx.designer.cs">
+      <DependentUpon>ClientMobileReportView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx.cs">
       <DependentUpon>ClientParamsDocumentView.aspx</DependentUpon>

@@ -165,11 +165,11 @@ namespace LD.SPPipeManage.Data.AdoNet
             return this.ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
         }
 
-        public DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType,int limit)
+        public DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType, int limit)
         {
             string top = "";
 
-            if(limit!=int.MaxValue)
+            if (limit != int.MaxValue)
             {
                 top = " TOP " + limit.ToString();
             }
@@ -197,8 +197,8 @@ namespace LD.SPPipeManage.Data.AdoNet
                     sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
                     break;
             }
-            
-            
+
+
             DbParameters dbParameters = this.CreateNewDbParameters();
 
             dbParameters.AddWithValue("startDate", startDate.Date);
@@ -1422,6 +1422,22 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             dbParameters.AddWithValue("enddate", date.AddDays(1).Date);
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+
+        public DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate)
+        {
+            string sql = "select * from ( Select MobileNumber,Count(*) as RecordCount from SPPaymentInfo with(nolock) where  ClientID =@ClientID and IsIntercept = 0  and createDate >= @startDate and createDate<@enddate group by MobileNumber) as T order by RecordCount desc  ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("ClientID", spClientId);
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
     }
 }
