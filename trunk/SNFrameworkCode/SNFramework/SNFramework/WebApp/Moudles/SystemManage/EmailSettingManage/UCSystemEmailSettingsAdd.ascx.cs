@@ -49,7 +49,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage
           obj.LoginPassword = this.txtLoginPassword.Text.Trim();        	
           obj.IsEnable = this.chkIsEnable.Checked;        	
           obj.IsDefault = this.chkIsDefault.Checked;        	
-          obj.CreateDate = System.DateTime.Now;        	
+          //obj.CreateDate = System.DateTime.Now;        	
           obj.CreateBy = 1;        	
 
 

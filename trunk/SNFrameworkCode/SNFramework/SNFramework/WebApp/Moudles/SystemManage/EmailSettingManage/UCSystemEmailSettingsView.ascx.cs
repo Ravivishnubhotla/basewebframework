@@ -44,7 +44,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailSettingManage
                     this.lblLoginPassword.Text = ValueConvertUtil.ConvertStringValue(obj.LoginPassword);
                     this.lblIsEnable.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable).ToString();
                     this.lblIsDefault.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsDefault).ToString();
-                    this.lblCreateDate.Text = obj.CreateDate.ToString();
+                    //this.lblCreateDate.Text = obj.CreateDate.ToString();
                     this.lblCreateBy.Text = obj.CreateBy.ToString();
 
 
