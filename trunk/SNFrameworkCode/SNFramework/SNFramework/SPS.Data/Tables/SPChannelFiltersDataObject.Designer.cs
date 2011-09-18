@@ -59,6 +59,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CHANNELID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CHANNELID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LastModifyBy"));
 		public static readonly DateTimeProperty PROPERTY_CHANNELID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_CHANNELID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PARAMSNAME = new StringProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_PARAMSNAME));		
 		public static readonly StringProperty PROPERTY_FILTERTYPE = new StringProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_FILTERTYPE));		
@@ -67,6 +68,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_LASTMODIFYBY));		
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPChannelFiltersEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -102,6 +104,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "LastModifyAt":
                     return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

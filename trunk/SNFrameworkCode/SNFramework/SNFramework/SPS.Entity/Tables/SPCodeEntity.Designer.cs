@@ -37,6 +37,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
@@ -69,6 +70,7 @@ namespace SPS.Entity.Tables
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		private bool _hasParamsConvert;
 		
 		#endregion
@@ -102,6 +104,7 @@ namespace SPS.Entity.Tables
 			_createAt = null;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
+			_lastModifyComment = null;
 			_hasParamsConvert = false;
 		}
 		#endregion
@@ -110,7 +113,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, bool hasParamsConvert)
+		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment, bool hasParamsConvert)
 		{
 			_id = id;
 			_name = name;
@@ -135,6 +138,7 @@ namespace SPS.Entity.Tables
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 			_hasParamsConvert = hasParamsConvert;
 		}
 		#endregion     
@@ -496,6 +500,23 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 

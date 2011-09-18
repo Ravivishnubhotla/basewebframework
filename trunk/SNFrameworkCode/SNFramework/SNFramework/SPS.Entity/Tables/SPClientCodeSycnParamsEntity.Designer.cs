@@ -28,6 +28,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -50,6 +51,7 @@ namespace SPS.Entity.Tables
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -73,6 +75,7 @@ namespace SPS.Entity.Tables
 			_createAt = null;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -80,7 +83,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPCodeEntity codeID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt)
+		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPCodeEntity codeID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -96,6 +99,7 @@ namespace SPS.Entity.Tables
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -312,6 +316,23 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>
