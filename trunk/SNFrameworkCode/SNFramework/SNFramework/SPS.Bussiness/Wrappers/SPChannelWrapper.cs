@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -13,7 +14,12 @@ namespace SPS.Bussiness.Wrappers
 	[Serializable]
     public partial class SPChannelWrapper
     {
-        #region Static Common Data Operation
+	    public bool NeedInitParams
+	    {
+	        get { return false; }
+	    }
+
+	    #region Static Common Data Operation
 
         public static void Save(SPChannelWrapper obj)
         {
@@ -127,5 +133,58 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        throw new NotImplementedException();
 	    }
+
+	    public string GetFailedCode(HttpRequestLog httpRequestLog)
+	    {
+	        return this.DataFailedMessage;
+	    }
+
+	    public bool CheckRequestIsFilters(HttpRequestLog httpRequestLog)
+	    {
+	        return false;
+	    }
+
+	    public void ParamsConvert(HttpRequestLog httpRequestLog)
+	    {
+	        return;
+	    }
+
+	    public void InitParams(HttpRequestLog httpRequestLog)
+	    {
+            return;
+	    }
+
+	    public bool ProcessRequest(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
+	    {
+	        requestError = RequestErrorType.NoError;
+	        errorMessage = "";
+	        return false;
+	    }
+
+	    public RequestType GetRequestType(HttpRequestLog httpRequestLog)
+	    {
+	        return RequestType.DataStatusReport;
+	    }
+
+        public bool ProcessStatusReport(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
+	    {
+
+            requestError = RequestErrorType.NoError;
+            errorMessage = "";
+            return false;
+	    }
+
+        public bool ProcessDataStatusReport(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
+	    {
+
+            requestError = RequestErrorType.NoError;
+            errorMessage = "";
+            return false;
+	    }
+
+        public string GetOkCode(HttpRequestLog httpRequestLog)
+        {
+            return this.DataOkMessage;
+        }
     }
 }

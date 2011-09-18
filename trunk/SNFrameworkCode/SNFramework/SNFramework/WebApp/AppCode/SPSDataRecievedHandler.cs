@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Common.Logging;
+using SPS.Bussiness.ConstClass;
+using SPS.Bussiness.HttpUtils;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.AppCode
@@ -16,10 +18,6 @@ namespace Legendigital.Common.WebApp.AppCode
 
         public void ProcessRequest(HttpContext context)
         {
-
-
-
-     
                 try
                 {
                     HttpRequestLog httpRequestLog = new HttpRequestLog(context.Request);
@@ -27,213 +25,136 @@ namespace Legendigital.Common.WebApp.AppCode
                     //检测是否存在ashx
                     if (string.IsNullOrEmpty(httpRequestLog.DataAdaptorUrl))
                     {
-                        //LogWarnInfo(httpRequest, "请求失败：没有指定ashx路径。\n", 0, 0);
+                        LogWarnInfo(httpRequestLog, "请求失败：没有指定ashx路径。\n", 0, 0);
 
                         return;
                     }
 
                     SPChannelWrapper channel = SPChannelWrapper.GetChannelByDataAdaptorUrl(httpRequestLog.DataAdaptorUrl);
 
-
-
-
-
                     //如果没有找到通道
                     if (channel == null)
                     {
-                        //LogWarnInfo(httpRequest, "处理请求失败：无法找到对应的通道。\n", 0, 0);
+                        LogWarnInfo(httpRequestLog, "处理请求失败：无法找到对应的通道。\n", 0, 0);
 
                         return;
                     }
 
-            //    saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
-
                     //如果通道未能运行
-                    //if (channel.ChannelStatus != ChannelStatus.Run)
-                    //{
-                    //    //LogWarnInfo(httpRequest, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n", channel.Id, 0);
+                    if (channel.ChannelStatus != DictionaryConst.Dictionary_ChannelStatus_Run_Key)
+                    {
+                        LogWarnInfo(httpRequestLog, "请求失败：\n" + "通道“" + channel.Name + "”未运行。\n", channel.Id, 0);
 
-                    //    //context.Response.Write(channel.GetFailedCode(httpRequest));
+                        context.Response.Write(channel.GetFailedCode(httpRequestLog));
 
-                    //    return;
-                    //}
-            //    //如果通道是监视通道，记录请求。
-            //    if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
-            //    {
-            //        SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
-            //    }
+                        return;
+                    }
 
+                    //如果通道是监视通道，记录请求。
+                    if (channel.IsMonitorRequest.HasValue && channel.IsMonitorRequest.Value)
+                    {
+                        SPMonitoringRequestWrapper.SaveRequest(httpRequestLog, channel);
+                    }
 
-            //    if (channel.Id == 88)
-            //    {
-            //        if (httpRequest.RequestParams.ContainsKey("command"))
-            //        {
-            //            if (httpRequest.RequestParams["command"].ToString().ToLower().Equals("z6"))
-            //            {
-            //                httpRequest.RequestParams["command"] = " 6";
-            //            }
-            //        }
-            //    }
-            //    if (channel.Id == 66)
-            //    {
-            //        if (httpRequest.RequestParams.ContainsKey("spnumber") && httpRequest.RequestParams.ContainsKey("momsg"))
-            //        {
-            //            if (httpRequest.RequestParams["momsg"].ToString().ToLower().StartsWith("8dm") && httpRequest.RequestParams["spnumber"].ToString().ToLower().Equals("106268001"))
-            //            {
-            //                httpRequest.RequestParams["spnumber"] = "106268000";
-            //            }
-            //        }
-            //    }
+                    //初始化参数，包含添加固定参数逻辑
+                    if (channel.NeedInitParams)
+                    {
+                        channel.InitParams(httpRequestLog);
+                    }
 
+                    //过滤请求
+                    if(channel.HasFilters.HasValue && channel.HasFilters.Value)
+                    {
+                        if (channel.CheckRequestIsFilters(httpRequestLog))
+                        {
+                            LogWarnInfo(httpRequestLog, "请求失败：\n" + "通道“" + channel.Name + "”属于过滤请求。\n", channel.Id, 0);
 
+                            context.Response.Write(channel.GetFailedCode(httpRequestLog));
+                        }
+                    }
 
-            //    //如果状态报告通道
-            //    if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
-            //    {
-            //        RequestError requestError1 = new RequestError();
+                    //参数转换
+                    if (channel.IsParamsConvert.HasValue && channel.IsParamsConvert.Value)
+                    {
+                        channel.ParamsConvert(httpRequestLog);
+                    }
 
-            //        bool result1 = false;
+                    RequestType requestType = channel.GetRequestType(httpRequestLog);
 
-            //        //分类型请求
-            //        if (channel.HasRequestTypeParams.HasValue && channel.HasRequestTypeParams.Value)
-            //        {
-            //            //报告状态请求
-            //            if (httpRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestReportTypeValue))
-            //            {
-            //                if (httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
-            //                {
-            //                    result1 = channel.RecState(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
-            //                }
-            //                else
-            //                {
-            //                    //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
+                    RequestErrorType requestError = RequestErrorType.NoError;
 
-            //                    context.Response.Write(channel.GetOkCode(httpRequest));
+                    string errorMessage = "";
 
-            //                    return;
-            //                }
-            //            }
-            //            //发送数据请求
-            //            else if (httpRequest.IsRequestContainValues(channel.RequestTypeParamName, channel.RequestDataTypeValue))
-            //            {
-            //                result1 = channel.ProcessStateRequest(httpRequest, out requestError1);
-            //            }
-            //            else
-            //            {
-            //                LogWarnInfo(httpRequest, "未知类型请求", channel.Id, 0);
+                    bool requestOK = false;
 
-            //                context.Response.Write(channel.GetFailedCode(httpRequest));
+                    if(requestType==RequestType.DataReport)
+                    {
+                        requestOK = channel.ProcessRequest(httpRequestLog, out requestError, out errorMessage);
+                    }
+                    else if (requestType == RequestType.StatusReport)
+                    {
+                        requestOK = channel.ProcessStatusReport(httpRequestLog, out requestError, out errorMessage);
+                    }
+                    else if (requestType == RequestType.DataStatusReport)
+                    {
+                        requestOK = channel.ProcessDataStatusReport(httpRequestLog, out requestError, out errorMessage);
+                    }
 
-            //                return;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            if (httpRequest.RequestParams.ContainsKey(channel.StatParamsName.ToLower()))
-            //            {
-            //                if (httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
-            //                {
-            //                    if (channel.StatSendOnce.HasValue && channel.StatSendOnce.Value)
-            //                    {
-            //                        result1 = channel.ProcessRequest(httpRequest, out requestError1);
-            //                    }
-            //                    else
-            //                    {
-            //                        result1 = channel.RecState(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString(), out requestError1);
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
-
-            //                    context.Response.Write(channel.GetOkCode(httpRequest));
-
-            //                    return;
-            //                }
-            //            }
-            //            else
-            //            {
-            //                result1 = channel.ProcessStateRequest(httpRequest, out requestError1);
-            //            }
-            //        }
-
-            //        //正确数据返回OK
-            //        if (result1)
-            //        {
-            //            context.Response.Write(channel.GetOkCode(httpRequest));
-            //            return;
-            //        }
+                    //正确数据返回OK
+                    if (requestOK)
+                    {
+                        context.Response.Write(channel.GetOkCode(httpRequestLog));
+                        return;
+                    }
 
 
 
-            //        //重复数据返回OK
-            //        if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
-            //        {
-            //            logger.Warn(requestError1.ErrorMessage);
-            //            context.Response.Write(channel.GetOkCode(httpRequest));
-            //            return;
-            //        }
+                    //重复数据返回OK
+                    if (requestError == RequestErrorType.RepeatLinkID)
+                    {
+                        logger.Warn(errorMessage);
+                        context.Response.Write(channel.GetOkCode(httpRequestLog));
+                        return;
+                    }
 
-            //        //其他错误类型记录错误请求
-            //        LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
+                    //其他错误类型记录错误请求
+                    LogWarnInfo(httpRequestLog, errorMessage, channel.Id, 0);
 
-            //        context.Response.Write(channel.GetFailedCode(httpRequest));
+                    context.Response.Write(channel.GetFailedCode(httpRequestLog));
 
-            //        return;
+                    return;
 
-            //    }
 
-            //    RequestError requestError;
 
-            //    bool result = channel.ProcessRequest(httpRequest, out requestError);
-
-            //    if (result)
-            //    {
-            //        context.Response.Write(channel.GetOkCode(httpRequest));
-
-            //        return;
-            //    }
-
-            //    //重复数据返回OK
-            //    if (requestError.ErrorType == RequestErrorType.RepeatLinkID)
-            //    {
-            //        logger.Warn(requestError.ErrorMessage);
-            //        context.Response.Write(channel.GetOkCode(httpRequest));
-            //        return;
-            //    }
-
-            //    LogWarnInfo(httpRequest, requestError.ErrorMessage, channel.Id, 0);
-
-            //    context.Response.Write(channel.GetFailedCode(httpRequest));
+ 
 
                 }
             catch (Exception ex)
             {
-                //try
-                //{
-                //    IHttpRequest failRequest = new HttpGetPostRequest(context.Request);
+                try
+                {
+                    HttpRequestLog failRequest = new HttpRequestLog(context.Request);
+ 
 
-                //    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message;
+                    string errorMessage = "处理请求失败:\n错误信息：" + ex.Message;
 
-                //    logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
+                    logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
-                //    if (saveLogFailedRequestToDb)
-                //        SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
-                //}
-                //catch (Exception e)
-                //{
-                //    logger.Error("处理请求失败:\n错误信息：" + e.Message);
-                //}
+ 
+                }
+                catch (Exception e)
+                {
+                    logger.Error("处理请求失败:\n错误信息：" + e.Message);
+                }
             }
         }
 
-        //private void LogWarnInfo(IHttpRequest httpRequest, string errorInfo, int channelID, int clientID)
-        //{
-        //    logger.Warn(errorInfo + "请求信息：\n" + httpRequest.RequestData);
+        private void LogWarnInfo(HttpRequestLog httpRequestLog, string errorInfo, int channelID, int clientID)
+        {
+            logger.Warn(errorInfo + "\n请求信息：\n" + httpRequestLog.RequestData);
 
-        //    if (saveLogFailedRequestToDb)
-        //        SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
-        //}
+ 
+        }
 
 
         public bool IsReusable

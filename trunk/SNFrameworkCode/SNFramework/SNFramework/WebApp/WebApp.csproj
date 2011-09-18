@@ -341,7 +341,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCode\HttpRequestLog.cs" />
     <Compile Include="AppCode\SPSDataRecievedHandler.cs" />
     <Compile Include="AppCode\WebUIHelper.cs" />
     <Compile Include="Default.aspx.cs">
