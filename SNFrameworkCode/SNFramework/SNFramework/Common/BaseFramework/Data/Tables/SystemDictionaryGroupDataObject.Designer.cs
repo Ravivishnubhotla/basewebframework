@@ -20,6 +20,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_ISENABLE));		
 		public static readonly BoolProperty PROPERTY_ISSYSTEM = new BoolProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_ISSYSTEM));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemDictionaryGroupEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -49,6 +54,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (bool);
                 case "IsSystem":
                     return typeof (bool);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

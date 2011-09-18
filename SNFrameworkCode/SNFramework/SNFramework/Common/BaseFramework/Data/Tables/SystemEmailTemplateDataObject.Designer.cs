@@ -23,8 +23,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_BODYTEMPLATE = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_BODYTEMPLATE));		
 		public static readonly BoolProperty PROPERTY_ISHTMLEMAIL = new BoolProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_ISHTMLEMAIL));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_ISENABLE));		
-		public static readonly DateTimeProperty PROPERTY_CREATEDATE = new DateTimeProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_CREATEDATE));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -60,10 +63,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (bool);
                 case "IsEnable":
                     return typeof (bool);
-                case "CreateDate":
+                case "CreateAt":
                     return typeof (DateTime);
                 case "CreateBy":
                     return typeof (int);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

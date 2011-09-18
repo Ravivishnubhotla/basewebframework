@@ -27,9 +27,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LOGINPASSWORD = "LoginPassword";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISDEFAULT = "IsDefault";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -51,9 +54,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _loginPassword;
 		private bool? _isEnable;
 		private bool? _isDefault;
-		private DateTime? _createDate;
-		private int? _createBy;
 		private int? _orderIndex;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -76,9 +82,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_loginPassword = null;
 			_isEnable = null;
 			_isDefault = null;
-			_createDate = null;
-			_createBy = null;
 			_orderIndex = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -86,7 +95,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemEmailSettingsEntity( int emailSettingID, string name, string code, string descriprsion, string host, string port, bool? ssl, string fromEmail, string fromName, string loginEmail, string loginPassword, bool? isEnable, bool? isDefault, DateTime? createDate, int? createBy, int? orderIndex)
+		public SystemEmailSettingsEntity( int emailSettingID, string name, string code, string descriprsion, string host, string port, bool? ssl, string fromEmail, string fromName, string loginEmail, string loginPassword, bool? isEnable, bool? isDefault, int? orderIndex, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_emailSettingID = emailSettingID;
 			_name = name;
@@ -101,9 +110,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_loginPassword = loginPassword;
 			_isEnable = isEnable;
 			_isDefault = isDefault;
-			_createDate = createDate;
-			_createBy = createBy;
 			_orderIndex = orderIndex;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -322,13 +334,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? CreateDate
+		public virtual int? OrderIndex
 		{
-			get { return _createDate; }
+			get { return _orderIndex; }
 
 			set	
 			{
-				_isChanged |= (_createDate != value); _createDate = value;
+				_isChanged |= (_orderIndex != value); _orderIndex = value;
 			}
 		}
 
@@ -350,13 +362,58 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? OrderIndex
+		public virtual DateTime? CreateAt
 		{
-			get { return _orderIndex; }
+			get { return _createAt; }
 
 			set	
 			{
-				_isChanged |= (_orderIndex != value); _orderIndex = value;
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

@@ -23,6 +23,11 @@
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
 		<property column="IsFinished" type="Boolean" name="IsFinished"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

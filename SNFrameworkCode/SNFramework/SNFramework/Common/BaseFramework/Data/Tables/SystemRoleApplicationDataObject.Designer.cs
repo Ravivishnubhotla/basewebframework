@@ -29,9 +29,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ROLEID_ROLEISSYSTEMROLE = new BoolProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole"));
 		public static readonly StringProperty PROPERTY_ROLEID_ROLETYPE = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType"));
 		public static readonly IntProperty PROPERTY_ROLEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateDate"));
-		public static readonly IntProperty PROPERTY_ROLEID_LASTUPDATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTUPDATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateDate"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_ROLEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_ROLEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly EntityProperty<SystemApplicationEntity> PROPERTY_APPLICATIONID = new EntityProperty<SystemApplicationEntity>(Property.ForName(SystemRoleApplicationEntity.PROPERTY_NAME_APPLICATIONID));
 		#region applicationID字段外键查询字段
@@ -47,6 +48,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationUrl"));
 		public static readonly BoolProperty PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = new BoolProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".SystemApplicationIsSystemApplication"));
 		public static readonly IntProperty PROPERTY_APPLICATIONID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".OrderIndex"));
+		public static readonly IntProperty PROPERTY_APPLICATIONID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_APPLICATIONID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_APPLICATIONID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_APPLICATIONID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
 		#region 子类集合字段查询字段

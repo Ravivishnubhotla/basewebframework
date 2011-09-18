@@ -35,6 +35,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameEn"));
 		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentDecription"));
 		public static readonly IntProperty PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentSortIndex"));
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly StringProperty PROPERTY_MOBILEPIN = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_MOBILEPIN));		
 		public static readonly IntProperty PROPERTY_PASSWORDFORMAT = new IntProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_PASSWORDFORMAT));		
@@ -54,6 +59,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISNEEDCHGPWD = new BoolProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_ISNEEDCHGPWD));		
 		public static readonly StringProperty PROPERTY_PASSWORDSALT = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_PASSWORDSALT));		
 		public static readonly StringProperty PROPERTY_LOWEREDEMAIL = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LOWEREDEMAIL));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -124,6 +134,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "PasswordSalt":
                     return typeof (string);
                 case "LoweredEmail":
+                    return typeof (string);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
                     return typeof (string);
           }
 			return typeof(string);

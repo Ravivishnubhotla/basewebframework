@@ -24,6 +24,11 @@
 		<property column="Menu_IsSystemMenu" type="Boolean" name="MenuIsSystemMenu"   />	
 		<property column="Menu_IsEnable" type="Boolean" name="MenuIsEnable"   />	
 		<many-to-one column="ApplicationID" name="ApplicationID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemApplicationEntity,Legendigital.Framework.Common" />		
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

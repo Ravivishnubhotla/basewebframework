@@ -23,9 +23,12 @@
 		<property column="LoginPassword" type="string" name="LoginPassword"   length="400" />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
 		<property column="IsDefault" type="Boolean" name="IsDefault"   />	
-		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
-		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

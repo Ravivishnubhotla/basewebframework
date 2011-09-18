@@ -17,6 +17,11 @@
 		<property column="IsSystemFlow" type="string" name="IsSystemFlow"   length="20" />	
 		<property column="IsDelete" type="string" name="IsDelete"   length="20" />	
 		<property column="IsEnable" type="string" name="IsEnable"   length="20" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

@@ -21,9 +21,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_ROLEISSYSTEMROLE = "RoleIsSystemRole";
 		public static readonly string PROPERTY_NAME_ROLETYPE = "RoleType";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_LASTUPDATEBY = "LastUpdateBy";
-		public static readonly string PROPERTY_NAME_LASTUPDATEDATE = "LastUpdateDate";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -39,9 +40,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool? _roleIsSystemRole;
 		private string _roleType;
 		private int? _createBy;
-		private DateTime? _createDate;
-		private int? _lastUpdateBy;
-		private DateTime? _lastUpdateDate;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -58,9 +60,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_roleIsSystemRole = null;
 			_roleType = null;
 			_createBy = null;
-			_createDate = null;
-			_lastUpdateBy = null;
-			_lastUpdateDate = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -68,7 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemRoleEntity( int roleID, string roleName, string roleCode, string roleDescription, bool? roleIsSystemRole, string roleType, int? createBy, DateTime? createDate, int? lastUpdateBy, DateTime? lastUpdateDate)
+		public SystemRoleEntity( int roleID, string roleName, string roleCode, string roleDescription, bool? roleIsSystemRole, string roleType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_roleID = roleID;
 			_roleName = roleName;
@@ -77,9 +80,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_roleIsSystemRole = roleIsSystemRole;
 			_roleType = roleType;
 			_createBy = createBy;
-			_createDate = createDate;
-			_lastUpdateBy = lastUpdateBy;
-			_lastUpdateDate = lastUpdateDate;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -199,13 +203,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? CreateDate
+		public virtual DateTime? CreateAt
 		{
-			get { return _createDate; }
+			get { return _createAt; }
 
 			set	
 			{
-				_isChanged |= (_createDate != value); _createDate = value;
+				_isChanged |= (_createAt != value); _createAt = value;
 			}
 		}
 
@@ -213,13 +217,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? LastUpdateBy
+		public virtual int? LastModifyBy
 		{
-			get { return _lastUpdateBy; }
+			get { return _lastModifyBy; }
 
 			set	
 			{
-				_isChanged |= (_lastUpdateBy != value); _lastUpdateBy = value;
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
 			}
 		}
 
@@ -227,13 +231,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? LastUpdateDate
+		public virtual DateTime? LastModifyAt
 		{
-			get { return _lastUpdateDate; }
+			get { return _lastModifyAt; }
 
 			set	
 			{
-				_isChanged |= (_lastUpdateDate != value); _lastUpdateDate = value;
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

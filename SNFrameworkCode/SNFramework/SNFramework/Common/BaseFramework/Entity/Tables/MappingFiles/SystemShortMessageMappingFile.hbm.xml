@@ -21,6 +21,11 @@
 		<property column="ShortMessage_Receiver_UserID" type="int" name="ShortMessageReceiverUserID"   not-null="true"  />	
 		<property column="ShortMessage_IsRead" type="Boolean" name="ShortMessageIsRead"   not-null="true"  />	
 		<property column="ShortMessage_Type" type="string" name="ShortMessageType"   length="20" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

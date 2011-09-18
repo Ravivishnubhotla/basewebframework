@@ -20,6 +20,11 @@
 		<many-to-one column="MoudleID" name="MoudleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMoudleEntity,Legendigital.Framework.Common" />		
 		<many-to-one column="ParentResources_ID" name="ParentResourcesID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemResourcesEntity,Legendigital.Framework.Common" />		
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

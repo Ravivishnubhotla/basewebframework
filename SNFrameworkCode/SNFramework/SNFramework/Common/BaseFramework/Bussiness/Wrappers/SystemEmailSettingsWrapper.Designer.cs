@@ -81,9 +81,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LOGINPASSWORD = "LoginPassword";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_ISDEFAULT = "IsDefault";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 
@@ -274,15 +277,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateDate
+		public int? OrderIndex
 		{
 			get
 			{
-				return entity.CreateDate;
+				return entity.OrderIndex;
 			}
 			set
 			{
-				entity.CreateDate = value;
+				entity.OrderIndex = value;
 			}
 		}
 		/// <summary>
@@ -302,15 +305,57 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? OrderIndex
+		public DateTime? CreateAt
 		{
 			get
 			{
-				return entity.OrderIndex;
+				return entity.CreateAt;
 			}
 			set
 			{
-				entity.OrderIndex = value;
+				entity.CreateAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? LastModifyBy
+		{
+			get
+			{
+				return entity.LastModifyBy;
+			}
+			set
+			{
+				entity.LastModifyBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? LastModifyAt
+		{
+			get
+			{
+				return entity.LastModifyAt;
+			}
+			set
+			{
+				entity.LastModifyAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LastModifyComment
+		{
+			get
+			{
+				return entity.LastModifyComment;
+			}
+			set
+			{
+				entity.LastModifyComment = value;
 			}
 		}
 		#endregion 

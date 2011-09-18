@@ -22,6 +22,11 @@
 		<property column="SaveMethodName" type="string" name="SaveMethodName"   length="100" />	
 		<property column="UpdateMethodName" type="string" name="UpdateMethodName"   length="100" />	
 		<property column="DeleteMethodName" type="string" name="DeleteMethodName"   length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

@@ -75,9 +75,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ROLEISSYSTEMROLE = "RoleIsSystemRole";
 		public static readonly string PROPERTY_NAME_ROLETYPE = "RoleType";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_LASTUPDATEBY = "LastUpdateBy";
-		public static readonly string PROPERTY_NAME_LASTUPDATEDATE = "LastUpdateDate";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 
@@ -184,43 +185,57 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateDate
+		public DateTime? CreateAt
 		{
 			get
 			{
-				return entity.CreateDate;
+				return entity.CreateAt;
 			}
 			set
 			{
-				entity.CreateDate = value;
+				entity.CreateAt = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? LastUpdateBy
+		public int? LastModifyBy
 		{
 			get
 			{
-				return entity.LastUpdateBy;
+				return entity.LastModifyBy;
 			}
 			set
 			{
-				entity.LastUpdateBy = value;
+				entity.LastModifyBy = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? LastUpdateDate
+		public DateTime? LastModifyAt
 		{
 			get
 			{
-				return entity.LastUpdateDate;
+				return entity.LastModifyAt;
 			}
 			set
 			{
-				entity.LastUpdateDate = value;
+				entity.LastModifyAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LastModifyComment
+		{
+			get
+			{
+				return entity.LastModifyComment;
+			}
+			set
+			{
+				entity.LastModifyComment = value;
 			}
 		}
 		#endregion 

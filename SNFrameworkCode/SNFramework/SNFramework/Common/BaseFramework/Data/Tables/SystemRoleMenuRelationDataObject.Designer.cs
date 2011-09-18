@@ -36,6 +36,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_MENUID_MENUISSYSTEMMENU = new BoolProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".MenuIsSystemMenu"));
 		public static readonly BoolProperty PROPERTY_MENUID_MENUISENABLE = new BoolProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".MenuIsEnable"));
 		public static readonly EntityProperty<SystemApplicationEntity> PROPERTY_MENUID_APPLICATIONID = new EntityProperty<SystemApplicationEntity>(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".ApplicationID"));
+		public static readonly IntProperty PROPERTY_MENUID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_MENUID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_MENUID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_MENUID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_MENUID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_MENUID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly EntityProperty<SystemRoleEntity> PROPERTY_ROLEID = new EntityProperty<SystemRoleEntity>(Property.ForName(SystemRoleMenuRelationEntity.PROPERTY_NAME_ROLEID));
 		#region roleID字段外键查询字段
@@ -51,9 +56,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ROLEID_ROLEISSYSTEMROLE = new BoolProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole"));
 		public static readonly StringProperty PROPERTY_ROLEID_ROLETYPE = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType"));
 		public static readonly IntProperty PROPERTY_ROLEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateDate"));
-		public static readonly IntProperty PROPERTY_ROLEID_LASTUPDATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTUPDATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateDate"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_ROLEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_ROLEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
 		#region 子类集合字段查询字段

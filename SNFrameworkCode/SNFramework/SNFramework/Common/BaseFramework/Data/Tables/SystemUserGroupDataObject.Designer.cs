@@ -18,6 +18,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_GROUPNAMECN = new StringProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_GROUPNAMECN));		
 		public static readonly StringProperty PROPERTY_GROUPNAMEEN = new StringProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_GROUPNAMEEN));		
 		public static readonly StringProperty PROPERTY_GROUPDESCRIPTION = new StringProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_GROUPDESCRIPTION));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemUserGroupEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -42,6 +47,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "GroupNameEn":
                     return typeof (string);
                 case "GroupDescription":
+                    return typeof (string);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
                     return typeof (string);
           }
 			return typeof(string);

@@ -49,6 +49,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_USERID_ISNEEDCHGPWD = new BoolProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".IsNeedChgPwd"));
 		public static readonly StringProperty PROPERTY_USERID_PASSWORDSALT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".PasswordSalt"));
 		public static readonly StringProperty PROPERTY_USERID_LOWEREDEMAIL = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LoweredEmail"));
+		public static readonly IntProperty PROPERTY_USERID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_USERID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_USERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_USERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_USERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly EntityProperty<SystemUserProfilePropertysEntity> PROPERTY_PROPERTYID = new EntityProperty<SystemUserProfilePropertysEntity>(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_PROPERTYID));
 		#region propertyID字段外键查询字段
@@ -64,6 +69,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_PROPERTYVALUESSTRING = new StringProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_PROPERTYVALUESSTRING));		
 		public static readonly ByteArrayProperty PROPERTY_PROPERTYVALUESBINARY = new ByteArrayProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_PROPERTYVALUESBINARY));		
 		public static readonly DateTimeProperty PROPERTY_LASTUPDATEDDATE = new DateTimeProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_LASTUPDATEDDATE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemUserProfileEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -93,6 +103,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (byte[]);
                 case "LastUpdatedDate":
                     return typeof (DateTime);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

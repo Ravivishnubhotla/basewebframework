@@ -43,7 +43,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly EntityProperty<SystemMoudleEntity> PROPERTY_RESOURCEID_MOUDLEID = new EntityProperty<SystemMoudleEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".MoudleID"));
 		public static readonly EntityProperty<SystemResourcesEntity> PROPERTY_RESOURCEID_PARENTRESOURCESID = new EntityProperty<SystemResourcesEntity>(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".ParentResourcesID"));
 		public static readonly IntProperty PROPERTY_RESOURCEID_ORDERINDEX = new IntProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".OrderIndex"));
+		public static readonly IntProperty PROPERTY_RESOURCEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_RESOURCEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_RESOURCEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_RESOURCEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_RESOURCEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_RESOURCEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -87,6 +97,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (bool);
                 case "ResourceID":
                     return typeof (int);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

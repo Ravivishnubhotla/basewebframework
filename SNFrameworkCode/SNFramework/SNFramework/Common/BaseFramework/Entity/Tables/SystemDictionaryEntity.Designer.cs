@@ -23,6 +23,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYORDER = "SystemDictionaryOrder";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISENABLE = "SystemDictionaryIsEnable";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYISSYSTEM = "SystemDictionaryIsSystem";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -40,6 +45,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _systemDictionaryOrder;
 		private bool? _systemDictionaryIsEnable;
 		private bool? _systemDictionaryIsSystem;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -58,6 +68,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemDictionaryOrder = null;
 			_systemDictionaryIsEnable = null;
 			_systemDictionaryIsSystem = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -65,7 +80,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDictionaryEntity( int systemDictionaryID, SystemDictionaryGroupEntity systemDictionaryGroupID, string systemDictionaryKey, string systemDictionaryCode, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable, bool? systemDictionaryIsSystem)
+		public SystemDictionaryEntity( int systemDictionaryID, SystemDictionaryGroupEntity systemDictionaryGroupID, string systemDictionaryKey, string systemDictionaryCode, string systemDictionaryValue, string systemDictionaryDesciption, int? systemDictionaryOrder, bool? systemDictionaryIsEnable, bool? systemDictionaryIsSystem, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_systemDictionaryID = systemDictionaryID;
 			_systemDictionaryGroupID = systemDictionaryGroupID;
@@ -76,6 +91,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_systemDictionaryOrder = systemDictionaryOrder;
 			_systemDictionaryIsEnable = systemDictionaryIsEnable;
 			_systemDictionaryIsSystem = systemDictionaryIsSystem;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -216,6 +236,79 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_systemDictionaryIsSystem != value); _systemDictionaryIsSystem = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

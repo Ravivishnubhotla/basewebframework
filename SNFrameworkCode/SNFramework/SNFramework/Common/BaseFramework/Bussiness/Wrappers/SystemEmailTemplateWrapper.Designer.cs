@@ -77,8 +77,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_BODYTEMPLATE = "BodyTemplate";
 		public static readonly string PROPERTY_NAME_ISHTMLEMAIL = "IsHtmlEmail";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
-		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 
@@ -213,15 +216,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateDate
+		public DateTime? CreateAt
 		{
 			get
 			{
-				return entity.CreateDate;
+				return entity.CreateAt;
 			}
 			set
 			{
-				entity.CreateDate = value;
+				entity.CreateAt = value;
 			}
 		}
 		/// <summary>
@@ -236,6 +239,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.CreateBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? LastModifyBy
+		{
+			get
+			{
+				return entity.LastModifyBy;
+			}
+			set
+			{
+				entity.LastModifyBy = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public DateTime? LastModifyAt
+		{
+			get
+			{
+				return entity.LastModifyAt;
+			}
+			set
+			{
+				entity.LastModifyAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LastModifyComment
+		{
+			get
+			{
+				return entity.LastModifyComment;
+			}
+			set
+			{
+				entity.LastModifyComment = value;
 			}
 		}
 		#endregion 
