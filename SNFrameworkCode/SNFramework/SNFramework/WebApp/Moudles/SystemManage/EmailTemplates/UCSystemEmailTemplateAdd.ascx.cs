@@ -47,7 +47,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.EmailTemplates
                 obj.BodyTemplate = this.txtBodyTemplate.Text.Trim();
                 obj.IsHtmlEmail = this.chkIsHtmlEmail.Checked;
                 obj.IsEnable = this.chkIsEnable.Checked;
-                obj.CreateDate = System.DateTime.Now;
+                //obj.CreateDate = System.DateTime.Now;
  
 
 
