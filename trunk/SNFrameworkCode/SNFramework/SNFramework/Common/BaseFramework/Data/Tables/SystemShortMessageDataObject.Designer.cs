@@ -25,6 +25,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_SHORTMESSAGERECEIVERUSERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID));		
 		public static readonly BoolProperty PROPERTY_SHORTMESSAGEISREAD = new BoolProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGEISREAD));		
 		public static readonly StringProperty PROPERTY_SHORTMESSAGETYPE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGETYPE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -63,6 +68,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "ShortMessageIsRead":
                     return typeof (bool);
                 case "ShortMessageType":
+                    return typeof (string);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
                     return typeof (string);
           }
 			return typeof(string);

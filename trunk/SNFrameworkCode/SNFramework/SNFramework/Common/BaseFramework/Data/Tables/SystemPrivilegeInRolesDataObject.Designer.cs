@@ -29,9 +29,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_ROLEID_ROLEISSYSTEMROLE = new BoolProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole"));
 		public static readonly StringProperty PROPERTY_ROLEID_ROLETYPE = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType"));
 		public static readonly IntProperty PROPERTY_ROLEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateDate"));
-		public static readonly IntProperty PROPERTY_ROLEID_LASTUPDATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateBy"));
-		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTUPDATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastUpdateDate"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_ROLEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_ROLEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly EntityProperty<SystemPrivilegeEntity> PROPERTY_PRIVILEGEID = new EntityProperty<SystemPrivilegeEntity>(Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEID));
 		#region privilegeID字段外键查询字段
@@ -49,6 +50,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_PRIVILEGEID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".Description"));
 		public static readonly IntProperty PROPERTY_PRIVILEGEID_PRIVILEGEORDER = new IntProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeOrder"));
 		public static readonly StringProperty PROPERTY_PRIVILEGEID_PRIVILEGETYPE = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".PrivilegeType"));
+		public static readonly IntProperty PROPERTY_PRIVILEGEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_PRIVILEGEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_PRIVILEGEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_PRIVILEGEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_PRIVILEGEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PRIVILEGEROLEVALUETYPE = new StringProperty(Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEROLEVALUETYPE));		
 		public static readonly StringProperty PROPERTY_ENABLETYPE = new StringProperty(Property.ForName(SystemPrivilegeInRolesEntity.PROPERTY_NAME_ENABLETYPE));		

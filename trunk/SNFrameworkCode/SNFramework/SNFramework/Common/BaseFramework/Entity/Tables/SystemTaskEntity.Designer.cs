@@ -27,6 +27,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_PARENTDATAID = "ParentDataID";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
 		public static readonly string PROPERTY_NAME_ISFINISHED = "IsFinished";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -48,6 +53,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _parentDataID;
 		private string _parentDataType;
 		private bool? _isFinished;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -70,6 +80,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_parentDataID = null;
 			_parentDataType = null;
 			_isFinished = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -77,7 +92,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemTaskEntity( int id, string title, string taskContent, int? assignedUserID, string status, DateTime? dateDue, bool? isDateDue, DateTime? dateStart, bool? isDateStart, string priority, int? parentDataID, string parentDataType, bool? isFinished)
+		public SystemTaskEntity( int id, string title, string taskContent, int? assignedUserID, string status, DateTime? dateDue, bool? isDateDue, DateTime? dateStart, bool? isDateStart, string priority, int? parentDataID, string parentDataType, bool? isFinished, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_title = title;
@@ -92,6 +107,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_parentDataID = parentDataID;
 			_parentDataType = parentDataType;
 			_isFinished = isFinished;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -291,6 +311,79 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isFinished != value); _isFinished = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

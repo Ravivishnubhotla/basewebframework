@@ -19,8 +19,11 @@
 		<property column="BodyTemplate" type="string" name="BodyTemplate"   length="2147483646" />	
 		<property column="IsHtmlEmail" type="Boolean" name="IsHtmlEmail"   />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
-		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

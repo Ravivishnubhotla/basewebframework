@@ -37,6 +37,11 @@
 		<property column="IsNeedChgPwd" type="Boolean" name="IsNeedChgPwd"   not-null="true"  />	
 		<property column="PasswordSalt" type="string" name="PasswordSalt"   length="256" />	
 		<property column="LoweredEmail" type="string" name="LoweredEmail"   length="256" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

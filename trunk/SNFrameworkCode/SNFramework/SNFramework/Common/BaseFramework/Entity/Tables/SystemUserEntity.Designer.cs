@@ -41,6 +41,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISNEEDCHGPWD = "IsNeedChgPwd";
 		public static readonly string PROPERTY_NAME_PASSWORDSALT = "PasswordSalt";
 		public static readonly string PROPERTY_NAME_LOWEREDEMAIL = "LoweredEmail";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
+		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
+		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
+		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
 	
@@ -76,6 +81,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _isNeedChgPwd;
 		private string _passwordSalt;
 		private string _loweredEmail;
+		private int? _createBy;
+		private DateTime? _createAt;
+		private int? _lastModifyBy;
+		private DateTime? _lastModifyAt;
+		private string _lastModifyComment;
 		
 		#endregion
 
@@ -112,6 +122,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isNeedChgPwd = false;
 			_passwordSalt = null;
 			_loweredEmail = null;
+			_createBy = null;
+			_createAt = null;
+			_lastModifyBy = null;
+			_lastModifyAt = null;
+			_lastModifyComment = null;
 		}
 		#endregion
 
@@ -119,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, SystemDepartmentEntity departmentID, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail)
+		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, SystemDepartmentEntity departmentID, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_userID = userID;
 			_userLoginID = userLoginID;
@@ -148,6 +163,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_isNeedChgPwd = isNeedChgPwd;
 			_passwordSalt = passwordSalt;
 			_loweredEmail = loweredEmail;
+			_createBy = createBy;
+			_createAt = createAt;
+			_lastModifyBy = lastModifyBy;
+			_lastModifyAt = lastModifyAt;
+			_lastModifyComment = lastModifyComment;
 		}
 		#endregion     
 	
@@ -564,6 +584,79 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 256)
 					throw new ArgumentOutOfRangeException("Invalid value for LoweredEmail", value, value.ToString());
 				_isChanged |= (_loweredEmail != value); _loweredEmail = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? CreateBy
+		{
+			get { return _createBy; }
+
+			set	
+			{
+				_isChanged |= (_createBy != value); _createBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? CreateAt
+		{
+			get { return _createAt; }
+
+			set	
+			{
+				_isChanged |= (_createAt != value); _createAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? LastModifyBy
+		{
+			get { return _lastModifyBy; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyBy != value); _lastModifyBy = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? LastModifyAt
+		{
+			get { return _lastModifyAt; }
+
+			set	
+			{
+				_isChanged |= (_lastModifyAt != value); _lastModifyAt = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastModifyComment
+		{
+			get { return _lastModifyComment; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
+				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
 		/// <summary>

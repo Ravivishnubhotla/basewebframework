@@ -19,6 +19,11 @@
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="PrivilegeOrder" type="int" name="PrivilegeOrder"   not-null="true"  />	
 		<property column="PrivilegeType" type="string" name="PrivilegeType"   length="400" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

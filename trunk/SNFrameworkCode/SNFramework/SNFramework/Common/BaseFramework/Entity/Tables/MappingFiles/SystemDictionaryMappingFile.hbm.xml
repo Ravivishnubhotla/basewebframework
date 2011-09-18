@@ -19,6 +19,11 @@
 		<property column="SystemDictionary_Order" type="int" name="SystemDictionaryOrder"   />	
 		<property column="SystemDictionary_IsEnable" type="Boolean" name="SystemDictionaryIsEnable"   />	
 		<property column="SystemDictionary_IsSystem" type="Boolean" name="SystemDictionaryIsSystem"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

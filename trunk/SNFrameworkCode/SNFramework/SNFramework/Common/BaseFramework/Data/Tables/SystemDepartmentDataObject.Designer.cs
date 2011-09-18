@@ -20,6 +20,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_DEPARTMENTNAMEEN = new StringProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTNAMEEN));		
 		public static readonly StringProperty PROPERTY_DEPARTMENTDECRIPTION = new StringProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTDECRIPTION));		
 		public static readonly IntProperty PROPERTY_DEPARTMENTSORTINDEX = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTSORTINDEX));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -49,6 +54,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "DepartmentSortIndex":
                     return typeof (int);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
+                    return typeof (string);
           }
 			return typeof(string);
         }

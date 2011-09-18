@@ -20,6 +20,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_SYSTEMURL = new StringProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_SYSTEMURL));		
 		public static readonly StringProperty PROPERTY_SYSTEMVERSION = new StringProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_SYSTEMVERSION));		
 		public static readonly StringProperty PROPERTY_SYSTEMLISENCE = new StringProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_SYSTEMLISENCE));		
+		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_CREATEBY));		
+		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_CREATEAT));		
+		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_LASTMODIFYBY));		
+		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_LASTMODIFYAT));		
+		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemSettingEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
 		#region 子类集合字段查询字段
 	
@@ -48,6 +53,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "SystemVersion":
                     return typeof (string);
                 case "SystemLisence":
+                    return typeof (string);
+                case "CreateBy":
+                    return typeof (int);
+                case "CreateAt":
+                    return typeof (DateTime);
+                case "LastModifyBy":
+                    return typeof (int);
+                case "LastModifyAt":
+                    return typeof (DateTime);
+                case "LastModifyComment":
                     return typeof (string);
           }
 			return typeof(string);

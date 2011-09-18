@@ -16,6 +16,11 @@
 		<property column="PropertyValuesString" type="string" name="PropertyValuesString"   length="2147483646" />	
 		<property column="PropertyValuesBinary" type="Byte[]" name="PropertyValuesBinary"   length="2147483647" />	
 		<property column="LastUpdatedDate" type="DateTime" name="LastUpdatedDate"   not-null="true"  />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

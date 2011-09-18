@@ -49,6 +49,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly BoolProperty PROPERTY_USERID_ISNEEDCHGPWD = new BoolProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".IsNeedChgPwd"));
 		public static readonly StringProperty PROPERTY_USERID_PASSWORDSALT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".PasswordSalt"));
 		public static readonly StringProperty PROPERTY_USERID_LOWEREDEMAIL = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LoweredEmail"));
+		public static readonly IntProperty PROPERTY_USERID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_USERID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_USERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_USERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_USERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
 		public static readonly EntityProperty<SystemUserGroupEntity> PROPERTY_USERGROUPID = new EntityProperty<SystemUserGroupEntity>(Property.ForName(SystemUserGroupUserRelationEntity.PROPERTY_NAME_USERGROUPID));
 		#region userGroupID字段外键查询字段
@@ -61,6 +66,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_USERGROUPID_GROUPNAMECN = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".GroupNameCn"));
 		public static readonly StringProperty PROPERTY_USERGROUPID_GROUPNAMEEN = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".GroupNameEn"));
 		public static readonly StringProperty PROPERTY_USERGROUPID_GROUPDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".GroupDescription"));
+		public static readonly IntProperty PROPERTY_USERGROUPID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_USERGROUPID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_USERGROUPID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_USERGROUPID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
 		#region 子类集合字段查询字段

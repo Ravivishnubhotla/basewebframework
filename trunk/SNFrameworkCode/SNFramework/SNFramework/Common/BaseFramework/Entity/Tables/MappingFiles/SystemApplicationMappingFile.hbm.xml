@@ -17,6 +17,11 @@
 		<property column="SystemApplication_Url" type="string" name="SystemApplicationUrl"   length="400" />	
 		<property column="SystemApplication_IsSystemApplication" type="Boolean" name="SystemApplicationIsSystemApplication"   />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

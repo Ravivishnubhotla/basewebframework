@@ -17,6 +17,11 @@
 		<property column="Config_Description" type="string" name="ConfigDescription"   length="4000" />	
 		<property column="SortIndex" type="int" name="SortIndex"   />	
 		<many-to-one column="Config_GroupID" name="ConfigGroupID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemConfigGroupEntity,Legendigital.Framework.Common" />		
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

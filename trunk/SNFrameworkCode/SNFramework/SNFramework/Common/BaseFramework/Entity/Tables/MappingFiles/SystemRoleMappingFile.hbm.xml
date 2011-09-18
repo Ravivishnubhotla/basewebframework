@@ -17,9 +17,10 @@
 		<property column="Role_IsSystemRole" type="Boolean" name="RoleIsSystemRole"   />	
 		<property column="Role_Type" type="string" name="RoleType"   length="100" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
-		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
-		<property column="LastUpdateBy" type="int" name="LastUpdateBy"   />	
-		<property column="LastUpdateDate" type="DateTime" name="LastUpdateDate"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

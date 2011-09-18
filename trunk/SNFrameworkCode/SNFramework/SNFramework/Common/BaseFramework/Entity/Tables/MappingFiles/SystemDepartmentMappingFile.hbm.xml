@@ -16,6 +16,11 @@
 		<property column="Department_NameEn" type="string" name="DepartmentNameEn"   not-null="true"  length="400" />	
 		<property column="Department_Decription" type="string" name="DepartmentDecription"   length="4000" />	
 		<property column="DepartmentSortIndex" type="int" name="DepartmentSortIndex"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 

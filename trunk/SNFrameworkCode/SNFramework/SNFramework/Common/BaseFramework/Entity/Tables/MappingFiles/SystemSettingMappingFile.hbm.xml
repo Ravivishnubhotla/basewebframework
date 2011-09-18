@@ -16,6 +16,11 @@
 		<property column="SystemUrl" type="string" name="SystemUrl"   length="400" />	
 		<property column="SystemVersion" type="string" name="SystemVersion"   not-null="true"  length="400" />	
 		<property column="SystemLisence" type="string" name="SystemLisence"   not-null="true"  length="4000" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
 
 
 
