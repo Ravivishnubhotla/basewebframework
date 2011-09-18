@@ -43,6 +43,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataSet FindAllPaymentIDByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType, int limit);
 
         int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType);
+
+        DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -333,6 +335,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType)
         {
             return AdoNetDb.FindAllPaymentCountByDateAndType(startDate, endDate, channleClientID, dataType);
+        }
+
+        public DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate)
+        {
+            return AdoNetDb.GetClientMobileCount(spClientId,startDate, endDate);
         }
     }
  }

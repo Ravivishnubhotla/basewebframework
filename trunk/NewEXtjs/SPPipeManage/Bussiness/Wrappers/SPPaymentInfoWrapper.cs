@@ -746,5 +746,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
 	        return businessProxy.CheckHasLinkIDAndChannelID(this.entity);
 	    }
+
+	    public static DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate)
+	    {
+            return businessProxy.GetClientMobileCount(spClientId, startDate, endDate);        
+	    }
     }
 }
