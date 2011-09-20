@@ -226,6 +226,9 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="SPClientGroupName" Header="下家组"
+                                    Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colUpSuccess" DataIndex="TotalCount" Header="总点播数(条)" Sortable="true">
                                     <Commands>
                                         <ext:ImageCommand Icon="Table" CommandName="TotalCountDetail" Hidden="true">
