@@ -1439,5 +1439,18 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate)
+        {
+            string sql = "SELECT   vw_ClientGroupAmountReport.ReportID, vw_ClientGroupAmountReport.ReportDate, vw_ClientGroupAmountReport.UpTotalCount, vw_ClientGroupAmountReport.InterceptTotalCount,  vw_ClientGroupAmountReport.DownTotalCount, vw_ClientGroupAmountReport.DownSuccess,  vw_ClientGroupAmountReport.ClientID, vw_ClientGroupAmountReport.ChannelID,   vw_ClientGroupAmountReport.SPClientGroupID, vw_ClientGroupAmountReport.Price,    vw_ClientGroupAmountReport.Amount, vw_ClientGroupAmountReport.ClientAliasName,  vw_ClientGroupAmountReport.ClientName, ISNULL(SPClientGroup.Name, '未分组下家') AS GroupName FROM  vw_ClientGroupAmountReport LEFT OUTER JOIN SPClientGroup ON vw_ClientGroupAmountReport.SPClientGroupID = SPClientGroup.ID WHERE 1=1 AND (ReportDate >= @startDate) AND  (ReportDate <@endDate)";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }
