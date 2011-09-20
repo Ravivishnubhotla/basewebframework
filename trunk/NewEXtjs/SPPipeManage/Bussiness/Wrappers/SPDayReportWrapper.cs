@@ -235,5 +235,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetReportDataChange(reportClientChannleId,startDate, endDate);
 	    }
+
+        public static DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate)
+	    {
+            return businessProxy.GetALlClientGroupPriceReport( startDate, endDate);
+	    }
     }
 }

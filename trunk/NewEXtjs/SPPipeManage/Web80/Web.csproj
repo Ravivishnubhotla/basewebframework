@@ -362,7 +362,9 @@
     <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
     <Content Include="Moudles\SPS\Reports\ReSendData.aspx" />
     <Content Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx" />
     <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
     <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\TextLogList.aspx" />
@@ -1080,12 +1082,26 @@
     <Compile Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx.designer.cs">
       <DependentUpon>ResetInterceptToSycn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx.cs">
+      <DependentUpon>SPALLClientGroupReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx.designer.cs">
+      <DependentUpon>SPALLClientGroupReportService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.cs">
       <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.designer.cs">
       <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.cs">
       <DependentUpon>UCMovePayment.ascx</DependentUpon>
@@ -1265,6 +1281,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Moudles\SPS\Reports\SPSALLClientGroupAmount.rdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
