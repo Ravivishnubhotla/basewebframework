@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\SPChannelParamsCollection.cs" />
     <Compile Include="ConstClass\DictionaryConst.cs" />
     <Compile Include="ConstClass\RoleCodeList.cs" />
     <Compile Include="DataAdapter\CSVFileAdapter.cs" />

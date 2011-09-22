@@ -100,5 +100,10 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        businessProxy.QuickAddCode(spCodeWrapper.entity, hasSubCode, subCode);
 	    }
+
+	    public SPSClientWrapper GetRelateClient()
+	    {
+	        return null;
+	    }
     }
 }

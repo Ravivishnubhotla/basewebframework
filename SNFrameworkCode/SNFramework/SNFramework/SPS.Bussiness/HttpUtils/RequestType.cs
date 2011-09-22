@@ -9,6 +9,7 @@ namespace SPS.Bussiness.HttpUtils
     {
         DataReport,
         StatusReport,
-        DataStatusReport
+        DataStatusReport,
+        UnKnow
     }
 }
