@@ -11,38 +11,38 @@
 </id>
 
 
-		<property column="Name" type="string" name="Name"   length="100" />	
-		<property column="Code" type="string" name="Code"   length="100" />	
-		<property column="DataOkMessage" type="string" name="DataOkMessage"   length="400" />	
-		<property column="DataFailedMessage" type="string" name="DataFailedMessage"   length="400" />	
-		<property column="Description" type="string" name="Description"   length="4000" />	
-		<property column="DataAdapterType" type="string" name="DataAdapterType"   length="100" />	
-		<property column="DataAdapterUrl" type="string" name="DataAdapterUrl"   length="400" />	
-		<property column="ChannelType" type="string" name="ChannelType"   length="40" />	
+		<property column="Name" type="string" name="Name"   not-null="true"  length="100" />	
+		<property column="Code" type="string" name="Code"   not-null="true"  length="100" />	
+		<property column="DataOkMessage" type="string" name="DataOkMessage"   not-null="true"  length="400" />	
+		<property column="DataFailedMessage" type="string" name="DataFailedMessage"   not-null="true"  length="400" />	
+		<property column="Description" type="string" name="Description"   not-null="true"  length="4000" />	
+		<property column="DataAdapterType" type="string" name="DataAdapterType"   not-null="true"  length="100" />	
+		<property column="DataAdapterUrl" type="string" name="DataAdapterUrl"   not-null="true"  length="400" />	
+		<property column="ChannelType" type="string" name="ChannelType"   not-null="true"  length="40" />	
 		<property column="IVRFeeTimeType" type="string" name="IVRFeeTimeType"   length="40" />	
 		<property column="IVRTimeFormat" type="string" name="IVRTimeFormat"   length="40" />	
-		<property column="IsStateReport" type="Boolean" name="IsStateReport"   />	
-		<property column="StateReportType" type="string" name="StateReportType"   length="40" />	
-		<property column="ReportOkMessage" type="string" name="ReportOkMessage"   length="400" />	
-		<property column="ReportFailedMessage" type="string" name="ReportFailedMessage"   length="400" />	
-		<property column="StateReportParamName" type="string" name="StateReportParamName"   length="40" />	
-		<property column="StateReportParamValue" type="string" name="StateReportParamValue"   length="40" />	
-		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   length="40" />	
-		<property column="RequestTypeParamStateReportValue" type="string" name="RequestTypeParamStateReportValue"   length="40" />	
-		<property column="RequestTypeParamDataReportValue" type="string" name="RequestTypeParamDataReportValue"   length="40" />	
-		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
-		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   />	
-		<property column="IsLogRequest" type="Boolean" name="IsLogRequest"   />	
-		<property column="IsParamsConvert" type="Boolean" name="IsParamsConvert"   />	
-		<property column="IsAutoLinkID" type="Boolean" name="IsAutoLinkID"   />	
-		<property column="AutoLinkIDFields" type="string" name="AutoLinkIDFields"   length="600" />	
+		<property column="IsStateReport" type="Boolean" name="IsStateReport"   not-null="true"  />	
+		<property column="StateReportType" type="string" name="StateReportType"   not-null="true"  length="40" />	
+		<property column="ReportOkMessage" type="string" name="ReportOkMessage"   not-null="true"  length="400" />	
+		<property column="ReportFailedMessage" type="string" name="ReportFailedMessage"   not-null="true"  length="400" />	
+		<property column="StateReportParamName" type="string" name="StateReportParamName"   not-null="true"  length="40" />	
+		<property column="StateReportParamValue" type="string" name="StateReportParamValue"   not-null="true"  length="40" />	
+		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   not-null="true"  length="40" />	
+		<property column="RequestTypeParamStateReportValue" type="string" name="RequestTypeParamStateReportValue"   not-null="true"  length="40" />	
+		<property column="RequestTypeParamDataReportValue" type="string" name="RequestTypeParamDataReportValue"   not-null="true"  length="40" />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   not-null="true"  />	
+		<property column="IsMonitorRequest" type="Boolean" name="IsMonitorRequest"   not-null="true"  />	
+		<property column="IsLogRequest" type="Boolean" name="IsLogRequest"   not-null="true"  />	
+		<property column="IsParamsConvert" type="Boolean" name="IsParamsConvert"   not-null="true"  />	
+		<property column="IsAutoLinkID" type="Boolean" name="IsAutoLinkID"   not-null="true"  />	
+		<property column="AutoLinkIDFields" type="string" name="AutoLinkIDFields"   not-null="true"  length="600" />	
 		<property column="LogRequestType" type="string" name="LogRequestType"   length="40" />	
 		<property column="Price" type="Decimal" name="Price"   />	
 		<property column="DefaultRate" type="Decimal" name="DefaultRate"   />	
 		<property column="ChannelDetailInfo" type="string" name="ChannelDetailInfo"   length="2147483646" />	
 		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
 		<property column="ChannelStatus" type="string" name="ChannelStatus"   length="40" />	
-		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   not-null="true"  />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

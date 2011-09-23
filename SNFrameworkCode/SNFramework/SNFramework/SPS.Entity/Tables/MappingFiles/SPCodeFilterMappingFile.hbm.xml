@@ -12,11 +12,11 @@
 
 
 		<many-to-one column="CodeID" name="CodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
-		<property column="ParamsName" type="string" name="ParamsName"   length="100" />	
-		<property column="FilterType" type="string" name="FilterType"   length="100" />	
-		<property column="FilterValue" type="string" name="FilterValue"   length="100" />	
-		<property column="CreateBy" type="int" name="CreateBy"   />	
-		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="ParamsName" type="string" name="ParamsName"   not-null="true"  length="100" />	
+		<property column="FilterType" type="string" name="FilterType"   not-null="true"  length="100" />	
+		<property column="FilterValue" type="string" name="FilterValue"   not-null="true"  length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
 		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	

@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+ 
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.ConstClass;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -100,6 +102,39 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        businessProxy.QuickAddCode(spCodeWrapper.entity, hasSubCode, subCode);
 	    }
+
+        public bool CheckIsMatchCode(string mo, string spcode, string province, string city)
+        {
+            return false;
+        }
+
+        public bool CheckIsMatchCode(string mo, string spcode)
+        {
+            return false;
+        }
+
+        public bool CheckIsMatchCode(string mo)
+        {
+            switch (this.MOType)
+            {
+                case DictionaryConst.Dictionary_CodeType_CodeDefault_Key:
+                    return mo.ToLower().Equals(this.Mo.ToLower());
+                case "2":
+                    return ywid.ToLower().Contains(this.CommandCode.ToLower());
+                case "3":
+                    return ywid.ToLower().StartsWith(this.CommandCode.ToLower());
+                case "4":
+                    return ywid.ToLower().EndsWith(this.CommandCode.ToLower());
+                case "5":
+                    return Regex.IsMatch(ywid.ToLower(), this.CommandCode.ToLower());
+                case "6":
+                    string newRegCommandCode = this.CommandCode.ToLower().Replace("*", "[S]*").Replace("?", "[S]{1}");
+                    return Regex.IsMatch(ywid.ToLower(), newRegCommandCode, RegexOptions.IgnoreCase);
+                case "7":
+                    return true;
+            }
+            return false;
+        }
 
 	    public SPSClientWrapper GetRelateClient()
 	    {

@@ -11,15 +11,15 @@
 </id>
 
 
-		<property column="Name" type="string" name="Name"   length="400" />	
-		<property column="Description" type="string" name="Description"   length="4000" />	
-		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
-		<property column="IsRequired" type="Boolean" name="IsRequired"   />	
+		<property column="Name" type="string" name="Name"   not-null="true"  length="400" />	
+		<property column="Description" type="string" name="Description"   not-null="true"  length="4000" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   not-null="true"  />	
+		<property column="IsRequired" type="Boolean" name="IsRequired"   not-null="true"  />	
 		<property column="ParamsType" type="string" name="ParamsType"   length="40" />	
 		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
-		<property column="ParamsMappingName" type="string" name="ParamsMappingName"   length="400" />	
-		<property column="Title" type="string" name="Title"   length="400" />	
-		<property column="ShowInClientGrid" type="Boolean" name="ShowInClientGrid"   />	
+		<property column="ParamsMappingName" type="string" name="ParamsMappingName"   not-null="true"  length="400" />	
+		<property column="Title" type="string" name="Title"   not-null="true"  length="400" />	
+		<property column="ShowInClientGrid" type="Boolean" name="ShowInClientGrid"   not-null="true"  />	
 		<property column="ParamsValue" type="string" name="ParamsValue"   length="400" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	

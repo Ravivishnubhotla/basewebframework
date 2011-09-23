@@ -11,14 +11,14 @@
 </id>
 
 
-		<property column="Name" type="string" name="Name"   length="400" />	
-		<property column="Code" type="string" name="Code"   length="400" />	
-		<property column="Description" type="string" name="Description"   length="4000" />	
-		<property column="CreateBy" type="int" name="CreateBy"   />	
-		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
-		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
-		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
-		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
+		<property column="Name" type="string" name="Name"   not-null="true"  length="400" />	
+		<property column="Code" type="string" name="Code"   not-null="true"  length="400" />	
+		<property column="Description" type="string" name="Description"   not-null="true"  length="4000" />	
+		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   not-null="true"  />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   not-null="true"  />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   not-null="true"  length="600" />	
 
 
 
