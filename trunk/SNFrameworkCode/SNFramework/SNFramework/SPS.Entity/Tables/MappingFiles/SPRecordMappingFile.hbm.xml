@@ -11,24 +11,24 @@
 </id>
 
 
-		<property column="LinkID" type="string" name="LinkID"   length="100" />	
+		<property column="LinkID" type="string" name="LinkID"   not-null="true"  length="100" />	
 		<property column="MO" type="string" name="Mo"   length="100" />	
-		<property column="Mobile" type="string" name="Mobile"   length="30" />	
+		<property column="Mobile" type="string" name="Mobile"   not-null="true"  length="30" />	
 		<property column="SpNumber" type="string" name="SpNumber"   length="40" />	
-		<property column="Province" type="string" name="Province"   length="12" />	
-		<property column="City" type="string" name="City"   length="16" />	
-		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
-		<property column="IsReport" type="Boolean" name="IsReport"   />	
-		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	
-		<property column="IsSycnToClient" type="Boolean" name="IsSycnToClient"   />	
-		<property column="IsSycnSuccessed" type="Boolean" name="IsSycnSuccessed"   />	
-		<property column="IsStatOK" type="Boolean" name="IsStatOK"   />	
-		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
+		<property column="Province" type="string" name="Province"   not-null="true"  length="12" />	
+		<property column="City" type="string" name="City"   not-null="true"  length="16" />	
+		<property column="CreateDate" type="DateTime" name="CreateDate"   not-null="true"  />	
+		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
+		<property column="IsIntercept" type="Boolean" name="IsIntercept"   not-null="true"  />	
+		<property column="IsSycnToClient" type="Boolean" name="IsSycnToClient"   not-null="true"  />	
+		<property column="IsSycnSuccessed" type="Boolean" name="IsSycnSuccessed"   not-null="true"  />	
+		<property column="IsStatOK" type="Boolean" name="IsStatOK"   not-null="true"  />	
+		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   not-null="true"  />	
 		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
 		<many-to-one column="ClientID" name="ClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
 		<!-- more than one foreign column is mapped to CodeID - you're on your own. -->		
 		<property column="Price" type="Decimal" name="Price"   />	
-		<property column="Count" type="int" name="Count"   />	
+		<property column="Count" type="int" name="Count"   not-null="true"  />	
 
 
 

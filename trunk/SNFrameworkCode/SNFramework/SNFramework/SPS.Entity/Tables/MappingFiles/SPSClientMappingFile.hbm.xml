@@ -11,11 +11,11 @@
 </id>
 
 
-		<property column="Name" type="string" name="Name"   length="400" />	
-		<property column="Description" type="string" name="Description"   length="4000" />	
-		<property column="UserID" type="int" name="UserID"   />	
+		<property column="Name" type="string" name="Name"   not-null="true"  length="400" />	
+		<property column="Description" type="string" name="Description"   not-null="true"  length="4000" />	
+		<property column="UserID" type="int" name="UserID"   not-null="true"  />	
 		<property column="IsDefaultClient" type="Boolean" name="IsDefaultClient"   />	
-		<property column="SyncData" type="Boolean" name="SyncData"   />	
+		<property column="SyncData" type="Boolean" name="SyncData"   not-null="true"  />	
 		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
 		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	
@@ -23,9 +23,9 @@
 		<property column="SycnOkMessage" type="string" name="SycnOkMessage"   length="100" />	
 		<property column="SycnFailedMessage" type="string" name="SycnFailedMessage"   length="100" />	
 		<property column="Alias" type="string" name="Alias"   length="400" />	
-		<property column="InterceptRate" type="Decimal" name="InterceptRate"   />	
-		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   />	
-		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   />	
+		<property column="InterceptRate" type="Decimal" name="InterceptRate"   not-null="true"  />	
+		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   not-null="true"  />	
+		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   not-null="true"  />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

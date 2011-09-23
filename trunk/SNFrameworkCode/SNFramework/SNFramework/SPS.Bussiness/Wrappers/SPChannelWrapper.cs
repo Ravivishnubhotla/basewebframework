@@ -179,7 +179,7 @@ namespace SPS.Bussiness.Wrappers
             }
 
 	        string mo = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_MO_Key);
-            string spnumber = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_SpNumber_Key);
+            string spcode = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_SpNumber_Key);
             string mobile = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_Mobile_Key);
 
 	        string province = "";
@@ -187,7 +187,7 @@ namespace SPS.Bussiness.Wrappers
 
 	        this.GetProvinceAndCity(mobile, ref province, ref city);
 
-            SPCodeWrapper matchCode = GetMatchCodeFromRequest(httpRequestLog, province, city);
+            SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);
 
             if (matchCode == null)
             {
@@ -351,10 +351,14 @@ namespace SPS.Bussiness.Wrappers
 	        return false;
 	    }
 
-	    private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string province, string city)
-	    {
-	        return null;
-	    }
+        private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
+        {
+            List<SPCodeWrapper> allcodes = Codes;
+
+            if (allcodes.FindAll())
+
+            return null;
+        }
 
 	    private void GetProvinceAndCity(string mobile, ref string province, ref string city)
 	    {
@@ -450,6 +454,20 @@ namespace SPS.Bussiness.Wrappers
                 return channelParams;
             }
 	    }
+
+        private List<SPCodeWrapper> codes = null;
+
+        public List<SPCodeWrapper> Codes
+        {
+            get
+            {
+                if (codes == null)
+                {
+                    codes = SPCodeWrapper.FindAllByChannelID(this).FindAll(p=>(!p.IsDiable));
+                }
+                return codes;
+            }
+        }
 
 
 

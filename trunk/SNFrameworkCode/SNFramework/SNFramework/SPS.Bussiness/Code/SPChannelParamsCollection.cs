@@ -37,7 +37,10 @@ namespace SPS.Bussiness.Code
 
         public string GetRequsetValueByKey(HttpRequestLog requestLog,string key)
         {
-            return requestLog.RequestParams[this[key]].ToString();
+            if (requestLog.RequestParams.ContainsKey(this[key]))
+                return requestLog.RequestParams[this[key]].ToString();
+            else
+                return "";
         }
     }
 }
