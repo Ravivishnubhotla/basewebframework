@@ -268,7 +268,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsStateReport
+		public bool IsStateReport
 		{
 			get
 			{
@@ -394,7 +394,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? HasFilters
+		public bool HasFilters
 		{
 			get
 			{
@@ -408,7 +408,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsMonitorRequest
+		public bool IsMonitorRequest
 		{
 			get
 			{
@@ -422,7 +422,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsLogRequest
+		public bool IsLogRequest
 		{
 			get
 			{
@@ -436,7 +436,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsParamsConvert
+		public bool IsParamsConvert
 		{
 			get
 			{
@@ -450,7 +450,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsAutoLinkID
+		public bool IsAutoLinkID
 		{
 			get
 			{
@@ -562,7 +562,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsDisable
+		public bool IsDisable
 		{
 			get
 			{

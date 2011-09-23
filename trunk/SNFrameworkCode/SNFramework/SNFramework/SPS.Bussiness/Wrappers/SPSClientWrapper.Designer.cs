@@ -139,7 +139,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? UserID
+		public int UserID
 		{
 			get
 			{
@@ -167,7 +167,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? SyncData
+		public bool SyncData
 		{
 			get
 			{
@@ -279,7 +279,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public decimal? InterceptRate
+		public decimal InterceptRate
 		{
 			get
 			{
@@ -293,7 +293,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public decimal? DefaultPrice
+		public decimal DefaultPrice
 		{
 			get
 			{
@@ -307,7 +307,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DefaultShowRecordDays
+		public int DefaultShowRecordDays
 		{
 			get
 			{

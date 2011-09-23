@@ -134,7 +134,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsEnable
+		public bool IsEnable
 		{
 			get
 			{
@@ -148,7 +148,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsRequired
+		public bool IsRequired
 		{
 			get
 			{
@@ -218,7 +218,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? ShowInClientGrid
+		public bool ShowInClientGrid
 		{
 			get
 			{

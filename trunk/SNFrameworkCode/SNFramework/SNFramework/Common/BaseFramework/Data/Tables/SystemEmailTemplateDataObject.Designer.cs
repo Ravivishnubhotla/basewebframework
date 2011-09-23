@@ -21,6 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_TEMPLATETYPE = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_TEMPLATETYPE));		
 		public static readonly StringProperty PROPERTY_TITLETEMPLATE = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_TITLETEMPLATE));		
 		public static readonly StringProperty PROPERTY_BODYTEMPLATE = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_BODYTEMPLATE));		
+		public static readonly StringProperty PROPERTY_PARAMS = new StringProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_PARAMS));		
 		public static readonly BoolProperty PROPERTY_ISHTMLEMAIL = new BoolProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_ISHTMLEMAIL));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_ISENABLE));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemEmailTemplateEntity.PROPERTY_NAME_CREATEAT));		
@@ -58,6 +59,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "TitleTemplate":
                     return typeof (string);
                 case "BodyTemplate":
+                    return typeof (string);
+                case "Params":
                     return typeof (string);
                 case "IsHtmlEmail":
                     return typeof (bool);

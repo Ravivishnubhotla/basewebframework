@@ -156,7 +156,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? CreateBy
+		public int CreateBy
 		{
 			get
 			{
@@ -170,7 +170,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateAt
+		public DateTime CreateAt
 		{
 			get
 			{

@@ -141,7 +141,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? CreateBy
+		public int CreateBy
 		{
 			get
 			{
@@ -155,7 +155,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateAt
+		public DateTime CreateAt
 		{
 			get
 			{
@@ -169,7 +169,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? LastModifyBy
+		public int LastModifyBy
 		{
 			get
 			{
@@ -183,7 +183,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? LastModifyAt
+		public DateTime LastModifyAt
 		{
 			get
 			{

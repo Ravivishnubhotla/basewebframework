@@ -36,9 +36,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.txtNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
                     this.numShowDayRecord.Text = obj.DefaultShowRecordDays.ToString();
 
-                    this.chkSyncData.Checked = obj.SyncData.HasValue && obj.SyncData.Value;
+                    this.chkSyncData.Checked = obj.SyncData;
 
-                    if (obj.SyncData.HasValue && obj.SyncData.Value)
+                    if (obj.SyncData)
                     {
                         this.txtFailedMessage.Show();
                         this.txtFailedMessage.Show();
@@ -94,7 +94,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
 
-                if (obj.SyncData != null && obj.SyncData.Value)
+                if (obj.SyncData)
                 {
                     obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
                     obj.SycnOkMessage = txtOkMessage.Text.Trim();

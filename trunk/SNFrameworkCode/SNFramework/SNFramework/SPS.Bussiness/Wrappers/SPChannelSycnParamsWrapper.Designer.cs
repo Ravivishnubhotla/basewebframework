@@ -132,7 +132,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsEnable
+		public bool IsEnable
 		{
 			get
 			{

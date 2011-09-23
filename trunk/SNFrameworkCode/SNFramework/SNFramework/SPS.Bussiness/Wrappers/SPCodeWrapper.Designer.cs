@@ -199,7 +199,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? OrderIndex
+		public int OrderIndex
 		{
 			get
 			{

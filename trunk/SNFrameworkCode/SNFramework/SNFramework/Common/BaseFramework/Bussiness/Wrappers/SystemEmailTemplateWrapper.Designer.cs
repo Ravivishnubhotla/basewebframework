@@ -75,6 +75,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_TEMPLATETYPE = "TemplateType";
 		public static readonly string PROPERTY_NAME_TITLETEMPLATE = "TitleTemplate";
 		public static readonly string PROPERTY_NAME_BODYTEMPLATE = "BodyTemplate";
+		public static readonly string PROPERTY_NAME_PARAMS = "Params";
 		public static readonly string PROPERTY_NAME_ISHTMLEMAIL = "IsHtmlEmail";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
@@ -183,6 +184,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.BodyTemplate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Params
+		{
+			get
+			{
+				return entity.Params;
+			}
+			set
+			{
+				entity.Params = value;
 			}
 		}
 		/// <summary>

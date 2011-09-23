@@ -101,7 +101,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpCity);
             }
 
-            if (channelEntity.IsStateReport.HasValue && channelEntity.IsStateReport.Value && !string.IsNullOrEmpty(channelEntity.StateReportParamName))
+            if (channelEntity.IsStateReport && !string.IsNullOrEmpty(channelEntity.StateReportParamName))
             {
                 SPChannelParamsEntity cpStateReport = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, channelEntity.StateReportParamName, "״̬", "Status", "1");
 

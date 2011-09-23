@@ -335,7 +335,7 @@ namespace SPS.Bussiness.Wrappers
 
         private void CaculteIsSycnToClient(SPCodeWrapper matchCode, SPSClientWrapper client, SPRecordWrapper record)
 	    {
-            if (record.IsIntercept.Value)
+            if (record.IsIntercept)
             {
                 record.IsSycnToClient = false;
                 return;
@@ -408,7 +408,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    private string GetLinkID(HttpRequestLog httpRequestLog)
 	    {
-	        if(this.IsAutoLinkID.HasValue && this.IsAutoLinkID.Value)
+	        if(this.IsAutoLinkID)
 	        {
                 if(string.IsNullOrEmpty(this.AutoLinkIDFields.Trim()))
                 {
@@ -456,7 +456,7 @@ namespace SPS.Bussiness.Wrappers
         //获取请求类型，当前状态报告还是数据报告
 	    public RequestType GetRequestType(HttpRequestLog httpRequestLog)
 	    {
-            if(!(this.IsStateReport.HasValue && this.IsStateReport.Value))
+            if(!(this.IsStateReport))
             {
                 return RequestType.DataReport;
             }
