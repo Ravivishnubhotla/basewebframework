@@ -193,7 +193,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateDate
+		public DateTime CreateDate
 		{
 			get
 			{
@@ -207,7 +207,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsReport
+		public bool IsReport
 		{
 			get
 			{
@@ -221,7 +221,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsIntercept
+		public bool IsIntercept
 		{
 			get
 			{
@@ -235,7 +235,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsSycnToClient
+		public bool IsSycnToClient
 		{
 			get
 			{
@@ -249,7 +249,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsSycnSuccessed
+		public bool IsSycnSuccessed
 		{
 			get
 			{
@@ -263,7 +263,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsStatOK
+		public bool IsStatOK
 		{
 			get
 			{
@@ -277,7 +277,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? SycnRetryTimes
+		public int SycnRetryTimes
 		{
 			get
 			{
@@ -347,7 +347,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? Count
+		public int Count
 		{
 			get
 			{

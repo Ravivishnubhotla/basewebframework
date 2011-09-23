@@ -67,7 +67,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 channelWrapper.IsStateReport = fsIsStateReport.CheckboxToggle;
 
-                if(channelWrapper.IsStateReport.Value)
+                if(channelWrapper.IsStateReport)
                 {
                     channelWrapper.StateReportType = ((Ext.Net.CheckboxBase)(rdgStateReportType.CheckedItems[0])).InputValue;
 
@@ -87,7 +87,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 channelWrapper.IsAutoLinkID = this.chkIsAutoLinkID.Checked;
 
-                if (channelWrapper.IsAutoLinkID.Value)
+                if (channelWrapper.IsAutoLinkID)
                 {
                     channelWrapper.AutoLinkIDFields = this.txtAutoLinkIDFields.Text.Trim();
                 }

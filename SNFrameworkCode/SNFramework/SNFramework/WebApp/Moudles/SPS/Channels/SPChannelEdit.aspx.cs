@@ -38,7 +38,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     txtIVRTimeFormat.Text = channelWrapper.IVRTimeFormat;
                 }
 
-                if(channelWrapper.IsStateReport.HasValue && channelWrapper.IsStateReport.Value)
+                if(channelWrapper.IsStateReport)
                 {
                     this.fsIsStateReport.CheckboxToggle = true;
                     this.fsIsStateReport.Collapsed = false;
@@ -67,13 +67,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 }
 
-                this.chkHasFilters.Checked = channelWrapper.HasFilters.HasValue && channelWrapper.HasFilters.Value;
-                this.chkIsLogRequest.Checked = channelWrapper.IsLogRequest.HasValue && channelWrapper.IsLogRequest.Value;
-                this.chkIsMonitorRequest.Checked = channelWrapper.IsMonitorRequest.HasValue && channelWrapper.IsMonitorRequest.Value;
-                this.chkIsParamsConvert.Checked = channelWrapper.IsParamsConvert.HasValue && channelWrapper.IsParamsConvert.Value;
-                this.chkIsAutoLinkID.Checked = channelWrapper.IsAutoLinkID.HasValue && channelWrapper.IsAutoLinkID.Value;
+                this.chkHasFilters.Checked = channelWrapper.HasFilters;
+                this.chkIsLogRequest.Checked = channelWrapper.IsLogRequest;
+                this.chkIsMonitorRequest.Checked = channelWrapper.IsMonitorRequest;
+                this.chkIsParamsConvert.Checked = channelWrapper.IsParamsConvert;
+                this.chkIsAutoLinkID.Checked = channelWrapper.IsAutoLinkID;
 
-                if(channelWrapper.IsAutoLinkID.HasValue && channelWrapper.IsAutoLinkID.Value)
+                if(channelWrapper.IsAutoLinkID)
                 {
                     this.txtAutoLinkIDFields.Hidden = false;
                     this.txtAutoLinkIDFields.Text = channelWrapper.AutoLinkIDFields;
@@ -104,7 +104,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 channelWrapper.IsStateReport = fsIsStateReport.CheckboxToggle;
 
-                if (channelWrapper.IsStateReport.HasValue && channelWrapper.IsStateReport.Value)
+                if (channelWrapper.IsStateReport)
                 {
                     channelWrapper.StateReportType = ((CheckboxBase)(rdgStateReportType.CheckedItems[0])).InputValue;
 
@@ -124,7 +124,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 channelWrapper.IsAutoLinkID = this.chkIsAutoLinkID.Checked;
 
-                if (channelWrapper.IsAutoLinkID.HasValue && channelWrapper.IsAutoLinkID.Value)
+                if (channelWrapper.IsAutoLinkID)
                 {
                     channelWrapper.AutoLinkIDFields = this.txtAutoLinkIDFields.Text.Trim();
                 }

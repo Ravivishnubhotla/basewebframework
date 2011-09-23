@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
-using SPS.Entity.Tables;
-using SPS.Bussiness.ServiceProxys.Tables.Container;
-using SPS.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
-namespace SPS.Bussiness.Wrappers
+namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SPClientCodeSycnParamsWrapper
+    public partial class SystemTemplateWrapper
     {
         #region Member
 
-		internal static readonly ISPClientCodeSycnParamsServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPClientCodeSycnParamsServiceProxyInstance;
+		internal static readonly ISystemTemplateServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemTemplateServiceProxyInstance;
 	 
 	 
-        internal SPClientCodeSycnParamsEntity entity;
+        internal SystemTemplateEntity entity;
 		
 		private static ILog logger = null;
 
@@ -27,7 +27,7 @@ namespace SPS.Bussiness.Wrappers
             get
             {
                 if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPClientCodeSycnParamsWrapper));
+                    logger = LogManager.GetLogger(typeof(SystemTemplateWrapper));
                 return logger;
             }
         }
@@ -35,12 +35,12 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 
         #region Construtor
-        public SPClientCodeSycnParamsWrapper() : this(new SPClientCodeSycnParamsEntity())
+        public SystemTemplateWrapper() : this(new SystemTemplateEntity())
         {
             
         }
 
-        internal SPClientCodeSycnParamsWrapper(SPClientCodeSycnParamsEntity entityObj)
+        internal SystemTemplateWrapper(SystemTemplateEntity entityObj)
         {
             entity = entityObj;
         }
@@ -67,19 +67,17 @@ namespace SPS.Bussiness.Wrappers
 		
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPClientCodeSycnParamsEntity";
+		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTemplateEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_TEMPLATETYPE = "TemplateType";
+		public static readonly string PROPERTY_NAME_TEMPLATE = "Template";
+		public static readonly string PROPERTY_NAME_PARAMS = "Params";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
-		public static readonly string PROPERTY_NAME_ISREQUIRED = "IsRequired";
-		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
-		public static readonly string PROPERTY_NAME_MAPPINGPARAMS = "MappingParams";
-		public static readonly string PROPERTY_NAME_TITLE = "Title";
-		public static readonly string PROPERTY_NAME_PARAMSVALUE = "ParamsValue";
-		public static readonly string PROPERTY_NAME_PARAMSTYPE = "ParamsType";
-		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
+		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
@@ -119,6 +117,20 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string Code
+		{
+			get
+			{
+				return entity.Code;
+			}
+			set
+			{
+				entity.Code = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string Description
 		{
 			get
@@ -133,7 +145,49 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool IsEnable
+		public string TemplateType
+		{
+			get
+			{
+				return entity.TemplateType;
+			}
+			set
+			{
+				entity.TemplateType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Template
+		{
+			get
+			{
+				return entity.Template;
+			}
+			set
+			{
+				entity.Template = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Params
+		{
+			get
+			{
+				return entity.Params;
+			}
+			set
+			{
+				entity.Params = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? IsEnable
 		{
 			get
 			{
@@ -142,104 +196,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.IsEnable = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool IsRequired
-		{
-			get
-			{
-				return entity.IsRequired;
-			}
-			set
-			{
-				entity.IsRequired = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public SPCodeWrapper CodeID
-		{
-			get
-			{
-				return SPCodeWrapper.ConvertEntityToWrapper(entity.CodeID) ;
-			}
-			set
-			{
-				entity.CodeID = ((value == null) ? null : value.entity);
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string MappingParams
-		{
-			get
-			{
-				return entity.MappingParams;
-			}
-			set
-			{
-				entity.MappingParams = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string Title
-		{
-			get
-			{
-				return entity.Title;
-			}
-			set
-			{
-				entity.Title = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string ParamsValue
-		{
-			get
-			{
-				return entity.ParamsValue;
-			}
-			set
-			{
-				entity.ParamsValue = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string ParamsType
-		{
-			get
-			{
-				return entity.ParamsType;
-			}
-			set
-			{
-				entity.ParamsType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? CreateBy
-		{
-			get
-			{
-				return entity.CreateBy;
-			}
-			set
-			{
-				entity.CreateBy = value;
 			}
 		}
 		/// <summary>
@@ -254,6 +210,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.CreateAt = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? CreateBy
+		{
+			get
+			{
+				return entity.CreateBy;
+			}
+			set
+			{
+				entity.CreateBy = value;
 			}
 		}
 		/// <summary>
@@ -305,17 +275,6 @@ namespace SPS.Bussiness.Wrappers
 
 
         #region "FKQuery"
-		
-        public static List<SPClientCodeSycnParamsWrapper> FindAllByOrderByAndFilterAndCodeID(string orderByColumnName, bool isDesc,   SPCodeWrapper codeID,  PageQueryParams pageQueryParams)
-        {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndCodeID(orderByColumnName, isDesc,   codeID.entity, pageQueryParams));
-        }
-
-        public static List<SPClientCodeSycnParamsWrapper> FindAllByCodeID(SPCodeWrapper codeID)
-        {
-            return ConvertToWrapperList(businessProxy.FindAllByCodeID(codeID.entity));
-        }
-		
 
 
 
@@ -330,37 +289,37 @@ namespace SPS.Bussiness.Wrappers
 
         #region Static Common Data Operation
 		
-		internal static List<SPClientCodeSycnParamsWrapper> ConvertToWrapperList(List<SPClientCodeSycnParamsEntity> entitylist)
+		internal static List<SystemTemplateWrapper> ConvertToWrapperList(List<SystemTemplateEntity> entitylist)
         {
-            List<SPClientCodeSycnParamsWrapper> list = new List<SPClientCodeSycnParamsWrapper>();
-            foreach (SPClientCodeSycnParamsEntity lentity in entitylist)
+            List<SystemTemplateWrapper> list = new List<SystemTemplateWrapper>();
+            foreach (SystemTemplateEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 
-		internal static List<SPClientCodeSycnParamsWrapper> ConvertToWrapperList(IList<SPClientCodeSycnParamsEntity> entitylist)
+		internal static List<SystemTemplateWrapper> ConvertToWrapperList(IList<SystemTemplateEntity> entitylist)
         {
-            List<SPClientCodeSycnParamsWrapper> list = new List<SPClientCodeSycnParamsWrapper>();
-            foreach (SPClientCodeSycnParamsEntity lentity in entitylist)
+            List<SystemTemplateWrapper> list = new List<SystemTemplateWrapper>();
+            foreach (SystemTemplateEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 		
-		internal static List<SPClientCodeSycnParamsEntity> ConvertToEntityList(List<SPClientCodeSycnParamsWrapper> wrapperlist)
+		internal static List<SystemTemplateEntity> ConvertToEntityList(List<SystemTemplateWrapper> wrapperlist)
         {
-            List<SPClientCodeSycnParamsEntity> list = new List<SPClientCodeSycnParamsEntity>();
-            foreach (SPClientCodeSycnParamsWrapper wrapper in wrapperlist)
+            List<SystemTemplateEntity> list = new List<SystemTemplateEntity>();
+            foreach (SystemTemplateWrapper wrapper in wrapperlist)
             {
                 list.Add(wrapper.entity);
             }
             return list;
         }
 
-        internal static SPClientCodeSycnParamsWrapper ConvertEntityToWrapper(SPClientCodeSycnParamsEntity entity)
+        internal static SystemTemplateWrapper ConvertEntityToWrapper(SystemTemplateEntity entity)
         {
             if (entity == null)
                 return null;
@@ -368,7 +327,7 @@ namespace SPS.Bussiness.Wrappers
             if (entity.Id == 0)
                 return null;
 
-            return new SPClientCodeSycnParamsWrapper(entity);
+            return new SystemTemplateWrapper(entity);
         }
 		
 		#endregion

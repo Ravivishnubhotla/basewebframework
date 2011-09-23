@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
 
-<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmailTemplateEntity,Legendigital.Framework.Common" table="SystemEmailTemplate" lazy="true"  >
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTemplateEntity,Legendigital.Framework.Common" table="SystemTemplate" lazy="true"  >
 
-<id name="EmailTemplateID" column="EmailTemplateID" type="int" unsaved-value="0" >
+<id name="Id" column="ID" type="int" unsaved-value="0" >
    <generator class="native">
 
 </generator>
@@ -15,10 +15,8 @@
 		<property column="Code" type="string" name="Code"   length="400" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="TemplateType" type="string" name="TemplateType"   length="100" />	
-		<property column="TitleTemplate" type="string" name="TitleTemplate"   length="400" />	
-		<property column="BodyTemplate" type="string" name="BodyTemplate"   length="2147483646" />	
+		<property column="Template" type="string" name="Template"   length="2147483646" />	
 		<property column="Params" type="string" name="Params"   length="6000" />	
-		<property column="IsHtmlEmail" type="Boolean" name="IsHtmlEmail"   />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	

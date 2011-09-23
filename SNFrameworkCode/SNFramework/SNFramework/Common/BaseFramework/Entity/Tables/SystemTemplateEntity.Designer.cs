@@ -9,20 +9,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SystemEmailTemplateEntity : ICloneable
+	public partial class SystemTemplateEntity : ICloneable
 	{
         #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmailTemplateEntity";
-		public static readonly string PROPERTY_NAME_EMAILTEMPLATEID = "EmailTemplateID";
+		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTemplateEntity";
+		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_TEMPLATETYPE = "TemplateType";
-		public static readonly string PROPERTY_NAME_TITLETEMPLATE = "TitleTemplate";
-		public static readonly string PROPERTY_NAME_BODYTEMPLATE = "BodyTemplate";
+		public static readonly string PROPERTY_NAME_TEMPLATE = "Template";
 		public static readonly string PROPERTY_NAME_PARAMS = "Params";
-		public static readonly string PROPERTY_NAME_ISHTMLEMAIL = "IsHtmlEmail";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
@@ -37,15 +35,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private bool _isChanged;		
 		private bool _isDeleted;
 		
-		private int _emailTemplateID;
+		private int _id;
 		private string _name;
 		private string _code;
 		private string _description;
 		private string _templateType;
-		private string _titleTemplate;
-		private string _bodyTemplate;
+		private string _template;
 		private string _params;
-		private bool? _isHtmlEmail;
 		private bool? _isEnable;
 		private DateTime? _createAt;
 		private int? _createBy;
@@ -59,17 +55,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SystemEmailTemplateEntity()
+		public SystemTemplateEntity()
 		{
-			_emailTemplateID = 0;
+			_id = 0;
 			_name = null;
 			_code = null;
 			_description = null;
 			_templateType = null;
-			_titleTemplate = null;
-			_bodyTemplate = null;
+			_template = null;
 			_params = null;
-			_isHtmlEmail = null;
 			_isEnable = null;
 			_createAt = null;
 			_createBy = null;
@@ -83,17 +77,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemEmailTemplateEntity( int emailTemplateID, string name, string code, string description, string templateType, string titleTemplate, string bodyTemplate, string paramsp, bool? isHtmlEmail, bool? isEnable, DateTime? createAt, int? createBy, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemTemplateEntity( int id, string name, string code, string description, string templateType, string template, string paramsp, bool? isEnable, DateTime? createAt, int? createBy, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
-			_emailTemplateID = emailTemplateID;
+			_id = id;
 			_name = name;
 			_code = code;
 			_description = description;
 			_templateType = templateType;
-			_titleTemplate = titleTemplate;
-			_bodyTemplate = bodyTemplate;
+			_template = template;
 			_params = paramsp;
-			_isHtmlEmail = isHtmlEmail;
 			_isEnable = isEnable;
 			_createAt = createAt;
 			_createBy = createBy;
@@ -109,13 +101,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int EmailTemplateID
+		public virtual int Id
 		{
-			get { return _emailTemplateID; }
+			get { return _id; }
 
 			set	
 			{
-				_isChanged |= (_emailTemplateID != value); _emailTemplateID = value;
+				_isChanged |= (_id != value); _id = value;
 			}
 		}
 
@@ -191,33 +183,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string TitleTemplate
+		public virtual string Template
 		{
-			get { return _titleTemplate; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for TitleTemplate", value, value.ToString());
-				_isChanged |= (_titleTemplate != value); _titleTemplate = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string BodyTemplate
-		{
-			get { return _bodyTemplate; }
+			get { return _template; }
 
 			set	
 			{
 
 				if( value != null && value.Length > 2147483646)
-					throw new ArgumentOutOfRangeException("Invalid value for BodyTemplate", value, value.ToString());
-				_isChanged |= (_bodyTemplate != value); _bodyTemplate = value;
+					throw new ArgumentOutOfRangeException("Invalid value for Template", value, value.ToString());
+				_isChanged |= (_template != value); _template = value;
 			}
 		}
 
@@ -235,20 +210,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 6000)
 					throw new ArgumentOutOfRangeException("Invalid value for Params", value, value.ToString());
 				_isChanged |= (_params != value); _params = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool? IsHtmlEmail
-		{
-			get { return _isHtmlEmail; }
-
-			set	
-			{
-				_isChanged |= (_isHtmlEmail != value); _isHtmlEmail = value;
 			}
 		}
 
@@ -379,9 +340,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			
 			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
 			
-			SystemEmailTemplateEntity castObj = (SystemEmailTemplateEntity)obj;
+			SystemTemplateEntity castObj = (SystemTemplateEntity)obj;
 			
-			return ( castObj != null ) && ( this._emailTemplateID == castObj.EmailTemplateID );
+			return ( castObj != null ) && ( this._id == castObj.Id );
 		}
 		
 		/// <summary>
@@ -391,7 +352,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		{
 			
 			int hash = 57; 
-			hash = 27 * hash * _emailTemplateID.GetHashCode();
+			hash = 27 * hash * _id.GetHashCode();
 
 			return hash; 
 		}

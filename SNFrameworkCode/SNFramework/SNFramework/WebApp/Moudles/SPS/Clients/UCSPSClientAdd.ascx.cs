@@ -73,7 +73,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
 
-                if (obj.SyncData!=null && obj.SyncData.Value)
+                if (obj.SyncData)
                 {
                     obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
                     obj.SycnOkMessage = txtOkMessage.Text.Trim();

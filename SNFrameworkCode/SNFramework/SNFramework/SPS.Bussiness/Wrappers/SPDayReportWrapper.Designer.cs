@@ -100,7 +100,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? ReportDate
+		public DateTime ReportDate
 		{
 			get
 			{
@@ -114,7 +114,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? TotalCount
+		public int TotalCount
 		{
 			get
 			{
@@ -128,7 +128,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? InterceptCount
+		public int InterceptCount
 		{
 			get
 			{
@@ -142,7 +142,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DownTotalCount
+		public int DownTotalCount
 		{
 			get
 			{
@@ -156,7 +156,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DownSuccess
+		public int DownSuccess
 		{
 			get
 			{

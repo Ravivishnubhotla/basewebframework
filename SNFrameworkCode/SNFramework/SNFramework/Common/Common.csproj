@@ -209,6 +209,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.Designer.cs">
       <DependentUpon>SystemTaskServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTemplateServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTemplateServiceProxy.Designer.cs">
+      <DependentUpon>SystemTemplateServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.Designer.cs">
       <DependentUpon>SystemTerminologyServiceProxy.cs</DependentUpon>
@@ -272,6 +276,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.Designer.cs">
       <DependentUpon>SystemTaskWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTemplateWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTemplateWrapper.Designer.cs">
+      <DependentUpon>SystemTemplateWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.Designer.cs">
       <DependentUpon>SystemTerminologyWrapper.cs</DependentUpon>
@@ -331,6 +339,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.Designer.cs">
       <DependentUpon>SystemTaskDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemTemplateDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTemplateDataObject.Designer.cs">
+      <DependentUpon>SystemTemplateDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.Designer.cs">
@@ -396,6 +408,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.Designer.cs">
       <DependentUpon>SystemTaskEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemTemplateEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTemplateEntity.Designer.cs">
+      <DependentUpon>SystemTemplateEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.Designer.cs">
@@ -1061,6 +1077,9 @@
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCityMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCountryMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemProvinceMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTemplateMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -51,7 +51,7 @@ namespace Legendigital.Common.WebApp.AppCode
                     }
 
                     //如果通道是监视通道，记录请求。
-                    if (channel.IsMonitorRequest.HasValue && channel.IsMonitorRequest.Value)
+                    if (channel.IsMonitorRequest)
                     {
                         SPMonitoringRequestWrapper.SaveRequest(httpRequestLog, channel);
                     }
@@ -63,7 +63,7 @@ namespace Legendigital.Common.WebApp.AppCode
                     }
 
                     //过滤请求
-                    if(channel.HasFilters.HasValue && channel.HasFilters.Value)
+                    if(channel.HasFilters)
                     {
                         if (channel.CheckRequestIsFilters(httpRequestLog))
                         {
@@ -74,7 +74,7 @@ namespace Legendigital.Common.WebApp.AppCode
                     }
 
                     //参数转换
-                    if (channel.IsParamsConvert.HasValue && channel.IsParamsConvert.Value)
+                    if (channel.IsParamsConvert)
                     {
                         channel.ParamsConvert(httpRequestLog);
                     }
