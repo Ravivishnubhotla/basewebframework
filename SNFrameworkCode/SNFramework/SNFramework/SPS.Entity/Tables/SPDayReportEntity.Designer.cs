@@ -33,11 +33,11 @@ namespace SPS.Entity.Tables
 		private bool _isDeleted;
 		
 		private int _id;
-		private DateTime? _reportDate;
-		private int? _totalCount;
-		private int? _interceptCount;
-		private int? _downTotalCount;
-		private int? _downSuccess;
+		private DateTime _reportDate;
+		private int _totalCount;
+		private int _interceptCount;
+		private int _downTotalCount;
+		private int _downSuccess;
 		private SPSClientEntity _clientID;
 		private SPChannelEntity _channelID;
 		private SPCodeEntity _codeID;
@@ -52,11 +52,11 @@ namespace SPS.Entity.Tables
 		public SPDayReportEntity()
 		{
 			_id = 0;
-			_reportDate = null;
-			_totalCount = null;
-			_interceptCount = null;
-			_downTotalCount = null;
-			_downSuccess = null;
+			_reportDate = DateTime.MinValue;
+			_totalCount = 0;
+			_interceptCount = 0;
+			_downTotalCount = 0;
+			_downSuccess = 0;
 			_clientID = null;
 			_channelID = null;
 			_codeID = null;
@@ -68,7 +68,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int id, DateTime? reportDate, int? totalCount, int? interceptCount, int? downTotalCount, int? downSuccess, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
+		public SPDayReportEntity( int id, DateTime reportDate, int totalCount, int interceptCount, int downTotalCount, int downSuccess, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
 		{
 			_id = id;
 			_reportDate = reportDate;
@@ -103,7 +103,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? ReportDate
+		public virtual DateTime ReportDate
 		{
 			get { return _reportDate; }
 
@@ -117,7 +117,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? TotalCount
+		public virtual int TotalCount
 		{
 			get { return _totalCount; }
 
@@ -131,7 +131,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? InterceptCount
+		public virtual int InterceptCount
 		{
 			get { return _interceptCount; }
 
@@ -145,7 +145,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownTotalCount
+		public virtual int DownTotalCount
 		{
 			get { return _downTotalCount; }
 
@@ -159,7 +159,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DownSuccess
+		public virtual int DownSuccess
 		{
 			get { return _downSuccess; }
 

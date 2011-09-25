@@ -39,7 +39,7 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private string _name;
 		private string _description;
-		private bool? _isEnable;
+		private bool _isEnable;
 		private SPChannelEntity _channelID;
 		private string _mappingParams;
 		private string _title;
@@ -60,14 +60,14 @@ namespace SPS.Entity.Tables
 		public SPChannelSycnParamsEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_isEnable = null;
+			_name = String.Empty;
+			_description = String.Empty;
+			_isEnable = false;
 			_channelID = null;
-			_mappingParams = null;
-			_title = null;
+			_mappingParams = String.Empty;
+			_title = String.Empty;
 			_paramsValue = null;
-			_paramsType = null;
+			_paramsType = String.Empty;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -80,7 +80,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelSycnParamsEntity( int id, string name, string description, bool? isEnable, SPChannelEntity channelID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPChannelSycnParamsEntity( int id, string name, string description, bool isEnable, SPChannelEntity channelID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -153,7 +153,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsEnable
+		public virtual bool IsEnable
 		{
 			get { return _isEnable; }
 

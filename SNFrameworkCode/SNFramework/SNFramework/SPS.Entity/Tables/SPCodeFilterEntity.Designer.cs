@@ -37,8 +37,8 @@ namespace SPS.Entity.Tables
 		private string _paramsName;
 		private string _filterType;
 		private string _filterValue;
-		private int? _createBy;
-		private DateTime? _createAt;
+		private int _createBy;
+		private DateTime _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
 		private string _lastModifyComment;
@@ -53,11 +53,11 @@ namespace SPS.Entity.Tables
 		{
 			_id = 0;
 			_codeID = null;
-			_paramsName = null;
-			_filterType = null;
-			_filterValue = null;
-			_createBy = null;
-			_createAt = null;
+			_paramsName = String.Empty;
+			_filterType = String.Empty;
+			_filterValue = String.Empty;
+			_createBy = 0;
+			_createAt = DateTime.MinValue;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
 			_lastModifyComment = null;
@@ -68,7 +68,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeFilterEntity( int id, SPCodeEntity codeID, string paramsName, string filterType, string filterValue, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPCodeFilterEntity( int id, SPCodeEntity codeID, string paramsName, string filterType, string filterValue, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -168,7 +168,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? CreateBy
+		public virtual int CreateBy
 		{
 			get { return _createBy; }
 
@@ -182,7 +182,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? CreateAt
+		public virtual DateTime CreateAt
 		{
 			get { return _createAt; }
 

@@ -93,6 +93,9 @@
  <object id="SystemTaskDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTaskDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemTemplateDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTemplateDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemTerminologyDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTerminologyDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -168,6 +171,7 @@
     <property name="SystemSettingDataObjectInstance" ref="SystemSettingDataObjectIocID"/>
     <property name="SystemShortMessageDataObjectInstance" ref="SystemShortMessageDataObjectIocID"/>
     <property name="SystemTaskDataObjectInstance" ref="SystemTaskDataObjectIocID"/>
+    <property name="SystemTemplateDataObjectInstance" ref="SystemTemplateDataObjectIocID"/>
     <property name="SystemTerminologyDataObjectInstance" ref="SystemTerminologyDataObjectIocID"/>
     <property name="SystemUserDataObjectInstance" ref="SystemUserDataObjectIocID"/>
     <property name="SystemUserGroupDataObjectInstance" ref="SystemUserGroupDataObjectIocID"/>

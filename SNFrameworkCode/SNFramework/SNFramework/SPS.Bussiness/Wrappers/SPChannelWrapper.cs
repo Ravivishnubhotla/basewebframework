@@ -2,10 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
+using System.IO;
+using System.Net;
+using System.Text;
 using System.Threading;
-using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
+ 
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.Code;
+using SPS.Bussiness.ConstClass;
 using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -178,9 +183,9 @@ namespace SPS.Bussiness.Wrappers
                 return false;
             }
 
-	        string mo = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_MO_Key);
-            string spcode = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_SpNumber_Key);
-            string mobile = this.ChannelParams.GetRequsetValueByKey(httpRequestLog, DictionaryConst.Dictionary_SPField_Mobile_Key);
+	        string mo = this.ChannelParams.MoFromRequset(httpRequestLog);
+            string spcode = this.ChannelParams.SPCodeFromRequset(httpRequestLog);
+            string mobile = this.ChannelParams.MobileFromRequset(httpRequestLog);
 
 	        string province = "";
 	        string city = "";
@@ -205,135 +210,149 @@ namespace SPS.Bussiness.Wrappers
                 return false;
             }
 
-            //string cpid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "cpid", fieldMappings);
-            //string mid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "mid", fieldMappings);
-            //string mobile = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "mobile", fieldMappings);
-            //string port = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "port", fieldMappings);
-            //string ywid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "ywid", fieldMappings);
-            //string msg = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "msg", fieldMappings);
-            //string linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
-            //string dest = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "dest", fieldMappings);
-            //string price = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "price", fieldMappings);
-            //string extendfield1 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield1", fieldMappings);
-            //string extendfield2 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield2", fieldMappings);
-            //string extendfield3 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield3", fieldMappings);
-            //string extendfield4 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield4", fieldMappings);
-            //string extendfield5 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield5", fieldMappings);
-            //string extendfield6 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield6", fieldMappings);
-            //string extendfield7 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield7", fieldMappings);
-            //string extendfield8 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield8", fieldMappings);
-            //string extendfield9 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield9", fieldMappings);
-
-
             SPRecordWrapper record = new SPRecordWrapper();
 
             record.ChannelID = this;
             record.CodeID = matchCode;
 	        record.ClientID = client;
-            //paymentInfo.Cpid = cpid;
-            //paymentInfo.Mid = mid;
-            //paymentInfo.MobileNumber = mobile;
-            //paymentInfo.Port = port;
-            //paymentInfo.Ywid = ywid;
-            //paymentInfo.Message = msg;
-            //paymentInfo.Linkid = linkid;
-            //paymentInfo.Dest = dest;
-            //paymentInfo.Price = price;
-            //paymentInfo.ExtendField1 = extendfield1;
-            //paymentInfo.ExtendField2 = extendfield2;
-            //paymentInfo.ExtendField3 = extendfield3;
-            //paymentInfo.ExtendField4 = extendfield4;
-            //paymentInfo.ExtendField5 = extendfield5;
-            //paymentInfo.ExtendField6 = extendfield6;
-            //paymentInfo.ExtendField7 = extendfield7;
-            //paymentInfo.ExtendField8 = extendfield8;
-            //paymentInfo.ExtendField9 = extendfield9;
-            //paymentInfo.Ip = httpGetPostRequest.RequestIp;
-            //paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
-            //paymentInfo.CreateDate = DateTime.Now;
-            //paymentInfo.RequestContent = httpGetPostRequest.RequestData;
+	        record.Mo = mo;
+	        record.Mobile = mobile;
+	        record.LinkID = linkid;
+	        record.SpNumber = spcode;
+	        record.Province = province;
+	        record.City = city;
+            record.CreateDate = GetRecordTime(httpRequestLog);
 
-            //if (phoneAreaInfo != null)
-            //{
-            //    paymentInfo.Province = phoneAreaInfo.Province;
-            //    paymentInfo.City = phoneAreaInfo.City;
-            //}
-	        record.IsSycnSuccessed = false;
+	        record.IsReport = false;
+
+
+
+
 	        record.IsIntercept = this.CaculteIsIntercept(matchCode, client);
-            //record.IsSycnToClient = this.CaculteIsSycnToClient(matchCode, client, record);
+
+            record.IsSycnSuccessed = false;
+
+	        record.IsStatOK = (!IsStateReport);
+	        record.SycnRetryTimes = 0;
+	        record.Price = matchCode.Price;
+	        record.Count = GetRecordCount(httpRequestLog);
+
+            SPRecordExtendInfoWrapper spRecordExtendInfo = new SPRecordExtendInfoWrapper();
+
+            spRecordExtendInfo.StartTime = this.ChannelParams.StartTimeFromRequset(httpRequestLog);
+            spRecordExtendInfo.EndTime = this.ChannelParams.EndTimeFromRequset(httpRequestLog);
+            spRecordExtendInfo.FeeTime = this.ChannelParams.FeeTimeFromRequset(httpRequestLog);
+            spRecordExtendInfo.State = this.ChannelParams.StateFromRequset(httpRequestLog);
+	        spRecordExtendInfo.Ip = httpRequestLog.RequestIp;
+	        spRecordExtendInfo.RequestContent = httpRequestLog.RequestData;
+            spRecordExtendInfo.ExtendField1 = this.ChannelParams.ExtendField1FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField2 = this.ChannelParams.ExtendField2FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField3 = this.ChannelParams.ExtendField3FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField4 = this.ChannelParams.ExtendField4FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField5 = this.ChannelParams.ExtendField5FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField6 = this.ChannelParams.ExtendField6FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField7 = this.ChannelParams.ExtendField7FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField8 = this.ChannelParams.ExtendField8FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField9 = this.ChannelParams.ExtendField9FromRequset(httpRequestLog);
+            spRecordExtendInfo.ExtendField10 = this.ChannelParams.ExtendField10FromRequset(httpRequestLog);
+
+            UrlSendTask sendTask = this.GenerateSendUrl(record, spRecordExtendInfo);
 
 
+            try
+            {
+
+                bool result = InsertPayment(record, spRecordExtendInfo, out requestError, out errorMessage);
+
+                if (!result && requestError == RequestErrorType.RepeatLinkID)
+                {
+                    requestError = RequestErrorType.RepeatLinkID;
+
+                    errorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID（查询排重 异常排重） .";
  
+                    return false;
+                }
 
+                requestError = RequestErrorType.NoError;
+                errorMessage = "";
+                try
+                {
+                    LinkIDQueryCache.AddLinkIDs(linkid, this.Id);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
 
+                if (sendTask != null)
+                {
+                    sendTask.PaymentID = record.Id;
+                    ThreadPool.QueueUserWorkItem(SendRequest, sendTask);
+                }
 
- 
-
-
-
-
-
- 
-
-
-
-
-
- 
-
-            
- 
-
-            //try
-            //{
-            //    PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
-
-
-
-            //    bool result = paymentInfo.InsertPayment(out errorType);
-
-            //    if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
-            //    {
-            //        error.ErrorType = RequestErrorType.RepeatLinkID;
-            //        error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID（查询排重 异常排重） .";
-            //        error.ClientID = channelSetting.ClinetID.Id;
-            //        //SPFailedRequestWrapper.SaveFailedRequest(request, ip, query, " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .",
-            //        //                                         Id, 0);
-
-            //        return false;
-            //    }
-
-            //    error.ErrorType = RequestErrorType.NoError;
-            //    error.ErrorMessage = "";
-            //    try
-            //    {
-            //        LinkIDQueryCache.AddLinkIDs(linkid, this.Id);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Logger.Error(ex.Message);
-            //    }
-
-            //    if (sendTask != null)
-            //    {
-            //        sendTask.PaymentID = paymentInfo.Id;
-            //        ThreadPool.QueueUserWorkItem(UrlSender.UrlSender.SendRequest, sendTask);
-            //    }
-
-            //    return true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    error.ErrorType = RequestErrorType.DataSaveError;
-            //    error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
-            //    return false;
-            //}
+                return true;
+            }
+            catch (Exception ex)
+            {
+                requestError = RequestErrorType.DataSaveError;
+                errorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
+                return false;
+            }
 
 
 	        return false;
 	    }
 
-        private void CaculteIsSycnToClient(SPCodeWrapper matchCode, SPSClientWrapper client, SPRecordWrapper record)
+	    private UrlSendTask GenerateSendUrl(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo)
+	    {
+	        return null;
+	    }
+
+	    private bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
+	    {
+            return businessProxy.InsertPayment(record, spRecordExtendInfo, out requestError, out errorMessage);
+	    }
+
+	    private int GetRecordCount(HttpRequestLog httpRequestLog)
+	    {
+            if(this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+            {
+                if (this.ChannelParams.FeeTimeFromRequset(httpRequestLog) != null)
+                {
+                    return Convert.ToInt32(this.ChannelParams.FeeTimeFromRequset(httpRequestLog));
+                }
+
+                DateTime startTime = ParseTime(this.ChannelParams.StartTimeFromRequset(httpRequestLog));
+                DateTime endTime = ParseTime(this.ChannelParams.EndTimeFromRequset(httpRequestLog));
+
+                return Convert.ToInt32((endTime - startTime).TotalMinutes);
+            }
+	        return 1;
+	    }
+
+	    private DateTime ParseTime(string feeTime)
+	    {
+	        if(!string.IsNullOrEmpty(this.IVRTimeFormat))
+	        {
+	            return Convert.ToDateTime(feeTime);
+	        }
+	        else
+	        {
+                DateTimeFormatInfo   dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+                DateTime output;
+                DateTime.TryParseExact(feeTime, this.IVRTimeFormat, dtfi, DateTimeStyles.None, out output);
+
+	            return output;
+	        }
+	    }
+
+	    private DateTime GetRecordTime(HttpRequestLog httpRequestLog)
+	    {
+            //if (this.ChannelParams.HasKey(DictionaryConst.Dictionary_SPField_CreateDate_Key)&&this.ca)
+	        return DateTime.Now;
+	    }
+
+	    private void CaculteIsSycnToClient(SPCodeWrapper matchCode, SPSClientWrapper client, SPRecordWrapper record)
 	    {
             if (record.IsIntercept)
             {
@@ -353,11 +372,7 @@ namespace SPS.Bussiness.Wrappers
 
         private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
         {
-            List<SPCodeWrapper> allcodes = Codes;
-
-            if (allcodes.FindAll())
-
-            return null;
+            return Codes.Find(p => p.CheckIsMatchCode(mo, spcode));
         }
 
 	    private void GetProvinceAndCity(string mobile, ref string province, ref string city)
@@ -405,7 +420,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    private bool CheckLinkIDIsExisted(string linkid)
 	    {
-	        return false;
+            return LinkIDQueryCache.CheckLinkIDAndChannelIDIsExisted(linkid,this.Id);
 	    }
 
 	    private const int linkIDMaxLength = 20;
@@ -436,8 +451,7 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	        else
 	        {
-	            return this.ChannelParams.GetRequsetValueByKey(httpRequestLog,
-	                                                           DictionaryConst.Dictionary_SPField_LinkID_Key);
+	            return this.ChannelParams.LinkIDFromRequset(httpRequestLog);
 	        }
 	    }
 
@@ -532,6 +546,86 @@ namespace SPS.Bussiness.Wrappers
         public string GetOkCode(HttpRequestLog httpRequestLog)
         {
             return this.DataOkMessage;
+        }
+
+        public static void SendRequest(object request)
+        {
+            UrlSendTask sendTask = request as UrlSendTask;
+
+            if (sendTask == null)
+                throw new AbandonedMutexException(" sendTask is null ");
+
+
+            try
+            {
+                bool requestOk = false;
+
+                string errorMessage = string.Empty;
+
+                requestOk = SendRequest(sendTask.SendUrl, 3000, sendTask.OkMessage, out errorMessage);
+
+                if (requestOk)
+                {
+                    UpdatePaymentSendSuccessAndUrl(sendTask.SendUrl, sendTask.PaymentID);
+                }
+                else
+                {
+                    Console.WriteLine(errorMessage);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private static void UpdatePaymentSendSuccessAndUrl(string url, int paymentID)
+        {
+            return; 
+            //SPPaymentInfoWrapper.UpdateUrlSuccessSend(paymentID, url);
+        }
+
+        private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)
+        {
+            try
+            {
+                errorMessage = "";
+
+                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);
+
+                webRequest.Timeout = timeOut;
+
+                HttpWebResponse webResponse = null;
+
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+
+                if (webResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+
+                    string responseText = sr.ReadToEnd();
+
+                    bool result = responseText.Trim().ToLower().Equals(okMessage);
+
+                    if (!result)
+                    {
+                        errorMessage = responseText;
+                    }
+
+                    return result;
+                }
+
+                errorMessage = "web error Status:" + webResponse.StatusCode.ToString();
+
+                return false;
+            }
+            catch (Exception e)
+            {
+                errorMessage = e.Message;
+                return false;
+            }
         }
     }
 }

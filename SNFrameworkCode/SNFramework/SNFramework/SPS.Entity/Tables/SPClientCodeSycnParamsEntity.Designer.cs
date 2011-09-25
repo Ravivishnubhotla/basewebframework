@@ -40,8 +40,8 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private string _name;
 		private string _description;
-		private bool? _isEnable;
-		private bool? _isRequired;
+		private bool _isEnable;
+		private bool _isRequired;
 		private SPCodeEntity _codeID;
 		private string _mappingParams;
 		private string _title;
@@ -62,15 +62,15 @@ namespace SPS.Entity.Tables
 		public SPClientCodeSycnParamsEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_isEnable = null;
-			_isRequired = null;
+			_name = String.Empty;
+			_description = String.Empty;
+			_isEnable = false;
+			_isRequired = false;
 			_codeID = null;
-			_mappingParams = null;
-			_title = null;
-			_paramsValue = null;
-			_paramsType = null;
+			_mappingParams = String.Empty;
+			_title = String.Empty;
+			_paramsValue = String.Empty;
+			_paramsType = String.Empty;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -83,7 +83,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, SPCodeEntity codeID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPClientCodeSycnParamsEntity( int id, string name, string description, bool isEnable, bool isRequired, SPCodeEntity codeID, string mappingParams, string title, string paramsValue, string paramsType, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -157,7 +157,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsEnable
+		public virtual bool IsEnable
 		{
 			get { return _isEnable; }
 
@@ -171,7 +171,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsRequired
+		public virtual bool IsRequired
 		{
 			get { return _isRequired; }
 

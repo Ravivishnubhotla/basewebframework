@@ -58,13 +58,13 @@ namespace SPS.Entity.Tables
 		public SPCodeParamsConvertEntity()
 		{
 			_id = 0;
-			_name = null;
-			_paramsValue = null;
-			_paramsConvertTo = null;
-			_paramsConvertType = null;
-			_paramsConvertCondition = null;
+			_name = String.Empty;
+			_paramsValue = String.Empty;
+			_paramsConvertTo = String.Empty;
+			_paramsConvertType = String.Empty;
+			_paramsConvertCondition = String.Empty;
 			_codeID = null;
-			_directionType = null;
+			_directionType = String.Empty;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;

@@ -35,10 +35,10 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _code;
 		private string _description;
-		private int? _createBy;
-		private DateTime? _createAt;
-		private int? _lastModifyBy;
-		private DateTime? _lastModifyAt;
+		private int _createBy;
+		private DateTime _createAt;
+		private int _lastModifyBy;
+		private DateTime _lastModifyAt;
 		private string _lastModifyComment;
 		
 		#endregion
@@ -50,14 +50,14 @@ namespace SPS.Entity.Tables
 		public SPUpperEntity()
 		{
 			_id = 0;
-			_name = null;
-			_code = null;
-			_description = null;
-			_createBy = null;
-			_createAt = null;
-			_lastModifyBy = null;
-			_lastModifyAt = null;
-			_lastModifyComment = null;
+			_name = String.Empty;
+			_code = String.Empty;
+			_description = String.Empty;
+			_createBy = 0;
+			_createAt = DateTime.MinValue;
+			_lastModifyBy = 0;
+			_lastModifyAt = DateTime.MinValue;
+			_lastModifyComment = String.Empty;
 		}
 		#endregion
 
@@ -65,7 +65,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPUpperEntity( int id, string name, string code, string description, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPUpperEntity( int id, string name, string code, string description, int createBy, DateTime createAt, int lastModifyBy, DateTime lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -150,7 +150,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? CreateBy
+		public virtual int CreateBy
 		{
 			get { return _createBy; }
 
@@ -164,7 +164,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? CreateAt
+		public virtual DateTime CreateAt
 		{
 			get { return _createAt; }
 
@@ -178,7 +178,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? LastModifyBy
+		public virtual int LastModifyBy
 		{
 			get { return _lastModifyBy; }
 
@@ -192,7 +192,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? LastModifyAt
+		public virtual DateTime LastModifyAt
 		{
 			get { return _lastModifyAt; }
 

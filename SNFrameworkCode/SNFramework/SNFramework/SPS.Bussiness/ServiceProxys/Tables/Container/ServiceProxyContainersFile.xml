@@ -8,92 +8,74 @@
   <!-- 服务层类 -->
   <object id="SPChannelServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPChannelFiltersServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelFiltersServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelFiltersDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPChannelParamsServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelParamsServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelParamsDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPChannelParamsConvertServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelParamsConvertServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelParamsConvertDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPChannelSycnParamsServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelSycnParamsServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelSycnParamsDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPClientCodeRelationServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPClientCodeRelationServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPClientCodeRelationDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPClientCodeSycnParamsServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPClientCodeSycnParamsServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPClientCodeSycnParamsDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPCodeServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPCodeServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPCodeDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPCodeFilterServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPCodeFilterServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPCodeFilterDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPCodeParamsConvertServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPCodeParamsConvertServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPCodeParamsConvertDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPDayReportServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPDayReportServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPDayReportDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPMemoServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPMemoServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPMemoDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPMonitoringRequestServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPMonitoringRequestServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPMonitoringRequestDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPPhoneAreaServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPPhoneAreaServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPPhoneAreaDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPRecordServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPRecordServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPRecordDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPRecordExtendInfoServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPRecordExtendInfoServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPRecordExtendInfoDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPSClientServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPSClientServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPSClientDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
   <object id="SPUpperServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPUpperServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPUpperDataObjectIocID"/>
-	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
 

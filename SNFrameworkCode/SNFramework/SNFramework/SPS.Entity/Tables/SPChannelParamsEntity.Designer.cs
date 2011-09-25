@@ -41,13 +41,13 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private string _name;
 		private string _description;
-		private bool? _isEnable;
-		private bool? _isRequired;
+		private bool _isEnable;
+		private bool _isRequired;
 		private string _paramsType;
 		private SPChannelEntity _channelID;
 		private string _paramsMappingName;
 		private string _title;
-		private bool? _showInClientGrid;
+		private bool _showInClientGrid;
 		private string _paramsValue;
 		private int? _createBy;
 		private DateTime? _createAt;
@@ -64,14 +64,14 @@ namespace SPS.Entity.Tables
 		public SPChannelParamsEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_isEnable = null;
-			_isRequired = null;
+			_name = String.Empty;
+			_description = String.Empty;
+			_isEnable = false;
+			_isRequired = false;
 			_paramsType = null;
 			_channelID = null;
-			_paramsMappingName = null;
-			_title = null;
+			_paramsMappingName = String.Empty;
+			_title = String.Empty;
 			_showInClientGrid = true;
 			_paramsValue = null;
 			_createBy = null;
@@ -86,7 +86,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelParamsEntity( int id, string name, string description, bool? isEnable, bool? isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool? showInClientGrid, string paramsValue, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPChannelParamsEntity( int id, string name, string description, bool isEnable, bool isRequired, string paramsType, SPChannelEntity channelID, string paramsMappingName, string title, bool showInClientGrid, string paramsValue, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -161,7 +161,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsEnable
+		public virtual bool IsEnable
 		{
 			get { return _isEnable; }
 
@@ -175,7 +175,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsRequired
+		public virtual bool IsRequired
 		{
 			get { return _isRequired; }
 
@@ -254,7 +254,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? ShowInClientGrid
+		public virtual bool ShowInClientGrid
 		{
 			get { return _showInClientGrid; }
 
