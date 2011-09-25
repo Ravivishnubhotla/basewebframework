@@ -310,7 +310,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    private bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
 	    {
-            return businessProxy.InsertPayment(record, spRecordExtendInfo, out requestError, out errorMessage);
+            return businessProxy.InsertPayment(record.entity, spRecordExtendInfo.entity, out requestError, out errorMessage);
 	    }
 
 	    private int GetRecordCount(HttpRequestLog httpRequestLog)
