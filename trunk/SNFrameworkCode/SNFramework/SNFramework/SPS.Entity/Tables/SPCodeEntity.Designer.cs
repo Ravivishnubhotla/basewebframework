@@ -54,7 +54,7 @@ namespace SPS.Entity.Tables
 		private SPChannelEntity _channelID;
 		private string _mo;
 		private string _mOType;
-		private int? _orderIndex;
+		private int _orderIndex;
 		private string _sPCode;
 		private string _province;
 		private string _disableCity;
@@ -82,14 +82,14 @@ namespace SPS.Entity.Tables
 		public SPCodeEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_code = null;
+			_name = String.Empty;
+			_description = String.Empty;
+			_code = String.Empty;
 			_channelID = null;
 			_mo = String.Empty;
 			_mOType = String.Empty;
-			_orderIndex = null;
-			_sPCode = null;
+			_orderIndex = 0;
+			_sPCode = String.Empty;
 			_province = null;
 			_disableCity = null;
 			_isDiable = false;
@@ -113,7 +113,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int? orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment, bool hasParamsConvert)
+		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment, bool hasParamsConvert)
 		{
 			_id = id;
 			_name = name;
@@ -262,7 +262,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? OrderIndex
+		public virtual int OrderIndex
 		{
 			get { return _orderIndex; }
 

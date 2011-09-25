@@ -53,9 +53,9 @@ namespace SPS.Entity.Tables
 		{
 			_id = 0;
 			_channelID = null;
-			_paramsName = null;
-			_filterType = null;
-			_filterValue = null;
+			_paramsName = String.Empty;
+			_filterType = String.Empty;
+			_filterValue = String.Empty;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;

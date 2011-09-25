@@ -83,10 +83,10 @@ namespace SPS.Entity.Tables
 			_useClientDefaultSycnSetting = false;
 			_syncData = false;
 			_sycnRetryTimes = String.Empty;
-			_syncType = null;
-			_sycnDataUrl = null;
-			_sycnOkMessage = null;
-			_sycnFailedMessage = null;
+			_syncType = String.Empty;
+			_sycnDataUrl = String.Empty;
+			_sycnOkMessage = String.Empty;
+			_sycnFailedMessage = String.Empty;
 			_startDate = null;
 			_endDate = null;
 			_isEnable = false;

@@ -11,5 +11,15 @@ namespace SPS.Data.Tables
 {
     public partial class SPRecordDataObject
     {
+        public SPRecordEntity CheckChannleLinkIDIsExist(SPChannelEntity spChannelEntity, string linkId)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPRecordEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(spChannelEntity));
+
+            queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(linkId));
+
+            return this.FindSingleEntityByQueryBuilder(queryBuilder);
+        }
     }
 }

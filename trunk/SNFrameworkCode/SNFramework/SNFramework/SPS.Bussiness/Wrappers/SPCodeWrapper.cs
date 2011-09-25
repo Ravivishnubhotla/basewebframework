@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
- 
+using System.Text.RegularExpressions;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.ConstClass;
 using SPS.Entity.Tables;
@@ -110,27 +110,29 @@ namespace SPS.Bussiness.Wrappers
 
         public bool CheckIsMatchCode(string mo, string spcode)
         {
-            return false;
+            return CheckIsMatchCode(mo) && spcode.ToLower().Equals(this.SPCode.ToLower());
         }
 
         public bool CheckIsMatchCode(string mo)
         {
             switch (this.MOType)
             {
-                case DictionaryConst.Dictionary_CodeType_CodeDefault_Key:
+                case DictionaryConst.Dictionary_CodeType_CodeEQ_Key:
                     return mo.ToLower().Equals(this.Mo.ToLower());
-                case "2":
-                    return ywid.ToLower().Contains(this.CommandCode.ToLower());
-                case "3":
-                    return ywid.ToLower().StartsWith(this.CommandCode.ToLower());
-                case "4":
-                    return ywid.ToLower().EndsWith(this.CommandCode.ToLower());
-                case "5":
-                    return Regex.IsMatch(ywid.ToLower(), this.CommandCode.ToLower());
-                case "6":
-                    string newRegCommandCode = this.CommandCode.ToLower().Replace("*", "[S]*").Replace("?", "[S]{1}");
-                    return Regex.IsMatch(ywid.ToLower(), newRegCommandCode, RegexOptions.IgnoreCase);
-                case "7":
+                case DictionaryConst.Dictionary_CodeType_CodeContain_Key:
+                    return mo.ToLower().Contains(this.Mo.ToLower());
+                case DictionaryConst.Dictionary_CodeType_CodeStartWith_Key:
+                    return mo.ToLower().StartsWith(this.Mo.ToLower());
+                case DictionaryConst.Dictionary_CodeType_CodeEndWith_Key:
+                    return mo.ToLower().EndsWith(this.Mo.ToLower());
+                case DictionaryConst.Dictionary_CodeType_CodeRegex_Key:
+                    return Regex.IsMatch(mo.ToLower(), this.Mo.ToLower());
+                case DictionaryConst.Dictionary_CodeType_CodeCustom_Key:
+                    string newRegCommandCode = this.Mo.ToLower().Replace("*", "[S]*").Replace("?", "[S]{1}");
+                    return Regex.IsMatch(mo.ToLower(), newRegCommandCode, RegexOptions.IgnoreCase);
+                //case DictionaryConst.di:
+                //    return Regex.IsMatch(mo.ToLower(), newRegCommandCode, RegexOptions.IgnoreCase);
+                case DictionaryConst.Dictionary_CodeType_CodeDefault_Key:
                     return true;
             }
             return false;
@@ -138,6 +140,18 @@ namespace SPS.Bussiness.Wrappers
 
 	    public SPSClientWrapper GetRelateClient()
 	    {
+	        List<SPClientCodeRelationWrapper> findClientInCodes = SPClientCodeRelationWrapper.FindAllByCodeID(this);
+
+	        SPClientCodeRelationWrapper spClientCodeRelation = findClientInCodes.Find(p => (p.IsEnable));
+
+            if (spClientCodeRelation != null)
+                return spClientCodeRelation.ClientID;
+
+            SPClientCodeRelationWrapper spDefaultClientCodeRelation = findClientInCodes.Find(p => (p.ClientID.IsDefaultClient.HasValue && p.ClientID.IsDefaultClient.Value));
+
+            if (spDefaultClientCodeRelation != null)
+                return spDefaultClientCodeRelation.ClientID;
+
 	        return null;
 	    }
     }

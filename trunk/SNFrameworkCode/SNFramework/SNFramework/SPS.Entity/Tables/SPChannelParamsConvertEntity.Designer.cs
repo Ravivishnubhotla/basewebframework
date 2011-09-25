@@ -56,11 +56,11 @@ namespace SPS.Entity.Tables
 		public SPChannelParamsConvertEntity()
 		{
 			_id = 0;
-			_name = null;
-			_paramsValue = null;
-			_paramsConvertTo = null;
-			_paramsConvertType = null;
-			_paramsConvertCondition = null;
+			_name = String.Empty;
+			_paramsValue = String.Empty;
+			_paramsConvertTo = String.Empty;
+			_paramsConvertType = String.Empty;
+			_paramsConvertCondition = String.Empty;
 			_channelID = null;
 			_createBy = null;
 			_createAt = null;

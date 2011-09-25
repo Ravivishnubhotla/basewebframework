@@ -39,6 +39,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemSettingDataObject SystemSettingDataObjectInstance { set; get; }
       public SystemShortMessageDataObject SystemShortMessageDataObjectInstance { set; get; }
       public SystemTaskDataObject SystemTaskDataObjectInstance { set; get; }
+      public SystemTemplateDataObject SystemTemplateDataObjectInstance { set; get; }
       public SystemTerminologyDataObject SystemTerminologyDataObjectInstance { set; get; }
       public SystemUserDataObject SystemUserDataObjectInstance { set; get; }
       public SystemUserGroupDataObject SystemUserGroupDataObjectInstance { set; get; }

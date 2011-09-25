@@ -48,18 +48,18 @@ namespace SPS.Entity.Tables
 		private string _spNumber;
 		private string _province;
 		private string _city;
-		private DateTime? _createDate;
-		private bool? _isReport;
-		private bool? _isIntercept;
-		private bool? _isSycnToClient;
-		private bool? _isSycnSuccessed;
-		private bool? _isStatOK;
-		private int? _sycnRetryTimes;
+		private DateTime _createDate;
+		private bool _isReport;
+		private bool _isIntercept;
+		private bool _isSycnToClient;
+		private bool _isSycnSuccessed;
+		private bool _isStatOK;
+		private int _sycnRetryTimes;
 		private SPChannelEntity _channelID;
 		private SPSClientEntity _clientID;
 		private SPCodeEntity _codeID;
 		private decimal? _price;
-		private int? _count;
+		private int _count;
 		
 		#endregion
 
@@ -70,24 +70,24 @@ namespace SPS.Entity.Tables
 		public SPRecordEntity()
 		{
 			_id = 0;
-			_linkID = null;
+			_linkID = String.Empty;
 			_mo = null;
-			_mobile = null;
+			_mobile = String.Empty;
 			_spNumber = null;
-			_province = null;
-			_city = null;
-			_createDate = null;
-			_isReport = null;
-			_isIntercept = null;
-			_isSycnToClient = null;
-			_isSycnSuccessed = null;
-			_isStatOK = null;
-			_sycnRetryTimes = null;
+			_province = String.Empty;
+			_city = String.Empty;
+			_createDate = DateTime.MinValue;
+			_isReport = false;
+			_isIntercept = false;
+			_isSycnToClient = false;
+			_isSycnSuccessed = false;
+			_isStatOK = false;
+			_sycnRetryTimes = 0;
 			_channelID = null;
 			_clientID = null;
 			_codeID = null;
 			_price = null;
-			_count = null;
+			_count = 0;
 		}
 		#endregion
 
@@ -95,7 +95,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordEntity( int id, string linkID, string mo, string mobile, string spNumber, string province, string city, DateTime? createDate, bool? isReport, bool? isIntercept, bool? isSycnToClient, bool? isSycnSuccessed, bool? isStatOK, int? sycnRetryTimes, SPChannelEntity channelID, SPSClientEntity clientID, SPCodeEntity codeID, decimal? price, int? count)
+		public SPRecordEntity( int id, string linkID, string mo, string mobile, string spNumber, string province, string city, DateTime createDate, bool isReport, bool isIntercept, bool isSycnToClient, bool isSycnSuccessed, bool isStatOK, int sycnRetryTimes, SPChannelEntity channelID, SPSClientEntity clientID, SPCodeEntity codeID, decimal? price, int count)
 		{
 			_id = id;
 			_linkID = linkID;
@@ -241,7 +241,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? CreateDate
+		public virtual DateTime CreateDate
 		{
 			get { return _createDate; }
 
@@ -255,7 +255,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsReport
+		public virtual bool IsReport
 		{
 			get { return _isReport; }
 
@@ -269,7 +269,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsIntercept
+		public virtual bool IsIntercept
 		{
 			get { return _isIntercept; }
 
@@ -283,7 +283,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsSycnToClient
+		public virtual bool IsSycnToClient
 		{
 			get { return _isSycnToClient; }
 
@@ -297,7 +297,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsSycnSuccessed
+		public virtual bool IsSycnSuccessed
 		{
 			get { return _isSycnSuccessed; }
 
@@ -311,7 +311,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsStatOK
+		public virtual bool IsStatOK
 		{
 			get { return _isStatOK; }
 
@@ -325,7 +325,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? SycnRetryTimes
+		public virtual int SycnRetryTimes
 		{
 			get { return _sycnRetryTimes; }
 
@@ -395,7 +395,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? Count
+		public virtual int Count
 		{
 			get { return _count; }
 

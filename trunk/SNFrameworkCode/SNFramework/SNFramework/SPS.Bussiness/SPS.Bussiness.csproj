@@ -59,8 +59,10 @@
     <Compile Include="DataAdapter\HttpXmlPostAdapter.cs" />
     <Compile Include="DataAdapter\IDataAdapter.cs" />
     <Compile Include="HttpUtils\HttpRequestLog.cs" />
+    <Compile Include="HttpUtils\LinkIDQueryCache.cs" />
     <Compile Include="HttpUtils\RequestErrorType.cs" />
     <Compile Include="HttpUtils\RequestType.cs" />
+    <Compile Include="HttpUtils\UrlSendTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">

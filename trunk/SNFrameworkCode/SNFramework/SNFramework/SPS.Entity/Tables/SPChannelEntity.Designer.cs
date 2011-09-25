@@ -71,7 +71,7 @@ namespace SPS.Entity.Tables
 		private string _channelType;
 		private string _iVRFeeTimeType;
 		private string _iVRTimeFormat;
-		private bool? _isStateReport;
+		private bool _isStateReport;
 		private string _stateReportType;
 		private string _reportOkMessage;
 		private string _reportFailedMessage;
@@ -80,11 +80,11 @@ namespace SPS.Entity.Tables
 		private string _requestTypeParamName;
 		private string _requestTypeParamStateReportValue;
 		private string _requestTypeParamDataReportValue;
-		private bool? _hasFilters;
-		private bool? _isMonitorRequest;
-		private bool? _isLogRequest;
-		private bool? _isParamsConvert;
-		private bool? _isAutoLinkID;
+		private bool _hasFilters;
+		private bool _isMonitorRequest;
+		private bool _isLogRequest;
+		private bool _isParamsConvert;
+		private bool _isAutoLinkID;
 		private string _autoLinkIDFields;
 		private string _logRequestType;
 		private decimal? _price;
@@ -92,7 +92,7 @@ namespace SPS.Entity.Tables
 		private string _channelDetailInfo;
 		private SPUpperEntity _upperID;
 		private string _channelStatus;
-		private bool? _isDisable;
+		private bool _isDisable;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -108,38 +108,38 @@ namespace SPS.Entity.Tables
 		public SPChannelEntity()
 		{
 			_id = 0;
-			_name = null;
-			_code = null;
-			_dataOkMessage = null;
-			_dataFailedMessage = null;
-			_description = null;
-			_dataAdapterType = null;
-			_dataAdapterUrl = null;
-			_channelType = null;
+			_name = String.Empty;
+			_code = String.Empty;
+			_dataOkMessage = String.Empty;
+			_dataFailedMessage = String.Empty;
+			_description = String.Empty;
+			_dataAdapterType = String.Empty;
+			_dataAdapterUrl = String.Empty;
+			_channelType = String.Empty;
 			_iVRFeeTimeType = null;
 			_iVRTimeFormat = null;
-			_isStateReport = null;
-			_stateReportType = null;
-			_reportOkMessage = null;
-			_reportFailedMessage = null;
-			_stateReportParamName = null;
-			_stateReportParamValue = null;
-			_requestTypeParamName = null;
-			_requestTypeParamStateReportValue = null;
-			_requestTypeParamDataReportValue = null;
-			_hasFilters = null;
-			_isMonitorRequest = null;
-			_isLogRequest = null;
-			_isParamsConvert = null;
-			_isAutoLinkID = null;
-			_autoLinkIDFields = null;
+			_isStateReport = false;
+			_stateReportType = String.Empty;
+			_reportOkMessage = String.Empty;
+			_reportFailedMessage = String.Empty;
+			_stateReportParamName = String.Empty;
+			_stateReportParamValue = String.Empty;
+			_requestTypeParamName = String.Empty;
+			_requestTypeParamStateReportValue = String.Empty;
+			_requestTypeParamDataReportValue = String.Empty;
+			_hasFilters = false;
+			_isMonitorRequest = false;
+			_isLogRequest = false;
+			_isParamsConvert = false;
+			_isAutoLinkID = false;
+			_autoLinkIDFields = String.Empty;
 			_logRequestType = null;
 			_price = null;
 			_defaultRate = null;
 			_channelDetailInfo = null;
 			_upperID = null;
 			_channelStatus = null;
-			_isDisable = null;
+			_isDisable = false;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -152,7 +152,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool? isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool? hasFilters, bool? isMonitorRequest, bool? isLogRequest, bool? isParamsConvert, bool? isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool? isDisable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPChannelEntity( int id, string name, string code, string dataOkMessage, string dataFailedMessage, string description, string dataAdapterType, string dataAdapterUrl, string channelType, string iVRFeeTimeType, string iVRTimeFormat, bool isStateReport, string stateReportType, string reportOkMessage, string reportFailedMessage, string stateReportParamName, string stateReportParamValue, string requestTypeParamName, string requestTypeParamStateReportValue, string requestTypeParamDataReportValue, bool hasFilters, bool isMonitorRequest, bool isLogRequest, bool isParamsConvert, bool isAutoLinkID, string autoLinkIDFields, string logRequestType, decimal? price, decimal? defaultRate, string channelDetailInfo, SPUpperEntity upperID, string channelStatus, bool isDisable, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -385,7 +385,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsStateReport
+		public virtual bool IsStateReport
 		{
 			get { return _isStateReport; }
 
@@ -535,7 +535,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? HasFilters
+		public virtual bool HasFilters
 		{
 			get { return _hasFilters; }
 
@@ -549,7 +549,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsMonitorRequest
+		public virtual bool IsMonitorRequest
 		{
 			get { return _isMonitorRequest; }
 
@@ -563,7 +563,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsLogRequest
+		public virtual bool IsLogRequest
 		{
 			get { return _isLogRequest; }
 
@@ -577,7 +577,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsParamsConvert
+		public virtual bool IsParamsConvert
 		{
 			get { return _isParamsConvert; }
 
@@ -591,7 +591,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsAutoLinkID
+		public virtual bool IsAutoLinkID
 		{
 			get { return _isAutoLinkID; }
 
@@ -715,7 +715,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? IsDisable
+		public virtual bool IsDisable
 		{
 			get { return _isDisable; }
 

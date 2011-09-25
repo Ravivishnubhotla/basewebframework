@@ -46,9 +46,9 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private string _name;
 		private string _description;
-		private int? _userID;
+		private int _userID;
 		private bool? _isDefaultClient;
-		private bool? _syncData;
+		private bool _syncData;
 		private int? _sycnRetryTimes;
 		private string _syncType;
 		private int? _sycnNotInterceptCount;
@@ -56,9 +56,9 @@ namespace SPS.Entity.Tables
 		private string _sycnOkMessage;
 		private string _sycnFailedMessage;
 		private string _alias;
-		private decimal? _interceptRate;
-		private decimal? _defaultPrice;
-		private int? _defaultShowRecordDays;
+		private decimal _interceptRate;
+		private decimal _defaultPrice;
+		private int _defaultShowRecordDays;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -74,11 +74,11 @@ namespace SPS.Entity.Tables
 		public SPSClientEntity()
 		{
 			_id = 0;
-			_name = null;
-			_description = null;
-			_userID = null;
+			_name = String.Empty;
+			_description = String.Empty;
+			_userID = 0;
 			_isDefaultClient = null;
-			_syncData = null;
+			_syncData = false;
 			_sycnRetryTimes = null;
 			_syncType = null;
 			_sycnNotInterceptCount = null;
@@ -86,9 +86,9 @@ namespace SPS.Entity.Tables
 			_sycnOkMessage = null;
 			_sycnFailedMessage = null;
 			_alias = null;
-			_interceptRate = null;
-			_defaultPrice = null;
-			_defaultShowRecordDays = null;
+			_interceptRate = 0;
+			_defaultPrice = 0;
+			_defaultShowRecordDays = 0;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -101,7 +101,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int? userID, bool? isDefaultClient, bool? syncData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal? interceptRate, decimal? defaultPrice, int? defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPSClientEntity( int id, string name, string description, int userID, bool? isDefaultClient, bool syncData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal interceptRate, decimal defaultPrice, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -181,7 +181,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? UserID
+		public virtual int UserID
 		{
 			get { return _userID; }
 
@@ -209,7 +209,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? SyncData
+		public virtual bool SyncData
 		{
 			get { return _syncData; }
 
@@ -336,7 +336,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual decimal? InterceptRate
+		public virtual decimal InterceptRate
 		{
 			get { return _interceptRate; }
 
@@ -350,7 +350,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual decimal? DefaultPrice
+		public virtual decimal DefaultPrice
 		{
 			get { return _defaultPrice; }
 
@@ -364,7 +364,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DefaultShowRecordDays
+		public virtual int DefaultShowRecordDays
 		{
 			get { return _defaultShowRecordDays; }
 
