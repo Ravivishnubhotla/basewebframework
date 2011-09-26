@@ -10,6 +10,7 @@ using System.Xml.Xsl;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
@@ -62,15 +63,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             List<string> phones = new List<string>();
             if (!string.IsNullOrEmpty(this.txtPhone.Text.Trim()))
             {
-                string[] arrays = this.txtPhone.Text.Trim().Replace("\r\n", "\n").Replace("\n", "|").Split('|');
-
-                foreach (string line in arrays)
-                {
-                    if (!string.IsNullOrEmpty(line.Trim()))
-                    {
-                        phones.Add(line);
-                    }
-                }
+                phones = StringUtil.SplitMLineTextToArray(this.txtPhone.Text.Trim(), "|");
             }
 
             int recordCount = 0;
@@ -138,15 +131,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             List<string> phones  = new List<string>();
             if (!string.IsNullOrEmpty(e.Parameters["txtPhone"]))
             {
-                string[] arrays = e.Parameters["txtPhone"].Replace("\r\n","|").Split('|');
-
-                foreach (string line in arrays)
-                {
-                    if(!string.IsNullOrEmpty(line.Trim()))
-                    {
-                        phones.Add(line);
-                    }
-                }
+                phones = StringUtil.SplitMLineTextToArray(e.Parameters["txtPhone"].Trim(), "|");
             }
 
             store1.DataSource = SPPaymentInfoWrapper.FindAllByChannelIDAndClientChannelIDAndPhoneListByOrderBy(channelID, clientChannelID, phones, sortFieldName,
