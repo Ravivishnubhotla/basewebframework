@@ -21,6 +21,8 @@
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ClientGroupName" />
+                    
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="MobileNumber" />
                     <ext:RecordField Name="Values" />
@@ -223,7 +225,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colCode" DataIndex="Code" Header="指令" Sortable="false">
                                 </ext:Column>
-                                <ext:Column ColumnID="colClientName" DataIndex="ClientName" Header="下家名" Sortable="false">
+                                <ext:Column ColumnID="colClientName" DataIndex="ClientGroupName" Header="下家名" Sortable="false">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>
