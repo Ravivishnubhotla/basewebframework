@@ -128,6 +128,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string ClientName
+        {
+            get
+            {
+                if (this.ClientID != null)
+                {
+                    return this.ClientID.Name;
+                }
+                return "";
+            }
+        }
+
+        public string Code
+        {
+            get
+            {
+                if (this.ClientID != null)
+                {
+                    if(this.ClientID.DefaultClientChannelSetting!=null)
+                        return this.ClientID.DefaultClientChannelSetting.ChannelClientCode;
+                }
+                return "";
+            }
+        }
+
+
 	    public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateNoIntercept(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, string sortFieldName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
 	    {
 	        return

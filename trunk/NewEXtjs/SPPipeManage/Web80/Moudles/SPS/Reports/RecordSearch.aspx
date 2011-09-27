@@ -19,8 +19,10 @@
             <ext:JsonReader ReaderID="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="MobileNumber" />
-                    <ext:RecordField Name="RequestContent" />
                     <ext:RecordField Name="Values" />
                     <ext:RecordField Name="Linkid" />
                     <ext:RecordField Name="Province" />
@@ -36,6 +38,8 @@
             <ext:Parameter Name="ChannelClientID" Value="#{cmbCode}.getValue()" Mode="Raw" />
             <ext:Parameter Name="txtPhone" Value="#{txtPhone}.getValue()" Mode="Raw" />
         </BaseParams>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
     <ext:Store ID="storeSPChannel" runat="server" AutoLoad="false" OnRefreshData="storeSPChannel_Refresh">
         <Reader>
@@ -214,6 +218,12 @@
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
                                 <ext:Column ColumnID="colReportDate" DataIndex="MobileNumber" Header="手机号" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colChannelName" DataIndex="ChannelName" Header="通道名" Sortable="false">
+                                </ext:Column>
+                                <ext:Column ColumnID="colCode" DataIndex="Code" Header="指令" Sortable="false">
+                                </ext:Column>
+                                <ext:Column ColumnID="colClientName" DataIndex="ClientName" Header="下家名" Sortable="false">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRequestContent" DataIndex="Linkid" Header="LinkID" Sortable="false">
                                 </ext:Column>

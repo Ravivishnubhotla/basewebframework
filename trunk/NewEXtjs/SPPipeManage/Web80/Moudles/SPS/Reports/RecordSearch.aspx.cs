@@ -50,6 +50,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         protected void ToExcel(object sender, EventArgs e)
         {
+            this.Server.ScriptTimeout = 120;
+
             int channelID = 0;
             if (this.cmbChannelID.SelectedItem != null && !string.IsNullOrEmpty(this.cmbChannelID.SelectedItem.Value.ToString()))
             {
@@ -80,12 +82,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("<table>");
             sb.AppendLine("<tr>");
-            sb.AppendLine("<td>linkid</td><td>手机号</td><td>上行指令</td><td>通道号码</td><td>日期</td>");
+            sb.AppendLine("<td>linkid</td><td>通道名</td><td>指令</td><td>下家名</td><td>手机号</td><td>上行指令</td><td>通道号码</td><td>日期</td>");
             sb.AppendLine("</tr>");
             foreach (SPPaymentInfoWrapper spPaymentInfoWrapper in paymentInfoWrappers)
             {
                 sb.AppendLine("<tr>");
-                sb.AppendFormat("<td style='vnd.ms-excel.numberformat:@'>{0}</td><td style='vnd.ms-excel.numberformat:@'>{1}</td><td style='vnd.ms-excel.numberformat:@'>{2}</td><td style='vnd.ms-excel.numberformat:@'>{3}</td><td style='vnd.ms-excel.numberformat:@'>{4}</td>", spPaymentInfoWrapper.Linkid,spPaymentInfoWrapper.MobileNumber,spPaymentInfoWrapper.Ywid,spPaymentInfoWrapper.Cpid,spPaymentInfoWrapper.CreateDate);
+                sb.AppendFormat("<td style='vnd.ms-excel.numberformat:@'>{0}</td><td style='vnd.ms-excel.numberformat:@'>{1}</td><td style='vnd.ms-excel.numberformat:@'>{2}</td><td style='vnd.ms-excel.numberformat:@'>{3}</td><td style='vnd.ms-excel.numberformat:@'>{4}</td><td style='vnd.ms-excel.numberformat:@'>{5}</td><td style='vnd.ms-excel.numberformat:@'>{6}</td><td style='vnd.ms-excel.numberformat:@'>{7}</td>", 
+                    spPaymentInfoWrapper.Linkid,
+                    spPaymentInfoWrapper.ChannelName,
+                    spPaymentInfoWrapper.Code,
+                    spPaymentInfoWrapper.ClientName,
+                    spPaymentInfoWrapper.MobileNumber,
+                    spPaymentInfoWrapper.Ywid,
+                    spPaymentInfoWrapper.Cpid,spPaymentInfoWrapper.CreateDate);
                 sb.AppendLine("");
                 sb.AppendLine("</tr>");
             }
