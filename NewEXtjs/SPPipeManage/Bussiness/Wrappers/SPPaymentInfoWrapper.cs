@@ -140,6 +140,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string ClientAlias
+        {
+            get
+            {
+                if (this.ClientID != null)
+                {
+                    return this.ClientID.Alias;
+                }
+                return "";
+            }
+        }
+
+        public string ClientGroupName
+        {
+            get
+            {
+                if (this.ClientID != null)
+                {
+                    if (this.ClientID.SPClientGroupID!=null)
+                        return this.ClientID.SPClientGroupID.Name;
+                }
+                return "";
+            }
+        }
+
         public string Code
         {
             get
