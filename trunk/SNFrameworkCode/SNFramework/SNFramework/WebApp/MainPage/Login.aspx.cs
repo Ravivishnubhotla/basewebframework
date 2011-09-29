@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace Legendigital.Common.WebApp.MainPage
@@ -38,6 +39,7 @@ namespace Legendigital.Common.WebApp.MainPage
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString();
+                SystemLogWrapper.LogUserLoginFailed(loginID, HttpUtil.GetIP(this.Request), GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString(),System.DateTime.Now);
                 return;
             }
 
@@ -51,6 +53,7 @@ namespace Legendigital.Common.WebApp.MainPage
                 {
                     ResourceManager.AjaxSuccess = false;
                     ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserLockError").ToString();
+                    SystemLogWrapper.LogUserLoginFailed(loginID, HttpUtil.GetIP(this.Request), GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString(), System.DateTime.Now);
                     return;
                 }
             }
@@ -60,6 +63,7 @@ namespace Legendigital.Common.WebApp.MainPage
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString();
+                SystemLogWrapper.LogUserLoginFailed(loginID, HttpUtil.GetIP(this.Request), GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString(), System.DateTime.Now);
                 return;
             }
 
@@ -77,6 +81,8 @@ namespace Legendigital.Common.WebApp.MainPage
                                               false);
 
             UserCurrentLoginId = userWrapper.UserLoginID;
+
+            SystemLogWrapper.LogUserLoginSuccessed(userWrapper, HttpUtil.GetIP(this.Request), System.DateTime.Now);
 
             Response.Redirect(FormsAuthentication.DefaultUrl);
         }

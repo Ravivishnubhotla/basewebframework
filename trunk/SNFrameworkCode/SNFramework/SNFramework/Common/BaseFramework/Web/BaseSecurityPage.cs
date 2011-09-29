@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Security;
 using System.Web.UI;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Web
@@ -53,7 +54,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
 
         public void ClearLoginInfo()
         {
-            Session[Session_Key_LoginUser] = null;
+            //if (CurrentLoginUser!=null)
+            //    SystemLogWrapper.LogUserLoginOutSuccessed(CurrentLoginUser, HttpUtil.GetIP(this.Request), System.DateTime.Now);
+            Session[Session_Key_LoginUser] = null;   
             FormsAuthentication.SignOut();
         }
 

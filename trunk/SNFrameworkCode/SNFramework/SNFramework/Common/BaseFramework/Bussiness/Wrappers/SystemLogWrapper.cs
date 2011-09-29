@@ -93,9 +93,91 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion
 
 
-        //public void LogWrapperOp(int id,string title,string content,DateTime logTime)
-        //{
+        public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = logindate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间成功登陆系统。登陆IP:{2}.", user.UserLoginID, logindate.ToLongTimeString(), ip);
+            log.LogLevel = "Info";
+            log.LogRelateDateTime = logindate;
+            log.LogRelateUserID = user.UserID;
+            log.LogRelateUserName = user.UserLoginID;
+            log.ParentDataType = typeof (SystemUserWrapper).Name.ToString();
+            log.ParentDataID = user.UserID;
+            log.LogSource = "System";
+            log.LogType = "系统安全日志";
+            Save(log);
+        }
 
-        //}
+
+        public static void LogUserLoginOutSuccessed(SystemUserWrapper user, string ip, DateTime logindate)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = logindate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间成功注销系统。登陆IP:{2}.", user.UserLoginID, logindate.ToLongTimeString(), ip);
+            log.LogLevel = "Info";
+            log.LogRelateDateTime = logindate;
+            log.LogRelateUserID = user.UserID;
+            log.LogRelateUserName = user.UserLoginID;
+            log.ParentDataType = typeof(SystemUserWrapper).Name.ToString();
+            log.ParentDataID = user.UserID;
+            log.LogSource = "System";
+            log.LogType = "系统安全日志";
+            Save(log);
+        }
+
+        public static void LogUserAutoLoginOutSuccessed(SystemUserWrapper user, string ip, DateTime logindate)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = logindate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间自动注销系统。登陆IP:{2}.", user.UserLoginID, logindate.ToLongTimeString(), ip);
+            log.LogLevel = "Info";
+            log.LogRelateDateTime = logindate;
+            log.LogRelateUserID = user.UserID;
+            log.LogRelateUserName = user.UserLoginID;
+            log.ParentDataType = typeof(SystemUserWrapper).Name.ToString();
+            log.ParentDataID = user.UserID;
+            log.LogSource = "System";
+            log.LogType = "系统安全日志";
+            Save(log);
+        }
+
+
+        public static void LogUserLoginFailed(string userLoginID, string ip, string reason, DateTime logindate)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = logindate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间登陆系统失败，错误原因{3}。登陆IP:{2}.", userLoginID, logindate.ToLongTimeString(), ip, reason);
+            log.LogLevel = "Error";
+            log.LogRelateDateTime = logindate;
+            log.LogRelateUserID = null;
+            log.LogRelateUserName = null;
+            log.ParentDataType = "N/A";
+            log.ParentDataID = null;
+            log.LogSource = "System";
+            log.LogType = "系统安全日志";
+            Save(log);
+        }
+
+
+        public static void LogUserOperationAction(SystemUserWrapper user, string operatioMessage, string ip, DateTime opdate, string dataType, int dataid)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = opdate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间{3}，操作IP:{2}.", user.UserLoginID, ip, opdate.ToLongTimeString(), operatioMessage);
+            log.LogLevel = "Info";
+            log.LogRelateDateTime = opdate;
+            log.LogRelateUserID = user.UserID;
+            log.LogRelateUserName = user.UserLoginID;
+            log.ParentDataType = dataType;
+            log.ParentDataID = dataid;
+            log.LogSource = "System";
+            log.LogType = "数据操作日志";
+            
+            Save(log);
+        }
+
+
+
     }
 }
