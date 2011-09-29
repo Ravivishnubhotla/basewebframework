@@ -27,9 +27,29 @@ namespace Legendigital.Framework.Common.Utility
             }
 
             if (HttpContext.Current.Request.Url.Port == 80)
-                return string.Format(urlTemplate + url, HttpContext.Current.Request.Url.Host);
+                return String.Format(urlTemplate + url, HttpContext.Current.Request.Url.Host);
             else
-                return string.Format(urlTemplate + url, HttpContext.Current.Request.Url.Host, HttpContext.Current.Request.Url.Port);
+                return String.Format(urlTemplate + url, HttpContext.Current.Request.Url.Host, HttpContext.Current.Request.Url.Port);
+        }
+
+        public static string GetIP(HttpRequest request)
+        {
+            string ip = String.Empty;
+            try
+            {
+                if (request.ServerVariables["HTTP_VIA"] != null)
+                {
+                    ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
+                }
+                else
+                {
+                    ip = request.UserHostAddress;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return ip;
         }
     }
 }

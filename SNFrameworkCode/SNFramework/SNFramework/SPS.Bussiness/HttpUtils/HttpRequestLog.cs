@@ -74,7 +74,7 @@ namespace SPS.Bussiness.HttpUtils
 
             requestData = SerializeUtil.ToJson(requestParams);
 
-            requestIP = GetIP(request);
+            requestIP = HttpUtil.GetIP(request);
 
             _dataAdaptorUrl = Path.GetFileName(request.PhysicalPath);
 
@@ -86,25 +86,7 @@ namespace SPS.Bussiness.HttpUtils
                 requestPostFileData = GetXmlPostValueFromRequest(request);
         }
 
-        public static string GetIP(HttpRequest request)
-        {
-            string ip = string.Empty;
-            try
-            {
-                if (request.ServerVariables["HTTP_VIA"] != null)
-                {
-                    ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString().Split(',')[0].Trim();
-                }
-                else
-                {
-                    ip = request.UserHostAddress;
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return ip;
-        }
+
 
         public static string GetXmlPostValueFromRequest(HttpRequest request)
         {
