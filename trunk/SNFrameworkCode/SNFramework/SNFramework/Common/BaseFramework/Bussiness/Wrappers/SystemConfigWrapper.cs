@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Reflection;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -74,6 +75,28 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemConfigWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            Type entityType = typeof(SystemConfigWrapper);
+
+            PropertyInfo[] ps = entityType.GetProperties();
+
+            foreach (PropertyInfo propertyInfo in ps)
+            {
+                if (!propertyInfo.CanWrite && propertyInfo.CanRead && propertyInfo.Name == orderByColumnName)
+                {
+                    object[] npas = propertyInfo.GetCustomAttributes(typeof(NhibernateQueryPropertyAttribute), false);
+
+                    foreach (object npa in npas)
+                    {
+                        if (npa is NhibernateQueryPropertyAttribute)
+                        {
+                            orderByColumnName = ((NhibernateQueryPropertyAttribute)npa).MappingColumnName;
+                            break;
+                        }
+                    }
+                }
+            }
+
+
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 
@@ -122,6 +145,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
         }
 
+        [NhibernateQueryPropertyAttribute(MappingColumnName = "ConfigGroupID_SystemConfigEntity_Alias.Name")]
         public string GroupName
         {
             get
