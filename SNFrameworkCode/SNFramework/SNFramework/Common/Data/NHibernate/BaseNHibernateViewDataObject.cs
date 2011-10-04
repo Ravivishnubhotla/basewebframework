@@ -817,6 +817,10 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
         }
 
+        public abstract void InClude_Parent_Table(string parent_alias,
+                                                  NHibernateDynamicQueryGenerator<DomainType> queryGenerator);
+
+
         protected void AddDefaultOrderByToQueryGenerator(string orderByColumn, bool isDesc,
                                                          NHibernateDynamicQueryGenerator<DomainType> queryGenerator)
         {
@@ -827,6 +831,16 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
             else
             {
+                if (orderByColumn.Contains("."))
+                {
+                    string tableAliasName = orderByColumn.Split('.')[0];
+
+                    if (!queryGenerator.HasIncludeTable(tableAliasName))
+                    {
+                        InClude_Parent_Table(tableAliasName, queryGenerator);
+                    }
+                }
+
                 if (isDesc)
                     queryGenerator.AddOrderBy(Property.ForName(orderByColumn).Desc());
                 else

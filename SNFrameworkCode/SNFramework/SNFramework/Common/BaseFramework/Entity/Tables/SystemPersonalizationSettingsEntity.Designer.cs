@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemPersonalizationSettingsEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPersonalizationSettingsEntity";
 		public static readonly string PROPERTY_NAME_PERSONALIZATIONID = "PersonalizationID";
@@ -27,6 +27,66 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region applicationID字段外键查询字段
+        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemPersonalizationSettingsEntity_Alias";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationID";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationName";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationCode";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationDescription";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationUrl";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyComment";
+		#endregion
+		#region userId字段外键查询字段
+        public static readonly string PROPERTY_USERID_ALIAS_NAME = "UserId_SystemPersonalizationSettingsEntity_Alias";
+		public static readonly string PROPERTY_USERID_USERID = "UserId_SystemPersonalizationSettingsEntity_Alias.UserID";
+		public static readonly string PROPERTY_USERID_USERLOGINID = "UserId_SystemPersonalizationSettingsEntity_Alias.UserLoginID";
+		public static readonly string PROPERTY_USERID_USERNAME = "UserId_SystemPersonalizationSettingsEntity_Alias.UserName";
+		public static readonly string PROPERTY_USERID_USEREMAIL = "UserId_SystemPersonalizationSettingsEntity_Alias.UserEmail";
+		public static readonly string PROPERTY_USERID_USERPASSWORD = "UserId_SystemPersonalizationSettingsEntity_Alias.UserPassword";
+		public static readonly string PROPERTY_USERID_USERSTATUS = "UserId_SystemPersonalizationSettingsEntity_Alias.UserStatus";
+		public static readonly string PROPERTY_USERID_USERCREATEDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.UserCreateDate";
+		public static readonly string PROPERTY_USERID_USERTYPE = "UserId_SystemPersonalizationSettingsEntity_Alias.UserType";
+		public static readonly string PROPERTY_USERID_DEPARTMENTID = "UserId_SystemPersonalizationSettingsEntity_Alias.DepartmentID";
+		public static readonly string PROPERTY_USERID_MOBILEPIN = "UserId_SystemPersonalizationSettingsEntity_Alias.MobilePIN";
+		public static readonly string PROPERTY_USERID_PASSWORDFORMAT = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordFormat";
+		public static readonly string PROPERTY_USERID_PASSWORDQUESTION = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordQuestion";
+		public static readonly string PROPERTY_USERID_PASSWORDANSWER = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordAnswer";
+		public static readonly string PROPERTY_USERID_COMMENTS = "UserId_SystemPersonalizationSettingsEntity_Alias.Comments";
+		public static readonly string PROPERTY_USERID_ISAPPROVED = "UserId_SystemPersonalizationSettingsEntity_Alias.IsApproved";
+		public static readonly string PROPERTY_USERID_ISLOCKEDOUT = "UserId_SystemPersonalizationSettingsEntity_Alias.IsLockedOut";
+		public static readonly string PROPERTY_USERID_LASTACTIVITYDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.LastActivityDate";
+		public static readonly string PROPERTY_USERID_LASTLOGINDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.LastLoginDate";
+		public static readonly string PROPERTY_USERID_LASTLOCKEDOUTDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.LastLockedOutDate";
+		public static readonly string PROPERTY_USERID_LASTPASSWORDCHANGEDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.LastPasswordChangeDate";
+		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTCNT = "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAttemptCnt";
+		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART = "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAttemptWndStart";
+		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT = "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAnsAttemptCnt";
+		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART = "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAnsAttemptWndStart";
+		public static readonly string PROPERTY_USERID_ISNEEDCHGPWD = "UserId_SystemPersonalizationSettingsEntity_Alias.IsNeedChgPwd";
+		public static readonly string PROPERTY_USERID_PASSWORDSALT = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordSalt";
+		public static readonly string PROPERTY_USERID_LOWEREDEMAIL = "UserId_SystemPersonalizationSettingsEntity_Alias.LoweredEmail";
+		public static readonly string PROPERTY_USERID_CREATEBY = "UserId_SystemPersonalizationSettingsEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_USERID_CREATEAT = "UserId_SystemPersonalizationSettingsEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_USERID_LASTMODIFYBY = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_USERID_LASTMODIFYAT = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

@@ -65,7 +65,7 @@ namespace SPS.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPRecordExtendInfoEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -89,6 +89,38 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ENDTIME = "EndTime";
 		
         #endregion
+	
+ 
+		#region recordID字段外键查询字段
+        public static readonly string PROPERTY_RECORDID_ALIAS_NAME = "RecordID_SPRecordExtendInfoEntity_Alias";
+		public static readonly string PROPERTY_RECORDID_ID = "RecordID_SPRecordExtendInfoEntity_Alias.Id";
+		public static readonly string PROPERTY_RECORDID_LINKID = "RecordID_SPRecordExtendInfoEntity_Alias.LinkID";
+		public static readonly string PROPERTY_RECORDID_MO = "RecordID_SPRecordExtendInfoEntity_Alias.Mo";
+		public static readonly string PROPERTY_RECORDID_MOBILE = "RecordID_SPRecordExtendInfoEntity_Alias.Mobile";
+		public static readonly string PROPERTY_RECORDID_SPNUMBER = "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber";
+		public static readonly string PROPERTY_RECORDID_PROVINCE = "RecordID_SPRecordExtendInfoEntity_Alias.Province";
+		public static readonly string PROPERTY_RECORDID_CITY = "RecordID_SPRecordExtendInfoEntity_Alias.City";
+		public static readonly string PROPERTY_RECORDID_CREATEDATE = "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate";
+		public static readonly string PROPERTY_RECORDID_ISREPORT = "RecordID_SPRecordExtendInfoEntity_Alias.IsReport";
+		public static readonly string PROPERTY_RECORDID_ISINTERCEPT = "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept";
+		public static readonly string PROPERTY_RECORDID_ISSYCNTOCLIENT = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnToClient";
+		public static readonly string PROPERTY_RECORDID_ISSYCNSUCCESSED = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnSuccessed";
+		public static readonly string PROPERTY_RECORDID_ISSTATOK = "RecordID_SPRecordExtendInfoEntity_Alias.IsStatOK";
+		public static readonly string PROPERTY_RECORDID_SYCNRETRYTIMES = "RecordID_SPRecordExtendInfoEntity_Alias.SycnRetryTimes";
+		public static readonly string PROPERTY_RECORDID_CHANNELID = "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID";
+		public static readonly string PROPERTY_RECORDID_CLIENTID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientID";
+		public static readonly string PROPERTY_RECORDID_CODEID = "RecordID_SPRecordExtendInfoEntity_Alias.CodeID";
+		public static readonly string PROPERTY_RECORDID_PRICE = "RecordID_SPRecordExtendInfoEntity_Alias.Price";
+		public static readonly string PROPERTY_RECORDID_COUNT = "RecordID_SPRecordExtendInfoEntity_Alias.Count";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemVersionEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemVersionEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -27,6 +27,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
+	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleMenuRelationEntity";
 		public static readonly string PROPERTY_NAME_MENUROLEID = "MenuRoleID";
@@ -73,6 +73,52 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ROLEID = "RoleID";
 		
         #endregion
+	
+ 
+		#region menuID字段外键查询字段
+        public static readonly string PROPERTY_MENUID_ALIAS_NAME = "MenuID_SystemRoleMenuRelationEntity_Alias";
+		public static readonly string PROPERTY_MENUID_MENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuID";
+		public static readonly string PROPERTY_MENUID_MENUNAME = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuName";
+		public static readonly string PROPERTY_MENUID_MENUCODE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuCode";
+		public static readonly string PROPERTY_MENUID_MENUDESCRIPTION = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuDescription";
+		public static readonly string PROPERTY_MENUID_MENUURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrl";
+		public static readonly string PROPERTY_MENUID_MENUURLTARGET = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrlTarget";
+		public static readonly string PROPERTY_MENUID_MENUICONURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIconUrl";
+		public static readonly string PROPERTY_MENUID_MENUISCATEGORY = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsCategory";
+		public static readonly string PROPERTY_MENUID_PARENTMENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.ParentMenuID";
+		public static readonly string PROPERTY_MENUID_MENUORDER = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuOrder";
+		public static readonly string PROPERTY_MENUID_MENUTYPE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuType";
+		public static readonly string PROPERTY_MENUID_MENUISSYSTEMMENU = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsSystemMenu";
+		public static readonly string PROPERTY_MENUID_MENUISENABLE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsEnable";
+		public static readonly string PROPERTY_MENUID_APPLICATIONID = "MenuID_SystemRoleMenuRelationEntity_Alias.ApplicationID";
+		public static readonly string PROPERTY_MENUID_CREATEBY = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_MENUID_CREATEAT = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_MENUID_LASTMODIFYBY = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_MENUID_LASTMODIFYAT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_MENUID_LASTMODIFYCOMMENT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region roleID字段外键查询字段
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleMenuRelationEntity_Alias";
+		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleID";
+		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleName";
+		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleCode";
+		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleDescription";
+		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleIsSystemRole";
+		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleType";
+		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

@@ -12,7 +12,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemOperationEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemOperationEntity";
 		public static readonly string PROPERTY_NAME_OPERATIONID = "OperationID";
@@ -35,6 +35,34 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region resourceID字段外键查询字段
+        public static readonly string PROPERTY_RESOURCEID_ALIAS_NAME = "ResourceID_SystemOperationEntity_Alias";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESID = "ResourceID_SystemOperationEntity_Alias.ResourcesID";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESNAMECN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameCn";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESNAMEEN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameEn";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESDESCRIPTION = "ResourceID_SystemOperationEntity_Alias.ResourcesDescription";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESTYPE = "ResourceID_SystemOperationEntity_Alias.ResourcesType";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESLIMITEXPRESSION = "ResourceID_SystemOperationEntity_Alias.ResourcesLimitExpression";
+		public static readonly string PROPERTY_RESOURCEID_RESOURCESISRELATEUSER = "ResourceID_SystemOperationEntity_Alias.ResourcesIsRelateUser";
+		public static readonly string PROPERTY_RESOURCEID_MOUDLEID = "ResourceID_SystemOperationEntity_Alias.MoudleID";
+		public static readonly string PROPERTY_RESOURCEID_PARENTRESOURCESID = "ResourceID_SystemOperationEntity_Alias.ParentResourcesID";
+		public static readonly string PROPERTY_RESOURCEID_ORDERINDEX = "ResourceID_SystemOperationEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_RESOURCEID_CREATEBY = "ResourceID_SystemOperationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_RESOURCEID_CREATEAT = "ResourceID_SystemOperationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYBY = "ResourceID_SystemOperationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYAT = "ResourceID_SystemOperationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYCOMMENT = "ResourceID_SystemOperationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

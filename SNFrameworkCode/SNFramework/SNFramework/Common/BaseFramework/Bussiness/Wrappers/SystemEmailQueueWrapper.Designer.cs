@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmailQueueEntity";
 		public static readonly string PROPERTY_NAME_QUEUEID = "QueueID";
@@ -91,6 +91,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		
         #endregion
+	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

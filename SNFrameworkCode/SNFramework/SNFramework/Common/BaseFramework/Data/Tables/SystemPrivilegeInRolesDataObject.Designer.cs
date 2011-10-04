@@ -104,6 +104,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPrivilegeInRolesEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "RoleID_SystemPrivilegeInRolesEntity_Alias":
+                    queryGenerator.AddAlians(SystemPrivilegeInRolesEntity.PROPERTY_NAME_ROLEID, PROPERTY_ROLEID_ALIAS_NAME);
+                    break;
+	            case "PrivilegeID_SystemPrivilegeInRolesEntity_Alias":
+                    queryGenerator.AddAlians(SystemPrivilegeInRolesEntity.PROPERTY_NAME_PRIVILEGEID, PROPERTY_PRIVILEGEID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SystemPrivilegeInRolesEntity> GetList_By_RoleID_SystemRoleEntity(SystemRoleEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SystemPrivilegeInRolesEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

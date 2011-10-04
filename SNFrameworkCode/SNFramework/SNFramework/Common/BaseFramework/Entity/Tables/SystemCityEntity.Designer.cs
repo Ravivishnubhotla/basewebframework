@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemCityEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemCityEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -22,6 +22,25 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_CAPITAL = "Capital";
 		
         #endregion
+	
+ 
+		#region provinceID字段外键查询字段
+        public static readonly string PROPERTY_PROVINCEID_ALIAS_NAME = "ProvinceID_SystemCityEntity_Alias";
+		public static readonly string PROPERTY_PROVINCEID_ID = "ProvinceID_SystemCityEntity_Alias.Id";
+		public static readonly string PROPERTY_PROVINCEID_NAME = "ProvinceID_SystemCityEntity_Alias.Name";
+		public static readonly string PROPERTY_PROVINCEID_ABBRNAME = "ProvinceID_SystemCityEntity_Alias.AbbrName";
+		public static readonly string PROPERTY_PROVINCEID_SINGLEABBRNAME = "ProvinceID_SystemCityEntity_Alias.SingleAbbrName";
+		public static readonly string PROPERTY_PROVINCEID_CODE = "ProvinceID_SystemCityEntity_Alias.Code";
+		public static readonly string PROPERTY_PROVINCEID_COUNTRYID = "ProvinceID_SystemCityEntity_Alias.CountryID";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

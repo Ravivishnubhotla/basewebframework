@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserGroupRoleRelationEntity";
 		public static readonly string PROPERTY_NAME_USERGROUPROLEID = "UserGroupRoleID";
@@ -73,6 +73,42 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_USERGROUPID = "UserGroupID";
 		
         #endregion
+	
+ 
+		#region roleID字段外键查询字段
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias";
+		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID";
+		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName";
+		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode";
+		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription";
+		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole";
+		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType";
+		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region userGroupID字段外键查询字段
+        public static readonly string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias";
+		public static readonly string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID";
+		public static readonly string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn";
+		public static readonly string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn";
+		public static readonly string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription";
+		public static readonly string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

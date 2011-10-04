@@ -98,6 +98,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemEmailQueueEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+
+ 
+            }
+        }
+		
+		
+		
 
 		
 		

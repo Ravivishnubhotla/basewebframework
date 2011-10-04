@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemViewEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWID = "SystemViewID";
@@ -81,6 +81,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region applicationID字段外键查询字段
+        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemViewEntity_Alias";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemViewEntity_Alias.SystemApplicationID";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemViewEntity_Alias.SystemApplicationName";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemViewEntity_Alias.SystemApplicationCode";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemViewEntity_Alias.SystemApplicationDescription";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemViewEntity_Alias.SystemApplicationUrl";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemViewEntity_Alias.SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemViewEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemViewEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemViewEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemViewEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemViewEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemViewEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

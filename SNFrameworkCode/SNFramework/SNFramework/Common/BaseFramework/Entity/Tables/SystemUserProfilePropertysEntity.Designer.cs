@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemUserProfilePropertysEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserProfilePropertysEntity";
 		public static readonly string PROPERTY_NAME_PROPERTYID = "PropertyID";
@@ -19,6 +19,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_PROPERTYDESCRIPTION = "PropertyDescription";
 		
         #endregion
+	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

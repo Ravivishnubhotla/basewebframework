@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMoudleEntity";
 		public static readonly string PROPERTY_NAME_MOUDLEID = "MoudleID";
@@ -83,6 +83,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region applicationID字段外键查询字段
+        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMoudleEntity_Alias";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationID";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationName";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationCode";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationDescription";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationUrl";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMoudleEntity_Alias.SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMoudleEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMoudleEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMoudleEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMoudleEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMoudleEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMoudleEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

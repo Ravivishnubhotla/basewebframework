@@ -13,6 +13,8 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
     {
         private DetachedCriteria query = null;
         private DetachedCriteria queryCount = null;
+        private List<string> allAlias = new List<string>();
+
      
         public NHibernateDynamicQueryGenerator()
         {
@@ -44,6 +46,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
         {
             query.CreateAlias(propertyName, alias);
             queryCount.CreateAlias(propertyName, alias);
+            allAlias.Add(alias);
             return this;
         }
 
@@ -156,6 +159,9 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
         }
 
 
-
+        public bool HasIncludeTable(string tableAliasName)
+        {
+            return allAlias.Contains(tableAliasName);
+        }
     }
 }

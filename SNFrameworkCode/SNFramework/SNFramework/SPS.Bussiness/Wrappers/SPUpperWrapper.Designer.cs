@@ -65,7 +65,7 @@ namespace SPS.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPUpperEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -79,6 +79,16 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

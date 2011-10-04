@@ -97,6 +97,20 @@ namespace SPS.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPCodeFilterEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "CodeID_SPCodeFilterEntity_Alias":
+                    queryGenerator.AddAlians(SPCodeFilterEntity.PROPERTY_NAME_CODEID, PROPERTY_CODEID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SPCodeFilterEntity> GetList_By_CodeID_SPCodeEntity(SPCodeEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPCodeFilterEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

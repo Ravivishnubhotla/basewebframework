@@ -65,7 +65,7 @@ namespace SPS.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPCodeEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -95,6 +95,57 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
+	
+ 
+		#region channelID字段外键查询字段
+        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPCodeEntity_Alias";
+		public static readonly string PROPERTY_CHANNELID_ID = "ChannelID_SPCodeEntity_Alias.Id";
+		public static readonly string PROPERTY_CHANNELID_NAME = "ChannelID_SPCodeEntity_Alias.Name";
+		public static readonly string PROPERTY_CHANNELID_CODE = "ChannelID_SPCodeEntity_Alias.Code";
+		public static readonly string PROPERTY_CHANNELID_DATAOKMESSAGE = "ChannelID_SPCodeEntity_Alias.DataOkMessage";
+		public static readonly string PROPERTY_CHANNELID_DATAFAILEDMESSAGE = "ChannelID_SPCodeEntity_Alias.DataFailedMessage";
+		public static readonly string PROPERTY_CHANNELID_DESCRIPTION = "ChannelID_SPCodeEntity_Alias.Description";
+		public static readonly string PROPERTY_CHANNELID_DATAADAPTERTYPE = "ChannelID_SPCodeEntity_Alias.DataAdapterType";
+		public static readonly string PROPERTY_CHANNELID_DATAADAPTERURL = "ChannelID_SPCodeEntity_Alias.DataAdapterUrl";
+		public static readonly string PROPERTY_CHANNELID_CHANNELTYPE = "ChannelID_SPCodeEntity_Alias.ChannelType";
+		public static readonly string PROPERTY_CHANNELID_IVRFEETIMETYPE = "ChannelID_SPCodeEntity_Alias.IVRFeeTimeType";
+		public static readonly string PROPERTY_CHANNELID_IVRTIMEFORMAT = "ChannelID_SPCodeEntity_Alias.IVRTimeFormat";
+		public static readonly string PROPERTY_CHANNELID_ISSTATEREPORT = "ChannelID_SPCodeEntity_Alias.IsStateReport";
+		public static readonly string PROPERTY_CHANNELID_STATEREPORTTYPE = "ChannelID_SPCodeEntity_Alias.StateReportType";
+		public static readonly string PROPERTY_CHANNELID_REPORTOKMESSAGE = "ChannelID_SPCodeEntity_Alias.ReportOkMessage";
+		public static readonly string PROPERTY_CHANNELID_REPORTFAILEDMESSAGE = "ChannelID_SPCodeEntity_Alias.ReportFailedMessage";
+		public static readonly string PROPERTY_CHANNELID_STATEREPORTPARAMNAME = "ChannelID_SPCodeEntity_Alias.StateReportParamName";
+		public static readonly string PROPERTY_CHANNELID_STATEREPORTPARAMVALUE = "ChannelID_SPCodeEntity_Alias.StateReportParamValue";
+		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = "ChannelID_SPCodeEntity_Alias.RequestTypeParamName";
+		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE = "ChannelID_SPCodeEntity_Alias.RequestTypeParamStateReportValue";
+		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE = "ChannelID_SPCodeEntity_Alias.RequestTypeParamDataReportValue";
+		public static readonly string PROPERTY_CHANNELID_HASFILTERS = "ChannelID_SPCodeEntity_Alias.HasFilters";
+		public static readonly string PROPERTY_CHANNELID_ISMONITORREQUEST = "ChannelID_SPCodeEntity_Alias.IsMonitorRequest";
+		public static readonly string PROPERTY_CHANNELID_ISLOGREQUEST = "ChannelID_SPCodeEntity_Alias.IsLogRequest";
+		public static readonly string PROPERTY_CHANNELID_ISPARAMSCONVERT = "ChannelID_SPCodeEntity_Alias.IsParamsConvert";
+		public static readonly string PROPERTY_CHANNELID_ISAUTOLINKID = "ChannelID_SPCodeEntity_Alias.IsAutoLinkID";
+		public static readonly string PROPERTY_CHANNELID_AUTOLINKIDFIELDS = "ChannelID_SPCodeEntity_Alias.AutoLinkIDFields";
+		public static readonly string PROPERTY_CHANNELID_LOGREQUESTTYPE = "ChannelID_SPCodeEntity_Alias.LogRequestType";
+		public static readonly string PROPERTY_CHANNELID_PRICE = "ChannelID_SPCodeEntity_Alias.Price";
+		public static readonly string PROPERTY_CHANNELID_DEFAULTRATE = "ChannelID_SPCodeEntity_Alias.DefaultRate";
+		public static readonly string PROPERTY_CHANNELID_CHANNELDETAILINFO = "ChannelID_SPCodeEntity_Alias.ChannelDetailInfo";
+		public static readonly string PROPERTY_CHANNELID_UPPERID = "ChannelID_SPCodeEntity_Alias.UpperID";
+		public static readonly string PROPERTY_CHANNELID_CHANNELSTATUS = "ChannelID_SPCodeEntity_Alias.ChannelStatus";
+		public static readonly string PROPERTY_CHANNELID_ISDISABLE = "ChannelID_SPCodeEntity_Alias.IsDisable";
+		public static readonly string PROPERTY_CHANNELID_CREATEBY = "ChannelID_SPCodeEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_CHANNELID_CREATEAT = "ChannelID_SPCodeEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_CHANNELID_LASTMODIFYBY = "ChannelID_SPCodeEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_CHANNELID_LASTMODIFYAT = "ChannelID_SPCodeEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_CHANNELID_LASTMODIFYCOMMENT = "ChannelID_SPCodeEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

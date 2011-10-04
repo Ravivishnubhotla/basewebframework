@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemRoleApplicationEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleApplicationEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMROLEAPPLICATIONID = "SystemRoleApplicationID";
@@ -19,6 +19,45 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_APPLICATIONID = "ApplicationID";
 		
         #endregion
+	
+ 
+		#region roleID字段外键查询字段
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleApplicationEntity_Alias";
+		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleApplicationEntity_Alias.RoleID";
+		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleApplicationEntity_Alias.RoleName";
+		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleApplicationEntity_Alias.RoleCode";
+		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleApplicationEntity_Alias.RoleDescription";
+		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleApplicationEntity_Alias.RoleIsSystemRole";
+		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleApplicationEntity_Alias.RoleType";
+		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleApplicationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleApplicationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyComment";
+		#endregion
+		#region applicationID字段外键查询字段
+        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemRoleApplicationEntity_Alias";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationID";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationName";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationCode";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationDescription";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationUrl";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemRoleApplicationEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

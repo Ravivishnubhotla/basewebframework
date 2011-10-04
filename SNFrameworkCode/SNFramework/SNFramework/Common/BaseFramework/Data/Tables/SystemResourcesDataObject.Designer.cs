@@ -100,6 +100,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemResourcesEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "MoudleID_SystemResourcesEntity_Alias":
+                    queryGenerator.AddAlians(SystemResourcesEntity.PROPERTY_NAME_MOUDLEID, PROPERTY_MOUDLEID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SystemResourcesEntity> GetList_By_MoudleID_SystemMoudleEntity(SystemMoudleEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SystemResourcesEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

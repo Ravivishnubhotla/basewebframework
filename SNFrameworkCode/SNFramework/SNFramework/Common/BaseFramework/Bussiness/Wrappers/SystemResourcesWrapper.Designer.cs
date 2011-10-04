@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemResourcesEntity";
 		public static readonly string PROPERTY_NAME_RESOURCESID = "ResourcesID";
@@ -85,6 +85,32 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region moudleID字段外键查询字段
+        public static readonly string PROPERTY_MOUDLEID_ALIAS_NAME = "MoudleID_SystemResourcesEntity_Alias";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLEID = "MoudleID_SystemResourcesEntity_Alias.MoudleID";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMECN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEEN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEDB = "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = "MoudleID_SystemResourcesEntity_Alias.MoudleDescription";
+		public static readonly string PROPERTY_MOUDLEID_APPLICATIONID = "MoudleID_SystemResourcesEntity_Alias.ApplicationID";
+		public static readonly string PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle";
+		public static readonly string PROPERTY_MOUDLEID_ORDERINDEX = "MoudleID_SystemResourcesEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_MOUDLEID_CREATEBY = "MoudleID_SystemResourcesEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_MOUDLEID_CREATEAT = "MoudleID_SystemResourcesEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYBY = "MoudleID_SystemResourcesEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYAT = "MoudleID_SystemResourcesEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYCOMMENT = "MoudleID_SystemResourcesEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property
