@@ -431,6 +431,7 @@
     </Compile>
     <Compile Include="BaseFramework\NavMenu.cs" />
     <Compile Include="BaseFramework\Utility\NameListItem.cs" />
+    <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\ByteArrayProperty.cs" />
