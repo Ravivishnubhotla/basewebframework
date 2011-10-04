@@ -22,7 +22,7 @@ namespace Legendigital.Common.WebApp.MainPage
             if (X.IsAjaxRequest)
                 return;
 
-            List<SystemPrivilegeWrapper> aaa = SystemPrivilegeWrapper.TestFindResouceNameAndOPName("", "");
+            //List<SystemPrivilegeWrapper> aaa = SystemPrivilegeWrapper.TestFindResouceNameAndOPName("", "");
 
             //Console.WriteLine(aaa.Count);
 

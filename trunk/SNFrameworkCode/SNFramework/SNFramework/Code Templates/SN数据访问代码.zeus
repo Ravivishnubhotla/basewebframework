@@ -47,8 +47,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	
 	private Utils utils = new Utils();
 	private static readonly string filterClassNameChar = "";
-	private bool IsSupportAdo = false;
-	//private bool IsGenerateWCFContainer = true;
+	private bool IsSupportAdo = true;
 
 	//---------------------------------------------------
 	// Render() is where you want to write your logic    
@@ -350,6 +349,28 @@ namespace <%= config.DataObjectNameSpace %>
 %>          }
 			return typeof(string);
         }
+		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+<%			foreach( IColumn field in table.Columns ){
+			if(field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>	            case "<%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityClassName(table) %>_Alias":
+                    queryGenerator.AddAlians(<%= config.GenerateEntityClassName(table) %>.PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>, PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_ALIAS_NAME);
+                    break;
+<%					}			
+				}
+				}
+%>
+ 
+            }
+        }
+		
+		
 		
 <%			foreach( IColumn field in table.Columns ){
 			if(field.IsInForeignKey)
@@ -1616,7 +1637,7 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 	
 	private void BuildPublicConst(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
 	{
-%>        #region 公共常量
+%>      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "<%= config.EntityNameSpace %>.<%= config.GenerateEntityClassName(table) %>";
 <%		foreach( IColumn column in table.Columns )
@@ -1625,6 +1646,32 @@ namespace <%= config.DataObjectContainerIoCClassNameSpace %>
 <%		}
 %>		
         #endregion
+	
+ 
+<%			foreach( IColumn field in table.Columns )
+			{
+				if(config.IsCreateFKeyClassrefence && field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>		#region <%= utils.SetCamelCase(field.Name) %>字段外键查询字段
+        public static readonly string PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_ALIAS_NAME = "<%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityClassName(table) %>_Alias";
+<%					foreach( IColumn pfield in pTable.Columns ){ 
+%>		public static readonly string PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_<%= config.GenerateEntityPorpertyName(pfield).ToUpper() %> = "<%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityClassName(table) %>_Alias.<%= config.GenerateEntityPorpertyName(pfield) %>";
+<%						 
+					}
+%>		#endregion
+<%					}
+				}
+			}
+%>      	
+	
+	
+		 
+		
+		
+		
+		
 <%	}
 
  
