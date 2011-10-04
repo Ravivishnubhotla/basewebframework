@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemPrivilegeParameterEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPrivilegeParameterEntity";
 		public static readonly string PROPERTY_NAME_PRIVILEGEPARAMETERID = "PrivilegeParameterID";
@@ -25,6 +25,47 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region roleID字段外键查询字段
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeParameterEntity_Alias";
+		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleID";
+		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleName";
+		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleCode";
+		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleDescription";
+		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleIsSystemRole";
+		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeParameterEntity_Alias.RoleType";
+		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeParameterEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeParameterEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyComment";
+		#endregion
+		#region privilegeID字段外键查询字段
+        public static readonly string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeParameterEntity_Alias";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeID";
+		public static readonly string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.OperationID";
+		public static readonly string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.ResourcesID";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeCnName";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeEnName";
+		public static readonly string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.DefaultValue";
+		public static readonly string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.Description";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeOrder";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeType";
+		public static readonly string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

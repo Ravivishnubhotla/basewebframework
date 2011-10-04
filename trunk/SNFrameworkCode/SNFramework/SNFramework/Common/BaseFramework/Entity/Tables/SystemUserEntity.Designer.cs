@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemUserEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemUserEntity";
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
@@ -48,6 +48,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region departmentID字段外键查询字段
+        public static readonly string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
+		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
+		public static readonly string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
+		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
+		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
+		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
+		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
+		public static readonly string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

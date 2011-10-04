@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemProvinceEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -76,6 +76,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_COUNTRYID = "CountryID";
 		
         #endregion
+	
+ 
+		#region countryID字段外键查询字段
+        public static readonly string PROPERTY_COUNTRYID_ALIAS_NAME = "CountryID_SystemProvinceEntity_Alias";
+		public static readonly string PROPERTY_COUNTRYID_ID = "CountryID_SystemProvinceEntity_Alias.Id";
+		public static readonly string PROPERTY_COUNTRYID_CODENUMBER = "CountryID_SystemProvinceEntity_Alias.CodeNumber";
+		public static readonly string PROPERTY_COUNTRYID_CODE2 = "CountryID_SystemProvinceEntity_Alias.Code2";
+		public static readonly string PROPERTY_COUNTRYID_CODE3 = "CountryID_SystemProvinceEntity_Alias.Code3";
+		public static readonly string PROPERTY_COUNTRYID_ABBRNAMECN = "CountryID_SystemProvinceEntity_Alias.AbbrNameCN";
+		public static readonly string PROPERTY_COUNTRYID_ABBRNAMEEN = "CountryID_SystemProvinceEntity_Alias.AbbrNameEN";
+		public static readonly string PROPERTY_COUNTRYID_FULLNAMECN = "CountryID_SystemProvinceEntity_Alias.FullNameCn";
+		public static readonly string PROPERTY_COUNTRYID_FULLNAMEEN = "CountryID_SystemProvinceEntity_Alias.FullNameEn";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

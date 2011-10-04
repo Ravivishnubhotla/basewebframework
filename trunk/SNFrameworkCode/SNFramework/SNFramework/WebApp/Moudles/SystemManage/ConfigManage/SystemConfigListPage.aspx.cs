@@ -127,6 +127,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
             pageQueryParams.PageSize = limit;
             pageQueryParams.PageIndex = pageIndex;
 
+            if (sortFieldName == "GroupName")
+                sortFieldName = "ConfigGroupID_SystemConfigEntity_Alias.Name";
+
 
             storeSystemConfig.DataSource = SystemConfigWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
             e.Total = recordCount;

@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemViewItemEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMVIEWITEMID = "SystemViewItemID";
@@ -82,6 +82,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region systemViewID字段外键查询字段
+        public static readonly string PROPERTY_SYSTEMVIEWID_ALIAS_NAME = "SystemViewID_SystemViewItemEntity_Alias";
+		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWID = "SystemViewID_SystemViewItemEntity_Alias.SystemViewID";
+		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMECN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameCn";
+		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameEn";
+		public static readonly string PROPERTY_SYSTEMVIEWID_APPLICATIONID = "SystemViewID_SystemViewItemEntity_Alias.ApplicationID";
+		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION = "SystemViewID_SystemViewItemEntity_Alias.SystemViewDescription";
+		public static readonly string PROPERTY_SYSTEMVIEWID_ORDERINDEX = "SystemViewID_SystemViewItemEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_SYSTEMVIEWID_CREATEBY = "SystemViewID_SystemViewItemEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_SYSTEMVIEWID_CREATEAT = "SystemViewID_SystemViewItemEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYBY = "SystemViewID_SystemViewItemEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYAT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYCOMMENT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

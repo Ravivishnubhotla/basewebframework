@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemLogEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemLogEntity";
 		public static readonly string PROPERTY_NAME_LOGID = "LogID";
@@ -29,6 +29,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LOGRELATEDATETIME = "LogRelateDateTime";
 		
         #endregion
+	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 
@@ -122,7 +132,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 20)
+				if( value != null && value.Length > 60)
 					throw new ArgumentOutOfRangeException("Invalid value for LogLevel", value, value.ToString());
 				_isChanged |= (_logLevel != value); _logLevel = value;
 			}
@@ -139,7 +149,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 20)
+				if( value != null && value.Length > 60)
 					throw new ArgumentOutOfRangeException("Invalid value for LogType", value, value.ToString());
 				_isChanged |= (_logType != value); _logType = value;
 			}
@@ -187,7 +197,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 40)
+				if( value != null && value.Length > 60)
 					throw new ArgumentOutOfRangeException("Invalid value for LogUser", value, value.ToString());
 				_isChanged |= (_logUser != value); _logUser = value;
 			}
@@ -283,7 +293,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 40)
+				if( value != null && value.Length > 60)
 					throw new ArgumentOutOfRangeException("Invalid value for LogRelateUserName", value, value.ToString());
 				_isChanged |= (_logRelateUserName != value); _logRelateUserName = value;
 			}

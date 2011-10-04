@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemConfigEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMCONFIGID = "SystemConfigID";
@@ -82,6 +82,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region configGroupID字段外键查询字段
+        public static readonly string PROPERTY_CONFIGGROUPID_ALIAS_NAME = "ConfigGroupID_SystemConfigEntity_Alias";
+		public static readonly string PROPERTY_CONFIGGROUPID_ID = "ConfigGroupID_SystemConfigEntity_Alias.Id";
+		public static readonly string PROPERTY_CONFIGGROUPID_NAME = "ConfigGroupID_SystemConfigEntity_Alias.Name";
+		public static readonly string PROPERTY_CONFIGGROUPID_CODE = "ConfigGroupID_SystemConfigEntity_Alias.Code";
+		public static readonly string PROPERTY_CONFIGGROUPID_DESCRIPTION = "ConfigGroupID_SystemConfigEntity_Alias.Description";
+		public static readonly string PROPERTY_CONFIGGROUPID_ISENABLE = "ConfigGroupID_SystemConfigEntity_Alias.IsEnable";
+		public static readonly string PROPERTY_CONFIGGROUPID_ISSYSTEM = "ConfigGroupID_SystemConfigEntity_Alias.IsSystem";
+		public static readonly string PROPERTY_CONFIGGROUPID_CREATEBY = "ConfigGroupID_SystemConfigEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_CONFIGGROUPID_CREATEAT = "ConfigGroupID_SystemConfigEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYBY = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYAT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYCOMMENT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

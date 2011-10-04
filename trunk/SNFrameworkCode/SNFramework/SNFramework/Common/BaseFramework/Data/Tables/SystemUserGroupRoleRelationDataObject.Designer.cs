@@ -78,6 +78,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemUserGroupRoleRelationEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "RoleID_SystemUserGroupRoleRelationEntity_Alias":
+                    queryGenerator.AddAlians(SystemUserGroupRoleRelationEntity.PROPERTY_NAME_ROLEID, PROPERTY_ROLEID_ALIAS_NAME);
+                    break;
+	            case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias":
+                    queryGenerator.AddAlians(SystemUserGroupRoleRelationEntity.PROPERTY_NAME_USERGROUPID, PROPERTY_USERGROUPID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SystemUserGroupRoleRelationEntity> GetList_By_RoleID_SystemRoleEntity(SystemRoleEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SystemUserGroupRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

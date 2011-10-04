@@ -65,7 +65,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMoudleFieldEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMMOUDLEFIELDID = "SystemMoudleFieldID";
@@ -87,6 +87,32 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region systemMoudleID字段外键查询字段
+        public static readonly string PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME = "SystemMoudleID_SystemMoudleFieldEntity_Alias";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleID";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMECN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameCn";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEEN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameEn";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEDB = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameDb";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEDESCRIPTION = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleDescription";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_APPLICATIONID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.ApplicationID";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEISSYSTEMMOUDLE = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleIsSystemMoudle";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_ORDERINDEX = "SystemMoudleID_SystemMoudleFieldEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_CREATEBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_CREATEAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYCOMMENT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property

@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemPrivilegeInRolesEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPrivilegeInRolesEntity";
 		public static readonly string PROPERTY_NAME_PRIVILEGEROLEID = "PrivilegeRoleID";
@@ -26,6 +26,47 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_PRIVILEGEROLEVALUE = "PrivilegeRoleValue";
 		
         #endregion
+	
+ 
+		#region roleID字段外键查询字段
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeInRolesEntity_Alias";
+		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleID";
+		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleName";
+		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleCode";
+		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleDescription";
+		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleIsSystemRole";
+		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleType";
+		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+		#endregion
+		#region privilegeID字段外键查询字段
+        public static readonly string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeID";
+		public static readonly string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.OperationID";
+		public static readonly string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.ResourcesID";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeCnName";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeEnName";
+		public static readonly string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.DefaultValue";
+		public static readonly string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.Description";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeOrder";
+		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeType";
+		public static readonly string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

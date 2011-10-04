@@ -11,17 +11,17 @@
 </id>
 
 
-		<property column="Log_Level" type="string" name="LogLevel"   not-null="true"  length="20" />	
-		<property column="Log_Type" type="string" name="LogType"   length="20" />	
+		<property column="Log_Level" type="string" name="LogLevel"   not-null="true"  length="60" />	
+		<property column="Log_Type" type="string" name="LogType"   length="60" />	
 		<property column="Log_Date" type="DateTime" name="LogDate"   not-null="true"  />	
 		<property column="Log_Source" type="string" name="LogSource"   not-null="true"  length="60" />	
-		<property column="Log_User" type="string" name="LogUser"   not-null="true"  length="40" />	
+		<property column="Log_User" type="string" name="LogUser"   not-null="true"  length="60" />	
 		<property column="Log_Descrption" type="string" name="LogDescrption"   not-null="true"  length="1600" />	
 		<property column="Log_RequestInfo" type="string" name="LogRequestInfo"   length="600" />	
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
 		<property column="Log_RelateUserID" type="int" name="LogRelateUserID"   />	
-		<property column="Log_RelateUserName" type="string" name="LogRelateUserName"   length="40" />	
+		<property column="Log_RelateUserName" type="string" name="LogRelateUserName"   length="60" />	
 		<property column="Log_RelateDateTime" type="DateTime" name="LogRelateDateTime"   />	
 
 

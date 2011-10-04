@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemMenuEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemMenuEntity";
 		public static readonly string PROPERTY_NAME_MENUID = "MenuID";
@@ -35,6 +35,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region applicationID字段外键查询字段
+        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMenuEntity_Alias";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationID";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationName";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationCode";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationDescription";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationUrl";
+		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationIsSystemApplication";
+		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMenuEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMenuEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMenuEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMenuEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMenuEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMenuEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

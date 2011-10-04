@@ -11,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	[DataContract]
 	public partial class SystemDictionaryEntity : ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDictionaryEntity";
 		public static readonly string PROPERTY_NAME_SYSTEMDICTIONARYID = "SystemDictionaryID";
@@ -30,6 +30,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region systemDictionaryGroupID字段外键查询字段
+        public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ID = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Id";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Name";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CODE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Code";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Description";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsEnable";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsSystem";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYCOMMENT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 	
         #region 私有成员变量
 

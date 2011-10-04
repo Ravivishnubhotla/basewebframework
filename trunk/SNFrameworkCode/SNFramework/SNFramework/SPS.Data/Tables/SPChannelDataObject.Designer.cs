@@ -165,6 +165,20 @@ namespace SPS.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPChannelEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "UpperID_SPChannelEntity_Alias":
+                    queryGenerator.AddAlians(SPChannelEntity.PROPERTY_NAME_UPPERID, PROPERTY_UPPERID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SPChannelEntity> GetList_By_UpperID_SPUpperEntity(SPUpperEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPChannelEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

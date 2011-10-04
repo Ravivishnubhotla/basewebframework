@@ -197,6 +197,26 @@ namespace SPS.Data.Tables
 			return typeof(string);
         }
 		
+        public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPRecordEntity> queryGenerator)
+        {
+            switch (parent_alias)
+            {
+	            case "ChannelID_SPRecordEntity_Alias":
+                    queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
+                    break;
+	            case "ClientID_SPRecordEntity_Alias":
+                    queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CLIENTID, PROPERTY_CLIENTID_ALIAS_NAME);
+                    break;
+	            case "CodeID_SPRecordEntity_Alias":
+                    queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CODEID, PROPERTY_CODEID_ALIAS_NAME);
+                    break;
+
+ 
+            }
+        }
+		
+		
+		
 		public List<SPRecordEntity> GetList_By_ChannelID_SPChannelEntity(SPChannelEntity fkentity)
 		{
 			NHibernateDynamicQueryGenerator<SPRecordEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();

@@ -65,7 +65,7 @@ namespace SPS.Bussiness.Wrappers
         }
 		#endregion
 		
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPClientCodeRelationEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -92,6 +92,68 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
 		
         #endregion
+	
+ 
+		#region codeID字段外键查询字段
+        public static readonly string PROPERTY_CODEID_ALIAS_NAME = "CodeID_SPClientCodeRelationEntity_Alias";
+		public static readonly string PROPERTY_CODEID_ID = "CodeID_SPClientCodeRelationEntity_Alias.Id";
+		public static readonly string PROPERTY_CODEID_NAME = "CodeID_SPClientCodeRelationEntity_Alias.Name";
+		public static readonly string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPClientCodeRelationEntity_Alias.Description";
+		public static readonly string PROPERTY_CODEID_CODE = "CodeID_SPClientCodeRelationEntity_Alias.Code";
+		public static readonly string PROPERTY_CODEID_CHANNELID = "CodeID_SPClientCodeRelationEntity_Alias.ChannelID";
+		public static readonly string PROPERTY_CODEID_MO = "CodeID_SPClientCodeRelationEntity_Alias.Mo";
+		public static readonly string PROPERTY_CODEID_MOTYPE = "CodeID_SPClientCodeRelationEntity_Alias.MOType";
+		public static readonly string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPClientCodeRelationEntity_Alias.OrderIndex";
+		public static readonly string PROPERTY_CODEID_SPCODE = "CodeID_SPClientCodeRelationEntity_Alias.SPCode";
+		public static readonly string PROPERTY_CODEID_PROVINCE = "CodeID_SPClientCodeRelationEntity_Alias.Province";
+		public static readonly string PROPERTY_CODEID_DISABLECITY = "CodeID_SPClientCodeRelationEntity_Alias.DisableCity";
+		public static readonly string PROPERTY_CODEID_ISDIABLE = "CodeID_SPClientCodeRelationEntity_Alias.IsDiable";
+		public static readonly string PROPERTY_CODEID_SPTYPE = "CodeID_SPClientCodeRelationEntity_Alias.SPType";
+		public static readonly string PROPERTY_CODEID_CODELENGTH = "CodeID_SPClientCodeRelationEntity_Alias.CodeLength";
+		public static readonly string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.DayLimit";
+		public static readonly string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.MonthLimit";
+		public static readonly string PROPERTY_CODEID_PRICE = "CodeID_SPClientCodeRelationEntity_Alias.Price";
+		public static readonly string PROPERTY_CODEID_SENDTEXT = "CodeID_SPClientCodeRelationEntity_Alias.SendText";
+		public static readonly string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeRelationEntity_Alias.HasFilters";
+		public static readonly string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		public static readonly string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeRelationEntity_Alias.HasParamsConvert";
+		#endregion
+		#region clientID字段外键查询字段
+        public static readonly string PROPERTY_CLIENTID_ALIAS_NAME = "ClientID_SPClientCodeRelationEntity_Alias";
+		public static readonly string PROPERTY_CLIENTID_ID = "ClientID_SPClientCodeRelationEntity_Alias.Id";
+		public static readonly string PROPERTY_CLIENTID_NAME = "ClientID_SPClientCodeRelationEntity_Alias.Name";
+		public static readonly string PROPERTY_CLIENTID_DESCRIPTION = "ClientID_SPClientCodeRelationEntity_Alias.Description";
+		public static readonly string PROPERTY_CLIENTID_USERID = "ClientID_SPClientCodeRelationEntity_Alias.UserID";
+		public static readonly string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPClientCodeRelationEntity_Alias.IsDefaultClient";
+		public static readonly string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPClientCodeRelationEntity_Alias.SyncData";
+		public static readonly string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
+		public static readonly string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPClientCodeRelationEntity_Alias.SyncType";
+		public static readonly string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount";
+		public static readonly string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPClientCodeRelationEntity_Alias.SycnDataUrl";
+		public static readonly string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnOkMessage";
+		public static readonly string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnFailedMessage";
+		public static readonly string PROPERTY_CLIENTID_ALIAS = "ClientID_SPClientCodeRelationEntity_Alias.Alias";
+		public static readonly string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
+		public static readonly string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
+		public static readonly string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPClientCodeRelationEntity_Alias.DefaultShowRecordDays";
+		public static readonly string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPClientCodeRelationEntity_Alias.CreateBy";
+		public static readonly string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPClientCodeRelationEntity_Alias.CreateAt";
+		public static readonly string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy";
+		public static readonly string PROPERTY_CLIENTID_LASTMODIFYAT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyAt";
+		public static readonly string PROPERTY_CLIENTID_LASTMODIFYCOMMENT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
 
 
 		#region Public Property
