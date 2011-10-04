@@ -138,5 +138,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 businessProxy.QuickGeneratePrivilege(systemResourcesWrapper.entity);
             }
 	    }
+
+        public static List<SystemPrivilegeWrapper> TestFindResouceNameAndOPName(string resourceName,string opName)
+        {
+            return ConvertToWrapperList(businessProxy.TestFindResouceNameAndOPName(resourceName, opName));
+        }
     }
 }

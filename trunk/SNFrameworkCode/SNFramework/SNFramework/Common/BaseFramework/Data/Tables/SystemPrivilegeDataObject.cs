@@ -69,5 +69,24 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public List<SystemPrivilegeEntity> TestFindResouceNameAndOPName(string resourceName, string opName)
+        {
+            NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            InClude_OperationID_Query(dynamicQueryGenerator);
+
+            InClude_ResourcesID_Query(dynamicQueryGenerator);
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_PRIVILEGEID.Gt(0));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_OPERATIONID_OPERATIONNAMECN.Eq("Ìí¼Ó"));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_RESOURCESID_RESOURCESNAMECN.Eq("²úÆ·"));
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_PRIVILEGEID.Desc());
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_OPERATIONID_OPERATIONNAMECN.Desc());
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_RESOURCESID_RESOURCESNAMECN.Desc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
