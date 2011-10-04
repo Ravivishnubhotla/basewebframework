@@ -811,10 +811,13 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             //构造Filter查询条件
             foreach (QueryFilter queryFilter in filters)
             {
-                ICriterion whereClause =
-                    queryFilter.GenerateNhibernateCriterion(GetFieldTypeByFieldName(queryFilter.FilterFieldName));
-                if (whereClause != null)
-                    queryGenerator.AddWhereClause(whereClause);
+                if(!queryFilter.FilterFieldName.Contains("."))
+                {
+                    ICriterion whereClause =
+                        queryFilter.GenerateNhibernateCriterion(GetFieldTypeByFieldName(queryFilter.FilterFieldName));
+                    if (whereClause != null)
+                        queryGenerator.AddWhereClause(whereClause);
+                }
             }
         }
 

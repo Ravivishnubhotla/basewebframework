@@ -22,6 +22,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemPrivilegeEntity FindByPermissionCode(string permissionCode);
 
         void QuickGeneratePrivilege(SystemResourcesEntity entity);
+
+        List<SystemPrivilegeEntity> TestFindResouceNameAndOPName(string resourceName, string opName);
     }
 
     public partial class SystemPrivilegeServiceProxy : ISystemPrivilegeServiceProxy
@@ -69,6 +71,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
             }
 
+        }
+
+        public List<SystemPrivilegeEntity> TestFindResouceNameAndOPName(string resourceName, string opName)
+        {
+            return this.SelfDataObj.TestFindResouceNameAndOPName(resourceName, opName);
         }
     }
 }
