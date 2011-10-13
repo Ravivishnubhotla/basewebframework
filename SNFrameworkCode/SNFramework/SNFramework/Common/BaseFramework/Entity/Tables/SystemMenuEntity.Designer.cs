@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System Navigation Menu
 	/// </summary>
 	[DataContract]
-	public partial class SystemMenuEntity : ICloneable
+	public partial class SystemMenuEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -38,19 +39,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region applicationID字段外键查询字段
-        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMenuEntity_Alias";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationID";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationName";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationCode";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationDescription";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationUrl";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationIsSystemApplication";
-		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMenuEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMenuEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMenuEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMenuEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMenuEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMenuEntity_Alias.LastModifyComment";
+        public const string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMenuEntity_Alias";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationID";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationName";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationCode";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationDescription";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationUrl";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationIsSystemApplication";
+		public const string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMenuEntity_Alias.OrderIndex";
+		public const string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMenuEntity_Alias.CreateBy";
+		public const string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMenuEntity_Alias.CreateAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMenuEntity_Alias.LastModifyBy";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMenuEntity_Alias.LastModifyAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMenuEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -63,8 +64,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _menuID;
 		private string _menuName;
@@ -435,36 +435,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -472,13 +447,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemMenuEntity castObj = (SystemMenuEntity)obj;
-			
-			return ( castObj != null ) && ( this._menuID == castObj.MenuID );
+			 return this.CheckEquals(obj as SystemMenuEntity);
 		}
 		
 		/// <summary>
@@ -486,13 +455,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _menuID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._menuID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

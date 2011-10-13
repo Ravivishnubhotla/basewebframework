@@ -114,6 +114,7 @@ namespace SPS.Bussiness.DataAdapter
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return ip;
         }

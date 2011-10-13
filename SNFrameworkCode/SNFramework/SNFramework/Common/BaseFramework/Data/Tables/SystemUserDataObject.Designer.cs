@@ -156,7 +156,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "DepartmentID_SystemUserEntity_Alias":
                     queryGenerator.AddAlians(SystemUserEntity.PROPERTY_NAME_DEPARTMENTID, PROPERTY_DEPARTMENTID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

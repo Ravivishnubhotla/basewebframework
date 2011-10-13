@@ -76,33 +76,33 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleApplicationEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleApplicationEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleApplicationEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleApplicationEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleApplicationEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleApplicationEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleApplicationEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleApplicationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleApplicationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleApplicationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleApplicationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleApplicationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleApplicationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleApplicationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleApplicationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleApplicationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleApplicationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleApplicationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleApplicationEntity_Alias.LastModifyComment";
 		#endregion
 		#region applicationID字段外键查询字段
-        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemRoleApplicationEntity_Alias";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationID";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationName";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationCode";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationDescription";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationUrl";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationIsSystemApplication";
-		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemRoleApplicationEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemRoleApplicationEntity_Alias";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationID";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationName";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationCode";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationDescription";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationUrl";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationIsSystemApplication";
+		public const string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemRoleApplicationEntity_Alias.OrderIndex";
+		public const string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateBy";
+		public const string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemRoleApplicationEntity_Alias.CreateAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -160,7 +160,246 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region roleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEID)]
+        public int? RoleID_RoleID
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLENAME)]
+        public string RoleID_RoleName
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLECODE)]
+        public string RoleID_RoleCode
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEDESCRIPTION)]
+        public string RoleID_RoleDescription
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEISSYSTEMROLE)]
+        public bool? RoleID_RoleIsSystemRole
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleIsSystemRole;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLETYPE)]
+        public string RoleID_RoleType
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEBY)]
+        public int? RoleID_CreateBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEAT)]
+        public DateTime? RoleID_CreateAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYBY)]
+        public int? RoleID_LastModifyBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYAT)]
+        public DateTime? RoleID_LastModifyAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYCOMMENT)]
+        public string RoleID_LastModifyComment
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region applicationID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID)]
+        public int? ApplicationID_SystemApplicationID
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME)]
+        public string ApplicationID_SystemApplicationName
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE)]
+        public string ApplicationID_SystemApplicationCode
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION)]
+        public string ApplicationID_SystemApplicationDescription
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL)]
+        public string ApplicationID_SystemApplicationUrl
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION)]
+        public bool? ApplicationID_SystemApplicationIsSystemApplication
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationIsSystemApplication;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_ORDERINDEX)]
+        public int? ApplicationID_OrderIndex
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_CREATEBY)]
+        public int? ApplicationID_CreateBy
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_CREATEAT)]
+        public DateTime? ApplicationID_CreateAt
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYBY)]
+        public int? ApplicationID_LastModifyBy
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYAT)]
+        public DateTime? ApplicationID_LastModifyAt
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT)]
+        public string ApplicationID_LastModifyComment
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

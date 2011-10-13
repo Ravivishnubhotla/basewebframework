@@ -118,7 +118,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "ApplicationID_SystemMenuEntity_Alias":
                     queryGenerator.AddAlians(SystemMenuEntity.PROPERTY_NAME_APPLICATIONID, PROPERTY_APPLICATIONID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

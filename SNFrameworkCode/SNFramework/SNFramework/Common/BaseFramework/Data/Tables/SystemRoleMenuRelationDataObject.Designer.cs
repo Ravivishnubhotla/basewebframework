@@ -98,7 +98,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "RoleID_SystemRoleMenuRelationEntity_Alias":
                     queryGenerator.AddAlians(SystemRoleMenuRelationEntity.PROPERTY_NAME_ROLEID, PROPERTY_ROLEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

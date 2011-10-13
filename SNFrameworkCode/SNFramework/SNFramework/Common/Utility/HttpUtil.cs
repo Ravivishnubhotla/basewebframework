@@ -48,6 +48,7 @@ namespace Legendigital.Framework.Common.Utility
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return ip;
         }

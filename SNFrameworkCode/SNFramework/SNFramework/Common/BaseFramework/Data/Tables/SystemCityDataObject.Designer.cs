@@ -73,7 +73,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "ProvinceID_SystemCityEntity_Alias":
                     queryGenerator.AddAlians(SystemCityEntity.PROPERTY_NAME_PROVINCEID, PROPERTY_PROVINCEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

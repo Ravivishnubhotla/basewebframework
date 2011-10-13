@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace SPS.Entity.Tables
 {
@@ -9,9 +10,9 @@ namespace SPS.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPMemoEntity : ICloneable
+	public partial class SPMemoEntity  : BaseTableEntity,ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPMemoEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -27,10 +28,19 @@ namespace SPS.Entity.Tables
 		
         #endregion
 	
+ 
+      	
+	
+	
+		 
+		
+		
+		
+		
+	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private decimal _id;
 		private string _title;
@@ -233,36 +243,11 @@ namespace SPS.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -270,13 +255,7 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SPMemoEntity castObj = (SPMemoEntity)obj;
-			
-			return ( castObj != null ) && ( this._id == castObj.Id );
+			 return this.CheckEquals(obj as SPMemoEntity);
 		}
 		
 		/// <summary>
@@ -284,13 +263,16 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _id.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._id;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

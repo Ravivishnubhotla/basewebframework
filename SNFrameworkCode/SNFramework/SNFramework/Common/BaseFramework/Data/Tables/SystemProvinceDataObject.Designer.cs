@@ -75,7 +75,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "CountryID_SystemProvinceEntity_Alias":
                     queryGenerator.AddAlians(SystemProvinceEntity.PROPERTY_NAME_COUNTRYID, PROPERTY_COUNTRYID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

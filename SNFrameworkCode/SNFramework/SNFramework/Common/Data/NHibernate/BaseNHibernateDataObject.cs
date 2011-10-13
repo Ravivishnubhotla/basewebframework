@@ -6,6 +6,7 @@ using System.Text;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
+using Legendigital.Framework.Common.Entity;
 using NHibernate;
 using NHibernate.Collection;
 using NHibernate.Criterion;
@@ -16,7 +17,7 @@ using IDictionary=System.Collections.IDictionary;
 
 namespace Legendigital.Framework.Common.Data.NHibernate
 {
-    public abstract class BaseNHibernateDataObject<DomainType> : BaseNHibernateViewDataObject<DomainType>, IBaseNHibernateDataObject<DomainType>
+    public abstract class BaseNHibernateDataObject<DomainType> : BaseNHibernateViewDataObject<DomainType>, IBaseNHibernateDataObject<DomainType> where DomainType : BaseTableEntity
     {
         #region 基本操作
 
@@ -79,7 +80,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().SaveOrUpdateCopy(instance);
+                HibernateTemplate.SessionFactory.GetCurrentSession().Merge(instance);
             }
             catch (Exception ex)
             {

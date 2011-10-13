@@ -109,7 +109,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "UserGroupID_SystemUserGroupUserRelationEntity_Alias":
                     queryGenerator.AddAlians(SystemUserGroupUserRelationEntity.PROPERTY_NAME_USERGROUPID, PROPERTY_USERGROUPID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

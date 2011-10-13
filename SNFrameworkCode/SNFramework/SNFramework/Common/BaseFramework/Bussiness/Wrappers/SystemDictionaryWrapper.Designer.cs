@@ -87,18 +87,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region systemDictionaryGroupID字段外键查询字段
-        public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ID = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Id";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Name";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CODE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Code";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Description";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsEnable";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsSystem";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYCOMMENT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyComment";
+        public const string PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_ID = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Id";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_NAME = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Name";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_CODE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Code";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Description";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsEnable";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsSystem";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateBy";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateAt";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYBY = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyBy";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYAT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyAt";
+		public const string PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYCOMMENT = "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -310,7 +310,124 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region systemDictionaryGroupID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_ID)]
+        public int? SystemDictionaryGroupID_Id
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_NAME)]
+        public string SystemDictionaryGroupID_Name
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_CODE)]
+        public string SystemDictionaryGroupID_Code
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION)]
+        public string SystemDictionaryGroupID_Description
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE)]
+        public bool? SystemDictionaryGroupID_IsEnable
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.IsEnable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM)]
+        public bool? SystemDictionaryGroupID_IsSystem
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.IsSystem;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEBY)]
+        public int? SystemDictionaryGroupID_CreateBy
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEAT)]
+        public DateTime? SystemDictionaryGroupID_CreateAt
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYBY)]
+        public int? SystemDictionaryGroupID_LastModifyBy
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYAT)]
+        public DateTime? SystemDictionaryGroupID_LastModifyAt
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYCOMMENT)]
+        public string SystemDictionaryGroupID_LastModifyComment
+        {
+            get
+            {
+                if (this. SystemDictionaryGroupID == null)
+                    return null;
+                return  SystemDictionaryGroupID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace SPS.Entity.Tables
 {
@@ -9,9 +10,9 @@ namespace SPS.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPClientCodeRelationEntity : ICloneable
+	public partial class SPClientCodeRelationEntity  : BaseTableEntity,ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPClientCodeRelationEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -39,10 +40,71 @@ namespace SPS.Entity.Tables
 		
         #endregion
 	
+ 
+		#region codeID字段外键查询字段
+        public const string PROPERTY_CODEID_ALIAS_NAME = "CodeID_SPClientCodeRelationEntity_Alias";
+		public const string PROPERTY_CODEID_ID = "CodeID_SPClientCodeRelationEntity_Alias.Id";
+		public const string PROPERTY_CODEID_NAME = "CodeID_SPClientCodeRelationEntity_Alias.Name";
+		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPClientCodeRelationEntity_Alias.Description";
+		public const string PROPERTY_CODEID_CODE = "CodeID_SPClientCodeRelationEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPClientCodeRelationEntity_Alias.ChannelID";
+		public const string PROPERTY_CODEID_MO = "CodeID_SPClientCodeRelationEntity_Alias.Mo";
+		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPClientCodeRelationEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPClientCodeRelationEntity_Alias.OrderIndex";
+		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPClientCodeRelationEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPClientCodeRelationEntity_Alias.Province";
+		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPClientCodeRelationEntity_Alias.DisableCity";
+		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPClientCodeRelationEntity_Alias.IsDiable";
+		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPClientCodeRelationEntity_Alias.SPType";
+		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPClientCodeRelationEntity_Alias.CodeLength";
+		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.DayLimit";
+		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.MonthLimit";
+		public const string PROPERTY_CODEID_PRICE = "CodeID_SPClientCodeRelationEntity_Alias.Price";
+		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPClientCodeRelationEntity_Alias.SendText";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeRelationEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeRelationEntity_Alias.HasParamsConvert";
+		#endregion
+		#region clientID字段外键查询字段
+        public const string PROPERTY_CLIENTID_ALIAS_NAME = "ClientID_SPClientCodeRelationEntity_Alias";
+		public const string PROPERTY_CLIENTID_ID = "ClientID_SPClientCodeRelationEntity_Alias.Id";
+		public const string PROPERTY_CLIENTID_NAME = "ClientID_SPClientCodeRelationEntity_Alias.Name";
+		public const string PROPERTY_CLIENTID_DESCRIPTION = "ClientID_SPClientCodeRelationEntity_Alias.Description";
+		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPClientCodeRelationEntity_Alias.UserID";
+		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPClientCodeRelationEntity_Alias.IsDefaultClient";
+		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPClientCodeRelationEntity_Alias.SyncData";
+		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPClientCodeRelationEntity_Alias.SyncType";
+		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount";
+		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPClientCodeRelationEntity_Alias.SycnDataUrl";
+		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnOkMessage";
+		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPClientCodeRelationEntity_Alias.Alias";
+		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
+		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
+		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPClientCodeRelationEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPClientCodeRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPClientCodeRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CLIENTID_LASTMODIFYAT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CLIENTID_LASTMODIFYCOMMENT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
+	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _id;
 		private SPCodeEntity _codeID;
@@ -458,36 +520,11 @@ namespace SPS.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -495,13 +532,7 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SPClientCodeRelationEntity castObj = (SPClientCodeRelationEntity)obj;
-			
-			return ( castObj != null ) && ( this._id == castObj.Id );
+			 return this.CheckEquals(obj as SPClientCodeRelationEntity);
 		}
 		
 		/// <summary>
@@ -509,13 +540,16 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _id.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._id;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

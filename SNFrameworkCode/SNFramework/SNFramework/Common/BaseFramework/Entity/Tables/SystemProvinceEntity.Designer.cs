@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SystemProvinceEntity : ICloneable
+	public partial class SystemProvinceEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -25,15 +26,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region countryID字段外键查询字段
-        public static readonly string PROPERTY_COUNTRYID_ALIAS_NAME = "CountryID_SystemProvinceEntity_Alias";
-		public static readonly string PROPERTY_COUNTRYID_ID = "CountryID_SystemProvinceEntity_Alias.Id";
-		public static readonly string PROPERTY_COUNTRYID_CODENUMBER = "CountryID_SystemProvinceEntity_Alias.CodeNumber";
-		public static readonly string PROPERTY_COUNTRYID_CODE2 = "CountryID_SystemProvinceEntity_Alias.Code2";
-		public static readonly string PROPERTY_COUNTRYID_CODE3 = "CountryID_SystemProvinceEntity_Alias.Code3";
-		public static readonly string PROPERTY_COUNTRYID_ABBRNAMECN = "CountryID_SystemProvinceEntity_Alias.AbbrNameCN";
-		public static readonly string PROPERTY_COUNTRYID_ABBRNAMEEN = "CountryID_SystemProvinceEntity_Alias.AbbrNameEN";
-		public static readonly string PROPERTY_COUNTRYID_FULLNAMECN = "CountryID_SystemProvinceEntity_Alias.FullNameCn";
-		public static readonly string PROPERTY_COUNTRYID_FULLNAMEEN = "CountryID_SystemProvinceEntity_Alias.FullNameEn";
+        public const string PROPERTY_COUNTRYID_ALIAS_NAME = "CountryID_SystemProvinceEntity_Alias";
+		public const string PROPERTY_COUNTRYID_ID = "CountryID_SystemProvinceEntity_Alias.Id";
+		public const string PROPERTY_COUNTRYID_CODENUMBER = "CountryID_SystemProvinceEntity_Alias.CodeNumber";
+		public const string PROPERTY_COUNTRYID_CODE2 = "CountryID_SystemProvinceEntity_Alias.Code2";
+		public const string PROPERTY_COUNTRYID_CODE3 = "CountryID_SystemProvinceEntity_Alias.Code3";
+		public const string PROPERTY_COUNTRYID_ABBRNAMECN = "CountryID_SystemProvinceEntity_Alias.AbbrNameCN";
+		public const string PROPERTY_COUNTRYID_ABBRNAMEEN = "CountryID_SystemProvinceEntity_Alias.AbbrNameEN";
+		public const string PROPERTY_COUNTRYID_FULLNAMECN = "CountryID_SystemProvinceEntity_Alias.FullNameCn";
+		public const string PROPERTY_COUNTRYID_FULLNAMEEN = "CountryID_SystemProvinceEntity_Alias.FullNameEn";
 		#endregion
       	
 	
@@ -46,8 +47,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _id;
 		private string _name;
@@ -185,36 +185,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_countryID != value); _countryID = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -222,13 +197,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemProvinceEntity castObj = (SystemProvinceEntity)obj;
-			
-			return ( castObj != null ) && ( this._id == castObj.Id );
+			 return this.CheckEquals(obj as SystemProvinceEntity);
 		}
 		
 		/// <summary>
@@ -236,13 +205,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _id.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._id;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

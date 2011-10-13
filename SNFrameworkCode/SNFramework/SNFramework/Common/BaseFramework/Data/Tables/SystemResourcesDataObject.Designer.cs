@@ -107,7 +107,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "MoudleID_SystemResourcesEntity_Alias":
                     queryGenerator.AddAlians(SystemResourcesEntity.PROPERTY_NAME_MOUDLEID, PROPERTY_MOUDLEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

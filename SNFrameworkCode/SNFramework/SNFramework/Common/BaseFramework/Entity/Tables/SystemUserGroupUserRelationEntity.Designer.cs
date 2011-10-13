@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	?????????
 	/// </summary>
 	[DataContract]
-	public partial class SystemUserGroupUserRelationEntity : ICloneable
+	public partial class SystemUserGroupUserRelationEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -22,51 +23,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region userID字段外键查询字段
-        public static readonly string PROPERTY_USERID_ALIAS_NAME = "UserID_SystemUserGroupUserRelationEntity_Alias";
-		public static readonly string PROPERTY_USERID_USERID = "UserID_SystemUserGroupUserRelationEntity_Alias.UserID";
-		public static readonly string PROPERTY_USERID_USERLOGINID = "UserID_SystemUserGroupUserRelationEntity_Alias.UserLoginID";
-		public static readonly string PROPERTY_USERID_USERNAME = "UserID_SystemUserGroupUserRelationEntity_Alias.UserName";
-		public static readonly string PROPERTY_USERID_USEREMAIL = "UserID_SystemUserGroupUserRelationEntity_Alias.UserEmail";
-		public static readonly string PROPERTY_USERID_USERPASSWORD = "UserID_SystemUserGroupUserRelationEntity_Alias.UserPassword";
-		public static readonly string PROPERTY_USERID_USERSTATUS = "UserID_SystemUserGroupUserRelationEntity_Alias.UserStatus";
-		public static readonly string PROPERTY_USERID_USERCREATEDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserCreateDate";
-		public static readonly string PROPERTY_USERID_USERTYPE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserType";
-		public static readonly string PROPERTY_USERID_DEPARTMENTID = "UserID_SystemUserGroupUserRelationEntity_Alias.DepartmentID";
-		public static readonly string PROPERTY_USERID_MOBILEPIN = "UserID_SystemUserGroupUserRelationEntity_Alias.MobilePIN";
-		public static readonly string PROPERTY_USERID_PASSWORDFORMAT = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordFormat";
-		public static readonly string PROPERTY_USERID_PASSWORDQUESTION = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordQuestion";
-		public static readonly string PROPERTY_USERID_PASSWORDANSWER = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordAnswer";
-		public static readonly string PROPERTY_USERID_COMMENTS = "UserID_SystemUserGroupUserRelationEntity_Alias.Comments";
-		public static readonly string PROPERTY_USERID_ISAPPROVED = "UserID_SystemUserGroupUserRelationEntity_Alias.IsApproved";
-		public static readonly string PROPERTY_USERID_ISLOCKEDOUT = "UserID_SystemUserGroupUserRelationEntity_Alias.IsLockedOut";
-		public static readonly string PROPERTY_USERID_LASTACTIVITYDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastActivityDate";
-		public static readonly string PROPERTY_USERID_LASTLOGINDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastLoginDate";
-		public static readonly string PROPERTY_USERID_LASTLOCKEDOUTDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastLockedOutDate";
-		public static readonly string PROPERTY_USERID_LASTPASSWORDCHANGEDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastPasswordChangeDate";
-		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTCNT = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptCnt";
-		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptWndStart";
-		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptCnt";
-		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptWndStart";
-		public static readonly string PROPERTY_USERID_ISNEEDCHGPWD = "UserID_SystemUserGroupUserRelationEntity_Alias.IsNeedChgPwd";
-		public static readonly string PROPERTY_USERID_PASSWORDSALT = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordSalt";
-		public static readonly string PROPERTY_USERID_LOWEREDEMAIL = "UserID_SystemUserGroupUserRelationEntity_Alias.LoweredEmail";
-		public static readonly string PROPERTY_USERID_CREATEBY = "UserID_SystemUserGroupUserRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_USERID_CREATEAT = "UserID_SystemUserGroupUserRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_USERID_ALIAS_NAME = "UserID_SystemUserGroupUserRelationEntity_Alias";
+		public const string PROPERTY_USERID_USERID = "UserID_SystemUserGroupUserRelationEntity_Alias.UserID";
+		public const string PROPERTY_USERID_USERLOGINID = "UserID_SystemUserGroupUserRelationEntity_Alias.UserLoginID";
+		public const string PROPERTY_USERID_USERNAME = "UserID_SystemUserGroupUserRelationEntity_Alias.UserName";
+		public const string PROPERTY_USERID_USEREMAIL = "UserID_SystemUserGroupUserRelationEntity_Alias.UserEmail";
+		public const string PROPERTY_USERID_USERPASSWORD = "UserID_SystemUserGroupUserRelationEntity_Alias.UserPassword";
+		public const string PROPERTY_USERID_USERSTATUS = "UserID_SystemUserGroupUserRelationEntity_Alias.UserStatus";
+		public const string PROPERTY_USERID_USERCREATEDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserCreateDate";
+		public const string PROPERTY_USERID_USERTYPE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserType";
+		public const string PROPERTY_USERID_DEPARTMENTID = "UserID_SystemUserGroupUserRelationEntity_Alias.DepartmentID";
+		public const string PROPERTY_USERID_MOBILEPIN = "UserID_SystemUserGroupUserRelationEntity_Alias.MobilePIN";
+		public const string PROPERTY_USERID_PASSWORDFORMAT = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordFormat";
+		public const string PROPERTY_USERID_PASSWORDQUESTION = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordQuestion";
+		public const string PROPERTY_USERID_PASSWORDANSWER = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordAnswer";
+		public const string PROPERTY_USERID_COMMENTS = "UserID_SystemUserGroupUserRelationEntity_Alias.Comments";
+		public const string PROPERTY_USERID_ISAPPROVED = "UserID_SystemUserGroupUserRelationEntity_Alias.IsApproved";
+		public const string PROPERTY_USERID_ISLOCKEDOUT = "UserID_SystemUserGroupUserRelationEntity_Alias.IsLockedOut";
+		public const string PROPERTY_USERID_LASTACTIVITYDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastActivityDate";
+		public const string PROPERTY_USERID_LASTLOGINDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastLoginDate";
+		public const string PROPERTY_USERID_LASTLOCKEDOUTDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastLockedOutDate";
+		public const string PROPERTY_USERID_LASTPASSWORDCHANGEDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.LastPasswordChangeDate";
+		public const string PROPERTY_USERID_FAILEDPWDATTEMPTCNT = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptCnt";
+		public const string PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptWndStart";
+		public const string PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptCnt";
+		public const string PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART = "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptWndStart";
+		public const string PROPERTY_USERID_ISNEEDCHGPWD = "UserID_SystemUserGroupUserRelationEntity_Alias.IsNeedChgPwd";
+		public const string PROPERTY_USERID_PASSWORDSALT = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordSalt";
+		public const string PROPERTY_USERID_LOWEREDEMAIL = "UserID_SystemUserGroupUserRelationEntity_Alias.LoweredEmail";
+		public const string PROPERTY_USERID_CREATEBY = "UserID_SystemUserGroupUserRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_USERID_CREATEAT = "UserID_SystemUserGroupUserRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment";
 		#endregion
 		#region userGroupID字段外键查询字段
-        public static readonly string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupUserRelationEntity_Alias";
-		public static readonly string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupID";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameCn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameEn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupDescription";
-		public static readonly string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupUserRelationEntity_Alias";
+		public const string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupID";
+		public const string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameCn";
+		public const string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameEn";
+		public const string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupDescription";
+		public const string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -79,8 +80,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _userGroupUserID;
 		private SystemUserEntity _userID;
@@ -155,36 +155,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_userGroupID != value); _userGroupID = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -192,13 +167,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemUserGroupUserRelationEntity castObj = (SystemUserGroupUserRelationEntity)obj;
-			
-			return ( castObj != null ) && ( this._userGroupUserID == castObj.UserGroupUserID );
+			 return this.CheckEquals(obj as SystemUserGroupUserRelationEntity);
 		}
 		
 		/// <summary>
@@ -206,13 +175,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _userGroupUserID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._userGroupUserID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

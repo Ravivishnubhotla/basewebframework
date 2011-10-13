@@ -136,7 +136,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "UserId_SystemPersonalizationSettingsEntity_Alias":
                     queryGenerator.AddAlians(SystemPersonalizationSettingsEntity.PROPERTY_NAME_USERID, PROPERTY_USERID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

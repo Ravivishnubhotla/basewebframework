@@ -111,16 +111,16 @@ namespace SPS.Bussiness.Wrappers
 	
  
 		#region upperID字段外键查询字段
-        public static readonly string PROPERTY_UPPERID_ALIAS_NAME = "UpperID_SPChannelEntity_Alias";
-		public static readonly string PROPERTY_UPPERID_ID = "UpperID_SPChannelEntity_Alias.Id";
-		public static readonly string PROPERTY_UPPERID_NAME = "UpperID_SPChannelEntity_Alias.Name";
-		public static readonly string PROPERTY_UPPERID_CODE = "UpperID_SPChannelEntity_Alias.Code";
-		public static readonly string PROPERTY_UPPERID_DESCRIPTION = "UpperID_SPChannelEntity_Alias.Description";
-		public static readonly string PROPERTY_UPPERID_CREATEBY = "UpperID_SPChannelEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_UPPERID_CREATEAT = "UpperID_SPChannelEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_UPPERID_LASTMODIFYBY = "UpperID_SPChannelEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_UPPERID_LASTMODIFYAT = "UpperID_SPChannelEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_UPPERID_LASTMODIFYCOMMENT = "UpperID_SPChannelEntity_Alias.LastModifyComment";
+        public const string PROPERTY_UPPERID_ALIAS_NAME = "UpperID_SPChannelEntity_Alias";
+		public const string PROPERTY_UPPERID_ID = "UpperID_SPChannelEntity_Alias.Id";
+		public const string PROPERTY_UPPERID_NAME = "UpperID_SPChannelEntity_Alias.Name";
+		public const string PROPERTY_UPPERID_CODE = "UpperID_SPChannelEntity_Alias.Code";
+		public const string PROPERTY_UPPERID_DESCRIPTION = "UpperID_SPChannelEntity_Alias.Description";
+		public const string PROPERTY_UPPERID_CREATEBY = "UpperID_SPChannelEntity_Alias.CreateBy";
+		public const string PROPERTY_UPPERID_CREATEAT = "UpperID_SPChannelEntity_Alias.CreateAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYBY = "UpperID_SPChannelEntity_Alias.LastModifyBy";
+		public const string PROPERTY_UPPERID_LASTMODIFYAT = "UpperID_SPChannelEntity_Alias.LastModifyAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYCOMMENT = "UpperID_SPChannelEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -668,7 +668,104 @@ namespace SPS.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region upperID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_ID)]
+        public int? UpperID_Id
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_NAME)]
+        public string UpperID_Name
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CODE)]
+        public string UpperID_Code
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_DESCRIPTION)]
+        public string UpperID_Description
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CREATEBY)]
+        public int? UpperID_CreateBy
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CREATEAT)]
+        public DateTime? UpperID_CreateAt
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYBY)]
+        public int? UpperID_LastModifyBy
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYAT)]
+        public DateTime? UpperID_LastModifyAt
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYCOMMENT)]
+        public string UpperID_LastModifyComment
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

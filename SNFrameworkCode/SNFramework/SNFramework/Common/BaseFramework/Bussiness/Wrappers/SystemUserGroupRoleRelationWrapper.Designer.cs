@@ -76,30 +76,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
 		#endregion
 		#region userGroupID字段外键查询字段
-        public static readonly string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias";
-		public static readonly string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription";
-		public static readonly string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias";
+		public const string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID";
+		public const string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn";
+		public const string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn";
+		public const string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription";
+		public const string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -157,7 +157,216 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region roleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEID)]
+        public int? RoleID_RoleID
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLENAME)]
+        public string RoleID_RoleName
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLECODE)]
+        public string RoleID_RoleCode
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEDESCRIPTION)]
+        public string RoleID_RoleDescription
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEISSYSTEMROLE)]
+        public bool? RoleID_RoleIsSystemRole
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleIsSystemRole;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLETYPE)]
+        public string RoleID_RoleType
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEBY)]
+        public int? RoleID_CreateBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEAT)]
+        public DateTime? RoleID_CreateAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYBY)]
+        public int? RoleID_LastModifyBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYAT)]
+        public DateTime? RoleID_LastModifyAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYCOMMENT)]
+        public string RoleID_LastModifyComment
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region userGroupID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_GROUPID)]
+        public int? UserGroupID_GroupID
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.GroupID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_GROUPNAMECN)]
+        public string UserGroupID_GroupNameCn
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.GroupNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_GROUPNAMEEN)]
+        public string UserGroupID_GroupNameEn
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.GroupNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_GROUPDESCRIPTION)]
+        public string UserGroupID_GroupDescription
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.GroupDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_CREATEBY)]
+        public int? UserGroupID_CreateBy
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_CREATEAT)]
+        public DateTime? UserGroupID_CreateAt
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_LASTMODIFYBY)]
+        public int? UserGroupID_LastModifyBy
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_LASTMODIFYAT)]
+        public DateTime? UserGroupID_LastModifyAt
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERGROUPID_LASTMODIFYCOMMENT)]
+        public string UserGroupID_LastModifyComment
+        {
+            get
+            {
+                if (this. UserGroupID == null)
+                    return null;
+                return  UserGroupID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	??????
 	/// </summary>
 	[DataContract]
-	public partial class SystemUserGroupRoleRelationEntity : ICloneable
+	public partial class SystemUserGroupRoleRelationEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -22,30 +23,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
 		#endregion
 		#region userGroupID字段外键查询字段
-        public static readonly string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias";
-		public static readonly string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn";
-		public static readonly string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription";
-		public static readonly string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias";
+		public const string PROPERTY_USERGROUPID_GROUPID = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID";
+		public const string PROPERTY_USERGROUPID_GROUPNAMECN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn";
+		public const string PROPERTY_USERGROUPID_GROUPNAMEEN = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn";
+		public const string PROPERTY_USERGROUPID_GROUPDESCRIPTION = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription";
+		public const string PROPERTY_USERGROUPID_CREATEBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_USERGROUPID_CREATEAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYBY = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYAT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -58,8 +59,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _userGroupRoleID;
 		private SystemRoleEntity _roleID;
@@ -134,36 +134,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_userGroupID != value); _userGroupID = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -171,13 +146,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemUserGroupRoleRelationEntity castObj = (SystemUserGroupRoleRelationEntity)obj;
-			
-			return ( castObj != null ) && ( this._userGroupRoleID == castObj.UserGroupRoleID );
+			 return this.CheckEquals(obj as SystemUserGroupRoleRelationEntity);
 		}
 		
 		/// <summary>
@@ -185,13 +154,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _userGroupRoleID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._userGroupRoleID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

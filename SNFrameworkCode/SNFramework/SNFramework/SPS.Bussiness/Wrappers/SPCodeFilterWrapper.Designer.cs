@@ -83,32 +83,32 @@ namespace SPS.Bussiness.Wrappers
 	
  
 		#region codeID字段外键查询字段
-        public static readonly string PROPERTY_CODEID_ALIAS_NAME = "CodeID_SPCodeFilterEntity_Alias";
-		public static readonly string PROPERTY_CODEID_ID = "CodeID_SPCodeFilterEntity_Alias.Id";
-		public static readonly string PROPERTY_CODEID_NAME = "CodeID_SPCodeFilterEntity_Alias.Name";
-		public static readonly string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPCodeFilterEntity_Alias.Description";
-		public static readonly string PROPERTY_CODEID_CODE = "CodeID_SPCodeFilterEntity_Alias.Code";
-		public static readonly string PROPERTY_CODEID_CHANNELID = "CodeID_SPCodeFilterEntity_Alias.ChannelID";
-		public static readonly string PROPERTY_CODEID_MO = "CodeID_SPCodeFilterEntity_Alias.Mo";
-		public static readonly string PROPERTY_CODEID_MOTYPE = "CodeID_SPCodeFilterEntity_Alias.MOType";
-		public static readonly string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPCodeFilterEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_CODEID_SPCODE = "CodeID_SPCodeFilterEntity_Alias.SPCode";
-		public static readonly string PROPERTY_CODEID_PROVINCE = "CodeID_SPCodeFilterEntity_Alias.Province";
-		public static readonly string PROPERTY_CODEID_DISABLECITY = "CodeID_SPCodeFilterEntity_Alias.DisableCity";
-		public static readonly string PROPERTY_CODEID_ISDIABLE = "CodeID_SPCodeFilterEntity_Alias.IsDiable";
-		public static readonly string PROPERTY_CODEID_SPTYPE = "CodeID_SPCodeFilterEntity_Alias.SPType";
-		public static readonly string PROPERTY_CODEID_CODELENGTH = "CodeID_SPCodeFilterEntity_Alias.CodeLength";
-		public static readonly string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPCodeFilterEntity_Alias.DayLimit";
-		public static readonly string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPCodeFilterEntity_Alias.MonthLimit";
-		public static readonly string PROPERTY_CODEID_PRICE = "CodeID_SPCodeFilterEntity_Alias.Price";
-		public static readonly string PROPERTY_CODEID_SENDTEXT = "CodeID_SPCodeFilterEntity_Alias.SendText";
-		public static readonly string PROPERTY_CODEID_HASFILTERS = "CodeID_SPCodeFilterEntity_Alias.HasFilters";
-		public static readonly string PROPERTY_CODEID_CREATEBY = "CodeID_SPCodeFilterEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_CODEID_CREATEAT = "CodeID_SPCodeFilterEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPCodeFilterEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPCodeFilterEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPCodeFilterEntity_Alias.LastModifyComment";
-		public static readonly string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPCodeFilterEntity_Alias.HasParamsConvert";
+        public const string PROPERTY_CODEID_ALIAS_NAME = "CodeID_SPCodeFilterEntity_Alias";
+		public const string PROPERTY_CODEID_ID = "CodeID_SPCodeFilterEntity_Alias.Id";
+		public const string PROPERTY_CODEID_NAME = "CodeID_SPCodeFilterEntity_Alias.Name";
+		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPCodeFilterEntity_Alias.Description";
+		public const string PROPERTY_CODEID_CODE = "CodeID_SPCodeFilterEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPCodeFilterEntity_Alias.ChannelID";
+		public const string PROPERTY_CODEID_MO = "CodeID_SPCodeFilterEntity_Alias.Mo";
+		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPCodeFilterEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPCodeFilterEntity_Alias.OrderIndex";
+		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPCodeFilterEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPCodeFilterEntity_Alias.Province";
+		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPCodeFilterEntity_Alias.DisableCity";
+		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPCodeFilterEntity_Alias.IsDiable";
+		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPCodeFilterEntity_Alias.SPType";
+		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPCodeFilterEntity_Alias.CodeLength";
+		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPCodeFilterEntity_Alias.DayLimit";
+		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPCodeFilterEntity_Alias.MonthLimit";
+		public const string PROPERTY_CODEID_PRICE = "CodeID_SPCodeFilterEntity_Alias.Price";
+		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPCodeFilterEntity_Alias.SendText";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPCodeFilterEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPCodeFilterEntity_Alias.CreateBy";
+		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPCodeFilterEntity_Alias.CreateAt";
+		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPCodeFilterEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPCodeFilterEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPCodeFilterEntity_Alias.LastModifyComment";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPCodeFilterEntity_Alias.HasParamsConvert";
 		#endregion
       	
 	
@@ -264,7 +264,264 @@ namespace SPS.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region codeID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ID)]
+        public int? CodeID_Id
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_NAME)]
+        public string CodeID_Name
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DESCRIPTION)]
+        public string CodeID_Description
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CODE)]
+        public string CodeID_Code
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CHANNELID)]
+        public SPChannelWrapper CodeID_ChannelID
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.ChannelID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_MO)]
+        public string CodeID_Mo
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Mo;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_MOTYPE)]
+        public string CodeID_MOType
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.MOType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ORDERINDEX)]
+        public int? CodeID_OrderIndex
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SPCODE)]
+        public string CodeID_SPCode
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.SPCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PROVINCE)]
+        public string CodeID_Province
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Province;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DISABLECITY)]
+        public string CodeID_DisableCity
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DisableCity;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISDIABLE)]
+        public bool? CodeID_IsDiable
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.IsDiable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SPTYPE)]
+        public string CodeID_SPType
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.SPType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CODELENGTH)]
+        public int? CodeID_CodeLength
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.CodeLength;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYLIMIT)]
+        public string CodeID_DayLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_MONTHLIMIT)]
+        public string CodeID_MonthLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.MonthLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PRICE)]
+        public decimal? CodeID_Price
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.Price;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SENDTEXT)]
+        public string CodeID_SendText
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.SendText;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASFILTERS)]
+        public bool? CodeID_HasFilters
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasFilters;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]
+        public int? CodeID_CreateBy
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEAT)]
+        public DateTime? CodeID_CreateAt
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_LASTMODIFYBY)]
+        public int? CodeID_LastModifyBy
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_LASTMODIFYAT)]
+        public DateTime? CodeID_LastModifyAt
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_LASTMODIFYCOMMENT)]
+        public string CodeID_LastModifyComment
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.LastModifyComment;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASPARAMSCONVERT)]
+        public bool? CodeID_HasParamsConvert
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasParamsConvert;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

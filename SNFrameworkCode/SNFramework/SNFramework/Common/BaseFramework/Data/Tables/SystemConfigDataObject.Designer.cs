@@ -96,7 +96,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "ConfigGroupID_SystemConfigEntity_Alias":
                     queryGenerator.AddAlians(SystemConfigEntity.PROPERTY_NAME_CONFIGGROUPID, PROPERTY_CONFIGGROUPID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

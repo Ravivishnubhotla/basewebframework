@@ -6,11 +6,12 @@ using System.Text;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.Bussiness.Interfaces
 {
     [ServiceContract]
-    public interface IBaseSpringNHibernateEntityViewServiceProxy<DomainType>
+    public interface IBaseSpringNHibernateEntityViewServiceProxy<DomainType> where DomainType : BaseViewEntity
     {
         [OperationContract]
         DomainType GetNewDomainInstance();

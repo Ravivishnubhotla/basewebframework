@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	??????
 	/// </summary>
 	[DataContract]
-	public partial class SystemPrivilegeInRolesEntity : ICloneable
+	public partial class SystemPrivilegeInRolesEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -29,35 +30,35 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeInRolesEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeInRolesEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
 		#endregion
 		#region privilegeID字段外键查询字段
-        public static readonly string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeID";
-		public static readonly string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.OperationID";
-		public static readonly string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.ResourcesID";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeCnName";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeEnName";
-		public static readonly string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.DefaultValue";
-		public static readonly string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.Description";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeOrder";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeType";
-		public static readonly string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeID";
+		public const string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.OperationID";
+		public const string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.ResourcesID";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeCnName";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeEnName";
+		public const string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.DefaultValue";
+		public const string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.Description";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeOrder";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeType";
+		public const string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public const string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -70,8 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _privilegeRoleID;
 		private SystemRoleEntity _roleID;
@@ -274,36 +274,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_privilegeRoleValue != value); _privilegeRoleValue = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -311,13 +286,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemPrivilegeInRolesEntity castObj = (SystemPrivilegeInRolesEntity)obj;
-			
-			return ( castObj != null ) && ( this._privilegeRoleID == castObj.PrivilegeRoleID );
+			 return this.CheckEquals(obj as SystemPrivilegeInRolesEntity);
 		}
 		
 		/// <summary>
@@ -325,13 +294,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _privilegeRoleID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._privilegeRoleID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

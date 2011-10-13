@@ -111,7 +111,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "PrivilegeID_SystemPrivilegeParameterEntity_Alias":
                     queryGenerator.AddAlians(SystemPrivilegeParameterEntity.PROPERTY_NAME_PRIVILEGEID, PROPERTY_PRIVILEGEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

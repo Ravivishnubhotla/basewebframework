@@ -83,35 +83,35 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeInRolesEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemPrivilegeInRolesEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemPrivilegeInRolesEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
 		#endregion
 		#region privilegeID字段外键查询字段
-        public static readonly string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeID";
-		public static readonly string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.OperationID";
-		public static readonly string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.ResourcesID";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeCnName";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeEnName";
-		public static readonly string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.DefaultValue";
-		public static readonly string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.Description";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeOrder";
-		public static readonly string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeType";
-		public static readonly string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_PRIVILEGEID_ALIAS_NAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeID";
+		public const string PROPERTY_PRIVILEGEID_OPERATIONID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.OperationID";
+		public const string PROPERTY_PRIVILEGEID_RESOURCESID = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.ResourcesID";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGECNNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeCnName";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEENNAME = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeEnName";
+		public const string PROPERTY_PRIVILEGEID_DEFAULTVALUE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.DefaultValue";
+		public const string PROPERTY_PRIVILEGEID_DESCRIPTION = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.Description";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGEORDER = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeOrder";
+		public const string PROPERTY_PRIVILEGEID_PRIVILEGETYPE = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.PrivilegeType";
+		public const string PROPERTY_PRIVILEGEID_CREATEBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateBy";
+		public const string PROPERTY_PRIVILEGEID_CREATEAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.CreateAt";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYBY = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYAT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT = "PrivilegeID_SystemPrivilegeInRolesEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -267,7 +267,266 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region roleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEID)]
+        public int? RoleID_RoleID
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLENAME)]
+        public string RoleID_RoleName
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLECODE)]
+        public string RoleID_RoleCode
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEDESCRIPTION)]
+        public string RoleID_RoleDescription
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEISSYSTEMROLE)]
+        public bool? RoleID_RoleIsSystemRole
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleIsSystemRole;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLETYPE)]
+        public string RoleID_RoleType
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEBY)]
+        public int? RoleID_CreateBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEAT)]
+        public DateTime? RoleID_CreateAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYBY)]
+        public int? RoleID_LastModifyBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYAT)]
+        public DateTime? RoleID_LastModifyAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYCOMMENT)]
+        public string RoleID_LastModifyComment
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region privilegeID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_PRIVILEGEID)]
+        public int? PrivilegeID_PrivilegeID
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.PrivilegeID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_OPERATIONID)]
+        public SystemOperationWrapper PrivilegeID_OperationID
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.OperationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_RESOURCESID)]
+        public SystemResourcesWrapper PrivilegeID_ResourcesID
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.ResourcesID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_PRIVILEGECNNAME)]
+        public string PrivilegeID_PrivilegeCnName
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.PrivilegeCnName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_PRIVILEGEENNAME)]
+        public string PrivilegeID_PrivilegeEnName
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.PrivilegeEnName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_DEFAULTVALUE)]
+        public string PrivilegeID_DefaultValue
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.DefaultValue;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_DESCRIPTION)]
+        public string PrivilegeID_Description
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_PRIVILEGEORDER)]
+        public int? PrivilegeID_PrivilegeOrder
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.PrivilegeOrder;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_PRIVILEGETYPE)]
+        public string PrivilegeID_PrivilegeType
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.PrivilegeType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_CREATEBY)]
+        public int? PrivilegeID_CreateBy
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_CREATEAT)]
+        public DateTime? PrivilegeID_CreateAt
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_LASTMODIFYBY)]
+        public int? PrivilegeID_LastModifyBy
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_LASTMODIFYAT)]
+        public DateTime? PrivilegeID_LastModifyAt
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT)]
+        public string PrivilegeID_LastModifyComment
+        {
+            get
+            {
+                if (this. PrivilegeID == null)
+                    return null;
+                return  PrivilegeID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	SystemMoudleField
 	/// </summary>
 	[DataContract]
-	public partial class SystemMoudleFieldEntity : ICloneable
+	public partial class SystemMoudleFieldEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -36,20 +37,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region systemMoudleID字段外键查询字段
-        public static readonly string PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME = "SystemMoudleID_SystemMoudleFieldEntity_Alias";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMECN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameCn";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEEN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameEn";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEDB = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameDb";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEDESCRIPTION = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleDescription";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_APPLICATIONID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.ApplicationID";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_MOUDLEISSYSTEMMOUDLE = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleIsSystemMoudle";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_ORDERINDEX = "SystemMoudleID_SystemMoudleFieldEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_CREATEBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_CREATEAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYCOMMENT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyComment";
+        public const string PROPERTY_SYSTEMMOUDLEID_ALIAS_NAME = "SystemMoudleID_SystemMoudleFieldEntity_Alias";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLEID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleID";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMECN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameCn";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEEN = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameEn";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEDB = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameDb";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLEDESCRIPTION = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleDescription";
+		public const string PROPERTY_SYSTEMMOUDLEID_APPLICATIONID = "SystemMoudleID_SystemMoudleFieldEntity_Alias.ApplicationID";
+		public const string PROPERTY_SYSTEMMOUDLEID_MOUDLEISSYSTEMMOUDLE = "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleIsSystemMoudle";
+		public const string PROPERTY_SYSTEMMOUDLEID_ORDERINDEX = "SystemMoudleID_SystemMoudleFieldEntity_Alias.OrderIndex";
+		public const string PROPERTY_SYSTEMMOUDLEID_CREATEBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateBy";
+		public const string PROPERTY_SYSTEMMOUDLEID_CREATEAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateAt";
+		public const string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYBY = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyBy";
+		public const string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYAT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyAt";
+		public const string PROPERTY_SYSTEMMOUDLEID_LASTMODIFYCOMMENT = "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -62,8 +63,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _systemMoudleFieldID;
 		private string _systemMoudleFieldNameEn;
@@ -397,36 +397,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -434,13 +409,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemMoudleFieldEntity castObj = (SystemMoudleFieldEntity)obj;
-			
-			return ( castObj != null ) && ( this._systemMoudleFieldID == castObj.SystemMoudleFieldID );
+			 return this.CheckEquals(obj as SystemMoudleFieldEntity);
 		}
 		
 		/// <summary>
@@ -448,13 +417,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _systemMoudleFieldID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._systemMoudleFieldID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

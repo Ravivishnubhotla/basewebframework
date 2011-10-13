@@ -162,7 +162,8 @@ namespace SPS.Data.Tables
 	            case "ChannelID_SPCodeEntity_Alias":
                     queryGenerator.AddAlians(SPCodeEntity.PROPERTY_NAME_CHANNELID, PROPERTY_CHANNELID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

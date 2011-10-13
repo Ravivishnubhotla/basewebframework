@@ -92,19 +92,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region applicationID字段外键查询字段
-        public static readonly string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMenuEntity_Alias";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationID";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationName";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationCode";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationDescription";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationUrl";
-		public static readonly string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationIsSystemApplication";
-		public static readonly string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMenuEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMenuEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMenuEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMenuEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMenuEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMenuEntity_Alias.LastModifyComment";
+        public const string PROPERTY_APPLICATIONID_ALIAS_NAME = "ApplicationID_SystemMenuEntity_Alias";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationID";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationName";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationCode";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationDescription";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationUrl";
+		public const string PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION = "ApplicationID_SystemMenuEntity_Alias.SystemApplicationIsSystemApplication";
+		public const string PROPERTY_APPLICATIONID_ORDERINDEX = "ApplicationID_SystemMenuEntity_Alias.OrderIndex";
+		public const string PROPERTY_APPLICATIONID_CREATEBY = "ApplicationID_SystemMenuEntity_Alias.CreateBy";
+		public const string PROPERTY_APPLICATIONID_CREATEAT = "ApplicationID_SystemMenuEntity_Alias.CreateAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYBY = "ApplicationID_SystemMenuEntity_Alias.LastModifyBy";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYAT = "ApplicationID_SystemMenuEntity_Alias.LastModifyAt";
+		public const string PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = "ApplicationID_SystemMenuEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -386,7 +386,134 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region applicationID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID)]
+        public int? ApplicationID_SystemApplicationID
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME)]
+        public string ApplicationID_SystemApplicationName
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE)]
+        public string ApplicationID_SystemApplicationCode
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION)]
+        public string ApplicationID_SystemApplicationDescription
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL)]
+        public string ApplicationID_SystemApplicationUrl
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION)]
+        public bool? ApplicationID_SystemApplicationIsSystemApplication
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.SystemApplicationIsSystemApplication;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_ORDERINDEX)]
+        public int? ApplicationID_OrderIndex
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_CREATEBY)]
+        public int? ApplicationID_CreateBy
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_CREATEAT)]
+        public DateTime? ApplicationID_CreateAt
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYBY)]
+        public int? ApplicationID_LastModifyBy
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYAT)]
+        public DateTime? ApplicationID_LastModifyAt
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT)]
+        public string ApplicationID_LastModifyComment
+        {
+            get
+            {
+                if (this. ApplicationID == null)
+                    return null;
+                return  ApplicationID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

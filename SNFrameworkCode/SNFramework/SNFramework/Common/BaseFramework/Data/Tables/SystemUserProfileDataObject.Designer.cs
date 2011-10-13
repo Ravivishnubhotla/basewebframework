@@ -127,7 +127,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "PropertyID_SystemUserProfileEntity_Alias":
                     queryGenerator.AddAlians(SystemUserProfileEntity.PROPERTY_NAME_PROPERTYID, PROPERTY_PROPERTYID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

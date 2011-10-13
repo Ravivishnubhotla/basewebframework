@@ -93,7 +93,7 @@
             <ext:JsonReader IDProperty="SystemConfigID">
                 <Fields>
                     <ext:RecordField Name="SystemConfigID" Type="int" />
-                    <ext:RecordField Name="GroupName"  />
+                    <ext:RecordField Name="ConfigGroupID_Name"  />
                     <ext:RecordField Name="ConfigKey" />
                     <ext:RecordField Name="ConfigValue" />
                     <ext:RecordField Name="ConfigDataTypeName" />
@@ -160,7 +160,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="GroupName" Header="配置组" 
+                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="ConfigGroupID_Name" Header="配置组" 
                             Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="<%$ Resources:msgcolKey %>"

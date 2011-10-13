@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace SPS.Entity.Tables
 {
@@ -9,9 +10,9 @@ namespace SPS.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPChannelFiltersEntity : ICloneable
+	public partial class SPChannelFiltersEntity  : BaseTableEntity,ICloneable
 	{
-        #region 公共常量
+      #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPChannelFiltersEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
@@ -27,10 +28,60 @@ namespace SPS.Entity.Tables
 		
         #endregion
 	
+ 
+		#region channelID字段外键查询字段
+        public const string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPChannelFiltersEntity_Alias";
+		public const string PROPERTY_CHANNELID_ID = "ChannelID_SPChannelFiltersEntity_Alias.Id";
+		public const string PROPERTY_CHANNELID_NAME = "ChannelID_SPChannelFiltersEntity_Alias.Name";
+		public const string PROPERTY_CHANNELID_CODE = "ChannelID_SPChannelFiltersEntity_Alias.Code";
+		public const string PROPERTY_CHANNELID_DATAOKMESSAGE = "ChannelID_SPChannelFiltersEntity_Alias.DataOkMessage";
+		public const string PROPERTY_CHANNELID_DATAFAILEDMESSAGE = "ChannelID_SPChannelFiltersEntity_Alias.DataFailedMessage";
+		public const string PROPERTY_CHANNELID_DESCRIPTION = "ChannelID_SPChannelFiltersEntity_Alias.Description";
+		public const string PROPERTY_CHANNELID_DATAADAPTERTYPE = "ChannelID_SPChannelFiltersEntity_Alias.DataAdapterType";
+		public const string PROPERTY_CHANNELID_DATAADAPTERURL = "ChannelID_SPChannelFiltersEntity_Alias.DataAdapterUrl";
+		public const string PROPERTY_CHANNELID_CHANNELTYPE = "ChannelID_SPChannelFiltersEntity_Alias.ChannelType";
+		public const string PROPERTY_CHANNELID_IVRFEETIMETYPE = "ChannelID_SPChannelFiltersEntity_Alias.IVRFeeTimeType";
+		public const string PROPERTY_CHANNELID_IVRTIMEFORMAT = "ChannelID_SPChannelFiltersEntity_Alias.IVRTimeFormat";
+		public const string PROPERTY_CHANNELID_ISSTATEREPORT = "ChannelID_SPChannelFiltersEntity_Alias.IsStateReport";
+		public const string PROPERTY_CHANNELID_STATEREPORTTYPE = "ChannelID_SPChannelFiltersEntity_Alias.StateReportType";
+		public const string PROPERTY_CHANNELID_REPORTOKMESSAGE = "ChannelID_SPChannelFiltersEntity_Alias.ReportOkMessage";
+		public const string PROPERTY_CHANNELID_REPORTFAILEDMESSAGE = "ChannelID_SPChannelFiltersEntity_Alias.ReportFailedMessage";
+		public const string PROPERTY_CHANNELID_STATEREPORTPARAMNAME = "ChannelID_SPChannelFiltersEntity_Alias.StateReportParamName";
+		public const string PROPERTY_CHANNELID_STATEREPORTPARAMVALUE = "ChannelID_SPChannelFiltersEntity_Alias.StateReportParamValue";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = "ChannelID_SPChannelFiltersEntity_Alias.RequestTypeParamName";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE = "ChannelID_SPChannelFiltersEntity_Alias.RequestTypeParamStateReportValue";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE = "ChannelID_SPChannelFiltersEntity_Alias.RequestTypeParamDataReportValue";
+		public const string PROPERTY_CHANNELID_HASFILTERS = "ChannelID_SPChannelFiltersEntity_Alias.HasFilters";
+		public const string PROPERTY_CHANNELID_ISMONITORREQUEST = "ChannelID_SPChannelFiltersEntity_Alias.IsMonitorRequest";
+		public const string PROPERTY_CHANNELID_ISLOGREQUEST = "ChannelID_SPChannelFiltersEntity_Alias.IsLogRequest";
+		public const string PROPERTY_CHANNELID_ISPARAMSCONVERT = "ChannelID_SPChannelFiltersEntity_Alias.IsParamsConvert";
+		public const string PROPERTY_CHANNELID_ISAUTOLINKID = "ChannelID_SPChannelFiltersEntity_Alias.IsAutoLinkID";
+		public const string PROPERTY_CHANNELID_AUTOLINKIDFIELDS = "ChannelID_SPChannelFiltersEntity_Alias.AutoLinkIDFields";
+		public const string PROPERTY_CHANNELID_LOGREQUESTTYPE = "ChannelID_SPChannelFiltersEntity_Alias.LogRequestType";
+		public const string PROPERTY_CHANNELID_PRICE = "ChannelID_SPChannelFiltersEntity_Alias.Price";
+		public const string PROPERTY_CHANNELID_DEFAULTRATE = "ChannelID_SPChannelFiltersEntity_Alias.DefaultRate";
+		public const string PROPERTY_CHANNELID_CHANNELDETAILINFO = "ChannelID_SPChannelFiltersEntity_Alias.ChannelDetailInfo";
+		public const string PROPERTY_CHANNELID_UPPERID = "ChannelID_SPChannelFiltersEntity_Alias.UpperID";
+		public const string PROPERTY_CHANNELID_CHANNELSTATUS = "ChannelID_SPChannelFiltersEntity_Alias.ChannelStatus";
+		public const string PROPERTY_CHANNELID_ISDISABLE = "ChannelID_SPChannelFiltersEntity_Alias.IsDisable";
+		public const string PROPERTY_CHANNELID_CREATEBY = "ChannelID_SPChannelFiltersEntity_Alias.CreateBy";
+		public const string PROPERTY_CHANNELID_CREATEAT = "ChannelID_SPChannelFiltersEntity_Alias.CreateAt";
+		public const string PROPERTY_CHANNELID_LASTMODIFYBY = "ChannelID_SPChannelFiltersEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CHANNELID_LASTMODIFYAT = "ChannelID_SPChannelFiltersEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CHANNELID_LASTMODIFYCOMMENT = "ChannelID_SPChannelFiltersEntity_Alias.LastModifyComment";
+		#endregion
+      	
+	
+	
+		 
+		
+		
+		
+		
+	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _id;
 		private SPChannelEntity _channelID;
@@ -236,36 +287,11 @@ namespace SPS.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -273,13 +299,7 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SPChannelFiltersEntity castObj = (SPChannelFiltersEntity)obj;
-			
-			return ( castObj != null ) && ( this._id == castObj.Id );
+			 return this.CheckEquals(obj as SPChannelFiltersEntity);
 		}
 		
 		/// <summary>
@@ -287,13 +307,16 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _id.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._id;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

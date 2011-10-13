@@ -102,7 +102,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias":
                     queryGenerator.AddAlians(SystemDictionaryEntity.PROPERTY_NAME_SYSTEMDICTIONARYGROUPID, PROPERTY_SYSTEMDICTIONARYGROUPID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

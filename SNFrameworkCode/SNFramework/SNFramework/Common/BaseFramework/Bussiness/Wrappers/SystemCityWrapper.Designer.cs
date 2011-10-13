@@ -79,13 +79,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region provinceID字段外键查询字段
-        public static readonly string PROPERTY_PROVINCEID_ALIAS_NAME = "ProvinceID_SystemCityEntity_Alias";
-		public static readonly string PROPERTY_PROVINCEID_ID = "ProvinceID_SystemCityEntity_Alias.Id";
-		public static readonly string PROPERTY_PROVINCEID_NAME = "ProvinceID_SystemCityEntity_Alias.Name";
-		public static readonly string PROPERTY_PROVINCEID_ABBRNAME = "ProvinceID_SystemCityEntity_Alias.AbbrName";
-		public static readonly string PROPERTY_PROVINCEID_SINGLEABBRNAME = "ProvinceID_SystemCityEntity_Alias.SingleAbbrName";
-		public static readonly string PROPERTY_PROVINCEID_CODE = "ProvinceID_SystemCityEntity_Alias.Code";
-		public static readonly string PROPERTY_PROVINCEID_COUNTRYID = "ProvinceID_SystemCityEntity_Alias.CountryID";
+        public const string PROPERTY_PROVINCEID_ALIAS_NAME = "ProvinceID_SystemCityEntity_Alias";
+		public const string PROPERTY_PROVINCEID_ID = "ProvinceID_SystemCityEntity_Alias.Id";
+		public const string PROPERTY_PROVINCEID_NAME = "ProvinceID_SystemCityEntity_Alias.Name";
+		public const string PROPERTY_PROVINCEID_ABBRNAME = "ProvinceID_SystemCityEntity_Alias.AbbrName";
+		public const string PROPERTY_PROVINCEID_SINGLEABBRNAME = "ProvinceID_SystemCityEntity_Alias.SingleAbbrName";
+		public const string PROPERTY_PROVINCEID_CODE = "ProvinceID_SystemCityEntity_Alias.Code";
+		public const string PROPERTY_PROVINCEID_COUNTRYID = "ProvinceID_SystemCityEntity_Alias.CountryID";
 		#endregion
       	
 	
@@ -185,7 +185,74 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region provinceID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_ID)]
+        public int? ProvinceID_Id
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_NAME)]
+        public string ProvinceID_Name
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_ABBRNAME)]
+        public string ProvinceID_AbbrName
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.AbbrName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_SINGLEABBRNAME)]
+        public string ProvinceID_SingleAbbrName
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.SingleAbbrName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_CODE)]
+        public string ProvinceID_Code
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROVINCEID_COUNTRYID)]
+        public SystemCountryWrapper ProvinceID_CountryID
+        {
+            get
+            {
+                if (this. ProvinceID == null)
+                    return null;
+                return  ProvinceID.CountryID;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

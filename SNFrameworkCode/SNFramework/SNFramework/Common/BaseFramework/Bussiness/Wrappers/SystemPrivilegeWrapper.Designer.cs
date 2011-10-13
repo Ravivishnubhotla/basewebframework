@@ -87,43 +87,43 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region operationID字段外键查询字段
-        public static readonly string PROPERTY_OPERATIONID_ALIAS_NAME = "OperationID_SystemPrivilegeEntity_Alias";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONID = "OperationID_SystemPrivilegeEntity_Alias.OperationID";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONNAMECN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameCn";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONNAMEEN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameEn";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONDESCRIPTION = "OperationID_SystemPrivilegeEntity_Alias.OperationDescription";
-		public static readonly string PROPERTY_OPERATIONID_ISSYSTEMOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsSystemOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISCANSINGLEOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanSingleOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISCANMUTILOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanMutilOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISENABLE = "OperationID_SystemPrivilegeEntity_Alias.IsEnable";
-		public static readonly string PROPERTY_OPERATIONID_ISINLISTPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInListPage";
-		public static readonly string PROPERTY_OPERATIONID_ISINSINGLEPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInSinglePage";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONORDER = "OperationID_SystemPrivilegeEntity_Alias.OperationOrder";
-		public static readonly string PROPERTY_OPERATIONID_ISCOMMONOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCommonOperation";
-		public static readonly string PROPERTY_OPERATIONID_RESOURCEID = "OperationID_SystemPrivilegeEntity_Alias.ResourceID";
-		public static readonly string PROPERTY_OPERATIONID_CREATEBY = "OperationID_SystemPrivilegeEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_OPERATIONID_CREATEAT = "OperationID_SystemPrivilegeEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYBY = "OperationID_SystemPrivilegeEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYAT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYCOMMENT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyComment";
+        public const string PROPERTY_OPERATIONID_ALIAS_NAME = "OperationID_SystemPrivilegeEntity_Alias";
+		public const string PROPERTY_OPERATIONID_OPERATIONID = "OperationID_SystemPrivilegeEntity_Alias.OperationID";
+		public const string PROPERTY_OPERATIONID_OPERATIONNAMECN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameCn";
+		public const string PROPERTY_OPERATIONID_OPERATIONNAMEEN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameEn";
+		public const string PROPERTY_OPERATIONID_OPERATIONDESCRIPTION = "OperationID_SystemPrivilegeEntity_Alias.OperationDescription";
+		public const string PROPERTY_OPERATIONID_ISSYSTEMOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsSystemOperation";
+		public const string PROPERTY_OPERATIONID_ISCANSINGLEOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanSingleOperation";
+		public const string PROPERTY_OPERATIONID_ISCANMUTILOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanMutilOperation";
+		public const string PROPERTY_OPERATIONID_ISENABLE = "OperationID_SystemPrivilegeEntity_Alias.IsEnable";
+		public const string PROPERTY_OPERATIONID_ISINLISTPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInListPage";
+		public const string PROPERTY_OPERATIONID_ISINSINGLEPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInSinglePage";
+		public const string PROPERTY_OPERATIONID_OPERATIONORDER = "OperationID_SystemPrivilegeEntity_Alias.OperationOrder";
+		public const string PROPERTY_OPERATIONID_ISCOMMONOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCommonOperation";
+		public const string PROPERTY_OPERATIONID_RESOURCEID = "OperationID_SystemPrivilegeEntity_Alias.ResourceID";
+		public const string PROPERTY_OPERATIONID_CREATEBY = "OperationID_SystemPrivilegeEntity_Alias.CreateBy";
+		public const string PROPERTY_OPERATIONID_CREATEAT = "OperationID_SystemPrivilegeEntity_Alias.CreateAt";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYBY = "OperationID_SystemPrivilegeEntity_Alias.LastModifyBy";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYAT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyAt";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYCOMMENT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyComment";
 		#endregion
 		#region resourcesID字段外键查询字段
-        public static readonly string PROPERTY_RESOURCESID_ALIAS_NAME = "ResourcesID_SystemPrivilegeEntity_Alias";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesID";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESNAMECN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameCn";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESNAMEEN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameEn";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESDESCRIPTION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesDescription";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESTYPE = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesType";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesLimitExpression";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesIsRelateUser";
-		public static readonly string PROPERTY_RESOURCESID_MOUDLEID = "ResourcesID_SystemPrivilegeEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_RESOURCESID_PARENTRESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ParentResourcesID";
-		public static readonly string PROPERTY_RESOURCESID_ORDERINDEX = "ResourcesID_SystemPrivilegeEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_RESOURCESID_CREATEBY = "ResourcesID_SystemPrivilegeEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_RESOURCESID_CREATEAT = "ResourcesID_SystemPrivilegeEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYBY = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYAT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYCOMMENT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyComment";
+        public const string PROPERTY_RESOURCESID_ALIAS_NAME = "ResourcesID_SystemPrivilegeEntity_Alias";
+		public const string PROPERTY_RESOURCESID_RESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesID";
+		public const string PROPERTY_RESOURCESID_RESOURCESNAMECN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameCn";
+		public const string PROPERTY_RESOURCESID_RESOURCESNAMEEN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameEn";
+		public const string PROPERTY_RESOURCESID_RESOURCESDESCRIPTION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesDescription";
+		public const string PROPERTY_RESOURCESID_RESOURCESTYPE = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesType";
+		public const string PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesLimitExpression";
+		public const string PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesIsRelateUser";
+		public const string PROPERTY_RESOURCESID_MOUDLEID = "ResourcesID_SystemPrivilegeEntity_Alias.MoudleID";
+		public const string PROPERTY_RESOURCESID_PARENTRESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ParentResourcesID";
+		public const string PROPERTY_RESOURCESID_ORDERINDEX = "ResourcesID_SystemPrivilegeEntity_Alias.OrderIndex";
+		public const string PROPERTY_RESOURCESID_CREATEBY = "ResourcesID_SystemPrivilegeEntity_Alias.CreateBy";
+		public const string PROPERTY_RESOURCESID_CREATEAT = "ResourcesID_SystemPrivilegeEntity_Alias.CreateAt";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYBY = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyBy";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYAT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyAt";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYCOMMENT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -335,7 +335,346 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region operationID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_OPERATIONID)]
+        public int? OperationID_OperationID
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.OperationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_OPERATIONNAMECN)]
+        public string OperationID_OperationNameCn
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.OperationNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_OPERATIONNAMEEN)]
+        public string OperationID_OperationNameEn
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.OperationNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_OPERATIONDESCRIPTION)]
+        public string OperationID_OperationDescription
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.OperationDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISSYSTEMOPERATION)]
+        public bool? OperationID_IsSystemOperation
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsSystemOperation;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISCANSINGLEOPERATION)]
+        public bool? OperationID_IsCanSingleOperation
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsCanSingleOperation;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISCANMUTILOPERATION)]
+        public bool? OperationID_IsCanMutilOperation
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsCanMutilOperation;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISENABLE)]
+        public bool? OperationID_IsEnable
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsEnable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISINLISTPAGE)]
+        public bool? OperationID_IsInListPage
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsInListPage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISINSINGLEPAGE)]
+        public bool? OperationID_IsInSinglePage
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsInSinglePage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_OPERATIONORDER)]
+        public int? OperationID_OperationOrder
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.OperationOrder;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_ISCOMMONOPERATION)]
+        public bool? OperationID_IsCommonOperation
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.IsCommonOperation;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_RESOURCEID)]
+        public SystemResourcesWrapper OperationID_ResourceID
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.ResourceID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_CREATEBY)]
+        public int? OperationID_CreateBy
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_CREATEAT)]
+        public DateTime? OperationID_CreateAt
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_LASTMODIFYBY)]
+        public int? OperationID_LastModifyBy
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_LASTMODIFYAT)]
+        public DateTime? OperationID_LastModifyAt
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_OPERATIONID_LASTMODIFYCOMMENT)]
+        public string OperationID_LastModifyComment
+        {
+            get
+            {
+                if (this. OperationID == null)
+                    return null;
+                return  OperationID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region resourcesID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESID)]
+        public int? ResourcesID_ResourcesID
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESNAMECN)]
+        public string ResourcesID_ResourcesNameCn
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESNAMEEN)]
+        public string ResourcesID_ResourcesNameEn
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESDESCRIPTION)]
+        public string ResourcesID_ResourcesDescription
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESTYPE)]
+        public string ResourcesID_ResourcesType
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION)]
+        public string ResourcesID_ResourcesLimitExpression
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesLimitExpression;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_RESOURCESISRELATEUSER)]
+        public bool? ResourcesID_ResourcesIsRelateUser
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ResourcesIsRelateUser;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_MOUDLEID)]
+        public SystemMoudleWrapper ResourcesID_MoudleID
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.MoudleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_PARENTRESOURCESID)]
+        public SystemResourcesWrapper ResourcesID_ParentResourcesID
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.ParentResourcesID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_ORDERINDEX)]
+        public int? ResourcesID_OrderIndex
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_CREATEBY)]
+        public int? ResourcesID_CreateBy
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_CREATEAT)]
+        public DateTime? ResourcesID_CreateAt
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_LASTMODIFYBY)]
+        public int? ResourcesID_LastModifyBy
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_LASTMODIFYAT)]
+        public DateTime? ResourcesID_LastModifyAt
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RESOURCESID_LASTMODIFYCOMMENT)]
+        public string ResourcesID_LastModifyComment
+        {
+            get
+            {
+                if (this. ResourcesID == null)
+                    return null;
+                return  ResourcesID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

@@ -54,7 +54,8 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
-
+                default:
+                    break;
  
             }
         }

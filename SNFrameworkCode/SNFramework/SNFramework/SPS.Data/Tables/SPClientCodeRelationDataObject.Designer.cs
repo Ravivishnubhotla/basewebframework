@@ -171,7 +171,8 @@ namespace SPS.Data.Tables
 	            case "ClientID_SPClientCodeRelationEntity_Alias":
                     queryGenerator.AddAlians(SPClientCodeRelationEntity.PROPERTY_NAME_CLIENTID, PROPERTY_CLIENTID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

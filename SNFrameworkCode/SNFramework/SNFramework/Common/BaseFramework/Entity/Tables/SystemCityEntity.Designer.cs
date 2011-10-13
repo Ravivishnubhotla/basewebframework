@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SystemCityEntity : ICloneable
+	public partial class SystemCityEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -25,13 +26,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region provinceID字段外键查询字段
-        public static readonly string PROPERTY_PROVINCEID_ALIAS_NAME = "ProvinceID_SystemCityEntity_Alias";
-		public static readonly string PROPERTY_PROVINCEID_ID = "ProvinceID_SystemCityEntity_Alias.Id";
-		public static readonly string PROPERTY_PROVINCEID_NAME = "ProvinceID_SystemCityEntity_Alias.Name";
-		public static readonly string PROPERTY_PROVINCEID_ABBRNAME = "ProvinceID_SystemCityEntity_Alias.AbbrName";
-		public static readonly string PROPERTY_PROVINCEID_SINGLEABBRNAME = "ProvinceID_SystemCityEntity_Alias.SingleAbbrName";
-		public static readonly string PROPERTY_PROVINCEID_CODE = "ProvinceID_SystemCityEntity_Alias.Code";
-		public static readonly string PROPERTY_PROVINCEID_COUNTRYID = "ProvinceID_SystemCityEntity_Alias.CountryID";
+        public const string PROPERTY_PROVINCEID_ALIAS_NAME = "ProvinceID_SystemCityEntity_Alias";
+		public const string PROPERTY_PROVINCEID_ID = "ProvinceID_SystemCityEntity_Alias.Id";
+		public const string PROPERTY_PROVINCEID_NAME = "ProvinceID_SystemCityEntity_Alias.Name";
+		public const string PROPERTY_PROVINCEID_ABBRNAME = "ProvinceID_SystemCityEntity_Alias.AbbrName";
+		public const string PROPERTY_PROVINCEID_SINGLEABBRNAME = "ProvinceID_SystemCityEntity_Alias.SingleAbbrName";
+		public const string PROPERTY_PROVINCEID_CODE = "ProvinceID_SystemCityEntity_Alias.Code";
+		public const string PROPERTY_PROVINCEID_COUNTRYID = "ProvinceID_SystemCityEntity_Alias.CountryID";
 		#endregion
       	
 	
@@ -44,8 +45,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _id;
 		private string _name;
@@ -180,36 +180,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_capital != value); _capital = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -217,13 +192,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemCityEntity castObj = (SystemCityEntity)obj;
-			
-			return ( castObj != null ) && ( this._id == castObj.Id );
+			 return this.CheckEquals(obj as SystemCityEntity);
 		}
 		
 		/// <summary>
@@ -231,13 +200,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _id.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._id;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		
