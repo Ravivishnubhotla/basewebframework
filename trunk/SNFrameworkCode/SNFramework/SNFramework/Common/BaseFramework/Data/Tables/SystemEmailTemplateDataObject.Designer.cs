@@ -84,7 +84,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         {
             switch (parent_alias)
             {
-
+                default:
+                    break;
  
             }
         }

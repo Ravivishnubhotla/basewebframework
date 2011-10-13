@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -10,7 +11,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
        
 	/// </summary>
 	[DataContract]
-	public partial class SystemOperationEntity : ICloneable
+	public partial class SystemOperationEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -38,22 +39,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region resourceID字段外键查询字段
-        public static readonly string PROPERTY_RESOURCEID_ALIAS_NAME = "ResourceID_SystemOperationEntity_Alias";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESID = "ResourceID_SystemOperationEntity_Alias.ResourcesID";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESNAMECN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameCn";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESNAMEEN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameEn";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESDESCRIPTION = "ResourceID_SystemOperationEntity_Alias.ResourcesDescription";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESTYPE = "ResourceID_SystemOperationEntity_Alias.ResourcesType";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESLIMITEXPRESSION = "ResourceID_SystemOperationEntity_Alias.ResourcesLimitExpression";
-		public static readonly string PROPERTY_RESOURCEID_RESOURCESISRELATEUSER = "ResourceID_SystemOperationEntity_Alias.ResourcesIsRelateUser";
-		public static readonly string PROPERTY_RESOURCEID_MOUDLEID = "ResourceID_SystemOperationEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_RESOURCEID_PARENTRESOURCESID = "ResourceID_SystemOperationEntity_Alias.ParentResourcesID";
-		public static readonly string PROPERTY_RESOURCEID_ORDERINDEX = "ResourceID_SystemOperationEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_RESOURCEID_CREATEBY = "ResourceID_SystemOperationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_RESOURCEID_CREATEAT = "ResourceID_SystemOperationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYBY = "ResourceID_SystemOperationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYAT = "ResourceID_SystemOperationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_RESOURCEID_LASTMODIFYCOMMENT = "ResourceID_SystemOperationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_RESOURCEID_ALIAS_NAME = "ResourceID_SystemOperationEntity_Alias";
+		public const string PROPERTY_RESOURCEID_RESOURCESID = "ResourceID_SystemOperationEntity_Alias.ResourcesID";
+		public const string PROPERTY_RESOURCEID_RESOURCESNAMECN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameCn";
+		public const string PROPERTY_RESOURCEID_RESOURCESNAMEEN = "ResourceID_SystemOperationEntity_Alias.ResourcesNameEn";
+		public const string PROPERTY_RESOURCEID_RESOURCESDESCRIPTION = "ResourceID_SystemOperationEntity_Alias.ResourcesDescription";
+		public const string PROPERTY_RESOURCEID_RESOURCESTYPE = "ResourceID_SystemOperationEntity_Alias.ResourcesType";
+		public const string PROPERTY_RESOURCEID_RESOURCESLIMITEXPRESSION = "ResourceID_SystemOperationEntity_Alias.ResourcesLimitExpression";
+		public const string PROPERTY_RESOURCEID_RESOURCESISRELATEUSER = "ResourceID_SystemOperationEntity_Alias.ResourcesIsRelateUser";
+		public const string PROPERTY_RESOURCEID_MOUDLEID = "ResourceID_SystemOperationEntity_Alias.MoudleID";
+		public const string PROPERTY_RESOURCEID_PARENTRESOURCESID = "ResourceID_SystemOperationEntity_Alias.ParentResourcesID";
+		public const string PROPERTY_RESOURCEID_ORDERINDEX = "ResourceID_SystemOperationEntity_Alias.OrderIndex";
+		public const string PROPERTY_RESOURCEID_CREATEBY = "ResourceID_SystemOperationEntity_Alias.CreateBy";
+		public const string PROPERTY_RESOURCEID_CREATEAT = "ResourceID_SystemOperationEntity_Alias.CreateAt";
+		public const string PROPERTY_RESOURCEID_LASTMODIFYBY = "ResourceID_SystemOperationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_RESOURCEID_LASTMODIFYAT = "ResourceID_SystemOperationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_RESOURCEID_LASTMODIFYCOMMENT = "ResourceID_SystemOperationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -66,8 +67,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _operationID;
 		private string _operationNameCn;
@@ -409,36 +409,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -446,13 +421,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemOperationEntity castObj = (SystemOperationEntity)obj;
-			
-			return ( castObj != null ) && ( this._operationID == castObj.OperationID );
+			 return this.CheckEquals(obj as SystemOperationEntity);
 		}
 		
 		/// <summary>
@@ -460,13 +429,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _operationID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._operationID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

@@ -125,7 +125,8 @@ namespace SPS.Data.Tables
 	            case "RecordID_SPRecordExtendInfoEntity_Alias":
                     queryGenerator.AddAlians(SPRecordExtendInfoEntity.PROPERTY_NAME_RECORDID, PROPERTY_RECORDID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

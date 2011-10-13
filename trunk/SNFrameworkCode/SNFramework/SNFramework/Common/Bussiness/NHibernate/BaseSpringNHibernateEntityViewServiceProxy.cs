@@ -6,6 +6,7 @@ using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Entity;
 using NHibernate.Criterion;
 
 namespace Legendigital.Framework.Common.Bussiness.NHibernate
@@ -14,7 +15,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
     /// NHibernate架构可查询服务层对象基类
     /// </summary>
     /// <typeparam name="DomainType"></typeparam>
-    public class BaseSpringNHibernateEntityViewServiceProxy<DomainType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType>
+    public class BaseSpringNHibernateEntityViewServiceProxy<DomainType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType> where DomainType : BaseViewEntity
     {
 
         protected IBaseNHibernateViewDataObject<DomainType> selfDataObject;

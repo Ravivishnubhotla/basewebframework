@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System Permission
 	/// </summary>
 	[DataContract]
-	public partial class SystemPrivilegeEntity : ICloneable
+	public partial class SystemPrivilegeEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -33,43 +34,43 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region operationID字段外键查询字段
-        public static readonly string PROPERTY_OPERATIONID_ALIAS_NAME = "OperationID_SystemPrivilegeEntity_Alias";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONID = "OperationID_SystemPrivilegeEntity_Alias.OperationID";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONNAMECN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameCn";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONNAMEEN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameEn";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONDESCRIPTION = "OperationID_SystemPrivilegeEntity_Alias.OperationDescription";
-		public static readonly string PROPERTY_OPERATIONID_ISSYSTEMOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsSystemOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISCANSINGLEOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanSingleOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISCANMUTILOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanMutilOperation";
-		public static readonly string PROPERTY_OPERATIONID_ISENABLE = "OperationID_SystemPrivilegeEntity_Alias.IsEnable";
-		public static readonly string PROPERTY_OPERATIONID_ISINLISTPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInListPage";
-		public static readonly string PROPERTY_OPERATIONID_ISINSINGLEPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInSinglePage";
-		public static readonly string PROPERTY_OPERATIONID_OPERATIONORDER = "OperationID_SystemPrivilegeEntity_Alias.OperationOrder";
-		public static readonly string PROPERTY_OPERATIONID_ISCOMMONOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCommonOperation";
-		public static readonly string PROPERTY_OPERATIONID_RESOURCEID = "OperationID_SystemPrivilegeEntity_Alias.ResourceID";
-		public static readonly string PROPERTY_OPERATIONID_CREATEBY = "OperationID_SystemPrivilegeEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_OPERATIONID_CREATEAT = "OperationID_SystemPrivilegeEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYBY = "OperationID_SystemPrivilegeEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYAT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_OPERATIONID_LASTMODIFYCOMMENT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyComment";
+        public const string PROPERTY_OPERATIONID_ALIAS_NAME = "OperationID_SystemPrivilegeEntity_Alias";
+		public const string PROPERTY_OPERATIONID_OPERATIONID = "OperationID_SystemPrivilegeEntity_Alias.OperationID";
+		public const string PROPERTY_OPERATIONID_OPERATIONNAMECN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameCn";
+		public const string PROPERTY_OPERATIONID_OPERATIONNAMEEN = "OperationID_SystemPrivilegeEntity_Alias.OperationNameEn";
+		public const string PROPERTY_OPERATIONID_OPERATIONDESCRIPTION = "OperationID_SystemPrivilegeEntity_Alias.OperationDescription";
+		public const string PROPERTY_OPERATIONID_ISSYSTEMOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsSystemOperation";
+		public const string PROPERTY_OPERATIONID_ISCANSINGLEOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanSingleOperation";
+		public const string PROPERTY_OPERATIONID_ISCANMUTILOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCanMutilOperation";
+		public const string PROPERTY_OPERATIONID_ISENABLE = "OperationID_SystemPrivilegeEntity_Alias.IsEnable";
+		public const string PROPERTY_OPERATIONID_ISINLISTPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInListPage";
+		public const string PROPERTY_OPERATIONID_ISINSINGLEPAGE = "OperationID_SystemPrivilegeEntity_Alias.IsInSinglePage";
+		public const string PROPERTY_OPERATIONID_OPERATIONORDER = "OperationID_SystemPrivilegeEntity_Alias.OperationOrder";
+		public const string PROPERTY_OPERATIONID_ISCOMMONOPERATION = "OperationID_SystemPrivilegeEntity_Alias.IsCommonOperation";
+		public const string PROPERTY_OPERATIONID_RESOURCEID = "OperationID_SystemPrivilegeEntity_Alias.ResourceID";
+		public const string PROPERTY_OPERATIONID_CREATEBY = "OperationID_SystemPrivilegeEntity_Alias.CreateBy";
+		public const string PROPERTY_OPERATIONID_CREATEAT = "OperationID_SystemPrivilegeEntity_Alias.CreateAt";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYBY = "OperationID_SystemPrivilegeEntity_Alias.LastModifyBy";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYAT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyAt";
+		public const string PROPERTY_OPERATIONID_LASTMODIFYCOMMENT = "OperationID_SystemPrivilegeEntity_Alias.LastModifyComment";
 		#endregion
 		#region resourcesID字段外键查询字段
-        public static readonly string PROPERTY_RESOURCESID_ALIAS_NAME = "ResourcesID_SystemPrivilegeEntity_Alias";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesID";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESNAMECN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameCn";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESNAMEEN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameEn";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESDESCRIPTION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesDescription";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESTYPE = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesType";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesLimitExpression";
-		public static readonly string PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesIsRelateUser";
-		public static readonly string PROPERTY_RESOURCESID_MOUDLEID = "ResourcesID_SystemPrivilegeEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_RESOURCESID_PARENTRESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ParentResourcesID";
-		public static readonly string PROPERTY_RESOURCESID_ORDERINDEX = "ResourcesID_SystemPrivilegeEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_RESOURCESID_CREATEBY = "ResourcesID_SystemPrivilegeEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_RESOURCESID_CREATEAT = "ResourcesID_SystemPrivilegeEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYBY = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYAT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_RESOURCESID_LASTMODIFYCOMMENT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyComment";
+        public const string PROPERTY_RESOURCESID_ALIAS_NAME = "ResourcesID_SystemPrivilegeEntity_Alias";
+		public const string PROPERTY_RESOURCESID_RESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesID";
+		public const string PROPERTY_RESOURCESID_RESOURCESNAMECN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameCn";
+		public const string PROPERTY_RESOURCESID_RESOURCESNAMEEN = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameEn";
+		public const string PROPERTY_RESOURCESID_RESOURCESDESCRIPTION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesDescription";
+		public const string PROPERTY_RESOURCESID_RESOURCESTYPE = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesType";
+		public const string PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesLimitExpression";
+		public const string PROPERTY_RESOURCESID_RESOURCESISRELATEUSER = "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesIsRelateUser";
+		public const string PROPERTY_RESOURCESID_MOUDLEID = "ResourcesID_SystemPrivilegeEntity_Alias.MoudleID";
+		public const string PROPERTY_RESOURCESID_PARENTRESOURCESID = "ResourcesID_SystemPrivilegeEntity_Alias.ParentResourcesID";
+		public const string PROPERTY_RESOURCESID_ORDERINDEX = "ResourcesID_SystemPrivilegeEntity_Alias.OrderIndex";
+		public const string PROPERTY_RESOURCESID_CREATEBY = "ResourcesID_SystemPrivilegeEntity_Alias.CreateBy";
+		public const string PROPERTY_RESOURCESID_CREATEAT = "ResourcesID_SystemPrivilegeEntity_Alias.CreateAt";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYBY = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyBy";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYAT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyAt";
+		public const string PROPERTY_RESOURCESID_LASTMODIFYCOMMENT = "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -82,8 +83,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _privilegeID;
 		private SystemOperationEntity _operationID;
@@ -363,36 +363,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -400,13 +375,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemPrivilegeEntity castObj = (SystemPrivilegeEntity)obj;
-			
-			return ( castObj != null ) && ( this._privilegeID == castObj.PrivilegeID );
+			 return this.CheckEquals(obj as SystemPrivilegeEntity);
 		}
 		
 		/// <summary>
@@ -414,13 +383,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _privilegeID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._privilegeID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

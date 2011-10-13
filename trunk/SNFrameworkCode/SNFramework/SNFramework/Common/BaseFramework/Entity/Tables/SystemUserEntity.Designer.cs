@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System User
 	/// </summary>
 	[DataContract]
-	public partial class SystemUserEntity : ICloneable
+	public partial class SystemUserEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -51,18 +52,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region departmentID字段外键查询字段
-        public static readonly string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
-		public static readonly string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
-		public static readonly string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
+        public const string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
+		public const string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
+		public const string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
+		public const string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -75,8 +76,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _userID;
 		private string _userLoginID;
@@ -683,36 +683,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -720,13 +695,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemUserEntity castObj = (SystemUserEntity)obj;
-			
-			return ( castObj != null ) && ( this._userID == castObj.UserID );
+			 return this.CheckEquals(obj as SystemUserEntity);
 		}
 		
 		/// <summary>
@@ -734,13 +703,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _userID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._userID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

@@ -85,18 +85,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region configGroupID字段外键查询字段
-        public static readonly string PROPERTY_CONFIGGROUPID_ALIAS_NAME = "ConfigGroupID_SystemConfigEntity_Alias";
-		public static readonly string PROPERTY_CONFIGGROUPID_ID = "ConfigGroupID_SystemConfigEntity_Alias.Id";
-		public static readonly string PROPERTY_CONFIGGROUPID_NAME = "ConfigGroupID_SystemConfigEntity_Alias.Name";
-		public static readonly string PROPERTY_CONFIGGROUPID_CODE = "ConfigGroupID_SystemConfigEntity_Alias.Code";
-		public static readonly string PROPERTY_CONFIGGROUPID_DESCRIPTION = "ConfigGroupID_SystemConfigEntity_Alias.Description";
-		public static readonly string PROPERTY_CONFIGGROUPID_ISENABLE = "ConfigGroupID_SystemConfigEntity_Alias.IsEnable";
-		public static readonly string PROPERTY_CONFIGGROUPID_ISSYSTEM = "ConfigGroupID_SystemConfigEntity_Alias.IsSystem";
-		public static readonly string PROPERTY_CONFIGGROUPID_CREATEBY = "ConfigGroupID_SystemConfigEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_CONFIGGROUPID_CREATEAT = "ConfigGroupID_SystemConfigEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYBY = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYAT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_CONFIGGROUPID_LASTMODIFYCOMMENT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyComment";
+        public const string PROPERTY_CONFIGGROUPID_ALIAS_NAME = "ConfigGroupID_SystemConfigEntity_Alias";
+		public const string PROPERTY_CONFIGGROUPID_ID = "ConfigGroupID_SystemConfigEntity_Alias.Id";
+		public const string PROPERTY_CONFIGGROUPID_NAME = "ConfigGroupID_SystemConfigEntity_Alias.Name";
+		public const string PROPERTY_CONFIGGROUPID_CODE = "ConfigGroupID_SystemConfigEntity_Alias.Code";
+		public const string PROPERTY_CONFIGGROUPID_DESCRIPTION = "ConfigGroupID_SystemConfigEntity_Alias.Description";
+		public const string PROPERTY_CONFIGGROUPID_ISENABLE = "ConfigGroupID_SystemConfigEntity_Alias.IsEnable";
+		public const string PROPERTY_CONFIGGROUPID_ISSYSTEM = "ConfigGroupID_SystemConfigEntity_Alias.IsSystem";
+		public const string PROPERTY_CONFIGGROUPID_CREATEBY = "ConfigGroupID_SystemConfigEntity_Alias.CreateBy";
+		public const string PROPERTY_CONFIGGROUPID_CREATEAT = "ConfigGroupID_SystemConfigEntity_Alias.CreateAt";
+		public const string PROPERTY_CONFIGGROUPID_LASTMODIFYBY = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CONFIGGROUPID_LASTMODIFYAT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CONFIGGROUPID_LASTMODIFYCOMMENT = "ConfigGroupID_SystemConfigEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -280,7 +280,124 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region configGroupID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_ID)]
+        public int? ConfigGroupID_Id
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_NAME)]
+        public string ConfigGroupID_Name
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_CODE)]
+        public string ConfigGroupID_Code
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_DESCRIPTION)]
+        public string ConfigGroupID_Description
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_ISENABLE)]
+        public bool? ConfigGroupID_IsEnable
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.IsEnable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_ISSYSTEM)]
+        public bool? ConfigGroupID_IsSystem
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.IsSystem;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_CREATEBY)]
+        public int? ConfigGroupID_CreateBy
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_CREATEAT)]
+        public DateTime? ConfigGroupID_CreateAt
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_LASTMODIFYBY)]
+        public int? ConfigGroupID_LastModifyBy
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_LASTMODIFYAT)]
+        public DateTime? ConfigGroupID_LastModifyAt
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CONFIGGROUPID_LASTMODIFYCOMMENT)]
+        public string ConfigGroupID_LastModifyComment
+        {
+            get
+            {
+                if (this. ConfigGroupID == null)
+                    return null;
+                return  ConfigGroupID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

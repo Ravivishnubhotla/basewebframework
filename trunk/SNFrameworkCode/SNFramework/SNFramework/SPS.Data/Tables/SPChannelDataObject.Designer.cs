@@ -172,7 +172,8 @@ namespace SPS.Data.Tables
 	            case "UpperID_SPChannelEntity_Alias":
                     queryGenerator.AddAlians(SPChannelEntity.PROPERTY_NAME_UPPERID, PROPERTY_UPPERID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

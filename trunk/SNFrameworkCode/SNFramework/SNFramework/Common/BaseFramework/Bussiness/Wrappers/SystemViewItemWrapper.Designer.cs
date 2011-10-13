@@ -85,18 +85,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region systemViewID字段外键查询字段
-        public static readonly string PROPERTY_SYSTEMVIEWID_ALIAS_NAME = "SystemViewID_SystemViewItemEntity_Alias";
-		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWID = "SystemViewID_SystemViewItemEntity_Alias.SystemViewID";
-		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMECN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameCn";
-		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameEn";
-		public static readonly string PROPERTY_SYSTEMVIEWID_APPLICATIONID = "SystemViewID_SystemViewItemEntity_Alias.ApplicationID";
-		public static readonly string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION = "SystemViewID_SystemViewItemEntity_Alias.SystemViewDescription";
-		public static readonly string PROPERTY_SYSTEMVIEWID_ORDERINDEX = "SystemViewID_SystemViewItemEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_SYSTEMVIEWID_CREATEBY = "SystemViewID_SystemViewItemEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_SYSTEMVIEWID_CREATEAT = "SystemViewID_SystemViewItemEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYBY = "SystemViewID_SystemViewItemEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYAT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_SYSTEMVIEWID_LASTMODIFYCOMMENT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyComment";
+        public const string PROPERTY_SYSTEMVIEWID_ALIAS_NAME = "SystemViewID_SystemViewItemEntity_Alias";
+		public const string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWID = "SystemViewID_SystemViewItemEntity_Alias.SystemViewID";
+		public const string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMECN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameCn";
+		public const string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN = "SystemViewID_SystemViewItemEntity_Alias.SystemViewNameEn";
+		public const string PROPERTY_SYSTEMVIEWID_APPLICATIONID = "SystemViewID_SystemViewItemEntity_Alias.ApplicationID";
+		public const string PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION = "SystemViewID_SystemViewItemEntity_Alias.SystemViewDescription";
+		public const string PROPERTY_SYSTEMVIEWID_ORDERINDEX = "SystemViewID_SystemViewItemEntity_Alias.OrderIndex";
+		public const string PROPERTY_SYSTEMVIEWID_CREATEBY = "SystemViewID_SystemViewItemEntity_Alias.CreateBy";
+		public const string PROPERTY_SYSTEMVIEWID_CREATEAT = "SystemViewID_SystemViewItemEntity_Alias.CreateAt";
+		public const string PROPERTY_SYSTEMVIEWID_LASTMODIFYBY = "SystemViewID_SystemViewItemEntity_Alias.LastModifyBy";
+		public const string PROPERTY_SYSTEMVIEWID_LASTMODIFYAT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyAt";
+		public const string PROPERTY_SYSTEMVIEWID_LASTMODIFYCOMMENT = "SystemViewID_SystemViewItemEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -280,7 +280,124 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region systemViewID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_SYSTEMVIEWID)]
+        public int? SystemViewID_SystemViewID
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.SystemViewID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMECN)]
+        public string SystemViewID_SystemViewNameCn
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.SystemViewNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN)]
+        public string SystemViewID_SystemViewNameEn
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.SystemViewNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_APPLICATIONID)]
+        public SystemApplicationWrapper SystemViewID_ApplicationID
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.ApplicationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION)]
+        public string SystemViewID_SystemViewDescription
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.SystemViewDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_ORDERINDEX)]
+        public int? SystemViewID_OrderIndex
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_CREATEBY)]
+        public int? SystemViewID_CreateBy
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_CREATEAT)]
+        public DateTime? SystemViewID_CreateAt
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_LASTMODIFYBY)]
+        public int? SystemViewID_LastModifyBy
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_LASTMODIFYAT)]
+        public DateTime? SystemViewID_LastModifyAt
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYSTEMVIEWID_LASTMODIFYCOMMENT)]
+        public string SystemViewID_LastModifyComment
+        {
+            get
+            {
+                if (this. SystemViewID == null)
+                    return null;
+                return  SystemViewID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

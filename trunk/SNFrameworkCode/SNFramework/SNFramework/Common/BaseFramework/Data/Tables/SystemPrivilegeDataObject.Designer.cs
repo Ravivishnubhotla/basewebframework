@@ -134,7 +134,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "ResourcesID_SystemPrivilegeEntity_Alias":
                     queryGenerator.AddAlians(SystemPrivilegeEntity.PROPERTY_NAME_RESOURCESID, PROPERTY_RESOURCESID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

@@ -79,15 +79,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region countryID字段外键查询字段
-        public static readonly string PROPERTY_COUNTRYID_ALIAS_NAME = "CountryID_SystemProvinceEntity_Alias";
-		public static readonly string PROPERTY_COUNTRYID_ID = "CountryID_SystemProvinceEntity_Alias.Id";
-		public static readonly string PROPERTY_COUNTRYID_CODENUMBER = "CountryID_SystemProvinceEntity_Alias.CodeNumber";
-		public static readonly string PROPERTY_COUNTRYID_CODE2 = "CountryID_SystemProvinceEntity_Alias.Code2";
-		public static readonly string PROPERTY_COUNTRYID_CODE3 = "CountryID_SystemProvinceEntity_Alias.Code3";
-		public static readonly string PROPERTY_COUNTRYID_ABBRNAMECN = "CountryID_SystemProvinceEntity_Alias.AbbrNameCN";
-		public static readonly string PROPERTY_COUNTRYID_ABBRNAMEEN = "CountryID_SystemProvinceEntity_Alias.AbbrNameEN";
-		public static readonly string PROPERTY_COUNTRYID_FULLNAMECN = "CountryID_SystemProvinceEntity_Alias.FullNameCn";
-		public static readonly string PROPERTY_COUNTRYID_FULLNAMEEN = "CountryID_SystemProvinceEntity_Alias.FullNameEn";
+        public const string PROPERTY_COUNTRYID_ALIAS_NAME = "CountryID_SystemProvinceEntity_Alias";
+		public const string PROPERTY_COUNTRYID_ID = "CountryID_SystemProvinceEntity_Alias.Id";
+		public const string PROPERTY_COUNTRYID_CODENUMBER = "CountryID_SystemProvinceEntity_Alias.CodeNumber";
+		public const string PROPERTY_COUNTRYID_CODE2 = "CountryID_SystemProvinceEntity_Alias.Code2";
+		public const string PROPERTY_COUNTRYID_CODE3 = "CountryID_SystemProvinceEntity_Alias.Code3";
+		public const string PROPERTY_COUNTRYID_ABBRNAMECN = "CountryID_SystemProvinceEntity_Alias.AbbrNameCN";
+		public const string PROPERTY_COUNTRYID_ABBRNAMEEN = "CountryID_SystemProvinceEntity_Alias.AbbrNameEN";
+		public const string PROPERTY_COUNTRYID_FULLNAMECN = "CountryID_SystemProvinceEntity_Alias.FullNameCn";
+		public const string PROPERTY_COUNTRYID_FULLNAMEEN = "CountryID_SystemProvinceEntity_Alias.FullNameEn";
 		#endregion
       	
 	
@@ -187,7 +187,94 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region countryID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_ID)]
+        public int? CountryID_Id
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_CODENUMBER)]
+        public string CountryID_CodeNumber
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.CodeNumber;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_CODE2)]
+        public string CountryID_Code2
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.Code2;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_CODE3)]
+        public string CountryID_Code3
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.Code3;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_ABBRNAMECN)]
+        public string CountryID_AbbrNameCN
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.AbbrNameCN;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_ABBRNAMEEN)]
+        public string CountryID_AbbrNameEN
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.AbbrNameEN;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_FULLNAMECN)]
+        public string CountryID_FullNameCn
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.FullNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_COUNTRYID_FULLNAMEEN)]
+        public string CountryID_FullNameEn
+        {
+            get
+            {
+                if (this. CountryID == null)
+                    return null;
+                return  CountryID.FullNameEn;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

@@ -105,18 +105,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region departmentID字段外键查询字段
-        public static readonly string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
-		public static readonly string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
-		public static readonly string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
-		public static readonly string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
+        public const string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
+		public const string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
+		public const string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
+		public const string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -580,7 +580,124 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region departmentID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTID)]
+        public int? DepartmentID_DepartmentID
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID)]
+        public SystemDepartmentWrapper DepartmentID_ParentDepartmentID
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.ParentDepartmentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN)]
+        public string DepartmentID_DepartmentNameCn
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN)]
+        public string DepartmentID_DepartmentNameEn
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION)]
+        public string DepartmentID_DepartmentDecription
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentDecription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX)]
+        public int? DepartmentID_DepartmentSortIndex
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentSortIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_CREATEBY)]
+        public int? DepartmentID_CreateBy
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_CREATEAT)]
+        public DateTime? DepartmentID_CreateAt
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYBY)]
+        public int? DepartmentID_LastModifyBy
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYAT)]
+        public DateTime? DepartmentID_LastModifyAt
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT)]
+        public string DepartmentID_LastModifyComment
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

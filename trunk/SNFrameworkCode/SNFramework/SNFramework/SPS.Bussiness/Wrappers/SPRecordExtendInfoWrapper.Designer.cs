@@ -92,26 +92,26 @@ namespace SPS.Bussiness.Wrappers
 	
  
 		#region recordID字段外键查询字段
-        public static readonly string PROPERTY_RECORDID_ALIAS_NAME = "RecordID_SPRecordExtendInfoEntity_Alias";
-		public static readonly string PROPERTY_RECORDID_ID = "RecordID_SPRecordExtendInfoEntity_Alias.Id";
-		public static readonly string PROPERTY_RECORDID_LINKID = "RecordID_SPRecordExtendInfoEntity_Alias.LinkID";
-		public static readonly string PROPERTY_RECORDID_MO = "RecordID_SPRecordExtendInfoEntity_Alias.Mo";
-		public static readonly string PROPERTY_RECORDID_MOBILE = "RecordID_SPRecordExtendInfoEntity_Alias.Mobile";
-		public static readonly string PROPERTY_RECORDID_SPNUMBER = "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber";
-		public static readonly string PROPERTY_RECORDID_PROVINCE = "RecordID_SPRecordExtendInfoEntity_Alias.Province";
-		public static readonly string PROPERTY_RECORDID_CITY = "RecordID_SPRecordExtendInfoEntity_Alias.City";
-		public static readonly string PROPERTY_RECORDID_CREATEDATE = "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate";
-		public static readonly string PROPERTY_RECORDID_ISREPORT = "RecordID_SPRecordExtendInfoEntity_Alias.IsReport";
-		public static readonly string PROPERTY_RECORDID_ISINTERCEPT = "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept";
-		public static readonly string PROPERTY_RECORDID_ISSYCNTOCLIENT = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnToClient";
-		public static readonly string PROPERTY_RECORDID_ISSYCNSUCCESSED = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnSuccessed";
-		public static readonly string PROPERTY_RECORDID_ISSTATOK = "RecordID_SPRecordExtendInfoEntity_Alias.IsStatOK";
-		public static readonly string PROPERTY_RECORDID_SYCNRETRYTIMES = "RecordID_SPRecordExtendInfoEntity_Alias.SycnRetryTimes";
-		public static readonly string PROPERTY_RECORDID_CHANNELID = "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID";
-		public static readonly string PROPERTY_RECORDID_CLIENTID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientID";
-		public static readonly string PROPERTY_RECORDID_CODEID = "RecordID_SPRecordExtendInfoEntity_Alias.CodeID";
-		public static readonly string PROPERTY_RECORDID_PRICE = "RecordID_SPRecordExtendInfoEntity_Alias.Price";
-		public static readonly string PROPERTY_RECORDID_COUNT = "RecordID_SPRecordExtendInfoEntity_Alias.Count";
+        public const string PROPERTY_RECORDID_ALIAS_NAME = "RecordID_SPRecordExtendInfoEntity_Alias";
+		public const string PROPERTY_RECORDID_ID = "RecordID_SPRecordExtendInfoEntity_Alias.Id";
+		public const string PROPERTY_RECORDID_LINKID = "RecordID_SPRecordExtendInfoEntity_Alias.LinkID";
+		public const string PROPERTY_RECORDID_MO = "RecordID_SPRecordExtendInfoEntity_Alias.Mo";
+		public const string PROPERTY_RECORDID_MOBILE = "RecordID_SPRecordExtendInfoEntity_Alias.Mobile";
+		public const string PROPERTY_RECORDID_SPNUMBER = "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber";
+		public const string PROPERTY_RECORDID_PROVINCE = "RecordID_SPRecordExtendInfoEntity_Alias.Province";
+		public const string PROPERTY_RECORDID_CITY = "RecordID_SPRecordExtendInfoEntity_Alias.City";
+		public const string PROPERTY_RECORDID_CREATEDATE = "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate";
+		public const string PROPERTY_RECORDID_ISREPORT = "RecordID_SPRecordExtendInfoEntity_Alias.IsReport";
+		public const string PROPERTY_RECORDID_ISINTERCEPT = "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept";
+		public const string PROPERTY_RECORDID_ISSYCNTOCLIENT = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnToClient";
+		public const string PROPERTY_RECORDID_ISSYCNSUCCESSED = "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnSuccessed";
+		public const string PROPERTY_RECORDID_ISSTATOK = "RecordID_SPRecordExtendInfoEntity_Alias.IsStatOK";
+		public const string PROPERTY_RECORDID_SYCNRETRYTIMES = "RecordID_SPRecordExtendInfoEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_RECORDID_CHANNELID = "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID";
+		public const string PROPERTY_RECORDID_CLIENTID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientID";
+		public const string PROPERTY_RECORDID_CODEID = "RecordID_SPRecordExtendInfoEntity_Alias.CodeID";
+		public const string PROPERTY_RECORDID_PRICE = "RecordID_SPRecordExtendInfoEntity_Alias.Price";
+		public const string PROPERTY_RECORDID_COUNT = "RecordID_SPRecordExtendInfoEntity_Alias.Count";
 		#endregion
       	
 	
@@ -393,7 +393,204 @@ namespace SPS.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region recordID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ID)]
+        public int? RecordID_Id
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_LINKID)]
+        public string RecordID_LinkID
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.LinkID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_MO)]
+        public string RecordID_Mo
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Mo;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_MOBILE)]
+        public string RecordID_Mobile
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Mobile;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_SPNUMBER)]
+        public string RecordID_SpNumber
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.SpNumber;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_PROVINCE)]
+        public string RecordID_Province
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Province;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CITY)]
+        public string RecordID_City
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.City;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CREATEDATE)]
+        public DateTime? RecordID_CreateDate
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.CreateDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ISREPORT)]
+        public bool? RecordID_IsReport
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.IsReport;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ISINTERCEPT)]
+        public bool? RecordID_IsIntercept
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.IsIntercept;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ISSYCNTOCLIENT)]
+        public bool? RecordID_IsSycnToClient
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.IsSycnToClient;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ISSYCNSUCCESSED)]
+        public bool? RecordID_IsSycnSuccessed
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.IsSycnSuccessed;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_ISSTATOK)]
+        public bool? RecordID_IsStatOK
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.IsStatOK;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_SYCNRETRYTIMES)]
+        public int? RecordID_SycnRetryTimes
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.SycnRetryTimes;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CHANNELID)]
+        public SPChannelWrapper RecordID_ChannelID
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.ChannelID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CLIENTID)]
+        public SPSClientWrapper RecordID_ClientID
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.ClientID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CODEID)]
+        public SPCodeWrapper RecordID_CodeID
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.CodeID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_PRICE)]
+        public decimal? RecordID_Price
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Price;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_COUNT)]
+        public int? RecordID_Count
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.Count;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

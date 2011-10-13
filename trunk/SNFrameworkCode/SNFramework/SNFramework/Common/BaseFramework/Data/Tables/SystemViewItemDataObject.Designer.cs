@@ -96,7 +96,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "SystemViewID_SystemViewItemEntity_Alias":
                     queryGenerator.AddAlians(SystemViewItemEntity.PROPERTY_NAME_SYSTEMVIEWID, PROPERTY_SYSTEMVIEWID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

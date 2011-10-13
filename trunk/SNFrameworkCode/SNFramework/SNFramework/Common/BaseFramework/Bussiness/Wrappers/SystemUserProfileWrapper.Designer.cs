@@ -84,45 +84,45 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region userID字段外键查询字段
-        public static readonly string PROPERTY_USERID_ALIAS_NAME = "UserID_SystemUserProfileEntity_Alias";
-		public static readonly string PROPERTY_USERID_USERID = "UserID_SystemUserProfileEntity_Alias.UserID";
-		public static readonly string PROPERTY_USERID_USERLOGINID = "UserID_SystemUserProfileEntity_Alias.UserLoginID";
-		public static readonly string PROPERTY_USERID_USERNAME = "UserID_SystemUserProfileEntity_Alias.UserName";
-		public static readonly string PROPERTY_USERID_USEREMAIL = "UserID_SystemUserProfileEntity_Alias.UserEmail";
-		public static readonly string PROPERTY_USERID_USERPASSWORD = "UserID_SystemUserProfileEntity_Alias.UserPassword";
-		public static readonly string PROPERTY_USERID_USERSTATUS = "UserID_SystemUserProfileEntity_Alias.UserStatus";
-		public static readonly string PROPERTY_USERID_USERCREATEDATE = "UserID_SystemUserProfileEntity_Alias.UserCreateDate";
-		public static readonly string PROPERTY_USERID_USERTYPE = "UserID_SystemUserProfileEntity_Alias.UserType";
-		public static readonly string PROPERTY_USERID_DEPARTMENTID = "UserID_SystemUserProfileEntity_Alias.DepartmentID";
-		public static readonly string PROPERTY_USERID_MOBILEPIN = "UserID_SystemUserProfileEntity_Alias.MobilePIN";
-		public static readonly string PROPERTY_USERID_PASSWORDFORMAT = "UserID_SystemUserProfileEntity_Alias.PasswordFormat";
-		public static readonly string PROPERTY_USERID_PASSWORDQUESTION = "UserID_SystemUserProfileEntity_Alias.PasswordQuestion";
-		public static readonly string PROPERTY_USERID_PASSWORDANSWER = "UserID_SystemUserProfileEntity_Alias.PasswordAnswer";
-		public static readonly string PROPERTY_USERID_COMMENTS = "UserID_SystemUserProfileEntity_Alias.Comments";
-		public static readonly string PROPERTY_USERID_ISAPPROVED = "UserID_SystemUserProfileEntity_Alias.IsApproved";
-		public static readonly string PROPERTY_USERID_ISLOCKEDOUT = "UserID_SystemUserProfileEntity_Alias.IsLockedOut";
-		public static readonly string PROPERTY_USERID_LASTACTIVITYDATE = "UserID_SystemUserProfileEntity_Alias.LastActivityDate";
-		public static readonly string PROPERTY_USERID_LASTLOGINDATE = "UserID_SystemUserProfileEntity_Alias.LastLoginDate";
-		public static readonly string PROPERTY_USERID_LASTLOCKEDOUTDATE = "UserID_SystemUserProfileEntity_Alias.LastLockedOutDate";
-		public static readonly string PROPERTY_USERID_LASTPASSWORDCHANGEDATE = "UserID_SystemUserProfileEntity_Alias.LastPasswordChangeDate";
-		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTCNT = "UserID_SystemUserProfileEntity_Alias.FailedPwdAttemptCnt";
-		public static readonly string PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART = "UserID_SystemUserProfileEntity_Alias.FailedPwdAttemptWndStart";
-		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT = "UserID_SystemUserProfileEntity_Alias.FailedPwdAnsAttemptCnt";
-		public static readonly string PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART = "UserID_SystemUserProfileEntity_Alias.FailedPwdAnsAttemptWndStart";
-		public static readonly string PROPERTY_USERID_ISNEEDCHGPWD = "UserID_SystemUserProfileEntity_Alias.IsNeedChgPwd";
-		public static readonly string PROPERTY_USERID_PASSWORDSALT = "UserID_SystemUserProfileEntity_Alias.PasswordSalt";
-		public static readonly string PROPERTY_USERID_LOWEREDEMAIL = "UserID_SystemUserProfileEntity_Alias.LoweredEmail";
-		public static readonly string PROPERTY_USERID_CREATEBY = "UserID_SystemUserProfileEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_USERID_CREATEAT = "UserID_SystemUserProfileEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserProfileEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserProfileEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserProfileEntity_Alias.LastModifyComment";
+        public const string PROPERTY_USERID_ALIAS_NAME = "UserID_SystemUserProfileEntity_Alias";
+		public const string PROPERTY_USERID_USERID = "UserID_SystemUserProfileEntity_Alias.UserID";
+		public const string PROPERTY_USERID_USERLOGINID = "UserID_SystemUserProfileEntity_Alias.UserLoginID";
+		public const string PROPERTY_USERID_USERNAME = "UserID_SystemUserProfileEntity_Alias.UserName";
+		public const string PROPERTY_USERID_USEREMAIL = "UserID_SystemUserProfileEntity_Alias.UserEmail";
+		public const string PROPERTY_USERID_USERPASSWORD = "UserID_SystemUserProfileEntity_Alias.UserPassword";
+		public const string PROPERTY_USERID_USERSTATUS = "UserID_SystemUserProfileEntity_Alias.UserStatus";
+		public const string PROPERTY_USERID_USERCREATEDATE = "UserID_SystemUserProfileEntity_Alias.UserCreateDate";
+		public const string PROPERTY_USERID_USERTYPE = "UserID_SystemUserProfileEntity_Alias.UserType";
+		public const string PROPERTY_USERID_DEPARTMENTID = "UserID_SystemUserProfileEntity_Alias.DepartmentID";
+		public const string PROPERTY_USERID_MOBILEPIN = "UserID_SystemUserProfileEntity_Alias.MobilePIN";
+		public const string PROPERTY_USERID_PASSWORDFORMAT = "UserID_SystemUserProfileEntity_Alias.PasswordFormat";
+		public const string PROPERTY_USERID_PASSWORDQUESTION = "UserID_SystemUserProfileEntity_Alias.PasswordQuestion";
+		public const string PROPERTY_USERID_PASSWORDANSWER = "UserID_SystemUserProfileEntity_Alias.PasswordAnswer";
+		public const string PROPERTY_USERID_COMMENTS = "UserID_SystemUserProfileEntity_Alias.Comments";
+		public const string PROPERTY_USERID_ISAPPROVED = "UserID_SystemUserProfileEntity_Alias.IsApproved";
+		public const string PROPERTY_USERID_ISLOCKEDOUT = "UserID_SystemUserProfileEntity_Alias.IsLockedOut";
+		public const string PROPERTY_USERID_LASTACTIVITYDATE = "UserID_SystemUserProfileEntity_Alias.LastActivityDate";
+		public const string PROPERTY_USERID_LASTLOGINDATE = "UserID_SystemUserProfileEntity_Alias.LastLoginDate";
+		public const string PROPERTY_USERID_LASTLOCKEDOUTDATE = "UserID_SystemUserProfileEntity_Alias.LastLockedOutDate";
+		public const string PROPERTY_USERID_LASTPASSWORDCHANGEDATE = "UserID_SystemUserProfileEntity_Alias.LastPasswordChangeDate";
+		public const string PROPERTY_USERID_FAILEDPWDATTEMPTCNT = "UserID_SystemUserProfileEntity_Alias.FailedPwdAttemptCnt";
+		public const string PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART = "UserID_SystemUserProfileEntity_Alias.FailedPwdAttemptWndStart";
+		public const string PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT = "UserID_SystemUserProfileEntity_Alias.FailedPwdAnsAttemptCnt";
+		public const string PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART = "UserID_SystemUserProfileEntity_Alias.FailedPwdAnsAttemptWndStart";
+		public const string PROPERTY_USERID_ISNEEDCHGPWD = "UserID_SystemUserProfileEntity_Alias.IsNeedChgPwd";
+		public const string PROPERTY_USERID_PASSWORDSALT = "UserID_SystemUserProfileEntity_Alias.PasswordSalt";
+		public const string PROPERTY_USERID_LOWEREDEMAIL = "UserID_SystemUserProfileEntity_Alias.LoweredEmail";
+		public const string PROPERTY_USERID_CREATEBY = "UserID_SystemUserProfileEntity_Alias.CreateBy";
+		public const string PROPERTY_USERID_CREATEAT = "UserID_SystemUserProfileEntity_Alias.CreateAt";
+		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserProfileEntity_Alias.LastModifyBy";
+		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserProfileEntity_Alias.LastModifyAt";
+		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserProfileEntity_Alias.LastModifyComment";
 		#endregion
 		#region propertyID字段外键查询字段
-        public static readonly string PROPERTY_PROPERTYID_ALIAS_NAME = "PropertyID_SystemUserProfileEntity_Alias";
-		public static readonly string PROPERTY_PROPERTYID_PROPERTYID = "PropertyID_SystemUserProfileEntity_Alias.PropertyID";
-		public static readonly string PROPERTY_PROPERTYID_PROPERTYNAME = "PropertyID_SystemUserProfileEntity_Alias.PropertyName";
-		public static readonly string PROPERTY_PROPERTYID_PROPERTYDESCRIPTION = "PropertyID_SystemUserProfileEntity_Alias.PropertyDescription";
+        public const string PROPERTY_PROPERTYID_ALIAS_NAME = "PropertyID_SystemUserProfileEntity_Alias";
+		public const string PROPERTY_PROPERTYID_PROPERTYID = "PropertyID_SystemUserProfileEntity_Alias.PropertyID";
+		public const string PROPERTY_PROPERTYID_PROPERTYNAME = "PropertyID_SystemUserProfileEntity_Alias.PropertyName";
+		public const string PROPERTY_PROPERTYID_PROPERTYDESCRIPTION = "PropertyID_SystemUserProfileEntity_Alias.PropertyDescription";
 		#endregion
       	
 	
@@ -292,7 +292,366 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region userID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERID)]
+        public int? UserID_UserID
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERLOGINID)]
+        public string UserID_UserLoginID
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserLoginID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERNAME)]
+        public string UserID_UserName
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USEREMAIL)]
+        public string UserID_UserEmail
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserEmail;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERPASSWORD)]
+        public string UserID_UserPassword
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserPassword;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERSTATUS)]
+        public string UserID_UserStatus
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserStatus;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERCREATEDATE)]
+        public DateTime? UserID_UserCreateDate
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserCreateDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_USERTYPE)]
+        public string UserID_UserType
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.UserType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_DEPARTMENTID)]
+        public SystemDepartmentWrapper UserID_DepartmentID
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.DepartmentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_MOBILEPIN)]
+        public string UserID_MobilePIN
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.MobilePIN;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_PASSWORDFORMAT)]
+        public int? UserID_PasswordFormat
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.PasswordFormat;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_PASSWORDQUESTION)]
+        public string UserID_PasswordQuestion
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.PasswordQuestion;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_PASSWORDANSWER)]
+        public string UserID_PasswordAnswer
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.PasswordAnswer;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_COMMENTS)]
+        public string UserID_Comments
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.Comments;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_ISAPPROVED)]
+        public bool? UserID_IsApproved
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.IsApproved;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_ISLOCKEDOUT)]
+        public bool? UserID_IsLockedOut
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.IsLockedOut;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTACTIVITYDATE)]
+        public DateTime? UserID_LastActivityDate
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastActivityDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTLOGINDATE)]
+        public DateTime? UserID_LastLoginDate
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastLoginDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTLOCKEDOUTDATE)]
+        public DateTime? UserID_LastLockedOutDate
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastLockedOutDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTPASSWORDCHANGEDATE)]
+        public DateTime? UserID_LastPasswordChangeDate
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastPasswordChangeDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_FAILEDPWDATTEMPTCNT)]
+        public int? UserID_FailedPwdAttemptCnt
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.FailedPwdAttemptCnt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART)]
+        public DateTime? UserID_FailedPwdAttemptWndStart
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.FailedPwdAttemptWndStart;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT)]
+        public int? UserID_FailedPwdAnsAttemptCnt
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.FailedPwdAnsAttemptCnt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART)]
+        public DateTime? UserID_FailedPwdAnsAttemptWndStart
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.FailedPwdAnsAttemptWndStart;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_ISNEEDCHGPWD)]
+        public bool? UserID_IsNeedChgPwd
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.IsNeedChgPwd;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_PASSWORDSALT)]
+        public string UserID_PasswordSalt
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.PasswordSalt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LOWEREDEMAIL)]
+        public string UserID_LoweredEmail
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LoweredEmail;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_CREATEBY)]
+        public int? UserID_CreateBy
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_CREATEAT)]
+        public DateTime? UserID_CreateAt
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTMODIFYBY)]
+        public int? UserID_LastModifyBy
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTMODIFYAT)]
+        public DateTime? UserID_LastModifyAt
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTMODIFYCOMMENT)]
+        public string UserID_LastModifyComment
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region propertyID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROPERTYID_PROPERTYID)]
+        public int? PropertyID_PropertyID
+        {
+            get
+            {
+                if (this. PropertyID == null)
+                    return null;
+                return  PropertyID.PropertyID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROPERTYID_PROPERTYNAME)]
+        public string PropertyID_PropertyName
+        {
+            get
+            {
+                if (this. PropertyID == null)
+                    return null;
+                return  PropertyID.PropertyName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_PROPERTYID_PROPERTYDESCRIPTION)]
+        public string PropertyID_PropertyDescription
+        {
+            get
+            {
+                if (this. PropertyID == null)
+                    return null;
+                return  PropertyID.PropertyDescription;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

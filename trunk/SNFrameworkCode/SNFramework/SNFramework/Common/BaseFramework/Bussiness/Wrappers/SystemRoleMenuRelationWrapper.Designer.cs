@@ -76,40 +76,40 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region menuID字段外键查询字段
-        public static readonly string PROPERTY_MENUID_ALIAS_NAME = "MenuID_SystemRoleMenuRelationEntity_Alias";
-		public static readonly string PROPERTY_MENUID_MENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuID";
-		public static readonly string PROPERTY_MENUID_MENUNAME = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuName";
-		public static readonly string PROPERTY_MENUID_MENUCODE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuCode";
-		public static readonly string PROPERTY_MENUID_MENUDESCRIPTION = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuDescription";
-		public static readonly string PROPERTY_MENUID_MENUURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrl";
-		public static readonly string PROPERTY_MENUID_MENUURLTARGET = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrlTarget";
-		public static readonly string PROPERTY_MENUID_MENUICONURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIconUrl";
-		public static readonly string PROPERTY_MENUID_MENUISCATEGORY = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsCategory";
-		public static readonly string PROPERTY_MENUID_PARENTMENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.ParentMenuID";
-		public static readonly string PROPERTY_MENUID_MENUORDER = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuOrder";
-		public static readonly string PROPERTY_MENUID_MENUTYPE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuType";
-		public static readonly string PROPERTY_MENUID_MENUISSYSTEMMENU = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsSystemMenu";
-		public static readonly string PROPERTY_MENUID_MENUISENABLE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsEnable";
-		public static readonly string PROPERTY_MENUID_APPLICATIONID = "MenuID_SystemRoleMenuRelationEntity_Alias.ApplicationID";
-		public static readonly string PROPERTY_MENUID_CREATEBY = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_MENUID_CREATEAT = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_MENUID_LASTMODIFYBY = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_MENUID_LASTMODIFYAT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_MENUID_LASTMODIFYCOMMENT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_MENUID_ALIAS_NAME = "MenuID_SystemRoleMenuRelationEntity_Alias";
+		public const string PROPERTY_MENUID_MENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuID";
+		public const string PROPERTY_MENUID_MENUNAME = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuName";
+		public const string PROPERTY_MENUID_MENUCODE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuCode";
+		public const string PROPERTY_MENUID_MENUDESCRIPTION = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuDescription";
+		public const string PROPERTY_MENUID_MENUURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrl";
+		public const string PROPERTY_MENUID_MENUURLTARGET = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrlTarget";
+		public const string PROPERTY_MENUID_MENUICONURL = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIconUrl";
+		public const string PROPERTY_MENUID_MENUISCATEGORY = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsCategory";
+		public const string PROPERTY_MENUID_PARENTMENUID = "MenuID_SystemRoleMenuRelationEntity_Alias.ParentMenuID";
+		public const string PROPERTY_MENUID_MENUORDER = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuOrder";
+		public const string PROPERTY_MENUID_MENUTYPE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuType";
+		public const string PROPERTY_MENUID_MENUISSYSTEMMENU = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsSystemMenu";
+		public const string PROPERTY_MENUID_MENUISENABLE = "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsEnable";
+		public const string PROPERTY_MENUID_APPLICATIONID = "MenuID_SystemRoleMenuRelationEntity_Alias.ApplicationID";
+		public const string PROPERTY_MENUID_CREATEBY = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_MENUID_CREATEAT = "MenuID_SystemRoleMenuRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_MENUID_LASTMODIFYBY = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_MENUID_LASTMODIFYAT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_MENUID_LASTMODIFYCOMMENT = "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
 		#endregion
 		#region roleID字段外键查询字段
-        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleMenuRelationEntity_Alias";
-		public static readonly string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleID";
-		public static readonly string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleName";
-		public static readonly string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleCode";
-		public static readonly string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleDescription";
-		public static readonly string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleIsSystemRole";
-		public static readonly string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleType";
-		public static readonly string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemRoleMenuRelationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemRoleMenuRelationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemRoleMenuRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -167,7 +167,316 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region menuID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUID)]
+        public int? MenuID_MenuID
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUNAME)]
+        public string MenuID_MenuName
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUCODE)]
+        public string MenuID_MenuCode
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUDESCRIPTION)]
+        public string MenuID_MenuDescription
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUURL)]
+        public string MenuID_MenuUrl
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUURLTARGET)]
+        public string MenuID_MenuUrlTarget
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuUrlTarget;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUICONURL)]
+        public string MenuID_MenuIconUrl
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuIconUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUISCATEGORY)]
+        public bool? MenuID_MenuIsCategory
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuIsCategory;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_PARENTMENUID)]
+        public SystemMenuWrapper MenuID_ParentMenuID
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.ParentMenuID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUORDER)]
+        public int? MenuID_MenuOrder
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuOrder;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUTYPE)]
+        public string MenuID_MenuType
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUISSYSTEMMENU)]
+        public bool? MenuID_MenuIsSystemMenu
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuIsSystemMenu;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_MENUISENABLE)]
+        public bool? MenuID_MenuIsEnable
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.MenuIsEnable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_APPLICATIONID)]
+        public SystemApplicationWrapper MenuID_ApplicationID
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.ApplicationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_CREATEBY)]
+        public int? MenuID_CreateBy
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_CREATEAT)]
+        public DateTime? MenuID_CreateAt
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_LASTMODIFYBY)]
+        public int? MenuID_LastModifyBy
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_LASTMODIFYAT)]
+        public DateTime? MenuID_LastModifyAt
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MENUID_LASTMODIFYCOMMENT)]
+        public string MenuID_LastModifyComment
+        {
+            get
+            {
+                if (this. MenuID == null)
+                    return null;
+                return  MenuID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region roleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEID)]
+        public int? RoleID_RoleID
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLENAME)]
+        public string RoleID_RoleName
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLECODE)]
+        public string RoleID_RoleCode
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEDESCRIPTION)]
+        public string RoleID_RoleDescription
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEISSYSTEMROLE)]
+        public bool? RoleID_RoleIsSystemRole
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleIsSystemRole;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLETYPE)]
+        public string RoleID_RoleType
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEBY)]
+        public int? RoleID_CreateBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEAT)]
+        public DateTime? RoleID_CreateAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYBY)]
+        public int? RoleID_LastModifyBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYAT)]
+        public DateTime? RoleID_LastModifyAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYCOMMENT)]
+        public string RoleID_LastModifyComment
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

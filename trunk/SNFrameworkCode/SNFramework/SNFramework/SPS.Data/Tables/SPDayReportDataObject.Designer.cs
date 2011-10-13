@@ -202,7 +202,8 @@ namespace SPS.Data.Tables
 	            case "UperID_SPDayReportEntity_Alias":
                     queryGenerator.AddAlians(SPDayReportEntity.PROPERTY_NAME_UPERID, PROPERTY_UPERID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

@@ -161,7 +161,12 @@ namespace SPS.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

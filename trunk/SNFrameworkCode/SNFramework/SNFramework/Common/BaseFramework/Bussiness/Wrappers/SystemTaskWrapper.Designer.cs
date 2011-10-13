@@ -356,7 +356,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

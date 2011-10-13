@@ -118,7 +118,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 	            case "ResourceID_SystemOperationEntity_Alias":
                     queryGenerator.AddAlians(SystemOperationEntity.PROPERTY_NAME_RESOURCEID, PROPERTY_RESOURCEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

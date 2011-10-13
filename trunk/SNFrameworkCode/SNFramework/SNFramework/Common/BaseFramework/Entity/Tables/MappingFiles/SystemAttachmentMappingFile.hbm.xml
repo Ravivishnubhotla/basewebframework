@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemAttachmentEntity,Legendigital.Framework.Common" table="SystemAttachment" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="FileName" type="string" name="FileName"   length="400" />	
+		<property column="MD5" type="string" name="Md5"   length="60" />	
+		<property column="Size" type="int" name="Size"   />	
+		<property column="FileExt" type="string" name="FileExt"   length="20" />	
+		<property column="Pages" type="int" name="Pages"   />	
+		<property column="FilePath" type="string" name="FilePath"   length="400" />	
+		<property column="ParentType" type="string" name="ParentType"   length="100" />	
+		<property column="ParentID" type="int" name="ParentID"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
+
+
+
+
+</class>
+</hibernate-mapping>

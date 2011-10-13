@@ -104,7 +104,8 @@ namespace SPS.Data.Tables
 	            case "CodeID_SPCodeFilterEntity_Alias":
                     queryGenerator.AddAlians(SPCodeFilterEntity.PROPERTY_NAME_CODEID, PROPERTY_CODEID_ALIAS_NAME);
                     break;
-
+                default:
+                    break;
  
             }
         }

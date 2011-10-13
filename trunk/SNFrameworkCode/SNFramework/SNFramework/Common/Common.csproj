@@ -165,6 +165,14 @@
   <ItemGroup>
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.Designer.cs">
+      <DependentUpon>SystemAttachmentContentServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentServiceProxy.Designer.cs">
+      <DependentUpon>SystemAttachmentServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.Designer.cs">
       <DependentUpon>SystemCityServiceProxy.cs</DependentUpon>
@@ -232,6 +240,14 @@
     <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.Designer.cs">
+      <DependentUpon>SystemAttachmentContentWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentWrapper.Designer.cs">
+      <DependentUpon>SystemAttachmentWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.Designer.cs">
       <DependentUpon>SystemCityWrapper.cs</DependentUpon>
@@ -295,6 +311,14 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.Designer.cs">
       <DependentUpon>SystemWorkFlowWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.Designer.cs">
+      <DependentUpon>SystemAttachmentContentDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentDataObject.Designer.cs">
+      <DependentUpon>SystemAttachmentDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.Designer.cs">
@@ -365,6 +389,14 @@
     <Compile Include="BaseFramework\Document\DataFileldType.cs" />
     <Compile Include="BaseFramework\Document\IDatabaseSchemaBuilder.cs" />
     <Compile Include="BaseFramework\Document\MSSQLDataBaseSchemaBulider.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.Designer.cs">
+      <DependentUpon>SystemAttachmentContentEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentEntity.Designer.cs">
+      <DependentUpon>SystemAttachmentEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.Designer.cs">
       <DependentUpon>SystemCityEntity.cs</DependentUpon>
@@ -431,6 +463,8 @@
     </Compile>
     <Compile Include="BaseFramework\NavMenu.cs" />
     <Compile Include="BaseFramework\Utility\NameListItem.cs" />
+    <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
+    <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />
@@ -442,6 +476,8 @@
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\IntProperty.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\StringProperty.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\TypedCriterionProperty.cs" />
+    <Compile Include="Entity\BaseTableEntity.cs" />
+    <Compile Include="Entity\BaseViewEntity.cs" />
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
     <Compile Include="Images\PdfProcessing.cs" />
@@ -1081,6 +1117,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTemplateMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentContentMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

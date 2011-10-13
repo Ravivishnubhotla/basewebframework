@@ -84,7 +84,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 
-
         public static List<SystemApplicationWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             List<SystemApplicationWrapper> results = null;

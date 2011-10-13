@@ -88,20 +88,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	
  
 		#region moudleID字段外键查询字段
-        public static readonly string PROPERTY_MOUDLEID_ALIAS_NAME = "MoudleID_SystemResourcesEntity_Alias";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEID = "MoudleID_SystemResourcesEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMECN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEEN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEDB = "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = "MoudleID_SystemResourcesEntity_Alias.MoudleDescription";
-		public static readonly string PROPERTY_MOUDLEID_APPLICATIONID = "MoudleID_SystemResourcesEntity_Alias.ApplicationID";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle";
-		public static readonly string PROPERTY_MOUDLEID_ORDERINDEX = "MoudleID_SystemResourcesEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_MOUDLEID_CREATEBY = "MoudleID_SystemResourcesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_MOUDLEID_CREATEAT = "MoudleID_SystemResourcesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYBY = "MoudleID_SystemResourcesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYAT = "MoudleID_SystemResourcesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYCOMMENT = "MoudleID_SystemResourcesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_MOUDLEID_ALIAS_NAME = "MoudleID_SystemResourcesEntity_Alias";
+		public const string PROPERTY_MOUDLEID_MOUDLEID = "MoudleID_SystemResourcesEntity_Alias.MoudleID";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMECN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMEEN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMEDB = "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb";
+		public const string PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = "MoudleID_SystemResourcesEntity_Alias.MoudleDescription";
+		public const string PROPERTY_MOUDLEID_APPLICATIONID = "MoudleID_SystemResourcesEntity_Alias.ApplicationID";
+		public const string PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle";
+		public const string PROPERTY_MOUDLEID_ORDERINDEX = "MoudleID_SystemResourcesEntity_Alias.OrderIndex";
+		public const string PROPERTY_MOUDLEID_CREATEBY = "MoudleID_SystemResourcesEntity_Alias.CreateBy";
+		public const string PROPERTY_MOUDLEID_CREATEAT = "MoudleID_SystemResourcesEntity_Alias.CreateAt";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYBY = "MoudleID_SystemResourcesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYAT = "MoudleID_SystemResourcesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYCOMMENT = "MoudleID_SystemResourcesEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -327,7 +327,144 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region moudleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLEID)]
+        public int? MoudleID_MoudleID
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLENAMECN)]
+        public string MoudleID_MoudleNameCn
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLENAMEEN)]
+        public string MoudleID_MoudleNameEn
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLENAMEDB)]
+        public string MoudleID_MoudleNameDb
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleNameDb;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLEDESCRIPTION)]
+        public string MoudleID_MoudleDescription
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_APPLICATIONID)]
+        public SystemApplicationWrapper MoudleID_ApplicationID
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.ApplicationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE)]
+        public bool? MoudleID_MoudleIsSystemMoudle
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.MoudleIsSystemMoudle;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_ORDERINDEX)]
+        public int? MoudleID_OrderIndex
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.OrderIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_CREATEBY)]
+        public int? MoudleID_CreateBy
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_CREATEAT)]
+        public DateTime? MoudleID_CreateAt
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_LASTMODIFYBY)]
+        public int? MoudleID_LastModifyBy
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_LASTMODIFYAT)]
+        public DateTime? MoudleID_LastModifyAt
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_MOUDLEID_LASTMODIFYCOMMENT)]
+        public string MoudleID_LastModifyComment
+        {
+            get
+            {
+                if (this. MoudleID == null)
+                    return null;
+                return  MoudleID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"

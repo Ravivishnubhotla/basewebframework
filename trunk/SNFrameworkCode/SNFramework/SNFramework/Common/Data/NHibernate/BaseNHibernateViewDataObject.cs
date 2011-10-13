@@ -7,6 +7,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
+using Legendigital.Framework.Common.Entity;
 using Legendigital.Framework.Common.Utility;
 using NHibernate;
 using NHibernate.Collection;
@@ -18,7 +19,7 @@ using Spring.Data.NHibernate.Generic.Support;
 namespace Legendigital.Framework.Common.Data.NHibernate
 {
     public abstract class BaseNHibernateViewDataObject<DomainType> : HibernateDaoSupport,
-                                                                     IBaseNHibernateViewDataObject<DomainType>
+                                                                     IBaseNHibernateViewDataObject<DomainType> where DomainType : BaseViewEntity
     {
         #region 基本操作
 

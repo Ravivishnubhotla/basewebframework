@@ -7,6 +7,7 @@ using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Entity;
 using NHibernate.Criterion;
 using Spring.Transaction;
 using Spring.Transaction.Interceptor;
@@ -15,7 +16,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 {
 
 
-    public class BaseSpringNHibernateEntityServiceProxy<DomainType> : IBaseSpringNHibernateEntityServiceProxy<DomainType>
+    public class BaseSpringNHibernateEntityServiceProxy<DomainType> : IBaseSpringNHibernateEntityServiceProxy<DomainType> where DomainType : BaseTableEntity
     {
         protected IBaseNHibernateDataObject<DomainType> selfDataObject;
 

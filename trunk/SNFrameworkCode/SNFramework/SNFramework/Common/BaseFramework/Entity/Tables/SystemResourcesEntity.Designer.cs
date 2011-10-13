@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	????
 	/// </summary>
 	[DataContract]
-	public partial class SystemResourcesEntity : ICloneable
+	public partial class SystemResourcesEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -34,20 +35,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
  
 		#region moudleID字段外键查询字段
-        public static readonly string PROPERTY_MOUDLEID_ALIAS_NAME = "MoudleID_SystemResourcesEntity_Alias";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEID = "MoudleID_SystemResourcesEntity_Alias.MoudleID";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMECN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEEN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLENAMEDB = "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = "MoudleID_SystemResourcesEntity_Alias.MoudleDescription";
-		public static readonly string PROPERTY_MOUDLEID_APPLICATIONID = "MoudleID_SystemResourcesEntity_Alias.ApplicationID";
-		public static readonly string PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle";
-		public static readonly string PROPERTY_MOUDLEID_ORDERINDEX = "MoudleID_SystemResourcesEntity_Alias.OrderIndex";
-		public static readonly string PROPERTY_MOUDLEID_CREATEBY = "MoudleID_SystemResourcesEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_MOUDLEID_CREATEAT = "MoudleID_SystemResourcesEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYBY = "MoudleID_SystemResourcesEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYAT = "MoudleID_SystemResourcesEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_MOUDLEID_LASTMODIFYCOMMENT = "MoudleID_SystemResourcesEntity_Alias.LastModifyComment";
+        public const string PROPERTY_MOUDLEID_ALIAS_NAME = "MoudleID_SystemResourcesEntity_Alias";
+		public const string PROPERTY_MOUDLEID_MOUDLEID = "MoudleID_SystemResourcesEntity_Alias.MoudleID";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMECN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMEEN = "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn";
+		public const string PROPERTY_MOUDLEID_MOUDLENAMEDB = "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb";
+		public const string PROPERTY_MOUDLEID_MOUDLEDESCRIPTION = "MoudleID_SystemResourcesEntity_Alias.MoudleDescription";
+		public const string PROPERTY_MOUDLEID_APPLICATIONID = "MoudleID_SystemResourcesEntity_Alias.ApplicationID";
+		public const string PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE = "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle";
+		public const string PROPERTY_MOUDLEID_ORDERINDEX = "MoudleID_SystemResourcesEntity_Alias.OrderIndex";
+		public const string PROPERTY_MOUDLEID_CREATEBY = "MoudleID_SystemResourcesEntity_Alias.CreateBy";
+		public const string PROPERTY_MOUDLEID_CREATEAT = "MoudleID_SystemResourcesEntity_Alias.CreateAt";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYBY = "MoudleID_SystemResourcesEntity_Alias.LastModifyBy";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYAT = "MoudleID_SystemResourcesEntity_Alias.LastModifyAt";
+		public const string PROPERTY_MOUDLEID_LASTMODIFYCOMMENT = "MoudleID_SystemResourcesEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -60,8 +61,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _resourcesID;
 		private string _resourcesNameCn;
@@ -358,36 +358,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -395,13 +370,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemResourcesEntity castObj = (SystemResourcesEntity)obj;
-			
-			return ( castObj != null ) && ( this._resourcesID == castObj.ResourcesID );
+			 return this.CheckEquals(obj as SystemResourcesEntity);
 		}
 		
 		/// <summary>
@@ -409,13 +378,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _resourcesID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._resourcesID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

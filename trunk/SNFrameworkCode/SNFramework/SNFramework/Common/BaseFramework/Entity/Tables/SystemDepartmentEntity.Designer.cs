@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 {
@@ -9,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	??????
 	/// </summary>
 	[DataContract]
-	public partial class SystemDepartmentEntity : ICloneable
+	public partial class SystemDepartmentEntity  : BaseTableEntity,ICloneable
 	{
       #region 公共常量
 
@@ -40,8 +41,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	
         #region 私有成员变量
 
-		private bool _isChanged;		
-		private bool _isDeleted;
+ 
 		
 		private int _departmentID;
 		private SystemDepartmentEntity _parentDepartmentID;
@@ -264,36 +264,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
 			}
 		}
-		/// <summary>
-		/// 返回对象是否被改变。
-		/// </summary>
-		public virtual bool IsChanged
-		{
-			get { return _isChanged; }
-		}
-		
-		/// <summary>
-		/// Returns whether or not the object has changed it's values.
-		/// </summary>
-		public virtual bool IsDeleted
-		{
-			get { return _isDeleted; }
-		}
-		
+	
+
 		#endregion 
 
-        #region 公共方法
-		
-		/// <summary>
-		/// mark the item as deleted
-		/// </summary>
-		public virtual void MarkAsDeleted()
-		{
-			_isDeleted = true;
-			_isChanged = true;
-		}
-		
-		#endregion
+        
 
 		#region Equals 和 HashCode 方法覆盖
 		/// <summary>
@@ -301,13 +276,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			if( this == obj ) return true;
-			
-			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
-			
-			SystemDepartmentEntity castObj = (SystemDepartmentEntity)obj;
-			
-			return ( castObj != null ) && ( this._departmentID == castObj.DepartmentID );
+			 return this.CheckEquals(obj as SystemDepartmentEntity);
 		}
 		
 		/// <summary>
@@ -315,13 +284,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// </summary>
 		public override int GetHashCode()
 		{
-			
-			int hash = 57; 
-			hash = 27 * hash * _departmentID.GetHashCode();
-
-			return hash; 
+			return GetEntityHashCode();
 		}
 		#endregion
+		
+		public override object GetDataEntityKey()
+	    {
+	        return this._departmentID;
+	    }
+		
+		
 	
 		#region ICloneable methods
 		

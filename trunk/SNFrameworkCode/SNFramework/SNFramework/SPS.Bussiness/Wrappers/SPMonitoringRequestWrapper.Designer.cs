@@ -79,45 +79,45 @@ namespace SPS.Bussiness.Wrappers
 	
  
 		#region channelID字段外键查询字段
-        public static readonly string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPMonitoringRequestEntity_Alias";
-		public static readonly string PROPERTY_CHANNELID_ID = "ChannelID_SPMonitoringRequestEntity_Alias.Id";
-		public static readonly string PROPERTY_CHANNELID_NAME = "ChannelID_SPMonitoringRequestEntity_Alias.Name";
-		public static readonly string PROPERTY_CHANNELID_CODE = "ChannelID_SPMonitoringRequestEntity_Alias.Code";
-		public static readonly string PROPERTY_CHANNELID_DATAOKMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.DataOkMessage";
-		public static readonly string PROPERTY_CHANNELID_DATAFAILEDMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.DataFailedMessage";
-		public static readonly string PROPERTY_CHANNELID_DESCRIPTION = "ChannelID_SPMonitoringRequestEntity_Alias.Description";
-		public static readonly string PROPERTY_CHANNELID_DATAADAPTERTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.DataAdapterType";
-		public static readonly string PROPERTY_CHANNELID_DATAADAPTERURL = "ChannelID_SPMonitoringRequestEntity_Alias.DataAdapterUrl";
-		public static readonly string PROPERTY_CHANNELID_CHANNELTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelType";
-		public static readonly string PROPERTY_CHANNELID_IVRFEETIMETYPE = "ChannelID_SPMonitoringRequestEntity_Alias.IVRFeeTimeType";
-		public static readonly string PROPERTY_CHANNELID_IVRTIMEFORMAT = "ChannelID_SPMonitoringRequestEntity_Alias.IVRTimeFormat";
-		public static readonly string PROPERTY_CHANNELID_ISSTATEREPORT = "ChannelID_SPMonitoringRequestEntity_Alias.IsStateReport";
-		public static readonly string PROPERTY_CHANNELID_STATEREPORTTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportType";
-		public static readonly string PROPERTY_CHANNELID_REPORTOKMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.ReportOkMessage";
-		public static readonly string PROPERTY_CHANNELID_REPORTFAILEDMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.ReportFailedMessage";
-		public static readonly string PROPERTY_CHANNELID_STATEREPORTPARAMNAME = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportParamName";
-		public static readonly string PROPERTY_CHANNELID_STATEREPORTPARAMVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportParamValue";
-		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamName";
-		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamStateReportValue";
-		public static readonly string PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamDataReportValue";
-		public static readonly string PROPERTY_CHANNELID_HASFILTERS = "ChannelID_SPMonitoringRequestEntity_Alias.HasFilters";
-		public static readonly string PROPERTY_CHANNELID_ISMONITORREQUEST = "ChannelID_SPMonitoringRequestEntity_Alias.IsMonitorRequest";
-		public static readonly string PROPERTY_CHANNELID_ISLOGREQUEST = "ChannelID_SPMonitoringRequestEntity_Alias.IsLogRequest";
-		public static readonly string PROPERTY_CHANNELID_ISPARAMSCONVERT = "ChannelID_SPMonitoringRequestEntity_Alias.IsParamsConvert";
-		public static readonly string PROPERTY_CHANNELID_ISAUTOLINKID = "ChannelID_SPMonitoringRequestEntity_Alias.IsAutoLinkID";
-		public static readonly string PROPERTY_CHANNELID_AUTOLINKIDFIELDS = "ChannelID_SPMonitoringRequestEntity_Alias.AutoLinkIDFields";
-		public static readonly string PROPERTY_CHANNELID_LOGREQUESTTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.LogRequestType";
-		public static readonly string PROPERTY_CHANNELID_PRICE = "ChannelID_SPMonitoringRequestEntity_Alias.Price";
-		public static readonly string PROPERTY_CHANNELID_DEFAULTRATE = "ChannelID_SPMonitoringRequestEntity_Alias.DefaultRate";
-		public static readonly string PROPERTY_CHANNELID_CHANNELDETAILINFO = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelDetailInfo";
-		public static readonly string PROPERTY_CHANNELID_UPPERID = "ChannelID_SPMonitoringRequestEntity_Alias.UpperID";
-		public static readonly string PROPERTY_CHANNELID_CHANNELSTATUS = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelStatus";
-		public static readonly string PROPERTY_CHANNELID_ISDISABLE = "ChannelID_SPMonitoringRequestEntity_Alias.IsDisable";
-		public static readonly string PROPERTY_CHANNELID_CREATEBY = "ChannelID_SPMonitoringRequestEntity_Alias.CreateBy";
-		public static readonly string PROPERTY_CHANNELID_CREATEAT = "ChannelID_SPMonitoringRequestEntity_Alias.CreateAt";
-		public static readonly string PROPERTY_CHANNELID_LASTMODIFYBY = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyBy";
-		public static readonly string PROPERTY_CHANNELID_LASTMODIFYAT = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyAt";
-		public static readonly string PROPERTY_CHANNELID_LASTMODIFYCOMMENT = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyComment";
+        public const string PROPERTY_CHANNELID_ALIAS_NAME = "ChannelID_SPMonitoringRequestEntity_Alias";
+		public const string PROPERTY_CHANNELID_ID = "ChannelID_SPMonitoringRequestEntity_Alias.Id";
+		public const string PROPERTY_CHANNELID_NAME = "ChannelID_SPMonitoringRequestEntity_Alias.Name";
+		public const string PROPERTY_CHANNELID_CODE = "ChannelID_SPMonitoringRequestEntity_Alias.Code";
+		public const string PROPERTY_CHANNELID_DATAOKMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.DataOkMessage";
+		public const string PROPERTY_CHANNELID_DATAFAILEDMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.DataFailedMessage";
+		public const string PROPERTY_CHANNELID_DESCRIPTION = "ChannelID_SPMonitoringRequestEntity_Alias.Description";
+		public const string PROPERTY_CHANNELID_DATAADAPTERTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.DataAdapterType";
+		public const string PROPERTY_CHANNELID_DATAADAPTERURL = "ChannelID_SPMonitoringRequestEntity_Alias.DataAdapterUrl";
+		public const string PROPERTY_CHANNELID_CHANNELTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelType";
+		public const string PROPERTY_CHANNELID_IVRFEETIMETYPE = "ChannelID_SPMonitoringRequestEntity_Alias.IVRFeeTimeType";
+		public const string PROPERTY_CHANNELID_IVRTIMEFORMAT = "ChannelID_SPMonitoringRequestEntity_Alias.IVRTimeFormat";
+		public const string PROPERTY_CHANNELID_ISSTATEREPORT = "ChannelID_SPMonitoringRequestEntity_Alias.IsStateReport";
+		public const string PROPERTY_CHANNELID_STATEREPORTTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportType";
+		public const string PROPERTY_CHANNELID_REPORTOKMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.ReportOkMessage";
+		public const string PROPERTY_CHANNELID_REPORTFAILEDMESSAGE = "ChannelID_SPMonitoringRequestEntity_Alias.ReportFailedMessage";
+		public const string PROPERTY_CHANNELID_STATEREPORTPARAMNAME = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportParamName";
+		public const string PROPERTY_CHANNELID_STATEREPORTPARAMVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.StateReportParamValue";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamName";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamStateReportValue";
+		public const string PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE = "ChannelID_SPMonitoringRequestEntity_Alias.RequestTypeParamDataReportValue";
+		public const string PROPERTY_CHANNELID_HASFILTERS = "ChannelID_SPMonitoringRequestEntity_Alias.HasFilters";
+		public const string PROPERTY_CHANNELID_ISMONITORREQUEST = "ChannelID_SPMonitoringRequestEntity_Alias.IsMonitorRequest";
+		public const string PROPERTY_CHANNELID_ISLOGREQUEST = "ChannelID_SPMonitoringRequestEntity_Alias.IsLogRequest";
+		public const string PROPERTY_CHANNELID_ISPARAMSCONVERT = "ChannelID_SPMonitoringRequestEntity_Alias.IsParamsConvert";
+		public const string PROPERTY_CHANNELID_ISAUTOLINKID = "ChannelID_SPMonitoringRequestEntity_Alias.IsAutoLinkID";
+		public const string PROPERTY_CHANNELID_AUTOLINKIDFIELDS = "ChannelID_SPMonitoringRequestEntity_Alias.AutoLinkIDFields";
+		public const string PROPERTY_CHANNELID_LOGREQUESTTYPE = "ChannelID_SPMonitoringRequestEntity_Alias.LogRequestType";
+		public const string PROPERTY_CHANNELID_PRICE = "ChannelID_SPMonitoringRequestEntity_Alias.Price";
+		public const string PROPERTY_CHANNELID_DEFAULTRATE = "ChannelID_SPMonitoringRequestEntity_Alias.DefaultRate";
+		public const string PROPERTY_CHANNELID_CHANNELDETAILINFO = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelDetailInfo";
+		public const string PROPERTY_CHANNELID_UPPERID = "ChannelID_SPMonitoringRequestEntity_Alias.UpperID";
+		public const string PROPERTY_CHANNELID_CHANNELSTATUS = "ChannelID_SPMonitoringRequestEntity_Alias.ChannelStatus";
+		public const string PROPERTY_CHANNELID_ISDISABLE = "ChannelID_SPMonitoringRequestEntity_Alias.IsDisable";
+		public const string PROPERTY_CHANNELID_CREATEBY = "ChannelID_SPMonitoringRequestEntity_Alias.CreateBy";
+		public const string PROPERTY_CHANNELID_CREATEAT = "ChannelID_SPMonitoringRequestEntity_Alias.CreateAt";
+		public const string PROPERTY_CHANNELID_LASTMODIFYBY = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CHANNELID_LASTMODIFYAT = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CHANNELID_LASTMODIFYCOMMENT = "ChannelID_SPMonitoringRequestEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -217,7 +217,394 @@ namespace SPS.Bussiness.Wrappers
 		#endregion 
 
 
-
+		#region Query Property
+		
+		
+		#region channelID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ID)]
+        public int? ChannelID_Id
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_NAME)]
+        public string ChannelID_Name
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CODE)]
+        public string ChannelID_Code
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DATAOKMESSAGE)]
+        public string ChannelID_DataOkMessage
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.DataOkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DATAFAILEDMESSAGE)]
+        public string ChannelID_DataFailedMessage
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.DataFailedMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DESCRIPTION)]
+        public string ChannelID_Description
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DATAADAPTERTYPE)]
+        public string ChannelID_DataAdapterType
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.DataAdapterType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DATAADAPTERURL)]
+        public string ChannelID_DataAdapterUrl
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.DataAdapterUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CHANNELTYPE)]
+        public string ChannelID_ChannelType
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.ChannelType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_IVRFEETIMETYPE)]
+        public string ChannelID_IVRFeeTimeType
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IVRFeeTimeType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_IVRTIMEFORMAT)]
+        public string ChannelID_IVRTimeFormat
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IVRTimeFormat;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISSTATEREPORT)]
+        public bool? ChannelID_IsStateReport
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsStateReport;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_STATEREPORTTYPE)]
+        public string ChannelID_StateReportType
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.StateReportType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_REPORTOKMESSAGE)]
+        public string ChannelID_ReportOkMessage
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.ReportOkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_REPORTFAILEDMESSAGE)]
+        public string ChannelID_ReportFailedMessage
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.ReportFailedMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_STATEREPORTPARAMNAME)]
+        public string ChannelID_StateReportParamName
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.StateReportParamName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_STATEREPORTPARAMVALUE)]
+        public string ChannelID_StateReportParamValue
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.StateReportParamValue;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME)]
+        public string ChannelID_RequestTypeParamName
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.RequestTypeParamName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE)]
+        public string ChannelID_RequestTypeParamStateReportValue
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.RequestTypeParamStateReportValue;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE)]
+        public string ChannelID_RequestTypeParamDataReportValue
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.RequestTypeParamDataReportValue;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_HASFILTERS)]
+        public bool? ChannelID_HasFilters
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.HasFilters;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISMONITORREQUEST)]
+        public bool? ChannelID_IsMonitorRequest
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsMonitorRequest;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISLOGREQUEST)]
+        public bool? ChannelID_IsLogRequest
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsLogRequest;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISPARAMSCONVERT)]
+        public bool? ChannelID_IsParamsConvert
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsParamsConvert;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISAUTOLINKID)]
+        public bool? ChannelID_IsAutoLinkID
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsAutoLinkID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_AUTOLINKIDFIELDS)]
+        public string ChannelID_AutoLinkIDFields
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.AutoLinkIDFields;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_LOGREQUESTTYPE)]
+        public string ChannelID_LogRequestType
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.LogRequestType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_PRICE)]
+        public decimal? ChannelID_Price
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.Price;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_DEFAULTRATE)]
+        public decimal? ChannelID_DefaultRate
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.DefaultRate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CHANNELDETAILINFO)]
+        public string ChannelID_ChannelDetailInfo
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.ChannelDetailInfo;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_UPPERID)]
+        public SPUpperWrapper ChannelID_UpperID
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.UpperID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CHANNELSTATUS)]
+        public string ChannelID_ChannelStatus
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.ChannelStatus;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_ISDISABLE)]
+        public bool? ChannelID_IsDisable
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.IsDisable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CREATEBY)]
+        public int? ChannelID_CreateBy
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_CREATEAT)]
+        public DateTime? ChannelID_CreateAt
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_LASTMODIFYBY)]
+        public int? ChannelID_LastModifyBy
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_LASTMODIFYAT)]
+        public DateTime? ChannelID_LastModifyAt
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CHANNELID_LASTMODIFYCOMMENT)]
+        public string ChannelID_LastModifyComment
+        {
+            get
+            {
+                if (this. ChannelID == null)
+                    return null;
+                return  ChannelID.LastModifyComment;
+            }
+        }
+		#endregion
+      	
+   
+		#endregion
 
 
         #region "FKQuery"
