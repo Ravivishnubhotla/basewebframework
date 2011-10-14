@@ -333,6 +333,7 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="TestPage\WebForm2.aspx" />
     <Content Include="TestPage\WebForm3.aspx" />
@@ -387,6 +388,13 @@
     </Compile>
     <Compile Include="Masters\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\AdminMasterJQuery.Master.cs">
+      <DependentUpon>AdminMasterJQuery.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masters\AdminMasterJQuery.Master.designer.cs">
+      <DependentUpon>AdminMasterJQuery.Master</DependentUpon>
     </Compile>
     <Compile Include="Masters\BaseAdminMasterPage.Master.cs">
       <DependentUpon>BaseAdminMasterPage.Master</DependentUpon>
@@ -1283,6 +1291,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Masters\AdminMasterJQuery.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
