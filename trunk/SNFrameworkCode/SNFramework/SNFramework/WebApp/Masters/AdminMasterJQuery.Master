@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMasterJQuery.master.cs"
+    Inherits="Legendigital.Common.WebApp.Masters.AdminMasterJQuery" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/css.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<script type="text/javascript" src="<%= this.ResolveUrl("~/Script/jquery-1.6.4.min.js") %>"></script>
+<body>
+    <form id="form1" runat="server">
+    <ext:resourcemanager id="ResourceManager1" scriptadapter="jQuery" runat="server">
+    </ext:resourcemanager>
+    <ext:resourceplaceholder id="ResourcePlaceHolder1" runat="server" />
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
