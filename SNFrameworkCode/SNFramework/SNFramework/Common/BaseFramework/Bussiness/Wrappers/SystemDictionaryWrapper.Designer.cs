@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,70 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemDictionaryWrapper
+    public partial class SystemDictionaryWrapper   
     {
         #region Member
 
 		internal static readonly ISystemDictionaryServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemDictionaryServiceProxyInstance;
-	 
-	 
-        internal SystemDictionaryEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemDictionaryEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemDictionaryWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemDictionaryWrapper() : this(new SystemDictionaryEntity())
+		public SystemDictionaryWrapper() : base(new SystemDictionaryEntity())
         {
             
         }
 
         internal SystemDictionaryWrapper(SystemDictionaryEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.SystemDictionaryID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "SystemDictionaryGroupID_Id":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_ID;
+		        case "SystemDictionaryGroupID_Name":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_NAME;
+		        case "SystemDictionaryGroupID_Code":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_CODE;
+		        case "SystemDictionaryGroupID_Description":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_DESCRIPTION;
+		        case "SystemDictionaryGroupID_IsEnable":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_ISENABLE;
+		        case "SystemDictionaryGroupID_IsSystem":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_ISSYSTEM;
+		        case "SystemDictionaryGroupID_CreateBy":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEBY;
+		        case "SystemDictionaryGroupID_CreateAt":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_CREATEAT;
+		        case "SystemDictionaryGroupID_LastModifyBy":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYBY;
+		        case "SystemDictionaryGroupID_LastModifyAt":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYAT;
+		        case "SystemDictionaryGroupID_LastModifyComment":
+					return PROPERTY_SYSTEMDICTIONARYGROUPID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -136,7 +150,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.SystemDictionaryGroupID = ((value == null) ? null : value.entity);
+				entity.SystemDictionaryGroupID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -434,12 +448,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemDictionaryWrapper> FindAllByOrderByAndFilterAndSystemDictionaryGroupID(string orderByColumnName, bool isDesc,   SystemDictionaryGroupWrapper systemDictionaryGroupID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(orderByColumnName, isDesc,   systemDictionaryGroupID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(orderByColumnName, isDesc,   systemDictionaryGroupID.Entity, pageQueryParams));
         }
 
         public static List<SystemDictionaryWrapper> FindAllBySystemDictionaryGroupID(SystemDictionaryGroupWrapper systemDictionaryGroupID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllBySystemDictionaryGroupID(systemDictionaryGroupID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllBySystemDictionaryGroupID(systemDictionaryGroupID.Entity));
         }
 		
 

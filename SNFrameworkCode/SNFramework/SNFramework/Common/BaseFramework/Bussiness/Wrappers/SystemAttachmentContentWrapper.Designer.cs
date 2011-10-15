@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,80 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemAttachmentContentWrapper
+    public partial class SystemAttachmentContentWrapper   
     {
         #region Member
 
 		internal static readonly ISystemAttachmentContentServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemAttachmentContentServiceProxyInstance;
-	 
-	 
-        internal SystemAttachmentContentEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemAttachmentContentEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemAttachmentContentWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemAttachmentContentWrapper() : this(new SystemAttachmentContentEntity())
+		public SystemAttachmentContentWrapper() : base(new SystemAttachmentContentEntity())
         {
             
         }
 
         internal SystemAttachmentContentWrapper(SystemAttachmentContentEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "AttacmentID_Id":
+					return PROPERTY_ATTACMENTID_ID;
+		        case "AttacmentID_Name":
+					return PROPERTY_ATTACMENTID_NAME;
+		        case "AttacmentID_Description":
+					return PROPERTY_ATTACMENTID_DESCRIPTION;
+		        case "AttacmentID_FileName":
+					return PROPERTY_ATTACMENTID_FILENAME;
+		        case "AttacmentID_Md5":
+					return PROPERTY_ATTACMENTID_MD5;
+		        case "AttacmentID_Size":
+					return PROPERTY_ATTACMENTID_SIZE;
+		        case "AttacmentID_FileExt":
+					return PROPERTY_ATTACMENTID_FILEEXT;
+		        case "AttacmentID_Pages":
+					return PROPERTY_ATTACMENTID_PAGES;
+		        case "AttacmentID_FilePath":
+					return PROPERTY_ATTACMENTID_FILEPATH;
+		        case "AttacmentID_ParentType":
+					return PROPERTY_ATTACMENTID_PARENTTYPE;
+		        case "AttacmentID_ParentID":
+					return PROPERTY_ATTACMENTID_PARENTID;
+		        case "AttacmentID_CreateBy":
+					return PROPERTY_ATTACMENTID_CREATEBY;
+		        case "AttacmentID_CreateAt":
+					return PROPERTY_ATTACMENTID_CREATEAT;
+		        case "AttacmentID_LastModifyBy":
+					return PROPERTY_ATTACMENTID_LASTMODIFYBY;
+		        case "AttacmentID_LastModifyAt":
+					return PROPERTY_ATTACMENTID_LASTMODIFYAT;
+		        case "AttacmentID_LastModifyComment":
+					return PROPERTY_ATTACMENTID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -130,7 +154,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.AttacmentID = ((value == null) ? null : value.entity);
+				entity.AttacmentID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -324,12 +348,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemAttachmentContentWrapper> FindAllByOrderByAndFilterAndAttacmentID(string orderByColumnName, bool isDesc,   SystemAttachmentWrapper attacmentID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndAttacmentID(orderByColumnName, isDesc,   attacmentID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndAttacmentID(orderByColumnName, isDesc,   attacmentID.Entity, pageQueryParams));
         }
 
         public static List<SystemAttachmentContentWrapper> FindAllByAttacmentID(SystemAttachmentWrapper attacmentID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByAttacmentID(attacmentID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByAttacmentID(attacmentID.Entity));
         }
 		
 

@@ -14,54 +14,54 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
     [DataObject()]
-    public partial class SystemPrivilegeWrapper
+    public partial class SystemPrivilegeWrapper : BaseSpringNHibernateWrapper<SystemPrivilegeEntity, ISystemPrivilegeServiceProxy, SystemPrivilegeWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemPrivilegeWrapper obj)
+
+        public static void Save(SystemPrivilegeWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemPrivilegeWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemPrivilegeWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemPrivilegeWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemPrivilegeWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemPrivilegeWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemPrivilegeWrapper> FindAll()
@@ -71,29 +71,37 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemPrivilegeWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemPrivilegeEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemPrivilegeWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+        }
+
+
+        public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
             List<SystemPrivilegeWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
 
             return results;
         }
-		
 
-		
-		#endregion
+        #endregion
+
 
 
         public string OperationName
@@ -118,10 +126,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
  
 
-        public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
-        {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
-        }
+ 
 
  
 
@@ -135,7 +140,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             if (systemResourcesWrapper != null)
             {
-                businessProxy.QuickGeneratePrivilege(systemResourcesWrapper.entity);
+                businessProxy.QuickGeneratePrivilege(systemResourcesWrapper.Entity);
             }
 	    }
 

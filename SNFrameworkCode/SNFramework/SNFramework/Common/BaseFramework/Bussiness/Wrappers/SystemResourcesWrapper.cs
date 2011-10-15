@@ -12,55 +12,58 @@ using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-	[Serializable]
-    public partial class SystemResourcesWrapper : TreeItemWrapper<SystemResourcesWrapper>
+
+ 
+
+    [Serializable]
+    public partial class SystemResourcesWrapper : TreeItemWrapper<SystemResourcesEntity, ISystemResourcesServiceProxy, SystemResourcesWrapper>
 	{
         #region Static Common Data Operation
-		
-		public static void Save(SystemResourcesWrapper obj)
+
+        public static void Save(SystemResourcesWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemResourcesWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemResourcesWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemResourcesWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemResourcesWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemResourcesWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemResourcesWrapper> FindAll()
@@ -70,63 +73,71 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemResourcesWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemResourcesEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemResourcesWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemResourcesWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+        }
+
+
+        public static List<SystemResourcesWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
             List<SystemResourcesWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
 
             return results;
         }
-		
 
-		
-		#endregion
+        #endregion
 
-	    public override List<SystemResourcesWrapper> FindAllItems()
-	    {
-	        return SystemResourcesWrapper.FindAll();
-	    }
 
-	    protected override bool CheckIsRoot(SystemResourcesWrapper obj)
-	    {
-            if(obj==null)
+
+        public override List<SystemResourcesWrapper> FindAllItems()
+        {
+            return SystemResourcesWrapper.FindAll();
+        }
+
+        protected override bool CheckIsRoot(SystemResourcesWrapper obj)
+        {
+            if (obj == null)
                 return false;
-	        return (obj.ParentResourcesID == null);
-	    }
+            return (obj.ParentResourcesID == null);
+        }
 
         protected override TypedTreeNodeItem<SystemResourcesWrapper> GetTreeNodeItemByDataItem(SystemResourcesWrapper item, TypedTreeNodeItem<SystemResourcesWrapper> parentNode)
-	    {
+        {
             TypedTreeNodeItem<SystemResourcesWrapper> node = new TypedTreeNodeItem<SystemResourcesWrapper>();
             node.Id = item.ResourcesID.ToString();
             node.Name = item.ResourcesNameCn;
             node.Code = item.ResourcesNameEn;
             node.DataItem = item.ParentResourcesID;
             node.ParentNode = parentNode;
-	        return node;
-	    }
+            return node;
+        }
 
         public static List<TypedTreeNodeItem<SystemResourcesWrapper>> GetAllTreeNodesItems()
-	    {
+        {
             return new SystemResourcesWrapper().GetAllTreeItems();
-	    }
+        }
 
-	    protected override bool CheckGetSubItems(SystemResourcesWrapper subitem, SystemResourcesWrapper mainItem)
-	    {
+        protected override bool CheckGetSubItems(SystemResourcesWrapper subitem, SystemResourcesWrapper mainItem)
+        {
             return (subitem.ParentResourcesID != null) && (subitem.ParentResourcesID.ResourcesID == mainItem.ResourcesID);
-	    }
-
+        }
 
 	}
 

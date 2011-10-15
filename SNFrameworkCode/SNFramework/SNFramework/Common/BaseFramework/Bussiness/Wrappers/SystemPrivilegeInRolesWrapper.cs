@@ -13,54 +13,54 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemPrivilegeInRolesWrapper
+    public partial class SystemPrivilegeInRolesWrapper : BaseSpringNHibernateWrapper<SystemPrivilegeInRolesEntity, ISystemPrivilegeInRolesServiceProxy, SystemPrivilegeInRolesWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemPrivilegeInRolesWrapper obj)
+
+        public static void Save(SystemPrivilegeInRolesWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemPrivilegeInRolesWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemPrivilegeInRolesWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemPrivilegeInRolesWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemPrivilegeInRolesWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemPrivilegeInRolesWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemPrivilegeInRolesWrapper> FindAll()
@@ -70,29 +70,36 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemPrivilegeInRolesWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemPrivilegeInRolesEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemPrivilegeInRolesWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemPrivilegeInRolesWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+        }
+
+
+        public static List<SystemPrivilegeInRolesWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
             List<SystemPrivilegeInRolesWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
 
             return results;
         }
-		
 
-		
-		#endregion
+        #endregion
 
         public object PrivilegeRoleParseValue
         {
@@ -171,12 +178,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static  List<SystemPrivilegeInRolesWrapper>  GetAllPrivilegeByCategoryByUserID(SystemUserWrapper wrapper)
 	    {
-            return ConvertToWrapperList(businessProxy.GetAllPrivilegeByCategoryByUserID(wrapper.entity));
+            return ConvertToWrapperList(businessProxy.GetAllPrivilegeByCategoryByUserID(wrapper.Entity));
 	    }
 
         public static SystemPrivilegeInRolesWrapper GetRelationByRoleAndPrivilege(SystemRoleWrapper systemRoleWrapper, SystemPrivilegeWrapper systemPrivilegeWrapper)
         {
-            return ConvertEntityToWrapper(businessProxy.GetRelationByRoleAndPrivilege(systemRoleWrapper.entity, systemPrivilegeWrapper.entity));
+            return ConvertEntityToWrapper(businessProxy.GetRelationByRoleAndPrivilege(systemRoleWrapper.Entity, systemPrivilegeWrapper.Entity));
         }
     }
 }

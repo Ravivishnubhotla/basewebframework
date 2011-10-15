@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,60 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemCityWrapper
+    public partial class SystemCityWrapper   
     {
         #region Member
 
 		internal static readonly ISystemCityServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemCityServiceProxyInstance;
-	 
-	 
-        internal SystemCityEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemCityEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemCityWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemCityWrapper() : this(new SystemCityEntity())
+		public SystemCityWrapper() : base(new SystemCityEntity())
         {
             
         }
 
         internal SystemCityWrapper(SystemCityEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "ProvinceID_Id":
+					return PROPERTY_PROVINCEID_ID;
+		        case "ProvinceID_Name":
+					return PROPERTY_PROVINCEID_NAME;
+		        case "ProvinceID_AbbrName":
+					return PROPERTY_PROVINCEID_ABBRNAME;
+		        case "ProvinceID_SingleAbbrName":
+					return PROPERTY_PROVINCEID_SINGLEABBRNAME;
+		        case "ProvinceID_Code":
+					return PROPERTY_PROVINCEID_CODE;
+		        case "ProvinceID_CountryID":
+					return PROPERTY_PROVINCEID_COUNTRYID;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -165,7 +169,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ProvinceID = ((value == null) ? null : value.entity);
+				entity.ProvinceID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -259,12 +263,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemCityWrapper> FindAllByOrderByAndFilterAndProvinceID(string orderByColumnName, bool isDesc,   SystemProvinceWrapper provinceID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndProvinceID(orderByColumnName, isDesc,   provinceID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndProvinceID(orderByColumnName, isDesc,   provinceID.Entity, pageQueryParams));
         }
 
         public static List<SystemCityWrapper> FindAllByProvinceID(SystemProvinceWrapper provinceID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByProvinceID(provinceID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByProvinceID(provinceID.Entity));
         }
 		
 

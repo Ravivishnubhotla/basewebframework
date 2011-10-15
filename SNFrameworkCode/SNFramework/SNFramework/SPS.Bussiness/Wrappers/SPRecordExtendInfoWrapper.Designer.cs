@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables.Container;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,86 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPRecordExtendInfoWrapper
+    public partial class SPRecordExtendInfoWrapper   
     {
         #region Member
 
 		internal static readonly ISPRecordExtendInfoServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPRecordExtendInfoServiceProxyInstance;
-	 
-	 
-        internal SPRecordExtendInfoEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SPRecordExtendInfoEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPRecordExtendInfoWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SPRecordExtendInfoWrapper() : this(new SPRecordExtendInfoEntity())
+		public SPRecordExtendInfoWrapper() : base(new SPRecordExtendInfoEntity())
         {
             
         }
 
         internal SPRecordExtendInfoWrapper(SPRecordExtendInfoEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "RecordID_Id":
+					return PROPERTY_RECORDID_ID;
+		        case "RecordID_LinkID":
+					return PROPERTY_RECORDID_LINKID;
+		        case "RecordID_Mo":
+					return PROPERTY_RECORDID_MO;
+		        case "RecordID_Mobile":
+					return PROPERTY_RECORDID_MOBILE;
+		        case "RecordID_SpNumber":
+					return PROPERTY_RECORDID_SPNUMBER;
+		        case "RecordID_Province":
+					return PROPERTY_RECORDID_PROVINCE;
+		        case "RecordID_City":
+					return PROPERTY_RECORDID_CITY;
+		        case "RecordID_CreateDate":
+					return PROPERTY_RECORDID_CREATEDATE;
+		        case "RecordID_IsReport":
+					return PROPERTY_RECORDID_ISREPORT;
+		        case "RecordID_IsIntercept":
+					return PROPERTY_RECORDID_ISINTERCEPT;
+		        case "RecordID_IsSycnToClient":
+					return PROPERTY_RECORDID_ISSYCNTOCLIENT;
+		        case "RecordID_IsSycnSuccessed":
+					return PROPERTY_RECORDID_ISSYCNSUCCESSED;
+		        case "RecordID_IsStatOK":
+					return PROPERTY_RECORDID_ISSTATOK;
+		        case "RecordID_SycnRetryTimes":
+					return PROPERTY_RECORDID_SYCNRETRYTIMES;
+		        case "RecordID_ChannelID":
+					return PROPERTY_RECORDID_CHANNELID;
+		        case "RecordID_ClientID":
+					return PROPERTY_RECORDID_CLIENTID;
+		        case "RecordID_CodeID":
+					return PROPERTY_RECORDID_CODEID;
+		        case "RecordID_Price":
+					return PROPERTY_RECORDID_PRICE;
+		        case "RecordID_Count":
+					return PROPERTY_RECORDID_COUNT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -149,7 +179,7 @@ namespace SPS.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.RecordID = ((value == null) ? null : value.entity);
+				entity.RecordID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -597,12 +627,12 @@ namespace SPS.Bussiness.Wrappers
 		
         public static List<SPRecordExtendInfoWrapper> FindAllByOrderByAndFilterAndRecordID(string orderByColumnName, bool isDesc,   SPRecordWrapper recordID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRecordID(orderByColumnName, isDesc,   recordID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRecordID(orderByColumnName, isDesc,   recordID.Entity, pageQueryParams));
         }
 
         public static List<SPRecordExtendInfoWrapper> FindAllByRecordID(SPRecordWrapper recordID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByRecordID(recordID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByRecordID(recordID.Entity));
         }
 		
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,130 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemUserGroupUserRelationWrapper
+    public partial class SystemUserGroupUserRelationWrapper   
     {
         #region Member
 
 		internal static readonly ISystemUserGroupUserRelationServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemUserGroupUserRelationServiceProxyInstance;
-	 
-	 
-        internal SystemUserGroupUserRelationEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemUserGroupUserRelationEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemUserGroupUserRelationWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemUserGroupUserRelationWrapper() : this(new SystemUserGroupUserRelationEntity())
+		public SystemUserGroupUserRelationWrapper() : base(new SystemUserGroupUserRelationEntity())
         {
             
         }
 
         internal SystemUserGroupUserRelationWrapper(SystemUserGroupUserRelationEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.UserGroupUserID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "UserID_UserID":
+					return PROPERTY_USERID_USERID;
+		        case "UserID_UserLoginID":
+					return PROPERTY_USERID_USERLOGINID;
+		        case "UserID_UserName":
+					return PROPERTY_USERID_USERNAME;
+		        case "UserID_UserEmail":
+					return PROPERTY_USERID_USEREMAIL;
+		        case "UserID_UserPassword":
+					return PROPERTY_USERID_USERPASSWORD;
+		        case "UserID_UserStatus":
+					return PROPERTY_USERID_USERSTATUS;
+		        case "UserID_UserCreateDate":
+					return PROPERTY_USERID_USERCREATEDATE;
+		        case "UserID_UserType":
+					return PROPERTY_USERID_USERTYPE;
+		        case "UserID_DepartmentID":
+					return PROPERTY_USERID_DEPARTMENTID;
+		        case "UserID_MobilePIN":
+					return PROPERTY_USERID_MOBILEPIN;
+		        case "UserID_PasswordFormat":
+					return PROPERTY_USERID_PASSWORDFORMAT;
+		        case "UserID_PasswordQuestion":
+					return PROPERTY_USERID_PASSWORDQUESTION;
+		        case "UserID_PasswordAnswer":
+					return PROPERTY_USERID_PASSWORDANSWER;
+		        case "UserID_Comments":
+					return PROPERTY_USERID_COMMENTS;
+		        case "UserID_IsApproved":
+					return PROPERTY_USERID_ISAPPROVED;
+		        case "UserID_IsLockedOut":
+					return PROPERTY_USERID_ISLOCKEDOUT;
+		        case "UserID_LastActivityDate":
+					return PROPERTY_USERID_LASTACTIVITYDATE;
+		        case "UserID_LastLoginDate":
+					return PROPERTY_USERID_LASTLOGINDATE;
+		        case "UserID_LastLockedOutDate":
+					return PROPERTY_USERID_LASTLOCKEDOUTDATE;
+		        case "UserID_LastPasswordChangeDate":
+					return PROPERTY_USERID_LASTPASSWORDCHANGEDATE;
+		        case "UserID_FailedPwdAttemptCnt":
+					return PROPERTY_USERID_FAILEDPWDATTEMPTCNT;
+		        case "UserID_FailedPwdAttemptWndStart":
+					return PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART;
+		        case "UserID_FailedPwdAnsAttemptCnt":
+					return PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT;
+		        case "UserID_FailedPwdAnsAttemptWndStart":
+					return PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART;
+		        case "UserID_IsNeedChgPwd":
+					return PROPERTY_USERID_ISNEEDCHGPWD;
+		        case "UserID_PasswordSalt":
+					return PROPERTY_USERID_PASSWORDSALT;
+		        case "UserID_LoweredEmail":
+					return PROPERTY_USERID_LOWEREDEMAIL;
+		        case "UserID_CreateBy":
+					return PROPERTY_USERID_CREATEBY;
+		        case "UserID_CreateAt":
+					return PROPERTY_USERID_CREATEAT;
+		        case "UserID_LastModifyBy":
+					return PROPERTY_USERID_LASTMODIFYBY;
+		        case "UserID_LastModifyAt":
+					return PROPERTY_USERID_LASTMODIFYAT;
+		        case "UserID_LastModifyComment":
+					return PROPERTY_USERID_LASTMODIFYCOMMENT;
+		        case "UserGroupID_GroupID":
+					return PROPERTY_USERGROUPID_GROUPID;
+		        case "UserGroupID_GroupNameCn":
+					return PROPERTY_USERGROUPID_GROUPNAMECN;
+		        case "UserGroupID_GroupNameEn":
+					return PROPERTY_USERGROUPID_GROUPNAMEEN;
+		        case "UserGroupID_GroupDescription":
+					return PROPERTY_USERGROUPID_GROUPDESCRIPTION;
+		        case "UserGroupID_CreateBy":
+					return PROPERTY_USERGROUPID_CREATEBY;
+		        case "UserGroupID_CreateAt":
+					return PROPERTY_USERGROUPID_CREATEAT;
+		        case "UserGroupID_LastModifyBy":
+					return PROPERTY_USERGROUPID_LASTMODIFYBY;
+		        case "UserGroupID_LastModifyAt":
+					return PROPERTY_USERGROUPID_LASTMODIFYAT;
+		        case "UserGroupID_LastModifyComment":
+					return PROPERTY_USERGROUPID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -158,7 +232,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.UserID = ((value == null) ? null : value.entity);
+				entity.UserID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -172,7 +246,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.UserGroupID = ((value == null) ? null : value.entity);
+				entity.UserGroupID = ((value == null) ? null : value.Entity);
 			}
 		}
 		#endregion 
@@ -604,23 +678,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemUserGroupUserRelationWrapper> FindAllByOrderByAndFilterAndUserID(string orderByColumnName, bool isDesc,   SystemUserWrapper userID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserID(orderByColumnName, isDesc,   userID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserID(orderByColumnName, isDesc,   userID.Entity, pageQueryParams));
         }
 
         public static List<SystemUserGroupUserRelationWrapper> FindAllByUserID(SystemUserWrapper userID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByUserID(userID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByUserID(userID.Entity));
         }
 		
 		
         public static List<SystemUserGroupUserRelationWrapper> FindAllByOrderByAndFilterAndUserGroupID(string orderByColumnName, bool isDesc,   SystemUserGroupWrapper userGroupID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserGroupID(orderByColumnName, isDesc,   userGroupID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserGroupID(orderByColumnName, isDesc,   userGroupID.Entity, pageQueryParams));
         }
 
         public static List<SystemUserGroupUserRelationWrapper> FindAllByUserGroupID(SystemUserGroupWrapper userGroupID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByUserGroupID(userGroupID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByUserGroupID(userGroupID.Entity));
         }
 		
 

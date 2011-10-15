@@ -11,7 +11,9 @@ namespace Legendigital.Framework.Common.Entity
         protected bool _isChanged;
         protected bool _isDeleted;
 
+
  
+
 
 
 

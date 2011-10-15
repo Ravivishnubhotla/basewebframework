@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,108 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemRoleMenuRelationWrapper
+    public partial class SystemRoleMenuRelationWrapper   
     {
         #region Member
 
 		internal static readonly ISystemRoleMenuRelationServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemRoleMenuRelationServiceProxyInstance;
-	 
-	 
-        internal SystemRoleMenuRelationEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemRoleMenuRelationEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemRoleMenuRelationWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemRoleMenuRelationWrapper() : this(new SystemRoleMenuRelationEntity())
+		public SystemRoleMenuRelationWrapper() : base(new SystemRoleMenuRelationEntity())
         {
             
         }
 
         internal SystemRoleMenuRelationWrapper(SystemRoleMenuRelationEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.MenuRoleID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "MenuID_MenuID":
+					return PROPERTY_MENUID_MENUID;
+		        case "MenuID_MenuName":
+					return PROPERTY_MENUID_MENUNAME;
+		        case "MenuID_MenuCode":
+					return PROPERTY_MENUID_MENUCODE;
+		        case "MenuID_MenuDescription":
+					return PROPERTY_MENUID_MENUDESCRIPTION;
+		        case "MenuID_MenuUrl":
+					return PROPERTY_MENUID_MENUURL;
+		        case "MenuID_MenuUrlTarget":
+					return PROPERTY_MENUID_MENUURLTARGET;
+		        case "MenuID_MenuIconUrl":
+					return PROPERTY_MENUID_MENUICONURL;
+		        case "MenuID_MenuIsCategory":
+					return PROPERTY_MENUID_MENUISCATEGORY;
+		        case "MenuID_ParentMenuID":
+					return PROPERTY_MENUID_PARENTMENUID;
+		        case "MenuID_MenuOrder":
+					return PROPERTY_MENUID_MENUORDER;
+		        case "MenuID_MenuType":
+					return PROPERTY_MENUID_MENUTYPE;
+		        case "MenuID_MenuIsSystemMenu":
+					return PROPERTY_MENUID_MENUISSYSTEMMENU;
+		        case "MenuID_MenuIsEnable":
+					return PROPERTY_MENUID_MENUISENABLE;
+		        case "MenuID_ApplicationID":
+					return PROPERTY_MENUID_APPLICATIONID;
+		        case "MenuID_CreateBy":
+					return PROPERTY_MENUID_CREATEBY;
+		        case "MenuID_CreateAt":
+					return PROPERTY_MENUID_CREATEAT;
+		        case "MenuID_LastModifyBy":
+					return PROPERTY_MENUID_LASTMODIFYBY;
+		        case "MenuID_LastModifyAt":
+					return PROPERTY_MENUID_LASTMODIFYAT;
+		        case "MenuID_LastModifyComment":
+					return PROPERTY_MENUID_LASTMODIFYCOMMENT;
+		        case "RoleID_RoleID":
+					return PROPERTY_ROLEID_ROLEID;
+		        case "RoleID_RoleName":
+					return PROPERTY_ROLEID_ROLENAME;
+		        case "RoleID_RoleCode":
+					return PROPERTY_ROLEID_ROLECODE;
+		        case "RoleID_RoleDescription":
+					return PROPERTY_ROLEID_ROLEDESCRIPTION;
+		        case "RoleID_RoleIsSystemRole":
+					return PROPERTY_ROLEID_ROLEISSYSTEMROLE;
+		        case "RoleID_RoleType":
+					return PROPERTY_ROLEID_ROLETYPE;
+		        case "RoleID_CreateBy":
+					return PROPERTY_ROLEID_CREATEBY;
+		        case "RoleID_CreateAt":
+					return PROPERTY_ROLEID_CREATEAT;
+		        case "RoleID_LastModifyBy":
+					return PROPERTY_ROLEID_LASTMODIFYBY;
+		        case "RoleID_LastModifyAt":
+					return PROPERTY_ROLEID_LASTMODIFYAT;
+		        case "RoleID_LastModifyComment":
+					return PROPERTY_ROLEID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -147,7 +199,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.MenuID = ((value == null) ? null : value.entity);
+				entity.MenuID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -161,7 +213,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.RoleID = ((value == null) ? null : value.entity);
+				entity.RoleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		#endregion 
@@ -483,23 +535,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemRoleMenuRelationWrapper> FindAllByOrderByAndFilterAndMenuID(string orderByColumnName, bool isDesc,   SystemMenuWrapper menuID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndMenuID(orderByColumnName, isDesc,   menuID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndMenuID(orderByColumnName, isDesc,   menuID.Entity, pageQueryParams));
         }
 
         public static List<SystemRoleMenuRelationWrapper> FindAllByMenuID(SystemMenuWrapper menuID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByMenuID(menuID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByMenuID(menuID.Entity));
         }
 		
 		
         public static List<SystemRoleMenuRelationWrapper> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,   SystemRoleWrapper roleID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.Entity, pageQueryParams));
         }
 
         public static List<SystemRoleMenuRelationWrapper> FindAllByRoleID(SystemRoleWrapper roleID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.Entity));
         }
 		
 

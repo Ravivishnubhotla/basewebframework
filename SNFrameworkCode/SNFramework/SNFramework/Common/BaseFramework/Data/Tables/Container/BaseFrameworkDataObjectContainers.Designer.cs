@@ -11,6 +11,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
         }
 
       public SystemApplicationDataObject SystemApplicationDataObjectInstance { set; get; }
+      public SystemAttachmentDataObject SystemAttachmentDataObjectInstance { set; get; }
+      public SystemAttachmentContentDataObject SystemAttachmentContentDataObjectInstance { set; get; }
       public SystemCityDataObject SystemCityDataObjectInstance { set; get; }
       public SystemConfigDataObject SystemConfigDataObjectInstance { set; get; }
       public SystemConfigGroupDataObject SystemConfigGroupDataObjectInstance { set; get; }

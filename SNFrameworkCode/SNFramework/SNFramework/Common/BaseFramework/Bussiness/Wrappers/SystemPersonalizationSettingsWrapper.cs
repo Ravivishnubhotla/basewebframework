@@ -11,11 +11,11 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemPersonalizationSettingsWrapper
+    public partial class SystemPersonalizationSettingsWrapper : BaseSpringNHibernateWrapper<SystemPersonalizationSettingsEntity, ISystemPersonalizationSettingsServiceProxy, SystemPersonalizationSettingsWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemPersonalizationSettingsWrapper obj)
+
+        public static void Save(SystemPersonalizationSettingsWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
@@ -87,10 +87,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             return results;
         }
-		
 
-		
-		#endregion
+
+
+        #endregion
 
         public static void LoadPersonalizationBlobs(string path, string userName, ref byte[] userDataBlob)
         {

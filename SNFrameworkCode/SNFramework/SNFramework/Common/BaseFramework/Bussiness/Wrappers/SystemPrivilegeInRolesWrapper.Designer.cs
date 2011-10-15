@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,98 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemPrivilegeInRolesWrapper
+    public partial class SystemPrivilegeInRolesWrapper   
     {
         #region Member
 
 		internal static readonly ISystemPrivilegeInRolesServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemPrivilegeInRolesServiceProxyInstance;
-	 
-	 
-        internal SystemPrivilegeInRolesEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemPrivilegeInRolesEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemPrivilegeInRolesWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemPrivilegeInRolesWrapper() : this(new SystemPrivilegeInRolesEntity())
+		public SystemPrivilegeInRolesWrapper() : base(new SystemPrivilegeInRolesEntity())
         {
             
         }
 
         internal SystemPrivilegeInRolesWrapper(SystemPrivilegeInRolesEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.PrivilegeRoleID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "RoleID_RoleID":
+					return PROPERTY_ROLEID_ROLEID;
+		        case "RoleID_RoleName":
+					return PROPERTY_ROLEID_ROLENAME;
+		        case "RoleID_RoleCode":
+					return PROPERTY_ROLEID_ROLECODE;
+		        case "RoleID_RoleDescription":
+					return PROPERTY_ROLEID_ROLEDESCRIPTION;
+		        case "RoleID_RoleIsSystemRole":
+					return PROPERTY_ROLEID_ROLEISSYSTEMROLE;
+		        case "RoleID_RoleType":
+					return PROPERTY_ROLEID_ROLETYPE;
+		        case "RoleID_CreateBy":
+					return PROPERTY_ROLEID_CREATEBY;
+		        case "RoleID_CreateAt":
+					return PROPERTY_ROLEID_CREATEAT;
+		        case "RoleID_LastModifyBy":
+					return PROPERTY_ROLEID_LASTMODIFYBY;
+		        case "RoleID_LastModifyAt":
+					return PROPERTY_ROLEID_LASTMODIFYAT;
+		        case "RoleID_LastModifyComment":
+					return PROPERTY_ROLEID_LASTMODIFYCOMMENT;
+		        case "PrivilegeID_PrivilegeID":
+					return PROPERTY_PRIVILEGEID_PRIVILEGEID;
+		        case "PrivilegeID_OperationID":
+					return PROPERTY_PRIVILEGEID_OPERATIONID;
+		        case "PrivilegeID_ResourcesID":
+					return PROPERTY_PRIVILEGEID_RESOURCESID;
+		        case "PrivilegeID_PrivilegeCnName":
+					return PROPERTY_PRIVILEGEID_PRIVILEGECNNAME;
+		        case "PrivilegeID_PrivilegeEnName":
+					return PROPERTY_PRIVILEGEID_PRIVILEGEENNAME;
+		        case "PrivilegeID_DefaultValue":
+					return PROPERTY_PRIVILEGEID_DEFAULTVALUE;
+		        case "PrivilegeID_Description":
+					return PROPERTY_PRIVILEGEID_DESCRIPTION;
+		        case "PrivilegeID_PrivilegeOrder":
+					return PROPERTY_PRIVILEGEID_PRIVILEGEORDER;
+		        case "PrivilegeID_PrivilegeType":
+					return PROPERTY_PRIVILEGEID_PRIVILEGETYPE;
+		        case "PrivilegeID_CreateBy":
+					return PROPERTY_PRIVILEGEID_CREATEBY;
+		        case "PrivilegeID_CreateAt":
+					return PROPERTY_PRIVILEGEID_CREATEAT;
+		        case "PrivilegeID_LastModifyBy":
+					return PROPERTY_PRIVILEGEID_LASTMODIFYBY;
+		        case "PrivilegeID_LastModifyAt":
+					return PROPERTY_PRIVILEGEID_LASTMODIFYAT;
+		        case "PrivilegeID_LastModifyComment":
+					return PROPERTY_PRIVILEGEID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -149,7 +191,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.RoleID = ((value == null) ? null : value.entity);
+				entity.RoleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -163,7 +205,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.PrivilegeID = ((value == null) ? null : value.entity);
+				entity.PrivilegeID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -533,23 +575,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemPrivilegeInRolesWrapper> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,   SystemRoleWrapper roleID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.Entity, pageQueryParams));
         }
 
         public static List<SystemPrivilegeInRolesWrapper> FindAllByRoleID(SystemRoleWrapper roleID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.Entity));
         }
 		
 		
         public static List<SystemPrivilegeInRolesWrapper> FindAllByOrderByAndFilterAndPrivilegeID(string orderByColumnName, bool isDesc,   SystemPrivilegeWrapper privilegeID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndPrivilegeID(orderByColumnName, isDesc,   privilegeID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndPrivilegeID(orderByColumnName, isDesc,   privilegeID.Entity, pageQueryParams));
         }
 
         public static List<SystemPrivilegeInRolesWrapper> FindAllByPrivilegeID(SystemPrivilegeWrapper privilegeID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByPrivilegeID(privilegeID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByPrivilegeID(privilegeID.Entity));
         }
 		
 

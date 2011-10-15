@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,78 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemOperationWrapper
+    public partial class SystemOperationWrapper   
     {
         #region Member
 
 		internal static readonly ISystemOperationServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemOperationServiceProxyInstance;
-	 
-	 
-        internal SystemOperationEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemOperationEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemOperationWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemOperationWrapper() : this(new SystemOperationEntity())
+		public SystemOperationWrapper() : base(new SystemOperationEntity())
         {
             
         }
 
         internal SystemOperationWrapper(SystemOperationEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.OperationID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "ResourceID_ResourcesID":
+					return PROPERTY_RESOURCEID_RESOURCESID;
+		        case "ResourceID_ResourcesNameCn":
+					return PROPERTY_RESOURCEID_RESOURCESNAMECN;
+		        case "ResourceID_ResourcesNameEn":
+					return PROPERTY_RESOURCEID_RESOURCESNAMEEN;
+		        case "ResourceID_ResourcesDescription":
+					return PROPERTY_RESOURCEID_RESOURCESDESCRIPTION;
+		        case "ResourceID_ResourcesType":
+					return PROPERTY_RESOURCEID_RESOURCESTYPE;
+		        case "ResourceID_ResourcesLimitExpression":
+					return PROPERTY_RESOURCEID_RESOURCESLIMITEXPRESSION;
+		        case "ResourceID_ResourcesIsRelateUser":
+					return PROPERTY_RESOURCEID_RESOURCESISRELATEUSER;
+		        case "ResourceID_MoudleID":
+					return PROPERTY_RESOURCEID_MOUDLEID;
+		        case "ResourceID_ParentResourcesID":
+					return PROPERTY_RESOURCEID_PARENTRESOURCESID;
+		        case "ResourceID_OrderIndex":
+					return PROPERTY_RESOURCEID_ORDERINDEX;
+		        case "ResourceID_CreateBy":
+					return PROPERTY_RESOURCEID_CREATEBY;
+		        case "ResourceID_CreateAt":
+					return PROPERTY_RESOURCEID_CREATEAT;
+		        case "ResourceID_LastModifyBy":
+					return PROPERTY_RESOURCEID_LASTMODIFYBY;
+		        case "ResourceID_LastModifyAt":
+					return PROPERTY_RESOURCEID_LASTMODIFYAT;
+		        case "ResourceID_LastModifyComment":
+					return PROPERTY_RESOURCEID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -298,7 +320,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ResourceID = ((value == null) ? null : value.entity);
+				entity.ResourceID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -538,12 +560,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemOperationWrapper> FindAllByOrderByAndFilterAndResourceID(string orderByColumnName, bool isDesc,   SystemResourcesWrapper resourceID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndResourceID(orderByColumnName, isDesc,   resourceID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndResourceID(orderByColumnName, isDesc,   resourceID.Entity, pageQueryParams));
         }
 
         public static List<SystemOperationWrapper> FindAllByResourceID(SystemResourcesWrapper resourceID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByResourceID(resourceID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByResourceID(resourceID.Entity));
         }
 		
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,114 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemPrivilegeWrapper
+    public partial class SystemPrivilegeWrapper   
     {
         #region Member
 
 		internal static readonly ISystemPrivilegeServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemPrivilegeServiceProxyInstance;
-	 
-	 
-        internal SystemPrivilegeEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemPrivilegeEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemPrivilegeWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemPrivilegeWrapper() : this(new SystemPrivilegeEntity())
+		public SystemPrivilegeWrapper() : base(new SystemPrivilegeEntity())
         {
             
         }
 
         internal SystemPrivilegeWrapper(SystemPrivilegeEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.PrivilegeID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "OperationID_OperationID":
+					return PROPERTY_OPERATIONID_OPERATIONID;
+		        case "OperationID_OperationNameCn":
+					return PROPERTY_OPERATIONID_OPERATIONNAMECN;
+		        case "OperationID_OperationNameEn":
+					return PROPERTY_OPERATIONID_OPERATIONNAMEEN;
+		        case "OperationID_OperationDescription":
+					return PROPERTY_OPERATIONID_OPERATIONDESCRIPTION;
+		        case "OperationID_IsSystemOperation":
+					return PROPERTY_OPERATIONID_ISSYSTEMOPERATION;
+		        case "OperationID_IsCanSingleOperation":
+					return PROPERTY_OPERATIONID_ISCANSINGLEOPERATION;
+		        case "OperationID_IsCanMutilOperation":
+					return PROPERTY_OPERATIONID_ISCANMUTILOPERATION;
+		        case "OperationID_IsEnable":
+					return PROPERTY_OPERATIONID_ISENABLE;
+		        case "OperationID_IsInListPage":
+					return PROPERTY_OPERATIONID_ISINLISTPAGE;
+		        case "OperationID_IsInSinglePage":
+					return PROPERTY_OPERATIONID_ISINSINGLEPAGE;
+		        case "OperationID_OperationOrder":
+					return PROPERTY_OPERATIONID_OPERATIONORDER;
+		        case "OperationID_IsCommonOperation":
+					return PROPERTY_OPERATIONID_ISCOMMONOPERATION;
+		        case "OperationID_ResourceID":
+					return PROPERTY_OPERATIONID_RESOURCEID;
+		        case "OperationID_CreateBy":
+					return PROPERTY_OPERATIONID_CREATEBY;
+		        case "OperationID_CreateAt":
+					return PROPERTY_OPERATIONID_CREATEAT;
+		        case "OperationID_LastModifyBy":
+					return PROPERTY_OPERATIONID_LASTMODIFYBY;
+		        case "OperationID_LastModifyAt":
+					return PROPERTY_OPERATIONID_LASTMODIFYAT;
+		        case "OperationID_LastModifyComment":
+					return PROPERTY_OPERATIONID_LASTMODIFYCOMMENT;
+		        case "ResourcesID_ResourcesID":
+					return PROPERTY_RESOURCESID_RESOURCESID;
+		        case "ResourcesID_ResourcesNameCn":
+					return PROPERTY_RESOURCESID_RESOURCESNAMECN;
+		        case "ResourcesID_ResourcesNameEn":
+					return PROPERTY_RESOURCESID_RESOURCESNAMEEN;
+		        case "ResourcesID_ResourcesDescription":
+					return PROPERTY_RESOURCESID_RESOURCESDESCRIPTION;
+		        case "ResourcesID_ResourcesType":
+					return PROPERTY_RESOURCESID_RESOURCESTYPE;
+		        case "ResourcesID_ResourcesLimitExpression":
+					return PROPERTY_RESOURCESID_RESOURCESLIMITEXPRESSION;
+		        case "ResourcesID_ResourcesIsRelateUser":
+					return PROPERTY_RESOURCESID_RESOURCESISRELATEUSER;
+		        case "ResourcesID_MoudleID":
+					return PROPERTY_RESOURCESID_MOUDLEID;
+		        case "ResourcesID_ParentResourcesID":
+					return PROPERTY_RESOURCESID_PARENTRESOURCESID;
+		        case "ResourcesID_OrderIndex":
+					return PROPERTY_RESOURCESID_ORDERINDEX;
+		        case "ResourcesID_CreateBy":
+					return PROPERTY_RESOURCESID_CREATEBY;
+		        case "ResourcesID_CreateAt":
+					return PROPERTY_RESOURCESID_CREATEAT;
+		        case "ResourcesID_LastModifyBy":
+					return PROPERTY_RESOURCESID_LASTMODIFYBY;
+		        case "ResourcesID_LastModifyAt":
+					return PROPERTY_RESOURCESID_LASTMODIFYAT;
+		        case "ResourcesID_LastModifyComment":
+					return PROPERTY_RESOURCESID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -161,7 +219,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.OperationID = ((value == null) ? null : value.entity);
+				entity.OperationID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -175,7 +233,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ResourcesID = ((value == null) ? null : value.entity);
+				entity.ResourcesID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -681,23 +739,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilterAndOperationID(string orderByColumnName, bool isDesc,   SystemOperationWrapper operationID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndOperationID(orderByColumnName, isDesc,   operationID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndOperationID(orderByColumnName, isDesc,   operationID.Entity, pageQueryParams));
         }
 
         public static List<SystemPrivilegeWrapper> FindAllByOperationID(SystemOperationWrapper operationID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOperationID(operationID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByOperationID(operationID.Entity));
         }
 		
 		
         public static List<SystemPrivilegeWrapper> FindAllByOrderByAndFilterAndResourcesID(string orderByColumnName, bool isDesc,   SystemResourcesWrapper resourcesID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndResourcesID(orderByColumnName, isDesc,   resourcesID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndResourcesID(orderByColumnName, isDesc,   resourcesID.Entity, pageQueryParams));
         }
 
         public static List<SystemPrivilegeWrapper> FindAllByResourcesID(SystemResourcesWrapper resourcesID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByResourcesID(resourcesID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByResourcesID(resourcesID.Entity));
         }
 		
 

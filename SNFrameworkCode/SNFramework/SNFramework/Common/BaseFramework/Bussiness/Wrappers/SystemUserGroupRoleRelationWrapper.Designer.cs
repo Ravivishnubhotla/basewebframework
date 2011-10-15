@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,88 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemUserGroupRoleRelationWrapper
+    public partial class SystemUserGroupRoleRelationWrapper   
     {
         #region Member
 
 		internal static readonly ISystemUserGroupRoleRelationServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemUserGroupRoleRelationServiceProxyInstance;
-	 
-	 
-        internal SystemUserGroupRoleRelationEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemUserGroupRoleRelationEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemUserGroupRoleRelationWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemUserGroupRoleRelationWrapper() : this(new SystemUserGroupRoleRelationEntity())
+		public SystemUserGroupRoleRelationWrapper() : base(new SystemUserGroupRoleRelationEntity())
         {
             
         }
 
         internal SystemUserGroupRoleRelationWrapper(SystemUserGroupRoleRelationEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.UserGroupRoleID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "RoleID_RoleID":
+					return PROPERTY_ROLEID_ROLEID;
+		        case "RoleID_RoleName":
+					return PROPERTY_ROLEID_ROLENAME;
+		        case "RoleID_RoleCode":
+					return PROPERTY_ROLEID_ROLECODE;
+		        case "RoleID_RoleDescription":
+					return PROPERTY_ROLEID_ROLEDESCRIPTION;
+		        case "RoleID_RoleIsSystemRole":
+					return PROPERTY_ROLEID_ROLEISSYSTEMROLE;
+		        case "RoleID_RoleType":
+					return PROPERTY_ROLEID_ROLETYPE;
+		        case "RoleID_CreateBy":
+					return PROPERTY_ROLEID_CREATEBY;
+		        case "RoleID_CreateAt":
+					return PROPERTY_ROLEID_CREATEAT;
+		        case "RoleID_LastModifyBy":
+					return PROPERTY_ROLEID_LASTMODIFYBY;
+		        case "RoleID_LastModifyAt":
+					return PROPERTY_ROLEID_LASTMODIFYAT;
+		        case "RoleID_LastModifyComment":
+					return PROPERTY_ROLEID_LASTMODIFYCOMMENT;
+		        case "UserGroupID_GroupID":
+					return PROPERTY_USERGROUPID_GROUPID;
+		        case "UserGroupID_GroupNameCn":
+					return PROPERTY_USERGROUPID_GROUPNAMECN;
+		        case "UserGroupID_GroupNameEn":
+					return PROPERTY_USERGROUPID_GROUPNAMEEN;
+		        case "UserGroupID_GroupDescription":
+					return PROPERTY_USERGROUPID_GROUPDESCRIPTION;
+		        case "UserGroupID_CreateBy":
+					return PROPERTY_USERGROUPID_CREATEBY;
+		        case "UserGroupID_CreateAt":
+					return PROPERTY_USERGROUPID_CREATEAT;
+		        case "UserGroupID_LastModifyBy":
+					return PROPERTY_USERGROUPID_LASTMODIFYBY;
+		        case "UserGroupID_LastModifyAt":
+					return PROPERTY_USERGROUPID_LASTMODIFYAT;
+		        case "UserGroupID_LastModifyComment":
+					return PROPERTY_USERGROUPID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -137,7 +169,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.RoleID = ((value == null) ? null : value.entity);
+				entity.RoleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -151,7 +183,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.UserGroupID = ((value == null) ? null : value.entity);
+				entity.UserGroupID = ((value == null) ? null : value.Entity);
 			}
 		}
 		#endregion 
@@ -373,23 +405,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemUserGroupRoleRelationWrapper> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,   SystemRoleWrapper roleID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.Entity, pageQueryParams));
         }
 
         public static List<SystemUserGroupRoleRelationWrapper> FindAllByRoleID(SystemRoleWrapper roleID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.Entity));
         }
 		
 		
         public static List<SystemUserGroupRoleRelationWrapper> FindAllByOrderByAndFilterAndUserGroupID(string orderByColumnName, bool isDesc,   SystemUserGroupWrapper userGroupID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserGroupID(orderByColumnName, isDesc,   userGroupID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserGroupID(orderByColumnName, isDesc,   userGroupID.Entity, pageQueryParams));
         }
 
         public static List<SystemUserGroupRoleRelationWrapper> FindAllByUserGroupID(SystemUserGroupWrapper userGroupID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByUserGroupID(userGroupID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByUserGroupID(userGroupID.Entity));
         }
 		
 

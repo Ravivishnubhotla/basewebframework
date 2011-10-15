@@ -2,37 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Legendigital.Framework.Common.Bussiness.Interfaces;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Legendigital.Framework.Common.Entity;
 using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 {
-    public abstract class TreeItemWrapper<T>
+    public abstract class TreeItemWrapper<DomainType, ServiceProxyType, WrapperType> : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
+        where DomainType : BaseTableEntity
+        where ServiceProxyType : IBaseSpringNHibernateEntityServiceProxy<DomainType>
+        where WrapperType : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
     {
-        public abstract List<T> FindAllItems();
-
-        protected abstract bool CheckIsRoot(T obj);
-
-        protected abstract TypedTreeNodeItem<T> GetTreeNodeItemByDataItem(T item,TypedTreeNodeItem<T> pnode);
-
-
-
-
-
-
-        public List<TypedTreeNodeItem<T>> GetAllTreeItems()
+        public TreeItemWrapper(DomainType entityObj) : base(entityObj)
         {
-            List<TypedTreeNodeItem<T>> nodes = new List<TypedTreeNodeItem<T>>();
+        }
 
-            List<T> allItems = FindAllItems();
+        public abstract List<WrapperType> FindAllItems();
+
+        protected abstract bool CheckIsRoot(WrapperType obj);
+
+        protected abstract TypedTreeNodeItem<WrapperType> GetTreeNodeItemByDataItem(WrapperType item, TypedTreeNodeItem<WrapperType> pnode);
+
+
+
+
+
+
+        public List<TypedTreeNodeItem<WrapperType>> GetAllTreeItems()
+        {
+            List<TypedTreeNodeItem<WrapperType>> nodes = new List<TypedTreeNodeItem<WrapperType>>();
+
+            List<WrapperType> allItems = FindAllItems();
 
             if (allItems == null || allItems.Count <= 0)
                 return nodes;
 
-            List<T> topItems = allItems.FindAll(p => (CheckIsRoot(p)));
+            List<WrapperType> topItems = allItems.FindAll(p => (CheckIsRoot(p)));
 
-            foreach (T topItem in topItems)
+            foreach (WrapperType topItem in topItems)
             {
-                TypedTreeNodeItem<T> topnode = GetTreeNodeItemByDataItem(topItem,null);
+                TypedTreeNodeItem<WrapperType> topnode = GetTreeNodeItemByDataItem(topItem, null);
 
                 AddSubItems(topnode, topItem, allItems);
 
@@ -42,13 +52,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
             return nodes;
         }
 
-        public void AddSubItems(TypedTreeNodeItem<T> mnode, T mainItem, List<T> items)
+        public void AddSubItems(TypedTreeNodeItem<WrapperType> mnode, WrapperType mainItem, List<WrapperType> items)
         {
-            List<T> subItems = items.FindAll(p => CheckGetSubItems(p,mainItem));
+            List<WrapperType> subItems = items.FindAll(p => CheckGetSubItems(p, mainItem));
 
-            foreach (T subItem in subItems)
+            foreach (WrapperType subItem in subItems)
             {
-                TypedTreeNodeItem<T> subnode = GetTreeNodeItemByDataItem(subItem, mnode);
+                TypedTreeNodeItem<WrapperType> subnode = GetTreeNodeItemByDataItem(subItem, mnode);
 
                 AddSubItems(subnode, subItem, items);
 
@@ -57,6 +67,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
         }
 
-        protected abstract bool CheckGetSubItems(T subitem,T mainItem);
+        protected abstract bool CheckGetSubItems(WrapperType subitem, WrapperType mainItem);
     }
 }

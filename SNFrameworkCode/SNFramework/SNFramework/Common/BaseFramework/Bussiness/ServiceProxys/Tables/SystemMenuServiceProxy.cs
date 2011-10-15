@@ -85,7 +85,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
         public List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app,SystemUserEntity userEntity)
         {
-            return this.SelfDataObj.GetMenuByApplication(app.entity);
+            return this.SelfDataObj.GetMenuByApplication(app.Entity);
         }
 
         public SystemMenuEntity GetNewMaxMenuByParentMenuAndApplication(SystemMenuEntity menuWrapper, SystemApplicationEntity applicationWrapper)
@@ -183,7 +183,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
         public List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app)
         {
-            return this.SelfDataObj.GetMenuByApplication(app.entity);
+            return this.SelfDataObj.GetMenuByApplication(app.Entity);
         }
     }
 }

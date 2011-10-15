@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables.Container;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,124 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPChannelParamsConvertWrapper
+    public partial class SPChannelParamsConvertWrapper   
     {
         #region Member
 
 		internal static readonly ISPChannelParamsConvertServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPChannelParamsConvertServiceProxyInstance;
-	 
-	 
-        internal SPChannelParamsConvertEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SPChannelParamsConvertEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPChannelParamsConvertWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SPChannelParamsConvertWrapper() : this(new SPChannelParamsConvertEntity())
+		public SPChannelParamsConvertWrapper() : base(new SPChannelParamsConvertEntity())
         {
             
         }
 
         internal SPChannelParamsConvertWrapper(SPChannelParamsConvertEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "ChannelID_Id":
+					return PROPERTY_CHANNELID_ID;
+		        case "ChannelID_Name":
+					return PROPERTY_CHANNELID_NAME;
+		        case "ChannelID_Code":
+					return PROPERTY_CHANNELID_CODE;
+		        case "ChannelID_DataOkMessage":
+					return PROPERTY_CHANNELID_DATAOKMESSAGE;
+		        case "ChannelID_DataFailedMessage":
+					return PROPERTY_CHANNELID_DATAFAILEDMESSAGE;
+		        case "ChannelID_Description":
+					return PROPERTY_CHANNELID_DESCRIPTION;
+		        case "ChannelID_DataAdapterType":
+					return PROPERTY_CHANNELID_DATAADAPTERTYPE;
+		        case "ChannelID_DataAdapterUrl":
+					return PROPERTY_CHANNELID_DATAADAPTERURL;
+		        case "ChannelID_ChannelType":
+					return PROPERTY_CHANNELID_CHANNELTYPE;
+		        case "ChannelID_IVRFeeTimeType":
+					return PROPERTY_CHANNELID_IVRFEETIMETYPE;
+		        case "ChannelID_IVRTimeFormat":
+					return PROPERTY_CHANNELID_IVRTIMEFORMAT;
+		        case "ChannelID_IsStateReport":
+					return PROPERTY_CHANNELID_ISSTATEREPORT;
+		        case "ChannelID_StateReportType":
+					return PROPERTY_CHANNELID_STATEREPORTTYPE;
+		        case "ChannelID_ReportOkMessage":
+					return PROPERTY_CHANNELID_REPORTOKMESSAGE;
+		        case "ChannelID_ReportFailedMessage":
+					return PROPERTY_CHANNELID_REPORTFAILEDMESSAGE;
+		        case "ChannelID_StateReportParamName":
+					return PROPERTY_CHANNELID_STATEREPORTPARAMNAME;
+		        case "ChannelID_StateReportParamValue":
+					return PROPERTY_CHANNELID_STATEREPORTPARAMVALUE;
+		        case "ChannelID_RequestTypeParamName":
+					return PROPERTY_CHANNELID_REQUESTTYPEPARAMNAME;
+		        case "ChannelID_RequestTypeParamStateReportValue":
+					return PROPERTY_CHANNELID_REQUESTTYPEPARAMSTATEREPORTVALUE;
+		        case "ChannelID_RequestTypeParamDataReportValue":
+					return PROPERTY_CHANNELID_REQUESTTYPEPARAMDATAREPORTVALUE;
+		        case "ChannelID_HasFilters":
+					return PROPERTY_CHANNELID_HASFILTERS;
+		        case "ChannelID_IsMonitorRequest":
+					return PROPERTY_CHANNELID_ISMONITORREQUEST;
+		        case "ChannelID_IsLogRequest":
+					return PROPERTY_CHANNELID_ISLOGREQUEST;
+		        case "ChannelID_IsParamsConvert":
+					return PROPERTY_CHANNELID_ISPARAMSCONVERT;
+		        case "ChannelID_IsAutoLinkID":
+					return PROPERTY_CHANNELID_ISAUTOLINKID;
+		        case "ChannelID_AutoLinkIDFields":
+					return PROPERTY_CHANNELID_AUTOLINKIDFIELDS;
+		        case "ChannelID_LogRequestType":
+					return PROPERTY_CHANNELID_LOGREQUESTTYPE;
+		        case "ChannelID_Price":
+					return PROPERTY_CHANNELID_PRICE;
+		        case "ChannelID_DefaultRate":
+					return PROPERTY_CHANNELID_DEFAULTRATE;
+		        case "ChannelID_ChannelDetailInfo":
+					return PROPERTY_CHANNELID_CHANNELDETAILINFO;
+		        case "ChannelID_UpperID":
+					return PROPERTY_CHANNELID_UPPERID;
+		        case "ChannelID_ChannelStatus":
+					return PROPERTY_CHANNELID_CHANNELSTATUS;
+		        case "ChannelID_IsDisable":
+					return PROPERTY_CHANNELID_ISDISABLE;
+		        case "ChannelID_CreateBy":
+					return PROPERTY_CHANNELID_CREATEBY;
+		        case "ChannelID_CreateAt":
+					return PROPERTY_CHANNELID_CREATEAT;
+		        case "ChannelID_LastModifyBy":
+					return PROPERTY_CHANNELID_LASTMODIFYBY;
+		        case "ChannelID_LastModifyAt":
+					return PROPERTY_CHANNELID_LASTMODIFYAT;
+		        case "ChannelID_LastModifyComment":
+					return PROPERTY_CHANNELID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -231,7 +299,7 @@ namespace SPS.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ChannelID = ((value == null) ? null : value.entity);
+				entity.ChannelID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -701,12 +769,12 @@ namespace SPS.Bussiness.Wrappers
 		
         public static List<SPChannelParamsConvertWrapper> FindAllByOrderByAndFilterAndChannelID(string orderByColumnName, bool isDesc,   SPChannelWrapper channelID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc,   channelID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelID(orderByColumnName, isDesc,   channelID.Entity, pageQueryParams));
         }
 
         public static List<SPChannelParamsConvertWrapper> FindAllByChannelID(SPChannelWrapper channelID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByChannelID(channelID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByChannelID(channelID.Entity));
         }
 		
 

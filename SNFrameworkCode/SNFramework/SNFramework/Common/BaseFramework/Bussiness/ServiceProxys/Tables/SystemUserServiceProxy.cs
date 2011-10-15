@@ -156,7 +156,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         /// <returns></returns>
         public bool CheckUserRoleRelationIsExist(SystemUserWrapper user, SystemRoleWrapper role)
         {
-            return CheckUserRoleRelationIsExist(user.entity, role.entity);
+            return CheckUserRoleRelationIsExist(user.Entity, role.Entity);
         }
 
         /// <summary>

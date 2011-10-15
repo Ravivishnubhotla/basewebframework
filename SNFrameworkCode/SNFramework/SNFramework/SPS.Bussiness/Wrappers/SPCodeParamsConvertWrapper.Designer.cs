@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables.Container;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,98 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPCodeParamsConvertWrapper
+    public partial class SPCodeParamsConvertWrapper   
     {
         #region Member
 
 		internal static readonly ISPCodeParamsConvertServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPCodeParamsConvertServiceProxyInstance;
-	 
-	 
-        internal SPCodeParamsConvertEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SPCodeParamsConvertEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPCodeParamsConvertWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SPCodeParamsConvertWrapper() : this(new SPCodeParamsConvertEntity())
+		public SPCodeParamsConvertWrapper() : base(new SPCodeParamsConvertEntity())
         {
             
         }
 
         internal SPCodeParamsConvertWrapper(SPCodeParamsConvertEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "CodeID_Id":
+					return PROPERTY_CODEID_ID;
+		        case "CodeID_Name":
+					return PROPERTY_CODEID_NAME;
+		        case "CodeID_Description":
+					return PROPERTY_CODEID_DESCRIPTION;
+		        case "CodeID_Code":
+					return PROPERTY_CODEID_CODE;
+		        case "CodeID_ChannelID":
+					return PROPERTY_CODEID_CHANNELID;
+		        case "CodeID_Mo":
+					return PROPERTY_CODEID_MO;
+		        case "CodeID_MOType":
+					return PROPERTY_CODEID_MOTYPE;
+		        case "CodeID_OrderIndex":
+					return PROPERTY_CODEID_ORDERINDEX;
+		        case "CodeID_SPCode":
+					return PROPERTY_CODEID_SPCODE;
+		        case "CodeID_Province":
+					return PROPERTY_CODEID_PROVINCE;
+		        case "CodeID_DisableCity":
+					return PROPERTY_CODEID_DISABLECITY;
+		        case "CodeID_IsDiable":
+					return PROPERTY_CODEID_ISDIABLE;
+		        case "CodeID_SPType":
+					return PROPERTY_CODEID_SPTYPE;
+		        case "CodeID_CodeLength":
+					return PROPERTY_CODEID_CODELENGTH;
+		        case "CodeID_DayLimit":
+					return PROPERTY_CODEID_DAYLIMIT;
+		        case "CodeID_MonthLimit":
+					return PROPERTY_CODEID_MONTHLIMIT;
+		        case "CodeID_Price":
+					return PROPERTY_CODEID_PRICE;
+		        case "CodeID_SendText":
+					return PROPERTY_CODEID_SENDTEXT;
+		        case "CodeID_HasFilters":
+					return PROPERTY_CODEID_HASFILTERS;
+		        case "CodeID_CreateBy":
+					return PROPERTY_CODEID_CREATEBY;
+		        case "CodeID_CreateAt":
+					return PROPERTY_CODEID_CREATEAT;
+		        case "CodeID_LastModifyBy":
+					return PROPERTY_CODEID_LASTMODIFYBY;
+		        case "CodeID_LastModifyAt":
+					return PROPERTY_CODEID_LASTMODIFYAT;
+		        case "CodeID_LastModifyComment":
+					return PROPERTY_CODEID_LASTMODIFYCOMMENT;
+		        case "CodeID_HasParamsConvert":
+					return PROPERTY_CODEID_HASPARAMSCONVERT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -219,7 +261,7 @@ namespace SPS.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.CodeID = ((value == null) ? null : value.entity);
+				entity.CodeID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -573,12 +615,12 @@ namespace SPS.Bussiness.Wrappers
 		
         public static List<SPCodeParamsConvertWrapper> FindAllByOrderByAndFilterAndCodeID(string orderByColumnName, bool isDesc,   SPCodeWrapper codeID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndCodeID(orderByColumnName, isDesc,   codeID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndCodeID(orderByColumnName, isDesc,   codeID.Entity, pageQueryParams));
         }
 
         public static List<SPCodeParamsConvertWrapper> FindAllByCodeID(SPCodeWrapper codeID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByCodeID(codeID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByCodeID(codeID.Entity));
         }
 		
 
