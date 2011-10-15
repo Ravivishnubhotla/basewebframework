@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,70 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemViewItemWrapper
+    public partial class SystemViewItemWrapper   
     {
         #region Member
 
 		internal static readonly ISystemViewItemServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemViewItemServiceProxyInstance;
-	 
-	 
-        internal SystemViewItemEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemViewItemEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemViewItemWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemViewItemWrapper() : this(new SystemViewItemEntity())
+		public SystemViewItemWrapper() : base(new SystemViewItemEntity())
         {
             
         }
 
         internal SystemViewItemWrapper(SystemViewItemEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.SystemViewItemID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "SystemViewID_SystemViewID":
+					return PROPERTY_SYSTEMVIEWID_SYSTEMVIEWID;
+		        case "SystemViewID_SystemViewNameCn":
+					return PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMECN;
+		        case "SystemViewID_SystemViewNameEn":
+					return PROPERTY_SYSTEMVIEWID_SYSTEMVIEWNAMEEN;
+		        case "SystemViewID_ApplicationID":
+					return PROPERTY_SYSTEMVIEWID_APPLICATIONID;
+		        case "SystemViewID_SystemViewDescription":
+					return PROPERTY_SYSTEMVIEWID_SYSTEMVIEWDESCRIPTION;
+		        case "SystemViewID_OrderIndex":
+					return PROPERTY_SYSTEMVIEWID_ORDERINDEX;
+		        case "SystemViewID_CreateBy":
+					return PROPERTY_SYSTEMVIEWID_CREATEBY;
+		        case "SystemViewID_CreateAt":
+					return PROPERTY_SYSTEMVIEWID_CREATEAT;
+		        case "SystemViewID_LastModifyBy":
+					return PROPERTY_SYSTEMVIEWID_LASTMODIFYBY;
+		        case "SystemViewID_LastModifyAt":
+					return PROPERTY_SYSTEMVIEWID_LASTMODIFYAT;
+		        case "SystemViewID_LastModifyComment":
+					return PROPERTY_SYSTEMVIEWID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -190,7 +204,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.SystemViewID = ((value == null) ? null : value.entity);
+				entity.SystemViewID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -404,12 +418,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemViewItemWrapper> FindAllByOrderByAndFilterAndSystemViewID(string orderByColumnName, bool isDesc,   SystemViewWrapper systemViewID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemViewID(orderByColumnName, isDesc,   systemViewID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemViewID(orderByColumnName, isDesc,   systemViewID.Entity, pageQueryParams));
         }
 
         public static List<SystemViewItemWrapper> FindAllBySystemViewID(SystemViewWrapper systemViewID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllBySystemViewID(systemViewID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllBySystemViewID(systemViewID.Entity));
         }
 		
 

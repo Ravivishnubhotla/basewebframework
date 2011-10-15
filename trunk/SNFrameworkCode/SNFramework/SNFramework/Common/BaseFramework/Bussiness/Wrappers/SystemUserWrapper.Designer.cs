@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,70 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemUserWrapper
+    public partial class SystemUserWrapper   
     {
         #region Member
 
 		internal static readonly ISystemUserServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemUserServiceProxyInstance;
-	 
-	 
-        internal SystemUserEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemUserEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemUserWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemUserWrapper() : this(new SystemUserEntity())
+		public SystemUserWrapper() : base(new SystemUserEntity())
         {
             
         }
 
         internal SystemUserWrapper(SystemUserEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.UserID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "DepartmentID_DepartmentID":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTID;
+		        case "DepartmentID_ParentDepartmentID":
+					return PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID;
+		        case "DepartmentID_DepartmentNameCn":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN;
+		        case "DepartmentID_DepartmentNameEn":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN;
+		        case "DepartmentID_DepartmentDecription":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION;
+		        case "DepartmentID_DepartmentSortIndex":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX;
+		        case "DepartmentID_CreateBy":
+					return PROPERTY_DEPARTMENTID_CREATEBY;
+		        case "DepartmentID_CreateAt":
+					return PROPERTY_DEPARTMENTID_CREATEAT;
+		        case "DepartmentID_LastModifyBy":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYBY;
+		        case "DepartmentID_LastModifyAt":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYAT;
+		        case "DepartmentID_LastModifyComment":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -252,7 +266,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.DepartmentID = ((value == null) ? null : value.entity);
+				entity.DepartmentID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -704,12 +718,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemUserWrapper> FindAllByOrderByAndFilterAndDepartmentID(string orderByColumnName, bool isDesc,   SystemDepartmentWrapper departmentID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndDepartmentID(orderByColumnName, isDesc,   departmentID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndDepartmentID(orderByColumnName, isDesc,   departmentID.Entity, pageQueryParams));
         }
 
         public static List<SystemUserWrapper> FindAllByDepartmentID(SystemDepartmentWrapper departmentID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByDepartmentID(departmentID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByDepartmentID(departmentID.Entity));
         }
 		
 

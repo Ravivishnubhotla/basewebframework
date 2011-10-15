@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables.Container;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,66 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPChannelWrapper
+    public partial class SPChannelWrapper   
     {
         #region Member
 
 		internal static readonly ISPChannelServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPChannelServiceProxyInstance;
-	 
-	 
-        internal SPChannelEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SPChannelEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SPChannelWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SPChannelWrapper() : this(new SPChannelEntity())
+		public SPChannelWrapper() : base(new SPChannelEntity())
         {
             
         }
 
         internal SPChannelWrapper(SPChannelEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.Id == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "UpperID_Id":
+					return PROPERTY_UPPERID_ID;
+		        case "UpperID_Name":
+					return PROPERTY_UPPERID_NAME;
+		        case "UpperID_Code":
+					return PROPERTY_UPPERID_CODE;
+		        case "UpperID_Description":
+					return PROPERTY_UPPERID_DESCRIPTION;
+		        case "UpperID_CreateBy":
+					return PROPERTY_UPPERID_CREATEBY;
+		        case "UpperID_CreateAt":
+					return PROPERTY_UPPERID_CREATEAT;
+		        case "UpperID_LastModifyBy":
+					return PROPERTY_UPPERID_LASTMODIFYBY;
+		        case "UpperID_LastModifyAt":
+					return PROPERTY_UPPERID_LASTMODIFYAT;
+		        case "UpperID_LastModifyComment":
+					return PROPERTY_UPPERID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -564,7 +574,7 @@ namespace SPS.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.UpperID = ((value == null) ? null : value.entity);
+				entity.UpperID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -772,12 +782,12 @@ namespace SPS.Bussiness.Wrappers
 		
         public static List<SPChannelWrapper> FindAllByOrderByAndFilterAndUpperID(string orderByColumnName, bool isDesc,   SPUpperWrapper upperID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUpperID(orderByColumnName, isDesc,   upperID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUpperID(orderByColumnName, isDesc,   upperID.Entity, pageQueryParams));
         }
 
         public static List<SPChannelWrapper> FindAllByUpperID(SPUpperWrapper upperID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByUpperID(upperID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByUpperID(upperID.Entity));
         }
 		
 

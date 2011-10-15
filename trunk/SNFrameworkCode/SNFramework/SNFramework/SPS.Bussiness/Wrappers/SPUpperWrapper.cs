@@ -11,54 +11,54 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace SPS.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SPUpperWrapper
+    public partial class SPUpperWrapper : BaseSpringNHibernateWrapper<SPUpperEntity, ISPUpperServiceProxy, SPUpperWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SPUpperWrapper obj)
+
+        public static void Save(SPUpperWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SPUpperWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SPUpperWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SPUpperWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SPUpperWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SPUpperWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SPUpperWrapper> FindAll()
@@ -68,33 +68,35 @@ namespace SPS.Bussiness.Wrappers
 
         public static List<SPUpperWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SPUpperEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
-		
-		public static List<SPUpperWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+
+        public static List<SPUpperWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SPUpperWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SPUpperWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
-		
+
 
         public static List<SPUpperWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
-        }
-			
-		#endregion
+            List<SPUpperWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+
+            return results;
+        }
+
+        #endregion
     }
 }

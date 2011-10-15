@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,74 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemMoudleFieldWrapper
+    public partial class SystemMoudleFieldWrapper   
     {
         #region Member
 
 		internal static readonly ISystemMoudleFieldServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemMoudleFieldServiceProxyInstance;
-	 
-	 
-        internal SystemMoudleFieldEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemMoudleFieldEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemMoudleFieldWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemMoudleFieldWrapper() : this(new SystemMoudleFieldEntity())
+		public SystemMoudleFieldWrapper() : base(new SystemMoudleFieldEntity())
         {
             
         }
 
         internal SystemMoudleFieldWrapper(SystemMoudleFieldEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.SystemMoudleFieldID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "SystemMoudleID_MoudleID":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLEID;
+		        case "SystemMoudleID_MoudleNameCn":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLENAMECN;
+		        case "SystemMoudleID_MoudleNameEn":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEEN;
+		        case "SystemMoudleID_MoudleNameDb":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLENAMEDB;
+		        case "SystemMoudleID_MoudleDescription":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLEDESCRIPTION;
+		        case "SystemMoudleID_ApplicationID":
+					return PROPERTY_SYSTEMMOUDLEID_APPLICATIONID;
+		        case "SystemMoudleID_MoudleIsSystemMoudle":
+					return PROPERTY_SYSTEMMOUDLEID_MOUDLEISSYSTEMMOUDLE;
+		        case "SystemMoudleID_OrderIndex":
+					return PROPERTY_SYSTEMMOUDLEID_ORDERINDEX;
+		        case "SystemMoudleID_CreateBy":
+					return PROPERTY_SYSTEMMOUDLEID_CREATEBY;
+		        case "SystemMoudleID_CreateAt":
+					return PROPERTY_SYSTEMMOUDLEID_CREATEAT;
+		        case "SystemMoudleID_LastModifyBy":
+					return PROPERTY_SYSTEMMOUDLEID_LASTMODIFYBY;
+		        case "SystemMoudleID_LastModifyAt":
+					return PROPERTY_SYSTEMMOUDLEID_LASTMODIFYAT;
+		        case "SystemMoudleID_LastModifyComment":
+					return PROPERTY_SYSTEMMOUDLEID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -267,7 +285,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.SystemMoudleID = ((value == null) ? null : value.entity);
+				entity.SystemMoudleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -501,12 +519,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemMoudleFieldWrapper> FindAllByOrderByAndFilterAndSystemMoudleID(string orderByColumnName, bool isDesc,   SystemMoudleWrapper systemMoudleID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemMoudleID(orderByColumnName, isDesc,   systemMoudleID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSystemMoudleID(orderByColumnName, isDesc,   systemMoudleID.Entity, pageQueryParams));
         }
 
         public static List<SystemMoudleFieldWrapper> FindAllBySystemMoudleID(SystemMoudleWrapper systemMoudleID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllBySystemMoudleID(systemMoudleID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllBySystemMoudleID(systemMoudleID.Entity));
         }
 		
 

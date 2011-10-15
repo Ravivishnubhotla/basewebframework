@@ -12,54 +12,54 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 namespace SPS.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SPSClientWrapper
+    public partial class SPSClientWrapper : BaseSpringNHibernateWrapper<SPSClientEntity, ISPSClientServiceProxy, SPSClientWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SPSClientWrapper obj)
+
+        public static void Save(SPSClientWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SPSClientWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SPSClientWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SPSClientWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SPSClientWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SPSClientWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SPSClientWrapper> FindAll()
@@ -69,33 +69,36 @@ namespace SPS.Bussiness.Wrappers
 
         public static List<SPSClientWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SPSClientEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
-		
-		public static List<SPSClientWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+
+        public static List<SPSClientWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SPSClientWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SPSClientWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
-		
+
 
         public static List<SPSClientWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
+            List<SPSClientWrapper> results = null;
+
+            ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+
+            return results;
         }
-			
-		#endregion
+
+        #endregion
 
 
 	    public string RelateUserLoginID

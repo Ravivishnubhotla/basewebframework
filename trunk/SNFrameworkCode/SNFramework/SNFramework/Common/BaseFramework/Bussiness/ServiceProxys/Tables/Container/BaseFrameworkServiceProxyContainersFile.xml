@@ -10,6 +10,14 @@
     <property name="SelfDataObj" ref="SystemApplicationDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemAttachmentServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemAttachmentServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemAttachmentDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemAttachmentContentServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemAttachmentContentServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemAttachmentContentDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemCityServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemCityServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemCityDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
@@ -184,6 +192,8 @@
 
 <object id="BaseFrameworkServiceProxyContainerIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer, Legendigital.Framework.Common">
     <property name="SystemApplicationServiceProxyInstance" ref="SystemApplicationServiceProxyIocID"/>
+    <property name="SystemAttachmentServiceProxyInstance" ref="SystemAttachmentServiceProxyIocID"/>
+    <property name="SystemAttachmentContentServiceProxyInstance" ref="SystemAttachmentContentServiceProxyIocID"/>
     <property name="SystemCityServiceProxyInstance" ref="SystemCityServiceProxyIocID"/>
     <property name="SystemConfigServiceProxyInstance" ref="SystemConfigServiceProxyIocID"/>
     <property name="SystemConfigGroupServiceProxyInstance" ref="SystemConfigGroupServiceProxyIocID"/>

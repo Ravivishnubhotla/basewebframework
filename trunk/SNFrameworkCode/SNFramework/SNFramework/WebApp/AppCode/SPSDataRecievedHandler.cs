@@ -57,10 +57,10 @@ namespace Legendigital.Common.WebApp.AppCode
                     }
 
                     //初始化参数，包含添加固定参数逻辑
-                    if (channel.NeedInitParams)
-                    {
-                        channel.InitParams(httpRequestLog);
-                    }
+                    //if (channel.NeedInitParams)
+                    //{
+                    //    channel.InitParams(httpRequestLog);
+                    //}
 
                     //过滤请求
                     if(channel.HasFilters)

@@ -47,7 +47,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {
             //获取用户分配的角色.
             List<SystemRoleEntity> userAssignedRole =
-                this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserAssignedRoles(user.entity);
+                this.DataObjectsContainerIocID.SystemUserRoleRelationDataObjectInstance.GetUserAssignedRoles(user.Entity);
 
             //获取角色分配的的应用程序.
             return this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.GetUserAssignedApplications(userAssignedRole);

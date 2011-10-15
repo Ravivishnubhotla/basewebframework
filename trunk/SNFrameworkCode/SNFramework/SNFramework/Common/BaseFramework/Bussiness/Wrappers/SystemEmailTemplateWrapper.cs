@@ -11,54 +11,54 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemEmailTemplateWrapper
+    public partial class SystemEmailTemplateWrapper : BaseSpringNHibernateWrapper<SystemEmailTemplateEntity, ISystemEmailTemplateServiceProxy, SystemEmailTemplateWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemEmailTemplateWrapper obj)
+
+        public static void Save(SystemEmailTemplateWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemEmailTemplateWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemEmailTemplateWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemEmailTemplateWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemEmailTemplateWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemEmailTemplateWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemEmailTemplateWrapper> FindAll()
@@ -68,33 +68,37 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemEmailTemplateWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemEmailTemplateEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemEmailTemplateWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemEmailTemplateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SystemEmailTemplateWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
-		
+
 
         public static List<SystemEmailTemplateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
+            List<SystemEmailTemplateWrapper> results = null;
+
+            ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+
+            return results;
         }
-			
-		#endregion
+
+        #endregion
+
 
         public static SystemEmailTemplateWrapper GetTemplateByName(string name)
         {

@@ -9,6 +9,12 @@
  <object id="SystemApplicationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemApplicationDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemAttachmentDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemAttachmentDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemAttachmentContentDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemAttachmentContentDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemCityDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemCityDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -143,6 +149,8 @@
 
 <object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
     <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
+    <property name="SystemAttachmentDataObjectInstance" ref="SystemAttachmentDataObjectIocID"/>
+    <property name="SystemAttachmentContentDataObjectInstance" ref="SystemAttachmentContentDataObjectIocID"/>
     <property name="SystemCityDataObjectInstance" ref="SystemCityDataObjectIocID"/>
     <property name="SystemConfigDataObjectInstance" ref="SystemConfigDataObjectIocID"/>
     <property name="SystemConfigGroupDataObjectInstance" ref="SystemConfigGroupDataObjectIocID"/>

@@ -21,59 +21,59 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserWrapper
+    public partial class SystemUserWrapper : BaseSpringNHibernateWrapper<SystemUserEntity, ISystemUserServiceProxy, SystemUserWrapper>
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
 
- 
+
 
         #region Static Common Data Operation
 
         public static void Save(SystemUserWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemUserWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemUserWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemUserWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemUserWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemUserWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemUserWrapper> FindAll()
@@ -83,57 +83,42 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemUserWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemUserEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemUserWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemUserWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SystemUserWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
-                                                   pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 
 
+        public static List<SystemUserWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
+            List<SystemUserWrapper> results = null;
+
+            ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+
+            return results;
+        }
 
         #endregion
 
         #region ¹¹ÔìÆ÷
 
-        public SystemUserWrapper(int id)
-        {
-            UserCreateDate = DateTime.Now;
-            LastActivityDate = DateTime.Now;
-            LastLoginDate = DateTime.Now;
-            LastLockedOutDate = DateTime.Now;
-            LastPasswordChangeDate = DateTime.Now;
-            FailedPwdAnsAttemptWndStart = DateTime.Now;
-            FailedPwdAttemptWndStart = DateTime.Now;
-            Applications = new ArrayList();
-            UserID = id;
-        }
+ 
 
-        public SystemUserWrapper(string name) // : base(name)
-        {
-            UserCreateDate = DateTime.Now;
-            LastActivityDate = DateTime.Now;
-            LastLoginDate = DateTime.Now;
-            LastLockedOutDate = DateTime.Now;
-            LastPasswordChangeDate = DateTime.Now;
-            FailedPwdAnsAttemptWndStart = DateTime.Now;
-            FailedPwdAttemptWndStart = DateTime.Now;
-            Applications = new ArrayList();
-        }
+ 
 
         #endregion
 

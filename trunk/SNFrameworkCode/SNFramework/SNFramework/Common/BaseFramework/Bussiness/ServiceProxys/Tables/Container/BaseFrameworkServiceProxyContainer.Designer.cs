@@ -10,6 +10,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {		
 		public ISystemApplicationServiceProxy SystemApplicationServiceProxyInstance
         {get; set;}
+		public ISystemAttachmentServiceProxy SystemAttachmentServiceProxyInstance
+        {get; set;}
+		public ISystemAttachmentContentServiceProxy SystemAttachmentContentServiceProxyInstance
+        {get; set;}
 		public ISystemCityServiceProxy SystemCityServiceProxyInstance
         {get; set;}
 		public ISystemConfigServiceProxy SystemConfigServiceProxyInstance

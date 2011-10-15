@@ -11,54 +11,54 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemTemplateWrapper
+    public partial class SystemTemplateWrapper : BaseSpringNHibernateWrapper<SystemTemplateEntity, ISystemTemplateServiceProxy, SystemTemplateWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemTemplateWrapper obj)
+
+        public static void Save(SystemTemplateWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemTemplateWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemTemplateWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemTemplateWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemTemplateWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemTemplateWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemTemplateWrapper> FindAll()
@@ -68,33 +68,36 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemTemplateWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemTemplateEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
-		
-		public static List<SystemTemplateWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+
+        public static List<SystemTemplateWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemTemplateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SystemTemplateWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
-		
+
 
         public static List<SystemTemplateWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
+            List<SystemTemplateWrapper> results = null;
+
+            ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+
+            return results;
         }
-			
-		#endregion
+
+        #endregion
 
     }
 }

@@ -670,57 +670,57 @@ using <%= config.ServiceProxyNameSpace %>;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 
-namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
+namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %> 
 {
 	[Serializable]
-    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>
-    {
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>  : BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>>
+    { 
         #region Static Common Data Operation
 		
 		public static void Save(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(<%= config.GenerateBussinessEncapsulationClassName(table) %> instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(<%= config.GenerateBussinessEncapsulationClassName(table) %> instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static <%= config.GenerateBussinessEncapsulationClassName(table) %> FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAll()
@@ -730,30 +730,33 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<<%= config.GenerateEntityClassName(table) %>> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 		
 		public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,pageQueryParams));
-
-            return results;
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 		
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
+		    List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> results = null;
+
+	        ProcessQueryFilters(filters);
+
+            results = ConvertToWrapperList(
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc,  businessProxy));
+
+            return results;
         }
 			
 		#endregion
@@ -775,6 +778,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using <%= config.EntityNameSpace %>;
 using <%= config.GenerateServiceProxyContainerClassNameSpace %>;
 using <%= config.ServiceProxyNameSpace %>;
@@ -782,57 +786,67 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 {
-    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>   
     {
         #region Member
 
 		internal static readonly <%= config.GenerateServiceProxyInterfaceClassName(table) %> businessProxy = ((<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>)(ContextRegistry.GetContext().GetObject("<%= config.GenerateServiceProxyContainerClassName %>IocID", typeof(<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>)))).<%= config.GenerateServiceProxyClassName(table) %>Instance;
-	 
-	 
-        internal <%= config.GenerateEntityClassName(table) %> entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal <%= config.GenerateEntityClassName(table) %> Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(<%= config.GenerateBussinessEncapsulationClassName(table) %>));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public <%= config.GenerateBussinessEncapsulationClassName(table) %>() : this(new <%= config.GenerateEntityClassName(table) %>())
+		public <%= config.GenerateBussinessEncapsulationClassName(table) %>() : base(new <%= config.GenerateEntityClassName(table) %>())
         {
             
         }
 
         internal <%= config.GenerateBussinessEncapsulationClassName(table) %>(<%= config.GenerateEntityClassName(table) %> entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.<%= pkProname %> == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+<%			foreach( IColumn field in table.Columns )
+			{
+				if(config.IsCreateFKeyClassrefence && field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+					foreach( IColumn pfield in pTable.Columns ){ 
+					string type = ((pfield.IsInForeignKey && !pfield.IsInPrimaryKey) ? config.GenerateBussinessEncapsulationClassName(pfield.ForeignKeys[0].PrimaryTable) : config.GenerateEntityPorpertyType(pfield));
+					if(type.ToLower()!="string" && !type.EndsWith("?") && !type.EndsWith("Wrapper"))
+					{
+						type = type+"?";
+					}
+%>		        case "<%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityPorpertyName(pfield) %>":
+					return PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_<%= config.GenerateEntityPorpertyName(pfield).ToUpper() %>;
+<%						 
+					}
+					}
+				}
+			}
+%>              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -889,12 +903,12 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 %>		
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(string orderByColumnName, bool isDesc,   <%= config.GenerateBussinessEncapsulationClassName(pTable) %> <%= config.GenerateEntityParamsName(field) %>,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(orderByColumnName, isDesc,   <%= config.GenerateEntityParamsName(field) %>.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAnd<%= config.GenerateEntityPorpertyName(field) %>(orderByColumnName, isDesc,   <%= config.GenerateEntityParamsName(field) %>.Entity, pageQueryParams));
         }
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateBussinessEncapsulationClassName(pTable) %> <%= config.GenerateEntityParamsName(field) %>)
         {
-            return ConvertToWrapperList(businessProxy.FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateEntityParamsName(field) %>.entity));
+            return ConvertToWrapperList(businessProxy.FindAllBy<%= config.GenerateEntityPorpertyName(field) %>(<%= config.GenerateEntityParamsName(field) %>.Entity));
         }
 		
 <%					}			
@@ -1320,7 +1334,7 @@ namespace <%= config.GenerateServiceProxyContainerClassNameSpace %>{
 <%   			if (!column.IsInForeignKey || column.IsInPrimaryKey) {
 %>				entity.<%= config.GenerateEntityPorpertyName(column) %> = value;
 <%   			} else {
-%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = ((value == null) ? null : value.entity);
+%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = ((value == null) ? null : value.Entity);
 <%   			} 
 %>			}
 		}
@@ -1355,7 +1369,7 @@ namespace <%= config.GenerateServiceProxyContainerClassNameSpace %>{
 <%   			if (!column.IsInForeignKey || column.IsInPrimaryKey) {
 %>				entity.<%= config.GenerateEntityPorpertyName(column) %> = value;
 <%   			} else {
-%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = ((value == null) ? null : value.entity);
+%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = ((value == null) ? null : value.Entity);
 <%   			} 
 %>			}
 		}

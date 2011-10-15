@@ -13,95 +13,90 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemApplicationWrapper
+    public partial class SystemApplicationWrapper : BaseSpringNHibernateWrapper<SystemApplicationEntity, ISystemApplicationServiceProxy, SystemApplicationWrapper>
     {
         #region Static Common Data Operation
 		
 		public static void Save(SystemApplicationWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemApplicationWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemApplicationWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
-
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemApplicationWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemApplicationWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemApplicationWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemApplicationWrapper> FindAll()
         {
-            return ConvertToWrapperList(businessProxy.FindAll());
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemApplicationWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemApplicationEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
         public static List<SystemApplicationWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            if (string.IsNullOrEmpty(orderByColumnName))
-            {
-                orderByColumnName = SystemApplicationWrapper.PROPERTY_NAME_SYSTEMAPPLICATIONID;
-                isDesc = false;
-            }
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
         }
 
-        public static List<SystemApplicationWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+
+
+	    public static List<SystemApplicationWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             List<SystemApplicationWrapper> results = null;
 
+	        ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
-                                                  pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
+                                                  pageQueryParams, businessProxy));
 
             return results;
         }
 
 
-		
 
-		
-		#endregion
-
- 
+	    #endregion
 
 
 	    /// <summary>

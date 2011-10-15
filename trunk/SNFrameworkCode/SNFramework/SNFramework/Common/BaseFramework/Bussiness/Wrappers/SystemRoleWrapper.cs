@@ -13,54 +13,54 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemRoleWrapper
+    public partial class SystemRoleWrapper : BaseSpringNHibernateWrapper<SystemRoleEntity, ISystemRoleServiceProxy, SystemRoleWrapper>
     {
         #region Static Common Data Operation
-		
-		public static void Save(SystemRoleWrapper obj)
+
+        public static void Save(SystemRoleWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemRoleWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemRoleWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemRoleWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemRoleWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemRoleWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemRoleWrapper> FindAll()
@@ -70,29 +70,36 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemRoleWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemRoleEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemRoleWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemRoleWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+        }
+
+
+        public static List<SystemRoleWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
             List<SystemRoleWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
 
             return results;
         }
-		
 
-		
-		#endregion
+        #endregion
 
         public static bool DeleteRole(string roleName, bool onPopulatedRole)
         {
@@ -141,7 +148,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             if (role != null && applicationWrapper != null)
             {
-                businessProxy.PatchAssignRoleMenusInApplication(role.entity, applicationWrapper.entity, assignedMenuIDS);
+                businessProxy.PatchAssignRoleMenusInApplication(role.entity, applicationWrapper.Entity, assignedMenuIDS);
             }
         }
 
@@ -272,7 +279,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 	    public static List<string> GetRoleAssignedPermissionsByResources(SystemRoleWrapper systemRoleWrapper, SystemResourcesWrapper resourcesWrapper)
 	    {
-            return businessProxy.GetRoleAssignedPermissionsByResources(systemRoleWrapper.entity, resourcesWrapper.entity);
+            return businessProxy.GetRoleAssignedPermissionsByResources(systemRoleWrapper.entity, resourcesWrapper.Entity);
 	    }
 
 

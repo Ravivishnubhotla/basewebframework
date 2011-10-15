@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,136 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemPersonalizationSettingsWrapper
+    public partial class SystemPersonalizationSettingsWrapper   
     {
         #region Member
 
 		internal static readonly ISystemPersonalizationSettingsServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemPersonalizationSettingsServiceProxyInstance;
-	 
-	 
-        internal SystemPersonalizationSettingsEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemPersonalizationSettingsEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemPersonalizationSettingsWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemPersonalizationSettingsWrapper() : this(new SystemPersonalizationSettingsEntity())
+		public SystemPersonalizationSettingsWrapper() : base(new SystemPersonalizationSettingsEntity())
         {
             
         }
 
         internal SystemPersonalizationSettingsWrapper(SystemPersonalizationSettingsEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.PersonalizationID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "ApplicationID_SystemApplicationID":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONID;
+		        case "ApplicationID_SystemApplicationName":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONNAME;
+		        case "ApplicationID_SystemApplicationCode":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONCODE;
+		        case "ApplicationID_SystemApplicationDescription":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONDESCRIPTION;
+		        case "ApplicationID_SystemApplicationUrl":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONURL;
+		        case "ApplicationID_SystemApplicationIsSystemApplication":
+					return PROPERTY_APPLICATIONID_SYSTEMAPPLICATIONISSYSTEMAPPLICATION;
+		        case "ApplicationID_OrderIndex":
+					return PROPERTY_APPLICATIONID_ORDERINDEX;
+		        case "ApplicationID_CreateBy":
+					return PROPERTY_APPLICATIONID_CREATEBY;
+		        case "ApplicationID_CreateAt":
+					return PROPERTY_APPLICATIONID_CREATEAT;
+		        case "ApplicationID_LastModifyBy":
+					return PROPERTY_APPLICATIONID_LASTMODIFYBY;
+		        case "ApplicationID_LastModifyAt":
+					return PROPERTY_APPLICATIONID_LASTMODIFYAT;
+		        case "ApplicationID_LastModifyComment":
+					return PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT;
+		        case "UserId_UserID":
+					return PROPERTY_USERID_USERID;
+		        case "UserId_UserLoginID":
+					return PROPERTY_USERID_USERLOGINID;
+		        case "UserId_UserName":
+					return PROPERTY_USERID_USERNAME;
+		        case "UserId_UserEmail":
+					return PROPERTY_USERID_USEREMAIL;
+		        case "UserId_UserPassword":
+					return PROPERTY_USERID_USERPASSWORD;
+		        case "UserId_UserStatus":
+					return PROPERTY_USERID_USERSTATUS;
+		        case "UserId_UserCreateDate":
+					return PROPERTY_USERID_USERCREATEDATE;
+		        case "UserId_UserType":
+					return PROPERTY_USERID_USERTYPE;
+		        case "UserId_DepartmentID":
+					return PROPERTY_USERID_DEPARTMENTID;
+		        case "UserId_MobilePIN":
+					return PROPERTY_USERID_MOBILEPIN;
+		        case "UserId_PasswordFormat":
+					return PROPERTY_USERID_PASSWORDFORMAT;
+		        case "UserId_PasswordQuestion":
+					return PROPERTY_USERID_PASSWORDQUESTION;
+		        case "UserId_PasswordAnswer":
+					return PROPERTY_USERID_PASSWORDANSWER;
+		        case "UserId_Comments":
+					return PROPERTY_USERID_COMMENTS;
+		        case "UserId_IsApproved":
+					return PROPERTY_USERID_ISAPPROVED;
+		        case "UserId_IsLockedOut":
+					return PROPERTY_USERID_ISLOCKEDOUT;
+		        case "UserId_LastActivityDate":
+					return PROPERTY_USERID_LASTACTIVITYDATE;
+		        case "UserId_LastLoginDate":
+					return PROPERTY_USERID_LASTLOGINDATE;
+		        case "UserId_LastLockedOutDate":
+					return PROPERTY_USERID_LASTLOCKEDOUTDATE;
+		        case "UserId_LastPasswordChangeDate":
+					return PROPERTY_USERID_LASTPASSWORDCHANGEDATE;
+		        case "UserId_FailedPwdAttemptCnt":
+					return PROPERTY_USERID_FAILEDPWDATTEMPTCNT;
+		        case "UserId_FailedPwdAttemptWndStart":
+					return PROPERTY_USERID_FAILEDPWDATTEMPTWNDSTART;
+		        case "UserId_FailedPwdAnsAttemptCnt":
+					return PROPERTY_USERID_FAILEDPWDANSATTEMPTCNT;
+		        case "UserId_FailedPwdAnsAttemptWndStart":
+					return PROPERTY_USERID_FAILEDPWDANSATTEMPTWNDSTART;
+		        case "UserId_IsNeedChgPwd":
+					return PROPERTY_USERID_ISNEEDCHGPWD;
+		        case "UserId_PasswordSalt":
+					return PROPERTY_USERID_PASSWORDSALT;
+		        case "UserId_LoweredEmail":
+					return PROPERTY_USERID_LOWEREDEMAIL;
+		        case "UserId_CreateBy":
+					return PROPERTY_USERID_CREATEBY;
+		        case "UserId_CreateAt":
+					return PROPERTY_USERID_CREATEAT;
+		        case "UserId_LastModifyBy":
+					return PROPERTY_USERID_LASTMODIFYBY;
+		        case "UserId_LastModifyAt":
+					return PROPERTY_USERID_LASTMODIFYAT;
+		        case "UserId_LastModifyComment":
+					return PROPERTY_USERID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -169,7 +249,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ApplicationID = ((value == null) ? null : value.entity);
+				entity.ApplicationID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -183,7 +263,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.UserId = ((value == null) ? null : value.entity);
+				entity.UserId = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -757,23 +837,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemPersonalizationSettingsWrapper> FindAllByOrderByAndFilterAndApplicationID(string orderByColumnName, bool isDesc,   SystemApplicationWrapper applicationID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndApplicationID(orderByColumnName, isDesc,   applicationID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndApplicationID(orderByColumnName, isDesc,   applicationID.Entity, pageQueryParams));
         }
 
         public static List<SystemPersonalizationSettingsWrapper> FindAllByApplicationID(SystemApplicationWrapper applicationID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByApplicationID(applicationID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByApplicationID(applicationID.Entity));
         }
 		
 		
         public static List<SystemPersonalizationSettingsWrapper> FindAllByOrderByAndFilterAndUserId(string orderByColumnName, bool isDesc,   SystemUserWrapper userId,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserId(orderByColumnName, isDesc,   userId.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUserId(orderByColumnName, isDesc,   userId.Entity, pageQueryParams));
         }
 
         public static List<SystemPersonalizationSettingsWrapper> FindAllByUserId(SystemUserWrapper userId)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByUserId(userId.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByUserId(userId.Entity));
         }
 		
 

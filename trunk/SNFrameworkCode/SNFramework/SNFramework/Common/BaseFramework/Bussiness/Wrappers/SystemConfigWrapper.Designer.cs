@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,70 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemConfigWrapper
+    public partial class SystemConfigWrapper   
     {
         #region Member
 
 		internal static readonly ISystemConfigServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemConfigServiceProxyInstance;
-	 
-	 
-        internal SystemConfigEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemConfigEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemConfigWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemConfigWrapper() : this(new SystemConfigEntity())
+		public SystemConfigWrapper() : base(new SystemConfigEntity())
         {
             
         }
 
         internal SystemConfigWrapper(SystemConfigEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.SystemConfigID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "ConfigGroupID_Id":
+					return PROPERTY_CONFIGGROUPID_ID;
+		        case "ConfigGroupID_Name":
+					return PROPERTY_CONFIGGROUPID_NAME;
+		        case "ConfigGroupID_Code":
+					return PROPERTY_CONFIGGROUPID_CODE;
+		        case "ConfigGroupID_Description":
+					return PROPERTY_CONFIGGROUPID_DESCRIPTION;
+		        case "ConfigGroupID_IsEnable":
+					return PROPERTY_CONFIGGROUPID_ISENABLE;
+		        case "ConfigGroupID_IsSystem":
+					return PROPERTY_CONFIGGROUPID_ISSYSTEM;
+		        case "ConfigGroupID_CreateBy":
+					return PROPERTY_CONFIGGROUPID_CREATEBY;
+		        case "ConfigGroupID_CreateAt":
+					return PROPERTY_CONFIGGROUPID_CREATEAT;
+		        case "ConfigGroupID_LastModifyBy":
+					return PROPERTY_CONFIGGROUPID_LASTMODIFYBY;
+		        case "ConfigGroupID_LastModifyAt":
+					return PROPERTY_CONFIGGROUPID_LASTMODIFYAT;
+		        case "ConfigGroupID_LastModifyComment":
+					return PROPERTY_CONFIGGROUPID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -204,7 +218,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ConfigGroupID = ((value == null) ? null : value.entity);
+				entity.ConfigGroupID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -404,12 +418,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemConfigWrapper> FindAllByOrderByAndFilterAndConfigGroupID(string orderByColumnName, bool isDesc,   SystemConfigGroupWrapper configGroupID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndConfigGroupID(orderByColumnName, isDesc,   configGroupID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndConfigGroupID(orderByColumnName, isDesc,   configGroupID.Entity, pageQueryParams));
         }
 
         public static List<SystemConfigWrapper> FindAllByConfigGroupID(SystemConfigGroupWrapper configGroupID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByConfigGroupID(configGroupID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByConfigGroupID(configGroupID.Entity));
         }
 		
 

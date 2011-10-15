@@ -14,7 +14,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemMenuWrapper
+    public partial class SystemMenuWrapper : BaseSpringNHibernateWrapper<SystemMenuEntity, ISystemMenuServiceProxy, SystemMenuWrapper>
     {
         public string LocaLocalizationName
         {
@@ -26,51 +26,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
         #region Static Common Data Operation
-		
-		public static void Save(SystemMenuWrapper obj)
+
+        public static void Save(SystemMenuWrapper obj)
         {
-            businessProxy.Save(obj.entity);
+            Save(obj, businessProxy);
         }
 
         public static void Update(SystemMenuWrapper obj)
         {
-            businessProxy.Update(obj.entity);
+            Update(obj, businessProxy);
         }
 
         public static void SaveOrUpdate(SystemMenuWrapper obj)
         {
-            businessProxy.SaveOrUpdate(obj.entity);
+            SaveOrUpdate(obj, businessProxy);
         }
 
         public static void DeleteAll()
         {
-            businessProxy.DeleteAll();
+            DeleteAll(businessProxy);
         }
 
         public static void DeleteByID(object id)
         {
-            businessProxy.DeleteByID(id);
+            DeleteByID(id, businessProxy);
         }
 
         public static void PatchDeleteByIDs(object[] ids)
         {
 
-            businessProxy.PatchDeleteByIDs(ids);
+            PatchDeleteByIDs(ids, businessProxy);
         }
 
         public static void Delete(SystemMenuWrapper instance)
         {
-            businessProxy.Delete(instance.entity);
+            Delete(instance, businessProxy);
         }
 
         public static void Refresh(SystemMenuWrapper instance)
         {
-            businessProxy.Refresh(instance.entity);
+            Refresh(instance, businessProxy);
         }
 
         public static SystemMenuWrapper FindById(object id)
         {
-            return ConvertEntityToWrapper(businessProxy.FindById(id));
+            return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
         public static List<SystemMenuWrapper> FindAll()
@@ -80,30 +80,37 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemMenuWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            List<SystemMenuEntity> list = businessProxy.FindAllByPage(pageQueryParams);
-            return ConvertToWrapperList(list);
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemMenuWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
 
         public static List<SystemMenuWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+        }
+
+
+        public static List<SystemMenuWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
             List<SystemMenuWrapper> results = null;
 
+            ProcessQueryFilters(filters);
+
             results = ConvertToWrapperList(
-                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
-                                                  pageQueryParams));
+                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
 
             return results;
         }
-		
 
-		
-		#endregion
+        #endregion
+
 
         public const int SYSTEMMENU_MAX_DEPTH = 2;
         public const int SYSTEMMENU_MIN_DEPTH = 1;
@@ -127,7 +134,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             if (role != null)
             {
-                return businessProxy.GetRoleAssignedMenuIDs(role.entity);
+                return businessProxy.GetRoleAssignedMenuIDs(role.Entity);
             }
             else
             {
@@ -188,7 +195,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             baseTreeNode.NavigateUrl = HttpContext.Current.Server.MapPath("#0");
             baseTreeNode.ImageUrl = rootImageUrl;
 
-            List<SystemMenuWrapper> listmenu = ConvertToWrapperList(businessProxy.GetMenuByApplication(app.entity));
+            List<SystemMenuWrapper> listmenu = ConvertToWrapperList(businessProxy.GetMenuByApplication(app.Entity));
 
             foreach (SystemMenuWrapper groupMenu in listmenu)
             {
@@ -238,9 +245,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             SystemMenuWrapper systemMenuWrapper = null;
 
             if(parentMenu==null)
-                systemMenuWrapper = ConvertEntityToWrapper(businessProxy.GetNewMaxMenuByParentMenuAndApplication(null, systemApplicationWrapper.entity));
+                systemMenuWrapper = ConvertEntityToWrapper(businessProxy.GetNewMaxMenuByParentMenuAndApplication(null, systemApplicationWrapper.Entity));
             else
-                systemMenuWrapper = ConvertEntityToWrapper(businessProxy.GetNewMaxMenuByParentMenuAndApplication(parentMenu.entity, systemApplicationWrapper.entity));
+                systemMenuWrapper = ConvertEntityToWrapper(businessProxy.GetNewMaxMenuByParentMenuAndApplication(parentMenu.entity, systemApplicationWrapper.Entity));
 
             if (systemMenuWrapper == null)
             {

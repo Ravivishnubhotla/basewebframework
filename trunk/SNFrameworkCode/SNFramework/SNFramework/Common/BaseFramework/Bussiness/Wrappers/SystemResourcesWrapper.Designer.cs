@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Spring.Context.Support;
 using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -11,57 +12,74 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemResourcesWrapper
+    public partial class SystemResourcesWrapper   
     {
         #region Member
 
 		internal static readonly ISystemResourcesServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemResourcesServiceProxyInstance;
-	 
-	 
-        internal SystemResourcesEntity entity;
 		
-		private static ILog logger = null;
-
-        public static ILog Logger
+		
+		internal SystemResourcesEntity Entity
         {
-            get
-            {
-                if (logger == null)
-                    logger = LogManager.GetLogger(typeof(SystemResourcesWrapper));
-                return logger;
-            }
+            get { return this.entity; }
         }
-
+		
         #endregion
 
         #region Construtor
-        public SystemResourcesWrapper() : this(new SystemResourcesEntity())
+		public SystemResourcesWrapper() : base(new SystemResourcesEntity())
         {
             
         }
 
         internal SystemResourcesWrapper(SystemResourcesEntity entityObj)
+            : base(entityObj)
         {
-            entity = entityObj;
         }
 		#endregion
-		
-		#region Equals 和 HashCode 方法覆盖
-		public override bool Equals(object obj)
-        {
-            if (obj == null && entity!=null)
-            {
-                if (entity.ResourcesID == 0)
-                    return true;
 
-                return false;
+        #region Process Column Name
+        private static string ProcessColumnName(string columnName)
+        {
+            switch (columnName)
+            {
+		        case "MoudleID_MoudleID":
+					return PROPERTY_MOUDLEID_MOUDLEID;
+		        case "MoudleID_MoudleNameCn":
+					return PROPERTY_MOUDLEID_MOUDLENAMECN;
+		        case "MoudleID_MoudleNameEn":
+					return PROPERTY_MOUDLEID_MOUDLENAMEEN;
+		        case "MoudleID_MoudleNameDb":
+					return PROPERTY_MOUDLEID_MOUDLENAMEDB;
+		        case "MoudleID_MoudleDescription":
+					return PROPERTY_MOUDLEID_MOUDLEDESCRIPTION;
+		        case "MoudleID_ApplicationID":
+					return PROPERTY_MOUDLEID_APPLICATIONID;
+		        case "MoudleID_MoudleIsSystemMoudle":
+					return PROPERTY_MOUDLEID_MOUDLEISSYSTEMMOUDLE;
+		        case "MoudleID_OrderIndex":
+					return PROPERTY_MOUDLEID_ORDERINDEX;
+		        case "MoudleID_CreateBy":
+					return PROPERTY_MOUDLEID_CREATEBY;
+		        case "MoudleID_CreateAt":
+					return PROPERTY_MOUDLEID_CREATEAT;
+		        case "MoudleID_LastModifyBy":
+					return PROPERTY_MOUDLEID_LASTMODIFYBY;
+		        case "MoudleID_LastModifyAt":
+					return PROPERTY_MOUDLEID_LASTMODIFYAT;
+		        case "MoudleID_LastModifyComment":
+					return PROPERTY_MOUDLEID_LASTMODIFYCOMMENT;
+              default:
+                    return columnName;
             }
-            return entity.Equals(obj);
         }
 
-        public override int GetHashCode()
+        private static void ProcessQueryFilters(List<QueryFilter> filters)
         {
-            return entity.GetHashCode();
+            foreach (QueryFilter queryFilter in filters)
+            {
+                queryFilter.FilterFieldName = ProcessColumnName(queryFilter.FilterFieldName);
+            }
         }
 		#endregion
 		
@@ -223,7 +241,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.MoudleID = ((value == null) ? null : value.entity);
+				entity.MoudleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -237,7 +255,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			}
 			set
 			{
-				entity.ParentResourcesID = ((value == null) ? null : value.entity);
+				entity.ParentResourcesID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -471,12 +489,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
         public static List<SystemResourcesWrapper> FindAllByOrderByAndFilterAndMoudleID(string orderByColumnName, bool isDesc,   SystemMoudleWrapper moudleID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndMoudleID(orderByColumnName, isDesc,   moudleID.entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndMoudleID(orderByColumnName, isDesc,   moudleID.Entity, pageQueryParams));
         }
 
         public static List<SystemResourcesWrapper> FindAllByMoudleID(SystemMoudleWrapper moudleID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByMoudleID(moudleID.entity));
+            return ConvertToWrapperList(businessProxy.FindAllByMoudleID(moudleID.Entity));
         }
 		
 
