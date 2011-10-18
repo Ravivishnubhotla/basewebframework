@@ -140,27 +140,29 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
+		public static readonly string PROPERTY_NAME_CODETYPE = "CodeType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_MO = "Mo";
 		public static readonly string PROPERTY_NAME_MOTYPE = "MOType";
+		public static readonly string PROPERTY_NAME_MOLENGTH = "MOLength";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		public static readonly string PROPERTY_NAME_SPCODE = "SPCode";
+		public static readonly string PROPERTY_NAME_SPCODETYPE = "SPCodeType";
+		public static readonly string PROPERTY_NAME_SPCODELENGTH = "SPCodeLength";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_DISABLECITY = "DisableCity";
 		public static readonly string PROPERTY_NAME_ISDIABLE = "IsDiable";
-		public static readonly string PROPERTY_NAME_SPTYPE = "SPType";
-		public static readonly string PROPERTY_NAME_CODELENGTH = "CodeLength";
 		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
-		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
-		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
 	
@@ -276,6 +278,20 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string CodeType
+		{
+			get
+			{
+				return entity.CodeType;
+			}
+			set
+			{
+				entity.CodeType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public SPChannelWrapper ChannelID
 		{
 			get
@@ -318,6 +334,20 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public int? MOLength
+		{
+			get
+			{
+				return entity.MOLength;
+			}
+			set
+			{
+				entity.MOLength = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public int OrderIndex
 		{
 			get
@@ -341,6 +371,62 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SPCode = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SPCodeType
+		{
+			get
+			{
+				return entity.SPCodeType;
+			}
+			set
+			{
+				entity.SPCodeType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? SPCodeLength
+		{
+			get
+			{
+				return entity.SPCodeLength;
+			}
+			set
+			{
+				entity.SPCodeLength = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool HasFilters
+		{
+			get
+			{
+				return entity.HasFilters;
+			}
+			set
+			{
+				entity.HasFilters = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool HasParamsConvert
+		{
+			get
+			{
+				return entity.HasParamsConvert;
+			}
+			set
+			{
+				entity.HasParamsConvert = value;
 			}
 		}
 		/// <summary>
@@ -383,34 +469,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.IsDiable = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string SPType
-		{
-			get
-			{
-				return entity.SPType;
-			}
-			set
-			{
-				entity.SPType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? CodeLength
-		{
-			get
-			{
-				return entity.CodeLength;
-			}
-			set
-			{
-				entity.CodeLength = value;
 			}
 		}
 		/// <summary>
@@ -467,20 +525,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SendText = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool HasFilters
-		{
-			get
-			{
-				return entity.HasFilters;
-			}
-			set
-			{
-				entity.HasFilters = value;
 			}
 		}
 		/// <summary>
@@ -551,20 +595,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.LastModifyComment = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public bool HasParamsConvert
-		{
-			get
-			{
-				return entity.HasParamsConvert;
-			}
-			set
-			{
-				entity.HasParamsConvert = value;
 			}
 		}
 		#endregion 

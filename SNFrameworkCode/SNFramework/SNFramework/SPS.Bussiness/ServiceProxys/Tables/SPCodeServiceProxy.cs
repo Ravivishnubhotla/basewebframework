@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -30,11 +31,12 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             code.OrderIndex = 0;
             code.Code = channelEntity.Code + "DefaultCode";
             code.Mo  = "";
+            code.MOLength = code.Mo.Length;
             code.MOType = DictionaryConst.Dictionary_CodeType_CodeDefault_Key;
             code.HasFilters = false;
+            code.SPCodeType = DictionaryConst.Dictionary_CodeType_CodeDefault_Key;
             code.SPCode = "";
-            code.CodeLength = 0;
-            code.SPType = "";
+            code.SPCodeLength = code.SPCode.Length;
             code.IsDiable = false;
             code.DayLimit = "";
             code.MonthLimit = "";
@@ -50,7 +52,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 throw new Exception("编码已存在！");
             }
-            if (!codeEntity.HasFilters && this.SelfDataObj.GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(codeEntity.Mo, codeEntity.SPCode, codeEntity.MOType) != null)
+            if (!codeEntity.HasFilters && this.SelfDataObj.GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(codeEntity.Mo, codeEntity.SPCode, codeEntity.MOType, codeEntity.SPCodeType, codeEntity.CodeType) != null)
             {
                 throw new Exception("该指令已存在！");
             }
@@ -75,8 +77,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                     subcode.Province = codeEntity.Province;
                     subcode.DisableCity = codeEntity.DisableCity;
                     subcode.IsDiable = false;
-                    subcode.SPType = "1";
-                    subcode.CodeLength = codeEntity.Mo.Length;
+                    subcode.SPCodeType = "1";
+                    subcode.MOLength = codeEntity.Mo.Length;
                     subcode.DayLimit = codeEntity.DayLimit;
                     subcode.MonthLimit = codeEntity.MonthLimit;
                     subcode.Price = codeEntity.Price;
