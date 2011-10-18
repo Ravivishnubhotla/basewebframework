@@ -51,26 +51,34 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_DESCRIPTION;
 		        case "CodeID_Code":
 					return PROPERTY_CODEID_CODE;
+		        case "CodeID_CodeType":
+					return PROPERTY_CODEID_CODETYPE;
 		        case "CodeID_ChannelID":
 					return PROPERTY_CODEID_CHANNELID;
 		        case "CodeID_Mo":
 					return PROPERTY_CODEID_MO;
 		        case "CodeID_MOType":
 					return PROPERTY_CODEID_MOTYPE;
+		        case "CodeID_MOLength":
+					return PROPERTY_CODEID_MOLENGTH;
 		        case "CodeID_OrderIndex":
 					return PROPERTY_CODEID_ORDERINDEX;
 		        case "CodeID_SPCode":
 					return PROPERTY_CODEID_SPCODE;
+		        case "CodeID_SPCodeType":
+					return PROPERTY_CODEID_SPCODETYPE;
+		        case "CodeID_SPCodeLength":
+					return PROPERTY_CODEID_SPCODELENGTH;
+		        case "CodeID_HasFilters":
+					return PROPERTY_CODEID_HASFILTERS;
+		        case "CodeID_HasParamsConvert":
+					return PROPERTY_CODEID_HASPARAMSCONVERT;
 		        case "CodeID_Province":
 					return PROPERTY_CODEID_PROVINCE;
 		        case "CodeID_DisableCity":
 					return PROPERTY_CODEID_DISABLECITY;
 		        case "CodeID_IsDiable":
 					return PROPERTY_CODEID_ISDIABLE;
-		        case "CodeID_SPType":
-					return PROPERTY_CODEID_SPTYPE;
-		        case "CodeID_CodeLength":
-					return PROPERTY_CODEID_CODELENGTH;
 		        case "CodeID_DayLimit":
 					return PROPERTY_CODEID_DAYLIMIT;
 		        case "CodeID_MonthLimit":
@@ -79,8 +87,6 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_PRICE;
 		        case "CodeID_SendText":
 					return PROPERTY_CODEID_SENDTEXT;
-		        case "CodeID_HasFilters":
-					return PROPERTY_CODEID_HASFILTERS;
 		        case "CodeID_CreateBy":
 					return PROPERTY_CODEID_CREATEBY;
 		        case "CodeID_CreateAt":
@@ -91,8 +97,6 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_LASTMODIFYAT;
 		        case "CodeID_LastModifyComment":
 					return PROPERTY_CODEID_LASTMODIFYCOMMENT;
-		        case "CodeID_HasParamsConvert":
-					return PROPERTY_CODEID_HASPARAMSCONVERT;
 		        case "ClientID_Id":
 					return PROPERTY_CLIENTID_ID;
 		        case "ClientID_Name":
@@ -184,27 +188,29 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_NAME = "CodeID_SPClientCodeRelationEntity_Alias.Name";
 		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPClientCodeRelationEntity_Alias.Description";
 		public const string PROPERTY_CODEID_CODE = "CodeID_SPClientCodeRelationEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CODETYPE = "CodeID_SPClientCodeRelationEntity_Alias.CodeType";
 		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPClientCodeRelationEntity_Alias.ChannelID";
 		public const string PROPERTY_CODEID_MO = "CodeID_SPClientCodeRelationEntity_Alias.Mo";
 		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPClientCodeRelationEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_MOLENGTH = "CodeID_SPClientCodeRelationEntity_Alias.MOLength";
 		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPClientCodeRelationEntity_Alias.OrderIndex";
 		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPClientCodeRelationEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_SPCODETYPE = "CodeID_SPClientCodeRelationEntity_Alias.SPCodeType";
+		public const string PROPERTY_CODEID_SPCODELENGTH = "CodeID_SPClientCodeRelationEntity_Alias.SPCodeLength";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeRelationEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeRelationEntity_Alias.HasParamsConvert";
 		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPClientCodeRelationEntity_Alias.Province";
 		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPClientCodeRelationEntity_Alias.DisableCity";
 		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPClientCodeRelationEntity_Alias.IsDiable";
-		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPClientCodeRelationEntity_Alias.SPType";
-		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPClientCodeRelationEntity_Alias.CodeLength";
 		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.DayLimit";
 		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPClientCodeRelationEntity_Alias.MonthLimit";
 		public const string PROPERTY_CODEID_PRICE = "CodeID_SPClientCodeRelationEntity_Alias.Price";
 		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPClientCodeRelationEntity_Alias.SendText";
-		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeRelationEntity_Alias.HasFilters";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeRelationEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeRelationEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyComment";
-		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeRelationEntity_Alias.HasParamsConvert";
 		#endregion
 		#region clientID字段外键查询字段
         public const string PROPERTY_CLIENTID_ALIAS_NAME = "ClientID_SPClientCodeRelationEntity_Alias";
@@ -596,6 +602,16 @@ namespace SPS.Bussiness.Wrappers
                 return  CodeID.Code;
             }
         }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CODETYPE)]
+        public string CodeID_CodeType
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.CodeType;
+            }
+        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CHANNELID)]
         public SPChannelWrapper CodeID_ChannelID
         {
@@ -626,6 +642,16 @@ namespace SPS.Bussiness.Wrappers
                 return  CodeID.MOType;
             }
         }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_MOLENGTH)]
+        public int? CodeID_MOLength
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.MOLength;
+            }
+        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ORDERINDEX)]
         public int? CodeID_OrderIndex
         {
@@ -644,6 +670,46 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.SPCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SPCODETYPE)]
+        public string CodeID_SPCodeType
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.SPCodeType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SPCODELENGTH)]
+        public int? CodeID_SPCodeLength
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.SPCodeLength;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASFILTERS)]
+        public bool? CodeID_HasFilters
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasFilters;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASPARAMSCONVERT)]
+        public bool? CodeID_HasParamsConvert
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasParamsConvert;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PROVINCE)]
@@ -674,26 +740,6 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.IsDiable;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SPTYPE)]
-        public string CodeID_SPType
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.SPType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CODELENGTH)]
-        public int? CodeID_CodeLength
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.CodeLength;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYLIMIT)]
@@ -734,16 +780,6 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.SendText;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASFILTERS)]
-        public bool? CodeID_HasFilters
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.HasFilters;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]
@@ -794,16 +830,6 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.LastModifyComment;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASPARAMSCONVERT)]
-        public bool? CodeID_HasParamsConvert
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.HasParamsConvert;
             }
         }
 		#endregion

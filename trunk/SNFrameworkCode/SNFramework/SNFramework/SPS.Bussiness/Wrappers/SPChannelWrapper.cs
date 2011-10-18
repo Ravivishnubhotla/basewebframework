@@ -15,6 +15,7 @@ using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 
 
 namespace SPS.Bussiness.Wrappers
