@@ -6,6 +6,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
 {
+
     public static class DictionaryConst
     {
         public const string Dictionary_GroupCode_UserType = "UserType";
@@ -228,6 +229,102 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst
         public const string Dictionary_System_DataType_datetime_Key = "4";
         ///布尔
         public const string Dictionary_System_DataType_bool_Key = "5";
+        #endregion
+
+        public const string Dictionary_GroupCode_CodeMatchType = "CodeMatchType";
+
+        public static List<SystemDictionaryWrapper> CodeMatchTypeDictionary
+        {
+            get
+            {
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_CodeMatchType);
+            }
+        }
+
+        public static string ParseCodeMatchTypeDictionaryKey(string key)
+        {
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_CodeMatchType, key);
+        }
+        #region KeyList
+        #endregion
+
+        public const string Dictionary_GroupCode_CodeType = "CodeType";
+
+        public static List<SystemDictionaryWrapper> CodeTypeDictionary
+        {
+            get
+            {
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_CodeType);
+            }
+        }
+
+        public static string ParseCodeTypeDictionaryKey(string key)
+        {
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_CodeType, key);
+        }
+        #region KeyList
+        ///默认指令
+        public const string Dictionary_CodeType_CodeDefault_Key = "0";
+        ///精准指令
+        public const string Dictionary_CodeType_CodeEQ_Key = "1";
+        ///模糊指令
+        public const string Dictionary_CodeType_CodeStartWith_Key = "2";
+        ///结束指令
+        public const string Dictionary_CodeType_CodeEndWith_Key = "3";
+        ///包含指令
+        public const string Dictionary_CodeType_CodeContain_Key = "4";
+        ///正则指令
+        public const string Dictionary_CodeType_CodeRegex_Key = "5";
+        ///自定义指令
+        public const string Dictionary_CodeType_CodeCustom_Key = "6";
+        ///多条件指令
+        public const string Dictionary_CodeType_CodeMutilCondition_Key = "7";
+        ///表达式指令
+        public const string Dictionary_CodeType_CodeExpression_Key = "8";
+        #endregion
+
+        public const string Dictionary_GroupCode_DataSycnType = "DataSycnType";
+
+        public static List<SystemDictionaryWrapper> DataSycnTypeDictionary
+        {
+            get
+            {
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_DataSycnType);
+            }
+        }
+
+        public static string ParseDataSycnTypeDictionaryKey(string key)
+        {
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_DataSycnType, key);
+        }
+        #region KeyList
+        ///异步同步
+        public const string Dictionary_DataSycnType_AsynType_Key = "1";
+        ///即时同步
+        public const string Dictionary_DataSycnType_SycnType_Key = "2";
+        #endregion
+
+        public const string Dictionary_GroupCode_ChannelParamsType = "ChannelParamsType";
+
+        public static List<SystemDictionaryWrapper> ChannelParamsTypeDictionary
+        {
+            get
+            {
+                return SystemDictionaryWrapper.GetDictionaryByGroupCode(Dictionary_GroupCode_ChannelParamsType);
+            }
+        }
+
+        public static string ParseChannelParamsTypeDictionaryKey(string key)
+        {
+            return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_ChannelParamsType, key);
+        }
+        #region KeyList
+        ///普通参数
+        public const string Dictionary_ChannelParamsType_Normal_Key = "1";
+        ///固定值
+        public const string Dictionary_ChannelParamsType_Values_Key = "2";
+        ///自定义函数
+        public const string Dictionary_ChannelParamsType_Custom_Key = "3";
         #endregion
 
 
