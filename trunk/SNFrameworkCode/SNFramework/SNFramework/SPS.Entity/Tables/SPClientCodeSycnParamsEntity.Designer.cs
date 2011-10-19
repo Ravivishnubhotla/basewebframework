@@ -40,27 +40,29 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_NAME = "CodeID_SPClientCodeSycnParamsEntity_Alias.Name";
 		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPClientCodeSycnParamsEntity_Alias.Description";
 		public const string PROPERTY_CODEID_CODE = "CodeID_SPClientCodeSycnParamsEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CODETYPE = "CodeID_SPClientCodeSycnParamsEntity_Alias.CodeType";
 		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPClientCodeSycnParamsEntity_Alias.ChannelID";
 		public const string PROPERTY_CODEID_MO = "CodeID_SPClientCodeSycnParamsEntity_Alias.Mo";
 		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPClientCodeSycnParamsEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_MOLENGTH = "CodeID_SPClientCodeSycnParamsEntity_Alias.MOLength";
 		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPClientCodeSycnParamsEntity_Alias.OrderIndex";
 		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPClientCodeSycnParamsEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_SPCODETYPE = "CodeID_SPClientCodeSycnParamsEntity_Alias.SPCodeType";
+		public const string PROPERTY_CODEID_SPCODELENGTH = "CodeID_SPClientCodeSycnParamsEntity_Alias.SPCodeLength";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeSycnParamsEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeSycnParamsEntity_Alias.HasParamsConvert";
 		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPClientCodeSycnParamsEntity_Alias.Province";
 		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPClientCodeSycnParamsEntity_Alias.DisableCity";
 		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPClientCodeSycnParamsEntity_Alias.IsDiable";
-		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPClientCodeSycnParamsEntity_Alias.SPType";
-		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPClientCodeSycnParamsEntity_Alias.CodeLength";
 		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPClientCodeSycnParamsEntity_Alias.DayLimit";
 		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPClientCodeSycnParamsEntity_Alias.MonthLimit";
 		public const string PROPERTY_CODEID_PRICE = "CodeID_SPClientCodeSycnParamsEntity_Alias.Price";
 		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPClientCodeSycnParamsEntity_Alias.SendText";
-		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPClientCodeSycnParamsEntity_Alias.HasFilters";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPClientCodeSycnParamsEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPClientCodeSycnParamsEntity_Alias.LastModifyComment";
-		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPClientCodeSycnParamsEntity_Alias.HasParamsConvert";
 		#endregion
       	
 	

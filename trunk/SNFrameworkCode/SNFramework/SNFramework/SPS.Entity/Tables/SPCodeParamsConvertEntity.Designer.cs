@@ -38,27 +38,29 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_NAME = "CodeID_SPCodeParamsConvertEntity_Alias.Name";
 		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPCodeParamsConvertEntity_Alias.Description";
 		public const string PROPERTY_CODEID_CODE = "CodeID_SPCodeParamsConvertEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CODETYPE = "CodeID_SPCodeParamsConvertEntity_Alias.CodeType";
 		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPCodeParamsConvertEntity_Alias.ChannelID";
 		public const string PROPERTY_CODEID_MO = "CodeID_SPCodeParamsConvertEntity_Alias.Mo";
 		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPCodeParamsConvertEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_MOLENGTH = "CodeID_SPCodeParamsConvertEntity_Alias.MOLength";
 		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPCodeParamsConvertEntity_Alias.OrderIndex";
 		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPCodeParamsConvertEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_SPCODETYPE = "CodeID_SPCodeParamsConvertEntity_Alias.SPCodeType";
+		public const string PROPERTY_CODEID_SPCODELENGTH = "CodeID_SPCodeParamsConvertEntity_Alias.SPCodeLength";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPCodeParamsConvertEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPCodeParamsConvertEntity_Alias.HasParamsConvert";
 		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPCodeParamsConvertEntity_Alias.Province";
 		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPCodeParamsConvertEntity_Alias.DisableCity";
 		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPCodeParamsConvertEntity_Alias.IsDiable";
-		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPCodeParamsConvertEntity_Alias.SPType";
-		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPCodeParamsConvertEntity_Alias.CodeLength";
 		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPCodeParamsConvertEntity_Alias.DayLimit";
 		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPCodeParamsConvertEntity_Alias.MonthLimit";
 		public const string PROPERTY_CODEID_PRICE = "CodeID_SPCodeParamsConvertEntity_Alias.Price";
 		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPCodeParamsConvertEntity_Alias.SendText";
-		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPCodeParamsConvertEntity_Alias.HasFilters";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPCodeParamsConvertEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPCodeParamsConvertEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPCodeParamsConvertEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPCodeParamsConvertEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPCodeParamsConvertEntity_Alias.LastModifyComment";
-		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPCodeParamsConvertEntity_Alias.HasParamsConvert";
 		#endregion
       	
 	
