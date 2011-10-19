@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Common.Logging;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using SPS.Bussiness.ConstClass;
 using SPS.Bussiness.HttpUtils;
 using SPS.Bussiness.Wrappers;
