@@ -18,6 +18,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_NAME));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CODE));		
+		public static readonly StringProperty PROPERTY_CODETYPE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CODETYPE));		
 		public static readonly EntityProperty<SPChannelEntity> PROPERTY_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(SPCodeEntity.PROPERTY_NAME_CHANNELID));
 		#region channelID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPCodeEntity> InClude_ChannelID_Query(NHibernateDynamicQueryGenerator<SPCodeEntity> queryGenerator)
@@ -66,24 +67,25 @@ namespace SPS.Data.Tables
 		#endregion
 		public static readonly StringProperty PROPERTY_MO = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MO));		
 		public static readonly StringProperty PROPERTY_MOTYPE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MOTYPE));		
+		public static readonly IntProperty PROPERTY_MOLENGTH = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MOLENGTH));		
 		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ORDERINDEX));		
 		public static readonly StringProperty PROPERTY_SPCODE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SPCODE));		
+		public static readonly StringProperty PROPERTY_SPCODETYPE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SPCODETYPE));		
+		public static readonly IntProperty PROPERTY_SPCODELENGTH = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SPCODELENGTH));		
+		public static readonly BoolProperty PROPERTY_HASFILTERS = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASFILTERS));		
+		public static readonly BoolProperty PROPERTY_HASPARAMSCONVERT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASPARAMSCONVERT));		
 		public static readonly StringProperty PROPERTY_PROVINCE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PROVINCE));		
 		public static readonly StringProperty PROPERTY_DISABLECITY = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DISABLECITY));		
 		public static readonly BoolProperty PROPERTY_ISDIABLE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ISDIABLE));		
-		public static readonly StringProperty PROPERTY_SPTYPE = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SPTYPE));		
-		public static readonly IntProperty PROPERTY_CODELENGTH = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CODELENGTH));		
 		public static readonly StringProperty PROPERTY_DAYLIMIT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYLIMIT));		
 		public static readonly StringProperty PROPERTY_MONTHLIMIT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_MONTHLIMIT));		
 		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PRICE));		
 		public static readonly StringProperty PROPERTY_SENDTEXT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_SENDTEXT));		
-		public static readonly BoolProperty PROPERTY_HASFILTERS = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASFILTERS));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYBY));		
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
-		public static readonly BoolProperty PROPERTY_HASPARAMSCONVERT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASPARAMSCONVERT));		
       
 		#region 子类集合字段查询字段
 	
@@ -109,26 +111,34 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "Code":
                     return typeof (string);
+                case "CodeType":
+                    return typeof (string);
                 case "ChannelID":
                     return typeof (int);
                 case "Mo":
                     return typeof (string);
                 case "MOType":
                     return typeof (string);
+                case "MOLength":
+                    return typeof (int);
                 case "OrderIndex":
                     return typeof (int);
                 case "SPCode":
                     return typeof (string);
+                case "SPCodeType":
+                    return typeof (string);
+                case "SPCodeLength":
+                    return typeof (int);
+                case "HasFilters":
+                    return typeof (bool);
+                case "HasParamsConvert":
+                    return typeof (bool);
                 case "Province":
                     return typeof (string);
                 case "DisableCity":
                     return typeof (string);
                 case "IsDiable":
                     return typeof (bool);
-                case "SPType":
-                    return typeof (string);
-                case "CodeLength":
-                    return typeof (int);
                 case "DayLimit":
                     return typeof (string);
                 case "MonthLimit":
@@ -137,8 +147,6 @@ namespace SPS.Data.Tables
                     return typeof (decimal);
                 case "SendText":
                     return typeof (string);
-                case "HasFilters":
-                    return typeof (bool);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":
@@ -149,8 +157,6 @@ namespace SPS.Data.Tables
                     return typeof (DateTime);
                 case "LastModifyComment":
                     return typeof (string);
-                case "HasParamsConvert":
-                    return typeof (bool);
           }
 			return typeof(string);
         }
