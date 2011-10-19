@@ -40,6 +40,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.TextField txtName;
         
         /// <summary>
+        /// txtTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtTitle;
+        
+        /// <summary>
         /// txtDescription control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Checkbox chkIsRequired;
         
         /// <summary>
+        /// chkShowInClientGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkShowInClientGrid;
+        
+        /// <summary>
         /// txtParamsType control.
         /// </summary>
         /// <remarks>
@@ -76,15 +94,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.TextField txtParamsType;
         
         /// <summary>
-        /// txtChannelID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtChannelID;
-        
-        /// <summary>
         /// txtParamsMappingName control.
         /// </summary>
         /// <remarks>
@@ -92,24 +101,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtParamsMappingName;
-        
-        /// <summary>
-        /// txtTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtTitle;
-        
-        /// <summary>
-        /// chkShowInClientGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkShowInClientGrid;
         
         /// <summary>
         /// txtParamsValue control.
