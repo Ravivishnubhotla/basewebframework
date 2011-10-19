@@ -100,27 +100,29 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_NAME = "CodeID_SPDayReportEntity_Alias.Name";
 		public const string PROPERTY_CODEID_DESCRIPTION = "CodeID_SPDayReportEntity_Alias.Description";
 		public const string PROPERTY_CODEID_CODE = "CodeID_SPDayReportEntity_Alias.Code";
+		public const string PROPERTY_CODEID_CODETYPE = "CodeID_SPDayReportEntity_Alias.CodeType";
 		public const string PROPERTY_CODEID_CHANNELID = "CodeID_SPDayReportEntity_Alias.ChannelID";
 		public const string PROPERTY_CODEID_MO = "CodeID_SPDayReportEntity_Alias.Mo";
 		public const string PROPERTY_CODEID_MOTYPE = "CodeID_SPDayReportEntity_Alias.MOType";
+		public const string PROPERTY_CODEID_MOLENGTH = "CodeID_SPDayReportEntity_Alias.MOLength";
 		public const string PROPERTY_CODEID_ORDERINDEX = "CodeID_SPDayReportEntity_Alias.OrderIndex";
 		public const string PROPERTY_CODEID_SPCODE = "CodeID_SPDayReportEntity_Alias.SPCode";
+		public const string PROPERTY_CODEID_SPCODETYPE = "CodeID_SPDayReportEntity_Alias.SPCodeType";
+		public const string PROPERTY_CODEID_SPCODELENGTH = "CodeID_SPDayReportEntity_Alias.SPCodeLength";
+		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPDayReportEntity_Alias.HasFilters";
+		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPDayReportEntity_Alias.HasParamsConvert";
 		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPDayReportEntity_Alias.Province";
 		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPDayReportEntity_Alias.DisableCity";
 		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPDayReportEntity_Alias.IsDiable";
-		public const string PROPERTY_CODEID_SPTYPE = "CodeID_SPDayReportEntity_Alias.SPType";
-		public const string PROPERTY_CODEID_CODELENGTH = "CodeID_SPDayReportEntity_Alias.CodeLength";
 		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPDayReportEntity_Alias.DayLimit";
 		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPDayReportEntity_Alias.MonthLimit";
 		public const string PROPERTY_CODEID_PRICE = "CodeID_SPDayReportEntity_Alias.Price";
 		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPDayReportEntity_Alias.SendText";
-		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPDayReportEntity_Alias.HasFilters";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPDayReportEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPDayReportEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPDayReportEntity_Alias.LastModifyComment";
-		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPDayReportEntity_Alias.HasParamsConvert";
 		#endregion
 		#region uperID字段外键查询字段
         public const string PROPERTY_UPERID_ALIAS_NAME = "UperID_SPDayReportEntity_Alias";

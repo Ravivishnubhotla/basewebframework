@@ -14,27 +14,29 @@
 		<property column="Name" type="string" name="Name"   not-null="true"  length="100" />	
 		<property column="Description" type="string" name="Description"   not-null="true"  length="400" />	
 		<property column="Code" type="string" name="Code"   not-null="true"  length="400" />	
+		<property column="CodeType" type="string" name="CodeType"   length="100" />	
 		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
 		<property column="MO" type="string" name="Mo"   not-null="true"  length="100" />	
 		<property column="MOType" type="string" name="MOType"   not-null="true"  length="100" />	
+		<property column="MOLength" type="int" name="MOLength"   />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   not-null="true"  />	
 		<property column="SPCode" type="string" name="SPCode"   not-null="true"  length="100" />	
+		<property column="SPCodeType" type="string" name="SPCodeType"   length="100" />	
+		<property column="SPCodeLength" type="int" name="SPCodeLength"   />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   not-null="true"  />	
+		<property column="HasParamsConvert" type="Boolean" name="HasParamsConvert"   not-null="true"  />	
 		<property column="Province" type="string" name="Province"   length="100" />	
 		<property column="DisableCity" type="string" name="DisableCity"   length="100" />	
 		<property column="IsDiable" type="Boolean" name="IsDiable"   not-null="true"  />	
-		<property column="SPType" type="string" name="SPType"   length="100" />	
-		<property column="CodeLength" type="int" name="CodeLength"   />	
 		<property column="DayLimit" type="string" name="DayLimit"   length="40" />	
 		<property column="MonthLimit" type="string" name="MonthLimit"   length="40" />	
 		<property column="Price" type="Decimal" name="Price"   />	
 		<property column="SendText" type="string" name="SendText"   length="4000" />	
-		<property column="HasFilters" type="Boolean" name="HasFilters"   not-null="true"  />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
 		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
-		<property column="HasParamsConvert" type="Boolean" name="HasParamsConvert"   not-null="true"  />	
 
 
 

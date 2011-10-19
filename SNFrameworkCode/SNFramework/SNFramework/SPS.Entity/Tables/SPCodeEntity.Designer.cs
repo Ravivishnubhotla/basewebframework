@@ -19,27 +19,29 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
+		public static readonly string PROPERTY_NAME_CODETYPE = "CodeType";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_MO = "Mo";
 		public static readonly string PROPERTY_NAME_MOTYPE = "MOType";
+		public static readonly string PROPERTY_NAME_MOLENGTH = "MOLength";
 		public static readonly string PROPERTY_NAME_ORDERINDEX = "OrderIndex";
 		public static readonly string PROPERTY_NAME_SPCODE = "SPCode";
+		public static readonly string PROPERTY_NAME_SPCODETYPE = "SPCodeType";
+		public static readonly string PROPERTY_NAME_SPCODELENGTH = "SPCodeLength";
+		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
+		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_DISABLECITY = "DisableCity";
 		public static readonly string PROPERTY_NAME_ISDIABLE = "IsDiable";
-		public static readonly string PROPERTY_NAME_SPTYPE = "SPType";
-		public static readonly string PROPERTY_NAME_CODELENGTH = "CodeLength";
 		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
-		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
-		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
 		
         #endregion
 	
@@ -102,27 +104,29 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _description;
 		private string _code;
+		private string _codeType;
 		private SPChannelEntity _channelID;
 		private string _mo;
 		private string _mOType;
+		private int? _mOLength;
 		private int _orderIndex;
 		private string _sPCode;
+		private string _sPCodeType;
+		private int? _sPCodeLength;
+		private bool _hasFilters;
+		private bool _hasParamsConvert;
 		private string _province;
 		private string _disableCity;
 		private bool _isDiable;
-		private string _sPType;
-		private int? _codeLength;
 		private string _dayLimit;
 		private string _monthLimit;
 		private decimal? _price;
 		private string _sendText;
-		private bool _hasFilters;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
 		private string _lastModifyComment;
-		private bool _hasParamsConvert;
 		
 		#endregion
 
@@ -136,27 +140,29 @@ namespace SPS.Entity.Tables
 			_name = String.Empty;
 			_description = String.Empty;
 			_code = String.Empty;
+			_codeType = null;
 			_channelID = null;
 			_mo = String.Empty;
 			_mOType = String.Empty;
+			_mOLength = null;
 			_orderIndex = 0;
 			_sPCode = String.Empty;
+			_sPCodeType = null;
+			_sPCodeLength = null;
+			_hasFilters = false;
+			_hasParamsConvert = false;
 			_province = null;
 			_disableCity = null;
 			_isDiable = false;
-			_sPType = null;
-			_codeLength = null;
 			_dayLimit = null;
 			_monthLimit = null;
 			_price = null;
 			_sendText = null;
-			_hasFilters = false;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
 			_lastModifyAt = null;
 			_lastModifyComment = null;
-			_hasParamsConvert = false;
 		}
 		#endregion
 
@@ -164,33 +170,35 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, SPChannelEntity channelID, string mo, string mOType, int orderIndex, string sPCode, string province, string disableCity, bool isDiable, string sPType, int? codeLength, string dayLimit, string monthLimit, decimal? price, string sendText, bool hasFilters, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment, bool hasParamsConvert)
+		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, string province, string disableCity, bool isDiable, string dayLimit, string monthLimit, decimal? price, string sendText, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
 			_description = description;
 			_code = code;
+			_codeType = codeType;
 			_channelID = channelID;
 			_mo = mo;
 			_mOType = mOType;
+			_mOLength = mOLength;
 			_orderIndex = orderIndex;
 			_sPCode = sPCode;
+			_sPCodeType = sPCodeType;
+			_sPCodeLength = sPCodeLength;
+			_hasFilters = hasFilters;
+			_hasParamsConvert = hasParamsConvert;
 			_province = province;
 			_disableCity = disableCity;
 			_isDiable = isDiable;
-			_sPType = sPType;
-			_codeLength = codeLength;
 			_dayLimit = dayLimit;
 			_monthLimit = monthLimit;
 			_price = price;
 			_sendText = sendText;
-			_hasFilters = hasFilters;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
 			_lastModifyComment = lastModifyComment;
-			_hasParamsConvert = hasParamsConvert;
 		}
 		#endregion     
 	
@@ -265,6 +273,23 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual string CodeType
+		{
+			get { return _codeType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for CodeType", value, value.ToString());
+				_isChanged |= (_codeType != value); _codeType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual SPChannelEntity ChannelID
 		{
 			get { return _channelID; }
@@ -313,6 +338,20 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual int? MOLength
+		{
+			get { return _mOLength; }
+
+			set	
+			{
+				_isChanged |= (_mOLength != value); _mOLength = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual int OrderIndex
 		{
 			get { return _orderIndex; }
@@ -337,6 +376,65 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for SPCode", value, value.ToString());
 				_isChanged |= (_sPCode != value); _sPCode = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SPCodeType
+		{
+			get { return _sPCodeType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SPCodeType", value, value.ToString());
+				_isChanged |= (_sPCodeType != value); _sPCodeType = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? SPCodeLength
+		{
+			get { return _sPCodeLength; }
+
+			set	
+			{
+				_isChanged |= (_sPCodeLength != value); _sPCodeLength = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool HasFilters
+		{
+			get { return _hasFilters; }
+
+			set	
+			{
+				_isChanged |= (_hasFilters != value); _hasFilters = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool HasParamsConvert
+		{
+			get { return _hasParamsConvert; }
+
+			set	
+			{
+				_isChanged |= (_hasParamsConvert != value); _hasParamsConvert = value;
 			}
 		}
 
@@ -385,37 +483,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_isDiable != value); _isDiable = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SPType
-		{
-			get { return _sPType; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SPType", value, value.ToString());
-				_isChanged |= (_sPType != value); _sPType = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? CodeLength
-		{
-			get { return _codeLength; }
-
-			set	
-			{
-				_isChanged |= (_codeLength != value); _codeLength = value;
 			}
 		}
 
@@ -481,20 +548,6 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 4000)
 					throw new ArgumentOutOfRangeException("Invalid value for SendText", value, value.ToString());
 				_isChanged |= (_sendText != value); _sendText = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool HasFilters
-		{
-			get { return _hasFilters; }
-
-			set	
-			{
-				_isChanged |= (_hasFilters != value); _hasFilters = value;
 			}
 		}
 
@@ -568,20 +621,6 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual bool HasParamsConvert
-		{
-			get { return _hasParamsConvert; }
-
-			set	
-			{
-				_isChanged |= (_hasParamsConvert != value); _hasParamsConvert = value;
 			}
 		}
 	
