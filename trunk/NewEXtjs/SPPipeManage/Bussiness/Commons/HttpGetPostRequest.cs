@@ -22,6 +22,12 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         private string requestUrl;
 
+ 
+
+        public static HashSet<string> recordParamsNames = new HashSet<string>() { "url", "query_string" };
+
+        public static HashSet<string> filterParamsNames = new HashSet<string>() { ".basewebmanageframework", "currentloginid", "asp.net_sessionid" };
+
         public string RequestUrl
         {
             get { return requestUrl; }
@@ -85,6 +91,8 @@ namespace LD.SPPipeManage.Bussiness.Commons
                 requestParams.Add(dictionaryEntry.Key, dictionaryEntry.Value);
             }
 
+ 
+
             requestData = SerializeUtil.ToJson(requestParams);
 
             requestIP = request.RequestIp;
@@ -125,8 +133,24 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
             foreach (string key in request.Params.Keys)
             {
-                if (!string.IsNullOrEmpty(key))
+                if (string.IsNullOrEmpty(key))
+                    continue;
+
+                if (filterParamsNames.Contains(key.ToLower()))
+                    continue;
+
+                if ((recordParamsNames.Contains(key.ToLower())))
+                {
                     hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                    continue;
+                }
+
+                if (request.ServerVariables[key] == null)
+                {
+                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                    continue;
+                }
+
             }
 
             return hb;

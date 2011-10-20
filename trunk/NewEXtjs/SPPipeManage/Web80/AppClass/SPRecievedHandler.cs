@@ -29,6 +29,8 @@ namespace Legendigital.Common.Web.AppClass
             {
                 IHttpRequest httpRequest = new HttpGetPostRequest(context.Request);
 
+                //context.Request.s
+
                 //检测是否存在ashx
                 if (string.IsNullOrEmpty(httpRequest.RequestFileName))
                 {

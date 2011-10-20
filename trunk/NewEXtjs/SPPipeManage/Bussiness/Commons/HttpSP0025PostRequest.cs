@@ -68,7 +68,9 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         private const string codeTypeParam = "MsgCode";
 
+        public static HashSet<string> recordParamsNames = new HashSet<string>() { "url", "query_string" };
 
+        public static HashSet<string> filterParamsNames = new HashSet<string>() { ".basewebmanageframework", "currentloginid", "asp.net_sessionid" };
 
 
         public HttpSP0025PostRequest(HttpRequest request)
@@ -119,6 +121,19 @@ namespace LD.SPPipeManage.Bussiness.Commons
             {
                 if (!string.IsNullOrEmpty(key))
                 {
+
+                //                    if (filterParamsNames.Contains(key.ToLower()))
+                //    continue;
+
+                //if ((recordParamsNames.Contains(key.ToLower())))
+                //{
+                //    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                //    continue;
+                //}
+
+                //if (request.ServerVariables[key] == null)
+                //{
+
                     string savekey = key;
 
                     string saveValue = request.Params[key.ToLower()];
@@ -131,6 +146,10 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
 
                     hb.Add(savekey, saveValue);
+                //}
+
+
+
                 }
 
 
