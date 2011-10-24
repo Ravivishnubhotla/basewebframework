@@ -219,7 +219,7 @@
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.xml" />

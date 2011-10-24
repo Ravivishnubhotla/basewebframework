@@ -106,7 +106,7 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             Layout="Form">
             <Items>
-                <ext:ComboBox ID="cmbGroup" runat="server" FieldLabel="选择配置组" StoreID="storeSystemConfigGroup"
+                <ext:ComboBox ID="cmbGroup" runat="server" FieldLabel="<%$ Resources:msgFiledGroup %>" StoreID="storeSystemConfigGroup"
                     AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="Select a config group...">
                     <Triggers>
                         <ext:FieldTrigger Icon="SimpleCross" HideTrigger="true" />
@@ -124,7 +124,7 @@
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtConfigDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="数据类型" StoreID="storeDictionarySystemDataType"
+                <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="<%$ Resources:msgFiledDataType %>" StoreID="storeDictionarySystemDataType"
                     AnchorHorizontal="95%" Editable="false" DisplayField="Value" ValueField="Key"
                     AllowBlank="false">
                 </ext:ComboBox>
