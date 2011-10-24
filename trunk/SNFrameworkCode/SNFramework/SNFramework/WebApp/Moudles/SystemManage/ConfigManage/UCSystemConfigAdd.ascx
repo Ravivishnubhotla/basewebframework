@@ -107,12 +107,12 @@
             Layout="Form">
             <Items>
                 <ext:ComboBox ID="cmbGroup" runat="server" FieldLabel="<%$ Resources:msgFiledGroup %>" StoreID="storeSystemConfigGroup"
-                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="Select a config group...">
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="<%$ Resources:msgFiledSelectGroup %>">
                     <Triggers>
-                        <ext:FieldTrigger Icon="SimpleCross" HideTrigger="true" />
-                        <ext:FieldTrigger Icon="SimpleAdd" Qtip="Add a group" />
-                        <ext:FieldTrigger Icon="SimpleEdit" Qtip="Edit this group" HideTrigger="true" />
-                        <ext:FieldTrigger Icon="SimpleDelete" Qtip="Delete this group" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleCross" Qtip="<%$ Resources : GlobalResource, msgClose  %>" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleAdd" Qtip="<%$ Resources : GlobalResource, msgAdd  %>" />
+                        <ext:FieldTrigger Icon="SimpleEdit" Qtip="<%$ Resources : GlobalResource, msgEdit  %>" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleDelete" Qtip="<%$ Resources : GlobalResource, msgDelete  %>" HideTrigger="true" />
                     </Triggers>
                     <Listeners>
                         <Select Handler="this.triggers[0].show();this.triggers[2].show();this.triggers[3].show();" />

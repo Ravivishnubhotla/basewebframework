@@ -4,6 +4,7 @@
   <add name="msgFiledKeyTitle" value="Key" />
   <add name="msgFiledGroup" value="Group" />
   <add name="msgFiledDataType" value="Data Type" />
+  <add name="msgFiledSelectGroup" value="Select a config group..." />
   <add name="msgFiledDescriptionTitle" value="Description" />
   <add name="msgFiledValueTitle" value="Value" />
   <add name="msgFiledSortIndexTitle" value="Sort Index" />
