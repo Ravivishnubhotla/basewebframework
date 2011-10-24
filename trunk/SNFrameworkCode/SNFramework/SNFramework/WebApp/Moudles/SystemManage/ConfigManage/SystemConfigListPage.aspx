@@ -160,7 +160,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="ConfigGroupID_Name" Header="配置组" 
+                        <ext:Column ColumnID="colConfigDictionaryGroupName" DataIndex="ConfigGroupID_Name" Header="<%$ Resources:msgcolGroup %>" 
                             Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colConfigKey" DataIndex="ConfigKey" Header="<%$ Resources:msgcolKey %>"
@@ -172,7 +172,7 @@
                         <ext:Column ColumnID="colConfigDescription" DataIndex="ConfigDescription" Header="<%$ Resources:msgcolDescription %>"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colConfig_DataType" DataIndex="ConfigDataTypeName" Header="数据类型"
+                        <ext:Column ColumnID="colConfig_DataType" DataIndex="ConfigDataTypeName" Header="<%$ Resources:msgcolDataType %>"
                             Sortable="false">
                         </ext:Column>
                         <ext:CommandColumn Header="<%$ Resources : GlobalResource, msgManage  %>" Width="160">
