@@ -245,6 +245,12 @@
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml">
