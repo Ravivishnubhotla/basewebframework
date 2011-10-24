@@ -62,8 +62,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                 obj.Province = this.txtProvince.Text.Trim();
                 obj.DisableCity = this.txtDisableCity.Text.Trim();
                 obj.IsDiable = false;
-                obj.SPType = "1";
-                obj.CodeLength = obj.Mo.Length;
+                //obj.SPType = "1";
+                //obj.CodeLength = obj.Mo.Length;
                 obj.DayLimit =  this.txtDayLimit.Text.Trim()  ;
                 obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                 obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());

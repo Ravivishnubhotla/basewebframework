@@ -66,7 +66,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','Are you sure delete the record ?SystemConfig ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -76,7 +76,7 @@
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete successfulSystemLog!',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', 'Delete successfulSystemLog!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -196,7 +196,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemLog"
-                        DisplayInfo="true" DisplayMsg="Show SystemLog {0} - {1} 共 {2}" EmptyMsg="No matched SystemLog" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

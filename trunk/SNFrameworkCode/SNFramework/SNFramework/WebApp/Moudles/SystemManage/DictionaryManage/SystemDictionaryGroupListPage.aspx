@@ -29,11 +29,11 @@
                 Ext.net.DirectMethods.UCSystemDictionaryGroupAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 });    
         
@@ -45,11 +45,11 @@
                 Ext.net.DirectMethods.UCSystemDictionaryGroupEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -59,32 +59,32 @@
                 Ext.net.DirectMethods.UCSystemDictionaryGroupView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -193,7 +193,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemDictionaryGroup"
-                        DisplayInfo="true" DisplayMsg="显示字典项 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的字典项目" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
