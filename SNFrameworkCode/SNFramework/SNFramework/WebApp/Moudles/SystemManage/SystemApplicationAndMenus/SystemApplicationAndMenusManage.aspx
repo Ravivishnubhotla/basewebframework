@@ -60,7 +60,7 @@
                         Ext.net.DirectMethods.AutoMaticSortSubItems(appID,id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshMenuData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshMenuData);
                                                                     },
                                                                     success: function(result) {
                                                                         ReloadMenus();
@@ -91,7 +91,7 @@
                 Ext.net.DirectMethods.UCSystemMenuManualResort.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshMenuData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshMenuData);
                                                                     },
                                                                     success: function(result) {
                                                                         ReloadMenus();
@@ -124,7 +124,7 @@
                                                 appid,
                                                 {
                                                     failure: function (msg) {
-                                                        Ext.Msg.alert('操作失败', msg);
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                     },
                                                     success: function (result) {
                                                         var nodes = eval(result);
@@ -138,7 +138,7 @@
                                                     },
                                                     eventMask: {
                                                         showMask: true,
-                                                        msg: '加载中......',
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
                                                         target: 'customtarget',
                                                         customTarget: '<%= TreePanel1.ClientID %>.el'
                                                     }
@@ -172,32 +172,32 @@
                Ext.net.DirectMethods.UCSystemMenuEdit.Show(id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: '加载中...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                                }
                                                                 }   
                 );
         }
 
         function DeleteMenu(menuID) {
-                        Ext.MessageBox.confirm('警告','确定要删除选定的菜单?',
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','确定要删除选定的菜单?',
                     function(e) {
                         if (e == 'yes')
             Ext.net.DirectMethods.DeleteMenu(
                                                         menuID,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('操作失败', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             success: function(result) {
-                                                                Ext.Msg.alert('操作成功', '删除菜单成功！', RefreshMenuData);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '删除菜单成功！', RefreshMenuData);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
-                                                                msg: '处理中......'
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                             }
                                                         });
                     }
@@ -220,11 +220,11 @@
             Ext.net.DirectMethods.UCSystemApplicationAdd.Show(
                                                                 {
                                                                     failure: function (msg) {
-                                                                        Ext.Msg.alert('操作失败', msg, RefreshSystemApplicationData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, RefreshSystemApplicationData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: '加载中...'
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                                     }
                                                                 });
 
@@ -238,11 +238,11 @@
                                                         parentmenuID,
                                                         {
                                                             failure: function(msg) {
-                                                                Ext.Msg.alert('操作失败', msg);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
-                                                                msg: '加载中......'
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
                                                             }
                                                         });
 
@@ -257,11 +257,11 @@
                 Ext.net.DirectMethods.UCSystemApplicationEdit.Show(id.id,
                                                                 {
                                                                     failure: function (msg) {
-                                                                        Ext.Msg.alert('操作失败', msg, RefreshSystemApplicationData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, RefreshSystemApplicationData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: '处理中...'
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                     }
                                                                 }
                 );
@@ -271,21 +271,21 @@
 
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告', '确认要删除当前记录?',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function (e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function (msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function (result) {
-                                                                        Ext.Msg.alert('操作成功', '删除记录成功！', RefreshSystemApplicationData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>', RefreshSystemApplicationData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: '处理中...'
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                     }
                                                                 }
                                                             );

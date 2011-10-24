@@ -46,8 +46,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     this.lblProvince.Text = ValueConvertUtil.ConvertStringValue(obj.Province);
                     this.lblDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
                     //this.lblIsDiable.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsDiable);
-                    this.lblSPType.Text = ValueConvertUtil.ConvertStringValue(obj.SPType);
-                    this.lblCodeLength.Text = obj.CodeLength.ToString();
+                    //this.lblSPType.Text = ValueConvertUtil.ConvertStringValue(obj.SPType);
+                    //this.lblCodeLength.Text = obj.CodeLength.ToString();
                     this.lblDayLimit.Text = obj.DayLimit.ToString();
                     this.lblMonthLimit.Text = obj.MonthLimit.ToString();
                     this.lblPrice.Text = obj.Price.ToString();

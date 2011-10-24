@@ -90,7 +90,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     obj.DisableCity = this.txtDisableCity.Text.Trim();
                     obj.IsDiable = this.chkIsDiable.Checked;
 
-                    obj.CodeLength = obj.Mo.Length;
+                    //obj.CodeLength = obj.Mo.Length;
                     obj.DayLimit =  this.txtDayLimit.Text.Trim();
                     obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                     obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
