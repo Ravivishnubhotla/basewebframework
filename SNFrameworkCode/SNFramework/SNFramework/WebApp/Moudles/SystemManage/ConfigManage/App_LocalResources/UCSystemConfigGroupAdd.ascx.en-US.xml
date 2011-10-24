@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Config Group Add" />
+  <add name="msgFiledName" value="Name" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledIsEnable" value="Enabled" />
+  <add name="msgFiledIsSystem" value="Is System" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add system config group successful',callback);function callback(id) {#{formPanelSystemConfigGroupAdd}.getForm().reset();#{storeSystemConfigGroup}.reload();  };" />
+</resources>

@@ -225,6 +225,12 @@
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.en-US.xml" />
