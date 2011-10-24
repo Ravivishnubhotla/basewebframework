@@ -3,6 +3,8 @@
   <add name="msgGridTitle" value="配置管理" />
   <add name="msgcolKey" value="键" />
   <add name="msgcolValue" value="值" />
+  <add name="msgcolGroup" value="配置组" />
+  <add name="msgcolDataType" value="数据类型" />
   <add name="msgcolDescription" value="描述" />
   <add name="msgcolSortIndex" value="排序号" />
 </resources>
