@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="配置组添加" />
+  <add name="msgFiledName" value="名称" />
+  <add name="msgFiledCode" value="编码" />
+  <add name="msgFiledDescription" value="描述" />
+  <add name="msgFiledIsEnable" value="启用" />
+  <add name="msgFiledIsSystem" value="系统" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加配置组成功！',callback);function callback(id) {#{formPanelSystemConfigGroupAdd}.getForm().reset();#{storeSystemConfigGroup}.reload();  };" />
+</resources>
