@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Dictionary Group Edit" />
+  <add name="msgFiledName" value="Name" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledIsEnable" value="Enabled" />
+  <add name="msgFiledIsSystem" value="Is System" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSystemDictionaryGroupEdit}.getForm().reset();#{storeSystemDictionaryGroup}.reload(); };" />
+</resources>
