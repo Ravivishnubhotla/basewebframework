@@ -2,6 +2,8 @@
 <resources>
   <add name="msgFormTitle" value="System Config Edit" />
   <add name="msgFiledKeyTitle" value="Key" />
+  <add name="msgFiledGroup" value="Group" />
+  <add name="msgFiledDataType" value="Data Type" />
   <add name="msgFiledDescriptionTitle" value="Description" />
   <add name="msgFiledValueTitle" value="Value" />
   <add name="msgFiledSortIndexTitle" value="Sort Index" />

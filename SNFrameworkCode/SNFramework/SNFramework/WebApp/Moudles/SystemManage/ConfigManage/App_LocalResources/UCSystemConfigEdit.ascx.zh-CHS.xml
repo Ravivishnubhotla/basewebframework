@@ -2,6 +2,8 @@
 <resources>
   <add name="msgFormTitle" value="配置编辑" />
   <add name="msgFiledKeyTitle" value="键" />
+  <add name="msgFiledGroup" value="配置组" />
+  <add name="msgFiledDataType" value="数据类型" />
   <add name="msgFiledDescriptionTitle" value="描述" />
   <add name="msgFiledValueTitle" value="值" />
   <add name="msgFiledSortIndexTitle" value="排序号" />
