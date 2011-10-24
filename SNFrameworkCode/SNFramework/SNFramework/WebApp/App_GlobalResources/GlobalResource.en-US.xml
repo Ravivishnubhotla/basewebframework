@@ -3,6 +3,7 @@
   <add name="msgAdd" value="Add" />
   <add name="msgEdit" value="Edit" />
   <add name="msgSave" value="Save" />
+  <add name="msgClose" value="Close" />
   <add name="msgRefresh" value="Refresh" />
   <add name="msgDelete" value="Delete" />
   <add name="msgCancel" value="Cancel" />

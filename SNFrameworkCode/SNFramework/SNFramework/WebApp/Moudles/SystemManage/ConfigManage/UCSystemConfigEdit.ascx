@@ -10,13 +10,13 @@
             <Items>
                 <ext:Hidden ID="hidSystemConfigID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:ComboBox ID="cmbGroup" runat="server" FieldLabel="选择配置组" StoreID="storeSystemConfigGroup"
-                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="Select a config group...">
+                <ext:ComboBox ID="cmbGroup" runat="server" FieldLabel="<%$ Resources:msgFiledGroup %>" StoreID="storeSystemConfigGroup"
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="<%$ Resources:msgFiledSelectGroup %>">
                     <Triggers>
-                        <ext:FieldTrigger Icon="SimpleCross" HideTrigger="true" />
-                        <ext:FieldTrigger Icon="SimpleAdd" Qtip="Add a group" />
-                        <ext:FieldTrigger Icon="SimpleEdit" Qtip="Edit this group" HideTrigger="true" />
-                        <ext:FieldTrigger Icon="SimpleDelete" Qtip="Delete this group" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleCross" Qtip="<%$ Resources : GlobalResource, msgClose  %>" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleAdd" Qtip="<%$ Resources : GlobalResource, msgAdd  %>" />
+                        <ext:FieldTrigger Icon="SimpleEdit" Qtip="<%$ Resources : GlobalResource, msgEdit  %>" HideTrigger="true" />
+                        <ext:FieldTrigger Icon="SimpleDelete" Qtip="<%$ Resources : GlobalResource, msgDelete  %>" HideTrigger="true" />
                     </Triggers>
                     <Listeners>
                         <Select Handler="this.triggers[0].show();this.triggers[2].show();this.triggers[3].show();" />
@@ -28,7 +28,7 @@
                     AllowBlank="True" AnchorHorizontal="95%" ReadOnly="true" />
                 <ext:TextArea ID="txtConfigDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="数据类型" StoreID="storeDictionarySystemDataType"
+                <ext:ComboBox ID="cmbDataType" runat="server" FieldLabel="<%$ Resources:msgFiledDataType %>" StoreID="storeDictionarySystemDataType"
                     AnchorHorizontal="95%" Editable="false" DisplayField="Value" ValueField="Key"
                     AllowBlank="false">
                 </ext:ComboBox>

@@ -3,6 +3,7 @@
   <add name="msgFormTitle" value="添加配置" />
   <add name="msgFiledKeyTitle" value="键" />
   <add name="msgFiledGroup" value="配置组" />
+  <add name="msgFiledSelectGroup" value="选择配置组..." />
   <add name="msgFiledDataType" value="数据类型" />
   <add name="msgFiledDescriptionTitle" value="描述" />
   <add name="msgFiledValueTitle" value="值" />
