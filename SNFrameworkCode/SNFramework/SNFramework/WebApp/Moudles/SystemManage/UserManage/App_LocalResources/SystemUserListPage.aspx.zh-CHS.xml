@@ -12,7 +12,10 @@
   <add name="msgcolIsApproved" value="审批通过" />
   <add name="msgcolIsLockedOut" value="锁定" />
   <add name="msgChangePassword" value="更改密码" />
-  <add name="msgAssignedPassword" value="分配角色" />
+  <add name="msgAssignedRole" value="分配角色" />
+  <add name="msgAssignedGroup" value="分配用户组" />
+  <add name="msgUserAssignedRole" value="用户 '{0}' 分配角色" />
+  <add name="msgUserAssignedGroup" value="用户 '{0}' 分配用户组" />
   <add name="msgLock" value="锁定" />
   <add name="msgunLock" value="解锁" />
 </resources>

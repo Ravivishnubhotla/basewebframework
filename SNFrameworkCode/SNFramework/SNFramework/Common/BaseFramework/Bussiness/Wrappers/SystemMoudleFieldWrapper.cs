@@ -74,7 +74,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		public static List<SystemMoudleFieldWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc,PageQueryParams pageQueryParams)
         {
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc,pageQueryParams);
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 

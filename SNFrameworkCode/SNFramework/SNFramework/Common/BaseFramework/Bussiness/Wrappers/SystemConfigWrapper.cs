@@ -75,29 +75,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemConfigWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            Type entityType = typeof(SystemConfigWrapper);
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            PropertyInfo[] ps = entityType.GetProperties();
-
-            foreach (PropertyInfo propertyInfo in ps)
-            {
-                if (!propertyInfo.CanWrite && propertyInfo.CanRead && propertyInfo.Name == orderByColumnName)
-                {
-                    object[] npas = propertyInfo.GetCustomAttributes(typeof(NhibernateQueryPropertyAttribute), false);
-
-                    foreach (object npa in npas)
-                    {
-                        if (npa is NhibernateQueryPropertyAttribute)
-                        {
-                            orderByColumnName = ((NhibernateQueryPropertyAttribute)npa).MappingColumnName;
-                            break;
-                        }
-                    }
-                }
-            }
-
-
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 
