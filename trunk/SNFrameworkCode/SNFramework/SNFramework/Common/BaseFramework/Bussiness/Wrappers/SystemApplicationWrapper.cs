@@ -81,17 +81,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
 
-	    public static List<SystemApplicationWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public static List<SystemApplicationWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SystemApplicationWrapper> results = null;
+            orderByFieldName = ProcessColumnName(orderByFieldName);
 
-	        ProcessQueryFilters(filters);
+            ProcessQueryFilters(filters);
 
-            results = ConvertToWrapperList(
-                    FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
-                                                  pageQueryParams, businessProxy));
-
-            return results;
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy)); ;
         }
 
 

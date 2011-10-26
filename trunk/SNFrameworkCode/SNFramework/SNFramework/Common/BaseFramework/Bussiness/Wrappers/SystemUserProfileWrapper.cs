@@ -68,18 +68,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             public static List<SystemUserProfileWrapper> FindAll()
             {
-                return ConvertToWrapperList(businessProxy.FindAll());
+                return ConvertToWrapperList(FindAll(businessProxy));
             }
 
             public static List<SystemUserProfileWrapper> FindAllByPage(PageQueryParams pageQueryParams)
             {
-                return ConvertToWrapperList(FindAll(businessProxy));
+                return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
             }
 
             public static List<SystemUserProfileWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc,
                                                                           PageQueryParams pageQueryParams)
             {
-                return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
+                orderByColumnName = ProcessColumnName(orderByColumnName);
+
+                return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
             }
 
 
@@ -89,21 +91,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             {
                 orderByColumnName = ProcessColumnName(orderByColumnName);
 
-                return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
+                ProcessQueryFilters(filters);
+
+                return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams, businessProxy));              
             }
 
 
             public static List<SystemUserProfileWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters,
                                                                                    string orderByFieldName, bool isDesc)
             {
-                List<SystemUserProfileWrapper> results = null;
+                orderByFieldName = ProcessColumnName(orderByFieldName);
 
                 ProcessQueryFilters(filters);
 
-                results = ConvertToWrapperList(
-                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
-
-                return results;
+                return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy)); 
             }
 
             #endregion
