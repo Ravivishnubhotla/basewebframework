@@ -63,21 +63,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemViewItemWrapper> FindAll()
         {
-            return ConvertToWrapperList(businessProxy.FindAll());
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<SystemViewItemWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAll(businessProxy));
-        }
-
-        public static List<SystemViewItemWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
-        {
             return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
-
-        public static List<SystemViewItemWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public static List<SystemViewItemWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             orderByColumnName = ProcessColumnName(orderByColumnName);
 
@@ -85,16 +79,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
 
-        public static List<SystemViewItemWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        public static List<SystemViewItemWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            List<SystemViewItemWrapper> results = null;
+            orderByColumnName = ProcessColumnName(orderByColumnName);
 
             ProcessQueryFilters(filters);
 
-            results = ConvertToWrapperList(
-                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams, businessProxy));     
+        }
 
-            return results;
+
+        public static List<SystemViewItemWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
+            orderByFieldName = ProcessColumnName(orderByFieldName);
+
+            ProcessQueryFilters(filters);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy)); 
         }
 
         #endregion
