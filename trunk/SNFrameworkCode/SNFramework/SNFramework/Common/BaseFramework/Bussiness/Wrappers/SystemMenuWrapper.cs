@@ -93,7 +93,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 

@@ -925,20 +925,6 @@
     <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
       <DependentUpon>SystemLogListPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx.cs">
-      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx.designer.cs">
-      <DependentUpon>UCSystemLogAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx.cs">
-      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx.designer.cs">
-      <DependentUpon>UCSystemLogEdit.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.cs">
       <DependentUpon>UCSystemLogView.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1243,8 +1229,6 @@
     <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx" />
     <Content Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx" />
-    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogAdd.ascx" />
-    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogEdit.ascx" />
     <Content Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx" />
     <Content Include="Moudles\SystemManage\MoudleManage\SystemMoudleListPage.aspx" />
     <Content Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleAdd.ascx" />

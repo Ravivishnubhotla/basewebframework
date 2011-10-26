@@ -12,7 +12,10 @@
   <add name="msgcolIsApproved" value="Approved" />
   <add name="msgcolIsLockedOut" value="Locked" />
   <add name="msgChangePassword" value="Change Password" />
-  <add name="msgAssignedPassword" value="Assign Role" />
+  <add name="msgAssignedRole" value="Assign Role" />
+  <add name="msgAssignedGroup" value="Assign Group" />
+  <add name="msgUserAssignedRole" value="user '{0}' assigned role" />
+  <add name="msgUserAssignedGroup" value="user '{0}' assigned group" />
   <add name="msgLock" value="Lock" />
   <add name="msgunLock" value="UnLock" />
 </resources>

@@ -31,24 +31,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage {
         protected global::Ext.Net.Store storeSystemLog;
         
         /// <summary>
-        /// UCSystemLogAdd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.LogManage.UCSystemLogAdd UCSystemLogAdd1;
-        
-        /// <summary>
-        /// UCSystemLogEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.LogManage.UCSystemLogEdit UCSystemLogEdit1;
-        
-        /// <summary>
         /// UCSystemLogView1 control.
         /// </summary>
         /// <remarks>

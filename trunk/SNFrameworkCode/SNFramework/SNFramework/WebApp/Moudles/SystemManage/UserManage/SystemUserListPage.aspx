@@ -132,7 +132,7 @@
             {
                  var win = <%= winAssignedRole.ClientID %>;
               win.autoLoad.params.UserID = id.id;
-              win.setTitle(String.format("user '{0}' assigned role",id.data.UserName));
+              win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserAssignedRole") %>",id.data.UserName));
               win.show();     
             }
 
@@ -140,7 +140,7 @@
             {
                  var win = <%= winAssignedGroup.ClientID %>;
               win.autoLoad.params.UserID = id.id;
-              win.setTitle(String.format("user '{0}' assigned group",id.data.UserName));
+              win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserAssignedGroup") %>",id.data.UserName));
               win.show();     
             }
         }
@@ -279,9 +279,9 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="LockOpen" CommandName="btnUnlock" Text="<%$ Resources:msgunLock %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="Application" CommandName="cmdApplyRole" Text="分配角色">
+                                            <ext:MenuCommand Icon="Application" CommandName="cmdApplyRole" Text="<%$ Resources:msgAssignedRole %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="Group" CommandName="cmdApplyGroup" Text="分配用户组">
+                                            <ext:MenuCommand Icon="Group" CommandName="cmdApplyGroup" Text="<%$ Resources:msgAssignedGroup %>">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
