@@ -31,16 +31,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:Panel ID="Panel1" Title="System User Group Assign" runat="server" Frame="true">
+            <ext:Panel ID="Panel1" Title="<%$ Resources:msgFormTitle %>" runat="server" Frame="true">
                 <Items>
                     <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
                         <Columns>
                             <ext:LayoutColumn ColumnWidth="0.5">
-                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1"  Title="可分配用户组" Frame="true">
+                                <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1"  Title="<%$ Resources:msgAvailableGroups %>" Frame="true">
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="GroupID" DataIndex="id" />
-                                            <ext:Column ColumnID="columnName" Header="GroupNameEn" DataIndex="name" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolD %>" DataIndex="id" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="name" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -75,7 +75,7 @@
                                                                     <Click Handler="GroupSelector.add(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectAddTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectAddContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
@@ -83,7 +83,7 @@
                                                                     <Click Handler="GroupSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectAddAllTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectAddAllContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
@@ -91,7 +91,7 @@
                                                                     <Click Handler="GroupSelector.remove(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectRemoveTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectRemoveContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
@@ -99,7 +99,7 @@
                                                                     <Click Handler="GroupSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectRemoveAllTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectRemoveAllContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                         </Items>
@@ -112,13 +112,13 @@
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.5">
                                 <ext:GridPanel runat="server" ID="GridPanel2" EnableDragDrop="false" AutoExpandColumn="columnID"
-                                    StoreID="Store2"   Title="已分配用户组" Frame="true">
+                                    StoreID="Store2"   Title="<%$ Resources:msgAssignedGroup %>" Frame="true">
                                     <Listeners>
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="GroupID" DataIndex="id" />
-                                            <ext:Column ColumnID="columnName" Header="GroupNameEn" DataIndex="name" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolD %>" DataIndex="id" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="name" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -131,7 +131,7 @@
                     </ext:ColumnLayout>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="Button5" runat="server" Text="Save" Icon="Disk">
+                    <ext:Button ID="Button5" runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>" Icon="Disk">
                         <Listeners>
                             <Click Handler="Button5_Click(Ext.encode(#{GridPanel2}.getRowsValues(false)),#{Window1})" />
                         </Listeners>
@@ -153,11 +153,11 @@
                             {
                                failure: function(msg) 
                                {
-                                    Ext.Msg.alert('操作失败', msg, null);
+                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, null);
                                },
                                success: function(result) 
                                { 
-                                    Ext.Msg.alert('Operation Successful', 'Assigned System User Group Successful!',function(btn){parent.CloseWinAssignedUserGroup();});            
+                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= this.GetLocalResourceObject("msgAssigedSystemGroupSuccessful") %>',function(btn){parent.CloseWinAssignedUserGroup();});            
                                },
                                eventMask: 
                                {

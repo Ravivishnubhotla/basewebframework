@@ -7,3 +7,4 @@
   <add name="msgcolRoleName" value="Name" />
   <add name="msgAssigedSystemRoleSuccessful" value="Assiged System Role successful!" />
 </resources>
+

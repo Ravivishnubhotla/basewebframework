@@ -725,38 +725,39 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAll()
         {
-            return ConvertToWrapperList(businessProxy.FindAll());
+            return ConvertToWrapperList(FindAll(businessProxy));
         }
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAll(businessProxy));
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 		
 		public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
+            orderByColumnName = ProcessColumnName(orderByColumnName);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 
-        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            orderByColumnName = ProcessColumnName(orderByColumnName);
+			orderByFieldName = ProcessColumnName(orderByFieldName);
 
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            ProcessQueryFilters(filters);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, pageQueryParams, businessProxy));
         }
 		
 
         public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-		    List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> results = null;
-
+			orderByFieldName = ProcessColumnName(orderByFieldName);
+		
 	        ProcessQueryFilters(filters);
-
-            results = ConvertToWrapperList(
-                    FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc,  businessProxy));
-
-            return results;
+ 
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc,  businessProxy));;
         }
 			
 		#endregion

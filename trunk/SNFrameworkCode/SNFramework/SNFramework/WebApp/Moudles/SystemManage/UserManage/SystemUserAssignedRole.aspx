@@ -31,17 +31,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
-            <ext:Panel ID="Panel1" Title="System User Group Assign" runat="server" Frame="true">
+            <ext:Panel ID="Panel1" Title="<%$ Resources:msgFormTitle %>" runat="server" Frame="true">
                 <Items>
                     <ext:ColumnLayout ID="ColumnLayout1" runat="server" FitHeight="true">
                         <Columns>
                             <ext:LayoutColumn ColumnWidth="0.5">
                                 <ext:GridPanel runat="server" ID="GridPanel1" EnableDragDrop="true" StoreID="Store1"
-                                    Title="可分配角色" Frame="true">
+                                    Title="<%$ Resources:msgAvailableRoles %>" Frame="true">
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="RoleID" DataIndex="id" />
-                                            <ext:Column ColumnID="columnName" Header="RoleName" DataIndex="name" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolRoleID %>" DataIndex="id" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolRoleName %>" DataIndex="name" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -76,7 +76,7 @@
                                                                     <Click Handler="RoleSelector.add(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="Add" Html="Add Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip1" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectAddTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectAddContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button2" runat="server" Icon="ResultsetLast" StyleSpec="margin-bottom:2px;">
@@ -84,7 +84,7 @@
                                                                     <Click Handler="RoleSelector.addAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="Add all" Html="Add All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip2" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectAddAllTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectAddAllContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button3" runat="server" Icon="ResultsetPrevious" StyleSpec="margin-bottom:2px;">
@@ -92,7 +92,7 @@
                                                                     <Click Handler="RoleSelector.remove(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="Remove" Html="Remove Selected Rows" />
+                                                                    <ext:ToolTip ID="ToolTip3" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectRemoveTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectRemoveContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                             <ext:Button ID="Button4" runat="server" Icon="ResultsetFirst" StyleSpec="margin-bottom:2px;">
@@ -100,7 +100,7 @@
                                                                     <Click Handler="RoleSelector.removeAll(#{GridPanel1}, #{GridPanel2});" />
                                                                 </Listeners>
                                                                 <ToolTips>
-                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="Remove all" Html="Remove All Rows" />
+                                                                    <ext:ToolTip ID="ToolTip4" runat="server" Title="<%$ Resources : GlobalResource, msgDoubleSelectRemoveAllTitle  %>" Html="<%$ Resources : GlobalResource, msgDoubleSelectRemoveAllContent  %>" />
                                                                 </ToolTips>
                                                             </ext:Button>
                                                         </Items>
@@ -113,13 +113,13 @@
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.5">
                                 <ext:GridPanel runat="server" ID="GridPanel2" EnableDragDrop="false" AutoExpandColumn="columnID"
-                                    StoreID="Store2" Title="已分配角色" Frame="true">
+                                    StoreID="Store2" Title="<%$ Resources:msgAssignedRoles %>" Frame="true">
                                     <Listeners>
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="RoleID" DataIndex="id" />
-                                            <ext:Column ColumnID="columnName" Header="RoleName" DataIndex="name" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolRoleID %>" DataIndex="id" />
+                                            <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolRoleName %>" DataIndex="name" />
                                         </Columns>
                                     </ColumnModel>
                                     <SelectionModel>
@@ -132,7 +132,7 @@
                     </ext:ColumnLayout>
                 </Items>
                 <Buttons>
-                    <ext:Button ID="btn55" runat="server" Text="保存" Icon="Disk">
+                    <ext:Button ID="btn55" runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>" Icon="Disk">
                         <Listeners>
                             <Click Handler="btn55_Click(#{GridPanel2})" />
                         </Listeners>
@@ -155,11 +155,11 @@
                             {
                                failure: function(msg) 
                                {
-                                    Ext.Msg.alert('操作失败', msg, null);
+                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, null);
                                },
                                success: function(result) 
                                { 
-                                    Ext.Msg.alert('Operation Successful', 'Assiged System Role successful!',function(btn){parent.CloseWinAssignedUserRole();});            
+                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= this.GetLocalResourceObject("msgAssigedSystemRoleSuccessful") %>',function(btn){parent.CloseWinAssignedUserRole();});            
                                },
                                eventMask: 
                                {

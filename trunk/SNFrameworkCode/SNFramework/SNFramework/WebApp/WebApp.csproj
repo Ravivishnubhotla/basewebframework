@@ -333,6 +333,16 @@
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.zh-CHS.xml" />
