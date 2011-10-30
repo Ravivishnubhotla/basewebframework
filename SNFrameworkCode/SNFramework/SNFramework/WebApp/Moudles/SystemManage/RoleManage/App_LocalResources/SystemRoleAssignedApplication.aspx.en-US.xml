@@ -3,7 +3,12 @@
   <add name="msgFormTitle" value="System Assign Applcations" />
   <add name="msgFormAvailableApplcations" value="Available Applcations" />
   <add name="msgFormAssignedApplcations" value="Assigned Applcations" />
+  <add name="msgcolID" value="ID" />
   <add name="msgcolName" value="Name" />
+  <add name="msgPanelTitleMenu" value="Menu" />
+  <add name="msgSubMenuManage" value="Sub Menu" />
+  <add name="msgSystemRoleAssignedMenuSuccessfully" value="System Role Assigned menu successfully." />
+  <add name="msgbtnSaveMenusText" value="Save All Assigned Menus" />
   <add name="msgcolAddTitle" value="Add" />
   <add name="msgcolAddDescription" value="Add Selected Application" />
   <add name="msgcolAddAllTitle" value="Add All" />

@@ -303,6 +303,9 @@
     </Content>
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.zh-CHS.xml" />

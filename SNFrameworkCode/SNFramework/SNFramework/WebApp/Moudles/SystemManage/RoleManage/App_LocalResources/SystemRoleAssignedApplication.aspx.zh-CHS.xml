@@ -3,7 +3,12 @@
   <add name="msgFormTitle" value="角色分配应用" />
   <add name="msgFormAvailableApplcations" value="可用应用" />
   <add name="msgFormAssignedApplcations" value="分配菜单" />
+  <add name="msgcolID" value="主键" />
   <add name="msgcolName" value="名称" />
+  <add name="msgPanelTitleMenu" value="菜单" />
+  <add name="msgSubMenuManage" value="子菜单" />
+  <add name="msgSystemRoleAssignedMenuSuccessfully" value="角色分配菜单成功！" />
+  <add name="msgbtnSaveMenusText" value="保存分配的子菜单" />
   <add name="msgcolAddTitle" value="分配" />
   <add name="msgcolAddDescription" value="分配选中应用" />
   <add name="msgcolAddAllTitle" value="分配所有" />

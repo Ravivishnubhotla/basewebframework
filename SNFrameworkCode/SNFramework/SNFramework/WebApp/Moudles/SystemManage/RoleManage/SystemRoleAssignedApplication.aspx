@@ -69,7 +69,7 @@
                                                 appid,
                                                 {
                                                     failure: function (msg) {
-                                                        Ext.Msg.alert('操作失败', msg);
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                     },
                                                     success: function (result) {
                                                         var nodes = eval(result);
@@ -84,7 +84,7 @@
                                                     },
                                                     eventMask: {
                                                         showMask: true,
-                                                        msg: '加载中......',
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
                                                         target: 'customtarget',
                                                         customTarget: '<%= TreePanel1.ClientID %>.el'
                                                     }
@@ -94,13 +94,13 @@
 
         function SelectApplication(app, tree) {
             
-            tree.setTitle(app.data.LocaLocalizationName + " 子菜单管理");
+            tree.setTitle(app.data.LocaLocalizationName + "<%= GetLocalResourceObject("msgSubMenuManage").ToString() %>");
 
             //var hidSelectAppID = <%= hidSelectAppID.ClientID %>;
 
             //hidSelectAppID.setValue(app.id.toString());
 
-            LoadMenus(app.id,tree)
+            LoadMenus(app.id, tree);
 
         }
 
@@ -113,7 +113,7 @@
                                                                     Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                 },
                                                                 success: function(result) {
-                                                                    Ext.MessageBox.alert('Operation successful', 'System Role Assigned menu successfully.', function(btn) { parent.CloseWinAssignedMenu(); });
+                                                                    Ext.MessageBox.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetLocalResourceObject("msgSystemRoleAssignedMenuSuccessfully").ToString() %>', function(btn) { parent.CloseWinAssignedMenu(); });
                                                                 },
                                                                 eventMask:
                                                                  {
@@ -152,7 +152,7 @@
                                     Frame="true" StoreID="storeNotAssigned" AutoExpandColumn="columnName" AutoScroll="true">
                                     <ColumnModel ID="ColumnModel1" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolID %>" DataIndex="SystemApplicationID" Width="30" />
                                             <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
@@ -264,7 +264,7 @@
                                     </Listeners>
                                     <ColumnModel ID="ColumnModel2" runat="server">
                                         <Columns>
-                                            <ext:Column ColumnID="columnID" Header="ID" DataIndex="SystemApplicationID" Width="30" />
+                                            <ext:Column ColumnID="columnID" Header="<%$ Resources:msgcolID %>" DataIndex="SystemApplicationID" Width="39" />
                                             <ext:Column ColumnID="columnName" Header="<%$ Resources:msgcolName %>" DataIndex="LocaLocalizationName" />
                                         </Columns>
                                     </ColumnModel>
@@ -279,7 +279,7 @@
                                 </ext:GridPanel>
                             </ext:LayoutColumn>
                             <ext:LayoutColumn ColumnWidth="0.33">
-                                <ext:TreePanel ID="TreePanel1" runat="server" UseArrows="true" Title="菜单" AutoScroll="true"
+                                <ext:TreePanel ID="TreePanel1" runat="server" UseArrows="true" Title="<%$ Resources:msgPanelTitleMenu %>" AutoScroll="true"
                                     RootVisible="false" Frame="true">
                                     <Root>
                                         <ext:TreeNode Text="Composers" Expanded="true">
@@ -289,7 +289,7 @@
                                         <CheckChange Handler="checkNode(node,checked);" />
                                     </Listeners>
                                     <Buttons>
-                                        <ext:Button ID="btnSaveMenus" runat="server" Text="保存菜单分配" Icon="Disk">
+                                        <ext:Button ID="btnSaveMenus" runat="server" Text="<%$ Resources:msgbtnSaveMenusText %>" Icon="Disk">
                                             <Listeners>
                                                 <Click Handler="SaveMenus(#{TreePanel1},#{hidSelectAppID}.getValue());" />
                                             </Listeners>
