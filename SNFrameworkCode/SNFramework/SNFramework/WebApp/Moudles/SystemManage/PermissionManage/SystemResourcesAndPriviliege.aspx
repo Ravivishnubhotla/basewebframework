@@ -168,7 +168,7 @@
                                                                 Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             success: function(result) {
-                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', 'Quick patch add ok!', RefreshSystemPrivilegeData);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetLocalResourceObject("msgPatchAddRsOK").ToString() %>', RefreshSystemPrivilegeData);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
@@ -183,7 +183,7 @@
         function SelectResources(node,hid,pnl)
         {
             hid.setValue(node.attributes.id.toString());
-            pnl.setTitle(node.text+' 操作权限管理');
+            pnl.setTitle(node.text+'<%= GetLocalResourceObject("msgPermsissionManage").ToString() %>');
             pnl.setDisabled(!(node!=null&&node.attributes.id!=null&&node.attributes.id>0));
             RefreshSystemPrivilegeDataList();
             RefreshOperationDataList();
@@ -220,11 +220,11 @@
                 Ext.net.DirectMethods.UCSystemOperationEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshOperationData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshOperationData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -234,32 +234,32 @@
                 Ext.net.DirectMethods.UCSystemOperationView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshOperationData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshOperationData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteSystemOperationRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshOperationData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshOperationData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -275,11 +275,11 @@
                 Ext.net.DirectMethods.UCSystemPrivilegeEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshSystemPrivilegeData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshSystemPrivilegeData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }              
                 );
@@ -288,21 +288,21 @@
  
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the Privilege ? ',
+                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %> ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteSystemPrivilegeRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshSystemPrivilegeData);            
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshSystemPrivilegeData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                                }
                                                                 }
                                                             );
@@ -384,17 +384,17 @@
     </ext:Hidden>
     <ext:Menu ID="cResource" runat="server">
         <Items>
-            <ext:MenuItem ID="AddItems" runat="server" Text="Add Sub Resource" Icon="Add">
+            <ext:MenuItem ID="AddItems" runat="server" Text="<%$ Resources:msgAddSubRS %>" Icon="Add">
                 <Listeners>
                     <Click Handler="ShowAddForm(#{treeMain}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="editItems" runat="server" Text="Edit Resource" Icon="Anchor">
+            <ext:MenuItem ID="editItems" runat="server" Text="<%$ Resources:msgEditRS %>" Icon="Anchor">
                 <Listeners>
                     <Click Handler="ShowEditForm(#{treeMain}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItems" runat="server" Text="Delete Resource" Icon="Delete">
+            <ext:MenuItem ID="deleteItems" runat="server" Text="<%$ Resources:msgDeleteRS %>" Icon="Delete">
                 <Listeners>
                     <Click Handler="DeleteData(#{treeMain}.selModel.selNode.attributes.id);" />
                 </Listeners>
@@ -405,24 +405,24 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
-                    <ext:Panel ID="WestPanel" runat="server" Icon="Package" Title="资源管理" Width="300"
+                    <ext:Panel ID="WestPanel" runat="server" Icon="Package" Title="<%$ Resources:msgPanelRSManage %>" Width="300"
                         Layout="fit">
                         <Content>
                             <ext:TreePanel ID="treeMain" runat="server" Header="false" RootVisible="false" AutoScroll="true">
                                 <TopBar>
                                     <ext:Toolbar ID="ToolBar1" runat="server">
                                         <Items>
-                                            <ext:Button ID="Button1" runat="server" Icon="Add" Text="添加根资源">
+                                            <ext:Button ID="Button1" runat="server" Icon="Add" Text="<%$ Resources:msgAddRootResource %>">
                                                 <Listeners>
                                                     <Click Handler="ShowAddForm(0);" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="展开全部">
+                                            <ext:Button ID="Button3" runat="server" IconCls="icon-expand-all" Text="<%$ Resources : GlobalResource, msgCollapseAll  %>">
                                                 <Listeners>
                                                     <Click Handler="#{treeMain}.root.expand(true);" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="收起全部">
+                                            <ext:Button ID="Button4" runat="server" IconCls="icon-collapse-all" Text="<%$ Resources : GlobalResource, msgExpandAll  %>">
                                                 <Listeners>
                                                     <Click Handler="#{treeMain}.root.collapse(true);" />
                                                 </Listeners>
@@ -432,7 +432,7 @@
                                     </ext:Toolbar>
                                 </TopBar>
                                 <Root>
-                                    <ext:TreeNode Text="System menu" Expanded="true" Icon="Folder">
+                                    <ext:TreeNode Text="<%$ Resources : msgRootNodeText  %>" Expanded="true" Icon="Folder">
                                     </ext:TreeNode>
                                 </Root>
                                 <BottomBar>
@@ -440,36 +440,36 @@
                                 </BottomBar>
                                 <Listeners>
                                     <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cResource},e.getPoint());" />
-                                    <Click Handler="#{StatusBar1}.setStatus({text: '当前选中节点: <b>' + node.text + '</b>', clear: false});SelectResources(node,#{hidSelectResourceID},#{pnlEast});" />
+                                    <Click Handler="<%$ Resources : msgResourceStatusBar  %>" />
                                 </Listeners>
                             </ext:TreePanel>
                         </Content>
                     </ext:Panel>
                 </Center>
                 <East Split="true" Collapsible="true">
-                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="操作权限管理" Width="650"
+                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="<%$ Resources : msgPanelOperationPermissionManage  %>" Width="650"
                         Layout="fit" Disabled="true">
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                    <ext:Panel ID="Tab1" Title="操作管理" Icon="UserMature" runat="server" Layout="FitLayout">
+                                    <ext:Panel ID="Tab1" Title="<%$ Resources : msgPanelOperationManage  %>" Icon="UserMature" runat="server" Layout="FitLayout">
                                         <Items>
                                             <ext:GridPanel ID="gridPanelSystemOperation" runat="server" StoreID="storeSystemOperation"
-                                                StripeRows="true" Title="操作管理" Icon="Table">
+                                                StripeRows="true" Title="<%$ Resources : msgGridPanelOperationManage  %>" Icon="Table">
                                                 <TopBar>
                                                     <ext:Toolbar ID="tbTop" runat="server">
                                                         <Items>
-                                                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                                                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
                                                                 <Listeners>
                                                                     <Click Handler="showAddSystemOperationForm(#{hidSelectResourceID}.getValue());" />
                                                                 </Listeners>
                                                             </ext:Button>
-                                                            <ext:Button ID='btnQuickPatchAdd' runat="server" Text="Quick Patch Add" Icon="Add">
+                                                            <ext:Button ID='btnQuickPatchAdd' runat="server" Text="<%$ Resources : GlobalResource, msgPatchAdd  %>" Icon="Add">
                                                                 <Listeners>
                                                                     <Click Handler="QuickPatchAdd(#{hidSelectResourceID}.getValue());" />
                                                                 </Listeners>
                                                             </ext:Button>
-                                                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                                                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                                                 <Listeners>
                                                                     <Click Handler="#{storeSystemOperation}.reload();" />
                                                                 </Listeners>
@@ -486,44 +486,44 @@
                                                     <Columns>
                                                         <ext:RowNumbererColumn>
                                                         </ext:RowNumbererColumn>
-                                                        <ext:Column ColumnID="colOperationNameCn" DataIndex="OperationNameCn" Header="Name"
+                                                        <ext:Column ColumnID="colOperationNameCn" DataIndex="OperationNameCn" Header="<%$ Resources : msgGridPanelColName  %>"
                                                             Sortable="true">
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colOperationNameEn" DataIndex="OperationNameEn" Header="Code"
+                                                        <ext:Column ColumnID="colOperationNameEn" DataIndex="OperationNameEn" Header="<%$ Resources : msgGridPanelColCode  %>"
                                                             Sortable="true">
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsSystemOperation" DataIndex="IsSystemOperation" Header="System"
+                                                        <ext:Column ColumnID="colIsSystemOperation" DataIndex="IsSystemOperation" Header="<%$ Resources : msgGridPanelColIsSystem  %>"
                                                             Width="55" Sortable="true">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsCanSingleOperation" DataIndex="IsCanSingleOperation" Header="SingleOp"
+                                                        <ext:Column ColumnID="colIsCanSingleOperation" DataIndex="IsCanSingleOperation" Header="<%$ Resources : msgGridPanelColIsSingleOp  %>"
                                                             Width="60" Sortable="true">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsCanMutilOperation" DataIndex="IsCanMutilOperation" Header="MutilOp"
+                                                        <ext:Column ColumnID="colIsCanMutilOperation" DataIndex="IsCanMutilOperation" Header="<%$ Resources : msgGridPanelColIsMutilOp  %>"
                                                             Width="60" Sortable="true">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="Enable" Sortable="true"
+                                                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="<%$ Resources : msgGridPanelColIsISEnable  %>" Sortable="true"
                                                             Width="50">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsInListPage" DataIndex="IsInListPage" Header="List" Width="50"
+                                                        <ext:Column ColumnID="colIsInListPage" DataIndex="IsInListPage" Header="<%$ Resources : msgGridPanelColIsISList  %>" Width="50"
                                                             Sortable="true">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colIsInSinglePage" DataIndex="IsInSinglePage" Header="Single"
+                                                        <ext:Column ColumnID="colIsInSinglePage" DataIndex="IsInSinglePage" Header="<%$ Resources : msgGridPanelColIsISSingle  %>"
                                                             Width="50" Sortable="true">
                                                             <Renderer Fn="FormatBool" />
                                                         </ext:Column>
-                                                        <ext:CommandColumn ColumnID="colManage" Header="Action" Width="80">
+                                                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>" Width="80">
                                                             <Commands>
-                                                                <ext:SplitCommand Text="Action" Icon="ApplicationEdit">
+                                                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" Icon="ApplicationEdit">
                                                                     <Menu>
                                                                         <Items>
-                                                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
+                                                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
                                                                             </ext:MenuCommand>
-                                                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
+                                                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                                                             </ext:MenuCommand>
                                                                         </Items>
                                                                     </Menu>
@@ -535,7 +535,7 @@
                                                 <LoadMask ShowMask="true" />
                                                 <BottomBar>
                                                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemOperation"
-                                                        DisplayInfo="true" DisplayMsg="Display Operations {0} - {1} total {2}" EmptyMsg="No matched Operations" />
+                                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                                                 </BottomBar>
                                                 <Listeners>
                                                     <Command Handler="processcmdSystemOperation(command, record);" />
@@ -546,10 +546,10 @@
                                             <BeforeShow Handler="if(#{hidSelectResourceID}.getValue()!=''){ RefreshOperationDataList();};" />
                                         </Listeners>
                                     </ext:Panel>
-                                    <ext:Panel ID="Tab2" Title="权限管理" Icon="UserKey" runat="server" Layout="FitLayout">
+                                    <ext:Panel ID="Tab2" Title="<%$ Resources : msgPanelPermissionManage  %>" Icon="UserKey" runat="server" Layout="FitLayout">
                                         <Items>
                                             <ext:GridPanel ID="gridPanelSystemPrivilege" runat="server" StoreID="storeSystemPrivilege"
-                                                StripeRows="true" Title="System PermissionManagement" Icon="Table">
+                                                StripeRows="true" Title="<%$ Resources : msgGridPanelPermissionManage  %>" Icon="Table">
                                                 <TopBar>
                                                     <ext:Toolbar ID="Toolbar2" runat="server">
                                                         <Items>
@@ -559,7 +559,7 @@
                                                                     <Click Handler="showAddSystemPrivilegeForm(#{hidSelectResourceID}.getValue());" />
                                                                 </Listeners>
                                                             </ext:Button>
-                                                            <ext:Button ID='btnQuickGenerate' runat="server" Text="Quick Generate" Icon="Add">
+                                                            <ext:Button ID='btnQuickGenerate' runat="server" Text="<%$ Resources : msgQuickGenerate  %>" Icon="Add">
                                                                 <Listeners>
                                                                     <Click Handler="QuickGenerate(#{hidSelectResourceID}.getValue());" />
                                                                 </Listeners>
@@ -582,20 +582,20 @@
                                                     <Columns>
                                                         <ext:RowNumbererColumn>
                                                         </ext:RowNumbererColumn>
-                                                        <ext:Column ColumnID="colOperationID" DataIndex="OperationName" Header="Operation">
+                                                        <ext:Column ColumnID="colOperationID" DataIndex="OperationName" Header="<%$ Resources : msgGridPanelPermissionColOperation  %>">
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colPrivilegeCnName" DataIndex="PrivilegeCnName" Header="Name"
+                                                        <ext:Column ColumnID="colPrivilegeCnName" DataIndex="PrivilegeCnName" Header="<%$ Resources : msgGridPanelPermissionColName  %>"
                                                             Sortable="true">
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colPrivilegeEnName" DataIndex="PrivilegeEnName" Header="Code"
+                                                        <ext:Column ColumnID="colPrivilegeEnName" DataIndex="PrivilegeEnName" Header="<%$ Resources : msgGridPanelPermissionColCode  %>"
                                                             Sortable="true">
                                                         </ext:Column>
-                                                        <ext:Column ColumnID="colPrivilegeOrder" DataIndex="PrivilegeOrder" Header="Order"
+                                                        <ext:Column ColumnID="colPrivilegeOrder" DataIndex="PrivilegeOrder" Header="<%$ Resources : msgGridPanelPermissionColOrder  %>"
                                                             Width="50" Sortable="true">
                                                         </ext:Column>
-                                                        <ext:CommandColumn ColumnID="colManage" Header="Action" Width="80">
+                                                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>" Width="80">
                                                             <Commands>
-                                                                <ext:SplitCommand Text="Action" Icon="ApplicationEdit">
+                                                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" Icon="ApplicationEdit">
                                                                     <Menu>
                                                                         <Items>
                                                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
@@ -612,7 +612,7 @@
                                                 <LoadMask ShowMask="true" />
                                                 <BottomBar>
                                                     <ext:PagingToolbar ID="PagingToolBar2" runat="server" PageSize="20" StoreID="storeSystemPrivilege"
-                                                        DisplayInfo="true" DisplayMsg="Show System Permission {0} - {1} total {2}" EmptyMsg="No matched   System Permission" />
+                                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                                                 </BottomBar>
                                                 <Listeners>
                                                     <Command Handler="processPrivilegecmd(command, record);" />

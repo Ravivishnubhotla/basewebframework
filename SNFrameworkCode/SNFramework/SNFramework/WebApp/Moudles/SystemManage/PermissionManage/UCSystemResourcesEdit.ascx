@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemResourcesEdit.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage.UCSystemResourcesEdit" %>
-<ext:Window ID="winSystemResourcesEdit" runat="server" Icon="ApplicationEdit" Title="Edit resource"
+<ext:Window ID="winSystemResourcesEdit" runat="server" Icon="ApplicationEdit" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="fit">
     <Content>
@@ -10,31 +10,30 @@
             <Items>
                 <ext:Hidden ID="hidResourcesID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:DisplayField ID="lblParentResourcesName" runat="server" FieldLabel="Parent Resource Name"
+                <ext:DisplayField ID="lblParentResourcesName" runat="server" FieldLabel="<%$ Resources:msgFieldParentResourcesName %>"
                     AnchorHorizontal="95%">
                 </ext:DisplayField>
-                <ext:TextField ID="txtResourcesNameCn" runat="server" FieldLabel="Name" AllowBlank="False"
+                <ext:TextField ID="txtResourcesNameCn" runat="server" FieldLabel="<%$ Resources:msgFieldName %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtResourcesNameEn" runat="server" FieldLabel="Code" AllowBlank="False"
+                <ext:TextField ID="txtResourcesNameEn" runat="server" FieldLabel="<%$ Resources:msgFieldCode %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtResourcesDescription" runat="server" FieldLabel="Description"
+                <ext:TextField ID="txtResourcesDescription" runat="server" FieldLabel="<%$ Resources:msgFieldDescription %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkResourcesIsRelateUser" runat="server" FieldLabel="Relate User"
+                <ext:Checkbox ID="chkResourcesIsRelateUser" runat="server" FieldLabel="<%$ Resources:msgFieldIsRelateUser %>"
                     Checked="false" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemResources" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemResources" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemResourcesEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemResources_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSystemResourcesEdit}.getForm().reset();RefreshTreeList1(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+                    OnEvent="btnSaveSystemResources_Click" Success="<%$ Resources:msgUpdateScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemResources" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemResources" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemResourcesEdit}.getForm().reset();#{winSystemResourcesEdit}.hide();" />
             </Listeners>

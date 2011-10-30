@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="菜单排序" />
+  <add name="msgGridmTitle" value="子菜单" />
+</resources>
+

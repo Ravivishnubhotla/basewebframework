@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Permission Add" />
+  <add name="msgFieldResourcesName" value="Resource" />
+  <add name="msgFieldOperation" value="Operation" />
+  <add name="msgFieldName" value="Name" />
+  <add name="msgFieldCode" value="Code" />
+  <add name="msgFieldDescription" value="Description" />
+  <add name="msgFieldOrder" value="Order" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Success AddedSystem Permission',callback);function callback(id) {#{formPanelSystemPrivilegeAdd}.getForm().reset();#{storeSystemPrivilege}.reload(); };" />
+</resources>
+
+

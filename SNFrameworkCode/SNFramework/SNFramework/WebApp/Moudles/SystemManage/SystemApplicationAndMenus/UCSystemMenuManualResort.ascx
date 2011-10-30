@@ -5,7 +5,7 @@
         Ext.net.DirectMethods.UCSystemMenuManualResort.SaveNewOrder(vlues,
                                                                 {
                                                                     failure: function (msg) {
-                                                                        Ext.Msg.alert('Operation failed.', msg, RefreshData);
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg, RefreshData);
                                                                     },
                                                                     success: function (result) {
                                                                         win.hide();
@@ -14,7 +14,7 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Saving...'
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
                                                                     }
                                                                 });
                                                             }
@@ -45,11 +45,11 @@
         </ext:Parameter>
     </AutoLoadParams>
 </ext:Store>
-<ext:Window ID="winSystemMenuManualResort" runat="server" Icon="SortAscending" Title="System menu sort"
+<ext:Window ID="winSystemMenuManualResort" runat="server" Icon="SortAscending" Title="<%$ Resources:msgFormTitle %>"
     Width="300" Height="380" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Layout="fit">
     <Items>
-        <ext:Panel ID="pnlSortItems" Title="Sub menu" Layout="fit">
+        <ext:Panel ID="pnlSortItems" Title="<%$ Resources:msgGridmTitle %>" Layout="fit">
             <Content>
                 <ext:MultiSelect ID="MultiSelect1" runat="server" StoreID="storeSubMenus" DisplayField="LocaLocalizationName"
                     ValueField="MenuID" DragGroup="grp1" DropGroup="grp1,grp1" KeepSelectionOnClick="WithCtrlKey"
@@ -59,7 +59,7 @@
         </ext:Panel>
     </Items>
     <Buttons>
-        <ext:Button ID="btnResortSystemMenu" runat="server" Text="Save" Icon="BulletTick">
+        <ext:Button ID="btnResortSystemMenu" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="BulletTick">
             <Listeners>
                 <Click Handler="SaveNewOrder(Ext.encode(#{MultiSelect1}.getValues()),#{winSystemMenuManualResort},#{storeSubMenus});" />
             </Listeners>

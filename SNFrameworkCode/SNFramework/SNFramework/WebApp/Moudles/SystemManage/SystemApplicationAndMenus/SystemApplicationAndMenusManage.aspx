@@ -148,7 +148,7 @@
 
         function SelectApplication(app, tree) {
             
-            tree.setTitle(app.data.LocaLocalizationName + " 子菜单管理");
+            tree.setTitle(app.data.LocaLocalizationName + "<%= GetLocalResourceObject("msgSubMenuManage").ToString() %>");
 
             //var hidSelectAppID = <%= hidSelectAppID.ClientID %>;
 
@@ -183,7 +183,7 @@
         }
 
         function DeleteMenu(menuID) {
-                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','确定要删除选定的菜单?',
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetLocalResourceObject("msgDeleteMenuWaring").ToString() %>',
                     function(e) {
                         if (e == 'yes')
             Ext.net.DirectMethods.DeleteMenu(
@@ -193,7 +193,7 @@
                                                                 Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                             },
                                                             success: function(result) {
-                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '删除菜单成功！', RefreshMenuData);
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetLocalResourceObject("msgDeleteMenuSuccessful").ToString() %>', RefreshMenuData);
                                                             },
                                                             eventMask: {
                                                                 showMask: true,
@@ -303,12 +303,12 @@
     <uc5:UCSystemMenuManualResort ID="UCSystemMenuManualResort1" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
-            <ext:Panel ID="Panel1" runat="server" Frame="true" Title="应用菜单管理">
+            <ext:Panel ID="Panel1" runat="server" Frame="true" Title="<%$ Resources:msgFormTitle %>">
                 <Items>
                     <ext:BorderLayout ID="BorderLayout1" runat="server">
                         <West Split="true" Collapsible="true">
                             <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true" 
-                                Title="系统应用管理" Width="430" Frame="true" AutoScroll="true" AutoExpandColumn="colLocaLocalizationName">
+                                Title="<%$ Resources:msgGridApplicationTitle %>" Width="430" Frame="true" AutoScroll="true" AutoExpandColumn="colLocaLocalizationName">
                                 <TopBar>
                                     <ext:Toolbar ID="tbTop" runat="server">
                                         <Items>
@@ -332,20 +332,20 @@
                                 </View>
                                 <ColumnModel ID="ColumnModel1" runat="server">
                                     <Columns>
-                                        <ext:Column ColumnID="colLocaLocalizationName" Header="名称" Width="80" Sortable="true"
+                                        <ext:Column ColumnID="colLocaLocalizationName" Header="<%$ Resources:msgcolName %>" Width="80" Sortable="true"
                                             DataIndex="LocaLocalizationName" />
-                                        <ext:Column ColumnID="colSystemApplicationCode" Header="编码" Width="120" Sortable="true"
+                                        <ext:Column ColumnID="colSystemApplicationCode" Header="<%$ Resources:msgcolCode %>" Width="120" Sortable="true"
                                             DataIndex="SystemApplicationCode" />
-                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="系统应用" Width="65">
+                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="<%$ Resources:msgcolIsSystem %>" Width="65">
                                             <Renderer Fn="FormatBool" />
                                         </ext:Column>
-                                        <ext:CommandColumn Width="50" Header="管理">
+                                        <ext:CommandColumn Width="50" Header="<%$ Resources : GlobalResource, msgManage  %>">
                                             <Commands>
-                                                <ext:SplitCommand Text="操作" ToolTip-Text="数据操作">
+                                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" ToolTip-Text="<%$ Resources : GlobalResource, msgAction  %>">
                                                     <Menu EnableScrolling="true" ShowSeparator="true">
                                                         <Items>
-                                                            <ext:MenuCommand Text="编辑" Icon="ApplicationEdit" CommandName="cmdEdit" />
-                                                            <ext:MenuCommand Text="删除" Icon="ApplicationDelete" CommandName="cmdDelete" />
+                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
+                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
                                                         </Items>
                                                     </Menu>
                                                 </ext:SplitCommand>
@@ -371,12 +371,12 @@
                             </ext:GridPanel>
                         </West>
                         <Center>
-                            <ext:TreePanel ID="TreePanel1" runat="server" Title="菜单管理" AutoScroll="true" RootVisible="false"  EnableDD=true
+                            <ext:TreePanel ID="TreePanel1" runat="server" Title="<%$ Resources:msgFormMenuManage %>" AutoScroll="true" RootVisible="false"  EnableDD=true
                                >
                                 <TopBar>
                                     <ext:Toolbar ID="ToolBar1" runat="server">
                                         <Items>
-                                            <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="根菜单操作:" />
+                                            <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:msgRootMenuOp %>" />
                                             <ext:ToolbarSeparator>
                                             </ext:ToolbarSeparator>
                                             <ext:Button ID="tbAddRootMenu" runat="server" Icon="Add" Text="<%$ Resources : GlobalResource, msgAdd  %>">
@@ -399,7 +399,7 @@
                                                     <Click Handler="#{TreePanel1}.root.expand(true);" />
                                                 </Listeners>
                                                 <ToolTips>
-                                                    <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="Expand All" />
+                                                    <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="<%$ Resources : GlobalResource, msgCollapseAll  %>" />
                                                 </ToolTips>
                                             </ext:Button>
                                             <ext:Button ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="<%$ Resources : GlobalResource, msgExpandAll  %>">
@@ -407,7 +407,7 @@
                                                     <Click Handler="#{TreePanel1}.root.collapse(true);" />
                                                 </Listeners>
                                                 <ToolTips>
-                                                    <ext:ToolTip ID="ToolTip2" IDMode="Ignore" runat="server" Html="Collapse All" />
+                                                    <ext:ToolTip ID="ToolTip2" IDMode="Ignore" runat="server" Html="<%$ Resources : GlobalResource, msgExpandAll  %>" />
                                                 </ToolTips>
                                             </ext:Button>
                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
@@ -415,7 +415,7 @@
                                     </ext:Toolbar>
                                 </TopBar>
                                 <Root>
-                                    <ext:TreeNode Text="系统菜单" Expanded="true" Icon="Folder">
+                                    <ext:TreeNode Text="<%$ Resources:msgRootNodeText %>" Expanded="true" Icon="Folder">
                                     </ext:TreeNode>
                                 </Root>
                                 <BottomBar>
@@ -424,7 +424,7 @@
                                 <Listeners>
                                     <NodeDragOver Fn="dragOver" />
                                     <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cmenu},e.getPoint());" />
-                                    <Click Handler="#{StatusBar1}.setStatus({text: '当前选中节点: <b>' + node.text + '</b>', clear: false});" />
+                                    <Click Handler="<%$ Resources:msgMenuStatusBar %>" />
                                 </Listeners>
    
                             </ext:TreePanel>
@@ -436,27 +436,27 @@
     </ext:Viewport>
     <ext:Menu ID="cmenu" runat="server">
         <Items>
-            <ext:MenuItem ID="addItem" runat="server" Text="添加子菜单" Icon="Add">
+            <ext:MenuItem ID="addItem" runat="server" Text="<%$ Resources:msgAddSubNode %>" Icon="Add">
                 <Listeners>
                     <Click Handler="ShowAddMenuForm(#{hidSelectAppID}.getValue(),#{TreePanel1}.selModel.selNode.attributes.id); " />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="editItem" runat="server" Text="编辑菜单" Icon="Anchor">
+            <ext:MenuItem ID="editItem" runat="server" Text="<%$ Resources:msgEditNode %>" Icon="Anchor">
                 <Listeners>
                     <Click Handler="ShowEditMenuForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItem" runat="server" Text="删除菜单" Icon="Delete">
+            <ext:MenuItem ID="deleteItem" runat="server" Text="<%$ Resources:msgDeleteNode %>" Icon="Delete">
                 <Listeners>
                     <Click Handler="DeleteMenu(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="sortItem" runat="server" Text="子菜单手动排序" Icon="SortAscending">
+            <ext:MenuItem ID="sortItem" runat="server" Text="<%$ Resources:msgMSortNode %>" Icon="SortAscending">
                 <Listeners>
                     <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{hidSelectAppID}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="autoSortItem" runat="server" Text="子菜单自动排序" Icon="SortAscending">
+            <ext:MenuItem ID="autoSortItem" runat="server" Text="<%$ Resources:msgASortNode %>" Icon="SortAscending">
                 <Listeners>
                     <Click Handler="AutoReorder(#{TreePanel1}.selModel.selNode.attributes.id,#{hidSelectAppID}.getValue());" />
                 </Listeners>

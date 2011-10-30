@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemApplicationAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMenus.UCSystemApplicationAdd" %>
-<ext:Window ID="winSystemApplicationAdd" runat="server" Icon="ApplicationAdd" Title="添加应用"
+<ext:Window ID="winSystemApplicationAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
     Width="500" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -8,15 +8,15 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="130"
             AutoScroll="true" Layout="Form">
             <Items>
-                <ext:TextField ID="txtSystemApplicationName" runat="server" DataIndex="SystemApplicationName" FieldLabel="名称" AllowBlank="false"
+                <ext:TextField ID="txtSystemApplicationName" runat="server" DataIndex="SystemApplicationName" FieldLabel="<%$ Resources:msgFieldName %>" AllowBlank="false"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSystemApplicationCode" runat="server"  DataIndex="SystemApplicationCode" FieldLabel="编码" AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtSystemApplicationDescription"  DataIndex="SystemApplicationDescription" runat="server" FieldLabel="描述"
+                <ext:TextField ID="txtSystemApplicationCode" runat="server"  DataIndex="SystemApplicationCode" FieldLabel="<%$ Resources:msgFieldCode %>" AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtSystemApplicationDescription"  DataIndex="SystemApplicationDescription" runat="server" FieldLabel="<%$ Resources:msgFieldDescription %>"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSystemApplicationUrl" runat="server"  DataIndex="SystemApplicationUrl" FieldLabel="链接" AllowBlank="false"
+                <ext:TextField ID="txtSystemApplicationUrl" runat="server"  DataIndex="SystemApplicationUrl" FieldLabel="<%$ Resources:msgFieldUrl %>" AllowBlank="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSystemApplicationIsSystemApplication"  DataIndex="SystemApplicationIsSystemApplication" runat="server" Checked="true"
-                    FieldLabel="系统应用" AnchorHorizontal="95%">
+                    FieldLabel="<%$ Resources:msgFieldIsSystem %>" AnchorHorizontal="95%">
                 </ext:Checkbox>
             </Items>
         </ext:FormPanel>
@@ -25,8 +25,7 @@
         <ext:Button ID="btnSaveSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemApplicationAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemApplication_Click" Success="Ext.MessageBox.alert('操作成功', '添加应用成功！',callback);function callback(id) {#{formPanelSystemApplicationAdd}.getForm().reset();#{storeSystemApplication}.reload(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    OnEvent="btnSaveSystemApplication_Click" Success="<%$ Resources:msgAddScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                     <ExtraParams>
                         <ext:Parameter Name="frmValues" Value="Ext.encode(#{formPanelSystemApplicationAdd}.getForm().getFieldValues(false, 'dataIndex'))"
