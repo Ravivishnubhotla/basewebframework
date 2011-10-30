@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="系统用户组分配" />
+  <add name="msgAvailableGroups" value="可用用户组" />
+  <add name="msgAssignedGroup" value="已分配用户组" />
+  <add name="msgcolD" value="主键" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgAssigedSystemGroupSuccessful" value="分配用户组成功！" />
+</resources>
+

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System User Group Assign" />
+  <add name="msgAvailableGroups" value="Available Groups" />
+  <add name="msgAssignedGroup" value="Assigned Groups" />
+  <add name="msgcolD" value="ID" />
+  <add name="msgcolName" value="Name" />
+  <add name="msgAssigedSystemGroupSuccessful" value="Assiged System Group successful!" />
+</resources>
+

@@ -28,4 +28,12 @@
   <add name="msgShowError" value="Ext.Msg.alert('Operation Failed', result.errorMessage);" />
   <add name="msgPatchAdd" value="Patch Add" />
   <add name="msgPatchEdit" value="Patch Edit" />
+  <add name="msgDoubleSelectAddTitle" value="Add" />
+  <add name="msgDoubleSelectAddContent" value="Add Selected Rows" />
+  <add name="msgDoubleSelectAddAllTitle" value="Add all" />
+  <add name="msgDoubleSelectAddAllContent" value="Add All Rows" />
+  <add name="msgDoubleSelectRemoveTitle" value="Remove" />
+  <add name="msgDoubleSelectRemoveContent" value="Remove Selected Rows" />
+  <add name="msgDoubleSelectRemoveAllTitle" value="Remove all" />
+  <add name="msgDoubleSelectRemoveAllContent" value="Remove All Rows" />
 </resources>

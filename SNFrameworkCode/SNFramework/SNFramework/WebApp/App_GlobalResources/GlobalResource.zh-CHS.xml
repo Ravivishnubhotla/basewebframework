@@ -28,4 +28,12 @@
   <add name="msgShowError" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
   <add name="msgPatchAdd" value="批量添加" />
   <add name="msgPatchEdit" value="批量编辑" />
+  <add name="msgDoubleSelectAddTitle" value="添加" />
+  <add name="msgDoubleSelectAddContent" value="添加选中的项" />
+  <add name="msgDoubleSelectAddAllTitle" value="添加所有" />
+  <add name="msgDoubleSelectAddAllContent" value="添加所有项" />
+  <add name="msgDoubleSelectRemoveTitle" value="移除" />
+  <add name="msgDoubleSelectRemoveContent" value="移除选中的项" />
+  <add name="msgDoubleSelectRemoveAllTitle" value="移除所有" />
+  <add name="msgDoubleSelectRemoveAllContent" value="移除所有项" />
 </resources>
