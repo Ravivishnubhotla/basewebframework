@@ -38,4 +38,6 @@
   <add name="msgDoubleSelectRemoveAllContent" value="移除所有项" />
   <add name="msgExpandAll" value="展开全部" />
   <add name="msgCollapseAll" value="收起全部" />
+  <add name="msgManualSort" value="手动排序" />
+  <add name="msgAutoSort" value="自动排序" />
 </resources>

@@ -38,6 +38,6 @@
   <add name="msgDoubleSelectRemoveAllContent" value="Remove All Rows" />
   <add name="msgExpandAll" value="Expand all" />
   <add name="msgCollapseAll" value="Collapse all" />
-
-  
+  <add name="msgManualSort" value="Sort" />
+  <add name="msgAutoSort" value="Auto Sort" />
 </resources>

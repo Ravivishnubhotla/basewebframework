@@ -312,12 +312,12 @@
                                 <TopBar>
                                     <ext:Toolbar ID="tbTop" runat="server">
                                         <Items>
-                                            <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
+                                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="ApplicationAdd">
                                                 <Listeners>
                                                     <Click Handler="ShowApplicationAddForm();" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
                                                 <Listeners>
                                                     <Click Handler="#{storeSystemApplication}.reload();" />
                                                 </Listeners>
@@ -363,7 +363,7 @@
                                 <LoadMask ShowMask="true" />
                                 <BottomBar>
                                     <ext:PagingToolbar ID="PagingToolbar1" runat="server" PageSize="10" StoreID="storeSystemApplication"
-                                        DisplayInfo="true" DisplayMsg="显示记录 {0} - {1} 共: {2}" EmptyMsg="没有符合条件的记录" />
+                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                                 </BottomBar>
                                 <Listeners>
                                     <Command Handler="processcmd(command, record);" />
@@ -379,22 +379,22 @@
                                             <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="根菜单操作:" />
                                             <ext:ToolbarSeparator>
                                             </ext:ToolbarSeparator>
-                                            <ext:Button ID="tbAddRootMenu" runat="server" Icon="Add" Text="添加">
+                                            <ext:Button ID="tbAddRootMenu" runat="server" Icon="Add" Text="<%$ Resources : GlobalResource, msgAdd  %>">
                                                 <Listeners>
                                                     <Click Handler="ShowAddMenuForm(#{hidSelectAppID}.getValue(),'');" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="手动排序">
+                                            <ext:Button ID="ToolbarButton2" runat="server" Icon="SortAscending" Text="<%$ Resources : GlobalResource, msgManualSort  %>">
                                                 <Listeners>
                                                     <Click Handler="showReorderForm(0,#{hidSelectAppID}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="自动排序">
+                                            <ext:Button ID="ToolbarButton5" runat="server" Icon="SortAscending" Text="<%$ Resources : GlobalResource, msgAutoSort  %>">
                                                 <Listeners>
                                                     <Click Handler="AutoReorder(0,#{hidSelectAppID}.getValue())" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="全部展开">
+                                            <ext:Button ID="ToolbarButton3" runat="server" IconCls="icon-expand-all" Text="<%$ Resources : GlobalResource, msgCollapseAll  %>">
                                                 <Listeners>
                                                     <Click Handler="#{TreePanel1}.root.expand(true);" />
                                                 </Listeners>
@@ -402,7 +402,7 @@
                                                     <ext:ToolTip ID="ToolTip1" IDMode="Ignore" runat="server" Html="Expand All" />
                                                 </ToolTips>
                                             </ext:Button>
-                                            <ext:Button ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="全部收起">
+                                            <ext:Button ID="ToolbarButton4" runat="server" IconCls="icon-collapse-all" Text="<%$ Resources : GlobalResource, msgExpandAll  %>">
                                                 <Listeners>
                                                     <Click Handler="#{TreePanel1}.root.collapse(true);" />
                                                 </Listeners>
