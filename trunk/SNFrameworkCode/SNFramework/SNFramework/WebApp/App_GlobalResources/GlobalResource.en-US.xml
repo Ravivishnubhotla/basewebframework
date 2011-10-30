@@ -36,4 +36,6 @@
   <add name="msgDoubleSelectRemoveContent" value="Remove Selected Rows" />
   <add name="msgDoubleSelectRemoveAllTitle" value="Remove all" />
   <add name="msgDoubleSelectRemoveAllContent" value="Remove All Rows" />
+  <add name="msgExpandAll" value="Expand all" />
+  <add name="msgCollapseAll" value="Collapse all" />
 </resources>

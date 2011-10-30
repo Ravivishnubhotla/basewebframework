@@ -7,6 +7,7 @@
   <add name="msgAssignApplicationBtnText" value="分配应用菜单" />
   <add name="msgAssignMenuBtnText" value="分配菜单" />
   <add name="msgAssignPermissionBtnText" value="分配权限" />
+  <add name="msgcolRoleID" value="主键" />
   <add name="msgcolRoleName" value="名称" />
   <add name="msgcolRoleCode" value="编码" />
   <add name="msgcolRoleDescription" value="描述" />

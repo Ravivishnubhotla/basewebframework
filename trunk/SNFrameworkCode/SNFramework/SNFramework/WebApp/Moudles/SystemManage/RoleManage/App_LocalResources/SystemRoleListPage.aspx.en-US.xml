@@ -7,6 +7,7 @@
   <add name="msgAssignApplicationBtnText" value="Assign Application Menu" />
   <add name="msgAssignMenuBtnText" value="Assign Menu" />
   <add name="msgAssignPermissionBtnText" value="Assign Permission" />
+  <add name="msgcolRoleID" value="ID" />
   <add name="msgcolRoleName" value="Name" />
   <add name="msgcolRoleCode" value="Code" />
   <add name="msgcolRoleDescription" value="Description" />

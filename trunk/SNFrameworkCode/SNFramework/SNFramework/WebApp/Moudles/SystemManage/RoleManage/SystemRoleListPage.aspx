@@ -162,7 +162,7 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="RoleID" Header="ID" Sortable="true" Width="50">
+                        <ext:Column DataIndex="RoleID" Header="<%$ Resources:msgcolRoleID %>" Sortable="true" Width="50">
                         </ext:Column>
                         <ext:Column DataIndex="RoleName" Header="<%$ Resources:msgcolRoleName %>" Sortable="true">
                         </ext:Column>

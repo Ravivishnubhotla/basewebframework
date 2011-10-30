@@ -1,0 +1,11 @@
+﻿<resources>
+  <add name="msgFormTitle" value="选择资源" />
+  <add name="msgFormAvailablePermissions" value="可用的权限" />
+  <add name="msgFormAssignedPermissions" value="已分配到权限" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgPanelTitle" value="分配权限" />
+  <add name="msgSetStatus" value="#{StatusBar1}.setStatus({text: '当前选中节点:' + node.text + '', clear: false});SelectResources(node,#{hidSelectResourceID},#{pnlEast});" />
+  <add name="msgAssignedPermissionSuccessful" value="分配权限成功！" />
+  <add name="msgManagePermission" value="操作权限管理" />
+</resources>
