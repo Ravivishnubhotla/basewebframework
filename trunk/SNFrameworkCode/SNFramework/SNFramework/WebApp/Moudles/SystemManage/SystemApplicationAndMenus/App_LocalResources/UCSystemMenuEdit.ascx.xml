@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="Edit Menu" />
+  <add name="msgFieldApplicationName" value="Application Name" />
+  <add name="msgFieldParentMenuName" value="Parent Menu" />
+  <add name="msgFieldName" value="Name" />
+  <add name="msgFieldCode" value="Code" />
+  <add name="msgFieldDescription" value="Description" />
+  <add name="msgFieldUrl" value="Url" />
+  <add name="msgFieldUrlTarget" value="Url Target" />
+  <add name="msgFieldUrlType" value="Url Type" />
+  <add name="msgFieldIconUrl" value="IconUrl" />
+  <add name="msgFieldIsSystem" value="Is System" />
+  <add name="msgFieldIsEnable" value="Is Enable" />
+  <add name="msgFieldIsCategory" value="Is Category" />
+  <add name="msgFieldInnerLink" value="Inner Link" />
+  <add name="msgFieldOutterLink" value="Outter Link" />
+  <add name="msgFieldNormalMenu" value="Normal Menu" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Edit System Menu Success!',callback);function callback(id) { #{formPanelSystemMenuEdit}.getForm().reset();ReloadMenus();};" />
+</resources>

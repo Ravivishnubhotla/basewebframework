@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgSubMenuManage" value=" Sub Menu Manage" />
+  <add name="msgDeleteMenuWaring" value="Are your sure to delete this menu?" />
+  <add name="msgDeleteMenuSuccessful" value="Delete menu Successful!" />
+  <add name="msgFormTitle" value="Application And Menu Manage" />
+  <add name="msgGridApplicationTitle" value="Application Manage" />
+  <add name="msgcolD" value="ID" />
+  <add name="msgcolName" value="Name" />
+  <add name="msgcolCode" value="Code" />
+  <add name="msgcolIsSystem" value="Is System" />
+  <add name="msgFormMenuManage" value="Menu Manage" />
+  <add name="msgRootMenuOp" value="Root Menu Operation:" />
+  <add name="msgRootNodeText" value="System Menu" />
+  <add name="msgMenuStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node : ' + node.text + '', clear: false});" />
+  <add name="msgAddSubNode" value="Add sub menu" />
+  <add name="msgEditNode" value="Edit menu" />
+  <add name="msgDeleteNode" value="Delete menu" />
+  <add name="msgMSortNode" value="Sub menu manual sort" />
+  <add name="msgASortNode" value="Sub menu auto sort" />
+</resources>

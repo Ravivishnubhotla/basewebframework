@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="编辑系统菜单" />
+  <add name="msgFieldApplicationName" value="所属应用" />
+  <add name="msgFieldParentMenuName" value="父菜单" />
+  <add name="msgFieldName" value="名称" />
+  <add name="msgFieldCode" value="编码" />
+  <add name="msgFieldDescription" value="描述" />
+  <add name="msgFieldUrl" value="链接" />
+  <add name="msgFieldUrlTarget" value="链接类型" />
+  <add name="msgFieldUrlType" value="菜单类型" />
+  <add name="msgFieldIconUrl" value="菜单图标" />
+  <add name="msgFieldIsSystem" value="系统菜单" />
+  <add name="msgFieldIsEnable" value="是否启用" />
+  <add name="msgFieldIsCategory" value="是否为链接菜单" />
+  <add name="msgFieldInnerLink" value="内部链接" />
+  <add name="msgFieldOutterLink" value="外部链接" />
+  <add name="msgFieldNormalMenu" value="普通菜单" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功', '编辑菜单成功！',callback);function callback(id) { #{formPanelSystemMenuEdit}.getForm().reset();ReloadMenus();};" />
+</resources>

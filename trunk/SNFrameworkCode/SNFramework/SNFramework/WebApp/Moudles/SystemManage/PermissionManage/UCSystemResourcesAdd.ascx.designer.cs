@@ -73,7 +73,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtResourcesDescription;
+        protected global::Ext.Net.TextField txtResourcesDescription;
         
         /// <summary>
         /// chkResourcesIsRelateUser control.

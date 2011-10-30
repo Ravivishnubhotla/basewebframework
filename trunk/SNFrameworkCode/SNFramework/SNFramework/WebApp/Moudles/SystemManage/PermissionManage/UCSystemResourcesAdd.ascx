@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemResourcesAdd.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage.UCSystemResourcesAdd" %>
-<ext:Window ID="winSystemResourcesAdd" runat="server" Icon="ApplicationAdd" Title="Add Resourcse"
+<ext:Window ID="winSystemResourcesAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -7,33 +7,32 @@
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             AutoScroll="true" Layout="Form">
             <Items>
-                 <ext:DisplayField ID="lblParentResourcesName" runat="server" FieldLabel="Parent Resource" AnchorHorizontal="95%">
+                 <ext:DisplayField ID="lblParentResourcesName" runat="server" FieldLabel="<%$ Resources:msgFieldParentResourcesName %>" AnchorHorizontal="95%">
                 </ext:DisplayField>
           
                 <ext:Hidden ID="hidParentResourcesID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtResourcesNameCn" runat="server" FieldLabel="Name" AllowBlank="False"
+                <ext:TextField ID="txtResourcesNameCn" runat="server" FieldLabel="<%$ Resources:msgFieldName %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtResourcesNameEn" runat="server" FieldLabel="Code" AllowBlank="False"
+                <ext:TextField ID="txtResourcesNameEn" runat="server" FieldLabel="<%$ Resources:msgFieldCode %>" AllowBlank="False"
                     AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtResourcesDescription" runat="server" FieldLabel="Description" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkResourcesIsRelateUser" runat="server" FieldLabel="Relate User"
+                <ext:TextField ID="txtResourcesDescription" runat="server" FieldLabel="<%$ Resources:msgFieldDescription %>"
+                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkResourcesIsRelateUser" runat="server" FieldLabel="<%$ Resources:msgFieldIsRelateUser %>"
                     Checked="false" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavelSystemResources" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSystemResources" runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemResourcesAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemResources_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a Resourcse success!' ,callback);function callback(id) {#{formPanelSystemResourcesAdd}.getForm().reset();RefreshTreeList1(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+                    OnEvent="btnSaveSystemResources_Click" Success="<%$ Resources:msgAddScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemResources" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemResources" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSystemResourcesAdd}.getForm().reset();#{winSystemResourcesAdd}.hide();" />
             </Listeners>

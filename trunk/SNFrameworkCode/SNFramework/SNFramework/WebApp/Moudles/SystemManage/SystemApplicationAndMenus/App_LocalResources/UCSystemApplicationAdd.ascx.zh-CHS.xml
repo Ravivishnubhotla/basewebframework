@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="系统应用添加" />
+  <add name="msgFieldName" value="名称" />
+  <add name="msgFieldCode" value="编码" />
+  <add name="msgFieldDescription" value="描述" />
+  <add name="msgFieldUrl" value="链接" />
+  <add name="msgFieldIsSystem" value="系统应用" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加系统应用成功！',callback);function callback(id) {#{formPanelSystemApplicationAdd}.getForm().reset();#{storeSystemApplication}.reload(); };" />
+</resources>

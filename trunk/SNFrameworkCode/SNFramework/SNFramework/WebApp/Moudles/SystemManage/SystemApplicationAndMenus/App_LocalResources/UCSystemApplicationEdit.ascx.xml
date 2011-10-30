@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Application Add" />
+  <add name="msgFieldName" value="Name" />
+  <add name="msgFieldCode" value="Code" />
+  <add name="msgFieldDescription" value="Description" />
+  <add name="msgFieldUrl" value="Url" />
+  <add name="msgFieldIsSystem" value="Is System" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful','Add application successful',callback);function callback(id) { #{storeSystemApplication}.reload(); };" />
+</resources>
+ 
+
