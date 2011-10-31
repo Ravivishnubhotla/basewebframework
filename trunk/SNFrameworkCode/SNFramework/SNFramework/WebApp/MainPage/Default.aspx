@@ -50,23 +50,23 @@
             });
         }
 
-        function changeTheme(cbTheme,mainTabs,loadingMessage) {
+        function changeTheme(cbTheme, mainTabs, loadingMessage) {
 
-        Ext.net.DirectMethods.GetThemeUrl(cbTheme.getValue(), {
-                                                                        success: function(result) {
-                                                                            Ext.net.ResourceMgr.setTheme(result);
-                                                                            mainTabs.items.each(function (el) {
-                                                                                if (!Ext.isEmpty(el.iframe)) {
-                                                                                    el.iframe.dom.contentWindow.Ext.net.ResourceMgr.setTheme(result);
-                                                                                }
-                                                                            });
-                                                                        },
-                    eventMask: {
-                        showMask: true,
-                        msg: loadingMessage
-                    }
+            Ext.net.DirectMethods.GetThemeUrl(cbTheme.getValue(), {
+                success: function (result) {
+                    Ext.net.ResourceMgr.setTheme(result);
+                    mainTabs.items.each(function (el) {
+                        if (!Ext.isEmpty(el.iframe)) {
+                            el.iframe.dom.contentWindow.Ext.net.ResourceMgr.setTheme(result);
+                        }
+                    });
+                },
+                eventMask: {
+                    showMask: true,
+                    msg: loadingMessage
+                }
             });
-        
+
         }
 
     </script>
@@ -97,8 +97,8 @@
                                     <ext:ToolbarFill>
                                     </ext:ToolbarFill>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:msgToolbarTextItemThemsText %>" />
-                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="<%$ Resources:msgCbThemeEmptyText %>" Width="80"
-                                        Editable="false" TypeAhead="true" >
+                                    <ext:ComboBox ID="cbTheme" runat="server" EmptyText="<%$ Resources:msgCbThemeEmptyText %>"
+                                        Width="80" Editable="false" TypeAhead="true">
                                         <Items>
                                             <ext:ListItem Text="Default" Value="Default" />
                                             <ext:ListItem Text="Gray" Value="Gray" />
@@ -118,7 +118,8 @@
                                         <DirectEvents>
                                             <Click OnEvent="btnExit_Click" Failure="<%$ Resources:msgLogoffError %>" Success="window.location.href='Login.aspx'">
                                                 <EventMask ShowMask="true" Msg="<%$ Resources:msgEventMaskLogOff %>" />
-                                                <Confirmation ConfirmRequest="true" Message="<%$ Resources:msgLogoffWarningMessage %>" Title="<%$ Resources:msgLogoffWarningTitle %>" />
+                                                <Confirmation ConfirmRequest="true" Message="<%$ Resources:msgLogoffWarningMessage %>"
+                                                    Title="<%$ Resources:msgLogoffWarningTitle %>" />
                                             </Click>
                                         </DirectEvents>
                                     </ext:Button>
@@ -137,7 +138,8 @@
                     </ext:Panel>
                 </South>
                 <West Collapsible="true" Split="true">
-                    <ext:Panel ID="LeftPanel" runat="server" Title="<%$ Resources:msgLeftPanelTitle %>" Width="175" Layout="Accordion">
+                    <ext:Panel ID="LeftPanel" runat="server" Title="<%$ Resources:msgLeftPanelTitle %>"
+                        Width="175" Layout="Accordion">
                         <Items>
                         </Items>
                     </ext:Panel>
@@ -145,9 +147,12 @@
                 <Center>
                     <ext:Panel ID="Panel2" runat="server" Title="<%$ Resources:msgPanel2Title %>" Layout="Fit">
                         <Items>
-                            <ext:TabPanel ID="MainTabs" runat="server" Border="false">
+                            <ext:TabPanel ID="MainTabs" runat="server" Border="false" EnableTabScroll="true">
                                 <Items>
                                 </Items>
+                                <Plugins>
+                                    <ext:TabScrollerMenu ID="TabScrollerMenu1" runat="server" PageSize="5" />
+                                </Plugins>
                             </ext:TabPanel>
                         </Items>
                     </ext:Panel>

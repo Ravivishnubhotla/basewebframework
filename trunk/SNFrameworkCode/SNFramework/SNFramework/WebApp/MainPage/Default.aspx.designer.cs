@@ -166,6 +166,15 @@ namespace Legendigital.Common.WebApp.MainPage {
         protected global::Ext.Net.TabPanel MainTabs;
         
         /// <summary>
+        /// TabScrollerMenu1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TabScrollerMenu TabScrollerMenu1;
+        
+        /// <summary>
         /// UCChangePassword1 control.
         /// </summary>
         /// <remarks>
