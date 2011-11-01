@@ -870,7 +870,7 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 %>		#region <%= utils.SetCamelCase(field.Name) %>字段外键查询字段
 <%					foreach( IColumn pfield in pTable.Columns ){ 
 					string type = ((pfield.IsInForeignKey && !pfield.IsInPrimaryKey) ? config.GenerateBussinessEncapsulationClassName(pfield.ForeignKeys[0].PrimaryTable) : config.GenerateEntityPorpertyType(pfield));
-					if(type.ToLower()!="string" && !type.EndsWith("?") && !type.EndsWith("Wrapper"))
+					if(type.ToLower()!="string" && type.ToLower()!="byte[]" && !type.EndsWith("?") && !type.EndsWith("Wrapper"))
 					{
 						type = type+"?";
 					}
