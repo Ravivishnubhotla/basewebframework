@@ -363,6 +363,7 @@
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuAdd.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuEdit.ascx" />
     <Content Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx" />
+    <Content Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.xml" />
     <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.zh-CHS.xml" />
@@ -1144,6 +1145,13 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\SystemApplicationAndMenus\UCSystemMenuManualResort.ascx.designer.cs">
       <DependentUpon>UCSystemMenuManualResort.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx.cs">
+      <DependentUpon>SystemTerminologyListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx.designer.cs">
+      <DependentUpon>SystemTerminologyListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.cs">
       <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>

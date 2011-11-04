@@ -14,6 +14,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	public interface ISystemTerminologyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemTerminologyEntity> ,ISystemTerminologyServiceProxyDesigner
     {
 	    string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode);
+	    List<SystemTerminologyEntity> FindAllByCode(string terminologyCode);
     }
 
     public partial class SystemTerminologyServiceProxy : ISystemTerminologyServiceProxy
@@ -27,6 +28,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
                 return "";
 
             return systemTerminologyEntity.Text;
+        }
+
+        public List<SystemTerminologyEntity> FindAllByCode(string terminologyCode)
+        {
+            return this.SelfDataObj.GetAllTerminologyByCode(terminologyCode);
         }
     }
 }

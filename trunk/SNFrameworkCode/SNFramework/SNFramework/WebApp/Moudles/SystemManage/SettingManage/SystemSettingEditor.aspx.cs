@@ -17,11 +17,29 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage
             if (X.IsAjaxRequest)
                 return;
             SystemSettingWrapper obj = SystemSettingWrapper.GetCurrentSystemSetting();
-            this.txtSystemName.Text = obj.SystemName.ToString();
-            this.txtSystemDescription.Text = obj.SystemDescription.ToString();
-            this.txtSystemUrl.Text = obj.SystemUrl.ToString();
-            this.txtSystemVersion.Text = obj.SystemVersion.ToString();
-            this.txtSystemLisence.Text = obj.SystemLisence.ToString();          
+            this.txtSystemName.Text = obj.SystemName;
+
+            //if (obj.SystemName!=null)
+            //{
+            //    if(obj.SystemName.ToLower().StartsWith("[l]"))
+            //    {
+            //        this.txtSystemName.Triggers[0].HideTrigger = false;
+            //    }
+            //    else
+            //    {
+            //        this.txtSystemName.Triggers[0].HideTrigger = true;              
+            //    }
+            //}
+            //else
+            //{
+            //    this.txtSystemName.Triggers[0].HideTrigger = true;           
+            //}
+
+
+            this.txtSystemDescription.Text = obj.SystemDescription;
+            this.txtSystemUrl.Text = obj.SystemUrl;
+            this.txtSystemVersion.Text = obj.SystemVersion;
+            this.txtSystemLisence.Text = obj.SystemLisence;          
         }
 
 
