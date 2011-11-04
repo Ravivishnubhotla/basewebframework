@@ -7,6 +7,7 @@
                 <ext:RecordField Name="SystemDictionaryID" Type="int" />
                 <ext:RecordField Name="SystemDictionaryCategoryID" />
                 <ext:RecordField Name="SystemDictionaryKey" />
+                <ext:RecordField Name="SystemDictionaryCode" />
                 <ext:RecordField Name="SystemDictionaryValue" />
                 <ext:RecordField Name="SystemDictionaryDesciption" />
                 <ext:RecordField Name="SystemDictionaryOrder" Type="int" />
@@ -29,7 +30,7 @@
 
 </script>
 <ext:Window ID="winSystemDictionaryPatchEdit" runat="server" Icon="ApplicationAdd"
-    Title="<%$ Resources:msgFormTitle %>" Width="800" Height="600" AutoShow="false"
+    Title="<%$ Resources:msgFormTitle %>" Width="640" Height="480" AutoShow="false"
     Maximizable="true" Modal="true" Hidden="true" ConstrainHeader="true" Resizable="true"
     Layout="Fit">
     <Content>
@@ -109,14 +110,7 @@
             </Items>
         </ext:FormPanel>
     </Content>
-    <Buttons>
-        <ext:Button ID="btnCancelSystemDictionary" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
-            Icon="Cancel">
-            <Listeners>
-                <Click Handler="#{winSystemDictionaryPatchEdit}.hide();" />
-            </Listeners>
-        </ext:Button>
-    </Buttons>
     <Listeners>
+    <BeforeShow Handler="#{storeFilterSystemDictionary}.reload();#{storeSystemDictionary}.reload();"></BeforeShow>
     </Listeners>
 </ext:Window>

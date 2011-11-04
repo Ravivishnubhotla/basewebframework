@@ -11,5 +11,6 @@
   <add name="txtSystemNameFieldLabel" value="名称" />
   <add name="txtSystemUrlFieldLabel" value="链接" />
   <add name="txtSystemVersionFieldLabel" value="版本" />
+  <add name="msgTitleEditLangItem" value="编辑术语 {0} 多语言内容" />
 </resources>
  

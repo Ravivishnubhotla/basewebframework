@@ -15,6 +15,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {
 	    string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode);
 	    List<SystemTerminologyEntity> FindAllByCode(string terminologyCode);
+	    bool IsExisted(string terminologyCode, string lang);
     }
 
     public partial class SystemTerminologyServiceProxy : ISystemTerminologyServiceProxy
@@ -33,6 +34,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         public List<SystemTerminologyEntity> FindAllByCode(string terminologyCode)
         {
             return this.SelfDataObj.GetAllTerminologyByCode(terminologyCode);
+        }
+
+        public bool IsExisted(string terminologyCode, string lang)
+        {
+            SystemTerminologyEntity systemTerminologyEntity =
+                this.SelfDataObj.GetLocalizationNameByTypeAndCode(lang, terminologyCode);
+
+            if (systemTerminologyEntity == null)
+                return false;
+
+            return true;
         }
     }
 }

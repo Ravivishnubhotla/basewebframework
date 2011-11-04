@@ -158,5 +158,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindAllByCode(terminologyCode));
         }
+
+	    public static bool IsExisted(string terminologyCode, string lang)
+	    {
+            return businessProxy.IsExisted(terminologyCode, lang);
+	    }
+
+	    public static void QuickAdd(string terminologyCode, string lang)
+	    {
+	        SystemTerminologyWrapper systemTerminology = new SystemTerminologyWrapper();
+	        systemTerminology.Name = terminologyCode;
+            systemTerminology.Code = terminologyCode;
+            systemTerminology.Description = terminologyCode;
+	        systemTerminology.Text = "";
+            systemTerminology.LanguageType = lang;
+	        systemTerminology.CreateAt = System.DateTime.Now;
+            systemTerminology.LastModifyAt = System.DateTime.Now;
+            SystemTerminologyWrapper.Save(systemTerminology);
+	    }
     }
 }

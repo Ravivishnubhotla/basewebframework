@@ -96,7 +96,7 @@
             if (cmd == "cmdAllItemManage") {
               var win = <%= winDictionaryList.ClientID %>;
               win.autoLoad.params.DictionaryGroupID = id.id;
-              win.setTitle(String.format('编辑字典项"{0}"子项',id.data.Name));
+              win.setTitle(String.format('<%= GetLocalResourceObject("msgManageDictionaryGroupSubItem").ToString() %>',id.data.Name));
               win.show();          
             }
             

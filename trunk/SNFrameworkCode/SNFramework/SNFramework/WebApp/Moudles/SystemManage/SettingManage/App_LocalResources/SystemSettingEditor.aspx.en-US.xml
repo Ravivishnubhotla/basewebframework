@@ -11,6 +11,7 @@
   <add name="txtSystemNameFieldLabel" value="Name" />
   <add name="txtSystemUrlFieldLabel" value="Url" />
   <add name="txtSystemVersionFieldLabel" value="Version" />
+  <add name="msgTitleEditLangItem" value="Edit Terminology {0} Items" />
 </resources>
 
 
