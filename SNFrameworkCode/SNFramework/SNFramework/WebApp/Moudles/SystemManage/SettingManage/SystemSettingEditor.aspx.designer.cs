@@ -82,7 +82,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtSystemDescription;
+        protected global::Ext.Net.TriggerField txtSystemDescription;
         
         /// <summary>
         /// txtSystemUrl control.
@@ -109,7 +109,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SettingManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtSystemLisence;
+        protected global::Ext.Net.TriggerField txtSystemLisence;
         
         /// <summary>
         /// btnSaveSystemSetting control.

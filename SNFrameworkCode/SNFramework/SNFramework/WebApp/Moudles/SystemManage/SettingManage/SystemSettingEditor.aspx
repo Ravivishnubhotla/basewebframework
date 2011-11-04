@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="SetFieldTriggerShow(#{txtSystemName}, #{txtSystemName}.getValue());">
+            <DocumentReady Handler="SetFieldTriggerShow(#{txtSystemName}, #{txtSystemName}.getValue());SetFieldTriggerShow(#{txtSystemDescription}, #{txtSystemDescription}.getValue());SetFieldTriggerShow(#{txtSystemLisence}, #{txtSystemLisence}.getValue());">
             </DocumentReady>
         </Listeners>
     </ext:ResourceManagerProxy>
@@ -20,7 +20,7 @@
                 
  
               winEditor.autoLoad.params.TerminologyCode = triggerField.getValue();
-              winEditor.setTitle(String.format('编辑术语"{0}"多语言内容',triggerField.getValue()));
+              winEditor.setTitle(String.format('<%= GetLocalResourceObject("msgTitleEditLangItem").ToString() %>',triggerField.getValue()));
               winEditor.show();   
             }
         }
@@ -30,7 +30,8 @@
 
             tText = Ext.util.Format.trim(tText);
 
-            tText = Ext.util.Format.substr(tText, 0, 3);
+            if(tText!='')
+                tText = Ext.util.Format.substr(tText, 0, 3);
 
             if (tText == "[l]") {
                 triggerField.triggers[0].show();
@@ -64,14 +65,30 @@
                                             <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
                                         </Listeners>
                                     </ext:TriggerField>
-                                    <ext:TextArea ID="txtSystemDescription" runat="server" FieldLabel="<%$ Resources:txtSystemDescriptionFieldLabel %>"
-                                        AllowBlank="True" AnchorHorizontal="95%" />
+                                    <ext:TriggerField ID="txtSystemDescription" runat="server" FieldLabel="<%$ Resources:txtSystemDescriptionFieldLabel %>"
+                                        AllowBlank="True" AnchorHorizontal="95%">
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="SimpleEdit" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                                            <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                                        </Listeners>
+                                    </ext:TriggerField>
                                     <ext:TextField ID="txtSystemUrl" runat="server" FieldLabel="<%$ Resources:txtSystemUrlFieldLabel %>"
                                         AllowBlank="True" AnchorHorizontal="95%" />
                                     <ext:TextField ID="txtSystemVersion" runat="server" FieldLabel="<%$ Resources:txtSystemVersionFieldLabel %>"
                                         AllowBlank="False" AnchorHorizontal="95%" />
-                                    <ext:TextArea ID="txtSystemLisence" runat="server" FieldLabel="<%$ Resources:txtSystemLisenceFieldLabel %>"
-                                        AllowBlank="False" AnchorHorizontal="95%" />
+                                    <ext:TriggerField ID="txtSystemLisence" runat="server" FieldLabel="<%$ Resources:txtSystemLisenceFieldLabel %>"
+                                        AllowBlank="False" AnchorHorizontal="95%">
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="SimpleEdit" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                                            <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                                        </Listeners>
+                                    </ext:TriggerField>
                                 </Items>
                             </ext:FormPanel>
                         </Content>
@@ -95,8 +112,8 @@
     <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
         Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
-        <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
-            ShowMask="true">
+        <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame"
+            NoCache="true" TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="TerminologyCode" Mode="Raw" Value="0">
                 </ext:Parameter>

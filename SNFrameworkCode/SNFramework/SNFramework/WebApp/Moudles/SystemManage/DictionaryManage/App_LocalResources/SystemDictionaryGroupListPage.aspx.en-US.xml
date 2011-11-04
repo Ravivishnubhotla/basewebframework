@@ -8,4 +8,5 @@
   <add name="msgcolIsEnable" value="Enable" />
   <add name="msgcolIsSystem" value="System" />
   <add name="msgManageSub" value="Manage Sub" />
+  <add name="msgManageDictionaryGroupSubItem" value="Manage Dictionary Group  {0}  Sub Item" />
 </resources>

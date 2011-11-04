@@ -28,6 +28,30 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.TerminologyManage
         }
 
 
+        [DirectMethod]
+        public void PatchAdd(string terminologyCode)
+        {
+            try
+            {
+                List<string> langs = new List<string>() { "zh-chs", "en-us" };
+
+                foreach (string lang in langs)
+                {
+                    if (!SystemTerminologyWrapper.IsExisted(terminologyCode, lang))
+                    {
+                        SystemTerminologyWrapper.QuickAdd(terminologyCode, lang);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
+                return;
+            }
+        }
+
+
         protected void Save_SystemTerminology(object sender, DirectEventArgs e)
         {
             string json = e.ExtraParams["Values"];

@@ -8,4 +8,5 @@
   <add name="msgcolIsEnable" value="可用" />
   <add name="msgcolIsSystem" value="系统" />
   <add name="msgManageSub" value="管理子项" />
+  <add name="msgManageDictionaryGroupSubItem" value="编辑字典项 {0} 子项" />
 </resources>

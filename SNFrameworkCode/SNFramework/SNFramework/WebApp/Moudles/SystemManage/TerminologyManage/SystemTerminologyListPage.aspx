@@ -30,8 +30,24 @@
         return values;
     }
 
- 
-  
+    function PatchAdd() {
+                                Ext.net.DirectMethods.PatchAdd(
+                                                                '<%= this.TerminologyCode %>',
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        <%= this.storeSystemTerminology.ClientID %>.reload();           
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                }
+                                                            );      
+    }
+
 
     </script>
     <ext:Store ID="storeSystemTerminology" runat="server" AutoLoad="true" OnRefreshData="storeSystemTerminology_Refresh">
@@ -60,7 +76,7 @@
                             <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
                                 Icon="Add">
                                 <Listeners>
-                                    <Click Handler="showAddForm();" />
+                                    <Click Handler="PatchAdd();" />
                                 </Listeners>
                             </ext:Button>
                             <ext:Button ID='btnSave' runat="server" Text="<%$ Resources : GlobalResource, msgSave  %>"
