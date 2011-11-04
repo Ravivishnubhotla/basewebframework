@@ -21,5 +21,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindSingleEntityByQueryBuilder(queryGenerator);
         }
+
+        public List<SystemTerminologyEntity> GetAllTerminologyByCode(string terminologyCode)
+        {
+            NHibernateDynamicQueryGenerator<SystemTerminologyEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_CODE.Eq(terminologyCode));
+
+            queryGenerator.AddOrderBy(PROPERTY_LANGUAGETYPE.Asc());
+
+            return this.FindListByQueryBuilder(queryGenerator);
+        }
     }
 }

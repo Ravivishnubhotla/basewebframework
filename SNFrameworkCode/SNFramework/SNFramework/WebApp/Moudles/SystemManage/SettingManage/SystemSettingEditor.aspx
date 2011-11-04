@@ -3,30 +3,67 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="SetFieldTriggerShow(#{txtSystemName}, #{txtSystemName}.getValue());">
+            </DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<style type="text/css">
-.HiLight
-{
- background-color:Red;    
-}
-</style>
+    <script type="text/javascript">
+
+            function ShowTextEdit(triggerField, index) {
+            if(index==0) {
+ 
+
+                var winEditor = <%= winSystemTerminologyEditor.ClientID %> ;
+                
+ 
+              winEditor.autoLoad.params.TerminologyCode = triggerField.getValue();
+              winEditor.setTitle(String.format('编辑术语"{0}"多语言内容',triggerField.getValue()));
+              winEditor.show();   
+            }
+        }
+
+        function SetFieldTriggerShow(triggerField, triggerText) {
+            var tText = Ext.util.Format.lowercase(triggerText);
+
+            tText = Ext.util.Format.trim(tText);
+
+            tText = Ext.util.Format.substr(tText, 0, 3);
+
+            if (tText == "[l]") {
+                triggerField.triggers[0].show();
+            }
+            else {
+                triggerField.triggers[0].hide();
+            }
+
+        }
+    </script>
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:Panel ID="Panel1" runat="server" Icon="ServerWrench" Title="<%$ Resources:Panel1Title %>"
                 Frame="true" Layout="Center">
                 <Items>
-                    <ext:Panel ID="Panel2" runat="server" Icon="ServerWrench" Title="<%$ Resources:Panel2Title %>" Width="500"
-                        Frame="true" AutoHeight="true">
+                    <ext:Panel ID="Panel2" runat="server" Icon="ServerWrench" Title="<%$ Resources:Panel2Title %>"
+                        Width="500" Frame="true" AutoHeight="true">
                         <Content>
-                            <ext:FormPanel ID="formPanelSystemSettingEdit"  runat="server" Frame="true" Header="false"
+                            <ext:FormPanel ID="formPanelSystemSettingEdit" runat="server" Frame="true" Header="false"
                                 MonitorValid="true" Layout="form" LabelSeparator=":" LabelWidth="100">
                                 <Items>
                                     <ext:Hidden ID="hidId" runat="server" AnchorHorizontal="95%">
                                     </ext:Hidden>
-                                    <ext:TextField ID="txtSystemName" runat="server"  FieldLabel="<%$ Resources:txtSystemNameFieldLabel %>"
-                                        AllowBlank="False" AnchorHorizontal="95%" />
+                                    <ext:TriggerField ID="txtSystemName" runat="server" FieldLabel="<%$ Resources:txtSystemNameFieldLabel %>"
+                                        AllowBlank="False" AnchorHorizontal="95%">
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="SimpleEdit" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                                            <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                                        </Listeners>
+                                    </ext:TriggerField>
                                     <ext:TextArea ID="txtSystemDescription" runat="server" FieldLabel="<%$ Resources:txtSystemDescriptionFieldLabel %>"
                                         AllowBlank="True" AnchorHorizontal="95%" />
                                     <ext:TextField ID="txtSystemUrl" runat="server" FieldLabel="<%$ Resources:txtSystemUrlFieldLabel %>"
@@ -55,4 +92,18 @@
             </ext:Panel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="TerminologyCode" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

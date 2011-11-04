@@ -154,8 +154,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	    }
 
 
- 
-
-
+        public static List<SystemTerminologyWrapper> FindAllByCode(string terminologyCode)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByCode(terminologyCode));
+        }
     }
 }
