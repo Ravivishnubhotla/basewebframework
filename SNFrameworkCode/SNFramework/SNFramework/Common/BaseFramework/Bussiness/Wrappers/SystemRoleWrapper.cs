@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Threading;
 using System.Web.Security;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -283,6 +284,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return businessProxy.GetRoleAssignedPermissionsByResources(systemRoleWrapper.entity, resourcesWrapper.Entity);
 	    }
 
-
+        public string LocaLocalizationName
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.RoleName, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
+        }
     }
 }

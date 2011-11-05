@@ -20,7 +20,7 @@
                 
  
               winEditor.autoLoad.params.TerminologyCode = triggerField.getValue();
-              winEditor.setTitle(String.format('<%= GetLocalResourceObject("msgTitleEditLangItem").ToString() %>',triggerField.getValue()));
+              winEditor.setTitle(String.format('<%= GetGlobalResourceObject("GlobalResource","msgTitleEditLangItem").ToString() %>',triggerField.getValue()));
               winEditor.show();   
             }
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Threading;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -99,6 +100,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
         #endregion
+
+
+        public string LocaLocalizationName
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.Name, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
+        }
 
     }
 }

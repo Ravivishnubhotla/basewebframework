@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Threading;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
@@ -155,6 +156,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public string Value
         {
             get { return this.SystemDictionaryValue; }
+        }
+
+
+        public string LocaLocalizationName
+        {
+            get
+            {
+                return SystemTerminologyWrapper.GetLocalizationName(this.SystemDictionaryValue, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
+            }
         }
 
     }

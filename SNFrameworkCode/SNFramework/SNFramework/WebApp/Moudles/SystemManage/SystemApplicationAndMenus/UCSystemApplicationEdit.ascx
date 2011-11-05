@@ -11,8 +11,16 @@
                 <ext:Hidden ID="hidSystemApplicationID" runat="server" DataIndex="SystemApplicationID"
                     AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtSystemApplicationName" runat="server" DataIndex="SystemApplicationName"
-                    FieldLabel="<%$ Resources:msgFieldName %>" AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:TriggerField ID="txtSystemApplicationName" runat="server" DataIndex="SystemApplicationName"
+                    FieldLabel="<%$ Resources:msgFieldName %>" AllowBlank="false" AnchorHorizontal="95%">
+                    <Triggers>
+                        <ext:FieldTrigger Icon="SimpleEdit" />
+                    </Triggers>
+                    <Listeners>
+                        <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                        <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                    </Listeners>
+                </ext:TriggerField>
                 <ext:TextField ID="txtSystemApplicationCode" runat="server" DataIndex="SystemApplicationCode"
                     FieldLabel="<%$ Resources:msgFieldCode %>" AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtSystemApplicationDescription" runat="server" DataIndex="SystemApplicationDescription"
@@ -20,24 +28,32 @@
                 <ext:TextField ID="txtSystemApplicationUrl" DataIndex="SystemApplicationUrl" runat="server"
                     FieldLabel="<%$ Resources:msgFieldUrl %>" AllowBlank="false" AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSystemApplicationIsSystemApplication" DataIndex="SystemApplicationIsSystemApplication"
-                    runat="server" Checked="true" FieldLabel="<%$ Resources:msgFieldIsSystem %>" AnchorHorizontal="95%">
+                    runat="server" Checked="true" FieldLabel="<%$ Resources:msgFieldIsSystem %>"
+                    AnchorHorizontal="95%">
                 </ext:Checkbox>
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgEdit  %>"
+            Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSystemApplicationEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSystemApplication_Click" Success="<%$ Resources:msgUpdateScript %>" Failure="<%$ Resources : GlobalResource, msgShowError  %>">
+                    OnEvent="btnSaveSystemApplication_Click" Success="<%$ Resources:msgUpdateScript %>"
+                    Failure="<%$ Resources : GlobalResource, msgShowError  %>">
                     <EventMask ShowMask="true" Msg="<%$ Resources : GlobalResource, msgSavingWaiting  %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>" Icon="Cancel">
+        <ext:Button ID="btnCancelSystemApplication" runat="server" Text="<%$ Resources : GlobalResource, msgCancel  %>"
+            Icon="Cancel">
             <Listeners>
                 <Click Handler="#{winSystemApplicationEdit}.hide();" />
             </Listeners>
         </ext:Button>
     </Buttons>
+    <Listeners>
+        <BeforeShow Handler="SetFieldTriggerShow(#{txtSystemApplicationName}, #{txtSystemApplicationName}.getValue());">
+        </BeforeShow>
+    </Listeners>
 </ext:Window>
