@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <add name="msgFormTitle" value="System User Add" />
+  <add name="msgFormTitle" value="System User Edit" />
   <add name="msgFieldName" value="Name" />
   <add name="msgFieldCode" value="Code" />
   <add name="msgFieldDescription" value="Description" />

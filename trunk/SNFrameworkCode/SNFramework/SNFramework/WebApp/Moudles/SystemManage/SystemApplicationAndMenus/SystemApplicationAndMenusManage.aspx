@@ -46,9 +46,43 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
  
+        
+ 
+
+            function ShowTextEdit(triggerField, index) {
+            if(index==0) {
+ 
+
+                var winEditor = <%= winSystemTerminologyEditor.ClientID %> ;
+                
+ 
+              winEditor.autoLoad.params.TerminologyCode = triggerField.getValue();
+              winEditor.setTitle(String.format('<%= GetGlobalResourceObject("GlobalResource","msgTitleEditLangItem").ToString() %>',triggerField.getValue()));
+              winEditor.show();   
+            }
+        }
+
+        function SetFieldTriggerShow(triggerField, triggerText) {
+            var tText = Ext.util.Format.lowercase(triggerText);
+
+            tText = Ext.util.Format.trim(tText);
+
+            if(tText!='')
+                tText = Ext.util.Format.substr(tText, 0, 3);
+
+            if (tText == "[l]") {
+                triggerField.triggers[0].show();
+            }
+            else {
+                triggerField.triggers[0].hide();
+            }
+
+        }
+ 
+        
 
         function dragOver(dragOverEvent) { 
             return (dragOverEvent.point != 'append') && (dragOverEvent.dropNode.getDepth()==dragOverEvent.target.getDepth());
@@ -336,7 +370,7 @@
                                             DataIndex="LocaLocalizationName" />
                                         <ext:Column ColumnID="colSystemApplicationCode" Header="<%$ Resources:msgcolCode %>" Width="120" Sortable="true"
                                             DataIndex="SystemApplicationCode" />
-                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="<%$ Resources:msgcolIsSystem %>" Width="65">
+                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="<%$ Resources:msgcolIsSystem %>" Width="38">
                                             <Renderer Fn="FormatBool" />
                                         </ext:Column>
                                         <ext:CommandColumn Width="50" Header="<%$ Resources : GlobalResource, msgManage  %>">
@@ -463,6 +497,22 @@
             </ext:MenuItem>
         </Items>
     </ext:Menu>
+
+        <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame"
+            NoCache="true" TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="TerminologyCode" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
     <ext:Hidden ID="hidSelectAppID" runat="server">
     </ext:Hidden>
 </asp:Content>

@@ -8,7 +8,7 @@
   <add name="msgcolD" value="ID" />
   <add name="msgcolName" value="Name" />
   <add name="msgcolCode" value="Code" />
-  <add name="msgcolIsSystem" value="Is System" />
+  <add name="msgcolIsSystem" value="System" />
   <add name="msgFormMenuManage" value="Menu Manage" />
   <add name="msgRootMenuOp" value="Root Menu Operation:" />
   <add name="msgRootNodeText" value="System Menu" />

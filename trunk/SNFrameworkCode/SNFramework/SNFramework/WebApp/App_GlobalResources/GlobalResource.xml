@@ -40,4 +40,5 @@
   <add name="msgCollapseAll" value="Collapse all" />
   <add name="msgManualSort" value="Sort" />
   <add name="msgAutoSort" value="Auto Sort" />
+  <add name="msgTitleEditLangItem" value="Edit Terminology {0} Items" />
 </resources>

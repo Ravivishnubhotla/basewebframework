@@ -46,7 +46,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSystemApplicationName;
+        protected global::Ext.Net.TriggerField txtSystemApplicationName;
         
         /// <summary>
         /// txtSystemApplicationCode control.
