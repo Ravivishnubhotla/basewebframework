@@ -728,21 +728,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName,
                                                             Hashtable fieldMappings)
         {
-            string queryKey = mapName.ToLower();
+            if (requestValues==null)
+                throw new ArgumentNullException("requestValues");
+            if (fieldMappings == null)
+                throw new ArgumentNullException("fieldMappings");
 
-            if (fieldMappings.ContainsKey(mapName))
+            try
             {
-                queryKey = (string) fieldMappings[mapName];
+                string queryKey = mapName.ToLower();
+
+                if (fieldMappings.ContainsKey(mapName))
+                {
+                    queryKey = (string) fieldMappings[mapName];
+                }
+                else
+                {
+                    queryKey = "";
+                }
+
+                if (!requestValues.ContainsKey(queryKey))
+                    return "";
+
+                return requestValues[queryKey].ToString();
             }
-            else
+            catch (Exception ex)
             {
-                queryKey = "";
+                Logger.Error(mapName+":Error",ex);
+                throw;
             }
-
-            if (!requestValues.ContainsKey(queryKey))
-                return "";
-
-            return requestValues[queryKey].ToString();
         }
 
 

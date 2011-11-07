@@ -25,7 +25,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 if (obj != null)
                 {
 					this.txtName.Text = obj.Name.ToString();          	
-              	    this.txtDescription.Text = obj.Description.ToString();          	
+              	    this.txtDescription.Text = obj.Description.ToString();
+                    this.txtDefaultSycnMoUrl.Text = obj.DefaultSycnMoUrl;
       	
                     hidId.Text = id.ToString();
 
@@ -54,7 +55,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 SPClientGroupWrapper obj = SPClientGroupWrapper.FindById(int.Parse(hidId.Text.Trim()));
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-
+                obj.DefaultSycnMoUrl = this.txtDefaultSycnMoUrl.Text.Trim();
                 SPClientGroupWrapper.Update(obj);
 
                 winSPClientGroupEdit.Hide();

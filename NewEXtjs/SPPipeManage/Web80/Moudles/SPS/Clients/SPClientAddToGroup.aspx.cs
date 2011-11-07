@@ -43,6 +43,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
 
                     SPClientWrapper.Update(spClientWrapper);
+
+
+                    spClientWrapper.UpdateSyncDataSetting();
+
                 }
 
             }
