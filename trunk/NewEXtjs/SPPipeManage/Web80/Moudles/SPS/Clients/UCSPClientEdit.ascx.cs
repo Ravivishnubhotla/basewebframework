@@ -89,6 +89,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
             try
             {
                 SPClientWrapper obj = SPClientWrapper.FindById(int.Parse(hidId.Text.Trim()));
+
+                int oldClientGroupID = 0;
+
+                if (obj.SPClientGroupID!=null)
+                {
+                    oldClientGroupID = obj.SPClientGroupID.Id;
+                }
+
                 obj.Name = this.txtName.Text.Trim();
                 obj.Alias = this.txtAlias.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
@@ -106,6 +114,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 }
 
                 SPClientWrapper.Update(obj);
+
+                int newClientGroupID = 0;
+
+                if (obj.SPClientGroupID != null)
+                {
+                    newClientGroupID = obj.SPClientGroupID.Id;
+                }
+
+                if (newClientGroupID != 0 && oldClientGroupID != newClientGroupID)
+                {
+                    obj.UpdateSyncDataSetting();
+                }
 
                 obj.SetClientPrice(Convert.ToDecimal(numPrice.Value));
 

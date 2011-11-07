@@ -83,6 +83,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
                 SPClientWrapper.Update(clientWrapper);
 
+                clientWrapper.UpdateSyncDataSetting();
+
                 ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)

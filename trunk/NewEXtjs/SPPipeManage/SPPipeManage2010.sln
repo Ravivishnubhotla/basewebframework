@@ -628,7 +628,4 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(PowerDesigner) = preSolution
-		HasSWS = 1
-	EndGlobalSection
 EndGlobal

@@ -8,12 +8,14 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+<div style="Width:auto;"> 
+    <form id="form1" runat="server"  style="width:100%; height:100%;">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Width="100%" 
-        Height="100%" onreportrefresh="ReportViewer1_ReportRefresh">
+    <rsweb:ReportViewer ID="ReportViewer1" runat="server"  
+       Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="True" onreportrefresh="ReportViewer1_ReportRefresh">
     </rsweb:ReportViewer>
     </form>
+</div>
 </body>
 </html>

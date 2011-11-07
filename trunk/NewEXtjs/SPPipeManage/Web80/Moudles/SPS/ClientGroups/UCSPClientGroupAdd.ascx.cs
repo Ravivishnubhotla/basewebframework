@@ -51,7 +51,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 SPClientGroupWrapper obj = new SPClientGroupWrapper();
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-
+                obj.DefaultSycnMoUrl = this.txtDefaultSycnMoUrl.Text.Trim();
 
                 Membership.CreateUser(loginID, this.txtUserPass.Text.Trim(), this.txtUserID.Text.Trim() + "@163.com");
 

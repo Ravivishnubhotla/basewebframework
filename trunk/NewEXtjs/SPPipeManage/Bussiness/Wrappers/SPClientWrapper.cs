@@ -430,5 +430,30 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
+	    public void UpdateSyncDataSetting()
+	    {
+            SPClientChannelSettingWrapper channelSetting = this.DefaultClientChannelSetting;
+
+            if (channelSetting != null)
+            {
+                if (this.SPClientGroupID!=null && !string.IsNullOrEmpty(this.SPClientGroupID.DefaultSycnMoUrl))
+                {
+                    channelSetting.SyncData = true;
+                    channelSetting.SyncDataUrl = this.SPClientGroupID.DefaultSycnMoUrl;
+                    channelSetting.OkMessage = "ok";
+                    channelSetting.SyncType = "1";
+                }
+                else
+                {
+                    channelSetting.SyncData = false;
+                    channelSetting.SyncDataUrl = "";
+                    channelSetting.OkMessage = "";
+                    channelSetting.FailedMessage = "";
+                    channelSetting.SyncType = "";
+                }
+
+                SPClientChannelSettingWrapper.Update(channelSetting);
+            }
+	    }
     }
 }
