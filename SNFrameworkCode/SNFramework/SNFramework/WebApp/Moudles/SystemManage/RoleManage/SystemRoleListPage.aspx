@@ -14,6 +14,36 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
+        };
+        
+                    function ShowTextEdit(triggerField, index) {
+            if(index==0) {
+ 
+
+                var winEditor = <%= winSystemTerminologyEditor.ClientID %> ;
+                
+ 
+              winEditor.autoLoad.params.TerminologyCode = triggerField.getValue();
+              winEditor.setTitle(String.format('<%= GetGlobalResourceObject("GlobalResource","msgTitleEditLangItem").ToString() %>',triggerField.getValue()));
+              winEditor.show();   
+            }
+        }
+
+        function SetFieldTriggerShow(triggerField, triggerText) {
+            var tText = Ext.util.Format.lowercase(triggerText);
+
+            tText = Ext.util.Format.trim(tText);
+
+            if(tText!='')
+                tText = Ext.util.Format.substr(tText, 0, 3);
+
+            if (tText == "[l]") {
+                triggerField.triggers[0].show();
+            }
+            else {
+                triggerField.triggers[0].hide();
+            }
+
         }
 
  
@@ -118,7 +148,7 @@
                 <Fields>
                     <ext:RecordField Name="RoleID" Type="int" />
                     <ext:RecordField Name="RoleName" />
-                                        <ext:RecordField Name="RoleCode" />
+                    <ext:RecordField Name="RoleCode" />
                     <ext:RecordField Name="RoleDescription" />
                     <ext:RecordField Name="RoleIsSystemRole" Type="Boolean" />
                 </Fields>
@@ -142,7 +172,8 @@
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnSearch' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>" Icon="Find">
+                            <ext:Button ID='btnSearch' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>"
+                                Icon="Find">
                             </ext:Button>
                             <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
                                 Icon="Reload">
@@ -162,17 +193,18 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column DataIndex="RoleID" Header="<%$ Resources:msgcolRoleID %>" Sortable="true" Width="50">
+                        <ext:Column DataIndex="RoleID" Header="<%$ Resources:msgcolRoleID %>" Sortable="true"
+                            Width="50">
                         </ext:Column>
                         <ext:Column DataIndex="RoleName" Header="<%$ Resources:msgcolRoleName %>" Sortable="true">
                         </ext:Column>
-                                                <ext:Column DataIndex="RoleCode" Header="<%$ Resources:msgcolRoleCode %>" Sortable="true">
+                        <ext:Column DataIndex="RoleCode" Header="<%$ Resources:msgcolRoleCode %>" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colRoleDescription" DataIndex="RoleDescription" Header="<%$ Resources:msgcolRoleDescription %>"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column DataIndex="RoleIsSystemRole" Header="<%$ Resources:msgcolIsSystemRole %>" Sortable="true"
-                            Width="90">
+                        <ext:Column DataIndex="RoleIsSystemRole" Header="<%$ Resources:msgcolIsSystemRole %>"
+                            Sortable="true" Width="90">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn Width="80" Header="<%$ Resources : GlobalResource, msgManage  %>">
@@ -180,10 +212,14 @@
                                 <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" ToolTip-Text="<%$ Resources : GlobalResource, msgDataAction  %>">
                                     <Menu EnableScrolling="true" ShowSeparator="true">
                                         <Items>
-                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
-                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
-                                            <ext:MenuCommand Text="<%$ Resources:msgAssignApplicationBtnText %>" Icon="ApplicationEdit" CommandName="cmdAssignedApp" />
-                                            <ext:MenuCommand Text="<%$ Resources:msgAssignPermissionBtnText %>" Icon="GroupKey" CommandName="cmdAssignedPermission" />
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit"
+                                                CommandName="cmdEdit" />
+                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete"
+                                                CommandName="cmdDelete" />
+                                            <ext:MenuCommand Text="<%$ Resources:msgAssignApplicationBtnText %>" Icon="ApplicationEdit"
+                                                CommandName="cmdAssignedApp" />
+                                            <ext:MenuCommand Text="<%$ Resources:msgAssignPermissionBtnText %>" Icon="GroupKey"
+                                                CommandName="cmdAssignedPermission" />
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
@@ -194,7 +230,8 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="20" StoreID="storeSystemRole"
-                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>"
+                        EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
@@ -223,6 +260,20 @@
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="RoleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
+        Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame"
+            NoCache="true" TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="TerminologyCode" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
         </AutoLoad>
