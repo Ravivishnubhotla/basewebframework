@@ -10,12 +10,28 @@
             <Items>
                 <ext:Hidden ID="hidSystemRoleID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtRoleName" runat="server" FieldLabel="<%$ Resources:msgFiledRoleNameTitle %>"
+                <ext:TriggerField ID="txtRoleName" runat="server" FieldLabel="<%$ Resources:msgFiledRoleNameTitle %>"
+                    AllowBlank="True" AnchorHorizontal="95%" >
+                    <Triggers>
+                        <ext:FieldTrigger Icon="SimpleEdit" />
+                    </Triggers>
+                    <Listeners>
+                        <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                        <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                    </Listeners>
+                </ext:TriggerField>
+                <ext:TriggerField ID="txtRoleCode" runat="server" FieldLabel="<%$ Resources:msgFiledRoleCodeTitle %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtRoleCode" runat="server" FieldLabel="<%$ Resources:msgFiledRoleCodeTitle %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtRoleDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TriggerField ID="txtRoleDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescriptionTitle %>"
+                    AllowBlank="True" AnchorHorizontal="95%" >
+                    <Triggers>
+                        <ext:FieldTrigger Icon="SimpleEdit" />
+                    </Triggers>
+                    <Listeners>
+                        <Change Handler="SetFieldTriggerShow(this,newValue);"></Change>
+                        <TriggerClick Handler="ShowTextEdit(this,index);"></TriggerClick>
+                    </Listeners>
+                </ext:TriggerField>
                 <ext:Checkbox ID="chkRoleIsSystemRole" runat="server" FieldLabel="<%$ Resources:msgFiledIsSystemRoleTitle %>"
                     Checked="false" AnchorHorizontal="95%" />
             </Items>

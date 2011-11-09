@@ -46,7 +46,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtRoleName;
+        protected global::Ext.Net.TriggerField txtRoleName;
         
         /// <summary>
         /// txtRoleCode control.
@@ -55,7 +55,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtRoleCode;
+        protected global::Ext.Net.TriggerField txtRoleCode;
         
         /// <summary>
         /// txtRoleDescription control.
@@ -64,7 +64,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtRoleDescription;
+        protected global::Ext.Net.TriggerField txtRoleDescription;
         
         /// <summary>
         /// chkRoleIsSystemRole control.
