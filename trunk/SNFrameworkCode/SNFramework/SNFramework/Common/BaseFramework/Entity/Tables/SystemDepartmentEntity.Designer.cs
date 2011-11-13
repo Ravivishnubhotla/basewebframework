@@ -21,6 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMEEN = "DepartmentNameEn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTDECRIPTION = "DepartmentDecription";
 		public static readonly string PROPERTY_NAME_DEPARTMENTSORTINDEX = "DepartmentSortIndex";
+		public static readonly string PROPERTY_NAME_ORGANIZATIONID = "OrganizationID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -30,6 +31,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
         #endregion
 	
  
+		#region organizationID字段外键查询字段
+        public const string PROPERTY_ORGANIZATIONID_ALIAS_NAME = "OrganizationID_SystemDepartmentEntity_Alias";
+		public const string PROPERTY_ORGANIZATIONID_ID = "OrganizationID_SystemDepartmentEntity_Alias.Id";
+		public const string PROPERTY_ORGANIZATIONID_NAME = "OrganizationID_SystemDepartmentEntity_Alias.Name";
+		public const string PROPERTY_ORGANIZATIONID_CODE = "OrganizationID_SystemDepartmentEntity_Alias.Code";
+		public const string PROPERTY_ORGANIZATIONID_DESCRIPTION = "OrganizationID_SystemDepartmentEntity_Alias.Description";
+		public const string PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION = "OrganizationID_SystemDepartmentEntity_Alias.IsMainOrganization";
+		public const string PROPERTY_ORGANIZATIONID_CREATEBY = "OrganizationID_SystemDepartmentEntity_Alias.CreateBy";
+		public const string PROPERTY_ORGANIZATIONID_CREATEAT = "OrganizationID_SystemDepartmentEntity_Alias.CreateAt";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYBY = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYAT = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYCOMMENT = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -49,6 +63,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _departmentNameEn;
 		private string _departmentDecription;
 		private int? _departmentSortIndex;
+		private SystemOrganizationEntity _organizationID;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -69,6 +84,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_departmentNameEn = String.Empty;
 			_departmentDecription = null;
 			_departmentSortIndex = null;
+			_organizationID = null;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -81,7 +97,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDepartmentEntity( int departmentID, SystemDepartmentEntity parentDepartmentID, string departmentNameCn, string departmentNameEn, string departmentDecription, int? departmentSortIndex, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemDepartmentEntity( int departmentID, SystemDepartmentEntity parentDepartmentID, string departmentNameCn, string departmentNameEn, string departmentDecription, int? departmentSortIndex, SystemOrganizationEntity organizationID, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_departmentID = departmentID;
 			_parentDepartmentID = parentDepartmentID;
@@ -89,6 +105,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_departmentNameEn = departmentNameEn;
 			_departmentDecription = departmentDecription;
 			_departmentSortIndex = departmentSortIndex;
+			_organizationID = organizationID;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -189,6 +206,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_departmentSortIndex != value); _departmentSortIndex = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SystemOrganizationEntity OrganizationID
+		{
+			get { return _organizationID; }
+
+			set	
+			{
+				_isChanged |= (_organizationID != value); _organizationID = value;
 			}
 		}
 

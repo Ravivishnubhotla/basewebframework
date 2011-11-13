@@ -20,6 +20,24 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_DEPARTMENTNAMEEN = new StringProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTNAMEEN));		
 		public static readonly StringProperty PROPERTY_DEPARTMENTDECRIPTION = new StringProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTDECRIPTION));		
 		public static readonly IntProperty PROPERTY_DEPARTMENTSORTINDEX = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_DEPARTMENTSORTINDEX));		
+		public static readonly EntityProperty<SystemOrganizationEntity> PROPERTY_ORGANIZATIONID = new EntityProperty<SystemOrganizationEntity>(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_ORGANIZATIONID));
+		#region organizationID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemDepartmentEntity> InClude_OrganizationID_Query(NHibernateDynamicQueryGenerator<SystemDepartmentEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemDepartmentEntity.PROPERTY_NAME_ORGANIZATIONID, PROPERTY_ORGANIZATIONID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_ORGANIZATIONID_ALIAS_NAME = "OrganizationID_SystemDepartmentEntity_Alias";
+		public static readonly IntProperty PROPERTY_ORGANIZATIONID_ID = new IntProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".Id"));
+		public static readonly StringProperty PROPERTY_ORGANIZATIONID_NAME = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_ORGANIZATIONID_CODE = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_ORGANIZATIONID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".Description"));
+		public static readonly BoolProperty PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION = new BoolProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".IsMainOrganization"));
+		public static readonly IntProperty PROPERTY_ORGANIZATIONID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_ORGANIZATIONID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_ORGANIZATIONID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_ORGANIZATIONID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_ORGANIZATIONID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemDepartmentEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -54,6 +72,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "DepartmentSortIndex":
                     return typeof (int);
+                case "OrganizationID":
+                    return typeof (int);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":
@@ -72,6 +92,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "OrganizationID_SystemDepartmentEntity_Alias":
+                    queryGenerator.AddAlians(SystemDepartmentEntity.PROPERTY_NAME_ORGANIZATIONID, PROPERTY_ORGANIZATIONID_ALIAS_NAME);
+                    break;
                 default:
                     break;
  
@@ -79,6 +102,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         }
 		
 		
+		
+		public List<SystemDepartmentEntity> GetList_By_OrganizationID_SystemOrganizationEntity(SystemOrganizationEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemDepartmentEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ORGANIZATIONID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemDepartmentEntity> GetPageList_By_OrganizationID_SystemOrganizationEntity(string orderByColumnName, bool isDesc, SystemOrganizationEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ORGANIZATIONID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		
