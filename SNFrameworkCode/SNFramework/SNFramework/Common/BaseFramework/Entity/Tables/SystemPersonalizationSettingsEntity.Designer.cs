@@ -55,7 +55,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public const string PROPERTY_USERID_USERSTATUS = "UserId_SystemPersonalizationSettingsEntity_Alias.UserStatus";
 		public const string PROPERTY_USERID_USERCREATEDATE = "UserId_SystemPersonalizationSettingsEntity_Alias.UserCreateDate";
 		public const string PROPERTY_USERID_USERTYPE = "UserId_SystemPersonalizationSettingsEntity_Alias.UserType";
-		public const string PROPERTY_USERID_DEPARTMENTID = "UserId_SystemPersonalizationSettingsEntity_Alias.DepartmentID";
 		public const string PROPERTY_USERID_MOBILEPIN = "UserId_SystemPersonalizationSettingsEntity_Alias.MobilePIN";
 		public const string PROPERTY_USERID_PASSWORDFORMAT = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordFormat";
 		public const string PROPERTY_USERID_PASSWORDQUESTION = "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordQuestion";

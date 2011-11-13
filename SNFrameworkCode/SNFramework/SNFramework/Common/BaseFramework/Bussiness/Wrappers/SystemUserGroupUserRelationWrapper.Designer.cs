@@ -59,8 +59,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 					return PROPERTY_USERID_USERCREATEDATE;
 		        case "UserID_UserType":
 					return PROPERTY_USERID_USERTYPE;
-		        case "UserID_DepartmentID":
-					return PROPERTY_USERID_DEPARTMENTID;
 		        case "UserID_MobilePIN":
 					return PROPERTY_USERID_MOBILEPIN;
 		        case "UserID_PasswordFormat":
@@ -159,7 +157,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public const string PROPERTY_USERID_USERSTATUS = "UserID_SystemUserGroupUserRelationEntity_Alias.UserStatus";
 		public const string PROPERTY_USERID_USERCREATEDATE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserCreateDate";
 		public const string PROPERTY_USERID_USERTYPE = "UserID_SystemUserGroupUserRelationEntity_Alias.UserType";
-		public const string PROPERTY_USERID_DEPARTMENTID = "UserID_SystemUserGroupUserRelationEntity_Alias.DepartmentID";
 		public const string PROPERTY_USERID_MOBILEPIN = "UserID_SystemUserGroupUserRelationEntity_Alias.MobilePIN";
 		public const string PROPERTY_USERID_PASSWORDFORMAT = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordFormat";
 		public const string PROPERTY_USERID_PASSWORDQUESTION = "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordQuestion";
@@ -334,16 +331,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 if (this. UserID == null)
                     return null;
                 return  UserID.UserType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_DEPARTMENTID)]
-        public SystemDepartmentWrapper UserID_DepartmentID
-        {
-            get
-            {
-                if (this. UserID == null)
-                    return null;
-                return  UserID.DepartmentID;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_MOBILEPIN)]

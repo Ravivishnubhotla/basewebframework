@@ -18,6 +18,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     public interface ISystemDepartmentServiceProxyDesigner
     {
+		List<SystemDepartmentEntity> FindAllByOrderByAndFilterAndOrganizationID(string orderByColumnName, bool isDesc,   SystemOrganizationEntity _organizationID, PageQueryParams pageQueryParams);
+		List<SystemDepartmentEntity> FindAllByOrganizationID(SystemOrganizationEntity _organizationID);
     }
 
     public partial class SystemDepartmentServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemDepartmentEntity>
@@ -34,6 +36,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             {
                 return (SystemDepartmentDataObject)selfDataObject;
             }
+        }
+	
+		public List<SystemDepartmentEntity> FindAllByOrderByAndFilterAndOrganizationID(string orderByColumnName, bool isDesc,  SystemOrganizationEntity _organizationID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_OrganizationID_SystemOrganizationEntity(orderByColumnName, isDesc,_organizationID, pageQueryParams);
+        }
+		
+		public List<SystemDepartmentEntity> FindAllByOrganizationID(SystemOrganizationEntity _organizationID)
+        {
+			return this.SelfDataObj.GetList_By_OrganizationID_SystemOrganizationEntity(_organizationID);
         }
 
 

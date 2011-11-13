@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPostEntity,Legendigital.Framework.Common" table="SystemPost" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<many-to-one column="OrganizationID" name="OrganizationID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemOrganizationEntity,Legendigital.Framework.Common" />		
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
+
+
+
+
+</class>
+</hibernate-mapping>

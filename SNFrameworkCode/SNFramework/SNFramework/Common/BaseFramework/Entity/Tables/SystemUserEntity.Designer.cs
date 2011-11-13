@@ -23,7 +23,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_USERSTATUS = "UserStatus";
 		public static readonly string PROPERTY_NAME_USERCREATEDATE = "UserCreateDate";
 		public static readonly string PROPERTY_NAME_USERTYPE = "UserType";
-		public static readonly string PROPERTY_NAME_DEPARTMENTID = "DepartmentID";
 		public static readonly string PROPERTY_NAME_MOBILEPIN = "MobilePIN";
 		public static readonly string PROPERTY_NAME_PASSWORDFORMAT = "PasswordFormat";
 		public static readonly string PROPERTY_NAME_PASSWORDQUESTION = "PasswordQuestion";
@@ -51,20 +50,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
         #endregion
 	
  
-		#region departmentID字段外键查询字段
-        public const string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
-		public const string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.DepartmentID";
-		public const string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemUserEntity_Alias.ParentDepartmentID";
-		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameCn";
-		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemUserEntity_Alias.DepartmentNameEn";
-		public const string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemUserEntity_Alias.DepartmentDecription";
-		public const string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemUserEntity_Alias.DepartmentSortIndex";
-		public const string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemUserEntity_Alias.CreateBy";
-		public const string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemUserEntity_Alias.CreateAt";
-		public const string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemUserEntity_Alias.LastModifyBy";
-		public const string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemUserEntity_Alias.LastModifyAt";
-		public const string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemUserEntity_Alias.LastModifyComment";
-		#endregion
       	
 	
 	
@@ -86,7 +71,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _userStatus;
 		private DateTime _userCreateDate;
 		private string _userType;
-		private SystemDepartmentEntity _departmentID;
 		private string _mobilePIN;
 		private int _passwordFormat;
 		private string _passwordQuestion;
@@ -127,7 +111,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_userStatus = String.Empty;
 			_userCreateDate = DateTime.MinValue;
 			_userType = String.Empty;
-			_departmentID = null;
 			_mobilePIN = null;
 			_passwordFormat = 0;
 			_passwordQuestion = null;
@@ -158,7 +141,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, SystemDepartmentEntity departmentID, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_userID = userID;
 			_userLoginID = userLoginID;
@@ -168,7 +151,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_userStatus = userStatus;
 			_userCreateDate = userCreateDate;
 			_userType = userType;
-			_departmentID = departmentID;
 			_mobilePIN = mobilePIN;
 			_passwordFormat = passwordFormat;
 			_passwordQuestion = passwordQuestion;
@@ -324,20 +306,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for UserType", value, value.ToString());
 				_isChanged |= (_userType != value); _userType = value;
-			}
-		}
-
-		/// <summary>
-		/// Department
-		/// </summary>
-		[DataMember]
-		public virtual SystemDepartmentEntity DepartmentID
-		{
-			get { return _departmentID; }
-
-			set	
-			{
-				_isChanged |= (_departmentID != value); _departmentID = value;
 			}
 		}
 

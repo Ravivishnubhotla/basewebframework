@@ -193,6 +193,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.Designer.cs">
       <DependentUpon>SystemDataTypeServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentPostRoleRelationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentPostRoleRelationServiceProxy.Designer.cs">
+      <DependentUpon>SystemDepartmentPostRoleRelationServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryGroupServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryGroupServiceProxy.Designer.cs">
       <DependentUpon>SystemDictionaryGroupServiceProxy.cs</DependentUpon>
@@ -208,6 +212,22 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailTemplateServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.Designer.cs">
+      <DependentUpon>SystemEmployeeServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.Designer.cs">
+      <DependentUpon>SystemNumberSeedServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.Designer.cs">
+      <DependentUpon>SystemOrganizationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.Designer.cs">
+      <DependentUpon>SystemPostServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.Designer.cs">
@@ -268,6 +288,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.Designer.cs">
       <DependentUpon>SystemDataTypeWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentPostRoleRelationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentPostRoleRelationWrapper.Designer.cs">
+      <DependentUpon>SystemDepartmentPostRoleRelationWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryGroupWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryGroupWrapper.Designer.cs">
       <DependentUpon>SystemDictionaryGroupWrapper.cs</DependentUpon>
@@ -283,6 +307,22 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.Designer.cs">
       <DependentUpon>SystemEmailTemplateWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.Designer.cs">
+      <DependentUpon>SystemEmployeeWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.Designer.cs">
+      <DependentUpon>SystemNumberSeedWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.Designer.cs">
+      <DependentUpon>SystemOrganizationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.Designer.cs">
+      <DependentUpon>SystemPostWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.Designer.cs">
@@ -340,6 +380,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.Designer.cs">
       <DependentUpon>SystemDataTypeDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentPostRoleRelationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentPostRoleRelationDataObject.Designer.cs">
+      <DependentUpon>SystemDepartmentPostRoleRelationDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemDictionaryGroupDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemDictionaryGroupDataObject.Designer.cs">
       <DependentUpon>SystemDictionaryGroupDataObject.cs</DependentUpon>
@@ -355,6 +399,22 @@
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.Designer.cs">
       <DependentUpon>SystemEmailTemplateDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.Designer.cs">
+      <DependentUpon>SystemEmployeeDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.Designer.cs">
+      <DependentUpon>SystemNumberSeedDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.Designer.cs">
+      <DependentUpon>SystemOrganizationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.Designer.cs">
+      <DependentUpon>SystemPostDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.Designer.cs">
@@ -417,6 +477,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.Designer.cs">
       <DependentUpon>SystemDataTypeEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentPostRoleRelationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentPostRoleRelationEntity.Designer.cs">
+      <DependentUpon>SystemDepartmentPostRoleRelationEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryGroupEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryGroupEntity.Designer.cs">
       <DependentUpon>SystemDictionaryGroupEntity.cs</DependentUpon>
@@ -432,6 +496,22 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.Designer.cs">
       <DependentUpon>SystemEmailTemplateEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.Designer.cs">
+      <DependentUpon>SystemEmployeeEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.Designer.cs">
+      <DependentUpon>SystemNumberSeedEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.Designer.cs">
+      <DependentUpon>SystemOrganizationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.Designer.cs">
+      <DependentUpon>SystemPostEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.Designer.cs">
@@ -1121,6 +1201,13 @@
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentContentMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDepartmentPostRoleRelationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmployeeMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemNumberSeedMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemOrganizationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPostMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

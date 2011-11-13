@@ -22,25 +22,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_USERSTATUS = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_USERSTATUS));		
 		public static readonly DateTimeProperty PROPERTY_USERCREATEDATE = new DateTimeProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_USERCREATEDATE));		
 		public static readonly StringProperty PROPERTY_USERTYPE = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_USERTYPE));		
-		public static readonly EntityProperty<SystemDepartmentEntity> PROPERTY_DEPARTMENTID = new EntityProperty<SystemDepartmentEntity>(Property.ForName(SystemUserEntity.PROPERTY_NAME_DEPARTMENTID));
-		#region departmentID字段外键查询字段
-        public static NHibernateDynamicQueryGenerator<SystemUserEntity> InClude_DepartmentID_Query(NHibernateDynamicQueryGenerator<SystemUserEntity> queryGenerator)
-        {
-            return queryGenerator.AddAlians(SystemUserEntity.PROPERTY_NAME_DEPARTMENTID, PROPERTY_DEPARTMENTID_ALIAS_NAME);
-        }
-        public static readonly string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemUserEntity_Alias";
-		public static readonly IntProperty PROPERTY_DEPARTMENTID_DEPARTMENTID = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentID"));
-		public static readonly EntityProperty<SystemDepartmentEntity> PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = new EntityProperty<SystemDepartmentEntity>(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".ParentDepartmentID"));
-		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameCn"));
-		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameEn"));
-		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentDecription"));
-		public static readonly IntProperty PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentSortIndex"));
-		public static readonly IntProperty PROPERTY_DEPARTMENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateBy"));
-		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateAt"));
-		public static readonly IntProperty PROPERTY_DEPARTMENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyBy"));
-		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyAt"));
-		public static readonly StringProperty PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyComment"));
-		#endregion
 		public static readonly StringProperty PROPERTY_MOBILEPIN = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_MOBILEPIN));		
 		public static readonly IntProperty PROPERTY_PASSWORDFORMAT = new IntProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_PASSWORDFORMAT));		
 		public static readonly StringProperty PROPERTY_PASSWORDQUESTION = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_PASSWORDQUESTION));		
@@ -97,8 +78,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (DateTime);
                 case "UserType":
                     return typeof (string);
-                case "DepartmentID":
-                    return typeof (int);
                 case "MobilePIN":
                     return typeof (string);
                 case "PasswordFormat":
@@ -153,9 +132,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         {
             switch (parent_alias)
             {
-	            case "DepartmentID_SystemUserEntity_Alias":
-                    queryGenerator.AddAlians(SystemUserEntity.PROPERTY_NAME_DEPARTMENTID, PROPERTY_DEPARTMENTID_ALIAS_NAME);
-                    break;
                 default:
                     break;
  
@@ -163,27 +139,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         }
 		
 		
-		
-		public List<SystemUserEntity> GetList_By_DepartmentID_SystemDepartmentEntity(SystemDepartmentEntity fkentity)
-		{
-			NHibernateDynamicQueryGenerator<SystemUserEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_DEPARTMENTID.Eq(fkentity));
-
-            return this.FindListByQueryBuilder(dynamicQueryGenerator);
-		}
-		
-		
-        public List<SystemUserEntity> GetPageList_By_DepartmentID_SystemDepartmentEntity(string orderByColumnName, bool isDesc, SystemDepartmentEntity fkentity, PageQueryParams pageQueryParams)
-        {
-            NHibernateDynamicQueryGenerator<SystemUserEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_DEPARTMENTID.Eq(fkentity));
-
-            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
-
-            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
-        }		
 		
 
 		

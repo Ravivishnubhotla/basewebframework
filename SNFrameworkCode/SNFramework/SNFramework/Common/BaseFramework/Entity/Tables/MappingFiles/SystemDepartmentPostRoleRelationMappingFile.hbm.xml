@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDepartmentPostRoleRelationEntity,Legendigital.Framework.Common" table="SystemDepartmentPostRoleRelation" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="DepartmentID" type="int" name="DepartmentID"   />	
+		<property column="PostID" type="int" name="PostID"   />	
+		<property column="RoleID" type="int" name="RoleID"   />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+
+
+
+
+</class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemEmployeeEntity,Legendigital.Framework.Common" table="SystemEmployee" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="OrganizationID" name="OrganizationID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemOrganizationEntity,Legendigital.Framework.Common" />		
+		<property column="Number" type="string" name="Number"   length="100" />	
+		<property column="FristName" type="string" name="FristName"   length="100" />	
+		<property column="MiddleName" type="string" name="MiddleName"   length="100" />	
+		<property column="LastName" type="string" name="LastName"   length="100" />	
+		<property column="FullName" type="string" name="FullName"   length="100" />	
+		<property column="Office1PhoneNumber" type="string" name="Office1PhoneNumber"   length="100" />	
+		<property column="Office2PhoneNumber" type="string" name="Office2PhoneNumber"   length="100" />	
+		<property column="Home1PhoneNumber" type="string" name="Home1PhoneNumber"   length="100" />	
+		<property column="Home2PhoneNumber" type="string" name="Home2PhoneNumber"   length="100" />	
+		<property column="Mobile1PhoneNumber" type="string" name="Mobile1PhoneNumber"   length="100" />	
+		<property column="Mobile2PhoneNumber" type="string" name="Mobile2PhoneNumber"   length="100" />	
+		<property column="Sex" type="int" name="Sex"   />	
+		<property column="Age" type="int" name="Age"   />	
+		<property column="Birthday" type="DateTime" name="Birthday"   />	
+		<property column="HomePage" type="string" name="HomePage"   length="400" />	
+		<property column="Comments" type="string" name="Comments"   length="4000" />	
+		<property column="DefaultDepartmentID" type="int" name="DefaultDepartmentID"   />	
+		<property column="DefaultPostID" type="int" name="DefaultPostID"   />	
+		<property column="UserID" type="int" name="UserID"   />	
+		<property column="Email2" type="string" name="Email2"   length="100" />	
+		<property column="Email1" type="string" name="Email1"   length="100" />	
+		<property column="IsActive" type="Boolean" name="IsActive"   />	
+		<property column="Status" type="string" name="Status"   length="100" />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
+
+
+
+
+</class>
+</hibernate-mapping>

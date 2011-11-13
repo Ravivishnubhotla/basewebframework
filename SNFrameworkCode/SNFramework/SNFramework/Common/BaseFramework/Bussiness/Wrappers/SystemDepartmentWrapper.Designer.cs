@@ -43,6 +43,26 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             switch (columnName)
             {
+		        case "OrganizationID_Id":
+					return PROPERTY_ORGANIZATIONID_ID;
+		        case "OrganizationID_Name":
+					return PROPERTY_ORGANIZATIONID_NAME;
+		        case "OrganizationID_Code":
+					return PROPERTY_ORGANIZATIONID_CODE;
+		        case "OrganizationID_Description":
+					return PROPERTY_ORGANIZATIONID_DESCRIPTION;
+		        case "OrganizationID_IsMainOrganization":
+					return PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION;
+		        case "OrganizationID_CreateBy":
+					return PROPERTY_ORGANIZATIONID_CREATEBY;
+		        case "OrganizationID_CreateAt":
+					return PROPERTY_ORGANIZATIONID_CREATEAT;
+		        case "OrganizationID_LastModifyBy":
+					return PROPERTY_ORGANIZATIONID_LASTMODIFYBY;
+		        case "OrganizationID_LastModifyAt":
+					return PROPERTY_ORGANIZATIONID_LASTMODIFYAT;
+		        case "OrganizationID_LastModifyComment":
+					return PROPERTY_ORGANIZATIONID_LASTMODIFYCOMMENT;
               default:
                     return columnName;
             }
@@ -66,6 +86,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DEPARTMENTNAMEEN = "DepartmentNameEn";
 		public static readonly string PROPERTY_NAME_DEPARTMENTDECRIPTION = "DepartmentDecription";
 		public static readonly string PROPERTY_NAME_DEPARTMENTSORTINDEX = "DepartmentSortIndex";
+		public static readonly string PROPERTY_NAME_ORGANIZATIONID = "OrganizationID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -75,6 +96,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         #endregion
 	
  
+		#region organizationID字段外键查询字段
+        public const string PROPERTY_ORGANIZATIONID_ALIAS_NAME = "OrganizationID_SystemDepartmentEntity_Alias";
+		public const string PROPERTY_ORGANIZATIONID_ID = "OrganizationID_SystemDepartmentEntity_Alias.Id";
+		public const string PROPERTY_ORGANIZATIONID_NAME = "OrganizationID_SystemDepartmentEntity_Alias.Name";
+		public const string PROPERTY_ORGANIZATIONID_CODE = "OrganizationID_SystemDepartmentEntity_Alias.Code";
+		public const string PROPERTY_ORGANIZATIONID_DESCRIPTION = "OrganizationID_SystemDepartmentEntity_Alias.Description";
+		public const string PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION = "OrganizationID_SystemDepartmentEntity_Alias.IsMainOrganization";
+		public const string PROPERTY_ORGANIZATIONID_CREATEBY = "OrganizationID_SystemDepartmentEntity_Alias.CreateBy";
+		public const string PROPERTY_ORGANIZATIONID_CREATEAT = "OrganizationID_SystemDepartmentEntity_Alias.CreateAt";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYBY = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYAT = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYCOMMENT = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -173,6 +207,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public SystemOrganizationWrapper OrganizationID
+		{
+			get
+			{
+				return SystemOrganizationWrapper.ConvertEntityToWrapper(entity.OrganizationID) ;
+			}
+			set
+			{
+				entity.OrganizationID = ((value == null) ? null : value.Entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public int? CreateBy
 		{
 			get
@@ -246,12 +294,125 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#region Query Property
 		
 		
+		#region organizationID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_ID)]
+        public int? OrganizationID_Id
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_NAME)]
+        public string OrganizationID_Name
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_CODE)]
+        public string OrganizationID_Code
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_DESCRIPTION)]
+        public string OrganizationID_Description
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION)]
+        public bool? OrganizationID_IsMainOrganization
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.IsMainOrganization;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_CREATEBY)]
+        public int? OrganizationID_CreateBy
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_CREATEAT)]
+        public DateTime? OrganizationID_CreateAt
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_LASTMODIFYBY)]
+        public int? OrganizationID_LastModifyBy
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_LASTMODIFYAT)]
+        public DateTime? OrganizationID_LastModifyAt
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_LASTMODIFYCOMMENT)]
+        public string OrganizationID_LastModifyComment
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.LastModifyComment;
+            }
+        }
+		#endregion
       	
    
 		#endregion
 
 
         #region "FKQuery"
+		
+        public static List<SystemDepartmentWrapper> FindAllByOrderByAndFilterAndOrganizationID(string orderByColumnName, bool isDesc,   SystemOrganizationWrapper organizationID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndOrganizationID(orderByColumnName, isDesc,   organizationID.Entity, pageQueryParams));
+        }
+
+        public static List<SystemDepartmentWrapper> FindAllByOrganizationID(SystemOrganizationWrapper organizationID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrganizationID(organizationID.Entity));
+        }
+		
 
 
 
