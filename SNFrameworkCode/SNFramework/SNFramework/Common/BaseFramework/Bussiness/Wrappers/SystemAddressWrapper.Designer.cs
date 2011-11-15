@@ -12,14 +12,14 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemAttachmentWrapper   
+    public partial class SystemAddressWrapper   
     {
         #region Member
 
-		internal static readonly ISystemAttachmentServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemAttachmentServiceProxyInstance;
+		internal static readonly ISystemAddressServiceProxy businessProxy = ((Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)(ContextRegistry.GetContext().GetObject("BaseFrameworkServiceProxyContainerIocID", typeof(Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer)))).SystemAddressServiceProxyInstance;
 		
 		
-		internal SystemAttachmentEntity Entity
+		internal SystemAddressEntity Entity
         {
             get { return this.entity; }
         }
@@ -27,12 +27,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         #endregion
 
         #region Construtor
-		public SystemAttachmentWrapper() : base(new SystemAttachmentEntity())
+		public SystemAddressWrapper() : base(new SystemAddressEntity())
         {
             
         }
 
-        internal SystemAttachmentWrapper(SystemAttachmentEntity entityObj)
+        internal SystemAddressWrapper(SystemAddressEntity entityObj)
             : base(entityObj)
         {
         }
@@ -59,24 +59,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
       #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemAttachmentEntity";
+		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemAddressEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_TYPE = "Type";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_FILENAME = "FileName";
-		public static readonly string PROPERTY_NAME_MD5 = "Md5";
-		public static readonly string PROPERTY_NAME_SIZE = "Size";
-		public static readonly string PROPERTY_NAME_FILEEXT = "FileExt";
-		public static readonly string PROPERTY_NAME_PAGES = "Pages";
-		public static readonly string PROPERTY_NAME_FILEPATH = "FilePath";
+		public static readonly string PROPERTY_NAME_COUNTRY = "Country";
+		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
+		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_ADDRESS1 = "Address1";
+		public static readonly string PROPERTY_NAME_ADDRESS2 = "Address2";
+		public static readonly string PROPERTY_NAME_ADDRESS3 = "Address3";
+		public static readonly string PROPERTY_NAME_ZIPCODE = "ZipCode";
 		public static readonly string PROPERTY_NAME_PARENTTYPE = "ParentType";
 		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
-		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
-		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
-		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
-		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
-		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
+		public static readonly string PROPERTY_NAME_LONGITUDE = "Longitude";
+		public static readonly string PROPERTY_NAME_LATITUDE = "Latitude";
+		public static readonly string PROPERTY_NAME_TIMEZONEID = "TimeZoneID";
 		
         #endregion
 	
@@ -151,85 +150,99 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string FileName
+		public string Country
 		{
 			get
 			{
-				return entity.FileName;
+				return entity.Country;
 			}
 			set
 			{
-				entity.FileName = value;
+				entity.Country = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string Md5
+		public string Province
 		{
 			get
 			{
-				return entity.Md5;
+				return entity.Province;
 			}
 			set
 			{
-				entity.Md5 = value;
+				entity.Province = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? Size
+		public string City
 		{
 			get
 			{
-				return entity.Size;
+				return entity.City;
 			}
 			set
 			{
-				entity.Size = value;
+				entity.City = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string FileExt
+		public string Address1
 		{
 			get
 			{
-				return entity.FileExt;
+				return entity.Address1;
 			}
 			set
 			{
-				entity.FileExt = value;
+				entity.Address1 = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? Pages
+		public string Address2
 		{
 			get
 			{
-				return entity.Pages;
+				return entity.Address2;
 			}
 			set
 			{
-				entity.Pages = value;
+				entity.Address2 = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string FilePath
+		public string Address3
 		{
 			get
 			{
-				return entity.FilePath;
+				return entity.Address3;
 			}
 			set
 			{
-				entity.FilePath = value;
+				entity.Address3 = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string ZipCode
+		{
+			get
+			{
+				return entity.ZipCode;
+			}
+			set
+			{
+				entity.ZipCode = value;
 			}
 		}
 		/// <summary>
@@ -263,71 +276,43 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? CreateBy
+		public decimal? Longitude
 		{
 			get
 			{
-				return entity.CreateBy;
+				return entity.Longitude;
 			}
 			set
 			{
-				entity.CreateBy = value;
+				entity.Longitude = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime? CreateAt
+		public decimal? Latitude
 		{
 			get
 			{
-				return entity.CreateAt;
+				return entity.Latitude;
 			}
 			set
 			{
-				entity.CreateAt = value;
+				entity.Latitude = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? LastModifyBy
+		public int? TimeZoneID
 		{
 			get
 			{
-				return entity.LastModifyBy;
+				return entity.TimeZoneID;
 			}
 			set
 			{
-				entity.LastModifyBy = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public DateTime? LastModifyAt
-		{
-			get
-			{
-				return entity.LastModifyAt;
-			}
-			set
-			{
-				entity.LastModifyAt = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string LastModifyComment
-		{
-			get
-			{
-				return entity.LastModifyComment;
-			}
-			set
-			{
-				entity.LastModifyComment = value;
+				entity.TimeZoneID = value;
 			}
 		}
 		#endregion 
@@ -356,37 +341,37 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #region Static Common Data Operation
 		
-		internal static List<SystemAttachmentWrapper> ConvertToWrapperList(List<SystemAttachmentEntity> entitylist)
+		internal static List<SystemAddressWrapper> ConvertToWrapperList(List<SystemAddressEntity> entitylist)
         {
-            List<SystemAttachmentWrapper> list = new List<SystemAttachmentWrapper>();
-            foreach (SystemAttachmentEntity lentity in entitylist)
+            List<SystemAddressWrapper> list = new List<SystemAddressWrapper>();
+            foreach (SystemAddressEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 
-		internal static List<SystemAttachmentWrapper> ConvertToWrapperList(IList<SystemAttachmentEntity> entitylist)
+		internal static List<SystemAddressWrapper> ConvertToWrapperList(IList<SystemAddressEntity> entitylist)
         {
-            List<SystemAttachmentWrapper> list = new List<SystemAttachmentWrapper>();
-            foreach (SystemAttachmentEntity lentity in entitylist)
+            List<SystemAddressWrapper> list = new List<SystemAddressWrapper>();
+            foreach (SystemAddressEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 		
-		internal static List<SystemAttachmentEntity> ConvertToEntityList(List<SystemAttachmentWrapper> wrapperlist)
+		internal static List<SystemAddressEntity> ConvertToEntityList(List<SystemAddressWrapper> wrapperlist)
         {
-            List<SystemAttachmentEntity> list = new List<SystemAttachmentEntity>();
-            foreach (SystemAttachmentWrapper wrapper in wrapperlist)
+            List<SystemAddressEntity> list = new List<SystemAddressEntity>();
+            foreach (SystemAddressWrapper wrapper in wrapperlist)
             {
                 list.Add(wrapper.entity);
             }
             return list;
         }
 
-        internal static SystemAttachmentWrapper ConvertEntityToWrapper(SystemAttachmentEntity entity)
+        internal static SystemAddressWrapper ConvertEntityToWrapper(SystemAddressEntity entity)
         {
             if (entity == null)
                 return null;
@@ -394,7 +379,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             if (entity.Id == 0)
                 return null;
 
-            return new SystemAttachmentWrapper(entity);
+            return new SystemAddressWrapper(entity);
         }
 		
 		#endregion

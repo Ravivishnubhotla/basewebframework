@@ -16,6 +16,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_ID));		
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_NAME));		
+		public static readonly StringProperty PROPERTY_TYPE = new StringProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_TYPE));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly StringProperty PROPERTY_FILENAME = new StringProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_FILENAME));		
 		public static readonly StringProperty PROPERTY_MD5 = new StringProperty(Property.ForName(SystemAttachmentEntity.PROPERTY_NAME_MD5));		
@@ -50,6 +51,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "Id":
                     return typeof (int);
                 case "Name":
+                    return typeof (string);
+                case "Type":
                     return typeof (string);
                 case "Description":
                     return typeof (string);

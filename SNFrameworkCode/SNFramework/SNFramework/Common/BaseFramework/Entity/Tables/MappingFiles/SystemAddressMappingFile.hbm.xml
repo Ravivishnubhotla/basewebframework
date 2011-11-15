@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemAddressEntity,Legendigital.Framework.Common" table="SystemAddress" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Type" type="string" name="Type"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="1000" />	
+		<property column="Country" type="string" name="Country"   length="40" />	
+		<property column="Province" type="string" name="Province"   length="40" />	
+		<property column="City" type="string" name="City"   length="100" />	
+		<property column="Address1" type="string" name="Address1"   length="400" />	
+		<property column="Address2" type="string" name="Address2"   length="400" />	
+		<property column="Address3" type="string" name="Address3"   length="400" />	
+		<property column="ZipCode" type="string" name="ZipCode"   length="40" />	
+		<property column="ParentType" type="string" name="ParentType"   length="100" />	
+		<property column="ParentID" type="int" name="ParentID"   />	
+		<property column="Longitude" type="Decimal" name="Longitude"   />	
+		<property column="Latitude" type="Decimal" name="Latitude"   />	
+		<property column="TimeZoneID" type="int" name="TimeZoneID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

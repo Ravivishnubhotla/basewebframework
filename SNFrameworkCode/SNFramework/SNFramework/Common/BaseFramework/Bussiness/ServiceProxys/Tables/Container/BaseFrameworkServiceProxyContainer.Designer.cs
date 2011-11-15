@@ -8,6 +8,8 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container{
     public partial class BaseFrameworkServiceProxyContainer
     {		
+		public ISystemAddressServiceProxy SystemAddressServiceProxyInstance
+        {get; set;}
 		public ISystemApplicationServiceProxy SystemApplicationServiceProxyInstance
         {get; set;}
 		public ISystemAttachmentServiceProxy SystemAttachmentServiceProxyInstance
@@ -26,6 +28,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemDepartmentServiceProxy SystemDepartmentServiceProxyInstance
         {get; set;}
+		public ISystemDepartmentPostRoleRelationServiceProxy SystemDepartmentPostRoleRelationServiceProxyInstance
+        {get; set;}
 		public ISystemDictionaryServiceProxy SystemDictionaryServiceProxyInstance
         {get; set;}
 		public ISystemDictionaryGroupServiceProxy SystemDictionaryGroupServiceProxyInstance
@@ -36,6 +40,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemEmailTemplateServiceProxy SystemEmailTemplateServiceProxyInstance
         {get; set;}
+		public ISystemEmployeeServiceProxy SystemEmployeeServiceProxyInstance
+        {get; set;}
 		public ISystemLogServiceProxy SystemLogServiceProxyInstance
         {get; set;}
 		public ISystemMenuServiceProxy SystemMenuServiceProxyInstance
@@ -44,9 +50,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemMoudleFieldServiceProxy SystemMoudleFieldServiceProxyInstance
         {get; set;}
+		public ISystemNumberSeedServiceProxy SystemNumberSeedServiceProxyInstance
+        {get; set;}
 		public ISystemOperationServiceProxy SystemOperationServiceProxyInstance
         {get; set;}
+		public ISystemOrganizationServiceProxy SystemOrganizationServiceProxyInstance
+        {get; set;}
 		public ISystemPersonalizationSettingsServiceProxy SystemPersonalizationSettingsServiceProxyInstance
+        {get; set;}
+		public ISystemPostServiceProxy SystemPostServiceProxyInstance
         {get; set;}
 		public ISystemPrivilegeServiceProxy SystemPrivilegeServiceProxyInstance
         {get; set;}
@@ -57,6 +69,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		public ISystemProvinceServiceProxy SystemProvinceServiceProxyInstance
         {get; set;}
 		public ISystemResourcesServiceProxy SystemResourcesServiceProxyInstance
+        {get; set;}
+		public ISystemRichTextServiceProxy SystemRichTextServiceProxyInstance
         {get; set;}
 		public ISystemRoleServiceProxy SystemRoleServiceProxyInstance
         {get; set;}
@@ -73,6 +87,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		public ISystemTemplateServiceProxy SystemTemplateServiceProxyInstance
         {get; set;}
 		public ISystemTerminologyServiceProxy SystemTerminologyServiceProxyInstance
+        {get; set;}
+		public ISystemTimeZoneServiceProxy SystemTimeZoneServiceProxyInstance
         {get; set;}
 		public ISystemUserServiceProxy SystemUserServiceProxyInstance
         {get; set;}

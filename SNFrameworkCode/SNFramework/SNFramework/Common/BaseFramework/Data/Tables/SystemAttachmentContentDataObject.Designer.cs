@@ -24,6 +24,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         public static readonly string PROPERTY_ATTACMENTID_ALIAS_NAME = "AttacmentID_SystemAttachmentContentEntity_Alias";
 		public static readonly IntProperty PROPERTY_ATTACMENTID_ID = new IntProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".Id"));
 		public static readonly StringProperty PROPERTY_ATTACMENTID_NAME = new StringProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_ATTACMENTID_TYPE = new StringProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".Type"));
 		public static readonly StringProperty PROPERTY_ATTACMENTID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".Description"));
 		public static readonly StringProperty PROPERTY_ATTACMENTID_FILENAME = new StringProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".FileName"));
 		public static readonly StringProperty PROPERTY_ATTACMENTID_MD5 = new StringProperty(Property.ForName(PROPERTY_ATTACMENTID_ALIAS_NAME + ".Md5"));
