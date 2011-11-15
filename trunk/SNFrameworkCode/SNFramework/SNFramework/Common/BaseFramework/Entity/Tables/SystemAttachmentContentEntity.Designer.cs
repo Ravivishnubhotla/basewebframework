@@ -26,6 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
         public const string PROPERTY_ATTACMENTID_ALIAS_NAME = "AttacmentID_SystemAttachmentContentEntity_Alias";
 		public const string PROPERTY_ATTACMENTID_ID = "AttacmentID_SystemAttachmentContentEntity_Alias.Id";
 		public const string PROPERTY_ATTACMENTID_NAME = "AttacmentID_SystemAttachmentContentEntity_Alias.Name";
+		public const string PROPERTY_ATTACMENTID_TYPE = "AttacmentID_SystemAttachmentContentEntity_Alias.Type";
 		public const string PROPERTY_ATTACMENTID_DESCRIPTION = "AttacmentID_SystemAttachmentContentEntity_Alias.Description";
 		public const string PROPERTY_ATTACMENTID_FILENAME = "AttacmentID_SystemAttachmentContentEntity_Alias.FileName";
 		public const string PROPERTY_ATTACMENTID_MD5 = "AttacmentID_SystemAttachmentContentEntity_Alias.Md5";

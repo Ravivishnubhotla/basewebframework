@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRichTextEntity,Legendigital.Framework.Common" table="SystemRichText" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Type" type="string" name="Type"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="400" />	
+		<property column="TextContent" type="string" name="TextContent"   length="2147483646" />	
+		<property column="ParentType" type="string" name="ParentType"   length="100" />	
+		<property column="ParentID" type="int" name="ParentID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

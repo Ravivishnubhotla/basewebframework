@@ -165,6 +165,10 @@
   <ItemGroup>
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.Designer.cs">
+      <DependentUpon>SystemAddressServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.Designer.cs">
       <DependentUpon>SystemAttachmentContentServiceProxy.cs</DependentUpon>
@@ -233,6 +237,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.Designer.cs">
       <DependentUpon>SystemProvinceServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRichTextServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRichTextServiceProxy.Designer.cs">
+      <DependentUpon>SystemRichTextServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.Designer.cs">
       <DependentUpon>SystemTaskServiceProxy.cs</DependentUpon>
@@ -244,6 +252,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.Designer.cs">
       <DependentUpon>SystemTerminologyServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTimeZoneServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTimeZoneServiceProxy.Designer.cs">
+      <DependentUpon>SystemTimeZoneServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.Designer.cs">
@@ -260,6 +272,10 @@
     <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.Designer.cs">
+      <DependentUpon>SystemAddressWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.Designer.cs">
       <DependentUpon>SystemAttachmentContentWrapper.cs</DependentUpon>
@@ -328,6 +344,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.Designer.cs">
       <DependentUpon>SystemProvinceWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRichTextWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRichTextWrapper.Designer.cs">
+      <DependentUpon>SystemRichTextWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.Designer.cs">
       <DependentUpon>SystemTaskWrapper.cs</DependentUpon>
@@ -340,6 +360,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.Designer.cs">
       <DependentUpon>SystemTerminologyWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTimeZoneWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTimeZoneWrapper.Designer.cs">
+      <DependentUpon>SystemTimeZoneWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.Designer.cs">
       <DependentUpon>SystemVersionWrapper.cs</DependentUpon>
@@ -351,6 +375,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.Designer.cs">
       <DependentUpon>SystemWorkFlowWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.Designer.cs">
+      <DependentUpon>SystemAddressDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.Designer.cs">
@@ -420,6 +448,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.Designer.cs">
       <DependentUpon>SystemProvinceDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRichTextDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemRichTextDataObject.Designer.cs">
+      <DependentUpon>SystemRichTextDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.Designer.cs">
       <DependentUpon>SystemTaskDataObject.cs</DependentUpon>
@@ -431,6 +463,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.Designer.cs">
       <DependentUpon>SystemTerminologyDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemTimeZoneDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTimeZoneDataObject.Designer.cs">
+      <DependentUpon>SystemTimeZoneDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.Designer.cs">
@@ -449,6 +485,10 @@
     <Compile Include="BaseFramework\Document\DataFileldType.cs" />
     <Compile Include="BaseFramework\Document\IDatabaseSchemaBuilder.cs" />
     <Compile Include="BaseFramework\Document\MSSQLDataBaseSchemaBulider.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAddressEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAddressEntity.Designer.cs">
+      <DependentUpon>SystemAddressEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.Designer.cs">
       <DependentUpon>SystemAttachmentContentEntity.cs</DependentUpon>
@@ -517,6 +557,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.Designer.cs">
       <DependentUpon>SystemProvinceEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRichTextEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemRichTextEntity.Designer.cs">
+      <DependentUpon>SystemRichTextEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.Designer.cs">
       <DependentUpon>SystemTaskEntity.cs</DependentUpon>
@@ -528,6 +572,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.Designer.cs">
       <DependentUpon>SystemTerminologyEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemTimeZoneEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTimeZoneEntity.Designer.cs">
+      <DependentUpon>SystemTimeZoneEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.Designer.cs">
@@ -1208,6 +1256,11 @@
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemNumberSeedMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemOrganizationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPostMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAddressMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRichTextMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTimeZoneMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -47,12 +47,32 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 					return PROPERTY_ORGANIZATIONID_ID;
 		        case "OrganizationID_Name":
 					return PROPERTY_ORGANIZATIONID_NAME;
+		        case "OrganizationID_ShortName":
+					return PROPERTY_ORGANIZATIONID_SHORTNAME;
 		        case "OrganizationID_Code":
 					return PROPERTY_ORGANIZATIONID_CODE;
 		        case "OrganizationID_Description":
 					return PROPERTY_ORGANIZATIONID_DESCRIPTION;
+		        case "OrganizationID_LogoUrl":
+					return PROPERTY_ORGANIZATIONID_LOGOURL;
+		        case "OrganizationID_Type":
+					return PROPERTY_ORGANIZATIONID_TYPE;
+		        case "OrganizationID_MasterName":
+					return PROPERTY_ORGANIZATIONID_MASTERNAME;
 		        case "OrganizationID_IsMainOrganization":
 					return PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION;
+		        case "OrganizationID_ParentID":
+					return PROPERTY_ORGANIZATIONID_PARENTID;
+		        case "OrganizationID_AddressID":
+					return PROPERTY_ORGANIZATIONID_ADDRESSID;
+		        case "OrganizationID_TelPhone":
+					return PROPERTY_ORGANIZATIONID_TELPHONE;
+		        case "OrganizationID_FaxNumber":
+					return PROPERTY_ORGANIZATIONID_FAXNUMBER;
+		        case "OrganizationID_WebSite":
+					return PROPERTY_ORGANIZATIONID_WEBSITE;
+		        case "OrganizationID_Email":
+					return PROPERTY_ORGANIZATIONID_EMAIL;
 		        case "OrganizationID_CreateBy":
 					return PROPERTY_ORGANIZATIONID_CREATEBY;
 		        case "OrganizationID_CreateAt":
@@ -100,9 +120,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public const string PROPERTY_ORGANIZATIONID_ALIAS_NAME = "OrganizationID_SystemDepartmentEntity_Alias";
 		public const string PROPERTY_ORGANIZATIONID_ID = "OrganizationID_SystemDepartmentEntity_Alias.Id";
 		public const string PROPERTY_ORGANIZATIONID_NAME = "OrganizationID_SystemDepartmentEntity_Alias.Name";
+		public const string PROPERTY_ORGANIZATIONID_SHORTNAME = "OrganizationID_SystemDepartmentEntity_Alias.ShortName";
 		public const string PROPERTY_ORGANIZATIONID_CODE = "OrganizationID_SystemDepartmentEntity_Alias.Code";
 		public const string PROPERTY_ORGANIZATIONID_DESCRIPTION = "OrganizationID_SystemDepartmentEntity_Alias.Description";
+		public const string PROPERTY_ORGANIZATIONID_LOGOURL = "OrganizationID_SystemDepartmentEntity_Alias.LogoUrl";
+		public const string PROPERTY_ORGANIZATIONID_TYPE = "OrganizationID_SystemDepartmentEntity_Alias.Type";
+		public const string PROPERTY_ORGANIZATIONID_MASTERNAME = "OrganizationID_SystemDepartmentEntity_Alias.MasterName";
 		public const string PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION = "OrganizationID_SystemDepartmentEntity_Alias.IsMainOrganization";
+		public const string PROPERTY_ORGANIZATIONID_PARENTID = "OrganizationID_SystemDepartmentEntity_Alias.ParentID";
+		public const string PROPERTY_ORGANIZATIONID_ADDRESSID = "OrganizationID_SystemDepartmentEntity_Alias.AddressID";
+		public const string PROPERTY_ORGANIZATIONID_TELPHONE = "OrganizationID_SystemDepartmentEntity_Alias.TelPhone";
+		public const string PROPERTY_ORGANIZATIONID_FAXNUMBER = "OrganizationID_SystemDepartmentEntity_Alias.FaxNumber";
+		public const string PROPERTY_ORGANIZATIONID_WEBSITE = "OrganizationID_SystemDepartmentEntity_Alias.WebSite";
+		public const string PROPERTY_ORGANIZATIONID_EMAIL = "OrganizationID_SystemDepartmentEntity_Alias.Email";
 		public const string PROPERTY_ORGANIZATIONID_CREATEBY = "OrganizationID_SystemDepartmentEntity_Alias.CreateBy";
 		public const string PROPERTY_ORGANIZATIONID_CREATEAT = "OrganizationID_SystemDepartmentEntity_Alias.CreateAt";
 		public const string PROPERTY_ORGANIZATIONID_LASTMODIFYBY = "OrganizationID_SystemDepartmentEntity_Alias.LastModifyBy";
@@ -315,6 +345,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 return  OrganizationID.Name;
             }
         }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_SHORTNAME)]
+        public string OrganizationID_ShortName
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.ShortName;
+            }
+        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_CODE)]
         public string OrganizationID_Code
         {
@@ -335,6 +375,36 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 return  OrganizationID.Description;
             }
         }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_LOGOURL)]
+        public string OrganizationID_LogoUrl
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.LogoUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_TYPE)]
+        public string OrganizationID_Type
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Type;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_MASTERNAME)]
+        public string OrganizationID_MasterName
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.MasterName;
+            }
+        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION)]
         public bool? OrganizationID_IsMainOrganization
         {
@@ -343,6 +413,66 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 if (this. OrganizationID == null)
                     return null;
                 return  OrganizationID.IsMainOrganization;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_PARENTID)]
+        public int? OrganizationID_ParentID
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.ParentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_ADDRESSID)]
+        public int? OrganizationID_AddressID
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.AddressID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_TELPHONE)]
+        public string OrganizationID_TelPhone
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.TelPhone;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_FAXNUMBER)]
+        public string OrganizationID_FaxNumber
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.FaxNumber;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_WEBSITE)]
+        public string OrganizationID_WebSite
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.WebSite;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_EMAIL)]
+        public string OrganizationID_Email
+        {
+            get
+            {
+                if (this. OrganizationID == null)
+                    return null;
+                return  OrganizationID.Email;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_CREATEBY)]

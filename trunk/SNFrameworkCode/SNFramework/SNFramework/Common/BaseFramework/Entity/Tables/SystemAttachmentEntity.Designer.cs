@@ -17,6 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemAttachmentEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_TYPE = "Type";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_FILENAME = "FileName";
 		public static readonly string PROPERTY_NAME_MD5 = "Md5";
@@ -50,6 +51,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		
 		private int _id;
 		private string _name;
+		private string _type;
 		private string _description;
 		private string _fileName;
 		private string _md5;
@@ -75,6 +77,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		{
 			_id = 0;
 			_name = null;
+			_type = null;
 			_description = null;
 			_fileName = null;
 			_md5 = null;
@@ -96,10 +99,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemAttachmentEntity( int id, string name, string description, string fileName, string md5, int? size, string fileExt, int? pages, string filePath, string parentType, int? parentID, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemAttachmentEntity( int id, string name, string type, string description, string fileName, string md5, int? size, string fileExt, int? pages, string filePath, string parentType, int? parentID, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
+			_type = type;
 			_description = description;
 			_fileName = fileName;
 			_md5 = md5;
@@ -147,6 +151,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for Name", value, value.ToString());
 				_isChanged |= (_name != value); _name = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string Type
+		{
+			get { return _type; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 60)
+					throw new ArgumentOutOfRangeException("Invalid value for Type", value, value.ToString());
+				_isChanged |= (_type != value); _type = value;
 			}
 		}
 

@@ -6,6 +6,9 @@
     Spring.Net框架数据访问层容器配置文件
   </description>
   <!-- 数据访问类 -->
+ <object id="SystemAddressDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemAddressDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemApplicationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemApplicationDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -33,6 +36,9 @@
  <object id="SystemDepartmentDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDepartmentDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemDepartmentPostRoleRelationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDepartmentPostRoleRelationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemDictionaryDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemDictionaryDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -48,6 +54,9 @@
  <object id="SystemEmailTemplateDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemEmailTemplateDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemEmployeeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemEmployeeDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemLogDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemLogDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -60,10 +69,19 @@
  <object id="SystemMoudleFieldDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemMoudleFieldDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemNumberSeedDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemNumberSeedDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemOperationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemOperationDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemOrganizationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemOrganizationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemPersonalizationSettingsDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPersonalizationSettingsDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPostDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPostDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemPrivilegeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPrivilegeDataObject, Legendigital.Framework.Common">
@@ -79,6 +97,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemResourcesDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemResourcesDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemRichTextDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemRichTextDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemRoleDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemRoleDataObject, Legendigital.Framework.Common">
@@ -103,6 +124,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemTerminologyDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTerminologyDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemTimeZoneDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTimeZoneDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemUserDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemUserDataObject, Legendigital.Framework.Common">
@@ -148,6 +172,7 @@
 
 
 <object id="BaseFrameworkDataObjectContainersIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.Container.BaseFrameworkDataObjectContainers, Legendigital.Framework.Common">
+    <property name="SystemAddressDataObjectInstance" ref="SystemAddressDataObjectIocID"/>
     <property name="SystemApplicationDataObjectInstance" ref="SystemApplicationDataObjectIocID"/>
     <property name="SystemAttachmentDataObjectInstance" ref="SystemAttachmentDataObjectIocID"/>
     <property name="SystemAttachmentContentDataObjectInstance" ref="SystemAttachmentContentDataObjectIocID"/>
@@ -157,22 +182,28 @@
     <property name="SystemCountryDataObjectInstance" ref="SystemCountryDataObjectIocID"/>
     <property name="SystemDataTypeDataObjectInstance" ref="SystemDataTypeDataObjectIocID"/>
     <property name="SystemDepartmentDataObjectInstance" ref="SystemDepartmentDataObjectIocID"/>
+    <property name="SystemDepartmentPostRoleRelationDataObjectInstance" ref="SystemDepartmentPostRoleRelationDataObjectIocID"/>
     <property name="SystemDictionaryDataObjectInstance" ref="SystemDictionaryDataObjectIocID"/>
     <property name="SystemDictionaryGroupDataObjectInstance" ref="SystemDictionaryGroupDataObjectIocID"/>
     <property name="SystemEmailQueueDataObjectInstance" ref="SystemEmailQueueDataObjectIocID"/>
     <property name="SystemEmailSettingsDataObjectInstance" ref="SystemEmailSettingsDataObjectIocID"/>
     <property name="SystemEmailTemplateDataObjectInstance" ref="SystemEmailTemplateDataObjectIocID"/>
+    <property name="SystemEmployeeDataObjectInstance" ref="SystemEmployeeDataObjectIocID"/>
     <property name="SystemLogDataObjectInstance" ref="SystemLogDataObjectIocID"/>
     <property name="SystemMenuDataObjectInstance" ref="SystemMenuDataObjectIocID"/>
     <property name="SystemMoudleDataObjectInstance" ref="SystemMoudleDataObjectIocID"/>
     <property name="SystemMoudleFieldDataObjectInstance" ref="SystemMoudleFieldDataObjectIocID"/>
+    <property name="SystemNumberSeedDataObjectInstance" ref="SystemNumberSeedDataObjectIocID"/>
     <property name="SystemOperationDataObjectInstance" ref="SystemOperationDataObjectIocID"/>
+    <property name="SystemOrganizationDataObjectInstance" ref="SystemOrganizationDataObjectIocID"/>
     <property name="SystemPersonalizationSettingsDataObjectInstance" ref="SystemPersonalizationSettingsDataObjectIocID"/>
+    <property name="SystemPostDataObjectInstance" ref="SystemPostDataObjectIocID"/>
     <property name="SystemPrivilegeDataObjectInstance" ref="SystemPrivilegeDataObjectIocID"/>
     <property name="SystemPrivilegeInRolesDataObjectInstance" ref="SystemPrivilegeInRolesDataObjectIocID"/>
     <property name="SystemPrivilegeParameterDataObjectInstance" ref="SystemPrivilegeParameterDataObjectIocID"/>
     <property name="SystemProvinceDataObjectInstance" ref="SystemProvinceDataObjectIocID"/>
     <property name="SystemResourcesDataObjectInstance" ref="SystemResourcesDataObjectIocID"/>
+    <property name="SystemRichTextDataObjectInstance" ref="SystemRichTextDataObjectIocID"/>
     <property name="SystemRoleDataObjectInstance" ref="SystemRoleDataObjectIocID"/>
     <property name="SystemRoleApplicationDataObjectInstance" ref="SystemRoleApplicationDataObjectIocID"/>
     <property name="SystemRoleMenuRelationDataObjectInstance" ref="SystemRoleMenuRelationDataObjectIocID"/>
@@ -181,6 +212,7 @@
     <property name="SystemTaskDataObjectInstance" ref="SystemTaskDataObjectIocID"/>
     <property name="SystemTemplateDataObjectInstance" ref="SystemTemplateDataObjectIocID"/>
     <property name="SystemTerminologyDataObjectInstance" ref="SystemTerminologyDataObjectIocID"/>
+    <property name="SystemTimeZoneDataObjectInstance" ref="SystemTimeZoneDataObjectIocID"/>
     <property name="SystemUserDataObjectInstance" ref="SystemUserDataObjectIocID"/>
     <property name="SystemUserGroupDataObjectInstance" ref="SystemUserGroupDataObjectIocID"/>
     <property name="SystemUserGroupRoleRelationDataObjectInstance" ref="SystemUserGroupRoleRelationDataObjectIocID"/>

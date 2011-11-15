@@ -16,9 +16,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_ID));		
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_NAME));		
+		public static readonly StringProperty PROPERTY_SHORTNAME = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_SHORTNAME));		
 		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_CODE));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_DESCRIPTION));		
+		public static readonly StringProperty PROPERTY_LOGOURL = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_LOGOURL));		
+		public static readonly StringProperty PROPERTY_TYPE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_TYPE));		
+		public static readonly StringProperty PROPERTY_MASTERNAME = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_MASTERNAME));		
 		public static readonly BoolProperty PROPERTY_ISMAINORGANIZATION = new BoolProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_ISMAINORGANIZATION));		
+		public static readonly IntProperty PROPERTY_PARENTID = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_PARENTID));		
+		public static readonly IntProperty PROPERTY_ADDRESSID = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_ADDRESSID));		
+		public static readonly StringProperty PROPERTY_TELPHONE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_TELPHONE));		
+		public static readonly StringProperty PROPERTY_FAXNUMBER = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_FAXNUMBER));		
+		public static readonly StringProperty PROPERTY_WEBSITE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_WEBSITE));		
+		public static readonly StringProperty PROPERTY_EMAIL = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_EMAIL));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -45,12 +55,32 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "Name":
                     return typeof (string);
+                case "ShortName":
+                    return typeof (string);
                 case "Code":
                     return typeof (string);
                 case "Description":
                     return typeof (string);
+                case "LogoUrl":
+                    return typeof (string);
+                case "Type":
+                    return typeof (string);
+                case "MasterName":
+                    return typeof (string);
                 case "IsMainOrganization":
                     return typeof (bool);
+                case "ParentID":
+                    return typeof (int);
+                case "AddressID":
+                    return typeof (int);
+                case "TelPhone":
+                    return typeof (string);
+                case "FaxNumber":
+                    return typeof (string);
+                case "WebSite":
+                    return typeof (string);
+                case "Email":
+                    return typeof (string);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":

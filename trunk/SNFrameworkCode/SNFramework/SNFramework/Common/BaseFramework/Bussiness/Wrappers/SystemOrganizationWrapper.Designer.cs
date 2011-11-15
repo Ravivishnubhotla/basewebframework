@@ -62,9 +62,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemOrganizationEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
+		public static readonly string PROPERTY_NAME_SHORTNAME = "ShortName";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_LOGOURL = "LogoUrl";
+		public static readonly string PROPERTY_NAME_TYPE = "Type";
+		public static readonly string PROPERTY_NAME_MASTERNAME = "MasterName";
 		public static readonly string PROPERTY_NAME_ISMAINORGANIZATION = "IsMainOrganization";
+		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
+		public static readonly string PROPERTY_NAME_ADDRESSID = "AddressID";
+		public static readonly string PROPERTY_NAME_TELPHONE = "TelPhone";
+		public static readonly string PROPERTY_NAME_FAXNUMBER = "FaxNumber";
+		public static readonly string PROPERTY_NAME_WEBSITE = "WebSite";
+		public static readonly string PROPERTY_NAME_EMAIL = "Email";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -116,6 +126,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string ShortName
+		{
+			get
+			{
+				return entity.ShortName;
+			}
+			set
+			{
+				entity.ShortName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public string Code
 		{
 			get
@@ -144,6 +168,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public string LogoUrl
+		{
+			get
+			{
+				return entity.LogoUrl;
+			}
+			set
+			{
+				entity.LogoUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Type
+		{
+			get
+			{
+				return entity.Type;
+			}
+			set
+			{
+				entity.Type = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string MasterName
+		{
+			get
+			{
+				return entity.MasterName;
+			}
+			set
+			{
+				entity.MasterName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public bool? IsMainOrganization
 		{
 			get
@@ -153,6 +219,90 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.IsMainOrganization = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? ParentID
+		{
+			get
+			{
+				return entity.ParentID;
+			}
+			set
+			{
+				entity.ParentID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? AddressID
+		{
+			get
+			{
+				return entity.AddressID;
+			}
+			set
+			{
+				entity.AddressID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string TelPhone
+		{
+			get
+			{
+				return entity.TelPhone;
+			}
+			set
+			{
+				entity.TelPhone = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string FaxNumber
+		{
+			get
+			{
+				return entity.FaxNumber;
+			}
+			set
+			{
+				entity.FaxNumber = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string WebSite
+		{
+			get
+			{
+				return entity.WebSite;
+			}
+			set
+			{
+				entity.WebSite = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string Email
+		{
+			get
+			{
+				return entity.Email;
+			}
+			set
+			{
+				entity.Email = value;
 			}
 		}
 		/// <summary>

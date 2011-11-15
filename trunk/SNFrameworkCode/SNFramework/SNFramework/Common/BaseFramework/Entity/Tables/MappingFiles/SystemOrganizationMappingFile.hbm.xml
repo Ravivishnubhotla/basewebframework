@@ -12,9 +12,19 @@
 
 
 		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="ShortName" type="string" name="ShortName"   length="100" />	
 		<property column="Code" type="string" name="Code"   length="100" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="LogoUrl" type="string" name="LogoUrl"   length="400" />	
+		<property column="Type" type="string" name="Type"   length="100" />	
+		<property column="MasterName" type="string" name="MasterName"   length="100" />	
 		<property column="IsMainOrganization" type="Boolean" name="IsMainOrganization"   />	
+		<property column="ParentID" type="int" name="ParentID"   />	
+		<property column="AddressID" type="int" name="AddressID"   />	
+		<property column="TelPhone" type="string" name="TelPhone"   length="60" />	
+		<property column="FaxNumber" type="string" name="FaxNumber"   length="60" />	
+		<property column="WebSite" type="string" name="WebSite"   length="100" />	
+		<property column="Email" type="string" name="Email"   length="100" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

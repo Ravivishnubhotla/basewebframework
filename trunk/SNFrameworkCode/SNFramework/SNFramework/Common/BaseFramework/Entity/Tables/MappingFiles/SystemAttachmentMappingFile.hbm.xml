@@ -12,6 +12,7 @@
 
 
 		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Type" type="string" name="Type"   length="60" />	
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="FileName" type="string" name="FileName"   length="400" />	
 		<property column="MD5" type="string" name="Md5"   length="60" />	
