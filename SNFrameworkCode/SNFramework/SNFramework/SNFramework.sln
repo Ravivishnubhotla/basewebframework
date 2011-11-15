@@ -39,6 +39,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Templates", "{6510D54F-B017-443F-A2AF-B7A9A0173BD4}"
 	ProjectSection(SolutionItems) = preProject
 		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
+		Code Templates\ExtJs表现层多语言模版.zeus = Code Templates\ExtJs表现层多语言模版.zeus
 		Code Templates\ExtJs表现层模版.zeus = Code Templates\ExtJs表现层模版.zeus
 		Code Templates\SN数据访问代码.zeus = Code Templates\SN数据访问代码.zeus
 		Code Templates\SPS.dat = Code Templates\SPS.dat
