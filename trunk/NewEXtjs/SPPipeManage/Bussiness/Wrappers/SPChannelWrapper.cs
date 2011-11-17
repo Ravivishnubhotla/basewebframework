@@ -349,7 +349,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield6 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield6", fieldMappings);
             string extendfield7 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield7", fieldMappings);
             string extendfield8 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield8", fieldMappings);
-            string extendfield9 = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "extendfield9", fieldMappings);
+
 
 
             if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
@@ -457,7 +457,24 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ExtendField6 = extendfield6;
             paymentInfo.ExtendField7 = extendfield7;
             paymentInfo.ExtendField8 = extendfield8;
-            paymentInfo.ExtendField9 = extendfield9;
+
+            try
+            {
+                if (channelSetting.ClinetID != null && channelSetting.ClinetID.SPClientGroupID != null)
+                {
+                    paymentInfo.ExtendField9 = channelSetting.ClinetID.SPClientGroupID.Id.ToString();
+                }
+                else
+                {
+                    paymentInfo.ExtendField9 = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("ExtendField9 Error", ex);
+            }
+
+
             paymentInfo.Ip = httpGetPostRequest.RequestIp;
             paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
@@ -964,7 +981,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ExtendField6 = extendfield6;
             paymentInfo.ExtendField7 = extendfield7;
             paymentInfo.ExtendField8 = extendfield8;
-            paymentInfo.ExtendField9 = extendfield9;
+            try
+            {
+                if (channelSetting.ClinetID != null && channelSetting.ClinetID.SPClientGroupID != null)
+                {
+                    paymentInfo.ExtendField9 = channelSetting.ClinetID.SPClientGroupID.Id.ToString();
+                }
+                else
+                {
+                    paymentInfo.ExtendField9 = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("ExtendField9 Error", ex);
+            }
             paymentInfo.Ip = httpGetPostReques.RequestIp;
             paymentInfo.IsIntercept = false;
             paymentInfo.CreateDate = DateTime.Now;
