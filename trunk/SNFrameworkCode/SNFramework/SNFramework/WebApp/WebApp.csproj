@@ -233,15 +233,18 @@
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.en-US.xml" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.en-US.xml" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\UCSystemDepartmentEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.zh-CHS.xml" />
@@ -293,6 +296,7 @@
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.xml" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.zh-CHS.xml" />
@@ -1006,6 +1010,13 @@
     <Compile Include="Moudles\SystemManage\MoudleManage\UCSystemMoudleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemMoudleEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx.cs">
+      <DependentUpon>SystemOrginationDepartmentManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx.designer.cs">
+      <DependentUpon>SystemOrginationDepartmentManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.cs">
       <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1278,9 +1289,6 @@
     <Content Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\SystemDepartmentListPage.aspx" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentAdd.ascx" />
-    <Content Include="Moudles\SystemManage\DepartmentManage\UCSystemDepartmentEdit.ascx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx" />

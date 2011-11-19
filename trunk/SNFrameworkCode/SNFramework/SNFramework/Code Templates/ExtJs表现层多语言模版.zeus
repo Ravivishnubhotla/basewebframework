@@ -1,6 +1,6 @@
 ﻿##|TYPE Template
 ##|UNIQUEID 03fe1be6-f041-4e2e-81bd-642378804296
-##|TITLE ExtJs表现层模版1.0
+##|TITLE ExtJs多语言表现层模版1.0
 ##|NAMESPACE 
 ##|SOURCE_TYPE Source
 ##|OUTPUT_LANGUAGE None
@@ -129,14 +129,15 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		private void GenerateAddPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
 	    {
-
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
 			string moudleCodeName = config.GenerateMoudleCodeName(table);
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
 %>
 
 
-<ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="ApplicationAdd" Title="<%= config.GenerateMoudleFormTitle(table) %> Add "
+<ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="ApplicationAdd" Title="<%= "<" %>%$ Resources:msgFormTitle %<%= ">" %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -164,16 +165,15 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavel<%= moudleCodeName %>" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavel<%= moudleCodeName %>" runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgAdd  %<%= ">" %>" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanel<%= moudleCodeName %>Add}.getForm().isValid()) return false;" OnEvent="btnSave<%= moudleCodeName %>_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+                    Success="<%= "<" %>%$ Resources:msgAddScript %<%= ">" %>" Failure="<%= "<" %>%$ Resources : GlobalResource, msgShowError  %<%= ">" %>">
+                    <EventMask ShowMask="true" Msg="<%= "<" %>%$ Resources : GlobalResource, msgSavingWaiting  %<%= ">" %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgCancel  %<%= ">" %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{win<%= moudleCodeName %>Add}.hide();" />
             </Listeners>
@@ -183,13 +183,55 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Add.ascx.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Add" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add <%= moudleNameCn %> successful',callback);function callback(id) {#{formPanel<%= moudleNameCn %>Add}.getForm().reset();#{store<%= moudleNameCn %>}.reload();  };" />
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Add.ascx.en-US.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Add" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add <%= moudleNameCn %> successful',callback);function callback(id) {#{formPanel<%= moudleNameCn %>Add}.getForm().reset();#{store<%= moudleNameCn %>}.reload();  };" />
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Add.ascx.zh-CHS.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Add" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add <%= moudleNameCn %> successful',callback);function callback(id) {#{formPanel<%= moudleNameCn %>Add}.getForm().reset();#{store<%= moudleNameCn %>}.reload();  };" />
+</resources>
+
+
+
+
+
 <%		
 		}
 		
 		
 		private void GenerateEditPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
 	    {
-
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
 			string moudleCodeName = config.GenerateMoudleCodeName(table);
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
@@ -198,7 +240,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 
-<ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="Edit <%= config.GenerateMoudleFormTitle(table) %>"
+<ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="<%= "<" %>%$ Resources:msgFormTitle %<%= ">" %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true"  Layout="fit">
     <Content>
@@ -230,16 +272,15 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgEdit  %<%= ">" %>" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanel<%= moudleCodeName %>Edit}.getForm().isValid()) return false;"
-                    OnEvent="btnSave<%= moudleCodeName %>_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+                    OnEvent="btnSave<%= moudleCodeName %>_Click" Success="<%= "<" %>%$ Resources :  msgUpdateScript  %<%= ">" %>" Failure="<%= "<" %>%$ Resources : GlobalResource, msgShowError  %<%= ">" %>">
+                    <EventMask ShowMask="true" Msg="<%= "<" %>%$ Resources : GlobalResource, msgSavingWaiting  %<%= ">" %>" />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgCancel  %<%= ">" %>" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{win<%= moudleCodeName %>Edit}.hide();" />
             </Listeners>
@@ -247,7 +288,42 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
     </Buttons>
 </ext:Window>
 
-
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Edit.ascx.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Edit" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Update <%= moudleNameCn %> Successfully',callback);function callback(id) {#{formPanel<%= moudleNameEn %>Edit}.getForm().reset();#{store<%= moudleNameEn %>}.reload(); };" />
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Edit.ascx.en-US.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Edit" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Update <%= moudleNameCn %> Successfully',callback);function callback(id) {#{formPanel<%= moudleNameEn %>Edit}.getForm().reset();#{store<%= moudleNameEn %>}.reload(); };" />
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>Edit.ascx.zh-CHS.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> Edit" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+	<add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Update <%= moudleNameCn %> Successfully',callback);function callback(id) {#{formPanel<%= moudleNameEn %>Edit}.getForm().reset();#{store<%= moudleNameEn %>}.reload(); };" />
+</resources>
 
 
 
@@ -261,12 +337,13 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 		
 		private void GenerateViewPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
 	    {
-
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
 			string moudleCodeName = config.GenerateMoudleCodeName(table);
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
 %>
-<ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationViewDetail" Title="Show<%= config.GenerateMoudleFormTitle(table) %>"
+<ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationViewDetail" Title="<%= "<" %>%$ Resources:msgFormTitle %<%= ">" %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -297,7 +374,39 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
     </Content>
 </ext:Window>
 
-
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>View.ascx.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> View" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>View.ascx.en-US.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> View" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+UC<%= moudleNameEn %>View.ascx.zh-CHS.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="<%= moudleNameCn %> View" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgFiled<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
 
 
 <%		
@@ -317,7 +426,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				return;
 			string domainFieldName = TableColumnGenerationHelper.GeneratePorpertyTypeByTableColumn(column);
 
-%>					<ext:DisplayField ID="lbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AnchorHorizontal="95%" />
+%>					<ext:DisplayField ID="lbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AnchorHorizontal="95%" />
 					
 <%
 		}
@@ -337,21 +446,21 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			{
 				case "Label":
 %>					
-						<ext:DisplayField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AnchorHorizontal="95%" />
+						<ext:DisplayField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>"   AnchorHorizontal="95%" />
                     
 <%					break;
 				case "TextBox":
 %>			
-						<ext:TextField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%" />
               
 <%					break;
 				case "TextBoxMultiLine":
 %>					
-						<ext:TextArea ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
+						<ext:TextArea ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
                    
 <%					break;
 				case "DropDownList":
-%>					 <ext:ComboBox ID="cmb<%= tableUIGenerationParamsListItem.FieldName %>" Editable="false" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>" 
+%>					 <ext:ComboBox ID="cmb<%= tableUIGenerationParamsListItem.FieldName %>" Editable="false" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>"   AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>" 
                                                 SelectedIndex="0" AnchorHorizontal="95%">
                                                 <Items>
 <% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
@@ -361,14 +470,14 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 <%					break;
 				case "CheckBox":
 %>					                                         
-                                            <ext:Checkbox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" Checked="false"  AnchorHorizontal="95%"/>
+                                            <ext:Checkbox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" Checked="false"  AnchorHorizontal="95%"/>
                                        
 <%					break;
 				case "CheckBoxList":
 %>					                                         <ext:CheckboxGroup 
                                                 ID="cbl<%= tableUIGenerationParamsListItem.FieldName %>" 
                                                 runat="server" 
-                                                FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AnchorHorizontal="95%">
+                                                FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AnchorHorizontal="95%">
                                                 <Items>
 												<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
 %>
@@ -381,7 +490,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                                             </ext:CheckboxGroup>    
 <%					break;
 				case "RadioButtonList":
-%>			  	 <ext:RadioGroup ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AnchorHorizontal="95%">
+%>			  	 <ext:RadioGroup ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>"  AnchorHorizontal="95%">
                                                 <Items>
 												<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
 %>
@@ -394,7 +503,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                                             </ext:RadioGroup>    
 <%					break;
 				case "ListBox":
-%>					                                <ext:MultiSelect runat="server" ID="lbx<%= tableUIGenerationParamsListItem.FieldName %>"  Legend="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AnchorHorizontal="95%" >
+%>					                                <ext:MultiSelect runat="server" ID="lbx<%= tableUIGenerationParamsListItem.FieldName %>"  Legend="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AnchorHorizontal="95%" >
                                             <Items>
 <% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
 %>
@@ -408,17 +517,17 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 <%					break;
 				case "RadNumericTextBox":
 %>				 
-						<ext:NumberField ID="radnum<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
+						<ext:NumberField ID="radnum<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                  	
 <%					break;
 				case "RadDatePicker":
 %>                 
-						<ext:DateField  ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
+						<ext:DateField  ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                 
 <%					break;
 				case "RadEditor":
 %>				 
-						<ext:HtmlEditor ID="edit<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
+						<ext:HtmlEditor ID="edit<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= "<" %>%$ Resources:msgFiled<%= tableUIGenerationParamsListItem.FieldName %> %<%= ">" %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
               
 <%					break;
 				default:
@@ -802,41 +911,46 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %<%= ">" %>';
             else
-                return 'false';
-        }
+                return '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %<%= ">" %>';
+        };
 
 
-        var RefreshData = function(btn) {
+        var Refresh<%= moudleNameEn %>Data = function(btn) {
             <%= "<" %>%= this.store<%= moudleNameEn %>.ClientID %<%= ">" %>.reload();
         };
+		
+		function Refresh<%= moudleNameEn %>List()
+		{
+			<%= "<" %>%= this.store<%= moudleNameEn %>.ClientID %<%= ">" %>.reload();
+		}
         
-        function showAddForm() {
+        function showAdd<%= moudleNameEn %>Form() {
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>Add.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %<%= ">" %>', msg,Refresh<%= moudleNameEn %>Data);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %<%= ">" %>'
                                                                                }
                                                                 });    
         
         }
 
-        function processcmd(cmd, id) {
+        function process<%= moudleNameEn %>cmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>Edit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %<%= ">" %>', msg,Refresh<%= moudleNameEn %>Data);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg:  '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %<%= ">" %>'
                                                                                }
                                                                 }              
                 );
@@ -846,32 +960,32 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>View.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %<%= ">" %>', msg,Refresh<%= moudleNameEn %>Data);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg:  '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %<%= ">" %>'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %<%= ">" %>', '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %<%= ">" %>',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %<%= ">" %>' msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %<%= ">" %>', '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %<%= ">" %>',Refresh<%= moudleNameEn %>Data);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '<%= "<" %>%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %<%= ">" %>'
                                                                                }
                                                                 }
                                                             );
@@ -929,16 +1043,16 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanel<%= moudleNameEn %>" runat="server" StoreID="store<%= moudleNameEn %>"
-                StripeRows="true" Title="<%=moudleNameCn%> Management" Icon="Table">
+                StripeRows="true" Title="<%= "<" %>%$ Resources:msgGridTitle %<%= ">" %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgAdd %<%= ">" %>" Icon="Add">
                                 <Listeners>
-                                    <Click Handler="showAddForm();" />
+                                    <Click Handler="showAdd<%= moudleNameEn %>Form();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="<%= "<" %>%$ Resources : GlobalResource, msgRefresh %<%= ">" %>" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{store<%= moudleNameEn %>}.reload();" />
                                 </Listeners>
@@ -966,14 +1080,14 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
 	BulidGridPanelColumn(table ,tableUIGenerationParamsListArray[i] ,config);
 }
 %> 
-                                <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
+                                <ext:CommandColumn ColumnID="colManage" Header="<%= "<" %>%$ Resources : GlobalResource, msgManage  %<%= ">" %>" Width="60">
                                     <Commands>
-                                    <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                                    <ext:SplitCommand Text="<%= "<" %>%$ Resources : GlobalResource, msgAction  %<%= ">" %>" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%= "<" %>%$ Resources : GlobalResource, msgEdit  %<%= ">" %>"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%= "<" %>%$ Resources : GlobalResource, msgDelete  %<%= ">" %>"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="<%= "<" %>%$ Resources : GlobalResource, msgView  %<%= ">" %>"></ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                    
@@ -986,10 +1100,10 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="store<%= moudleNameEn %>"
-                        DisplayInfo="true" DisplayMsg="Display <%= moudleNameCn %>s {0} - {1} total {2}" EmptyMsg="No matched <%= moudleNameCn %>" />
+                        DisplayInfo="true" DisplayMsg="<%= "<" %>%$ Resources : GlobalResource, msgPageInfo  %<%= ">" %>" EmptyMsg="<%= "<" %>%$ Resources : GlobalResource, msgNoRecordInfo  %<%= ">" %>" />
                 </BottomBar>
                 <Listeners>
-                    <Command Handler="processcmd(command, record);" />
+                    <Command Handler="process<%= moudleNameEn %>cmd(command, record);" />
                 </Listeners>
             </ext:GridPanel>
         </Items>
@@ -1063,9 +1177,43 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
 
         }
     }
-
-
-
+	
+	
+	
+	
+-----------------------------------------------------------------------------------------------------------------------------------
+<%= moudleNameEn %>ListPage.aspx.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="<%= moudleNameCn %> Management" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgcol<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+<%= moudleNameEn %>ListPage.aspx.en-US.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="<%= moudleNameCn %> Management" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgcol<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
+-----------------------------------------------------------------------------------------------------------------------------------
+<%= moudleNameEn %>ListPage.aspx.zh-CHS.xml
+-----------------------------------------------------------------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="<%= moudleNameCn %> Management" />
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>   <add name="msgcol<%= tableUIGenerationParamsListArray[i].FieldName %>" value="<%= tableUIGenerationParamsListArray[i].FieldNameCn %>" />               	
+<%				}%>
+</resources>
 
 
 			
@@ -1074,44 +1222,48 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
 
 
 
+ 
+
+
+
 
 private void BulidGridPanelColumn(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
 {
 	if(tableUIGenerationParam.LanguageType=="string")
 {
-%>		<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>		<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                 </ext:Column>			
 <%	return;
 }
 	if(tableUIGenerationParam.LanguageType=="DateTime")
 {
-%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                 </ext:Column>
 <%	return;
 }
 	if(tableUIGenerationParam.LanguageType=="bool")
 {
-%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                     <Renderer Fn="FormatBool" />
                                 </ext:Column>
 <%	return;
 }
 	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" )
 {
-%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                 </ext:Column>
 <%	return;
 }
 
 	if(tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal" )
 {
-%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                 </ext:Column>
 <%	return;
 }
 
 
-%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= tableUIGenerationParam.FieldNameCn %>" Sortable="true">
+%>				<ext:Column ColumnID="col<%= tableUIGenerationParam.FieldName %>" DataIndex="<%= tableUIGenerationParam.FieldName %>" Header="<%= "<" %>%$ Resources:msgcol<%= tableUIGenerationParam.FieldName %> %<%= ">" %>" Sortable="true">
                                 </ext:Column>
 <%
 }
@@ -1156,35 +1308,6 @@ private void BulidStoreRecordField(ITable table ,TableUIGenerationParams tableUI
 }
 
 
-
-
-
-
-private void BulidGridColumn(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
-{
-	if(tableUIGenerationParam.LanguageType=="string")
-{
-%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>"/>
-<%	return;
-}
-	if(tableUIGenerationParam.LanguageType=="DateTime")
-{
-%>					<telerik:GridDateTimeColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
-<%	return;
-}
-	if(tableUIGenerationParam.LanguageType=="bool")
-{
-%>					<telerik:GridCheckBoxColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
-<%	return;
-}
-	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" || tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal")
-{
-%>					<telerik:GridNumericColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
-<%	return;
-}
-%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
-<%
-}
 
 		
 		private string ShowGridFieldType(TableUIGenerationParams tableUIGenerationParam)
