@@ -41,4 +41,6 @@
   <add name="msgManualSort" value="Sort" />
   <add name="msgAutoSort" value="Auto Sort" />
   <add name="msgTitleEditLangItem" value="Edit Terminology {0} Items" />
+  <add name="msgDataNotExisted" value="Error Message：Data does not exist!" />
+  <add name="msgShowError" value="Error Message：{0}" />
 </resources>

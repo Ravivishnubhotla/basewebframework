@@ -53,14 +53,14 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "Error Message：Data does not exist";
+                    ResourceManager.AjaxErrorMessage = GetGlobalResourceObject("GlobalResource", "msgDataNotExisted").ToString();
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(GetGlobalResourceObject("GlobalResource", "msgShowError").ToString(), ex.Message);
                 return;
             }
         }
@@ -147,7 +147,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage：" + ex.Message;
+                ResourceManager.AjaxErrorMessage = string.Format(GetGlobalResourceObject("GlobalResource", "msgShowError").ToString(), ex.Message);
                 return;
             }
 
