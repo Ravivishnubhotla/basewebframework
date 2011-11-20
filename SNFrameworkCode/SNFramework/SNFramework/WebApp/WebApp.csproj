@@ -298,6 +298,12 @@
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.xml" />
@@ -1370,7 +1376,6 @@
     <Folder Include="Moudles\SPS\Data\" />
     <Folder Include="Moudles\SPS\Reports\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
-    <Folder Include="Moudles\SystemManage\LogManage\App_LocalResources\" />
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="SPSInterface\" />

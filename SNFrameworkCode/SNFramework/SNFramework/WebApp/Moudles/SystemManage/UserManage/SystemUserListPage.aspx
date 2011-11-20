@@ -154,7 +154,7 @@
  
                  var win = <%= winShowLoginLog.ClientID %>;
               win.autoLoad.params.ParentID = id.id;
-              win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserAssignedGroup") %>",id.data.UserName));
+              win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserViewLoginLog") %>",id.data.UserName));
               win.show();     
             }   
             
@@ -233,16 +233,17 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
+                            <ext:TextField ID="txtSearchName" FieldLabel="User Name" LabelWidth="70" runat="server" EmptyText="[Enter user Name]" />
+                            <ext:Button ID='btnFind' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>"
+                                Icon="Find">
+                                <Listeners>
+                                    <Click Handler="#{storeSystemUser}.reload();" />
+                                </Listeners>
+                            </ext:Button>
                             <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
                                 Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
-                                </Listeners>
-                            </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
-                                Icon="Reload">
-                                <Listeners>
-                                    <Click Handler="#{storeSystemUser}.reload();" />
                                 </Listeners>
                             </ext:Button>
                         </Items>
@@ -301,7 +302,7 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="Group" CommandName="cmdApplyGroup" Text="<%$ Resources:msgAssignedGroup %>">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="Script" CommandName="cmdShowLoginLog" Text="<%$ Resources:msgAssignedGroup %>">
+                                            <ext:MenuCommand Icon="Script" CommandName="cmdShowLoginLog" Text="<%$ Resources:msgViewLoginLog %>">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>

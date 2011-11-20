@@ -51,7 +51,15 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
 
             filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_LOGTYPE, LogType, FilterFunction.EqualTo));
             filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_PARENTDATAID, ParentID, FilterFunction.EqualTo));
-            filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_PARENTDATATYPE, ParentType, FilterFunction.EqualTo));
+
+            if (!string.IsNullOrEmpty(ParentType))
+                filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_PARENTDATATYPE, ParentType, FilterFunction.EqualTo));
+
+
+            if (dfStart.SelectedValue!=null)
+                filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_LOGDATE, Convert.ToDateTime(dfStart.SelectedDate).ToString("yyyy-MM-dd"), FilterFunction.GreaterThanOrEqualTo));
+            if (dfEnd.SelectedValue != null)
+                filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_LOGDATE, Convert.ToDateTime(dfEnd.SelectedDate).AddDays(1).ToString("yyyy-MM-dd"), FilterFunction.LessThanOrEqualTo));
 
             storeSystemLog.DataSource = SystemLogWrapper.FindAllByOrderByAndFilter(filters, sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
             e.Total = pageQueryParams.RecordCount;

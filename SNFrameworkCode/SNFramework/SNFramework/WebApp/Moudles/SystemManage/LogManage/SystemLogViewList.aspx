@@ -74,12 +74,15 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemLog" runat="server" StoreID="storeSystemLog" StripeRows="true"
-                AutoExpandColumn="colLogDescrption" Title="SystemLogManagement" Icon="Table">
+                AutoExpandColumn="colLogDescrption" Title="<%$ Resources:msgGridTitle %>" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
-                                Icon="Reload">
+                            <ext:DateField ID="dfStart" runat="server" />
+                            <ext:Button runat="server" Text="-" />
+                            <ext:DateField ID="dfEnd" runat="server" />
+                            <ext:Button ID='btnFind' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>"
+                                Icon="Find">
                                 <Listeners>
                                     <Click Handler="#{storeSystemLog}.reload();" />
                                 </Listeners>
@@ -94,17 +97,17 @@
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:Column ColumnID="colLogLevel" DataIndex="LogLevel" Header="LogLevel" Width="35"
-                            Sortable="true">
+                        <ext:Column ColumnID="colLogLevel" DataIndex="LogLevel" Header="<%$ Resources:msgcolLogLevel %>"
+                            Width="16" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colLogDate" DataIndex="LogDate" Header="LogDate" Width="50"
-                            Sortable="true">
+                        <ext:Column ColumnID="colLogDate" DataIndex="LogDate" Header="<%$ Resources:msgcolLogDate %>"
+                            Width="39" Sortable="true">
                             <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y h:i:s')" />
                         </ext:Column>
-                        <ext:Column ColumnID="colLogUser" DataIndex="LogUser" Header="LogUser" Width="50"
-                            Sortable="true" Hidden="true">
+                        <ext:Column ColumnID="colLogUser" DataIndex="LogUser" Header="<%$ Resources:msgcolLogUser %>"
+                            Width="50" Sortable="true" Hidden="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colLogDescrption" DataIndex="LogDescrption" Header="LogDescrption"
+                        <ext:Column ColumnID="colLogDescrption" DataIndex="LogDescrption" Header="<%$ Resources:msgcolLogDescrption %>"
                             Sortable="true">
                         </ext:Column>
                     </Columns>
