@@ -75,14 +75,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage {
         /// </remarks>
         protected global::Ext.Net.DateField dfStart;
         
-        /// <summary>
-        /// DateField1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Lable DateField1;
+ 
         
         /// <summary>
         /// dfEnd control.

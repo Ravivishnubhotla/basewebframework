@@ -199,6 +199,25 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 
 
+        public static void LogUserOperationAction(string operatioMessage, string ip, DateTime opdate, string dataType, int dataid)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+
+            log.LogDate = opdate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间{3}，操作IP:{2}.", "", ip, opdate.ToLongTimeString(), operatioMessage);
+            log.LogLevel = SysteLogLevel.Error;
+            log.LogRelateDateTime = opdate;
+            log.LogRelateUserID = 0;
+            log.LogRelateUserName = "";
+            log.ParentDataType = dataType;
+            log.ParentDataID = dataid;
+            log.LogSource = "System";
+            log.LogType = SysteLogType.OperationLog;
+
+            Save(log);
+        }
+
+
 
     }
 }

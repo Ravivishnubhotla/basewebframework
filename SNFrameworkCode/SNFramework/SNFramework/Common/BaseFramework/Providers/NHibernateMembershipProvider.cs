@@ -178,7 +178,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             user.Applications.Add(application);
             try
             {
-                SystemUserWrapper.Save(user);
+    
+
+
+                SystemUserWrapper.Save(user, SystemUserWrapper.GetDeveUserID());
                 status = MembershipCreateStatus.Success;
             }
             catch (Exception exception)

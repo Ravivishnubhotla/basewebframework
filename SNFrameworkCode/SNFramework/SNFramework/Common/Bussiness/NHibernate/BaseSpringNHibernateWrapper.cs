@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Web;
 using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Entity;
+using Legendigital.Framework.Common.Utility;
 using Spring.Context.Support;
 
 namespace Legendigital.Framework.Common.Bussiness.NHibernate
@@ -69,6 +71,8 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         //    throw new NotImplementedException();
         //}
 
+ 
+
         #region Static Common Data Operation
 
         protected static void Save(WrapperType obj, ServiceProxyType serviceProxy)
@@ -81,9 +85,30 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 
                 DateTime? createAtTime = GetCreateAt(obj);
 
-                //LogNewRecord(obj, createByUserID.Value, createAtTime.Value);
+                string lastModifyComment  = GetLastModifyComment(obj);
+
+                LogNewRecord(obj, createByUserID.Value, createAtTime.Value, lastModifyComment, obj.entity.GetDataEntityKey());
             }
 
+        }
+
+        private static void LogNewRecord(WrapperType wrapperType, int userID, DateTime dateTime,string opComment,object id)
+        {
+            try
+            {
+                if(userID==0)
+                {
+                    SystemLogWrapper.LogUserOperationAction(opComment, HttpUtil.GetIP(HttpContext.Current.Request), dateTime, typeof(WrapperType).Name, (int)id);
+                }
+                else
+                {
+                    SystemLogWrapper.LogUserOperationAction(SystemUserWrapper.FindById(userID), opComment, HttpUtil.GetIP(HttpContext.Current.Request), dateTime, typeof(WrapperType).Name, (int)id);          
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
         }
 
         protected static void Update(WrapperType obj, ServiceProxyType serviceProxy)
@@ -193,5 +218,11 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             return (DateTime?)(typeof(WrapperType).GetProperty("CreateAt").GetValue(wrapper.entity, null));
         }
 
+        protected static string GetLastModifyComment(WrapperType wrapper)
+        {
+            return (string)(typeof(WrapperType).GetProperty("LastModifyComment").GetValue(wrapper.entity, null));
+        }
+
+        
     }
 }

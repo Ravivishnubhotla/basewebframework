@@ -24,6 +24,9 @@ namespace Legendigital.Framework.Common.Bussiness
                 wrapperSetting = new WrapperSetting();
 
                 wrapperSetting.allowWrapperAutoRecordLog.Add(typeof(SystemOrganizationWrapper).FullName);
+                wrapperSetting.allowWrapperAutoRecordLog.Add(typeof(SystemUserWrapper).FullName);
+
+                
 
                 wrapperSetting.allowWrapperAutoVersion.Add(typeof(SystemOrganizationWrapper).FullName);
             }
