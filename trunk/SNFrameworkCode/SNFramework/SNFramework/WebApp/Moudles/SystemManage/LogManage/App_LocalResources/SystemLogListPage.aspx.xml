@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System Log Management" />
+  <add name="msgcolLogID" value="ID" />
+  <add name="msgcolLogLevel" value="Level" />
+  <add name="msgcolLogType" value="Type" />
+  <add name="msgcolLogDate" value="Date" />
+  <add name="msgcolLogSource" value="Source" />
+  <add name="msgcolLogUser" value="Log User" />
+  <add name="msgcolLogDescrption" value="Descrption" />
+  <add name="msgcolLogRequestInfo" value="Request" />
+  <add name="msgcolParentDataID" value="Moudle Data" />
+  <add name="msgcolParentDataType" value="Moudle Type" />
+  <add name="msgcolLogRelateUserID" value="User ID" />
+  <add name="msgcolLogRelateUserName" value="Relate User" />
+  <add name="msgcolLogRelateDateTime" value="Relate Date" />
+</resources>

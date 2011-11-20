@@ -14,9 +14,13 @@
   <add name="msgChangePassword" value="更改密码" />
   <add name="msgAssignedRole" value="分配角色" />
   <add name="msgAssignedGroup" value="分配用户组" />
+  <add name="msgViewLoginLog" value="查看登陆日志" />
   <add name="msgUserAssignedRole" value="用户 '{0}' 分配角色" />
   <add name="msgUserAssignedGroup" value="用户 '{0}' 分配用户组" />
+  <add name="msgUserViewLoginLog" value="查看 '{0}' 登陆日志" />
   <add name="msgLock" value="锁定" />
   <add name="msgunLock" value="解锁" />
+  <add name="msgLableSearchName" value="用户名" />
+  <add name="msgEmptyTextSearchName" value="[输入用户名]" />
 </resources>
 

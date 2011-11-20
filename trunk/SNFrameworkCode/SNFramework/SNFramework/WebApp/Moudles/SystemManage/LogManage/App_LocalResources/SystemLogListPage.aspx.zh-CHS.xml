@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="系统" />
+  <add name="msgcolLogID" value="主键" />
+  <add name="msgcolLogLevel" value="级别" />
+  <add name="msgcolLogType" value="类型" />
+  <add name="msgcolLogDate" value="日期" />
+  <add name="msgcolLogSource" value="来源" />
+  <add name="msgcolLogUser" value="记录用户" />
+  <add name="msgcolLogDescrption" value="内容" />
+  <add name="msgcolLogRequestInfo" value="请求信息" />
+  <add name="msgcolParentDataID" value="相关数据" />
+  <add name="msgcolParentDataType" value="相关数据类型" />
+  <add name="msgcolLogRelateUserID" value="用户ID" />
+  <add name="msgcolLogRelateUserName" value="相关用户" />
+  <add name="msgcolLogRelateDateTime" value="相关日期" />
+</resources>
