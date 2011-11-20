@@ -30,8 +30,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #region Static Common Data Operation
 
-        public static void Save(SystemUserWrapper obj)
+        public static void Save(SystemUserWrapper obj, int saveUserID)
         {
+            obj.CreateAt = System.DateTime.Now;
+            obj.CreateBy = saveUserID;
+            obj.LastModifyComment = string.Format("创建用户'{0}'成功！", obj.UserLoginID);
             Save(obj, businessProxy);
         }
 
@@ -443,6 +446,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.FindAllByOrderByExpcept(sortFieldName, isDesc, expceptUserLoginId, expceptRoleName, pageQueryParams));
         }
 
- 
+
+        public static int GetDeveUserID()
+        {
+            SystemUserWrapper user = GetInitalUserByLoginID(DEV_USER_ID);
+
+            if(user!=null)
+                return user.UserID;
+
+            return 0;
+        }
     }
 }

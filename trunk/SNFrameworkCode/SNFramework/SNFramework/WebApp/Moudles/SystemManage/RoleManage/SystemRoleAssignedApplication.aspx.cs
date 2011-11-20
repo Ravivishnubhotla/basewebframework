@@ -111,7 +111,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
                 subNode.NodeID = sMenu.Id;
                 WebUIHelper.SetIcon(menu.Icon, menu.IsCategory, mainNode);
                 subNode.CustomAttributes.Add(new ConfigItem("IsGroup", (sMenu.IsCategory ? "1" : "0"), ParameterMode.Value));
-                subNode.CustomAttributes.Add(new ConfigItem("MenuID", menu.Id, ParameterMode.Value));
+                subNode.CustomAttributes.Add(new ConfigItem("MenuID", sMenu.Id, ParameterMode.Value));
                 if (roleAssignedmenuIDs.Contains(menu.Id.ToString()))
                     subNode.Checked = ThreeStateBool.True;
                 else
