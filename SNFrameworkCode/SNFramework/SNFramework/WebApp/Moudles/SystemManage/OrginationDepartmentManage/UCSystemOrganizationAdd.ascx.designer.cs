@@ -7,144 +7,144 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
+namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage {
     
     
-    public partial class SystemUserListPage {
+    public partial class UCSystemOrganizationAdd {
         
         /// <summary>
-        /// ResourceManagerProxy1 control.
+        /// winSystemOrganizationAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
+        protected global::Ext.Net.Window winSystemOrganizationAdd;
         
         /// <summary>
-        /// storeSystemUser control.
+        /// formPanelSystemOrganizationAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemUser;
+        protected global::Ext.Net.FormPanel formPanelSystemOrganizationAdd;
         
         /// <summary>
-        /// UCSystemUserAdd1 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserAdd UCSystemUserAdd1;
+        protected global::Ext.Net.TextField txtName;
         
         /// <summary>
-        /// UCSystemUserEdit1 control.
+        /// txtShortName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserEdit UCSystemUserEdit1;
+        protected global::Ext.Net.TextField txtShortName;
         
         /// <summary>
-        /// UCSystemUserChangePwd1 control.
+        /// txtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserChangePwd UCSystemUserChangePwd1;
+        protected global::Ext.Net.TextField txtCode;
         
         /// <summary>
-        /// viewPortMain control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
-        /// gridPanelSystemUser control.
+        /// txtLogoUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSystemUser;
+        protected global::Ext.Net.TextField txtLogoUrl;
         
         /// <summary>
-        /// tbTop control.
+        /// txtMasterName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.TextField txtMasterName;
         
         /// <summary>
-        /// btnAdd control.
+        /// chkIsMainOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.Checkbox chkIsMainOrganization;
         
         /// <summary>
-        /// btnRefresh control.
+        /// txtTelPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.TextField txtTelPhone;
         
         /// <summary>
-        /// GridView1 control.
+        /// txtFaxNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.TextField txtFaxNumber;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// txtWebSite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.TextField txtWebSite;
         
         /// <summary>
-        /// winAssignedRole control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winAssignedRole;
+        protected global::Ext.Net.TextField txtEmail;
         
         /// <summary>
-        /// winAssignedGroup control.
+        /// btnSavelSystemOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winAssignedGroup;
+        protected global::Ext.Net.Button btnSavelSystemOrganization;
         
         /// <summary>
-        /// winShowLoginLog control.
+        /// btnCancelSystemOrganization control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winShowLoginLog;
+        protected global::Ext.Net.Button btnCancelSystemOrganization;
     }
 }

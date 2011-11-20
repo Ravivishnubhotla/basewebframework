@@ -593,6 +593,7 @@
     <Compile Include="BaseFramework\Utility\NameListItem.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
+    <Compile Include="Bussiness\WrapperSetting.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />

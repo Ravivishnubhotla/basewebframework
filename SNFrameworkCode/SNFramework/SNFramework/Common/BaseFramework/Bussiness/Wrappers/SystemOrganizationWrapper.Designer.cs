@@ -224,15 +224,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ParentID
+		public SystemOrganizationWrapper ParentID
 		{
 			get
 			{
-				return entity.ParentID;
+				return SystemOrganizationWrapper.ConvertEntityToWrapper(entity.ParentID) ;
 			}
 			set
 			{
-				entity.ParentID = value;
+				entity.ParentID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>

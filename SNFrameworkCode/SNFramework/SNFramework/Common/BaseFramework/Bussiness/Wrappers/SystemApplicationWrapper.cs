@@ -94,6 +94,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 	    #endregion
 
+ 
+
+
 
 	    /// <summary>
         /// 通过配置文件加载系统应用（如果不存在，则创建。MemberShip使用）

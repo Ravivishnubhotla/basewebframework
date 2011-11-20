@@ -7,55 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
+namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage {
     
     
-    public partial class SystemUserListPage {
+    public partial class SystemLogViewList {
         
         /// <summary>
-        /// ResourceManagerProxy1 control.
+        /// ScriptManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
+        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
         
         /// <summary>
-        /// storeSystemUser control.
+        /// storeSystemLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSystemUser;
+        protected global::Ext.Net.Store storeSystemLog;
         
         /// <summary>
-        /// UCSystemUserAdd1 control.
+        /// UCSystemLogView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserAdd UCSystemUserAdd1;
-        
-        /// <summary>
-        /// UCSystemUserEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserEdit UCSystemUserEdit1;
-        
-        /// <summary>
-        /// UCSystemUserChangePwd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.UserManage.UCSystemUserChangePwd UCSystemUserChangePwd1;
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.LogManage.UCSystemLogView UCSystemLogView1;
         
         /// <summary>
         /// viewPortMain control.
@@ -67,13 +49,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// gridPanelSystemUser control.
+        /// gridPanelSystemLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSystemUser;
+        protected global::Ext.Net.GridPanel gridPanelSystemLog;
         
         /// <summary>
         /// tbTop control.
@@ -83,15 +65,6 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Toolbar tbTop;
-        
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
         /// btnRefresh control.
@@ -121,30 +94,21 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage {
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
         
         /// <summary>
-        /// winAssignedRole control.
+        /// RowSelectionModel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winAssignedRole;
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
         
         /// <summary>
-        /// winAssignedGroup control.
+        /// RowTip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winAssignedGroup;
-        
-        /// <summary>
-        /// winShowLoginLog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Window winShowLoginLog;
+        protected global::Ext.Net.ToolTip RowTip;
     }
 }

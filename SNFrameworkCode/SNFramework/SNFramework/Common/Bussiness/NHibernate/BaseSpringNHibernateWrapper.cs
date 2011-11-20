@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Entity;
@@ -62,16 +64,36 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         }
         #endregion
 
+        //public static void LogNewRecord(WrapperType obj, int createUserID, DateTime createTime)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         #region Static Common Data Operation
 
         protected static void Save(WrapperType obj, ServiceProxyType serviceProxy)
         {
             serviceProxy.Save(obj.entity);
+
+            if(IsAutoRecordLog())
+            {
+                int? createByUserID = GetCreateBy(obj);
+
+                DateTime? createAtTime = GetCreateAt(obj);
+
+                //LogNewRecord(obj, createByUserID.Value, createAtTime.Value);
+            }
+
         }
 
         protected static void Update(WrapperType obj, ServiceProxyType serviceProxy)
         {
             serviceProxy.Update(obj.entity);
+
+            if (IsAutoRecordLog())
+            {
+
+            }
         }
 
         protected static void SaveOrUpdate(WrapperType obj, ServiceProxyType serviceProxy)
@@ -132,6 +154,44 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 
 
         #endregion
+
+        public static bool IsAutoRecordLog()
+        {
+            return WrapperSetting.GetCurrent().CheckTypeIsAutoRecordLog(typeof (DomainType));
+        }
+
+        public static bool IsAutoVersion()
+        {
+            return WrapperSetting.GetCurrent().CheckTypeIsAutoVersion(typeof(DomainType));
+        }
+
+
+        protected static T GetEntityProperty<T>(DomainType obj,string propertyName ,ServiceProxyType serviceProxy)
+        {
+            if (serviceProxy.CheckEntityHasProperty(propertyName))
+            {
+                throw new Exception(string.Format("Missing '{0}' property", propertyName));
+            }
+
+            object propertyValue = serviceProxy.GetEntityPropertyValue(propertyName, obj);
+
+            if (!(propertyValue is T))
+            {
+                throw new Exception(string.Format("'{0}' property type error", propertyName));
+            }
+
+            return (T)propertyValue;
+        }
+
+        protected static int? GetCreateBy(WrapperType wrapper)
+        {
+            return (int?)(typeof(WrapperType).GetProperty("CreateBy").GetValue(wrapper.entity, null));
+        }
+
+        protected static DateTime? GetCreateAt(WrapperType wrapper)
+        {
+            return (DateTime?)(typeof(WrapperType).GetProperty("CreateAt").GetValue(wrapper.entity, null));
+        }
 
     }
 }

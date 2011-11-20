@@ -33,5 +33,9 @@ namespace Legendigital.Framework.Common.Bussiness.Interfaces
         List<DomainType> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumn, bool isDesc,
                                                    PageQueryParams pageQueryParams);
 
+        [OperationContract]
+        bool CheckEntityHasProperty(string propertyName);
+        [OperationContract]
+        object GetEntityPropertyValue(string propertyName,DomainType domain);
     }
 }

@@ -386,7 +386,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ORGANIZATIONID_PARENTID)]
-        public int? OrganizationID_ParentID
+        public SystemOrganizationWrapper OrganizationID_ParentID
         {
             get
             {

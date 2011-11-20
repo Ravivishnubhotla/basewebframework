@@ -1,0 +1,1 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemOrganizationEdit.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage.UCSystemOrganizationEdit" %>

@@ -23,7 +23,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_TYPE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_TYPE));		
 		public static readonly StringProperty PROPERTY_MASTERNAME = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_MASTERNAME));		
 		public static readonly BoolProperty PROPERTY_ISMAINORGANIZATION = new BoolProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_ISMAINORGANIZATION));		
-		public static readonly IntProperty PROPERTY_PARENTID = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_PARENTID));		
+		public static readonly EntityProperty<SystemOrganizationEntity> PROPERTY_PARENTID = new EntityProperty<SystemOrganizationEntity>(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_PARENTID));
 		public static readonly IntProperty PROPERTY_ADDRESSID = new IntProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_ADDRESSID));		
 		public static readonly StringProperty PROPERTY_TELPHONE = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_TELPHONE));		
 		public static readonly StringProperty PROPERTY_FAXNUMBER = new StringProperty(Property.ForName(SystemOrganizationEntity.PROPERTY_NAME_FAXNUMBER));		

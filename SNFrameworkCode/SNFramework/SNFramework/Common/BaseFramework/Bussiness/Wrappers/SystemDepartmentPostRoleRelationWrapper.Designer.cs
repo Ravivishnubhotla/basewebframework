@@ -43,6 +43,72 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             switch (columnName)
             {
+		        case "DepartmentID_DepartmentID":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTID;
+		        case "DepartmentID_ParentDepartmentID":
+					return PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID;
+		        case "DepartmentID_DepartmentNameCn":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN;
+		        case "DepartmentID_DepartmentNameEn":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN;
+		        case "DepartmentID_DepartmentDecription":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION;
+		        case "DepartmentID_DepartmentSortIndex":
+					return PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX;
+		        case "DepartmentID_OrganizationID":
+					return PROPERTY_DEPARTMENTID_ORGANIZATIONID;
+		        case "DepartmentID_CreateBy":
+					return PROPERTY_DEPARTMENTID_CREATEBY;
+		        case "DepartmentID_CreateAt":
+					return PROPERTY_DEPARTMENTID_CREATEAT;
+		        case "DepartmentID_LastModifyBy":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYBY;
+		        case "DepartmentID_LastModifyAt":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYAT;
+		        case "DepartmentID_LastModifyComment":
+					return PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT;
+		        case "PostID_Id":
+					return PROPERTY_POSTID_ID;
+		        case "PostID_Name":
+					return PROPERTY_POSTID_NAME;
+		        case "PostID_Code":
+					return PROPERTY_POSTID_CODE;
+		        case "PostID_Description":
+					return PROPERTY_POSTID_DESCRIPTION;
+		        case "PostID_OrganizationID":
+					return PROPERTY_POSTID_ORGANIZATIONID;
+		        case "PostID_CreateBy":
+					return PROPERTY_POSTID_CREATEBY;
+		        case "PostID_CreateAt":
+					return PROPERTY_POSTID_CREATEAT;
+		        case "PostID_LastModifyBy":
+					return PROPERTY_POSTID_LASTMODIFYBY;
+		        case "PostID_LastModifyAt":
+					return PROPERTY_POSTID_LASTMODIFYAT;
+		        case "PostID_LastModifyComment":
+					return PROPERTY_POSTID_LASTMODIFYCOMMENT;
+		        case "RoleID_RoleID":
+					return PROPERTY_ROLEID_ROLEID;
+		        case "RoleID_RoleName":
+					return PROPERTY_ROLEID_ROLENAME;
+		        case "RoleID_RoleCode":
+					return PROPERTY_ROLEID_ROLECODE;
+		        case "RoleID_RoleDescription":
+					return PROPERTY_ROLEID_ROLEDESCRIPTION;
+		        case "RoleID_RoleIsSystemRole":
+					return PROPERTY_ROLEID_ROLEISSYSTEMROLE;
+		        case "RoleID_RoleType":
+					return PROPERTY_ROLEID_ROLETYPE;
+		        case "RoleID_CreateBy":
+					return PROPERTY_ROLEID_CREATEBY;
+		        case "RoleID_CreateAt":
+					return PROPERTY_ROLEID_CREATEAT;
+		        case "RoleID_LastModifyBy":
+					return PROPERTY_ROLEID_LASTMODIFYBY;
+		        case "RoleID_LastModifyAt":
+					return PROPERTY_ROLEID_LASTMODIFYAT;
+		        case "RoleID_LastModifyComment":
+					return PROPERTY_ROLEID_LASTMODIFYCOMMENT;
               default:
                     return columnName;
             }
@@ -69,6 +135,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         #endregion
 	
  
+		#region departmentID字段外键查询字段
+        public const string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentID";
+		public const string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.ParentDepartmentID";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameCn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameEn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentDecription";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentSortIndex";
+		public const string PROPERTY_DEPARTMENTID_ORGANIZATIONID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID";
+		public const string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region postID字段外键查询字段
+        public const string PROPERTY_POSTID_ALIAS_NAME = "PostID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_POSTID_ID = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Id";
+		public const string PROPERTY_POSTID_NAME = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Name";
+		public const string PROPERTY_POSTID_CODE = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Code";
+		public const string PROPERTY_POSTID_DESCRIPTION = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Description";
+		public const string PROPERTY_POSTID_ORGANIZATIONID = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID";
+		public const string PROPERTY_POSTID_CREATEBY = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_POSTID_CREATEAT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_POSTID_LASTMODIFYBY = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_POSTID_LASTMODIFYAT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_POSTID_LASTMODIFYCOMMENT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region roleID字段外键查询字段
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -97,43 +205,43 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? DepartmentID
+		public SystemDepartmentWrapper DepartmentID
 		{
 			get
 			{
-				return entity.DepartmentID;
+				return SystemDepartmentWrapper.ConvertEntityToWrapper(entity.DepartmentID) ;
 			}
 			set
 			{
-				entity.DepartmentID = value;
+				entity.DepartmentID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? PostID
+		public SystemPostWrapper PostID
 		{
 			get
 			{
-				return entity.PostID;
+				return SystemPostWrapper.ConvertEntityToWrapper(entity.PostID) ;
 			}
 			set
 			{
-				entity.PostID = value;
+				entity.PostID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? RoleID
+		public SystemRoleWrapper RoleID
 		{
 			get
 			{
-				return entity.RoleID;
+				return SystemRoleWrapper.ConvertEntityToWrapper(entity.RoleID) ;
 			}
 			set
 			{
-				entity.RoleID = value;
+				entity.RoleID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -156,12 +264,381 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		#region Query Property
 		
 		
+		#region departmentID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTID)]
+        public int? DepartmentID_DepartmentID
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID)]
+        public SystemDepartmentWrapper DepartmentID_ParentDepartmentID
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.ParentDepartmentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN)]
+        public string DepartmentID_DepartmentNameCn
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentNameCn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN)]
+        public string DepartmentID_DepartmentNameEn
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentNameEn;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION)]
+        public string DepartmentID_DepartmentDecription
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentDecription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX)]
+        public int? DepartmentID_DepartmentSortIndex
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.DepartmentSortIndex;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_ORGANIZATIONID)]
+        public SystemOrganizationWrapper DepartmentID_OrganizationID
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.OrganizationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_CREATEBY)]
+        public int? DepartmentID_CreateBy
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_CREATEAT)]
+        public DateTime? DepartmentID_CreateAt
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYBY)]
+        public int? DepartmentID_LastModifyBy
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYAT)]
+        public DateTime? DepartmentID_LastModifyAt
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT)]
+        public string DepartmentID_LastModifyComment
+        {
+            get
+            {
+                if (this. DepartmentID == null)
+                    return null;
+                return  DepartmentID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region postID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_ID)]
+        public int? PostID_Id
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_NAME)]
+        public string PostID_Name
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_CODE)]
+        public string PostID_Code
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_DESCRIPTION)]
+        public string PostID_Description
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_ORGANIZATIONID)]
+        public SystemOrganizationWrapper PostID_OrganizationID
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.OrganizationID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_CREATEBY)]
+        public int? PostID_CreateBy
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_CREATEAT)]
+        public DateTime? PostID_CreateAt
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_LASTMODIFYBY)]
+        public int? PostID_LastModifyBy
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_LASTMODIFYAT)]
+        public DateTime? PostID_LastModifyAt
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_POSTID_LASTMODIFYCOMMENT)]
+        public string PostID_LastModifyComment
+        {
+            get
+            {
+                if (this. PostID == null)
+                    return null;
+                return  PostID.LastModifyComment;
+            }
+        }
+		#endregion
+		#region roleID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEID)]
+        public int? RoleID_RoleID
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLENAME)]
+        public string RoleID_RoleName
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleName;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLECODE)]
+        public string RoleID_RoleCode
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleCode;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEDESCRIPTION)]
+        public string RoleID_RoleDescription
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleDescription;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLEISSYSTEMROLE)]
+        public bool? RoleID_RoleIsSystemRole
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleIsSystemRole;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_ROLETYPE)]
+        public string RoleID_RoleType
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.RoleType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEBY)]
+        public int? RoleID_CreateBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_CREATEAT)]
+        public DateTime? RoleID_CreateAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYBY)]
+        public int? RoleID_LastModifyBy
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYAT)]
+        public DateTime? RoleID_LastModifyAt
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_ROLEID_LASTMODIFYCOMMENT)]
+        public string RoleID_LastModifyComment
+        {
+            get
+            {
+                if (this. RoleID == null)
+                    return null;
+                return  RoleID.LastModifyComment;
+            }
+        }
+		#endregion
       	
    
 		#endregion
 
 
         #region "FKQuery"
+		
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByOrderByAndFilterAndDepartmentID(string orderByColumnName, bool isDesc,   SystemDepartmentWrapper departmentID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndDepartmentID(orderByColumnName, isDesc,   departmentID.Entity, pageQueryParams));
+        }
+
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByDepartmentID(SystemDepartmentWrapper departmentID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByDepartmentID(departmentID.Entity));
+        }
+		
+		
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByOrderByAndFilterAndPostID(string orderByColumnName, bool isDesc,   SystemPostWrapper postID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndPostID(orderByColumnName, isDesc,   postID.Entity, pageQueryParams));
+        }
+
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByPostID(SystemPostWrapper postID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByPostID(postID.Entity));
+        }
+		
+		
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,   SystemRoleWrapper roleID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndRoleID(orderByColumnName, isDesc,   roleID.Entity, pageQueryParams));
+        }
+
+        public static List<SystemDepartmentPostRoleRelationWrapper> FindAllByRoleID(SystemRoleWrapper roleID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByRoleID(roleID.Entity));
+        }
+		
 
 
 

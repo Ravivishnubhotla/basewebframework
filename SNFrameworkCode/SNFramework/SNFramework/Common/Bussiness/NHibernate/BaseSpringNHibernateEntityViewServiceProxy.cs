@@ -119,6 +119,8 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             return selfDataObject.FindAllByOrderByAndFilter(filters, orderByColumn, isDesc, pageQueryParams);
         }
 
+
+
         public List<DomainType> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumn, bool isDesc)
         {
             return selfDataObject.FindAllByOrderByAndFilter(filters, orderByColumn, isDesc);
@@ -147,6 +149,17 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         protected virtual List<DomainType> FindAll(ICriterion[] criterias, Order[] sortItems, PageQueryParams pageQueryParams)
         {
             return selfDataObject.FindAll(criterias, sortItems, pageQueryParams);
+        }
+
+
+        public virtual bool CheckEntityHasProperty(string propertyName)
+        {
+            return selfDataObject.CheckEntityHasProperty(propertyName);
+        }
+
+        public virtual object GetEntityPropertyValue(string propertyName, DomainType domain)
+        {
+            return selfDataObject.GetEntityPropertyValue(propertyName, domain);
         }
     }
 }

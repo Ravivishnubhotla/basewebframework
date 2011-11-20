@@ -13,6 +13,7 @@ using NHibernate;
 using NHibernate.Collection;
 using NHibernate.Criterion;
 using NHibernate.Exceptions;
+using NHibernate.Metadata;
 using NHibernate.Proxy;
 using Spring.Data.NHibernate.Generic.Support;
 
@@ -873,15 +874,34 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         #endregion
 
-        //public DomainType FindSingleEntityByProperty(string propertyName, object propertyValue)
-        //{
-        //    var query = this.
-        //}
+
+        public virtual IClassMetadata GetClassMetadata()
+        {
+            try
+            {
+                return HibernateTemplate.SessionFactory.GetClassMetadata(typeof(DomainType));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("GetClassMetadata Failed:", ex);
+                throw new DataException("Could not perform GetClassMetadata for " + typeof(DomainType).Name, ex);
+            }
+        }
+
+        public bool CheckEntityHasProperty(string propertyName)
+        {
+            IClassMetadata classMetadata = GetClassMetadata();
+
+            return (classMetadata.GetPropertyType(propertyName) != null);
+        }
+
+        public object GetEntityPropertyValue(string propertyName,DomainType domain)
+        {
+            IClassMetadata classMetadata = GetClassMetadata();
+
+            return (classMetadata.GetPropertyValue(domain, propertyName,EntityMode.Poco));
+        }
 
 
-        //public List<DomainType> FindListEntityByProperty(string propertyName, object propertyValue)
-        //{
-
-        //}
     }
 }

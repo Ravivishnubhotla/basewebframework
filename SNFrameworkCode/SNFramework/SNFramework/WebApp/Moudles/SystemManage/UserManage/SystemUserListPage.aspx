@@ -6,6 +6,9 @@
 <%@ Register Src="UCSystemUserChangePwd.ascx" TagName="UCSystemUserChangePwd" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSystemUser}.reload();"></DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
         var rooturl = '<%=this.ResolveUrl("~/")%>';
@@ -15,16 +18,16 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
-        
-        
+
+
         var FormatLocked = function(value) {
             if (value)
                 return '<%= this.GetLocalResourceObject("msgLocked") %>';
             else
                 return '<%= this.GetLocalResourceObject("msgNormal") %>';
-        }
+        };
 
  
 
@@ -143,6 +146,21 @@
               win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserAssignedGroup") %>",id.data.UserName));
               win.show();     
             }
+
+
+                                 if (cmd == "cmdShowLoginLog") 
+            {
+                                     
+ 
+                 var win = <%= winShowLoginLog.ClientID %>;
+              win.autoLoad.params.ParentID = id.id;
+              win.setTitle(String.format("<%= this.GetLocalResourceObject("msgUserAssignedGroup") %>",id.data.UserName));
+              win.show();     
+            }   
+            
+            
+            
+            
         }
 
 
@@ -283,6 +301,8 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="Group" CommandName="cmdApplyGroup" Text="<%$ Resources:msgAssignedGroup %>">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Script" CommandName="cmdShowLoginLog" Text="<%$ Resources:msgAssignedGroup %>">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
@@ -324,6 +344,24 @@
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="UserID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winShowLoginLog" runat="server" Title="Window" Frame="true" Width="600"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="../LogManage/SystemLogViewList.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="LogType" Mode="Value" Value="系统安全日志">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentType" Mode="Value" Value="SystemUserWrapper">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentID" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
         </AutoLoad>

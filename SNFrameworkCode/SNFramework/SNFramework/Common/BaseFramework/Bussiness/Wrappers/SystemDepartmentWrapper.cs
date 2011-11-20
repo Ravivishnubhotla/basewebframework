@@ -101,7 +101,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #endregion
 
-
         public static List<TypedTreeNodeItem<SystemDepartmentWrapper>> GetAllDepartment()
         {
             List<TypedTreeNodeItem<SystemDepartmentWrapper>> nodes = new List<TypedTreeNodeItem<SystemDepartmentWrapper>>();
