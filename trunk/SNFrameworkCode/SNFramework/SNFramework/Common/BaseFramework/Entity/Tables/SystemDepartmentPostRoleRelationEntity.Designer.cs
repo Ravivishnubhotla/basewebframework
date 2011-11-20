@@ -24,6 +24,48 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
         #endregion
 	
  
+		#region departmentID字段外键查询字段
+        public const string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentID";
+		public const string PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.ParentDepartmentID";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameCn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameEn";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentDecription";
+		public const string PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentSortIndex";
+		public const string PROPERTY_DEPARTMENTID_ORGANIZATIONID = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID";
+		public const string PROPERTY_DEPARTMENTID_CREATEBY = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_DEPARTMENTID_CREATEAT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYBY = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYAT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region postID字段外键查询字段
+        public const string PROPERTY_POSTID_ALIAS_NAME = "PostID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_POSTID_ID = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Id";
+		public const string PROPERTY_POSTID_NAME = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Name";
+		public const string PROPERTY_POSTID_CODE = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Code";
+		public const string PROPERTY_POSTID_DESCRIPTION = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Description";
+		public const string PROPERTY_POSTID_ORGANIZATIONID = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID";
+		public const string PROPERTY_POSTID_CREATEBY = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_POSTID_CREATEAT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_POSTID_LASTMODIFYBY = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_POSTID_LASTMODIFYAT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_POSTID_LASTMODIFYCOMMENT = "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region roleID字段外键查询字段
+        public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public const string PROPERTY_ROLEID_ROLEID = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleID";
+		public const string PROPERTY_ROLEID_ROLENAME = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleName";
+		public const string PROPERTY_ROLEID_ROLECODE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleCode";
+		public const string PROPERTY_ROLEID_ROLEDESCRIPTION = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleDescription";
+		public const string PROPERTY_ROLEID_ROLEISSYSTEMROLE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleIsSystemRole";
+		public const string PROPERTY_ROLEID_ROLETYPE = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleType";
+		public const string PROPERTY_ROLEID_CREATEBY = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy";
+		public const string PROPERTY_ROLEID_CREATEAT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYBY = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy";
+		public const string PROPERTY_ROLEID_LASTMODIFYAT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt";
+		public const string PROPERTY_ROLEID_LASTMODIFYCOMMENT = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -38,9 +80,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
  
 		
 		private int _id;
-		private int? _departmentID;
-		private int? _postID;
-		private int? _roleID;
+		private SystemDepartmentEntity _departmentID;
+		private SystemPostEntity _postID;
+		private SystemRoleEntity _roleID;
 		private string _description;
 		
 		#endregion
@@ -63,7 +105,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemDepartmentPostRoleRelationEntity( int id, int? departmentID, int? postID, int? roleID, string description)
+		public SystemDepartmentPostRoleRelationEntity( int id, SystemDepartmentEntity departmentID, SystemPostEntity postID, SystemRoleEntity roleID, string description)
 		{
 			_id = id;
 			_departmentID = departmentID;
@@ -93,7 +135,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? DepartmentID
+		public virtual SystemDepartmentEntity DepartmentID
 		{
 			get { return _departmentID; }
 
@@ -107,7 +149,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? PostID
+		public virtual SystemPostEntity PostID
 		{
 			get { return _postID; }
 
@@ -121,7 +163,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? RoleID
+		public virtual SystemRoleEntity RoleID
 		{
 			get { return _roleID; }
 

@@ -28,7 +28,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual void Save(DomainType instance)
         {
             try
-            { 
+            {
                 HibernateTemplate.SessionFactory.GetCurrentSession().Save(instance);
             }
             catch (Exception ex)

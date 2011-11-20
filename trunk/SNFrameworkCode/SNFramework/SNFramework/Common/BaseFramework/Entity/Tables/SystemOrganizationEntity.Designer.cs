@@ -61,7 +61,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private string _type;
 		private string _masterName;
 		private bool? _isMainOrganization;
-		private int? _parentID;
+		private SystemOrganizationEntity _parentID;
 		private int? _addressID;
 		private string _telPhone;
 		private string _faxNumber;
@@ -108,7 +108,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemOrganizationEntity( int id, string name, string shortName, string code, string description, string logoUrl, string type, string masterName, bool? isMainOrganization, int? parentID, int? addressID, string telPhone, string faxNumber, string webSite, string email, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemOrganizationEntity( int id, string name, string shortName, string code, string description, string logoUrl, string type, string masterName, bool? isMainOrganization, SystemOrganizationEntity parentID, int? addressID, string telPhone, string faxNumber, string webSite, string email, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -286,7 +286,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? ParentID
+		public virtual SystemOrganizationEntity ParentID
 		{
 			get { return _parentID; }
 

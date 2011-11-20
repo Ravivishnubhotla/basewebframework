@@ -19,7 +19,7 @@
 		<property column="Type" type="string" name="Type"   length="100" />	
 		<property column="MasterName" type="string" name="MasterName"   length="100" />	
 		<property column="IsMainOrganization" type="Boolean" name="IsMainOrganization"   />	
-		<property column="ParentID" type="int" name="ParentID"   />	
+		<many-to-one column="ParentID" name="ParentID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemOrganizationEntity,Legendigital.Framework.Common" />		
 		<property column="AddressID" type="int" name="AddressID"   />	
 		<property column="TelPhone" type="string" name="TelPhone"   length="60" />	
 		<property column="FaxNumber" type="string" name="FaxNumber"   length="60" />	

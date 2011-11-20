@@ -18,6 +18,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     public interface ISystemDepartmentPostRoleRelationServiceProxyDesigner
     {
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndDepartmentID(string orderByColumnName, bool isDesc,   SystemDepartmentEntity _departmentID, PageQueryParams pageQueryParams);
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByDepartmentID(SystemDepartmentEntity _departmentID);
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndPostID(string orderByColumnName, bool isDesc,   SystemPostEntity _postID, PageQueryParams pageQueryParams);
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByPostID(SystemPostEntity _postID);
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,   SystemRoleEntity _roleID, PageQueryParams pageQueryParams);
+		List<SystemDepartmentPostRoleRelationEntity> FindAllByRoleID(SystemRoleEntity _roleID);
     }
 
     public partial class SystemDepartmentPostRoleRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemDepartmentPostRoleRelationEntity>
@@ -34,6 +40,36 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             {
                 return (SystemDepartmentPostRoleRelationDataObject)selfDataObject;
             }
+        }
+	
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndDepartmentID(string orderByColumnName, bool isDesc,  SystemDepartmentEntity _departmentID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_DepartmentID_SystemDepartmentEntity(orderByColumnName, isDesc,_departmentID, pageQueryParams);
+        }
+		
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByDepartmentID(SystemDepartmentEntity _departmentID)
+        {
+			return this.SelfDataObj.GetList_By_DepartmentID_SystemDepartmentEntity(_departmentID);
+        }
+	
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndPostID(string orderByColumnName, bool isDesc,  SystemPostEntity _postID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_PostID_SystemPostEntity(orderByColumnName, isDesc,_postID, pageQueryParams);
+        }
+		
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByPostID(SystemPostEntity _postID)
+        {
+			return this.SelfDataObj.GetList_By_PostID_SystemPostEntity(_postID);
+        }
+	
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByOrderByAndFilterAndRoleID(string orderByColumnName, bool isDesc,  SystemRoleEntity _roleID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_RoleID_SystemRoleEntity(orderByColumnName, isDesc,_roleID, pageQueryParams);
+        }
+		
+		public List<SystemDepartmentPostRoleRelationEntity> FindAllByRoleID(SystemRoleEntity _roleID)
+        {
+			return this.SelfDataObj.GetList_By_RoleID_SystemRoleEntity(_roleID);
         }
 
 

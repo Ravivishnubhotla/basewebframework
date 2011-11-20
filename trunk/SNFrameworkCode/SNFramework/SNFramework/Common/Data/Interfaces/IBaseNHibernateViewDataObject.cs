@@ -89,5 +89,9 @@ namespace Legendigital.Framework.Common.Data.Interfaces
 
         string[] PkPropertyName { get;}
         List<DomainType> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumn, bool isDesc);
+ 
+        bool CheckEntityHasProperty(string propertyName);
+
+        object GetEntityPropertyValue(string propertyName, DomainType domain);
     }
 }

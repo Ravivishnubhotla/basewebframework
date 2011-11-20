@@ -34,7 +34,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_ORGANIZATIONID_TYPE = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".Type"));
 		public static readonly StringProperty PROPERTY_ORGANIZATIONID_MASTERNAME = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".MasterName"));
 		public static readonly BoolProperty PROPERTY_ORGANIZATIONID_ISMAINORGANIZATION = new BoolProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".IsMainOrganization"));
-		public static readonly IntProperty PROPERTY_ORGANIZATIONID_PARENTID = new IntProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".ParentID"));
+		public static readonly EntityProperty<SystemOrganizationEntity> PROPERTY_ORGANIZATIONID_PARENTID = new EntityProperty<SystemOrganizationEntity>(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".ParentID"));
 		public static readonly IntProperty PROPERTY_ORGANIZATIONID_ADDRESSID = new IntProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".AddressID"));
 		public static readonly StringProperty PROPERTY_ORGANIZATIONID_TELPHONE = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".TelPhone"));
 		public static readonly StringProperty PROPERTY_ORGANIZATIONID_FAXNUMBER = new StringProperty(Property.ForName(PROPERTY_ORGANIZATIONID_ALIAS_NAME + ".FaxNumber"));

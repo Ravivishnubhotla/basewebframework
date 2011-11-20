@@ -60,7 +60,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = string.Format(GetGlobalResourceObject("GlobalResource", "msgShowError").ToString(), ex.Message);
+                ResourceManager.AjaxErrorMessage = string.Format(GetGlobalResourceObject("GlobalResource", "msgServerErrorMsg").ToString(), ex.Message);
                 return;
             }
         }

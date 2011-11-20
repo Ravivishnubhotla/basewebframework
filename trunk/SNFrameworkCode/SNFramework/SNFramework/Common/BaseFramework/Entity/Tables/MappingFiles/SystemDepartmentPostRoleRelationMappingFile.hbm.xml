@@ -11,9 +11,9 @@
 </id>
 
 
-		<property column="DepartmentID" type="int" name="DepartmentID"   />	
-		<property column="PostID" type="int" name="PostID"   />	
-		<property column="RoleID" type="int" name="RoleID"   />	
+		<many-to-one column="DepartmentID" name="DepartmentID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemDepartmentEntity,Legendigital.Framework.Common" />		
+		<many-to-one column="PostID" name="PostID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPostEntity,Legendigital.Framework.Common" />		
+		<many-to-one column="RoleID" name="RoleID" class="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemRoleEntity,Legendigital.Framework.Common" />		
 		<property column="Description" type="string" name="Description"   length="4000" />	
 
 

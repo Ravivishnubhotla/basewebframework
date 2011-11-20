@@ -37,6 +37,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.SystemApplicationAndMe
                     //hidSystemApplicationID.Text = id.ToString();
 
 
+
+
                     winSystemApplicationEdit.Show();
 
                 }

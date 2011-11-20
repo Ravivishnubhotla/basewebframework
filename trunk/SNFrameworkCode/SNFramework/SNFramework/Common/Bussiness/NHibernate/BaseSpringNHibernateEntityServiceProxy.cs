@@ -161,6 +161,15 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         {
             return selfDataObject.FindAll(criterias, sortItems, pageQueryParams);
         }
- 
+        public virtual bool CheckEntityHasProperty(string propertyName)
+        {
+            return selfDataObject.CheckEntityHasProperty(propertyName);
+        }
+
+        public virtual object GetEntityPropertyValue(string propertyName, DomainType domain)
+        {
+            return selfDataObject.GetEntityPropertyValue(propertyName, domain);
+        }
+
     }
 }

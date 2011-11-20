@@ -219,7 +219,9 @@
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.en-US.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.xml" />
@@ -296,7 +298,16 @@
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationEdit.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationAdd.ascx" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationEdit.ascx" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.xml" />
     <Content Include="Moudles\SystemManage\PermissionManage\App_LocalResources\SystemResourcesAndPriviliege.aspx.zh-CHS.xml" />
@@ -982,6 +993,13 @@
     <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
       <DependentUpon>SystemLogListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx.cs">
+      <DependentUpon>SystemLogViewList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx.designer.cs">
+      <DependentUpon>SystemLogViewList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.cs">
       <DependentUpon>UCSystemLogView.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1016,6 +1034,20 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx.designer.cs">
       <DependentUpon>SystemOrginationDepartmentManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationAdd.ascx.cs">
+      <DependentUpon>UCSystemOrganizationAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemOrganizationAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationEdit.ascx.cs">
+      <DependentUpon>UCSystemOrganizationEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemOrganizationEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\PermissionManage\SystemPrivilegeListPage.aspx.cs">
       <DependentUpon>SystemPrivilegeListPage.aspx</DependentUpon>

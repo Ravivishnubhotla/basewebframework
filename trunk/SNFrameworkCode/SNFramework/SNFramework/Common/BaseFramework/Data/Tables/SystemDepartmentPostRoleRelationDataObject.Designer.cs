@@ -15,9 +15,63 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_ID));		
-		public static readonly IntProperty PROPERTY_DEPARTMENTID = new IntProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DEPARTMENTID));		
-		public static readonly IntProperty PROPERTY_POSTID = new IntProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_POSTID));		
-		public static readonly IntProperty PROPERTY_ROLEID = new IntProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_ROLEID));		
+		public static readonly EntityProperty<SystemDepartmentEntity> PROPERTY_DEPARTMENTID = new EntityProperty<SystemDepartmentEntity>(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DEPARTMENTID));
+		#region departmentID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> InClude_DepartmentID_Query(NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DEPARTMENTID, PROPERTY_DEPARTMENTID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_DEPARTMENTID_ALIAS_NAME = "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_DEPARTMENTID = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentID"));
+		public static readonly EntityProperty<SystemDepartmentEntity> PROPERTY_DEPARTMENTID_PARENTDEPARTMENTID = new EntityProperty<SystemDepartmentEntity>(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".ParentDepartmentID"));
+		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTNAMECN = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameCn"));
+		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTNAMEEN = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentNameEn"));
+		public static readonly StringProperty PROPERTY_DEPARTMENTID_DEPARTMENTDECRIPTION = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentDecription"));
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_DEPARTMENTSORTINDEX = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".DepartmentSortIndex"));
+		public static readonly EntityProperty<SystemOrganizationEntity> PROPERTY_DEPARTMENTID_ORGANIZATIONID = new EntityProperty<SystemOrganizationEntity>(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".OrganizationID"));
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_DEPARTMENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_DEPARTMENTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_DEPARTMENTID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_DEPARTMENTID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
+		public static readonly EntityProperty<SystemPostEntity> PROPERTY_POSTID = new EntityProperty<SystemPostEntity>(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_POSTID));
+		#region postID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> InClude_PostID_Query(NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_POSTID, PROPERTY_POSTID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_POSTID_ALIAS_NAME = "PostID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public static readonly IntProperty PROPERTY_POSTID_ID = new IntProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".Id"));
+		public static readonly StringProperty PROPERTY_POSTID_NAME = new StringProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_POSTID_CODE = new StringProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_POSTID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".Description"));
+		public static readonly EntityProperty<SystemOrganizationEntity> PROPERTY_POSTID_ORGANIZATIONID = new EntityProperty<SystemOrganizationEntity>(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".OrganizationID"));
+		public static readonly IntProperty PROPERTY_POSTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_POSTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_POSTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_POSTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_POSTID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_POSTID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
+		public static readonly EntityProperty<SystemRoleEntity> PROPERTY_ROLEID = new EntityProperty<SystemRoleEntity>(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_ROLEID));
+		#region roleID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> InClude_RoleID_Query(NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_ROLEID, PROPERTY_ROLEID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemDepartmentPostRoleRelationEntity_Alias";
+		public static readonly IntProperty PROPERTY_ROLEID_ROLEID = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleID"));
+		public static readonly StringProperty PROPERTY_ROLEID_ROLENAME = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleName"));
+		public static readonly StringProperty PROPERTY_ROLEID_ROLECODE = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleCode"));
+		public static readonly StringProperty PROPERTY_ROLEID_ROLEDESCRIPTION = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleDescription"));
+		public static readonly BoolProperty PROPERTY_ROLEID_ROLEISSYSTEMROLE = new BoolProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleIsSystemRole"));
+		public static readonly StringProperty PROPERTY_ROLEID_ROLETYPE = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".RoleType"));
+		public static readonly IntProperty PROPERTY_ROLEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_ROLEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_ROLEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_ROLEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DESCRIPTION));		
       
 		#region 子类集合字段查询字段
@@ -54,6 +108,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias":
+                    queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DEPARTMENTID, PROPERTY_DEPARTMENTID_ALIAS_NAME);
+                    break;
+	            case "PostID_SystemDepartmentPostRoleRelationEntity_Alias":
+                    queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_POSTID, PROPERTY_POSTID_ALIAS_NAME);
+                    break;
+	            case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias":
+                    queryGenerator.AddAlians(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_ROLEID, PROPERTY_ROLEID_ALIAS_NAME);
+                    break;
                 default:
                     break;
  
@@ -61,6 +124,69 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         }
 		
 		
+		
+		public List<SystemDepartmentPostRoleRelationEntity> GetList_By_DepartmentID_SystemDepartmentEntity(SystemDepartmentEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_DEPARTMENTID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemDepartmentPostRoleRelationEntity> GetPageList_By_DepartmentID_SystemDepartmentEntity(string orderByColumnName, bool isDesc, SystemDepartmentEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_DEPARTMENTID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
+		
+		public List<SystemDepartmentPostRoleRelationEntity> GetList_By_PostID_SystemPostEntity(SystemPostEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_POSTID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemDepartmentPostRoleRelationEntity> GetPageList_By_PostID_SystemPostEntity(string orderByColumnName, bool isDesc, SystemPostEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_POSTID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
+		
+		public List<SystemDepartmentPostRoleRelationEntity> GetList_By_RoleID_SystemRoleEntity(SystemRoleEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SystemDepartmentPostRoleRelationEntity> GetPageList_By_RoleID_SystemRoleEntity(string orderByColumnName, bool isDesc, SystemRoleEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		

@@ -45,6 +45,10 @@ namespace Legendigital.Framework.Common.Utility
                 {
                     ip = request.UserHostAddress;
                 }
+                if(ip=="::1")
+                {
+                    ip = "127.1.1.1";
+                }
             }
             catch (Exception ex)
             {
