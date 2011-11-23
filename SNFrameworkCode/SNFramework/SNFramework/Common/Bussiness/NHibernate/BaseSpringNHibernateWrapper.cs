@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
     {
         #region Member
 
-        protected DomainType entity;
+        protected internal DomainType entity;
 
         private static ILog _logger = null;
 
@@ -78,47 +78,13 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         protected static void Save(WrapperType obj, ServiceProxyType serviceProxy)
         {
             serviceProxy.Save(obj.entity);
-
-            if(IsAutoRecordLog())
-            {
-                int? createByUserID = GetCreateBy(obj);
-
-                DateTime? createAtTime = GetCreateAt(obj);
-
-                string lastModifyComment  = GetLastModifyComment(obj);
-
-                LogNewRecord(obj, createByUserID.Value, createAtTime.Value, lastModifyComment, obj.entity.GetDataEntityKey());
-            }
-
         }
 
-        private static void LogNewRecord(WrapperType wrapperType, int userID, DateTime dateTime,string opComment,object id)
-        {
-            try
-            {
-                if(userID==0)
-                {
-                    SystemLogWrapper.LogUserOperationAction(opComment, HttpUtil.GetIP(HttpContext.Current.Request), dateTime, typeof(WrapperType).Name, (int)id);
-                }
-                else
-                {
-                    SystemLogWrapper.LogUserOperationAction(SystemUserWrapper.FindById(userID), opComment, HttpUtil.GetIP(HttpContext.Current.Request), dateTime, typeof(WrapperType).Name, (int)id);          
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex);
-            }
-        }
+
 
         protected static void Update(WrapperType obj, ServiceProxyType serviceProxy)
         {
             serviceProxy.Update(obj.entity);
-
-            if (IsAutoRecordLog())
-            {
-
-            }
         }
 
         protected static void SaveOrUpdate(WrapperType obj, ServiceProxyType serviceProxy)
@@ -180,15 +146,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 
         #endregion
 
-        public static bool IsAutoRecordLog()
-        {
-            return WrapperSetting.GetCurrent().CheckTypeIsAutoRecordLog(typeof (DomainType));
-        }
-
-        public static bool IsAutoVersion()
-        {
-            return WrapperSetting.GetCurrent().CheckTypeIsAutoVersion(typeof(DomainType));
-        }
+ 
 
 
         protected static T GetEntityProperty<T>(DomainType obj,string propertyName ,ServiceProxyType serviceProxy)
@@ -208,20 +166,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             return (T)propertyValue;
         }
 
-        protected static int? GetCreateBy(WrapperType wrapper)
-        {
-            return (int?)(typeof(WrapperType).GetProperty("CreateBy").GetValue(wrapper.entity, null));
-        }
 
-        protected static DateTime? GetCreateAt(WrapperType wrapper)
-        {
-            return (DateTime?)(typeof(WrapperType).GetProperty("CreateAt").GetValue(wrapper.entity, null));
-        }
-
-        protected static string GetLastModifyComment(WrapperType wrapper)
-        {
-            return (string)(typeof(WrapperType).GetProperty("LastModifyComment").GetValue(wrapper.entity, null));
-        }
 
         
     }
