@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Web.UI;
 
@@ -28,9 +29,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.RoleManage
         [DirectMethod]
         public string GetTreeNodes()
         {
-            List<TypedTreeNodeItem<SystemResourcesWrapper>> nodes = SystemResourcesWrapper.GetAllTreeNodesItems();
+            List<TypedTreeNodeItem<ITreeItemWrapper>> nodes = new SystemResourcesWrapper().GetAllTreeItems();
 
-            return WebUIHelper.BuildTree<SystemResourcesWrapper>(nodes, "All Resources", Icon.Bricks).ToJson();
+            return WebUIHelper.BuildTree<ITreeItemWrapper>(nodes, "All Resources", Icon.Bricks).ToJson();
         }
 
         protected void Page_Load(object sender, EventArgs e)

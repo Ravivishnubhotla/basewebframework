@@ -16,7 +16,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
  
 
     [Serializable]
-    public partial class SystemResourcesWrapper : TreeItemWrapper<SystemResourcesEntity, ISystemResourcesServiceProxy, SystemResourcesWrapper>
+    public partial class SystemResourcesWrapper : BaseSpringNHibernateWrapper<SystemResourcesEntity, ISystemResourcesServiceProxy, SystemResourcesWrapper>, ITreeItemWrapper
 	{
         #region Static Common Data Operation
 
@@ -107,38 +107,47 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
 
-        public override List<SystemResourcesWrapper> FindAllItems()
+        public List<ITreeItemWrapper> FindAllItems()
         {
-            return SystemResourcesWrapper.FindAll();
+            List<ITreeItemWrapper> treeItems = new List<ITreeItemWrapper>();
+
+            List<SystemResourcesWrapper> organizationWrappers = FindAll();
+
+            foreach (SystemResourcesWrapper organization in organizationWrappers)
+            {
+                treeItems.Add(organization);
+            }
+
+            return treeItems;
         }
 
-        protected override bool CheckIsRoot(SystemResourcesWrapper obj)
+        public ITreeItemWrapper ParentDataItemID
         {
-            if (obj == null)
-                return false;
-            return (obj.ParentResourcesID == null);
+            get { return this.ParentResourcesID; }
         }
 
-        protected override TypedTreeNodeItem<SystemResourcesWrapper> GetTreeNodeItemByDataItem(SystemResourcesWrapper item, TypedTreeNodeItem<SystemResourcesWrapper> parentNode)
+ 
+
+        public string Name
         {
-            TypedTreeNodeItem<SystemResourcesWrapper> node = new TypedTreeNodeItem<SystemResourcesWrapper>();
-            node.Id = item.ResourcesID.ToString();
-            node.Name = item.ResourcesNameCn;
-            node.Code = item.ResourcesNameEn;
-            node.DataItem = item.ParentResourcesID;
-            node.ParentNode = parentNode;
-            return node;
+            get { return this.ResourcesNameCn; }
         }
 
-        public static List<TypedTreeNodeItem<SystemResourcesWrapper>> GetAllTreeNodesItems()
+        public string Code
         {
-            return new SystemResourcesWrapper().GetAllTreeItems();
+            get { return this.ResourcesNameEn; }
         }
 
-        protected override bool CheckGetSubItems(SystemResourcesWrapper subitem, SystemResourcesWrapper mainItem)
+        public object DataKeyId
         {
-            return (subitem.ParentResourcesID != null) && (subitem.ParentResourcesID.ResourcesID == mainItem.ResourcesID);
+            get { return this.ResourcesID; }
         }
+
+ 
+
+ 
+
+ 
 
 	}
 

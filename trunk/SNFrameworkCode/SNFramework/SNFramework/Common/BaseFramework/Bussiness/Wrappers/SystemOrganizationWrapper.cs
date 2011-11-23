@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Web.UI;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers 
 {
 	[Serializable]
-    public partial class SystemOrganizationWrapper : TreeItemWrapper<SystemOrganizationEntity, ISystemOrganizationServiceProxy, SystemOrganizationWrapper>
+    public partial class SystemOrganizationWrapper : BaseSpringNHibernateWrapper<SystemOrganizationEntity, ISystemOrganizationServiceProxy, SystemOrganizationWrapper>, ITreeItemWrapper
     { 
         #region Static Common Data Operation
 		
@@ -107,32 +107,30 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
-	    public override List<SystemOrganizationWrapper> FindAllItems()
+        public List<ITreeItemWrapper> FindAllItems()
 	    {
-	        return FindAll();
+            List<ITreeItemWrapper> treeItems = new List<ITreeItemWrapper>();
+
+            List<SystemOrganizationWrapper> organizationWrappers = FindAll();
+
+            foreach (SystemOrganizationWrapper organization in organizationWrappers)
+            {
+                treeItems.Add(organization);
+            }
+
+            return treeItems;
 	    }
 
-	    protected override bool CheckIsRoot(SystemOrganizationWrapper obj)
+	    public ITreeItemWrapper ParentDataItemID
 	    {
-            if (obj == null)
-                return false;
-            return (obj.ParentID == null);
+            get { return this.ParentID; }
 	    }
 
-	    protected override TypedTreeNodeItem<SystemOrganizationWrapper> GetTreeNodeItemByDataItem(SystemOrganizationWrapper item, TypedTreeNodeItem<SystemOrganizationWrapper> pnode)
+	    public object DataKeyId
 	    {
-            TypedTreeNodeItem<SystemOrganizationWrapper> node = new TypedTreeNodeItem<SystemOrganizationWrapper>();
-            node.Id = item.Id.ToString();
-            node.Name = item.Name;
-            node.Code = item.Code;
-            node.DataItem = item.ParentID;
-            node.ParentNode = pnode;
-            return node;
+            get { return this.Id; }
 	    }
 
-	    protected override bool CheckGetSubItems(SystemOrganizationWrapper subitem, SystemOrganizationWrapper mainItem)
-	    {
-            return (subitem.ParentID != null) && (subitem.ParentID.Id == mainItem.Id);
-	    }
+ 
     }
 }
