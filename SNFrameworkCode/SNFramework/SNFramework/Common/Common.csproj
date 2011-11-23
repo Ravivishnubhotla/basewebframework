@@ -163,8 +163,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapperExtension.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
-    <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.Designer.cs">
       <DependentUpon>SystemAddressServiceProxy.cs</DependentUpon>
