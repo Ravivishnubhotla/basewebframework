@@ -762,6 +762,8 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 			
 		#endregion
 
+ 
+
     }
 }
 <%	    output.saveEnc(config.GenerateBussinessEncapsulationClassFilePath(table),"d","uft8");
