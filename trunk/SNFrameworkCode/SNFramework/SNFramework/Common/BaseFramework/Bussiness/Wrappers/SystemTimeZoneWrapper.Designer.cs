@@ -62,10 +62,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTimeZoneEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
-		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_OFFSET = "OffSet";
-		public static readonly string PROPERTY_NAME_DST = "Dst";
+		public static readonly string PROPERTY_NAME_NAMECN = "NameCn";
+		public static readonly string PROPERTY_NAME_DISPLAYNAME = "DisplayName";
+		public static readonly string PROPERTY_NAME_DISPLAYNAMECN = "DisplayNameCn";
+		public static readonly string PROPERTY_NAME_STANDARDNAME = "StandardName";
+		public static readonly string PROPERTY_NAME_STANDARDNAMECN = "StandardNameCn";
+		public static readonly string PROPERTY_NAME_DAYLIGHTNAME = "DaylightName";
+		public static readonly string PROPERTY_NAME_UTCOFFSET = "UTCOffset";
+		public static readonly string PROPERTY_NAME_SUPPORTDST = "SupportDST";
+		public static readonly string PROPERTY_NAME_DAYLIGHTDELTA = "DaylightDelta";
 		
         #endregion
 	
@@ -112,57 +117,127 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string Code
+		public string NameCn
 		{
 			get
 			{
-				return entity.Code;
+				return entity.NameCn;
 			}
 			set
 			{
-				entity.Code = value;
+				entity.NameCn = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string Description
+		public string DisplayName
 		{
 			get
 			{
-				return entity.Description;
+				return entity.DisplayName;
 			}
 			set
 			{
-				entity.Description = value;
+				entity.DisplayName = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string OffSet
+		public string DisplayNameCn
 		{
 			get
 			{
-				return entity.OffSet;
+				return entity.DisplayNameCn;
 			}
 			set
 			{
-				entity.OffSet = value;
+				entity.DisplayNameCn = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? Dst
+		public string StandardName
 		{
 			get
 			{
-				return entity.Dst;
+				return entity.StandardName;
 			}
 			set
 			{
-				entity.Dst = value;
+				entity.StandardName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string StandardNameCn
+		{
+			get
+			{
+				return entity.StandardNameCn;
+			}
+			set
+			{
+				entity.StandardNameCn = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DaylightName
+		{
+			get
+			{
+				return entity.DaylightName;
+			}
+			set
+			{
+				entity.DaylightName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int UTCOffset
+		{
+			get
+			{
+				return entity.UTCOffset;
+			}
+			set
+			{
+				entity.UTCOffset = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool SupportDST
+		{
+			get
+			{
+				return entity.SupportDST;
+			}
+			set
+			{
+				entity.SupportDST = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DaylightDelta
+		{
+			get
+			{
+				return entity.DaylightDelta;
+			}
+			set
+			{
+				entity.DaylightDelta = value;
 			}
 		}
 		#endregion 

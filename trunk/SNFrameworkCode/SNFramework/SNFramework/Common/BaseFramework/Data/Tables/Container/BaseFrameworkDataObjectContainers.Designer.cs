@@ -27,6 +27,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemEmailSettingsDataObject SystemEmailSettingsDataObjectInstance { set; get; }
       public SystemEmailTemplateDataObject SystemEmailTemplateDataObjectInstance { set; get; }
       public SystemEmployeeDataObject SystemEmployeeDataObjectInstance { set; get; }
+      public SystemIPLocationDataObject SystemIPLocationDataObjectInstance { set; get; }
       public SystemLogDataObject SystemLogDataObjectInstance { set; get; }
       public SystemMenuDataObject SystemMenuDataObjectInstance { set; get; }
       public SystemMoudleDataObject SystemMoudleDataObjectInstance { set; get; }
@@ -35,6 +36,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables.Container
       public SystemOperationDataObject SystemOperationDataObjectInstance { set; get; }
       public SystemOrganizationDataObject SystemOrganizationDataObjectInstance { set; get; }
       public SystemPersonalizationSettingsDataObject SystemPersonalizationSettingsDataObjectInstance { set; get; }
+      public SystemPhoneAreaDataObject SystemPhoneAreaDataObjectInstance { set; get; }
       public SystemPostDataObject SystemPostDataObjectInstance { set; get; }
       public SystemPrivilegeDataObject SystemPrivilegeDataObjectInstance { set; get; }
       public SystemPrivilegeInRolesDataObject SystemPrivilegeInRolesDataObjectInstance { set; get; }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemPhoneAreaEntity,Legendigital.Framework.Common" table="SystemPhoneArea" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="PhonePrefix" type="string" name="PhonePrefix"   length="24" />	
+		<property column="Province" type="string" name="Province"   length="24" />	
+		<property column="City" type="string" name="City"   length="24" />	
+		<property column="OperatorType" type="string" name="OperatorType"   length="4" />	
+		<property column="CardType" type="string" name="CardType"   length="12" />	
+		<property column="AreaCode" type="string" name="AreaCode"   length="12" />	
+		<property column="ZipCode" type="string" name="ZipCode"   length="16" />	
+
+
+
+
+</class>
+</hibernate-mapping>

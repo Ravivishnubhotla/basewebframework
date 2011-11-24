@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemIPLocationEntity,Legendigital.Framework.Common" table="SystemIPLocation" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="StartIPNum" type="Decimal" name="StartIPNum"   not-null="true"  />	
+		<property column="StartIPText" type="string" name="StartIPText"   length="30" />	
+		<property column="EndIPNum" type="Decimal" name="EndIPNum"   not-null="true"  />	
+		<property column="EndIPText" type="string" name="EndIPText"   length="30" />	
+		<property column="Country" type="string" name="Country"   length="510" />	
+		<property column="Local" type="string" name="Local"   length="510" />	
+
+
+
+
+</class>
+</hibernate-mapping>

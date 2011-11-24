@@ -222,6 +222,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.Designer.cs">
       <DependentUpon>SystemEmployeeServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemIPLocationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemIPLocationServiceProxy.Designer.cs">
+      <DependentUpon>SystemIPLocationServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.Designer.cs">
       <DependentUpon>SystemNumberSeedServiceProxy.cs</DependentUpon>
@@ -229,6 +233,10 @@
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.Designer.cs">
       <DependentUpon>SystemOrganizationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPhoneAreaServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPhoneAreaServiceProxy.Designer.cs">
+      <DependentUpon>SystemPhoneAreaServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.Designer.cs">
@@ -329,6 +337,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.Designer.cs">
       <DependentUpon>SystemEmployeeWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemIPLocationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemIPLocationWrapper.Designer.cs">
+      <DependentUpon>SystemIPLocationWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.Designer.cs">
       <DependentUpon>SystemNumberSeedWrapper.cs</DependentUpon>
@@ -336,6 +348,10 @@
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.Designer.cs">
       <DependentUpon>SystemOrganizationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPhoneAreaWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPhoneAreaWrapper.Designer.cs">
+      <DependentUpon>SystemPhoneAreaWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.Designer.cs">
@@ -433,6 +449,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.Designer.cs">
       <DependentUpon>SystemEmployeeDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemIPLocationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemIPLocationDataObject.Designer.cs">
+      <DependentUpon>SystemIPLocationDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.Designer.cs">
       <DependentUpon>SystemNumberSeedDataObject.cs</DependentUpon>
@@ -440,6 +460,10 @@
     <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.Designer.cs">
       <DependentUpon>SystemOrganizationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPhoneAreaDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemPhoneAreaDataObject.Designer.cs">
+      <DependentUpon>SystemPhoneAreaDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.cs" />
     <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.Designer.cs">
@@ -542,6 +566,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.Designer.cs">
       <DependentUpon>SystemEmployeeEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemIPLocationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemIPLocationEntity.Designer.cs">
+      <DependentUpon>SystemIPLocationEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.Designer.cs">
       <DependentUpon>SystemNumberSeedEntity.cs</DependentUpon>
@@ -549,6 +577,10 @@
     <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.Designer.cs">
       <DependentUpon>SystemOrganizationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPhoneAreaEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemPhoneAreaEntity.Designer.cs">
+      <DependentUpon>SystemPhoneAreaEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.cs" />
     <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.Designer.cs">
@@ -1151,6 +1183,14 @@
     <Compile Include="Web\UI\SuperWebTreeNode.cs" />
     <Compile Include="Web\UI\TreeViewExenter.cs" />
     <Compile Include="Web\UI\TypedTreeNodeItem.cs" />
+    <Compile Include="Win\Process\PercentProcessOperator.cs" />
+    <Compile Include="Win\Process\ProcessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\Process\ProcessForm.Designer.cs">
+      <DependentUpon>ProcessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\Process\ProcessOperator.cs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemApplicationMappingFile.hbm.xml" />
@@ -1179,6 +1219,9 @@
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserRoleRelationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemViewItemMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemViewMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Win\Process\ProcessForm.resx">
+      <DependentUpon>ProcessForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BaseFramework\Providers\NHibernateProviderSR.resx">
@@ -1264,6 +1307,10 @@
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAddressMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRichTextMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTimeZoneMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemIPLocationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPhoneAreaMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -561,15 +561,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		internal static List<SystemMenuWrapper> ConvertToWrapperList(List<SystemMenuEntity> entitylist)
         {
             List<SystemMenuWrapper> list = new List<SystemMenuWrapper>();
-
-            if (entitylist == null)
-                return list;
-
             foreach (SystemMenuEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
-
             return list;
         }
 

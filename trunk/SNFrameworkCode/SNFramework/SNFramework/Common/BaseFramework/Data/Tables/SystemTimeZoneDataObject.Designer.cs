@@ -16,10 +16,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_ID));		
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_NAME));		
-		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_CODE));		
-		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DESCRIPTION));		
-		public static readonly StringProperty PROPERTY_OFFSET = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_OFFSET));		
-		public static readonly BoolProperty PROPERTY_DST = new BoolProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DST));		
+		public static readonly StringProperty PROPERTY_NAMECN = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_NAMECN));		
+		public static readonly StringProperty PROPERTY_DISPLAYNAME = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DISPLAYNAME));		
+		public static readonly StringProperty PROPERTY_DISPLAYNAMECN = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DISPLAYNAMECN));		
+		public static readonly StringProperty PROPERTY_STANDARDNAME = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_STANDARDNAME));		
+		public static readonly StringProperty PROPERTY_STANDARDNAMECN = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_STANDARDNAMECN));		
+		public static readonly StringProperty PROPERTY_DAYLIGHTNAME = new StringProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DAYLIGHTNAME));		
+		public static readonly IntProperty PROPERTY_UTCOFFSET = new IntProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_UTCOFFSET));		
+		public static readonly BoolProperty PROPERTY_SUPPORTDST = new BoolProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_SUPPORTDST));		
+		public static readonly IntProperty PROPERTY_DAYLIGHTDELTA = new IntProperty(Property.ForName(SystemTimeZoneEntity.PROPERTY_NAME_DAYLIGHTDELTA));		
       
 		#region 子类集合字段查询字段
 	
@@ -41,14 +46,24 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "Name":
                     return typeof (string);
-                case "Code":
+                case "NameCn":
                     return typeof (string);
-                case "Description":
+                case "DisplayName":
                     return typeof (string);
-                case "OffSet":
+                case "DisplayNameCn":
                     return typeof (string);
-                case "Dst":
+                case "StandardName":
+                    return typeof (string);
+                case "StandardNameCn":
+                    return typeof (string);
+                case "DaylightName":
+                    return typeof (string);
+                case "UTCOffset":
+                    return typeof (int);
+                case "SupportDST":
                     return typeof (bool);
+                case "DaylightDelta":
+                    return typeof (int);
           }
 			return typeof(string);
         }

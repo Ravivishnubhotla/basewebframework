@@ -74,6 +74,10 @@
     <property name="SelfDataObj" ref="SystemEmployeeDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemIPLocationServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemIPLocationServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemIPLocationDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemLogServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemLogServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemLogDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
@@ -104,6 +108,10 @@
   </object>
   <object id="SystemPersonalizationSettingsServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPersonalizationSettingsServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemPersonalizationSettingsDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
+  <object id="SystemPhoneAreaServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPhoneAreaServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemPhoneAreaDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
   <object id="SystemPostServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemPostServiceProxy, Legendigital.Framework.Common">
@@ -240,6 +248,7 @@
     <property name="SystemEmailSettingsServiceProxyInstance" ref="SystemEmailSettingsServiceProxyIocID"/>
     <property name="SystemEmailTemplateServiceProxyInstance" ref="SystemEmailTemplateServiceProxyIocID"/>
     <property name="SystemEmployeeServiceProxyInstance" ref="SystemEmployeeServiceProxyIocID"/>
+    <property name="SystemIPLocationServiceProxyInstance" ref="SystemIPLocationServiceProxyIocID"/>
     <property name="SystemLogServiceProxyInstance" ref="SystemLogServiceProxyIocID"/>
     <property name="SystemMenuServiceProxyInstance" ref="SystemMenuServiceProxyIocID"/>
     <property name="SystemMoudleServiceProxyInstance" ref="SystemMoudleServiceProxyIocID"/>
@@ -248,6 +257,7 @@
     <property name="SystemOperationServiceProxyInstance" ref="SystemOperationServiceProxyIocID"/>
     <property name="SystemOrganizationServiceProxyInstance" ref="SystemOrganizationServiceProxyIocID"/>
     <property name="SystemPersonalizationSettingsServiceProxyInstance" ref="SystemPersonalizationSettingsServiceProxyIocID"/>
+    <property name="SystemPhoneAreaServiceProxyInstance" ref="SystemPhoneAreaServiceProxyIocID"/>
     <property name="SystemPostServiceProxyInstance" ref="SystemPostServiceProxyIocID"/>
     <property name="SystemPrivilegeServiceProxyInstance" ref="SystemPrivilegeServiceProxyIocID"/>
     <property name="SystemPrivilegeInRolesServiceProxyInstance" ref="SystemPrivilegeInRolesServiceProxyIocID"/>
