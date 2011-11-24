@@ -42,6 +42,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemEmployeeServiceProxy SystemEmployeeServiceProxyInstance
         {get; set;}
+		public ISystemIPLocationServiceProxy SystemIPLocationServiceProxyInstance
+        {get; set;}
 		public ISystemLogServiceProxy SystemLogServiceProxyInstance
         {get; set;}
 		public ISystemMenuServiceProxy SystemMenuServiceProxyInstance
@@ -57,6 +59,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		public ISystemOrganizationServiceProxy SystemOrganizationServiceProxyInstance
         {get; set;}
 		public ISystemPersonalizationSettingsServiceProxy SystemPersonalizationSettingsServiceProxyInstance
+        {get; set;}
+		public ISystemPhoneAreaServiceProxy SystemPhoneAreaServiceProxyInstance
         {get; set;}
 		public ISystemPostServiceProxy SystemPostServiceProxyInstance
         {get; set;}

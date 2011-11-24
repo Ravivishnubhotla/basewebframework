@@ -11,11 +11,16 @@
 </id>
 
 
-		<property column="Name" type="string" name="Name"   length="100" />	
-		<property column="Code" type="string" name="Code"   length="100" />	
-		<property column="Description" type="string" name="Description"   length="1000" />	
-		<property column="OffSet" type="string" name="OffSet"   length="100" />	
-		<property column="DST" type="Boolean" name="Dst"   />	
+		<property column="Name" type="string" name="Name"   not-null="true"  length="400" />	
+		<property column="NameCn" type="string" name="NameCn"   length="400" />	
+		<property column="DisplayName" type="string" name="DisplayName"   not-null="true"  length="400" />	
+		<property column="DisplayNameCn" type="string" name="DisplayNameCn"   length="400" />	
+		<property column="StandardName" type="string" name="StandardName"   not-null="true"  length="400" />	
+		<property column="StandardNameCn" type="string" name="StandardNameCn"   length="400" />	
+		<property column="DaylightName" type="string" name="DaylightName"   not-null="true"  length="400" />	
+		<property column="UTCOffset" type="int" name="UTCOffset"   not-null="true"  />	
+		<property column="SupportDST" type="Boolean" name="SupportDST"   not-null="true"  />	
+		<property column="DaylightDelta" type="int" name="DaylightDelta"   not-null="true"  />	
 
 
 

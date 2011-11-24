@@ -324,7 +324,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		
 		#endregion
 
-
     }//End Class
 }// End Namespace
 

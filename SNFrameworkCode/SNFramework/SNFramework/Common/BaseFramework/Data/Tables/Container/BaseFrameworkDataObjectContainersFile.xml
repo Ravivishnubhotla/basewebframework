@@ -57,6 +57,9 @@
  <object id="SystemEmployeeDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemEmployeeDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemIPLocationDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemIPLocationDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemLogDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemLogDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -79,6 +82,9 @@
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemPersonalizationSettingsDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPersonalizationSettingsDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SystemPhoneAreaDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPhoneAreaDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SystemPostDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemPostDataObject, Legendigital.Framework.Common">
@@ -189,6 +195,7 @@
     <property name="SystemEmailSettingsDataObjectInstance" ref="SystemEmailSettingsDataObjectIocID"/>
     <property name="SystemEmailTemplateDataObjectInstance" ref="SystemEmailTemplateDataObjectIocID"/>
     <property name="SystemEmployeeDataObjectInstance" ref="SystemEmployeeDataObjectIocID"/>
+    <property name="SystemIPLocationDataObjectInstance" ref="SystemIPLocationDataObjectIocID"/>
     <property name="SystemLogDataObjectInstance" ref="SystemLogDataObjectIocID"/>
     <property name="SystemMenuDataObjectInstance" ref="SystemMenuDataObjectIocID"/>
     <property name="SystemMoudleDataObjectInstance" ref="SystemMoudleDataObjectIocID"/>
@@ -197,6 +204,7 @@
     <property name="SystemOperationDataObjectInstance" ref="SystemOperationDataObjectIocID"/>
     <property name="SystemOrganizationDataObjectInstance" ref="SystemOrganizationDataObjectIocID"/>
     <property name="SystemPersonalizationSettingsDataObjectInstance" ref="SystemPersonalizationSettingsDataObjectIocID"/>
+    <property name="SystemPhoneAreaDataObjectInstance" ref="SystemPhoneAreaDataObjectIocID"/>
     <property name="SystemPostDataObjectInstance" ref="SystemPostDataObjectIocID"/>
     <property name="SystemPrivilegeDataObjectInstance" ref="SystemPrivilegeDataObjectIocID"/>
     <property name="SystemPrivilegeInRolesDataObjectInstance" ref="SystemPrivilegeInRolesDataObjectIocID"/>

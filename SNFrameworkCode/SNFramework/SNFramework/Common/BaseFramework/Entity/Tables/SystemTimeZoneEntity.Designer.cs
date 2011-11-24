@@ -17,10 +17,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemTimeZoneEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_NAME = "Name";
-		public static readonly string PROPERTY_NAME_CODE = "Code";
-		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
-		public static readonly string PROPERTY_NAME_OFFSET = "OffSet";
-		public static readonly string PROPERTY_NAME_DST = "Dst";
+		public static readonly string PROPERTY_NAME_NAMECN = "NameCn";
+		public static readonly string PROPERTY_NAME_DISPLAYNAME = "DisplayName";
+		public static readonly string PROPERTY_NAME_DISPLAYNAMECN = "DisplayNameCn";
+		public static readonly string PROPERTY_NAME_STANDARDNAME = "StandardName";
+		public static readonly string PROPERTY_NAME_STANDARDNAMECN = "StandardNameCn";
+		public static readonly string PROPERTY_NAME_DAYLIGHTNAME = "DaylightName";
+		public static readonly string PROPERTY_NAME_UTCOFFSET = "UTCOffset";
+		public static readonly string PROPERTY_NAME_SUPPORTDST = "SupportDST";
+		public static readonly string PROPERTY_NAME_DAYLIGHTDELTA = "DaylightDelta";
 		
         #endregion
 	
@@ -40,10 +45,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		
 		private int _id;
 		private string _name;
-		private string _code;
-		private string _description;
-		private string _offSet;
-		private bool? _dst;
+		private string _nameCn;
+		private string _displayName;
+		private string _displayNameCn;
+		private string _standardName;
+		private string _standardNameCn;
+		private string _daylightName;
+		private int _uTCOffset;
+		private bool _supportDST;
+		private int _daylightDelta;
 		
 		#endregion
 
@@ -54,11 +64,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public SystemTimeZoneEntity()
 		{
 			_id = 0;
-			_name = null;
-			_code = null;
-			_description = null;
-			_offSet = null;
-			_dst = null;
+			_name = String.Empty;
+			_nameCn = null;
+			_displayName = String.Empty;
+			_displayNameCn = null;
+			_standardName = String.Empty;
+			_standardNameCn = null;
+			_daylightName = String.Empty;
+			_uTCOffset = 0;
+			_supportDST = false;
+			_daylightDelta = 0;
 		}
 		#endregion
 
@@ -66,14 +81,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemTimeZoneEntity( int id, string name, string code, string description, string offSet, bool? dst)
+		public SystemTimeZoneEntity( int id, string name, string nameCn, string displayName, string displayNameCn, string standardName, string standardNameCn, string daylightName, int uTCOffset, bool supportDST, int daylightDelta)
 		{
 			_id = id;
 			_name = name;
-			_code = code;
-			_description = description;
-			_offSet = offSet;
-			_dst = dst;
+			_nameCn = nameCn;
+			_displayName = displayName;
+			_displayNameCn = displayNameCn;
+			_standardName = standardName;
+			_standardNameCn = standardNameCn;
+			_daylightName = daylightName;
+			_uTCOffset = uTCOffset;
+			_supportDST = supportDST;
+			_daylightDelta = daylightDelta;
 		}
 		#endregion     
 	
@@ -104,7 +124,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 100)
+				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for Name", value, value.ToString());
 				_isChanged |= (_name != value); _name = value;
 			}
@@ -114,16 +134,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string Code
+		public virtual string NameCn
 		{
-			get { return _code; }
+			get { return _nameCn; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for Code", value, value.ToString());
-				_isChanged |= (_code != value); _code = value;
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for NameCn", value, value.ToString());
+				_isChanged |= (_nameCn != value); _nameCn = value;
 			}
 		}
 
@@ -131,16 +151,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string Description
+		public virtual string DisplayName
 		{
-			get { return _description; }
+			get { return _displayName; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 1000)
-					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
-				_isChanged |= (_description != value); _description = value;
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for DisplayName", value, value.ToString());
+				_isChanged |= (_displayName != value); _displayName = value;
 			}
 		}
 
@@ -148,16 +168,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string OffSet
+		public virtual string DisplayNameCn
 		{
-			get { return _offSet; }
+			get { return _displayNameCn; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for OffSet", value, value.ToString());
-				_isChanged |= (_offSet != value); _offSet = value;
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for DisplayNameCn", value, value.ToString());
+				_isChanged |= (_displayNameCn != value); _displayNameCn = value;
 			}
 		}
 
@@ -165,13 +185,92 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? Dst
+		public virtual string StandardName
 		{
-			get { return _dst; }
+			get { return _standardName; }
 
 			set	
 			{
-				_isChanged |= (_dst != value); _dst = value;
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for StandardName", value, value.ToString());
+				_isChanged |= (_standardName != value); _standardName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string StandardNameCn
+		{
+			get { return _standardNameCn; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for StandardNameCn", value, value.ToString());
+				_isChanged |= (_standardNameCn != value); _standardNameCn = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DaylightName
+		{
+			get { return _daylightName; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for DaylightName", value, value.ToString());
+				_isChanged |= (_daylightName != value); _daylightName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int UTCOffset
+		{
+			get { return _uTCOffset; }
+
+			set	
+			{
+				_isChanged |= (_uTCOffset != value); _uTCOffset = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool SupportDST
+		{
+			get { return _supportDST; }
+
+			set	
+			{
+				_isChanged |= (_supportDST != value); _supportDST = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DaylightDelta
+		{
+			get { return _daylightDelta; }
+
+			set	
+			{
+				_isChanged |= (_daylightDelta != value); _daylightDelta = value;
 			}
 		}
 	
