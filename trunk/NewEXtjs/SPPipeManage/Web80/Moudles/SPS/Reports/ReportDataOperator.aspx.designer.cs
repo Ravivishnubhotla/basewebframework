@@ -94,6 +94,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
         
         /// <summary>
+        /// cmbOperator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbOperator;
+        
+        /// <summary>
+        /// cmbProvince control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbProvince;
+        
+        /// <summary>
         /// cmbChannelID control.
         /// </summary>
         /// <remarks>

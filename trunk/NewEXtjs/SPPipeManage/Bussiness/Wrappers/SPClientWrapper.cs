@@ -171,6 +171,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	        }
 	    }
 
+
+        public string ChannelClientCode
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return "";
+                return DefaultClientChannelSetting.ChannelClientCode;
+            }
+        }
+
 	    public int DefaultChannelID
 	    {
             get

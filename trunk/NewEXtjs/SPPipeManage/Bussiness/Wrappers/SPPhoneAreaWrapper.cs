@@ -115,6 +115,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 phoneAreaInfo.Province = phoneAreaWrapper.Province;
 
                 phoneAreaInfo.City += phoneAreaWrapper.City;
+
+                phoneAreaInfo.MobileOperators = phoneAreaWrapper.MobileOperators;
             }
 
             return phoneAreaInfo;

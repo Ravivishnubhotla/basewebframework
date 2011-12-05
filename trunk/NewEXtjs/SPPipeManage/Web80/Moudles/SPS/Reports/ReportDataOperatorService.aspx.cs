@@ -54,10 +54,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             }
         }
 
+        public string Province
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Request.QueryString["Province"]))
+                    return "";
+                return this.Request.QueryString["Province"].Trim();
+            }
+        }
+
+        public string Operator
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Request.QueryString["Operator"]))
+                    return "";
+                return this.Request.QueryString["Operator"].Trim();
+            }
+        }
+        
+
 
         private void BindData()
         {
-            DataTable tb = SPDayReportWrapper.GetOperatorReport(StartDate, EndDate, ReportChannleID, ReportClientChannleID);
+            DataTable tb = SPDayReportWrapper.GetOperatorReport(StartDate, EndDate, ReportChannleID, ReportClientChannleID, Province, Operator);
 
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();

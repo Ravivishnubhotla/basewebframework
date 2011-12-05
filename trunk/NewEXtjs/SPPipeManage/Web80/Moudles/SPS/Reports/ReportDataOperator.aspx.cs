@@ -31,6 +31,26 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             this.ReportPanel.AutoLoad.Params.Clear();
             this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleID", cmbChannelID.SelectedItem.Value.ToString()));
             this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", cmbCode.SelectedItem.Value.ToString()));
+            if(cmbOperator.SelectedItem!=null)
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("Operator", cmbOperator.SelectedItem.Value.ToString()));
+            }
+            else
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("Operator", ""));
+            }
+
+            if (cmbProvince.SelectedItem != null)
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("Province", cmbProvince.SelectedItem.Value.ToString()));
+            }
+            else
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("Province", ""));
+            }
+
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleID", cmbChannelID.SelectedItem.Value.ToString()));
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", cmbCode.SelectedItem.Value.ToString()));
             this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("StartDate", dfReportStartDate.DateField.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
             this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("EndDate", dfReportEndDate.DateField.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
             this.ReportPanel.AutoLoad.Url = "ReportDataOperatorService.aspx";

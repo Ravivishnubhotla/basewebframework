@@ -42,7 +42,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetReportDataChange(int reportClientChannleId, DateTime startDate, DateTime endDate);
         DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate);
         DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept);
-        DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept);
+        DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isInterceptstring ,string mprovince,  string moperator);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -255,9 +255,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetProvinceReport(startDate, endDate, channelId, channleClientID, isIntercept);
         }
 
-        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept)
+        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept, string mprovince, string moperator)
         {
-            return this.AdoNetDb.GetOperatorReport(startDate, endDate, channleId, clientChannleId, isIntercept);
+            return this.AdoNetDb.GetOperatorReport(startDate, endDate, channleId, clientChannleId, isIntercept,mprovince,   moperator);
         }
 
         public string GetDbSize()

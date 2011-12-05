@@ -406,16 +406,28 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     {
                         phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
                         phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
                     }
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex.Message);
+                    Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
                 }
             }
+            //else
+            //{
+            //    if (string.IsNullOrEmpty(mobile))
+            //    {
+            //        Logger.Error("ø’∫≈¥ÌŒÛ");
+            //    }
+            //    else
+            //    {
+            //        Logger.Error("∫≈¬Î¥ÌŒÛ£∫" + mobile);               
+            //    }
+            //}
 #endif
 
 
@@ -931,17 +943,29 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     {
                         phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫"+ex.Message);
                         phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex.Message);
+                    Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
                 }
             }
+            //else
+            //{
+            //    if (string.IsNullOrEmpty(mobile))
+            //    {
+            //        Logger.Error("ø’∫≈¥ÌŒÛ");
+            //    }
+            //    else
+            //    {
+            //        Logger.Error("∫≈¬Î¥ÌŒÛ£∫" + mobile);
+            //    }
+            //}
 
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostReques.RequestParams,
@@ -992,7 +1016,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
             catch (Exception ex)
             {
-                logger.Error("ExtendField9 Error", ex);
+                logger.Error("SPClientGroupID Error", ex);
             }
             paymentInfo.Ip = httpGetPostReques.RequestIp;
             paymentInfo.IsIntercept = false;
