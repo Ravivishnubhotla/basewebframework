@@ -462,11 +462,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 if (channelSetting.ClinetID != null && channelSetting.ClinetID.SPClientGroupID != null)
                 {
-                    paymentInfo.ExtendField9 = channelSetting.ClinetID.SPClientGroupID.Id.ToString();
-                }
-                else
-                {
-                    paymentInfo.ExtendField9 = "";
+                    paymentInfo.ClientGroupID = channelSetting.ClinetID.SPClientGroupID.Id;
                 }
             }
             catch (Exception ex)
@@ -484,6 +480,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 paymentInfo.Province = phoneAreaInfo.Province;
                 paymentInfo.City = phoneAreaInfo.City;
+                paymentInfo.MobileOperators = phoneAreaInfo.MobileOperators;
             }
 
 
@@ -891,7 +888,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             string extendfield6 = GetMappedParamValueFromRequest(httpGetPostReques.RequestParams, "extendfield6", fieldMappings);
             string extendfield7 = GetMappedParamValueFromRequest(httpGetPostReques.RequestParams, "extendfield7", fieldMappings);
             string extendfield8 = GetMappedParamValueFromRequest(httpGetPostReques.RequestParams, "extendfield8", fieldMappings);
-            string extendfield9 = GetMappedParamValueFromRequest(httpGetPostReques.RequestParams, "extendfield9", fieldMappings);
+
 
 
             if (string.IsNullOrEmpty(linkid) && IsAllowNullLinkID.HasValue && IsAllowNullLinkID.Value)
@@ -981,15 +978,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ExtendField6 = extendfield6;
             paymentInfo.ExtendField7 = extendfield7;
             paymentInfo.ExtendField8 = extendfield8;
+
             try
             {
                 if (channelSetting.ClinetID != null && channelSetting.ClinetID.SPClientGroupID != null)
                 {
-                    paymentInfo.ExtendField9 = channelSetting.ClinetID.SPClientGroupID.Id.ToString();
+                    paymentInfo.ClientGroupID = channelSetting.ClinetID.SPClientGroupID.Id;
                 }
                 else
                 {
-                    paymentInfo.ExtendField9 = "";
+                    paymentInfo.ClientGroupID = 0;
                 }
             }
             catch (Exception ex)
@@ -1005,6 +1003,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 paymentInfo.Province = phoneAreaInfo.Province;
                 paymentInfo.City = phoneAreaInfo.City;
+                paymentInfo.MobileOperators = phoneAreaInfo.MobileOperators;
             }
 
 
@@ -1056,121 +1055,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        //public bool RecState(Hashtable hashtable, string recievdData, string query, string stat, out RequestError error)
-        //{
-        //    Hashtable fieldMappings = GetFieldMappings();
 
-        //    string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
-
-        //    var statReport = new SPStatReportWrapper();
-        //    statReport.ChannelID = Id;
-        //    statReport.LinkID = linkid;
-        //    statReport.CreateDate = DateTime.Now;
-        //    statReport.QueryString = query;
-        //    statReport.RequestContent = recievdData;
-        //    statReport.Stat = stat;
-
-        //    SPStatReportWrapper.Save(statReport);
-
-        //    SPSStatePaymentInfoWrapper statepaymentInfo = SPSStatePaymentInfoWrapper.FindByChannelIDAndLinkID(Id, linkid);
-
-        //    error = new RequestError();
-        //    error.ErrorType = RequestErrorType.NoError;
-        //    error.ErrorMessage = "";
-        //    error.ChannelID = Id;
-
-
-        //    if (statepaymentInfo==null)
-        //    {
-        //        error.ErrorType = RequestErrorType.NoReportData;
-        //        error.ErrorMessage = "没有linkid为“" + linkid + "”找到状态报告数据";
-        //        return false;
-        //    }
-
-
-
-        //    SPClientChannelSettingWrapper channelSetting =
-        //        SPClientChannelSettingWrapper.FindById(statepaymentInfo.ChannleClientID);
-
-        //    SPPaymentInfoWrapper paymentInfo = new SPPaymentInfoWrapper();
-
-        //    paymentInfo.ChannelID = this;
-        //    paymentInfo.ClientID = SPClientWrapper.FindById(statepaymentInfo.ClientID);
-        //    paymentInfo.ChannleClientID = statepaymentInfo.ChannleClientID;
-        //    paymentInfo.Cpid = statepaymentInfo.Cpid;
-        //    paymentInfo.Mid = statepaymentInfo.Mid;
-        //    paymentInfo.MobileNumber = statepaymentInfo.MobileNumber;
-        //    paymentInfo.Port = statepaymentInfo.Port;
-        //    paymentInfo.Ywid = statepaymentInfo.Ywid;
-        //    paymentInfo.Message = statepaymentInfo.Message;
-        //    paymentInfo.Linkid = linkid;
-        //    paymentInfo.Dest = statepaymentInfo.Dest;
-        //    paymentInfo.Price = statepaymentInfo.Price;
-        //    paymentInfo.ExtendField1 = statepaymentInfo.ExtendField1;
-        //    paymentInfo.ExtendField2 = statepaymentInfo.ExtendField2;
-        //    paymentInfo.ExtendField3 = statepaymentInfo.ExtendField3;
-        //    paymentInfo.ExtendField4 = statepaymentInfo.ExtendField4;
-        //    paymentInfo.ExtendField5 = statepaymentInfo.ExtendField5;
-        //    paymentInfo.ExtendField6 = statepaymentInfo.ExtendField6;
-        //    paymentInfo.ExtendField7 = statepaymentInfo.ExtendField7;
-        //    paymentInfo.ExtendField8 = statepaymentInfo.ExtendField8;
-        //    paymentInfo.ExtendField9 = statepaymentInfo.ExtendField9;
-        //    paymentInfo.Ip = statepaymentInfo.Ip;
-        //    paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
-        //    paymentInfo.CreateDate = DateTime.Now;
-        //    paymentInfo.RequestContent = recievdData;
-
-
-        //    paymentInfo.SetPaymentProviceAndCity();
-
-        //    paymentInfo.IsSycnData = false;
-
-        //    paymentInfo.SycnDataToClient();
-
-        //    try
-        //    {
-        //        PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
-
-        //        var uniqueKeyNames = new List<string>();
-
-        //        List<SPChannelParamsWrapper> channelParams = GetAllEnableParams();
-
-        //        foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParams)
-        //        {
-        //            if (spChannelParamsWrapper.IsUnique.HasValue && spChannelParamsWrapper.IsUnique.Value)
-        //                uniqueKeyNames.Add(spChannelParamsWrapper.ParamsMappingName.ToLower());
-        //        }
-
-        //        if (!uniqueKeyNames.Contains("linkid"))
-        //        {
-        //            uniqueKeyNames.Add("linkid");
-        //        }
-
-        //        bool result = paymentInfo.InsertPayment(uniqueKeyNames, out errorType);
-
-        //        if (!result && errorType == PaymentInfoInsertErrorType.RepeatLinkID)
-        //        {
-        //            error.ErrorType = RequestErrorType.RepeatLinkID;
-        //            error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
-        //            error.ClientID = channelSetting.ClinetID.Id;
-
-        //            return false;
-        //        }
-
-        //        error.ErrorType = RequestErrorType.NoError;
-        //        error.ErrorMessage = "";
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        error.ErrorType = RequestErrorType.DataSaveError;
-        //        error.ErrorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
-        //        return false;
-        //    }
-
-
-        //}
 
         public bool RecState(IHttpRequest httpGetPostRequest, string stat, out RequestError error)
         {
@@ -1252,7 +1137,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ExtendField6 = statepaymentInfo.ExtendField6;
             paymentInfo.ExtendField7 = statepaymentInfo.ExtendField7;
             paymentInfo.ExtendField8 = statepaymentInfo.ExtendField8;
-            paymentInfo.ExtendField9 = statepaymentInfo.ExtendField9;
+            paymentInfo.ClientGroupID = statepaymentInfo.ClientGroupID;
+            paymentInfo.MobileOperators = statepaymentInfo.MobileOperators;
             paymentInfo.Ip = statepaymentInfo.Ip;
             paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
@@ -1357,11 +1243,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return true;
             }
         }
-
-        //public void GetStatValueFormRequest()
-        //{
-
-        //}
 
 
         public void RefreshChannelInfo()

@@ -710,7 +710,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.Message = wrapper.Message;
 			this.IsIntercept = wrapper.IsIntercept;
 			this.CreateDate = wrapper.CreateDate;
-			this.RequestID = wrapper.RequestID;
 			this.Cpid = wrapper.Cpid;
 			this.Mid = wrapper.Mid;
 			this.Port = wrapper.Port;
@@ -728,7 +727,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ExtendField6 = wrapper.ExtendField6;
 			this.ExtendField7 = wrapper.ExtendField7;
 			this.ExtendField8 = wrapper.ExtendField8;
-			this.ExtendField9 = wrapper.ExtendField9;
 			this.IsReport = wrapper.IsReport;
 			this.RequestContent = wrapper.RequestContent;
 			this.City = wrapper.City;
@@ -751,7 +749,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.Message = this.Message;
 			wrapper.IsIntercept = this.IsIntercept;
 			wrapper.CreateDate = this.CreateDate;
-			wrapper.RequestID = this.RequestID;
 			wrapper.Cpid = this.Cpid;
 			wrapper.Mid = this.Mid;
 			wrapper.Port = this.Port;
@@ -769,7 +766,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ExtendField6 = this.ExtendField6;
 			wrapper.ExtendField7 = this.ExtendField7;
 			wrapper.ExtendField8 = this.ExtendField8;
-			wrapper.ExtendField9 = this.ExtendField9;
 			wrapper.IsReport = this.IsReport;
 			wrapper.RequestContent = this.RequestContent;
 			wrapper.City = this.City;

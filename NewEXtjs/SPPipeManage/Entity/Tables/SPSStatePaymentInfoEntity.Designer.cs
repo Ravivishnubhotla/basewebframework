@@ -21,7 +21,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_MESSAGE = "Message";
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_REQUESTID = "RequestID";
+		public static readonly string PROPERTY_NAME_CLIENTGROUPID = "ClientGroupID";
 		public static readonly string PROPERTY_NAME_CPID = "Cpid";
 		public static readonly string PROPERTY_NAME_MID = "Mid";
 		public static readonly string PROPERTY_NAME_PORT = "Port";
@@ -39,7 +39,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD6 = "ExtendField6";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
-		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
+		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
@@ -64,7 +64,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _message;
 		private bool? _isIntercept;
 		private DateTime? _createDate;
-		private int? _requestID;
+		private int? _clientGroupID;
 		private string _cpid;
 		private string _mid;
 		private string _port;
@@ -82,7 +82,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _extendField6;
 		private string _extendField7;
 		private string _extendField8;
-		private string _extendField9;
+		private string _mobileOperators;
 		private bool? _isReport;
 		private string _requestContent;
 		private string _city;
@@ -108,7 +108,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_message = null;
 			_isIntercept = null;
 			_createDate = null;
-			_requestID = null;
+			_clientGroupID = null;
 			_cpid = null;
 			_mid = null;
 			_port = null;
@@ -126,7 +126,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField6 = null;
 			_extendField7 = null;
 			_extendField8 = null;
-			_extendField9 = null;
+			_mobileOperators = null;
 			_isReport = null;
 			_requestContent = null;
 			_city = null;
@@ -143,7 +143,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSStatePaymentInfoEntity( int id, string mobileNumber, int? channelID, int? clientID, string message, bool? isIntercept, DateTime? createDate, int? requestID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string extendField9, bool? isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
+		public SPSStatePaymentInfoEntity( int id, string mobileNumber, int? channelID, int? clientID, string message, bool? isIntercept, DateTime? createDate, int? clientGroupID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string mobileOperators, bool? isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -152,7 +152,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_message = message;
 			_isIntercept = isIntercept;
 			_createDate = createDate;
-			_requestID = requestID;
+			_clientGroupID = clientGroupID;
 			_cpid = cpid;
 			_mid = mid;
 			_port = port;
@@ -170,7 +170,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField6 = extendField6;
 			_extendField7 = extendField7;
 			_extendField8 = extendField8;
-			_extendField9 = extendField9;
+			_mobileOperators = mobileOperators;
 			_isReport = isReport;
 			_requestContent = requestContent;
 			_city = city;
@@ -293,13 +293,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? RequestID
+		public virtual int? ClientGroupID
 		{
-			get { return _requestID; }
+			get { return _clientGroupID; }
 
 			set	
 			{
-				_isChanged |= (_requestID != value); _requestID = value;
+				_isChanged |= (_clientGroupID != value); _clientGroupID = value;
 			}
 		}
 
@@ -593,16 +593,16 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string ExtendField9
+		public virtual string MobileOperators
 		{
-			get { return _extendField9; }
+			get { return _mobileOperators; }
 
 			set	
 			{
 
 				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for ExtendField9", value, value.ToString());
-				_isChanged |= (_extendField9 != value); _extendField9 = value;
+					throw new ArgumentOutOfRangeException("Invalid value for MobileOperators", value, value.ToString());
+				_isChanged |= (_mobileOperators != value); _mobileOperators = value;
 			}
 		}
 

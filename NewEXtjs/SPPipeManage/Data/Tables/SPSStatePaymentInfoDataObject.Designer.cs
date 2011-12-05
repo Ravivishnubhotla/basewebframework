@@ -20,7 +20,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_MESSAGE = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_MESSAGE);
 		public static readonly Property PROPERTY_ISINTERCEPT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_ISINTERCEPT);
 		public static readonly Property PROPERTY_CREATEDATE = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_CREATEDATE);
-		public static readonly Property PROPERTY_REQUESTID = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_REQUESTID);
+		public static readonly Property PROPERTY_CLIENTGROUPID = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_CLIENTGROUPID);
 		public static readonly Property PROPERTY_CPID = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_CPID);
 		public static readonly Property PROPERTY_MID = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_MID);
 		public static readonly Property PROPERTY_PORT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_PORT);
@@ -38,7 +38,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_EXTENDFIELD6 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD6);
 		public static readonly Property PROPERTY_EXTENDFIELD7 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD7);
 		public static readonly Property PROPERTY_EXTENDFIELD8 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD8);
-		public static readonly Property PROPERTY_EXTENDFIELD9 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD9);
+		public static readonly Property PROPERTY_MOBILEOPERATORS = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_MOBILEOPERATORS);
 		public static readonly Property PROPERTY_ISREPORT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_ISREPORT);
 		public static readonly Property PROPERTY_REQUESTCONTENT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_REQUESTCONTENT);
 		public static readonly Property PROPERTY_CITY = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_CITY);
@@ -79,7 +79,7 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "CreateDate":
                     return typeof (DateTime);
-                case "RequestID":
+                case "ClientGroupID":
                     return typeof (int);
                 case "Cpid":
                     return typeof (string);
@@ -115,7 +115,7 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "ExtendField8":
                     return typeof (string);
-                case "ExtendField9":
+                case "MobileOperators":
                     return typeof (string);
                 case "IsReport":
                     return typeof (bool);

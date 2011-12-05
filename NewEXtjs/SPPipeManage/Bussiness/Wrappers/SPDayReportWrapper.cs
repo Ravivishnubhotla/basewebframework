@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
@@ -12,7 +13,65 @@ using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
-	[Serializable]
+    public class ReportDataProvinceItem
+    {
+        public string ChannelName { get; set; }
+        public string CodeName { get; set; }
+        public string Mo { get; set; }
+        public string SPCode { get; set; }
+        public string MoType { get; set; }
+        public string Province { get; set; }
+        public int RecordCount { get; set; }
+        public int MoLength { get; set; }
+
+
+        public ReportDataProvinceItem Copy()
+        {
+            ReportDataProvinceItem item = new ReportDataProvinceItem();
+            item.ChannelName = this.ChannelName;
+            item.CodeName = this.CodeName;
+            item.Mo = this.Mo;
+            item.SPCode = this.SPCode;
+            item.MoType = this.MoType;
+            item.Province = this.Province;
+            item.RecordCount = this.RecordCount;
+            item.MoLength = this.MoLength;
+            return item;
+        }
+
+    }
+
+    public class ReportDataOperatorItem
+    {
+        public string ChannelName { get; set; }
+        public string CodeName { get; set; }
+        public string Mo { get; set; }
+        public string SPCode { get; set; }
+        public string MoType { get; set; }
+        public string Province { get; set; }
+        public string OperatorType { get; set; }
+        public int RecordCount { get; set; }
+        public int MoLength { get; set; }
+
+
+        public ReportDataOperatorItem Copy()
+        {
+            ReportDataOperatorItem item = new ReportDataOperatorItem();
+            item.ChannelName = this.ChannelName;
+            item.CodeName = this.CodeName;
+            item.Mo = this.Mo;
+            item.SPCode = this.SPCode;
+            item.MoType = this.MoType;
+            item.Province = this.Province;
+            item.RecordCount = this.RecordCount;
+            item.MoLength = this.MoLength;
+            item.OperatorType = this.OperatorType;
+            return item;
+        }
+
+    }
+
+    [Serializable]
     public partial class SPDayReportWrapper
     {
         #region Static Common Data Operation
@@ -240,5 +299,325 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetALlClientGroupPriceReport( startDate, endDate);
 	    }
+
+
+        public static DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelID, int channleClientID)
+        {
+            DataTable dt = new DataTable("DS");
+            dt.Columns.Add("ChannelName");
+            dt.Columns.Add("CodeName");
+            dt.Columns.Add("Province");
+            dt.Columns.Add("RecordCount",typeof(int));
+            dt.AcceptChanges();
+
+            DataTable dtReportQuery = businessProxy.GetProvinceReport(startDate, endDate, channelID, channleClientID,null);
+
+            List<ReportDataProvinceItem> reportDataProvinceItems = new List<ReportDataProvinceItem>();
+
+            foreach (DataRow dr in dtReportQuery.Rows)
+            {
+                SPChannelWrapper channel = SPChannelWrapper.FindById((int) dr["ChannelID"]);
+                SPClientChannelSettingWrapper channelSettingWrapper = SPClientChannelSettingWrapper.FindById((int)dr["ChannleClientID"]);
+
+                string channelName = channel.Name;
+                string moCode = channelSettingWrapper.MoCode;
+                string province = dr["Province"].ToString();
+                int recordCount = (int)dr["RecordCount"];
+
+                ReportDataProvinceItem reportDataProvinceItem = new ReportDataProvinceItem();
+                reportDataProvinceItem.ChannelName = channelName.ToLower();
+                reportDataProvinceItem.CodeName = moCode.ToLower();
+                if (string.IsNullOrEmpty(province))
+                {
+                    reportDataProvinceItem.Province = "未知省份";   
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(province.Trim()))
+                    {
+                        reportDataProvinceItem.Province = "未知省份";  
+                    }
+                    else
+                    {
+                        reportDataProvinceItem.Province = province.ToLower();              
+                    }
+                }
+
+                reportDataProvinceItem.RecordCount = recordCount;
+                reportDataProvinceItem.Mo = channelSettingWrapper.CommandCode.ToLower();
+                if (channelSettingWrapper.ChannelCode==null)
+                {
+                    reportDataProvinceItem.SPCode = "";
+                }
+                else
+                {
+                    reportDataProvinceItem.SPCode = channelSettingWrapper.ChannelCode.ToLower();          
+                }
+
+
+                if (channelSettingWrapper.CommandType == "1")
+                    reportDataProvinceItem.MoType = "1";
+                else if (channelSettingWrapper.CommandType == "2" || channelSettingWrapper.CommandType == "3" || channelSettingWrapper.CommandType == "4")
+                    reportDataProvinceItem.MoType = "2";
+                else
+                {
+                    reportDataProvinceItem.MoType = "0";
+                }
+
+                reportDataProvinceItem.MoLength = reportDataProvinceItem.Mo.Length;
+
+                reportDataProvinceItems.Add(reportDataProvinceItem);
+            }
+
+
+            List<ReportDataProvinceItem> orderedItems = (from rap in reportDataProvinceItems
+                                                         orderby rap.ChannelName, rap.MoType, rap.Mo, rap.SPCode, rap.Province, rap.MoLength
+                          select rap).ToList();
+
+            List<ReportDataProvinceItem> groupItems = new List<ReportDataProvinceItem>();
+
+            foreach (ReportDataProvinceItem oItem in orderedItems)
+            {
+                ReportDataProvinceItem item =
+                    groupItems.Find(
+                        p =>
+                        (p.ChannelName == oItem.ChannelName && p.CodeName == oItem.CodeName &&
+                         p.Province == oItem.Province));
+
+                if (item!=null)
+                {
+                    item.RecordCount = oItem.RecordCount + item.RecordCount;
+                }
+                else
+                {
+                    if (oItem.MoType == "2")
+                    {
+                        ReportDataProvinceItem mitem = (from rap in groupItems
+                             where
+                                 (rap.ChannelName == oItem.ChannelName && rap.SPCode == oItem.SPCode &&
+                                  !oItem.Mo.Equals(rap.Mo) && oItem.Mo.Contains(rap.Mo))
+                             orderby rap.MoLength
+                             select rap).FirstOrDefault();
+                            
+                        bool hasMain = (mitem != null);
+
+                        if(hasMain)
+                        {
+                            ReportDataProvinceItem mi = groupItems.Find(p => (p.ChannelName == oItem.ChannelName && p.SPCode == oItem.SPCode && oItem.Mo.Contains(p.Mo) && p.Province == oItem.Province));
+
+                            if(mi!=null)
+                            {
+                                mi.RecordCount = oItem.RecordCount + mi.RecordCount;
+                            }
+                            else
+                            {
+                                var maitem = oItem.Copy();
+                                maitem.CodeName = mitem.CodeName;
+                                maitem.Mo = mitem.Mo;
+                                maitem.MoLength = mitem.MoLength;
+                                if (string.IsNullOrEmpty(maitem.Province.Trim()))
+                                    throw new Exception("11111");
+
+                                groupItems.Add(maitem);       
+                            }
+
+                            continue;
+                        }
+                    }
+
+                    var addItem = oItem.Copy();
+
+                    if (string.IsNullOrEmpty(addItem.Province.Trim()))
+                        throw new Exception("11111");
+
+                    groupItems.Add(addItem);
+                    //if (oItem.MoType == "2")
+                    //{
+                    //    DataRow dr = FindMainItemInDataTable(dt, oItem);
+
+                    //    if(dr!=null)
+                    //    {
+                    //        dr.BeginEdit();
+                    //        dr["RecordCount"] = oItem.RecordCount + (int)dr["RecordCount"];
+                    //        dr.EndEdit();
+                    //        dt.AcceptChanges();
+                    //    }
+                    //    else
+                    //    {
+                    //        AddNewProvinceReportRow(dt, oItem.ChannelName, oItem.CodeName, oItem.Province, oItem.RecordCount);                     
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    AddNewProvinceReportRow(dt, oItem.ChannelName, oItem.CodeName, oItem.Province, oItem.RecordCount);
+                    //}
+                }
+ 
+            }
+
+            foreach (ReportDataProvinceItem groupItem in groupItems)
+            {
+                AddNewProvinceReportRow(dt, groupItem.ChannelName, groupItem.CodeName, groupItem.Province, groupItem.RecordCount);
+            }
+ 
+            return dt;
+ 
+        }
+
+        //private static DataRow FindMainItemInDataTable(DataTable dt, ReportDataProvinceItem oItem)
+        //{
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        if ((row["ChannelName"].ToString() == oItem.ChannelName) && (row["CodeName"].ToString() == oItem.))
+        //        {
+        //        }
+        //    }
+        //    return null;
+        //}
+
+        private static void AddNewProvinceReportRow(DataTable dt,string channelName,string codeName,string province,int recordCount)
+        {
+            DataRow dr = dt.NewRow();
+            dr["ChannelName"] = channelName;
+            dr["CodeName"] = codeName;
+            dr["Province"] = province;
+            dr["RecordCount"] = recordCount;
+            dt.Rows.Add(dr);
+            dt.AcceptChanges();
+        }
+
+        public static DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId)
+        {
+            DataTable dt = new DataTable("DS");
+            dt.Columns.Add("Operator");
+            dt.Columns.Add("Province");
+            dt.Columns.Add("Channel");
+            dt.Columns.Add("Mo");
+            dt.Columns.Add("RecordCount",typeof(int));
+            dt.AcceptChanges();
+
+            DataTable dtReportQuery = businessProxy.GetOperatorReport(startDate, endDate, channleId, clientChannleId,null);
+
+            List<ReportDataOperatorItem> reportDataProvinceItems = new List<ReportDataOperatorItem>();
+
+            foreach (DataRow dr in dtReportQuery.Rows)
+            {
+                SPChannelWrapper channel = SPChannelWrapper.FindById((int) dr["ChannelID"]);
+                SPClientChannelSettingWrapper channelSettingWrapper = SPClientChannelSettingWrapper.FindById((int)dr["ChannleClientID"]);
+
+                string channelName = channel.Name;
+                string moCode = channelSettingWrapper.MoCode;
+                int recordCount = (int)dr["RecordCount"];
+                string province = dr["Province"].ToString();
+
+                ReportDataOperatorItem reportDataProvinceItem = new ReportDataOperatorItem();
+                reportDataProvinceItem.ChannelName = channelName.ToLower();
+                reportDataProvinceItem.CodeName = moCode.ToLower();
+                if (string.IsNullOrEmpty(province))
+                {
+                    reportDataProvinceItem.Province = "未知省份";
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(province.Trim()))
+                    {
+                        reportDataProvinceItem.Province = "未知省份";
+                    }
+                    else
+                    {
+                        reportDataProvinceItem.Province = province.ToLower();
+                    }
+                }
+
+                reportDataProvinceItem.RecordCount = recordCount;
+                reportDataProvinceItem.Mo = channelSettingWrapper.CommandCode.ToLower();
+                if (channelSettingWrapper.ChannelCode == null)
+                {
+                    reportDataProvinceItem.SPCode = "";
+                }
+                else
+                {
+                    reportDataProvinceItem.SPCode = channelSettingWrapper.ChannelCode.ToLower();
+                }
+
+
+                if (channelSettingWrapper.CommandType == "1")
+                    reportDataProvinceItem.MoType = "1";
+                else if (channelSettingWrapper.CommandType == "2" || channelSettingWrapper.CommandType == "3" || channelSettingWrapper.CommandType == "4")
+                    reportDataProvinceItem.MoType = "2";
+                else
+                {
+                    reportDataProvinceItem.MoType = "0";
+                }
+
+                reportDataProvinceItem.MoLength = reportDataProvinceItem.Mo.Length;
+                reportDataProvinceItem.OperatorType = dr["Operator"].ToString();
+                reportDataProvinceItems.Add(reportDataProvinceItem);
+            }
+
+
+
+            List<ReportDataOperatorItem> orderedItems = (from rap in reportDataProvinceItems
+                                                         orderby rap.OperatorType, rap.Province, rap.ChannelName, rap.MoType, rap.Mo, rap.SPCode, rap.MoLength
+                                                         select rap).ToList();
+
+            List<ReportDataOperatorItem> groupItems = new List<ReportDataOperatorItem>();
+
+            foreach (ReportDataOperatorItem oItem in orderedItems)
+            {
+                ReportDataOperatorItem item =
+                    groupItems.Find(
+                        p =>
+                        (p.OperatorType == oItem.OperatorType && p.ChannelName == oItem.ChannelName &&
+                         p.Province == oItem.Province && p.CodeName == oItem.CodeName));
+
+                if (item != null)
+                {
+                    item.RecordCount = oItem.RecordCount + item.RecordCount;
+                }
+                else
+                {
+                    if (oItem.MoType == "2")
+                    {
+                        ReportDataOperatorItem mitem = (from rap in groupItems
+                                                        where
+                                                            (rap.OperatorType == oItem.OperatorType && rap.ChannelName == oItem.ChannelName &&
+                         rap.Province == oItem.Province && rap.SPCode == oItem.SPCode &&
+                                                             !oItem.Mo.Equals(rap.Mo) && oItem.Mo.Contains(rap.Mo))
+                                                        orderby rap.MoLength
+                                                        select rap).FirstOrDefault();
+
+                        bool hasMain = (mitem != null);
+
+                        if (hasMain)
+                        {
+                            mitem.RecordCount = oItem.RecordCount + mitem.RecordCount;
+
+                            continue;
+                        }
+                    }
+
+                    var addItem = oItem.Copy();
+
+                    groupItems.Add(addItem);
+ 
+                }
+
+            }
+
+            foreach (ReportDataOperatorItem groupItem in groupItems)
+            {
+                dt.Rows.Add(groupItem.OperatorType, groupItem.Province, groupItem.ChannelName, groupItem.CodeName,
+                            groupItem.RecordCount);
+            }
+
+
+
+            dt.AcceptChanges();
+
+            return dt;
+
+
+        }
     }
 }

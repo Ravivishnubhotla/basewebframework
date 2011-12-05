@@ -71,6 +71,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PHONEPREFIX = "PhonePrefix";
+		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
 		
         #endregion
 
@@ -130,6 +131,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.PhonePrefix = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string MobileOperators
+		{
+			get
+			{
+				return entity.MobileOperators;
+			}
+			set
+			{
+				entity.MobileOperators = value;
 			}
 		}
 		#endregion 

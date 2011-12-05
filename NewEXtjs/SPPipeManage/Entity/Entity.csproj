@@ -334,7 +334,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientMappingFile.hbm.xml" />
-    <EmbeddedResource Include="Tables\MappingFiles\SPPaymentInfoMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPPaymentInfoMappingFile.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\MappingFiles\SPRequestInfoMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSendClientParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSendRequestInfoMappingFile.hbm.xml" />
@@ -360,7 +362,9 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPClientChannelSettingMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\MappingFiles\SPDayReportMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPDayReportMappingFile.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\MappingFiles\SPTestRecievedMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>

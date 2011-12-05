@@ -41,6 +41,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetDayCountReportForMaster(DateTime startDate, DateTime endDate);
         DataTable GetReportDataChange(int reportClientChannleId, DateTime startDate, DateTime endDate);
         DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate);
+        DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept);
+        DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -156,7 +158,35 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 {
                     dayReportEntity = new SPDayReportEntity();
                     dayReportEntity.ChannelID = channelID;
-                    dayReportEntity.ClientID = clientID;
+                    dayReportEntity .ClientID = clientID;
+
+                    try
+                    {
+                        if(clientID>0)
+                        {
+                            SPClientEntity spClient =
+                                this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(clientID);
+
+                            if(spClient!=null)
+                            {
+                                if(spClient.SPClientGroupID!=null)
+                                {
+                                    dayReportEntity.ClientGroupID = spClient.SPClientGroupID.Id;
+                                }
+
+                                SPClientWrapper clientWrapper = new SPClientWrapper(spClient);
+
+                                if(clientWrapper.DefaultClientChannelSetting!=null)
+                                {
+                                    dayReportEntity.ChannelClientID = clientWrapper.DefaultClientChannelSetting.Id;
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error("±¨±í´íÎó£¨SPClientGroupID ChannelClientID£©£º"+ex.Message);
+                    }
                 }
  
                 dayReportEntity.UpTotalCount = totalCount;
@@ -218,6 +248,16 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate)
         {
             return this.AdoNetDb.GetALlClientGroupPriceReport( startDate, endDate);
+        }
+
+        public DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept)
+        {
+            return this.AdoNetDb.GetProvinceReport(startDate, endDate, channelId, channleClientID, isIntercept);
+        }
+
+        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept)
+        {
+            return this.AdoNetDb.GetOperatorReport(startDate, endDate, channleId, clientChannleId, isIntercept);
         }
 
         public string GetDbSize()

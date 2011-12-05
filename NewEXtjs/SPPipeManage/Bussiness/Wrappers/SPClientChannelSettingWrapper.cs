@@ -258,6 +258,40 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string MoCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.CommandCode))
+                    return "";
+
+                string spcode = "空缺";
+
+                if (!string.IsNullOrEmpty(this.ChannelCode))
+                    spcode = this.ChannelCode;
+
+                if (this.CommandType == "1")
+                    return this.CommandCode + " (精准) 到 " + spcode;
+
+                if (this.CommandType == "2")
+                    return "包含" + this.CommandCode + " (模糊) 到 " + spcode;
+
+                if (this.CommandType == "3")
+                    return this.CommandCode + " (模糊) 到 " + spcode;
+
+                if (this.CommandType == "4")
+                    return "结尾" + this.CommandCode + " (模糊) 到 " + spcode;
+
+                if (this.CommandType == "5")
+                    return "正则" + this.CommandCode + " (模糊) 到 " + spcode;
+
+                if (this.CommandType == "6")
+                    return "自定义" + this.CommandCode + " (模糊) 到 " + spcode;
+
+                return this.CommandTypeName + " " + this.CommandCode;
+            }
+        }
+
         public static List<SPClientChannelSettingWrapper> GetSettingByChannel(SPChannelWrapper spChannelWrapper)
         {
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.GetSettingByChannel(spChannelWrapper.entity));
@@ -413,6 +447,25 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return businessProxy.GetToDayRate(clinetID, channelID);
         }
 
+        private SPClientChannelSettingWrapper ParentClientChannelSetting
+        {
+            get
+            {
+                if (this.CommandType == "2" || this.CommandType == "3" || this.CommandType == "4")
+                {
+                    List<SPClientChannelSettingWrapper> clientChannelSettings = FindAllByChannelID(this.ChannelID);
+
+                    SPClientChannelSettingWrapper
+
+                    return null;
+                }
+                else
+                {
+                   return this;                 
+                }
+            }
+        }
+
         public bool SendMsg(SPPaymentInfoWrapper spPaymentInfo)
         {
             string requesturl = "";
@@ -497,9 +550,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                         case "extendfield8":
                             BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField8);
                             break;
-                        case "extendfield9":
-                            BulidParams(queryString, clientFieldMapping.Name, spPaymentInfo.ExtendField9);
-                            break;
                     }
                 }
             }
@@ -559,9 +609,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                             break;
                         case "extendfield8":
                             BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField8);
-                            break;
-                        case "extendfield9":
-                            BulidParams(queryString, channelDefaultClientSycnParam.Name, spPaymentInfo.ExtendField9);
                             break;
                     }
                 }

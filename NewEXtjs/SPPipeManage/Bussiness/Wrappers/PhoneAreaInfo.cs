@@ -10,6 +10,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
     {
         public string Province { get; set;}
         public string City { get; set; }
-
+        public string MobileOperators { get; set; }
     }
 }
