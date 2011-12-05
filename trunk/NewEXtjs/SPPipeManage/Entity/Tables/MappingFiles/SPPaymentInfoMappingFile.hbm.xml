@@ -17,7 +17,7 @@
 		<property column="Message" type="string" name="Message"   length="160" />	
 		<property column="IsIntercept" type="Boolean" name="IsIntercept"   />	
 		<property column="CreateDate" type="DateTime" name="CreateDate"   />	
-		<property column="RequestID" type="int" name="RequestID"   />	
+		<property column="ClientGroupID" type="int" name="ClientGroupID"   />	
 		<property column="Cpid" type="string" name="Cpid"   length="160" />	
 		<property column="Mid" type="string" name="Mid"   length="160" />	
 		<property column="Port" type="string" name="Port"   not-null="true"  length="160" />	
@@ -35,7 +35,7 @@
 		<property column="ExtendField6" type="string" name="ExtendField6"   length="100" />	
 		<property column="ExtendField7" type="string" name="ExtendField7"   length="100" />	
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="100" />	
-		<property column="ExtendField9" type="string" name="ExtendField9"   length="100" />	
+		<property column="MobileOperators" type="string" name="MobileOperators"   length="100" />	
 		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="City" type="string" name="City"   length="20" />	

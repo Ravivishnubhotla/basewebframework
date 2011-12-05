@@ -119,7 +119,7 @@
                              
                 var win = <%= this.winReSendData.ClientID %>;
                 
-                win.setTitle("取消扣除的数据");
+                win.setTitle("补发数据");
                 
                 win.autoLoad.url = 'ReSendData.aspx';
                 

@@ -74,7 +74,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_MESSAGE = "Message";
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
-		public static readonly string PROPERTY_NAME_REQUESTID = "RequestID";
+		public static readonly string PROPERTY_NAME_CLIENTGROUPID = "ClientGroupID";
 		public static readonly string PROPERTY_NAME_CPID = "Cpid";
 		public static readonly string PROPERTY_NAME_MID = "Mid";
 		public static readonly string PROPERTY_NAME_PORT = "Port";
@@ -92,7 +92,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_EXTENDFIELD6 = "ExtendField6";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
-		public static readonly string PROPERTY_NAME_EXTENDFIELD9 = "ExtendField9";
+		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
@@ -208,15 +208,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? RequestID
+		public int? ClientGroupID
 		{
 			get
 			{
-				return entity.RequestID;
+				return entity.ClientGroupID;
 			}
 			set
 			{
-				entity.RequestID = value;
+				entity.ClientGroupID = value;
 			}
 		}
 		/// <summary>
@@ -460,15 +460,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ExtendField9
+		public string MobileOperators
 		{
 			get
 			{
-				return entity.ExtendField9;
+				return entity.MobileOperators;
 			}
 			set
 			{
-				entity.ExtendField9 = value;
+				entity.MobileOperators = value;
 			}
 		}
 		/// <summary>

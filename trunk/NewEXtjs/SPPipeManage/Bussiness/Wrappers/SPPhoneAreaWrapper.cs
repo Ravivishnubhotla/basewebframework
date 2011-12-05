@@ -135,6 +135,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     PhoneAreaInfo phonearea = new PhoneAreaInfo();
                     phonearea.City = item["City"].ToString();
                     phonearea.Province = item["Province"].ToString();
+                    phonearea.MobileOperators = item["MobileOperators"].ToString();
                     phoneinfos.Add(item["PhonePrefix"].ToString(), phonearea);
                 }
 	        }

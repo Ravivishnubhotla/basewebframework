@@ -18,6 +18,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PHONEPREFIX = "PhonePrefix";
+		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
 		
         #endregion
 	
@@ -30,6 +31,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _province;
 		private string _city;
 		private string _phonePrefix;
+		private string _mobileOperators;
 		
 		#endregion
 
@@ -43,6 +45,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_province = null;
 			_city = null;
 			_phonePrefix = null;
+			_mobileOperators = null;
 		}
 		#endregion
 
@@ -50,12 +53,13 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPhoneAreaEntity( int id, string province, string city, string phonePrefix)
+		public SPPhoneAreaEntity( int id, string province, string city, string phonePrefix, string mobileOperators)
 		{
 			_id = id;
 			_province = province;
 			_city = city;
 			_phonePrefix = phonePrefix;
+			_mobileOperators = mobileOperators;
 		}
 		#endregion     
 	
@@ -123,6 +127,23 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 24)
 					throw new ArgumentOutOfRangeException("Invalid value for PhonePrefix", value, value.ToString());
 				_isChanged |= (_phonePrefix != value); _phonePrefix = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string MobileOperators
+		{
+			get { return _mobileOperators; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4)
+					throw new ArgumentOutOfRangeException("Invalid value for MobileOperators", value, value.ToString());
+				_isChanged |= (_mobileOperators != value); _mobileOperators = value;
 			}
 		}
 		/// <summary>

@@ -1452,5 +1452,99 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept)
+        {
+            string sql = @"SELECT [ChannelID] ,[ChannleClientID] ,[Province],COUNT(*) as RecordCount FROM  [dbo].[SPPaymentInfo] with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if(channelId>0)
+            {
+                sql += " AND ( [ChannelID] = @channelID) ";
+            }
+
+            if (channleClientID > 0)
+            {
+                sql += " AND ( [ChannleClientID] = @channleClientID) ";
+            }
+
+            if(isIntercept!=null)
+            {
+                sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (channelId > 0)
+            {
+                dbParameters.AddWithValue("channelID", channelId);
+            }
+
+            if (channleClientID > 0)
+            {
+                dbParameters.AddWithValue("channleClientID", channleClientID);
+            }
+
+            if (isIntercept != null)
+            {
+                dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
+            }
+
+
+            sql += " GROUP BY  [ChannelID] ,[ChannleClientID],[Province] ";
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept)
+        {
+            string sql = @"select  MobileOperators as Operator,Province,ChannelID,ChannleClientID,COUNT(*) as RecordCount from dbo.SPPaymentInfo with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if (channelId > 0)
+            {
+                sql += " AND ( [ChannelID] = @channelID) ";
+            }
+
+            if (channleClientID > 0)
+            {
+                sql += " AND ( [ChannleClientID] = @channleClientID) ";
+            }
+
+            if (isIntercept != null)
+            {
+                sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (channelId > 0)
+            {
+                dbParameters.AddWithValue("channelID", channelId);
+            }
+
+            if (channleClientID > 0)
+            {
+                dbParameters.AddWithValue("channleClientID", channleClientID);
+            }
+
+            if (isIntercept != null)
+            {
+                dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
+            }
+
+
+            sql += "  group by  MobileOperators,Province,ChannelID,ChannleClientID ";
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }

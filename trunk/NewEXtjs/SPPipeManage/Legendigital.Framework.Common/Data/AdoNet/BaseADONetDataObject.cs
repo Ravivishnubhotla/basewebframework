@@ -71,6 +71,7 @@ namespace Legendigital.Framework.Common.Data.AdoNet
                 Logger.Info(string.Format("commandType:{0}", commandType));
                 cmd.CommandText = commandText;
                 cmd.CommandType = commandType;
+                cmd.CommandTimeout = 90;
                 for (int i = 0; i < parameters.Count; i++)
                 {
                     //if (parameters[i].Value != null)
@@ -110,6 +111,7 @@ namespace Legendigital.Framework.Common.Data.AdoNet
                 Logger.Info(string.Format("commandType:{0}", commandType));
                 cmd.CommandText = commandText;
                 cmd.CommandType = commandType;
+                cmd.CommandTimeout = 90;
                 for (int i = 0; i < parameters.Count; i++)
                 {
                     IDbDataParameter obj = this.CreateNewDbParameter();
@@ -155,6 +157,7 @@ namespace Legendigital.Framework.Common.Data.AdoNet
                 Logger.Info(string.Format("commandType:{0}", commandType));
                 cmd.CommandText = commandText;
                 cmd.CommandType = commandType;
+                cmd.CommandTimeout = 90;
                 for (int i = 0; i < parameters.Count; i++)
                 {
                     IDbDataParameter obj = this.CreateNewDbParameter();
@@ -202,6 +205,7 @@ namespace Legendigital.Framework.Common.Data.AdoNet
             IDbCommand cmd = this.DbProvider.CreateCommand();
             cmd.CommandText = commandText;
             cmd.CommandType = commandType;
+            cmd.CommandTimeout = 90;
             for (int i = 0; i < parameters.Count; i++)
             {
                 AddParameterToCmmand(cmd, parameters[i]);

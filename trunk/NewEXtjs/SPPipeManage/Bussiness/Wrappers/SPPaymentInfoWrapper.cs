@@ -404,8 +404,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return this.ExtendField7;
                 case "extendfield8":
                     return this.ExtendField8;
-                case "extendfield9":
-                    return this.ExtendField9;
                 default:
                     return "";
             }
@@ -465,9 +463,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     break;
                 case "extendfield8":
                     this.ExtendField8 = sValue;
-                    break;
-                case "extendfield9":
-                    this.ExtendField9 = sValue;
                     break;
             }
         }
@@ -665,6 +660,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     {
                         this.Province = phoneAreaInfo.Province;
                         this.City = phoneAreaInfo.City;
+                        this.MobileOperators = phoneAreaInfo.MobileOperators;
                     }
                 }
                 catch (Exception ex)

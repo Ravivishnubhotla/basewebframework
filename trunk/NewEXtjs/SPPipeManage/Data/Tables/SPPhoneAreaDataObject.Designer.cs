@@ -17,6 +17,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_PROVINCE = Property.ForName(SPPhoneAreaEntity.PROPERTY_NAME_PROVINCE);
 		public static readonly Property PROPERTY_CITY = Property.ForName(SPPhoneAreaEntity.PROPERTY_NAME_CITY);
 		public static readonly Property PROPERTY_PHONEPREFIX = Property.ForName(SPPhoneAreaEntity.PROPERTY_NAME_PHONEPREFIX);
+		public static readonly Property PROPERTY_MOBILEOPERATORS = Property.ForName(SPPhoneAreaEntity.PROPERTY_NAME_MOBILEOPERATORS);
       
 		#region 子类集合字段查询字段
 	
@@ -41,6 +42,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "City":
                     return typeof (string);
                 case "PhonePrefix":
+                    return typeof (string);
+                case "MobileOperators":
                     return typeof (string);
           }
 			return typeof(string);

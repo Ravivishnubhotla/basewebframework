@@ -14,6 +14,7 @@
 		<property column="Province" type="string" name="Province"   length="24" />	
 		<property column="City" type="string" name="City"   length="24" />	
 		<property column="PhonePrefix" type="string" name="PhonePrefix"   length="24" />	
+		<property column="MobileOperators" type="string" name="MobileOperators"   length="4" />	
 
 
 
