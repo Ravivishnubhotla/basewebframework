@@ -7,6 +7,7 @@ using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
@@ -455,9 +456,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     List<SPClientChannelSettingWrapper> clientChannelSettings = FindAllByChannelID(this.ChannelID);
 
-                    SPClientChannelSettingWrapper
+                    SPClientChannelSettingWrapper parentClientChannelSetting = (from rap in clientChannelSettings
+                                                                                where
+                                                                                    (rap.ChannelID.Id == this.ChannelID.Id && rap.MoCode == this.MoCode &&
+                                                                                     !this.ChannelCode.Equals(rap.ChannelCode) && this.ChannelCode.Contains(rap.ChannelCode))
+                                                                                orderby rap.ChannelCode.Length
+                                                                                select rap).FirstOrDefault();
 
-                    return null;
+                    return parentClientChannelSetting;
                 }
                 else
                 {

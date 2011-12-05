@@ -486,7 +486,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             dt.AcceptChanges();
         }
 
-        public static DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId)
+        public static DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId,string  mprovince,  string moperator)
         {
             DataTable dt = new DataTable("DS");
             dt.Columns.Add("Operator");
@@ -496,7 +496,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             dt.Columns.Add("RecordCount",typeof(int));
             dt.AcceptChanges();
 
-            DataTable dtReportQuery = businessProxy.GetOperatorReport(startDate, endDate, channleId, clientChannleId,null);
+            DataTable dtReportQuery = businessProxy.GetOperatorReport(startDate, endDate, channleId, clientChannleId,null, mprovince , moperator);
 
             List<ReportDataOperatorItem> reportDataProvinceItems = new List<ReportDataOperatorItem>();
 

@@ -1500,7 +1500,7 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
-        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept)
+        public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept, string mprovince, string moperator)
         {
             string sql = @"select  MobileOperators as Operator,Province,ChannelID,ChannleClientID,COUNT(*) as RecordCount from dbo.SPPaymentInfo with(nolock)
                            WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
@@ -1518,6 +1518,16 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             if (isIntercept != null)
             {
                 sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            if (!string.IsNullOrEmpty(mprovince))
+            {
+                sql += " AND ( [Province] = @Province) ";
+            }
+
+            if (!string.IsNullOrEmpty(moperator))
+            {
+                sql += " AND ( [MobileOperators] = @MobileOperators) ";
             }
 
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -1541,6 +1551,15 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
                 dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
             }
 
+            if (!string.IsNullOrEmpty(mprovince))
+            {
+                dbParameters.AddWithValue("Province", mprovince);
+            }
+
+            if (!string.IsNullOrEmpty(moperator))
+            {
+                dbParameters.AddWithValue("MobileOperators", moperator);
+            }
 
             sql += "  group by  MobileOperators,Province,ChannelID,ChannleClientID ";
 

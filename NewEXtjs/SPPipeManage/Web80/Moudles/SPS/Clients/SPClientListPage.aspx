@@ -13,35 +13,35 @@
         var rooturl ='<%=this.ResolveUrl("~/")%>';
        var template = '<span style="color:{0};">{1}</span>';
 
-        var change = function (value) {
-            return String.format(template, (value) ? 'red' : 'green', FormatBool(value));
-        }
+       var change = function(value) {
+           return String.format(template, (value) ? 'red' : 'green', FormatBool(value));
+       };
 
 
-                var showCommands=function(grid, toolbar, rowIndex, record)
+        var showCommands = function(grid, toolbar, rowIndex, record)
         {
-      
-            if(record.data.UserIsLocked!=null && record.data.UserIsLocked)
-            {
-             toolbar.items.items[0].menu.items.items[2].hide();
-             toolbar.items.items[0].menu.items.items[3].show();
-            }
-            
-            else{
-             toolbar.items.items[0].menu.items.items[2].show();
-             toolbar.items.items[0].menu.items.items[3].hide();
-        
-            }
-               
-        }
- 
 
-        var FormatBool = function(value) {
-            if (value)
-                return '锁定';
-            else
-                return '正常';
-        }
+            if (record.data.UserIsLocked != null && record.data.UserIsLocked)
+            {
+                toolbar.items.items[0].menu.items.items[2].hide();
+                toolbar.items.items[0].menu.items.items[3].show();
+            }
+
+            else {
+                toolbar.items.items[0].menu.items.items[2].show();
+                toolbar.items.items[0].menu.items.items[3].hide();
+
+            }
+
+        };
+
+
+                var FormatBool = function(value) {
+                    if (value)
+                        return '锁定';
+                    else
+                        return '正常';
+                };
 
         function RefreshSPClientList() {
             <%= this.storeSPClient.ClientID %>.reload();
@@ -242,6 +242,8 @@
                     <ext:RecordField Name="UserLoginID" />
                     <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="ClientGroupName" />
+                    <ext:RecordField Name="ChannelClientCode" />
+                    
                     <ext:RecordField Name="Price" Type="Float" />
                 </Fields>
             </ext:JsonReader>
@@ -302,12 +304,14 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="通道价格" Sortable="true">
+                                <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令" Width="120" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="35" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Hidden="true" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Sortable="true">
+                                <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Width="55" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组"
                                     Sortable="true">
