@@ -448,7 +448,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return businessProxy.GetToDayRate(clinetID, channelID);
         }
 
-        private SPClientChannelSettingWrapper ParentClientChannelSetting
+        public SPClientChannelSettingWrapper ParentClientChannelSetting
         {
             get
             {
@@ -458,10 +458,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                     SPClientChannelSettingWrapper parentClientChannelSetting = (from rap in clientChannelSettings
                                                                                 where
-                                                                                    (rap.ChannelID.Id == this.ChannelID.Id && rap.MoCode == this.MoCode &&
-                                                                                     !this.ChannelCode.Equals(rap.ChannelCode) && this.ChannelCode.Contains(rap.ChannelCode))
-                                                                                orderby rap.ChannelCode.Length
+                                                                                    (rap.ChannelID.Id == this.ChannelID.Id && rap.ChannelCode == this.ChannelCode &&
+                                                                                     !this.CommandCode.Equals(rap.CommandCode) && this.CommandCode.Contains(rap.CommandCode))
+                                                                                orderby rap.CommandCode.Length
                                                                                 select rap).FirstOrDefault();
+
+                    if (parentClientChannelSetting == null)
+                        return this;
 
                     return parentClientChannelSetting;
                 }

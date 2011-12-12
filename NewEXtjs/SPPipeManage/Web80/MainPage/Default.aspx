@@ -59,11 +59,11 @@
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="lblUser" Text="<b>Super Admin</b>">
+                                    <ext:ToolbarTextItem ID="lblUser" Text="<b>Super Admin</b>" runat="server">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="lblToday" Text="2008-1-1">
+                                    <ext:ToolbarTextItem ID="lblToday" Text="2008-1-1"  runat="server">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarFill>
                                     </ext:ToolbarFill>
@@ -97,11 +97,7 @@
             });" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ToolbarButton Icon="UserKey" Text="更改密码">
-                                        <Listeners>
-                                            <Click Handler="#{winChangePassword}.show();" />
-                                        </Listeners>
-                                    </ext:ToolbarButton>
+ 
                                     <ext:ToolbarButton ID="btnExit" Icon="UserGo" Text="注销">
                                         <AjaxEvents>
                                             <Click OnEvent="btnExit_Click" Failure="Ext.Msg.show({ 
@@ -137,79 +133,7 @@
                                         <ext:Tab runat="server" ID="HomeTab" Closable="false" Title="系统首页">
                                             <Body>
                                                 <ext:FitLayout ID="FitLayout2" runat="server">
-<%--                                                    <ext:Portal ID="Portal1" runat="server" Border="false">
-                                                        <Listeners>
-                                                            <Drop Handler="e.panel.el.frame();" />
-                                                        </Listeners>
-                                                        <Body>
-                                                            <ext:ColumnLayout ID="ColumnLayout1" runat="server">
-                                                                <ext:LayoutColumn ColumnWidth=".33">
-                                                                    <ext:PortalColumn ID="PortalColumn1" runat="server" StyleSpec="padding:10px 0 10px 10px">
-                                                                        <Body>
-                                                                            <ext:AnchorLayout ID="AnchorLayout1" runat="server">
-                                                                                <ext:Anchor>
-                                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="今日数据统计">
-                                                                                        <Tools>
-                                                                                            <ext:Tool Type="Gear" Qtip="设置" />
-                                                                                            <ext:Tool Type="Close" Qtip="关闭" Handler="this.close();" />
-                                                                                        </Tools>
-                                                                                    </ext:Portlet>
-                                                                                </ext:Anchor>
-                                                                                <ext:Anchor>
-                                                                                    <ext:Portlet ID="Portlet5" runat="server" Title="系统公告">
-                                                                                        <Tools>
-                                                                                            <ext:Tool Type="Gear" Qtip="设置" />
-                                                                                            <ext:Tool Type="Close" Qtip="关闭" Handler="this.close();" />
-                                                                                        </Tools>
-                                                                                    </ext:Portlet>
-                                                                                </ext:Anchor>
-                                                                            </ext:AnchorLayout>
-                                                                        </Body>
-                                                                    </ext:PortalColumn>
-                                                                </ext:LayoutColumn>
-                                                                <ext:LayoutColumn ColumnWidth=".33">
-                                                                    <ext:PortalColumn ID="PortalColumn2" runat="server" StyleSpec="padding:10px 0 10px 10px">
-                                                                        <Body>
-                                                                            <ext:AnchorLayout ID="AnchorLayout2" runat="server">
-                                                                                <ext:Anchor>
-                                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="失败请求监控">
-                                                                                        <Tools>
-                                                                                            <ext:Tool Type="Gear" Qtip="设置" />
-                                                                                            <ext:Tool Type="Close" Qtip="关闭" Handler="this.close();" />
-                                                                                        </Tools>
-                                                                                    </ext:Portlet>
-                                                                                </ext:Anchor>
-                                                                                <ext:Anchor>
-                                                                                    <ext:Portlet ID="Portlet3" runat="server" Title="系统错误监控">
-                                                                                        <Tools>
-                                                                                            <ext:Tool Type="Gear" Qtip="设置" />
-                                                                                            <ext:Tool Type="Close" Qtip="关闭" Handler="this.close();" />
-                                                                                        </Tools>
-                                                                                    </ext:Portlet>
-                                                                                </ext:Anchor>
-                                                                            </ext:AnchorLayout>
-                                                                        </Body>
-                                                                    </ext:PortalColumn>
-                                                                </ext:LayoutColumn>
-                                                                <ext:LayoutColumn ColumnWidth=".33">
-                                                                    <ext:PortalColumn ID="PortalColumn3" runat="server" StyleSpec="padding:10px">
-                                                                        <Body>
-                                                                            <ext:AnchorLayout ID="AnchorLayout3" runat="server">
-                                                                                <ext:Anchor>
-                                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="系统运行状态">
-                                                                                        <Tools>
-                                                                                            <ext:Tool Type="Gear" Qtip="设置" />
-                                                                                            <ext:Tool Type="Close" Qtip="关闭" Handler="this.close();" />
-                                                                                        </Tools>
-                                                                                    </ext:Portlet>
-                                                                                </ext:Anchor>
-                                                                            </ext:AnchorLayout>
-                                                                        </Body>
-                                                                    </ext:PortalColumn>
-                                                                </ext:LayoutColumn>
-                                                            </ext:ColumnLayout>
-                                                        </Body>
-                                                    </ext:Portal>--%>
+ 
                                                 </ext:FitLayout>
                                             </Body>
                                         </ext:Tab>

@@ -18,7 +18,7 @@
                 return 'true';
             else
                 return 'false';
-        }
+        };
 
 
         var RefreshData = function(btn) {

@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.MainPage {
+namespace Legendigital.Common.Web.Moudles.SystemManage.LogViews {
     
     
-    public partial class Default {
+    public partial class SystemLogList {
         
         /// <summary>
         /// ScriptManagerProxy1 control.
@@ -22,138 +22,102 @@ namespace Legendigital.Common.Web.MainPage {
         protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
         
         /// <summary>
-        /// ViewPort1 control.
+        /// storeSystemLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort ViewPort1;
+        protected global::Coolite.Ext.Web.Store storeSystemLog;
         
         /// <summary>
-        /// BorderLayout1 control.
+        /// viewPortMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.BorderLayout BorderLayout1;
+        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
         
         /// <summary>
-        /// locSystemName control.
+        /// fitLayoutMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Localize locSystemName;
+        protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// lblUser control.
+        /// gridPanelSystemLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem lblUser;
+        protected global::Coolite.Ext.Web.GridPanel gridPanelSystemLog;
         
         /// <summary>
-        /// lblToday control.
+        /// tbTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem lblToday;
+        protected global::Coolite.Ext.Web.Toolbar tbTop;
         
         /// <summary>
-        /// ToolbarTextItem1 control.
+        /// dfStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem1;
+        protected global::Coolite.Ext.Web.DateField dfStart;
         
         /// <summary>
-        /// cbTheme control.
+        /// dfEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ComboBox cbTheme;
+        protected global::Coolite.Ext.Web.DateField dfEnd;
         
         /// <summary>
-        /// Panel1 control.
+        /// btnFind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel Panel1;
+        protected global::Coolite.Ext.Web.Button btnFind;
         
         /// <summary>
-        /// LeftPanel control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Accordion LeftPanel;
+        protected global::Coolite.Ext.Web.GridView GridView1;
         
         /// <summary>
-        /// Panel2 control.
+        /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Panel Panel2;
+        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
         
         /// <summary>
-        /// FitLayout1 control.
+        /// RowSelectionModel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout FitLayout1;
-        
-        /// <summary>
-        /// MainTabs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TabPanel MainTabs;
-        
-        /// <summary>
-        /// HomeTab control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Tab HomeTab;
-        
-        /// <summary>
-        /// FitLayout2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.FitLayout FitLayout2;
-        
-        /// <summary>
-        /// locCopyRight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Localize locCopyRight;
+        protected global::Coolite.Ext.Web.RowSelectionModel RowSelectionModel1;
     }
 }

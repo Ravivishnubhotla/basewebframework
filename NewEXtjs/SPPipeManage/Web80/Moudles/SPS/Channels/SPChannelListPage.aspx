@@ -16,7 +16,7 @@
                 return '是';
             else
                 return '否';
-        }
+        };
 
 
         function ReloadAllChannelInfo()

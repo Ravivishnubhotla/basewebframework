@@ -9,12 +9,34 @@
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
-        var FormatBool = function(value) {
-            if (value)
-                return '是';
-            else
-                return '否';
-        }
+       var template = '<span style="color:{0};">{1}</span>';
+
+       var showUserStatus = function(value) {
+           return String.format(template, (value) ? 'red' : 'green', FormatBool(value));
+       };
+                var FormatBool = function(value) {
+                    if (value)
+                        return '锁定';
+                    else
+                        return '正常';
+                };
+        
+                var showCommands = function(grid, toolbar, rowIndex, record)
+        {
+
+            if (record.data.UserIsLocked != null && record.data.UserIsLocked)
+            {
+                toolbar.items.items[0].menu.items.items[0].hide();
+                toolbar.items.items[0].menu.items.items[1].show();
+            }
+
+            else {
+                toolbar.items.items[0].menu.items.items[0].show();
+                toolbar.items.items[0].menu.items.items[1].hide();
+
+            }
+
+        };
 
         function RefreshSPClientGroupList() {
             <%= this.storeSPClientGroup.ClientID %>.reload();
@@ -24,7 +46,14 @@
             <%= this.storeSPClientGroup.ClientID %>.reload();
         };
         
-        function ShowAddSPClientGroupForm() {
+                function CloseChangePwd() {
+                var win = <%= this.winChangePwd.ClientID %>;
+ 
+        
+                win.hide();
+                }
+
+                function ShowAddSPClientGroupForm() {
                 Coolite.AjaxMethods.UCSPClientGroupAdd.Show( 
                                                                 {
                                                                     failure: function(msg) {
@@ -86,6 +115,35 @@
                 win.show();    
             }
 
+            if (cmd == "cmdChangePassword") 
+            {
+                var win = <%= this.winChangePwd.ClientID %>;
+                
+                win.setTitle(" 修改用户“"+id.data.UserLoginID+"” 登录密码 ");
+                
+                win.autoLoad.url = '<%= this.ResolveUrl("~/Moudles/SystemManage/UserManage/SystemUserChangePwd.aspx") %>';
+                
+                win.autoLoad.params.UserID = id.data.UserID;
+        
+                win.show();  
+            }
+            
+            
+            if (cmd == "cmdShowLoginLog") {
+
+                var win = <%= this.winShowLoginLog.ClientID %>;
+                
+                win.setTitle(" 显示用户“"+id.data.UserLoginID+"” 安全日志 ");
+                
+                win.autoLoad.url = '<%= this.ResolveUrl("~/Moudles/SystemManage/LogViews/SystemLogList.aspx") %>';
+                
+                win.autoLoad.params.ParentID = id.data.UserID;
+        
+                win.show();    
+            }             
+            
+            
+            
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认要删除所选SPClientGroup ? ',
                     function(e) {
@@ -127,12 +185,15 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="UserID" Type="int" />
+                    <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="UserName" />
+                    <ext:RecordField Name="UserLoginID" />
                     <ext:RecordField Name="ClientList" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
-        <AjaxEventConfig Timeout="120000"></AjaxEventConfig>
+        <AjaxEventConfig Timeout="120000">
+        </AjaxEventConfig>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -152,7 +213,12 @@
                                             <Click Handler="ShowAddSPClientGroupForm();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:TextField ID="txtSreachName" runat="server" EmptyText="输入下家组名" />
+                                    <ext:ToolbarSeparator>
+                                    </ext:ToolbarSeparator>
+                                    <ext:ToolbarButton ID='btnRefresh' runat="server" Text="搜索" Icon="Find">
                                         <Listeners>
                                             <Click Handler="#{storeSPClientGroup}.reload();" />
                                         </Listeners>
@@ -177,21 +243,36 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserID" DataIndex="UserName" Header="关联用户登录ID">
                                 </ext:Column>
+                                <ext:Column ColumnID="colUserIsLocked" DataIndex="UserIsLocked" Header="用户状态" Sortable="false"
+                                    Width="50">
+                                    <Renderer Fn="showUserStatus" />
+                                </ext:Column>
                                 <ext:CommandColumn Header="下家组管理" Width="160">
                                     <Commands>
+                                        <ext:SplitCommand Icon="cog" CommandName="Split" Text="用户管理">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户" />
+                                                    <ext:MenuCommand CommandName="cmdUnlock" Icon="LockOpen" Text="解锁用户" />
+                                                    <ext:MenuCommand Icon="Key" CommandName="cmdChangePassword" Text="更改密码">
+                                                    </ext:MenuCommand>
+                                                    <ext:MenuCommand Icon="ScriptCode" CommandName="cmdShowLoginLog" Text="查看安全日志">
+                                                    </ext:MenuCommand>
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="用户管理" />
+                                        </ext:SplitCommand>
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Hidden="true">
-                                            <ToolTip Text="删除" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理">
                                             <ToolTip Text="下家管理" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon=Money CommandName="cmdClientGroupPriceReport" Text="结算报表">
+                                        <ext:GridCommand Icon="Money" CommandName="cmdClientGroupPriceReport" Text="结算报表">
                                             <ToolTip Text="结算报表" />
-                                        </ext:GridCommand>              
+                                        </ext:GridCommand>
                                     </Commands>
+                                    <PrepareToolbar Fn="showCommands" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
@@ -231,13 +312,45 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-        <ext:Window ID="winClientGroupPriceReport" runat="server" Title="Window" Frame="true" Width="850"
-        ConstrainHeader="true" Height="390" Maximizable="true" Closable="true" Resizable="true"
-        Modal="true" ShowOnLoad="false">
-        <AutoLoad Url="../Clients/SPClientGroupReportContainer.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
-            ReloadOnEvent="true" ShowMask="true">
+    <ext:Window ID="winClientGroupPriceReport" runat="server" Title="Window" Frame="true"
+        Width="850" ConstrainHeader="true" Height="390" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Clients/SPClientGroupReportContainer.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winShowLoginLog" runat="server" Title="Window" Frame="true" Width="720"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="LogType" Mode="Value" Value="安全日志">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentType" Mode="Value" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChangePwd" runat="server" Title="Window" Frame="true" Width="390"
+        ConstrainHeader="true" Height="170" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="UserID" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
         </AutoLoad>
