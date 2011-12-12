@@ -305,6 +305,9 @@
     <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.xml" />
     <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\SystemOrginationDepartmentManage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\SystemOrginationDepartmentManage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\SystemOrginationDepartmentManage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemOrganizationAdd.ascx.zh-CHS.xml" />
