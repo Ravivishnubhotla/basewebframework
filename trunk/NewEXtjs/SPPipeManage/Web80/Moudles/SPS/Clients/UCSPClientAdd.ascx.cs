@@ -86,6 +86,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 }
 
 
+
+
                 //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
                 //obj.SyncData = this.chkSyncDate.Checked;
                 //obj.OkMessage = this.txtOkMessage.Text.Trim();

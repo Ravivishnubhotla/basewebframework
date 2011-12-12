@@ -6,17 +6,24 @@
 <%@ Register Src="UCClientParamsSetting.ascx" TagName="UCClientParamsSetting" TagPrefix="uc3" %>
 <%@ Register Src="UCSPSendClientParamsClone.ascx" TagName="UCSPSendClientParamsClone"
     TagPrefix="uc5" %>
+ 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+ 
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
        var template = '<span style="color:{0};">{1}</span>';
 
-       var change = function(value) {
+       var showUserStatus = function(value) {
            return String.format(template, (value) ? 'red' : 'green', FormatBool(value));
        };
-
+                var FormatBool = function(value) {
+                    if (value)
+                        return '锁定';
+                    else
+                        return '正常';
+                };
 
         var showCommands = function(grid, toolbar, rowIndex, record)
         {
@@ -36,12 +43,12 @@
         };
 
 
-                var FormatBool = function(value) {
-                    if (value)
-                        return '锁定';
-                    else
-                        return '正常';
-                };
+                function CloseChangePwd() {
+                var win = <%= this.winChangePwd.ClientID %>;
+ 
+        
+                win.hide();
+                }
 
         function RefreshSPClientList() {
             <%= this.storeSPClient.ClientID %>.reload();
@@ -102,6 +109,9 @@
                                                                 }              
                 );
             }
+            
+            
+
 
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认要将所选下家从下家组中移除 ? ',
@@ -176,7 +186,35 @@
                     );
             }
 
+            if (cmd == "cmdChangePassword") 
+            {
+                                var win = <%= this.winChangePwd.ClientID %>;
+                
+                win.setTitle(" 修改用户“"+id.data.UserLoginID+"” 登录密码 ");
+                
+                win.autoLoad.url = '<%= this.ResolveUrl("~/Moudles/SystemManage/UserManage/SystemUserChangePwd.aspx") %>';
+                
+                win.autoLoad.params.UserID = id.data.UserID;
+        
+                win.show();  
+                
+                
+ 
+            }
+            
+            
+            if (cmd == "cmdShowLoginLog") {
 
+                var win = <%= this.winShowLoginLog.ClientID %>;
+                
+                win.setTitle(" 显示用户“"+id.data.UserLoginID+"” 安全日志 ");
+                
+                win.autoLoad.url = '<%= this.ResolveUrl("~/Moudles/SystemManage/LogViews/SystemLogList.aspx") %>';
+                
+                win.autoLoad.params.ParentID = id.data.UserID;
+        
+                win.show();    
+            } 
 
             
                         if (cmd == "cmdParams") {
@@ -243,7 +281,6 @@
                     <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
-                    
                     <ext:RecordField Name="Price" Type="Float" />
                 </Fields>
             </ext:JsonReader>
@@ -304,21 +341,23 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令" Width="120" Sortable="true">
+                                <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
+                                    Width="120" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="35" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Hidden="true" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Width="55" Sortable="true">
+                                <ext:Column ColumnID="colUserID" DataIndex="UserLoginID" Header="关联用户" Width="55"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="所属下家组"
                                     Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colUserIsLocked" DataIndex="UserIsLocked" Header="用户状态" Sortable="false"
                                     Width="50">
-                                    <Renderer Fn="change" />
+                                    <Renderer Fn="showUserStatus" />
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家管理" Width="160">
                                     <Commands>
@@ -329,6 +368,10 @@
                                                     <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="移出下家组" />
                                                     <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户" />
                                                     <ext:MenuCommand CommandName="cmdUnlock" Icon="LockOpen" Text="解锁用户" />
+                                                    <ext:MenuCommand Icon="Key" CommandName="cmdChangePassword" Text="更改密码">
+                                                    </ext:MenuCommand>
+                                                    <ext:MenuCommand Icon="ScriptCode" CommandName="cmdShowLoginLog" Text="查看安全日志">
+                                                    </ext:MenuCommand>
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Split" />
@@ -368,4 +411,41 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+
+
+        <ext:Window ID="winShowLoginLog" runat="server" Title="Window" Frame="true" Width="720"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="LogType" Mode="Value" Value="安全日志">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentType" Mode="Value" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
+        <ext:Window ID="winChangePwd" runat="server" Title="Window" Frame="true" Width="390"
+        ConstrainHeader="true" Height="170" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="UserID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
+
 </asp:Content>

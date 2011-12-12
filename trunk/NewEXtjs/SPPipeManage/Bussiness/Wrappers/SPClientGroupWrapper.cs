@@ -140,6 +140,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
+        public string UserLoginID
+        {
+            get
+            {
+                if (this.UserID != null && this.UserID > 0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.UserID);
+
+                    if (user != null)
+                        return user.UserLoginID;
+                }
+                return "";
+            }
+        }
+
         public bool UserIsLocked
         {
             get
@@ -196,6 +211,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return "";
             }
         }
+
+ 
 
         public static SPClientGroupWrapper GetByUserID(int userId)
 	    {

@@ -94,6 +94,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
         
         /// <summary>
+        /// txtSreachName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtSreachName;
+        
+        /// <summary>
         /// btnRefresh control.
         /// </summary>
         /// <remarks>
@@ -146,5 +155,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Window winClientGroupPriceReport;
+        
+        /// <summary>
+        /// winShowLoginLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winShowLoginLog;
+        
+        /// <summary>
+        /// winChangePwd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winChangePwd;
     }
 }

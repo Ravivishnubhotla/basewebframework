@@ -16,7 +16,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
         {
             if (Ext.IsAjaxRequest)
                 return;
-
+ 
             this.gridPanelSPClient.Reload();
 
             this.btnAddToClientGroup.Hidden = (ClientGroupID <= 0);

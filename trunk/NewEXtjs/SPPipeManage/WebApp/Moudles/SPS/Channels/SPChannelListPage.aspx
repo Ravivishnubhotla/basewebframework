@@ -13,7 +13,7 @@
                 return '是';
             else
                 return '否';
-        }
+        };
 
 
         var RefreshData = function(btn) {

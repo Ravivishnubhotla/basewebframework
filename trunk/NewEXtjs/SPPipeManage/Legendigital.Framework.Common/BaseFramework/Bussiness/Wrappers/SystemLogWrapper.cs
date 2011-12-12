@@ -92,5 +92,87 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		
 		#endregion
+
+
+        public enum SecurityLogType
+        {
+            LoginSuccessful,
+            LoginFailed,
+            Logout,
+            ChangePasswordSuccessful,
+            ChangePasswordFailed
+        }
+
+        public enum SystemLogLevel
+        {
+            Warning,
+            Error,
+            Info,
+            Debug
+        }
+
+        public enum MoudleType
+        {
+            User = 0,
+            Channel = 1,
+            Client = 2,
+            ClientGroup = 3,
+            ChannelClientSetting =4,
+            Report = 5
+        }
+
+        public static void AddSecurityLog(string loginID,DateTime date,string reason,string ip,string ipLocation,SecurityLogType logType)
+        {
+            try
+            {
+                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(loginID);
+
+                if (user == null)
+                    return;
+
+                SystemLogWrapper securityLog = new SystemLogWrapper();
+                securityLog.LogDate = date;
+                securityLog.LogType = "安全日志";
+                securityLog.LogRelateDateTime = date;
+                securityLog.LogRelateUserID = user.UserID;
+                securityLog.LogRelateMoudleDataID = user.UserID;
+                securityLog.LogRelateMoudleID = (int)MoudleType.User;
+                securityLog.LogSource = "系统日志";
+                securityLog.LogUser = user.UserLoginID;
+           
+
+                switch (logType)
+                {
+                    case SecurityLogType.LoginFailed:
+                        securityLog.LogLevel = SystemLogLevel.Warning.ToString();
+                        securityLog.LogDescrption = string.Format("用户“{0}”于“{1}”时间登陆系统失败，失败原因：{4}，登陆IP:{2}({3})", user.UserLoginID, date.ToString("yyyy-MM-dd hh:mm:ss"), ip, ipLocation, reason);
+                        break;
+                    case SecurityLogType.LoginSuccessful:
+                        securityLog.LogLevel = SystemLogLevel.Info.ToString();
+                        securityLog.LogDescrption = string.Format("用户“{0}”于“{1}”时间登陆系统成功，登陆IP:{2}({3})", user.UserLoginID, date.ToString("yyyy-MM-dd hh:mm:ss"), ip, ipLocation);
+                        break;
+                    case SecurityLogType.Logout:
+                        securityLog.LogLevel = SystemLogLevel.Info.ToString();
+                        securityLog.LogDescrption = string.Format("用户“{0}”于“{1}”时间注销登陆，登陆IP:{2}({3})", user.UserLoginID, date.ToString("yyyy-MM-dd hh:mm:ss"), ip, ipLocation);
+                        break;
+                    case SecurityLogType.ChangePasswordSuccessful:
+                        securityLog.LogLevel = SystemLogLevel.Info.ToString();
+                        securityLog.LogDescrption = string.Format("用户“{0}”于“{1}”时间更改密码成功，登陆IP:{2}({3})", user.UserLoginID, date.ToString("yyyy-MM-dd hh:mm:ss"), ip, ipLocation);
+                        break;
+                    case SecurityLogType.ChangePasswordFailed:
+                        securityLog.LogLevel = SystemLogLevel.Warning.ToString();
+                        securityLog.LogDescrption = string.Format("用户“{0}”于“{1}”时间更改密码失败，登陆IP:{2}({3})", user.UserLoginID, date.ToString("yyyy-MM-dd hh:mm:ss"), ip, ipLocation);
+                        break;
+                }
+
+                SystemLogWrapper.Save(securityLog);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex);
+            }
+        }
+
+ 
     }
 }

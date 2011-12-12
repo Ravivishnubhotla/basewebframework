@@ -409,7 +409,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             int dayCount = 7;
 
-
             try
             {
                 dayCount = ConfigurationUtil.ReadIntAppSetting("ClientViewRecordDay", dayCount);

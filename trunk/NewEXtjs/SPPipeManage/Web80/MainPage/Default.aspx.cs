@@ -14,6 +14,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
 using TreeNode=Coolite.Ext.Web.TreeNode;
 using Panel = Coolite.Ext.Web.Panel;
+using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Common.Web.MainPage
 {
@@ -152,6 +153,16 @@ namespace Legendigital.Common.Web.MainPage
 
         protected void btnExit_Click(object sender, AjaxEventArgs e)
         {
+            SystemUserWrapper userWrapper = this.CurrentLoginUser;
+
+            if(userWrapper!=null)
+            {
+                string ip = HttpUtil.GetIP(Request);
+
+                SystemLogWrapper.AddSecurityLog(userWrapper.UserLoginID, System.DateTime.Now, "", ip, HttpUtil.ParseLocation(ip), SystemLogWrapper.SecurityLogType.Logout);
+
+            }
+
             FormsAuthentication.SignOut();
         }
     }

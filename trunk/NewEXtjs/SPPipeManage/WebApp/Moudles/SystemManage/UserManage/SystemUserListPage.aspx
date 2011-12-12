@@ -15,7 +15,7 @@
                 return 'Yes';
             else
                 return 'No';
-        }
+        };
         var prepare = function(grid, command, record, row, col, value) {
             if (command.command === "btnLock") {
                 command.hidden = !value;

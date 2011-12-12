@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
+using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Common.Web.MainPage
 {
@@ -31,10 +32,21 @@ namespace Legendigital.Common.Web.MainPage
 
             SystemUserWrapper userWrapper = SystemUserWrapper.GetUserByLoginID(username);
 
+            string ip = HttpUtil.GetIP(Request);
+
             if (userWrapper == null)
             {
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
                 Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "登录失败,用户名或者密码错误！";
+                //SystemLogWrapper.AddSecurityLog(username, System.DateTime.Now, "用户名不存在", HttpUtil.GetIP(Request), HttpUtil.ParseLocation(Request), SystemLogWrapper.SecurityLogType.LoginFailed);
+                return;
+            }
+
+            if (!userWrapper.IsApproved)
+            {
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "登录失败,用户已失效！";
+                SystemLogWrapper.AddSecurityLog(userWrapper.UserLoginID, System.DateTime.Now, "用户已失效", ip, HttpUtil.ParseLocation(ip), SystemLogWrapper.SecurityLogType.LoginFailed);
                 return;
             }
 
@@ -42,6 +54,7 @@ namespace Legendigital.Common.Web.MainPage
             {
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
                 Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "登录失败,用户被锁定！";
+                SystemLogWrapper.AddSecurityLog(userWrapper.UserLoginID, System.DateTime.Now, "用户被锁定", ip, HttpUtil.ParseLocation(ip), SystemLogWrapper.SecurityLogType.LoginFailed);
                 return;
             }
 
@@ -51,7 +64,9 @@ namespace Legendigital.Common.Web.MainPage
                 FormsAuthentication.SetAuthCookie(userWrapper.UserLoginID,
                                                           false);
 
-                CurrentLoginUser = SystemUserWrapper.GetInitalUserByLoginID(userWrapper.UserLoginID); ;
+                CurrentLoginUser = SystemUserWrapper.GetInitalUserByLoginID(userWrapper.UserLoginID);
+
+                SystemLogWrapper.AddSecurityLog(userWrapper.UserLoginID, System.DateTime.Now, "", ip, HttpUtil.ParseLocation(ip), SystemLogWrapper.SecurityLogType.LoginSuccessful);
 
                 Response.Redirect(FormsAuthentication.DefaultUrl);
             }
@@ -60,6 +75,7 @@ namespace Legendigital.Common.Web.MainPage
 
                 Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
                 Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "登录失败,用户名或者密码错误！";
+                SystemLogWrapper.AddSecurityLog(username, System.DateTime.Now, "密码错误", ip, HttpUtil.ParseLocation(ip), SystemLogWrapper.SecurityLogType.LoginFailed);
                 return;
 
             }
