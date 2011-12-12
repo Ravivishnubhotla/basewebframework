@@ -31,6 +31,24 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         protected global::Ext.Net.FormPanel formPanelSystemOrganizationAdd;
         
         /// <summary>
+        /// lblParentOrgName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField lblParentOrgName;
+        
+        /// <summary>
+        /// hidParentOrgID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidParentOrgID;
+        
+        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>

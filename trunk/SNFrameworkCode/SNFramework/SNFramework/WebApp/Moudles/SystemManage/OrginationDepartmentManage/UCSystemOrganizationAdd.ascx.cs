@@ -19,16 +19,27 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         }
 
         [DirectMethod]
-        public void Show()
+        public void Show(int pID)
         {
             try
             {
+                if (pID == 0)
+                {
+                    this.lblParentOrgName.Text = "As root org";
+                }
+                else
+                {
+                    this.lblParentOrgName.Text =
+                        SystemOrganizationWrapper.FindById(pID).Name;
+                }
+
+                this.hidParentOrgID.Value = pID;
                 this.winSystemOrganizationAdd.Show();
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
             }
         }
 
@@ -38,6 +49,18 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
             {
                 SystemOrganizationWrapper obj = new SystemOrganizationWrapper();
 
+
+                int pid = Convert.ToInt32(this.hidParentOrgID.Value);
+
+                if (pid > 0)
+                {
+                    obj.ParentID = SystemOrganizationWrapper.FindById(pid);
+                }
+                else
+                {
+                    obj.ParentID = null;
+                }
+
                 obj.Name = this.txtName.Text.Trim();
                 obj.ShortName = this.txtShortName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
@@ -46,6 +69,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
 
                 obj.MasterName = this.txtMasterName.Text.Trim();
                 obj.IsMainOrganization = this.chkIsMainOrganization.Checked;
+
+
 
                 obj.TelPhone = this.txtTelPhone.Text.Trim();
                 obj.FaxNumber = this.txtFaxNumber.Text.Trim();

@@ -6,11 +6,12 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.BaseFramework.Web;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
 {
 
-    public partial class SystemPrivilegeListPage : System.Web.UI.Page
+    public partial class SystemPrivilegeListPage : BaseSecurityPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

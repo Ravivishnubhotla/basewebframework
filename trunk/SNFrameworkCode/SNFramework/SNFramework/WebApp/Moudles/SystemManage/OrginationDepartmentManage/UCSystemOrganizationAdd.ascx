@@ -1,13 +1,17 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSystemOrganizationAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage.UCSystemOrganizationAdd" %>
 <ext:Window ID="winSystemOrganizationAdd" runat="server" Icon="ApplicationAdd" Title="<%$ Resources:msgFormTitle %>"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="450" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSystemOrganizationAdd" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             AutoScroll="true" Layout="Form">
             <Items>
+                <ext:DisplayField ID="lblParentOrgName" runat="server" FieldLabel="<%$ Resources:msgFiledParentID %>"
+                    AnchorHorizontal="95%" />
+                <ext:Hidden ID="hidParentOrgID" runat="server" AnchorHorizontal="95%">
+                </ext:Hidden>
                 <ext:TextField ID="txtName" runat="server" FieldLabel="<%$ Resources:msgFiledName %>"
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtShortName" runat="server" FieldLabel="<%$ Resources:msgFiledShortName %>"

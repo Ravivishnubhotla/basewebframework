@@ -176,22 +176,22 @@
 
 
 
-                var IntailLockedOut=function(grid, toolbar, rowIndex, record)
-        {
-      
-            if(record.data.IsLockedOut)
-            {
-             toolbar.items.items[0].menu.items.items[3].hide();
-             toolbar.items.items[0].menu.items.items[4].show();
-            }
-            
-            else{
-             toolbar.items.items[0].menu.items.items[3].show();
-             toolbar.items.items[0].menu.items.items[4].hide();
-        
-            }
-               
-        }
+          var IntailLockedOut = function(grid, toolbar, rowIndex, record)
+          {
+
+              if (record.data.IsLockedOut)
+              {
+                  toolbar.items.items[0].menu.items.items[3].hide();
+                  toolbar.items.items[0].menu.items.items[4].show();
+              }
+
+              else {
+                  toolbar.items.items[0].menu.items.items[3].show();
+                  toolbar.items.items[0].menu.items.items[4].hide();
+
+              }
+
+          };
 
 
     </script>

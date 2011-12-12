@@ -20,6 +20,6 @@
   <add name="msgFiledLastModifyBy" value="LastModifyBy" />
   <add name="msgFiledLastModifyAt" value="LastModifyAt" />
   <add name="msgFiledLastModifyComment" value="LastModifyComment" />
-  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add SystemOrganization successful',callback);function callback(id) {#{formPanelSystemOrganizationAdd}.getForm().reset();#{storeSystemOrganization}.reload();  };" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add SystemOrganization successful',callback);function callback(id) {#{formPanelSystemOrganizationAdd}.getForm().reset();RefreshTreeList1();  };" />
 </resources>
 

@@ -9,11 +9,12 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Web.UI;
+using Legendigital.Framework.Common.BaseFramework.Web;
 
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
 {
-    public partial class SystemResourcesAndPriviliege : System.Web.UI.Page
+    public partial class SystemResourcesAndPriviliege : BaseSecurityPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
