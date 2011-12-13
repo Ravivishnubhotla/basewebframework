@@ -9,9 +9,9 @@
   <add name="msgAddRootOrg" value="Add Root Org" />
   <add name="msgRootNodeText" value="Root Org" />
   <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node:  ' + node.text + ' ', clear: false});" />
-  <add name="msgPanelOperationPermissionManage" value="Operation Permission Manage" />
-  <add name="msgPanelOperationManage" value="Operation Manage" />
-  <add name="msgGridPanelOperationManage" value="Operation Manage" />
+  <add name="msgPanelOperationPermissionManage" value="Department Post Manage" />
+  <add name="msgPanelOperationManage" value="Department Manage" />
+  <add name="msgGridPanelOperationManage" value="Department Manage" />
   <add name="msgGridPanelColID" value="ID" />
   <add name="msgGridPanelColName" value="Name" />
   <add name="msgGridPanelColCode" value="Code" />
@@ -21,8 +21,8 @@
   <add name="msgGridPanelColIsISEnable" value="Enable" />
   <add name="msgGridPanelColIsISList" value="List" />
   <add name="msgGridPanelColIsISSingle" value="Single" />
-  <add name="msgPanelPermissionManage" value="Permission Manage" />
-  <add name="msgGridPanelPermissionManage" value="Permission Manage" />
+  <add name="msgPanelPermissionManage" value="Post Manage" />
+  <add name="msgGridPanelPermissionManage" value="Post Manage" />
   <add name="msgQuickGenerate" value="Quick Generate" />
   <add name="msgGridPanelPermissionColID" value="ID" />
   <add name="msgGridPanelPermissionColName" value="Name" />
