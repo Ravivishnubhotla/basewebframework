@@ -66,7 +66,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
         public static bool CheckGetSubItems(this ITreeItemWrapper self, ITreeItemWrapper subitem, ITreeItemWrapper mainItem)
         {
-            return (subitem.ParentDataItemID != null) && (subitem.ParentDataItemID.DataKeyId == mainItem.DataKeyId);
+            return (subitem.ParentDataItemID != null) && (subitem.ParentDataItemID.DataKeyId.ToString().Equals(mainItem.DataKeyId.ToString()));
         }
     }
 }

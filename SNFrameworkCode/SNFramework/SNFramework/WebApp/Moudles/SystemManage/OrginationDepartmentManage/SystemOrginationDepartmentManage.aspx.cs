@@ -27,5 +27,24 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
 
             return WebUIHelper.BuildTree<ITreeItemWrapper>(nodes, "All Organizations", Icon.Bricks).ToJson();
         }
+
+
+        [DirectMethod]
+        public void DeleteData(int id)
+        {
+            try
+            {
+                SystemOrganizationWrapper.DeleteByID(id);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = e.Message;
+                return;
+            }
+
+        }
     }
 }

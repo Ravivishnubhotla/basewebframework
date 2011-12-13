@@ -27,6 +27,10 @@
             menu.showAt(point);
         }
         
+                var RefreshData = function(btn) {
+            RefreshList(<%= this.treeMain.ClientID %>);
+        };
+        
         function RefreshList(treepanel) {
             Ext.net.DirectMethods.GetTreeNodes(
                                                 {
@@ -64,9 +68,55 @@
                                                             }
                                                         });
         } 
+        
+        
+                function ShowEditForm(id) {
+               Ext.net.DirectMethods.UCSystemOrganizationEdit.Show(id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
+                                                                               }
+                                                                }   
+                );
+        }
+        
+        
+        
+        
+        
           function RefreshTreeList1() {
             RefreshList(<%= this.treeMain.ClientID %>);
         }
+          
+               function DeleteData(id) {
+                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
+                    function(e) {
+                        if (e == 'yes')
+            Ext.net.DirectMethods.DeleteData(
+                                                        id,
+                                                        {
+                                                            failure: function(msg) {
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                            },
+                                                            success: function(result) {
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>', RefreshData);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                            }
+                                                        });
+                    }
+                    );
+
+        }    
+          
+          
+          
     
     </script>
 </asp:Content>
@@ -100,7 +150,7 @@
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Center>
                     <ext:Panel ID="WestPanel" runat="server" Icon="Package" Title="<%$ Resources:msgPanelOrgManage %>"
-                        Width="300" Layout="fit">
+                        Width="260" Layout="fit">
                         <Content>
                             <ext:TreePanel ID="treeMain" runat="server" Header="false" RootVisible="false" AutoScroll="true">
                                 <TopBar>
@@ -141,12 +191,20 @@
                     </ext:Panel>
                 </Center>
                 <East Split="true" Collapsible="true">
-                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="122121" Width="650"
-                        Layout="fit" Disabled="true">
+                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="<%$ Resources : msgPanelOperationPermissionManage  %>"
+                        Width="880" Layout="fit" Disabled="true">
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                    <ext:Panel ID="Tab2" Title="12233" Icon="UserKey" runat="server" Layout="FitLayout">
+                                    <ext:Panel ID="Tab2" Title="<%$ Resources : msgPanelOperationManage  %>" Icon="UserKey"
+                                        runat="server" Layout="FitLayout">
+                                        <Items>
+                                        </Items>
+                                        <Listeners>
+                                        </Listeners>
+                                    </ext:Panel>
+                                    <ext:Panel ID="Panel1" Title="<%$ Resources : msgPanelPermissionManage  %>" Icon="UserKey"
+                                        runat="server" Layout="FitLayout">
                                         <Items>
                                         </Items>
                                         <Listeners>
