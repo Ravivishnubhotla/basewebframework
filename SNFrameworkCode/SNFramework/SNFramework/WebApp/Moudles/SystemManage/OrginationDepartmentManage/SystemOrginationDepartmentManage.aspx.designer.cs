@@ -193,13 +193,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         protected global::Ext.Net.TabPanel TabPanel1;
         
         /// <summary>
-        /// Tab2 control.
+        /// pnlDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Tab2;
+        protected global::Ext.Net.Panel pnlDepartment;
         
         /// <summary>
         /// Panel1 control.

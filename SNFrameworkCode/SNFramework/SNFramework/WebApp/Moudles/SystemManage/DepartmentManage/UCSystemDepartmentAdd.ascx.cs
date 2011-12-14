@@ -44,6 +44,19 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage
             }
         }
 
+
+        public int OrginationID
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.Request.QueryString["OrginationID"]))
+                {
+                    return Convert.ToInt32(this.Request.QueryString["OrginationID"]);
+                }
+                return 0;
+            }
+        }
+
         protected void btnSaveSystemDepartment_Click(object sender, DirectEventArgs e)
         {
             try
@@ -65,7 +78,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage
                 obj.DepartmentNameEn = this.txtDepartmentNameEn.Text.Trim();
                 obj.DepartmentDecription = this.txtDepartmentDecription.Text.Trim();
                 obj.DepartmentSortIndex = SystemDepartmentWrapper.GetNewMaxOrder(pid);
-
+                obj.OrganizationID = SystemOrganizationWrapper.FindById(OrginationID);
                 SystemDepartmentWrapper.Save(obj);
 
                 winSystemDepartmentAdd.Hide();

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <add name="msgPermsissionManage" value=" Operation Permission Manage" />
+  <add name="msgPermsissionManage" value=" Department Post Manage" />
   <add name="msgPatchAddRsOK" value="Quick patch add ok!" />
   <add name="msgAddSubOrg" value="Add Sub Org" />
   <add name="msgEditOrg" value="Edit Org" />
@@ -8,7 +8,7 @@
   <add name="msgPanelOrgManage" value="Org Manage" />
   <add name="msgAddRootOrg" value="Add Root Org" />
   <add name="msgRootNodeText" value="Root Org" />
-  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node:  ' + node.text + ' ', clear: false});" />
+  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node:  ' + node.text + ' ', clear: false});SelectOrg(node,#{hidSelectOrgID},#{pnlEast});" />
   <add name="msgPanelOperationPermissionManage" value="Department Post Manage" />
   <add name="msgPanelOperationManage" value="Department Manage" />
   <add name="msgGridPanelOperationManage" value="Department Manage" />
