@@ -116,7 +116,17 @@
         }    
           
           
-          
+        function SelectOrg(node,hid,pnl)
+        {
+            hid.setValue(node.attributes.id.toString());
+            pnl.setTitle(node.text+'<%= GetLocalResourceObject("msgPermsissionManage").ToString() %>');
+            pnl.setDisabled(!(node!=null&&node.attributes.id!=null&&node.attributes.id>0));
+            var pnlDepartment = <%= pnlDepartment.ClientID %> ;
+            pnlDepartment.autoLoad.params.OrginationID = node.attributes.id;
+            pnlDepartment.reload();
+                          
+            //RefreshSystemPostDataList();
+        }
     
     </script>
 </asp:Content>
@@ -196,12 +206,14 @@
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                    <ext:Panel ID="Tab2" Title="<%$ Resources : msgPanelOperationManage  %>" Icon="UserKey"
+                                    <ext:Panel ID="pnlDepartment" Title="<%$ Resources : msgPanelOperationManage  %>" Icon="UserKey"
                                         runat="server" Layout="FitLayout">
-                                        <Items>
-                                        </Items>
-                                        <Listeners>
-                                        </Listeners>
+                                        <AutoLoad Url="../DepartmentManage/SystemDepartmentListPage.aspx" Mode="IFrame" ManuallyTriggered="true" NoCache="true" ShowMask="true">
+                                            <Params>
+                                                <ext:Parameter Name="OrginationID" Mode="Raw" Value="0">
+                                                </ext:Parameter>
+                                            </Params>
+                                        </AutoLoad>
                                     </ext:Panel>
                                     <ext:Panel ID="Panel1" Title="<%$ Resources : msgPanelPermissionManage  %>" Icon="UserKey"
                                         runat="server" Layout="FitLayout">

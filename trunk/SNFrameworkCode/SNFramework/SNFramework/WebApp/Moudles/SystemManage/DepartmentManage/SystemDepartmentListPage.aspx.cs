@@ -42,7 +42,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage
         [DirectMethod]
         public string GetTreeNodes()
         {
-            List<TypedTreeNodeItem<SystemDepartmentWrapper>> menus = SystemDepartmentWrapper.GetAllDepartment();
+            List<TypedTreeNodeItem<SystemDepartmentWrapper>> menus = SystemDepartmentWrapper.GetAllDepartmentByOrginationID(OrginationID);
 
             return BuildTree(menus).ToJson();
         }
@@ -76,6 +76,18 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DepartmentManage
             return nodes;
         }
 
+
+        public int OrginationID
+        {
+            get
+            {
+                if(!string.IsNullOrEmpty(this.Request.QueryString["OrginationID"]))
+                {
+                    return Convert.ToInt32(this.Request.QueryString["OrginationID"]);
+                }
+                return 0;
+            }
+        }
 
         private void GenerateSubTreeNode(TreeNode mainNode, TypedTreeNodeItem<SystemDepartmentWrapper> menu)
         {

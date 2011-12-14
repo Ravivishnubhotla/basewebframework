@@ -101,11 +101,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #endregion
 
-        public static List<TypedTreeNodeItem<SystemDepartmentWrapper>> GetAllDepartment()
+        public static List<TypedTreeNodeItem<SystemDepartmentWrapper>> GetAllDepartmentByOrginationID(int orginationID)
         {
             List<TypedTreeNodeItem<SystemDepartmentWrapper>> nodes = new List<TypedTreeNodeItem<SystemDepartmentWrapper>>();
 
-            List<SystemDepartmentWrapper> departments = SystemDepartmentWrapper.FindAllByOrder();
+            List<SystemDepartmentWrapper> departments =
+                SystemDepartmentWrapper.FindAllByOrganizationID(SystemOrganizationWrapper.FindById(orginationID));
 
             List<SystemDepartmentWrapper> topDepartments = departments.FindAll(p => (p.ParentDepartmentID == null));
 

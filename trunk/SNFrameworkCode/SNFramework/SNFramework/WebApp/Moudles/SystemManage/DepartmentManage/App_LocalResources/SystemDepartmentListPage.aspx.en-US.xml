@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <add name="msgGridTitle" value="System department manage" />
-  <add name="msgToolbarAddRoot" value="Add root department" />
-  <add name="msgToolbarSortRoot" value="Root department sort" />
-  <add name="msgToolbarSortRootAuto" value="Root department autosort" />
+  <add name="msgGridTitle" value="Department manage" />
+  <add name="msgToolbarAddRoot" value="Add root" />
+  <add name="msgToolbarSortRoot" value="Root sort" />
+  <add name="msgToolbarSortRootAuto" value="Root autosort" />
   <add name="msgToolbarExpandAll" value="Expand all" />
   <add name="msgToolbarCollapse" value="Collapse all" />
   <add name="msgMenuAddSub" value="Add sub department" />
