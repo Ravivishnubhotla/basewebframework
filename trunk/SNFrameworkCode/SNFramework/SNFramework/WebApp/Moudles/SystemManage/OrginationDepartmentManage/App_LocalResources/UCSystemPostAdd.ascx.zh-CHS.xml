@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="SystemPost Add" />
+  <add name="msgFiledName" value="Name" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledOrganizationID" value="OrganizationID" />
+  <add name="msgFiledCreateBy" value="CreateBy" />
+  <add name="msgFiledCreateAt" value="CreateAt" />
+  <add name="msgFiledLastModifyBy" value="LastModifyBy" />
+  <add name="msgFiledLastModifyAt" value="LastModifyAt" />
+  <add name="msgFiledLastModifyComment" value="LastModifyComment" />
+
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add SystemPost successful',callback);function callback(id) {#{formPanelSystemPostAdd}.getForm().reset();#{storeSystemPost}.reload();  };" />
+</resources>
