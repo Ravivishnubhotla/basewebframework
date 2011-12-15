@@ -11,8 +11,45 @@
             <DocumentReady Handler="RefreshList(#{treeMain});" />
         </Listeners>
     </ext:ResourceManagerProxy>
+    <ext:Store ID="storeSystemPost" runat="server" AutoLoad="true" RemoteSort="true"
+        RemotePaging="true" OnRefreshData="storeSystemPost_Refresh">
+        <AutoLoadParams>
+            <ext:Parameter Name="start" Value="0" Mode="Raw" />
+            <ext:Parameter Name="limit" Value="8" Mode="Raw" />
+        </AutoLoadParams>
+        <Proxy>
+            <ext:PageProxy />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader IDProperty="Id">
+                <Fields>
+                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="Description" />
+                    <ext:RecordField Name="OrganizationID" Type="int" />
+                    <ext:RecordField Name="CreateBy" Type="int" />
+                    <ext:RecordField Name="CreateAt" Type="Date" />
+                    <ext:RecordField Name="LastModifyBy" Type="int" />
+                    <ext:RecordField Name="LastModifyAt" Type="Date" />
+                    <ext:RecordField Name="LastModifyComment" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Value="#{hidSelectOrgID}.getValue()" Mode="Raw" Name="SelectOrgID">
+            </ext:Parameter>
+        </BaseParams>
+    </ext:Store>
     <script type="text/javascript">
+        var RefreshSystemPostData = function(btn) {
+            RefreshSystemPostDataList();
+        };
 
+        function RefreshSystemPostDataList() {
+            <%= this.storeSystemPost.ClientID %>.reload();
+        };
+        
         var FormatBool = function(value) {
             if (value)
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
@@ -121,12 +158,35 @@
             hid.setValue(node.attributes.id.toString());
             pnl.setTitle(node.text+'<%= GetLocalResourceObject("msgPermsissionManage").ToString() %>');
             pnl.setDisabled(!(node!=null&&node.attributes.id!=null&&node.attributes.id>0));
-            var pnlDepartment = <%= pnlDepartment.ClientID %> ;
-            pnlDepartment.autoLoad.params.OrginationID = node.attributes.id;
-            pnlDepartment.reload();
-                          
-            //RefreshSystemPostDataList();
+
+            RefreshDepartmentPanel();      
+            RefreshSystemPostDataList();
         }
+
+        function RefreshDepartmentPanel() {
+            var pnlDepartment = <%= pnlDepartment.ClientID %> ;
+            var hid = <%= hidSelectOrgID.ClientID %> ;
+            pnlDepartment.autoLoad.params.OrginationID = hid.getValue();
+            pnlDepartment.reload(); 
+        }
+        
+        
+         function showAddSystemPostForm(oid) {
+                Ext.net.DirectMethods.UCSystemPostAdd.Show(oid, 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshSystemPostData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                });    
+        
+        }
+       
+        
+        
     
     </script>
 </asp:Content>
@@ -206,9 +266,10 @@
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                    <ext:Panel ID="pnlDepartment" Title="<%$ Resources : msgPanelOperationManage  %>" Icon="UserKey"
-                                        runat="server" Layout="FitLayout">
-                                        <AutoLoad Url="../DepartmentManage/SystemDepartmentListPage.aspx" Mode="IFrame" ManuallyTriggered="true" NoCache="true" ShowMask="true">
+                                    <ext:Panel ID="pnlDepartment" Title="<%$ Resources : msgPanelOperationManage  %>"
+                                        Icon="UserKey" runat="server" Layout="FitLayout">
+                                        <AutoLoad Url="../DepartmentManage/SystemDepartmentListPage.aspx" Mode="IFrame" ManuallyTriggered="true"
+                                            NoCache="true" ShowMask="true">
                                             <Params>
                                                 <ext:Parameter Name="OrginationID" Mode="Raw" Value="0">
                                                 </ext:Parameter>
@@ -218,11 +279,75 @@
                                     <ext:Panel ID="Panel1" Title="<%$ Resources : msgPanelPermissionManage  %>" Icon="UserKey"
                                         runat="server" Layout="FitLayout">
                                         <Items>
+                                            <ext:GridPanel ID="gridPanelSystemPost" runat="server" StoreID="storeSystemPost"
+                                                StripeRows="true" Title="<%$ Resources:msgGridPanelOperationManage %>" Icon="Table">
+                                                <TopBar>
+                                                    <ext:Toolbar ID="tbTop" runat="server">
+                                                        <Items>
+                                                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd %>"
+                                                                Icon="Add">
+                                                                <Listeners>
+                                                                    <Click Handler="showAddSystemPostForm(#{hidSelectOrgID}.getValue());" />
+                                                                </Listeners>
+                                                            </ext:Button>
+                                                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh %>"
+                                                                Icon="Reload">
+                                                                <Listeners>
+                                                                    <Click Handler="#{storeSystemPost}.reload();" />
+                                                                </Listeners>
+                                                            </ext:Button>
+                                                        </Items>
+                                                    </ext:Toolbar>
+                                                </TopBar>
+                                                <View>
+                                                    <ext:GridView ForceFit="true" ID="GridView1">
+                                                        <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
+                                                    </ext:GridView>
+                                                </View>
+                                                <ColumnModel ID="ColumnModel1" runat="server">
+                                                    <Columns>
+                                                        <ext:RowNumbererColumn>
+                                                        </ext:RowNumbererColumn>
+                                                        <ext:Column ColumnID="colName" DataIndex="Name" Header="<%$ Resources:msgGridPanelColName %>"
+                                                            Sortable="true">
+                                                        </ext:Column>
+                                                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="<%$ Resources:msgGridPanelColCode %>"
+                                                            Sortable="true">
+                                                        </ext:Column>
+                                                        <ext:CommandColumn ColumnID="colManage" Header="<%$ Resources : GlobalResource, msgManage  %>"
+                                                            Width="60">
+                                                            <Commands>
+                                                                <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" Icon="ApplicationEdit">
+                                                                    <Menu>
+                                                                        <Items>
+                                                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="<%$ Resources : GlobalResource, msgEdit  %>">
+                                                                            </ext:MenuCommand>
+                                                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
+                                                                            </ext:MenuCommand>
+                                                                        </Items>
+                                                                    </Menu>
+                                                                </ext:SplitCommand>
+                                                            </Commands>
+                                                        </ext:CommandColumn>
+                                                    </Columns>
+                                                </ColumnModel>
+                                                <LoadMask ShowMask="true" />
+                                                <BottomBar>
+                                                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemPost"
+                                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>"
+                                                        EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
+                                                </BottomBar>
+                                                <Listeners>
+                                                    <Command Handler="processSystemPostcmd(command, record);" />
+                                                </Listeners>
+                                            </ext:GridPanel>
                                         </Items>
                                         <Listeners>
+                                            <BeforeShow Handler="if(#{hidSelectOrgID}.getValue()!=''){RefreshSystemPostDataList();};" />
                                         </Listeners>
                                     </ext:Panel>
                                 </Items>
+
                             </ext:TabPanel>
                         </Content>
                     </ext:Panel>
