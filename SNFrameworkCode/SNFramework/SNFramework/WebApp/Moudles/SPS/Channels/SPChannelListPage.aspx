@@ -34,15 +34,15 @@
 
 
         };
-        
-        
-        
+
+
+
         var FormatBool = function(value) {
             if (value)
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
