@@ -35,6 +35,23 @@
                                                                 });    
         
         }
+        
+                  var ShowCommands = function(grid, toolbar, rowIndex, record)
+          {
+
+              if (record.data.MOType=="0")
+              {
+                  toolbar.items.items[0].menu.items.items[0].hide();
+                  toolbar.items.items[0].menu.items.items[1].hide();
+              }
+
+              else {
+                  toolbar.items.items[0].menu.items.items[0].show();
+                  toolbar.items.items[0].menu.items.items[1].show();
+
+              }
+
+          };
 
         function processcmd(cmd, id) {
 
@@ -46,7 +63,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
@@ -60,14 +77,14 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认要删除该条数据？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -77,11 +94,11 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '删除记录成功！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '处理中 ......'
                                                                                }
                                                                 }
                                                             );
@@ -167,7 +184,8 @@
                         <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Width="30" Sortable="true">
+                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Width="30"
+                            Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
@@ -185,6 +203,7 @@
                                     </Menu>
                                 </ext:SplitCommand>
                             </Commands>
+                            <PrepareToolbar Fn="ShowCommands" />
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
