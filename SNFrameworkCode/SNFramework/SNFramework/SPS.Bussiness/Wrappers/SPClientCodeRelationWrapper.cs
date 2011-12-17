@@ -98,5 +98,16 @@ namespace SPS.Bussiness.Wrappers
         }
 
         #endregion
+
+
+        public string CodeID_MoCode
+        {
+            get
+            {
+                if (this.CodeID == null)
+                    return "";
+                return CodeID.MoCode;
+            }
+        }
     }
 }
