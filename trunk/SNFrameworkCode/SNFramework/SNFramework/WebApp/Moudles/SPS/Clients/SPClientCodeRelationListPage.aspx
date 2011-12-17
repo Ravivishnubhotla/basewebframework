@@ -9,21 +9,7 @@
     TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
- 
     </ext:ResourceManagerProxy>
-<%--    <ext:Store ID="storeSPSChannel" runat="server" AutoLoad="false">
-        <Proxy>
-            <ext:HttpProxy Method="POST" Url="../Channels/SPChannelHandler.ashx" />
-        </Proxy>
-        <Reader>
-            <ext:JsonReader Root="Datas" TotalProperty="Total">
-                <Fields>
-                    <ext:RecordField Name="Id" />
-                    <ext:RecordField Name="Name" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>--%>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -122,9 +108,8 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="CodeID" Type="int" />
-
-                    <ext:RecordField Name="CodeID_MoCode"  />
-                    
+                    <ext:RecordField Name="CodeID_MoCode" />
+                    <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="UseClientDefaultSycnSetting" Type="Boolean" />
@@ -178,13 +163,17 @@
                         </ext:RowNumbererColumn>
                         <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Width="25" Sortable="true">
                         </ext:Column>
+                        <ext:Column ColumnID="colChannelName" DataIndex="ChannelName" Header="通道" Sortable="true">
+                        </ext:Column>
                         <ext:Column ColumnID="colMoCode" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格"  Width="25" Sortable="true">
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="25" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate"  Width="25" Header="扣率" Sortable="true">
+                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Width="25" Header="扣率"
+                            Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家"  Width="35" Sortable="true">
+                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家" Width="35"
+                            Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Width="25" Sortable="true">
