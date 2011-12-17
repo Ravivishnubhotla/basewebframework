@@ -528,6 +528,9 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx.designer.cs">
       <DependentUpon>SPChannelFiltersListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
+      <DependentUpon>SPChannelHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
       <DependentUpon>SPChannelListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -758,6 +761,9 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.designer.cs">
       <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx.cs">
+      <DependentUpon>SPSChannelCodeHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx.cs">
       <DependentUpon>UCSPClientCodeSycnParamsAdd.ascx</DependentUpon>
@@ -1419,6 +1425,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMasterJQuery.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
