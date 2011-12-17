@@ -74,7 +74,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 this.txtInterceptRate.Text = client.InterceptRate.ToString();
                 this.txtSycnNotInterceptCount.Text = client.SycnNotInterceptCount.ToString();
                 this.chkSyncData.Checked = client.SyncData;
-                this.chkSycnResendFailedData.Checked = true;
+ 
                 this.txtSycnDataUrl.Text = client.SycnDataUrl;
                 this.txtSycnOkMessage.Text = client.SycnOkMessage;
                 this.txtSycnFailedMessage.Text = client.SycnFailedMessage;

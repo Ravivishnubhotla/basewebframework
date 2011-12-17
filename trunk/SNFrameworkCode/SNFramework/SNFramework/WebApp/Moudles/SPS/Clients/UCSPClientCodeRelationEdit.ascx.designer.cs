@@ -40,22 +40,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.Hidden hidId;
         
         /// <summary>
+        /// txtChannelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField txtChannelID;
+        
+        /// <summary>
         /// txtCodeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCodeID;
-        
-        /// <summary>
-        /// txtClientID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtClientID;
+        protected global::Ext.Net.DisplayField txtCodeID;
         
         /// <summary>
         /// txtPrice control.
@@ -76,13 +76,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.TextField txtInterceptRate;
         
         /// <summary>
-        /// chkUseClientDefaultSycnSetting control.
+        /// txtSycnNotInterceptCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkUseClientDefaultSycnSetting;
+        protected global::Ext.Net.TextField txtSycnNotInterceptCount;
+        
+        /// <summary>
+        /// chkIsEnable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox chkIsEnable;
         
         /// <summary>
         /// chkSyncData control.
@@ -94,15 +103,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.Checkbox chkSyncData;
         
         /// <summary>
-        /// chkSycnResendFailedData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkSycnResendFailedData;
-        
-        /// <summary>
         /// txtSycnRetryTimes control.
         /// </summary>
         /// <remarks>
@@ -110,15 +110,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtSycnRetryTimes;
-        
-        /// <summary>
-        /// txtSyncType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtSyncType;
         
         /// <summary>
         /// txtSycnDataUrl control.
@@ -146,78 +137,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtSycnFailedMessage;
-        
-        /// <summary>
-        /// txtStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtStartDate;
-        
-        /// <summary>
-        /// txtEndDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtEndDate;
-        
-        /// <summary>
-        /// chkIsEnable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsEnable;
-        
-        /// <summary>
-        /// txtSycnNotInterceptCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtSycnNotInterceptCount;
-        
-        /// <summary>
-        /// txtCreateBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCreateBy;
-        
-        /// <summary>
-        /// txtCreateAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtCreateAt;
-        
-        /// <summary>
-        /// txtLastModifyBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtLastModifyBy;
-        
-        /// <summary>
-        /// txtLastModifyAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtLastModifyAt;
         
         /// <summary>
         /// btnSaveSPClientCodeRelation control.
