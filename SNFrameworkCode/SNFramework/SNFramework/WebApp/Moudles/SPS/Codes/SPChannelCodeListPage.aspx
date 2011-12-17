@@ -107,6 +107,7 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="MoCode" />
                     <ext:RecordField Name="MO" />
                     <ext:RecordField Name="MOType" />
                     <ext:RecordField Name="OrderIndex" Type="int" />
@@ -161,7 +162,7 @@
                         </ext:RowNumbererColumn>
                         <ext:Column ColumnID="colID" DataIndex="Id" Header="主键" Width="30" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCode" DataIndex="Code" Header="指令" Sortable="true">
+                        <ext:Column ColumnID="colCode" DataIndex="MoCode" Header="指令" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
