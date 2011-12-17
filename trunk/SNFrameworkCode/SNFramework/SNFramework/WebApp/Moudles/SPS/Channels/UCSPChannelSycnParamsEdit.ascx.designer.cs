@@ -67,31 +67,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Checkbox chkIsEnable;
         
         /// <summary>
-        /// txtChannelID control.
+        /// cmbChannelParamsType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtChannelID;
+        protected global::Ext.Net.ComboBox cmbChannelParamsType;
         
         /// <summary>
-        /// txtMappingParams control.
+        /// cmbParamsMappingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtMappingParams;
-        
-        /// <summary>
-        /// txtTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtTitle;
+        protected global::Ext.Net.ComboBox cmbParamsMappingName;
         
         /// <summary>
         /// txtParamsValue control.
@@ -101,15 +92,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextField txtParamsValue;
-        
-        /// <summary>
-        /// txtParamsType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtParamsType;
         
         /// <summary>
         /// btnSaveSPChannelSycnParams control.
