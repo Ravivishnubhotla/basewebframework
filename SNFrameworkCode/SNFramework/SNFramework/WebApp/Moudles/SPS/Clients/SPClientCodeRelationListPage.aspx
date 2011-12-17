@@ -9,7 +9,21 @@
     TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+ 
     </ext:ResourceManagerProxy>
+<%--    <ext:Store ID="storeSPSChannel" runat="server" AutoLoad="false">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../Channels/SPChannelHandler.ashx" />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader Root="Datas" TotalProperty="Total">
+                <Fields>
+                    <ext:RecordField Name="Id" />
+                    <ext:RecordField Name="Name" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>--%>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -18,7 +32,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -33,7 +47,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '操作中...'
                                                                                }
                                                                 });    
         
@@ -49,7 +63,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '操作中...'
                                                                                }
                                                                 }              
                 );
@@ -63,14 +77,14 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '操作中...'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认要删除该条数据？',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -80,11 +94,11 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '删除记录成功！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '操作中...'
                                                                                }
                                                                 }
                                                             );
@@ -106,14 +120,12 @@
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="CodeID" Type="int" />
-                    <ext:RecordField Name="ClientID" Type="int" />
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="UseClientDefaultSycnSetting" Type="Boolean" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
- 
                     <ext:RecordField Name="SycnRetryTimes" />
                     <ext:RecordField Name="SyncType" />
                     <ext:RecordField Name="SycnDataUrl" />
@@ -123,10 +135,6 @@
                     <ext:RecordField Name="EndDate" Type="Date" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="SycnNotInterceptCount" Type="int" />
-                    <ext:RecordField Name="CreateBy" Type="int" />
-                    <ext:RecordField Name="CreateAt" Type="Date" />
-                    <ext:RecordField Name="LastModifyBy" Type="int" />
-                    <ext:RecordField Name="LastModifyAt" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -139,16 +147,16 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPClientCodeRelation" runat="server" StoreID="storeSPClientCodeRelation"
-                StripeRows="true" Title="SPClientCodeRelation Management" Icon="Table">
+                StripeRows="true" Title="代码分配管理" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="分配代码" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSPClientCodeRelation}.reload();" />
                                 </Listeners>
@@ -165,72 +173,30 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCodeID" DataIndex="CodeID" Header="CodeID" Sortable="true">
+                        <ext:Column ColumnID="colCodeID" DataIndex="CodeID" Header="代码" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colClientID" DataIndex="ClientID" Header="ClientID" Sortable="true">
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="Price" Sortable="true">
+                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="InterceptRate"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colUseClientDefaultSycnSetting" DataIndex="UseClientDefaultSycnSetting"
-                            Header="UseClientDefaultSycnSetting" Sortable="true">
+                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="SyncData" Sortable="true">
+                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colSycnResendFailedData" DataIndex="SycnResendFailedData" Header="SycnResendFailedData"
-                            Sortable="true">
-                            <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colSycnRetryTimes" DataIndex="SycnRetryTimes" Header="SycnRetryTimes"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colSyncType" DataIndex="SyncType" Header="SyncType" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colSycnDataUrl" DataIndex="SycnDataUrl" Header="SycnDataUrl"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colSycnOkMessage" DataIndex="SycnOkMessage" Header="SycnOkMessage"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colSycnFailedMessage" DataIndex="SycnFailedMessage" Header="SycnFailedMessage"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colStartDate" DataIndex="StartDate" Header="StartDate" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colEndDate" DataIndex="EndDate" Header="EndDate" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="IsEnable" Sortable="true">
-                            <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colSycnNotInterceptCount" DataIndex="SycnNotInterceptCount"
-                            Header="SycnNotInterceptCount" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colCreateBy" DataIndex="CreateBy" Header="CreateBy" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colCreateAt" DataIndex="CreateAt" Header="CreateAt" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colLastModifyBy" DataIndex="LastModifyBy" Header="LastModifyBy"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colLastModifyAt" DataIndex="LastModifyAt" Header="LastModifyAt"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
+                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
                             <Commands>
-                                <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View">
+                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -242,8 +208,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPClientCodeRelation"
-                        DisplayInfo="true" DisplayMsg="Display SPClientCodeRelations {0} - {1} total {2}"
-                        EmptyMsg="No matched SPClientCodeRelation" />
+                        DisplayInfo="true" DisplayMsg="显示代码 {0} - {1} 共 {2}" EmptyMsg="没有分配的代码" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

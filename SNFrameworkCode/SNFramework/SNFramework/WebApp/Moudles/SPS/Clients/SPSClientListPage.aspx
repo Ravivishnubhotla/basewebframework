@@ -8,7 +8,9 @@
     TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+
     </ext:ResourceManagerProxy>
+
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -17,7 +19,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -68,18 +70,11 @@
                 );
             }
 			
-			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSPSClientView.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing...'
-                                                                               }
-                                                                }              
-                );
+			if (cmd == "cmdAssignedCode") {
+              var win = <%= winClientCode.ClientID %>;
+              win.autoLoad.params.SPSClientID = id.id;
+              win.setTitle(String.format('客户“{0}”代码分配管理',id.data.Name));
+              win.show(); 
             }
 
             if (cmd == "cmdDelete") {
@@ -190,7 +185,7 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
+                                            <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="UserEdit" CommandName="cmdChangeUserLoginInfo" Text="编辑用户信息">
                                             </ext:MenuCommand>
@@ -212,4 +207,18 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winClientCode" runat="server" Title="winClientCode" Frame="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPClientCodeRelationListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="SPSClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

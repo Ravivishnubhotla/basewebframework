@@ -1,71 +1,113 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientCodeRelationAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientCodeRelationAdd" %>
-<ext:Window ID="winSPClientCodeRelationAdd" runat="server" Icon="ApplicationAdd"
-    Title="SPClientCodeRelation Add " Width="400" Height="270" AutoShow="false" Maximizable="true"
-    Modal="true" Hidden="true" AutoScroll="true" ConstrainHeader="true" Resizable="true"
-    Layout="Fit">
-    <Content>
+<script type="text/javascript">
+    function SetAddSyncUI(showSync) {
+        if(showSync) {
+            //alert('111');
+            <%= this.chkSycnResendFailedData.ClientID %>.show();
+            <%= this.txtSycnRetryTimes.ClientID %>.show();    
+            <%= this.txtSycnDataUrl.ClientID %>.show();   
+            <%= this.txtSycnOkMessage.ClientID %>.show();   
+            <%= this.txtSycnFailedMessage.ClientID %>.show();           
+        }
+        else {
+            <%= this.chkSycnResendFailedData.ClientID %>.hide();
+            <%= this.txtSycnRetryTimes.ClientID %>.hide();      
+            <%= this.txtSycnDataUrl.ClientID %>.hide();   
+            <%= this.txtSycnOkMessage.ClientID %>.hide();   
+            <%= this.txtSycnFailedMessage.ClientID %>.hide();                
+        }
+
+    }
+    
+</script>
+<ext:store id="storeSPChannel" runat="server" autoload="true" onrefreshdata="storeSPChannel_Refresh">
+    <reader>
+            <ext:JsonReader IDProperty="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+ 
+                </Fields>
+            </ext:JsonReader>
+        </reader>
+    <directeventconfig>
+            <EventMask ShowMask="true" />
+        </directeventconfig>
+ 
+</ext:store>
+<ext:store id="storeSPCode" runat="server" autoload="false" onrefreshdata="storeSPCode_Refresh">
+    <reader>
+            <ext:JsonReader IDProperty="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+ 
+                </Fields>
+            </ext:JsonReader>
+        </reader>
+    <directeventconfig>
+            <EventMask ShowMask="true" />
+        </directeventconfig>
+</ext:store>
+<ext:window id="winSPClientCodeRelationAdd" runat="server" icon="ApplicationAdd"
+    title="分配代码" width="400" height="270" autoshow="false" maximizable="true" modal="true"
+    hidden="true" autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
+    <content>
         <ext:FormPanel ID="formPanelSPClientCodeRelationAdd" runat="server" Frame="true"
             Header="false" MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":"
             LabelWidth="100" AutoScroll="true" Layout="Form">
             <Items>
-                <ext:TextField ID="txtCodeID" runat="server" FieldLabel="CodeID" AllowBlank="True"
+                <ext:ComboBox ID="cmbChannel" runat="server" FieldLabel="通道" StoreID="storeSPChannel"
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="选择通道" AllowBlank="false">
+                           <Listeners>
+            <Select Handler="#{cmbCode}.clearValue(); #{storeSPCode}.reload();" />
+        </Listeners> 
+                </ext:ComboBox>
+                 <ext:ComboBox ID="cmbCode" runat="server" FieldLabel="代码" StoreID="storeSPCode"
+                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="选择代码" AllowBlank="false">
+                </ext:ComboBox>
+                <ext:TextField ID="txtPrice" runat="server" FieldLabel="价格" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtInterceptRate" runat="server" FieldLabel="扣率" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtClientID" runat="server" FieldLabel="ClientID" AllowBlank="True"
+                <ext:TextField ID="txtSycnNotInterceptCount" runat="server" FieldLabel="免扣量" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtPrice" runat="server" FieldLabel="Price" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtInterceptRate" runat="server" FieldLabel="InterceptRate" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkUseClientDefaultSycnSetting" runat="server" FieldLabel="UseClientDefaultSycnSetting"
-                    Checked="false" AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="SyncData" Checked="false"
-                    AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkSycnResendFailedData" runat="server" FieldLabel="SycnResendFailedData"
-                    Checked="false" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="SycnRetryTimes"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSyncType" runat="server" FieldLabel="SyncType" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSycnDataUrl" runat="server" FieldLabel="SycnDataUrl" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSycnOkMessage" runat="server" FieldLabel="SycnOkMessage" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSycnFailedMessage" runat="server" FieldLabel="SycnFailedMessage"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtStartDate" runat="server" FieldLabel="StartDate" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtEndDate" runat="server" FieldLabel="EndDate" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="IsEnable" Checked="false"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtSycnNotInterceptCount" runat="server" FieldLabel="SycnNotInterceptCount"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtCreateBy" runat="server" FieldLabel="CreateBy" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtCreateAt" runat="server" FieldLabel="CreateAt" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtLastModifyBy" runat="server" FieldLabel="LastModifyBy" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtLastModifyAt" runat="server" FieldLabel="LastModifyAt" AllowBlank="True"
-                    AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="同步数据" Checked="false" AnchorHorizontal="95%">
+                    <Listeners>
+                        <Check Handler="SetAddSyncUI(#{chkSyncData}.getValue());"></Check>
+                    </Listeners>
+                </ext:Checkbox>
+                <ext:Checkbox ID="chkSycnResendFailedData" runat="server" FieldLabel="重发失败同步" Checked="false"
+                    AnchorHorizontal="95%" Hidden="true" />
+                <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="重发次数" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />
+                <ext:TextField ID="txtSycnDataUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />
+                <ext:TextField ID="txtSycnOkMessage" runat="server" FieldLabel="同步成功标识" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />
+                <ext:TextField ID="txtSycnFailedMessage" runat="server" FieldLabel="同步失败标识" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />
             </Items>
         </ext:FormPanel>
-    </Content>
-    <Buttons>
-        <ext:Button ID="btnSavelSPClientCodeRelation" runat="server" Text="Add" Icon="Add">
+    </content>
+    <buttons>
+        <ext:Button ID="btnSavelSPClientCodeRelation" runat="server" Text="分配代码" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPClientCodeRelationAdd}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPClientCodeRelation_Click" Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPClientCodeRelationAdd}.getForm().reset();#{storeSPClientCodeRelation}.reload(); };
+                    OnEvent="btnSaveSPClientCodeRelation_Click" Success="Ext.MessageBox.alert('操作成功', '分配代码成功！' ,callback);function callback(id) {#{formPanelSPClientCodeRelationAdd}.getForm().reset();#{storeSPClientCodeRelation}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSPClientCodeRelation" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSPClientCodeRelation" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSPClientCodeRelationAdd}.getForm().reset();#{winSPClientCodeRelationAdd}.hide();" />
             </Listeners>
         </ext:Button>
-    </Buttons>
-</ext:Window>
+    </buttons>
+    <listeners>
+        <BeforeShow Handler="#{storeSPChannel}.reload();SetAddSyncUI(#{chkSyncData}.getValue());">
+        </BeforeShow>
+    </listeners>
+</ext:window>

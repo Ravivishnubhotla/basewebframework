@@ -43,6 +43,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                         this.txtFailedMessage.Show();
                         this.txtFailedMessage.Show();
                         this.txtRecieveDataUrl.Show();
+                        this.txtSycnRetryTimes.Show();
                         this.txtFailedMessage.Text = obj.SycnFailedMessage;
                         this.txtOkMessage.Text = obj.SycnOkMessage;
                         this.txtRecieveDataUrl.Text = obj.SycnDataUrl;
@@ -52,6 +53,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                         this.txtFailedMessage.Hide();
                         this.txtFailedMessage.Hide();
                         this.txtRecieveDataUrl.Hide();
+                        this.txtSycnRetryTimes.Hide();
                         this.txtFailedMessage.Text = "";
                         this.txtOkMessage.Text = "";
                         this.txtRecieveDataUrl.Text = "";                 
@@ -99,12 +101,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
                     obj.SycnOkMessage = txtOkMessage.Text.Trim();
                     obj.SycnFailedMessage = txtFailedMessage.Text.Trim();
+                    obj.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
                 }
                 else
                 {
                     obj.SycnDataUrl = "";
                     obj.SycnOkMessage = "";
                     obj.SycnFailedMessage = "";
+                    obj.SycnRetryTimes = 3;
                 }
 
 

@@ -74,6 +74,20 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             storeSPClientCodeRelation.DataBind();
 
         }
+
+
+        public SPSClientWrapper SPSClientID
+        {
+            get
+            {
+                if (this.Request.QueryString["SPSClientID"] != null)
+                {
+                    return
+                        SPSClientWrapper.FindById(int.Parse(this.Request.QueryString["SPSClientID"]));
+                }
+                return null;
+            }
+        }
     }
 
 
