@@ -34,20 +34,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     this.chkIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable);
                     this.chkIsRequired.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsRequired);
-                    this.txtParamsType.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsType);
-                    this.txtChannelID.Text = obj.ChannelID.ToString();
-                    this.txtParamsMappingName.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsMappingName);
+
                     this.txtTitle.Text = ValueConvertUtil.ConvertStringValue(obj.Title);
                     this.chkShowInClientGrid.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.ShowInClientGrid);
                     this.txtParamsValue.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsValue);
 
-
+                    this.cmbChannelParamsType.SetValue(obj.ParamsType);
+                    this.cmbParamsMappingName.SetValue(obj.ParamsMappingName);
 
 
                     hidId.Text = id.ToString();
 
 
                     winSPChannelParamsEdit.Show();
+
+
+ 
 
                 }
                 else
@@ -74,9 +76,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.IsEnable = this.chkIsEnable.Checked;
                 obj.IsRequired = this.chkIsRequired.Checked;
-                obj.ParamsType = this.txtParamsType.Text.Trim();
+                obj.ParamsType = this.cmbChannelParamsType.SelectedItem.Value.Trim();
  
-                obj.ParamsMappingName = this.txtParamsMappingName.Text.Trim();
+                obj.ParamsMappingName = this.cmbParamsMappingName.SelectedItem.Value.Trim();
                 obj.Title = this.txtTitle.Text.Trim();
                 obj.ShowInClientGrid = this.chkShowInClientGrid.Checked;
                 obj.ParamsValue = this.txtParamsValue.Text.Trim();
