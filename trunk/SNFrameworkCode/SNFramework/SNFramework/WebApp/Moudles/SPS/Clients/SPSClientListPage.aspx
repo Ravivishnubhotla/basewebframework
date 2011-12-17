@@ -183,8 +183,7 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
-                                            </ext:MenuCommand>
+ 
                                             <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="UserEdit" CommandName="cmdChangeUserLoginInfo" Text="编辑用户信息">
