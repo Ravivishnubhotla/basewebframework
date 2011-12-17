@@ -28,6 +28,8 @@
                         </Check>
                     </Listeners>
                 </ext:Checkbox>
+                                                        <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />	      
                 <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步地址" Hidden="true"
                     AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" Hidden="true"

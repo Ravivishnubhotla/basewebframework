@@ -1,25 +1,27 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSClientAdd.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPSClientAdd" %>
-    <script type="text/javascript">
-        function ShowSycn(chkSyncData, txtRecieveDataUrl, txtOkMessage, txtFailedMessage) {
-            //alert(chkSyncData);
-            //alert(chkSyncData.getValue());
-            if(chkSyncData.getValue()) {
-                txtRecieveDataUrl.show();
-                txtOkMessage.show();
-                txtFailedMessage.show();
-            }
-            else {
-                txtRecieveDataUrl.hide();
-                txtOkMessage.hide();
-                txtFailedMessage.hide();                
-            }
+<script type="text/javascript">
+    function ShowSycn(chkSyncData, txtRecieveDataUrl, txtOkMessage, txtFailedMessage) {
+        //alert(chkSyncData);
+        //alert(chkSyncData.getValue());
+        if (chkSyncData.getValue()) {
+            txtRecieveDataUrl.show();
+            txtOkMessage.show();
+            txtFailedMessage.show();
+            <%= txtSycnRetryTimes.ClientID %>.show();
         }
-    </script>
+        else {
+            txtRecieveDataUrl.hide();
+            txtOkMessage.hide();
+            txtFailedMessage.hide();
+            <%= txtSycnRetryTimes.ClientID %>.hide();
+        }
+    }
+</script>
 <ext:window id="winSPSClientAdd" runat="server" icon="ApplicationAdd" title="SPSClient Add "
     width="400" height="270" autoshow="false" maximizable="true" modal="true" hidden="true"
     autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
-    <Content>
+    <content>
         <ext:FormPanel ID="formPanelSPSClientAdd" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"  AutoScroll="true"
             Layout="Form">
@@ -38,15 +40,17 @@
                         <Check  Handler="ShowSycn(#{chkSyncData},#{txtRecieveDataUrl},#{txtOkMessage},#{txtFailedMessage});"></Check>
  
                         </Listeners>
-                        </ext:Checkbox>	                                         
+                        </ext:Checkbox>
+                                        <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />	                                         
                         <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步地址" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
 						<ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
 						<ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed" Hidden="true" AllowBlank="True"  AnchorHorizontal="95%" />
  
             </Items>
         </ext:FormPanel>
-    </Content>
-    <Buttons>
+    </content>
+    <buttons>
         <ext:Button ID="btnSavelSPSClient" runat="server" Text="Add" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPSClient_Click"
@@ -61,5 +65,5 @@
                 <Click Handler="#{formPanelSPSClientAdd}.getForm().reset();#{winSPSClientAdd}.hide();" />
             </Listeners>
         </ext:Button>
-    </Buttons>
+    </buttons>
 </ext:window>

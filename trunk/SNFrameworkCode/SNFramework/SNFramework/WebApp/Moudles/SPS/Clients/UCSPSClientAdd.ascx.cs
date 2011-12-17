@@ -78,12 +78,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
                     obj.SycnOkMessage = txtOkMessage.Text.Trim();
                     obj.SycnFailedMessage = txtFailedMessage.Text.Trim();
+                    obj.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
                 }
                 else
                 {
                     obj.SycnDataUrl = "";
                     obj.SycnOkMessage = "";
-                    obj.SycnFailedMessage = "";                  
+                    obj.SycnFailedMessage = "";
+                    obj.SycnRetryTimes = 3;
                 }
 
 
