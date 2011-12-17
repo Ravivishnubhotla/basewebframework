@@ -18,7 +18,7 @@
         }
     }
 </script>
-<ext:window id="winSPSClientAdd" runat="server" icon="ApplicationAdd" title="SPSClient Add "
+<ext:window id="winSPSClientAdd" runat="server" icon="ApplicationAdd" title="添加客户"
     width="400" height="270" autoshow="false" maximizable="true" modal="true" hidden="true"
     autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
     <content>
@@ -51,16 +51,16 @@
         </ext:FormPanel>
     </content>
     <buttons>
-        <ext:Button ID="btnSavelSPSClient" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavelSPSClient" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPSClient_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPSClientAdd}.getForm().reset();#{storeSPSClient}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', '添加客户成功！' ,callback);function callback(id) {#{formPanelSPSClientAdd}.getForm().reset();#{storeSPSClient}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSPSClient" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSPSClient" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSPSClientAdd}.getForm().reset();#{winSPSClientAdd}.hide();" />
             </Listeners>
