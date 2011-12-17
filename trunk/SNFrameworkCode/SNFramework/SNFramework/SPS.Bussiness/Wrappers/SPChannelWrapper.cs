@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading;
- 
+using System.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
@@ -159,6 +160,25 @@ namespace SPS.Bussiness.Wrappers
             return;
 	    }
 
+        public string InterfaceUrl
+        {
+            get
+            {
+                HttpContext context = HttpContext.Current;
+
+                if (context == null)
+                    return "";
+
+                if (context.Request.Url.Port == 80)
+                    return string.Format("{0}://{1}/SPSInterface/{2}{3}", context.Request.Url.Scheme,
+                                         context.Request.Url.Host, this.Code,this.DataAdapterUrl);
+
+                return string.Format("{0}://{1}:{2}/SPSInterface/{3}{4}", context.Request.Url.Scheme,
+                                     context.Request.Url.Host,
+                                     context.Request.Url.Port, this.Code, this.DataAdapterUrl);
+            }
+        }
+
 	    public bool ProcessRequest(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
 	    {
             requestError = RequestErrorType.NoError;
@@ -187,7 +207,7 @@ namespace SPS.Bussiness.Wrappers
 	        string province = "";
 	        string city = "";
 
-	        this.GetProvinceAndCity(mobile, ref province, ref city);
+	        //this.GetProvinceAndCity(mobile, ref province, ref city);
 
             SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);
 
@@ -198,7 +218,9 @@ namespace SPS.Bussiness.Wrappers
                 return false;
             }
 
-	        SPSClientWrapper client = matchCode.GetRelateClient();
+	        SPClientCodeRelationWrapper clientCodeRelation = null;
+
+            SPSClientWrapper client = matchCode.GetRelateClient(out clientCodeRelation);
 
             if (client == null)
             {
@@ -223,13 +245,19 @@ namespace SPS.Bussiness.Wrappers
 	        record.IsReport = false;
 
 
+            record.IsStatOK = (!IsStateReport);
+
+            record.IsIntercept = this.CaculteIsIntercept(matchCode, clientCodeRelation);
+
+            if (!record.IsIntercept)
+            {
+                record.IsSycnToClient = true;
+                record.IsSycnSuccessed = false;
+
+            }
 
 
-	        record.IsIntercept = this.CaculteIsIntercept(matchCode, client);
 
-            record.IsSycnSuccessed = false;
-
-	        record.IsStatOK = (!IsStateReport);
 	        record.SycnRetryTimes = 0;
 	        record.Price = matchCode.Price;
 	        record.Count = GetRecordCount(httpRequestLog);
@@ -362,14 +390,60 @@ namespace SPS.Bussiness.Wrappers
             return;
 	    }
 
-	    private bool CaculteIsIntercept(SPCodeWrapper matchCode, SPSClientWrapper client)
+        private bool CaculteRandom(int rate)
+        {
+            Random random = new Random(unchecked((int)DateTime.Now.Ticks));
+
+            int result = random.Next(0, 100);
+
+            return (result <= rate);
+        }
+
+        private bool CaculteIsIntercept(SPCodeWrapper matchCode, SPClientCodeRelationWrapper clientCodeRelation)
 	    {
-	        return false;
+            //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
+            //    return false;
+
+
+            if(clientCodeRelation==null)
+                return false;
+
+            int interceptRate = 0;
+
+ 
+            interceptRate = Convert.ToInt32(clientCodeRelation.InterceptRate);
+ 
+
+            return CaculteRandom(interceptRate);
+
+            //if(interceptRate==0)
+            //    return false;
+
+            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+
+            //if (rate < Convert.ToDecimal(interceptRate))
+            //{
+            //    return CaculteRandom(Math.Min(interceptRate + AddRate, MaxInterceptRate));
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 	    }
 
         private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
         {
-            return Codes.Find(p => p.CheckIsMatchCode(mo, spcode));
+            var findCode = (from cc in Codes
+                            where (cc.CheckIsMatchCode(mo, spcode))
+                            orderby cc.Priority ascending , cc.Mo.Length descending 
+                                 select cc).FirstOrDefault();
+
+            if (findCode != null)
+                return findCode;
+
+            var defaultCode = Codes.Find(p => p.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key);
+
+            return defaultCode;
         }
 
 	    private void GetProvinceAndCity(string mobile, ref string province, ref string city)
@@ -417,7 +491,8 @@ namespace SPS.Bussiness.Wrappers
 
 	    private bool CheckLinkIDIsExisted(string linkid)
 	    {
-            return LinkIDQueryCache.CheckLinkIDAndChannelIDIsExisted(linkid,this.Id);
+	        return false;
+            //return LinkIDQueryCache.CheckLinkIDAndChannelIDIsExisted(linkid,this.Id);
 	    }
 
 	    private const int linkIDMaxLength = 20;
@@ -625,6 +700,11 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-  
+
+
+        internal static SPSClientWrapper GetDefaultClient()
+        {
+            return  new SPSClientWrapper(businessProxy.GetDefaultClient());
+        }
     }
 }

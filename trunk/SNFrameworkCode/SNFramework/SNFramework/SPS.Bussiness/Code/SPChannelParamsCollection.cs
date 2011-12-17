@@ -21,6 +21,11 @@ namespace SPS.Bussiness.Code
             this.cpparams = cpparams;
         }
 
+        public List<SPChannelParamsWrapper> Items
+        {
+            get { return this.cpparams; }
+        }
+
         public string this[string paramKey]
         {
             get

@@ -99,5 +99,9 @@ namespace SPS.Bussiness.Wrappers
 
         #endregion
 
+	    public static object GetAllPhoneInfos_Key()
+	    {
+	        return null;
+	    }
     }
 }
