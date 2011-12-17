@@ -76,33 +76,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Checkbox chkIsRequired;
         
         /// <summary>
-        /// txtParamsType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtParamsType;
-        
-        /// <summary>
-        /// txtChannelID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtChannelID;
-        
-        /// <summary>
-        /// txtParamsMappingName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtParamsMappingName;
-        
-        /// <summary>
         /// txtTitle control.
         /// </summary>
         /// <remarks>
@@ -119,6 +92,24 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Checkbox chkShowInClientGrid;
+        
+        /// <summary>
+        /// cmbChannelParamsType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbChannelParamsType;
+        
+        /// <summary>
+        /// cmbParamsMappingName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbParamsMappingName;
         
         /// <summary>
         /// txtParamsValue control.

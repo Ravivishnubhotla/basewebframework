@@ -85,22 +85,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Checkbox chkShowInClientGrid;
         
         /// <summary>
-        /// txtParamsType control.
+        /// cmbChannelParamsType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtParamsType;
+        protected global::Ext.Net.ComboBox cmbChannelParamsType;
         
         /// <summary>
-        /// txtParamsMappingName control.
+        /// cmbParamsMappingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtParamsMappingName;
+        protected global::Ext.Net.ComboBox cmbParamsMappingName;
         
         /// <summary>
         /// txtParamsValue control.

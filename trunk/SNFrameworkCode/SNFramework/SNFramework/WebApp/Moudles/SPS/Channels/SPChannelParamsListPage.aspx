@@ -15,7 +15,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -117,6 +117,40 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+    </ext:Store>
+    <ext:Store ID="storeDictionarySPField" runat="server" AutoLoad="false">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader Root="dictionarys" TotalProperty="total">
+                <Fields>
+                    <ext:RecordField Name="Key" />
+                    <ext:RecordField Name="Value" />
+                    <ext:RecordField Name="Code" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Name="GroupCode" Value="SPField" Mode="Value" />
+        </BaseParams>
+    </ext:Store>
+    <ext:Store ID="storeDictionaryChannelParamsType" runat="server" AutoLoad="false">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+        </Proxy>
+        <Reader>
+            <ext:JsonReader Root="dictionarys" TotalProperty="total">
+                <Fields>
+                    <ext:RecordField Name="Key" />
+                    <ext:RecordField Name="Value" />
+                    <ext:RecordField Name="Code" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Name="GroupCode" Value="ChannelParamsType" Mode="Value" />
+        </BaseParams>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

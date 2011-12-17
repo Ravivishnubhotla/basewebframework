@@ -17,10 +17,14 @@
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkShowInClientGrid" runat="server" FieldLabel="显示给下家" Checked="false"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtParamsType" runat="server" FieldLabel="参数类型" AllowBlank="True"
-                    AnchorHorizontal="95%" />
-                <ext:TextField ID="txtParamsMappingName" runat="server" FieldLabel="映射字段" AllowBlank="True"
-                    AnchorHorizontal="95%" />
+                <ext:ComboBox ID="cmbChannelParamsType" Editable="false" runat="server" FieldLabel="参数类型"
+                    DisplayField="Value" ValueField="Key" StoreID="storeDictionaryChannelParamsType"
+                    AllowBlank="false" SelectedIndex="0"  AnchorHorizontal="95%">
+                </ext:ComboBox>
+                <ext:ComboBox ID="cmbParamsMappingName" Editable="false" runat="server" FieldLabel="映射字段"
+                    DisplayField="Code" ValueField="Code" StoreID="storeDictionarySPField" AllowBlank="false"
+                    SelectedIndex="0"  AnchorHorizontal="95%">
+                </ext:ComboBox>
                 <ext:TextField ID="txtParamsValue" runat="server" FieldLabel="参数值" AllowBlank="True"
                     AnchorHorizontal="95%" />
             </Items>
@@ -42,4 +46,8 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+    <Listeners>
+        <BeforeShow Handler="#{storeDictionaryChannelParamsType}.reload();#{storeDictionarySPField}.reload();">
+        </BeforeShow>
+    </Listeners>
 </ext:Window>

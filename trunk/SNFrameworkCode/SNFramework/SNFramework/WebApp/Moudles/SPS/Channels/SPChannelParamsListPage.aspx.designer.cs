@@ -31,6 +31,24 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Store storeSPChannelParams;
         
         /// <summary>
+        /// storeDictionarySPField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeDictionarySPField;
+        
+        /// <summary>
+        /// storeDictionaryChannelParamsType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeDictionaryChannelParamsType;
+        
+        /// <summary>
         /// UCSPChannelParamsAdd1 control.
         /// </summary>
         /// <remarks>
