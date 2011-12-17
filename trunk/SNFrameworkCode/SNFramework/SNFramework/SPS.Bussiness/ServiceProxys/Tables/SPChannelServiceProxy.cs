@@ -26,6 +26,10 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
     }
 
+
+
+
+
     internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
     {
         [Transaction(ReadOnly = false)]
@@ -68,53 +72,53 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
 
 
-            SPChannelParamsEntity cpLinkId = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pLinkId, "唯一标识", "linkid", "1");
+            SPChannelParamsEntity cpLinkId = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pLinkId, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_LinkID_Key), DictionaryConst.Dictionary_SPField_LinkID_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpLinkId);
 
-            SPChannelParamsEntity cpMo = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMo, "上行内容", "mo", "1");
+            SPChannelParamsEntity cpMo = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMo, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_MO_Key), DictionaryConst.Dictionary_SPField_MO_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpMo);
 
-            SPChannelParamsEntity cpMobile = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMobile, "手机号码", "mobile", "1");
+            SPChannelParamsEntity cpMobile = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pMobile, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_Mobile_Key), DictionaryConst.Dictionary_SPField_Mobile_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpMobile);
 
-            SPChannelParamsEntity cpSpCode = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pSpCode, "通道号码", "SpCode", "1");
+            SPChannelParamsEntity cpSpCode = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pSpCode, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_SpNumber_Key), DictionaryConst.Dictionary_SPField_SpNumber_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpSpCode);
 
             if (!string.IsNullOrEmpty(pCreateDate))
             {
-                SPChannelParamsEntity cpCreateDate = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pCreateDate, "数据日期", "CreateDate", "1");
+                SPChannelParamsEntity cpCreateDate = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pCreateDate, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_CreateDate_Key), DictionaryConst.Dictionary_SPField_CreateDate_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpCreateDate);
             }
 
             if (!string.IsNullOrEmpty(pProvince))
             {
-                SPChannelParamsEntity cpProvince = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pProvince, "省份", "Province", "1");
+                SPChannelParamsEntity cpProvince = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pProvince, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_Province_Key), DictionaryConst.Dictionary_SPField_Province_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpProvince);
             }
 
             if (!string.IsNullOrEmpty(pCity))
             {
-                SPChannelParamsEntity cpCity = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pCity, "地市", "City", "1");
+                SPChannelParamsEntity cpCity = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pCity, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_City_Key), DictionaryConst.Dictionary_SPField_City_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpCity);
             }
 
             if (channelEntity.IsStateReport && !string.IsNullOrEmpty(channelEntity.StateReportParamName))
             {
-                SPChannelParamsEntity cpStateReport = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, channelEntity.StateReportParamName, "状态", "Status", "1");
+                SPChannelParamsEntity cpStateReport = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, channelEntity.StateReportParamName, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_State_Key), DictionaryConst.Dictionary_SPField_State_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpStateReport);
             }
 
             if (!string.IsNullOrEmpty(pExtend1))
             {
-                SPChannelParamsEntity cpExtend1 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, "扩展1", "Extend1", "1");
+                SPChannelParamsEntity cpExtend1 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField1_Key), DictionaryConst.Dictionary_SPField_ExtendField1_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend1);
             }
@@ -122,81 +126,81 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             if (!string.IsNullOrEmpty(pExtend2))
             {
-                SPChannelParamsEntity cpExtend2 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend2, "扩展2", "Extend2", "1");
+                SPChannelParamsEntity cpExtend2 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend2, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField2_Key), DictionaryConst.Dictionary_SPField_ExtendField2_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend2);
             }
 
             if (!string.IsNullOrEmpty(pExtend3))
             {
-                SPChannelParamsEntity cpExtend3 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend3, "扩展3", "Extend3", "1");
+                SPChannelParamsEntity cpExtend3 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend3, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField3_Key), DictionaryConst.Dictionary_SPField_ExtendField3_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend3);
             }
 
             if (!string.IsNullOrEmpty(pExtend4))
             {
-                SPChannelParamsEntity cpExtend4 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend4, "扩展4", "Extend4", "1");
+                SPChannelParamsEntity cpExtend4 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend4, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField4_Key), DictionaryConst.Dictionary_SPField_ExtendField4_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend4);
             }
 
             if (!string.IsNullOrEmpty(pExtend5))
             {
-                SPChannelParamsEntity cpExtend5 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend5, "扩展5", "Extend5", "1");
+                SPChannelParamsEntity cpExtend5 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend5, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField5_Key), DictionaryConst.Dictionary_SPField_ExtendField5_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend5);
             }
 
             if (!string.IsNullOrEmpty(pExtend6))
             {
-                SPChannelParamsEntity cpExtend6 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend6, "扩展6", "Extend6", "1");
+                SPChannelParamsEntity cpExtend6 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend6, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField6_Key), DictionaryConst.Dictionary_SPField_ExtendField6_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend6);
             }
 
             if (!string.IsNullOrEmpty(pExtend7))
             {
-                SPChannelParamsEntity cpExtend7 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend7, "扩展7", "Extend7", "1");
+                SPChannelParamsEntity cpExtend7 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend7, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField7_Key), DictionaryConst.Dictionary_SPField_ExtendField7_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend7);
             }
 
             if (!string.IsNullOrEmpty(pExtend8))
             {
-                SPChannelParamsEntity cpExtend8 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend8, "扩展8", "Extend8", "1");
+                SPChannelParamsEntity cpExtend8 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend8, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField8_Key), DictionaryConst.Dictionary_SPField_ExtendField8_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend8);
             }
 
             if (!string.IsNullOrEmpty(pExtend9))
             {
-                SPChannelParamsEntity cpExtend9 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, "扩展9", "Extend9", "1");
+                SPChannelParamsEntity cpExtend9 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend1, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField9_Key), DictionaryConst.Dictionary_SPField_ExtendField9_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend9);
             }
 
             if (!string.IsNullOrEmpty(pExtend10))
             {
-                SPChannelParamsEntity cpExtend10 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend10, "扩展10", "Extend10", "1");
+                SPChannelParamsEntity cpExtend10 = SPChannelParamsServiceProxy.NewChannelParams(channelEntity, pExtend10, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_ExtendField10_Key), DictionaryConst.Dictionary_SPField_ExtendField10_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
                 this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(cpExtend10);
             }
 
 
-            SPChannelSycnParamsEntity linkidSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "linkid", "唯一标识", "linkid", "1");
+            SPChannelSycnParamsEntity linkidSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, DictionaryConst.Dictionary_SPField_LinkID_Key, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_LinkID_Key), DictionaryConst.Dictionary_SPField_LinkID_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(linkidSycnParam);
 
-            SPChannelSycnParamsEntity moSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "mo", "上行内容", "mo", "1");
+            SPChannelSycnParamsEntity moSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, DictionaryConst.Dictionary_SPField_Mobile_Key, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_Mobile_Key), DictionaryConst.Dictionary_SPField_Mobile_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(moSycnParam);
 
-            SPChannelSycnParamsEntity SpCodeSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "SpCode", "通道编码", "SpCode", "1");
+            SPChannelSycnParamsEntity SpCodeSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, DictionaryConst.Dictionary_SPField_MO_Key, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_MO_Key), DictionaryConst.Dictionary_SPField_MO_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(SpCodeSycnParam);
 
-            SPChannelSycnParamsEntity mobileSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, "mobile", "手机号码", "mobile", "1");
+            SPChannelSycnParamsEntity mobileSycnParam = SPChannelSycnParamsServiceProxy.NewSPChannelSycnParams(channelEntity, DictionaryConst.Dictionary_SPField_SpNumber_Key, DictionaryConst.ParseSPFieldDictionaryKey(DictionaryConst.Dictionary_SPField_SpNumber_Key), DictionaryConst.Dictionary_SPField_SpNumber_Key, DictionaryConst.Dictionary_ChannelParamsType_Normal_Key);
 
             this.DataObjectsContainerIocID.SPChannelSycnParamsDataObjectInstance.Save(mobileSycnParam);
 
