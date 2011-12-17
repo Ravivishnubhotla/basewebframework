@@ -24,6 +24,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         void QuickAddIVRChannel(SPChannelEntity channelEntity, string pIvrLinkId, string pIvrFeetime, string pIvrMobile, string pIvrspCode, string pIvrStartTime, string pIvrEndTime, string pIvrProvince, string pIvrCity, string pIvrExtend1, string pIvrExtend2, string pIvrExtend3, string pIvrExtend4, string pIvrExtend5, string pIvrExtend6, string pIvrExtend7, string pIvrExtend8, string pIvrExtend9, string pIvrExtend10);
         SPChannelEntity GetChannelByDataAdaptorUrl(string dataAdaptorUrl);
         bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
+        SPSClientEntity GetDefaultClient();
     }
 
 
@@ -46,20 +47,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             this.selfDataObject.Save(channelEntity);
 
-            SPSClientEntity defaultClient =
-                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.FindDefaultClient();
-
-            if (defaultClient == null)
-            {
-                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser(SystemConfigConst.Config_SpsDefaultClientname, RoleCodeList.ROLE_CODE_SPDOWNUSER, SystemConfigConst.Config_SysDefaultUserpass, SystemConfigConst.Config_SpsDefaultClientname+SystemConfigConst.Config_SysDefaultUsermail);
-
-                if (defaultSPClientuserID < 0)
-                    throw new Exception("Create defaultSPClient failed");
-
-                defaultClient = SPSClientServiceProxy.NewDefaultSPClient(defaultSPClientuserID);
-
-                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Save(defaultClient);
-            }
+            SPSClientEntity defaultClient = GetDefaultClient();
 
             SPCodeEntity defaultCode = SPCodeServiceProxy.NewDefaultCode(channelEntity);
 
@@ -206,7 +194,29 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
         }
 
+        [Transaction(ReadOnly = false)]
+        public SPSClientEntity GetDefaultClient()
+        {
+            SPSClientEntity defaultClient =
+                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.FindDefaultClient();
 
+            if (defaultClient == null)
+            {
+                int defaultSPClientuserID = SystemUserWrapper.QuickAddUser(SystemConfigConst.Config_SpsDefaultClientname,
+                                                                           RoleCodeList.ROLE_CODE_SPDOWNUSER,
+                                                                           SystemConfigConst.Config_SysDefaultUserpass,
+                                                                           SystemConfigConst.Config_SpsDefaultClientname +
+                                                                           SystemConfigConst.Config_SysDefaultUsermail);
+
+                if (defaultSPClientuserID < 0)
+                    throw new Exception("Create defaultSPClient failed");
+
+                defaultClient = SPSClientServiceProxy.NewDefaultSPClient(defaultSPClientuserID);
+
+                this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Save(defaultClient);
+            }
+            return defaultClient;
+        }
 
 
         [Transaction(ReadOnly = false)]

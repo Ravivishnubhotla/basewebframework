@@ -119,7 +119,37 @@ namespace SPS.Bussiness.Wrappers
             return CheckIsMatchCode(mo) && spcode.ToLower().Equals(this.SPCode.ToLower());
         }
 
-        public bool CheckIsMatchCode(string mo)
+        public int Priority
+	    {
+	        get
+	        {
+	            switch (this.MOType)
+	            {
+                    case DictionaryConst.Dictionary_CodeType_CodeEQ_Key:
+                        return 1;
+                    case DictionaryConst.Dictionary_CodeType_CodeContain_Key:
+                        return 2;
+                    case DictionaryConst.Dictionary_CodeType_CodeStartWith_Key:
+                        return 3;
+                    case DictionaryConst.Dictionary_CodeType_CodeEndWith_Key:
+                        return 3;
+                    case DictionaryConst.Dictionary_CodeType_CodeRegex_Key:
+                        return 3;
+                    case DictionaryConst.Dictionary_CodeType_CodeCustom_Key:
+                        return 3;
+                    case DictionaryConst.Dictionary_CodeType_CodeExpression_Key:
+                        return 3;
+                    case DictionaryConst.Dictionary_CodeType_CodeMutilCondition_Key:
+                        return 5;
+                    case DictionaryConst.Dictionary_CodeType_CodeDefault_Key:
+                        return 6;                
+	            }
+
+	            return 9999;
+	        }
+	    }
+
+	    public bool CheckIsMatchCode(string mo)
         {
             switch (this.MOType)
             {
@@ -144,21 +174,30 @@ namespace SPS.Bussiness.Wrappers
             return false;
         }
 
-	    public SPSClientWrapper GetRelateClient()
+	    public SPSClientWrapper GetRelateClient(out SPClientCodeRelationWrapper clientCodeRelation)
 	    {
 	        List<SPClientCodeRelationWrapper> findClientInCodes = SPClientCodeRelationWrapper.FindAllByCodeID(this);
 
 	        SPClientCodeRelationWrapper spClientCodeRelation = findClientInCodes.Find(p => (p.IsEnable));
 
             if (spClientCodeRelation != null)
+            {
+                clientCodeRelation = spClientCodeRelation;
+
                 return spClientCodeRelation.ClientID;
+            }
+
 
             SPClientCodeRelationWrapper spDefaultClientCodeRelation = findClientInCodes.Find(p => (p.ClientID.IsDefaultClient.HasValue && p.ClientID.IsDefaultClient.Value));
 
             if (spDefaultClientCodeRelation != null)
+            {
+                clientCodeRelation = spDefaultClientCodeRelation;
                 return spDefaultClientCodeRelation.ClientID;
+            }
 
-	        return null;
+	        clientCodeRelation = null;
+            return SPChannelWrapper.GetDefaultClient();
         }
 
 
