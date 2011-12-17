@@ -122,6 +122,9 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="CodeID" Type="int" />
+
+                    <ext:RecordField Name="CodeID_MoCode"  />
+                    
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="UseClientDefaultSycnSetting" Type="Boolean" />
@@ -173,21 +176,21 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Width="25" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCodeID" DataIndex="CodeID" Header="代码" Sortable="true">
+                        <ext:Column ColumnID="colMoCode" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true">
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格"  Width="25" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Sortable="true">
+                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate"  Width="25" Header="扣率" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家" Sortable="true">
+                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家"  Width="35" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="true">
+                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Width="25" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
+                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="50">
                             <Commands>
                                 <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
                                     <Menu>

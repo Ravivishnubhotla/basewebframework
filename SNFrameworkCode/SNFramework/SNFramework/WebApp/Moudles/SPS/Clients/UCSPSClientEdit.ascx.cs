@@ -41,22 +41,24 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     if (obj.SyncData)
                     {
                         this.txtFailedMessage.Show();
-                        this.txtFailedMessage.Show();
+                        this.txtOkMessage.Show();
                         this.txtRecieveDataUrl.Show();
                         this.txtSycnRetryTimes.Show();
                         this.txtFailedMessage.Text = obj.SycnFailedMessage;
                         this.txtOkMessage.Text = obj.SycnOkMessage;
                         this.txtRecieveDataUrl.Text = obj.SycnDataUrl;
+                        this.txtSycnRetryTimes.Text = obj.SycnRetryTimes.ToString();
                     }
                     else
                     {
                         this.txtFailedMessage.Hide();
-                        this.txtFailedMessage.Hide();
+                        this.txtOkMessage.Hide();
                         this.txtRecieveDataUrl.Hide();
                         this.txtSycnRetryTimes.Hide();
                         this.txtFailedMessage.Text = "";
                         this.txtOkMessage.Text = "";
-                        this.txtRecieveDataUrl.Text = "";                 
+                        this.txtRecieveDataUrl.Text = "";
+                        this.txtSycnRetryTimes.Text = "3";
                     }
 
 

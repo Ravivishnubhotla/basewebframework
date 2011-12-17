@@ -4,14 +4,14 @@
     function SetAddSyncUI(showSync) {
         if(showSync) {
             //alert('111');
-            <%= this.chkSycnResendFailedData.ClientID %>.show();
+ 
             <%= this.txtSycnRetryTimes.ClientID %>.show();    
             <%= this.txtSycnDataUrl.ClientID %>.show();   
             <%= this.txtSycnOkMessage.ClientID %>.show();   
             <%= this.txtSycnFailedMessage.ClientID %>.show();           
         }
         else {
-            <%= this.chkSycnResendFailedData.ClientID %>.hide();
+ 
             <%= this.txtSycnRetryTimes.ClientID %>.hide();      
             <%= this.txtSycnDataUrl.ClientID %>.hide();   
             <%= this.txtSycnOkMessage.ClientID %>.hide();   
@@ -27,7 +27,7 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
- 
+  <ext:RecordField Name="MoCode" />
                 </Fields>
             </ext:JsonReader>
         </reader>
@@ -65,7 +65,7 @@
         </Listeners> 
                 </ext:ComboBox>
                  <ext:ComboBox ID="cmbCode" runat="server" FieldLabel="代码" StoreID="storeSPCode"
-                    AnchorHorizontal="95%" Editable="false" DisplayField="Name" ValueField="Id" EmptyText="选择代码" AllowBlank="false">
+                    AnchorHorizontal="95%" Editable="false" DisplayField="MoCode" ValueField="Id" EmptyText="选择代码" AllowBlank="false">
                 </ext:ComboBox>
                 <ext:TextField ID="txtPrice" runat="server" FieldLabel="价格" AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtInterceptRate" runat="server" FieldLabel="扣率" AllowBlank="True"
@@ -77,8 +77,7 @@
                         <Check Handler="SetAddSyncUI(#{chkSyncData}.getValue());"></Check>
                     </Listeners>
                 </ext:Checkbox>
-                <ext:Checkbox ID="chkSycnResendFailedData" runat="server" FieldLabel="重发失败同步" Checked="false"
-                    AnchorHorizontal="95%" Hidden="true" />
+ 
                 <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="重发次数" AllowBlank="True"
                     AnchorHorizontal="95%" Hidden="true" />
                 <ext:TextField ID="txtSycnDataUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"

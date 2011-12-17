@@ -29,27 +29,23 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
                 if (obj != null)
                 {
-                    this.txtCodeID.Text = obj.CodeID.ToString();
-                    this.txtClientID.Text = obj.ClientID.ToString();
+
+                    this.txtChannelID.Text = obj.CodeID_ChannelID.Name;
+                    this.txtCodeID.Text = obj.CodeID.MoCode;
                     this.txtPrice.Text = obj.Price.ToString();
                     this.txtInterceptRate.Text = obj.InterceptRate.ToString();
-                    this.chkUseClientDefaultSycnSetting.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.UseClientDefaultSycnSetting);
-                    this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
  
+                    this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
+  
                     this.txtSycnRetryTimes.Text = ValueConvertUtil.ConvertStringValue(obj.SycnRetryTimes);
-                    this.txtSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
+ 
                     this.txtSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SycnDataUrl);
                     this.txtSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnOkMessage);
                     this.txtSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnFailedMessage);
-                    this.txtStartDate.Text = obj.StartDate.ToString();
-                    this.txtEndDate.Text = obj.EndDate.ToString();
+ 
                     this.chkIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable);
                     this.txtSycnNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
-                    this.txtCreateBy.Text = obj.CreateBy.ToString();
-                    this.txtCreateAt.Text = obj.CreateAt.ToString();
-                    this.txtLastModifyBy.Text = obj.LastModifyBy.ToString();
-                    this.txtLastModifyAt.Text = obj.LastModifyAt.ToString();
-
+ 
 
 
 
@@ -62,14 +58,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                    ResourceManager.AjaxErrorMessage = "Error Message  : Data does not exist";
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
                 return;
             }
         }
@@ -82,22 +78,18 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
  
                 obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
-                obj.UseClientDefaultSycnSetting = this.chkUseClientDefaultSycnSetting.Checked;
+ 
                 obj.SyncData = this.chkSyncData.Checked;
  
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
-                obj.SyncType = this.txtSyncType.Text.Trim();
+ 
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
                 obj.SycnOkMessage = this.txtSycnOkMessage.Text.Trim();
                 obj.SycnFailedMessage = this.txtSycnFailedMessage.Text.Trim();
-                obj.StartDate = UIHelper.SaftGetDateTime(this.txtStartDate.Text.Trim());
-                obj.EndDate = UIHelper.SaftGetDateTime(this.txtEndDate.Text.Trim());
+ 
                 obj.IsEnable = this.chkIsEnable.Checked;
                 obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
-                obj.CreateBy = Convert.ToInt32(this.txtCreateBy.Text.Trim());
-                obj.CreateAt = UIHelper.SaftGetDateTime(this.txtCreateAt.Text.Trim());
-                obj.LastModifyBy = Convert.ToInt32(this.txtLastModifyBy.Text.Trim());
-                obj.LastModifyAt = UIHelper.SaftGetDateTime(this.txtLastModifyAt.Text.Trim());
+ 
 
 
                 SPClientCodeRelationWrapper.Update(obj);
