@@ -18,7 +18,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -33,7 +33,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 });    
         
@@ -49,7 +49,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
@@ -63,7 +63,7 @@
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
@@ -80,11 +80,11 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '删除指令成功！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }
                                                             );
@@ -94,7 +94,6 @@
         }
 
     </script>
-
     <ext:Store ID="storeSPCode" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
         OnRefreshData="storeSPCode_Refresh">
         <AutoLoadParams>
@@ -164,9 +163,9 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="ID" Header="主键" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colName" DataIndex="Name" Header="Name" Sortable="true">
+                        <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colDescription" DataIndex="Description" Header="Description"
                             Sortable="true">
@@ -211,11 +210,11 @@
                                 <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View">
+                                            <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -227,7 +226,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPCode"
-                        DisplayInfo="true" DisplayMsg="Display SPCodes {0} - {1} total {2}" EmptyMsg="No matched SPCode" />
+                        DisplayInfo="true" DisplayMsg="显示指令 {0} - {1} total {2}" EmptyMsg="没有指令" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

@@ -15,7 +15,7 @@
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
                 return '<%= GetGlobalResourceObject("GlobalResource","msgFalse").ToString() %>';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -163,12 +163,10 @@
                         </ext:Column>
                         <ext:Column ColumnID="colCode" DataIndex="Code" Header="指令" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="序位" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Sortable="true">
+                        <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Sortable="true">
+                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
