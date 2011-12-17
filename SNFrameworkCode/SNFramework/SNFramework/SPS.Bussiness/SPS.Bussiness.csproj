@@ -35,6 +35,9 @@
     <Reference Include="Common.Logging">
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\ThirdsDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
     </Reference>

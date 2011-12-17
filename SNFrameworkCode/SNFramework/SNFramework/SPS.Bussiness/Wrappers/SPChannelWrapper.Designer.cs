@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 using Spring.Context.Support;
 using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -12,6 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class SPChannelWrapper   
     {
         #region Member
@@ -145,7 +147,8 @@ namespace SPS.Bussiness.Wrappers
 		#region Public Property
 		/// <summary>
 		/// 
-		/// </summary>		
+		/// </summary>
+        [JsonProperty]		
 		public int Id
 		{
 			get
@@ -159,7 +162,8 @@ namespace SPS.Bussiness.Wrappers
 		}
 		/// <summary>
 		/// 
-		/// </summary>		
+		/// </summary>
+        [JsonProperty]		
 		public string Name
 		{
 			get
