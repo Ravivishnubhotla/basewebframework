@@ -109,5 +109,15 @@ namespace SPS.Bussiness.Wrappers
                 return CodeID.MoCode;
             }
         }
+
+        public string ChannelName
+        {
+            get
+            {
+                if (this.CodeID == null)
+                    return "";
+                return this.CodeID.ChannelID_Name;
+            }
+        }
     }
 }

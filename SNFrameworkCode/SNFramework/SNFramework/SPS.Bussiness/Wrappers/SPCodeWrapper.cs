@@ -191,6 +191,10 @@ namespace SPS.Bussiness.Wrappers
         {
             get
             {
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key)
+                    return "默认指令";
+
+
                 if (string.IsNullOrEmpty(this.Mo))
                     return "";
 
@@ -198,6 +202,8 @@ namespace SPS.Bussiness.Wrappers
 
                 if (!string.IsNullOrEmpty(this.SPCode))
                     spcode = this.SPCode;
+
+
 
                 if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEQ_Key)
                     return this.Mo + " (精准) 到 " + spcode;
