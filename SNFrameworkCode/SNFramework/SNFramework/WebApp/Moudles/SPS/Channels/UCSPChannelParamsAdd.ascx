@@ -12,10 +12,10 @@
                 <ext:TextField ID="txtTitle" runat="server" FieldLabel="显示名" AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="是否可用" Checked="false" AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkIsRequired" runat="server" FieldLabel="是否必须" Checked="false"
+                <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="是否可用" Checked="true" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkIsRequired" runat="server" FieldLabel="是否必须" Checked="true"
                     AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkShowInClientGrid" runat="server" FieldLabel="显示给下家" Checked="false"
+                <ext:Checkbox ID="chkShowInClientGrid" runat="server" FieldLabel="显示给下家" Checked="true"
                     AnchorHorizontal="95%" />
                 <ext:ComboBox ID="cmbChannelParamsType" Editable="false" runat="server" FieldLabel="参数类型"
                     DisplayField="Value" ValueField="Key" StoreID="storeDictionaryChannelParamsType"

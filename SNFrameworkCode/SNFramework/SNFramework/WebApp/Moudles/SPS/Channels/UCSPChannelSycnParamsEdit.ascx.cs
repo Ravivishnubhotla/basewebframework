@@ -31,11 +31,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     this.chkIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable);
-                    this.txtChannelID.Text = obj.ChannelID.ToString();
-                    this.txtMappingParams.Text = ValueConvertUtil.ConvertStringValue(obj.MappingParams);
-                    this.txtTitle.Text = ValueConvertUtil.ConvertStringValue(obj.Title);
+
+                    this.cmbChannelParamsType.SetValue(obj.ParamsType);
+                    this.cmbParamsMappingName.SetValue(obj.MappingParams);
+ 
                     this.txtParamsValue.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsValue);
-                    this.txtParamsType.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsType);
+ 
 
 
 
@@ -70,10 +71,10 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.IsEnable = this.chkIsEnable.Checked;
  
-                obj.MappingParams = this.txtMappingParams.Text.Trim();
-                obj.Title = this.txtTitle.Text.Trim();
+                obj.MappingParams = this.cmbParamsMappingName.SelectedItem.Value;
+ 
                 obj.ParamsValue = this.txtParamsValue.Text.Trim();
-                obj.ParamsType = this.txtParamsType.Text.Trim();
+                obj.ParamsType = this.cmbChannelParamsType.SelectedItem.Value;
 
 
                 SPChannelSycnParamsWrapper.Update(obj);

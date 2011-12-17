@@ -32,6 +32,20 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
             }
         }
 
+        public SPChannelWrapper ChannelID   
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannelID"] != null)
+                {
+                    return
+                        SPChannelWrapper.FindById(int.Parse(this.Request.QueryString["ChannelID"]));
+                }
+                return null;
+            }
+        }
+
+
         protected void btnSaveSPChannelSycnParams_Click(object sender, DirectEventArgs e)
         {
             try
@@ -40,11 +54,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.IsEnable = this.chkIsEnable.Checked;
- 
-                obj.MappingParams = this.txtMappingParams.Text.Trim();
-                obj.Title = this.txtTitle.Text.Trim();
+                obj.ChannelID = ChannelID;
+                obj.MappingParams = this.cmbParamsMappingName.SelectedItem.Value;
+                obj.Title = "";
                 obj.ParamsValue = this.txtParamsValue.Text.Trim();
-                obj.ParamsType = this.txtParamsType.Text.Trim();
+                obj.ParamsType = this.cmbChannelParamsType.SelectedItem.Value;
 
 
 
