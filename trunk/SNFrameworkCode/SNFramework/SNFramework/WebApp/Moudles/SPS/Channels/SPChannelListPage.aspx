@@ -153,7 +153,19 @@
               win.show();   
             }    
             
-                                                         
+                   if (cmd == "cmdSendTestRequest") {
+
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 发送模拟数据 ");
+                
+                win.autoLoad.url = 'SPChannelSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannelID = id.data.Id;
+        
+                win.show();    
+            }                                                    
                                             
         }
 
@@ -263,6 +275,8 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="DatabaseLightning" CommandName="cmdManageFilters" Text="过滤条件管理">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="通道测试">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
@@ -367,6 +381,20 @@
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SPChannelParamsConvertListPage.aspx" Mode="IFrame" NoCache="true"
             TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
                 </ext:Parameter>
