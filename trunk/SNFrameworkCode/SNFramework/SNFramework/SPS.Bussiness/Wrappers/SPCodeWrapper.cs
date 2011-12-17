@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -158,6 +159,66 @@ namespace SPS.Bussiness.Wrappers
                 return spDefaultClientCodeRelation.ClientID;
 
 	        return null;
-	    }
+        }
+
+
+        public SPCodeWrapper ParentCode
+        {
+            get
+            {
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key || this.MOType == DictionaryConst.Dictionary_CodeType_CodeContain_Key || this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
+                {
+                    List<SPCodeWrapper> codes = FindAllByChannelID(this.ChannelID);
+
+                    SPCodeWrapper parentCode = (from rap in codes  where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                                                                     !this.Mo.Equals(rap.Mo) && this.Mo.Contains(rap.Mo))
+                                                orderby rap.Mo.Length
+                                                                                select rap).FirstOrDefault();
+
+                    if (parentCode == null)
+                        return this;
+
+                    return parentCode;
+                }
+                else
+                {
+                    return this;
+                }
+            }
+        }
+
+        public string MoCode
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Mo))
+                    return "";
+
+                string spcode = "空缺";
+
+                if (!string.IsNullOrEmpty(this.SPCode))
+                    spcode = this.SPCode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEQ_Key)
+                    return this.Mo + " (精准) 到 " + spcode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeContain_Key)
+                    return "包含" + this.Mo + " (模糊) 到 " + spcode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key)
+                    return this.Mo + " (模糊) 到 " + spcode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
+                    return "结尾" + this.Mo + " (模糊) 到 " + spcode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeRegex_Key)
+                    return "正则" + this.Mo + " (模糊) 到 " + spcode;
+
+                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeCustom_Key)
+                    return "自定义" + this.Mo + " (模糊) 到 " + spcode;
+
+                return this.Mo + " " + this.SPCode;
+            }
+        }
     }
 }
