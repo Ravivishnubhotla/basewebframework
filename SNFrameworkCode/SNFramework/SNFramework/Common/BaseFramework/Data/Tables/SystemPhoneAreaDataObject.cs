@@ -12,5 +12,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemPhoneAreaDataObject
     {
+        public SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix)
+        {
+            NHibernateDynamicQueryGenerator<SystemPhoneAreaEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            queryGenerator.AddWhereClause(PROPERTY_PHONEPREFIX.Eq(mobilePrefix));
+
+            return this.FindSingleEntityByQueryBuilder(queryGenerator);
+        }
     }
 }

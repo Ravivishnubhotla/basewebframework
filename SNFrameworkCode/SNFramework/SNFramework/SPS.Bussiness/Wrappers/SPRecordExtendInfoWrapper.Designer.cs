@@ -57,6 +57,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_RECORDID_PROVINCE;
 		        case "RecordID_City":
 					return PROPERTY_RECORDID_CITY;
+		        case "RecordID_OperatorType":
+					return PROPERTY_RECORDID_OPERATORTYPE;
 		        case "RecordID_CreateDate":
 					return PROPERTY_RECORDID_CREATEDATE;
 		        case "RecordID_IsReport":
@@ -77,6 +79,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_RECORDID_CLIENTID;
 		        case "RecordID_CodeID":
 					return PROPERTY_RECORDID_CODEID;
+		        case "RecordID_ClientCodeRelationID":
+					return PROPERTY_RECORDID_CLIENTCODERELATIONID;
 		        case "RecordID_Price":
 					return PROPERTY_RECORDID_PRICE;
 		        case "RecordID_Count":
@@ -102,6 +106,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_RECORDID = "RecordID";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE = "SSycnDataFailedMessage";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
@@ -130,6 +135,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_RECORDID_SPNUMBER = "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber";
 		public const string PROPERTY_RECORDID_PROVINCE = "RecordID_SPRecordExtendInfoEntity_Alias.Province";
 		public const string PROPERTY_RECORDID_CITY = "RecordID_SPRecordExtendInfoEntity_Alias.City";
+		public const string PROPERTY_RECORDID_OPERATORTYPE = "RecordID_SPRecordExtendInfoEntity_Alias.OperatorType";
 		public const string PROPERTY_RECORDID_CREATEDATE = "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate";
 		public const string PROPERTY_RECORDID_ISREPORT = "RecordID_SPRecordExtendInfoEntity_Alias.IsReport";
 		public const string PROPERTY_RECORDID_ISINTERCEPT = "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept";
@@ -140,6 +146,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_RECORDID_CHANNELID = "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID";
 		public const string PROPERTY_RECORDID_CLIENTID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientID";
 		public const string PROPERTY_RECORDID_CODEID = "RecordID_SPRecordExtendInfoEntity_Alias.CodeID";
+		public const string PROPERTY_RECORDID_CLIENTCODERELATIONID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientCodeRelationID";
 		public const string PROPERTY_RECORDID_PRICE = "RecordID_SPRecordExtendInfoEntity_Alias.Price";
 		public const string PROPERTY_RECORDID_COUNT = "RecordID_SPRecordExtendInfoEntity_Alias.Count";
 		#endregion
@@ -208,6 +215,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SSycnDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string SSycnDataFailedMessage
+		{
+			get
+			{
+				return entity.SSycnDataFailedMessage;
+			}
+			set
+			{
+				entity.SSycnDataFailedMessage = value;
 			}
 		}
 		/// <summary>
@@ -497,6 +518,16 @@ namespace SPS.Bussiness.Wrappers
                 return  RecordID.City;
             }
         }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_OPERATORTYPE)]
+        public string RecordID_OperatorType
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.OperatorType;
+            }
+        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CREATEDATE)]
         public DateTime? RecordID_CreateDate
         {
@@ -595,6 +626,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. RecordID == null)
                     return null;
                 return  RecordID.CodeID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_CLIENTCODERELATIONID)]
+        public SPClientCodeRelationWrapper RecordID_ClientCodeRelationID
+        {
+            get
+            {
+                if (this. RecordID == null)
+                    return null;
+                return  RecordID.ClientCodeRelationID;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_RECORDID_PRICE)]

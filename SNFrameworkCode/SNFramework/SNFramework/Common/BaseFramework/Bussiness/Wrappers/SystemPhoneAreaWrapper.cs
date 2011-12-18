@@ -100,7 +100,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
- 
-
+        public static SystemPhoneAreaWrapper GetPhoneAreaByMobilePrefix(string mobilePrefix)
+        {
+            return  new SystemPhoneAreaWrapper(businessProxy.GetPhoneAreaByMobilePrefix(mobilePrefix));
+        }
     }
 }

@@ -10,6 +10,6 @@ namespace SPS.Bussiness.HttpUtils
     {
         public string OkMessage { get; set; }
         public string SendUrl { get; set; }
-        public int PaymentID { get; set; }
+        public int RecordID { get; set; }
     }
 }

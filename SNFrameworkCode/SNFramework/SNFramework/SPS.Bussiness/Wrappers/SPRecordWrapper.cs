@@ -98,5 +98,10 @@ namespace SPS.Bussiness.Wrappers
         }
 
         #endregion
+
+	    public static void UpdateUrlSuccessSend(int recordId, string url)
+	    {
+            businessProxy.UpdateUrlSuccessSend(recordId, url);
+	    }
     }
 }

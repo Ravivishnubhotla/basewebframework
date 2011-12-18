@@ -281,6 +281,7 @@
     <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
     <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.Designer.cs">
       <DependentUpon>SystemAddressWrapper.cs</DependentUpon>

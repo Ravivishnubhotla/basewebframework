@@ -25,6 +25,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPRecordEntity> FindAllByClientID(SPSClientEntity _clientID);
 		List<SPRecordEntity> FindAllByOrderByAndFilterAndCodeID(string orderByColumnName, bool isDesc,   SPCodeEntity _codeID, PageQueryParams pageQueryParams);
 		List<SPRecordEntity> FindAllByCodeID(SPCodeEntity _codeID);
+		List<SPRecordEntity> FindAllByOrderByAndFilterAndClientCodeRelationID(string orderByColumnName, bool isDesc,   SPClientCodeRelationEntity _clientCodeRelationID, PageQueryParams pageQueryParams);
+		List<SPRecordEntity> FindAllByClientCodeRelationID(SPClientCodeRelationEntity _clientCodeRelationID);
     }
 
     internal partial class SPRecordServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRecordEntity>
@@ -71,6 +73,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		public List<SPRecordEntity> FindAllByCodeID(SPCodeEntity _codeID)
         {
 			return this.SelfDataObj.GetList_By_CodeID_SPCodeEntity(_codeID);
+        }
+	
+		public List<SPRecordEntity> FindAllByOrderByAndFilterAndClientCodeRelationID(string orderByColumnName, bool isDesc,  SPClientCodeRelationEntity _clientCodeRelationID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_ClientCodeRelationID_SPClientCodeRelationEntity(orderByColumnName, isDesc,_clientCodeRelationID, pageQueryParams);
+        }
+		
+		public List<SPRecordEntity> FindAllByClientCodeRelationID(SPClientCodeRelationEntity _clientCodeRelationID)
+        {
+			return this.SelfDataObj.GetList_By_ClientCodeRelationID_SPClientCodeRelationEntity(_clientCodeRelationID);
         }
 
 
