@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Web;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
@@ -206,10 +208,18 @@ namespace SPS.Bussiness.Wrappers
 
 	        string province = "";
 	        string city = "";
+            string mobileOperator    = "";        
 
-	        //this.GetProvinceAndCity(mobile, ref province, ref city);
+            PhoneAreaInfo phoneArea = this.GetProvinceAndCity(mobile);
 
-            SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);
+            if(phoneArea!=null)
+            {
+                province = phoneArea.Province;
+                city = phoneArea.City;
+                mobileOperator = phoneArea.MobileOperators;
+            }
+
+	        SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);
 
             if (matchCode == null)
             {
@@ -234,34 +244,57 @@ namespace SPS.Bussiness.Wrappers
             record.ChannelID = this;
             record.CodeID = matchCode;
 	        record.ClientID = client;
+	        record.ClientCodeRelationID = clientCodeRelation;
 	        record.Mo = mo;
 	        record.Mobile = mobile;
 	        record.LinkID = linkid;
 	        record.SpNumber = spcode;
 	        record.Province = province;
 	        record.City = city;
+	        record.OperatorType = mobileOperator;
             record.CreateDate = GetRecordTime(httpRequestLog);
 
 	        record.IsReport = false;
 
 
-            record.IsStatOK = (!IsStateReport);
+            record.IsStatOK = true;
 
             record.IsIntercept = this.CaculteIsIntercept(matchCode, clientCodeRelation);
 
-            if (!record.IsIntercept)
+            if (record.IsIntercept)
             {
-                record.IsSycnToClient = true;
+                record.IsSycnToClient = false;
                 record.IsSycnSuccessed = false;
-
+                record.SycnRetryTimes = 0;
             }
+            else
+            {
+                if (clientCodeRelation==null)
+                {
+                    record.IsSycnToClient = false;
+                    record.IsSycnSuccessed = false;
+                    record.SycnRetryTimes = 0;
+                }
+                else if(!clientCodeRelation.SyncData)
+                {
+                    record.IsSycnToClient = false;
+                    record.IsSycnSuccessed = false;
+                    record.SycnRetryTimes = 0;
+                }
+                else
+                {
+                    record.IsSycnToClient = true;
+                    record.IsSycnSuccessed = false;
+                    record.SycnRetryTimes = 0;      
+                }
+            }
+            if (clientCodeRelation != null)
+                record.Price = clientCodeRelation.Price;
+            else
+                record.Price = 0;
 
-
-
-	        record.SycnRetryTimes = 0;
-	        record.Price = matchCode.Price;
 	        record.Count = GetRecordCount(httpRequestLog);
-
+            
             SPRecordExtendInfoWrapper spRecordExtendInfo = new SPRecordExtendInfoWrapper();
 
             spRecordExtendInfo.StartTime = this.ChannelParams.StartTimeFromRequset(httpRequestLog);
@@ -280,10 +313,7 @@ namespace SPS.Bussiness.Wrappers
             spRecordExtendInfo.ExtendField8 = this.ChannelParams.ExtendField8FromRequset(httpRequestLog);
             spRecordExtendInfo.ExtendField9 = this.ChannelParams.ExtendField9FromRequset(httpRequestLog);
             spRecordExtendInfo.ExtendField10 = this.ChannelParams.ExtendField10FromRequset(httpRequestLog);
-
-            UrlSendTask sendTask = this.GenerateSendUrl(record, spRecordExtendInfo);
-
-
+ 
             try
             {
 
@@ -309,12 +339,16 @@ namespace SPS.Bussiness.Wrappers
                     Logger.Error(ex.Message);
                 }
 
-                if (sendTask != null)
+                if (record.IsSycnToClient && clientCodeRelation!=null)
                 {
-                    sendTask.PaymentID = record.Id;
-                    ThreadPool.QueueUserWorkItem(SendRequest, sendTask);
-                }
+                    UrlSendTask sendTask = this.GenerateSendUrl(record, spRecordExtendInfo, clientCodeRelation);
 
+                    if (sendTask != null)
+                    {
+                        sendTask.RecordID = record.Id;
+                        ThreadPool.QueueUserWorkItem(UrlSender.SendRequest, sendTask);
+                    }
+                }
                 return true;
             }
             catch (Exception ex)
@@ -328,9 +362,24 @@ namespace SPS.Bussiness.Wrappers
 	        return false;
 	    }
 
-	    private UrlSendTask GenerateSendUrl(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo)
+
+
+	    private UrlSendTask GenerateSendUrl(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo,SPClientCodeRelationWrapper clientCodeRelation )
 	    {
-	        return null;
+            if (clientCodeRelation == null)
+                return null;
+
+            UrlSendTask urlSendTask = new UrlSendTask();
+	        urlSendTask.RecordID = record.Id;
+	        urlSendTask.OkMessage = clientCodeRelation.SycnOkMessage;
+	        urlSendTask.SendUrl = clientCodeRelation.GenerateSendUrl(record, spRecordExtendInfo);
+
+	        return urlSendTask;
+	    }
+
+	    public List<SPChannelSycnParamsWrapper> GetAllSycnParams()
+	    {
+	        return SPChannelSycnParamsWrapper.FindAllByChannelID(this);
 	    }
 
 	    private bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
@@ -446,25 +495,32 @@ namespace SPS.Bussiness.Wrappers
             return defaultCode;
         }
 
-	    private void GetProvinceAndCity(string mobile, ref string province, ref string city)
+        private PhoneAreaInfo GetProvinceAndCity(string mobile)
 	    {
 
-//            PhoneAreaInfo phoneAreaInfo = null;
+            PhoneAreaInfo phoneAreaInfo = null;
 
 //#if DEBUG
-//            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-//            {
-//                try
-//                {
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    SystemPhoneAreaWrapper phoneArea = SystemPhoneAreaWrapper.GetPhoneAreaByMobilePrefix(mobile.Substring(0, 7));
+                
+                    phoneAreaInfo = new PhoneAreaInfo();
 
-//                    phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    phoneAreaInfo.MobileOperators = phoneArea.OperatorType;
+                    phoneAreaInfo.Province = phoneArea.Province;
+                    phoneArea.City = phoneArea.City;
 
-//                }
-//                catch (Exception ex)
-//                {
-//                    Logger.Error(ex.Message);
-//                }
-//            }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+
+            return phoneAreaInfo;
 //#else
 //            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
 //            {
@@ -620,85 +676,9 @@ namespace SPS.Bussiness.Wrappers
             return this.DataOkMessage;
         }
 
-        public static void SendRequest(object request)
-        {
-            UrlSendTask sendTask = request as UrlSendTask;
+ 
 
-            if (sendTask == null)
-                throw new AbandonedMutexException(" sendTask is null ");
-
-
-            try
-            {
-                bool requestOk = false;
-
-                string errorMessage = string.Empty;
-
-                requestOk = SendRequest(sendTask.SendUrl, 3000, sendTask.OkMessage, out errorMessage);
-
-                if (requestOk)
-                {
-                    UpdatePaymentSendSuccessAndUrl(sendTask.SendUrl, sendTask.PaymentID);
-                }
-                else
-                {
-                    Console.WriteLine(errorMessage);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }
-
-        private static void UpdatePaymentSendSuccessAndUrl(string url, int paymentID)
-        {
-            return; 
-            //SPPaymentInfoWrapper.UpdateUrlSuccessSend(paymentID, url);
-        }
-
-        private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)
-        {
-            try
-            {
-                errorMessage = "";
-
-                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);
-
-                webRequest.Timeout = timeOut;
-
-                HttpWebResponse webResponse = null;
-
-                webResponse = (HttpWebResponse)webRequest.GetResponse();
-
-
-                if (webResponse.StatusCode == HttpStatusCode.OK)
-                {
-                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
-
-                    string responseText = sr.ReadToEnd();
-
-                    bool result = responseText.Trim().ToLower().Equals(okMessage);
-
-                    if (!result)
-                    {
-                        errorMessage = responseText;
-                    }
-
-                    return result;
-                }
-
-                errorMessage = "web error Status:" + webResponse.StatusCode.ToString();
-
-                return false;
-            }
-            catch (Exception e)
-            {
-                errorMessage = e.Message;
-                return false;
-            }
-        }
+ 
 
 
 

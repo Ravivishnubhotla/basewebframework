@@ -215,6 +215,50 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_LASTMODIFYAT;
 		        case "CodeID_LastModifyComment":
 					return PROPERTY_CODEID_LASTMODIFYCOMMENT;
+		        case "ClientCodeRelationID_Id":
+					return PROPERTY_CLIENTCODERELATIONID_ID;
+		        case "ClientCodeRelationID_CodeID":
+					return PROPERTY_CLIENTCODERELATIONID_CODEID;
+		        case "ClientCodeRelationID_ClientID":
+					return PROPERTY_CLIENTCODERELATIONID_CLIENTID;
+		        case "ClientCodeRelationID_Price":
+					return PROPERTY_CLIENTCODERELATIONID_PRICE;
+		        case "ClientCodeRelationID_InterceptRate":
+					return PROPERTY_CLIENTCODERELATIONID_INTERCEPTRATE;
+		        case "ClientCodeRelationID_UseClientDefaultSycnSetting":
+					return PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING;
+		        case "ClientCodeRelationID_SyncData":
+					return PROPERTY_CLIENTCODERELATIONID_SYNCDATA;
+		        case "ClientCodeRelationID_SycnRetryTimes":
+					return PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES;
+		        case "ClientCodeRelationID_SyncType":
+					return PROPERTY_CLIENTCODERELATIONID_SYNCTYPE;
+		        case "ClientCodeRelationID_SycnDataUrl":
+					return PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL;
+		        case "ClientCodeRelationID_SycnOkMessage":
+					return PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE;
+		        case "ClientCodeRelationID_SycnFailedMessage":
+					return PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE;
+		        case "ClientCodeRelationID_StartDate":
+					return PROPERTY_CLIENTCODERELATIONID_STARTDATE;
+		        case "ClientCodeRelationID_EndDate":
+					return PROPERTY_CLIENTCODERELATIONID_ENDDATE;
+		        case "ClientCodeRelationID_IsEnable":
+					return PROPERTY_CLIENTCODERELATIONID_ISENABLE;
+		        case "ClientCodeRelationID_SycnNotInterceptCount":
+					return PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT;
+		        case "ClientCodeRelationID_DefaultShowRecordDays":
+					return PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS;
+		        case "ClientCodeRelationID_CreateBy":
+					return PROPERTY_CLIENTCODERELATIONID_CREATEBY;
+		        case "ClientCodeRelationID_CreateAt":
+					return PROPERTY_CLIENTCODERELATIONID_CREATEAT;
+		        case "ClientCodeRelationID_LastModifyBy":
+					return PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY;
+		        case "ClientCodeRelationID_LastModifyAt":
+					return PROPERTY_CLIENTCODERELATIONID_LASTMODIFYAT;
+		        case "ClientCodeRelationID_LastModifyComment":
+					return PROPERTY_CLIENTCODERELATIONID_LASTMODIFYCOMMENT;
               default:
                     return columnName;
             }
@@ -239,6 +283,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SPNUMBER = "SpNumber";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_OPERATORTYPE = "OperatorType";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
@@ -249,6 +294,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
+		public static readonly string PROPERTY_NAME_CLIENTCODERELATIONID = "ClientCodeRelationID";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_COUNT = "Count";
 		
@@ -349,6 +395,31 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPRecordEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPRecordEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPRecordEntity_Alias.LastModifyComment";
+		#endregion
+		#region clientCodeRelationID字段外键查询字段
+        public const string PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME = "ClientCodeRelationID_SPRecordEntity_Alias";
+		public const string PROPERTY_CLIENTCODERELATIONID_ID = "ClientCodeRelationID_SPRecordEntity_Alias.Id";
+		public const string PROPERTY_CLIENTCODERELATIONID_CODEID = "ClientCodeRelationID_SPRecordEntity_Alias.CodeID";
+		public const string PROPERTY_CLIENTCODERELATIONID_CLIENTID = "ClientCodeRelationID_SPRecordEntity_Alias.ClientID";
+		public const string PROPERTY_CLIENTCODERELATIONID_PRICE = "ClientCodeRelationID_SPRecordEntity_Alias.Price";
+		public const string PROPERTY_CLIENTCODERELATIONID_INTERCEPTRATE = "ClientCodeRelationID_SPRecordEntity_Alias.InterceptRate";
+		public const string PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING = "ClientCodeRelationID_SPRecordEntity_Alias.UseClientDefaultSycnSetting";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYNCDATA = "ClientCodeRelationID_SPRecordEntity_Alias.SyncData";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES = "ClientCodeRelationID_SPRecordEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYNCTYPE = "ClientCodeRelationID_SPRecordEntity_Alias.SyncType";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL = "ClientCodeRelationID_SPRecordEntity_Alias.SycnDataUrl";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnOkMessage";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTCODERELATIONID_STARTDATE = "ClientCodeRelationID_SPRecordEntity_Alias.StartDate";
+		public const string PROPERTY_CLIENTCODERELATIONID_ENDDATE = "ClientCodeRelationID_SPRecordEntity_Alias.EndDate";
+		public const string PROPERTY_CLIENTCODERELATIONID_ISENABLE = "ClientCodeRelationID_SPRecordEntity_Alias.IsEnable";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT = "ClientCodeRelationID_SPRecordEntity_Alias.SycnNotInterceptCount";
+		public const string PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS = "ClientCodeRelationID_SPRecordEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTCODERELATIONID_CREATEBY = "ClientCodeRelationID_SPRecordEntity_Alias.CreateBy";
+		public const string PROPERTY_CLIENTCODERELATIONID_CREATEAT = "ClientCodeRelationID_SPRecordEntity_Alias.CreateAt";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYAT = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYCOMMENT = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -457,6 +528,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.City = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string OperatorType
+		{
+			get
+			{
+				return entity.OperatorType;
+			}
+			set
+			{
+				entity.OperatorType = value;
 			}
 		}
 		/// <summary>
@@ -597,6 +682,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.CodeID = ((value == null) ? null : value.Entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SPClientCodeRelationWrapper ClientCodeRelationID
+		{
+			get
+			{
+				return SPClientCodeRelationWrapper.ConvertEntityToWrapper(entity.ClientCodeRelationID) ;
+			}
+			set
+			{
+				entity.ClientCodeRelationID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -1499,6 +1598,228 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		#endregion
+		#region clientCodeRelationID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_ID)]
+        public int? ClientCodeRelationID_Id
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_CODEID)]
+        public SPCodeWrapper ClientCodeRelationID_CodeID
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.CodeID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_CLIENTID)]
+        public SPSClientWrapper ClientCodeRelationID_ClientID
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.ClientID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_PRICE)]
+        public decimal? ClientCodeRelationID_Price
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.Price;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_INTERCEPTRATE)]
+        public decimal? ClientCodeRelationID_InterceptRate
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.InterceptRate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING)]
+        public bool? ClientCodeRelationID_UseClientDefaultSycnSetting
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.UseClientDefaultSycnSetting;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYNCDATA)]
+        public bool? ClientCodeRelationID_SyncData
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SyncData;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES)]
+        public string ClientCodeRelationID_SycnRetryTimes
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SycnRetryTimes;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYNCTYPE)]
+        public string ClientCodeRelationID_SyncType
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SyncType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL)]
+        public string ClientCodeRelationID_SycnDataUrl
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SycnDataUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE)]
+        public string ClientCodeRelationID_SycnOkMessage
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SycnOkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE)]
+        public string ClientCodeRelationID_SycnFailedMessage
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SycnFailedMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_STARTDATE)]
+        public DateTime? ClientCodeRelationID_StartDate
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.StartDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_ENDDATE)]
+        public DateTime? ClientCodeRelationID_EndDate
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.EndDate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_ISENABLE)]
+        public bool? ClientCodeRelationID_IsEnable
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.IsEnable;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT)]
+        public int? ClientCodeRelationID_SycnNotInterceptCount
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.SycnNotInterceptCount;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS)]
+        public int? ClientCodeRelationID_DefaultShowRecordDays
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.DefaultShowRecordDays;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_CREATEBY)]
+        public int? ClientCodeRelationID_CreateBy
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_CREATEAT)]
+        public DateTime? ClientCodeRelationID_CreateAt
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY)]
+        public int? ClientCodeRelationID_LastModifyBy
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_LASTMODIFYAT)]
+        public DateTime? ClientCodeRelationID_LastModifyAt
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTCODERELATIONID_LASTMODIFYCOMMENT)]
+        public string ClientCodeRelationID_LastModifyComment
+        {
+            get
+            {
+                if (this. ClientCodeRelationID == null)
+                    return null;
+                return  ClientCodeRelationID.LastModifyComment;
+            }
+        }
+		#endregion
       	
    
 		#endregion
@@ -1536,6 +1857,17 @@ namespace SPS.Bussiness.Wrappers
         public static List<SPRecordWrapper> FindAllByCodeID(SPCodeWrapper codeID)
         {
             return ConvertToWrapperList(businessProxy.FindAllByCodeID(codeID.Entity));
+        }
+		
+		
+        public static List<SPRecordWrapper> FindAllByOrderByAndFilterAndClientCodeRelationID(string orderByColumnName, bool isDesc,   SPClientCodeRelationWrapper clientCodeRelationID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndClientCodeRelationID(orderByColumnName, isDesc,   clientCodeRelationID.Entity, pageQueryParams));
+        }
+
+        public static List<SPRecordWrapper> FindAllByClientCodeRelationID(SPClientCodeRelationWrapper clientCodeRelationID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByClientCodeRelationID(clientCodeRelationID.Entity));
         }
 		
 

@@ -49,9 +49,45 @@ namespace SPS.Data.AdoNet
 
         #endregion
 
-    
-     
 
-      
+
+        public void UpdateUrlFailedSend(int recordId, string url,string errMessage)
+        {
+            if(errMessage.Length>3000)
+            {
+                errMessage = errMessage.Substring(0, 2999);
+            }
+
+
+            string sql = "update SPRecordExtendInfo set sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage=@Error where RecordID=@ID ;";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("sSycnDataUrl", url);
+
+            dbParameters.AddWithValue("RecordID", recordId);
+
+            dbParameters.AddWithValue("Error", errMessage);
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+
+        }
+
+
+        public void UpdateUrlSuccessSend(int recordId, string url)
+        {
+
+            string sql = "update SPRecord set IsSycnSuccessed =1  where ID=@ID and IsIntercept=0 and IsSycnToClient=1 and IsStatOK=1;" +
+                         "update SPRecordExtendInfo set  sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage='' where RecordID=@ID ;";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("sSycnDataUrl", url);
+
+            dbParameters.AddWithValue("RecordID", recordId);
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+ 
+        }
     }
 }

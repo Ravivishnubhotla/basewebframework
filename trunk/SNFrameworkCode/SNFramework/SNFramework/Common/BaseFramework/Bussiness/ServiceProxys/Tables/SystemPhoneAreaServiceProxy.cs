@@ -14,13 +14,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 {
 	public interface ISystemPhoneAreaServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity> ,ISystemPhoneAreaServiceProxyDesigner
     {
-
-
+	    SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix);
     }
 
     public partial class SystemPhoneAreaServiceProxy : ISystemPhoneAreaServiceProxy
     {
-
-
+        public SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix)
+        {
+            return this.SelfDataObj.GetPhoneAreaByMobilePrefix(mobilePrefix);
+        }
     }
 }
