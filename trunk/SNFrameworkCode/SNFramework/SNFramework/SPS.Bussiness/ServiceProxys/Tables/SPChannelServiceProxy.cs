@@ -23,7 +23,6 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         void QuickAddSPChannel(SPChannelEntity channelEntity, string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10);
         void QuickAddIVRChannel(SPChannelEntity channelEntity, string pIvrLinkId, string pIvrFeetime, string pIvrMobile, string pIvrspCode, string pIvrStartTime, string pIvrEndTime, string pIvrProvince, string pIvrCity, string pIvrExtend1, string pIvrExtend2, string pIvrExtend3, string pIvrExtend4, string pIvrExtend5, string pIvrExtend6, string pIvrExtend7, string pIvrExtend8, string pIvrExtend9, string pIvrExtend10);
         SPChannelEntity GetChannelByDataAdaptorUrl(string dataAdaptorUrl);
-        bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
         SPSClientEntity GetDefaultClient();
     }
 
@@ -232,58 +231,6 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return this.SelfDataObj.GetChannelByDataAdaptorUrl(dataAdaptorUrl);
         }
 
-        public bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
-        {
-            requestError = RequestErrorType.NoError;
-
-            if (this.CheckHasLinkIDAndChannelID(record.ChannelID,record.LinkID))
-            {
-                requestError = RequestErrorType.RepeatLinkID;
-
-                errorMessage = "";
-
-                return false;
-            }
-
-            try
-            {
-                this.DataObjectsContainerIocID.SPRecordDataObjectInstance.Save(record);
-                spRecordExtendInfo.RecordID = record;
-                this.DataObjectsContainerIocID.SPRecordExtendInfoDataObjectInstance.Save(spRecordExtendInfo);
-                errorMessage = "";
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Exception innerEx = ex;
-
-                while (innerEx.InnerException != null)
-                {
-                    innerEx = innerEx.InnerException;
-                }
-
-                if (innerEx is SqlException && ((SqlException)innerEx).Number == 2601)
-                {
-                    requestError = RequestErrorType.RepeatLinkID;
-                    errorMessage = "";
-                    return false;
-                }
-
-                throw ex;
-            }
-        }
-
-        private bool CheckHasLinkIDAndChannelID(SPChannelEntity channelID, string linkId)
-        {
-            SPRecordEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPRecordDataObjectInstance.CheckChannleLinkIDIsExist(channelID, linkId);
-
-            return (spPaymentInfoEntity != null);
-        }
-
-        //public SPChannelEntity GetChannelByDataAdaptorUrl(string dataAdaptorUrl)
-        //{
  
-
-        //}
     }
 }
