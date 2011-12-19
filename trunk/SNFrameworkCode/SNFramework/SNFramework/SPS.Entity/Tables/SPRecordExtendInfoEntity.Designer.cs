@@ -19,6 +19,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_RECORDID = "RecordID";
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE = "SSycnDataFailedMessage";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
@@ -47,6 +48,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_RECORDID_SPNUMBER = "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber";
 		public const string PROPERTY_RECORDID_PROVINCE = "RecordID_SPRecordExtendInfoEntity_Alias.Province";
 		public const string PROPERTY_RECORDID_CITY = "RecordID_SPRecordExtendInfoEntity_Alias.City";
+		public const string PROPERTY_RECORDID_OPERATORTYPE = "RecordID_SPRecordExtendInfoEntity_Alias.OperatorType";
 		public const string PROPERTY_RECORDID_CREATEDATE = "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate";
 		public const string PROPERTY_RECORDID_ISREPORT = "RecordID_SPRecordExtendInfoEntity_Alias.IsReport";
 		public const string PROPERTY_RECORDID_ISINTERCEPT = "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept";
@@ -57,6 +59,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_RECORDID_CHANNELID = "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID";
 		public const string PROPERTY_RECORDID_CLIENTID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientID";
 		public const string PROPERTY_RECORDID_CODEID = "RecordID_SPRecordExtendInfoEntity_Alias.CodeID";
+		public const string PROPERTY_RECORDID_CLIENTCODERELATIONID = "RecordID_SPRecordExtendInfoEntity_Alias.ClientCodeRelationID";
 		public const string PROPERTY_RECORDID_PRICE = "RecordID_SPRecordExtendInfoEntity_Alias.Price";
 		public const string PROPERTY_RECORDID_COUNT = "RecordID_SPRecordExtendInfoEntity_Alias.Count";
 		#endregion
@@ -77,6 +80,7 @@ namespace SPS.Entity.Tables
 		private SPRecordEntity _recordID;
 		private string _ip;
 		private string _sSycnDataUrl;
+		private string _sSycnDataFailedMessage;
 		private string _requestContent;
 		private string _extendField1;
 		private string _extendField2;
@@ -105,6 +109,7 @@ namespace SPS.Entity.Tables
 			_recordID = null;
 			_ip = null;
 			_sSycnDataUrl = null;
+			_sSycnDataFailedMessage = null;
 			_requestContent = null;
 			_extendField1 = null;
 			_extendField2 = null;
@@ -127,12 +132,13 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime)
+		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string sSycnDataFailedMessage, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime)
 		{
 			_id = id;
 			_recordID = recordID;
 			_ip = ip;
 			_sSycnDataUrl = sSycnDataUrl;
+			_sSycnDataFailedMessage = sSycnDataFailedMessage;
 			_requestContent = requestContent;
 			_extendField1 = extendField1;
 			_extendField2 = extendField2;
@@ -219,6 +225,23 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual string SSycnDataFailedMessage
+		{
+			get { return _sSycnDataFailedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnDataFailedMessage", value, value.ToString());
+				_isChanged |= (_sSycnDataFailedMessage != value); _sSycnDataFailedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual string RequestContent
 		{
 			get { return _requestContent; }
@@ -226,7 +249,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 2147483646)
+				if( value != null && value.Length > 6000)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
 				_isChanged |= (_requestContent != value); _requestContent = value;
 			}

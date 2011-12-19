@@ -180,7 +180,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 12)
+				if( value != null && value.Length > 30)
 					throw new ArgumentOutOfRangeException("Invalid value for CardType", value, value.ToString());
 				_isChanged |= (_cardType != value); _cardType = value;
 			}

@@ -22,6 +22,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_SPNUMBER = "SpNumber";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
 		public static readonly string PROPERTY_NAME_CITY = "City";
+		public static readonly string PROPERTY_NAME_OPERATORTYPE = "OperatorType";
 		public static readonly string PROPERTY_NAME_CREATEDATE = "CreateDate";
 		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_ISINTERCEPT = "IsIntercept";
@@ -32,6 +33,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
+		public static readonly string PROPERTY_NAME_CLIENTCODERELATIONID = "ClientCodeRelationID";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
 		public static readonly string PROPERTY_NAME_COUNT = "Count";
 		
@@ -133,6 +135,31 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_LASTMODIFYAT = "CodeID_SPRecordEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CODEID_LASTMODIFYCOMMENT = "CodeID_SPRecordEntity_Alias.LastModifyComment";
 		#endregion
+		#region clientCodeRelationID字段外键查询字段
+        public const string PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME = "ClientCodeRelationID_SPRecordEntity_Alias";
+		public const string PROPERTY_CLIENTCODERELATIONID_ID = "ClientCodeRelationID_SPRecordEntity_Alias.Id";
+		public const string PROPERTY_CLIENTCODERELATIONID_CODEID = "ClientCodeRelationID_SPRecordEntity_Alias.CodeID";
+		public const string PROPERTY_CLIENTCODERELATIONID_CLIENTID = "ClientCodeRelationID_SPRecordEntity_Alias.ClientID";
+		public const string PROPERTY_CLIENTCODERELATIONID_PRICE = "ClientCodeRelationID_SPRecordEntity_Alias.Price";
+		public const string PROPERTY_CLIENTCODERELATIONID_INTERCEPTRATE = "ClientCodeRelationID_SPRecordEntity_Alias.InterceptRate";
+		public const string PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING = "ClientCodeRelationID_SPRecordEntity_Alias.UseClientDefaultSycnSetting";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYNCDATA = "ClientCodeRelationID_SPRecordEntity_Alias.SyncData";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES = "ClientCodeRelationID_SPRecordEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYNCTYPE = "ClientCodeRelationID_SPRecordEntity_Alias.SyncType";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL = "ClientCodeRelationID_SPRecordEntity_Alias.SycnDataUrl";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnOkMessage";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTCODERELATIONID_STARTDATE = "ClientCodeRelationID_SPRecordEntity_Alias.StartDate";
+		public const string PROPERTY_CLIENTCODERELATIONID_ENDDATE = "ClientCodeRelationID_SPRecordEntity_Alias.EndDate";
+		public const string PROPERTY_CLIENTCODERELATIONID_ISENABLE = "ClientCodeRelationID_SPRecordEntity_Alias.IsEnable";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT = "ClientCodeRelationID_SPRecordEntity_Alias.SycnNotInterceptCount";
+		public const string PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS = "ClientCodeRelationID_SPRecordEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTCODERELATIONID_CREATEBY = "ClientCodeRelationID_SPRecordEntity_Alias.CreateBy";
+		public const string PROPERTY_CLIENTCODERELATIONID_CREATEAT = "ClientCodeRelationID_SPRecordEntity_Alias.CreateAt";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyBy";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYAT = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyAt";
+		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYCOMMENT = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -153,6 +180,7 @@ namespace SPS.Entity.Tables
 		private string _spNumber;
 		private string _province;
 		private string _city;
+		private string _operatorType;
 		private DateTime _createDate;
 		private bool _isReport;
 		private bool _isIntercept;
@@ -163,6 +191,7 @@ namespace SPS.Entity.Tables
 		private SPChannelEntity _channelID;
 		private SPSClientEntity _clientID;
 		private SPCodeEntity _codeID;
+		private SPClientCodeRelationEntity _clientCodeRelationID;
 		private decimal? _price;
 		private int _count;
 		
@@ -181,6 +210,7 @@ namespace SPS.Entity.Tables
 			_spNumber = null;
 			_province = String.Empty;
 			_city = String.Empty;
+			_operatorType = String.Empty;
 			_createDate = DateTime.MinValue;
 			_isReport = false;
 			_isIntercept = false;
@@ -191,6 +221,7 @@ namespace SPS.Entity.Tables
 			_channelID = null;
 			_clientID = null;
 			_codeID = null;
+			_clientCodeRelationID = null;
 			_price = null;
 			_count = 0;
 		}
@@ -200,7 +231,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordEntity( int id, string linkID, string mo, string mobile, string spNumber, string province, string city, DateTime createDate, bool isReport, bool isIntercept, bool isSycnToClient, bool isSycnSuccessed, bool isStatOK, int sycnRetryTimes, SPChannelEntity channelID, SPSClientEntity clientID, SPCodeEntity codeID, decimal? price, int count)
+		public SPRecordEntity( int id, string linkID, string mo, string mobile, string spNumber, string province, string city, string operatorType, DateTime createDate, bool isReport, bool isIntercept, bool isSycnToClient, bool isSycnSuccessed, bool isStatOK, int sycnRetryTimes, SPChannelEntity channelID, SPSClientEntity clientID, SPCodeEntity codeID, SPClientCodeRelationEntity clientCodeRelationID, decimal? price, int count)
 		{
 			_id = id;
 			_linkID = linkID;
@@ -209,6 +240,7 @@ namespace SPS.Entity.Tables
 			_spNumber = spNumber;
 			_province = province;
 			_city = city;
+			_operatorType = operatorType;
 			_createDate = createDate;
 			_isReport = isReport;
 			_isIntercept = isIntercept;
@@ -219,6 +251,7 @@ namespace SPS.Entity.Tables
 			_channelID = channelID;
 			_clientID = clientID;
 			_codeID = codeID;
+			_clientCodeRelationID = clientCodeRelationID;
 			_price = price;
 			_count = count;
 		}
@@ -339,6 +372,23 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 16)
 					throw new ArgumentOutOfRangeException("Invalid value for City", value, value.ToString());
 				_isChanged |= (_city != value); _city = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string OperatorType
+		{
+			get { return _operatorType; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 4)
+					throw new ArgumentOutOfRangeException("Invalid value for OperatorType", value, value.ToString());
+				_isChanged |= (_operatorType != value); _operatorType = value;
 			}
 		}
 
@@ -479,6 +529,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_codeID != value); _codeID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPClientCodeRelationEntity ClientCodeRelationID
+		{
+			get { return _clientCodeRelationID; }
+
+			set	
+			{
+				_isChanged |= (_clientCodeRelationID != value); _clientCodeRelationID = value;
 			}
 		}
 
