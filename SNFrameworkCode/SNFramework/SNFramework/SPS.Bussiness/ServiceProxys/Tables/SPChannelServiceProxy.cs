@@ -45,6 +45,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             if (string.IsNullOrEmpty(pMo))
                 throw new ArgumentNullException("pSpCode");
 
+            channelEntity.ChannelStatus = DictionaryConst.Dictionary_ChannelStatus_Run_Key;
+
             this.selfDataObject.Save(channelEntity);
 
             SPSClientEntity defaultClient = GetDefaultClient();

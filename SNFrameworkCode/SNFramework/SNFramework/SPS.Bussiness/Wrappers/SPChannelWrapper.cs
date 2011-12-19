@@ -214,9 +214,18 @@ namespace SPS.Bussiness.Wrappers
 
             if(phoneArea!=null)
             {
-                province = phoneArea.Province;
-                city = phoneArea.City;
-                mobileOperator = phoneArea.MobileOperators;
+                if (!string.IsNullOrEmpty(phoneArea.Province))
+                    province = phoneArea.Province;
+                else
+                    province = "";
+                if (!string.IsNullOrEmpty(phoneArea.City))
+                    city = phoneArea.City;
+                else
+                    city = "";
+                if (!string.IsNullOrEmpty(phoneArea.MobileOperators))
+                    mobileOperator = phoneArea.MobileOperators;
+                else
+                    mobileOperator = "";
             }
 
 	        SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);

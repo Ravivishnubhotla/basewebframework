@@ -29,6 +29,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_RECORDID_SPNUMBER = new StringProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".SpNumber"));
 		public static readonly StringProperty PROPERTY_RECORDID_PROVINCE = new StringProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".Province"));
 		public static readonly StringProperty PROPERTY_RECORDID_CITY = new StringProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".City"));
+		public static readonly StringProperty PROPERTY_RECORDID_OPERATORTYPE = new StringProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".OperatorType"));
 		public static readonly DateTimeProperty PROPERTY_RECORDID_CREATEDATE = new DateTimeProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".CreateDate"));
 		public static readonly BoolProperty PROPERTY_RECORDID_ISREPORT = new BoolProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".IsReport"));
 		public static readonly BoolProperty PROPERTY_RECORDID_ISINTERCEPT = new BoolProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".IsIntercept"));
@@ -39,11 +40,13 @@ namespace SPS.Data.Tables
 		public static readonly EntityProperty<SPChannelEntity> PROPERTY_RECORDID_CHANNELID = new EntityProperty<SPChannelEntity>(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".ChannelID"));
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_RECORDID_CLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".ClientID"));
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_RECORDID_CODEID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".CodeID"));
+		public static readonly EntityProperty<SPClientCodeRelationEntity> PROPERTY_RECORDID_CLIENTCODERELATIONID = new EntityProperty<SPClientCodeRelationEntity>(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".ClientCodeRelationID"));
 		public static readonly DecimalProperty PROPERTY_RECORDID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".Price"));
 		public static readonly IntProperty PROPERTY_RECORDID_COUNT = new IntProperty(Property.ForName(PROPERTY_RECORDID_ALIAS_NAME + ".Count"));
 		#endregion
 		public static readonly StringProperty PROPERTY_IP = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_IP));		
 		public static readonly StringProperty PROPERTY_SSYCNDATAURL = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNDATAURL));		
+		public static readonly StringProperty PROPERTY_SSYCNDATAFAILEDMESSAGE = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE));		
 		public static readonly StringProperty PROPERTY_REQUESTCONTENT = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_REQUESTCONTENT));		
 		public static readonly StringProperty PROPERTY_EXTENDFIELD1 = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_EXTENDFIELD1));		
 		public static readonly StringProperty PROPERTY_EXTENDFIELD2 = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_EXTENDFIELD2));		
@@ -83,6 +86,8 @@ namespace SPS.Data.Tables
                 case "Ip":
                     return typeof (string);
                 case "SSycnDataUrl":
+                    return typeof (string);
+                case "SSycnDataFailedMessage":
                     return typeof (string);
                 case "RequestContent":
                     return typeof (string);

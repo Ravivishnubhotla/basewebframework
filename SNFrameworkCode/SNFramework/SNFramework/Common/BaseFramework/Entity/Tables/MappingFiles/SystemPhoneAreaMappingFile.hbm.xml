@@ -15,7 +15,7 @@
 		<property column="Province" type="string" name="Province"   length="24" />	
 		<property column="City" type="string" name="City"   length="24" />	
 		<property column="OperatorType" type="string" name="OperatorType"   length="4" />	
-		<property column="CardType" type="string" name="CardType"   length="12" />	
+		<property column="CardType" type="string" name="CardType"   length="30" />	
 		<property column="AreaCode" type="string" name="AreaCode"   length="12" />	
 		<property column="ZipCode" type="string" name="ZipCode"   length="16" />	
 

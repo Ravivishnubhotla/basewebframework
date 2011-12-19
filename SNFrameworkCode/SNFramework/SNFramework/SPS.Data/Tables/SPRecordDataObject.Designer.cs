@@ -21,6 +21,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SPNUMBER = new StringProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_SPNUMBER));		
 		public static readonly StringProperty PROPERTY_PROVINCE = new StringProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_PROVINCE));		
 		public static readonly StringProperty PROPERTY_CITY = new StringProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_CITY));		
+		public static readonly StringProperty PROPERTY_OPERATORTYPE = new StringProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_OPERATORTYPE));		
 		public static readonly DateTimeProperty PROPERTY_CREATEDATE = new DateTimeProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_CREATEDATE));		
 		public static readonly BoolProperty PROPERTY_ISREPORT = new BoolProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_ISREPORT));		
 		public static readonly BoolProperty PROPERTY_ISINTERCEPT = new BoolProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_ISINTERCEPT));		
@@ -138,6 +139,36 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CODEID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyAt"));
 		public static readonly StringProperty PROPERTY_CODEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
+		public static readonly EntityProperty<SPClientCodeRelationEntity> PROPERTY_CLIENTCODERELATIONID = new EntityProperty<SPClientCodeRelationEntity>(Property.ForName(SPRecordEntity.PROPERTY_NAME_CLIENTCODERELATIONID));
+		#region clientCodeRelationID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPRecordEntity> InClude_ClientCodeRelationID_Query(NHibernateDynamicQueryGenerator<SPRecordEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CLIENTCODERELATIONID, PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME = "ClientCodeRelationID_SPRecordEntity_Alias";
+		public static readonly IntProperty PROPERTY_CLIENTCODERELATIONID_ID = new IntProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".Id"));
+		public static readonly EntityProperty<SPCodeEntity> PROPERTY_CLIENTCODERELATIONID_CODEID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".CodeID"));
+		public static readonly EntityProperty<SPSClientEntity> PROPERTY_CLIENTCODERELATIONID_CLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".ClientID"));
+		public static readonly DecimalProperty PROPERTY_CLIENTCODERELATIONID_PRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".Price"));
+		public static readonly DecimalProperty PROPERTY_CLIENTCODERELATIONID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".InterceptRate"));
+		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".UseClientDefaultSycnSetting"));
+		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SyncData"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnRetryTimes"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SyncType"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnDataUrl"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnOkMessage"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnFailedMessage"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_STARTDATE = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".StartDate"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_ENDDATE = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".EndDate"));
+		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_ISENABLE = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".IsEnable"));
+		public static readonly IntProperty PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnNotInterceptCount"));
+		public static readonly IntProperty PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".DefaultShowRecordDays"));
+		public static readonly IntProperty PROPERTY_CLIENTCODERELATIONID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
 		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_PRICE));		
 		public static readonly IntProperty PROPERTY_COUNT = new IntProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_COUNT));		
       
@@ -171,6 +202,8 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "City":
                     return typeof (string);
+                case "OperatorType":
+                    return typeof (string);
                 case "CreateDate":
                     return typeof (DateTime);
                 case "IsReport":
@@ -190,6 +223,8 @@ namespace SPS.Data.Tables
                 case "ClientID":
                     return typeof (int);
                 case "CodeID":
+                    return typeof (int);
+                case "ClientCodeRelationID":
                     return typeof (int);
                 case "Price":
                     return typeof (decimal);
@@ -211,6 +246,9 @@ namespace SPS.Data.Tables
                     break;
 	            case "CodeID_SPRecordEntity_Alias":
                     queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CODEID, PROPERTY_CODEID_ALIAS_NAME);
+                    break;
+	            case "ClientCodeRelationID_SPRecordEntity_Alias":
+                    queryGenerator.AddAlians(SPRecordEntity.PROPERTY_NAME_CLIENTCODERELATIONID, PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME);
                     break;
                 default:
                     break;
@@ -277,6 +315,27 @@ namespace SPS.Data.Tables
             NHibernateDynamicQueryGenerator<SPRecordEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_CODEID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
+		
+		public List<SPRecordEntity> GetList_By_ClientCodeRelationID_SPClientCodeRelationEntity(SPClientCodeRelationEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPRecordEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTCODERELATIONID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPRecordEntity> GetPageList_By_ClientCodeRelationID_SPClientCodeRelationEntity(string orderByColumnName, bool isDesc, SPClientCodeRelationEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SPRecordEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTCODERELATIONID.Eq(fkentity));
 
             AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
 
