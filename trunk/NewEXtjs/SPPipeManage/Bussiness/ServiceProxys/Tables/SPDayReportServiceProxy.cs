@@ -43,10 +43,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetALlClientGroupPriceReport(DateTime startDate, DateTime endDate);
         DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept);
         DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isInterceptstring ,string mprovince,  string moperator);
+        DataTable GetDayReport(DateTime startDate, DateTime enddate, string dateType);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
     {
+
+        public const string DataType_All = "All";
+        public const string DataType_Intercept = "Intercept";
+        public const string DataType_Down = "Down";
+        public const string DataType_DownSycn = "DownSycn";
+        public const string DataType_DownNotSycn = "DownNotSycn";
+        public const string DataType_SycnFailed = "SycnFailed";
+
         [Transaction(ReadOnly=false)]
         public void BulidReport(DateTime date)
         {
@@ -382,6 +391,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             dsReportDate.WriteXml(ms);
 
             File.WriteAllBytes(filePath, CompressionUtil.CompressZipFile(ms.ToArray(), Path.GetFileNameWithoutExtension(fileName)+".xml"));
+        }
+
+        public DataTable GetDayReport( DateTime startDate, DateTime enddate,string dateType)
+        {
+            return this.AdoNetDb.GetDayReport(startDate, enddate, dateType);
         }
 
  
