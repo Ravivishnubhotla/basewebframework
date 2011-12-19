@@ -317,7 +317,7 @@ namespace SPS.Bussiness.Wrappers
             try
             {
 
-                bool result = InsertPayment(record, spRecordExtendInfo, out requestError, out errorMessage);
+                bool result = SPRecordWrapper.InsertPayment(record, spRecordExtendInfo, out requestError, out errorMessage);
 
                 if (!result && requestError == RequestErrorType.RepeatLinkID)
                 {
@@ -356,10 +356,7 @@ namespace SPS.Bussiness.Wrappers
 	        return SPChannelSycnParamsWrapper.FindAllByChannelID(this);
 	    }
 
-	    private bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
-	    {
-            return businessProxy.InsertPayment(record.Entity, spRecordExtendInfo.Entity, out requestError, out errorMessage);
-	    }
+
 
 	    private int GetRecordCount(HttpRequestLog httpRequestLog)
 	    {
@@ -568,8 +565,6 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-
-
         //获取请求类型，当前状态报告还是数据报告
 	    public RequestType GetRequestType(HttpRequestLog httpRequestLog)
 	    {
@@ -622,7 +617,6 @@ namespace SPS.Bussiness.Wrappers
 
         public bool ProcessDataStatusReport(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
 	    {
-
             requestError = RequestErrorType.NoError;
             errorMessage = "";
             return false;
@@ -634,14 +628,5 @@ namespace SPS.Bussiness.Wrappers
         }
 
  
-
- 
-
-
-
-        internal static SPSClientWrapper GetDefaultClient()
-        {
-            return  new SPSClientWrapper(businessProxy.GetDefaultClient());
-        }
     }
 }

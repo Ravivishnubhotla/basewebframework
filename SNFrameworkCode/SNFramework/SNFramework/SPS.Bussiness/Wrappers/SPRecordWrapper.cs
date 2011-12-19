@@ -111,7 +111,6 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.UpdateUrlFailedSend(recordId, sendUrl, errorMessage);
 	    }
 
-
         public SPRecordExtendInfoWrapper GetExtendInfo()
         {
             List<SPRecordExtendInfoWrapper> spRecordExtends = SPRecordExtendInfoWrapper.FindAllByRecordID(this);
@@ -139,7 +138,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    public void SycnToClient()
 	    {
-            if (this.IsSycnToClient && this.ClientCodeRelationID != null)
+            if (this.IsStatOK && this.IsSycnToClient && this.ClientCodeRelationID != null)
             {
                 UrlSendTask sendTask = this.GenerateSendUrl();
 
@@ -149,7 +148,11 @@ namespace SPS.Bussiness.Wrappers
                     ThreadPool.QueueUserWorkItem(UrlSender.SendRequest, sendTask);
                 }
             }
-
 	    }
+
+        public static bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
+        {
+            return businessProxy.InsertPayment(record.Entity, spRecordExtendInfo.Entity, out requestError, out errorMessage);
+        }
     }
 }

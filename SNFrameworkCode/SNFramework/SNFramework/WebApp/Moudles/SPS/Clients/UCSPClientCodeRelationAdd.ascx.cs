@@ -93,18 +93,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             }
         }
 
-        protected void btnSaveSPClientCodeRelation_Click(object sender, DirectEventArgs e)
+
+        [DirectMethod]
+        public void SaveClientCodeRelation()
         {
             try
             {
+                SPCodeWrapper code = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
+
                 SPClientCodeRelationWrapper obj = new SPClientCodeRelationWrapper();
- 
+
                 obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
                 obj.UseClientDefaultSycnSetting = false;
                 obj.SyncData = this.chkSyncData.Checked;
                 obj.ClientID = SPSClientID;
-                obj.CodeID = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
+                obj.CodeID = code;
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
                 obj.SyncType = "1";
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
@@ -133,6 +137,48 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
             }
+        }
+ 
+
+        protected void btnSaveSPClientCodeRelation_Click(object sender, DirectEventArgs e)
+        {
+            SPCodeWrapper code = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
+
+            List<SPClientCodeRelationWrapper> spClientCodeRelations = SPClientCodeRelationWrapper.FindAllByCodeID(code);
+
+            var findClientAssignedCode = spClientCodeRelations.Find(p => (p.ClientID.Id == SPSClientID.Id && p.IsEnable));
+
+            if (findClientAssignedCode!=null)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = "错误信息:该指令已经分配给该客户";
+                return;
+            }
+
+            var findClientAssignedCodes =
+                spClientCodeRelations.FindAll(p=>p.IsEnable);
+
+            if (findClientAssignedCodes.Count>0)
+            {
+                X.Msg.Confirm("警告", "该指令已经分配给其他的客户，确认更改客户？", new MessageBoxButtonsConfig
+                {
+                    Yes = new MessageBoxButtonConfig
+                    {
+                        Handler = "#{DirectMethods}.SaveClientCodeRelation(false)",
+                        Text = "确认"
+                    },
+                    No = new MessageBoxButtonConfig
+                    {
+                        Handler = "",
+                        Text = "取消"
+                    }
+                }).Show();
+            }
+            else
+            {
+                SaveClientCodeRelation();
+            }
+
         }
     }
 

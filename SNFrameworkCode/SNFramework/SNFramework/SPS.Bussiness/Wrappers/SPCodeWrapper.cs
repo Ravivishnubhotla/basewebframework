@@ -196,7 +196,6 @@ namespace SPS.Bussiness.Wrappers
             return null;
         }
 
-
         public SPCodeWrapper ParentCode
         {
             get
