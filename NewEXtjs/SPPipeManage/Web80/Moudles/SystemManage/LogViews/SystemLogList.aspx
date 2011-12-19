@@ -81,7 +81,7 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colLogDate" DataIndex="LogDate" Header="日期"
                                     Width="39" Sortable="true">
-                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y h:i:s')" />
+                                    <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y H:i:s')" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colLogUser" DataIndex="LogUser" Header="用户"
                                     Width="50" Sortable="true" Hidden="true">

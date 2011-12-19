@@ -301,6 +301,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
+        public static DataTable GetAllDayDownReport(DateTime startDate, DateTime endDate)
+        {
+            return businessProxy.GetDayReport(startDate, endDate, SPDayReportServiceProxy.DataType_Down);
+        }
+
+
+
+
         public static DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelID, int channleClientID)
         {
             DataTable dt = new DataTable("DS");

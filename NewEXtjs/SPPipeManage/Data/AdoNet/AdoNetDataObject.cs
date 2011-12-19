@@ -23,6 +23,17 @@ namespace LD.SPPipeManage.Data.AdoNet
 
     public partial class AdoNetDataObject
     {
+
+
+ 
+
+        public const string DataType_All = "All";
+        public const string DataType_Intercept = "Intercept";
+        public const string DataType_Down = "Down";
+        public const string DataType_DownSycn = "DownSycn";
+        public const string DataType_DownNotSycn = "DownNotSycn";
+        public const string DataType_SycnFailed = "SycnFailed";
+
         #region Common
 
         private T GetScalarFromDataSet<T>(DataTable dt, int columnIndex)
@@ -1562,6 +1573,43 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             }
 
             sql += "  group by  MobileOperators,Province,ChannelID,ChannleClientID ";
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetDayReport(DateTime startDate, DateTime endDate, string dataType)
+        {
+            string sql = @"select ChannelID,ChannleClientID,ClientGroupID,COUNT(*) as RecordCount  from dbo.SPPaymentInfo with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            switch (dataType)
+            {
+                case AdoNetDataObject.DataType_All:
+                    break;
+                case AdoNetDataObject.DataType_Intercept:
+                    sql += " AND IsIntercept = 1 ";
+                    break;
+                case AdoNetDataObject.DataType_Down:
+                    sql += " AND IsIntercept = 0 ";
+                    break;
+                case AdoNetDataObject.DataType_DownSycn:
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
+                    break;
+                case AdoNetDataObject.DataType_DownNotSycn:
+                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+                    break;
+                case AdoNetDataObject.DataType_SycnFailed:
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+
+            sql += " GROUP BY  ChannelID,ChannleClientID,ClientGroupID ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }

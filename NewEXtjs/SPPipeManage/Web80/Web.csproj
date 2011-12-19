@@ -348,7 +348,9 @@
     <Content Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientGroupReport.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientReportContainer.aspx" />
     <Content Include="Moudles\SPS\Clients\UCClientChangePwd.ascx" />
@@ -871,12 +873,26 @@
     <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx.designer.cs">
       <DependentUpon>SPClientGroupReportContainer.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx.cs">
+      <DependentUpon>SPClientGroupReportContainer1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportContainer1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.cs">
       <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.designer.cs">
       <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx.cs">
+      <DependentUpon>SPClientGroupReportService1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportService1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>
@@ -1347,6 +1363,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Moudles\SPS\Clients\SPClientGroupAmountReport1.rdl" />
     <None Include="Moudles\SPS\Reports\ReportDataOperator.rdl" />
     <None Include="Moudles\SPS\Reports\ReportDataProvince.rdl" />
     <None Include="Moudles\SPS\Reports\SPSALLClientGroupAmount.rdl">
