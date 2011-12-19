@@ -14,6 +14,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	public interface ISPRecordServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRecordEntity> ,ISPRecordServiceProxyDesigner
     {
 	    void UpdateUrlSuccessSend(int recordId, string url);
+	    void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage);
     }
 
     internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
@@ -21,6 +22,11 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         public void UpdateUrlSuccessSend(int recordId, string url)
         {
             this.AdoNetDb.UpdateUrlSuccessSend(recordId, url);
+        }
+
+        public void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage)
+        {
+            this.AdoNetDb.UpdateUrlFailedSend(recordId, sendUrl, errorMessage);
         }
     }
 }

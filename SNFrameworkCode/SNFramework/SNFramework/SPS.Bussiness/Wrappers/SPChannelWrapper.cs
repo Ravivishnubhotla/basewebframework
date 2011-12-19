@@ -237,14 +237,12 @@ namespace SPS.Bussiness.Wrappers
                 return false;
             }
 
-	        SPClientCodeRelationWrapper clientCodeRelation = null;
+            SPClientCodeRelationWrapper clientCodeRelation = matchCode.GetRelateClientCodeRelation();
 
-            SPSClientWrapper client = matchCode.GetRelateClient(out clientCodeRelation);
-
-            if (client == null)
+            if (clientCodeRelation == null)
             {
                 requestError = RequestErrorType.NoChannelClientSetting;
-                errorMessage = "请求失败：代码‘" + matchCode.Name + "’请求未能找到对应客户。";
+                errorMessage = "请求失败：代码‘" + matchCode.Name + "’请求未能找到对应客户代码分配关系。";
                 return false;
             }
 
@@ -252,7 +250,7 @@ namespace SPS.Bussiness.Wrappers
 
             record.ChannelID = this;
             record.CodeID = matchCode;
-	        record.ClientID = client;
+            record.ClientID = clientCodeRelation.ClientID;
 	        record.ClientCodeRelationID = clientCodeRelation;
 	        record.Mo = mo;
 	        record.Mobile = mobile;
@@ -278,13 +276,7 @@ namespace SPS.Bussiness.Wrappers
             }
             else
             {
-                if (clientCodeRelation==null)
-                {
-                    record.IsSycnToClient = false;
-                    record.IsSycnSuccessed = false;
-                    record.SycnRetryTimes = 0;
-                }
-                else if(!clientCodeRelation.SyncData)
+                if(!clientCodeRelation.SyncData)
                 {
                     record.IsSycnToClient = false;
                     record.IsSycnSuccessed = false;
@@ -297,10 +289,9 @@ namespace SPS.Bussiness.Wrappers
                     record.SycnRetryTimes = 0;      
                 }
             }
-            if (clientCodeRelation != null)
-                record.Price = clientCodeRelation.Price;
-            else
-                record.Price = 0;
+ 
+            record.Price = clientCodeRelation.Price;
+ 
 
 	        record.Count = GetRecordCount(httpRequestLog);
             
@@ -348,16 +339,8 @@ namespace SPS.Bussiness.Wrappers
                     Logger.Error(ex.Message);
                 }
 
-                if (record.IsSycnToClient && clientCodeRelation!=null)
-                {
-                    UrlSendTask sendTask = this.GenerateSendUrl(record, spRecordExtendInfo, clientCodeRelation);
+                record.SycnToClient();
 
-                    if (sendTask != null)
-                    {
-                        sendTask.RecordID = record.Id;
-                        ThreadPool.QueueUserWorkItem(UrlSender.SendRequest, sendTask);
-                    }
-                }
                 return true;
             }
             catch (Exception ex)
@@ -366,24 +349,6 @@ namespace SPS.Bussiness.Wrappers
                 errorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
                 return false;
             }
-
-
-	        return false;
-	    }
-
-
-
-	    private UrlSendTask GenerateSendUrl(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo,SPClientCodeRelationWrapper clientCodeRelation )
-	    {
-            if (clientCodeRelation == null)
-                return null;
-
-            UrlSendTask urlSendTask = new UrlSendTask();
-	        urlSendTask.RecordID = record.Id;
-	        urlSendTask.OkMessage = clientCodeRelation.SycnOkMessage;
-	        urlSendTask.SendUrl = clientCodeRelation.GenerateSendUrl(record, spRecordExtendInfo);
-
-	        return urlSendTask;
 	    }
 
 	    public List<SPChannelSycnParamsWrapper> GetAllSycnParams()
@@ -435,19 +400,6 @@ namespace SPS.Bussiness.Wrappers
 	        return DateTime.Now;
 	    }
 
-	    private void CaculteIsSycnToClient(SPCodeWrapper matchCode, SPSClientWrapper client, SPRecordWrapper record)
-	    {
-            if (record.IsIntercept)
-            {
-                record.IsSycnToClient = false;
-                return;
-            }
-
-
-            record.IsSycnToClient = false;
-            return;
-	    }
-
         private bool CaculteRandom(int rate)
         {
             Random random = new Random(unchecked((int)DateTime.Now.Ticks));
@@ -459,10 +411,6 @@ namespace SPS.Bussiness.Wrappers
 
         private bool CaculteIsIntercept(SPCodeWrapper matchCode, SPClientCodeRelationWrapper clientCodeRelation)
 	    {
-            //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
-            //    return false;
-
-
             if(clientCodeRelation==null)
                 return false;
 

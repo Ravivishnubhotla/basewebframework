@@ -29,24 +29,21 @@ namespace SPS.Bussiness.HttpUtils
 
                 if (requestOk)
                 {
-                    UpdatePaymentSendSuccessAndUrl(sendTask.SendUrl, sendTask.RecordID);
+                    SPRecordWrapper.UpdateUrlSuccessSend(sendTask.RecordID, sendTask.SendUrl);
                 }
                 else
                 {
-                    Console.WriteLine(errorMessage);
+                    SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendUrl, errorMessage);
                 }
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendUrl, ex.Message);
             }
         }
 
-        private static void UpdatePaymentSendSuccessAndUrl(string url, int recordID)
-        {
-            SPRecordWrapper.UpdateUrlSuccessSend(recordID, url);
-        }
+ 
 
         private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)
         {
