@@ -40,7 +40,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
                 if(channelWrapper.IsStateReport)
                 {
-                    this.fsIsStateReport.CheckboxToggle = true;
+                    //this.fsIsStateReport.CheckboxToggle = true;
                     this.fsIsStateReport.Collapsed = false;
 
                     this.rdgStateReportType.SetValue(channelWrapper.StateReportType);
@@ -102,7 +102,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     channelWrapper.IVRTimeFormat = this.txtIVRTimeFormat.Text.Trim();
                 }
 
-                channelWrapper.IsStateReport = fsIsStateReport.CheckboxToggle;
+                channelWrapper.IsStateReport = !fsIsStateReport.Collapsed;
 
                 if (channelWrapper.IsStateReport)
                 {

@@ -65,7 +65,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     channelWrapper.IVRTimeFormat = this.txtIVRTimeFormat.Text.Trim();
                 }
 
-                channelWrapper.IsStateReport = fsIsStateReport.CheckboxToggle;
+                channelWrapper.IsStateReport = !fsIsStateReport.Collapsed;
 
                 if(channelWrapper.IsStateReport)
                 {
