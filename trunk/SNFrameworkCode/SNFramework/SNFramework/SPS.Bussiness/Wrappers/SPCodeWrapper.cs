@@ -174,7 +174,7 @@ namespace SPS.Bussiness.Wrappers
             return false;
         }
 
-	    public SPSClientWrapper GetRelateClient(out SPClientCodeRelationWrapper clientCodeRelation)
+        public SPClientCodeRelationWrapper GetRelateClientCodeRelation()
 	    {
 	        List<SPClientCodeRelationWrapper> findClientInCodes = SPClientCodeRelationWrapper.FindAllByCodeID(this);
 
@@ -182,9 +182,7 @@ namespace SPS.Bussiness.Wrappers
 
             if (spClientCodeRelation != null)
             {
-                clientCodeRelation = spClientCodeRelation;
-
-                return spClientCodeRelation.ClientID;
+                return spClientCodeRelation;
             }
 
 
@@ -192,12 +190,10 @@ namespace SPS.Bussiness.Wrappers
 
             if (spDefaultClientCodeRelation != null)
             {
-                clientCodeRelation = spDefaultClientCodeRelation;
-                return spDefaultClientCodeRelation.ClientID;
+                return spDefaultClientCodeRelation;
             }
 
-	        clientCodeRelation = null;
-            return SPChannelWrapper.GetDefaultClient();
+            return null;
         }
 
 

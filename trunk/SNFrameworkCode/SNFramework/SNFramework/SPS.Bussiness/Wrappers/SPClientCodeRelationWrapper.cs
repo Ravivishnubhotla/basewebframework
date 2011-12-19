@@ -124,8 +124,10 @@ namespace SPS.Bussiness.Wrappers
         }
 
 
-        public string GenerateSendUrl(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo)
+        public string GenerateSendUrl(SPRecordWrapper record)
         {
+            SPRecordExtendInfoWrapper spRecordExtendInfo = record.GetExtendInfo();
+
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
 
 
