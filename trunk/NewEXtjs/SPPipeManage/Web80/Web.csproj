@@ -1336,7 +1336,6 @@
     <Content Include="Moudles\SPS\Upers\UCSPUperEdit.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
