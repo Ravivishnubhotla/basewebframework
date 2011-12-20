@@ -56,6 +56,15 @@ namespace Legendigital.Common.Web.AppClass
                 {
                     SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
+
+                if (httpRequest.RequestParams.ContainsKey("SpNumber") && httpRequest.RequestParams.ContainsKey("Msg"))
+                {
+                    if (httpRequest.RequestParams["Msg"].ToString().ToLower().StartsWith("1036") && httpRequest.RequestParams["SpNumber"].ToString().ToLower().Equals("91605"))
+                    {
+                        httpRequest.RequestParams["SpNumber"] = "106691605";
+                    }
+                }
+
                 //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
                 {
