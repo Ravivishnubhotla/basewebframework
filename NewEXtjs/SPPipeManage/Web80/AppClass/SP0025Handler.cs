@@ -59,7 +59,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (httpRequest.RequestParams.ContainsKey("SpNumber") && httpRequest.RequestParams.ContainsKey("Msg"))
                 {
-                    if (httpRequest.RequestParams["Msg"].ToString().ToLower().StartsWith("1036") && httpRequest.RequestParams["SpNumber"].ToString().ToLower().Equals("91605"))
+                    if (httpRequest.RequestParams["SpNumber"].ToString().ToLower().Equals("91605"))
                     {
                         httpRequest.RequestParams["SpNumber"] = "106691605";
                     }
