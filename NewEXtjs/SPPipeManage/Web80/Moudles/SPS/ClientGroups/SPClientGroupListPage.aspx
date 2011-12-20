@@ -286,7 +286,7 @@
                                         <ext:GridCommand Icon="Money" CommandName="cmdClientGroupPriceReport" Text="结算报表">
                                             <ToolTip Text="结算报表" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1">
+                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1" Hidden="true">
                                             <ToolTip Text="结算报表" />
                                         </ext:GridCommand>
                                     </Commands>
