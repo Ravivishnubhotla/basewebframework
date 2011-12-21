@@ -57,11 +57,11 @@ namespace Legendigital.Common.Web.AppClass
                     SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
 
-                if (httpRequest.RequestParams.ContainsKey("SpNumber") && httpRequest.RequestParams.ContainsKey("Msg"))
+                if (httpRequest.RequestParams.ContainsKey("spnumber"))
                 {
-                    if (httpRequest.RequestParams["SpNumber"].ToString().ToLower().Equals("91605"))
+                    if (httpRequest.RequestParams["spnumber"].ToString().ToLower().Equals("91605"))
                     {
-                        httpRequest.RequestParams["SpNumber"] = "106691605";
+                        httpRequest.RequestParams["spnumber"] = "106691605";
                     }
                 }
 
