@@ -135,11 +135,18 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(spCodeParamsEntity);
 
+            string sycnParamNameMO = "mo";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMO"]))
+            {
+                sycnParamNameMO = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMO"];
+            }
+
             SPChannelDefaultClientSycnParamsEntity moSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
 
             moSendParamsEntity.ChannelID = spChannelWrapper;
-            moSendParamsEntity.Name = "mo";
-            moSendParamsEntity.Title = "mo";
+            moSendParamsEntity.Name = sycnParamNameMO;
+            moSendParamsEntity.Title = sycnParamNameMO;
             moSendParamsEntity.Description = "上行内容";
             moSendParamsEntity.IsEnable = true;
             moSendParamsEntity.IsRequired = true;
@@ -147,11 +154,18 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(moSendParamsEntity);
 
+            string sycnParamNameLinkID = "linkid";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameLinkID"]))
+            {
+                sycnParamNameLinkID = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameLinkID"];
+            }
+
             SPChannelDefaultClientSycnParamsEntity linkidSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
 
             linkidSendParamsEntity.ChannelID = spChannelWrapper;
-            linkidSendParamsEntity.Name = "linkid";
-            linkidSendParamsEntity.Title = "linkid";
+            linkidSendParamsEntity.Name = sycnParamNameLinkID;
+            linkidSendParamsEntity.Title = sycnParamNameLinkID;
             linkidSendParamsEntity.Description = "唯一标识";
             linkidSendParamsEntity.IsEnable = true;
             linkidSendParamsEntity.IsRequired = true;
@@ -159,11 +173,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(linkidSendParamsEntity);
 
+
+            string sycnParamNameMobile = "mobile";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMobile"]))
+            {
+                sycnParamNameMobile = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMobile"];
+            }
+
             SPChannelDefaultClientSycnParamsEntity mobileSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
 
             mobileSendParamsEntity.ChannelID = spChannelWrapper;
-            mobileSendParamsEntity.Name = "mobile";
-            mobileSendParamsEntity.Title = "mobile";
+            mobileSendParamsEntity.Name = sycnParamNameMobile;
+            mobileSendParamsEntity.Title = sycnParamNameMobile;
             mobileSendParamsEntity.Description = "手机号码";
             mobileSendParamsEntity.IsEnable = true;
             mobileSendParamsEntity.IsRequired = true;
@@ -172,11 +194,20 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(mobileSendParamsEntity);
 
 
+            string sycnParamNameSPCode = "spCode";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameSPCode"]))
+            {
+                sycnParamNameSPCode = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameSPCode"];
+            }
+
+
+
             SPChannelDefaultClientSycnParamsEntity spCodeSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
 
             spCodeSendParamsEntity.ChannelID = spChannelWrapper;
-            spCodeSendParamsEntity.Name = "spCode";
-            spCodeSendParamsEntity.Title = "spCode";
+            spCodeSendParamsEntity.Name = sycnParamNameSPCode;
+            spCodeSendParamsEntity.Title = sycnParamNameSPCode;
             spCodeSendParamsEntity.Description = "通道号码";
             spCodeSendParamsEntity.IsEnable = true;
             spCodeSendParamsEntity.IsRequired = true;
