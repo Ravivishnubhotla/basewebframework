@@ -308,6 +308,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Images\logon\button_bg.gif" />
+    <Content Include="Images\logon\Button_On.GIF" />
+    <Content Include="Images\logon\Button_Over.GIF" />
+    <Content Include="Images\logon\Logon_1.gif" />
+    <Content Include="Images\logon\Logon_10.gif" />
+    <Content Include="Images\logon\Logon_11.gif" />
+    <Content Include="Images\logon\Logon_2.gif" />
+    <Content Include="Images\logon\Logon_3.gif" />
+    <Content Include="Images\logon\Logon_4.gif" />
+    <Content Include="Images\logon\Logon_5.gif" />
+    <Content Include="Images\logon\Logon_6.gif" />
+    <Content Include="Images\logon\Logon_7.jpg" />
+    <Content Include="Images\logon\Logon_8.gif" />
+    <Content Include="Images\logon\Logon_9.gif" />
+    <Content Include="MainPage\Login1.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
@@ -440,6 +455,13 @@
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Login1.aspx.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login1.aspx.designer.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\UCChangePassword.ascx.cs">
       <DependentUpon>UCChangePassword.ascx</DependentUpon>
