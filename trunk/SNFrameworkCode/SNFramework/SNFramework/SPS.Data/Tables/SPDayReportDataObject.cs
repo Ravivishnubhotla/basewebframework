@@ -11,5 +11,14 @@ namespace SPS.Data.Tables
 {
     public partial class SPDayReportDataObject
     {
+        public List<SPDayReportEntity> FindByDate(DateTime date)
+        {
+            NHibernateDynamicQueryGenerator<SPDayReportEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Eq(date.Date));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }

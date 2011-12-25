@@ -142,5 +142,31 @@ namespace SPS.Data.AdoNet
  
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public void RestAllReportedData(DateTime date)
+        {
+            string sql = "update SPRecord set  IsReport = 0  where CreateDate >= @startDate and  CreateDate <  @endDate";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+        public void ClearAllReportedData(DateTime date)
+        {
+            string sql = "update SPRecord set  IsReport = 1  where CreateDate >= @startDate and  CreateDate <  @endDate";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
+
+            this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
     }
 }
