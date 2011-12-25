@@ -8,7 +8,18 @@ using Spring.Data.Common;
 
 namespace SPS.Data.AdoNet
 {
- 
+    public enum DayReportType
+    {
+        AllUp,
+        AllUpSuccess,
+        Intercept,
+        Down,
+        DownSycnSuccess,
+        DownNotSycn,
+        DownSycnFailed
+    }
+
+
     public partial class AdoNetDataObject
     {
 
@@ -53,9 +64,9 @@ namespace SPS.Data.AdoNet
 
         public void UpdateUrlFailedSend(int recordId, string url,string errMessage)
         {
-            if(errMessage.Length>3000)
+            if(errMessage.Length>50)
             {
-                errMessage = errMessage.Substring(0, 2999);
+                errMessage = errMessage.Substring(0, 50);
             }
 
 
@@ -88,6 +99,48 @@ namespace SPS.Data.AdoNet
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
  
+        }
+
+        public DataTable CaculateReport(DateTime reportDate,DayReportType dayReportType)
+        {
+            string sql = "Select [ChannelID],[ClientID],[CodeID],Sum([Count]) as RecordCount from SPRecord with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate";
+
+            switch (dayReportType)
+            {
+                case DayReportType.AllUp:
+                    sql += " AND IsReport =0";
+                    break;
+                case DayReportType.AllUpSuccess:
+                    sql += " AND IsReport =0 AND IsStatOK = 1 ";
+                    break;
+                case DayReportType.Intercept:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 1 ";
+                    break;
+                case DayReportType.Down:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
+                    break;
+                case DayReportType.DownSycnSuccess:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
+                    break;
+                case DayReportType.DownNotSycn:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
+                    break;
+                case DayReportType.DownSycnFailed:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+
+            sql += " group by [ChannelID],[ClientID],[CodeID]";
+
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", reportDate.Date);
+
+            dbParameters.AddWithValue("endDate", reportDate.Date.AddDays(1));
+
+ 
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
     }
 }
