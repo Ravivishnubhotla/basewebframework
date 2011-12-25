@@ -123,6 +123,29 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
+        public string DataRange
+        {
+            get
+            {
+                string startDate = "Î´¿ªÊ¼";
+
+                if(this.StartDate.HasValue)
+                {
+                    startDate = this.StartDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+
+                string endDate = "Î´½áÊø";
+
+                if (this.EndDate.HasValue)
+                {
+                    endDate = this.EndDate.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                }
+
+
+                return startDate + "<br/>" + endDate;
+            }
+        }
+
 
         public string GenerateSendUrl(SPRecordWrapper record)
         {

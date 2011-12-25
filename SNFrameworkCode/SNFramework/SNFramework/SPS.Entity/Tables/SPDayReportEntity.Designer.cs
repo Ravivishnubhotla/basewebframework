@@ -18,9 +18,12 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
+		public static readonly string PROPERTY_NAME_TOTALSUCCESSCOUNT = "TotalSuccessCount";
 		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
-		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
+		public static readonly string PROPERTY_NAME_DOWNSYCNSUCCESS = "DownSycnSuccess";
+		public static readonly string PROPERTY_NAME_DOWNSYCNFAILED = "DownSycnFailed";
+		public static readonly string PROPERTY_NAME_DOWNNOTSYCN = "DownNotSycn";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
@@ -152,9 +155,12 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private DateTime _reportDate;
 		private int _totalCount;
+		private int _totalSuccessCount;
 		private int _interceptCount;
 		private int _downTotalCount;
-		private int _downSuccess;
+		private int _downSycnSuccess;
+		private int _downSycnFailed;
+		private int _downNotSycn;
 		private SPSClientEntity _clientID;
 		private SPChannelEntity _channelID;
 		private SPCodeEntity _codeID;
@@ -171,9 +177,12 @@ namespace SPS.Entity.Tables
 			_id = 0;
 			_reportDate = DateTime.MinValue;
 			_totalCount = 0;
+			_totalSuccessCount = 0;
 			_interceptCount = 0;
 			_downTotalCount = 0;
-			_downSuccess = 0;
+			_downSycnSuccess = 0;
+			_downSycnFailed = 0;
+			_downNotSycn = 0;
 			_clientID = null;
 			_channelID = null;
 			_codeID = null;
@@ -185,14 +194,17 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int id, DateTime reportDate, int totalCount, int interceptCount, int downTotalCount, int downSuccess, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
+		public SPDayReportEntity( int id, DateTime reportDate, int totalCount, int totalSuccessCount, int interceptCount, int downTotalCount, int downSycnSuccess, int downSycnFailed, int downNotSycn, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
 		{
 			_id = id;
 			_reportDate = reportDate;
 			_totalCount = totalCount;
+			_totalSuccessCount = totalSuccessCount;
 			_interceptCount = interceptCount;
 			_downTotalCount = downTotalCount;
-			_downSuccess = downSuccess;
+			_downSycnSuccess = downSycnSuccess;
+			_downSycnFailed = downSycnFailed;
+			_downNotSycn = downNotSycn;
 			_clientID = clientID;
 			_channelID = channelID;
 			_codeID = codeID;
@@ -248,6 +260,20 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
+		public virtual int TotalSuccessCount
+		{
+			get { return _totalSuccessCount; }
+
+			set	
+			{
+				_isChanged |= (_totalSuccessCount != value); _totalSuccessCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public virtual int InterceptCount
 		{
 			get { return _interceptCount; }
@@ -276,13 +302,41 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int DownSuccess
+		public virtual int DownSycnSuccess
 		{
-			get { return _downSuccess; }
+			get { return _downSycnSuccess; }
 
 			set	
 			{
-				_isChanged |= (_downSuccess != value); _downSuccess = value;
+				_isChanged |= (_downSycnSuccess != value); _downSycnSuccess = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DownSycnFailed
+		{
+			get { return _downSycnFailed; }
+
+			set	
+			{
+				_isChanged |= (_downSycnFailed != value); _downSycnFailed = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DownNotSycn
+		{
+			get { return _downNotSycn; }
+
+			set	
+			{
+				_isChanged |= (_downNotSycn != value); _downNotSycn = value;
 			}
 		}
 

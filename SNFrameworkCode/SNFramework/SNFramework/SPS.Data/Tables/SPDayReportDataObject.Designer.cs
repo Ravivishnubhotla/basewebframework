@@ -17,9 +17,12 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_ID));		
 		public static readonly DateTimeProperty PROPERTY_REPORTDATE = new DateTimeProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_REPORTDATE));		
 		public static readonly IntProperty PROPERTY_TOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALCOUNT));		
+		public static readonly IntProperty PROPERTY_TOTALSUCCESSCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALSUCCESSCOUNT));		
 		public static readonly IntProperty PROPERTY_INTERCEPTCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTCOUNT));		
 		public static readonly IntProperty PROPERTY_DOWNTOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNTOTALCOUNT));		
-		public static readonly IntProperty PROPERTY_DOWNSUCCESS = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSUCCESS));		
+		public static readonly IntProperty PROPERTY_DOWNSYCNSUCCESS = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSYCNSUCCESS));		
+		public static readonly IntProperty PROPERTY_DOWNSYCNFAILED = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSYCNFAILED));		
+		public static readonly IntProperty PROPERTY_DOWNNOTSYCN = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNNOTSYCN));		
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_CLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CLIENTID));
 		#region clientID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPDayReportEntity> InClude_ClientID_Query(NHibernateDynamicQueryGenerator<SPDayReportEntity> queryGenerator)
@@ -170,11 +173,17 @@ namespace SPS.Data.Tables
                     return typeof (DateTime);
                 case "TotalCount":
                     return typeof (int);
+                case "TotalSuccessCount":
+                    return typeof (int);
                 case "InterceptCount":
                     return typeof (int);
                 case "DownTotalCount":
                     return typeof (int);
-                case "DownSuccess":
+                case "DownSycnSuccess":
+                    return typeof (int);
+                case "DownSycnFailed":
+                    return typeof (int);
+                case "DownNotSycn":
                     return typeof (int);
                 case "ClientID":
                     return typeof (int);

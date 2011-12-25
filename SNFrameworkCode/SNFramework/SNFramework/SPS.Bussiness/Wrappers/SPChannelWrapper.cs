@@ -181,7 +181,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-	    public bool ProcessRequest(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
+	    public bool ProcessRequest(HttpRequestLog httpRequestLog,bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
             requestError = RequestErrorType.NoError;
             errorMessage = "";
@@ -264,7 +264,7 @@ namespace SPS.Bussiness.Wrappers
 	        record.IsReport = false;
 
 
-            record.IsStatOK = true;
+            record.IsStatOK = statusOk;
 
             record.IsIntercept = this.CaculteIsIntercept(matchCode, clientCodeRelation);
 
@@ -607,7 +607,7 @@ namespace SPS.Bussiness.Wrappers
             return RequestType.UnKnow;
 	    }
 
-        public bool ProcessStatusReport(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
+        public bool ProcessStatusReport(HttpRequestLog httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
 
             requestError = RequestErrorType.NoError;
@@ -615,18 +615,18 @@ namespace SPS.Bussiness.Wrappers
             return false;
 	    }
 
-        public bool ProcessDataStatusReport(HttpRequestLog httpRequestLog, out RequestErrorType requestError, out string errorMessage)
-	    {
-            requestError = RequestErrorType.NoError;
-            errorMessage = "";
-            return false;
-	    }
+ 
 
         public string GetOkCode(HttpRequestLog httpRequestLog)
         {
             return this.DataOkMessage;
         }
 
- 
+
+
+        public bool GetStatus(HttpRequestLog httpRequestLog)
+        {
+            return (httpRequestLog.RequestParams[this.StateReportParamName] == this.StateReportParamValue);
+        }
     }
 }
