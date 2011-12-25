@@ -47,7 +47,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	
 	private Utils utils = new Utils();
 	private static readonly string filterClassNameChar = "";
-	private bool IsSupportAdo = false;
+	private bool IsSupportAdo = true;
 
 	//---------------------------------------------------
 	// Render() is where you want to write your logic    

@@ -174,7 +174,26 @@ namespace SPS.Bussiness.Wrappers
             return false;
         }
 
-        public SPClientCodeRelationWrapper GetRelateClientCodeRelation()
+
+
+        private SPClientCodeRelationWrapper clientCodeRelation = null;
+        private bool hasGetClientCodeRelation = false;
+
+	    public SPClientCodeRelationWrapper ClientCodeRelation
+	    {
+	        get
+	        {
+                if (!hasGetClientCodeRelation)
+                {
+                    clientCodeRelation = GetRelateClientCodeRelation();
+                    hasGetClientCodeRelation = true;
+                }
+	            return clientCodeRelation;
+	        }
+	    }
+
+
+	    public SPClientCodeRelationWrapper GetRelateClientCodeRelation()
 	    {
 	        List<SPClientCodeRelationWrapper> findClientInCodes = SPClientCodeRelationWrapper.FindAllByCodeID(this);
 
@@ -194,6 +213,24 @@ namespace SPS.Bussiness.Wrappers
             }
 
             return null;
+        }
+
+
+        public string  CodeAssignedClientName 
+        {
+            get
+            {
+                SPClientCodeRelationWrapper clientCodeRelationWrapper = GetRelateClientCodeRelation();
+
+                if (clientCodeRelationWrapper == null)
+                    return "Œ¥∑÷≈‰";
+
+                if (clientCodeRelationWrapper.ClientID.IsDefaultClient.HasValue && clientCodeRelationWrapper.ClientID.IsDefaultClient.Value)
+                    return "Œ¥∑÷≈‰";
+
+                return clientCodeRelationWrapper.ClientID.Name;        
+            }
+
         }
 
         public SPCodeWrapper ParentCode
@@ -221,7 +258,18 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-        public string MoCode
+	    public string AssignedClientName
+	    {
+	        get
+	        {
+                if (ClientCodeRelation == null)
+                    return  "";
+                else
+                    return  ClientCodeRelation.ClientID.Name;
+	        }
+	    }
+
+	    public string MoCode
         {
             get
             {
@@ -259,6 +307,20 @@ namespace SPS.Bussiness.Wrappers
 
                 return this.Mo + " " + this.SPCode;
             }
+        }
+
+        public static List<SPCodeWrapper> GetAvaiableCodeForClient(SPChannelWrapper spChannelWrapper, SPSClientWrapper spsClientId)
+        {
+            List<SPCodeWrapper> spCodes = FindAllByChannelID(spChannelWrapper);
+
+            return
+                spCodes.FindAll(
+                    p =>
+                    (!p.IsDiable && p.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key && ((p.ClientCodeRelation==null) || (p.ClientCodeRelation != null &&
+                     p.ClientCodeRelation.ClientID.Id != spsClientId.Id))));
+
+
+
         }
     }
 }
