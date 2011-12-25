@@ -98,5 +98,38 @@ namespace SPS.Bussiness.Wrappers
         }
 
         #endregion
+
+
+        public static List<SPDayReportWrapper> CaculateReport(DateTime reportDate)
+        {
+            return ConvertNoDbDataToWrapperList(businessProxy.CaculateReport(reportDate.Date));
+        }
+
+	    public string CodeID_MoCode
+	    {
+	        get
+	        {
+                if (CodeID == null)
+                    return "";
+	            return CodeID.MoCode;
+	        }
+	    }
+
+
+	    internal static List<SPDayReportWrapper> ConvertNoDbDataToWrapperList(List<SPDayReportEntity> entitys)
+        {
+            List<SPDayReportWrapper> list = new List<SPDayReportWrapper>();
+            foreach (SPDayReportEntity reportEntity in entitys)
+            {
+                list.Add(new SPDayReportWrapper(reportEntity));
+            }
+            int i = 1;
+            foreach (SPDayReportWrapper report  in list)
+            {
+                report.Id = i;
+                i++;
+            }
+            return list;
+        }
     }
 }
