@@ -131,5 +131,10 @@ namespace SPS.Bussiness.Wrappers
             }
             return list;
         }
+
+        public static void ReGenerateDayReport(DateTime date)
+        {
+            businessProxy.ReBulidReport(date);
+        }
     }
 }

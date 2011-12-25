@@ -10,6 +10,7 @@ using SPS.Bussiness.Wrappers;
 using SPS.Data.AdoNet;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace SPS.Bussiness.ServiceProxys.Tables
@@ -19,6 +20,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
 
         List<SPDayReportEntity> CaculateReport(DateTime reportDate);
+	    void ReBulidReport(DateTime date);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -60,6 +62,32 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             return spDayReportEntities;
         }
+                
+        [Transaction(ReadOnly = false)]
+        public void ReBulidReport(DateTime date)
+        {
+            this.AdoNetDb.RestAllReportedData(date);
+
+            List<SPDayReportEntity> allReports = this.SelfDataObj.FindByDate(date);
+
+            foreach (SPDayReportEntity spDayReportEntity in allReports)
+            {
+                this.SelfDataObj.Delete(spDayReportEntity);
+            }
+
+            List<SPDayReportEntity> generateReports = CaculateReport(date);
+
+            foreach (SPDayReportEntity spDayReportEntity in generateReports)
+            {
+                this.SelfDataObj.Save(spDayReportEntity);
+            }
+
+            this.AdoNetDb.ClearAllReportedData(date);
+        }
+
+
+ 
+
 
         private int FindCountInDataTable(DataTable dtIntercept, int channelId, int clientId, int codeId)
         {
