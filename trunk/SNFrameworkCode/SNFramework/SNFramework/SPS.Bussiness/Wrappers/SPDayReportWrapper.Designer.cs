@@ -253,9 +253,12 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
+		public static readonly string PROPERTY_NAME_TOTALSUCCESSCOUNT = "TotalSuccessCount";
 		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
-		public static readonly string PROPERTY_NAME_DOWNSUCCESS = "DownSuccess";
+		public static readonly string PROPERTY_NAME_DOWNSYCNSUCCESS = "DownSycnSuccess";
+		public static readonly string PROPERTY_NAME_DOWNSYCNFAILED = "DownSycnFailed";
+		public static readonly string PROPERTY_NAME_DOWNNOTSYCN = "DownNotSycn";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
@@ -427,6 +430,20 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
+		public int TotalSuccessCount
+		{
+			get
+			{
+				return entity.TotalSuccessCount;
+			}
+			set
+			{
+				entity.TotalSuccessCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
 		public int InterceptCount
 		{
 			get
@@ -455,15 +472,43 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int DownSuccess
+		public int DownSycnSuccess
 		{
 			get
 			{
-				return entity.DownSuccess;
+				return entity.DownSycnSuccess;
 			}
 			set
 			{
-				entity.DownSuccess = value;
+				entity.DownSycnSuccess = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DownSycnFailed
+		{
+			get
+			{
+				return entity.DownSycnFailed;
+			}
+			set
+			{
+				entity.DownSycnFailed = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DownNotSycn
+		{
+			get
+			{
+				return entity.DownNotSycn;
+			}
+			set
+			{
+				entity.DownNotSycn = value;
 			}
 		}
 		/// <summary>
@@ -1541,12 +1586,7 @@ namespace SPS.Bussiness.Wrappers
 
         #endregion
 
-
-
-
-
-
-
+ 
 
         #region Static Common Data Operation
 		
