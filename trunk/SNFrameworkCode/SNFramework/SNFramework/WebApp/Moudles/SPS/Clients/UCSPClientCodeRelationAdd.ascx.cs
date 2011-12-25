@@ -34,7 +34,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
             if(cmbChannel.SelectedItem!=null)
             {
-                this.storeSPCode.DataSource = SPCodeWrapper.FindAllByChannelID(SPChannelWrapper.FindById(Convert.ToInt32(cmbChannel.SelectedItem.Value)));
+                this.storeSPCode.DataSource = SPCodeWrapper.GetAvaiableCodeForClient(SPChannelWrapper.FindById(Convert.ToInt32(cmbChannel.SelectedItem.Value)), SPSClientID);
             }
             else
             {
@@ -43,7 +43,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
 
 
-            this.storeSPChannel.DataBind();
+            this.storeSPCode.DataBind();
         }
 
         
@@ -93,14 +93,25 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             }
         }
 
-
         [DirectMethod]
         public void SaveClientCodeRelation()
         {
+
+            SPCodeWrapper codeWrapper = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
+
+            if (codeWrapper.ClientCodeRelation!=null)
+            {
+                if(codeWrapper.ClientCodeRelation.ClientID.Id==SPSClientID.Id)
+                    return;
+
+                codeWrapper.ClientCodeRelation.IsEnable = false;
+                codeWrapper.ClientCodeRelation.EndDate = System.DateTime.Now;
+
+                SPClientCodeRelationWrapper.Update(codeWrapper.ClientCodeRelation);
+            }
+
             try
             {
-                SPCodeWrapper code = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
-
                 SPClientCodeRelationWrapper obj = new SPClientCodeRelationWrapper();
 
                 obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
@@ -108,7 +119,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.UseClientDefaultSycnSetting = false;
                 obj.SyncData = this.chkSyncData.Checked;
                 obj.ClientID = SPSClientID;
-                obj.CodeID = code;
+                obj.CodeID = codeWrapper;
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
                 obj.SyncType = "1";
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
@@ -124,9 +135,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.LastModifyAt = System.DateTime.Now;
 
 
-
-
-
                 SPClientCodeRelationWrapper.Save(obj);
 
                 winSPClientCodeRelationAdd.Hide();
@@ -135,49 +143,55 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
- 
 
         protected void btnSaveSPClientCodeRelation_Click(object sender, DirectEventArgs e)
         {
-            SPCodeWrapper code = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
 
-            List<SPClientCodeRelationWrapper> spClientCodeRelations = SPClientCodeRelationWrapper.FindAllByCodeID(code);
+            SPCodeWrapper codeWrapper = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
 
-            var findClientAssignedCode = spClientCodeRelations.Find(p => (p.ClientID.Id == SPSClientID.Id && p.IsEnable));
-
-            if (findClientAssignedCode!=null)
+            if (!string.IsNullOrEmpty(codeWrapper.AssignedClientName))
             {
-                ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "错误信息:该指令已经分配给该客户";
+                X.Msg.Show(new MessageBoxConfig
+                {
+                    Title = "警告",
+                    Message = string.Format("该代码已经分配给客户{0}，确认转给客户{1}？", codeWrapper.AssignedClientName, SPSClientID.Name),
+                    Width = 300,
+                    Buttons = MessageBox.Button.OKCANCEL,
+                    Multiline = false,
+                    AnimEl = this.btnSavelSPClientCodeRelation.ClientID,
+                    Fn = new JFunction { Fn = "beforeSaveClientCodeRelation" }
+                });
+                //X.Msg.Confirm("警告", string.Format("该代码已经分配给客户{0}，确认转给客户{1}？", codeWrapper.AssignedClientName, SPSClientID.Name), new JFunction { Fn = "beforeSaveClientCodeRelation" }).Show();
                 return;
             }
 
-            var findClientAssignedCodes =
-                spClientCodeRelations.FindAll(p=>p.IsEnable);
-
-            if (findClientAssignedCodes.Count>0)
+            if (codeWrapper.AssignedClientName == SPSClientID.Name)
             {
-                X.Msg.Confirm("警告", "该指令已经分配给其他的客户，确认更改客户？", new MessageBoxButtonsConfig
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = string.Format("该代码已经分配给客户{0},不能重复分配",  SPSClientID.Name);
+                if (cmbChannel.SelectedItem != null)
                 {
-                    Yes = new MessageBoxButtonConfig
-                    {
-                        Handler = "#{DirectMethods}.SaveClientCodeRelation(false)",
-                        Text = "确认"
-                    },
-                    No = new MessageBoxButtonConfig
-                    {
-                        Handler = "",
-                        Text = "取消"
-                    }
-                }).Show();
+                    this.storeSPCode.DataSource = SPCodeWrapper.GetAvaiableCodeForClient(SPChannelWrapper.FindById(Convert.ToInt32(cmbChannel.SelectedItem.Value)), SPSClientID);
+                }
+                else
+                {
+                    this.storeSPCode.DataSource = new List<SPCodeWrapper>();
+                }
+
+
+
+                this.storeSPCode.DataBind();
+                return;
             }
-            else
-            {
-                SaveClientCodeRelation();
-            }
+
+
+
+            SaveClientCodeRelation();
+
+
 
         }
     }

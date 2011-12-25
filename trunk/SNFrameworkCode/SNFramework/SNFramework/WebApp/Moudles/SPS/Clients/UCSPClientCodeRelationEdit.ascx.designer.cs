@@ -85,15 +85,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.TextField txtSycnNotInterceptCount;
         
         /// <summary>
-        /// chkIsEnable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsEnable;
-        
-        /// <summary>
         /// chkSyncData control.
         /// </summary>
         /// <remarks>

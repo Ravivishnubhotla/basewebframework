@@ -112,6 +112,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
+        /// RowSelectionModel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
+        
+        /// <summary>
         /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>
@@ -119,5 +128,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// RowTip control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolTip RowTip;
     }
 }

@@ -8,9 +8,7 @@
     TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
-
     </ext:ResourceManagerProxy>
-
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -40,6 +38,22 @@
         
         }
 
+           var ShowCommands = function(grid, toolbar, rowIndex, record)
+          {
+//               debugger;
+//               alert(record.IsDefaultClient);
+              if (record.data.IsDefaultClient)
+              {
+                  toolbar.items.items[0].menu.items.items[1].hide();
+              }
+
+              else {
+                  toolbar.items.items[0].menu.items.items[1].show();
+              }
+
+          };        
+        
+        
         function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
@@ -126,6 +140,8 @@
                     <ext:RecordField Name="SyncType" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="DefaultPrice" Type="int" />
+                    <ext:RecordField Name="IsDefaultClient" Type="Boolean" />
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -183,7 +199,6 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
- 
                                             <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="UserEdit" CommandName="cmdChangeUserLoginInfo" Text="编辑用户信息">
@@ -192,6 +207,7 @@
                                     </Menu>
                                 </ext:SplitCommand>
                             </Commands>
+                            <PrepareToolbar Fn="ShowCommands" />
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
