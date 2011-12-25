@@ -122,6 +122,9 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="CodeAssignedClientName" />
+
+                    
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="MoCode" />
@@ -181,6 +184,11 @@
                         </ext:Column>
                         <ext:Column ColumnID="colCode" DataIndex="MoCode" Header="指令" Sortable="true">
                         </ext:Column>
+                        <ext:Column ColumnID="colCodeAssignedClientName" DataIndex="CodeAssignedClientName" Header="分配" Sortable="true">
+                        </ext:Column>
+
+
+                        
                         <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>

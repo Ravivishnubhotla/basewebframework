@@ -108,6 +108,8 @@
                 <Fields>
                     <ext:RecordField Name="ID" Type="int" />
                     <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="CodeAssignedClientName" />
+                    
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="ChannelID" Type="int" />

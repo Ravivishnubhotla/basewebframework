@@ -43,7 +43,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.txtSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnOkMessage);
                     this.txtSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnFailedMessage);
  
-                    this.chkIsEnable.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsEnable);
+ 
                     this.txtSycnNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
  
 
@@ -58,14 +58,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "Error Message  : Data does not exist";
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在！";
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
         }
@@ -87,7 +87,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.SycnOkMessage = this.txtSycnOkMessage.Text.Trim();
                 obj.SycnFailedMessage = this.txtSycnFailedMessage.Text.Trim();
  
-                obj.IsEnable = this.chkIsEnable.Checked;
+ 
                 obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
  
 
@@ -100,7 +100,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
 

@@ -22,7 +22,7 @@
     
 </script>
 <ext:Window ID="winSPClientCodeRelationEdit" runat="server" Icon="ApplicationEdit"
-    Title="编辑分配代码设置" Width="400" Height="270" AutoShow="false" Maximizable="true"
+    Title="编辑分配代码设置" Width="520" Height="270" AutoShow="false" Maximizable="true"
     Modal="true" Hidden="true" AutoScroll="true" ConstrainHeader="true" Resizable="true"
     Layout="fit">
     <Content>
@@ -39,7 +39,6 @@
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSycnNotInterceptCount" runat="server" FieldLabel="免扣量" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkIsEnable" runat="server" FieldLabel="启用" Checked="false" AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="同步数据" Checked="false" AnchorHorizontal="95%" />
  
                 <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="重发数据次数" AllowBlank="True"

@@ -13,7 +13,14 @@
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
-        var FormatBool = function(value) {
+        var FormatStatus = function(value) {
+            if (value)
+                return '<font color=Green>启用</font>';
+            else
+                return '<font color=Red>停用</font>';
+        };
+        
+                var FormatBool = function(value) {
             if (value)
                 return '<%= GetGlobalResourceObject("GlobalResource","msgTrue").ToString() %>';
             else
@@ -22,6 +29,10 @@
 
 
         var RefreshData = function(btn) {
+            <%= this.storeSPClientCodeRelation.ClientID %>.reload();
+        };
+
+        function RefreshSPClientCodeRelationList() {
             <%= this.storeSPClientCodeRelation.ClientID %>.reload();
         };
         
@@ -92,7 +103,18 @@
                     );
             }
         }
+        var showTip = function() {
+            var rowIndex = <%= gridPanelSPClientCodeRelation.ClientID %> .view.findRowIndex(this.triggerElement),
+                cellIndex = <%= gridPanelSPClientCodeRelation.ClientID %> .view.findCellIndex(this.triggerElement),
+                record = <%= storeSPClientCodeRelation.ClientID %> .getAt(rowIndex),
+                fieldName = <%= gridPanelSPClientCodeRelation.ClientID %> .getColumnModel().getDataIndex(cellIndex),
+                data = record.get(fieldName);
 
+            if(fieldName=='IsEnable')
+                data = record.get('DataRange');
+            
+            this.body.dom.innerHTML = data;
+        };
     </script>
     <ext:Store ID="storeSPClientCodeRelation" runat="server" AutoLoad="true" RemoteSort="true"
         RemotePaging="true" OnRefreshData="storeSPClientCodeRelation_Refresh">
@@ -123,6 +145,8 @@
                     <ext:RecordField Name="EndDate" Type="Date" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="SycnNotInterceptCount" Type="int" />
+                    <ext:RecordField Name="DataRange" />
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -135,7 +159,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPClientCodeRelation" runat="server" StoreID="storeSPClientCodeRelation"
-                StripeRows="true" Title="代码分配管理" Icon="Table">
+                TrackMouseOver="true" StripeRows="true" Title="代码分配管理" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
@@ -161,25 +185,24 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-                        <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Width="25" Sortable="true">
+                        <ext:Column ColumnID="colID" DataIndex="Id" Header="ID" Width="15" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colChannelName" DataIndex="ChannelName" Header="通道" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colMoCode" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="25" Sortable="true">
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="20" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Width="25" Header="扣率"
+                        <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Width="20" Header="扣率"
                             Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步下家" Width="35"
-                            Sortable="true">
+                        <ext:Column ColumnID="colSyncData" DataIndex="SyncData" Header="同步" Width="20" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Width="25" Sortable="true">
-                            <Renderer Fn="FormatBool" />
+                        <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="状态" Width="20" Sortable="true">
+                            <Renderer Fn="FormatStatus" />
                         </ext:Column>
-                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="50">
+                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="39">
                             <Commands>
                                 <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
                                     <Menu>
@@ -197,6 +220,9 @@
                         </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
+                <SelectionModel>
+                    <ext:RowSelectionModel ID="RowSelectionModel1" runat="server" SingleSelect="true" />
+                </SelectionModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPClientCodeRelation"
@@ -208,4 +234,10 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:ToolTip ID="RowTip" runat="server" Target="={#{gridPanelSPClientCodeRelation}.getView().mainBody}" Anchor="left"
+        Delegate=".x-grid3-cell" TrackMouse="true">
+        <Listeners>
+            <Show Fn="showTip" />
+        </Listeners>
+    </ext:ToolTip>
 </asp:Content>
