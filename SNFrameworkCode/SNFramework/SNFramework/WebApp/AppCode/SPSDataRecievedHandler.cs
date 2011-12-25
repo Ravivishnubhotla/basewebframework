@@ -90,15 +90,19 @@ namespace Legendigital.Common.WebApp.AppCode
 
                     if(requestType==RequestType.DataReport)
                     {
-                        requestOK = channel.ProcessRequest(httpRequestLog, out requestError, out errorMessage);
+                        requestOK = channel.ProcessRequest(httpRequestLog,true, out requestError, out errorMessage);
                     }
                     else if (requestType == RequestType.StatusReport)
                     {
-                        requestOK = channel.ProcessStatusReport(httpRequestLog, out requestError, out errorMessage);
+                        bool statusOk = channel.GetStatus(httpRequestLog);
+
+                        requestOK = channel.ProcessStatusReport(httpRequestLog, statusOk, out requestError, out errorMessage);
                     }
                     else if (requestType == RequestType.DataStatusReport)
                     {
-                        requestOK = channel.ProcessDataStatusReport(httpRequestLog, out requestError, out errorMessage);
+                        bool statusOk = channel.GetStatus(httpRequestLog);
+
+                        requestOK = channel.ProcessRequest(httpRequestLog, statusOk, out requestError, out errorMessage);
                     }
 
                     //正确数据返回OK
