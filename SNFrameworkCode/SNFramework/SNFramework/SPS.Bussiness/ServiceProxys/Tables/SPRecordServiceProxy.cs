@@ -18,6 +18,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    void UpdateUrlSuccessSend(int recordId, string url);
 	    void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage);
         bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
+	    SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId);
     }
 
     internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
@@ -75,9 +76,14 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
         private bool CheckHasLinkIDAndChannelID(SPChannelEntity channelID, string linkId)
         {
-            SPRecordEntity spPaymentInfoEntity = this.DataObjectsContainerIocID.SPRecordDataObjectInstance.CheckChannleLinkIDIsExist(channelID, linkId);
+            SPRecordEntity spPaymentInfoEntity = FindByLinkIDAndChannelID(channelID, linkId);
 
             return (spPaymentInfoEntity != null);
+        }
+
+        public SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId)
+        {
+            return this.DataObjectsContainerIocID.SPRecordDataObjectInstance.FindByLinkIDAndChannelID(channelID, linkId);
         }
     }
 }

@@ -154,5 +154,10 @@ namespace SPS.Bussiness.Wrappers
         {
             return businessProxy.InsertPayment(record.Entity, spRecordExtendInfo.Entity, out requestError, out errorMessage);
         }
+
+	    public static SPRecordWrapper FindByChannelIDAndLinkID(string linkid, SPChannelWrapper spChannelWrapper)
+	    {
+	        return  ConvertEntityToWrapper(businessProxy.FindByLinkIDAndChannelID(spChannelWrapper.Entity, linkid));
+	    }
     }
 }
