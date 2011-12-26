@@ -239,11 +239,13 @@ namespace SPS.Bussiness.Wrappers
 
             SPClientCodeRelationWrapper clientCodeRelation = matchCode.GetRelateClientCodeRelation();
 
+
+            //如果存在指令，但是不存在对应的分配关系，转到默认匹配
             if (clientCodeRelation == null)
             {
-                requestError = RequestErrorType.NoChannelClientSetting;
-                errorMessage = "请求失败：代码‘" + matchCode.Name + "’请求未能找到对应客户代码分配关系。";
-                return false;
+                clientCodeRelation = this.GetDefaultClientCodeRelation();
+
+                matchCode = clientCodeRelation.CodeID;
             }
 
             SPRecordWrapper record = new SPRecordWrapper();
@@ -349,6 +351,13 @@ namespace SPS.Bussiness.Wrappers
                 errorMessage = "请求失败：插入数据失败，错误信息：" + ex.Message;
                 return false;
             }
+	    }
+
+	    private SPClientCodeRelationWrapper GetDefaultClientCodeRelation()
+	    {
+	        var defaultCode = Codes.Find(p => p.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key);
+
+	        return defaultCode.GetRelateClientCodeRelation();
 	    }
 
 	    public List<SPChannelSycnParamsWrapper> GetAllSycnParams()
