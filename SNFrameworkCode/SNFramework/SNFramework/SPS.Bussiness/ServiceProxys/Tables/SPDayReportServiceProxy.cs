@@ -21,6 +21,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
         List<SPDayReportEntity> CaculateReport(DateTime reportDate);
 	    void ReBulidReport(DateTime date);
+	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -85,8 +86,10 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.ClearAllReportedData(date);
         }
 
-
- 
+        public List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate)
+        {
+            return SelfDataObj.QueryReport(startDate.Date, endDate.Date);
+        }
 
 
         private int FindCountInDataTable(DataTable dtIntercept, int channelId, int clientId, int codeId)
