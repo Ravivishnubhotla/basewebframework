@@ -136,5 +136,10 @@ namespace SPS.Bussiness.Wrappers
         {
             businessProxy.ReBulidReport(date);
         }
+
+        public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate)
+        {
+           return  ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate));
+        }
     }
 }
