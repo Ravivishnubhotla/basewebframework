@@ -15,8 +15,6 @@ namespace Legendigital.Common.WebApp.AppCode
     {
         protected static ILog logger = LogManager.GetLogger(typeof(SPSDataRecievedHandler));
 
- 
-
         public void ProcessRequest(HttpContext context)
         {
                 try

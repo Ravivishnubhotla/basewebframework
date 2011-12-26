@@ -609,10 +609,38 @@ namespace SPS.Bussiness.Wrappers
 
         public bool ProcessStatusReport(HttpRequestLog httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
-
             requestError = RequestErrorType.NoError;
             errorMessage = "";
+
+            string linkid = GetLinkID(httpRequestLog);
+
+            if (string.IsNullOrEmpty(linkid))
+            {
+                requestError = RequestErrorType.NoLinkID;
+                errorMessage = " 通道 ‘" + Name + "’ 请求失败：没有LinkID .";
+                return false;
+            }
+
+            if(!statusOk)
+            {
+                return true;
+            }
+
+            SPRecordWrapper record = SPRecordWrapper.FindByChannelIDAndLinkID(linkid, this);
+
+            if (!record.IsStatOK)
+            {
+                record.IsStatOK = statusOk;
+
+                SPRecordWrapper.Update(record);
+
+                record.SycnToClient();
+
+                return true;
+            }
+
             return false;
+
 	    }
 
  
