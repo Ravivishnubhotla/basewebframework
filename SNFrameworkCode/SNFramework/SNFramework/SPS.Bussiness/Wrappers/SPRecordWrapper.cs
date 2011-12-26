@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
@@ -159,5 +160,16 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        return  ConvertEntityToWrapper(businessProxy.FindByLinkIDAndChannelID(spChannelWrapper.Entity, linkid));
 	    }
+
+
+        public static List<SPRecordWrapper> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.QueryRecordByPage(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc, pageQueryParams));
+        }
+
+        public static List<SPRecordWrapper> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        {
+            return ConvertToWrapperList(businessProxy.QueryRecord(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
+        }
     }
 }

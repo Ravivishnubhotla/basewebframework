@@ -6,7 +6,9 @@ using System.Text;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.HttpUtils;
+using SPS.Bussiness.Wrappers;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
 
@@ -19,6 +21,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage);
         bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
 	    SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId);
+        List<SPRecordEntity> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams);
+	    List<SPRecordEntity> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
     }
 
     internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
@@ -84,6 +88,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         public SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId)
         {
             return this.DataObjectsContainerIocID.SPRecordDataObjectInstance.FindByLinkIDAndChannelID(channelID, linkId);
+        }
+
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SPRecordEntity> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        {
+            throw new NotImplementedException();
         }
     }
 }
