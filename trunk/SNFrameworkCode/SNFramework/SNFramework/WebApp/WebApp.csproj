@@ -218,6 +218,7 @@
     <Content Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDetailPage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
@@ -845,6 +846,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx.designer.cs">
       <DependentUpon>ReportCountRecordToday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDetailPage.aspx.cs">
+      <DependentUpon>ReportDetailPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDetailPage.aspx.designer.cs">
+      <DependentUpon>ReportDetailPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx.cs">
       <DependentUpon>ReportRecordDateRange.aspx</DependentUpon>
