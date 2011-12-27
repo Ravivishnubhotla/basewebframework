@@ -17,7 +17,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="viewPortMain" runat="server">
         <Items>
-            <ext:GridPanel ID="GridPanel1" Header="false" runat="server" StripeRows="true" TrackMouseOver="true"
+            <ext:GridPanel ID="GridPanel1" Header="false" runat="server" StripeRows="true" TrackMouseOver="true" StoreID="storeData"
                 AutoScroll="true">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
