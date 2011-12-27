@@ -13,6 +13,7 @@ namespace Legendigital.Common.WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             this.Response.Redirect("~/MainPage/Default.aspx");
         }
     }
