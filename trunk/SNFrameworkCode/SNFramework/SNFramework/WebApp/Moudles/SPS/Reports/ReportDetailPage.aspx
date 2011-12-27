@@ -23,14 +23,14 @@
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
                             <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
-                                <listeners>
-                                            <Click Handler="#{storeData}.reload();" />
-                                        </listeners>
+                                <Listeners>
+                                    <Click Handler="#{storeData}.reload();" />
+                                </Listeners>
                             </ext:Button>
                             <ext:Button ID='btnAdd' runat="server" Text="导出" Icon="PageExcel">
-                                <listeners>
-                                            <Click Handler="#{GridPanel1}.submitData(false);" />
-                                        </listeners>
+                                <Listeners>
+                                    <Click Handler="#{GridPanel1}.submitData(false);" />
+                                </Listeners>
                             </ext:Button>
                         </Items>
                     </ext:Toolbar>
@@ -45,7 +45,7 @@
                 </SelectionModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="30" DisplayInfo="true"
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="30" DisplayInfo="true" StoreID="storeData"
                         DisplayMsg="显示记录 {0} - {1} 共: {2}" EmptyMsg="没有记录" />
                 </BottomBar>
             </ext:GridPanel>
