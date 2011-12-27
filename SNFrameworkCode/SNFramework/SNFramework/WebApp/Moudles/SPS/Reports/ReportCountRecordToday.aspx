@@ -22,7 +22,17 @@
  
         function processcmd(cmd, id) {
 
- 
+             if (cmd == "cmdViewTotalRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_ID;
+              win.autoLoad.params.CodeID = id.data.ClientID_ID;
+              win.autoLoad.params.ClientID = id.data.ClientID_ID;
+              win.autoLoad.params.DataType = 'AllUp';
+              win.autoLoad.params.StartDate = '2011-12-27';
+              win.autoLoad.params.EndDate = '2011-12-27';
+              win.setTitle(String.format('详细数据',id.data.Name));
+              win.show();   
+            }
         }
 
     </script>
@@ -32,8 +42,11 @@
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="ChannelID_ID" />
                     <ext:RecordField Name="ChannelID_Name" />
                     <ext:RecordField Name="ClientID_Name" />
+                    <ext:RecordField Name="ClientID_ID" />
+                    <ext:RecordField Name="CodeID_ID" />
                     <ext:RecordField Name="CodeID_MoCode" />
                     <ext:RecordField Name="TotalCount" Type="int" />
                     <ext:RecordField Name="TotalSuccessCount" Type="int" />
@@ -72,32 +85,74 @@
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:Column ColumnID="colChannelID" DataIndex="ChannelID_Name" Header="通道"
-                            Sortable="true">
+                        <ext:Column ColumnID="colChannelID" DataIndex="ChannelID_Name" Header="通道" Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewChannelDetail" Icon="ApplicationViewDetail">
+                                    <ToolTip Text="通道详细信息" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colClientID" DataIndex="ClientID_Name" Header="客户" Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewClientDetail" Icon="ApplicationViewDetail">
+                                    <ToolTip Text="客户详细信息" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colCodeID" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount" Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewTotalRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colTotalSuccessCount" Header="MO总数" DataIndex="TotalSuccessCount"
                             Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewTotalSuccessRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colInterceptCount" Header="扣量" DataIndex="InterceptCount"
-                            Sortable="true">
+                        <ext:Column ColumnID="colInterceptCount" Header="扣量" DataIndex="InterceptCount" Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewInterceptCountRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colDownTotalCount" Header="同步下家数" DataIndex="DownTotalCount"
                             Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewDownTotalCountRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colDownSycnSuccess" Header="同步下家成功数" DataIndex="DownSycnSuccess"
                             Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewDownSycnSuccessRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                         <ext:Column ColumnID="colDownSycnFailed" Header="同步下家失败数" DataIndex="DownSycnFailed"
                             Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewDownSycnFailedRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn"
-                            Sortable="true">
+                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn" Sortable="true">
+                            <Commands>
+                                <ext:ImageCommand CommandName="cmdViewDownNotSycnRecord" Icon="DatabaseTable">
+                                    <ToolTip Text="查看记录" />
+                                </ext:ImageCommand>
+                            </Commands>
                         </ext:Column>
                     </Columns>
                 </ColumnModel>
@@ -108,4 +163,28 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="800"
+        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="StartDate" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="EndDate" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

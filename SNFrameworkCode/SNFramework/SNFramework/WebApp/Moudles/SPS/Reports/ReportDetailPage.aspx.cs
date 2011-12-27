@@ -106,5 +106,18 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
                 return null;
             }
         }
+
+        protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            storeData.DataSource = null;
+            storeData.DataBind();
+
+        }
+
+        protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
+        {
+            
+
+        }
     }
 }
