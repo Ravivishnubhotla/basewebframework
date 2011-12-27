@@ -446,7 +446,7 @@ namespace SPS.Bussiness.Wrappers
         private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
         {
             var findCode = (from cc in Codes
-                            where (cc.CheckIsMatchCode(mo, spcode))
+                            where (cc.CheckIsMatchCode(mo, spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
                             orderby cc.Priority ascending , cc.Mo.Length descending 
                                  select cc).FirstOrDefault();
 
