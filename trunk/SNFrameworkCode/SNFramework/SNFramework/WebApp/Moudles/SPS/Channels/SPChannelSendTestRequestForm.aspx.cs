@@ -53,13 +53,58 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     hidMobileName.Text = txt.ClientID;
                 }
 
+                if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_MO_Key)
+                {
+                    txt.Value = this.MO;
+                }
+
+                if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_SpNumber_Key)
+                {
+                    txt.Value = this.SPCode;
+                }
+
                 txt.AnchorHorizontal = "95%";
                 this.FormPanel1.Items.Add(txt);
             }
 
         }
 
+        public SPCodeWrapper CodeID
+        {
+            get
+            {
+                if (this.Request.QueryString["CodeID"] != null)
+                {
+                    return
+                        SPCodeWrapper.FindById(int.Parse(this.Request.QueryString["CodeID"]));
+                }
+                return null;           
+            }
+        }
 
+        public string MO
+        {
+            get
+            {
+                if (CodeID != null)
+                {
+                    return  CodeID.Mo;
+                }
+                return "";
+            }
+        }
+
+        public string SPCode
+        {
+            get
+            {
+                if (CodeID != null)
+                {
+                    return CodeID.SPCode;
+                }
+                return "";
+            }
+        }
 
         public SPChannelWrapper ChannelID
         {

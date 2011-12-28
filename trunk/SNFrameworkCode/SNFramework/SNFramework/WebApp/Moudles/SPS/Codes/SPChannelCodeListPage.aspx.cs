@@ -18,7 +18,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
             if (X.IsAjaxRequest)
                 return;
 
-
+            
 
             this.gridPanelSPCode.Reload();
         }
