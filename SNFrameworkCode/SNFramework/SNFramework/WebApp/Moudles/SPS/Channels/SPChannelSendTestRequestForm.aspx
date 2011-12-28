@@ -64,6 +64,8 @@
                     <ext:Label ID="txtChannelName" runat="server" FieldLabel="通道名称" AnchorHorizontal="95%" />
                     <ext:Label ID="txtChannelSubmitUrl" runat="server" FieldLabel="通道提交地址" AnchorHorizontal="95%" />
                     <ext:Label ID="lblSendUrl" runat="server" FieldLabel="通道提交测试Url" AnchorHorizontal="95%" />
+                    <ext:Label ID="txtChannelStatusSubmitUrl" runat="server" FieldLabel="通道状态报告地址" AnchorHorizontal="95%" />
+                    <ext:Label ID="lblStatusSendUrl" runat="server" FieldLabel="通道状态报告测试Url" AnchorHorizontal="95%" />
                     <ext:Label ID="lblChannelInfo" runat="server" FieldLabel="通道信息" AnchorHorizontal="95%" />
                 </Items>
                 <Buttons>

@@ -21,6 +21,11 @@
         var RefreshData = function(btn) {
             <%= this.storeSPCode.ClientID %>.reload();
         };
+
+
+        function RefreshstoreSPCode() {
+            <%= this.storeSPCode.ClientID %>.reload();
+        };
         
         function showAddForm() {
                 Ext.net.DirectMethods.UCSPCodeAdd.Show( 
@@ -82,6 +87,21 @@
                                                                 }              
                 );
             }
+            
+            			            if (cmd == "cmdChannelTest") {
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(' 通道 [<%= this.ChannelID.Name %>]  发送模拟数据 ');
+                
+                win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannelID = <%= this.ChannelID.Id.ToString() %>;
+        
+            	win.autoLoad.params.CodeID = id.data.Id;		                
+            			                
+                win.show(); 
+            }
 
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认要删除该条数据？ ',
@@ -123,8 +143,6 @@
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="CodeAssignedClientName" />
-
-                    
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="MoCode" />
@@ -184,11 +202,9 @@
                         </ext:Column>
                         <ext:Column ColumnID="colCode" DataIndex="MoCode" Header="指令" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colCodeAssignedClientName" DataIndex="CodeAssignedClientName" Header="分配" Sortable="true">
+                        <ext:Column ColumnID="colCodeAssignedClientName" DataIndex="CodeAssignedClientName"
+                            Header="分配" Sortable="true">
                         </ext:Column>
-
-
-                        
                         <ext:Column ColumnID="colIsDiable" DataIndex="IsDiable" Header="禁用" Width="30" Sortable="true">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
@@ -206,6 +222,8 @@
                                             <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdChannelTest" Text="通道测试">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -226,4 +244,20 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="../Channels/SPChannelSendTestRequestForm.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>
