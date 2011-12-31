@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportCountRecordToday.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportCountRecordToday" %>
+<%@ Import Namespace="SPS.Bussiness.Wrappers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
@@ -22,17 +23,31 @@
  
         function processcmd(cmd, id) {
 
-             if (cmd == "cmdViewTotalRecord") {
+            if (cmd == "cmdViewTotalRecord") {
               var win = <%= winShowRecordList.ClientID %>;
               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
               win.autoLoad.params.CodeID = id.data.CodeID_Id;
               win.autoLoad.params.ClientID = id.data.ClientID_Id;
-              win.autoLoad.params.DataType = 'AllUp';
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_AllUp %>';
               win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
               win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
                  
                  
-              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MR详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+            
+            if (cmd == "cmdViewTotalSuccessRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_AllUpSuccess %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MO详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
               win.show();   
             }
         }
@@ -166,7 +181,7 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="800"
+    <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="830"
         ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"

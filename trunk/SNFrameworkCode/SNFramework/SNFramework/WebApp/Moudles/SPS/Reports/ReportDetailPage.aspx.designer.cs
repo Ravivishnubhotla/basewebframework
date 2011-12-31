@@ -85,6 +85,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
         
         /// <summary>
+        /// RowExpander1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.RowExpander RowExpander1;
+        
+        /// <summary>
         /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>

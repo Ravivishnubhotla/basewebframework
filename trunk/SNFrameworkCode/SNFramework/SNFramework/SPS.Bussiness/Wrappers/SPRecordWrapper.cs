@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Threading;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.HttpUtils;
+using SPS.Data.AdoNet;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -112,7 +113,44 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.UpdateUrlFailedSend(recordId, sendUrl, errorMessage);
 	    }
 
-        public SPRecordExtendInfoWrapper GetExtendInfo()
+	    private bool accessExtendInfo = false;
+	    private SPRecordExtendInfoWrapper extendInfo;
+	    public SPRecordExtendInfoWrapper ExtendInfo
+	    {
+	        get
+	        {
+	            if(!accessExtendInfo)
+	            {
+	                extendInfo = GetExtendInfo();
+	                accessExtendInfo = true;
+	            }
+	            return extendInfo;
+	        }
+	    }
+
+	    public string SycnDataUrl
+	    {
+            get
+            {
+                if (ExtendInfo != null)
+                    return ExtendInfo.SSycnDataUrl;
+                return "";
+            }
+	    }
+
+        public string SycnReturnMessage
+        {
+            get
+            {
+                if (ExtendInfo != null)
+                    return ExtendInfo.SSycnDataFailedMessage;
+                return "";
+            }
+        }
+
+ 
+
+	    private SPRecordExtendInfoWrapper GetExtendInfo()
         {
             List<SPRecordExtendInfoWrapper> spRecordExtends = SPRecordExtendInfoWrapper.FindAllByRecordID(this);
 
@@ -171,5 +209,35 @@ namespace SPS.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.QueryRecord(channel.Entity, code.Entity, client.Entity, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
         }
+
+        public static string DayReportType_AllUp
+        {
+            get { return DayReportType.AllUp.ToString(); }
+        }
+        public static string DayReportType_AllUpSuccess
+        {
+            get { return DayReportType.AllUpSuccess.ToString(); }
+        }
+        public static string DayReportType_Intercept
+        {
+            get { return DayReportType.Intercept.ToString(); }
+        }
+        public static string DayReportType_Down
+        {
+            get { return DayReportType.Down.ToString(); }
+        }
+        public static string DayReportType_DownNotSycn
+        {
+            get { return DayReportType.DownNotSycn.ToString(); }
+        }
+        public static string DayReportType_DownSycnFailed
+        {
+            get { return DayReportType.DownSycnFailed.ToString(); }
+        } 
+        public static string DayReportType_DownSycnSuccess
+        {
+            get { return DayReportType.DownSycnSuccess.ToString(); }
+        } 
+ 
     }
 }
