@@ -123,7 +123,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// <returns></returns>
         public static List<SystemMenuWrapper> GetUserAssignedMenuByUserLoginID(string loginID)
         {
-            return SystemMenuWrapper.ConvertToWrapperList(businessProxy.GetUserAssignedMenuByLoginID(loginID));
+            List<SystemApplicationWrapper> applications = SystemApplicationWrapper.GetUserAvaiableApplications(SystemUserWrapper.GetUserByLoginID(loginID));
+
+            List<SystemMenuWrapper> assignedMenus = new List<SystemMenuWrapper>();
+
+            List<SystemMenuEntity> menus = businessProxy.GetUserAssignedMenuByLoginID(loginID);
+
+            foreach (SystemMenuEntity systemMenuWrapper in menus)
+            {
+                if(applications.Exists(p=>(p.SystemApplicationID==systemMenuWrapper.ApplicationID.SystemApplicationID)))
+                {
+                    assignedMenus.Add(ConvertEntityToWrapper(systemMenuWrapper));
+                }
+            }
+
+            return assignedMenus;
         }
 
         /// <summary>
@@ -150,7 +164,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// <returns></returns>
         public static List<NavMenu> GetUserAssignedNavMenuByUserLoginID(string loginID)
         {
-            List<SystemMenuWrapper> listmenu = SystemMenuWrapper.ConvertToWrapperList(businessProxy.GetUserAssignedMenuByLoginID(loginID));
+            List<SystemMenuWrapper> listmenu = GetUserAssignedMenuByUserLoginID(loginID);
 
             return GetNavMenusFromSystemMenus(listmenu);
         }
