@@ -23,6 +23,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId);
         List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams);
         List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
+        decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date);
     }
 
     internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
@@ -100,6 +101,11 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         {
             return this.SelfDataObj.QueryRecordByPage(channel, code, client, dataType, startDate, endDate, filters,
                                                       orderByColumnName, isDesc);
+        }
+
+        public decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date)
+        {
+            return this.AdoNetDb.CaculteActualInterceptRate(clientCodeRelation, date);
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-
+using SPS.Entity.Tables;
 using Spring.Data.Common;
 
 namespace SPS.Data.AdoNet
@@ -167,6 +167,44 @@ namespace SPS.Data.AdoNet
             dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
+        }
+
+        public decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date)
+        {
+            string sql = "SELECT  IsIntercept,COUNT(*) as RCount FROM [SPRecord] with(nolock) where CreateDate>@startDate and CreateDate<@endDate and ClientCodeRelationID=@ClientCodeRelationID and IsStatOK=1 group by IsIntercept";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
+
+            dbParameters.AddWithValue("ClientCodeRelationID", clientCodeRelation.Id);
+
+            DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+            object result = dt.Compute("Sum(RCount)","");
+
+            int totalCount = 0;
+
+            if(result!=System.DBNull.Value)
+            {
+                totalCount = (int) result;
+            }
+
+            int totalInterceptCount = 0;
+
+            object result2 = dt.Compute("Sum(RCount)", " IsIntercept =1 ");
+
+            if (result2 != System.DBNull.Value)
+            {
+                totalInterceptCount = (int)result2;
+            }
+
+            if (totalCount <= 0)
+                return Decimal.Zero;
+
+            return (decimal) totalInterceptCount/(decimal) totalCount;
         }
     }
 }
