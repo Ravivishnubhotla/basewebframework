@@ -18,6 +18,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             if (X.IsAjaxRequest)
                 return;
 
+            GridPanel1.Reload();
+
             //SPSClientWrapper spClientWrapper = SPSClientWrapper.FindById(this.SPClientID);
 
             //SPClientChannelSettingWrapper clientChannelSettingWrapper = spClientWrapper.DefaultClientChannelSetting;

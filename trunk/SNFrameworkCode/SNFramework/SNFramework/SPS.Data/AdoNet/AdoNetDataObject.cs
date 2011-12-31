@@ -70,7 +70,7 @@ namespace SPS.Data.AdoNet
             }
 
 
-            string sql = "update SPRecordExtendInfo set sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage=@Error where RecordID=@ID ;";
+            string sql = "update SPRecordExtendInfo set sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage=@Error where RecordID=@RecordID ;";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
@@ -89,7 +89,7 @@ namespace SPS.Data.AdoNet
         {
 
             string sql = "update SPRecord set IsSycnSuccessed =1  where ID=@ID and IsIntercept=0 and IsSycnToClient=1 and IsStatOK=1;" +
-                         "update SPRecordExtendInfo set  sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage='' where RecordID=@ID ;";
+                         "update SPRecordExtendInfo set  sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage='' where RecordID=@RecordID ;";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 

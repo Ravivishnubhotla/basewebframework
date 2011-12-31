@@ -164,12 +164,12 @@ namespace SPS.Bussiness.Wrappers
 
         public static List<SPRecordWrapper> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.QueryRecordByPage(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.QueryRecordByPage(channel.Entity, code.Entity, client.Entity, dataType, startDate, endDate, filters, orderByColumnName, isDesc, pageQueryParams));
         }
 
         public static List<SPRecordWrapper> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.QueryRecord(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
+            return ConvertToWrapperList(businessProxy.QueryRecord(channel.Entity, code.Entity, client.Entity, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
         }
     }
 }
