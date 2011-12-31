@@ -28,7 +28,7 @@
                     <ext:RecordField Name="IsSycnSuccessed" Type="Boolean" />
                     <ext:RecordField Name="SycnRetryTimes" Type="Int" />
                     <ext:RecordField Name="SycnDataUrl" />
-                    <ext:RecordField Name="SycnReturnMessage"  />
+                    <ext:RecordField Name="SycnReturnMessage" />
                     <ext:RecordField Name="Count" />
                     <ext:RecordField Name="CreateDate" Type="Date" />
                     <ext:RecordField Name="Count" Type="int" />
@@ -74,6 +74,8 @@
                                     <Click Handler="#{GridPanel1}.submitData(false);" />
                                 </Listeners>
                             </ext:Button>
+                            <ext:Button ID='btnMove' runat="server" Text="移动数据" Icon="PageGo">
+                            </ext:Button>
                         </Items>
                     </ext:Toolbar>
                 </TopBar>
@@ -114,6 +116,13 @@
                             Width="35">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
+                        <ext:Column ColumnID="colIsSycnSuccessed" DataIndex="IsSycnSuccessed" Header="同步状态"
+                            Sortable="true" Width="60">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colSycnRetryTimes" DataIndex="SycnRetryTimes" Header="重试" Sortable="true"
+                            Width="35">
+                        </ext:Column>
                     </Columns>
                 </ColumnModel>
                 <View>
@@ -126,8 +135,8 @@
                     <ext:RowExpander ID="RowExpander1" runat="server">
                         <Template ID="Template1" runat="server">
                             <Html>
-                                <p><b>同步状态:</b> {IsSycnSuccessed}<b>重试次数:</b> {SycnRetryTimes}
-                                <br/><b>同步地址:</b> {SycnDataUrl}
+                                <p>
+                                    <b>同步地址:</b> {SycnDataUrl}
                                 <br/><b>失败消息:</b> {SycnReturnMessage}</p>
                             </Html>
                         </Template>
