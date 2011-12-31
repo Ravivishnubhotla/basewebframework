@@ -71,26 +71,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 }
  
                 txt.AnchorHorizontal = "95%";
-                this.FormPanel1.Items.Add(txt);
+                this.FormPanel1.Items.Add(txt); 
             }
 
-            if(this.ChannelID.IsStateReport && statusField==null)
+            if (this.ChannelID.IsStateReport && statusField == null && !this.FormPanel1.Items.Exists(p => p.ID == "txt" + this.ChannelID.StateReportParamName))
             {
                 statusField = new TextField();
                 statusField.ID = "txt" + this.ChannelID.StateReportParamName;
                 statusField.FieldLabel = this.ChannelID.StateReportParamName;
-
-
-                
-
-
+                statusField.AnchorHorizontal = "95%";
+                this.FormPanel1.Items.Add(statusField);
             }
 
             if (this.ChannelID.IsStateReport &&  statusField != null)
             {
                 statusField.Value = this.ChannelID.StateReportParamValue;
-                statusField.AnchorHorizontal = "95%";
-                this.FormPanel1.Items.Add(statusField);
+                
             }
 
 

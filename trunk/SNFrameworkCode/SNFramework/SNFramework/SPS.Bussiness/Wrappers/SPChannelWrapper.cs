@@ -585,7 +585,35 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-        //获取请求类型，当前状态报告还是数据报告
+	    public string StatusReportType
+	    {
+	        get
+	        {
+	            if(!this.IsStateReport)
+	            {
+	                return "只同步成功";
+	            }
+	            else
+	            {
+                    if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendOnce_Key)
+                    {
+                        return "单次请求";
+                    }
+                    else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key)
+                    {
+                        return "双次请求";
+                    }
+                    else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key)
+                    {
+                        return "双次请求(分类型)";
+                    }
+	                return "未知类型";
+	            }
+
+	        }
+	    }
+
+	    //获取请求类型，当前状态报告还是数据报告
 	    public RequestType GetRequestType(HttpRequestLog httpRequestLog)
 	    {
             if(!(this.IsStateReport))
