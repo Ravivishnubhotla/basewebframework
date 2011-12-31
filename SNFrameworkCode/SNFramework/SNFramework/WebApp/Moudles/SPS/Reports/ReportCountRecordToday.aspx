@@ -24,13 +24,15 @@
 
              if (cmd == "cmdViewTotalRecord") {
               var win = <%= winShowRecordList.ClientID %>;
-              win.autoLoad.params.ChannelID = id.data.ChannelID_ID;
-              win.autoLoad.params.CodeID = id.data.ClientID_ID;
-              win.autoLoad.params.ClientID = id.data.ClientID_ID;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
               win.autoLoad.params.DataType = 'AllUp';
-              win.autoLoad.params.StartDate = '2011-12-27';
-              win.autoLoad.params.EndDate = '2011-12-27';
-              win.setTitle(String.format('详细数据',id.data.Name));
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
               win.show();   
             }
         }
@@ -42,11 +44,11 @@
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
-                    <ext:RecordField Name="ChannelID_ID" />
+                    <ext:RecordField Name="ChannelID_Id" />
                     <ext:RecordField Name="ChannelID_Name" />
                     <ext:RecordField Name="ClientID_Name" />
-                    <ext:RecordField Name="ClientID_ID" />
-                    <ext:RecordField Name="CodeID_ID" />
+                    <ext:RecordField Name="ClientID_Id" />
+                    <ext:RecordField Name="CodeID_Id" />
                     <ext:RecordField Name="CodeID_MoCode" />
                     <ext:RecordField Name="TotalCount" Type="int" />
                     <ext:RecordField Name="TotalSuccessCount" Type="int" />
@@ -59,6 +61,7 @@
             </ext:JsonReader>
         </Reader>
         <DirectEventConfig Timeout="120000">
+            <EventMask ShowMask="true"></EventMask>
         </DirectEventConfig>
     </ext:Store>
 </asp:Content>

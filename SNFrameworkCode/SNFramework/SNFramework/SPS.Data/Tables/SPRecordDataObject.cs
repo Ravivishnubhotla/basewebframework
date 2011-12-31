@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using NHibernate.Criterion;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using SPS.Data.AdoNet;
 using SPS.Entity.Tables;
 using Legendigital.Framework.Common.Data.NHibernate;
 
@@ -20,6 +22,87 @@ namespace SPS.Data.Tables
             queryBuilder.AddWhereClause(PROPERTY_LINKID.Eq(linkId));
 
             return this.FindSingleEntityByQueryBuilder(queryBuilder);
+        }
+
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        {
+            var queryBuilder = BuilderQueryGenerator(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc);
+
+            return FindListByPageByQueryBuilder(queryBuilder, pageQueryParams);
+        }
+
+        private NHibernateDynamicQueryGenerator<SPRecordEntity> BuilderQueryGenerator(SPChannelEntity channel, SPCodeEntity code,
+                                                                      SPSClientEntity client, string dataType,
+                                                                      DateTime startDate, DateTime endDate, List<QueryFilter> filters,
+                                                                      string orderByColumnName, bool isDesc)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPRecordEntity>();
+
+            queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channel));
+
+            queryBuilder.AddWhereClause(PROPERTY_CODEID.Eq(code));
+
+            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(client));
+
+            DayReportType reportType = (DayReportType) Enum.Parse(typeof (DayReportType), dataType);
+
+            switch (reportType)
+            {
+                case DayReportType.AllUp:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    break;
+                case DayReportType.AllUpSuccess:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    break;
+                case DayReportType.Intercept:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(true));
+                    break;
+                case DayReportType.Down:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    break;
+                case DayReportType.DownSycnSuccess:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
+                    break;
+                case DayReportType.DownNotSycn:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
+                    break;
+                case DayReportType.DownSycnFailed:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_SYCNRETRYTIMES.Gt(0));
+                    break;
+                default:
+                    break;
+            }
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.Date.AddDays(1)));
+
+
+            AddQueryFiltersToQueryGenerator(filters, queryBuilder);
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, queryBuilder);
+            return queryBuilder;
+        }
+
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        {
+            var queryBuilder = BuilderQueryGenerator(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc);
+
+            return FindListByQueryBuilder(queryBuilder);
         }
     }
 }
