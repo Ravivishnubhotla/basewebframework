@@ -11,7 +11,19 @@ namespace Legendigital.Framework.Common.Utility
             var ra = new Random();
             for (int i = 0; i < lenght; i++)
             {
-                randNumber += (ra.Next(11) - 1).ToString();
+                int number = (ra.Next(11) - 1);
+
+                if(number<0)
+                {
+                    number = 0;
+                }
+
+                if (number > 9)
+                {
+                    number = 9;
+                }
+
+                randNumber += number.ToString();
             }
             return randNumber;
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using Legendigital.Framework.Common.Utility;
+using Newtonsoft.Json;
 
 namespace SPS.Bussiness.HttpUtils
 {
@@ -75,7 +76,7 @@ namespace SPS.Bussiness.HttpUtils
         {
             requestParams = PraseHttpGetPostRequestValue(request);
 
-            requestData = SerializeUtil.ToJson(requestParams);
+            requestData = JsonConvert.SerializeObject(requestParams);
 
             requestIP = HttpUtil.GetIP(request);
 

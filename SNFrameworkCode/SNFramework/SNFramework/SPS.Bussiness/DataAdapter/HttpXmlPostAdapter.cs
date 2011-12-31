@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Xml;
 using Legendigital.Framework.Common.Utility;
+using Newtonsoft.Json;
 
 namespace SPS.Bussiness.DataAdapter
 {
@@ -85,7 +86,7 @@ namespace SPS.Bussiness.DataAdapter
 
             requestParams = PraseHttpXmlRequestValue(request, xmlString,xmlNodeName);
 
-            requestData = SerializeUtil.ToJson(requestParams);
+            requestData = JsonConvert.SerializeObject(requestParams);
 
             requestIP = GetIP(request);
 
