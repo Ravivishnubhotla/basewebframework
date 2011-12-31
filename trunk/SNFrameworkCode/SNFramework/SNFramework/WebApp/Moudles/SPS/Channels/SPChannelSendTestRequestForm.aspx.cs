@@ -32,6 +32,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
             SPChannelParamsCollection channelParamsWrappers = channelWrapper.ChannelParams;
 
+            TextField statusField = null;
+
             foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParamsWrappers.Items)
             {
  
@@ -63,9 +65,37 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                     txt.Value = this.SPCode;
                 }
 
+                if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_State_Key)
+                {
+                    statusField = txt;
+                }
+ 
                 txt.AnchorHorizontal = "95%";
                 this.FormPanel1.Items.Add(txt);
             }
+
+            if(this.ChannelID.IsStateReport && statusField==null)
+            {
+                statusField = new TextField();
+                statusField.ID = "txt" + this.ChannelID.StateReportParamName;
+                statusField.FieldLabel = this.ChannelID.StateReportParamName;
+
+
+                
+
+
+            }
+
+            if (this.ChannelID.IsStateReport &&  statusField != null)
+            {
+                statusField.Value = this.ChannelID.StateReportParamValue;
+                statusField.AnchorHorizontal = "95%";
+                this.FormPanel1.Items.Add(statusField);
+            }
+
+
+
+
 
         }
 

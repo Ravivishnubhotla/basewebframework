@@ -21,7 +21,6 @@
                         Ext.Msg.alert('消息', '请求成功，响应字符串："' + response.responseText + '"');
                     else
                         Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
-                    //alert(response.responseText);
                 },
                 failure: function () {
                     alert('请求失败！');
@@ -56,7 +55,7 @@
 
         }
     </script>
-    <ext:Viewport ID="viewPortMain" runat="server">
+    <ext:Viewport ID="viewPortMain" runat="server" Layout="Fit">
         <Items>
             <ext:FormPanel ID="FormPanel1" runat="server" Frame="true" Title="发送测试数据" Layout="Form"
                 AutoScroll="true">
@@ -64,8 +63,8 @@
                     <ext:Label ID="txtChannelName" runat="server" FieldLabel="通道名称" AnchorHorizontal="95%" />
                     <ext:Label ID="txtChannelSubmitUrl" runat="server" FieldLabel="通道提交地址" AnchorHorizontal="95%" />
                     <ext:Label ID="lblSendUrl" runat="server" FieldLabel="通道提交测试Url" AnchorHorizontal="95%" />
-                    <ext:Label ID="txtChannelStatusSubmitUrl" runat="server" FieldLabel="通道状态报告地址" AnchorHorizontal="95%" />
-                    <ext:Label ID="lblStatusSendUrl" runat="server" FieldLabel="通道状态报告测试Url" AnchorHorizontal="95%" />
+                    <ext:Label ID="txtChannelStatusSubmitUrl" runat="server" FieldLabel="状态报告地址" AnchorHorizontal="95%" />
+                    <ext:Label ID="lblStatusSendUrl" runat="server" FieldLabel="状态报告测试Url" AnchorHorizontal="95%" />
                     <ext:Label ID="lblChannelInfo" runat="server" FieldLabel="通道信息" AnchorHorizontal="95%" />
                 </Items>
                 <Buttons>
@@ -88,5 +87,7 @@
     <ext:Hidden ID="hidMobileName" runat="server">
     </ext:Hidden>
     <ext:Hidden ID="hidLinkIDeName" runat="server">
+    </ext:Hidden>
+    <ext:Hidden ID="hidReportType" runat="server">
     </ext:Hidden>
 </asp:Content>
