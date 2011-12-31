@@ -237,7 +237,11 @@ namespace SPS.Bussiness.Wrappers
         public static string DayReportType_DownSycnSuccess
         {
             get { return DayReportType.DownSycnSuccess.ToString(); }
-        } 
- 
+        }
+
+	    public static decimal CaculteActualInterceptRate(SPClientCodeRelationWrapper clientCodeRelation, DateTime date)
+	    {
+	        return businessProxy.CaculteActualInterceptRate(clientCodeRelation.Entity, date);
+	    }
     }
 }

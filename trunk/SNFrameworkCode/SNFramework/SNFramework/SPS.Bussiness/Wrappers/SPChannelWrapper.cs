@@ -420,27 +420,38 @@ namespace SPS.Bussiness.Wrappers
             if(clientCodeRelation==null)
                 return false;
 
-            int interceptRate = 0;
+            int addRate = 50;
 
+            int maxInterceptRate = 80;
+
+            if(clientCodeRelation.SycnNotInterceptCount>0)
+            {
+                clientCodeRelation.SycnNotInterceptCount = clientCodeRelation.SycnNotInterceptCount - 1;
+
+                SPClientCodeRelationWrapper.Update(clientCodeRelation);
+
+                return false;
+            }
+
+            int interceptRate = 0;
  
             interceptRate = Convert.ToInt32(clientCodeRelation.InterceptRate);
- 
 
-            return CaculteRandom(interceptRate);
+            //return CaculteRandom(interceptRate);
 
-            //if(interceptRate==0)
-            //    return false;
+            if (interceptRate == 0)
+                return false;
 
-            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
+            decimal rate = SPRecordWrapper.CaculteActualInterceptRate(clientCodeRelation,System.DateTime.Now.Date);
 
-            //if (rate < Convert.ToDecimal(interceptRate))
-            //{
-            //    return CaculteRandom(Math.Min(interceptRate + AddRate, MaxInterceptRate));
-            //}
-            //else
-            //{
-            //    return false;
-            //}
+            if (rate < Convert.ToDecimal(interceptRate))
+            {
+                return CaculteRandom(Math.Min(interceptRate + addRate, maxInterceptRate));
+            }
+            else
+            {
+                return false;
+            }
 	    }
 
         private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
