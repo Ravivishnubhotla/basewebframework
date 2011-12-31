@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportCountRecordToday.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportCountRecordToday" %>
-<%@ Import Namespace="SPS.Bussiness.Wrappers" %>
 
+<%@ Import Namespace="SPS.Bussiness.Wrappers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -48,6 +48,76 @@
                  
                  
               win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MO详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+            
+            if (cmd == "cmdViewInterceptCountRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_Intercept %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】扣除详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+            
+            
+           if (cmd == "cmdViewDownTotalCountRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_Down %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】下家详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+            
+            
+           if (cmd == "cmdViewDownSycnSuccessRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_DownSycnSuccess %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】同步下家成功详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+           if (cmd == "cmdViewDownSycnFailedRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_DownSycnFailed %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】同步下家失败详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+           if (cmd == "cmdViewDownNotSycnRecord") {
+              var win = <%= winShowRecordList.ClientID %>;
+              win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_DownNotSycn %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                 
+                 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】未同步下家详细数据',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
               win.show();   
             }
         }
@@ -136,14 +206,20 @@
                         </ext:Column>
                         <ext:Column ColumnID="colInterceptCount" Header="扣量" DataIndex="InterceptCount" Sortable="true">
                             <Commands>
+                                <ext:ImageCommand CommandName="cmdRemovewInterceptRecord" Icon="DatabaseGo">
+                                    <ToolTip Text="移除扣量" />
+                                </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewInterceptCountRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
                                 </ext:ImageCommand>
                             </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownTotalCount" Header="同步下家数" DataIndex="DownTotalCount"
+                        <ext:Column ColumnID="colDownTotalCount" Header="下家数" DataIndex="DownTotalCount"
                             Sortable="true">
                             <Commands>
+                                <ext:ImageCommand CommandName="cmdRemovewInterceptRecord" Icon="DatabaseLightning">
+                                    <ToolTip Text="重新同步" />
+                                </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewDownTotalCountRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
                                 </ext:ImageCommand>
@@ -181,7 +257,7 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="830"
+    <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="900"
         ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
