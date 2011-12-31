@@ -194,6 +194,7 @@
                     <ext:RecordField Name="IsLogRequest" Type="Boolean" />
                     <ext:RecordField Name="IsParamsConvert" Type="Boolean" />
                     <ext:RecordField Name="HasFilters" Type="Boolean" />
+                    <ext:RecordField Name="StatusReportType" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -238,21 +239,24 @@
                         <ext:Column ColumnID="colCode" DataIndex="Code" Header="编码" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colIsMonitorRequest" DataIndex="IsMonitorRequest" Header="监控"
+                            Sortable="true" Width="30">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colIsDisable" DataIndex="IsDisable" Header="禁用" Sortable="true" Width="30">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Sortable="true" Width="30">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true" Width="30">
+                        </ext:Column>
+                        <ext:Column ColumnID="colDefaultRate" DataIndex="DefaultRate" Header="扣率" Sortable="true" Width="30">
+                        </ext:Column>
+                        <ext:Column ColumnID="colIsLogRequest" DataIndex="IsLogRequest" Header="日志" Sortable="true" Width="30">
+                            <Renderer Fn="FormatBool" />
+                        </ext:Column>
+                        <ext:Column ColumnID="colStatusReportType" DataIndex="StatusReportType" Header="状态报告类型" Width="60"
                             Sortable="true">
-                            <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colIsDisable" DataIndex="IsDisable" Header="禁用" Sortable="true">
-                            <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colHasFilters" DataIndex="HasFilters" Header="过滤" Sortable="true">
-                            <Renderer Fn="FormatBool" />
-                        </ext:Column>
-                        <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDefaultRate" DataIndex="DefaultRate" Header="扣率" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colIsLogRequest" DataIndex="IsLogRequest" Header="日志" Sortable="true">
-                            <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
                             <Commands>
