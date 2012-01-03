@@ -29,10 +29,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
             this.txtChannelSubmitUrl.Text = channelWrapper.InterfaceUrl;
 
-
             SPChannelParamsCollection channelParamsWrappers = channelWrapper.ChannelParams;
 
             TextField statusField = null;
+
+            List<string> dataParams = new List<string>();
+
+            List<string> dataStatusParams = new List<string>();
 
             foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParamsWrappers.Items)
             {
@@ -45,7 +48,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 {
                     txt.Value = "test" + StringUtil.GetRandNumber(10);
 
-                    hidLinkIDeName.Text = txt.ClientID;
+                    hidLinkIDName.Text = txt.ClientID;
+
+                    dataStatusParams.Add(txt.ClientID);
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_Mobile_Key)
@@ -68,7 +73,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_State_Key)
                 {
                     statusField = txt;
+
+                    hidStatusName.Text = txt.ClientID;
                 }
+
+                if (spChannelParamsWrapper.ParamsMappingName != DictionaryConst.Dictionary_SPField_State_Key)
+                    dataParams.Add(txt.ClientID);
  
                 txt.AnchorHorizontal = "95%";
                 this.FormPanel1.Items.Add(txt); 
@@ -80,16 +90,23 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 statusField.ID = "txt" + this.ChannelID.StateReportParamName;
                 statusField.FieldLabel = this.ChannelID.StateReportParamName;
                 statusField.AnchorHorizontal = "95%";
+                hidStatusName.Text = statusField.ClientID;
                 this.FormPanel1.Items.Add(statusField);
+            }
+
+            if (statusField != null)
+            {
+                dataStatusParams.Add(statusField.ClientID);
             }
 
             if (this.ChannelID.IsStateReport &&  statusField != null)
             {
                 statusField.Value = this.ChannelID.StateReportParamValue;
-                
             }
 
+            hidDataParam.Text = string.Join(",", dataParams.ToArray());
 
+            hidDataStatusParam.Text = string.Join(",", dataStatusParams.ToArray());
 
 
 

@@ -88,7 +88,14 @@ namespace Legendigital.Common.WebApp.AppCode
 
                     if(requestType==RequestType.DataReport)
                     {
-                        requestOK = channel.ProcessRequest(httpRequestLog,true, out requestError, out errorMessage);
+                        bool statusOk = true;
+
+                        if (channel.IsStateReport && (channel.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key || channel.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key))
+                        {
+                            statusOk = false;
+                        }
+
+                        requestOK = channel.ProcessRequest(httpRequestLog, statusOk, out requestError, out errorMessage);
                     }
                     else if (requestType == RequestType.StatusReport)
                     {

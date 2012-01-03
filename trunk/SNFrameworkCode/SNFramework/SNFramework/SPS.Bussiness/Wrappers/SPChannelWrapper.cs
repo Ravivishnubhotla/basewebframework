@@ -702,7 +702,7 @@ namespace SPS.Bussiness.Wrappers
 
         public bool GetStatus(HttpRequestLog httpRequestLog)
         {
-            return (httpRequestLog.RequestParams[this.StateReportParamName] == this.StateReportParamValue);
+            return (httpRequestLog.RequestParams[this.StateReportParamName].ToString().ToLower().Equals(this.StateReportParamValue.ToLower()));
         }
     }
 }
