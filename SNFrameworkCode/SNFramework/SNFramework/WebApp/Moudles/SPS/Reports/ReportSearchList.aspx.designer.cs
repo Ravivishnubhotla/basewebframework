@@ -7,10 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
+namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
     
     
-    public partial class SPChannelSendTestRequestForm {
+    public partial class ReportSearchList {
+        
+        /// <summary>
+        /// ScriptManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
+        /// storeSPChannel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeSPChannel;
+        
+        /// <summary>
+        /// storeData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeData;
         
         /// <summary>
         /// viewPortMain control.
@@ -22,156 +49,102 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels {
         protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// FormPanel1 control.
+        /// GridPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel FormPanel1;
+        protected global::Ext.Net.GridPanel GridPanel1;
         
         /// <summary>
-        /// txtChannelName control.
+        /// tbTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label txtChannelName;
+        protected global::Ext.Net.Toolbar tbTop;
         
         /// <summary>
-        /// txtChannelSubmitUrl control.
+        /// cmbChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label txtChannelSubmitUrl;
+        protected global::Ext.Net.ComboBox cmbChannel;
         
         /// <summary>
-        /// lblSendUrl control.
+        /// cmbCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblSendUrl;
+        protected global::Ext.Net.ComboBox cmbCode;
         
         /// <summary>
-        /// lblStatusSendUrl control.
+        /// cmbClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblStatusSendUrl;
+        protected global::Ext.Net.ComboBox cmbClient;
         
         /// <summary>
-        /// lblDataTestResult control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblDataTestResult;
+        protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
-        /// lblDataStatusTestResult control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblDataStatusTestResult;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
-        /// lblChannelInfo control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Label lblChannelInfo;
+        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
-        /// btnRefreshData control.
+        /// RowSelectionModel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefreshData;
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
         
         /// <summary>
-        /// btnSPClientSendRequest control.
+        /// RowExpander1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnSPClientSendRequest;
+        protected global::Ext.Net.RowExpander RowExpander1;
         
         /// <summary>
-        /// hidChannelID control.
+        /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Hidden hidChannelID;
-        
-        /// <summary>
-        /// hidMobileName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidMobileName;
-        
-        /// <summary>
-        /// hidLinkIDName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidLinkIDName;
-        
-        /// <summary>
-        /// hidStatusName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidStatusName;
-        
-        /// <summary>
-        /// hidReportType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidReportType;
-        
-        /// <summary>
-        /// hidDataParam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidDataParam;
-        
-        /// <summary>
-        /// hidDataStatusParam control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidDataStatusParam;
+        protected global::Ext.Net.PagingToolbar PagingToolBar1;
     }
 }
