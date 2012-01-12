@@ -56,5 +56,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             storeData.DataBind();
 
         }
+
+        protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            this.storeSPClient.DataSource = SPSClientWrapper.FindAll();
+
+            this.storeSPClient.DataBind();
+        }
     }
 }
