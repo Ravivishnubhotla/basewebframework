@@ -77,7 +77,7 @@
  
                var win = <%= winChannelEdit.ClientID %>;
                win.autoLoad.params.ChannelID = id.id;
-               win.setTitle('编辑通道');
+               win.setTitle(String.format('通道“{0}”编辑',id.data.Name));
                win.show();
                win.maximize();
             }

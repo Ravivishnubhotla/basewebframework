@@ -220,6 +220,7 @@
     <Content Include="Moudles\SPS\Codes\UCSPCodeFilterEdit.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
+    <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDetailPage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx" />
@@ -865,6 +866,13 @@
     <Compile Include="Moudles\SPS\Codes\UCSPCodeView.ascx.designer.cs">
       <DependentUpon>UCSPCodeView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Data\SPSDataManage.aspx.cs">
+      <DependentUpon>SPSDataManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Data\SPSDataManage.aspx.designer.cs">
+      <DependentUpon>SPSDataManage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx.cs">
       <DependentUpon>ReportCountRecordToday.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1393,7 +1401,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\DataConfig.xml" />
-    <Content Include="Config\Log4Net.xml" />
     <Content Include="Css\css.css" />
     <Content Include="images\collapse-all.gif" />
     <Content Include="images\expand-all.gif" />
@@ -1468,7 +1475,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
-    <Folder Include="Moudles\SPS\Data\" />
+    <Folder Include="Logs\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />

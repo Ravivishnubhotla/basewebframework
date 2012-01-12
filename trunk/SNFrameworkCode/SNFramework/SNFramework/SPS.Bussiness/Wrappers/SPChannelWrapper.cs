@@ -704,5 +704,64 @@ namespace SPS.Bussiness.Wrappers
         {
             return (httpRequestLog.RequestParams[this.StateReportParamName].ToString().ToLower().Equals(this.StateReportParamValue.ToLower()));
         }
+
+        public void UpdateChannelDetailInfo()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("通道参数列表:<br/>");
+
+            sb.AppendLine(ParamsList + "<br/>");
+
+
+            sb.AppendLine("通道指令列表:<br/>");
+
+            sb.AppendLine(CodeList + "<br/>");
+
+            this.ChannelDetailInfo = sb.ToString();
+
+            Update(this);
+        }
+
+
+        public string CodeList
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+
+                List<SPCodeWrapper> sortedList = (from cc in Codes
+                                                                  orderby cc.OrderIndex descending
+                                                                  select cc).ToList();
+
+                foreach (SPCodeWrapper code in sortedList)
+                {
+                    if(code.MOType==DictionaryConst.Dictionary_CodeType_CodeDefault_Key)
+                        continue;
+                    sb.AppendLine(code.MoCode);
+                    sb.Append("&nbsp;&nbsp;分配状态：" + code.AssignedClientName + "<br/>");
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        public string ParamsList
+        {
+            get
+            {
+                SPChannelParamsCollection clientChannelParams = this.ChannelParams;
+
+                var sb = new StringBuilder();
+
+                foreach (SPChannelParamsWrapper paramsWrapper in clientChannelParams.Items)
+                {
+                    sb.AppendFormat("参数 {0} - {2}：{1} <br/>", paramsWrapper.Name, paramsWrapper.Description,
+                                    paramsWrapper.ParamsMappingName);
+                }
+
+                return sb.ToString();
+            }
+        }
     }
 }

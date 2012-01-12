@@ -13,16 +13,6 @@ namespace Legendigital.Common.WebApp.Jobs
     {
         private ILog logger = LogManager.GetLogger(typeof(DailyReportGenerateJob));
 
-        private string reportOutPutPath;
-
-        /// <summary>
-        /// Simple property that can be injected.
-        /// </summary>
-        public string ReportOutPutPath
-        {
-            set { reportOutPutPath = value; }
-        }
-
         protected override void ExecuteInternal(JobExecutionContext context)
         {
             logger.Info("日报表任务开始。。。");
