@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework;
+using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Common.WebApp.AppCode
@@ -175,6 +176,51 @@ namespace Legendigital.Common.WebApp.AppCode
             }
 
             node.Icon = GetDefaultIcon(iscategoty);
+        }
+
+
+
+        public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e,Ext.Net.PagingToolbar pagingToolbar)
+        {
+            string sortFieldName = "";
+            if (e.Sort != null)
+                sortFieldName = e.Sort;
+
+            int startIndex = 0;
+
+            if (e.Start > -1)
+            {
+                startIndex = e.Start;
+            }
+
+            int limit = pagingToolbar.PageSize;
+
+            int pageIndex = 1;
+
+            if ((startIndex % limit) == 0)
+                pageIndex = startIndex / limit + 1;
+            else
+                pageIndex = startIndex / limit;
+
+
+            PageQueryParams pageQueryParams = new PageQueryParams();
+            pageQueryParams.PageSize = limit;
+            pageQueryParams.PageIndex = pageIndex;
+
+            return pageQueryParams;
+        }
+
+        public static RecordSortor GetRecordSortorFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e)
+        {
+            RecordSortor recordSortor = new RecordSortor();
+
+            recordSortor.OrderByColumnName = "";
+            if (e.Sort != null)
+                recordSortor.OrderByColumnName = e.Sort;
+
+            recordSortor.IsDesc = (e.Dir == Ext.Net.SortDirection.DESC);
+
+            return recordSortor;
         }
     }
 }

@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
@@ -27,33 +30,40 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
         protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            //string sortFieldName = "";
-            //if (e.Sort != null)
-            //    sortFieldName = e.Sort;
-
-            //int startIndex = 0;
-
-            //if (e.Start > -1)
-            //{
-            //    startIndex = e.Start;
-            //}
-
-            //int limit = this.PagingToolBar1.PageSize;
-
-            //int pageIndex = 1;
-
-            //if ((startIndex % limit) == 0)
-            //    pageIndex = startIndex / limit + 1;
-            //else
-            //    pageIndex = startIndex / limit;
-
-
-            //PageQueryParams pageQueryParams = new PageQueryParams();
-            //pageQueryParams.PageSize = limit;
-            //pageQueryParams.PageIndex = pageIndex;
 
             storeData.DataSource = new List<SPRecordWrapper>();
             storeData.DataBind();
+ 
+            //PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e,
+            //                                                                                             this.
+            //                                                                                                 PagingToolBar1);
+
+            //RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
+
+            //SPChannelWrapper channel = null;
+
+            //if(this.cmbChannel.SelectedItem!=null)
+            //{
+            //    channel = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannel.SelectedItem.Value));
+            //}
+
+            //SPSClientWrapper client = null;
+
+            //if(this.cmbClient.SelectedItem!=null)
+            //{
+            //    client = SPSClientWrapper.FindById(Convert.ToInt32(this.cmbClient.SelectedItem.Value));
+            //}
+
+            //SPCodeWrapper code = null;
+
+            //if(this.cmbCode.SelectedItem!=null)
+            //{
+            //    code = SPCodeWrapper.FindById(Convert.ToInt32(this.cmbCode.SelectedItem.Value));
+            //}
+
+
+            //storeData.DataSource = SPRecordWrapper.QueryRecordByPage(channel, code, client, SPRecordWrapper.DayReportType_AllUp, null, null, new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc,pageQueryParams);
+            //storeData.DataBind();
 
         }
 
@@ -62,6 +72,28 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             this.storeSPClient.DataSource = SPSClientWrapper.FindAll();
 
             this.storeSPClient.DataBind();
+        }
+
+        protected void storeSPCode_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            SPChannelWrapper channel = null;
+
+            if (this.cmbChannel.SelectedItem != null)
+            {
+                channel = SPChannelWrapper.FindById(Convert.ToInt32(this.cmbChannel.SelectedItem.Value));
+            }
+
+            if (channel!=null)
+            {
+                this.storeSPCode.DataSource = SPCodeWrapper.FindAllByChannelID(channel);
+            }
+            else
+            {
+                this.storeSPCode.DataSource = new List<SPCodeWrapper>();               
+            }
+
+            this.storeSPCode.DataBind();
+ 
         }
     }
 }

@@ -10,8 +10,8 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int RecordCount { get; set; }
-        public string OrderByColumnName { get; set; }
-        public bool IsDesc { get; set; }
+        //public string OrderByColumnName { get; set; }
+        //public bool IsDesc { get; set; }
  
         public int PageCount
         {
@@ -52,9 +52,9 @@ namespace Legendigital.Framework.Common.Data.NHibernate.DynamicQuery
 
             PageSize = maxRecord;
 
-            OrderByColumnName = orderByColumnName;
+            //OrderByColumnName = orderByColumnName;
 
-            IsDesc = isDesc;
+            //IsDesc = isDesc;
         }
 
 

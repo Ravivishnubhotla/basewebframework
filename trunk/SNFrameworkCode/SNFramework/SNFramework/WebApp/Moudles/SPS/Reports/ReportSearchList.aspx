@@ -33,6 +33,21 @@
             <EventMask ShowMask="true" />
         </DirectEventConfig>
     </ext:Store>
+    <ext:Store ID="storeSPCode" runat="server" AutoLoad="false" OnRefreshData="storeSPCode_Refresh">
+        <Reader>
+            <ext:JsonReader IDProperty="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="MoCode" />
+                    <ext:RecordField Name="AssignedClientName" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <DirectEventConfig>
+            <EventMask ShowMask="true" />
+        </DirectEventConfig>
+    </ext:Store>
     <%--<p>Limitations of ajax file downloading: success/failure events don't fired. Therefore the mask is impossible.</p>--%>
     <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh">
         <AutoLoadParams>
@@ -110,14 +125,30 @@
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                         </Triggers>
                                         <Listeners>
-                                            <Select Handler="this.triggers[0].show();" />
+                                            <Select Handler="this.triggers[0].show();#{cmbCode}.clearValue(); #{storeSPCode}.reload();" />
                                             <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
                                     <ext:ComboBox ID="cmbCode" runat="server" FieldLabel="选择代码" LabelWidth="60" Width="180"
-                                        StoreID="storeSPChannel" Editable="false" DisplayField="Name" ValueField="Id"
-                                        EmptyText="选择代码">
+                                        StoreID="storeSPCode" AnchorHorizontal="95%" ItemSelector="div.list-item" TypeAhead="true"
+                                        Editable="false" DisplayField="MoCode" ValueField="Id" EmptyText="选择代码">
+                                        <Template ID="Template2" runat="server">
+                                            <Html>
+                                                <tpl for=".">
+						<div class="list-item">
+							 <h3>{MoCode}</h3>
+ 						<tpl if="AssignedClientName == ''">
+							<font color="green">未分配</font>
+						</tpl>
+  						<tpl if="AssignedClientName != ''">
+							 已分配 {AssignedClientName}
+						</tpl>
+ 
+						</div>
+					</tpl>
+                                            </Html>
+                                        </Template>
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                         </Triggers>

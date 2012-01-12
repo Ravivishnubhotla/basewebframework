@@ -24,7 +24,7 @@ namespace SPS.Data.Tables
             return this.FindSingleEntityByQueryBuilder(queryBuilder);
         }
 
-        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             var queryBuilder = BuilderQueryGenerator(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc);
 
@@ -33,16 +33,19 @@ namespace SPS.Data.Tables
 
         private NHibernateDynamicQueryGenerator<SPRecordEntity> BuilderQueryGenerator(SPChannelEntity channel, SPCodeEntity code,
                                                                       SPSClientEntity client, string dataType,
-                                                                      DateTime startDate, DateTime endDate, List<QueryFilter> filters,
+                                                                      DateTime? startDate, DateTime? endDate, List<QueryFilter> filters,
                                                                       string orderByColumnName, bool isDesc)
         {
             var queryBuilder = new NHibernateDynamicQueryGenerator<SPRecordEntity>();
 
-            queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channel));
+            if (channel!=null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channel));
 
-            queryBuilder.AddWhereClause(PROPERTY_CODEID.Eq(code));
+            if (code != null)
+                queryBuilder.AddWhereClause(PROPERTY_CODEID.Eq(code));
 
-            queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(client));
+            if (client != null)
+                queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(client));
 
             DayReportType reportType = (DayReportType) Enum.Parse(typeof (DayReportType), dataType);
 
@@ -88,8 +91,11 @@ namespace SPS.Data.Tables
                     break;
             }
 
-            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Date));
-            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.Date.AddDays(1)));
+            if (startDate != null)
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Value.Date));
+
+            if (endDate != null)
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.Value.Date.AddDays(1)));
 
 
             AddQueryFiltersToQueryGenerator(filters, queryBuilder);
@@ -98,7 +104,7 @@ namespace SPS.Data.Tables
             return queryBuilder;
         }
 
-        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
         {
             var queryBuilder = BuilderQueryGenerator(channel, code, client, dataType, startDate, endDate, filters, orderByColumnName, isDesc);
 
