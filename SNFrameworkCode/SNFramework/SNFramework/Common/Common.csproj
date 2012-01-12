@@ -639,6 +639,7 @@
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\EntityProperty.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\IntProperty.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\StringProperty.cs" />
+    <Compile Include="Data\NHibernate\DynamicQuery\RecordSortor.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\TypedCriterionProperty.cs" />
     <Compile Include="Entity\BaseTableEntity.cs" />
     <Compile Include="Entity\BaseViewEntity.cs" />

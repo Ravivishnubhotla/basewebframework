@@ -200,14 +200,39 @@ namespace SPS.Bussiness.Wrappers
 	    }
 
 
-        public static List<SPRecordWrapper> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public static List<SPRecordWrapper> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.QueryRecordByPage(channel.Entity, code.Entity, client.Entity, dataType, startDate, endDate, filters, orderByColumnName, isDesc, pageQueryParams));
+            SPChannelEntity channelEntity = null;
+            if (channel != null)
+                channelEntity = channel.Entity;
+
+            SPCodeEntity codeEntity = null;
+            if (code != null)
+                codeEntity = code.Entity;
+
+            SPSClientEntity clientEntity = null;
+            if (client != null)
+                clientEntity = client.Entity;
+
+
+            return ConvertToWrapperList(businessProxy.QueryRecordByPage(channelEntity, codeEntity, clientEntity, dataType, startDate, endDate, filters, orderByColumnName, isDesc, pageQueryParams));
         }
 
-        public static List<SPRecordWrapper> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        public static List<SPRecordWrapper> QueryRecord(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
         {
-            return ConvertToWrapperList(businessProxy.QueryRecord(channel.Entity, code.Entity, client.Entity, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
+            SPChannelEntity channelEntity = null;
+            if (channel != null)
+                channelEntity = channel.Entity;
+
+            SPCodeEntity codeEntity = null;
+            if (code != null)
+                codeEntity = code.Entity;
+
+            SPSClientEntity clientEntity = null;
+            if (client != null)
+                clientEntity = client.Entity;
+
+            return ConvertToWrapperList(businessProxy.QueryRecord(channelEntity, codeEntity, clientEntity, dataType, startDate, endDate, filters, orderByColumnName, isDesc));
         }
 
         public static string DayReportType_AllUp

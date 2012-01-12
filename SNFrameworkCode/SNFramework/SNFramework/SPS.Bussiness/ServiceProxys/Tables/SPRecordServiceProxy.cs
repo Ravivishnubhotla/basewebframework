@@ -21,8 +21,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage);
         bool InsertPayment(SPRecordEntity record, SPRecordExtendInfoEntity spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage);
 	    SPRecordEntity FindByLinkIDAndChannelID(SPChannelEntity channelID, string linkId);
-        List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams);
-        List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
+        List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams);
+        List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
         decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date);
     }
 
@@ -91,13 +91,13 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return this.DataObjectsContainerIocID.SPRecordDataObjectInstance.FindByLinkIDAndChannelID(channelID, linkId);
         }
 
-        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+        public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             return this.SelfDataObj.QueryRecordByPage(channel, code, client, dataType, startDate, endDate, filters,
                                                       orderByColumnName, isDesc, pageQueryParams);
         }
 
-        public List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime startDate, DateTime endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
+        public List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)
         {
             return this.SelfDataObj.QueryRecordByPage(channel, code, client, dataType, startDate, endDate, filters,
                                                       orderByColumnName, isDesc);
