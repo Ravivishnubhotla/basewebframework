@@ -13,11 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Ext.Net.UX.dll = ThirdsDll\Ext.Net.UX.dll
 		ThirdsDll\ICSharpCode.SharpZipLib.dll = ThirdsDll\ICSharpCode.SharpZipLib.dll
 		ThirdsDll\Iesi.Collections.dll = ThirdsDll\Iesi.Collections.dll
+		ThirdsDll\Ionic.Zip.dll = ThirdsDll\Ionic.Zip.dll
 		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
 		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
 		ThirdsDll\MySql.Data.dll = ThirdsDll\MySql.Data.dll
 		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
 		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
+		ThirdsDll\NPOI.dll = ThirdsDll\NPOI.dll
 		ThirdsDll\NVelocity.dll = ThirdsDll\NVelocity.dll
 		ThirdsDll\Quartz.dll = ThirdsDll\Quartz.dll
 		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
@@ -32,7 +34,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Web.Extensions.dll = ThirdsDll\Spring.Web.Extensions.dll
 		ThirdsDll\Spring.Web.Mvc.dll = ThirdsDll\Spring.Web.Mvc.dll
 		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
-		ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll = ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
