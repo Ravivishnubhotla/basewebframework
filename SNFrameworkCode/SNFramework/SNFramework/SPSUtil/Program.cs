@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using SubSonic.Repository;
 
 namespace SPSUtil
 {
@@ -13,6 +14,7 @@ namespace SPSUtil
         [STAThread]
         static void Main()
         {
+            var repo = new SimpleRepository("NorthwindSQLite", SimpleRepositoryOptions.RunMigrations);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
