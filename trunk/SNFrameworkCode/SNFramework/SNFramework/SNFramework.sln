@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 		ThirdsDll\Spring.Web.Extensions.dll = ThirdsDll\Spring.Web.Extensions.dll
 		ThirdsDll\Spring.Web.Mvc.dll = ThirdsDll\Spring.Web.Mvc.dll
+		ThirdsDll\SubSonic.Core.dll = ThirdsDll\SubSonic.Core.dll
 		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
 	EndProjectSection
 EndProject
