@@ -8,13 +8,17 @@ namespace SPSUtil
 {
     static class Program
     {
+
+        public static SimpleRepository DbRepository = null; 
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            var repo = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
+            DbRepository = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
