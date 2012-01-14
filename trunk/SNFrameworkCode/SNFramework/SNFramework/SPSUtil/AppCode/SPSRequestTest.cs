@@ -21,5 +21,7 @@ namespace SPSUtil.AppCode
         public SPSRequestType RequestType { get; set; }
 
 
+
+
     }
 }
