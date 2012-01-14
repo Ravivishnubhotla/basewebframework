@@ -28,29 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            WeifenLuo.WinFormsUI.Docking.DockPanelSkin dockPanelSkin7 = new WeifenLuo.WinFormsUI.Docking.DockPanelSkin();
+            WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin autoHideStripSkin7 = new WeifenLuo.WinFormsUI.Docking.AutoHideStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient19 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient43 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin dockPaneStripSkin7 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripSkin();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient dockPaneStripGradient7 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient44 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient20 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient45 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient dockPaneStripToolWindowGradient7 = new WeifenLuo.WinFormsUI.Docking.DockPaneStripToolWindowGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient46 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient47 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.DockPanelGradient dockPanelGradient21 = new WeifenLuo.WinFormsUI.Docking.DockPanelGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient48 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
+            WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient49 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.msTop = new System.Windows.Forms.MenuStrip();
             this.ssBottom = new System.Windows.Forms.StatusStrip();
             this.tsTop = new System.Windows.Forms.ToolStrip();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.scMain = new System.Windows.Forms.SplitContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pnlLeft = new System.Windows.Forms.Panel();
-            this.tvLeft = new System.Windows.Forms.TreeView();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbNewHttpRequest = new System.Windows.Forms.ToolStripButton();
+            this.dpnlMain = new WeifenLuo.WinFormsUI.Docking.DockPanel();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.msTop.SuspendLayout();
             this.tsTop.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).BeginInit();
-            this.scMain.Panel1.SuspendLayout();
-            this.scMain.SuspendLayout();
-            this.pnlLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // msTop
             // 
+            this.msTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.msTop.Location = new System.Drawing.Point(0, 0);
             this.msTop.Name = "msTop";
-            this.msTop.Size = new System.Drawing.Size(890, 24);
+            this.msTop.Size = new System.Drawing.Size(890, 25);
             this.msTop.TabIndex = 0;
             this.msTop.Text = "menuStrip1";
             // 
@@ -65,89 +79,130 @@
             // tsTop
             // 
             this.tsTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.tsTop.Location = new System.Drawing.Point(0, 24);
+            this.tsbNewHttpRequest});
+            this.tsTop.Location = new System.Drawing.Point(0, 25);
             this.tsTop.Name = "tsTop";
             this.tsTop.Size = new System.Drawing.Size(890, 25);
             this.tsTop.TabIndex = 2;
             this.tsTop.Text = "toolStrip1";
+            this.tsTop.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsTop_ItemClicked);
             // 
-            // panel1
+            // tsbNewHttpRequest
             // 
-            this.panel1.Controls.Add(this.scMain);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 49);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(890, 404);
-            this.panel1.TabIndex = 3;
+            this.tsbNewHttpRequest.Image = global::SPSUtil.Properties.Resources.link;
+            this.tsbNewHttpRequest.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNewHttpRequest.Name = "tsbNewHttpRequest";
+            this.tsbNewHttpRequest.Size = new System.Drawing.Size(100, 22);
+            this.tsbNewHttpRequest.Text = "请求测试管理";
             // 
-            // scMain
+            // dpnlMain
             // 
-            this.scMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scMain.Location = new System.Drawing.Point(0, 0);
-            this.scMain.Name = "scMain";
+            this.dpnlMain.ActiveAutoHideContent = null;
+            this.dpnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dpnlMain.DockBackColor = System.Drawing.SystemColors.Control;
+            this.dpnlMain.Location = new System.Drawing.Point(0, 50);
+            this.dpnlMain.Name = "dpnlMain";
+            this.dpnlMain.Size = new System.Drawing.Size(890, 403);
+            dockPanelGradient19.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient19.StartColor = System.Drawing.SystemColors.ControlLight;
+            autoHideStripSkin7.DockStripGradient = dockPanelGradient19;
+            tabGradient43.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient43.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient43.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            autoHideStripSkin7.TabGradient = tabGradient43;
+            autoHideStripSkin7.TextFont = new System.Drawing.Font("Microsoft YaHei", 9F);
+            dockPanelSkin7.AutoHideStripSkin = autoHideStripSkin7;
+            tabGradient44.EndColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient44.StartColor = System.Drawing.SystemColors.ControlLightLight;
+            tabGradient44.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient7.ActiveTabGradient = tabGradient44;
+            dockPanelGradient20.EndColor = System.Drawing.SystemColors.Control;
+            dockPanelGradient20.StartColor = System.Drawing.SystemColors.Control;
+            dockPaneStripGradient7.DockStripGradient = dockPanelGradient20;
+            tabGradient45.EndColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient45.StartColor = System.Drawing.SystemColors.ControlLight;
+            tabGradient45.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripGradient7.InactiveTabGradient = tabGradient45;
+            dockPaneStripSkin7.DocumentGradient = dockPaneStripGradient7;
+            dockPaneStripSkin7.TextFont = new System.Drawing.Font("Microsoft YaHei", 9F);
+            tabGradient46.EndColor = System.Drawing.SystemColors.ActiveCaption;
+            tabGradient46.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient46.StartColor = System.Drawing.SystemColors.GradientActiveCaption;
+            tabGradient46.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dockPaneStripToolWindowGradient7.ActiveCaptionGradient = tabGradient46;
+            tabGradient47.EndColor = System.Drawing.SystemColors.Control;
+            tabGradient47.StartColor = System.Drawing.SystemColors.Control;
+            tabGradient47.TextColor = System.Drawing.SystemColors.ControlText;
+            dockPaneStripToolWindowGradient7.ActiveTabGradient = tabGradient47;
+            dockPanelGradient21.EndColor = System.Drawing.SystemColors.ControlLight;
+            dockPanelGradient21.StartColor = System.Drawing.SystemColors.ControlLight;
+            dockPaneStripToolWindowGradient7.DockStripGradient = dockPanelGradient21;
+            tabGradient48.EndColor = System.Drawing.SystemColors.InactiveCaption;
+            tabGradient48.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            tabGradient48.StartColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            tabGradient48.TextColor = System.Drawing.SystemColors.InactiveCaptionText;
+            dockPaneStripToolWindowGradient7.InactiveCaptionGradient = tabGradient48;
+            tabGradient49.EndColor = System.Drawing.Color.Transparent;
+            tabGradient49.StartColor = System.Drawing.Color.Transparent;
+            tabGradient49.TextColor = System.Drawing.SystemColors.ControlDarkDark;
+            dockPaneStripToolWindowGradient7.InactiveTabGradient = tabGradient49;
+            dockPaneStripSkin7.ToolWindowGradient = dockPaneStripToolWindowGradient7;
+            dockPanelSkin7.DockPaneStripSkin = dockPaneStripSkin7;
+            this.dpnlMain.Skin = dockPanelSkin7;
+            this.dpnlMain.TabIndex = 5;
             // 
-            // scMain.Panel1
+            // fileToolStripMenuItem
             // 
-            this.scMain.Panel1.Controls.Add(this.pnlLeft);
-            this.scMain.Panel1.Controls.Add(this.toolStrip1);
-            this.scMain.Size = new System.Drawing.Size(890, 404);
-            this.scMain.SplitterDistance = 155;
-            this.scMain.TabIndex = 0;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.fileToolStripMenuItem.Text = "文件";
             // 
-            // toolStrip1
+            // exitToolStripMenuItem
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(155, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "退出";
             // 
-            // pnlLeft
+            // helpToolStripMenuItem
             // 
-            this.pnlLeft.Controls.Add(this.tvLeft);
-            this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLeft.Location = new System.Drawing.Point(0, 25);
-            this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(155, 379);
-            this.pnlLeft.TabIndex = 1;
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.toolStripMenuItem2});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.helpToolStripMenuItem.Text = "帮助";
             // 
-            // tvLeft
+            // viewToolStripMenuItem
             // 
-            this.tvLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvLeft.Location = new System.Drawing.Point(0, 0);
-            this.tvLeft.Name = "tvLeft";
-            this.tvLeft.Size = new System.Drawing.Size(155, 379);
-            this.tvLeft.TabIndex = 0;
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewToolStripMenuItem.Text = "查看帮助";
             // 
-            // toolStripButton1
+            // toolStripMenuItem2
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(101, 22);
-            this.toolStripButton1.Text = "Http请求测试";
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(196, 22);
+            this.toolStripMenuItem2.Text = "关于短信平台处理工具";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 475);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dpnlMain);
             this.Controls.Add(this.tsTop);
             this.Controls.Add(this.ssBottom);
             this.Controls.Add(this.msTop);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.msTop;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "短信平台处理工具";
+            this.msTop.ResumeLayout(false);
+            this.msTop.PerformLayout();
             this.tsTop.ResumeLayout(false);
             this.tsTop.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.scMain.Panel1.ResumeLayout(false);
-            this.scMain.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scMain)).EndInit();
-            this.scMain.ResumeLayout(false);
-            this.pnlLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,11 +213,12 @@
         private System.Windows.Forms.MenuStrip msTop;
         private System.Windows.Forms.StatusStrip ssBottom;
         private System.Windows.Forms.ToolStrip tsTop;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.SplitContainer scMain;
-        private System.Windows.Forms.Panel pnlLeft;
-        private System.Windows.Forms.TreeView tvLeft;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbNewHttpRequest;
+        private WeifenLuo.WinFormsUI.Docking.DockPanel dpnlMain;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }

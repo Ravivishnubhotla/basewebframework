@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPSUtil</RootNamespace>
     <AssemblyName>SPSUtil</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -34,12 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zip">
-      <HintPath>..\ThirdsDll\Ionic.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="NPOI">
-      <HintPath>..\ThirdsDll\NPOI.dll</HintPath>
-    </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\ThirdsDll\SubSonic.Core.dll</HintPath>
     </Reference>
@@ -50,7 +45,6 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -70,10 +64,37 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\HttpRequestTestList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\HttpRequestTestList.Designer.cs">
+      <DependentUpon>HttpRequestTestList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\TemplateForm\FrmListcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\TemplateForm\FrmListcs.Designer.cs">
+      <DependentUpon>FrmListcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\TemplateForm\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\TemplateForm\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\HttpRequestTestList.resx">
+      <DependentUpon>HttpRequestTestList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\TemplateForm\FrmListcs.resx">
+      <DependentUpon>FrmListcs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\TemplateForm\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +104,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -97,7 +119,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Moudles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
