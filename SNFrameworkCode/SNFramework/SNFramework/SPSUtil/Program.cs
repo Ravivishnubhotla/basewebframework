@@ -14,7 +14,7 @@ namespace SPSUtil
         [STAThread]
         static void Main()
         {
-            var repo = new SimpleRepository("NorthwindSQLite", SimpleRepositoryOptions.RunMigrations);
+            var repo = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
