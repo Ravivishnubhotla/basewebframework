@@ -70,6 +70,12 @@
     <Compile Include="Moudles\HttpRequestTestList.Designer.cs">
       <DependentUpon>HttpRequestTestList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\HttpRequestTestParamsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\HttpRequestTestParamsList.Designer.cs">
+      <DependentUpon>HttpRequestTestParamsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\TemplateForm\FrmListcs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\HttpRequestTestList.resx">
       <DependentUpon>HttpRequestTestList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\HttpRequestTestParamsList.resx">
+      <DependentUpon>HttpRequestTestParamsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\TemplateForm\FrmListcs.resx">
       <DependentUpon>FrmListcs.cs</DependentUpon>
