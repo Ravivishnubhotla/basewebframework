@@ -189,7 +189,7 @@ namespace SPS.Data.AdoNet
 
             if(result!=System.DBNull.Value)
             {
-                totalCount = (int) result;
+                totalCount = Convert.ToInt32( result);
             }
 
             int totalInterceptCount = 0;
@@ -198,7 +198,7 @@ namespace SPS.Data.AdoNet
 
             if (result2 != System.DBNull.Value)
             {
-                totalInterceptCount = (int)result2;
+                totalInterceptCount = Convert.ToInt32( result2);
             }
 
             if (totalCount <= 0)

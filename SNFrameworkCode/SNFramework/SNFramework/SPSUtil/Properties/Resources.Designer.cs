@@ -60,6 +60,20 @@ namespace SPSUtil.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap brick_link {
+            get {
+                object obj = ResourceManager.GetObject("brick_link", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cancel {
+            get {
+                object obj = ResourceManager.GetObject("cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap link {
             get {
                 object obj = ResourceManager.GetObject("link", resourceCulture);
@@ -98,6 +112,13 @@ namespace SPSUtil.Properties {
         internal static System.Drawing.Bitmap link_error {
             get {
                 object obj = ResourceManager.GetObject("link_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap link_go {
+            get {
+                object obj = ResourceManager.GetObject("link_go", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

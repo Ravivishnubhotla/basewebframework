@@ -40,6 +40,27 @@ namespace SPSUtil
 
  
                     break;
+
+
+                case "tsbHttpBatchSender":
+
+                    DockContent tsbHttpBatchSendercontent = FindFormType(typeof(HttpBatchSender));
+
+                    if (tsbHttpBatchSendercontent == null)
+                    {
+                        HttpBatchSender httpRequestTest = new HttpBatchSender();
+
+                        httpRequestTest.Show(this.dpnlMain);
+                    }
+                    else
+                    {
+                        tsbHttpBatchSendercontent.Activate();
+                    }
+
+
+ 
+                    break;
+                    
             }
         }
 

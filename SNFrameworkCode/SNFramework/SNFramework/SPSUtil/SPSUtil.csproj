@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NVelocity">
+      <HintPath>..\ThirdsDll\NVelocity.dll</HintPath>
+    </Reference>
     <Reference Include="SubSonic.Core">
       <HintPath>..\ThirdsDll\SubSonic.Core.dll</HintPath>
     </Reference>
@@ -55,6 +58,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\HttpGetSenderTask.cs" />
+    <Compile Include="AppCode\HttpGetSenderTaskItem.cs" />
+    <Compile Include="AppCode\IProgressTask.cs" />
+    <Compile Include="AppCode\IProgressTaskItem.cs" />
+    <Compile Include="AppCode\NumberGenerator.cs" />
+    <Compile Include="AppCode\ProcessResult.cs" />
     <Compile Include="AppCode\SPSRequestTest.cs" />
     <Compile Include="AppCode\SPSTestParams.cs" />
     <Compile Include="AppCode\SPSTestTask.cs" />
@@ -64,17 +73,23 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\frmTestSendTask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\frmTestSendTask.Designer.cs">
+      <DependentUpon>frmTestSendTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\HttpBatchSender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\HttpBatchSender.Designer.cs">
+      <DependentUpon>HttpBatchSender.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\HttpRequestTestList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Moudles\HttpRequestTestList.Designer.cs">
       <DependentUpon>HttpRequestTestList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\HttpRequestTestParamsList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Moudles\HttpRequestTestParamsList.Designer.cs">
-      <DependentUpon>HttpRequestTestParamsList.cs</DependentUpon>
     </Compile>
     <Compile Include="Moudles\TemplateForm\FrmListcs.cs">
       <SubType>Form</SubType>
@@ -93,11 +108,14 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\frmTestSendTask.resx">
+      <DependentUpon>frmTestSendTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\HttpBatchSender.resx">
+      <DependentUpon>HttpBatchSender.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Moudles\HttpRequestTestList.resx">
       <DependentUpon>HttpRequestTestList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Moudles\HttpRequestTestParamsList.resx">
-      <DependentUpon>HttpRequestTestParamsList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\TemplateForm\FrmListcs.resx">
       <DependentUpon>FrmListcs.cs</DependentUpon>
@@ -115,7 +133,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -146,6 +166,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\link_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
