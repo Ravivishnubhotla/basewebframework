@@ -85,13 +85,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.Panel SouthPanel;
         
         /// <summary>
-        /// pnlPackStart control.
+        /// pnlsearch1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel pnlPackStart;
+        protected global::Ext.Net.FormPanel pnlsearch1;
         
         /// <summary>
         /// cmbChannel control.
@@ -103,15 +103,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ComboBox cmbChannel;
         
         /// <summary>
-        /// cmbCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbCode;
-        
-        /// <summary>
         /// cmbClient control.
         /// </summary>
         /// <remarks>
@@ -121,31 +112,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ComboBox cmbClient;
         
         /// <summary>
-        /// dfStart control.
+        /// cmbCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DateField dfStart;
-        
-        /// <summary>
-        /// dfEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.DateField dfEnd;
-        
-        /// <summary>
-        /// cmbStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbStatus;
+        protected global::Ext.Net.ComboBox cmbCode;
         
         /// <summary>
         /// cmbSycnStatus control.
@@ -157,22 +130,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ComboBox cmbSycnStatus;
         
         /// <summary>
-        /// Panel1 control.
+        /// pnlsearch2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
+        protected global::Ext.Net.FormPanel pnlsearch2;
         
         /// <summary>
-        /// txtCode control.
+        /// txtPhoneNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCode;
+        protected global::Ext.Net.TextField txtPhoneNumber;
         
         /// <summary>
         /// txtSpNumber control.
@@ -193,6 +166,42 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.TextField txtLinkID;
         
         /// <summary>
+        /// cmbStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbStatus;
+        
+        /// <summary>
+        /// cmbIntercepter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ComboBox cmbIntercepter;
+        
+        /// <summary>
+        /// pnlsearch3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.FormPanel pnlsearch3;
+        
+        /// <summary>
+        /// txtMo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtMo;
+        
+        /// <summary>
         /// cmbProvince control.
         /// </summary>
         /// <remarks>
@@ -211,13 +220,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ComboBox cmbOperateType;
         
         /// <summary>
-        /// ComboBox1 control.
+        /// dfStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ComboBox ComboBox1;
+        protected global::Ext.Net.DateField dfStart;
+        
+        /// <summary>
+        /// dfEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DateField dfEnd;
         
         /// <summary>
         /// btnReset control.

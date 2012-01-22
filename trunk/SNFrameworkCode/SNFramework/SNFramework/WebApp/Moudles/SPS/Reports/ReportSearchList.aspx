@@ -49,7 +49,7 @@
         </DirectEventConfig>
     </ext:Store>
     <%--<p>Limitations of ajax file downloading: success/failure events don't fired. Therefore the mask is impossible.</p>--%>
-    <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh">
+    <ext:Store ID="storeData" runat="server" AutoLoad="false" RemoteSort="true" OnRefreshData="storeData_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="50" Mode="Raw" />
@@ -107,10 +107,10 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <North Split="true" Collapsible="true">
-                    <ext:Panel ID="SouthPanel" runat="server" Frame="True" Title="搜索条件" Height="100"
+                    <ext:Panel ID="SouthPanel" runat="server" Frame="True" Title="搜索条件" Height="130"
                         Layout="form">
                         <Items>
-                            <ext:Panel ID="pnlPackStart" runat="server" Layout="HBoxLayout" AnchorHorizontal="95%">
+                            <ext:FormPanel ID="pnlsearch1" runat="server" Layout="HBoxLayout" AnchorHorizontal="95%">
                                 <Defaults>
                                     <ext:Parameter Name="margins" Value="0 5 0 0" Mode="Value" />
                                 </Defaults>
@@ -130,7 +130,19 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ComboBox ID="cmbCode" runat="server" FieldLabel="选择代码" LabelWidth="60" Width="180"
+                                    <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="60" Width="180"
+                                        StoreID="storeSPClient" Editable="false" DisplayField="Name" ValueField="Id"
+                                        EmptyText="选择客户">
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                    </ext:ComboBox>
+                                    <ext:ComboBox ID="cmbCode" runat="server" FieldLabel="选择代码" LabelWidth="60" Width="260"
                                         StoreID="storeSPCode" AnchorHorizontal="95%" ItemSelector="div.list-item" TypeAhead="true"
                                         Editable="false" DisplayField="MoCode" ValueField="Id" EmptyText="选择代码">
                                         <Template ID="Template2" runat="server">
@@ -158,39 +170,8 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="60" Width="180"
-                                        StoreID="storeSPClient" Editable="false" DisplayField="Name" ValueField="Id"
-                                        EmptyText="选择客户">
-                                        <Triggers>
-                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
-                                        </Triggers>
-                                        <Listeners>
-                                            <Select Handler="this.triggers[0].show();" />
-                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
-                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
-                                        </Listeners>
-                                    </ext:ComboBox>
-                                    <ext:DateField ID="dfStart" runat="server" FieldLabel="开始时间" LabelWidth="60" Width="150">
-                                    </ext:DateField>
-                                    <ext:DateField ID="dfEnd" runat="server" FieldLabel="结束时间" LabelWidth="60" Width="150">
-                                    </ext:DateField>
-                                    <ext:ComboBox ID="cmbStatus" Editable="true" runat="server" FieldLabel="状态" LabelWidth="40"
-                                        Width="120" TriggerAction="All">
-                                        <Items>
-                                            <ext:ListItem Value="1" Text="成功"></ext:ListItem>
-                                            <ext:ListItem Value="0" Text="失败"></ext:ListItem>
-                                        </Items>
-                                        <Triggers>
-                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
-                                        </Triggers>
-                                        <Listeners>
-                                            <Select Handler="this.triggers[0].show();" />
-                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
-                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
-                                        </Listeners>
-                                    </ext:ComboBox>
-                                    <ext:ComboBox ID="cmbSycnStatus" Editable="true" runat="server" FieldLabel="同步" LabelWidth="40"
-                                        Width="120" TriggerAction="All">
+                                    <ext:ComboBox ID="cmbSycnStatus" Editable="false" runat="server" FieldLabel="同步"
+                                        LabelWidth="40" Width="120" TriggerAction="All">
                                         <Items>
                                             <ext:ListItem Value="1" Text="成功"></ext:ListItem>
                                             <ext:ListItem Value="0" Text="失败"></ext:ListItem>
@@ -205,8 +186,8 @@
                                         </Listeners>
                                     </ext:ComboBox>
                                 </Items>
-                            </ext:Panel>
-                            <ext:Panel ID="Panel1" runat="server" Layout="HBoxLayout" AnchorHorizontal="95%">
+                            </ext:FormPanel>
+                            <ext:FormPanel ID="pnlsearch2" runat="server" Layout="HBoxLayout" AnchorHorizontal="95%">
                                 <Defaults>
                                     <ext:Parameter Name="margins" Value="0 5 0 0" Mode="Value" />
                                 </Defaults>
@@ -214,12 +195,54 @@
                                     <ext:HBoxLayoutConfig Padding="5" Align="Middle" Pack="Start" />
                                 </LayoutConfig>
                                 <Items>
-                                    <ext:TextField ID="txtCode" runat="server" FieldLabel="手机号" LabelWidth="60" Width="180" />
+                                    <ext:TextField ID="txtPhoneNumber" runat="server" FieldLabel="手机号" LabelWidth="60"
+                                        Width="180" />
                                     <ext:TextField ID="txtSpNumber" runat="server" FieldLabel="端口号" LabelWidth="60" Width="180" />
                                     <ext:TextField ID="txtLinkID" runat="server" FieldLabel="LinkID" LabelWidth="60"
                                         Width="180" />
-                                    <ext:ComboBox ID="cmbProvince" Editable="true" runat="server" FieldLabel="省份" LabelWidth="50"
-                                        Width="130" TriggerAction="All">
+                                    <ext:ComboBox ID="cmbStatus" Editable="false" runat="server" FieldLabel="状态" LabelWidth="40"
+                                        Width="120" TriggerAction="All">
+                                        <Items>
+                                            <ext:ListItem Value="1" Text="成功"></ext:ListItem>
+                                            <ext:ListItem Value="0" Text="失败"></ext:ListItem>
+                                        </Items>
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                    </ext:ComboBox>
+                                    <ext:ComboBox ID="cmbIntercepter" Editable="false" runat="server" FieldLabel="扣除"
+                                        LabelWidth="40" Width="110" TriggerAction="All">
+                                        <Items>
+                                            <ext:ListItem Value="1" Text="是"></ext:ListItem>
+                                            <ext:ListItem Value="0" Text="否"></ext:ListItem>
+                                        </Items>
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                    </ext:ComboBox>
+                                </Items>
+                            </ext:FormPanel>
+                            <ext:FormPanel ID="pnlsearch3" runat="server" Layout="HBoxLayout" AnchorHorizontal="95%">
+                                <Defaults>
+                                    <ext:Parameter Name="margins" Value="0 5 0 0" Mode="Value" />
+                                </Defaults>
+                                <LayoutConfig>
+                                    <ext:HBoxLayoutConfig Padding="5" Align="Middle" Pack="Start" />
+                                </LayoutConfig>
+                                <Items>
+                                    <ext:TextField ID="txtMo" runat="server" FieldLabel="指令" LabelWidth="60" Width="180" />
+                                    <ext:ComboBox ID="cmbProvince" Editable="false" runat="server" FieldLabel="省  份"
+                                        LabelWidth="50" Width="130" TriggerAction="All">
                                         <Items>
                                             <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                             <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
@@ -251,7 +274,7 @@
                                             <ext:ListItem Value="云南" Text="云南"></ext:ListItem>
                                             <ext:ListItem Value="浙江" Text="浙江"></ext:ListItem>
                                             <ext:ListItem Value="重庆" Text="重庆"></ext:ListItem>
-                                            <ext:ListItem Value="" Text="未知地区"></ext:ListItem>
+                                            <ext:ListItem Value="NULL" Text="未知地区"></ext:ListItem>
                                         </Items>
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
@@ -262,7 +285,7 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ComboBox ID="cmbOperateType" Editable="true" runat="server" FieldLabel="运营商"
+                                    <ext:ComboBox ID="cmbOperateType" Editable="false" runat="server" FieldLabel="运营商"
                                         LabelWidth="40" Width="120" TriggerAction="All">
                                         <Items>
                                             <ext:ListItem Value="移动" Text="移动"></ext:ListItem>
@@ -278,24 +301,13 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ComboBox ID="ComboBox1" Editable="true" runat="server" FieldLabel="扣除" LabelWidth="40"
-                                        Width="120" TriggerAction="All">
-                                        <Items>
-                                            <ext:ListItem Value="1" Text="是"></ext:ListItem>
-                                            <ext:ListItem Value="0" Text="否"></ext:ListItem>
-                                        </Items>
-                                        <Triggers>
-                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
-                                        </Triggers>
-                                        <Listeners>
-                                            <Select Handler="this.triggers[0].show();" />
-                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
-                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
-                                        </Listeners>
-                                    </ext:ComboBox>
+                                    <ext:DateField ID="dfStart" runat="server" FieldLabel="开始时间" LabelWidth="60" Width="150">
+                                    </ext:DateField>
+                                    <ext:DateField ID="dfEnd" runat="server" FieldLabel="结束时间" LabelWidth="60" Width="150">
+                                    </ext:DateField>
                                     <ext:Button ID='btnReset' runat="server" Text="重置" Icon="Reload">
                                         <Listeners>
-                                            <Click Handler="#{storeData}.reload();" />
+                                            <Click Handler="#{pnlsearch1}.reset();#{pnlsearch2}.reset();#{pnlsearch3}.reset();" />
                                         </Listeners>
                                     </ext:Button>
                                     <ext:Button ID='btnFind' runat="server" Text="搜索" Icon="Find">
@@ -304,7 +316,7 @@
                                         </Listeners>
                                     </ext:Button>
                                 </Items>
-                            </ext:Panel>
+                            </ext:FormPanel>
                         </Items>
                     </ext:Panel>
                 </North>

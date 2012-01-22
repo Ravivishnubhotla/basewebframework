@@ -11,6 +11,8 @@ namespace SPS.Bussiness.HttpUtils
 {
     public class UrlSender
     {
+        
+
         public static void SendRequest(object request)
         {
             UrlSendTask sendTask = request as UrlSendTask;
