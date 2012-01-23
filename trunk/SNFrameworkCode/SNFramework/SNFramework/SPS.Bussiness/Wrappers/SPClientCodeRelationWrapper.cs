@@ -146,8 +146,23 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
+        public static List<SPCodeWrapper> GetAllCodeByClient(SPSClientWrapper client)
+        {
+            List<SPClientCodeRelationWrapper> spClientCodeRelations = FindAllByClientID(client);
 
-        public string GenerateSendUrl(SPRecordWrapper record)
+            List<SPCodeWrapper> spCodes = new List<SPCodeWrapper>();
+
+            foreach (SPClientCodeRelationWrapper spClientCodeRelationWrapper in spClientCodeRelations)
+            {
+                if(!spCodes.Exists(p=>(p.Id==spClientCodeRelationWrapper.ClientID.Id)))
+                    spCodes.Add(spClientCodeRelationWrapper.CodeID);
+            }
+
+            return spCodes;
+        }
+
+
+	    public string GenerateSendUrl(SPRecordWrapper record)
         {
             SPRecordExtendInfoWrapper spRecordExtendInfo = record.ExtendInfo;
 

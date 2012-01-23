@@ -19,8 +19,8 @@ namespace Legendigital.Common.WebApp.AppCode
                 if (!CurrentLoginUserAssignedRole.Contains(RoleCodeList.ROLE_CODE_SPDOWNUSER))
                     return null;
 
-                if (!this.Context.User.IsInRole(RoleCodeList.ROLE_CODE_SPDOWNUSER))
-                    return null;
+                //if (!this.Context.User.IsInRole(RoleCodeList.ROLE_CODE_SPDOWNUSER))
+                //    return null;
 
                 return SPSClientWrapper.GetClientByUserID(this.CurrentLoginUser.UserID);
             }

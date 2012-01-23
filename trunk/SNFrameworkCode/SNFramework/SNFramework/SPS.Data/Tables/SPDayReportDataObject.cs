@@ -32,5 +32,19 @@ namespace SPS.Data.Tables
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity clientEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPDayReportEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Ge(startDate.Date));
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Lt(endDate.AddDays(1).Date));
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(clientEntity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
