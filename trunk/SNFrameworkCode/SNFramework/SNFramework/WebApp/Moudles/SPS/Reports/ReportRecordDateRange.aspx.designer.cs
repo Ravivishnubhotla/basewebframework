@@ -130,13 +130,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.DisplayField lblTotalTotalCount;
         
         /// <summary>
-        /// colTotalTotalSuccessCount control.
+        /// lblTotalTotalSuccessCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalTotalSuccessCount;
+        protected global::Ext.Net.DisplayField lblTotalTotalSuccessCount;
         
         /// <summary>
         /// ToolbarSeparator1 control.
@@ -148,13 +148,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ToolbarSeparator ToolbarSeparator1;
         
         /// <summary>
-        /// colTotalInterceptCount control.
+        /// lblTotalInterceptCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalInterceptCount;
+        protected global::Ext.Net.DisplayField lblTotalInterceptCount;
         
         /// <summary>
         /// ToolbarSeparator2 control.
@@ -166,13 +166,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ToolbarSeparator ToolbarSeparator2;
         
         /// <summary>
-        /// colTotalDownTotalCount control.
+        /// lblTotalDownTotalCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalDownTotalCount;
+        protected global::Ext.Net.DisplayField lblTotalDownTotalCount;
         
         /// <summary>
         /// ToolbarSeparator3 control.
@@ -184,13 +184,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ToolbarSeparator ToolbarSeparator3;
         
         /// <summary>
-        /// colTotalDownSycnSuccess control.
+        /// lblTotalDownSycnSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalDownSycnSuccess;
+        protected global::Ext.Net.DisplayField lblTotalDownSycnSuccess;
         
         /// <summary>
         /// ToolbarSeparator4 control.
@@ -202,13 +202,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ToolbarSeparator ToolbarSeparator4;
         
         /// <summary>
-        /// colTotalDownSycnFailed control.
+        /// lblTotalDownSycnFailed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalDownSycnFailed;
+        protected global::Ext.Net.DisplayField lblTotalDownSycnFailed;
         
         /// <summary>
         /// ToolbarSeparator5 control.
@@ -220,12 +220,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ToolbarSeparator ToolbarSeparator5;
         
         /// <summary>
-        /// colTotalDownNotSycn control.
+        /// lblTotalDownNotSycn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DisplayField colTotalDownNotSycn;
+        protected global::Ext.Net.DisplayField lblTotalDownNotSycn;
     }
 }
