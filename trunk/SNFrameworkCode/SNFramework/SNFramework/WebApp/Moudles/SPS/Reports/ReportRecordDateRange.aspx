@@ -27,11 +27,13 @@
 
     </script>
     <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
-        RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh">
+        RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh" GroupField="ReportDate">
+        <SortInfo Direction="DESC" Field="ReportDate" />
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ChannelID_Name" />
                     <ext:RecordField Name="ClientID_Name" />
                     <ext:RecordField Name="CodeID_MoCode" />
@@ -67,46 +69,65 @@
                                     <Click Handler="#{storeSPDayReport}.reload();" />
                                 </Listeners>
                             </ext:Button>
+                            <ext:Button ID="btnToggleGroups" runat="server" Text="收起/展开 分组" Icon="TableSort"
+                                AutoPostBack="false">
+                                <Listeners>
+                                    <Click Handler="#{gridPanelSPDayReport}.getView().toggleAllGroups();" />
+                                </Listeners>
+                            </ext:Button>
                         </Items>
                     </ext:Toolbar>
                 </TopBar>
                 <View>
-                    <ext:GridView ForceFit="true" ID="GridView1">
-                        <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
-                    </ext:GridView>
+                    <ext:GroupingView ID="GroupingView1" runat="server" ForceFit="true" MarkDirty="false"
+                        ShowGroupName="false" EnableNoGroups="true" HideGroupedColumn="true" />
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:Column ColumnID="colChannelID" DataIndex="ChannelID_Name" Header="通道" Sortable="true">
+                        <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="日期" Sortable="true"
+                            Groupable="True">
+                            <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                         </ext:Column>
-                        <ext:Column ColumnID="colClientID" DataIndex="ClientID_Name" Header="客户" Sortable="true">
+                        <ext:Column ColumnID="colChannelID" DataIndex="ChannelID_Name" Header="通道" Sortable="true"
+                            Groupable="True">
                         </ext:Column>
-                        <ext:Column ColumnID="colCodeID" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
+                        <ext:Column ColumnID="colClientID" DataIndex="ClientID_Name" Header="客户" Sortable="true"
+                            Groupable="True">
                         </ext:Column>
-                        <ext:Column ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount" Sortable="true">
+                        <ext:Column ColumnID="colCodeID" DataIndex="CodeID_MoCode" Header="代码" Sortable="true"
+                            Groupable="True">
                         </ext:Column>
-                        <ext:Column ColumnID="colTotalSuccessCount" Header="MO总数" DataIndex="TotalSuccessCount"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colInterceptCount" Header="扣量" DataIndex="InterceptCount" Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDownTotalCount" Header="同步下家数" DataIndex="DownTotalCount"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDownSycnSuccess" Header="同步下家成功数" DataIndex="DownSycnSuccess"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDownSycnFailed" Header="同步下家失败数" DataIndex="DownSycnFailed"
-                            Sortable="true">
-                        </ext:Column>
-                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn" Sortable="true">
-                        </ext:Column>
+                        <ext:GroupingSummaryColumn ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="MO总数" DataIndex="TotalSuccessCount"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colInterceptCount" Header="扣量" DataIndex="InterceptCount"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="同步数" DataIndex="DownTotalCount"
+                            Sortable="true" Groupable="False" SummaryType="Sum">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colDownSycnSuccess" Header="同步成功数" DataIndex="DownSycnSuccess"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colDownSycnFailed" Header="同步失败数" DataIndex="DownSycnFailed"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colDownNotSycn" Header="未同步数" DataIndex="DownNotSycn"
+                            Sortable="true" SummaryType="Sum" Hidden="True" Groupable="False">
+                        </ext:GroupingSummaryColumn>
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />
                 </Listeners>
+                <Plugins>
+                    <ext:GroupingSummary ID="GroupingSummary1" runat="server">
+                    </ext:GroupingSummary>
+                </Plugins>
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
