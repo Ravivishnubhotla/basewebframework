@@ -141,5 +141,20 @@ namespace SPS.Bussiness.Wrappers
         {
            return  ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate));
         }
+
+	    public static void ReGenerateDayReport(DateTime startDate, DateTime endDate)
+	    {
+            for (DateTime i = startDate; i < endDate.AddDays(1); i = i.AddDays(1))
+            {
+                try
+                {
+                    ReGenerateDayReport(i);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("生成报表错误：" + ex.Message);
+                }
+            }
+	    }
     }
 }

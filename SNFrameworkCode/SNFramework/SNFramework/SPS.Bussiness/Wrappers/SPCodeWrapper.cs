@@ -274,7 +274,7 @@ namespace SPS.Bussiness.Wrappers
             get
             {
                 if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key)
-                    return "默认指令";
+                    return this.ChannelID.Name+"-默认指令";
 
 
                 if (string.IsNullOrEmpty(this.Mo))
