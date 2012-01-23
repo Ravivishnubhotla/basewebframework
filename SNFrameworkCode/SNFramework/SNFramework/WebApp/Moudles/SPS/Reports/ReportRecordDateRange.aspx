@@ -4,37 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-    <script type="text/javascript">
-        var rooturl ='<%=this.ResolveUrl("~/")%>';
 
-        var FormatBool = function(value) {
-            if (value)
-                return 'true';
-            else
-                return 'false';
-        };
-
-
-        var RefreshData = function(btn) {
-            <%= this.storeSPDayReport.ClientID %>.reload();
-        };
-        
- 
-        function processcmd(cmd, id) {
-
- 
-        }
-
-        function UpdateTotalCount(lblTotalCount) {
-            //var lblTotalCount = Ext.get('<%= lblTotalTotalCount.ClientID %>');
-            //lblTotalCount.setValue('11111');
-            
-
-        }
-        
- 
-
-    </script>
     <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
         RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh" GroupField="ReportDate">
         <SortInfo Direction="DESC" Field="ReportDate" />
@@ -140,22 +110,22 @@
                 <BottomBar>
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
-                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" LabelWidth="60" runat="server" Text="-" />
                             <ext:ToolbarSeparator runat="server" />
-                            <ext:DisplayField ID="colTotalTotalSuccessCount" FieldLabel="总MO数" runat="server"
+                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总MO数"  LabelWidth="60" runat="server"
                                 Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator1" runat="server" />
-                            <ext:DisplayField ID="colTotalInterceptCount" FieldLabel="总扣量" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalInterceptCount" FieldLabel="总扣量"  LabelWidth="60" runat="server" Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator2" runat="server" />
-                            <ext:DisplayField ID="colTotalDownTotalCount" FieldLabel="总下家数" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalDownTotalCount" FieldLabel="总下家数"  LabelWidth="60" runat="server" Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator3" runat="server" />
-                            <ext:DisplayField ID="colTotalDownSycnSuccess" FieldLabel="总同步成功数" runat="server"
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总同步成功数"  LabelWidth="90" runat="server"
                                 Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator4" runat="server" />
-                            <ext:DisplayField ID="colTotalDownSycnFailed" FieldLabel="总同步失败数" runat="server"
+                            <ext:DisplayField ID="lblTotalDownSycnFailed" FieldLabel="总同步失败数"  LabelWidth="90" runat="server"
                                 Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator5" runat="server" />
-                            <ext:DisplayField ID="colTotalDownNotSycn" FieldLabel="总未同步数" runat="server" Text="-"
+                            <ext:DisplayField ID="lblTotalDownNotSycn" FieldLabel="总未同步数"  LabelWidth="70" runat="server" Text="-"
                                 Hidden="True" />
                         </Items>
                     </ext:Toolbar>
@@ -163,4 +133,30 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+        <script type="text/javascript">
+        var rooturl ='<%=this.ResolveUrl("~/")%>';
+
+        var FormatBool = function(value) {
+            if (value)
+                return 'true';
+            else
+                return 'false';
+        };
+
+
+        var RefreshData = function(btn) {
+            <%= this.storeSPDayReport.ClientID %>.reload();
+        };
+        
+ 
+        function processcmd(cmd, id) {
+
+ 
+        }
+
+
+        
+ 
+
+    </script>
 </asp:Content>

@@ -119,6 +119,29 @@
                     <ext:GroupingSummary ID="GroupingSummary1" runat="server">
                     </ext:GroupingSummary>
                 </Plugins>
+                                <BottomBar>
+                    <ext:Toolbar ID="Toolbar1" runat="server">
+                        <Items>
+                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" LabelWidth="60" runat="server" Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator1" runat="server" />
+                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总MO数"  LabelWidth="60" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator2" runat="server" />
+                            <ext:DisplayField ID="lblTotalInterceptCount" FieldLabel="总扣量"  LabelWidth="60" runat="server" Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator3" runat="server" />
+                            <ext:DisplayField ID="lblTotalDownTotalCount" FieldLabel="总下家数"  LabelWidth="60" runat="server" Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator4" runat="server" />
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总同步成功数"  LabelWidth="90" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator5" runat="server" />
+                            <ext:DisplayField ID="lblTotalDownSycnFailed" FieldLabel="总同步失败数"  LabelWidth="90" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator6" runat="server" />
+                            <ext:DisplayField ID="lblTotalDownNotSycn" FieldLabel="总未同步数"  LabelWidth="70" runat="server" Text="-"
+                                Hidden="True" />
+                        </Items>
+                    </ext:Toolbar>
+                </BottomBar>
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
