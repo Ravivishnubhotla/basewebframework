@@ -16,6 +16,9 @@ namespace Legendigital.Common.WebApp.AppCode
             {
                 if (this.CurrentLoginUser == null)
                     return null;
+                if (!CurrentLoginUserAssignedRole.Contains(RoleCodeList.ROLE_CODE_SPDOWNUSER))
+                    return null;
+
                 if (!this.Context.User.IsInRole(RoleCodeList.ROLE_CODE_SPDOWNUSER))
                     return null;
 

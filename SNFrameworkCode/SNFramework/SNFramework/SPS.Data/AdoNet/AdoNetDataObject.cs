@@ -143,6 +143,50 @@ namespace SPS.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
+
+        public DataTable CaculateReport(DateTime reportDate, DayReportType dayReportType, SPSClientEntity clientEntity)
+        {
+            string sql = "Select [ChannelID],[CodeID],Sum([Count]) as RecordCount from SPRecord with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and [ClientID] = @ClientID";
+
+            switch (dayReportType)
+            {
+                case DayReportType.AllUp:
+                    sql += " AND IsReport =0";
+                    break;
+                case DayReportType.AllUpSuccess:
+                    sql += " AND IsReport =0 AND IsStatOK = 1 ";
+                    break;
+                case DayReportType.Intercept:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 1 ";
+                    break;
+                case DayReportType.Down:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
+                    break;
+                case DayReportType.DownSycnSuccess:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
+                    break;
+                case DayReportType.DownNotSycn:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
+                    break;
+                case DayReportType.DownSycnFailed:
+                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+
+            sql += " group by [ChannelID],[CodeID]";
+
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", reportDate.Date);
+
+            dbParameters.AddWithValue("endDate", reportDate.Date.AddDays(1));
+
+            dbParameters.AddWithValue("ClientID", clientEntity.Id);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
         public void RestAllReportedData(DateTime date)
         {
             string sql = "update SPRecord set  IsReport = 0  where CreateDate >= @startDate and  CreateDate <  @endDate";
@@ -206,5 +250,7 @@ namespace SPS.Data.AdoNet
 
             return (decimal) totalInterceptCount/(decimal) totalCount;
         }
+
+
     }
 }
