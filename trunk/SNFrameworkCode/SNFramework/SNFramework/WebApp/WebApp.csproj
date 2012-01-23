@@ -207,6 +207,7 @@
     <Content Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx" />
+    <Content Include="Moudles\SPS\ClientView\SPClientCodeList.aspx" />
     <Content Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
@@ -453,6 +454,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\SPClientViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppCode\SPSDataRecievedHandler.cs" />
     <Compile Include="AppCode\WebUIHelper.cs" />
     <Compile Include="Default.aspx.cs">
@@ -776,6 +780,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx.designer.cs">
       <DependentUpon>ReportClientSearchList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\SPClientCodeList.aspx.cs">
+      <DependentUpon>SPClientCodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\SPClientCodeList.aspx.designer.cs">
+      <DependentUpon>SPClientCodeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.cs">
       <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>

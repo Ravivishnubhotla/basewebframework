@@ -8,7 +8,7 @@ using Legendigital.Common.WebApp.AppCode;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.ClientView
 {
-    public partial class ReportClientSearchList : SPClientViewPage
+    public partial class SPClientCodeList : SPClientViewPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
