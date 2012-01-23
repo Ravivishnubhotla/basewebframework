@@ -241,7 +241,7 @@
                                 </ext:ImageCommand>
                             </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn" Sortable="true">
+                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn" Sortable="true"  Hidden="True">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewDownNotSycnRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />

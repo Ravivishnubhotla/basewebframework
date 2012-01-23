@@ -26,9 +26,9 @@ namespace SPS.Data.Tables
             NHibernateDynamicQueryGenerator<SPDayReportEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             //指定查询条件
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Lt(startDate.Date));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Gt(startDate.Date));
 
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Gt(endDate.AddDays(1).Date));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_REPORTDATE.Lt(endDate.AddDays(1).Date));
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
         }

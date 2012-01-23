@@ -223,6 +223,7 @@
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDetailPage.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportRecordDate.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportSearchList.aspx" />
     <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
@@ -440,6 +441,10 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="TestCP\0.htm" />
+    <Content Include="TestCP\1.htm" />
+    <Content Include="TestCP\Error.htm" />
+    <Content Include="TestCP\OK.htm" />
     <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="TestPage\WebForm2.aspx" />
     <Content Include="TestPage\WebForm3.aspx" />
@@ -886,6 +891,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportDetailPage.aspx.designer.cs">
       <DependentUpon>ReportDetailPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportRecordDate.aspx.cs">
+      <DependentUpon>ReportRecordDate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportRecordDate.aspx.designer.cs">
+      <DependentUpon>ReportRecordDate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx.cs">
       <DependentUpon>ReportRecordDateRange.aspx</DependentUpon>
@@ -1475,11 +1487,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
+    <Folder Include="IVRS\" />
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="SPSInterface\" />
+    <Folder Include="SPS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.en-US.xml" />

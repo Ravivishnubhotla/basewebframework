@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Common.Logging;
 
 namespace Legendigital.Common.WebApp
 {
     public class Global : System.Web.HttpApplication
     {
+        private ILog logger = LogManager.GetLogger(typeof(Global));
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -32,7 +34,8 @@ namespace Legendigital.Common.WebApp
 
         protected void Application_Error(object sender, EventArgs e)
         {
-
+            Exception objErr = Server.GetLastError().GetBaseException();
+            logger.Error("Page Error:" + Request.Url, objErr);
         }
 
         protected void Session_End(object sender, EventArgs e)
