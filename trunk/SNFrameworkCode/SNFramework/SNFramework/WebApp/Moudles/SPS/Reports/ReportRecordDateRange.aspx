@@ -55,7 +55,7 @@
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPDayReport" runat="server" StoreID="storeSPDayReport"
-                StripeRows="true" Title="即时报表" Icon="Table">
+                StripeRows="true" Title="汇总报表" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
