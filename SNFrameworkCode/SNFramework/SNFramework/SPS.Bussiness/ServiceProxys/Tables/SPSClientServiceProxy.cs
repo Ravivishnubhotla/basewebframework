@@ -16,6 +16,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	public interface ISPSClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSClientEntity> ,ISPSClientServiceProxyDesigner
     {
 	    void QuickAdd(SPSClientEntity clientEntity, string loginId, string password);
+
+        SPSClientEntity GetClientByUserID(int userId);
     }
 
     internal partial class SPSClientServiceProxy : ISPSClientServiceProxy
@@ -50,6 +52,11 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             SelfDataObj.Save(clientEntity);
 
+        }
+
+        public SPSClientEntity GetClientByUserID(int userId)
+        {
+            return SelfDataObj.GetClientByUserID(userId);
         }
     }
 }

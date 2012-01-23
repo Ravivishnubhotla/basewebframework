@@ -121,5 +121,10 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        businessProxy.QuickAdd(spsClientWrapper.entity, loginId, password);
 	    }
+
+        public static SPSClientWrapper GetClientByUserID(int userId)
+	    {
+            return ConvertEntityToWrapper(businessProxy.GetClientByUserID(userId));
+	    }
     }
 }

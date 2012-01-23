@@ -22,5 +22,17 @@ namespace SPS.Data.Tables
  
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
         }
+
+        public SPSClientEntity GetClientByUserID(int userId)
+        {
+            NHibernateDynamicQueryGenerator<SPSClientEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            dynamicQueryGenerator.AddWhereClause(SPSClientDataObject.PROPERTY_USERID.Eq(userId));
+            //指定排序规则
+            dynamicQueryGenerator.AddOrderBy(SPSClientDataObject.PROPERTY_ID.Desc());
+
+            return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
     }
 }
