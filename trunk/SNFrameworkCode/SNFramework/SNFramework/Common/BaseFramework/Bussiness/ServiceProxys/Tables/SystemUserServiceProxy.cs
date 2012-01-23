@@ -209,7 +209,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         public bool IsUserInRole(string loginId, string roleName)
         {
             SystemUserEntity user = this.SelfDataObj.GetUserByLoginID(loginId);
-            SystemRoleEntity role = this.DataObjectsContainerIocID.SystemRoleDataObjectInstance.GetRoleByName(roleName);
+            SystemRoleEntity role = this.DataObjectsContainerIocID.SystemRoleDataObjectInstance.GetRoleByCode(roleName);
             if ((user != null) && (role != null))
             {
                 return CheckUserRoleRelationIsExist(user, role);
@@ -223,7 +223,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
             List<SystemRoleWrapper> allRoles = GetUserAssignedRoleByUserLoginId(username);
             foreach (var role in allRoles)
             {
-                list.Add(role.RoleName);
+                list.Add(role.RoleCode);
             }
             return list.ToArray();
         }

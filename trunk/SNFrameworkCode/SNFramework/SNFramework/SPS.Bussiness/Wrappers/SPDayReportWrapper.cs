@@ -105,6 +105,11 @@ namespace SPS.Bussiness.Wrappers
             return ConvertNoDbDataToWrapperList(businessProxy.CaculateReport(reportDate.Date));
         }
 
+        public static List<SPDayReportWrapper> CaculateReport(DateTime reportDate,SPSClientWrapper clientWrapper)
+        {
+            return ConvertNoDbDataToWrapperList(businessProxy.CaculateReport(reportDate.Date, clientWrapper.Entity));
+        }
+
 	    public string CodeID_MoCode
 	    {
 	        get
