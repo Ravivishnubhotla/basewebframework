@@ -24,6 +24,8 @@
 
  
         }
+        
+ 
 
     </script>
     <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
@@ -47,6 +49,7 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+ 
         <DirectEventConfig Timeout="120000">
         </DirectEventConfig>
     </ext:Store>
@@ -128,6 +131,29 @@
                     <ext:GroupingSummary ID="GroupingSummary1" runat="server">
                     </ext:GroupingSummary>
                 </Plugins>
+                <BottomBar>
+                    <ext:Toolbar ID="Toolbar1" runat="server">
+                        <Items>
+                            <ext:DisplayField ID="colTotalTotalCount" FieldLabel="总MR数" runat="server" Text="-" />
+                            <ext:ToolbarSeparator runat="server" />
+                            <ext:DisplayField ID="colTotalTotalSuccessCount" FieldLabel="总MO数" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator1" runat="server" />
+                            <ext:DisplayField ID="colTotalInterceptCount" FieldLabel="总扣量" runat="server" Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator2" runat="server" />
+                            <ext:DisplayField ID="colTotalDownTotalCount" FieldLabel="总下家数" runat="server" Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator3" runat="server" />
+                            <ext:DisplayField ID="colTotalDownSycnSuccess" FieldLabel="总同步成功数" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator4" runat="server" />
+                            <ext:DisplayField ID="colTotalDownSycnFailed" FieldLabel="总同步失败数" runat="server"
+                                Text="-" />
+                            <ext:ToolbarSeparator ID="ToolbarSeparator5" runat="server" />
+                            <ext:DisplayField ID="colTotalDownNotSycn" FieldLabel="总未同步数" runat="server" Text="-"
+                                Hidden="True" />
+                        </Items>
+                    </ext:Toolbar>
+                </BottomBar>
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
