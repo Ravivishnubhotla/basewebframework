@@ -24,6 +24,13 @@
 
  
         }
+
+        function UpdateTotalCount(lblTotalCount) {
+            //var lblTotalCount = Ext.get('<%= lblTotalTotalCount.ClientID %>');
+            //lblTotalCount.setValue('11111');
+            
+
+        }
         
  
 
@@ -49,7 +56,6 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
- 
         <DirectEventConfig Timeout="120000">
         </DirectEventConfig>
     </ext:Store>
@@ -134,7 +140,7 @@
                 <BottomBar>
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
-                            <ext:DisplayField ID="colTotalTotalCount" FieldLabel="总MR数" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" runat="server" Text="-" />
                             <ext:ToolbarSeparator runat="server" />
                             <ext:DisplayField ID="colTotalTotalSuccessCount" FieldLabel="总MO数" runat="server"
                                 Text="-" />
