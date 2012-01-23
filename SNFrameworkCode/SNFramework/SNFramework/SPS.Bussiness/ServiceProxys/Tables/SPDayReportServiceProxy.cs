@@ -23,6 +23,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    void ReBulidReport(DateTime date);
 	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate);
 	    List<SPDayReportEntity> CaculateReport(DateTime reportDate, SPSClientEntity clientEntity);
+	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity clientEntity);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -85,10 +86,10 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                 spDayReport.ChannelID = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelID);
                 spDayReport.ClientID = this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Load(clientID);
                 spDayReport.CodeID = this.DataObjectsContainerIocID.SPCodeDataObjectInstance.Load(codeID);
-                spDayReport.DownTotalCount = FindCountInDataTable(dtDown, channelID, clientID, codeID);
-                spDayReport.DownSycnSuccess = FindCountInDataTable(dtDownSycnSuccess, channelID, clientID, codeID);
-                spDayReport.DownNotSycn = FindCountInDataTable(dtDownNotSycn, channelID, clientID, codeID);
-                spDayReport.DownSycnFailed = FindCountInDataTable(dtDownSycnFailed, channelID, clientID, codeID);
+                spDayReport.DownTotalCount = FindCountInDataTable(dtDown, channelID, codeID);
+                spDayReport.DownSycnSuccess = FindCountInDataTable(dtDownSycnSuccess, channelID, codeID);
+                spDayReport.DownNotSycn = FindCountInDataTable(dtDownNotSycn, channelID, codeID);
+                spDayReport.DownSycnFailed = FindCountInDataTable(dtDownSycnFailed, channelID, codeID);
 
                 spDayReportEntities.Add(spDayReport);
 
@@ -96,7 +97,12 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
             return spDayReportEntities;
         }
-                
+
+        public List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity clientEntity)
+        {
+            return SelfDataObj.QueryReport(startDate.Date, endDate.Date,clientEntity);
+        }
+
         [Transaction(ReadOnly = false)]
         public void ReBulidReport(DateTime date)
         {
@@ -125,7 +131,19 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         }
 
 
+        private int FindCountInDataTable(DataTable dtIntercept, int channelId, int codeId)
+        {
+            string filterSql = string.Format("  ChannelID = {0} and CodeID ={1} ",  channelId, codeId);
 
+            DataRow[] drs = dtIntercept.Select(filterSql);
+
+            if (drs.Length > 0)
+            {
+                return (int)drs[0]["RecordCount"];
+            }
+
+            return 0;
+        }
 
         private int FindCountInDataTable(DataTable dtIntercept, int channelId, int clientId, int codeId)
         {

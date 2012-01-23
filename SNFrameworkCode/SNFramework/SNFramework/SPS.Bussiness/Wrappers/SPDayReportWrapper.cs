@@ -161,5 +161,10 @@ namespace SPS.Bussiness.Wrappers
                 }
             }
 	    }
+
+        public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
+	    {
+            return ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate, client.Entity));
+	    }
     }
 }
