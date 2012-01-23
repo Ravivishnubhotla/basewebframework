@@ -85,12 +85,30 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
-        /// GridView1 control.
+        /// btnToggleGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.Button btnToggleGroups;
+        
+        /// <summary>
+        /// GroupingView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GroupingView GroupingView1;
+        
+        /// <summary>
+        /// GroupingSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GroupingSummary GroupingSummary1;
     }
 }

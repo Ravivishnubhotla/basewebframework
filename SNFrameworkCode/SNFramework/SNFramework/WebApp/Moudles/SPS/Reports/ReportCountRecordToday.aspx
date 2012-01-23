@@ -225,7 +225,7 @@
                                 </ext:ImageCommand>
                             </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownSycnSuccess" Header="同步下家成功数" DataIndex="DownSycnSuccess"
+                        <ext:Column ColumnID="colDownSycnSuccess" Header="同步成功数" DataIndex="DownSycnSuccess"
                             Sortable="true">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewDownSycnSuccessRecord" Icon="DatabaseTable">
@@ -233,7 +233,7 @@
                                 </ext:ImageCommand>
                             </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownSycnFailed" Header="同步下家失败数" DataIndex="DownSycnFailed"
+                        <ext:Column ColumnID="colDownSycnFailed" Header="同步失败数" DataIndex="DownSycnFailed"
                             Sortable="true">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewDownSycnFailedRecord" Icon="DatabaseTable">
@@ -241,7 +241,7 @@
                                 </ext:ImageCommand>
                             </Commands>
                         </ext:Column>
-                        <ext:Column ColumnID="colDownNotSycn" Header="未同步下家数" DataIndex="DownNotSycn" Sortable="true"  Hidden="True">
+                        <ext:Column ColumnID="colDownNotSycn" Header="未同步数" DataIndex="DownNotSycn" Sortable="true"  Hidden="True">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewDownNotSycnRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
