@@ -66,6 +66,7 @@
     <Content Include="images\logo.JPG" />
     <Content Include="images\logo.png" />
     <Content Include="images\maplogo.png" />
+    <Content Include="images\markers.png" />
     <Content Include="images\user.png" />
     <Content Include="MapSamples\AdvanceShowMap.aspx" />
     <Content Include="MapSamples\BaiduMapShowPage.aspx" />
