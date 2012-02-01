@@ -22,6 +22,15 @@ namespace BaiduMapSearch.MapSamples {
         protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
+        /// storeResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeResult;
+        
+        /// <summary>
         /// ViewPort1 control.
         /// </summary>
         /// <remarks>
@@ -49,49 +58,49 @@ namespace BaiduMapSearch.MapSamples {
         protected global::Ext.Net.Panel regionHeader;
         
         /// <summary>
-        /// TabPanel1 control.
+        /// tabSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TabPanel TabPanel1;
+        protected global::Ext.Net.TabPanel tabSearch;
         
         /// <summary>
-        /// Panel3 control.
+        /// pnlSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel Panel3;
+        protected global::Ext.Net.FormPanel pnlSearch;
         
         /// <summary>
-        /// CompositeField1 control.
+        /// cfSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.CompositeField CompositeField1;
+        protected global::Ext.Net.CompositeField cfSearch;
         
         /// <summary>
-        /// TextField3 control.
+        /// txtMapSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField TextField3;
+        protected global::Ext.Net.TextField txtMapSearch;
         
         /// <summary>
-        /// Button2 control.
+        /// btnMapSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button Button2;
+        protected global::Ext.Net.Button btnMapSearch;
         
         /// <summary>
         /// Panel4 control.
@@ -202,13 +211,13 @@ namespace BaiduMapSearch.MapSamples {
         protected global::Ext.Net.Button Button5;
         
         /// <summary>
-        /// Panel2 control.
+        /// pnlMainMap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
+        protected global::Ext.Net.Panel pnlMainMap;
         
         /// <summary>
         /// Panel1 control.
@@ -218,5 +227,68 @@ namespace BaiduMapSearch.MapSamples {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Panel Panel1;
+        
+        /// <summary>
+        /// bl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.BorderLayout bl;
+        
+        /// <summary>
+        /// pnlInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Panel pnlInfo;
+        
+        /// <summary>
+        /// txtCenterLat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField txtCenterLat;
+        
+        /// <summary>
+        /// txtCenterLng control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField txtCenterLng;
+        
+        /// <summary>
+        /// grdFindPath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GridPanel grdFindPath;
+        
+        /// <summary>
+        /// RowSelectionModel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
+        
+        /// <summary>
+        /// PagingToolbar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.PagingToolbar PagingToolbar1;
     }
 }
