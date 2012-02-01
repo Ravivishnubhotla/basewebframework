@@ -19,6 +19,9 @@
         </Reader>
     </ext:Store>
     <script type="text/javascript">
+
+        var markets = [];
+
         function map_dragend(center) {
             <%= txtCenterLat.ClientID %>.setValue(center.lat);
             <%= txtCenterLng.ClientID %>.setValue(center.lng);
@@ -69,8 +72,10 @@
             fpoint = results.getPoi(0).point;
         }
 
+        markets = [];
+
         for (var i = 0; i < rcount; i++) {
-            <%= pnlMainMap.ClientID %>.getBody().addMarker(results.getPoi(i).point,i);
+            markets.push(<%= pnlMainMap.ClientID %>.getBody().addMarker(results.getPoi(i).point,i));
             StoreAddDirection(results.getPoi(i).title + "-" + results.getPoi(i).address, results.getPoi(i).point.lng, results.getPoi(i).point.lat);
         }
         
@@ -88,7 +93,16 @@
                    //alert(rec.data);
                 //alert(rec.get('Longitude'));
 
-                    <%= pnlMainMap.ClientID %>.getBody().MoveToPoint(rec.get('Longitude'), rec.get('Latitude'));     
+                    <%= pnlMainMap.ClientID %>.getBody().MoveToPoint(rec.get('Longitude'), rec.get('Latitude'));
+
+                    for (var i = 0; i < markets.length; i++) {
+                        if(rowIndex==i)
+                            markets[rowIndex].setTop(true);
+                        else
+                            markets[rowIndex].setTop(false);  
+                    }
+
+   
             }
 
 

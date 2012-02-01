@@ -38,6 +38,8 @@
     map.enableScrollWheelZoom();
     map.enableKeyboard();
 
+
+
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function (r) {
         //alert(this.getStatus());
@@ -127,5 +129,7 @@
     }
 
 
-
+
+
+
 </script>
