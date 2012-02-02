@@ -379,6 +379,7 @@
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.zh-CHS.xml" />
@@ -1273,6 +1274,13 @@
     <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.cs">
+      <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.designer.cs">
+      <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx.cs">
       <DependentUpon>SystemSettingEditor.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1505,6 +1513,7 @@
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPS\" />
+    <Folder Include="WCFS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.en-US.xml" />

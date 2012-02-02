@@ -45,6 +45,31 @@ namespace SPSUtil.Moudles
 
 
                     break;
+                case "tsbSendDataUrls":
+
+
+                    frmTestSendTask frmSendTask = new frmTestSendTask();
+
+                    if (frmSendTask.ShowDialog()==DialogResult.OK)
+                    {
+                        this.tsbUrlSender.Enabled = false;
+                        this.tsbProgressBar.Visible = true;
+                        this.tsbCancelProgress.Visible = true;
+
+                        this.rtxtOutput.Clear();
+
+
+                        //this.richTextBox1.a
+                        bgwSenderUrl.RunWorkerAsync(frmSendTask.SendTask);
+
+                    }
+
+
+
+                    break;
+
+
+                    
             }
         }
 
