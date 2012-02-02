@@ -1168,6 +1168,7 @@
     <Compile Include="Utility\HttpUtil.cs" />
     <Compile Include="Utility\ReflectionUtil.cs" />
     <Compile Include="Utility\SerializeUtil.cs" />
+    <Compile Include="Utility\ServerInfoUtil.cs" />
     <Compile Include="Utility\StringUtil.cs" />
     <Compile Include="Utility\VauleConvertUtil.cs" />
     <Compile Include="Utility\WebControlHelper.cs" />
