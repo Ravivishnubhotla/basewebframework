@@ -38,7 +38,7 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 25);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(684, 215);
+            this.pnlMain.Size = new System.Drawing.Size(684, 237);
             this.pnlMain.TabIndex = 8;
             // 
             // tsTop
@@ -51,7 +51,7 @@
             // 
             // ssBottom
             // 
-            this.ssBottom.Location = new System.Drawing.Point(0, 240);
+            this.ssBottom.Location = new System.Drawing.Point(0, 262);
             this.ssBottom.Name = "ssBottom";
             this.ssBottom.Size = new System.Drawing.Size(684, 22);
             this.ssBottom.TabIndex = 6;
@@ -59,9 +59,9 @@
             // 
             // FrmListcs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 262);
+            this.ClientSize = new System.Drawing.Size(684, 284);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.tsTop);
             this.Controls.Add(this.ssBottom);

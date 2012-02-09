@@ -185,6 +185,303 @@
   <ItemGroup>
     <None Include="Resources\cancel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_world.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_attach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_break_insert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_header_footer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_landscape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_landscape_shot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_magnify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_paintbrush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_portrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_portrait_shot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_acrobat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_actionscript.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_cd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_cdr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_code_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_coldfusion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_compressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_cplusplus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_csharp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_cup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_database_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_dvd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_excel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_flash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_font.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_freehand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_get.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_h.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_horizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_magnify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_medal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_office.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_paint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_paint_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_paintbrush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_paste_table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_php.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_powerpoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_put.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_ruby.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_side_by_side.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_stack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_swoosh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_text_width.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_tux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_visualstudio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_width.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_word.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_world.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_wrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_zip.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_word.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
