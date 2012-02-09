@@ -33,11 +33,13 @@
     var point = new BMap.Point(113.146196, 29.378007);    // 创建点坐标
     map.centerAndZoom(point, 14);                     // 初始化地图,设置中心点坐标和地图级别。
     map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
-    var opts = { type: BMAP_NAVIGATION_CONTROL_LARGE }
+    var opts = { type: BMAP_NAVIGATION_CONTROL_LARGE };
     map.addControl(new BMap.NavigationControl(opts)); 
     map.enableScrollWheelZoom();
     map.enableKeyboard();
-    var marker = new BMap.Marker(point);
+    var marker = new BMap.Marker(point, { 
+        raiseOnDrag: true
+    });
     map.addOverlay(marker);
     marker.enableDragging(true); // 设置标注可拖拽
     marker.addEventListener("dragend", function () {
