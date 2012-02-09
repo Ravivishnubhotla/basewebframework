@@ -34,10 +34,10 @@
             this.tsbCancelProgress = new System.Windows.Forms.ToolStripSplitButton();
             this.tsTop = new System.Windows.Forms.ToolStrip();
             this.tsbUrlSender = new System.Windows.Forms.ToolStripButton();
+            this.tsbSendDataUrls = new System.Windows.Forms.ToolStripButton();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.bgwSenderUrl = new System.ComponentModel.BackgroundWorker();
-            this.tsbSendDataUrls = new System.Windows.Forms.ToolStripButton();
             this.ssBottom.SuspendLayout();
             this.tsTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -71,7 +71,7 @@
             this.tsbCancelProgress.Image = global::SPSUtil.Properties.Resources.cancel;
             this.tsbCancelProgress.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCancelProgress.Name = "tsbCancelProgress";
-            this.tsbCancelProgress.Size = new System.Drawing.Size(78, 21);
+            this.tsbCancelProgress.Size = new System.Drawing.Size(75, 20);
             this.tsbCancelProgress.Text = "Cancel";
             this.tsbCancelProgress.Visible = false;
             this.tsbCancelProgress.ButtonClick += new System.EventHandler(this.tsbCancelProgress_ButtonClick);
@@ -93,8 +93,16 @@
             this.tsbUrlSender.Image = global::SPSUtil.Properties.Resources.link_go;
             this.tsbUrlSender.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUrlSender.Name = "tsbUrlSender";
-            this.tsbUrlSender.Size = new System.Drawing.Size(148, 22);
+            this.tsbUrlSender.Size = new System.Drawing.Size(147, 22);
             this.tsbUrlSender.Text = "直接批量发送测试请求";
+            // 
+            // tsbSendDataUrls
+            // 
+            this.tsbSendDataUrls.Image = global::SPSUtil.Properties.Resources.brick_link;
+            this.tsbSendDataUrls.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSendDataUrls.Name = "tsbSendDataUrls";
+            this.tsbSendDataUrls.Size = new System.Drawing.Size(147, 22);
+            this.tsbSendDataUrls.Text = "直接批量发送数据请求";
             // 
             // pnlMain
             // 
@@ -122,14 +130,6 @@
             this.bgwSenderUrl.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSenderUrl_DoWork);
             this.bgwSenderUrl.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwSenderUrl_ProgressChanged);
             this.bgwSenderUrl.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSenderUrl_RunWorkerCompleted);
-            // 
-            // tsbSendDataUrls
-            // 
-            this.tsbSendDataUrls.Image = global::SPSUtil.Properties.Resources.brick_link;
-            this.tsbSendDataUrls.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSendDataUrls.Name = "tsbSendDataUrls";
-            this.tsbSendDataUrls.Size = new System.Drawing.Size(148, 22);
-            this.tsbSendDataUrls.Text = "直接批量发送数据请求";
             // 
             // HttpBatchSender
             // 
