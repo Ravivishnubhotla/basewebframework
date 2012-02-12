@@ -13,6 +13,7 @@
     <RootNamespace>BaiduMapSearch</RootNamespace>
     <AssemblyName>BaiduMapSearch</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,7 +67,11 @@
     <Content Include="images\logo.JPG" />
     <Content Include="images\logo.png" />
     <Content Include="images\maplogo.png" />
+<<<<<<< .mine
+    <Content Include="images\Market\Home.png" />
+=======
     <Content Include="images\markers.png" />
+>>>>>>> .r772
     <Content Include="images\user.png" />
     <Content Include="MapSamples\AdvanceShowMap.aspx" />
     <Content Include="MapSamples\BaiduMapShowPage.aspx" />
