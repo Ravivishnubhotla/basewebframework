@@ -48,9 +48,9 @@ namespace SPSUtil.Moudles
                 case "tsbSendDataUrls":
 
 
-                    frmTestSendTask frmSendTask = new frmTestSendTask();
+                    frmTestSendTask frmSendTask1 = new frmTestSendTask();
 
-                    if (frmSendTask.ShowDialog()==DialogResult.OK)
+                    if (frmSendTask1.ShowDialog() == DialogResult.OK)
                     {
                         this.tsbUrlSender.Enabled = false;
                         this.tsbProgressBar.Visible = true;
@@ -60,7 +60,7 @@ namespace SPSUtil.Moudles
 
 
                         //this.richTextBox1.a
-                        bgwSenderUrl.RunWorkerAsync(frmSendTask.SendTask);
+                        bgwSenderUrl.RunWorkerAsync(frmSendTask1.SendTask);
 
                     }
 
