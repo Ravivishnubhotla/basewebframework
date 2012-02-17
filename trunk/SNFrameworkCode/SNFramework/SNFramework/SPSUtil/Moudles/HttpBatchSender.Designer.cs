@@ -96,14 +96,16 @@
             this.tsbUrlSender.Size = new System.Drawing.Size(147, 22);
             this.tsbUrlSender.Text = "直接批量发送测试请求";
             // 
+ 
             // tsbSendDataUrls
             // 
             this.tsbSendDataUrls.Image = global::SPSUtil.Properties.Resources.brick_link;
             this.tsbSendDataUrls.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSendDataUrls.Name = "tsbSendDataUrls";
-            this.tsbSendDataUrls.Size = new System.Drawing.Size(147, 22);
+            this.tsbSendDataUrls.Size = new System.Drawing.Size(148, 22);
             this.tsbSendDataUrls.Text = "直接批量发送数据请求";
             // 
+
             // pnlMain
             // 
             this.pnlMain.Controls.Add(this.rtxtOutput);
