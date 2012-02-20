@@ -63,7 +63,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		string GenerateType = (string)input["GenerateType"];
 		
-		uiftg = (UICodeGenerationConfig)input["Uiconfig"];
+		//uiftg = (UICodeGenerationConfig)input["Uiconfig"];
 		
 		NHibernateFrameworkWebUIGenerateConfig config = (NHibernateFrameworkWebUIGenerateConfig)input["codeGenerationSetting"];
 		
@@ -71,7 +71,8 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
 		
-		
+	            try
+            {	
 		switch (GenerateType)
 		{
 			case "GenerateAddPageHtmlAndPageCode":
@@ -120,7 +121,11 @@ public class GeneratedTemplate : DotNetScriptTemplate
 				break;
 		}
 		
-
+            }
+            catch (Exception ex)
+            {
+				output.writeln("模版错误："+ex.Message + "-----" + ex.StackTrace);
+            }
 		
 %>
 <%  
@@ -333,19 +338,22 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			if(tableUIGenerationParamsListItem.IsAutoKey)
 				return;
 			string domainFieldName = TableColumnGenerationHelper.GeneratePorpertyTypeByTableColumn(column);
+			
+			//output.writeln(tableUIGenerationParamsListItem.InputType);
+			
 			switch (tableUIGenerationParamsListItem.InputType)
 			{
-				case "Label":
+				case "DisplayField":
 %>					
 						<ext:DisplayField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AnchorHorizontal="95%" />
                     
 <%					break;
-				case "TextBox":
+				case "TextField":
 %>			
 						<ext:TextField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%" />
               
 <%					break;
-				case "TextBoxMultiLine":
+				case "TextArea":
 %>					
 						<ext:TextArea ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
                    
@@ -444,7 +452,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 		
 		private string GetInputControlName(TableUIGenerationParams tableUIGenerationParamsListItem)
 		{
-			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlIDFormat.Replace("{$PName}",tableUIGenerationParamsListItem.FieldName);		
+			return this.cfg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlIDFormat.Replace("{$PName}",tableUIGenerationParamsListItem.FieldName);		
 		}
 		
 		private string GetLableControlName(TableUIGenerationParams tableUIGenerationParamsListItem)
@@ -454,7 +462,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 		
 		private string GetInputControlValue(TableUIGenerationParams tableUIGenerationParamsListItem)
 		{
-			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlGetSetValuePrppertyName;
+			return this.cfg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlGetSetValuePrppertyName;
 		}
 		
 		
@@ -560,6 +568,10 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
 					if (column.IsAutoKey)
 						continue;
+					//output.writeln(tableUIGenerationParamsListArray.Length.ToString());
+					//output.writeln(GetInputControlName(tableUIGenerationParamsListArray[i]));
+					//output.writeln(GetInputControlValue(tableUIGenerationParamsListArray[i]));
+					//output.writeln(column.LanguageType);
 %>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
 <%				}%>
 
