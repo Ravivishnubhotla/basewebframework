@@ -71,55 +71,55 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
 		
-	            try
-            {	
-		switch (GenerateType)
-		{
-			case "GenerateAddPageHtmlAndPageCode":
-				if(config.GenerateKeyLableForm)
-					GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				break;
-			case "GenerateEditPageHtmlAndPageCode":
-				if(config.GenerateKeyLableForm)
-					GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				break;
-			case "GenerateViewPageHtmlAndPageCode":
-				if(config.GenerateKeyLableForm)
-					GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				break;
-			case "GenerateListPageHtmlAndPageCode":
-				GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
-				break;
-			case "GenerateSingleManageListPageHtmlAndPageCode":
-				if(config.GenerateKeyLableForm)
-					GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				if(config.GenerateKeyLableForm)
-					GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				if(config.GenerateKeyLableForm)
-					GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
-				else
-					GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
-				GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
-				GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
-				break;
-			default:
-				break;
-		}
+	    try
+        {	
+			switch (GenerateType)
+			{
+				case "GenerateAddPageHtmlAndPageCode":
+					if(config.GenerateKeyLableForm)
+						GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					break;
+				case "GenerateEditPageHtmlAndPageCode":
+					if(config.GenerateKeyLableForm)
+						GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					break;
+				case "GenerateViewPageHtmlAndPageCode":
+					if(config.GenerateKeyLableForm)
+						GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					break;
+				case "GenerateListPageHtmlAndPageCode":
+					GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
+					break;
+				case "GenerateSingleManageListPageHtmlAndPageCode":
+					if(config.GenerateKeyLableForm)
+						GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					if(config.GenerateKeyLableForm)
+						GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					if(config.GenerateKeyLableForm)
+						GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+					else
+						GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+					GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
+					GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
+					break;
+				default:
+					break;
+			}
 		
             }
             catch (Exception ex)
@@ -343,9 +343,14 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			
 			switch (tableUIGenerationParamsListItem.InputType)
 			{
+				case "HiddenField":
+%>					
+						<ext:HiddenField ID="hid<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"   AnchorHorizontal="95%" />
+                    
+<%					break;
 				case "DisplayField":
 %>					
-						<ext:DisplayField ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AnchorHorizontal="95%" />
+						<ext:DisplayField ID="lbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AnchorHorizontal="95%" />
                     
 <%					break;
 				case "TextField":
@@ -358,7 +363,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 						<ext:TextArea ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
                    
 <%					break;
-				case "DropDownList":
+				case "ComboBox":
 %>					 <ext:ComboBox ID="cmb<%= tableUIGenerationParamsListItem.FieldName %>" Editable="false" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"   AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>" 
                                                 SelectedIndex="0" AnchorHorizontal="95%">
                                                 <Items>
@@ -367,12 +372,12 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                                                 </Items>
                                             </ext:ComboBox> 
 <%					break;
-				case "CheckBox":
+				case "Checkbox":
 %>					                                         
                                             <ext:Checkbox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" Checked="false"  AnchorHorizontal="95%"/>
                                        
 <%					break;
-				case "CheckBoxList":
+				case "CheckBoxGroup":
 %>					                                         <ext:CheckboxGroup 
                                                 ID="cbl<%= tableUIGenerationParamsListItem.FieldName %>" 
                                                 runat="server" 
@@ -388,7 +393,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                                                 </Items>
                                             </ext:CheckboxGroup>    
 <%					break;
-				case "RadioButtonList":
+				case "RadioGroup":
 %>			  	 <ext:RadioGroup ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AnchorHorizontal="95%">
                                                 <Items>
 												<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
@@ -414,17 +419,18 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 %>					<telerik:RadComboBox ID="<%= GetInputControlName(tableUIGenerationParamsListItem) %>" runat="server" ToolTip="Please select <%= tableUIGenerationParamsListItem.FieldNameCn %>" EmptyMessage="Please select <%= tableUIGenerationParamsListItem.FieldNameCn %>" Width="300px"    AnchorHorizontal="95%">
                     </telerik:RadComboBox>
 <%					break;
-				case "RadNumericTextBox":
+				case "NumberField":
+				case "NumberDecimalField":
 %>				 
 						<ext:NumberField ID="radnum<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                  	
 <%					break;
-				case "RadDatePicker":
+				case "DateField":
 %>                 
 						<ext:DateField  ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                 
 <%					break;
-				case "RadEditor":
+				case "HtmlEditor":
 %>				 
 						<ext:HtmlEditor ID="edit<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"  AnchorHorizontal="95%"/>
               
