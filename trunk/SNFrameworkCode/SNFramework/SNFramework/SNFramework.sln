@@ -44,8 +44,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Temp
 		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
 		Code Templates\ExtJs表现层多语言模版.zeus = Code Templates\ExtJs表现层多语言模版.zeus
 		Code Templates\ExtJs表现层模版.zeus = Code Templates\ExtJs表现层模版.zeus
+		Code Templates\Legendigital.Code.MyGenAddin.dll = Code Templates\Legendigital.Code.MyGenAddin.dll
 		Code Templates\SN数据访问代码.zeus = Code Templates\SN数据访问代码.zeus
 		Code Templates\SPS.dat = Code Templates\SPS.dat
+		Code Templates\UI.dat = Code Templates\UI.dat
 		Code Templates\基础框架字典配置生成工具.zeus = Code Templates\基础框架字典配置生成工具.zeus
 	EndProjectSection
 EndProject
