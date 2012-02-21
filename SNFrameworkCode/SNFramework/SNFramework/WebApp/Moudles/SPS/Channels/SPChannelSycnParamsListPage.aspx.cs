@@ -17,8 +17,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         {
             if (X.IsAjaxRequest)
                 return;
-
-
+ 
 
             this.gridPanelSPChannelSycnParams.Reload();
         }
