@@ -16,6 +16,7 @@ namespace DataSendTools
 {
     class Program
     {
+
         private static ILog logger = LogManager.GetLogger(typeof(Program));
 
         static void Main(string[] args)
