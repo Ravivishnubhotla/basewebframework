@@ -20,6 +20,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_DEFAULTSYCNMOURL = "DefaultSycnMoUrl";
 		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
+		public static readonly string PROPERTY_NAME_DEFAULTINTERCEPTRATE = "DefaultInterceptRate";
+		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
 		
         #endregion
 	
@@ -34,6 +36,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int? _userID;
 		private string _defaultSycnMoUrl;
 		private string _defaultSycnMRUrl;
+		private int _defaultInterceptRate;
+		private int _defaultNoInterceptCount;
 		
 		#endregion
 
@@ -49,6 +53,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_userID = null;
 			_defaultSycnMoUrl = null;
 			_defaultSycnMRUrl = null;
+			_defaultInterceptRate = 5;
+			_defaultNoInterceptCount = 100;
 		}
 		#endregion
 
@@ -56,7 +62,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientGroupEntity( int id, string name, string description, int? userID, string defaultSycnMoUrl, string defaultSycnMRUrl)
+		public SPClientGroupEntity( int id, string name, string description, int? userID, string defaultSycnMoUrl, string defaultSycnMRUrl, int defaultInterceptRate, int defaultNoInterceptCount)
 		{
 			_id = id;
 			_name = name;
@@ -64,6 +70,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_userID = userID;
 			_defaultSycnMoUrl = defaultSycnMoUrl;
 			_defaultSycnMRUrl = defaultSycnMRUrl;
+			_defaultInterceptRate = defaultInterceptRate;
+			_defaultNoInterceptCount = defaultNoInterceptCount;
 		}
 		#endregion     
 	
@@ -162,6 +170,34 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 1000)
 					throw new ArgumentOutOfRangeException("Invalid value for DefaultSycnMRUrl", value, value.ToString());
 				_isChanged |= (_defaultSycnMRUrl != value); _defaultSycnMRUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DefaultInterceptRate
+		{
+			get { return _defaultInterceptRate; }
+
+			set	
+			{
+				_isChanged |= (_defaultInterceptRate != value); _defaultInterceptRate = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DefaultNoInterceptCount
+		{
+			get { return _defaultNoInterceptCount; }
+
+			set	
+			{
+				_isChanged |= (_defaultNoInterceptCount != value); _defaultNoInterceptCount = value;
 			}
 		}
 		/// <summary>

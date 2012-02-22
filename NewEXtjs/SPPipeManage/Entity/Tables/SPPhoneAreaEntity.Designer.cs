@@ -141,7 +141,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4)
+				if( value != null && value.Length > 8)
 					throw new ArgumentOutOfRangeException("Invalid value for MobileOperators", value, value.ToString());
 				_isChanged |= (_mobileOperators != value); _mobileOperators = value;
 			}

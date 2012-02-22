@@ -254,15 +254,15 @@ namespace LD.SPPipeManage.Data.AdoNet
         }
 
 
-
-
-
-
-        public DataSet GetAllClientChannel()
+        public DataSet GetAllClientChannel(DateTime reportdate)
         {
-            string sql = "select ChannelID,ClinetID as ClientID from dbo.SPClientChannelSetting group by ChannelID,ClinetID";
+            string sql = "SELECT     ChannelID, ClientID FROM  dbo.SPPaymentInfo WITH (nolock) WHERE     (CreateDate > @startDate) AND (CreateDate < @enddate) GROUP BY ChannelID, ClientID";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", reportdate.Date);
+
+            dbParameters.AddWithValue("enddate",reportdate.AddDays(1).Date);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
         }
@@ -1577,6 +1577,45 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
+
+        public decimal CaculteActualInterceptRate(int channelClientID, DateTime date)
+        {
+            string sql = "SELECT  IsIntercept,COUNT(*) as RCount FROM [SPPaymentInfo] with(nolock) where CreateDate>@startDate and CreateDate<@endDate and ChannleClientID=@ChannleClientID  group by IsIntercept";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", date.Date);
+
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
+
+            dbParameters.AddWithValue("ChannleClientID", channelClientID);
+
+            DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+            object result = dt.Compute("Sum(RCount)", "");
+
+            int totalCount = 0;
+
+            if (result != System.DBNull.Value)
+            {
+                totalCount = Convert.ToInt32(result);
+            }
+
+            int totalInterceptCount = 0;
+
+            object result2 = dt.Compute("Sum(RCount)", " IsIntercept =1 ");
+
+            if (result2 != System.DBNull.Value)
+            {
+                totalInterceptCount = Convert.ToInt32(result2);
+            }
+
+            if (totalCount <= 0)
+                return Decimal.Zero;
+
+            return ((decimal)totalInterceptCount / (decimal)totalCount)*100;
+        }
+
         public DataTable GetDayReport(DateTime startDate, DateTime endDate, string dataType)
         {
             string sql = @"select ChannelID,ChannleClientID,ClientGroupID,COUNT(*) as RecordCount  from dbo.SPPaymentInfo with(nolock)
@@ -1613,5 +1652,109 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId)
+        {
+            string sql = @"select ChannelID,ChannleClientID,ClientGroupID,COUNT(*) as RecordCount  from dbo.SPPaymentInfo with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if (clientGroupId>0)
+            {
+                sql += " AND ClientGroupID = @ClientGroupID ";
+            }
+
+
+            sql += " AND IsIntercept = 0 ";
+ 
+ 
+
+            sql += " GROUP BY  ChannelID,ChannleClientID,ClientGroupID ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+
+            if (clientGroupId > 0)
+            {
+                dbParameters.AddWithValue("ClientGroupID", clientGroupId);
+            }
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate)
+        {
+            string sql = @"SELECT dbo.GetClientGroupName1(ClientGroupID) AS ClientGroupName, dbo.GetMoCode(ChannleClientID) AS Mo, COUNT(*) AS DownCount
+FROM SPPaymentInfo
+WHERE (CreateDate > @startdate) AND (CreateDate < @enddate) AND 
+      (IsIntercept = 0)
+GROUP BY ClientGroupID, ChannleClientID
+ORDER BY ClientGroupName";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime reportDate, int clientGroupId)
+        {
+            string sql = @"SELECT  
+       [ClientID], SucesssToSend,
+       COUNT(*) as DownCount  
+  FROM [SPPaymentInfo] with(nolock)
+  where (CreateDate > @startdate) AND (CreateDate < @enddate) AND  ClientGroupID =@ClientGroupID and IsIntercept=0 
+  group by [ClientID],SucesssToSend
+  order by [ClientID],SucesssToSend
+
+";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", reportDate.Date);
+
+            dbParameters.AddWithValue("enddate", reportDate.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ClientGroupID", clientGroupId);
+
+            DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+
+            List<SPDayReportEntity> dayReports = new List<SPDayReportEntity>();
+
+            List<int> clients = new List<int>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                int cid = (int)dr["ClientID"];
+
+                if(!clients.Contains(cid))
+                    clients.Add(cid);
+            }
+
+
+            foreach (int clientid in clients)
+            {
+                SPDayReportEntity spDayReport = new SPDayReportEntity();
+                spDayReport.ClientID = clientid;
+                spDayReport.ReportDate = reportDate;
+                spDayReport.DownTotalCount = GetIntValueFromDb(dt.Compute("Sum(DownCount)", string.Format(" ClientID = {0} ", clientid)));
+                spDayReport.DownSuccess = GetIntValueFromDb(dt.Compute("Sum(DownCount)", string.Format(" ClientID = {0} and SucesssToSend=1 ", clientid)));
+                dayReports.Add(spDayReport);
+            }
+
+            return dayReports;
+        }
+
+        private int GetIntValueFromDb(object obj)
+        {
+            if (obj == System.DBNull.Value)
+                return 0;
+            return Convert.ToInt32(obj);
+        }
+
     }
 }

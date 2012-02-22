@@ -421,10 +421,42 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             int interceptRate = 0;
 
+            if(this.DefaultNoInterceptCount<0)
+            {
+                this.DefaultNoInterceptCount = 0;
+            }
+
+            if (this.DefaultNoInterceptCount>0)
+            {
+                this.DefaultNoInterceptCount = this.DefaultNoInterceptCount - 1;
+
+                Update(this);
+
+                return false;
+            }
+
             if(this.InterceptRate.HasValue)
             {
                 interceptRate = this.InterceptRate.Value;
             }
+
+            //int addRate = 60;
+
+            //int maxInterceptRate = 80;
+
+            //if (interceptRate == 0)
+            //    return false;
+
+            //decimal rate =  CaculteActualInterceptRate(System.DateTime.Now.Date);
+
+            //if (rate < Convert.ToDecimal(interceptRate))
+            //{
+            //    return CaculteRandom(Math.Min(interceptRate + addRate, maxInterceptRate));
+            //}
+            //else
+            //{
+            //    return false;
+            //}
 
             return CaculteRandom(interceptRate);
 
@@ -441,6 +473,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             //{
             //    return false;
             //}
+        }
+
+        private decimal CaculteActualInterceptRate(DateTime date)
+        {
+            return businessProxy.CaculteActualInterceptRate(this.entity,date);
         }
 
         private decimal GetToDayRate(int clinetID, int channelID)

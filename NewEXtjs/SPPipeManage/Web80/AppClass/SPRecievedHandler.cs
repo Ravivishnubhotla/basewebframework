@@ -76,6 +76,13 @@ namespace Legendigital.Common.Web.AppClass
                             httpRequest.RequestParams["command"] = " 6";
                         }
                     }
+                    if (httpRequest.RequestParams.ContainsKey("command"))
+                    {
+                        if (httpRequest.RequestParams["command"].ToString().ToLower().Equals("71") && httpRequest.RequestParams["sp_no"].ToString().ToLower().Equals("1066885031"))
+                        {
+                            httpRequest.RequestParams["command"] = "7";
+                        }
+                    }
                 }
                 if (channel.Id == 66)
                 {

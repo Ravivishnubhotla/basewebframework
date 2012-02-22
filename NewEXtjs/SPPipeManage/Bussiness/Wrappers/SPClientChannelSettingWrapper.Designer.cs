@@ -94,6 +94,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
+		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
 		
         #endregion
 
@@ -475,6 +476,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.Getway = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DefaultNoInterceptCount
+		{
+			get
+			{
+				return entity.DefaultNoInterceptCount;
+			}
+			set
+			{
+				entity.DefaultNoInterceptCount = value;
 			}
 		}
 		#endregion 

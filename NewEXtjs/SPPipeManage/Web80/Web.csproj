@@ -351,11 +351,15 @@
     <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx" />
     <Content Include="Moudles\SPS\ClientsView\Excel.xsl" />
+    <Content Include="Moudles\SPS\ClientsView\ReportDayRange.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ReportToDay.aspx" />
     <Content Include="Moudles\SPS\Clients\Blank.htm" />
     <Content Include="Moudles\SPS\Clients\Excel.xsl" />
     <Content Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx" />
@@ -384,8 +388,10 @@
     <Content Include="Moudles\SPS\Reports\ReSendData.aspx" />
     <Content Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx" />
     <Content Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx" />
     <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
     <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\SystemLogList.aspx" />
@@ -762,6 +768,13 @@
     <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.designer.cs">
       <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx.cs">
+      <DependentUpon>ClientGroupToDayReportPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx.designer.cs">
+      <DependentUpon>ClientGroupToDayReportPage1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx.cs">
       <DependentUpon>ClientGroupViewDaySum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -775,6 +788,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx.designer.cs">
       <DependentUpon>ClientGroupViewRecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx.cs">
+      <DependentUpon>ClientGroupViewRecord1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx.designer.cs">
+      <DependentUpon>ClientGroupViewRecord1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientInfoEditor.aspx.cs">
       <DependentUpon>ClientInfoEditor.aspx</DependentUpon>
@@ -859,6 +879,20 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx.designer.cs">
       <DependentUpon>ClientViewRecordListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportDayRange.aspx.cs">
+      <DependentUpon>ReportDayRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportDayRange.aspx.designer.cs">
+      <DependentUpon>ReportDayRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportToDay.aspx.cs">
+      <DependentUpon>ReportToDay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportToDay.aspx.designer.cs">
+      <DependentUpon>ReportToDay.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx.cs">
       <DependentUpon>SPClientAddToGroup.aspx</DependentUpon>
@@ -1163,6 +1197,13 @@
     <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx.designer.cs">
       <DependentUpon>SPALLClientGroupReportService.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx.cs">
+      <DependentUpon>SPALLClientGroupReportService1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx.designer.cs">
+      <DependentUpon>SPALLClientGroupReportService1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.cs">
       <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1176,6 +1217,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx.designer.cs">
       <DependentUpon>SPClientGroupTotalReportContainer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer1.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.cs">
       <DependentUpon>UCMovePayment.ascx</DependentUpon>
@@ -1385,12 +1433,15 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Moudles\SPS\Clients\SPClientGroupAmountReport1.rdl" />
-    <None Include="Moudles\SPS\Reports\ReportDataOperator.rdl" />
-    <None Include="Moudles\SPS\Reports\ReportDataProvince.rdl" />
-    <None Include="Moudles\SPS\Reports\SPSALLClientGroupAmount.rdl">
+    <Content Include="Moudles\SPS\Clients\SPClientGroupAmountReport1.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataOperator.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataProvince.rdl" />
+    <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount.rdl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount1.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

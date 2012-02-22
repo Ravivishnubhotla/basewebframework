@@ -45,6 +45,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType);
 
         DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate);
+        List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept1(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
+        List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept1(int spClientId, int spClientGroupId, int channleId, DateTime startDate, DateTime endDate, string province, string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount);
     }
 
     internal partial class SPPaymentInfoServiceProxy : ISPPaymentInfoServiceProxy
@@ -340,6 +342,36 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetClientMobileCount(int spClientId, DateTime startDate, DateTime endDate)
         {
             return AdoNetDb.GetClientMobileCount(spClientId,startDate, endDate);
+        }
+
+        [Transaction(IsolationLevel.ReadUncommitted)]
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept1(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+            SPClientGroupEntity clientGroupEntity = this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(spClientGroupID);
+
+            List<SPClientEntity> spClientEntities =
+                this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupEntity
+                    (clientGroupEntity);
+
+            return this.SelfDataObj.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept(spClientEntities, spClientGroupID,
+                                                                                   startDate,
+                                                                                   endDate, province, city, phone,
+                                                                                   sortFieldName, isdesc,
+                                                                                   pageIndex, limit,
+                                                                                   out recordCount);
+        }
+
+        [Transaction(IsolationLevel.ReadUncommitted)]
+        public List<SPPaymentInfoEntity> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept1(int spClientId, int spClientGroupId, int channleId, DateTime startDate, DateTime endDate, string province, string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+        {
+            SPClientEntity clientEntity = this.DataObjectsContainerIocID.SPClientDataObjectInstance.Load(spClientId);
+
+            return this.SelfDataObj.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept1(clientEntity, spClientGroupId,
+                                                                                   startDate,
+                                                                                   endDate, province, city, phone,
+                                                                                   sortFieldName, isdesc,
+                                                                                   pageIndex, limit,
+                                                                                   out recordCount);
         }
     }
  }

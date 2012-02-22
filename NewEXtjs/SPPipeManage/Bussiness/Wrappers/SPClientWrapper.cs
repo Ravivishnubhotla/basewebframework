@@ -462,6 +462,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     channelSetting.SyncType = "";
                 }
 
+
+                if (this.SPClientGroupID != null)
+                {
+                    channelSetting.InterceptRate = this.SPClientGroupID.DefaultInterceptRate;
+                    channelSetting.DefaultNoInterceptCount = this.SPClientGroupID.DefaultNoInterceptCount;
+                }
+ 
+
                 SPClientChannelSettingWrapper.Update(channelSetting);
             }
 	    }

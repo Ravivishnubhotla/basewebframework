@@ -19,6 +19,14 @@
                                 <ext:TextField ID="txtDefaultSycnMoUrl" runat="server" FieldLabel="默认同步地址" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="5"
+                                    DecimalPrecision="0" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtDefaultNoInterceptCount" runat="server" FieldLabel="默认免扣量"
+                                    Text="100" DecimalPrecision="0" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtUserID" runat="server" FieldLabel="登陆用户ID" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

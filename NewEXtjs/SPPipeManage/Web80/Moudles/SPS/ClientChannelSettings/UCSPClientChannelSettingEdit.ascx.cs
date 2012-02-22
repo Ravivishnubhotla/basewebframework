@@ -88,6 +88,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.chkDisable.Checked = obj.Disable.HasValue && obj.Disable.Value;
 
+                    this.txtDefaultNoInterceptCount.Text = obj.DefaultNoInterceptCount.ToString();
 
                     if (obj.SyncData.HasValue && obj.SyncData.Value)
                     {
@@ -165,6 +166,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.CommandCode = this.txtCommandCode.Text;
                 obj.Disable = this.chkDisable.Checked;
                 obj.ChannelCode = this.txtChannleCode.Text.Trim();
+                obj.DefaultNoInterceptCount = Convert.ToInt32(this.txtDefaultNoInterceptCount.Text);
+ 
 
 
                 if (!this.fsAllowSycnData.Collapsed)
