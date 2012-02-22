@@ -21,9 +21,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
     public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity>, ISPDayReportServiceProxyDesigner
     {
         void ReBulidReport(DateTime date);
-	    void BulidReport(DateTime date);
+        //void BulidReport(DateTime date);
 	    string GetDbSize();
-	    void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
+        //void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate);
 	    DataTable GetDayliyReport(DateTime dateTime);
         DataTable GetTodayReport(int clientId, int channelId);
         DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime);
@@ -44,6 +44,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetProvinceReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept);
         DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isInterceptstring ,string mprovince,  string moperator);
         DataTable GetDayReport(DateTime startDate, DateTime enddate, string dateType);
+        DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate , int clientGroupId);
+        DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate);
+        List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -56,78 +59,78 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public const string DataType_DownNotSycn = "DownNotSycn";
         public const string DataType_SycnFailed = "SycnFailed";
 
-        [Transaction(ReadOnly=false)]
-        public void BulidReport(DateTime date)
-        {
-            //Get all need to generate report's channle nad client ID.
-            DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
+        //[Transaction(ReadOnly=false)]
+        //public void BulidReport(DateTime date)
+        //{
+        //    //Get all need to generate report's channle nad client ID.
+        //    DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
 
-            DataTable dsDayTotalCount = this.AdoNetDb.GetDayTotalCount(date);
-            DataTable dsDayDownCount = this.AdoNetDb.GetDayDownCount(date);
-            DataTable dsDayInterceptCount = this.AdoNetDb.GetDayInterceptCount(date);
-            DataTable dsDayDownSycnCount = this.AdoNetDb.GetDayDownSycnCount(date);    
+        //    DataTable dsDayTotalCount = this.AdoNetDb.GetDayTotalCount(date);
+        //    DataTable dsDayDownCount = this.AdoNetDb.GetDayDownCount(date);
+        //    DataTable dsDayInterceptCount = this.AdoNetDb.GetDayInterceptCount(date);
+        //    DataTable dsDayDownSycnCount = this.AdoNetDb.GetDayDownSycnCount(date);    
 
-            foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
-            {
-                int channelID = (int)dataRow["ChannelID"];
-                int clientID = (int)dataRow["ClientID"];
-
-
-                string filterSql = string.Format(" ClientID = {0} and ChannelID = {1} ", clientID, channelID);
-
-                int totalCount = this.AdoNetDb.ExecuteScalarFormDataTable("TotalCount", filterSql, dsDayTotalCount);
-                int downCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownCount", filterSql, dsDayDownCount);
-                int interceptCount = this.AdoNetDb.ExecuteScalarFormDataTable("InterceptCount", filterSql, dsDayInterceptCount);
-                int downSycnCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownSycnCount", filterSql, dsDayDownSycnCount);
-
-                SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
-
-                bool hasReport = false;
+        //    foreach (DataRow dataRow in dsAllClientChannel.Tables[0].Rows)
+        //    {
+        //        int channelID = (int)dataRow["ChannelID"];
+        //        int clientID = (int)dataRow["ClientID"];
 
 
-                if (dayReportEntity==null)
-                {
-                    dayReportEntity = new SPDayReportEntity();
-                }
-                else
-                {
-                    hasReport = true;
-                }
+        //        string filterSql = string.Format(" ClientID = {0} and ChannelID = {1} ", clientID, channelID);
 
-                dayReportEntity.ChannelID = channelID;
-                dayReportEntity.ClientID = clientID;
-                if (hasReport)
-                {
-                    dayReportEntity.UpTotalCount += totalCount;
-                    dayReportEntity.UpSuccess += 0;
-                    dayReportEntity.InterceptTotalCount += interceptCount;
-                    dayReportEntity.InterceptSuccess += 0;
-                    dayReportEntity.DownTotalCount += downCount;
-                    dayReportEntity.DownSuccess += downSycnCount;
-                }
-                else
-                {
-                    dayReportEntity.UpTotalCount = totalCount;
-                    dayReportEntity.UpSuccess = 0;
-                    dayReportEntity.InterceptTotalCount = interceptCount;
-                    dayReportEntity.InterceptSuccess = 0;
-                    dayReportEntity.DownTotalCount = downCount;
-                    dayReportEntity.DownSuccess = downSycnCount;
-                }        
+        //        int totalCount = this.AdoNetDb.ExecuteScalarFormDataTable("TotalCount", filterSql, dsDayTotalCount);
+        //        int downCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownCount", filterSql, dsDayDownCount);
+        //        int interceptCount = this.AdoNetDb.ExecuteScalarFormDataTable("InterceptCount", filterSql, dsDayInterceptCount);
+        //        int downSycnCount = this.AdoNetDb.ExecuteScalarFormDataTable("DownSycnCount", filterSql, dsDayDownSycnCount);
+
+        //        SPDayReportEntity dayReportEntity = this.SelfDataObj.FindReportByChannelIDChannelIDAndDate(channelID, clientID, date);
+
+        //        bool hasReport = false;
+
+
+        //        if (dayReportEntity==null)
+        //        {
+        //            dayReportEntity = new SPDayReportEntity();
+        //        }
+        //        else
+        //        {
+        //            hasReport = true;
+        //        }
+
+        //        dayReportEntity.ChannelID = channelID;
+        //        dayReportEntity.ClientID = clientID;
+        //        if (hasReport)
+        //        {
+        //            dayReportEntity.UpTotalCount += totalCount;
+        //            dayReportEntity.UpSuccess += 0;
+        //            dayReportEntity.InterceptTotalCount += interceptCount;
+        //            dayReportEntity.InterceptSuccess += 0;
+        //            dayReportEntity.DownTotalCount += downCount;
+        //            dayReportEntity.DownSuccess += downSycnCount;
+        //        }
+        //        else
+        //        {
+        //            dayReportEntity.UpTotalCount = totalCount;
+        //            dayReportEntity.UpSuccess = 0;
+        //            dayReportEntity.InterceptTotalCount = interceptCount;
+        //            dayReportEntity.InterceptSuccess = 0;
+        //            dayReportEntity.DownTotalCount = downCount;
+        //            dayReportEntity.DownSuccess = downSycnCount;
+        //        }        
                 
-                dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
+        //        dayReportEntity.ReportDate = new DateTime(date.Year, date.Month, date.Day);
 
-                this.SelfDataObj.SaveOrUpdate(dayReportEntity);
-
-
-
-            }
+        //        this.SelfDataObj.SaveOrUpdate(dayReportEntity);
 
 
 
+        //    }
 
-            this.AdoNetDb.ClearAllReportedData(date);     
-        }
+
+
+
+        //    this.AdoNetDb.ClearAllReportedData(date);     
+        //}
 
 
 
@@ -138,7 +141,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.ResetAllReportedData(date);
 
             //Get all need to generate report's channle nad client ID.
-            DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel();
+            DataSet dsAllClientChannel = this.AdoNetDb.GetAllClientChannel(date);
 
             DataTable dsDayTotalCount = this.AdoNetDb.GetDayTotalCount(date);
             DataTable dsDayDownCount = this.AdoNetDb.GetDayDownCount(date);
@@ -178,10 +181,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
                             if(spClient!=null)
                             {
-                                if(spClient.SPClientGroupID!=null)
-                                {
-                                    dayReportEntity.ClientGroupID = spClient.SPClientGroupID.Id;
-                                }
+                                //if(spClient.SPClientGroupID!=null)
+                                //{
+                                //    dayReportEntity.ClientGroupID = spClient.SPClientGroupID.Id;
+                                //}
 
                                 SPClientWrapper clientWrapper = new SPClientWrapper(spClient);
 
@@ -274,14 +277,14 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetDbSize();
         }
 
-        [Transaction(ReadOnly = false)]
-        public void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
-        {
-            for (DateTime i = startDate; i < endDate.AddDays(1); i=i.AddDays(1))
-            {
-                ArchivesData(archivesPath, i);
-            }
-        }
+        //[Transaction(ReadOnly = false)]
+        //public void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
+        //{
+        //    for (DateTime i = startDate; i < endDate.AddDays(1); i=i.AddDays(1))
+        //    {
+        //        ArchivesData(archivesPath, i);
+        //    }
+        //}
 
         public DataTable GetDayliyReport(DateTime dateTime)
         {
@@ -337,24 +340,24 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
 
 
-        [Transaction(ReadOnly = false)]
-        private void ArchivesData(string archivesPath, DateTime dateTime)
-        {
-            BulidReport(dateTime);
+        //[Transaction(ReadOnly = false)]
+        //private void ArchivesData(string archivesPath, DateTime dateTime)
+        //{
+        //    BulidReport(dateTime);
 
-            DataSet ds = this.AdoNetDb.GetAllReportData(dateTime);
+        //    DataSet ds = this.AdoNetDb.GetAllReportData(dateTime);
 
-            if(ds.Tables[0].Rows.Count ==0)
-                return;
+        //    if(ds.Tables[0].Rows.Count ==0)
+        //        return;
 
-            string fileName = GetFileName(archivesPath, dateTime);
+        //    string fileName = GetFileName(archivesPath, dateTime);
 
-            WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName)+".jpg", ds);
+        //    WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName)+".jpg", ds);
 
-            WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName) + ".zip", ds);
+        //    WriteDataSetToXml(archivesPath, Path.GetFileNameWithoutExtension(fileName) + ".zip", ds);
 
-            //this.AdoNetDb.DeleteAllReportData(dateTime);
-        }
+        //    //this.AdoNetDb.DeleteAllReportData(dateTime);
+        //}
 
         private string GetFileName(string reportOutPutPath, DateTime date)
         {
@@ -398,6 +401,43 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetDayReport(startDate, enddate, dateType);
         }
 
- 
+        public DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate , int clientGroupId)
+        {
+            return this.AdoNetDb.GetClientGroupDayReport(startDate, endDate, clientGroupId);
+        }
+
+        public DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate)
+        {
+            return this.AdoNetDb.GetClientGroupTotalReport(startDate, endDate);
+        }
+
+        public List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId)
+        {
+            List<SPDayReportEntity> spDayReports = new List<SPDayReportEntity>();
+
+            for(DateTime st = startDate.Date;st<endDate.Date.AddDays(1);st=st.AddDays(1))
+            {
+                spDayReports.AddRange(GetAllClientGroupDayReport(st, clientGroupId));
+            }
+
+            int i = 1;
+
+            foreach (SPDayReportEntity spDayReportEntity in spDayReports)
+            {
+                spDayReportEntity.ReportID = i;
+                i++;
+            }
+
+            return spDayReports;
+        }
+
+        private List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime reportDate, int clientGroupId)
+        {
+            //List<SPClientEntity> clients =
+            //    this.DataObjectsContainerIocID.SPClientDataObjectInstance.GetList_By_SPClientGroupEntity(
+            //        this.DataObjectsContainerIocID.SPClientGroupDataObjectInstance.Load(clientGroupId));
+
+            return this.AdoNetDb.GetAllClientGroupDayReport(reportDate, clientGroupId);
+        }
     }
 }

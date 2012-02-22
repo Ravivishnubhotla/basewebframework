@@ -159,10 +159,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
-	    public static void  GenerateDayReport(DateTime date)
-        {
-            businessProxy.BulidReport(date);
-        }
+        //public static void GenerateDayReport(DateTime date)
+        //{
+        //    businessProxy.BulidReport(date);
+        //}
 
         public static void ReGenerateDayReport(DateTime date)
         {
@@ -199,10 +199,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return dbsize;
         }
 
-        public static void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
-        {
-            businessProxy.ArchivesData(archivesPath, startDate.Date, endDate.Date);
-        }
+        //public static void ArchivesData(string archivesPath, DateTime startDate, DateTime endDate)
+        //{
+        //    businessProxy.ArchivesData(archivesPath, startDate.Date, endDate.Date);
+        //}
 
 
         public static DataTable GetCountReport(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime)
@@ -301,9 +301,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
-        public static DataTable GetAllDayDownReport(DateTime startDate, DateTime endDate)
+        public static DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId)
         {
-            return businessProxy.GetDayReport(startDate, endDate, SPDayReportServiceProxy.DataType_Down);
+            return businessProxy.GetClientGroupDayReport(startDate, endDate, clientGroupId);
+        }
+
+
+
+        public static List<SPDayReportWrapper> GetAllClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId)
+        {
+            return ConvertToWrapperList(businessProxy.GetAllClientGroupDayReport(startDate, endDate, clientGroupId));
         }
 
 
@@ -627,6 +634,54 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return dt;
 
 
+        }
+
+        public string ClientChannelName
+        {
+            get
+            {
+                if (this.ClientID <= 0)
+                    return "";
+
+                SPClientWrapper client = SPClientWrapper.FindById(this.ClientID);
+
+                if (client == null)
+                    return "";
+
+                if (string.IsNullOrEmpty(client.Alias))
+                    return client.Name;
+
+                return client.Alias;
+
+            }
+        }
+
+        public string MoCode
+        {
+            get
+            {
+                if (this.ClientID <= 0)
+                    return "";
+
+                SPClientWrapper client = SPClientWrapper.FindById(this.ClientID);
+
+                if (client == null)
+                    return "";
+
+                SPClientChannelSettingWrapper spClientChannelSetting = client.DefaultClientChannelSetting;
+
+                if (spClientChannelSetting == null)
+                    return "";
+
+                return spClientChannelSetting.MoCode;
+ 
+
+            }
+        }
+
+        public static DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate)
+        {
+            return businessProxy.GetClientGroupTotalReport(startDate, endDate);
         }
     }
 }

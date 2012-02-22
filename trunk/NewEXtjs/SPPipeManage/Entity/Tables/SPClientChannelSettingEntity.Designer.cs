@@ -41,6 +41,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
+		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
 		
         #endregion
 	
@@ -76,6 +77,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _monthLimit;
 		private string _sendText;
 		private string _getway;
+		private int _defaultNoInterceptCount;
 		
 		#endregion
 
@@ -112,6 +114,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_monthLimit = null;
 			_sendText = null;
 			_getway = null;
+			_defaultNoInterceptCount = 0;
 		}
 		#endregion
 
@@ -119,7 +122,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount)
 		{
 			_id = id;
 			_name = name;
@@ -148,6 +151,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_monthLimit = monthLimit;
 			_sendText = sendText;
 			_getway = getway;
+			_defaultNoInterceptCount = defaultNoInterceptCount;
 		}
 		#endregion     
 	
@@ -579,6 +583,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for Getway", value, value.ToString());
 				_isChanged |= (_getway != value); _getway = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int DefaultNoInterceptCount
+		{
+			get { return _defaultNoInterceptCount; }
+
+			set	
+			{
+				_isChanged |= (_defaultNoInterceptCount != value); _defaultNoInterceptCount = value;
 			}
 		}
 		/// <summary>

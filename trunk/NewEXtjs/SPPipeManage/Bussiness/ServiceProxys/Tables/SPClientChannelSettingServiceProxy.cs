@@ -28,6 +28,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
  
         List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
+        decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -148,6 +149,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                      pageIndex, pageSize,
                                                                                      out recordCount);
         
+        }
+
+        public decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date)
+        {
+            return AdoNetDb.CaculteActualInterceptRate(entity.Id,date);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
         private void BindData()
         {
-            DataTable tb = SPDayReportWrapper.GetAllDayDownReport(StartDate.Date, EndDate.Date);
+            DataTable tb = SPDayReportWrapper.GetClientGroupDayReport(StartDate.Date, EndDate.Date, ClientGroupID);
 
             DataTable rtp = tb.Clone();
 

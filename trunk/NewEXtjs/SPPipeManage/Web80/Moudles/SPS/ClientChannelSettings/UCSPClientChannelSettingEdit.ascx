@@ -2,9 +2,9 @@
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingEdit" %>
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
-<ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"  ConstrainHeader="true"
-    Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false" Maximizable="true"
-    Modal="true" ShowOnLoad="false" AutoScroll="true">
+<ext:Window ID="winSPClientChannelSettingEdit" runat="server" Icon="ApplicationEdit"
+    ConstrainHeader="true" Title="编辑通道下家设置" Width="640" Height="460" AutoShow="false"
+    Maximizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientChannelSettingAdd" runat="server" Frame="true"
@@ -123,6 +123,10 @@
                                                                 </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:TextField ID="txtCommandCode" runat="server" FieldLabel="指令代码" AllowBlank="False" />
+                                                                </ext:Anchor>
+                                                                <ext:Anchor Horizontal="95%">
+                                                                    <ext:NumberField ID="txtDefaultNoInterceptCount" DecimalPrecision="0" runat="server" FieldLabel="免扣数" AllowBlank="false">
+                                                                    </ext:NumberField>
                                                                 </ext:Anchor>
                                                             </Anchors>
                                                         </ext:FormLayout>

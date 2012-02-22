@@ -52,6 +52,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_MONTHLIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".MonthLimit");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SENDTEXT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SendText");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_GETWAY = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".Getway");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DEFAULTNOINTERCEPTCOUNT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DefaultNoInterceptCount");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_TITLE);

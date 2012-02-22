@@ -7,19 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
+namespace Legendigital.Common.Web.Moudles.SPS.ClientsView {
     
     
-    public partial class UCSPClientGroupEdit {
+    public partial class ReportToDay {
         
         /// <summary>
-        /// winSPClientGroupEdit control.
+        /// Store1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Window winSPClientGroupEdit;
+        protected global::Coolite.Ext.Web.Store Store1;
+        
+        /// <summary>
+        /// ScriptManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
+        /// viewPortMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
         
         /// <summary>
         /// fitLayoutMain control.
@@ -31,93 +49,75 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// formPanelSPClientGroupEdit control.
+        /// gridPanelSPClientChannelSetting control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormPanel formPanelSPClientGroupEdit;
+        protected global::Coolite.Ext.Web.GridPanel gridPanelSPClientChannelSetting;
         
         /// <summary>
-        /// FormLayoutSPClientGroup control.
+        /// tbTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.FormLayout FormLayoutSPClientGroup;
+        protected global::Coolite.Ext.Web.Toolbar tbTop;
         
         /// <summary>
-        /// hidId control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidId;
+        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
         
         /// <summary>
-        /// txtName control.
+        /// ToolbarTextItem1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtName;
+        protected global::Coolite.Ext.Web.ToolbarTextItem ToolbarTextItem1;
         
         /// <summary>
-        /// txtDescription control.
+        /// txtDownCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtDescription;
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownCount;
         
         /// <summary>
-        /// txtDefaultSycnMoUrl control.
+        /// txtDownSycnCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtDefaultSycnMoUrl;
+        protected global::Coolite.Ext.Web.ToolbarTextItem txtDownSycnCount;
         
         /// <summary>
-        /// txtDefaultInterceptRate control.
+        /// GroupingView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtDefaultInterceptRate;
+        protected global::Coolite.Ext.Web.GroupingView GroupingView1;
         
         /// <summary>
-        /// txtDefaultNoInterceptCount control.
+        /// GroupingSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtDefaultNoInterceptCount;
-        
-        /// <summary>
-        /// btnSaveSPClientGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnSaveSPClientGroup;
-        
-        /// <summary>
-        /// btnCancelSPClientGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Button btnCancelSPClientGroup;
+        protected global::Coolite.Ext.Web.GroupingSummary GroupingSummary1;
     }
 }

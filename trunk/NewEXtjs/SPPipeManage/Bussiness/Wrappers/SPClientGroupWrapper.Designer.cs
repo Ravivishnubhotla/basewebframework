@@ -73,6 +73,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_DEFAULTSYCNMOURL = "DefaultSycnMoUrl";
 		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
+		public static readonly string PROPERTY_NAME_DEFAULTINTERCEPTRATE = "DefaultInterceptRate";
+		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
 		
         #endregion
 
@@ -160,6 +162,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DefaultSycnMRUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DefaultInterceptRate
+		{
+			get
+			{
+				return entity.DefaultInterceptRate;
+			}
+			set
+			{
+				entity.DefaultInterceptRate = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DefaultNoInterceptCount
+		{
+			get
+			{
+				return entity.DefaultNoInterceptCount;
+			}
+			set
+			{
+				entity.DefaultNoInterceptCount = value;
 			}
 		}
 		#endregion 

@@ -27,6 +27,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
 					this.txtName.Text = obj.Name.ToString();          	
               	    this.txtDescription.Text = obj.Description.ToString();
                     this.txtDefaultSycnMoUrl.Text = obj.DefaultSycnMoUrl;
+                    this.txtDefaultInterceptRate.Text = obj.DefaultInterceptRate.ToString();
+                    this.txtDefaultNoInterceptCount.Text = obj.DefaultNoInterceptCount.ToString();
       	
                     hidId.Text = id.ToString();
 
@@ -56,6 +58,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.DefaultSycnMoUrl = this.txtDefaultSycnMoUrl.Text.Trim();
+                obj.DefaultInterceptRate = Convert.ToInt32(this.txtDefaultInterceptRate.Text);
+                obj.DefaultNoInterceptCount = Convert.ToInt32(this.txtDefaultNoInterceptCount.Text);
                 SPClientGroupWrapper.Update(obj);
 
                 winSPClientGroupEdit.Hide();

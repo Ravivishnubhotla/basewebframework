@@ -11,7 +11,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
-    public partial class SPALLClientGroupReportService : System.Web.UI.Page
+    public partial class SPALLClientGroupReportService1 : System.Web.UI.Page
     {
         public DateTime StartDate
         {
@@ -38,38 +38,30 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (this.IsPostBack)
                 return;
-            FixReportDefinition(this.Server.MapPath("SPSALLClientGroupAmount.rdl"));
-            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("SPSALLClientGroupAmount.rdl");
+            FixReportDefinition(this.Server.MapPath("SPSALLClientGroupAmount1.rdl"));
+            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("SPSALLClientGroupAmount1.rdl");
             BindData();
         }
 
         private void BindData()
-        {
-            DataTable tb = SPDayReportWrapper.GetALlClientGroupPriceReport(StartDate.Date, EndDate.Date);
+        { 
+            DataTable tb = SPDayReportWrapper.GetClientGroupTotalReport(StartDate.Date, EndDate.Date);
 
-
-            ReportDataSource rds = new ReportDataSource("DataSet2", tb);
+            ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(rds);
  
-
-            ReportParameter rpStartDate = new ReportParameter();
-            rpStartDate.Name = "StartDate";
-            rpStartDate.Values.Add(StartDate.ToShortDateString());
-
-            ReportParameter rpEndDate = new ReportParameter();
-            rpEndDate.Name = "EndDate";
-            rpEndDate.Values.Add(EndDate.ToShortDateString());
-
+            string reportName = string.Format("【{0}】-【{1}】下家结算报表", StartDate.ToString("yyyy-MM-dd"), EndDate.ToString("yyyy-MM-dd"));
+ 
+            ReportParameter rpReportName = new ReportParameter();
+            rpReportName.Name = "ReportName";
+            rpReportName.Values.Add(reportName);
 
             ReportViewer1.LocalReport.SetParameters(
-             new ReportParameter[] {  rpStartDate, rpEndDate });
-
-
-
+             new ReportParameter[] { rpReportName });
+ 
             ReportViewer1.LocalReport.Refresh();
         }
-
 
         public void FixReportDefinition(string reportPath)
         {

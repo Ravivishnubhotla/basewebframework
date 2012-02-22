@@ -37,6 +37,7 @@
 		<property column="MonthLimit" type="string" name="MonthLimit"   length="40" />	
 		<property column="SendText" type="string" name="SendText"   length="600" />	
 		<property column="Getway" type="string" name="Getway"   length="40" />	
+		<property column="DefaultNoInterceptCount" type="int" name="DefaultNoInterceptCount"   not-null="true"  />	
 
 
 

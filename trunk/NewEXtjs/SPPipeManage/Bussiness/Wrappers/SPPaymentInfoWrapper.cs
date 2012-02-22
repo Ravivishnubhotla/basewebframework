@@ -798,5 +798,52 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             return businessProxy.GetClientMobileCount(spClientId, startDate, endDate);        
 	    }
+
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept1(int spClientGroupID, DateTime startDate, DateTime endDate, string province, string city, string phone, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
+	    {
+            return
+                ConvertToWrapperList(businessProxy.FindAllByOrderByAndSPClientGroupIDAndDateAndProviceNoIntercept1(spClientGroupID,
+                                                                                                  startDate,
+                                                                                                  endDate, province, city, phone,
+                                                                                                  sortFieldName, isdesc,
+                                                                                                  pageIndex, limit,
+                                                                                                  out recordCount));	  
+	    }
+
+        public static List<SPPaymentInfoWrapper> FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept1(
+                                                                                                                        int channleID,
+                                                                                                                        int spClientId,
+                                                                                                                        int spClientGroupID,
+                                                                                                                        DateTime startDate,
+                                                                                                                        DateTime endDate,
+                                                                                                                        string province,
+                                                                                                                        string city,
+                                                                                                                        string phone,
+                                                                                                                        string sortFieldName,
+                                                                                                                        bool isdesc,
+                                                                                                                        int pageIndex,
+                                                                                                                        int limit,
+                                                                                                                        out int recordCount
+                                                                                                                     )
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndCleintIDAndChanneLIDAndDateAndProviceNoIntercept1(
+                                                                                                                            spClientId,
+                                                                                                                            spClientGroupID,
+                                                                                                                            channleID,
+                                                                                                                            startDate,
+                                                                                                                            endDate,
+                                                                                                                            province,
+                                                                                                                            city,
+                                                                                                                            phone,
+                                                                                                                            sortFieldName,
+                                                                                                                            isdesc,
+                                                                                                                            pageIndex,
+                                                                                                                            limit,
+                                                                                                                            out recordCount)
+                                                                                                                          );
+
+
+
+        }
     }
 }
