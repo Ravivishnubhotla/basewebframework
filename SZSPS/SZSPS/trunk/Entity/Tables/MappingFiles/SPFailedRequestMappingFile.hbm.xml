@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPFailedRequestEntity,LD.SPPipeManage.Entity" table="SPFailedRequest" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="RecievedContent" type="string" name="RecievedContent"   length="2147483646" />	
+		<property column="RecievedDate" type="DateTime" name="RecievedDate"   />	
+		<property column="RecievedIP" type="string" name="RecievedIP"   length="100" />	
+		<property column="RecievedSendUrl" type="string" name="RecievedSendUrl"   length="1200" />	
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="ClientID" type="int" name="ClientID"   />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="4000" />	
+		<property column="IsProcessed" type="Boolean" name="IsProcessed"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

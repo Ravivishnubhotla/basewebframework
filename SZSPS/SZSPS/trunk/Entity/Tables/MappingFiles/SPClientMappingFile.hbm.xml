@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPClientEntity,LD.SPPipeManage.Entity" table="SPClient" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="RecieveDataUrl" type="string" name="RecieveDataUrl"   length="400" />	
+		<property column="UserID" type="int" name="UserID"   />	
+		<property column="SyncData" type="Boolean" name="SyncData"   />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="100" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="100" />	
+		<property column="SyncType" type="string" name="SyncType"   length="100" />	
+		<many-to-one column="SPClientGroupID" name="SPClientGroupID" class="LD.SPPipeManage.Entity.Tables.SPClientGroupEntity,LD.SPPipeManage.Entity" />		
+		<property column="IsDefaultClient" type="Boolean" name="IsDefaultClient"   />	
+		<property column="Alias" type="string" name="Alias"   length="400" />	
+
+
+
+
+</class>
+</hibernate-mapping>
