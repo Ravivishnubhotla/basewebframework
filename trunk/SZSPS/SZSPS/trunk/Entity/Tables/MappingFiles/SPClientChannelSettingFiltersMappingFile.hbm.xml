@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPClientChannelSettingFiltersEntity,LD.SPPipeManage.Entity" table="SPClientChannelSettingFilters" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ParamsName" type="string" name="ParamsName"   length="100" />	
+		<property column="FilterType" type="string" name="FilterType"   length="100" />	
+		<property column="FilterValue" type="string" name="FilterValue"   length="100" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
+		<many-to-one column="ClientChannelSettingID" name="ClientChannelSettingID" class="LD.SPPipeManage.Entity.Tables.SPClientChannelSettingEntity,LD.SPPipeManage.Entity" />		
+
+
+
+
+</class>
+</hibernate-mapping>

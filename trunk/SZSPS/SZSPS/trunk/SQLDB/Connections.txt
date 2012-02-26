@@ -1,0 +1,4 @@
+DBRefFolders found in your dbp file
+Connect String: Data Source=ATOM\SQLEXPRESS;Initial Catalog=WebConsole;Persist Security Info=True;User ID=WebConsole
+Provider: Microsoft SQL Server
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPInterceptRateEntity,LD.SPPipeManage.Entity" table="SPInterceptRate" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ClientID" type="int" name="ClientID"   />	
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="TotalCount" type="int" name="TotalCount"   />	
+		<property column="InterceptCount" type="int" name="InterceptCount"   />	
+		<property column="InterceptRate" type="Decimal" name="InterceptRate"   />	
+		<property column="LastSycnDate" type="DateTime" name="LastSycnDate"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
