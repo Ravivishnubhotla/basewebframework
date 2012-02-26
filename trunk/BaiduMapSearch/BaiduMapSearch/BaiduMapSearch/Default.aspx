@@ -44,11 +44,11 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <North Collapsible="True" Split="True">
-                    <ext:Panel runat="server" ID="regionHeader"  Height="60" Header="false">
+                    <ext:Panel runat="server" ID="regionHeader" Height="60" Header="false">
                         <Content>
                             <div id='headerDiv'>
                                 <a style='float: left; margin-right: 10px;' href='#' target='_blank'>
-                                    <img alt=''  src='images/maplogo.png' /></a> 
+                                    <img alt='' src='images/maplogo.png' /></a>
                             </div>
                         </Content>
                     </ext:Panel>
@@ -63,8 +63,8 @@
                     </ext:Panel>
                 </South>
                 <West Collapsible="true" Split="true">
-                    <ext:TreePanel ID="TreePanel1" runat="server" Width="135" Icon="BookOpen"
-                        Title="Baidu地图API" AutoScroll="true">
+                    <ext:TreePanel ID="TreePanel1" runat="server" Width="135" Icon="BookOpen" Title="Baidu地图API"
+                        AutoScroll="true">
                         <TopBar>
                             <ext:Toolbar ID="Toolbar1" runat="server">
                                 <Items>
@@ -86,6 +86,7 @@
                                 <Nodes>
                                     <ext:TreeNode Text="普通地图" Icon="MapLink" Href="MapSamples/ShowMap.aspx" />
                                     <ext:TreeNode Text="高级地图" Icon="MapLink" Href="MapSamples/AdvanceShowMap.aspx" />
+                                    <ext:TreeNode Text="生成区域" Icon="MapLink" Href="MapSamples/MakeArea.aspx" />
                                 </Nodes>
                             </ext:TreeNode>
                         </Root>

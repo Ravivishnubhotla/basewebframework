@@ -67,14 +67,12 @@
     <Content Include="images\logo.JPG" />
     <Content Include="images\logo.png" />
     <Content Include="images\maplogo.png" />
- 
     <Content Include="images\Market\Home.png" />
- 
     <Content Include="images\markers.png" />
- 
     <Content Include="images\user.png" />
     <Content Include="MapSamples\AdvanceShowMap.aspx" />
     <Content Include="MapSamples\BaiduMapShowPage.aspx" />
+    <Content Include="MapSamples\MakeArea.aspx" />
     <Content Include="MapSamples\ShowMap.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -108,6 +106,13 @@
     </Compile>
     <Compile Include="MapSamples\BaiduMapShowPage.aspx.designer.cs">
       <DependentUpon>BaiduMapShowPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MapSamples\MakeArea.aspx.cs">
+      <DependentUpon>MakeArea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MapSamples\MakeArea.aspx.designer.cs">
+      <DependentUpon>MakeArea.aspx</DependentUpon>
     </Compile>
     <Compile Include="MapSamples\ShowMap.aspx.cs">
       <DependentUpon>ShowMap.aspx</DependentUpon>
