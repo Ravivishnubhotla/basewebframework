@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架数据访问层容器配置文件
+  </description>
+  <!-- 数据访问类 -->
+ <object id="SPChannelDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPChannelDefaultClientSycnParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelDefaultClientSycnParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPChannelFiltersDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelFiltersDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPChannelParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPChannelParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientChannelSettingDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientChannelSettingFiltersDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSettingFiltersDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientChannelSycnParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientChannelSycnParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientGroupDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientGroupDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPClientPriceDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientPriceDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPDayReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPDayReportDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPFailedRequestDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPFailedRequestDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPInterceptRateDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPInterceptRateDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPMemoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMemoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPMonitoringRequestDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPMonitoringRequestDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPPaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPaymentInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPPhoneAreaDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPPhoneAreaDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPRequestInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPSendClientParamsDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSendClientParamsDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPSendRequestInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSendRequestInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPSStatePaymentInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPSStatePaymentInfoDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPStatReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPStatReportDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPTestRecievedDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPTestRecievedDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPUperDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPUperDataObject, LD.SPPipeManage.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+
+
+
+
+
+
+<object id="DataObjectContainersIocID" type="LD.SPPipeManage.Data.Tables.Container.DataObjectContainers, LD.SPPipeManage.Data">
+    <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
+    <property name="SPChannelDefaultClientSycnParamsDataObjectInstance" ref="SPChannelDefaultClientSycnParamsDataObjectIocID"/>
+    <property name="SPChannelFiltersDataObjectInstance" ref="SPChannelFiltersDataObjectIocID"/>
+    <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
+    <property name="SPClientDataObjectInstance" ref="SPClientDataObjectIocID"/>
+    <property name="SPClientChannelSettingDataObjectInstance" ref="SPClientChannelSettingDataObjectIocID"/>
+    <property name="SPClientChannelSettingFiltersDataObjectInstance" ref="SPClientChannelSettingFiltersDataObjectIocID"/>
+    <property name="SPClientChannelSycnParamsDataObjectInstance" ref="SPClientChannelSycnParamsDataObjectIocID"/>
+    <property name="SPClientGroupDataObjectInstance" ref="SPClientGroupDataObjectIocID"/>
+    <property name="SPClientPriceDataObjectInstance" ref="SPClientPriceDataObjectIocID"/>
+    <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
+    <property name="SPFailedRequestDataObjectInstance" ref="SPFailedRequestDataObjectIocID"/>
+    <property name="SPInterceptRateDataObjectInstance" ref="SPInterceptRateDataObjectIocID"/>
+    <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
+    <property name="SPMonitoringRequestDataObjectInstance" ref="SPMonitoringRequestDataObjectIocID"/>
+    <property name="SPPaymentInfoDataObjectInstance" ref="SPPaymentInfoDataObjectIocID"/>
+    <property name="SPPhoneAreaDataObjectInstance" ref="SPPhoneAreaDataObjectIocID"/>
+    <property name="SPRequestInfoDataObjectInstance" ref="SPRequestInfoDataObjectIocID"/>
+    <property name="SPSendClientParamsDataObjectInstance" ref="SPSendClientParamsDataObjectIocID"/>
+    <property name="SPSendRequestInfoDataObjectInstance" ref="SPSendRequestInfoDataObjectIocID"/>
+    <property name="SPSStatePaymentInfoDataObjectInstance" ref="SPSStatePaymentInfoDataObjectIocID"/>
+    <property name="SPStatReportDataObjectInstance" ref="SPStatReportDataObjectIocID"/>
+    <property name="SPTestRecievedDataObjectInstance" ref="SPTestRecievedDataObjectIocID"/>
+    <property name="SPUperDataObjectInstance" ref="SPUperDataObjectIocID"/>
+ 
+
+
+</object>
+</objects>

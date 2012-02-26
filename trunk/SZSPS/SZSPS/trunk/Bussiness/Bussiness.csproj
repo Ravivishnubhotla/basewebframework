@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LD.SPPipeManage.Bussiness</RootNamespace>
+    <AssemblyName>LD.SPPipeManage.Bussiness</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|AnyCPU'">
+    <OutputPath>bin\X86Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|AnyCPU'">
+    <OutputPath>bin\X64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|x64'">
+    <OutputPath>bin\x64\X86Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|x64'">
+    <OutputPath>bin\x64\X64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Itanium'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Itanium\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Itanium'">
+    <OutputPath>bin\Itanium\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|Itanium'">
+    <OutputPath>bin\Itanium\X86Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|Itanium'">
+    <OutputPath>bin\Itanium\X64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\LD.SPPipeManage.Bussiness.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commons\ChannelStatus.cs" />
+    <Compile Include="Commons\HttpGetPostRequest.cs" />
+    <Compile Include="Commons\HttpSP0025PostRequest.cs" />
+    <Compile Include="Commons\HttpXmlPostRequest.cs" />
+    <Compile Include="Commons\IHttpRequest.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelFiltersDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPClientGroupDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPDayReportDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPFailedRequestDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPInterceptRateDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPMonitoringRequestDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPPhoneAreaDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPSStatePaymentInfoDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPStatReportDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPUperDataContract.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
+    <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
+      <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelDefaultClientSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelFiltersServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPChannelServiceProxy.Designer.cs">
+      <DependentUpon>SPChannelServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingFiltersServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingFiltersServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSettingServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSettingServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSycnParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientChannelSycnParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientGroupServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientGroupServiceProxy.Designer.cs">
+      <DependentUpon>SPClientGroupServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientPriceServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientPriceServiceProxy.Designer.cs">
+      <DependentUpon>SPClientPriceServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
+      <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
+      <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPFailedRequestServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPFailedRequestServiceProxy.Designer.cs">
+      <DependentUpon>SPFailedRequestServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPInterceptRateServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPInterceptRateServiceProxy.Designer.cs">
+      <DependentUpon>SPInterceptRateServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
+      <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.Designer.cs">
+      <DependentUpon>SPMonitoringRequestServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPPaymentInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPPaymentInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.Designer.cs">
+      <DependentUpon>SPPhoneAreaServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPRequestInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPRequestInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSendClientParamsServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSendClientParamsServiceProxy.Designer.cs">
+      <DependentUpon>SPSendClientParamsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSendRequestInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPSendRequestInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSStatePaymentInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSStatePaymentInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPStatReportServiceProxy.Designer.cs">
+      <DependentUpon>SPStatReportServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPTestRecievedServiceProxy.Designer.cs">
+      <DependentUpon>SPTestRecievedServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPUperServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPUperServiceProxy.Designer.cs">
+      <DependentUpon>SPUperServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UrlSender\UrlSender.cs" />
+    <Compile Include="UrlSender\UrlSendTask.cs" />
+    <Compile Include="Wrappers\LinkIDQueryCache.cs" />
+    <Compile Include="Wrappers\PhoneAreaInfo.cs" />
+    <Compile Include="Wrappers\PhoneCache.cs" />
+    <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelDefaultClientSycnParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelFiltersWrapper.Designer.cs">
+      <DependentUpon>SPChannelFiltersWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
+      <DependentUpon>SPChannelParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPChannelWrapper.cs" />
+    <Compile Include="Wrappers\SPChannelWrapper.Designer.cs">
+      <DependentUpon>SPChannelWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientChannelSettingFiltersWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSettingFiltersWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientChannelSettingWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSettingWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSettingWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientChannelSycnParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPClientChannelSycnParamsWrapper.Designer.cs">
+      <DependentUpon>SPClientChannelSycnParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientGroupWrapper.cs" />
+    <Compile Include="Wrappers\SPClientGroupWrapper.Designer.cs">
+      <DependentUpon>SPClientGroupWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientPriceWrapper.cs" />
+    <Compile Include="Wrappers\SPClientPriceWrapper.Designer.cs">
+      <DependentUpon>SPClientPriceWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPClientWrapper.cs" />
+    <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
+      <DependentUpon>SPClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPDayReportWrapper.cs" />
+    <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">
+      <DependentUpon>SPDayReportWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPFailedRequestWrapper.cs" />
+    <Compile Include="Wrappers\SPFailedRequestWrapper.Designer.cs">
+      <DependentUpon>SPFailedRequestWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPInterceptRateWrapper.cs" />
+    <Compile Include="Wrappers\SPInterceptRateWrapper.Designer.cs">
+      <DependentUpon>SPInterceptRateWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMemoWrapper.cs" />
+    <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
+      <DependentUpon>SPMemoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPMessage.cs" />
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.cs" />
+    <Compile Include="Wrappers\SPMonitoringRequestWrapper.Designer.cs">
+      <DependentUpon>SPMonitoringRequestWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPPaymentInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPPaymentInfoWrapper.Designer.cs">
+      <DependentUpon>SPPaymentInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPPhoneAreaWrapper.cs" />
+    <Compile Include="Wrappers\SPPhoneAreaWrapper.Designer.cs">
+      <DependentUpon>SPPhoneAreaWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPRequestInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPRequestInfoWrapper.Designer.cs">
+      <DependentUpon>SPRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSendClientParamsWrapper.cs" />
+    <Compile Include="Wrappers\SPSendClientParamsWrapper.Designer.cs">
+      <DependentUpon>SPSendClientParamsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSendRequestInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPSendRequestInfoWrapper.Designer.cs">
+      <DependentUpon>SPSendRequestInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSStatePaymentInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPSStatePaymentInfoWrapper.Designer.cs">
+      <DependentUpon>SPSStatePaymentInfoWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPStatReportWrapper.cs" />
+    <Compile Include="Wrappers\SPStatReportWrapper.Designer.cs">
+      <DependentUpon>SPStatReportWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPTestRecievedWrapper.cs" />
+    <Compile Include="Wrappers\SPTestRecievedWrapper.Designer.cs">
+      <DependentUpon>SPTestRecievedWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPUperWrapper.cs" />
+    <Compile Include="Wrappers\SPUperWrapper.Designer.cs">
+      <DependentUpon>SPUperWrapper.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{E6D8392C-1D79-49D0-97CC-2C591E1F3AE8}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ServiceProxys\Tables\Container\ServiceProxyContainersFile.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
