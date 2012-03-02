@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架WCF服务层容器配置文件
+  </description>
+  <!-- 服务层类 -->
+ <object id="SystemApplicationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemApplicationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemApplicationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemApplicationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemApplicationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemApplicationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemConfigServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemConfigServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemConfigServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemConfigServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemConfigServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemConfigServiceProxyEndpoint" />
+	</object>
+ <object id="SystemDepartmentServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemDepartmentServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemDepartmentServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemDepartmentServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemDepartmentServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemDepartmentServiceProxyEndpoint" />
+	</object>
+ <object id="SystemDictionaryServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemDictionaryServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemDictionaryServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemDictionaryServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemDictionaryServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemDictionaryServiceProxyEndpoint" />
+	</object>
+ <object id="SystemLogServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemLogServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemLogServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemLogServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemLogServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemLogServiceProxyEndpoint" />
+	</object>
+ <object id="SystemMenuServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMenuServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemMenuServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemMenuServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMenuServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemMenuServiceProxyEndpoint" />
+	</object>
+ <object id="SystemMoudleServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMoudleServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemMoudleServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemMoudleServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMoudleServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemMoudleServiceProxyEndpoint" />
+	</object>
+ <object id="SystemMoudleFieldServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMoudleFieldServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemMoudleFieldServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemMoudleFieldServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemMoudleFieldServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemMoudleFieldServiceProxyEndpoint" />
+	</object>
+ <object id="SystemOperationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemOperationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemOperationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemOperationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemOperationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemOperationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemPersonalizationSettingsServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPersonalizationSettingsServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemPersonalizationSettingsServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemPersonalizationSettingsServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPersonalizationSettingsServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemPersonalizationSettingsServiceProxyEndpoint" />
+	</object>
+ <object id="SystemPrivilegeServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemPrivilegeServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemPrivilegeServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemPrivilegeServiceProxyEndpoint" />
+	</object>
+ <object id="SystemPrivilegeInRolesServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeInRolesServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemPrivilegeInRolesServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemPrivilegeInRolesServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeInRolesServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemPrivilegeInRolesServiceProxyEndpoint" />
+	</object>
+ <object id="SystemPrivilegeParameterServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeParameterServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemPrivilegeParameterServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemPrivilegeParameterServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemPrivilegeParameterServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemPrivilegeParameterServiceProxyEndpoint" />
+	</object>
+ <object id="SystemResourcesServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemResourcesServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemResourcesServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemResourcesServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemResourcesServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemResourcesServiceProxyEndpoint" />
+	</object>
+ <object id="SystemRoleServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemRoleServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemRoleServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemRoleServiceProxyEndpoint" />
+	</object>
+ <object id="SystemRoleApplicationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleApplicationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemRoleApplicationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemRoleApplicationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleApplicationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemRoleApplicationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemRoleMenuRelationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleMenuRelationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemRoleMenuRelationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemRoleMenuRelationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemRoleMenuRelationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemRoleMenuRelationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemSettingServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemSettingServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemSettingServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemSettingServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemSettingServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemSettingServiceProxyEndpoint" />
+	</object>
+ <object id="SystemShortMessageServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemShortMessageServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemShortMessageServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemShortMessageServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemShortMessageServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemShortMessageServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserGroupServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserGroupServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserGroupServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserGroupServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserGroupRoleRelationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupRoleRelationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserGroupRoleRelationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserGroupRoleRelationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupRoleRelationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserGroupRoleRelationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserGroupUserRelationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupUserRelationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserGroupUserRelationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserGroupUserRelationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserGroupUserRelationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserGroupUserRelationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserProfileServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserProfileServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserProfileServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserProfileServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserProfileServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserProfileServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserProfilePropertysServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserProfilePropertysServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserProfilePropertysServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserProfilePropertysServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserProfilePropertysServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserProfilePropertysServiceProxyEndpoint" />
+	</object>
+ <object id="SystemUserRoleRelationServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserRoleRelationServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemUserRoleRelationServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemUserRoleRelationServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemUserRoleRelationServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemUserRoleRelationServiceProxyEndpoint" />
+	</object>
+ <object id="SystemViewServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemViewServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemViewServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemViewServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemViewServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemViewServiceProxyEndpoint" />
+	</object>
+ <object id="SystemViewItemServiceProxyIocID"
+			type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemViewItemServiceProxy, Legendigital.Framework.Common"
+			factory-object="SystemViewItemServiceProxyChannelFactory"
+			factory-method="CreateChannel" />
+	<object id="SystemViewItemServiceProxyChannelFactory"
+			type="System.ServiceModel.ChannelFactory&lt;Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.ISystemViewItemServiceProxy>, System.ServiceModel">
+		<constructor-arg name="endpointConfigurationName" value="WCFSystemViewItemServiceProxyEndpoint" />
+	</object>
+
+
+<object id="BaseFrameworkServiceProxyContainerIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container.BaseFrameworkServiceProxyContainer, Legendigital.Framework.Common">
+    <property name="SystemApplicationServiceProxyInstance" ref="SystemApplicationServiceProxyIocID"/>
+    <property name="SystemConfigServiceProxyInstance" ref="SystemConfigServiceProxyIocID"/>
+    <property name="SystemDepartmentServiceProxyInstance" ref="SystemDepartmentServiceProxyIocID"/>
+    <property name="SystemDictionaryServiceProxyInstance" ref="SystemDictionaryServiceProxyIocID"/>
+    <property name="SystemLogServiceProxyInstance" ref="SystemLogServiceProxyIocID"/>
+    <property name="SystemMenuServiceProxyInstance" ref="SystemMenuServiceProxyIocID"/>
+    <property name="SystemMoudleServiceProxyInstance" ref="SystemMoudleServiceProxyIocID"/>
+    <property name="SystemMoudleFieldServiceProxyInstance" ref="SystemMoudleFieldServiceProxyIocID"/>
+    <property name="SystemOperationServiceProxyInstance" ref="SystemOperationServiceProxyIocID"/>
+    <property name="SystemPersonalizationSettingsServiceProxyInstance" ref="SystemPersonalizationSettingsServiceProxyIocID"/>
+    <property name="SystemPrivilegeServiceProxyInstance" ref="SystemPrivilegeServiceProxyIocID"/>
+    <property name="SystemPrivilegeInRolesServiceProxyInstance" ref="SystemPrivilegeInRolesServiceProxyIocID"/>
+    <property name="SystemPrivilegeParameterServiceProxyInstance" ref="SystemPrivilegeParameterServiceProxyIocID"/>
+    <property name="SystemResourcesServiceProxyInstance" ref="SystemResourcesServiceProxyIocID"/>
+    <property name="SystemRoleServiceProxyInstance" ref="SystemRoleServiceProxyIocID"/>
+    <property name="SystemRoleApplicationServiceProxyInstance" ref="SystemRoleApplicationServiceProxyIocID"/>
+    <property name="SystemRoleMenuRelationServiceProxyInstance" ref="SystemRoleMenuRelationServiceProxyIocID"/>
+    <property name="SystemSettingServiceProxyInstance" ref="SystemSettingServiceProxyIocID"/>
+    <property name="SystemShortMessageServiceProxyInstance" ref="SystemShortMessageServiceProxyIocID"/>
+    <property name="SystemUserServiceProxyInstance" ref="SystemUserServiceProxyIocID"/>
+    <property name="SystemUserGroupServiceProxyInstance" ref="SystemUserGroupServiceProxyIocID"/>
+    <property name="SystemUserGroupRoleRelationServiceProxyInstance" ref="SystemUserGroupRoleRelationServiceProxyIocID"/>
+    <property name="SystemUserGroupUserRelationServiceProxyInstance" ref="SystemUserGroupUserRelationServiceProxyIocID"/>
+    <property name="SystemUserProfileServiceProxyInstance" ref="SystemUserProfileServiceProxyIocID"/>
+    <property name="SystemUserProfilePropertysServiceProxyInstance" ref="SystemUserProfilePropertysServiceProxyIocID"/>
+    <property name="SystemUserRoleRelationServiceProxyInstance" ref="SystemUserRoleRelationServiceProxyIocID"/>
+    <property name="SystemViewServiceProxyInstance" ref="SystemViewServiceProxyIocID"/>
+    <property name="SystemViewItemServiceProxyInstance" ref="SystemViewItemServiceProxyIocID"/>
+
+
+</object>
+</objects>
