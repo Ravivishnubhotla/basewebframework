@@ -1,0 +1,1470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C6A0C68A-70F7-4687-B273-B1BA083D7615}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Legendigital.Common.Web</RootNamespace>
+    <AssemblyName>Legendigital.Common.Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|x64'">
+    <OutputPath>bin\x64\X86Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|x64'">
+    <OutputPath>bin\x64\X64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Itanium'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Itanium\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Itanium'">
+    <OutputPath>bin\Itanium\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|Itanium'">
+    <OutputPath>bin\Itanium\X86Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X64Release|Itanium'">
+    <OutputPath>bin\Itanium\X64Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>Itanium</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Legendigital.Common.Web.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;D:\Program Files\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net, Version=1.2.0.2, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Coolite.Ext.UX">
+      <HintPath>..\Dlls\Coolite.Ext.UX.dll</HintPath>
+    </Reference>
+    <Reference Include="Coolite.Ext.Web, Version=0.8.2.983, Culture=neutral, PublicKeyToken=f58c952e9aa5b80a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Coolite.Ext.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Coolite.Utilities, Version=1.0.0.981, Culture=neutral, PublicKeyToken=f06596a209371c29, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Coolite.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=1.0.2.2, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate21, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate21.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Images\logon\button_bg.gif" />
+    <Content Include="Images\logon\Button_On.GIF" />
+    <Content Include="Images\logon\Button_Over.GIF" />
+    <Content Include="Images\logon\Logon_1.gif" />
+    <Content Include="Images\logon\Logon_10.gif" />
+    <Content Include="Images\logon\Logon_11.gif" />
+    <Content Include="Images\logon\Logon_2.gif" />
+    <Content Include="Images\logon\Logon_3.gif" />
+    <Content Include="Images\logon\Logon_4.gif" />
+    <Content Include="Images\logon\Logon_5.gif" />
+    <Content Include="Images\logon\Logon_6.gif" />
+    <Content Include="Images\logon\Logon_7.jpg" />
+    <Content Include="Images\logon\Logon_8.gif" />
+    <Content Include="Images\logon\Logon_9.gif" />
+    <Content Include="MainPage\Login1.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\Excel.xsl" />
+    <Content Include="Moudles\SPS\ClientsView\ReportDayRange.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ReportToDay.aspx" />
+    <Content Include="Moudles\SPS\Clients\Blank.htm" />
+    <Content Include="Moudles\SPS\Clients\Excel.xsl" />
+    <Content Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReport.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCClientChangePwd.ascx" />
+    <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
+    <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
+    <Content Include="Moudles\SPS\Reports\DataChangeChannel.aspx" />
+    <Content Include="Moudles\SPS\Reports\DataProviceReport.aspx" />
+    <Content Include="Moudles\SPS\Reports\RecordSearch.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChange.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChangeService.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataOperator.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataOperatorService.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataProvince.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDataProvinceService.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportForCodeCount.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReSendData.aspx" />
+    <Content Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx" />
+    <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
+    <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
+    <Content Include="Moudles\SystemManage\LogViews\SystemLogList.aspx" />
+    <Content Include="Moudles\SystemManage\LogViews\TextLogList.aspx" />
+    <Content Include="Moudles\SystemManage\LogViews\UCFileView.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserChangePwd.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx" />
+    <Content Include="Services\SPDataService.asmx" />
+    <Content Include="SPSInterface\IVRChannel.aspx" />
+    <Content Include="SPSInterface\IVRXLChannel.aspx" />
+    <Content Include="SPSInterface\SCIVRChannel.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppClass\PageResend.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppClass\SmtpClientSmtpAppender.cs" />
+    <Compile Include="AppClass\SP0025Handler.cs" />
+    <Compile Include="AppClass\SPClientGroupViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppClass\SPNoEncodeHandler.cs" />
+    <Compile Include="AppClass\SPXml2Handler.cs" />
+    <Compile Include="AppClass\SPXmlHandler.cs" />
+    <Compile Include="AppClass\SPSClientViewPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppClass\SPRecievedHandler.cs" />
+    <Compile Include="AppClass\SPTestSendHandle.cs" />
+    <Compile Include="AppClass\SPXmlRecievedHandler.cs" />
+    <Compile Include="AppClass\UCLongActionOp.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage\Errors.aspx.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage\Errors.aspx.designer.cs">
+      <DependentUpon>Errors.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs\DailyReportGenerateJob.cs" />
+    <Compile Include="Jobs\DailyResendDataJob.cs" />
+    <Compile Include="MainPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\Login1.aspx.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login1.aspx.designer.cs">
+      <DependentUpon>Login1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.designer.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPChannelDefaultSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelDefaultSycnParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
+      <DependentUpon>SPChannelHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx.cs">
+      <DependentUpon>SPChannelHandlerByClientID.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
+      <DependentUpon>SPChannelListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx.cs">
+      <DependentUpon>SPChannelQuickAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx.designer.cs">
+      <DependentUpon>SPChannelQuickAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.cs">
+      <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.designer.cs">
+      <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx.cs">
+      <DependentUpon>UCChannelParamsManage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx.designer.cs">
+      <DependentUpon>UCChannelParamsManage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx.cs">
+      <DependentUpon>UCChannelParamsSetting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx.designer.cs">
+      <DependentUpon>UCChannelParamsSetting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.cs">
+      <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.cs">
+      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx.cs">
+      <DependentUpon>SPChannelClientSendClientTestRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx.designer.cs">
+      <DependentUpon>SPChannelClientSendClientTestRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx.cs">
+      <DependentUpon>SPChannelClientSendTestRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendTestRequestForm.aspx.designer.cs">
+      <DependentUpon>SPChannelClientSendTestRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx.cs">
+      <DependentUpon>SPChannelClientSycnListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSycnListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelClientSycnListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelHandler.ashx.cs">
+      <DependentUpon>SPClientChannelHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx.cs">
+      <DependentUpon>SPClientChannelParamsManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelParamsManage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelParamsManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingFiltersListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingFiltersListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingFiltersListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingNewInChannelListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInChannelListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingNewInChannelListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx.cs">
+      <DependentUpon>SPClientChannelSettingNewInClientGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingNewInClientGroupListPage.aspx.designer.cs">
+      <DependentUpon>SPClientChannelSettingNewInClientGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx.cs">
+      <DependentUpon>SPCodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx.designer.cs">
+      <DependentUpon>SPCodeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingBaseEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingBaseEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingChangeClientAndUser.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingChangeClientAndUser.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingFiltersEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingInfoEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingInfoEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingInfoEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx.cs">
+      <DependentUpon>UCSPClientChannelSettingPatchAdd1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingPatchAdd1.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelSettingPatchAdd1.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPChannelGroupHandle.ashx.cs">
+      <DependentUpon>SPChannelGroupHandle.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx.cs">
+      <DependentUpon>SPClientGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\SPClientGroupListPage.aspx.designer.cs">
+      <DependentUpon>SPClientGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx.cs">
+      <DependentUpon>UCChangeLoginID.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangeLoginID.ascx.designer.cs">
+      <DependentUpon>UCChangeLoginID.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx.designer.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx.cs">
+      <DependentUpon>UCSPClientGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx.cs">
+      <DependentUpon>UCSPClientGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.cs">
+      <DependentUpon>ClientChannleView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.designer.cs">
+      <DependentUpon>ClientChannleView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx.cs">
+      <DependentUpon>ClientGroupInterfaceSettingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx.designer.cs">
+      <DependentUpon>ClientGroupInterfaceSettingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.cs">
+      <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx.designer.cs">
+      <DependentUpon>ClientGroupToDayReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx.cs">
+      <DependentUpon>ClientGroupToDayReportPage1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx.designer.cs">
+      <DependentUpon>ClientGroupToDayReportPage1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx.cs">
+      <DependentUpon>ClientGroupViewDaySum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewDaySum.aspx.designer.cs">
+      <DependentUpon>ClientGroupViewDaySum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx.cs">
+      <DependentUpon>ClientGroupViewRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord.aspx.designer.cs">
+      <DependentUpon>ClientGroupViewRecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx.cs">
+      <DependentUpon>ClientGroupViewRecord1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientGroupViewRecord1.aspx.designer.cs">
+      <DependentUpon>ClientGroupViewRecord1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInfoEditor.aspx.cs">
+      <DependentUpon>ClientInfoEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInfoEditor.aspx.designer.cs">
+      <DependentUpon>ClientInfoEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfacePage.aspx.cs">
+      <DependentUpon>ClientInterfacePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfacePage.aspx.designer.cs">
+      <DependentUpon>ClientInterfacePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx.cs">
+      <DependentUpon>ClientInterfaceSettingPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSettingPage.aspx.designer.cs">
+      <DependentUpon>ClientInterfaceSettingPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx.cs">
+      <DependentUpon>ClientInterfaceSubmitUrlSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx.designer.cs">
+      <DependentUpon>ClientInterfaceSubmitUrlSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoView.aspx.cs">
+      <DependentUpon>ClientMemoView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMemoView.aspx.designer.cs">
+      <DependentUpon>ClientMemoView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx.cs">
+      <DependentUpon>ClientMobileReportView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientMobileReportView.aspx.designer.cs">
+      <DependentUpon>ClientMobileReportView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx.cs">
+      <DependentUpon>ClientParamsDocumentView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx.designer.cs">
+      <DependentUpon>ClientParamsDocumentView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx.cs">
+      <DependentUpon>ClientToDayReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx.designer.cs">
+      <DependentUpon>ClientToDayReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx.cs">
+      <DependentUpon>ClientViewDaySum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx.designer.cs">
+      <DependentUpon>ClientViewDaySum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx.cs">
+      <DependentUpon>ClientViewRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx.designer.cs">
+      <DependentUpon>ClientViewRecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx.cs">
+      <DependentUpon>ClientViewRecordDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx.designer.cs">
+      <DependentUpon>ClientViewRecordDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx.cs">
+      <DependentUpon>ClientViewRecordListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx.designer.cs">
+      <DependentUpon>ClientViewRecordListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportDayRange.aspx.cs">
+      <DependentUpon>ReportDayRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportDayRange.aspx.designer.cs">
+      <DependentUpon>ReportDayRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportToDay.aspx.cs">
+      <DependentUpon>ReportToDay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientsView\ReportToDay.aspx.designer.cs">
+      <DependentUpon>ReportToDay.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx.cs">
+      <DependentUpon>SPClientAddToGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientAddToGroup.aspx.designer.cs">
+      <DependentUpon>SPClientAddToGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx.cs">
+      <DependentUpon>SPClientChangeLoginID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginID.aspx.designer.cs">
+      <DependentUpon>SPClientChangeLoginID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx.cs">
+      <DependentUpon>SPClientChangeLoginUserPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientChangeLoginUserPassword.aspx.designer.cs">
+      <DependentUpon>SPClientChangeLoginUserPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReport.aspx.cs">
+      <DependentUpon>SPClientGroupReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReport.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx.cs">
+      <DependentUpon>SPClientGroupReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportContainer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx.cs">
+      <DependentUpon>SPClientGroupReportContainer1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportContainer1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportContainer1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.cs">
+      <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx.cs">
+      <DependentUpon>SPClientGroupReportService1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientGroupReportService1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupReportService1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
+      <DependentUpon>SPClientHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx.cs">
+      <DependentUpon>SPClientHandlerByChannel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx.cs">
+      <DependentUpon>SPClientListForClientGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx.designer.cs">
+      <DependentUpon>SPClientListForClientGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.cs">
+      <DependentUpon>SPClientListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientListPage.aspx.designer.cs">
+      <DependentUpon>SPClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientReportContainer.aspx.cs">
+      <DependentUpon>SPClientReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientReportContainer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientsHandler.ashx.cs">
+      <DependentUpon>SPClientsHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientChangePwd.ascx.cs">
+      <DependentUpon>UCClientChangePwd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientChangePwd.ascx.designer.cs">
+      <DependentUpon>UCClientChangePwd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.cs">
+      <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx.designer.cs">
+      <DependentUpon>UCClientParamsSetting.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientAdd.ascx.cs">
+      <DependentUpon>UCSPClientAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientEdit.ascx.cs">
+      <DependentUpon>UCSPClientEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPClientEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsClone.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsClone.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.cs">
+      <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.cs">
+      <DependentUpon>DataArchive.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.designer.cs">
+      <DependentUpon>DataArchive.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx.cs">
+      <DependentUpon>SPFailedRequestListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx.designer.cs">
+      <DependentUpon>SPFailedRequestListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\SPMemoListPage.aspx.cs">
+      <DependentUpon>SPMemoListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\SPMemoListPage.aspx.designer.cs">
+      <DependentUpon>SPMemoListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx.cs">
+      <DependentUpon>UCSPMemoAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx.designer.cs">
+      <DependentUpon>UCSPMemoAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx.cs">
+      <DependentUpon>UCSPMemoEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx.designer.cs">
+      <DependentUpon>UCSPMemoEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx.cs">
+      <DependentUpon>DefaultClientRecordView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx.designer.cs">
+      <DependentUpon>DefaultClientRecordView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataChangeChannel.aspx.cs">
+      <DependentUpon>DataChangeChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataChangeChannel.aspx.designer.cs">
+      <DependentUpon>DataChangeChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataProviceReport.aspx.cs">
+      <DependentUpon>DataProviceReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DataProviceReport.aspx.designer.cs">
+      <DependentUpon>DataProviceReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DetailRecordView.aspx.cs">
+      <DependentUpon>DetailRecordView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\DetailRecordView.aspx.designer.cs">
+      <DependentUpon>DetailRecordView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\RecordSearch.aspx.cs">
+      <DependentUpon>RecordSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\RecordSearch.aspx.designer.cs">
+      <DependentUpon>RecordSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.cs">
+      <DependentUpon>ReportChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannel.aspx.designer.cs">
+      <DependentUpon>ReportChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClient.aspx.cs">
+      <DependentUpon>ReportClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClient.aspx.designer.cs">
+      <DependentUpon>ReportClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChange.aspx.cs">
+      <DependentUpon>ReportDataChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChange.aspx.designer.cs">
+      <DependentUpon>ReportDataChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChangeService.aspx.cs">
+      <DependentUpon>ReportDataChangeService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataChangeService.aspx.designer.cs">
+      <DependentUpon>ReportDataChangeService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataOperator.aspx.cs">
+      <DependentUpon>ReportDataOperator.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataOperator.aspx.designer.cs">
+      <DependentUpon>ReportDataOperator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataOperatorService.aspx.cs">
+      <DependentUpon>ReportDataOperatorService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataOperatorService.aspx.designer.cs">
+      <DependentUpon>ReportDataOperatorService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataProvince.aspx.cs">
+      <DependentUpon>ReportDataProvince.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataProvince.aspx.designer.cs">
+      <DependentUpon>ReportDataProvince.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataProvinceService.aspx.cs">
+      <DependentUpon>ReportDataProvinceService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDataProvinceService.aspx.designer.cs">
+      <DependentUpon>ReportDataProvinceService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.cs">
+      <DependentUpon>ReportDayTotal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportDayTotal.aspx.designer.cs">
+      <DependentUpon>ReportDayTotal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportForCodeCount.aspx.cs">
+      <DependentUpon>ReportForCodeCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportForCodeCount.aspx.designer.cs">
+      <DependentUpon>ReportForCodeCount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.cs">
+      <DependentUpon>ReportToday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportToday.aspx.designer.cs">
+      <DependentUpon>ReportToday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReSendData.aspx.cs">
+      <DependentUpon>ReSendData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReSendData.aspx.designer.cs">
+      <DependentUpon>ReSendData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx.cs">
+      <DependentUpon>ResetInterceptToSycn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ResetInterceptToSycn.aspx.designer.cs">
+      <DependentUpon>ResetInterceptToSycn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx.cs">
+      <DependentUpon>SPALLClientGroupReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService.aspx.designer.cs">
+      <DependentUpon>SPALLClientGroupReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx.cs">
+      <DependentUpon>SPALLClientGroupReportService1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPALLClientGroupReportService1.aspx.designer.cs">
+      <DependentUpon>SPALLClientGroupReportService1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.cs">
+      <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx.designer.cs">
+      <DependentUpon>SPClientClientCountReportService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx.designer.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx.designer.cs">
+      <DependentUpon>SPClientGroupTotalReportContainer1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.cs">
+      <DependentUpon>UCMovePayment.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.designer.cs">
+      <DependentUpon>UCMovePayment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\SPUperListPage.aspx.cs">
+      <DependentUpon>SPUperListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\SPUperListPage.aspx.designer.cs">
+      <DependentUpon>SPUperListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\UCSPUperAdd.ascx.cs">
+      <DependentUpon>UCSPUperAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\UCSPUperAdd.ascx.designer.cs">
+      <DependentUpon>UCSPUperAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\UCSPUperEdit.ascx.cs">
+      <DependentUpon>UCSPUperEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Upers\UCSPUperEdit.ascx.designer.cs">
+      <DependentUpon>UCSPUperEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Users\GetAUserByChannel.ashx.cs">
+      <DependentUpon>GetAUserByChannel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx.cs">
+      <DependentUpon>SiteTaskLogView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx.designer.cs">
+      <DependentUpon>SiteTaskLogView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\SystemLogList.aspx.cs">
+      <DependentUpon>SystemLogList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\SystemLogList.aspx.designer.cs">
+      <DependentUpon>SystemLogList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\TextLogList.aspx.cs">
+      <DependentUpon>TextLogList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\TextLogList.aspx.designer.cs">
+      <DependentUpon>TextLogList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\UCFileView.ascx.cs">
+      <DependentUpon>UCFileView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogViews\UCFileView.ascx.designer.cs">
+      <DependentUpon>UCFileView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserChangePwd.aspx.cs">
+      <DependentUpon>SystemUserChangePwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserChangePwd.aspx.designer.cs">
+      <DependentUpon>SystemUserChangePwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SPDataService.asmx.cs">
+      <DependentUpon>SPDataService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\SPSSendUrlEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\bg.gif" />
+    <Content Include="Images\collapse-all.gif" />
+    <Content Include="Images\expand-all.gif" />
+    <Content Include="Images\layout-browser-hd-bg.gif" />
+    <Content Include="Images\lock.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\user.png" />
+    <Content Include="MainPage\Default.aspx" />
+    <Content Include="MainPage\Login.aspx" />
+    <Content Include="MainPage\UCChangePassword.ascx" />
+    <Content Include="Masters\AdminMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bussiness\Bussiness.csproj">
+      <Project>{61174116-A26C-4AB4-A50D-22B1E3F4FC4E}</Project>
+      <Name>Bussiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{838F4D57-8B18-45BF-A3A8-B08D0F1072FF}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Legendigital.Framework.Common\Common.csproj">
+      <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelSettingListPage.aspx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingEdit.ascx" />
+    <Content Include="Moudles\SPS\Clients\SPClientListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientAdd.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPClientEdit.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
+    <Content Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCChannelParamsSetting.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCClientParamsSetting.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\DataArchives\DataArchive.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportChannel.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportClient.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportDayTotal.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\DataConfig.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Css\css.css" />
+    <Content Include="Moudles\SPS\Clients\SPClientHandlerByChannel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\ClientsView\ClientToDayReportPage.aspx" />
+    <Content Include="Moudles\SPS\Users\GetAUserByChannel.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ErrorPage\Errors.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelHandlerByClientID.ashx" />
+    <Content Include="Moudles\SPS\ClientsView\BlankData.htm" />
+    <Content Include="Moudles\SPS\ClientsView\ClientChannleView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientInfoEditor.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientInterfacePage.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientInterfaceSubmitUrlSetting.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientMemoView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientParamsDocumentView.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientViewDaySum.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientViewRecord.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientViewRecordDetail.aspx" />
+    <Content Include="Moudles\SPS\ClientsView\ClientViewRecordListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPSendClientParamsClone.ascx" />
+    <Content Include="Moudles\SPS\Memos\SPMemoListPage.aspx" />
+    <Content Include="Moudles\SPS\Memos\UCSPMemoAdd.ascx" />
+    <Content Include="Moudles\SPS\Memos\UCSPMemoEdit.ascx" />
+    <Content Include="Moudles\SPS\Reports\Blank.htm" />
+    <Content Include="Moudles\SPS\Reports\DetailRecordView.aspx" />
+    <Content Include="Moudles\SPS\Reports\Excel.xsl" />
+    <Content Include="Moudles\SPS\Reports\ReportToday.aspx" />
+    <Content Include="Moudles\SPS\Upers\SPUperListPage.aspx" />
+    <Content Include="Moudles\SPS\Upers\UCSPUperAdd.ascx" />
+    <Content Include="Moudles\SPS\Upers\UCSPUperEdit.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DayReport\" />
+    <Folder Include="Logs\" />
+    <Folder Include="Moudles\SPS\MonitorRequestView\" />
+    <Folder Include="Moudles\SPS\SPChannelFilters\" />
+    <Folder Include="SPSTestInterface\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\ClientGroups\SPChannelGroupHandle.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientsHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\Report2.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientGroupAmountReport.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataChange.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientGroupAmountReport1.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataOperator.rdl" />
+    <Content Include="Moudles\SPS\Reports\ReportDataProvince.rdl" />
+    <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount.rdl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount1.rdl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>10086</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
