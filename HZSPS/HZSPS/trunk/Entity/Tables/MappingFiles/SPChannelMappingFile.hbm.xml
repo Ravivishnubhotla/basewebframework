@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" table="SPChannel" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="Area" type="string" name="Area"   length="4000" />	
+		<property column="Operator" type="string" name="Operator"   length="400" />	
+		<property column="ChannelCode" type="string" name="ChannelCode"   length="400" />	
+		<property column="FuzzyCommand" type="string" name="FuzzyCommand"   length="400" />	
+		<property column="AccurateCommand" type="string" name="AccurateCommand"   length="400" />	
+		<property column="Port" type="string" name="Port"   length="400" />	
+		<property column="ChannelType" type="string" name="ChannelType"   length="400" />	
+		<property column="Price" type="Decimal" name="Price"   />	
+		<property column="Rate" type="int" name="Rate"   />	
+		<property column="Status" type="int" name="Status"   />	
+		<property column="CreateTime" type="DateTime" name="CreateTime"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   />	
+		<property column="OkMessage" type="string" name="OkMessage"   length="400" />	
+		<property column="FailedMessage" type="string" name="FailedMessage"   length="400" />	
+		<many-to-one column="UperID" name="UperID" class="LD.SPPipeManage.Entity.Tables.SPUperEntity,LD.SPPipeManage.Entity" />		
+		<property column="ChannelCodeParamsName" type="string" name="ChannelCodeParamsName"   length="100" />	
+		<property column="IsAllowNullLinkID" type="Boolean" name="IsAllowNullLinkID"   />	
+		<property column="RecStatReport" type="Boolean" name="RecStatReport"   />	
+		<property column="StatParamsName" type="string" name="StatParamsName"   length="100" />	
+		<property column="StatParamsValues" type="string" name="StatParamsValues"   length="1000" />	
+		<property column="HasRequestTypeParams" type="Boolean" name="HasRequestTypeParams"   />	
+		<property column="RequestTypeParamName" type="string" name="RequestTypeParamName"   length="100" />	
+		<property column="RequestTypeValues" type="string" name="RequestTypeValues"   length="400" />	
+		<property column="HasFilters" type="Boolean" name="HasFilters"   />	
+		<property column="ChannelInfo" type="string" name="ChannelInfo"   length="2147483646" />	
+		<property column="StatSendOnce" type="Boolean" name="StatSendOnce"   />	
+		<property column="IsMonitoringRequest" type="Boolean" name="IsMonitoringRequest"   />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
+		<property column="ReportIDParams" type="string" name="ReportIDParams"   length="100" />	
+		<property column="ChanneData" type="string" name="ChanneData"   length="2147483646" />	
+
+
+
+
+</class>
+</hibernate-mapping>

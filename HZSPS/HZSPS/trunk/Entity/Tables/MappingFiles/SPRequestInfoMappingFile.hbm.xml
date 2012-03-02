@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPRequestInfoEntity,LD.SPPipeManage.Entity" table="SPRequestInfo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="IP" type="string" name="Ip"   length="400" />	
+		<property column="RequestInfo" type="string" name="RequestInfo"   length="2147483646" />	
+		<property column="RequestDate" type="DateTime" name="RequestDate"   />	
+		<property column="IsToPayment" type="Boolean" name="IsToPayment"   />	
+		<property column="RequestUrl" type="string" name="RequestUrl"   length="4000" />	
+		<property column="DataID" type="int" name="DataID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

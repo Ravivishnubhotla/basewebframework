@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPDayReportEntity,LD.SPPipeManage.Entity" table="SPDayReport" lazy="true"  >
+
+<id name="ReportID" column="ReportID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ReportDate" type="DateTime" name="ReportDate"   />	
+		<property column="UpTotalCount" type="int" name="UpTotalCount"   />	
+		<property column="UpSuccess" type="int" name="UpSuccess"   />	
+		<property column="InterceptTotalCount" type="int" name="InterceptTotalCount"   />	
+		<property column="InterceptSuccess" type="int" name="InterceptSuccess"   />	
+		<property column="DownTotalCount" type="int" name="DownTotalCount"   />	
+		<property column="DownSuccess" type="int" name="DownSuccess"   />	
+		<property column="DayXmlFileName" type="string" name="DayXmlFileName"   length="400" />	
+		<property column="ClientID" type="int" name="ClientID"   />	
+		<property column="ChannelID" type="int" name="ChannelID"   />	
+		<property column="ChannelClientID" type="int" name="ChannelClientID"   />	
+		<property column="UperID" type="int" name="UperID"   />	
+		<property column="ClientGroupID" type="int" name="ClientGroupID"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
