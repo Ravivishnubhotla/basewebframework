@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemConfigEntity,Legendigital.Framework.Common" table="SystemConfig" lazy="true"  >
+
+<id name="SystemConfigID" column="SystemConfig_ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Config_Key" type="string" name="ConfigKey"   not-null="true"  length="400" />	
+		<property column="Config_Value" type="string" name="ConfigValue"   not-null="true"  length="400" />	
+		<property column="Config_Description" type="string" name="ConfigDescription"   length="4000" />	
+		<property column="SortIndex" type="int" name="SortIndex"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
