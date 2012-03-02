@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPClientGroupEntity,LD.SPPipeManage.Entity" table="SPClientGroup" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="UserID" type="int" name="UserID"   />	
+		<property column="DefaultSycnMoUrl" type="string" name="DefaultSycnMoUrl"   length="1000" />	
+		<property column="DefaultSycnMRUrl" type="string" name="DefaultSycnMRUrl"   length="1000" />	
+		<property column="DefaultInterceptRate" type="int" name="DefaultInterceptRate"   not-null="true"  />	
+		<property column="DefaultNoInterceptCount" type="int" name="DefaultNoInterceptCount"   not-null="true"  />	
+
+
+
+
+</class>
+</hibernate-mapping>

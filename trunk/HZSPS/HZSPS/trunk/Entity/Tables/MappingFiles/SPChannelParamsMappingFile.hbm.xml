@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPChannelParamsEntity,LD.SPPipeManage.Entity" table="SPChannelParams" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="400" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
+		<property column="IsRequired" type="Boolean" name="IsRequired"   />	
+		<property column="ParamsType" type="string" name="ParamsType"   length="400" />	
+		<many-to-one column="ChannelID" name="ChannelID" class="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" />		
+		<property column="ParamsMappingName" type="string" name="ParamsMappingName"   length="400" />	
+		<property column="Title" type="string" name="Title"   length="400" />	
+		<property column="ShowInClientGrid" type="Boolean" name="ShowInClientGrid"   />	
+		<property column="IsUnique" type="Boolean" name="IsUnique"   />	
+
+
+
+
+</class>
+</hibernate-mapping>
