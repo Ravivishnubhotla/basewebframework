@@ -159,7 +159,9 @@
     <Content Include="App_GlobalResources\GlobalResource.en-US.xml" />
     <Content Include="App_GlobalResources\GlobalResource.zh-CHS.xml" />
     <Content Include="App_GlobalResources\GlobalResource.xml" />
+    <Content Include="Config\AOP.xml" />
     <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.zh-CHS.xml" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.en-US.xml" />

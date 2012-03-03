@@ -21,6 +21,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     public partial class SystemTaskServiceProxy : ISystemTaskServiceProxy
     {
 
-
+        
     }
 }

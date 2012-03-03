@@ -10,7 +10,7 @@ namespace Legendigital.Common.WebApp
 {
     public class Global : System.Web.HttpApplication
     {
-        private ILog logger = LogManager.GetLogger(typeof(Global));
+        private static ILog logger = LogManager.GetLogger(typeof(Global));
 
         protected void Application_Start(object sender, EventArgs e)
         {

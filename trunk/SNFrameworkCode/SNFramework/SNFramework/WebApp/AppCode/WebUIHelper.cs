@@ -12,9 +12,6 @@ namespace Legendigital.Common.WebApp.AppCode
 {
     public static class WebUIHelper
     {
-
- 
-
         public static TreeNodeCollection BuildTree<T>(List<TypedTreeNodeItem<T>> items, string rootName, Icon treeIcon)
         {
             TreeNodeCollection nodes = new TreeNodeCollection();
@@ -201,7 +198,6 @@ namespace Legendigital.Common.WebApp.AppCode
                 pageIndex = startIndex / limit + 1;
             else
                 pageIndex = startIndex / limit;
-
 
             PageQueryParams pageQueryParams = new PageQueryParams();
             pageQueryParams.PageSize = limit;

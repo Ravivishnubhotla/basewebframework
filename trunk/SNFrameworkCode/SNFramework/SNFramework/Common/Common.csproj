@@ -166,6 +166,9 @@
     <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapperExtension.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorLogAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordVersionAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\ServiceProxyAroundAdvice.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.Designer.cs">
       <DependentUpon>SystemAddressServiceProxy.cs</DependentUpon>
@@ -625,7 +628,6 @@
     </Compile>
     <Compile Include="BaseFramework\NavMenu.cs" />
     <Compile Include="BaseFramework\Utility\NameListItem.cs" />
-    <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateDataLogableWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\IDataLogableWrapper.cs" />
@@ -643,6 +645,7 @@
     <Compile Include="Data\NHibernate\DynamicQuery\TypedCriterionProperty.cs" />
     <Compile Include="Entity\BaseTableEntity.cs" />
     <Compile Include="Entity\BaseViewEntity.cs" />
+    <Compile Include="Entity\IAuditableEntity.cs" />
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
     <Compile Include="Images\PdfProcessing.cs" />
