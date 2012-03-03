@@ -15,6 +15,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Exceptions;
+using Legendigital.Framework.Common.Utility;
 using Spring.Context.Support;
 
 
@@ -25,6 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
+        public static string SYSOPTOR_USER_ID = "SystemOperator";
 
 
 
@@ -446,12 +448,76 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.FindAllByOrderByExpcept(sortFieldName, isDesc, expceptUserLoginId, expceptRoleName, pageQueryParams));
         }
 
+        public static void CreateDeveUser(string defaultPassword)
+        {
+            Membership.CreateUser(DEV_USER_ID, defaultPassword, DEV_USER_ID + "@163.ocm");
+
+            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(DEV_USER_ID);
+
+            user.UserName = DEV_USER_ID;
+
+            SystemUserWrapper.Update(user);
+        }
+
+        public static void CreateSysAdminUser(string defaultPassword)
+        {
+            Membership.CreateUser(SYS_USER_ID, defaultPassword, DEV_USER_ID + "@163.ocm");
+
+            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(SYS_USER_ID);
+
+            user.UserName = SYS_USER_ID;
+
+            SystemUserWrapper.Update(user);
+        }
+
+        public static void CreateSysOperatorUser()
+        {
+            Membership.CreateUser(SYSOPTOR_USER_ID, StringUtil.GetRandNumber(6), DEV_USER_ID + "@163.ocm");
+
+            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(SYSOPTOR_USER_ID);
+
+            user.UserName = SYSOPTOR_USER_ID;
+
+            user.IsApproved = false;
+
+            user.IsLockedOut = false;
+
+            SystemUserWrapper.Update(user);
+        }
+
 
         public static int GetDeveUserID()
         {
             SystemUserWrapper user = GetInitalUserByLoginID(DEV_USER_ID);
 
             if(user!=null)
+                return user.UserID;
+
+            return 0;
+        }
+
+        public static int GetSysAdminUserID()
+        {
+            SystemUserWrapper user = GetInitalUserByLoginID(SYS_USER_ID);
+
+            if (user != null)
+                return user.UserID;
+
+            return 0;
+        }
+
+        public static int GetSysOperatorUserID()
+        {
+            SystemUserWrapper user = GetInitalUserByLoginID(SYSOPTOR_USER_ID);
+
+            if (user != null)
+                return user.UserID;
+            else
+                CreateSysOperatorUser();
+
+            user = GetInitalUserByLoginID(SYSOPTOR_USER_ID);
+
+            if (user != null)
                 return user.UserID;
 
             return 0;
