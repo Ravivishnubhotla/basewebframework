@@ -179,9 +179,7 @@ namespace Legendigital.Common.WebApp.AppCode
 
         public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e,Ext.Net.PagingToolbar pagingToolbar)
         {
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+
 
             int startIndex = 0;
 

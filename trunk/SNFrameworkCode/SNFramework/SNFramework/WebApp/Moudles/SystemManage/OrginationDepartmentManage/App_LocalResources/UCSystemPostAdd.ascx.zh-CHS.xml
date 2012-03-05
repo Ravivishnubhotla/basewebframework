@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <add name="msgFormTitle" value="SystemPost Add" />
+  <add name="msgFormTitle" value="添加职位" />
   <add name="msgFiledName" value="Name" />
   <add name="msgFiledCode" value="Code" />
   <add name="msgFiledDescription" value="Description" />
-  <add name="msgFiledOrganizationID" value="OrganizationID" />
+  <add name="msgFiledOrganizationID" value="所属组织" />
   <add name="msgFiledCreateBy" value="CreateBy" />
   <add name="msgFiledCreateAt" value="CreateAt" />
   <add name="msgFiledLastModifyBy" value="LastModifyBy" />
