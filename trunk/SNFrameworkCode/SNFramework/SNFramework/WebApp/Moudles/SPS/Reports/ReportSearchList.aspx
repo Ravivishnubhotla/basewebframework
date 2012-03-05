@@ -342,14 +342,14 @@
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="接收时间" Sortable="true"
-                                    Width="120">
+                                    Width="130">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y h:i:s')" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colLinkID" DataIndex="LinkID" Header="唯一标识" Sortable="true"
                                     Width="130">
                                 </ext:Column>
                                 <ext:Column ColumnID="colMobile" DataIndex="Mobile" Header="手机号码" Sortable="true"
-                                    Width="80">
+                                    Width="90">
                                 </ext:Column>
                                 <ext:Column ColumnID="colMo" DataIndex="Mo" Header="上行指令" Sortable="true" Width="90">
                                 </ext:Column>
