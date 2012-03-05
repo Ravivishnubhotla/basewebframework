@@ -214,8 +214,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemOrganizationAdd ID="UCSystemOrganizationAdd1" runat="server" />
     <uc2:UCSystemOrganizationEdit ID="UCSystemOrganizationEdit1" runat="server" />
- 
-
     <ext:Hidden ID="hidSelectOrgID" runat="server">
     </ext:Hidden>
     <ext:Menu ID="cOrg" runat="server">
