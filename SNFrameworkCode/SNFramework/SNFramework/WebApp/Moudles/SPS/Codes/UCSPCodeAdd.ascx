@@ -14,7 +14,7 @@
         }
     }
 </script>
-<ext:store id="storeMOType" runat="server" autoload="false">
+<ext:store id="storeMOType" runat="server" autoload="True">
         <Proxy>
             <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
         </Proxy>
@@ -93,7 +93,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-    <Listeners>
-    <BeforeShow Handler="#{storeMOType}.reload();"></BeforeShow>
-    </Listeners>
 </ext:window>
