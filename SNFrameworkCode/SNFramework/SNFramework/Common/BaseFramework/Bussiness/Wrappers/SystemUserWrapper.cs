@@ -5,11 +5,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Security;
 using Common.Logging;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Providers;
+using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -521,6 +524,25 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 return user.UserID;
 
             return 0;
+        }
+
+
+        public static int GetCurrentOperateUserID()
+        {
+            if (HttpContext.Current != null)
+            {
+                if (HttpContext.Current.User != null)
+                {
+                    return SystemUserWrapper.GetInitalUserByLoginID(HttpContext.Current.User.Identity.Name).UserID;
+                }
+                if (HttpContext.Current.Session[BaseSecurityPage.Session_Key_LoginUser] != null)
+                {
+                    return
+                        ((SystemUserWrapper)HttpContext.Current.Session[BaseSecurityPage.Session_Key_LoginUser]).UserID;
+                }
+            }
+
+            return SystemUserWrapper.GetSysOperatorUserID();
         }
     }
 }

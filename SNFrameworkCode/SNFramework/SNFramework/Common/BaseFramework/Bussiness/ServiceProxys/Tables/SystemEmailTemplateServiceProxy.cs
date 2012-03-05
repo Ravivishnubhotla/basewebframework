@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -16,8 +17,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	    SystemEmailTemplateEntity GetTemplateByName(string name);
     }
 
+    [RecordAuditorClass(EnableVersion = false)]
     public partial class SystemEmailTemplateServiceProxy : ISystemEmailTemplateServiceProxy
     {
+        //[RecordAuditorMethod(AuditorActionHandle = )]
+        //public override void Save(SystemEmailTemplateEntity obj)
+        //{
+        //    base.Save(obj);
+        //}
+
+
+
+
         public SystemEmailTemplateEntity GetTemplateByName(string name)
         {
             return this.SelfDataObj.GetTemplateByName(name);

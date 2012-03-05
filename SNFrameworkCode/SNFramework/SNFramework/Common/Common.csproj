@@ -166,8 +166,10 @@
     <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapper.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapperExtension.cs" />
     <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorLogAttribute.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordVersionAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassInfo.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodInfo.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\ServiceProxyAroundAdvice.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs" />
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.Designer.cs">
@@ -630,7 +632,6 @@
     <Compile Include="BaseFramework\Utility\NameListItem.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
-    <Compile Include="Bussiness\NHibernate\IDataLogableWrapper.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />

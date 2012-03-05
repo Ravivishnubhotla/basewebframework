@@ -16,5 +16,9 @@ namespace Legendigital.Framework.Common.Entity
         DateTime? LastModifyAt { get; set; }
 
         string LastModifyComment { get; set; }
+
+        string GetEntityName { get; set; }
+
+        string GetEntityID { get; set; }
     }
 }
