@@ -1,32 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <add name="msgPermsissionManage" value=" Department Post Manage" />
-  <add name="msgPatchAddRsOK" value="Quick patch add ok!" />
-  <add name="msgAddSubOrg" value="Add Sub Org" />
-  <add name="msgEditOrg" value="Edit Org" />
-  <add name="msgDeleteOrg" value="Delete Org" />
-  <add name="msgPanelOrgManage" value="Org Manage" />
-  <add name="msgAddRootOrg" value="Add Root Org" />
-  <add name="msgRootNodeText" value="Root Org" />
-  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node:  ' + node.text + ' ', clear: false});SelectOrg(node,#{hidSelectOrgID},#{pnlEast});" />
-  <add name="msgPanelOperationPermissionManage" value="Department Post Manage" />
-  <add name="msgPanelOperationManage" value="Department Manage" />
-  <add name="msgGridPanelOperationManage" value="Department Manage" />
-  <add name="msgGridPanelColID" value="ID" />
-  <add name="msgGridPanelColName" value="Name" />
-  <add name="msgGridPanelColCode" value="Code" />
-  <add name="msgGridPanelColIsSystem" value="System" />
-  <add name="msgGridPanelColIsSingleOp" value="SingleOp" />
-  <add name="msgGridPanelColIsMutilOp" value="MutilOp" />
-  <add name="msgGridPanelColIsISEnable" value="Enable" />
-  <add name="msgGridPanelColIsISList" value="List" />
-  <add name="msgGridPanelColIsISSingle" value="Single" />
-  <add name="msgPanelPermissionManage" value="Post Manage" />
-  <add name="msgGridPanelPermissionManage" value="Post Manage" />
-  <add name="msgQuickGenerate" value="Quick Generate" />
-  <add name="msgGridPanelPermissionColID" value="ID" />
-  <add name="msgGridPanelPermissionColName" value="Name" />
-  <add name="msgGridPanelPermissionColCode" value="Code" />
-  <add name="msgGridPanelPermissionColOperation" value="Operation" />
-  <add name="msgGridPanelPermissionColOrder" value="Order" />
+  <add name="msgDepartmentPostManage" value=" 部门岗位管理" />
+  <add name="msgAddSubOrg" value="添加子组织" />
+  <add name="msgEditOrg" value="编辑组织" />
+  <add name="msgDeleteOrg" value="删除组织" />
+  <add name="msgPanelOrgManage" value="组织机构管理" />
+  <add name="msgAddRootOrg" value="添加根组织" />
+  <add name="msgRootNodeText" value="根组织" />
+  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: '当前组织：  ' + node.text + ' ', clear: false});SelectOrg(node,#{hidSelectOrgID},#{pnlEast});" />
+  <add name="msgPanelDepartmentPostManage" value="部门岗位管理" />
+  <add name="msgPanelDepartmentManage" value="部门管理" />
+  <add name="msgGridPanelColID" value="主键" />
+  <add name="msgGridPanelColName" value="名称" />
+  <add name="msgGridPanelColCode" value="编码" />
+  <add name="msgPanelPostManage" value="职位管理" />
+  <add name="msgGridPanelPostManage" value="职位管理" />
 </resources>

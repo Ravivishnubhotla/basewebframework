@@ -10,14 +10,6 @@
             <Items>
                 <ext:Hidden ID="hidOrgID" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:DisplayField ID="txtOrganizationID" runat="server" FieldLabel="<%$ Resources:msgFiledOrganizationID %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtName" runat="server" FieldLabel="<%$ Resources:msgFiledName %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtCode" runat="server" FieldLabel="<%$ Resources:msgFiledCode %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="<%$ Resources:msgFiledDescription %>"
-                    AllowBlank="True" AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>

@@ -23,7 +23,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         {
             try
             {
-                this.txtOrganizationID.Text = SystemOrganizationWrapper.FindById(orgid).Name;
+                //this.txtOrganizationID.Text = SystemOrganizationWrapper.FindById(orgid).Name;
              
                 this.hidOrgID.Value = orgid;
 
@@ -41,9 +41,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
             try
             {
                 SystemPostWrapper obj = new SystemPostWrapper();
-                obj.Name = this.txtName.Text.Trim();
-                obj.Code = this.txtCode.Text.Trim();
-                obj.Description = this.txtDescription.Text.Trim();
+                //obj.Name = this.txtName.Text.Trim();
+                //obj.Code = this.txtCode.Text.Trim();
+                //obj.Description = this.txtDescription.Text.Trim();
                 obj.OrganizationID = SystemOrganizationWrapper.FindById(Convert.ToInt32(this.hidOrgID.Text.Trim()));
                 obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
                 obj.CreateAt = System.DateTime.Now;

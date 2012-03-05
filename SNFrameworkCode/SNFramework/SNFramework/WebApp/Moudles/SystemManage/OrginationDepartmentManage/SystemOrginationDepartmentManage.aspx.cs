@@ -48,7 +48,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
 
             int selectOrgID = 0;
 
-            if (e.Parameters["SelectOrgID"] != null)
+            if (!string.IsNullOrEmpty(e.Parameters["SelectOrgID"]))
             {
                 selectOrgID = Convert.ToInt32(e.Parameters["SelectOrgID"]);
             }

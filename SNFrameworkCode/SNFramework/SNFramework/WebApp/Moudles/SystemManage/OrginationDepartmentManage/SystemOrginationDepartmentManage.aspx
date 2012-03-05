@@ -5,6 +5,8 @@
     TagPrefix="uc1" %>
 <%@ Register Src="UCSystemOrganizationEdit.ascx" TagName="UCSystemOrganizationEdit"
     TagPrefix="uc2" %>
+<%@ Register Src="UCSystemPostAdd.ascx" TagName="UCSystemPostAdd" TagPrefix="uc3" %>
+<%@ Register Src="UCSystemPostEdit.ascx" TagName="UCSystemPostEdit" TagPrefix="uc4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
@@ -120,6 +122,37 @@
                                                                 }   
                 );
         }
+                
+
+                        function showAddSystemPostForm(pid) {
+                            alert(pid);
+            Ext.net.DirectMethods.UCSystemPostAdd.Show(
+                                                        pid,
+                                                        {
+                                                            failure: function (msg) {
+                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                            },
+                                                            eventMask: {
+                                                                showMask: true,
+                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
+                                                            }
+                                                        });
+        } 
+        
+        
+                function ShowEditSystemPostForm(id) {
+               Ext.net.DirectMethods.UCSystemPostEdit.Show(id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>'
+                                                                               }
+                                                                }   
+                );
+        }
         
         
         
@@ -156,7 +189,7 @@
         function SelectOrg(node,hid,pnl)
         {
             hid.setValue(node.attributes.id.toString());
-            pnl.setTitle(node.text+'<%= GetLocalResourceObject("msgPermsissionManage").ToString() %>');
+            pnl.setTitle(node.text+'<%= GetLocalResourceObject("msgDepartmentPostManage").ToString() %>');
             pnl.setDisabled(!(node!=null&&node.attributes.id!=null&&node.attributes.id>0));
 
             RefreshDepartmentPanel();      
@@ -171,19 +204,7 @@
         }
         
         
-         function showAddSystemPostForm(oid) {
-                Ext.net.DirectMethods.UCSystemPostAdd.Show(oid, 
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshSystemPostData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
-                                                                });    
-        
-        }
+ 
        
         
         
@@ -193,6 +214,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemOrganizationAdd ID="UCSystemOrganizationAdd1" runat="server" />
     <uc2:UCSystemOrganizationEdit ID="UCSystemOrganizationEdit1" runat="server" />
+ 
+
     <ext:Hidden ID="hidSelectOrgID" runat="server">
     </ext:Hidden>
     <ext:Menu ID="cOrg" runat="server">
@@ -261,12 +284,12 @@
                     </ext:Panel>
                 </Center>
                 <East Split="true" Collapsible="true">
-                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="<%$ Resources : msgPanelOperationPermissionManage  %>"
+                    <ext:Panel ID="pnlEast" runat="server" Icon="Package" Title="<%$ Resources : msgPanelDepartmentPostManage  %>"
                         Width="880" Layout="fit" Disabled="true">
                         <Content>
                             <ext:TabPanel ID="TabPanel1" runat="server" Frame="true">
                                 <Items>
-                                    <ext:Panel ID="pnlDepartment" Title="<%$ Resources : msgPanelOperationManage  %>"
+                                    <ext:Panel ID="pnlDepartment" Title="<%$ Resources : msgPanelDepartmentManage  %>"
                                         Icon="UserKey" runat="server" Layout="FitLayout">
                                         <AutoLoad Url="../DepartmentManage/SystemDepartmentListPage.aspx" Mode="IFrame" ManuallyTriggered="true"
                                             NoCache="true" ShowMask="true">
@@ -276,11 +299,11 @@
                                             </Params>
                                         </AutoLoad>
                                     </ext:Panel>
-                                    <ext:Panel ID="Panel1" Title="<%$ Resources : msgPanelPermissionManage  %>" Icon="UserKey"
+                                    <ext:Panel ID="Panel1" Title="<%$ Resources : msgPanelPostManage  %>" Icon="UserKey"
                                         runat="server" Layout="FitLayout">
                                         <Items>
                                             <ext:GridPanel ID="gridPanelSystemPost" runat="server" StoreID="storeSystemPost"
-                                                StripeRows="true" Title="<%$ Resources:msgGridPanelOperationManage %>" Icon="Table">
+                                                StripeRows="true" Title="<%$ Resources:msgGridPanelPostManage %>" Icon="Table">
                                                 <TopBar>
                                                     <ext:Toolbar ID="tbTop" runat="server">
                                                         <Items>
@@ -347,7 +370,6 @@
                                         </Listeners>
                                     </ext:Panel>
                                 </Items>
-
                             </ext:TabPanel>
                         </Content>
                     </ext:Panel>
