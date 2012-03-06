@@ -252,5 +252,46 @@ namespace SPS.Data.AdoNet
         }
 
 
+        public DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate, int channelId)
+        {
+            string sql = "SELECT [Province] ,count(*) as ProvinceCount FROM  [dbo].[SPRecord]  {0} group by  [Province]";
+
+            string where = " Where 1=1 and CreateDate>=@startDate and CreateDate<@endDate ";
+
+            if (channelId > 0)
+                where += " and ChannelID=@ChannelId ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            if (channelId>0)
+                dbParameters.AddWithValue("ChannelId", channelId);
+
+            return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
+        }
+
+        public DataSet QueryDayCodeClientProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID)
+        {
+            string sql = "SELECT [Province] ,count(*) as ProvinceCount FROM  [dbo].[SPRecord]  {0} group by  [Province]";
+
+            string where = " Where 1=1 and CreateDate>=@startDate and CreateDate<@endDate ";
+
+            if (clientCodeRelationID > 0)
+                where += " and clientCodeRelationID=@clientCodeRelationID ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            if (clientCodeRelationID > 0)
+                dbParameters.AddWithValue("clientCodeRelationID", clientCodeRelationID);
+
+            return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
+        }
     }
 }

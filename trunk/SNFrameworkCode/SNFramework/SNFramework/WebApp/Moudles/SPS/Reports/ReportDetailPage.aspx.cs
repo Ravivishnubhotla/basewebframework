@@ -19,6 +19,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             if (X.IsAjaxRequest)
                 return;
 
+ 
+
             GridPanel1.Reload();
 
             //SPSClientWrapper spClientWrapper = SPSClientWrapper.FindById(this.SPClientID);
@@ -33,6 +35,21 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             //this.GridPanel1.StoreID = "storeData";
 
             //this.PagingToolBar1.StoreID = "storeData";
+        }
+
+
+        public bool ShowForClient
+        {
+
+            get
+            {
+                if (this.Request.QueryString["ShowMode"] != null)
+                {
+                    return
+                        this.Request.QueryString["ShowMode"].Equals("Client");
+                }
+                return false;
+            }
         }
 
 
@@ -114,9 +131,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
         protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e,this.PagingToolBar1);
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
             RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
-            
+
             storeData.DataSource = SPRecordWrapper.QueryRecordByPage(this.ChannelID, this.CodeID, this.ClientID, this.DataType, this.StartDate.Value, this.EndDate.Value, new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
             storeData.DataBind();
@@ -125,7 +142,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
         protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
         {
-            
+
 
         }
     }

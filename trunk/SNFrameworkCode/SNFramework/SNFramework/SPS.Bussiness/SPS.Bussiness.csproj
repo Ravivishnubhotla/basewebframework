@@ -56,6 +56,8 @@
     <Compile Include="Code\LinkIDQueryCache.cs" />
     <Compile Include="Code\PhoneAreaInfo.cs" />
     <Compile Include="Code\PhoneCache.cs" />
+    <Compile Include="Code\SPInterceptRateCache.cs" />
+    <Compile Include="Code\SPInterceptRateItem.cs" />
     <Compile Include="Code\SPChannelParamsCollection.cs" />
     <Compile Include="Code\SPMessage.cs" />
     <Compile Include="ConstClass\RoleCodeList.cs" />

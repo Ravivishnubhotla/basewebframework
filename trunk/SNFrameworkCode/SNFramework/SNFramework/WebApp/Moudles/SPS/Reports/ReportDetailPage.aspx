@@ -102,13 +102,13 @@
                         <ext:Column ColumnID="colCity" DataIndex="City" Header="地市" Sortable="true" Width="35">
                         </ext:Column>
                         <ext:Column ColumnID="colOperatorType" DataIndex="OperatorType" Header="运营商" Sortable="true"
-                            Width="45">
+                            Width="50">
                         </ext:Column>
                         <ext:Column ColumnID="colIsStatOK" DataIndex="IsStatOK" Header="状态" Sortable="true"
                             Width="35">
                             <Renderer Fn="FormatStat" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsIntercept" DataIndex="IsIntercept" Header="扣除" Sortable="true"
+                        <ext:Column ColumnID="colIsIntercept" DataIndex="IsIntercept" Header="扣除" Sortable="true" Hidden='<%# ShowForClient %>' AutoDataBind="True"  runat="server" 
                             Width="35">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
