@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -161,6 +162,17 @@ namespace SPS.Bussiness.Wrappers
                 }
             }
 	    }
+
+
+        public static DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate,int channelID)
+        {
+            return businessProxy.QueryDayChannelProvine(startDate, endDate, channelID);
+        }
+
+        public static DataSet QueryDayCodeProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID)
+        {
+            return businessProxy.QueryDayCodeClientProvine(startDate, endDate, clientCodeRelationID);
+        }
 
         public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
 	    {

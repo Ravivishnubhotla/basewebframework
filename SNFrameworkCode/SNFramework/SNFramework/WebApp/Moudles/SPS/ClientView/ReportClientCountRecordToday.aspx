@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportClientCountRecordToday.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.ClientView.ReportClientCountRecordToday" %>
+
 <%@ Import Namespace="SPS.Bussiness.Wrappers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
@@ -117,7 +118,7 @@
                     <Columns>
                         <ext:Column ColumnID="colCodeID" DataIndex="CodeID_MoCode" Header="代码" Sortable="true">
                         </ext:Column>
-                        <ext:Column ColumnID="colDownTotalCount" Header="下家数" DataIndex="DownTotalCount"
+                        <ext:Column ColumnID="colDownTotalCount" Header="同步数" DataIndex="DownTotalCount"
                             Sortable="true">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdRemovewInterceptRecord" Icon="DatabaseLightning">
@@ -170,7 +171,7 @@
     <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="900"
         ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
-        <AutoLoad Url="ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+        <AutoLoad Url="../Reports/ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
@@ -184,6 +185,8 @@
                 <ext:Parameter Name="StartDate" Mode="Raw" Value="0">
                 </ext:Parameter>
                 <ext:Parameter Name="EndDate" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ShowMode" Mode="Value" Value="Client">
                 </ext:Parameter>
             </Params>
         </AutoLoad>

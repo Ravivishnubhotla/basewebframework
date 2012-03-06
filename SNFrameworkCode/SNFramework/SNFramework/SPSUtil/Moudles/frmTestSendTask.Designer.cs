@@ -69,6 +69,7 @@
             this.txtTemplateUrl.Name = "txtTemplateUrl";
             this.txtTemplateUrl.Size = new System.Drawing.Size(617, 21);
             this.txtTemplateUrl.TabIndex = 1;
+            this.txtTemplateUrl.Text = "http://xxx/xx.ashx?linkid=test{$N10}&content=10933&phone=135{$N8}&spnum=3223";
             // 
             // label2
             // 
