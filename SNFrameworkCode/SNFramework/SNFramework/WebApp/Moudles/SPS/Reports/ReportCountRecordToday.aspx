@@ -22,7 +22,17 @@
         
  
         function processcmd(cmd, id) {
+            if (cmd == "cmdViewTotalRecordProvince") {
+              var win = <%= winShowProvinceChart.ClientID %>;
+ 
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MR省份分部',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
 
+
+
+
+        
             if (cmd == "cmdViewTotalRecord") {
               var win = <%= winShowRecordList.ClientID %>;
               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
@@ -191,6 +201,9 @@
                         </ext:Column>
                         <ext:Column ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount" Sortable="true">
                             <Commands>
+                                <ext:ImageCommand CommandName="cmdViewTotalRecordProvince" Icon="ChartPie">
+                                    <ToolTip Text="省份分部" />
+                                </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewTotalRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
                                 </ext:ImageCommand>
@@ -199,6 +212,9 @@
                         <ext:Column ColumnID="colTotalSuccessCount" Header="MO总数" DataIndex="TotalSuccessCount"
                             Sortable="true">
                             <Commands>
+                                <ext:ImageCommand CommandName="cmdViewTotalSuccessRecordProvince" Icon="ChartPie">
+                                    <ToolTip Text="省份分部" />
+                                </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewTotalSuccessRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
                                 </ext:ImageCommand>
@@ -303,6 +319,16 @@
                 <ext:Parameter Name="EndDate" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winShowProvinceChart" runat="server" Title="Window" Frame="true"
+        Width="900" ConstrainHeader="true" Height="600" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="ReportProvinceChart.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
         </AutoLoad>
         <Listeners>
             <Hide Handler="this.clearContent();" />

@@ -209,5 +209,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winShowRecordList;
+        
+        /// <summary>
+        /// winShowProvinceChart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winShowProvinceChart;
     }
 }
