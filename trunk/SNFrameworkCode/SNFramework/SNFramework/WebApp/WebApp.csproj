@@ -230,6 +230,7 @@
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDetailPage.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportProvinceChart.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportRecordDate.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportRecordDateRange.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportSearchList.aspx" />
@@ -910,6 +911,13 @@
     <Compile Include="Moudles\SPS\Reports\ReportDetailPage.aspx.designer.cs">
       <DependentUpon>ReportDetailPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportProvinceChart.aspx.cs">
+      <DependentUpon>ReportProvinceChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportProvinceChart.aspx.designer.cs">
+      <DependentUpon>ReportProvinceChart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportRecordDate.aspx.cs">
       <DependentUpon>ReportRecordDate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1541,6 +1549,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Moudles\SPS\Reports\ReportProvinceChart.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
