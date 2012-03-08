@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Data.AdoNet;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -164,15 +165,13 @@ namespace SPS.Bussiness.Wrappers
 	    }
 
 
-        public static DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate,int channelID)
+        public static DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, string dayReportType, int? channelId, int? codeID, int? clientID)
         {
-            return businessProxy.QueryDayChannelProvine(startDate, endDate, channelID);
+            DayReportType reportType = (DayReportType)Enum.Parse(typeof(DayReportType), dayReportType);
+            return businessProxy.QueryRecordProvine(startDate, endDate, reportType, channelId, codeID, clientID);
         }
 
-        public static DataSet QueryDayCodeProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID)
-        {
-            return businessProxy.QueryDayCodeClientProvine(startDate, endDate, clientCodeRelationID);
-        }
+ 
 
         public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
 	    {

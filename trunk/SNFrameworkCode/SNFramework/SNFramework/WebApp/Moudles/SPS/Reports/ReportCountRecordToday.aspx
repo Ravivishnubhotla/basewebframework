@@ -24,14 +24,44 @@
         function processcmd(cmd, id) {
             if (cmd == "cmdViewTotalRecordProvince") {
               var win = <%= winShowProvinceChart.ClientID %>;
- 
-              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MR省份分部',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_AllUp %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MR省份分布',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+
+
+            if (cmd == "cmdViewTotalSuccessRecordProvince") {
+              var win = <%= winShowProvinceChart.ClientID %>;
+               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_AllUpSuccess %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】MO省份分布',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
+              win.show();   
+            }
+
+            if (cmd == "cmdRemovewInterceptRecordProvince") {
+              var win = <%= winShowProvinceChart.ClientID %>;
+               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;
+              win.autoLoad.params.CodeID = id.data.CodeID_Id;
+              win.autoLoad.params.ClientID = id.data.ClientID_Id;
+              win.autoLoad.params.DataType = '<%= SPRecordWrapper.DayReportType_Down %>';
+              win.autoLoad.params.StartDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.autoLoad.params.EndDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+              win.setTitle(String.format('通道【{0}】客户【{1}】指令【{2}】下家数省份分布',id.data.ChannelID_Name,id.data.ClientID_Name,id.data.CodeID_MoCode));
               win.show();   
             }
 
 
 
-
+            
         
             if (cmd == "cmdViewTotalRecord") {
               var win = <%= winShowRecordList.ClientID %>;
@@ -202,7 +232,7 @@
                         <ext:Column ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount" Sortable="true">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewTotalRecordProvince" Icon="ChartPie">
-                                    <ToolTip Text="省份分部" />
+                                    <ToolTip Text="省份分布" />
                                 </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewTotalRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
@@ -213,7 +243,7 @@
                             Sortable="true">
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdViewTotalSuccessRecordProvince" Icon="ChartPie">
-                                    <ToolTip Text="省份分部" />
+                                    <ToolTip Text="省份分布" />
                                 </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewTotalSuccessRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
@@ -235,6 +265,9 @@
                             <Commands>
                                 <ext:ImageCommand CommandName="cmdRemovewInterceptRecord" Icon="DatabaseLightning">
                                     <ToolTip Text="重新同步" />
+                                </ext:ImageCommand>
+                                <ext:ImageCommand CommandName="cmdRemovewInterceptRecordProvince" Icon="ChartPie">
+                                    <ToolTip Text="省份分布" />
                                 </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewDownTotalCountRecord" Icon="DatabaseTable">
                                     <ToolTip Text="查看记录" />
@@ -329,6 +362,20 @@
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="ReportProvinceChart.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="DataType" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="StartDate" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="EndDate" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
         </AutoLoad>
         <Listeners>
             <Hide Handler="this.clearContent();" />

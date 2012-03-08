@@ -18,23 +18,94 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
         {
             if (this.IsPostBack)
                 return;
-            //ReportViewHelper.EnableFormat(rptvContainer,ReportViewHelper.ReportViewer_RenderFormat_IMAGE);
-            //ReportViewHelper.EnableFormat(rptvContainer, ReportViewHelper.ReportViewer_RenderFormat_HTML);
-            //ReportViewHelper.EnableFormat(rptvContainer, ReportViewHelper.ReportViewer_RenderFormat_RGDI);
+
             ReportViewHelper.FixReportDefinition(this.Server.MapPath("ReportProvinceChart.rdl"));
             rptvContainer.LocalReport.ReportPath = this.Server.MapPath("ReportProvinceChart.rdl");
             BindData();
         }
 
+        public int? ChannelID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannelID"] != null)
+                {
+                    return int.Parse(this.Request.QueryString["ChannelID"]);
+                }
+                return null;
+            }
+        }
+
+        public int? CodeID
+        {
+            get
+            {
+                if (this.Request.QueryString["CodeID"] != null)
+                {
+                    return int.Parse(this.Request.QueryString["CodeID"]);
+                }
+                return null;
+            }
+        }
+
+
+        public int? ClientID
+        {
+            get
+            {
+                if (this.Request.QueryString["ClientID"] != null)
+                {
+                    return int.Parse(this.Request.QueryString["ClientID"]);
+                }
+                return null;
+            }
+        }
+
+        public string DataType
+        {
+            get
+            {
+                if (this.Request.QueryString["DataType"] != null)
+                {
+                    return this.Request.QueryString["DataType"];
+                }
+                return "";
+            }
+        }
+
+        public DateTime? StartDate
+        {
+            get
+            {
+                if (this.Request.QueryString["StartDate"] != null)
+                {
+                    return Convert.ToDateTime(this.Request.QueryString["StartDate"]);
+                }
+                return null;
+            }
+        }
+
+        public DateTime? EndDate
+        {
+            get
+            {
+                if (this.Request.QueryString["EndDate"] != null)
+                {
+                    return Convert.ToDateTime(this.Request.QueryString["EndDate"]);
+                }
+                return null;
+            }
+        }
+
         private void BindData()
         {
-            DataTable tb = SPDayReportWrapper.QueryDayChannelProvine(System.DateTime.Now.Date.AddDays(-3), System.DateTime.Now.Date, 0).Tables[0];
+            DataTable tb = SPDayReportWrapper.QueryRecordProvine(StartDate, EndDate, DataType, ChannelID, CodeID, ClientID).Tables[0];
 
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             rptvContainer.LocalReport.DataSources.Clear();
             rptvContainer.LocalReport.DataSources.Add(rds);
 
-            string reportName = string.Format("【{0}】-【{1}】数据省份分布报表", System.DateTime.Now.Date.AddDays(-3).ToString("yyyy-MM-dd"), System.DateTime.Now.Date.ToString("yyyy-MM-dd"));
+            string reportName = string.Format("【{0}】-【{1}】数据省份分布报表", StartDate.Value.ToString("yyyy-MM-dd"), EndDate.Value.ToString("yyyy-MM-dd"));
 
             ReportParameter rpReportName = new ReportParameter();
             rpReportName.Name = "ReportName";
