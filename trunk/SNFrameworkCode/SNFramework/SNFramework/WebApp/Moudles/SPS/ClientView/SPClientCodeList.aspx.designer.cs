@@ -31,6 +31,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.ClientView {
         protected global::Ext.Net.Store storeSPClientCodeRelation;
         
         /// <summary>
+        /// UCSPClientCodeRelationEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientCodeRelationEdit UCSPClientCodeRelationEdit1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SPClientCodeList.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.ClientView.SPClientCodeList" %>
 
+<%@ Register Src="~/Moudles/SPS/Clients/UCSPClientCodeRelationEdit.ascx" TagName="UCSPClientCodeRelationEdit"
+    TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -35,7 +37,19 @@
         function processcmd(cmd, id) {
 
  
-			
+			            if (cmd == "cmdEdit") {
+                Ext.net.DirectMethods.UCSPClientCodeRelationEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '操作中...'
+                                                                               }
+                                                                }              
+                );
+            }
  
 
  
@@ -85,6 +99,8 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc2:UCSPClientCodeRelationEdit ID="UCSPClientCodeRelationEdit1" ShowForClient="True"
+        runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPClientCodeRelation" runat="server" StoreID="storeSPClientCodeRelation"
@@ -124,7 +140,7 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="同步设置">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="发送测试数据">
+                                            <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdChannelTest" Text="通道测试">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>

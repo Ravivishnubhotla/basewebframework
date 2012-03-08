@@ -153,15 +153,14 @@ namespace SPS.Data.AdoNet
                 case DayReportType.Down:
                     filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
                     break;
-                case DayReportType.DownSycnSuccess:
-                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
-                    break;
                 case DayReportType.DownNotSycn:
                     filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
                     break;
+                case DayReportType.DownSycnSuccess:
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 1 AND IsSycnSuccessed = 1 ";
+                    break;
                 case DayReportType.DownSycnFailed:
-                    filterSql +=
-                        " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 1 AND IsSycnSuccessed = 0 ";
                     break;
             }
             return filterSql;

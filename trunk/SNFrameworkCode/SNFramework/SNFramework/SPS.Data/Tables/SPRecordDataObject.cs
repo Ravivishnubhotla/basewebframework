@@ -49,6 +49,23 @@ namespace SPS.Data.Tables
 
             DayReportType reportType = (DayReportType) Enum.Parse(typeof (DayReportType), dataType);
 
+            SetReportTypeFilter(queryBuilder, reportType);
+
+            if (startDate != null)
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Value.Date));
+
+            if (endDate != null)
+                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.Value.Date.AddDays(1)));
+
+
+            AddQueryFiltersToQueryGenerator(filters, queryBuilder);
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, queryBuilder);
+            return queryBuilder;
+        }
+
+        private static void SetReportTypeFilter(NHibernateDynamicQueryGenerator<SPRecordEntity> queryBuilder, DayReportType reportType)
+        {
             switch (reportType)
             {
                 case DayReportType.AllUp:
@@ -68,40 +85,29 @@ namespace SPS.Data.Tables
                     queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
                     queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
                     break;
-                case DayReportType.DownSycnSuccess:
-                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
-                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
-                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
-                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
-                    break;
                 case DayReportType.DownNotSycn:
                     //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
                     queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
                     queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNTOCLIENT.Eq(false));
+                    break;
+                case DayReportType.DownSycnSuccess:
+                    //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNTOCLIENT.Eq(true));
                     queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
                     break;
                 case DayReportType.DownSycnFailed:
                     //queryBuilder.AddWhereClause(PROPERTY_ISREPORT.Eq(false));
                     queryBuilder.AddWhereClause(PROPERTY_ISSTATOK.Eq(true));
                     queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
-                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(true));
-                    queryBuilder.AddWhereClause(PROPERTY_SYCNRETRYTIMES.Gt(0));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNTOCLIENT.Eq(true));
+                    queryBuilder.AddWhereClause(PROPERTY_ISSYCNSUCCESSED.Eq(false));
                     break;
                 default:
                     break;
             }
-
-            if (startDate != null)
-                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDate.Value.Date));
-
-            if (endDate != null)
-                queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(endDate.Value.Date.AddDays(1)));
-
-
-            AddQueryFiltersToQueryGenerator(filters, queryBuilder);
-
-            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, queryBuilder);
-            return queryBuilder;
         }
 
         public List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc)

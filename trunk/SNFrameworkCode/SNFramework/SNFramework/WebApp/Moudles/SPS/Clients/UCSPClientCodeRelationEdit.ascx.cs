@@ -14,9 +14,29 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSPClientCodeRelationEdit")]
     public partial class UCSPClientCodeRelationEdit : System.Web.UI.UserControl
     {
+        public bool ShowForClient
+        {
+            get
+            {
+                if (this.ViewState["ShowForClient"]==null)
+                    this.ViewState["ShowForClient"] = false;
+                return (bool) this.ViewState["ShowForClient"];
+            }
+            set { this.ViewState["ShowForClient"] = value; }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (X.IsAjaxRequest)
+                return;
 
+            txtChannelID.Hidden = ShowForClient;
+            txtCodeID.Hidden = ShowForClient;
+            txtPrice.Hidden = ShowForClient;
+            txtInterceptRate.Hidden = ShowForClient;
+            txtSycnNotInterceptCount.Hidden = ShowForClient;
+         
         }
 
 
@@ -34,7 +54,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.txtCodeID.Text = obj.CodeID.MoCode;
                     this.txtPrice.Text = obj.Price.ToString();
                     this.txtInterceptRate.Text = obj.InterceptRate.ToString();
- 
+                    this.txtSycnNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
+
                     this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
   
                     this.txtSycnRetryTimes.Text = ValueConvertUtil.ConvertStringValue(obj.SycnRetryTimes);
@@ -44,7 +65,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.txtSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnFailedMessage);
  
  
-                    this.txtSycnNotInterceptCount.Text = obj.SycnNotInterceptCount.ToString();
+
  
 
 
@@ -75,21 +96,23 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             try
             {
                 SPClientCodeRelationWrapper obj = SPClientCodeRelationWrapper.FindById(int.Parse(hidId.Text.Trim()));
- 
-                obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
- 
-                obj.SyncData = this.chkSyncData.Checked;
- 
-                obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
- 
+
+                if (!ShowForClient)
+                {
+                    obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
+                    obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
+                    obj.SyncData = this.chkSyncData.Checked;
+                    obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
+                    obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
+                }
+
+
                 obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
                 obj.SycnOkMessage = this.txtSycnOkMessage.Text.Trim();
                 obj.SycnFailedMessage = this.txtSycnFailedMessage.Text.Trim();
  
  
-                obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
- 
+
 
 
                 SPClientCodeRelationWrapper.Update(obj);
