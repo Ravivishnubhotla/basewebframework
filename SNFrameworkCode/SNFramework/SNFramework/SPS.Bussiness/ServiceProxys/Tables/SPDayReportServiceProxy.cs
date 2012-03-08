@@ -24,8 +24,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate);
 	    List<SPDayReportEntity> CaculateReport(DateTime reportDate, SPSClientEntity clientEntity);
 	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity clientEntity);
-	    DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate, int channelId);
-        DataSet QueryDayCodeClientProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID);
+        DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, DayReportType dayReportType, int? channelId, int? codeID, int? clientID);
+ 
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -105,15 +105,12 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return SelfDataObj.QueryReport(startDate.Date, endDate.Date,clientEntity);
         }
 
-        public DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate, int channelId)
+        public DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, DayReportType dayReportType, int? channelId, int? codeID, int? clientID)
         {
-            return AdoNetDb.QueryDayChannelProvine(startDate, endDate, channelId);
+            return AdoNetDb.QueryRecordProvine(startDate, endDate, dayReportType, channelId, codeID, clientID);
         }
 
-        public DataSet QueryDayCodeClientProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID)
-        {
-            return AdoNetDb.QueryDayCodeClientProvine(startDate, endDate, clientCodeRelationID);
-        }
+ 
 
         [Transaction(ReadOnly = false)]
         public void ReBulidReport(DateTime date)

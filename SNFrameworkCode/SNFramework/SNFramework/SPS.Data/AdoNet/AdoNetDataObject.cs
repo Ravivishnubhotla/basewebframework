@@ -60,8 +60,6 @@ namespace SPS.Data.AdoNet
 
         #endregion
 
-
-
         public void UpdateUrlFailedSend(int recordId, string url,string errMessage)
         {
             if(errMessage.Length>50)
@@ -84,7 +82,6 @@ namespace SPS.Data.AdoNet
 
         }
 
-
         public void UpdateUrlSuccessSend(int recordId, string url)
         {
 
@@ -105,33 +102,9 @@ namespace SPS.Data.AdoNet
         {
             string sql = "Select [ChannelID],[ClientID],[CodeID],Sum([Count]) as RecordCount from SPRecord with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate";
 
-            switch (dayReportType)
-            {
-                case DayReportType.AllUp:
-                    sql += " AND IsReport =0";
-                    break;
-                case DayReportType.AllUpSuccess:
-                    sql += " AND IsReport =0 AND IsStatOK = 1 ";
-                    break;
-                case DayReportType.Intercept:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 1 ";
-                    break;
-                case DayReportType.Down:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
-                    break;
-                case DayReportType.DownSycnSuccess:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
-                    break;
-                case DayReportType.DownNotSycn:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
-                    break;
-                case DayReportType.DownSycnFailed:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
-                    break;
-            }
+            sql += BuildDayReportTypeFilterSql(dayReportType);
 
             sql += " group by [ChannelID],[ClientID],[CodeID]";
-
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
@@ -143,38 +116,13 @@ namespace SPS.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
-
         public DataTable CaculateReport(DateTime reportDate, DayReportType dayReportType, SPSClientEntity clientEntity)
         {
             string sql = "Select [ChannelID],[CodeID],Sum([Count]) as RecordCount from SPRecord with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and [ClientID] = @ClientID";
 
-            switch (dayReportType)
-            {
-                case DayReportType.AllUp:
-                    sql += " AND IsReport =0";
-                    break;
-                case DayReportType.AllUpSuccess:
-                    sql += " AND IsReport =0 AND IsStatOK = 1 ";
-                    break;
-                case DayReportType.Intercept:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 1 ";
-                    break;
-                case DayReportType.Down:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
-                    break;
-                case DayReportType.DownSycnSuccess:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
-                    break;
-                case DayReportType.DownNotSycn:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
-                    break;
-                case DayReportType.DownSycnFailed:
-                    sql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
-                    break;
-            }
+            sql += BuildDayReportTypeFilterSql(dayReportType);
 
             sql += " group by [ChannelID],[CodeID]";
-
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
@@ -185,6 +133,38 @@ namespace SPS.Data.AdoNet
             dbParameters.AddWithValue("ClientID", clientEntity.Id);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        private static string BuildDayReportTypeFilterSql(DayReportType dayReportType)
+        {
+            string filterSql = "";
+
+            switch (dayReportType)
+            {
+                case DayReportType.AllUp:
+                    filterSql += " AND IsReport =0";
+                    break;
+                case DayReportType.AllUpSuccess:
+                    filterSql += " AND IsReport =0 AND IsStatOK = 1 ";
+                    break;
+                case DayReportType.Intercept:
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 1 ";
+                    break;
+                case DayReportType.Down:
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 ";
+                    break;
+                case DayReportType.DownSycnSuccess:
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 1 ";
+                    break;
+                case DayReportType.DownNotSycn:
+                    filterSql += " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnToClient = 0 ";
+                    break;
+                case DayReportType.DownSycnFailed:
+                    filterSql +=
+                        " AND IsReport =0 AND  IsStatOK = 1 AND IsIntercept = 0 AND IsSycnSuccessed = 0 AND IsSycnToClient=1 AND SycnRetryTimes >0  ";
+                    break;
+            }
+            return filterSql;
         }
 
         public void RestAllReportedData(DateTime date)
@@ -251,47 +231,49 @@ namespace SPS.Data.AdoNet
             return (decimal) totalInterceptCount/(decimal) totalCount;
         }
 
-
-        public DataSet QueryDayChannelProvine(DateTime startDate, DateTime endDate, int channelId)
+        public DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, DayReportType dayReportType, int? channelId, int? codeID, int? clientID)
         {
-            string sql = "SELECT [Province] ,count(*) as ProvinceCount FROM  [dbo].[SPRecord]  {0} group by  [Province]";
+            string sql = "SELECT [Province] ,count(*) as ProvinceCount FROM  [dbo].[SPRecord] with(nolock)  {0} group by  [Province]";
 
-            string where = " Where 1=1 and CreateDate>=@startDate and CreateDate<@endDate ";
+            string where = " Where 1=1  ";
 
-            if (channelId > 0)
+            where += BuildDayReportTypeFilterSql(dayReportType);
+
+            if (startDate.HasValue)
+                where += " and CreateDate>=@startDate ";
+
+            if (endDate.HasValue)
+                where += " and CreateDate<@endDate ";
+
+            if (channelId.HasValue)
                 where += " and ChannelID=@ChannelId ";
 
+            if (codeID.HasValue)
+                where += " and CodeID=@CodeID ";
+
+            if (clientID.HasValue)
+                where += " and ClientID=@ClientID ";
+
             DbParameters dbParameters = this.CreateNewDbParameters();
 
-            dbParameters.AddWithValue("startDate", startDate.Date);
+            if (startDate.HasValue)
+                dbParameters.AddWithValue("startDate", startDate.Value.Date);
 
-            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+            if (endDate.HasValue)
+                dbParameters.AddWithValue("endDate", endDate.Value.Date.AddDays(1));
 
-            if (channelId>0)
-                dbParameters.AddWithValue("ChannelId", channelId);
+            if (channelId.HasValue)
+                dbParameters.AddWithValue("ChannelId", channelId.Value);
+
+            if (codeID.HasValue)
+                dbParameters.AddWithValue("CodeID", codeID.Value);
+
+            if (clientID.HasValue)
+                dbParameters.AddWithValue("ClientID", clientID.Value);
 
             return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
         }
 
-        public DataSet QueryDayCodeClientProvine(DateTime startDate, DateTime endDate, int clientCodeRelationID)
-        {
-            string sql = "SELECT [Province] ,count(*) as ProvinceCount FROM  [dbo].[SPRecord]  {0} group by  [Province]";
-
-            string where = " Where 1=1 and CreateDate>=@startDate and CreateDate<@endDate ";
-
-            if (clientCodeRelationID > 0)
-                where += " and clientCodeRelationID=@clientCodeRelationID ";
-
-            DbParameters dbParameters = this.CreateNewDbParameters();
-
-            dbParameters.AddWithValue("startDate", startDate.Date);
-
-            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
-
-            if (clientCodeRelationID > 0)
-                dbParameters.AddWithValue("clientCodeRelationID", clientCodeRelationID);
-
-            return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
-        }
+ 
     }
 }
