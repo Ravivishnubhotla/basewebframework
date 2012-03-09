@@ -10,52 +10,7 @@
 namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
     
     
-    public partial class SPClientCodeRelationListPage {
-        
-        /// <summary>
-        /// ScriptManagerProxy1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
-        
-        /// <summary>
-        /// storeSPClientCodeRelation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store storeSPClientCodeRelation;
-        
-        /// <summary>
-        /// UCSPClientCodeRelationAdd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientCodeRelationAdd UCSPClientCodeRelationAdd1;
-        
-        /// <summary>
-        /// UCSPClientCodeRelationEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientCodeRelationEdit UCSPClientCodeRelationEdit1;
-        
-        /// <summary>
-        /// UCSPClientCodeRelationView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.WebApp.Moudles.SPS.Clients.UCSPClientCodeRelationView UCSPClientCodeRelationView1;
+    public partial class SPSClientCodeSycnTestForm {
         
         /// <summary>
         /// viewPortMain control.
@@ -67,93 +22,102 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// gridPanelSPClientCodeRelation control.
+        /// FormPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPClientCodeRelation;
+        protected global::Ext.Net.FormPanel FormPanel1;
         
         /// <summary>
-        /// tbTop control.
+        /// lblChannelName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Label lblChannelName;
         
         /// <summary>
-        /// btnAdd control.
+        /// lblClientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.Label lblClientName;
         
         /// <summary>
-        /// btnRefresh control.
+        /// lblCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.Label lblCode;
         
         /// <summary>
-        /// GridView1 control.
+        /// lblOkMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.Label lblOkMessage;
         
         /// <summary>
-        /// RowSelectionModel1 control.
+        /// txtClientSycnUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.RowSelectionModel RowSelectionModel1;
+        protected global::Ext.Net.Label txtClientSycnUrl;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// lblClientSendUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.Label lblClientSendUrl;
         
         /// <summary>
-        /// RowTip control.
+        /// btnRefreshData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ToolTip RowTip;
+        protected global::Ext.Net.Button btnRefreshData;
         
         /// <summary>
-        /// winSendTestRequestForm control.
+        /// btnSPClientSendRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSendTestRequestForm;
+        protected global::Ext.Net.Button btnSPClientSendRequest;
         
         /// <summary>
-        /// winSendClientTestRequestForm control.
+        /// hidMobileName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSendClientTestRequestForm;
+        protected global::Ext.Net.Hidden hidMobileName;
+        
+        /// <summary>
+        /// hidLinkIDName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidLinkIDName;
     }
 }

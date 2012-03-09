@@ -36,8 +36,7 @@
 
         function processcmd(cmd, id) {
 
- 
-			            if (cmd == "cmdEdit") {
+		    if (cmd == "cmdEdit") {
                 Ext.net.DirectMethods.UCSPClientCodeRelationEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
@@ -46,13 +45,11 @@
                                                                     eventMask: {
                                                                                 showMask: true,
                                                                                 msg: '操作中...'
-                                                                               }
+                                                                                }
                                                                 }              
                 );
             }
- 
-
- 
+            
         }
         var showTip = function() {
             var rowIndex = <%= gridPanelSPClientCodeRelation.ClientID %> .view.findRowIndex(this.triggerElement),

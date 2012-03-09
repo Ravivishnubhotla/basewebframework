@@ -52,6 +52,36 @@
 
         function processcmd(cmd, id) {
 
+
+
+
+            if (cmd == "cmdChannelTest") {
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(' 通道 '+id.data.ChannelName+'  发送模拟数据 ');
+                
+                win.autoLoad.params.ChannelID = id.data.ChannelID;	
+        
+            	win.autoLoad.params.CodeID = id.data.CodeID_Id;		                
+            			                
+                win.show(); 
+            }
+            
+
+            if (cmd == "cmdClientTest") {
+                var win = <%= this.winSendClientTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(' 客户 '+id.data.ClientID_Name+'  发送模拟同步数据 ');
+                
+                win.autoLoad.params.ClientCodeRelationID = id.data.Id;	
+            			                
+                win.show(); 
+            }
+
+
+
             if (cmd == "cmdEdit") {
                 Ext.net.DirectMethods.UCSPClientCodeRelationEdit.Show(id.id,
                                                                 {
@@ -129,9 +159,12 @@
             <ext:JsonReader IDProperty="Id">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
-                    <ext:RecordField Name="CodeID" Type="int" />
+                    <ext:RecordField Name="CodeID_Id" Type="int" />
                     <ext:RecordField Name="CodeID_MoCode" />
                     <ext:RecordField Name="ChannelName" />
+                           <ext:RecordField Name="ClientID_Name" />             
+                    
+                    <ext:RecordField Name="ChannelID" Type="int" />
                     <ext:RecordField Name="Price" Type="int" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="UseClientDefaultSycnSetting" Type="Boolean" />
@@ -146,7 +179,6 @@
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="SycnNotInterceptCount" Type="int" />
                     <ext:RecordField Name="DataRange" />
-                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -213,6 +245,10 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdChannelTest" Text="通道测试">
+                                            </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdClientTest" Text="客户同步测试">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
@@ -234,10 +270,40 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    <ext:ToolTip ID="RowTip" runat="server" Target="={#{gridPanelSPClientCodeRelation}.getView().mainBody}" Anchor="left"
-        Delegate=".x-grid3-cell" TrackMouse="true">
+    <ext:ToolTip ID="RowTip" runat="server" Target="={#{gridPanelSPClientCodeRelation}.getView().mainBody}"
+        Anchor="left" Delegate=".x-grid3-cell" TrackMouse="true">
         <Listeners>
             <Show Fn="showTip" />
         </Listeners>
     </ext:ToolTip>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="../Channels/SPChannelSendTestRequestForm.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winSendClientTestRequestForm" runat="server" Title="下家模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPSClientCodeSycnTestForm.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientCodeRelationID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

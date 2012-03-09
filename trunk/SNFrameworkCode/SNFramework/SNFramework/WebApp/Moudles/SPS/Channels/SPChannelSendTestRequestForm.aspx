@@ -115,6 +115,8 @@
                             Ext.Msg.alert('消息', '请求成功，响应字符串："' + response.responseText + '"');
                         else
                             Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
+                        
+                                                RefreshValue();
                     },
                     failure: function () {
                         alert('请求失败！');
@@ -165,7 +167,7 @@
 
                          <%= lblDataStatusTestResult.ClientID %>.setText(showtext2);
 
-
+                        RefreshValue();
 
                     },
                     failure: function () {

@@ -208,6 +208,7 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
     <Content Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx" />
@@ -717,6 +718,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx.designer.cs">
       <DependentUpon>SPClientCodeRelationListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx.cs">
+      <DependentUpon>SPSClientCodeSycnTestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx.designer.cs">
+      <DependentUpon>SPSClientCodeSycnTestForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.cs">
       <DependentUpon>SPSClientListPage.aspx</DependentUpon>
