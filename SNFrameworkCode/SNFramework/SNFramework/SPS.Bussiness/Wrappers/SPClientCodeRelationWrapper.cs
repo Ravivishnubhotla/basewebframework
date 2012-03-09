@@ -113,6 +113,17 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
+        public int ChannelID
+        {
+            get
+            {
+                if (this.CodeID == null)
+                    return 0;
+                return this.CodeID.ChannelID.Id;
+            }
+        }
+
+
         public string ChannelName
         {
             get
@@ -258,5 +269,20 @@ namespace SPS.Bussiness.Wrappers
         {
             queryString.Add(key, value);
         }
+
+	    public NameValueCollection GetAllSycnParams()
+	    {
+	        List<SPChannelSycnParamsWrapper> channelSycnParams = this.CodeID_ChannelID.GetAllSycnParams();
+
+            NameValueCollection nameValueCollection = new NameValueCollection();
+
+            foreach (SPChannelSycnParamsWrapper channelSycnParam in channelSycnParams)
+	        {
+                nameValueCollection.Add(channelSycnParam.Name.ToLower(), channelSycnParam.MappingParams.ToLower());       
+	        }
+
+	        return nameValueCollection;
+
+	    }
     }
 }
