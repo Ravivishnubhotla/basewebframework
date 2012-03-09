@@ -9,44 +9,30 @@ namespace SPSUtil.AppCode
 {
     public class HttpGetSenderTask
     {
-        public string TemplateSendUrl { get; set; }
+        public ChannelSendSettings SendSetting { get; set; }
         public string OkMessage { get; set; }
         public int TimeOut { get; set; }
         public int SendInterval { get; set; }
         public int RetryTimes { get; set; }
-        public Hashtable TemplateSendUrlParams { get; set; }
-        public List<HttpGetSenderTaskItem> SendItems { get; set; }
+        public List<HttpGetSenderTaskItem> SendDataItems { get; set; }
 
-        public HttpGetSenderTask(string templateSendUrl, string okMessage, int timeOut, int sendInterval, int retryTimes,int RandomSendCounts)
+        public HttpGetSenderTask(ChannelSendSettings sendSetting, string okMessage, int timeOut, int sendInterval, int retryTimes, int RandomSendCounts)
         {
-            TemplateSendUrl = templateSendUrl;
+            SendSetting = sendSetting;
             OkMessage = okMessage;
             TimeOut = timeOut;
             SendInterval = sendInterval;
             RetryTimes = retryTimes;
-            TemplateSendUrlParams = new Hashtable();
 
-            Regex regex = new Regex(@"(?<={\$).*?(?=})");
-
-            MatchCollection mc = regex.Matches(TemplateSendUrl);
-
-            foreach (Match match in mc)
-            {
-                if(!TemplateSendUrlParams.Contains("{$" + match.Value + "}"))
-                {
-                    TemplateSendUrlParams.Add("{$" + match.Value + "}",Convert.ToInt32(match.Value.Substring(1,match.Value.Length-1)));
-                }
-            }
-
-            this.SendItems = new List<HttpGetSenderTaskItem>();
+            this.SendDataItems = new List<HttpGetSenderTaskItem>();
 
             for (int i = 0; i < RandomSendCounts; i++)
             {
-                string sendUrl = TemplateSendUrl;
+                string sendUrl = sendSetting.DataUrl;
 
-                foreach (DictionaryEntry templateSendUrlParamItem in TemplateSendUrlParams)
+                foreach (DictionaryEntry templateSendUrlParamItem in sendSetting.DataUrlParams)
                 {
-                    if(templateSendUrlParamItem.Key.ToString().StartsWith("{$N"))
+                    if (templateSendUrlParamItem.Key.ToString().StartsWith(ChannelSendSettings.ParamsPrefix + "N"))
                     {
                         sendUrl = sendUrl.Replace(templateSendUrlParamItem.Key.ToString(), NumberGenerator.GetRandNumber((int)templateSendUrlParamItem.Value));
                     }
@@ -55,7 +41,7 @@ namespace SPSUtil.AppCode
                 HttpGetSenderTaskItem httpGetSenderTaskItem = new HttpGetSenderTaskItem(sendUrl, OkMessage);
                 httpGetSenderTaskItem.TimeOut = TimeOut;
                 httpGetSenderTaskItem.TaskIndex = i;
-                this.SendItems.Add(httpGetSenderTaskItem);         
+                this.SendDataItems.Add(httpGetSenderTaskItem);         
             }
 
  

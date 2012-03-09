@@ -182,6 +182,7 @@
     <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
+    <Content Include="Moudles\DataImports\DataImportPage.aspx" />
     <Content Include="Moudles\Installs\InstallDB.aspx" />
     <Content Include="Moudles\Installs\InstallSystem.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
@@ -533,6 +534,13 @@
     </Compile>
     <Compile Include="Masters\BaseAdminMasterPage.Master.designer.cs">
       <DependentUpon>BaseAdminMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\DataImports\DataImportPage.aspx.cs">
+      <DependentUpon>DataImportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\DataImports\DataImportPage.aspx.designer.cs">
+      <DependentUpon>DataImportPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\Installs\InstallDB.aspx.cs">
       <DependentUpon>InstallDB.aspx</DependentUpon>
@@ -1436,6 +1444,9 @@
       <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCP\EmuCP.ashx.cs">
+      <DependentUpon>EmuCP.ashx</DependentUpon>
+    </Compile>
     <Compile Include="TestPage\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1566,6 +1577,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Moudles\SPS\Reports\ReportProvinceChart.rdl" />
+    <Content Include="TestCP\EmuCP.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

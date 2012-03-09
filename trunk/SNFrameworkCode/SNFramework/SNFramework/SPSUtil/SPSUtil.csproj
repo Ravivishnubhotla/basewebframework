@@ -46,6 +46,7 @@
     <Reference Include="System.Data.SQLite">
       <HintPath>..\ThirdsDll\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -58,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\ChannelSendSettings.cs" />
     <Compile Include="AppCode\HttpGetSenderTask.cs" />
     <Compile Include="AppCode\HttpGetSenderTaskItem.cs" />
     <Compile Include="AppCode\IProgressTask.cs" />
@@ -109,6 +111,12 @@
     <Compile Include="Moudles\TemplateForm\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\UCChannelParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Moudles\UCChannelParams.Designer.cs">
+      <DependentUpon>UCChannelParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -131,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\TemplateForm\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\UCChannelParams.resx">
+      <DependentUpon>UCChannelParams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
