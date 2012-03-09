@@ -7,6 +7,7 @@
     <title></title>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
     <style type="text/css">
+        
         html
         {
             height: 100%;
