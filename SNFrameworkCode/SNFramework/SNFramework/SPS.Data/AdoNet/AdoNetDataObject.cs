@@ -85,7 +85,7 @@ namespace SPS.Data.AdoNet
         public void UpdateUrlSuccessSend(int recordId, string url)
         {
 
-            string sql = "update SPRecord set IsSycnSuccessed =1  where ID=@ID and IsIntercept=0 and IsSycnToClient=1 and IsStatOK=1;" +
+            string sql = "update SPRecord set IsSycnSuccessed =1  where ID=@RecordID and IsIntercept=0 and IsSycnToClient=1 and IsStatOK=1;" +
                          "update SPRecordExtendInfo set  sSycnDataUrl=@sSycnDataUrl,sSycnDataFailedMessage='' where RecordID=@RecordID ;";
 
             DbParameters dbParameters = this.CreateNewDbParameters();

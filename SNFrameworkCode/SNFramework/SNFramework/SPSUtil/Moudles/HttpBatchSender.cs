@@ -48,21 +48,23 @@ namespace SPSUtil.Moudles
                 case "tsbSendDataUrls":
 
 
-                    frmTestSendTask frmSendTask1 = new frmTestSendTask();
+                    frmDataSendTask frmSendTask1 = new frmDataSendTask();
 
-                    if (frmSendTask1.ShowDialog() == DialogResult.OK)
-                    {
-                        this.tsbUrlSender.Enabled = false;
-                        this.tsbProgressBar.Visible = true;
-                        this.tsbCancelProgress.Visible = true;
+                    frmSendTask1.ShowDialog();
 
-                        this.rtxtOutput.Clear();
+                    //if (frmSendTask1.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    this.tsbUrlSender.Enabled = false;
+                    //    this.tsbProgressBar.Visible = true;
+                    //    this.tsbCancelProgress.Visible = true;
+
+                    //    this.rtxtOutput.Clear();
 
 
-                        //this.richTextBox1.a
-                        bgwSenderUrl.RunWorkerAsync(frmSendTask1.SendTask);
+                    //    //this.richTextBox1.a
+                    //    bgwSenderUrl.RunWorkerAsync(frmSendTask1.SendTask);
 
-                    }
+                    //}
 
 
 
@@ -87,7 +89,7 @@ namespace SPSUtil.Moudles
 
             if (senderTask!=null)
             {
-                for (int i = 0; i < senderTask.SendItems.Count; i++)
+                for (int i = 0; i < senderTask.SendDataItems.Count; i++)
                 {
                     if (bgw.CancellationPending)
                     {
@@ -98,9 +100,9 @@ namespace SPSUtil.Moudles
                     // Wait 100 milliseconds.
                     Thread.Sleep(100);
 
-                    senderTask.SendItems[i].Process();
+                    senderTask.SendDataItems[i].Process();
                     // Report progress.
-                    bgwSenderUrl.ReportProgress(i * 100 / senderTask.SendItems.Count, senderTask.SendItems[i]);
+                    bgwSenderUrl.ReportProgress(i * 100 / senderTask.SendDataItems.Count, senderTask.SendDataItems[i]);
                 }
 
             }
@@ -150,7 +152,6 @@ namespace SPSUtil.Moudles
             {
                 this.tsbMessage.Text = string.Format("请求发送取消。");
             }
-  
         }
 
         private void tsbCancelProgress_ButtonClick(object sender, EventArgs e)
