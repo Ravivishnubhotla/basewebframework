@@ -25,7 +25,13 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    List<SPDayReportEntity> CaculateReport(DateTime reportDate, SPSClientEntity clientEntity);
 	    List<SPDayReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity clientEntity);
         DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, DayReportType dayReportType, int? channelId, int? codeID, int? clientID);
- 
+
+	    DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId);
+	    DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId);
+	    DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId);
+	    DataSet QueryClientOperatorReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId);
+	    DataSet QueryChannelProvinceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId);
+	    DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId);
     }
 
     internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
@@ -110,7 +116,36 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return AdoNetDb.QueryRecordProvine(startDate, endDate, dayReportType, channelId, codeID, clientID);
         }
 
- 
+        public DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            return AdoNetDb.QueryChannelInvoiceReport(startDate, endDate, channelId, codeId);
+        }
+
+        public DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            return AdoNetDb.QueryClientInvoiceReport(startDate, endDate, clientId, codeId);
+        }
+
+        public DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            return AdoNetDb.QueryChannelOperatorReport(startDate, endDate, channelId, codeId);
+        }
+
+        public DataSet QueryClientOperatorReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            return AdoNetDb.QueryClientOperatorReport(startDate, endDate, clientId, codeId);
+        }
+
+        public DataSet QueryChannelProvinceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            return AdoNetDb.QueryChannelProvinceReport(startDate, endDate, channelId, codeId);
+        }
+
+        public DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            return AdoNetDb.QueryClientProvinceReport(startDate, endDate, clientId, codeId);
+        }
+
 
         [Transaction(ReadOnly = false)]
         public void ReBulidReport(DateTime date)
