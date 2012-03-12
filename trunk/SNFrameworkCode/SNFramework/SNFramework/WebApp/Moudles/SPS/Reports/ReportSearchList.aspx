@@ -81,6 +81,9 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+            <Load Handler="if (#{storeData}.getCount()>0) #{btnExport}.enable(); else #{btnExport}.disable();"></Load>
+        </Listeners>
     </ext:Store>
     <script type="text/javascript">
 
@@ -331,7 +334,8 @@
                                             <Click Handler="#{storeData}.reload();" />
                                         </Listeners>
                                     </ext:Button>
-                                    <ext:Button ID='btnExport' runat="server" Text="导出" Icon="PageExcel" AutoPostBack="true" OnClick="ExportToExcel">
+                                    <ext:Button ID='btnExport' runat="server"  Disabled="True"  Text="导出" Icon="PageExcel" AutoPostBack="true"
+                                        OnClick="ExportToExcel">
                                     </ext:Button>
                                 </Items>
                             </ext:Toolbar>

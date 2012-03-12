@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportDetailPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportDetailPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
@@ -68,10 +68,8 @@
                                     <Click Handler="#{storeData}.reload();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnAdd' runat="server" Text="导出" Icon="PageExcel">
-                                <Listeners>
-                                    <Click Handler="#{GridPanel1}.submitData(false);" />
-                                </Listeners>
+                            <ext:Button ID='btnExport' runat="server" Text="导出" Icon="PageExcel" AutoPostBack="true"
+                                OnClick="ExportToExcel">
                             </ext:Button>
                             <ext:Button ID='btnMove' runat="server" Text="移动数据" Icon="PageGo">
                             </ext:Button>
@@ -107,8 +105,8 @@
                             Width="35">
                             <Renderer Fn="FormatStat" />
                         </ext:Column>
-                        <ext:Column ColumnID="colIsIntercept" DataIndex="IsIntercept" Header="扣除" Sortable="true" Hidden='<%# ShowForClient %>' AutoDataBind="True"  runat="server" 
-                            Width="35">
+                        <ext:Column ColumnID="colIsIntercept" DataIndex="IsIntercept" Header="扣除" Sortable="true"
+                            Hidden='<%# ShowForClient %>' AutoDataBind="True" runat="server" Width="35">
                             <Renderer Fn="FormatBool" />
                         </ext:Column>
                         <ext:Column ColumnID="colIsSycnToClient" DataIndex="IsSycnToClient" Header="同步" Sortable="true"
@@ -149,4 +147,6 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
+    <rsweb:ReportViewer ID="rptvExport" runat="server" Visible="False">
+    </rsweb:ReportViewer>
 </asp:Content>
