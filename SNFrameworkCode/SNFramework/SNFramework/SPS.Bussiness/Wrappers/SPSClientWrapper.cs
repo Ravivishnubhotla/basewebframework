@@ -126,5 +126,10 @@ namespace SPS.Bussiness.Wrappers
 	    {
             return ConvertEntityToWrapper(businessProxy.GetClientByUserID(userId));
 	    }
+
+        public List<SPCodeWrapper> GetAllAssignedCode()
+	    {
+	        return new List<SPCodeWrapper>();
+	    }
     }
 }

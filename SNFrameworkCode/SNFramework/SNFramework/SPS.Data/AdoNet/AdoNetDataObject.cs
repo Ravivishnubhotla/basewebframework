@@ -273,6 +273,102 @@ namespace SPS.Data.AdoNet
             return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
         }
 
- 
+
+        public DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            string sql = "SELECT ChannelID, CodeID, ReportDate,SUM(TotalSuccessCount) AS STotalSuccessCount FROM  dbo.SPDayReport WITH (nolock) ";
+
+            string where = " Where 1=1  ";
+
+            if (startDate.HasValue)
+                where += " and CreateDate>=@startDate ";
+
+            if (endDate.HasValue)
+                where += " and CreateDate<@endDate ";
+
+            if (channelId.HasValue)
+                where += " and ChannelID=@ChannelId ";
+
+            if (codeId.HasValue)
+                where += " and CodeID=@CodeID ";
+
+            sql += where;
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            if (startDate.HasValue)
+                dbParameters.AddWithValue("startDate", startDate.Value.Date);
+
+            if (endDate.HasValue)
+                dbParameters.AddWithValue("endDate", endDate.Value.Date.AddDays(1));
+
+            if (channelId.HasValue)
+                dbParameters.AddWithValue("ChannelId", channelId.Value);
+
+            if (codeId.HasValue)
+                dbParameters.AddWithValue("CodeID", codeId.Value);
+
+            sql += " ORDER BY ChannelID, CodeID, ReportDate ";
+
+            sql += " GROUP BY ChannelID, CodeID, ReportDate ";
+
+            return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
+        }
+        public DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            string sql = "SELECT ClientId, CodeID, ReportDate,SUM(DownTotalCount) AS SDownTotalCount FROM  dbo.SPDayReport WITH (nolock) ";
+
+            string where = " Where 1=1  ";
+
+            if (startDate.HasValue)
+                where += " and CreateDate>=@startDate ";
+
+            if (endDate.HasValue)
+                where += " and CreateDate<@endDate ";
+
+            if (clientId.HasValue)
+                where += " and ClientId=@ClientId ";
+
+            if (codeId.HasValue)
+                where += " and CodeID=@CodeID ";
+
+            sql += where;
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            if (startDate.HasValue)
+                dbParameters.AddWithValue("startDate", startDate.Value.Date);
+
+            if (endDate.HasValue)
+                dbParameters.AddWithValue("endDate", endDate.Value.Date.AddDays(1));
+
+            if (clientId.HasValue)
+                dbParameters.AddWithValue("ClientId", clientId.Value);
+
+            if (codeId.HasValue)
+                dbParameters.AddWithValue("CodeID", codeId.Value);
+
+            sql += " ORDER BY ClientId, CodeID, ReportDate ";
+
+            sql += " GROUP BY ClientId, CodeID, ReportDate ";
+
+            return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
+        }
+        public DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            throw new NotImplementedException();
+        }
+        public DataSet QueryClientOperatorReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            throw new NotImplementedException();
+        }
+        public DataSet QueryChannelProvinceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeId)
+        {
+            throw new NotImplementedException();
+        }
+        public DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

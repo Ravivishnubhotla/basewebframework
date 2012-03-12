@@ -177,5 +177,30 @@ namespace SPS.Bussiness.Wrappers
 	    {
             return ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate, client.Entity));
 	    }
+
+        public static DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate,int? channelId, int? codeID)
+        {
+            return businessProxy.QueryChannelInvoiceReport(startDate,endDate,channelId,codeID);
+        }
+        public static DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
+        {
+            return businessProxy.QueryClientInvoiceReport(startDate, endDate, clientID, codeID);
+        }
+        public static DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeID)
+        {
+            return businessProxy.QueryChannelOperatorReport(startDate, endDate, channelId, codeID);
+        }
+        public static DataSet QueryClientOperatorReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
+        {
+            return businessProxy.QueryClientOperatorReport(startDate, endDate, clientID, codeID);
+        }
+        public static DataSet QueryChannelProvinceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeID)
+        {
+            return businessProxy.QueryChannelProvinceReport(startDate, endDate, channelId, codeID);
+        }
+        public static DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
+        {
+            return businessProxy.QueryClientProvinceReport(startDate, endDate, clientID, codeID);
+        }
     }
 }

@@ -232,6 +232,11 @@
     <Content Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
+    <Content Include="Moudles\SPS\Reports\Blank.htm" />
+    <Content Include="Moudles\SPS\Reports\ReportChannelInvoice.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportChannelInvoiceService.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportClientInvoice.aspx" />
+    <Content Include="Moudles\SPS\Reports\ReportClientInvoiceService.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportDetailPage.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportProvinceChart.aspx" />
@@ -914,6 +919,34 @@
     </Compile>
     <Compile Include="Moudles\SPS\Data\SPSDataManage.aspx.designer.cs">
       <DependentUpon>SPSDataManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannelInvoice.aspx.cs">
+      <DependentUpon>ReportChannelInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannelInvoice.aspx.designer.cs">
+      <DependentUpon>ReportChannelInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannelInvoiceService.aspx.cs">
+      <DependentUpon>ReportChannelInvoiceService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportChannelInvoiceService.aspx.designer.cs">
+      <DependentUpon>ReportChannelInvoiceService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClientInvoice.aspx.cs">
+      <DependentUpon>ReportClientInvoice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClientInvoice.aspx.designer.cs">
+      <DependentUpon>ReportClientInvoice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClientInvoiceService.aspx.cs">
+      <DependentUpon>ReportClientInvoiceService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\ReportClientInvoiceService.aspx.designer.cs">
+      <DependentUpon>ReportClientInvoiceService.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Reports\ReportCountRecordToday.aspx.cs">
       <DependentUpon>ReportCountRecordToday.aspx</DependentUpon>
