@@ -331,10 +331,7 @@
                                             <Click Handler="#{storeData}.reload();" />
                                         </Listeners>
                                     </ext:Button>
-                                    <ext:Button ID='btnAdd' runat="server" Text="导出" Icon="PageExcel">
-                                        <Listeners>
-                                            <Click Handler="#{GridPanel1}.submitData(false);" />
-                                        </Listeners>
+                                    <ext:Button ID='btnExport' runat="server" Text="导出" Icon="PageExcel" AutoPostBack="true" OnClick="ExportToExcel">
                                     </ext:Button>
                                 </Items>
                             </ext:Toolbar>
@@ -412,4 +409,6 @@
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
+    <rsweb:ReportViewer ID="rptvExport" runat="server" Visible="False">
+    </rsweb:ReportViewer>
 </asp:Content>
