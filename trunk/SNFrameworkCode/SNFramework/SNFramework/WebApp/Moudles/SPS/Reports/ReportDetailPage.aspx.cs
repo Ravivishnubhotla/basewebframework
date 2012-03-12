@@ -19,22 +19,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             if (X.IsAjaxRequest)
                 return;
 
- 
-
             GridPanel1.Reload();
 
-            //SPSClientWrapper spClientWrapper = SPSClientWrapper.FindById(this.SPClientID);
-
-            //SPClientChannelSettingWrapper clientChannelSettingWrapper = spClientWrapper.DefaultClientChannelSetting;
-
-            //bool isSycnData = (clientChannelSettingWrapper != null && clientChannelSettingWrapper.SyncData.HasValue &&
-            //                   clientChannelSettingWrapper.SyncData.Value);
-
-            //storeData.Reader.Add(GetJsonReaderByDataTable(SPChannelWrapper.FindById(this.ChannleID), isSycnData));
-
-            //this.GridPanel1.StoreID = "storeData";
-
-            //this.PagingToolBar1.StoreID = "storeData";
         }
 
 
@@ -140,10 +126,6 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
         }
 
-        protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
-        {
-
-
-        }
+ 
     }
 }

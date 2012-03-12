@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportDetailPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportDetailPage" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%--<p>Limitations of ajax file downloading: success/failure events don't fired. Therefore the mask is impossible.</p>--%>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">>
     <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
