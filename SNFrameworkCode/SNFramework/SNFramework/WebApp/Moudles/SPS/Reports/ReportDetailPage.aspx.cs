@@ -8,6 +8,8 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Web.UI;
+using Microsoft.Reporting.WebForms;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
@@ -20,6 +22,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
                 return;
 
             GridPanel1.Reload();
+
+            ReportViewHelper.FixReportDefinition(this.Server.MapPath("RecordExportTemplateForChannel.rdl"));
+            rptvExport.LocalReport.ReportPath = this.Server.MapPath("RecordExportTemplateForChannel.rdl");
 
         }
 
@@ -115,6 +120,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             }
         }
 
+
+
+
         protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
@@ -123,9 +131,53 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             storeData.DataSource = SPRecordWrapper.QueryRecordByPage(this.ChannelID, this.CodeID, this.ClientID, this.DataType, this.StartDate.Value, this.EndDate.Value, new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
             storeData.DataBind();
-
         }
 
+
+        protected void ExportToExcel(object sender, EventArgs e)
+        {
+            RecordSortor recordSortor = new RecordSortor();
+
+            recordSortor.OrderByColumnName = "";
+
+
+
+            List<SPRecordWrapper> dataSource = SPRecordWrapper.QueryRecord(this.ChannelID, this.CodeID, this.ClientID, this.DataType, this.StartDate.Value, this.EndDate.Value, new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc);
+
+            ReportDataSource rds = new ReportDataSource("DataSet1", dataSource);
+
+            rptvExport.LocalReport.DataSources.Clear();
+            rptvExport.LocalReport.DataSources.Add(rds);
+
+            string reportName = string.Format("自定义数据导出报表");
+
+            ReportParameter rpReportName = new ReportParameter();
+            rpReportName.Name = "ReportName";
+            rpReportName.Values.Add(reportName);
+
+            rptvExport.LocalReport.SetParameters(
+             new ReportParameter[] { rpReportName });
+
+
+            Warning[] warnings;
+            string[] streamids;
+            string mimeType;
+            string encoding;
+            string extension;
+
+            byte[] reportFile = rptvExport.LocalReport.Render(
+               "Excel", null, out mimeType, out encoding,
+                out extension,
+               out streamids, out warnings);
+
+
+
+            this.Response.Clear();
+            this.Response.ContentType = "application/vnd.ms-excel";
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
+            this.Response.BinaryWrite(reportFile);
+            this.Response.End();
+        }
  
     }
 }

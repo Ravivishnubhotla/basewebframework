@@ -58,13 +58,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
-        /// btnAdd control.
+        /// btnExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.Button btnExport;
         
         /// <summary>
         /// btnMove control.
@@ -110,5 +110,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// rptvExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer rptvExport;
     }
 }
