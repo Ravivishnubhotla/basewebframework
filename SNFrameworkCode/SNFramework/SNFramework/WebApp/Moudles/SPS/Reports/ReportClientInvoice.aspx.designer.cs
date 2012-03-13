@@ -103,12 +103,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports {
         protected global::Ext.Net.ComboBox cmbCode;
         
         /// <summary>
-        /// btnFind control.
+        /// btnQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnFind;
+        protected global::Ext.Net.Button btnQuery;
     }
 }

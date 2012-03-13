@@ -144,34 +144,10 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
             List<SPRecordWrapper> dataSource = SPRecordWrapper.QueryRecord(this.ChannelID, this.CodeID, this.ClientID, this.DataType, this.StartDate.Value, this.EndDate.Value, new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc);
 
-            ReportDataSource rds = new ReportDataSource("DataSet1", dataSource);
 
-            rptvExport.LocalReport.DataSources.Clear();
-            rptvExport.LocalReport.DataSources.Add(rds);
+            byte[] reportFile = ReportViewHelper.ExportListToExcel(this.rptvExport, dataSource, "DataSet1", "自定义数据导出报表");
 
-            string reportName = string.Format("自定义数据导出报表");
-
-            ReportParameter rpReportName = new ReportParameter();
-            rpReportName.Name = "ReportName";
-            rpReportName.Values.Add(reportName);
-
-            rptvExport.LocalReport.SetParameters(
-             new ReportParameter[] { rpReportName });
-
-
-            Warning[] warnings;
-            string[] streamids;
-            string mimeType;
-            string encoding;
-            string extension;
-
-            byte[] reportFile = rptvExport.LocalReport.Render(
-               "Excel", null, out mimeType, out encoding,
-                out extension,
-               out streamids, out warnings);
-
-
-
+ 
             this.Response.Clear();
             this.Response.ContentType = "application/vnd.ms-excel";
             this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");

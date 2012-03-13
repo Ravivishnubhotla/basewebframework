@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -34,6 +35,7 @@ namespace Legendigital.Framework.Common.Web.UI
         public const string ReportViewer_RenderFormat_RGDI = "RGDI";
         public const string ReportViewer_RenderFormat_IMAGE = "IMAGE";
         public const string ReportViewer_RenderFormat_PDF = "PDF";
+        public const string ReportTitle_ParamsName = "ReportName";
 
 //result = rvDashlet.ServerReport.Render("HTML4.0", "<DeviceInfo><HTMLFragment>True</HTMLFragment></DeviceInfo>", out mimeType, out encoding, out extension, out streamids, out warnings);
        
@@ -43,6 +45,72 @@ namespace Legendigital.Framework.Common.Web.UI
             return reportViewer.LocalReport.Render(format, deviceInfo, out mimeType, out encoding, out fileNameExtension,
                                                    out streams, out warnings);
         }
+
+
+        public static void BindDataTableToReport(ReportViewer reportViewer, DataTable dataTable, string dataSourceName, string reportName)
+        {
+            ReportDataSource rds = new ReportDataSource(dataSourceName, dataTable);
+            reportViewer.LocalReport.DataSources.Clear();
+            reportViewer.LocalReport.DataSources.Add(rds);
+
+            ReportParameter rpReportName = new ReportParameter();
+            rpReportName.Name = ReportTitle_ParamsName;
+            rpReportName.Values.Add(reportName);
+
+            reportViewer.LocalReport.SetParameters(
+                new ReportParameter[] { rpReportName });
+
+            reportViewer.LocalReport.Refresh();
+        }
+
+        public static void BindListToReport(ReportViewer reportViewer, IEnumerable list, string dataSourceName, string reportName)
+        {
+            ReportDataSource rds = new ReportDataSource(dataSourceName, list);
+            reportViewer.LocalReport.DataSources.Clear();
+            reportViewer.LocalReport.DataSources.Add(rds);
+
+            ReportParameter rpReportName = new ReportParameter();
+            rpReportName.Name = ReportTitle_ParamsName;
+            rpReportName.Values.Add(reportName);
+
+            reportViewer.LocalReport.SetParameters(
+                new ReportParameter[] { rpReportName });
+
+            reportViewer.LocalReport.Refresh();
+        }
+
+
+        public static byte[] ExportListToExcel(ReportViewer reportViewer, IEnumerable list, string dataSourceName, string reportName)
+        {
+            ReportDataSource rds = new ReportDataSource(dataSourceName, list);
+
+            reportViewer.LocalReport.DataSources.Clear();
+            reportViewer.LocalReport.DataSources.Add(rds);
+ 
+
+            ReportParameter rpReportName = new ReportParameter();
+            rpReportName.Name = ReportTitle_ParamsName;
+            rpReportName.Values.Add(reportName);
+
+            reportViewer.LocalReport.SetParameters(
+             new ReportParameter[] { rpReportName });
+
+
+            Warning[] warnings;
+            string[] streamids;
+            string mimeType;
+            string encoding;
+            string extension;
+
+            byte[] reportFile = reportViewer.LocalReport.Render(
+               "Excel", null, out mimeType, out encoding,
+                out extension,
+               out streamids, out warnings);
+
+            return reportFile;
+
+        }
+
 
 
         public static void EnableFormat(ReportViewer viewer, string formatName)

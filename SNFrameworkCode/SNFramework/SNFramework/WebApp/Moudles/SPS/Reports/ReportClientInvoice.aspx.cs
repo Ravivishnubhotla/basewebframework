@@ -13,7 +13,13 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (X.IsAjaxRequest)
+                return;
 
+            dfStart.SelectedDate = System.DateTime.Now.AddDays(-3);
+            dfStart.MaxDate = System.DateTime.Now.AddDays(-1);
+            dfEnd.SelectedDate = System.DateTime.Now.AddDays(-1);
+            dfEnd.MaxDate = System.DateTime.Now.AddDays(-1);
         }
 
         protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
@@ -21,6 +27,31 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             this.storeSPClient.DataSource = SPSClientWrapper.FindAll();
 
             this.storeSPClient.DataBind();
+        }
+
+
+        protected void btnQuery_Click(object sender, DirectEventArgs e)
+        {
+            this.ReportPanel.AutoLoad.Params.Clear();
+
+            if (cmbClient.SelectedItem != null && cmbClient.SelectedItem.Value != null)
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("ClientID", cmbClient.SelectedItem.Value.ToString()));
+            }
+
+
+            if (cmbCode.SelectedItem != null && cmbCode.SelectedItem.Value != null)
+            {
+                this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("CodeID", cmbCode.SelectedItem.Value.ToString()));
+            }
+
+
+            if (dfStart.SelectedValue != null)
+                this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("StartDate", dfStart.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
+            if (dfEnd.SelectedValue != null)
+                this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("EndDate", dfEnd.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
+            this.ReportPanel.AutoLoad.Url = "ReportChannelInvoiceService.aspx";
+            this.ReportPanel.LoadContent();
         }
 
         protected void storeSPCode_Refresh(object sender, StoreRefreshDataEventArgs e)
