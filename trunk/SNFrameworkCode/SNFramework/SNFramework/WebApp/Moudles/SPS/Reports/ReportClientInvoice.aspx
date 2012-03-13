@@ -54,7 +54,7 @@
                                     <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                 </Triggers>
                                 <Listeners>
-                                    <Select Handler="this.triggers[0].show();" />
+                                    <Select Handler="this.triggers[0].show();#{cmbCode}.clearValue(); #{storeSPCode}.reload();" />
                                     <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                 </Listeners>
@@ -87,8 +87,10 @@
                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                 </Listeners>
                             </ext:ComboBox>
-                            <ext:Button ID='btnFind' runat="server" Text="搜索" Icon="Find">
- 
+                            <ext:Button ID='btnQuery' runat="server" Text="搜索" Icon="Find">
+                                <DirectEvents>
+                                    <Click OnEvent="btnQuery_Click" />
+                                </DirectEvents>
                             </ext:Button>
                         </Items>
                     </ext:Toolbar>

@@ -129,7 +129,17 @@ namespace SPS.Bussiness.Wrappers
 
         public List<SPCodeWrapper> GetAllAssignedCode()
 	    {
-	        return new List<SPCodeWrapper>();
+            List<SPClientCodeRelationWrapper> spClientCodeRelations = SPClientCodeRelationWrapper.FindAllByClientID(this);
+
+            List<SPCodeWrapper> spCodes = new List<SPCodeWrapper>();
+
+            foreach (SPClientCodeRelationWrapper spClientCodeRelationWrapper in spClientCodeRelations)
+            {
+                if (!spCodes.Exists(p => (p.Id == spClientCodeRelationWrapper.ClientID.Id)&&(!p.IsDiable)))
+                    spCodes.Add(spClientCodeRelationWrapper.CodeID);
+            }
+
+            return spCodes;
 	    }
     }
 }

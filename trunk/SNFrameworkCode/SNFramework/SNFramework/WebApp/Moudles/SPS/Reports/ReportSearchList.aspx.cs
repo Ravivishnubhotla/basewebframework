@@ -213,33 +213,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
             List<SPRecordWrapper> dataSource = SPRecordWrapper.QueryRecord(reportSearchCondition.Channel, reportSearchCondition.Code, reportSearchCondition.Client, SPRecordWrapper.DayReportType_AllUp, reportSearchCondition.StartDate, reportSearchCondition.EndDate, reportSearchCondition.QueryFilters, reportSearchCondition.RecordSortor.OrderByColumnName, reportSearchCondition.RecordSortor.IsDesc);
 
-            ReportDataSource rds = new ReportDataSource("DataSet1", dataSource);
-
-            rptvExport.LocalReport.DataSources.Clear();
-            rptvExport.LocalReport.DataSources.Add(rds);
-
-            string reportName = string.Format("自定义数据导出报表");
-
-            ReportParameter rpReportName = new ReportParameter();
-            rpReportName.Name = "ReportName";
-            rpReportName.Values.Add(reportName);
-
-            rptvExport.LocalReport.SetParameters(
-             new ReportParameter[] { rpReportName });
-
-
-            Warning[] warnings;
-            string[] streamids;
-            string mimeType;
-            string encoding;
-            string extension;
-
-            byte[] reportFile = rptvExport.LocalReport.Render(
-               "Excel", null, out mimeType, out encoding,
-                out extension,
-               out streamids, out warnings);
- 
-
+            byte[] reportFile = ReportViewHelper.ExportListToExcel(this.rptvExport, dataSource, "DataSet1", "自定义数据导出报表");
 
             this.Response.Clear();
             this.Response.ContentType = "application/vnd.ms-excel";
