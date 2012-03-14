@@ -43,9 +43,9 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:DateField ID="dfStart" runat="server" FieldLabel="开始时间" LabelWidth="60" Width="150">
+                            <ext:DateField ID="dfStart" runat="server" FieldLabel="开始时间" AllowBlank="False"  LabelWidth="60" Width="150">
                             </ext:DateField>
-                            <ext:DateField ID="dfEnd" runat="server" FieldLabel="结束时间" LabelWidth="60" Width="150">
+                            <ext:DateField ID="dfEnd" runat="server" FieldLabel="结束时间"  AllowBlank="False" LabelWidth="60" Width="150">
                             </ext:DateField>
                             <ext:ComboBox ID="cmbChannel" FieldLabel="选择通道" LabelWidth="60" Width="180" runat="server"
                                 StoreID="storeSPChannel" Editable="false" DisplayField="Name" ValueField="Id"
@@ -89,7 +89,7 @@
                             </ext:ComboBox>
                             <ext:Button ID='btnQuery' runat="server" Text="搜索" Icon="Find">
                                 <DirectEvents>
-                                    <Click OnEvent="btnQuery_Click" />
+                                    <Click Before="if(! (#{dfStart}.isValid() && #{dfEnd}.isValid() )) return false;" OnEvent="btnQuery_Click" />
                                 </DirectEvents>
                             </ext:Button>
                         </Items>

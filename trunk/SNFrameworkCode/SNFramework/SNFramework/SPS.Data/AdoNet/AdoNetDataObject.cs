@@ -281,10 +281,10 @@ namespace SPS.Data.AdoNet
             string where = " Where 1=1  ";
 
             if (startDate.HasValue)
-                where += " and CreateDate>=@startDate ";
+                where += " and ReportDate>=@startDate ";
 
             if (endDate.HasValue)
-                where += " and CreateDate<@endDate ";
+                where += " and ReportDate<@endDate ";
 
             if (channelId.HasValue)
                 where += " and ChannelID=@ChannelId ";
@@ -308,9 +308,9 @@ namespace SPS.Data.AdoNet
             if (codeId.HasValue)
                 dbParameters.AddWithValue("CodeID", codeId.Value);
 
-            sql += " ORDER BY ChannelID, CodeID, ReportDate ";
-
             sql += " GROUP BY ChannelID, CodeID, ReportDate ";
+
+            sql += " ORDER BY ChannelID, CodeID, ReportDate ";
 
             return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
         }
@@ -321,10 +321,10 @@ namespace SPS.Data.AdoNet
             string where = " Where 1=1  ";
 
             if (startDate.HasValue)
-                where += " and CreateDate>=@startDate ";
+                where += " and ReportDate>=@startDate ";
 
             if (endDate.HasValue)
-                where += " and CreateDate<@endDate ";
+                where += " and ReportDate<@endDate ";
 
             if (clientId.HasValue)
                 where += " and ClientId=@ClientId ";
@@ -348,9 +348,9 @@ namespace SPS.Data.AdoNet
             if (codeId.HasValue)
                 dbParameters.AddWithValue("CodeID", codeId.Value);
 
-            sql += " ORDER BY ClientId, CodeID, ReportDate ";
-
             sql += " GROUP BY ClientId, CodeID, ReportDate ";
+
+            sql += " ORDER BY ClientId, CodeID, ReportDate ";
 
             return this.ExecuteDataSet(string.Format(sql, where), CommandType.Text, dbParameters);
         }
