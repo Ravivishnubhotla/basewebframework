@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Linq;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.Code;
 using SPS.Data.AdoNet;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -122,7 +124,6 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	    }
 
-
 	    internal static List<SPDayReportWrapper> ConvertNoDbDataToWrapperList(List<SPDayReportEntity> entitys)
         {
             List<SPDayReportWrapper> list = new List<SPDayReportWrapper>();
@@ -144,9 +145,69 @@ namespace SPS.Bussiness.Wrappers
             businessProxy.ReBulidReport(date);
         }
 
+        public static List<SPDayReportWrapper> ConvertToDayReport(List<SPDayReportWrapper> convertToWrapperList)
+        {
+            //var dayReports = from p in convertToWrapperList
+            //                 group p by new { p.ChannelID_Id, p.CodeID_Id, p.ClientID_Id, p.ReportDate } into g
+            //                 select new
+            //                 {
+            //                     ChannelID = g.Key.ChannelID_Id.Value,
+            //                     CodeID = g.Key.CodeID_Id.Value,
+            //                     ClientID = g.Key.ClientID_Id.Value,
+            //                     ReportDate = g.Key.ReportDate,
+            //                     TotalCount = g.Sum(p => p.TotalCount),
+            //                     TotalSuccessCount = g.Sum(p => p.TotalSuccessCount),
+            //                     InterceptCount = g.Sum(p => p.InterceptCount),
+            //                     DownTotalCount = g.Sum(p => p.DownTotalCount),
+            //                     DownSycnSuccess = g.Sum(p => p.DownSycnSuccess),
+            //                     DownSycnFailed = g.Sum(p => p.DownSycnFailed),
+            //                     DownNotSycn = g.Sum(p => p.DownNotSycn)
+            //                 };
+
+            List<SPDayReportWrapper> spDays = new List<SPDayReportWrapper>();
+
+            foreach (SPDayReportWrapper dayReport in convertToWrapperList)
+            {
+                SPDayReportWrapper finDayReportWrapper =
+                    spDays.Find(
+                        p =>
+                        (
+                         (p.ChannelID.Id == dayReport.ChannelID.Id) && 
+                         (p.ClientID.Id == dayReport.ClientID.Id) &&
+                         (p.CodeID.Id == dayReport.CodeID.Id) &&
+                         (p.ReportDate == dayReport.ReportDate)
+                        ));
+
+                if (finDayReportWrapper!=null)
+                {
+                    finDayReportWrapper.TotalCount += dayReport.TotalCount;
+                    finDayReportWrapper.TotalSuccessCount += dayReport.TotalSuccessCount;
+                    finDayReportWrapper.InterceptCount += dayReport.InterceptCount;
+                    finDayReportWrapper.DownTotalCount += dayReport.DownTotalCount;
+                    finDayReportWrapper.DownSycnSuccess += dayReport.DownSycnSuccess;
+                    finDayReportWrapper.DownSycnFailed += dayReport.DownSycnFailed;
+                    finDayReportWrapper.DownNotSycn += dayReport.DownNotSycn;
+                }
+                else
+                {
+                    spDays.Add(dayReport);         
+                }
+ 
+
+            }
+
+            return spDays;
+
+        }
+
         public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate)
         {
-           return  ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate));
+            return ConvertToDayReport(ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate)));
+        }
+
+        public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
+        {
+            return ConvertToDayReport(ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate, client.Entity)));
         }
 
 	    public static void ReGenerateDayReport(DateTime startDate, DateTime endDate)
@@ -164,19 +225,11 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
-
         public static DataSet QueryRecordProvine(DateTime? startDate, DateTime? endDate, string dayReportType, int? channelId, int? codeID, int? clientID)
         {
             DayReportType reportType = (DayReportType)Enum.Parse(typeof(DayReportType), dayReportType);
             return businessProxy.QueryRecordProvine(startDate, endDate, reportType, channelId, codeID, clientID);
         }
-
- 
-
-        public static List<SPDayReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
-	    {
-            return ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate, client.Entity));
-	    }
 
         public static DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate,int? channelId, int? codeID)
         {
@@ -199,6 +252,7 @@ namespace SPS.Bussiness.Wrappers
 
             return ds;
         }
+
         public static DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
         {
             DataSet ds = businessProxy.QueryClientInvoiceReport(startDate, endDate, clientID, codeID);
@@ -211,7 +265,7 @@ namespace SPS.Bussiness.Wrappers
 
             foreach (DataRow dataRow in ds.Tables[0].Rows)
             {
-                dataRow["ClientName"] = SPChannelWrapper.FindById((int)dataRow["ClientID"]).Name;
+                dataRow["ClientName"] = SPSClientWrapper.FindById((int)dataRow["ClientId"]).Name;
                 dataRow["MoName"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).MoCode;
                 dataRow["Price"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).Price;
             }
@@ -220,18 +274,22 @@ namespace SPS.Bussiness.Wrappers
 
             return ds;
         }
+
         public static DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeID)
         {
             return businessProxy.QueryChannelOperatorReport(startDate, endDate, channelId, codeID);
         }
+
         public static DataSet QueryClientOperatorReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
         {
             return businessProxy.QueryClientOperatorReport(startDate, endDate, clientID, codeID);
         }
+
         public static DataSet QueryChannelProvinceReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeID)
         {
             return businessProxy.QueryChannelProvinceReport(startDate, endDate, channelId, codeID);
         }
+
         public static DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
         {
             return businessProxy.QueryClientProvinceReport(startDate, endDate, clientID, codeID);

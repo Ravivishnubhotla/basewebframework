@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
+using SPS.Bussiness.Code;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.ClientView
@@ -31,7 +32,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.ClientView
         protected void storeSPDayReport_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
 
-            List<SPDayReportWrapper> spDayReports = SPDayReportWrapper.QueryReport(dfStart.SelectedDate, dfEnd.SelectedDate,this.Client);
+            List<SPDayReportWrapper> spDayReports = SPDayReportWrapper.QueryReport(dfStart.SelectedDate, dfEnd.SelectedDate, this.Client);
 
             storeSPDayReport.DataSource = spDayReports;
             storeSPDayReport.DataBind();
