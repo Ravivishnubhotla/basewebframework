@@ -180,11 +180,45 @@ namespace SPS.Bussiness.Wrappers
 
         public static DataSet QueryChannelInvoiceReport(DateTime? startDate, DateTime? endDate,int? channelId, int? codeID)
         {
-            return businessProxy.QueryChannelInvoiceReport(startDate,endDate,channelId,codeID);
+            DataSet ds = businessProxy.QueryChannelInvoiceReport(startDate, endDate, channelId, codeID);
+
+            ds.Tables[0].Columns.Add(new DataColumn("ChannelName"));
+            ds.Tables[0].Columns.Add(new DataColumn("MoName"));
+            ds.Tables[0].Columns.Add(new DataColumn("Price",typeof(decimal)));
+            
+            ds.AcceptChanges();
+
+            foreach (DataRow dataRow in ds.Tables[0].Rows)
+            {
+                dataRow["ChannelName"] = SPChannelWrapper.FindById((int) dataRow["ChannelID"]).Name;
+                dataRow["MoName"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).MoCode;
+                dataRow["Price"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).Price;
+            }
+
+            ds.AcceptChanges();
+
+            return ds;
         }
         public static DataSet QueryClientInvoiceReport(DateTime? startDate, DateTime? endDate, int? clientID, int? codeID)
         {
-            return businessProxy.QueryClientInvoiceReport(startDate, endDate, clientID, codeID);
+            DataSet ds = businessProxy.QueryClientInvoiceReport(startDate, endDate, clientID, codeID);
+
+            ds.Tables[0].Columns.Add(new DataColumn("ClientName"));
+            ds.Tables[0].Columns.Add(new DataColumn("MoName"));
+            ds.Tables[0].Columns.Add(new DataColumn("Price", typeof(decimal)));
+
+            ds.AcceptChanges();
+
+            foreach (DataRow dataRow in ds.Tables[0].Rows)
+            {
+                dataRow["ClientName"] = SPChannelWrapper.FindById((int)dataRow["ClientID"]).Name;
+                dataRow["MoName"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).MoCode;
+                dataRow["Price"] = SPCodeWrapper.FindById((int)dataRow["CodeID"]).Price;
+            }
+
+            ds.AcceptChanges();
+
+            return ds;
         }
         public static DataSet QueryChannelOperatorReport(DateTime? startDate, DateTime? endDate, int? channelId, int? codeID)
         {

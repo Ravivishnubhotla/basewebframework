@@ -74,8 +74,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             if (this.IsPostBack)
                 return;
 
-            ReportViewHelper.FixReportDefinition(this.Server.MapPath("RecordExportTemplateForChannel.rdl"));
-            rptvContainer.LocalReport.ReportPath = this.Server.MapPath("RecordExportTemplateForChannel.rdl");
+            ReportViewHelper.FixReportDefinition(this.Server.MapPath("ClientReport.rdl"));
+            rptvContainer.LocalReport.ReportPath = this.Server.MapPath("ClientReport.rdl");
             BindData();
         }
 
@@ -83,8 +83,23 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
         {
             DataTable tb = SPDayReportWrapper.QueryClientInvoiceReport(StartDate, EndDate, ClientID, CodeID).Tables[0];
 
-            string reportName = string.Format("【{0}】-【{1}】客户结算报表", StartDate.Value.ToString("yyyy-MM-dd"),
-                                  EndDate.Value.ToString("yyyy-MM-dd"));
+
+            string clientName = "所有";
+
+            if (ClientID > 0)
+            {
+                clientName = "【" + SPSClientWrapper.FindById(ClientID).Name + "】";
+            }
+
+            string codeName = "";
+
+            if (CodeID > 0)
+            {
+                codeName = "【" + SPCodeWrapper.FindById(CodeID).MoCode + "】指令";
+            }
+
+            string reportName = string.Format("【{0}】-【{1}】 {2} 客户 {3} 结算报表", StartDate.Value.ToString("yyyy-MM-dd"),
+                                  EndDate.Value.ToString("yyyy-MM-dd"), clientName, codeName);
 
             ReportViewHelper.BindDataTableToReport(rptvContainer, tb, "DataSet1", reportName);
         }
