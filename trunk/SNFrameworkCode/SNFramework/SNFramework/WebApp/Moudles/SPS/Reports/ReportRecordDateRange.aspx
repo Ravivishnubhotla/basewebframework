@@ -5,8 +5,7 @@
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
 
-    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
-        RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh" GroupField="ReportDate">
+    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" OnRefreshData="storeSPDayReport_Refresh" GroupField="ReportDate">
         <SortInfo Direction="DESC" Field="ReportDate" />
         <Reader>
             <ext:JsonReader IDProperty="Id">

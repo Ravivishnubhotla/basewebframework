@@ -50,7 +50,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
                 this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("StartDate", dfStart.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
             if (dfEnd.SelectedValue != null)
                 this.ReportPanel.AutoLoad.Params.Add(new Ext.Net.Parameter("EndDate", dfEnd.SelectedDate.ToString("yyyy-MM-dd hh:mm:ss")));
-            this.ReportPanel.AutoLoad.Url = "ReportChannelInvoiceService.aspx";
+            this.ReportPanel.AutoLoad.Url = "ReportClientInvoiceService.aspx";
             this.ReportPanel.LoadContent();
         }
 

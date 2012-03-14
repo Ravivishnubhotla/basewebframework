@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="DataSource1">
@@ -16,19 +16,19 @@
     <DataSet Name="DataSet1">
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
-        <CommandText>select C.Name As ClentName ,
+        <CommandText>select C.Name As ClientName ,
 	   CO.MO+CO.MOType+CO.SPCode As MoName 
       ,CCR.[ReportDate]
 ,
 	   0.58 as Price
-      ,CCR.STotalSuccessCount  from dbo.View_2  as CCR 
+      ,CCR.STotalSuccessCount as SDownTotalCount  from dbo.View_2  as CCR 
       inner join dbo.SPChannel C on CCR.[ChannelID] = C.ID
       inner join dbo.SPCode CO on CCR.[CodeID] = CO.ID</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
-        <Field Name="ClentName">
-          <DataField>ClentName</DataField>
+        <Field Name="ClientName">
+          <DataField>ClientName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="MoName">
@@ -43,18 +43,18 @@
           <DataField>ReportDate</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="STotalSuccessCount">
-          <DataField>STotalSuccessCount</DataField>
+        <Field Name="SDownTotalCount">
+          <DataField>SDownTotalCount</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ItemTotal">
-          <Value>=Fields!Price.Value*Fields!STotalSuccessCount.Value</Value>
+          <Value>=Fields!Price.Value*Fields!SDownTotalCount.Value</Value>
         </Field>
       </Fields>
     </DataSet>
   </DataSets>
-  <ReportSections>
-    <ReportSection>
+  
+    
       <Body>
         <ReportItems>
           <Tablix Name="Tablix1">
@@ -222,14 +222,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="STotalSuccessCount">
+                        <Textbox Name="SDownTotalCount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!STotalSuccessCount.Value)</Value>
+                                  <Value>=Fields!SDownTotalCount.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <Color>#4d4d4d</Color>
@@ -239,7 +239,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>STotalSuccessCount</rd:DefaultName>
+                          <rd:DefaultName>SDownTotalCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e5e5e5</Color>
@@ -328,14 +328,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox24">
+                        <Textbox Name="SDownTotalCount1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!STotalSuccessCount.Value)</Value>
+                                  <Value>=Sum(Fields!SDownTotalCount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -346,7 +346,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox24</rd:DefaultName>
+                          <rd:DefaultName>SDownTotalCount1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#e6eefc</Color>
@@ -438,14 +438,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox20">
+                        <Textbox Name="SDownTotalCount2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!STotalSuccessCount.Value)</Value>
+                                  <Value>=Sum(Fields!SDownTotalCount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -456,7 +456,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox20</rd:DefaultName>
+                          <rd:DefaultName>SDownTotalCount2</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#c6daf8</Color>
@@ -548,14 +548,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox15">
+                        <Textbox Name="SDownTotalCount3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!STotalSuccessCount.Value)</Value>
+                                  <Value>=Sum(Fields!SDownTotalCount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -566,7 +566,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox15</rd:DefaultName>
+                          <rd:DefaultName>SDownTotalCount3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>#9eb6e4</Color>
@@ -755,27 +755,27 @@
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="ClentName">
+                  <Group Name="ClientName">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!ClentName.Value</GroupExpression>
+                      <GroupExpression>=Fields!ClientName.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!ChannelName.Value</Value>
+                      <Value>=Fields!ClientName.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
                     <Size>36.1125mm</Size>
                     <CellContents>
-                      <Textbox Name="ClentName">
+                      <Textbox Name="ClientName">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!ClentName.Value</Value>
+                                <Value>=Fields!ClientName.Value</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
                                   <FontWeight>Bold</FontWeight>
@@ -786,7 +786,7 @@
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>ClentName</rd:DefaultName>
+                        <rd:DefaultName>ClientName</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>#c6daf8</Color>
@@ -950,7 +950,7 @@
                         </TablixMember>
                       </TablixMembers>
                       <Visibility>
-                        <ToggleItem>ChannelName</ToggleItem>
+                        <ToggleItem>ClientName</ToggleItem>
                       </Visibility>
                     </TablixMember>
                     <TablixMember>
@@ -1262,8 +1262,8 @@
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
-    </ReportSection>
-  </ReportSections>
+    
+  
   <ReportParameters>
     <ReportParameter Name="ReportName">
       <DataType>String</DataType>
