@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ReportRecordDate.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportRecordDate" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="ReportRecordDate.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportRecordDate" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -24,7 +26,8 @@
         }
 
     </script>
-    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true"   OnRefreshData="storeSPDayReport_Refresh" GroupField="ChannelID_Name">
+    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" OnRefreshData="storeSPDayReport_Refresh"
+        GroupField="ChannelID_Name">
         <SortInfo Direction="DESC" Field="ChannelID_Name" />
         <Reader>
             <ext:JsonReader IDProperty="Id">
@@ -55,8 +58,8 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:DateField ID="dfStart" FieldLabel="日期" LabelWidth="60" AllowBlank="false"
-                                Width="150" runat="server" />
+                            <ext:DateField ID="dfStart" FieldLabel="日期" LabelWidth="60" AllowBlank="false" Width="150"
+                                runat="server" />
                             <ext:ToolbarSpacer />
                             <ext:Button ID='btnRefresh' runat="server" Text="查询" Icon="Reload">
                                 <Listeners>
@@ -118,26 +121,29 @@
                     <ext:GroupingSummary ID="GroupingSummary1" runat="server">
                     </ext:GroupingSummary>
                 </Plugins>
-                                <BottomBar>
+                <BottomBar>
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
-                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" LabelWidth="60" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalTotalCount" FieldLabel="总MR数" LabelWidth="60" runat="server"
+                                Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator1" runat="server" />
-                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总MO数"  LabelWidth="60" runat="server"
-                                Text="-" />
+                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总MO数" LabelWidth="60"
+                                runat="server" Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator2" runat="server" />
-                            <ext:DisplayField ID="lblTotalInterceptCount" FieldLabel="总扣量"  LabelWidth="60" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalInterceptCount" FieldLabel="总扣量" LabelWidth="60" runat="server"
+                                Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator3" runat="server" />
-                            <ext:DisplayField ID="lblTotalDownTotalCount" FieldLabel="总下家数"  LabelWidth="60" runat="server" Text="-" />
+                            <ext:DisplayField ID="lblTotalDownTotalCount" FieldLabel="总下家数" LabelWidth="60" runat="server"
+                                Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator4" runat="server" />
-                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总同步成功数"  LabelWidth="90" runat="server"
-                                Text="-" />
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总同步成功数" LabelWidth="90"
+                                runat="server" Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator5" runat="server" />
-                            <ext:DisplayField ID="lblTotalDownSycnFailed" FieldLabel="总同步失败数"  LabelWidth="90" runat="server"
-                                Text="-" />
+                            <ext:DisplayField ID="lblTotalDownSycnFailed" FieldLabel="总同步失败数" LabelWidth="90"
+                                runat="server" Text="-" />
                             <ext:ToolbarSeparator ID="ToolbarSeparator6" runat="server" />
-                            <ext:DisplayField ID="lblTotalDownNotSycn" FieldLabel="总未同步数"  LabelWidth="70" runat="server" Text="-"
-                                Hidden="True" />
+                            <ext:DisplayField ID="lblTotalDownNotSycn" FieldLabel="总未同步数" LabelWidth="70" runat="server"
+                                Text="-" Hidden="True" />
                         </Items>
                     </ext:Toolbar>
                 </BottomBar>
