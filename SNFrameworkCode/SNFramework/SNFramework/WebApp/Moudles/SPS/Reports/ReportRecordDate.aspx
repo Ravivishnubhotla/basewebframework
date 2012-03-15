@@ -24,8 +24,7 @@
         }
 
     </script>
-    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
-        RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh" GroupField="ChannelID_Name">
+    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true"   OnRefreshData="storeSPDayReport_Refresh" GroupField="ChannelID_Name">
         <SortInfo Direction="DESC" Field="ChannelID_Name" />
         <Reader>
             <ext:JsonReader IDProperty="Id">
