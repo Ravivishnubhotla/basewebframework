@@ -65,9 +65,30 @@
             }
 
 
+            if(cmd == "cmdAutoMatch") {
+                  var channelID = id.data.ChannelID_Id;
+                  var codeID = id.data.CodeID_Id;
+                  var clientID = id.data.ClientID_Id;
+                  var startDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                  var endDate = '<%= System.DateTime.Now.ToShortDateString() %>';
+                
+                Ext.net.DirectMethods.AutoMatch(channelID,codeID,clientID,startDate,endDate,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '重新匹配默认下家数据成功！',RefreshData);                
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                }              
+                );
+            }
 
-            
-        
+
             if (cmd == "cmdViewTotalRecord") {
               var win = <%= winShowRecordList.ClientID %>;
               win.autoLoad.params.ChannelID = id.data.ChannelID_Id;

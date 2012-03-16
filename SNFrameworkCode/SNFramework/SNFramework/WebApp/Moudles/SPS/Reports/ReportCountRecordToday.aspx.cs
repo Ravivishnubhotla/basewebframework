@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.Wrappers;
 
@@ -22,8 +23,11 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             this.gridPanelSPDayReport.Reload();
         }
 
-
- 
+        [DirectMethod]
+        public void AutoMatch(int channelID, int codeID, int clientID, string startDate, string endDate)
+        {
+             SPRecordWrapper.AutoMatch(channelID, codeID, clientID, DateTime.Parse(startDate), DateTime.Parse(endDate));
+        }
 
         protected void storeSPDayReport_Refresh(object sender, StoreRefreshDataEventArgs e)
         {

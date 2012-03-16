@@ -268,5 +268,50 @@ namespace SPS.Bussiness.Wrappers
 	    {
 	        return businessProxy.CaculteActualInterceptRate(clientCodeRelation.Entity, date);
 	    }
+
+        public static void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate)
+        {
+            SPChannelWrapper channel = SPChannelWrapper.FindById(channelId);
+
+            SPCodeWrapper code = SPCodeWrapper.FindById(codeId);
+
+            SPSClientWrapper client = SPSClientWrapper.FindById(clientId);
+
+            List<SPRecordWrapper> records = SPRecordWrapper.QueryRecord(channel, code, client, SPRecordWrapper.DayReportType_AllUp, startDate, endDate, new List<QueryFilter>(), "", false);
+
+            foreach (SPRecordWrapper record in records)
+            {
+                record.ReAutoMatch();
+            }
+        }
+
+	    public void ReAutoMatch()
+	    {
+            SPCodeWrapper matchCode = this.ChannelID.GetMatchCodeFromRequest(this.ExtendInfo.GetHttpRequestLog(), this.Mo, this.SpNumber, this.Province,
+	                                               this.City);
+
+            if (matchCode == null)
+            {
+                return;
+            }
+
+            SPClientCodeRelationWrapper clientCodeRelation = matchCode.GetRelateClientCodeRelation();
+
+
+            //如果存在指令，但是不存在对应的分配关系，转到默认匹配
+            if (clientCodeRelation == null)
+            {
+                clientCodeRelation = this.ChannelID.GetDefaultClientCodeRelation();
+
+                matchCode = clientCodeRelation.CodeID;
+            }
+
+	        this.CodeID = matchCode;
+	        this.ClientID = clientCodeRelation.ClientID;
+	        this.ClientCodeRelationID = clientCodeRelation;
+
+            Update(this);
+
+	    }
     }
 }
