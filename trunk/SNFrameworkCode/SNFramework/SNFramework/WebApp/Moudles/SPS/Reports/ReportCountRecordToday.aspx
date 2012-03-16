@@ -14,7 +14,12 @@
             else
                 return 'false';
         };
-
+        
+        var prepareTotalCommand = function (grid, command, record, row, col, value) {
+            if (command.command == 'cmdAutoMatch') {
+                command.hidden = !(record.get("ClientID_Name") == '默认下家');
+            }   
+        };
 
         var RefreshData = function(btn) {
             <%= this.storeSPDayReport.ClientID %>.reload();
@@ -163,8 +168,7 @@
         }
 
     </script>
-    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" RemoteSort="true"
-        RemotePaging="true" OnRefreshData="storeSPDayReport_Refresh">
+    <ext:Store ID="storeSPDayReport" runat="server" AutoLoad="true" OnRefreshData="storeSPDayReport_Refresh">
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
@@ -231,6 +235,12 @@
                         </ext:Column>
                         <ext:Column ColumnID="colTotalCount" Header="MR总数" DataIndex="TotalCount" Sortable="true">
                             <Commands>
+                                <ext:ImageCommand CommandName="cmdChangeCode" Icon="TableGo">
+                                    <ToolTip Text="转移数据" />
+                                </ext:ImageCommand>
+                                <ext:ImageCommand CommandName="cmdAutoMatch" Icon="TableRelationship">
+                                    <ToolTip Text="自动转移" />
+                                </ext:ImageCommand>
                                 <ext:ImageCommand CommandName="cmdViewTotalRecordProvince" Icon="ChartPie">
                                     <ToolTip Text="省份分布" />
                                 </ext:ImageCommand>
@@ -238,6 +248,7 @@
                                     <ToolTip Text="查看记录" />
                                 </ext:ImageCommand>
                             </Commands>
+                            <PrepareCommand Fn="prepareTotalCommand" />
                         </ext:Column>
                         <ext:Column ColumnID="colTotalSuccessCount" Header="MO总数" DataIndex="TotalSuccessCount"
                             Sortable="true">
