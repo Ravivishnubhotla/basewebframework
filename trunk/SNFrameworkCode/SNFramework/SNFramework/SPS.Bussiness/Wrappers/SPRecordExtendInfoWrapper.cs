@@ -98,5 +98,10 @@ namespace SPS.Bussiness.Wrappers
         }
 
         #endregion
+
+        internal HttpUtils.HttpRequestLog GetHttpRequestLog()
+        {
+            return null;
+        }
     }
 }

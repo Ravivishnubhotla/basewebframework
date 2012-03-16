@@ -353,7 +353,7 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
-	    private SPClientCodeRelationWrapper GetDefaultClientCodeRelation()
+	    public SPClientCodeRelationWrapper GetDefaultClientCodeRelation()
 	    {
 	        var defaultCode = Codes.Find(p => p.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key);
 
@@ -454,7 +454,7 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
-        private SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
+        public SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
         {
             var findCode = (from cc in Codes
                             where (cc.CheckIsMatchCode(mo, spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))

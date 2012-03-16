@@ -11,6 +11,8 @@ using SPS.Bussiness.HttpUtils;
 using SPS.Bussiness.Wrappers;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
+using Spring.Transaction;
+using Spring.Transaction.Interceptor;
 
 
 namespace SPS.Bussiness.ServiceProxys.Tables
@@ -24,6 +26,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         List<SPRecordEntity> QueryRecordByPage(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams);
         List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
         decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date);
+        //void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
@@ -107,5 +110,22 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         {
             return this.AdoNetDb.CaculteActualInterceptRate(clientCodeRelation, date);
         }
+
+        //[Transaction(TransactionPropagation.Required, ReadOnly = false)]
+        //public void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate)
+        //{
+        //    SPChannelEntity channel = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId);
+
+        //    SPCodeEntity code = this.DataObjectsContainerIocID.SPCodeDataObjectInstance.Load(codeId);
+
+        //    SPSClientEntity client = this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Load(clientId);
+
+        //    List<SPRecordEntity> records = QueryRecord(channel, code, client, SPRecordWrapper.DayReportType_AllUp, startDate, endDate,new List<QueryFilter>(),"",false);
+
+        //    foreach (SPRecordEntity record in records)
+        //    {
+                
+        //    }
+        //}
     }
 }
