@@ -1175,6 +1175,7 @@
     <Compile Include="Utility\CsvFileReader.cs" />
     <Compile Include="Utility\EncodeUtil.cs" />
     <Compile Include="Utility\HttpUtil.cs" />
+    <Compile Include="Utility\RandomUtil.cs" />
     <Compile Include="Utility\ReflectionUtil.cs" />
     <Compile Include="Utility\SerializeUtil.cs" />
     <Compile Include="Utility\ServerInfoUtil.cs" />
