@@ -327,7 +327,7 @@
                                 <ext:Column ColumnID="colIsLimit" DataIndex="IsLimit" Header="限量" Width="31" Sortable="true">
                                     <Renderer Fn="FormatBool"></Renderer>
                                 </ext:Column>
-                                <ext:Column ColumnID="colDayMonthLimit" DataIndex="DayMonthLimit" Header="日月限" Width="35"
+                                <ext:Column ColumnID="colDayMonthLimit" DataIndex="DayMonthLimit" Header="日月限" Width="45"
                                     Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="可用" Width="31" Sortable="true">
