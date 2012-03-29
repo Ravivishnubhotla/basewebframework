@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientGroupAdd.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientGroups.UCSPClientGroupAdd" %>
 <ext:Window ID="winSPClientGroupAdd" runat="server" Icon="ApplicationAdd" Title="新建下家组"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
+    Width="400" Height="300" AutoShow="false" Maximizable="true" Modal="true" ShowOnLoad="false">
     <Body>
         <ext:FitLayout ID="fitLayoutMain" runat="server">
             <ext:FormPanel ID="formPanelSPClientGroupAdd" runat="server" Frame="true" Header="false"
@@ -19,7 +19,7 @@
                                 <ext:TextField ID="txtDefaultSycnMoUrl" runat="server" FieldLabel="默认同步地址" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="5"
+                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="11"
                                     DecimalPrecision="0" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
@@ -32,6 +32,20 @@
                             <ext:Anchor Horizontal="95%">
                                 <ext:TextField ID="txtUserPass" runat="server" FieldLabel="登陆用户密码" InputType="Password"
                                     AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmbSelectAssignedUser" runat="server" AllowBlank="true" FieldLabel="分配商务用户"
+                                    StoreID="storeSPUser" TypeAhead="true" Mode="Local" Editable="false" DisplayField="UserLoginID"
+                                    ValueField="UserID" EmptyText="无">
+                                    <Triggers>
+                                        <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                    </Triggers>
+                                    <Listeners>
+                                        <Select Handler="this.triggers[0].show();" />
+                                        <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                        <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                    </Listeners>
+                                </ext:ComboBox>
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

@@ -65,6 +65,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
             }
         }
 
+
+        protected void storeSystemUser_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+ 
+
+            List<QueryFilter> filters = new List<QueryFilter>();
+
+            filters.Add(new QueryFilter(SystemUserWrapper.PROPERTY_NAME_ISAPPROVED, "True", FilterFunction.EqualTo));
+            filters.Add(new QueryFilter(SystemUserWrapper.PROPERTY_NAME_USERTYPE, "SPCOM", FilterFunction.EqualTo));
+
+            int recordCount = 0;
+
+            storeSPUser.DataSource = SystemUserWrapper.FindAllByOrderByAndFilter(filters, "", (e.Dir == Coolite.Ext.Web.SortDirection.DESC), 1, 20, out recordCount);
+
+
+            storeSPUser.DataBind();
+
+        }
+
         protected void storeSPClientGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             int recordCount = 0;

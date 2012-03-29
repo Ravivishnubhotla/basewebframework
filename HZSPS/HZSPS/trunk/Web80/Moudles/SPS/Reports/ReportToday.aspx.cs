@@ -79,6 +79,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             DataTable dt = SPDayReportWrapper.GetAllTodayReport(this.chkFilterNoCount.Checked);
 
             dt.Columns.Add(new DataColumn("ClientGroupName"));
+            dt.Columns.Add(new DataColumn("AssignedUser"));
             dt.Columns.Add(new DataColumn("SetInterceptRate"));
             dt.Columns.Add(new DataColumn("ChannelClientCode"));
             dt.Columns.Add(new DataColumn("IsSycnData",typeof(bool)));
@@ -98,6 +99,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["SetInterceptRate"] = "";
                     item["ChannelClientCode"] = "";
                     item["IsSycnData"] = false;
+                    item["AssignedUser"] = "";
                 }
                 else
                 {
@@ -106,6 +108,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["SetInterceptRate"] = client.DefaultClientChannelSetting.InterceptRate;
                     item["ChannelClientCode"] = client.DefaultClientChannelSetting.ChannelClientCode;
                     item["IsSycnData"] = client.DefaultClientChannelSetting.SyncData.HasValue && client.DefaultClientChannelSetting.SyncData.Value;
+                    if (client.SPClientGroupID != null)
+                        item["AssignedUser"] = client.SPClientGroupID.AssigedUserLoginID;
+                    else
+                        item["AssignedUser"] = "";
                 }
             }
 

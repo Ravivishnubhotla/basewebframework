@@ -95,6 +95,17 @@ namespace Legendigital.Common.Web.AppClass
                     }
                 }
 
+                if (channel.Id == 165)
+                {
+                    if (httpRequest.RequestParams.ContainsKey("b") && httpRequest.RequestParams.ContainsKey("msg"))
+                    {
+                        if (httpRequest.RequestParams["msg"].ToString().ToLower().StartsWith("6cpe") && httpRequest.RequestParams["b"].ToString().ToLower().Equals("1066578641"))
+                        {
+                            httpRequest.RequestParams["b"] = "106657864";
+                        }
+                    }
+                }
+
 
 
                 //如果状态报告通道

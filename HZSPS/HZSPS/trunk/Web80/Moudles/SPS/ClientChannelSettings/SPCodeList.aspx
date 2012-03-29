@@ -56,9 +56,9 @@
 
        var template = '<span style="color:{0};">{1}</span>';
 
-        var change = function (value) {
-            return String.format(template, (value) ? 'green' : 'red', FormatBool(value));
-        }
+       var change = function(value) {
+           return String.format(template, (value) ? 'green' : 'red', FormatBool(value));
+       };
 
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -67,7 +67,7 @@
                 return '是';
             else
                 return '否';
-        }
+        };
 
 
         function RefreshSPClientChannelSettingList() {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
 using NHibernate;
@@ -27,5 +28,6 @@ namespace Legendigital.Framework.Common.Data.Interfaces
         void Lock(DomainType instance, LockMode lockMode);
 
 
+       
     }
 }

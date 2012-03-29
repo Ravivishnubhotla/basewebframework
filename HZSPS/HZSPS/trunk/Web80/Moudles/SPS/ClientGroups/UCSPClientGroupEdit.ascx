@@ -23,12 +23,26 @@
                                 <ext:TextField ID="txtDefaultSycnMoUrl" runat="server" FieldLabel="默认同步地址" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="5"
+                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="11"
                                     DecimalPrecision="0" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:NumberField ID="txtDefaultNoInterceptCount" runat="server" FieldLabel="默认免扣量"
                                     Text="100" DecimalPrecision="0" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmbSelectAssignedUser" runat="server" AllowBlank="true" FieldLabel="分配商务用户"
+                                    StoreID="storeSPUser" TypeAhead="true" Mode="Local" Editable="false" DisplayField="UserLoginID"
+                                    ValueField="UserID" EmptyText="无">
+                                    <Triggers>
+                                        <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                    </Triggers>
+                                    <Listeners>
+                                        <Select Handler="this.triggers[0].show();" />
+                                        <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                        <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                    </Listeners>
+                                </ext:ComboBox>
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

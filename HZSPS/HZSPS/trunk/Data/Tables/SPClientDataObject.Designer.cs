@@ -37,6 +37,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_DEFAULTSYCNMRURL = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".DefaultSycnMRUrl");
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_DEFAULTINTERCEPTRATE = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".DefaultInterceptRate");
 		public static readonly Property PROPERTY_SPCLIENTGROUPID_DEFAULTNOINTERCEPTCOUNT = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".DefaultNoInterceptCount");
+		public static readonly Property PROPERTY_SPCLIENTGROUPID_ASSIGNEDUSERID = Property.ForName(PROPERTY_SPCLIENTGROUPID_ALIAS_NAME + ".AssignedUserID");
 		#endregion
 		public static readonly Property PROPERTY_ISDEFAULTCLIENT = Property.ForName(SPClientEntity.PROPERTY_NAME_ISDEFAULTCLIENT);
 		public static readonly Property PROPERTY_ALIAS = Property.ForName(SPClientEntity.PROPERTY_NAME_ALIAS);
