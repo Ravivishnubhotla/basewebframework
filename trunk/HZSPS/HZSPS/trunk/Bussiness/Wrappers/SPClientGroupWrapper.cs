@@ -12,12 +12,12 @@ using Legendigital.Framework.Common.Utility;
 
 namespace LD.SPPipeManage.Bussiness.Wrappers
 {
-	[Serializable]
+    [Serializable]
     public partial class SPClientGroupWrapper
     {
         #region Static Common Data Operation
-		
-		public static void Save(SPClientGroupWrapper obj)
+
+        public static void Save(SPClientGroupWrapper obj)
         {
             businessProxy.Save(obj.entity);
         }
@@ -73,8 +73,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             List<SPClientGroupEntity> list = businessProxy.FindAll(firstRow, maxRows, out recordCount);
             return ConvertToWrapperList(list);
         }
-		
-		public static List<SPClientGroupWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+
+        public static List<SPClientGroupWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
         {
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
                                              out recordCount);
@@ -91,14 +91,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return results;
         }
-		
+
 
         public static List<SPClientGroupWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
         }
-			
-		#endregion
+
+        #endregion
 
         public DateTime GetDT()
         {
@@ -155,6 +155,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string AssigedUserLoginID
+        {
+            get
+            {
+                if (this.AssignedUserID != null && this.AssignedUserID > 0)
+                {
+                    SystemUserWrapper user = SystemUserWrapper.FindById(this.AssignedUserID);
+                    if (user != null)
+                        return user.UserLoginID;
+                }
+                return "";
+            }
+        }
+
+
         public bool UserIsLocked
         {
             get
@@ -171,31 +186,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
         public string ClientList
-	    {
-	        get
-	        {
-	            StringBuilder sb = new StringBuilder();
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
 
-	            List<SPClientWrapper> clientWrappers = SPClientWrapper.FindAllBySPClientGroupID(this);
+                List<SPClientWrapper> clientWrappers = SPClientWrapper.FindAllBySPClientGroupID(this);
 
-	            foreach (SPClientWrapper spClientWrapper in clientWrappers)
-	            {
-	                SPClientChannelSettingWrapper channelSettingWrapper = spClientWrapper.FindDefaultSetting();
+                foreach (SPClientWrapper spClientWrapper in clientWrappers)
+                {
+                    SPClientChannelSettingWrapper channelSettingWrapper = spClientWrapper.FindDefaultSetting();
 
-	                string codeChannel = "";
+                    string codeChannel = "";
 
-                    if(channelSettingWrapper!=null)
+                    if (channelSettingWrapper != null)
                     {
                         codeChannel = string.Format("指令 ‘{0}’ 通道 ‘{1}’", channelSettingWrapper.ChannelClientRuleMatch, channelSettingWrapper.ChannelID.Name);
                     }
 
-	                sb.AppendFormat(" 下家 ‘{0}’{1}  <br/>", spClientWrapper.Name, codeChannel);
-	            }
+                    sb.AppendFormat(" 下家 ‘{0}’{1}  <br/>", spClientWrapper.Name, codeChannel);
+                }
 
-	            return sb.ToString();
-	        }
+                return sb.ToString();
+            }
 
-	    }
+        }
 
         public string UserName
         {
@@ -212,15 +227,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
- 
+
 
         public static SPClientGroupWrapper GetByUserID(int userId)
-	    {
+        {
             SystemUserWrapper user = SystemUserWrapper.FindById(userId);
 
             return ConvertEntityToWrapper(businessProxy.GetIDByUserID(userId));
-	    }
+        }
 
- 
+
     }
 }

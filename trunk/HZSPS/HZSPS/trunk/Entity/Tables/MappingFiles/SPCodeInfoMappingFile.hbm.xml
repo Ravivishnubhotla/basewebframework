@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPCodeInfoEntity,LD.SPPipeManage.Entity" table="SPCodeInfo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="ChannelID" name="ChannelID" class="LD.SPPipeManage.Entity.Tables.SPChannelEntity,LD.SPPipeManage.Entity" />		
+		<property column="OperatorType" type="string" name="OperatorType"   not-null="true"  length="100" />	
+		<property column="MO" type="string" name="Mo"   not-null="true"  length="100" />	
+		<property column="CodeType" type="string" name="CodeType"   not-null="true"  length="100" />	
+		<property column="SPCode" type="string" name="SPCode"   not-null="true"  length="100" />	
+		<property column="Province" type="string" name="Province"   not-null="true"  length="1000" />	
+		<property column="DisableArea" type="string" name="DisableArea"   not-null="true"  length="1000" />	
+		<property column="DayMonthLimit" type="string" name="DayMonthLimit"   not-null="true"  length="1000" />	
+		<property column="IsLimit" type="Boolean" name="IsLimit"   not-null="true"  />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   not-null="true"  />	
+		<property column="Price" type="string" name="Price"   length="100" />	
+		<property column="SendText" type="string" name="SendText"   length="1000" />	
+		<property column="Comment" type="string" name="Comment"   length="2000" />	
+		<property column="CreateUser" type="int" name="CreateUser"   />	
+		<property column="CreateTime" type="DateTime" name="CreateTime"   />	
+
+
+
+
+</class>
+</hibernate-mapping>

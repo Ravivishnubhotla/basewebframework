@@ -275,6 +275,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -891,6 +895,7 @@
     <Compile Include="Web\Request\WebRequestResult.cs" />
     <Compile Include="Web\UI\GridViewAddRowExtender.cs" />
     <Compile Include="Web\UI\GridViewSortExtender.cs" />
+    <Compile Include="Web\UI\ReportViewHelper.cs" />
     <Compile Include="Web\UI\SuperWebTreeNode.cs" />
     <Compile Include="Web\UI\TreeViewExenter.cs" />
     <Compile Include="Web\UI\TypedTreeNodeItem.cs" />

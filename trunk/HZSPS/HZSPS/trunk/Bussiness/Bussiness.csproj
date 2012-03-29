@@ -322,6 +322,10 @@
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPCodeInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCodeInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPCodeInfoServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
       <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
@@ -422,6 +426,10 @@
     <Compile Include="Wrappers\SPClientWrapper.cs" />
     <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
       <DependentUpon>SPClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPCodeInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPCodeInfoWrapper.Designer.cs">
+      <DependentUpon>SPCodeInfoWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPDayReportWrapper.cs" />
     <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">

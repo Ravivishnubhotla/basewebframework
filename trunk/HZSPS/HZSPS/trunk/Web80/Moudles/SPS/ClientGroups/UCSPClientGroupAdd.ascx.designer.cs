@@ -112,6 +112,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         protected global::Coolite.Ext.Web.TextField txtUserPass;
         
         /// <summary>
+        /// cmbSelectAssignedUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.ComboBox cmbSelectAssignedUser;
+        
+        /// <summary>
         /// btnSaveSPClientGroup control.
         /// </summary>
         /// <remarks>

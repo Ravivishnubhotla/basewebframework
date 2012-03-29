@@ -304,6 +304,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="ExtUX\SuperBoxSelect\clear.png" />
+    <Content Include="ExtUX\SuperBoxSelect\close.png" />
+    <Content Include="ExtUX\SuperBoxSelect\expand.png" />
+    <Content Include="ExtUX\SuperBoxSelect\superboxselect-gray-extend.css" />
+    <Content Include="ExtUX\SuperBoxSelect\superboxselect.css" />
+    <Content Include="ExtUX\SuperBoxSelect\SuperBoxSelect.js" />
     <Content Include="Images\logon\button_bg.gif" />
     <Content Include="Images\logon\Button_On.GIF" />
     <Content Include="Images\logon\Button_Over.GIF" />
@@ -318,7 +324,6 @@
     <Content Include="Images\logon\Logon_7.jpg" />
     <Content Include="Images\logon\Logon_8.gif" />
     <Content Include="Images\logon\Logon_9.gif" />
-    <Content Include="MainPage\Login1.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
@@ -369,6 +374,9 @@
     <Content Include="Moudles\SPS\Clients\SPClientListForClientGroup.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientReportContainer.aspx" />
     <Content Include="Moudles\SPS\Clients\UCClientChangePwd.ascx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeInfoList.aspx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeInfoAdd.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeInfoEdit.ascx" />
     <Content Include="Moudles\SPS\FailedRequests\SPFailedRequestListPage.aspx" />
     <Content Include="Moudles\SPS\RecordViews\DefaultClientRecordView.aspx" />
     <Content Include="Moudles\SPS\Reports\DataChangeChannel.aspx" />
@@ -457,13 +465,6 @@
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage\Login1.aspx.cs">
-      <DependentUpon>Login1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainPage\Login1.aspx.designer.cs">
-      <DependentUpon>Login1.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\UCChangePassword.ascx.cs">
       <DependentUpon>UCChangePassword.ascx</DependentUpon>
@@ -1025,6 +1026,27 @@
     <Compile Include="Moudles\SPS\Clients\UCSPSendClientParamsEdit.ascx.designer.cs">
       <DependentUpon>UCSPSendClientParamsEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeInfoList.aspx.cs">
+      <DependentUpon>SPCodeInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeInfoList.aspx.designer.cs">
+      <DependentUpon>SPCodeInfoList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeInfoAdd.ascx.cs">
+      <DependentUpon>UCSPCodeInfoAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeInfoAdd.ascx.designer.cs">
+      <DependentUpon>UCSPCodeInfoAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeInfoEdit.ascx.cs">
+      <DependentUpon>UCSPCodeInfoEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeInfoEdit.ascx.designer.cs">
+      <DependentUpon>UCSPCodeInfoEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\DataArchives\DataArchive.aspx.cs">
       <DependentUpon>DataArchive.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1438,6 +1460,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount1.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Codes\CodeInfoExport.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

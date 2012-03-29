@@ -300,6 +300,10 @@
     <Compile Include="Tables\SPClientPriceDataObject.Designer.cs">
       <DependentUpon>SPClientPriceDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPCodeInfoDataObject.cs" />
+    <Compile Include="Tables\SPCodeInfoDataObject.Designer.cs">
+      <DependentUpon>SPCodeInfoDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>

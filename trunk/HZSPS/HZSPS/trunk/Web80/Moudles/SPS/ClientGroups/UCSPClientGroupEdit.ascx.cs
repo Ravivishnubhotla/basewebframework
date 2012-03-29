@@ -29,7 +29,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                     this.txtDefaultSycnMoUrl.Text = obj.DefaultSycnMoUrl;
                     this.txtDefaultInterceptRate.Text = obj.DefaultInterceptRate.ToString();
                     this.txtDefaultNoInterceptCount.Text = obj.DefaultNoInterceptCount.ToString();
-      	
+
+                    if (obj.AssignedUserID != null && obj.AssignedUserID.Value>0)
+                    {
+                        cmbSelectAssignedUser.Value = obj.AssignedUserID;
+                    }
+                    else
+                    {
+                        cmbSelectAssignedUser.ClearValue();
+                    }
+
                     hidId.Text = id.ToString();
 
                     winSPClientGroupEdit.Show();
@@ -60,6 +69,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 obj.DefaultSycnMoUrl = this.txtDefaultSycnMoUrl.Text.Trim();
                 obj.DefaultInterceptRate = Convert.ToInt32(this.txtDefaultInterceptRate.Text);
                 obj.DefaultNoInterceptCount = Convert.ToInt32(this.txtDefaultNoInterceptCount.Text);
+
+                if (cmbSelectAssignedUser.SelectedItem != null)
+                    obj.AssignedUserID = Convert.ToInt32(cmbSelectAssignedUser.SelectedItem.Value);
+                else
+                    obj.AssignedUserID = null;
                 SPClientGroupWrapper.Update(obj);
 
                 winSPClientGroupEdit.Hide();

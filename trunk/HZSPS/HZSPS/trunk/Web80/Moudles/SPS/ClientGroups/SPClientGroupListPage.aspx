@@ -5,6 +5,9 @@
 <%@ Register Src="UCSPClientGroupEdit.ascx" TagName="UCSPClientGroupEdit" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSPUser}.reload();"></DocumentReady>
+        </Listeners>
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -203,12 +206,34 @@
                     <ext:RecordField Name="UserIsLocked" Type="Boolean" />
                     <ext:RecordField Name="UserName" />
                     <ext:RecordField Name="UserLoginID" />
+                    <ext:RecordField Name="AssigedUserLoginID" />
                     <ext:RecordField Name="ClientList" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
         <AjaxEventConfig Timeout="120000">
         </AjaxEventConfig>
+    </ext:Store>
+    <ext:Store ID="storeSPUser" runat="server" AutoLoad="true" OnRefreshData="storeSystemUser_Refresh">
+        <Reader>
+            <ext:JsonReader ReaderID="UserID">
+                <Fields>
+                    <ext:RecordField Name="UserID" Type="int" />
+                    <ext:RecordField Name="UserLoginID" />
+                    <ext:RecordField Name="UserName" />
+                    <ext:RecordField Name="UserEmail" />
+                    <ext:RecordField Name="UserPassword" />
+                    <ext:RecordField Name="UserStatus" />
+                    <ext:RecordField Name="UserCreateDate" Type="Date" />
+                    <ext:RecordField Name="UserType" />
+                    <ext:RecordField Name="PasswordFormat" Type="int" />
+                    <ext:RecordField Name="Comments" />
+                    <ext:RecordField Name="IsApproved" Type="Boolean" />
+                    <ext:RecordField Name="IsLockedOut" Type="Boolean" />
+                    <ext:RecordField Name="LastActivityDate" Type="Date" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -256,10 +281,12 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserID" DataIndex="UserName" Header="关联用户登录ID">
+                                <ext:Column ColumnID="colAssigedUserLoginID" Width="60" DataIndex="AssigedUserLoginID" Header="分配">
                                 </ext:Column>
-                                <ext:Column ColumnID="colUserIsLocked" DataIndex="UserIsLocked" Header="用户状态" Sortable="false"
-                                    Width="50">
+                                <ext:Column ColumnID="colUserID" DataIndex="UserName"  Width="80" Header="关联用户登录ID">
+                                </ext:Column>
+                                <ext:Column ColumnID="colUserIsLocked" DataIndex="UserIsLocked"  Header="用户状态" Sortable="false"
+                                    Width="38">
                                     <Renderer Fn="showUserStatus" />
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家组管理" Width="160">
@@ -284,9 +311,6 @@
                                             <ToolTip Text="下家管理" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="Money" CommandName="cmdClientGroupPriceReport" Text="结算报表">
-                                            <ToolTip Text="结算报表" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1" Hidden="true">
                                             <ToolTip Text="结算报表" />
                                         </ext:GridCommand>
                                     </Commands>

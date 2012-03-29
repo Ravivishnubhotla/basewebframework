@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportToday.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportToday" %>
+
 <%@ Register Src="../ClientChannelSettings/UCSPClientChannelSettingEdit.ascx" TagName="UCSPClientChannelSettingEdit"
     TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -234,6 +235,8 @@
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
+                      <ext:RecordField Name="AssignedUser" />                  
+                    
                     <ext:RecordField Name="IsSycnData" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
@@ -324,10 +327,14 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="下家组"
+                                <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Width="65"
                                     Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Width="55"
+                                    Header="下家组" Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colAssignedUser" DataIndex="AssignedUser" Width="50"
+                                    Header="分配" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
