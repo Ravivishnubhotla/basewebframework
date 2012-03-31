@@ -18,6 +18,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             this.gridPanelSPChannel.Reload();
         }
 
+        public bool IsSPCommUser
+        {
+            get
+            {
+                return this.Context.User.IsInRole("SPCOM");
+            }
+        }
+
 
         [AjaxMethod]
         public void DeleteRecord(int id)

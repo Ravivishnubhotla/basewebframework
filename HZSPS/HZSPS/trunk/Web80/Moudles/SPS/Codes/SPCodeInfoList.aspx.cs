@@ -25,7 +25,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.Codes
             ReportViewHelper.FixReportDefinition(this.Server.MapPath("CodeInfoExport.rdl"));
             rptvExport.LocalReport.ReportPath = this.Server.MapPath("CodeInfoExport.rdl");
 
+            btnExport.Hidden = IsSPCommUser;
+
             this.gridPanelSPCodeInfo.Reload();
+        }
+
+        public bool IsSPCommUser
+        {
+            get
+            {
+                return this.Context.User.IsInRole("SPCOM");
+            }
         }
 
 

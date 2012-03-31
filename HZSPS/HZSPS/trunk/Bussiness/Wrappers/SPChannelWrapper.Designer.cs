@@ -100,6 +100,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
 		public static readonly string PROPERTY_NAME_CHANNEDATA = "ChanneData";
+		public static readonly string PROPERTY_NAME_HASCONVERTRULE = "HasConvertRule";
 		
         #endregion
 
@@ -565,6 +566,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.ChanneData = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasConvertRule
+		{
+			get
+			{
+				return entity.HasConvertRule;
+			}
+			set
+			{
+				entity.HasConvertRule = value;
 			}
 		}
 		#endregion 

@@ -43,6 +43,7 @@
 		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 		<property column="ReportIDParams" type="string" name="ReportIDParams"   length="100" />	
 		<property column="ChanneData" type="string" name="ChanneData"   length="2147483646" />	
+		<property column="HasConvertRule" type="Boolean" name="HasConvertRule"   />	
 
 
 

@@ -230,6 +230,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Coolite.Utilities.dll</HintPath>
     </Reference>
+    <Reference Include="CSScriptLibrary.v3.5">
+      <HintPath>..\ThirdsDll\CSScriptLibrary.v3.5.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
@@ -1425,6 +1428,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ConvertRules\" />
     <Folder Include="DayReport\" />
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SPS\MonitorRequestView\" />

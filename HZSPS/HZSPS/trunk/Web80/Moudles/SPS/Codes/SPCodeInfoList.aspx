@@ -34,6 +34,13 @@
             if (value)
                 return '是';
             else
+                return '<span style="color:red;">否</span>';
+        };
+        
+                var FormatBool2 = function(value) {
+            if (value)
+                return '是';
+            else
                 return '否';
         };
 
@@ -182,7 +189,7 @@
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
                                     <ext:ComboBox ID="cmbSChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name" ValueField="Id"
+                                        TypeAhead="true" Mode="Local" Editable="True" ForceSelection="True" DisplayField="Name" ValueField="Id"
                                         EmptyText="选择上家" Width="90">
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
@@ -313,6 +320,8 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colMoCode" DataIndex="MoCode" Header="指令" Sortable="true" Width="100">
                                 </ext:Column>
+                                <ext:Column ColumnID="colCodeType" DataIndex="CodeType" Header="指令类型" Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true" Width="30">
                                 </ext:Column>
                                 <ext:Column ColumnID="colProvince" DataIndex="Province" Header="开通省份" Sortable="true">
@@ -321,11 +330,8 @@
                                 <ext:Column ColumnID="colDisableArea" DataIndex="DisableArea" Header="屏蔽地市" Sortable="true">
                                     <Renderer Fn="columnWrap" />
                                 </ext:Column>
-                                <ext:Column ColumnID="colCreateTime" DataIndex="CreateTime" Header="开通日期" Sortable="true">
-                                    <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
-                                </ext:Column>
                                 <ext:Column ColumnID="colIsLimit" DataIndex="IsLimit" Header="限量" Width="31" Sortable="true">
-                                    <Renderer Fn="FormatBool"></Renderer>
+                                    <Renderer Fn="FormatBool2"></Renderer>
                                 </ext:Column>
                                 <ext:Column ColumnID="colDayMonthLimit" DataIndex="DayMonthLimit" Header="日月限" Width="45"
                                     Sortable="true">

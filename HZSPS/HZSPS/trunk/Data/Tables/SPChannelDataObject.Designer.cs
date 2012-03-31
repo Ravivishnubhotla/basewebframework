@@ -57,6 +57,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_ISDISABLE = Property.ForName(SPChannelEntity.PROPERTY_NAME_ISDISABLE);
 		public static readonly Property PROPERTY_REPORTIDPARAMS = Property.ForName(SPChannelEntity.PROPERTY_NAME_REPORTIDPARAMS);
 		public static readonly Property PROPERTY_CHANNEDATA = Property.ForName(SPChannelEntity.PROPERTY_NAME_CHANNEDATA);
+		public static readonly Property PROPERTY_HASCONVERTRULE = Property.ForName(SPChannelEntity.PROPERTY_NAME_HASCONVERTRULE);
       
 		#region 子类集合字段查询字段
 	
@@ -140,6 +141,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "ChanneData":
                     return typeof (string);
+                case "HasConvertRule":
+                    return typeof (bool);
           }
 			return typeof(string);
         }
