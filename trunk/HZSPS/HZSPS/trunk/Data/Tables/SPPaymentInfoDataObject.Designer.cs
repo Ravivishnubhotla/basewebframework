@@ -55,6 +55,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CHANNELID_ISDISABLE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".IsDisable");
 		public static readonly Property PROPERTY_CHANNELID_REPORTIDPARAMS = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ReportIDParams");
 		public static readonly Property PROPERTY_CHANNELID_CHANNEDATA = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".ChanneData");
+		public static readonly Property PROPERTY_CHANNELID_HASCONVERTRULE = Property.ForName(PROPERTY_CHANNELID_ALIAS_NAME + ".HasConvertRule");
 		#endregion
 		public static readonly Property PROPERTY_CLIENTID = Property.ForName(SPPaymentInfoEntity.PROPERTY_NAME_CLIENTID);
 		#region clientID字段外键查询字段

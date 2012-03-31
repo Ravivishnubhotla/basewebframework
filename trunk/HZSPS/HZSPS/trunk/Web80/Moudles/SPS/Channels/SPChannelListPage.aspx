@@ -295,13 +295,13 @@
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道管理" Width="172">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
                                             <ToolTip Text="删除" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理"  Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
                                             <ToolTip Text="参数管理" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
@@ -311,7 +311,7 @@
                                             <ToolTip Text="指令分配" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
-                                            Text="默认下发参数">
+                                            Text="默认下发参数"  Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
                                             <ToolTip Text="默认下发参数" />
                                         </ext:GridCommand>
                                     </Commands>

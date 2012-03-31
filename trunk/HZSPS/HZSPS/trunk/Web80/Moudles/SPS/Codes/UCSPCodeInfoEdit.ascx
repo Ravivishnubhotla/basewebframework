@@ -15,7 +15,7 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" FieldLabel="上家"
-                                    StoreID="storeSPChannel" TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name"
+                                    StoreID="storeSPChannel" TypeAhead="true" Mode="Local"  Editable="True" ForceSelection="True" DisplayField="Name"
                                     ValueField="Id" EmptyText="全部">
                                     <Triggers>
                                         <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
@@ -93,7 +93,7 @@
                                 <ext:TextField ID="txtPrice" runat="server" FieldLabel="价格" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtComent" runat="server" FieldLabel="备注" AllowBlank="False" />
+                                <ext:TextField ID="txtComent" runat="server" FieldLabel="备注" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
