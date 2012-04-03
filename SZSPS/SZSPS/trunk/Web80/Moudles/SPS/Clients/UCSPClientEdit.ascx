@@ -68,7 +68,7 @@
                                 </ext:ComboBox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="numPrice" FieldLabel="通道价格" runat="server" AllowDecimals="true" DecimalPrecision="2">
+                                <ext:NumberField ID="numPrice" FieldLabel="通道价格" runat="server" AllowDecimals="true" DecimalPrecision="3">
                                 </ext:NumberField>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

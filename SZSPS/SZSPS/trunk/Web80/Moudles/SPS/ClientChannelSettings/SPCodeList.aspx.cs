@@ -77,12 +77,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
  
 
-            string province = this.txtProvince.Text.Trim();
+            string province = this.txtMO.Text.Trim();
 
             string port = this.txtPort.Text.Trim();
 
 
-            List<SPClientChannelSettingWrapper> spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, (e.Dir == SortDirection.DESC), ChannleID, province, port, pageIndex,
+            List<SPClientChannelSettingWrapper> spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, (e.Dir == SortDirection.DESC), ChannleID, province, port, pageIndex,
                                                                                 limit, out recordCount);
  
 

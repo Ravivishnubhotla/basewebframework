@@ -54,7 +54,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultSycnMoUrl = null;
 			_defaultSycnMRUrl = null;
 			_defaultInterceptRate = 5;
-			_defaultNoInterceptCount = 100;
+			_defaultNoInterceptCount = 20;
 		}
 		#endregion
 

@@ -181,10 +181,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
                             if(spClient!=null)
                             {
-                                //if(spClient.SPClientGroupID!=null)
-                                //{
-                                //    dayReportEntity.ClientGroupID = spClient.SPClientGroupID.Id;
-                                //}
+                                if (spClient.SPClientGroupID != null)
+                                {
+                                    dayReportEntity.ClientGroupID = spClient.SPClientGroupID.Id;
+                                }
 
                                 SPClientWrapper clientWrapper = new SPClientWrapper(spClient);
 

@@ -126,17 +126,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             get
             {
-                string dayl = "";
-                if (this.DayLimit != null)
+                if (!this.DayLimitCount.HasValue)
+                    this.DayLimitCount = 0;
+
+                if (!this.MonthLimitCount.HasValue)
+                    this.MonthLimitCount = 0;
+
+                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value)
                 {
-                    dayl = this.DayLimit;
+                    return string.Format("日{0}/月{1}", this.DayLimitCount.Value, this.MonthLimitCount.Value);
                 }
-                string monthl = "";
-                if (this.MonthLimit != null)
+                return "无";
+            }
+        }
+
+        public string DayTotalLimitInfo
+        {
+            get
+            {
+                if (!this.DayTotalLimit.HasValue)
+                    this.DayTotalLimit = 0;
+
+                if (this.HasDayTotalLimit.HasValue && this.HasDayTotalLimit.Value)
                 {
-                    monthl = this.MonthLimit;
+                    return string.Format("{0}", this.DayTotalLimit.Value);
                 }
-                return string.Format("{0}/{1}", dayl, monthl);
+                return "无";
             }
         }
 
@@ -161,6 +176,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return this.ChannelID.Name;
                 }
                 return "";
+            }
+        }
+
+        public int ChannelID_ID
+        {
+            get
+            {
+                if (this.ChannelID != null)
+                {
+                    return this.ChannelID.Id;
+                }
+                return 0;
             }
         }
 
@@ -412,13 +439,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public const int AddRate = 30;
         public const int MaxInterceptRate = 75;
 
-        public bool CaculteIsIntercept()
+        public bool CaculteIsIntercept(SPPaymentInfoWrapper paymentInfo)
         {
-            //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
-            //    return false;
-
-            
-
             int interceptRate = 0;
 
             if(this.DefaultNoInterceptCount<0)
@@ -440,25 +462,79 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 interceptRate = this.InterceptRate.Value;
             }
 
-            //int addRate = 60;
+            bool isIntercept = CaculteRandom(interceptRate);
 
-            //int maxInterceptRate = 80;
+            //如果没有扣除，如果该通道日总量有限制，超过了日总量，必须改成扣除
+            if (!isIntercept && this.HasDayTotalLimit.HasValue && this.HasDayTotalLimit.Value)
+            {
+                if (this.DayTotalLimit.HasValue && this.DayTotalLimit.Value > 0)
+                {
+                    int todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
 
-            //if (interceptRate == 0)
-            //    return false;
+                    if(todayPaymentCount>=this.DayTotalLimit.Value)
+                        isIntercept = true;
+                }
+            }
 
-            //decimal rate =  CaculteActualInterceptRate(System.DateTime.Now.Date);
+            //如果是扣除的，如果该通道有号码日限制月限制，超过日限月限制的，先检查月限制，超过月限制乘以扣率，则放行（直接返回不检查日限制）
+            //没有超过，在检查日限制，超过日限制乘以扣率，则放行
 
-            //if (rate < Convert.ToDecimal(interceptRate))
+            if (isIntercept)
+            {
+                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.MonthLimitCount.HasValue && this.MonthLimitCount.Value>0)
+                {
+                    int todayMonthPhoneCount = CaculteMonthPhoneCount(System.DateTime.Now.Date, this.Id,paymentInfo.MobileNumber);
+
+                    int maxMonthPhoneCount = Convert.ToInt32(Math.Floor((double) this.MonthLimitCount.Value*(double) interceptRate/100d));
+
+                    if (maxMonthPhoneCount < 1)
+                        maxMonthPhoneCount = 1;
+
+                    if (todayMonthPhoneCount + 1 > maxMonthPhoneCount)
+                    {
+                        isIntercept = false;
+                        return isIntercept;
+                    }
+                }
+                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
+                {
+                    int todayDayPhoneCount = CaculteDayPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
+
+                    int maxDayPhoneCount = Convert.ToInt32(Math.Floor((double) this.DayLimitCount.Value*(double) interceptRate/100d));
+
+                    if (maxDayPhoneCount < 1)
+                        maxDayPhoneCount = 1;
+
+                    if (todayDayPhoneCount + 1 > maxDayPhoneCount)
+                    {
+                        isIntercept = false;
+                        return isIntercept;
+                    }
+                }
+            }
+
+            //this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value
+                //if (this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
+                //    isIntercept = CaculteDayPhoneIntercept(paymentInfo);
+
+                //if (!isIntercept)
+                //    return isIntercept;
+
+                //if (this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
+                //    isIntercept = CaculteMonthPhoneIntercept(paymentInfo);
+
+                //if (!isIntercept)
+                //    return isIntercept;
+            //if ()
             //{
-            //    return CaculteRandom(Math.Min(interceptRate + addRate, maxInterceptRate));
-            //}
-            //else
-            //{
-            //    return false;
+
+            //        isIntercept = CaculteDayTotalPhoneIntercept();
+
+            //    if (!isIntercept)
+            //        return isIntercept;
             //}
 
-            return CaculteRandom(interceptRate);
+            return isIntercept;
 
             //if(interceptRate==0)
             //    return false;
@@ -475,15 +551,24 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             //}
         }
 
-        private decimal CaculteActualInterceptRate(DateTime date)
+        private int CaculteDayPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)
         {
-            return businessProxy.CaculteActualInterceptRate(this.entity,date);
+            return businessProxy.CaculteDayPhoneCount(dateTime, clientChannelID, mobileNumber);
         }
 
-        private decimal GetToDayRate(int clinetID, int channelID)
+        private int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)
         {
-            return businessProxy.GetToDayRate(clinetID, channelID);
+            return businessProxy.CaculteMonthPhoneCount(dateTime, clientChannelID, mobileNumber);
         }
+
+        private int CacultePaymentCount(DateTime dateTime, int clientChannelID)
+        {
+            return businessProxy.CacultePaymentCount(dateTime, clientChannelID);
+        }
+
+ 
+
+ 
 
         public SPClientChannelSettingWrapper ParentClientChannelSetting
         {
@@ -798,9 +883,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.ResetIntercept(this.entity, date, dataCount);
         }
 
-        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount)
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount)
         {
-            return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, isDesc, channleId, province, port, pageIndex, pageSize, out   recordCount)) ;
+            return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, isDesc, channleId, mo, port, pageIndex, pageSize, out   recordCount));
         }
 
 

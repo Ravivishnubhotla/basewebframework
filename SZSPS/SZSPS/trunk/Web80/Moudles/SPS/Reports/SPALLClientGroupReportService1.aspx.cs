@@ -47,6 +47,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         { 
             DataTable tb = SPDayReportWrapper.GetClientGroupTotalReport(StartDate.Date, EndDate.Date);
 
+            //tb.Columns.Add(new DataColumn("Amount", typeof (decimal), ""));
+
+            //tb.AcceptChanges();
+
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(rds);

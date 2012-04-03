@@ -10,29 +10,77 @@ using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Channels
 {
- 
-
-
     public partial class SPChannelSendTestRequestForm : System.Web.UI.Page
     {
+
+        public SPClientChannelSettingWrapper ClientChannelID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannleClientID"] != null)
+                {
+                    return
+                        SPClientChannelSettingWrapper.FindById(int.Parse(this.Request.QueryString["ChannleClientID"]));
+                }
+                return null;
+            }
+        }
+
+        //public string MO
+        //{
+        //    get
+        //    {
+        //        if (CodeID != null)
+        //        {
+        //            return CodeID.Mo;
+        //        }
+        //        return "";
+        //    }
+        //}
+
+        //public string SPCode
+        //{
+        //    get
+        //    {
+        //        if (CodeID != null)
+        //        {
+        //            return CodeID.SPCode;
+        //        }
+        //        return "";
+        //    }
+        //}
+
+        public SPChannelWrapper ChannelID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannleID"] != null)
+                {
+                    return
+                        SPChannelWrapper.FindById(int.Parse(this.Request.QueryString["ChannleID"]));
+                }
+                return null;
+            }
+        }
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Ext.IsAjaxRequest)
                 return;
 
-            int channelID = Convert.ToInt32(this.Request.QueryString["ChannleID"]);
 
-            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
 
-            this.hidChannelID.Text = channelWrapper.Id.ToString();
+            this.txtChannelName.Text = ChannelID.Name;
 
-            this.txtChannelName.Text = channelWrapper.Name;
+            this.txtChannelSubmitUrl.Text = ChannelID.InterfaceUrl;
 
-            this.txtChannelSubmitUrl.Text = channelWrapper.InterfaceUrl;
+            List<SPChannelParamsWrapper> channelParamsWrappers = ChannelID.GetAllEnableParams();
 
-            this.lblChannelCode.Text = channelWrapper.ChannelCode;
+            List<string> dataParams = new List<string>();
 
-            List<SPChannelParamsWrapper> channelParamsWrappers = channelWrapper.GetAllEnableParams();
+            List<string> dataStatusParams = new List<string>();
 
             foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParamsWrappers)
             {
@@ -44,9 +92,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 if (spChannelParamsWrapper.ParamsMappingName=="linkid")
                 {
-                    txt.Value = "test" + StringUtil.GetRandNumber(10);
+                    txt.Value = "99999" + StringUtil.GetRandNumber(10);
 
                     hidLinkIDeName.Text = txt.ClientID;
+
+                    dataStatusParams.Add(txt.ClientID);
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName == "mobile")
@@ -56,9 +106,52 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     hidMobileName.Text = txt.ClientID;
                 }
 
+                if (spChannelParamsWrapper.ParamsMappingName == "cpid")
+                {
+                    if (!string.IsNullOrEmpty(ClientChannelID.ChannelCode))
+                        txt.Value = ClientChannelID.ChannelCode;
+                }
+
+                if (spChannelParamsWrapper.ParamsMappingName == "ywid")
+                {
+                    if (!string.IsNullOrEmpty(ClientChannelID.CommandCode))
+                        txt.Value = ClientChannelID.CommandCode;
+                }
+
+                if (spChannelParamsWrapper.Name != this.ChannelID.StatParamsName)
+                {
+                    dataParams.Add(txt.ClientID);               
+                }
+                else
+                {
+                    dataStatusParams.Add(txt.ClientID);
+                }
+
+
                 anchor.Items.Add(txt);
                 this.FormLayout1.Anchors.Add(anchor);
+
+
             }
+
+            if (this.ChannelID.RecStatReport.HasValue && this.ChannelID.RecStatReport.Value && !dataStatusParams.Contains("txt" + this.ChannelID.StatParamsName))
+            {
+                Anchor anchor = new Anchor();
+                anchor.Horizontal = "95%";
+                TextField statusField = new TextField();
+                statusField.ID = "txt" + this.ChannelID.StatParamsName;
+                statusField.FieldLabel = this.ChannelID.StatParamsName;
+                statusField.Text = this.ChannelID.StatParamsValues;
+                anchor.Items.Add(statusField);
+                dataStatusParams.Add(statusField.ClientID);
+                this.FormLayout1.Anchors.Add(anchor);
+                hidStatusName.Text = statusField.ClientID;
+                this.FormPanel1.Items.Add(statusField);
+            }
+
+            hidDataParam.Text = string.Join(",", dataParams.ToArray());
+
+            hidDataStatusParam.Text = string.Join(",", dataStatusParams.ToArray());
 
         }
 

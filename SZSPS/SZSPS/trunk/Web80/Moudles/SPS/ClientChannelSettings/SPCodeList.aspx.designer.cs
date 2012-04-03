@@ -103,13 +103,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.ComboBox cmbChannelID;
         
         /// <summary>
-        /// txtProvince control.
+        /// txtMO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtProvince;
+        protected global::Coolite.Ext.Web.TextField txtMO;
         
         /// <summary>
         /// txtPort control.
@@ -146,5 +146,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winSendTestRequestForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winSendTestRequestForm;
+        
+        /// <summary>
+        /// WindwinSendClientTestRequestFormow1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window WindwinSendClientTestRequestFormow1;
     }
 }

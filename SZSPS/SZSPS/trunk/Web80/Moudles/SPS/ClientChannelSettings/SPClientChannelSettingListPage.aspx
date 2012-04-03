@@ -18,9 +18,9 @@
 
        var template = '<span style="color:{0};">{1}</span>';
 
-        var change = function (value) {
-            return String.format(template, (value) ? 'green' : 'red', FormatBool(value));
-        }
+       var change = function(value) {
+           return String.format(template, (value) ? 'green' : 'red', FormatBool(value));
+       };
 
         var rooturl ='<%=this.ResolveUrl("~/")%>';
 
@@ -29,7 +29,7 @@
                 return '是';
             else
                 return '否';
-        }
+        };
 
         function GetChannleID()
         {
@@ -91,42 +91,32 @@
         }
 
 
-        var showCommands=function(grid, toolbar, rowIndex, record)
-        {
-      
-            if(record.data.SyncData!=null && record.data.SyncData)
-            {
+        var showCommands = function(grid, toolbar, rowIndex, record) {
+
+            if (record.data.SyncData != null && record.data.SyncData) {
                 toolbar.items.items[0].menu.items.items[1].show();
                 //toolbar.items.items[0].menu.items.items[2].show();
                 toolbar.items.items[0].menu.items.items[8].show();
-            }
-            
-            else{
+            } else {
                 toolbar.items.items[0].menu.items.items[1].hide();
                 //toolbar.items.items[0].menu.items.items[2].hide();
                 toolbar.items.items[0].menu.items.items[8].hide();
-        
+
             }
 
-            if(record.data.CommandType=="1" && record.data.AllowFilter!=null && record.data.AllowFilter)
-            {
-                 toolbar.items.items[0].menu.items.items[7].show();        
-            }
-            else
-            {
-                 toolbar.items.items[0].menu.items.items[7].hide();      
+            if (record.data.CommandType == "1" && record.data.AllowFilter != null && record.data.AllowFilter) {
+                toolbar.items.items[0].menu.items.items[7].show();
+            } else {
+                toolbar.items.items[0].menu.items.items[7].hide();
             }
 
-            if(record.data.CommandType=="3")
-            {
-                 toolbar.items.items[0].menu.items.items[3].show();        
+            if (record.data.CommandType == "3") {
+                toolbar.items.items[0].menu.items.items[3].show();
+            } else {
+                toolbar.items.items[0].menu.items.items[3].hide();
             }
-            else
-            {
-                 toolbar.items.items[0].menu.items.items[3].hide();      
-            }
-               
-        }
+
+        };
 
         function processcmd(cmd, id) {
 
@@ -224,9 +214,11 @@
 
                 win.setTitle("  "+id.data.Name + "  " + " 发送模拟数据 ");
                 
-                win.autoLoad.url = 'SPChannelClientSendTestRequestForm.aspx';
+                win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
                 
                 win.autoLoad.params.ChannleClientID = id.data.Id;
+                win.autoLoad.params.ChannleID = id.data.ChannelID_ID;
+
         
                 win.show();    
             } 
@@ -302,6 +294,7 @@
                     <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
+                    <ext:RecordField Name="ChannelID_ID" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="OrderIndex" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
@@ -445,6 +438,8 @@
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
                 <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
@@ -453,9 +448,9 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-        <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试" Frame="true"
-        Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+    <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试"
+        Frame="true" Width="640" ConstrainHeader="true" Height="380" Maximizable="true"
+        Closable="true" Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>

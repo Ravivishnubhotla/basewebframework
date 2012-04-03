@@ -112,22 +112,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.Label lblChannelClientCode;
         
         /// <summary>
-        /// txtAllowAndDisableArea control.
+        /// chkHasDayMonthLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtAllowAndDisableArea;
-        
-        /// <summary>
-        /// txtGetway control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGetway;
+        protected global::Coolite.Ext.Web.Checkbox chkHasDayMonthLimit;
         
         /// <summary>
         /// txtDayLimit control.
@@ -136,7 +127,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtDayLimit;
+        protected global::Coolite.Ext.Web.NumberField txtDayLimit;
         
         /// <summary>
         /// txtMonthLimit control.
@@ -145,16 +136,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMonthLimit;
+        protected global::Coolite.Ext.Web.NumberField txtMonthLimit;
         
         /// <summary>
-        /// txtSendText control.
+        /// chkHasDayTotalLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtSendText;
+        protected global::Coolite.Ext.Web.Checkbox chkHasDayTotalLimit;
+        
+        /// <summary>
+        /// txtDayTotalLimit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.NumberField txtDayTotalLimit;
         
         /// <summary>
         /// btnSaveSPClientChannelSetting control.
