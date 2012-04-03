@@ -57,6 +57,10 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Ext.NET.CHANGELOG.txt" />
+    <Content Include="App_Readme\Ext.NET.README.txt" />
+    <Content Include="App_Readme\Ext.NET.Utilities.LICENSE.txt" />
+    <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
     <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="images\bg.gif" />
