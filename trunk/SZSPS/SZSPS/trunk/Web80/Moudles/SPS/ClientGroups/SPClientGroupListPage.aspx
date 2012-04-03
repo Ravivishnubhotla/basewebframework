@@ -283,10 +283,8 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理">
                                             <ToolTip Text="下家管理" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="Money" CommandName="cmdClientGroupPriceReport" Text="结算报表">
-                                            <ToolTip Text="结算报表" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1" Hidden="true">
+ 
+                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1">
                                             <ToolTip Text="结算报表" />
                                         </ext:GridCommand>
                                     </Commands>

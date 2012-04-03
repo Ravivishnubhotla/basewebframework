@@ -143,26 +143,29 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             string sql = "Select Count(*) from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and  ChannleClientID = @ChannleClientID ";
 
-            switch (dataType)
-            {
-                case "All":
-                    break;
-                case "Intercept":
-                    sql += " AND IsIntercept = 1 ";
-                    break;
-                case "Down":
-                    sql += " AND IsIntercept = 0 ";
-                    break;
-                case "DownSycn":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
-                    break;
-                case "DownNotSycn":
-                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
-                    break;
-                case "SycnFailed":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
-                    break;
-            }
+            sql += BuildFilterSqlByDataType(dataType);
+
+
+            //switch (dataType)
+            //{
+            //    case "All":
+            //        break;
+            //    case "Intercept":
+            //        sql += " AND IsIntercept = 1 ";
+            //        break;
+            //    case "Down":
+            //        sql += " AND IsIntercept = 0 ";
+            //        break;
+            //    case "DownSycn":
+            //        sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
+            //        break;
+            //    case "DownNotSycn":
+            //        sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+            //        break;
+            //    case "SycnFailed":
+            //        sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+            //        break;
+            //}
 
 
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -188,26 +191,28 @@ namespace LD.SPPipeManage.Data.AdoNet
 
             string sql = "Select " + top + " ID from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and  ChannleClientID = @ChannleClientID ";
 
-            switch (dataType)
-            {
-                case "All":
-                    break;
-                case "Intercept":
-                    sql += " AND IsIntercept = 1 ";
-                    break;
-                case "Down":
-                    sql += " AND IsIntercept = 0 ";
-                    break;
-                case "DownSycn":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
-                    break;
-                case "DownNotSycn":
-                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
-                    break;
-                case "SycnFailed":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
-                    break;
-            }
+            sql += BuildFilterSqlByDataType(dataType);
+
+            //switch (dataType)
+            //{
+            //    case "All":
+            //        break;
+            //    case "Intercept":
+            //        sql += " AND IsIntercept = 1 ";
+            //        break;
+            //    case "Down":
+            //        sql += " AND IsIntercept = 0 ";
+            //        break;
+            //    case "DownSycn":
+            //        sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
+            //        break;
+            //    case "DownNotSycn":
+            //        sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+            //        break;
+            //    case "SycnFailed":
+            //        sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+            //        break;
+            //}
 
 
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -1406,7 +1411,7 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
         public int GetSycnFailedCount(int clientChannelid, DateTime date)
         {
-            string sql = "select Count(*) from dbo.SPPaymentInfo where ChannleClientID = @ChannleClientID and CreateDate>@startDate and CreateDate < @endDate and IsIntercept = 0 and SucesssToSend = 0   and IsSycnData=1 and SycnRetryTimes >0";
+            string sql = "select Count(*) from dbo.SPPaymentInfo where ChannleClientID = @ChannleClientID and CreateDate>@startDate and CreateDate < @endDate and IsIntercept = 0 and SucesssToSend = 0   and IsSycnData=1";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
@@ -1621,26 +1626,7 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             string sql = @"select ChannelID,ChannleClientID,ClientGroupID,COUNT(*) as RecordCount  from dbo.SPPaymentInfo with(nolock)
                            WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
 
-            switch (dataType)
-            {
-                case AdoNetDataObject.DataType_All:
-                    break;
-                case AdoNetDataObject.DataType_Intercept:
-                    sql += " AND IsIntercept = 1 ";
-                    break;
-                case AdoNetDataObject.DataType_Down:
-                    sql += " AND IsIntercept = 0 ";
-                    break;
-                case AdoNetDataObject.DataType_DownSycn:
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 1 ";
-                    break;
-                case AdoNetDataObject.DataType_DownNotSycn:
-                    sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
-                    break;
-                case AdoNetDataObject.DataType_SycnFailed:
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
-                    break;
-            }
+            sql += BuildFilterSqlByDataType(dataType);
 
             sql += " GROUP BY  ChannelID,ChannleClientID,ClientGroupID ";
 
@@ -1649,6 +1635,74 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             dbParameters.AddWithValue("startDate", startDate.Date);
 
             dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        private static string BuildFilterSqlByDataType(string dataType)
+        {
+            string filterSQL = "";
+
+            switch (dataType)
+            {
+                case AdoNetDataObject.DataType_All:
+                    break;
+                case AdoNetDataObject.DataType_Intercept:
+                    filterSQL += " AND IsIntercept = 1 ";
+                    break;
+                case AdoNetDataObject.DataType_Down:
+                    filterSQL += " AND IsIntercept = 0 ";
+                    break;
+                case AdoNetDataObject.DataType_DownSycn:
+                    filterSQL += " AND IsIntercept = 0 AND IsSycnData = 1 AND SucesssToSend = 1 ";
+                    break;
+                case AdoNetDataObject.DataType_SycnFailed:
+                    filterSQL += " AND IsIntercept = 0 AND IsSycnData = 1 AND SucesssToSend = 0";
+                    break;
+                case AdoNetDataObject.DataType_DownNotSycn:
+                    filterSQL += " AND IsIntercept = 0 AND IsSycnData = 0 ";
+                    break;
+            }
+            return filterSQL;
+        }
+
+
+
+
+
+
+        public DataTable QueryHoursReport(DateTime startDate, DateTime endDate, string dataType,int? channelID,int? channelClientID,int? clientGroupID)
+        {
+            string sql =
+                @"SELECT DATEPART ( hour,CreateDate) as Hours,count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            sql += BuildFilterSqlByDataType(dataType);
+              
+            if (channelID.HasValue)
+                sql += " and ChannelID =@ChannleID  ";
+
+            if (channelClientID.HasValue)
+                sql += " and ChannleClientID =@ChannleClientID  ";
+
+            if (clientGroupID.HasValue)
+                sql += " and ClientGroupID =@clientGroupID  ";
+
+            sql += "  group by DATEPART ( hour,CreateDate) ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (channelID.HasValue)
+                dbParameters.AddWithValue("ChannleID", channelID.Value);
+
+            if (channelClientID.HasValue)
+                dbParameters.AddWithValue("ChannleClientID", channelClientID.Value);
+
+            if (clientGroupID.HasValue)
+                dbParameters.AddWithValue("clientGroupID", clientGroupID.Value);
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
@@ -1687,7 +1741,7 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
 
         public DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate)
         {
-            string sql = @"SELECT dbo.GetClientGroupName1(ClientGroupID) AS ClientGroupName, dbo.GetMoCode(ChannleClientID) AS Mo, COUNT(*) AS DownCount
+            string sql = @"SELECT dbo.GetClientGroupName1(ClientGroupID) AS ClientGroupName, dbo.GetMoCode(ChannleClientID) AS Mo,dbo.GetSPClientGroupPriceByClientChannel(ChannleClientID,ClientGroupID) as Price, COUNT(*) AS DownCount
 FROM SPPaymentInfo
 WHERE (CreateDate > @startdate) AND (CreateDate < @enddate) AND 
       (IsIntercept = 0)
@@ -1756,5 +1810,60 @@ ORDER BY ClientGroupName";
             return Convert.ToInt32(obj);
         }
 
+ 
+ 
+ 
+
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE IsIntercept=1 AND MobileNumber = @MobileNumber AND  (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("MobileNumber", mobileNumber);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE IsIntercept=1 AND MobileNumber = @MobileNumber AND  (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", new DateTime(dateTime.Year, dateTime.Month,1));
+
+            dbParameters.AddWithValue("enddate", new DateTime(dateTime.AddMonths(1).Year, dateTime.AddMonths(1).Month, 1));
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("MobileNumber", mobileNumber);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
     }
 }

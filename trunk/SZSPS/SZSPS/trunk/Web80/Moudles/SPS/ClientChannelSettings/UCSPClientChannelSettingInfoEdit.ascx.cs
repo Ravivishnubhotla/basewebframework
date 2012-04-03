@@ -37,17 +37,46 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     this.lblName.Text = obj.Name;
 
                     this.lblChannelClientCode.Text = obj.ChannelClientCode;
+
+                    chkHasDayMonthLimit.Checked = obj.HasDayMonthLimit.HasValue && obj.HasDayMonthLimit.Value;
+                    chkHasDayTotalLimit.Checked = obj.HasDayTotalLimit.HasValue && obj.HasDayTotalLimit.Value;
+
+                    if(chkHasDayMonthLimit.Checked)
+                    {
+                        if (obj.DayLimitCount.HasValue)
+                            this.txtDayLimit.Text = obj.DayLimitCount.Value.ToString();
+                        else
+                            this.txtDayLimit.Text = "0";
+                        if (obj.MonthLimitCount.HasValue)
+                            this.txtMonthLimit.Text = obj.MonthLimitCount.Value.ToString();
+                        else
+                            this.txtMonthLimit.Text = "0";
+                    }
+                    else
+                    {
+                        this.txtDayLimit.Text = "0";
+                        this.txtMonthLimit.Text = "0";
+                    }
+
+                    this.txtDayLimit.Hidden = !chkHasDayMonthLimit.Checked;
+                    this.txtMonthLimit.Hidden = !chkHasDayMonthLimit.Checked;
  
-                    this.txtAllowAndDisableArea.Text = obj.AllowAndDisableArea;
-                    this.txtGetway.Text = obj.Getway;
-                    this.txtDayLimit.Text = obj.DayLimit;
-                    this.txtMonthLimit.Text = obj.MonthLimit;
-                    this.txtSendText.Text = obj.SendText;
+                    if(this.chkHasDayTotalLimit.Checked)
+                    {
+                        if (obj.DayTotalLimit.HasValue)
+                            this.txtDayTotalLimit.Text = obj.DayTotalLimit.Value.ToString();
+                        else
+                            this.txtDayTotalLimit.Text = "0";
+                    }
+                    else
+                    {
+                        this.txtDayTotalLimit.Text = "0";
+                    }
+
+
+                    this.txtDayTotalLimit.Hidden = !chkHasDayTotalLimit.Checked;
  
-
-    
-
-
+ 
 
                     hidId.Text = id.ToString();
 
@@ -74,16 +103,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             try
             {
                 SPClientChannelSettingWrapper obj = SPClientChannelSettingWrapper.FindById(int.Parse(hidId.Text.Trim()));
- 
-                obj.AllowAndDisableArea = this.txtAllowAndDisableArea.Text.Trim();
-                obj.Getway = this.txtGetway.Text.Trim();
-                obj.DayLimit = this.txtDayLimit.Text.Trim();
-                obj.MonthLimit = this.txtMonthLimit.Text.Trim();
-                obj.SendText = this.txtSendText.Text.Trim();
-  
- 
 
- 
+                obj.HasDayMonthLimit = this.chkHasDayMonthLimit.Checked;
+                obj.DayLimitCount = Convert.ToInt32(this.txtDayLimit.Value);
+                obj.MonthLimitCount = Convert.ToInt32(this.txtMonthLimit.Value);
+
+                obj.HasDayTotalLimit = this.chkHasDayTotalLimit.Checked;
+                obj.DayTotalLimit = Convert.ToInt32(this.txtDayTotalLimit.Value);
 
 
                 SPClientChannelSettingWrapper.Update(obj);

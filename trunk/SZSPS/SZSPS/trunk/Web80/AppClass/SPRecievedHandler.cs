@@ -96,6 +96,19 @@ namespace Legendigital.Common.Web.AppClass
                 }
 
 
+                if (channel.FuzzyCommand.Trim().ToLower().Equals("quantt"))
+                {
+                    if (httpRequest.RequestParams.ContainsKey("reportcode"))
+                    {
+                        if (!string.IsNullOrEmpty(httpRequest.RequestParams["reportcode"].ToString()))
+                        {
+                            httpRequest.RequestParams.Add("status", httpRequest.RequestParams["reportcode"].ToString().Substring(0, 1));
+                            httpRequest.RequestParams.Add("msg", httpRequest.RequestParams["reportcode"].ToString().Substring(1, httpRequest.RequestParams["reportcode"].ToString().Length - 1));
+                        }
+                    }
+                }
+
+
 
                 //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)

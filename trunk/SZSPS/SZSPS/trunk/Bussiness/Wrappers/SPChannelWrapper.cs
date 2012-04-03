@@ -188,6 +188,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public bool DataSendOnce
+        {
+            get
+            {
+                if(!(this.RecStatReport.HasValue && this.RecStatReport.Value))
+                    return true;
+                if(this.StatSendOnce.HasValue && this.StatSendOnce.Value)
+                    return true;
+                return false;
+            }
+        }
+
         public string RequestReportTypeValue
         {
             get
@@ -484,7 +496,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
             paymentInfo.Ip = httpGetPostRequest.RequestIp;
-            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
+            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept(paymentInfo);
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
 
@@ -1164,7 +1176,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ClientGroupID = statepaymentInfo.ClientGroupID;
             paymentInfo.MobileOperators = statepaymentInfo.MobileOperators;
             paymentInfo.Ip = statepaymentInfo.Ip;
-            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
+            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept(paymentInfo);
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
 

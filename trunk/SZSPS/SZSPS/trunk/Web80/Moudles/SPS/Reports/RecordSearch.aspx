@@ -22,7 +22,6 @@
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ClientGroupName" />
-                    
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="MobileNumber" />
                     <ext:RecordField Name="Values" />
@@ -31,6 +30,9 @@
                     <ext:RecordField Name="Ywid" />
                     <ext:RecordField Name="Cpid" />
                     <ext:RecordField Name="SSycnDataUrl" />
+                    <ext:RecordField Name="IsIntercept" Type="Boolean" />
+                    <ext:RecordField Name="SucesssToSend" Type="Boolean" />
+                    <ext:RecordField Name="IsSycnData" Type="Boolean" />
                     <ext:RecordField Name="CreateDate" Type="Date" />
                 </Fields>
             </ext:JsonReader>
@@ -68,6 +70,15 @@
             <ext:Parameter Name="ChannelID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
         </BaseParams>
     </ext:Store>
+    <script type="text/javascript">
+        var FormatBool = function (value) {
+            if (value)
+                return '是';
+            else
+                return '否';
+        };
+
+    </script>
     <style type="text/css">
         .list-item
         {
@@ -237,6 +248,15 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colCreateDate" DataIndex="CreateDate" Header="日期" Sortable="true">
                                     <Renderer Fn="Ext.util.Format.dateRenderer('n/d/Y H:i:s A')" />
+                                </ext:Column>
+                                <ext:Column Header="扣除" Width="30" DataIndex="IsIntercept">
+                                    <Renderer Fn="FormatBool" />
+                                </ext:Column>
+                                <ext:Column Header="同步" Width="30" DataIndex="SucesssToSend">
+                                    <Renderer Fn="FormatBool" />
+                                </ext:Column>
+                                <ext:Column Header="允许同步" Width="30" DataIndex="IsSycnData">
+                                    <Renderer Fn="FormatBool" />
                                 </ext:Column>
                             </Columns>
                         </ColumnModel>

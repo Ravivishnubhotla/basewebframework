@@ -451,13 +451,6 @@
     <Compile Include="MainPage\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MainPage\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainPage\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MainPage\Login1.aspx.cs">
       <DependentUpon>Login1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1317,7 +1310,6 @@
     <Content Include="Images\logo.png" />
     <Content Include="Images\user.png" />
     <Content Include="MainPage\Default.aspx" />
-    <Content Include="MainPage\Login.aspx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
     <Content Include="Masters\AdminMaster.Master" />
   </ItemGroup>

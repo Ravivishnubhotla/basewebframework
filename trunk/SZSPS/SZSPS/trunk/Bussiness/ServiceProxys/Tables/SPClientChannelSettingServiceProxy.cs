@@ -27,8 +27,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount);
 
  
-        List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
-        decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date);
+        List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
+        int CacultePaymentCount(DateTime dateTime, int clientChannelId);
+        int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
+        int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -137,23 +139,33 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             this.AdoNetDb.ResetIntercept(spClientChannelSettingEntity.Id, date, dataCount);
         }
 
-        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount)
+        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount)
         {
             SPChannelEntity channelEntity = null;
 
             if(channleId>0)
                 channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channleId);
 
-            return this.SelfDataObj.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, isDesc,
-                                                                                     channelEntity, province, port,
+            return this.SelfDataObj.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, isDesc,
+                                                                                     channelEntity, mo, port,
                                                                                      pageIndex, pageSize,
                                                                                      out recordCount);
         
         }
 
-        public decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date)
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId)
         {
-            return AdoNetDb.CaculteActualInterceptRate(entity.Id,date);
+            return AdoNetDb.CacultePaymentCount(dateTime, clientChannelId);
+        }
+
+        public int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            return AdoNetDb.CaculteDayPhoneCount(dateTime, clientChannelId, mobileNumber);
+        }
+
+        public int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            return AdoNetDb.CaculteMonthPhoneCount(dateTime, clientChannelId, mobileNumber);
         }
     }
 }

@@ -156,7 +156,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             get
             {
-                if (this.ClientID != null)
+                if (this.ClientGroupID != null && this.ClientGroupID!=0)
+                {
+                    SPClientGroupWrapper spClientGroupWrapper = SPClientGroupWrapper.FindById(this.ClientGroupID);
+
+                    if (spClientGroupWrapper!=null)
+                        return spClientGroupWrapper.Name;
+                }
+                else if (this.ClientID != null)
                 {
                     if (this.ClientID.SPClientGroupID!=null)
                         return this.ClientID.SPClientGroupID.Name;

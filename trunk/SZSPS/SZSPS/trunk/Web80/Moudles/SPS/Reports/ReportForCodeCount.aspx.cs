@@ -42,11 +42,24 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                 {
                     dataRow["SPClientGroupName"] = "";
                 }
+                else if (dataRow["ClientGroupID"] != System.DBNull.Value && !dataRow["ClientGroupID"].Equals(0))
+                {
+                    SPClientGroupWrapper clientGroupWrapper = SPClientGroupWrapper.FindById((int)dataRow["ClientGroupID"]);
+
+                    if (clientGroupWrapper != null)
+                    {
+                        dataRow["SPClientGroupName"] = clientGroupWrapper.Name;
+                    }
+                    else
+                    {
+                        dataRow["SPClientGroupName"] = "";
+                    }
+                }
                 else
                 {
-                    SPClientWrapper clientWrapper = SPClientWrapper.FindById((int) dataRow["ClientID"]);
+                    SPClientWrapper clientWrapper = SPClientWrapper.FindById((int)dataRow["ClientID"]);
 
-                    if(clientWrapper!=null)
+                    if (clientWrapper != null)
                     {
                         dataRow["SPClientGroupName"] = clientWrapper.ClientGroupName;
                     }
@@ -54,7 +67,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     {
                         dataRow["SPClientGroupName"] = "";
                     }
-                }  
+                }
             }
 
 

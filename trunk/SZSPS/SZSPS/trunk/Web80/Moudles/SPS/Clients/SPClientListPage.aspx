@@ -344,7 +344,7 @@
                                 <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
                                     Width="120" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="35" Sortable="true">
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="40" Sortable="False">
                                 </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Hidden="true" Sortable="true">
