@@ -15,5 +15,7 @@ namespace SPSUtil.Moudles
         {
             InitializeComponent();
         }
+
+ 
     }
 }

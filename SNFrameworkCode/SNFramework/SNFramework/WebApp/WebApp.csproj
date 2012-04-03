@@ -463,6 +463,8 @@
     <Content Include="TestCP\1.htm" />
     <Content Include="TestCP\Error.htm" />
     <Content Include="TestCP\OK.htm" />
+    <Content Include="TestPage\TestFlash.aspx" />
+    <Content Include="TestPage\TestFlash1.aspx" />
     <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="TestPage\WebForm2.aspx" />
     <Content Include="TestPage\WebForm3.aspx" />
@@ -1475,6 +1477,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCP\EmuCP.ashx.cs">
       <DependentUpon>EmuCP.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage\TestFlash.aspx.cs">
+      <DependentUpon>TestFlash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\TestFlash.aspx.designer.cs">
+      <DependentUpon>TestFlash.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage\TestFlash1.aspx.cs">
+      <DependentUpon>TestFlash1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\TestFlash1.aspx.designer.cs">
+      <DependentUpon>TestFlash1.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestPage\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -45,6 +46,39 @@ namespace SPSUtil.Moudles
 
 
                     break;
+
+
+                case "tsbtnSendTextLink":
+
+
+                    if(ofdFileTextLink.ShowDialog()==DialogResult.OK)
+                    {
+                        string[] links = File.ReadAllLines(ofdFileTextLink.FileName);
+
+                        List<string> alllink = new List<string>();
+
+                        foreach (string link in links)
+                        {
+                            if(!string.IsNullOrEmpty(link))
+                                alllink.Add(link);
+                        }
+
+                        this.tsbUrlSender.Enabled = false;
+                        this.tsbProgressBar.Visible = true;
+                        this.tsbCancelProgress.Visible = true;
+
+                        this.rtxtOutput.Clear();
+
+                        HttpGetSenderTask senderTask = new HttpGetSenderTask(alllink);
+
+
+                        //this.richTextBox1.a
+                        bgwSenderUrl.RunWorkerAsync(senderTask);
+                    }
+
+
+                    break;
+
                 case "tsbSendDataUrls":
 
 
@@ -84,28 +118,37 @@ namespace SPSUtil.Moudles
             if (bgw == null)
                 return;
 
-            HttpGetSenderTask senderTask = e.Argument as HttpGetSenderTask;
 
-
-            if (senderTask!=null)
+            if(e.Argument is HttpGetSenderTask)
             {
-                for (int i = 0; i < senderTask.SendDataItems.Count; i++)
+
+                HttpGetSenderTask senderTask = e.Argument as HttpGetSenderTask;
+
+
+                if (senderTask != null)
                 {
-                    if (bgw.CancellationPending)
+                    for (int i = 0; i < senderTask.SendDataItems.Count; i++)
                     {
-                        e.Cancel = true;
-                        bgwSenderUrl.ReportProgress(100, i);
-                        break;
+                        if (bgw.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            bgwSenderUrl.ReportProgress(100, i);
+                            break;
+                        }
+                        // Wait 100 milliseconds.
+                        Thread.Sleep(100);
+
+                        senderTask.SendDataItems[i].Process();
+                        // Report progress.
+                        bgwSenderUrl.ReportProgress(i * 100 / senderTask.SendDataItems.Count, senderTask.SendDataItems[i]);
                     }
-                    // Wait 100 milliseconds.
-                    Thread.Sleep(100);
 
-                    senderTask.SendDataItems[i].Process();
-                    // Report progress.
-                    bgwSenderUrl.ReportProgress(i * 100 / senderTask.SendDataItems.Count, senderTask.SendDataItems[i]);
                 }
-
             }
+ 
+ 
+
+
 
 
 

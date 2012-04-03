@@ -35,9 +35,11 @@
             this.tsTop = new System.Windows.Forms.ToolStrip();
             this.tsbUrlSender = new System.Windows.Forms.ToolStripButton();
             this.tsbSendDataUrls = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnSendTextLink = new System.Windows.Forms.ToolStripButton();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.rtxtOutput = new System.Windows.Forms.RichTextBox();
             this.bgwSenderUrl = new System.ComponentModel.BackgroundWorker();
+            this.ofdFileTextLink = new System.Windows.Forms.OpenFileDialog();
             this.ssBottom.SuspendLayout();
             this.tsTop.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -80,7 +82,8 @@
             // 
             this.tsTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbUrlSender,
-            this.tsbSendDataUrls});
+            this.tsbSendDataUrls,
+            this.tsbtnSendTextLink});
             this.tsTop.Location = new System.Drawing.Point(0, 0);
             this.tsTop.Name = "tsTop";
             this.tsTop.Size = new System.Drawing.Size(991, 25);
@@ -103,6 +106,14 @@
             this.tsbSendDataUrls.Name = "tsbSendDataUrls";
             this.tsbSendDataUrls.Size = new System.Drawing.Size(148, 22);
             this.tsbSendDataUrls.Text = "直接批量发送数据请求";
+            // 
+            // tsbtnSendTextLink
+            // 
+            this.tsbtnSendTextLink.Image = global::SPSUtil.Properties.Resources.page_white_link;
+            this.tsbtnSendTextLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnSendTextLink.Name = "tsbtnSendTextLink";
+            this.tsbtnSendTextLink.Size = new System.Drawing.Size(100, 22);
+            this.tsbtnSendTextLink.Text = "直接发送文本";
             // 
             // pnlMain
             // 
@@ -164,5 +175,7 @@
         private System.ComponentModel.BackgroundWorker bgwSenderUrl;
         private System.Windows.Forms.ToolStripSplitButton tsbCancelProgress;
         private System.Windows.Forms.ToolStripButton tsbSendDataUrls;
+        private System.Windows.Forms.ToolStripButton tsbtnSendTextLink;
+        private System.Windows.Forms.OpenFileDialog ofdFileTextLink;
     }
 }

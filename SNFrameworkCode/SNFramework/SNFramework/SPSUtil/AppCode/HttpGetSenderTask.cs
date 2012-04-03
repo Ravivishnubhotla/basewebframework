@@ -15,6 +15,7 @@ namespace SPSUtil.AppCode
         public int SendInterval { get; set; }
         public int RetryTimes { get; set; }
         public List<HttpGetSenderTaskItem> SendDataItems { get; set; }
+        public List<HttpGetSenderTaskItem> SendReportItems { get; set; }
 
         public HttpGetSenderTask(ChannelSendSettings sendSetting, string okMessage, int timeOut, int sendInterval, int retryTimes, int RandomSendCounts)
         {
@@ -25,6 +26,7 @@ namespace SPSUtil.AppCode
             RetryTimes = retryTimes;
 
             this.SendDataItems = new List<HttpGetSenderTaskItem>();
+            this.SendReportItems = new List<HttpGetSenderTaskItem>();
 
             for (int i = 0; i < RandomSendCounts; i++)
             {
@@ -41,10 +43,53 @@ namespace SPSUtil.AppCode
                 HttpGetSenderTaskItem httpGetSenderTaskItem = new HttpGetSenderTaskItem(sendUrl, OkMessage);
                 httpGetSenderTaskItem.TimeOut = TimeOut;
                 httpGetSenderTaskItem.TaskIndex = i;
-                this.SendDataItems.Add(httpGetSenderTaskItem);         
+                this.SendDataItems.Add(httpGetSenderTaskItem);
+
+                if(this.SendSetting.SendTwice())
+                {
+                    string reportUrl = sendSetting.ReportUrl;
+
+                    foreach (DictionaryEntry templateReportUrlParamItem in sendSetting.ReportUrlParams)
+                    {
+                        if (templateReportUrlParamItem.Key.ToString().StartsWith(ChannelSendSettings.ParamsPrefix + "N"))
+                        {
+                            sendUrl = sendUrl.Replace(templateReportUrlParamItem.Key.ToString(), NumberGenerator.GetRandNumber((int)templateReportUrlParamItem.Value));
+                        }
+                    }
+
+                    HttpGetSenderTaskItem httpGetReportSenderTaskItem = new HttpGetSenderTaskItem(reportUrl, OkMessage);
+                    httpGetSenderTaskItem.TimeOut = TimeOut;
+                    httpGetSenderTaskItem.TaskIndex = i;
+                    this.SendReportItems.Add(httpGetSenderTaskItem);
+                }
+
+
+
+
             }
 
+
+
+
  
+        }
+
+        public HttpGetSenderTask(List<string> alllinks)
+        {
+            OkMessage = "ok";
+            TimeOut = 10000;
+            SendInterval = 10;
+            RetryTimes = 2;
+
+            this.SendDataItems = new List<HttpGetSenderTaskItem>();
+
+            for (int i = 0; i < alllinks.Count; i++)
+            {
+                HttpGetSenderTaskItem httpGetSenderTaskItem = new HttpGetSenderTaskItem(alllinks[i], OkMessage);
+                httpGetSenderTaskItem.TimeOut = TimeOut;
+                httpGetSenderTaskItem.TaskIndex = i;
+                this.SendDataItems.Add(httpGetSenderTaskItem);
+            }
         }
     }
 }

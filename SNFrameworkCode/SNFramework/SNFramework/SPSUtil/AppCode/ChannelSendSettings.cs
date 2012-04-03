@@ -32,6 +32,8 @@ namespace SPSUtil.AppCode
         public string ParamsRequestTypeReportValue { get; set; }
         public Hashtable DataUrlParams { get; set; }
         private string dataUrl = null;
+        public Hashtable ReportUrlParams { get; set; }
+        private string reportUrl = null;
 
         public string DataUrl
         {
@@ -60,8 +62,34 @@ namespace SPSUtil.AppCode
             }
         }
 
+        public string ReportUrl
+        {
+            get
+            {
+                if (reportUrl == null)
+                {
+                    reportUrl = BuildReportUrl();
+                }
 
+                ReportUrlParams = new Hashtable();
 
+                Regex regex = new Regex(@"(?<=" + ParamsPrefix + @").*?(?=" + ParamsSubfix + @")");
+
+                MatchCollection mc = regex.Matches(dataUrl);
+
+                foreach (Match match in mc)
+                {
+                    if (!ReportUrlParams.Contains(ParamsPrefix + match.Value + ParamsSubfix))
+                    {
+                        ReportUrlParams.Add(ParamsPrefix + match.Value + ParamsSubfix, Convert.ToInt32(match.Value.Substring(1, match.Value.Length - 1)));
+                    }
+                }
+
+                return reportUrl;
+            }
+        }
+ 
+ 
 
         private string BuildDataUrl()
         {
@@ -131,5 +159,9 @@ namespace SPSUtil.AppCode
             return string.Format("{0}?{1}", this.SubmitSendUrl, queryString.ToString());
         }
 
+        public bool SendTwice()
+        {
+            return RequestType>0;
+        }
     }
 }
