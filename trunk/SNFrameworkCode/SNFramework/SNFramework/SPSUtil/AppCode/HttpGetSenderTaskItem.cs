@@ -39,11 +39,6 @@ namespace SPSUtil.AppCode
         {
             SendUrl = sendUrl;
 
-            //for (int i = minGNumber; i <= maxGNumber; i++)
-            //{
-            //    templateUrl = templateUrl.Replace("{GN" + i.ToString() + "}", NumberGenerator.GetRandNumber(i));
-            //}
-
             OkMessage = okMessage;
         }
 
