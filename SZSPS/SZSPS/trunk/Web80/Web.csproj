@@ -400,6 +400,7 @@
     <Content Include="SPSInterface\IVRChannel.aspx" />
     <Content Include="SPSInterface\IVRXLChannel.aspx" />
     <Content Include="SPSInterface\SCIVRChannel.aspx" />
+    <Content Include="SPSTestInterface\TestCP.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1399,7 +1400,6 @@
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SPS\MonitorRequestView\" />
     <Folder Include="Moudles\SPS\SPChannelFilters\" />
-    <Folder Include="SPSTestInterface\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\ClientChannelSettings\SPClientChannelHandler.ashx" />
