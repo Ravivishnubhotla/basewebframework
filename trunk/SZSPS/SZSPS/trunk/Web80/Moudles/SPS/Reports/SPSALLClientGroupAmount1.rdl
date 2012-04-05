@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
@@ -52,8 +52,6 @@ ORDER BY ClientGroupName</CommandText>
       </Fields>
     </DataSet>
   </DataSets>
-  
-    
       <Body>
         <ReportItems>
           <Tablix Name="Tablix2">
