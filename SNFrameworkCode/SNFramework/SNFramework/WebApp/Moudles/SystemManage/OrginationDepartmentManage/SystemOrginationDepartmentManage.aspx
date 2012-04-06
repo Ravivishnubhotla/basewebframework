@@ -125,7 +125,7 @@
                 
 
                         function showAddSystemPostForm(pid) {
-                            alert(pid);
+                            //alert(pid);
             Ext.net.DirectMethods.UCSystemPostAdd.Show(
                                                         pid,
                                                         {
@@ -205,7 +205,54 @@
         
         
  
-       
+               function processSystemPostcmd(cmd, id) {
+
+            if (cmd == "cmdEdit") {
+                Ext.net.DirectMethods.UCSystemPostEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshSystemPostData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                               }
+                                                                }              
+                );
+            }
+            
+            
+ 
+
+            if (cmd == "cmdDelete") 
+            {
+                    Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %>',
+                        function(e) 
+                        {
+                            if (e == 'yes')
+                                Ext.net.DirectMethods.DeletePost(
+                                                                    id.id,
+                                                                    {
+                                                                        failure: function(msg) {
+                                                                            Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                                        },
+                                                                        success: function(result) { 
+                                                                            Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshSystemPostData);            
+                                                                        },
+                                                                        eventMask: {
+                                                                                    showMask: true,
+                                                                                    msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                        }
+                                                                    }
+                                                                );
+                        }
+                    );
+            }
+
+           
+ 
+     }
+
         
         
     
@@ -214,6 +261,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemOrganizationAdd ID="UCSystemOrganizationAdd1" runat="server" />
     <uc2:UCSystemOrganizationEdit ID="UCSystemOrganizationEdit1" runat="server" />
+    <uc3:UCSystemPostAdd ID="UCSystemPostAdd1" runat="server" />
+    <uc4:UCSystemPostEdit ID="UCSystemPostEdit1" runat="server" />
     <ext:Hidden ID="hidSelectOrgID" runat="server">
     </ext:Hidden>
     <ext:Menu ID="cOrg" runat="server">

@@ -49,6 +49,24 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         protected global::Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage.UCSystemOrganizationEdit UCSystemOrganizationEdit1;
         
         /// <summary>
+        /// UCSystemPostAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage.UCSystemPostAdd UCSystemPostAdd1;
+        
+        /// <summary>
+        /// UCSystemPostEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentManage.UCSystemPostEdit UCSystemPostEdit1;
+        
+        /// <summary>
         /// hidSelectOrgID control.
         /// </summary>
         /// <remarks>
