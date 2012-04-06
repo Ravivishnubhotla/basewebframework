@@ -110,5 +110,23 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
             }
 
         }
+
+        [DirectMethod]
+        public void DeletePost(int id)
+        {
+            try
+            {
+                SystemPostWrapper.DeleteByID(id);
+
+                ResourceManager.AjaxSuccess = true;
+            }
+            catch (Exception e)
+            {
+                ResourceManager.AjaxSuccess = false;
+                ResourceManager.AjaxErrorMessage = e.Message;
+                return;
+            }
+
+        }
     }
 }
