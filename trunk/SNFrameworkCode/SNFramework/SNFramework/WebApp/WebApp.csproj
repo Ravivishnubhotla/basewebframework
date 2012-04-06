@@ -346,7 +346,9 @@
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostAdd.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.xml" />
-    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.zh-CHS.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\SystemOrginationDepartmentManage.aspx" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationAdd.ascx" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\UCSystemOrganizationEdit.ascx" />
