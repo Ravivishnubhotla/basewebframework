@@ -168,6 +168,7 @@
     <Content Include="Config\AOP.xml" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\FileManage.aspx" />
     <Content Include="Global.asax" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.zh-CHS.xml" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.en-US.xml" />
@@ -344,7 +345,9 @@
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostAdd.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostAdd.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.en-US.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\OrginationDepartmentManage\App_LocalResources\UCSystemPostEdit.ascx.zh-CHS.xml">
       <SubType>Designer</SubType>
@@ -486,6 +489,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileManage.aspx.cs">
+      <DependentUpon>FileManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\FileManage.aspx.designer.cs">
+      <DependentUpon>FileManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1592,6 +1602,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
+    <Folder Include="Files\Documents\" />
+    <Folder Include="Files\Images\" />
+    <Folder Include="Files\Others\" />
+    <Folder Include="Files\Videos\" />
     <Folder Include="IVRS\" />
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SPS\DataServices\" />
