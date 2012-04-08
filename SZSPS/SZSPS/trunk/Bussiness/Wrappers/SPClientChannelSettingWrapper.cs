@@ -485,10 +485,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     int todayMonthPhoneCount = CaculteMonthPhoneCount(System.DateTime.Now.Date, this.Id,paymentInfo.MobileNumber);
 
-                    int maxMonthPhoneCount = Convert.ToInt32(Math.Floor((double) this.MonthLimitCount.Value*(double) interceptRate/100d));
+                    //int maxMonthPhoneCount = Convert.ToInt32(Math.Floor((double) this.MonthLimitCount.Value*(double) interceptRate/100d));
 
-                    if (maxMonthPhoneCount < 1)
-                        maxMonthPhoneCount = 1;
+                    //if (maxMonthPhoneCount < 1)
+                    //    maxMonthPhoneCount = 1;
+
+                    int maxMonthPhoneCount = this.MonthLimitCount.Value;
 
                     if (todayMonthPhoneCount + 1 > maxMonthPhoneCount)
                     {
@@ -500,10 +502,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     int todayDayPhoneCount = CaculteDayPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
 
-                    int maxDayPhoneCount = Convert.ToInt32(Math.Floor((double) this.DayLimitCount.Value*(double) interceptRate/100d));
+                    //int maxDayPhoneCount = Convert.ToInt32(Math.Floor((double) this.DayLimitCount.Value*(double) interceptRate/100d));
 
-                    if (maxDayPhoneCount < 1)
-                        maxDayPhoneCount = 1;
+                    //if (maxDayPhoneCount < 1)
+                    //    maxDayPhoneCount = 1;
+
+                    int maxDayPhoneCount = this.DayLimitCount.Value;
 
                     if (todayDayPhoneCount + 1 > maxDayPhoneCount)
                     {

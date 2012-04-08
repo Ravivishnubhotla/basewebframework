@@ -59,6 +59,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             if (e.Sort != null)
                 sortFieldName = e.Sort;
 
+
+            if(sortFieldName=="DayLimitAndMonthLimit")
+            {
+                sortFieldName = "HasDayMonthLimit";
+            }
+            else if (sortFieldName == "DayTotalLimitInfo")
+            {
+                sortFieldName = "HasDayTotalLimit";
+            } 
+
             int startIndex = 0;
 
             if (e.Start > -1)
