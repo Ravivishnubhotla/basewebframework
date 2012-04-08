@@ -263,10 +263,10 @@
                                     Width="120">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDayLimitAndMonthLimit" DataIndex="DayLimitAndMonthLimit"
-                                    Header="日限月限" Sortable="False">
+                                    Header="日限月限" Sortable="True">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDayTotalLimitInfo" DataIndex="DayTotalLimitInfo" Header="日总限"
-                                    Sortable="False">
+                                    Sortable="True">
                                 </ext:Column>
                                 <ext:CommandColumn Header="设置管理" Width="50">
                                     <Commands>
