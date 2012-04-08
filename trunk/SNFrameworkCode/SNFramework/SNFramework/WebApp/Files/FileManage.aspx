@@ -4,11 +4,59 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="LoadDirectorys('/');#{storeFiles}.reload();"></DocumentReady>
+        </Listeners>
+    </ext:ResourceManagerProxy>
+    <ext:Store ID="storeFiles" runat="server" OnRefreshData="storeFiles_Refresh">
+        <Reader>
+            <ext:JsonReader IDProperty="name">
+                <Fields>
+                    <ext:RecordField Name="name" />
+                    <ext:RecordField Name="size" Type="Int" />
+                    <ext:RecordField Name="lastmod" Type="Date" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <DirectEventConfig>
+            <EventMask ShowMask="True"></EventMask>
+        </DirectEventConfig>
+    </ext:Store>
+    <script language="javascript">
+        function LoadDirectorys(rootPath) {
+            var tree = <%=treeDirectorys.ClientID  %>;
+            Ext.net.DirectMethods.GetTreeNodes(
+                                                rootPath,
+                                                {
+                                                    failure: function (msg) {
+                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                                    },
+                                                    success: function (result) {
+                                                        var nodes = eval(result);
+                                                        if (nodes.length > 0) {
+                                                            tree.initChildren(nodes);
+                                                        }
+                                                        else {
+                                                            tree.getRootNode().removeChildren();
+                                                        }
+
+                                                    },
+                                                    eventMask: {
+                                                        showMask: true,
+                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
+                                                        target: 'customtarget',
+                                                        customTarget: '<%= treeDirectorys.ClientID %>.el'
+                                                    }
+                                                }
+                                             );    
+        }
+    </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
-            <ext:TreePanel ID="TreePanel1" runat="server" Icon="BookOpen"  Title="Directory" Region="West" Layout="Fit"
-                Width="225" MinWidth="225" MaxWidth="400" Split="true" Collapsible="true" RootVisible="false"
-                AutoScroll="true">
+            <ext:TreePanel ID="treeDirectorys" runat="server" Icon="BookOpen" Title="Directory"
+                Region="West" Layout="Fit" Width="225" MinWidth="225" MaxWidth="400" Split="true"
+                Collapsible="true" RootVisible="false" AutoScroll="true">
                 <TopBar>
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
@@ -22,99 +70,16 @@
                                     <Click Handler="#{TreePanel1}.collapseAll();" />
                                 </Listeners>
                             </ext:Button>
+                            <ext:Button ID="btnReload" runat="server" Text="Reload" Icon="Reload">
+                                <Listeners>
+                                    <Click Handler="LoadDirectorys('/');" />
+                                </Listeners>
+                            </ext:Button>
                         </Items>
                     </ext:Toolbar>
                 </TopBar>
                 <Root>
                     <ext:TreeNode Text="Composers" Expanded="true">
-                        <Nodes>
-                            <ext:TreeNode Text="Beethoven" Icon="UserGray">
-                                <Nodes>
-                                    <ext:TreeNode Text="Concertos">
-                                        <Nodes>
-                                            <ext:TreeNode Text="No. 1 - C" Icon="Music" />
-                                            <ext:TreeNode Text="No. 2 - B-Flat Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 3 - C Minor" Icon="Music" />
-                                            <ext:TreeNode Text="No. 4 - G Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 5 - E-Flat Major" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Quartets">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Six String Quartets" Icon="Music" />
-                                            <ext:TreeNode Text="Three String Quartets" Icon="Music" />
-                                            <ext:TreeNode Text="Grosse Fugue for String Quartets" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Sonatas">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Sonata in A Minor" Icon="Music" />
-                                            <ext:TreeNode Text="sonata in F Major" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Symphonies">
-                                        <Nodes>
-                                            <ext:TreeNode Text="No. 1 - C Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 2 - D Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 3 - E-Flat Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 4 - B-Flat Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 5 - C Minor" Icon="Music" />
-                                            <ext:TreeNode Text="No. 6 - F Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 7 - A Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 8 - F Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 9 - D Minor" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                </Nodes>
-                            </ext:TreeNode>
-                            <ext:TreeNode Text="Brahms" Icon="UserGray">
-                                <Nodes>
-                                    <ext:TreeNode Text="Concertos">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Violin Concerto" Icon="Music" />
-                                            <ext:TreeNode Text="Double Concerto - A Minor" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Concerto No. 1 - D Minor" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Concerto No. 2 - B-Flat Major" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Quartets">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Piano Quartet No. 1 - G Minor" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Quartet No. 2 - A Major" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Quartet No. 3 - C Minor" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Quartet No. 3 - B-Flat Minor" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Sonatas">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Two Sonatas for Clarinet - F Minor" Icon="Music" />
-                                            <ext:TreeNode Text="Two Sonatas for Clarinet - E-Flat Major" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                    <ext:TreeNode Text="Symphonies">
-                                        <Nodes>
-                                            <ext:TreeNode Text="No. 1 - C Minor" Icon="Music" />
-                                            <ext:TreeNode Text="No. 2 - D Minor" Icon="Music" />
-                                            <ext:TreeNode Text="No. 3 - F Major" Icon="Music" />
-                                            <ext:TreeNode Text="No. 4 - E Minor" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                </Nodes>
-                            </ext:TreeNode>
-                            <ext:TreeNode Text="Mozart" Icon="UserGray">
-                                <Nodes>
-                                    <ext:TreeNode Text="Concertos">
-                                        <Nodes>
-                                            <ext:TreeNode Text="Piano Concerto No. 12" Icon="Music" />
-                                            <ext:TreeNode Text="Piano Concerto No. 17" Icon="Music" />
-                                            <ext:TreeNode Text="Clarinet Concerto" Icon="Music" />
-                                            <ext:TreeNode Text="Violin Concerto No. 5" Icon="Music" />
-                                            <ext:TreeNode Text="Violin Concerto No. 4" Icon="Music" />
-                                        </Nodes>
-                                    </ext:TreeNode>
-                                </Nodes>
-                            </ext:TreeNode>
-                        </Nodes>
                     </ext:TreeNode>
                 </Root>
                 <BottomBar>
@@ -127,13 +92,31 @@
                     <CollapseNode Handler="#{StatusBar1}.setStatus({text: 'Node Collapsed: <b>' + node.text + '<br />', clear: true});" />
                 </Listeners>
             </ext:TreePanel>
-<%--            <ext:Panel ID="Panel2" runat="server">
-                <Items>
-                </Items>
-            </ext:Panel>--%>
             <ext:TabPanel ID="TabPanel1" runat="server" Region="Center">
                 <Items>
-                    <ext:Panel ID="Panel5" runat="server" Title="Files" Border="false" Padding="6" Html="<h1>Viewport with BorderLayout</h1>" />
+                    <ext:Panel ID="Panel5" runat="server" Title="Files" Layout="Fit">
+                        <TopBar>
+                            <ext:Toolbar ID="Toolbar2" runat="server">
+                                <Items>
+                                    <ext:Button ID="Button5" runat="server" Text="Reload" Icon="Reload">
+                                        <Listeners>
+                                            <Click Handler="#{storeFiles}.reload();" />
+                                        </Listeners>
+                                    </ext:Button>
+                                </Items>
+                            </ext:Toolbar>
+                        </TopBar>
+                        <Items>
+                            <ext:ListView ID="ListView1" runat="server" MultiSelect="true" ReserveScrollOffset="true"
+                                EmptyText="No Images to Display" StoreID="storeFiles">
+                                <Columns>
+                                    <ext:ListViewColumn Header="File" Width="0.35" DataIndex="name" />
+                                    <ext:ListViewColumn Header="Last Modified" Width="0.3" DataIndex="lastmod" Template='{lastmod:date("m-d h:i a")}' />
+                                    <ext:ListViewColumn Header="Size" Width="0.2" DataIndex="size" Align="Right" Template="{size:fileSize}" />
+                                </Columns>
+                            </ext:ListView>
+                        </Items>
+                    </ext:Panel>
                 </Items>
             </ext:TabPanel>
             <ext:Panel ID="Panel7" runat="server" Title="File Info" Region="East" Collapsible="True"

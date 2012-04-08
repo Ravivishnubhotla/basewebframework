@@ -13,6 +13,24 @@ namespace Legendigital.Common.WebApp.Files {
     public partial class FileManage {
         
         /// <summary>
+        /// ResourceManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
+        
+        /// <summary>
+        /// storeFiles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeFiles;
+        
+        /// <summary>
         /// Viewport1 control.
         /// </summary>
         /// <remarks>
@@ -22,13 +40,13 @@ namespace Legendigital.Common.WebApp.Files {
         protected global::Ext.Net.Viewport Viewport1;
         
         /// <summary>
-        /// TreePanel1 control.
+        /// treeDirectorys control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TreePanel TreePanel1;
+        protected global::Ext.Net.TreePanel treeDirectorys;
         
         /// <summary>
         /// Toolbar1 control.
@@ -58,6 +76,15 @@ namespace Legendigital.Common.WebApp.Files {
         protected global::Ext.Net.Button Button2;
         
         /// <summary>
+        /// btnReload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnReload;
+        
+        /// <summary>
         /// StatusBar1 control.
         /// </summary>
         /// <remarks>
@@ -83,6 +110,33 @@ namespace Legendigital.Common.WebApp.Files {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Panel Panel5;
+        
+        /// <summary>
+        /// Toolbar2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar2;
+        
+        /// <summary>
+        /// Button5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button Button5;
+        
+        /// <summary>
+        /// ListView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ListView ListView1;
         
         /// <summary>
         /// Panel7 control.
