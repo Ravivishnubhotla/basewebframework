@@ -39,7 +39,6 @@
             <Load Handler="#{GridPanel1}.getSelectionModel().selectFirstRow();" />
         </Listeners>
     </ext:Store>
-
     <script type="text/javascript">
         var FormatBool = function(value) {
             if (value)
@@ -341,17 +340,20 @@
                 <Items>
                     <ext:BorderLayout ID="BorderLayout1" runat="server">
                         <West Split="true" Collapsible="true">
-                            <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true" 
-                                Title="<%$ Resources:msgGridApplicationTitle %>" Width="430" Frame="true" AutoScroll="true" AutoExpandColumn="colLocaLocalizationName">
+                            <ext:GridPanel ID="GridPanel1" runat="server" StoreID="storeSystemApplication" StripeRows="true"
+                                Title="<%$ Resources:msgGridApplicationTitle %>" Width="430" Frame="true" AutoScroll="true"
+                                AutoExpandColumn="colLocaLocalizationName">
                                 <TopBar>
                                     <ext:Toolbar ID="tbTop" runat="server">
                                         <Items>
-                                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>" Icon="ApplicationAdd">
+                                            <ext:Button ID='btnAdd' runat="server" Text="<%$ Resources : GlobalResource, msgAdd  %>"
+                                                Icon="ApplicationAdd">
                                                 <Listeners>
                                                     <Click Handler="ShowApplicationAddForm();" />
                                                 </Listeners>
                                             </ext:Button>
-                                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>" Icon="Reload">
+                                            <ext:Button ID='btnRefresh' runat="server" Text="<%$ Resources : GlobalResource, msgRefresh  %>"
+                                                Icon="Reload">
                                                 <Listeners>
                                                     <Click Handler="#{storeSystemApplication}.reload();" />
                                                 </Listeners>
@@ -366,11 +368,12 @@
                                 </View>
                                 <ColumnModel ID="ColumnModel1" runat="server">
                                     <Columns>
-                                        <ext:Column ColumnID="colLocaLocalizationName" Header="<%$ Resources:msgcolName %>" Width="80" Sortable="true"
-                                            DataIndex="LocaLocalizationName" />
-                                        <ext:Column ColumnID="colSystemApplicationCode" Header="<%$ Resources:msgcolCode %>" Width="120" Sortable="true"
-                                            DataIndex="SystemApplicationCode" />
-                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="<%$ Resources:msgcolIsSystem %>" Width="38">
+                                        <ext:Column ColumnID="colLocaLocalizationName" Header="<%$ Resources:msgcolName %>"
+                                            Width="80" Sortable="true" DataIndex="LocaLocalizationName" />
+                                        <ext:Column ColumnID="colSystemApplicationCode" Header="<%$ Resources:msgcolCode %>"
+                                            Width="120" Sortable="true" DataIndex="SystemApplicationCode" />
+                                        <ext:Column DataIndex="SystemApplicationIsSystemApplication" Header="<%$ Resources:msgcolIsSystem %>"
+                                            Width="38">
                                             <Renderer Fn="FormatBool" />
                                         </ext:Column>
                                         <ext:CommandColumn Width="50" Header="<%$ Resources : GlobalResource, msgManage  %>">
@@ -378,8 +381,10 @@
                                                 <ext:SplitCommand Text="<%$ Resources : GlobalResource, msgAction  %>" ToolTip-Text="<%$ Resources : GlobalResource, msgAction  %>">
                                                     <Menu EnableScrolling="true" ShowSeparator="true">
                                                         <Items>
-                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit" CommandName="cmdEdit" />
-                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete" CommandName="cmdDelete" />
+                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgEdit  %>" Icon="ApplicationEdit"
+                                                                CommandName="cmdEdit" />
+                                                            <ext:MenuCommand Text="<%$ Resources : GlobalResource, msgDelete  %>" Icon="ApplicationDelete"
+                                                                CommandName="cmdDelete" />
                                                         </Items>
                                                     </Menu>
                                                 </ext:SplitCommand>
@@ -397,7 +402,8 @@
                                 <LoadMask ShowMask="true" />
                                 <BottomBar>
                                     <ext:PagingToolbar ID="PagingToolbar1" runat="server" PageSize="10" StoreID="storeSystemApplication"
-                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
+                                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>"
+                                        EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                                 </BottomBar>
                                 <Listeners>
                                     <Command Handler="processcmd(command, record);" />
@@ -405,8 +411,8 @@
                             </ext:GridPanel>
                         </West>
                         <Center>
-                            <ext:TreePanel ID="TreePanel1" runat="server" Title="<%$ Resources:msgFormMenuManage %>" AutoScroll="true" RootVisible="false"  EnableDD=true
-                               >
+                            <ext:TreePanel ID="TreePanel1" runat="server" Title="<%$ Resources:msgFormMenuManage %>"
+                                AutoScroll="true" RootVisible="false" EnableDD="true">
                                 <TopBar>
                                     <ext:Toolbar ID="ToolBar1" runat="server">
                                         <Items>
@@ -460,7 +466,6 @@
                                     <ContextMenu Handler="e.preventDefault();node.select();ShowMenu(node,#{cmenu},e.getPoint());" />
                                     <Click Handler="<%$ Resources:msgMenuStatusBar %>" />
                                 </Listeners>
-   
                             </ext:TreePanel>
                         </Center>
                     </ext:BorderLayout>
@@ -480,7 +485,8 @@
                     <Click Handler="ShowEditMenuForm(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="deleteItem" runat="server" Text="<%$ Resources:msgDeleteNode %>" Icon="Delete">
+            <ext:MenuItem ID="deleteItem" runat="server" Text="<%$ Resources:msgDeleteNode %>"
+                Icon="Delete">
                 <Listeners>
                     <Click Handler="DeleteMenu(#{TreePanel1}.selModel.selNode.attributes.id);" />
                 </Listeners>
@@ -490,15 +496,15 @@
                     <Click Handler="showReorderForm(#{TreePanel1}.selModel.selNode.attributes.id,#{hidSelectAppID}.getValue(),#{hidSortPMenuID},#{hidSortAppID});" />
                 </Listeners>
             </ext:MenuItem>
-            <ext:MenuItem ID="autoSortItem" runat="server" Text="<%$ Resources:msgASortNode %>" Icon="SortAscending">
+            <ext:MenuItem ID="autoSortItem" runat="server" Text="<%$ Resources:msgASortNode %>"
+                Icon="SortAscending">
                 <Listeners>
                     <Click Handler="AutoReorder(#{TreePanel1}.selModel.selNode.attributes.id,#{hidSelectAppID}.getValue());" />
                 </Listeners>
             </ext:MenuItem>
         </Items>
     </ext:Menu>
-
-        <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
+    <ext:Window ID="winSystemTerminologyEditor" runat="server" Title="Window" Frame="true"
         Width="700" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="../TerminologyManage/SystemTerminologyListPage.aspx" Mode="IFrame"
@@ -512,7 +518,6 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-
     <ext:Hidden ID="hidSelectAppID" runat="server">
     </ext:Hidden>
 </asp:Content>

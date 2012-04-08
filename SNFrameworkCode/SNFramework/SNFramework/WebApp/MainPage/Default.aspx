@@ -8,7 +8,7 @@
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
-        var loadPage = function (mtab, node) {
+        var loadPage = function(mtab, node) {
             if (node.attributes.isCategory != "False" && node.attributes.isCategory != null)
                 return;
             var tab = mtab.getComponent(node.id);
@@ -18,7 +18,7 @@
             } else {
                 createTab(mtab, node);
             }
-        }
+        };
         function createTab(mtab, node) {
 
             var tabid = node.id;
