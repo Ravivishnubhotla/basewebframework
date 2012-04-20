@@ -1,0 +1,110 @@
+﻿<UserControl xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"  xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"   x:Class="SLHotSpot.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="768" d:DesignWidth="1024">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="75*" />
+        </Grid.ColumnDefinitions>
+        <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
+        <ScrollViewer Name="ssvDraw" Grid.Row="0" Grid.Column="1"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <toolkit:BusyIndicator Name="biLoadingImage" IsBusy="False" DisplayAfter="0" BusyContent="Downloading image...">
+                <ContentControl >
+                    <toolkit:LayoutTransformer x:Name="layoutTransform">
+                        <toolkit:LayoutTransformer.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="scaleTransform"/>
+                            </TransformGroup>
+                        </toolkit:LayoutTransformer.LayoutTransform>
+                        <toolkit:LayoutTransformer.Content>
+                            <Canvas Name="casDrawPanel">
+                                <Image Name="imgBg" Canvas.Top="0" Canvas.Left="0">
+                                </Image>
+                            </Canvas>
+                        </toolkit:LayoutTransformer.Content>
+                    </toolkit:LayoutTransformer>
+                </ContentControl>
+            </toolkit:BusyIndicator>
+        </ScrollViewer>
+        <sdk:GridSplitter  Grid.Column="1"  Width="5"></sdk:GridSplitter>
+        <StackPanel  Grid.Row="0" Grid.Column="2" Background="Gray" >
+            <StackPanel Name="pnlAnalysis">
+                <Button Name="btnStartAnalysis" Content="执行竞争力分析" Margin="5" Click="btnStartAnalysis_Click" Width="100"  HorizontalAlignment="Left"/>
+                <ListBox Name="listBrand"   ItemsSource="{StaticResource brandInfos}"  Background="White" Margin="5" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel  Width="260" Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="-"/>
+                                <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding CPText}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel  Name="pnlManage">
+                <toolkit:WrapPanel >
+                    <ToggleButton Name="btnDrawArea" Content="开始绘制热点"  Margin="10" Visibility="Collapsed" Click="btnDrawArea_Click"/>
+                    <Button Name="btnClearHotSpot"  Visibility="Collapsed" Content="清除绘制点" Margin="10" Click="btnClearHotSpot_Click"/>
+                    <Button Name="btnSaveHotSpot"  Visibility="Collapsed" Content="保存所有热点" Margin="10" Click="btnSaveHotSpot_Click"/>
+                    <Button Name="btnLoadHotSpot"  Visibility="Collapsed" Content="加载热点信息" Margin="10" />
+                </toolkit:WrapPanel>
+                <sdk:DataGrid x:Name="dgHotSpot" Margin="2"
+            Height="500"   SelectionMode="Single" 
+            AutoGenerateColumns="False" Visibility="Collapsed"
+            GridLinesVisibility="All"
+            RowBackground="White">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Header="编号" Binding="{Binding ID}" 
+                    IsReadOnly="True" Visibility="Collapsed" Width="50" />
+                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding Name}" IsReadOnly="True" Width="80" />
+                        <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
+                        <sdk:DataGridTemplateColumn Header="操作" Width="130">
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                        <Button Margin="1"  Content="修改" CommandParameter="{Binding ID}" Click="dgHotSpot_OnEditClick"  />
+                                        <Button Margin="1" Content="删除"  CommandParameter="{Binding ID}"  Click="dgHotSpot_OnDeleteClick" />
+                                        <ToggleButton Margin="1" Content="字定位开始"  CommandParameter="{Binding ID}"  Click="dgHotSpot_OnChangeTextPosionClick" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </StackPanel>
+            <StackPanel  Name="pnlView">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="显示其他所有品牌店铺信息：" Padding="5" Foreground="White"></TextBlock>
+                    <CheckBox Name="chkShowAllShop" VerticalAlignment="Center" Padding="5"></CheckBox>
+                </StackPanel>
+                <sdk:DataGrid x:Name="dgHotSpotView" Margin="2"
+            Height="500"   SelectionMode="Single" 
+            AutoGenerateColumns="False"  
+            GridLinesVisibility="All"
+            RowBackground="White">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding Name}" IsReadOnly="True" Width="80" />
+                        <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+            </StackPanel>
+
+            <Button Name="btnSelectImage" Content="加载图片" Margin="7" Click="btnSelectImage_Click"/>
+            <TextBlock Name="txtzoom"  Visibility="Collapsed" Text="图片缩放" HorizontalAlignment="Left" Margin="7"/>
+            <Slider Name="zoomSlider"  Visibility="Collapsed" Margin="7" Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
+        </StackPanel>
+
+    </Grid>
+</UserControl>
