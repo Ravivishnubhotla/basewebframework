@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHotSpot", "SLHotSpot\SLHotSpot.csproj", "{E8D37A87-81EC-4F57-9989-52DDB5F3A373}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7} = {8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLHotSpot.Web", "SLHotSpot.Web\SLHotSpot.Web.csproj", "{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{62C665F5-5AD6-47D5-B951-665C4E02CE50}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8D37A87-81EC-4F57-9989-52DDB5F3A373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D37A87-81EC-4F57-9989-52DDB5F3A373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D37A87-81EC-4F57-9989-52DDB5F3A373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D37A87-81EC-4F57-9989-52DDB5F3A373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFE5CBB-4476-4C12-869F-B1D21B2FF7E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
