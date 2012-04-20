@@ -38,8 +38,8 @@
         <sdk:GridSplitter  Grid.Column="1"  Width="5"></sdk:GridSplitter>
         <StackPanel  Grid.Row="0" Grid.Column="2" Background="Gray" >
             <StackPanel Name="pnlAnalysis">
-                <Button Name="btnStartAnalysis" Content="执行竞争力分析" Margin="5" Click="btnStartAnalysis_Click" Width="100"  HorizontalAlignment="Left"/>
-                <ListBox Name="listBrand"   ItemsSource="{StaticResource brandInfos}"  Background="White" Margin="5" >
+                <Button Name="btnStartAnalysis" Visibility="Collapsed"  Content="执行竞争力分析" Margin="5" Click="btnStartAnalysis_Click" Width="100"  HorizontalAlignment="Left"/>
+                <ListBox Name="listBrand"  Visibility="Collapsed"  ItemsSource="{StaticResource brandInfos}"  Background="White" Margin="5" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel  Width="260" Orientation="Horizontal">
@@ -52,6 +52,51 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                <sdk:DataGrid x:Name="dgBrandCP" Margin="2"
+            Height="260"   SelectionMode="Single" 
+            AutoGenerateColumns="False"  
+            GridLinesVisibility="All"
+            RowBackground="White">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTemplateColumn Header="名称" IsReadOnly="True" Width="100">
+                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <StackPanel  Width="260" Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                        <TextBlock Text="-"/>
+                                        <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                        </sdk:DataGridTemplateColumn>
+                        <sdk:DataGridTemplateColumn Header="原有竞争力"  IsReadOnly="True" Width="80" >
+                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding OCP}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                        </sdk:DataGridTemplateColumn>
+                        <sdk:DataGridTemplateColumn Header="现有竞争力"  IsReadOnly="True" Width="80" >
+                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <TextBlock Text="{Binding NCP}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
+                        </sdk:DataGridTemplateColumn>
+                    </sdk:DataGrid.Columns>
+                </sdk:DataGrid>
+                <toolkit:Chart Name="chartForOP" Height="350" Title="品牌竞争力分析">
+                    <toolkit:Chart.Series >
+                        <toolkit:ColumnSeries Title="原有竞争力分析"  DependentValueBinding="{Binding OCP}" IndependentValueBinding="{Binding Name}">
+                        </toolkit:ColumnSeries>
+                        <toolkit:ColumnSeries Title="现有竞争力分析" DependentValueBinding="{Binding NCP}" IndependentValueBinding="{Binding Name}">
+                        </toolkit:ColumnSeries>
+                    </toolkit:Chart.Series>
+                </toolkit:Chart>
             </StackPanel>
             <StackPanel  Name="pnlManage">
                 <toolkit:WrapPanel >
@@ -87,7 +132,7 @@
             <StackPanel  Name="pnlView">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="显示其他所有品牌店铺信息：" Padding="5" Foreground="White"></TextBlock>
-                    <CheckBox Name="chkShowAllShop" VerticalAlignment="Center" Padding="5"></CheckBox>
+                    <CheckBox Name="chkShowAllShop" VerticalAlignment="Center" Padding="5" Click="chkShowAllShop_Click"></CheckBox>
                 </StackPanel>
                 <sdk:DataGrid x:Name="dgHotSpotView" Margin="2"
             Height="500"   SelectionMode="Single" 
@@ -95,7 +140,7 @@
             GridLinesVisibility="All"
             RowBackground="White">
                     <sdk:DataGrid.Columns>
-                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding Name}" IsReadOnly="True" Width="80" />
+                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding DataID}" IsReadOnly="True" Width="80" />
                         <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
