@@ -10,6 +10,7 @@ using System.ServiceModel.Channels;
 using System.Windows;
 using System.Windows.Browser;
 using System.Windows.Controls;
+using System.Windows.Controls.DataVisualization.Charting;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -33,6 +34,8 @@ namespace SLHotSpot
     {
         public SLHotSpotSetting setting;
 
+        private string hotSpotData = "";
+
         Point? lastDragPoint;
 
         public ObservableCollection<ShopHotSpot> HostSpots = new ObservableCollection<ShopHotSpot>();
@@ -49,31 +52,27 @@ namespace SLHotSpot
             setting = _hotSpotSetting;
 
             LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
-            LayoutRoot.ColumnDefinitions[1].Width = new GridLength(75, GridUnitType.Star);
-            LayoutRoot.ColumnDefinitions[2].Width = new GridLength(25, GridUnitType.Star);   
+ 
 
             switch (setting.ControlMode)
             {
                 case Mode.View:
-                    //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[1].Width = new GridLength(100, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(85, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(15, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Collapsed;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     this.pnlView.Visibility = Visibility.Visible;
                     break;
                 case Mode.Change:
-                    //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[1].Width = new GridLength(75, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[2].Width = new GridLength(25, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(50, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(50, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Visible;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     this.pnlView.Visibility = Visibility.Collapsed;
                     break;
                 case Mode.Design:
-                    //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(25, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[1].Width = new GridLength(75, GridUnitType.Star);
-                    //LayoutRoot.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(75, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(25, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Collapsed;
                     this.pnlManage.Visibility = Visibility.Visible;
                     this.pnlView.Visibility = Visibility.Collapsed;
@@ -105,9 +104,9 @@ namespace SLHotSpot
 
         private void serviceClient_LoadHotspotDataCompleted(object sender, LoadHotspotDataCompletedEventArgs e)
         {
-            string dataString = e.Result;
+            hotSpotData = e.Result;
 
-            if (string.IsNullOrEmpty(dataString))
+            if (string.IsNullOrEmpty(hotSpotData))
                 return;
 
             //List<UIElement> removedElements = new List<UIElement>();
@@ -125,14 +124,27 @@ namespace SLHotSpot
 
             ClearAll();
 
-            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(dataString);
+            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(hotSpotData);
 
             foreach (ROSHotSpot rosHotSpot in rosHotSpots)
             {
+                if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
+                {
+                    continue;
+                }
                 AddToCanvas(rosHotSpot, setting.ControlMode);
             }
  
             dgHotSpot.ItemsSource = HostSpots;
+
+            if(this.setting.ControlMode == Mode.View)
+            {
+                dgHotSpotView.ItemsSource = HostSpots;
+            }
+
+            dgBrandCP.ItemsSource = CPData.GetAllData();
+            ((ColumnSeries)(chartForOP.Series[0])).ItemsSource = CPData.GetAllData();
+            ((ColumnSeries)(chartForOP.Series[1])).ItemsSource = CPData.GetAllData(); 
         }
 
         void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -633,7 +645,9 @@ namespace SLHotSpot
 
             shopHotSpot.UpdateHotspot(casDrawPanel, setting.ControlMode, this);
 
-            dgHotSpot.ItemsSource = HostSpots;      
+            dgHotSpot.ItemsSource = HostSpots;
+
+            CPData.CaculateAllData();
         }
 
         private void AddToCanvas(ROSHotSpot rosHotSpot,Mode mode)
@@ -645,6 +659,29 @@ namespace SLHotSpot
         private void btnStartAnalysis_Click(object sender, RoutedEventArgs e)
         { 
             CPData.CaculateAllData();
+        }
+
+        private void chkShowAllShop_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+
+            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(hotSpotData);
+
+            foreach (ROSHotSpot rosHotSpot in rosHotSpots)
+            {
+                if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
+                {
+                    continue;
+                }
+                AddToCanvas(rosHotSpot, setting.ControlMode);
+            }
+
+            dgHotSpot.ItemsSource = HostSpots;
+
+            if (this.setting.ControlMode == Mode.View)
+            {
+                dgHotSpotView.ItemsSource = HostSpots;
+            }
         }
     }
 }

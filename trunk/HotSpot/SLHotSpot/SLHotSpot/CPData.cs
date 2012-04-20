@@ -28,6 +28,18 @@ namespace SLHotSpot
             }
         }
 
+        public int ncp;
+        public int NCP
+        {
+            get { return ncp; }
+            set {
+                ncp = value;
+                NotifyPropertyChanged("NCP");
+            }
+        }
+
+        
+
         #region INotifyPropertyChanged 接口实现
 
         protected void NotifyPropertyChanged(string propertyName)
@@ -55,6 +67,7 @@ namespace SLHotSpot
                 cpData.BrandColor = brandInfo.BrandColor;
                 Random random = new Random(cpData.GetHashCode());
                 cpData.OCP = random.Next(20, 100);
+                cpData.NCP = cpData.OCP;
                 cpData.CPText = string.Format("原有竞争力 ： {0}",cpData.OCP);
                 cpDatas.Add(cpData);           
             }
@@ -65,11 +78,11 @@ namespace SLHotSpot
 
         public static void CaculateAllData()
         {
-
             foreach (CPData cpData in cpDatas)
             {
                 Random random = new Random(Guid.NewGuid().GetHashCode());
-                cpData.CPText = string.Format("原有竞争力：{0} 现有竞争力:{1}", cpData.OCP, random.Next(20, 100));
+                cpData.NCP = random.Next(20, 100);
+                cpData.CPText = string.Format("原有竞争力：{0} 现有竞争力:{1}", cpData.OCP, cpData.NCP);
             }
         }
     }
