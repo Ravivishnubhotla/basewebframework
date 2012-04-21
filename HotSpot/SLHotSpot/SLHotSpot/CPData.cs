@@ -56,6 +56,11 @@ namespace SLHotSpot
 
         private static ObservableCollection<CPData> cpDatas = new ObservableCollection<CPData>();
 
+        public static  ObservableCollection<CPData>  CPDatas
+        {
+            get { return cpDatas; }
+        }
+
         public static ObservableCollection<CPData> GetAllData()
         {
             cpDatas.Clear();

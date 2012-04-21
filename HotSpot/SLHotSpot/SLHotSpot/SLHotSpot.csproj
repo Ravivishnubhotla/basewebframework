@@ -64,6 +64,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>D:\Dev\Org\SLDraw\Dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SLVisifire.Charts">
+      <HintPath>..\Dlls\SLVisifire.Charts.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations, Version=5.0.5.0, Culture=neutral, PublicKeyToken=ddd0da4d3e678217" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />

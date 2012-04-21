@@ -89,7 +89,7 @@
                         </sdk:DataGridTemplateColumn>
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
-                <toolkit:Chart Name="chartForOP" Height="350" Title="品牌竞争力分析">
+                <toolkit:Chart Name="chartForOP" Height="350" Visibility="Collapsed" Title="品牌竞争力分析">
                     <toolkit:Chart.Series >
                         <toolkit:ColumnSeries Title="原有竞争力分析"  DependentValueBinding="{Binding OCP}" IndependentValueBinding="{Binding Name}">
                         </toolkit:ColumnSeries>

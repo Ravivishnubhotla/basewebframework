@@ -11,6 +11,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{62C665F5-5AD6-47D5-B951-665C4E02CE50}"
 	ProjectSection(SolutionItems) = preProject
 		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
+		Dlls\SLVisifire.Charts.dll = Dlls\SLVisifire.Charts.dll
 	EndProjectSection
 EndProject
 Global
