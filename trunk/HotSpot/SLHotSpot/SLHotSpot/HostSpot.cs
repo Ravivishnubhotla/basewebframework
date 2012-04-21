@@ -63,6 +63,8 @@ namespace SLHotSpot
         public List<Point> HostSpotArea { get; set; }
         public List<Rectangle> HostSpotAreaPoints { get; set; }
 
+        private DragMover dragMover;
+
         public Polygon ShowPolygon
         {
             get
@@ -90,6 +92,30 @@ namespace SLHotSpot
                     showTextBlock = GetTextBlock(ShowPolygon);
                 }
                 return showTextBlock;
+            }
+        }
+
+
+        public bool isSelected = false;
+
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+
+                isSelected = value;
+
+
+
+                NotifyPropertyChanged("IsSelected");
+
+
+                if (isSelected)
+                    this.ShowPolygon.Fill = new SolidColorBrush(this.FillOverColor);
+                else
+                    this.ShowPolygon.Fill = new SolidColorBrush(this.FillColor);
+
             }
         }
 
@@ -165,16 +191,171 @@ namespace SLHotSpot
 
         #endregion
 
+        Point? lastTextDragPoint;
 
         public void StartChangeText()
         {
-            TextArea = new List<Point>();
-            TextPoints = new List<Rectangle>();
-            if (showPolygon != null)
-            {
-                showPolygon.MouseLeftButtonDown += new MouseButtonEventHandler(showPolygonOnMouseLeftButtonDowns);
-            }
+            //TextArea = new List<Point>();
+            //TextPoints = new List<Rectangle>();
+            //if (showPolygon != null)
+            //{
+            //    showPolygon.MouseLeftButtonDown += new MouseButtonEventHandler(showPolygonOnMouseLeftButtonDowns);
+            //}
             ChangingText = true;
+
+            if(dragMover == null)
+            {
+                dragMover = new DragMover(showTextBlock);
+            }
+
+            dragMover.EnableTracking();
+
+        }
+
+        public void LargeText(double rate)
+        {
+            if (ShowTextBlock.RenderTransform != null && ShowTextBlock.RenderTransform is TransformGroup)
+            {
+                foreach (Transform transform in ((TransformGroup)ShowTextBlock.RenderTransform).Children)
+                {
+                    if (transform is ScaleTransform)
+                    {
+                        ((ScaleTransform)transform).ScaleX += rate;
+                        ((ScaleTransform)transform).ScaleY += rate;
+                    }
+                }
+            }
+        }
+        public void SmallText(double rate)
+        {
+            if (ShowTextBlock.RenderTransform != null && ShowTextBlock.RenderTransform is TransformGroup)
+            {
+                foreach (Transform transform in ((TransformGroup)ShowTextBlock.RenderTransform).Children)
+                {
+                    if (((ScaleTransform)transform).ScaleX > rate)
+                    {
+                        ((ScaleTransform)transform).ScaleX -= rate;
+                        ((ScaleTransform)transform).ScaleY -= rate;
+                    }
+                }
+            }
+        }
+
+        //    if(e.Key == Key.Up && e.Key == Key.Down)
+        //    {
+        //        if (moveFramework.RenderTransform != null && moveFramework.RenderTransform is TransformGroup)
+        //        {
+        //            foreach (Transform transform in ((TransformGroup)moveFramework.RenderTransform).Children)
+        //            {
+        //                if(transform is ScaleTransform)
+        //                {
+        //                    if (e.Key == Key.Up)
+        //                    {
+        //                        ((ScaleTransform)transform).ScaleX += 0.2;
+        //                        ((ScaleTransform)transform).ScaleX += 0.2;
+        //                    }
+
+        //                    if (((ScaleTransform)transform).ScaleX>0.2 && e.Key == Key.Down)
+        //                    {
+        //                        ((ScaleTransform)transform).ScaleX -= 0.2;
+        //                        ((ScaleTransform)transform).ScaleX -= 0.2;
+        //                    }
+
+
+        //                }
+        //            }
+        //        }
+        //    }
+
+        public bool EndChangeText()
+        {
+            //if (TextArea.Count != 4)
+            //{
+            //    MessageBox.Show("必须设置四个点！");
+            //    return false;
+            //}
+
+            //double cx = 0d;
+            //double cy = 0d;
+
+            //foreach (Point point in TextArea)
+            //{
+            //    cx += point.X;
+            //    cy += point.Y;
+            //}
+
+            //cx = cx / Convert.ToDouble(TextArea.Count);
+            //cy = cy / Convert.ToDouble(TextArea.Count);
+
+            //double textX = Math.Min(Math.Abs(TextArea[1].X - TextArea[0].X), Math.Abs(TextArea[2].X - TextArea[3].X));
+            //double textY = Math.Min(Math.Abs(TextArea[3].Y - TextArea[0].Y), Math.Abs(TextArea[2].Y - TextArea[1].Y));
+
+            //double textLeftX = TextArea[0].X;
+            //double textLeftY = TextArea[0].Y;
+
+
+            //TransformGroup transformGroup = showTextBlock.RenderTransform as TransformGroup;
+
+            //double scale = textX / showTextBlock.ActualWidth;
+
+            //double scaleX = showTextBlock.ActualWidth / 2d;
+            //double scaleY = showTextBlock.ActualHeight / 2d;
+
+            //if (this.IsRotate)
+            //{
+            //    scale = textY / showTextBlock.ActualHeight;
+            //    scaleX = scaleX;
+            //    scaleY = scaleY;
+            //}
+
+            //if (transformGroup != null)
+            //{
+            //    foreach (Transform transform in transformGroup.Children)
+            //    {
+            //        if (transform is ScaleTransform)
+            //        {
+            //            ScaleTransform scaleTransform = transform as ScaleTransform;
+
+            //            if (scaleTransform != null)
+            //            {
+            //                scaleTransform.CenterX = scaleX;
+            //                scaleTransform.CenterY = scaleY;
+            //                //scaleTransform.ScaleX = textX / showTextBlock.ActualWidth;
+            //                //scaleTransform.ScaleY = textY / showTextBlock.ActualHeight;
+            //                scaleTransform.ScaleX = scale;
+            //                scaleTransform.ScaleY = scale;
+            //            }
+            //        }
+            //    }
+            //}
+
+            //Point textpoint = new Point(textLeftX + Canvas.GetLeft(showPolygon), textLeftY + Canvas.GetTop(showPolygon));
+
+            //foreach (Rectangle textPoint in TextPoints)
+            //{
+            //    ParentCanvas.Children.Remove(textPoint);
+            //}
+
+            //TextPoints.Clear();
+            //TextArea.Clear();
+
+            //if (showPolygon != null)
+            //{
+            //    showPolygon.MouseLeftButtonDown -= new MouseButtonEventHandler(showPolygonOnMouseLeftButtonDowns);
+            //}
+
+
+            //Canvas.SetLeft(this.ShowTextBlock, textpoint.X);
+            //Canvas.SetTop(this.ShowTextBlock, textpoint.Y);
+
+            ChangingText = false;
+
+            if (dragMover != null)
+            {
+                dragMover.DisableTracking();
+            }
+
+            return true;
         }
 
         private Rectangle AddChangeTextPoint(Point point)
@@ -185,93 +366,7 @@ namespace SLHotSpot
             return tRPoint;
         }
 
-        public bool EndChangeText()
-        {
-            if (TextArea.Count != 4)
-            {
-                MessageBox.Show("必须设置四个点！");
-                return false;
-            }
 
-            double cx = 0d;
-            double cy = 0d;
-
-            foreach (Point point in TextArea)
-            {
-                cx += point.X;
-                cy += point.Y;
-            }
-
-            cx = cx / Convert.ToDouble(TextArea.Count);
-            cy = cy / Convert.ToDouble(TextArea.Count);
-
-            double textX = Math.Min(Math.Abs(TextArea[1].X - TextArea[0].X), Math.Abs(TextArea[2].X - TextArea[3].X));
-            double textY = Math.Min(Math.Abs(TextArea[3].Y - TextArea[0].Y), Math.Abs(TextArea[2].Y - TextArea[1].Y));
-
-            double textLeftX = TextArea[0].X;
-            double textLeftY = TextArea[0].Y;
-
-
-            TransformGroup transformGroup = showTextBlock.RenderTransform as TransformGroup;
-
-            double scale = textX / showTextBlock.ActualWidth;
-
-            double scaleX = showTextBlock.ActualWidth / 2d;
-            double scaleY = showTextBlock.ActualHeight / 2d;
-
-            if (this.IsRotate)
-            {
-                scale = textY / showTextBlock.ActualHeight;
-                scaleX = scaleX;
-                scaleY = scaleY;
-            }
-
-            if (transformGroup != null)
-            {
-                foreach (Transform transform in transformGroup.Children)
-                {
-                    if (transform is ScaleTransform)
-                    {
-                        ScaleTransform scaleTransform = transform as ScaleTransform;
-
-                        if (scaleTransform != null)
-                        {
-                            scaleTransform.CenterX = scaleX;
-                            scaleTransform.CenterY = scaleY;
-                            //scaleTransform.ScaleX = textX / showTextBlock.ActualWidth;
-                            //scaleTransform.ScaleY = textY / showTextBlock.ActualHeight;
-                            scaleTransform.ScaleX = scale;
-                            scaleTransform.ScaleY = scale;
-                        }
-                    }
-                }
-            }
-
-            Point textpoint = new Point(textLeftX + Canvas.GetLeft(showPolygon), textLeftY + Canvas.GetTop(showPolygon));
-
-            foreach (Rectangle textPoint in TextPoints)
-            {
-                ParentCanvas.Children.Remove(textPoint);
-            }
-
-            TextPoints.Clear();
-            TextArea.Clear();
-
-            if (showPolygon != null)
-            {
-                showPolygon.MouseLeftButtonDown -= new MouseButtonEventHandler(showPolygonOnMouseLeftButtonDowns);
-            }
-
-
-            Canvas.SetLeft(this.ShowTextBlock, textpoint.X);
-            Canvas.SetTop(this.ShowTextBlock, textpoint.Y);
-
-            ChangingText = false;
-
-
-
-            return true;
-        }
 
         private void showPolygonOnMouseLeftButtonDowns(object sender, MouseButtonEventArgs e)
         {
@@ -458,6 +553,8 @@ namespace SLHotSpot
 
             polygon.MouseEnter += new MouseEventHandler(polygon_OnMouseEnter);
             polygon.MouseLeave += new MouseEventHandler(polygon_OnMouseLeave);
+
+
 
             return polygon;
         }

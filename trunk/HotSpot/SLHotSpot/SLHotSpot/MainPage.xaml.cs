@@ -19,6 +19,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using SLHotSpot.DiagramDesigner;
 using SLHotSpot.HotSpotService;
 
 namespace SLHotSpot
@@ -30,17 +31,19 @@ namespace SLHotSpot
         Change
     }
 
-
+    
 
     public partial class MainPage : UserControl
     {
         public SLHotSpotSetting setting;
 
+        public ResizeRotateChrome resize = new ResizeRotateChrome();
+
         private string hotSpotData = "";
 
         Point? lastDragPoint;
 
- 
+        public bool canDragPanel = true;
 
         public ObservableCollection<ShopHotSpot> HostSpots = new ObservableCollection<ShopHotSpot>();
 
@@ -48,11 +51,8 @@ namespace SLHotSpot
         {
             Resources.Add("brandInfos", CPData.GetAllData());
 
-
+            resize.Hide();
  
-
- 
-
             InitializeComponent();
 
             casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
@@ -267,36 +267,45 @@ namespace SLHotSpot
 
         private void ssvDrawOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var mousePos = e.GetPosition(casDrawPanel);
-            if (mousePos.X <= ssvDraw.ViewportWidth && mousePos.Y < ssvDraw.ViewportHeight) //make sure we still can use the scrollbars
+            if(canDragPanel)
             {
-                casDrawPanel.Cursor = Cursors.Hand;
-                lastDragPoint = mousePos;
-                casDrawPanel.CaptureMouse();
+                var mousePos = e.GetPosition(casDrawPanel);
+                if (mousePos.X <= ssvDraw.ViewportWidth && mousePos.Y < ssvDraw.ViewportHeight) //make sure we still can use the scrollbars
+                {
+                    casDrawPanel.Cursor = Cursors.Hand;
+                    lastDragPoint = mousePos;
+                    casDrawPanel.CaptureMouse();
+                }
             }
         }
 
         private void ssvDrawOnMouseMove(object sender, MouseEventArgs e)
         {
-            if (lastDragPoint.HasValue)
+            if (canDragPanel)
             {
-                Point posNow = e.GetPosition(casDrawPanel);
+                if (lastDragPoint.HasValue)
+                {
+                    Point posNow = e.GetPosition(casDrawPanel);
 
-                double dX = posNow.X - lastDragPoint.Value.X;
-                double dY = posNow.Y - lastDragPoint.Value.Y;
+                    double dX = posNow.X - lastDragPoint.Value.X;
+                    double dY = posNow.Y - lastDragPoint.Value.Y;
 
-                lastDragPoint = posNow;
+                    lastDragPoint = posNow;
 
-                ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
-                ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
+                    ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
+                    ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
+                }
             }
         }
 
         private void ssvDrawOnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            casDrawPanel.Cursor = Cursors.Arrow;
-            casDrawPanel.ReleaseMouseCapture();
-            lastDragPoint = null;
+            if (canDragPanel)
+            {
+                casDrawPanel.Cursor = Cursors.Arrow;
+                casDrawPanel.ReleaseMouseCapture();
+                lastDragPoint = null;
+            }
         }
 
         private void btnSelectImage_Click(object sender, RoutedEventArgs e)
@@ -571,14 +580,17 @@ namespace SLHotSpot
 
                 if (tbtn.IsChecked.HasValue && tbtn.IsChecked.Value)
                 {
+
                     shopHotSpot.StartChangeText();
-                    tbtn.Content = "字定位结束";
+                    canDragPanel = false;
+                    tbtn.Content = "调整结束";
                 }
                 else
                 {
                     if (shopHotSpot.EndChangeText())
                     {
-                        tbtn.Content = "字定位开始";
+                        canDragPanel = true;
+                        tbtn.Content = "文字调整";
                     }
                 }
             }
@@ -784,6 +796,36 @@ namespace SLHotSpot
             if (this.setting.ControlMode == Mode.View)
             {
                 dgHotSpotView.ItemsSource = HostSpots;
+            }
+        }
+
+        private void dgHotSpot_OnTextChangeClick(object sender, RoutedEventArgs e)
+        {
+            Button btnOnTextChange = sender as Button;
+
+            if (btnOnTextChange != null && btnOnTextChange.Tag!=null)
+            {
+                ShopHotSpot shopHotSpot = GetHotSpotBy((Guid)btnOnTextChange.CommandParameter);
+
+                if (shopHotSpot !=null && btnOnTextChange.Tag.ToString() == "+")
+                {
+                    shopHotSpot.LargeText(0.1);
+                }
+                else if (shopHotSpot !=null && btnOnTextChange.Tag.ToString() == "-")
+                {
+                    shopHotSpot.SmallText(0.1);
+                }
+            }
+        }
+
+        private void chkCheckAlldgHotSpotView_Click(object sender, RoutedEventArgs e)
+        {
+            var checkBox = sender as CheckBox;
+            bool selected = checkBox.IsChecked.HasValue ? checkBox.IsChecked.Value : false;
+
+            foreach (var hostSpot in HostSpots)
+            {
+                hostSpot.IsSelected = selected;
             }
         }
     }
