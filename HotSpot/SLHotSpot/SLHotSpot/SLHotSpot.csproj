@@ -100,6 +100,11 @@
     <Compile Include="cwShopEditor.xaml.cs">
       <DependentUpon>cwShopEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DiagramDesigner\MoveThumb.cs" />
+    <Compile Include="DiagramDesigner\ResizeRotateChrome.cs" />
+    <Compile Include="DiagramDesigner\ResizeThumb.cs" />
+    <Compile Include="DiagramDesigner\RotateThumb.cs" />
+    <Compile Include="DragMover.cs" />
     <Compile Include="HostSpot.cs" />
     <Compile Include="HotSpotPolygon.cs" />
     <Compile Include="HotSpotText.cs" />
@@ -133,6 +138,10 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

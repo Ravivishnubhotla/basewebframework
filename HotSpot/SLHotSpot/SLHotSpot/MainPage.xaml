@@ -5,7 +5,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="768" d:DesignWidth="1024">
+    <UserControl.Resources>
+        <!-- Designer Item Template-->
+        <Style x:Key="DesignerItemStyle" TargetType="ContentControl">
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
 
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate  TargetType="ContentControl">
+                        <Grid>
+                            <ContentPresenter Content="{TemplateBinding Content}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -39,19 +55,7 @@
         <StackPanel  Grid.Row="0" Grid.Column="2" Background="Gray" >
             <StackPanel Name="pnlAnalysis">
                 <Button Name="btnStartAnalysis" Visibility="Collapsed"  Content="执行竞争力分析" Margin="5" Click="btnStartAnalysis_Click" Width="100"  HorizontalAlignment="Left"/>
-                <ListBox Name="listBrand"  Visibility="Collapsed"  ItemsSource="{StaticResource brandInfos}"  Background="White" Margin="5" >
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel  Width="260" Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="-"/>
-                                <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
-                                <TextBlock Text="-"/>
-                                <TextBlock Text="{Binding CPText}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+
                 <sdk:DataGrid x:Name="dgBrandCP" Margin="2"
             Height="260"   SelectionMode="Single" 
             AutoGenerateColumns="False"  
@@ -115,13 +119,20 @@
                     IsReadOnly="True" Visibility="Collapsed" Width="50" />
                         <sdk:DataGridTextColumn Header="名称" Binding="{Binding Name}" IsReadOnly="True" Width="80" />
                         <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
-                        <sdk:DataGridTemplateColumn Header="操作" Width="130">
+                        <sdk:DataGridTemplateColumn Header="操作" Width="110">
                             <sdk:DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                         <Button Margin="1"  Content="修改" CommandParameter="{Binding ID}" Click="dgHotSpot_OnEditClick"  />
                                         <Button Margin="1" Content="删除"  CommandParameter="{Binding ID}"  Click="dgHotSpot_OnDeleteClick" />
-                                        <ToggleButton Margin="1" Content="字定位开始"  CommandParameter="{Binding ID}"  Click="dgHotSpot_OnChangeTextPosionClick" />
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                            <ToggleButton Margin="1" Content="文字调整"  CommandParameter="{Binding ID}"  Click="dgHotSpot_OnChangeTextPosionClick" />
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                                <Button Margin="1"  Content="+" Tag="+" CommandParameter="{Binding ID}"   Click="dgHotSpot_OnTextChangeClick" />
+                                                <Button Margin="1" Content="-" Tag="-"  CommandParameter="{Binding ID}"   Click="dgHotSpot_OnTextChangeClick"  />
+                                            </StackPanel>
+                                        </StackPanel>
+
                                     </StackPanel>
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellTemplate>
@@ -140,6 +151,28 @@
             GridLinesVisibility="All"
             RowBackground="White">
                     <sdk:DataGrid.Columns>
+                        <sdk:DataGridTemplateColumn>
+                            <sdk:DataGridTemplateColumn.HeaderStyle>
+                                <Style TargetType="sdk:DataGridColumnHeader">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <CheckBox x:Name="chkCheckAlldgHotSpot" Click="chkCheckAlldgHotSpotView_Click"/>
+                                                </StackPanel>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </sdk:DataGridTemplateColumn.HeaderStyle>
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                        <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
                         <sdk:DataGridTextColumn Header="名称" Binding="{Binding DataID}" IsReadOnly="True" Width="80" />
                         <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
                     </sdk:DataGrid.Columns>
