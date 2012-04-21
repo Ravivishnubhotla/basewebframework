@@ -580,10 +580,23 @@ namespace SLHotSpot
 
                 if (tbtn.IsChecked.HasValue && tbtn.IsChecked.Value)
                 {
-
                     shopHotSpot.StartChangeText();
                     canDragPanel = false;
                     tbtn.Content = "调整结束";
+
+                    if (tbtn.Parent is StackPanel)
+                    {
+                        foreach (UIElement uiElement in ((StackPanel)tbtn.Parent).Children)
+                        {
+                            if (uiElement is StackPanel)
+                            {
+                                ((StackPanel)uiElement).Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+
+
+
                 }
                 else
                 {
@@ -591,6 +604,16 @@ namespace SLHotSpot
                     {
                         canDragPanel = true;
                         tbtn.Content = "文字调整";
+                        if (tbtn.Parent is StackPanel)
+                        {
+                            foreach (UIElement uiElement in ((StackPanel)tbtn.Parent).Children)
+                            {
+                                if (uiElement is StackPanel)
+                                {
+                                    ((StackPanel)uiElement).Visibility = Visibility.Collapsed;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -828,5 +851,7 @@ namespace SLHotSpot
                 hostSpot.IsSelected = selected;
             }
         }
+
+ 
     }
 }
