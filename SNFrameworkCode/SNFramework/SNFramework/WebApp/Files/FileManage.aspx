@@ -54,7 +54,7 @@
     </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
-            <ext:TreePanel ID="treeDirectorys" runat="server" Icon="BookOpen" Title="Directory"
+            <ext:TreePanel ID="treeDirectorys" runat="server" Title="Directory"  Icon="Folder" 
                 Region="West" Layout="Fit" Width="225" MinWidth="225" MaxWidth="400" Split="true"
                 Collapsible="true" RootVisible="false" AutoScroll="true">
                 <TopBar>

@@ -43,7 +43,7 @@ namespace Legendigital.Common.WebApp.Files
 
             TreeNode root = new TreeNode();
             root.Text = rootNavPath;
-            root.Icon = Icon.Folder;
+            root.Icon = Icon.TimeGo;
 
             nodes.Add(root);
 
@@ -56,7 +56,7 @@ namespace Legendigital.Common.WebApp.Files
                 DirectoryInfo directory = new DirectoryInfo(dirs[i]);
                 TreeNode mainNode = new TreeNode();
                 mainNode.Text = directory.Name;
-                mainNode.Leaf = false;
+                //mainNode.Leaf = false;
                 mainNode.NodeID = "Node"+(dirs[i]).GetHashCode().ToString();
                 mainNode.Icon = Icon.Folder;
                 GenerateSubTreeNode(mainNode, dirs[i]);
@@ -75,7 +75,7 @@ namespace Legendigital.Common.WebApp.Files
                 DirectoryInfo directory = new DirectoryInfo(dirs[i]);
                 TreeNode subNode = new TreeNode();
                 subNode.Text = directory.Name;
-                subNode.Leaf = false;
+                //subNode.Leaf = false;
                 subNode.NodeID = "Node" + (subPath + dirs[i]).GetHashCode().ToString();
                 subNode.Icon = Icon.Folder;
                 GenerateSubTreeNode(subNode, dirs[i]);
