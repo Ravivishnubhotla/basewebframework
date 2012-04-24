@@ -23,33 +23,40 @@
             <EventMask ShowMask="True"></EventMask>
         </DirectEventConfig>
     </ext:Store>
-    <script language="javascript">
+    <script type="text/javascript">
+        function LoadSubDir(subdir) {
+            var hidcPath = <%=cPath.ClientID  %>;
+            //alert(subdir);
+            hidcPath.setValue(subdir);
+            var storeFiles = <%=storeFiles.ClientID  %>;
+            storeFiles.reload();
+        }
         function LoadDirectorys(rootPath) {
             var tree = <%=treeDirectorys.ClientID  %>;
             Ext.net.DirectMethods.GetTreeNodes(
-                                                rootPath,
-                                                {
-                                                    failure: function (msg) {
-                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
-                                                    },
-                                                    success: function (result) {
-                                                        var nodes = eval(result);
-                                                        if (nodes.length > 0) {
-                                                            tree.initChildren(nodes);
-                                                        }
-                                                        else {
-                                                            tree.getRootNode().removeChildren();
-                                                        }
+                rootPath,
+                {
+                    failure: function (msg) {
+                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                    },
+                    success: function (result) {
+                        var nodes = eval(result);
+                        if (nodes.length > 0) {
+                            tree.initChildren(nodes);
+                        }
+                        else {
+                            tree.getRootNode().removeChildren();
+                        }
 
-                                                    },
-                                                    eventMask: {
-                                                        showMask: true,
-                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
-                                                        target: 'customtarget',
-                                                        customTarget: '<%= treeDirectorys.ClientID %>.el'
-                                                    }
-                                                }
-                                             );    
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
+                        target: 'customtarget',
+                        customTarget: '<%= treeDirectorys.ClientID %>.el'
+                    }
+                }
+            );    
         }
     </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
@@ -75,7 +82,7 @@
                                     <Click Handler="LoadDirectorys('/');" />
                                 </Listeners>
                             </ext:Button>
-                        </Items>
+                        </Items> 
                     </ext:Toolbar>
                 </TopBar>
                 <Root>
@@ -86,7 +93,7 @@
                     <ext:StatusBar ID="StatusBar1" runat="server" AutoClear="1500" />
                 </BottomBar>
                 <Listeners>
-                    <Click Handler="#{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text + '<br />', clear: true});" />
+                    <Click Handler=" #{StatusBar1}.setStatus({text: 'Node Selected: <b>' + node.text +   '<br />', clear: true});LoadSubDir(node.attributes.Path);" />
                     <ExpandNode Handler="#{StatusBar1}.setStatus({text: 'Node Expanded: <b>' + node.text + '<br />', clear: true});"
                         Delay="30" />
                     <CollapseNode Handler="#{StatusBar1}.setStatus({text: 'Node Collapsed: <b>' + node.text + '<br />', clear: true});" />
@@ -152,4 +159,5 @@
             </ext:Panel>
         </Items>
     </ext:Viewport>
+    <ext:Hidden ID="cPath" runat="server" />
 </asp:Content>

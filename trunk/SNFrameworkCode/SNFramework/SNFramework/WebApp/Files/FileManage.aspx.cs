@@ -21,7 +21,7 @@ namespace Legendigital.Common.WebApp.Files
             if (X.IsAjaxRequest)
                 return;
 
-
+            cPath.Value = this.Server.MapPath("~/Files/");
         }
 
         [DirectMethod]
@@ -49,6 +49,11 @@ namespace Legendigital.Common.WebApp.Files
 
             string dirNav = this.Server.MapPath(rootNavPath);
 
+            if(!dirNav.EndsWith("\\"))
+            {
+                dirNav += "\\";
+            }
+
             string[] dirs = Directory.GetDirectories(dirNav);
 
             for (int i = 0; i < dirs.Length; i++)
@@ -58,15 +63,16 @@ namespace Legendigital.Common.WebApp.Files
                 mainNode.Text = directory.Name;
                 //mainNode.Leaf = false;
                 mainNode.NodeID = "Node"+(dirs[i]).GetHashCode().ToString();
+                mainNode.CustomAttributes.Add(new ConfigItem("Path", dirs[i] +  "\\", ParameterMode.Value));
                 mainNode.Icon = Icon.Folder;
-                GenerateSubTreeNode(mainNode, dirs[i]);
+                GenerateSubTreeNode(mainNode, dirs[i], dirs[i]  + "\\");
                 root.Nodes.Add(mainNode);              
             }
 
             return nodes;
         }
 
-        private void GenerateSubTreeNode(TreeNode mainNode, string subPath)
+        private void GenerateSubTreeNode(TreeNode mainNode, string subPath,string dirPath)
         {
             string[] dirs = Directory.GetDirectories(subPath);
 
@@ -77,15 +83,16 @@ namespace Legendigital.Common.WebApp.Files
                 subNode.Text = directory.Name;
                 //subNode.Leaf = false;
                 subNode.NodeID = "Node" + (subPath + dirs[i]).GetHashCode().ToString();
+                subNode.CustomAttributes.Add(new ConfigItem("Path", dirs[i] + "\\", ParameterMode.Value));
                 subNode.Icon = Icon.Folder;
-                GenerateSubTreeNode(subNode, dirs[i]);
+                GenerateSubTreeNode(subNode, dirs[i], dirs[i] + "\\");
                 mainNode.Nodes.Add(subNode);
             }
         }
 
         protected void storeFiles_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            string[] files = System.IO.Directory.GetFiles(@"D:\TDDownload");
+            string[] files = System.IO.Directory.GetFiles(cPath.Value.ToString());
 
             List<object> data = new List<object>(files.Length);
 
