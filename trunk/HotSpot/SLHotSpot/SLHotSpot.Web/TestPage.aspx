@@ -50,25 +50,53 @@
         }
 
 
+        var slCtl = null;
+        function pluginLoaded(sender, args) {
+            slCtl = sender.getHost();
+            slCtl.Content.SLControl.ItemOpenedHandle = itemOpened;
+        }
+
+
+        function showShop(value, rowData, rowIndex) {
+            return "<a href='#' title='提示信息'>" + value + "</a>";
+        }
+
+
+        function itemOpened(sender, args) {
+            window.open('http://localhost:12031/Shop_ShopDetail.aspx?CSN=' + sender, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
+
+        }
 
 
         $(function () {
 
-            //            $("#slider").slider();
+
+
+
+
+            $("#slider").slider({
+                onChange: function (newValue) {
+                    slCtl.Content.SLControl.SetZoom(newValue);
+                }
+            });
 
 
             $('#tt').datagrid({
-                onSelect: function (rowIndex) {
-                    alert(rowIndex);
+                onSelect: function (rowIndex, rowData) {
+                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, true);
                 },
-                onUnselect: function (rowIndex) {
-                    alert(rowIndex);
+                onUnselect: function (rowIndex, rowData) {
+                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, false);
                 },
                 onSelectAll: function (rows) {
-                    alert(rows);
+                    for (var i = 0; i < rows.length; i++) {
+                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].ShopNO, true);
+                    }
                 },
                 onUnselectAll: function (rows) {
-                    alert(rows);
+                    for (var i = 0; i < rows.length; i++) {
+                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].ShopNO, false);
+                    }
                 }
 
             });
@@ -87,6 +115,7 @@
                 width="100%" height="100%">
                 <param name="source" value="ClientBin/SLHotSpot.xap" />
                 <param name="onError" value="onSilverlightError" />
+                <param name="onLoad" value="pluginLoaded" />
                 <param name="background" value="white" />
                 <param name="minRuntimeVersion" value="5.0.61118.0" />
                 <param name="autoUpgrade" value="true" />
@@ -101,33 +130,33 @@
                 border: 0px"></iframe>
         </div>
     </div>
-    <div region="east" split="true" title="商铺信息" style="width: 200px;">
-        <form id="ff" action="Handler1.ashx" method="post">
-        <table>
-            <tr>
-                <td style="text-align: center;">
-                    <div class="easyui-slider" min="1" max="6" step="1" style="width: 170px">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table id="tt" title="商铺列表" class="easyui-datagrid" style="width: 187px; height: 450px;"
-                        idfield="itemid" pagination="false" url="Handler1.ashx" iconcls="icon-save">
-                        <thead>
-                            <tr>
-                                <th field="ck" checkbox="true">
-                                </th>
-                                <th field="itemid" width="130">
-                                    商铺位
-                                </th>
-                            </tr>
-                        </thead>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        </form>
+    <div region="east" split="true" title="设置" style="width: 200px;">
+        <div class="easyui-layout" fit="true">
+            <div region="north" title="缩放" split="false" style="overflow: hidden; height: 60px;
+                padding: 10px">
+                <div id="slider" class="easyui-slider" min="1" max="6" step="1" fit="true">
+                </div>
+            </div>
+            <div region="center" title="商铺" style="background: #fafafa; overflow: hidden" tools="#tol">
+                <table id="tt" title="商铺列表" class="easyui-datagrid" border="false" fit="true" fitcolumns="true"
+                    idfield="itemid" pagination="false" url="Handler1.ashx?223232" iconcls="icon-save">
+                    <thead>
+                        <tr>
+                            <th field="ck" checkbox="true">
+                            </th>
+                            <th field="ShopNO" width="130" formatter="showShop">
+                                商铺位
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="tol">
+        显示店铺：
+        <a href="#" class="icon-edit"
+            onclick="javascript:alert('edit')"></a>
     </div>
 </body>
 </html>

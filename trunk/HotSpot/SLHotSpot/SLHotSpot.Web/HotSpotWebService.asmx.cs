@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Newtonsoft.Json;
 
 namespace SLHotSpot.Web
 {
@@ -27,9 +28,10 @@ namespace SLHotSpot.Web
             {
                 File.Delete(fileName);
             }
-
+ 
             File.WriteAllText(fileName, hotSpotData);
         }
+
 
         [WebMethod]
         public string LoadHotspotData(string shopNo)

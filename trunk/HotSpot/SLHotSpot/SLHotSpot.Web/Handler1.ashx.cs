@@ -15,7 +15,7 @@ namespace SLHotSpot.Web
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            context.Response.Write(File.ReadAllText(context.Server.MapPath("~/data/datagrid_data.json")));
+            context.Response.Write(File.ReadAllText(context.Server.MapPath("~/DataFiles/" + "M001001_F1_0" + ".txt")));
             context.Response.End();
         }
 

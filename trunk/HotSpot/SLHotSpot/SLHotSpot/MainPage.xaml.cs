@@ -19,6 +19,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SLHotSpot.DiagramDesigner;
 using SLHotSpot.HotSpotService;
 
@@ -111,6 +112,17 @@ namespace SLHotSpot
 
         }
 
+        private void OnItemOpened(HostSpot hostSpot)
+        {
+            if(ItemOpenedHandle!=null)
+            {
+                ItemOpenedHandle(hostSpot.DataID, EventArgs.Empty);
+            }
+        }
+
+        [ScriptableMember]
+        public event EventHandler ItemOpenedHandle;
+
         private void serviceClient_LoadHotspotDataCompleted(object sender, LoadHotspotDataCompletedEventArgs e)
         {
             hotSpotData = e.Result;
@@ -132,8 +144,14 @@ namespace SLHotSpot
             //}
 
             ClearAll();
+            JsonSerializer serializer = new JsonSerializer();
+            var o = (JObject)serializer.Deserialize(new JsonTextReader(new StringReader(hotSpotData)));
 
-            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(hotSpotData);
+
+
+
+
+            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(o["rows"].ToString());
 
             foreach (ROSHotSpot rosHotSpot in rosHotSpots)
             {
@@ -424,9 +442,27 @@ namespace SLHotSpot
         {
             if (sender is Slider && this.imgBg != null && this.imgBg.Source != null)
             {
-                scaleTransform.ScaleX = ((Slider)sender).Value;
-                scaleTransform.ScaleY = ((Slider)sender).Value;
-                layoutTransform.ApplyLayoutTransform();
+                SetZoom(((Slider)sender).Value);
+            }
+        }
+
+        [ScriptableMember]
+        public void SetZoom(double zoomValue)
+        {
+            zoomValue = (zoomValue+3)/3d;
+            scaleTransform.ScaleX = zoomValue;
+            scaleTransform.ScaleY = zoomValue;
+            layoutTransform.ApplyLayoutTransform();
+        }
+
+        [ScriptableMember]
+        public void SetHotSpotSelected(string shopNO,bool selected)
+        {
+            ShopHotSpot spot = GetHotSpotByDataID(shopNO);
+
+            if(spot!=null)
+            {
+                spot.IsSelected = selected;
             }
         }
 
@@ -623,24 +659,11 @@ namespace SLHotSpot
 
         private void btnSaveHotSpot_Click(object sender, RoutedEventArgs e)
         {
-            //SaveFileDialog sfd = new SaveFileDialog()
-            //{
-            //    DefaultExt = "txt",
-            //    Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
-            //    FilterIndex = 2
-            //};
-            //if (sfd.ShowDialog() == true)
-            //{
-            //    //FileName.Text = "文件名称：" + sfd.File.Name;
-            //    using (Stream stream = sfd.OpenFile())
-            //    {
-            //        Byte[] fileContent = System.Text.UTF8Encoding.UTF8.GetBytes(ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
-            //        stream.Write(fileContent, 0, fileContent.Length);
-            //        stream.Close();
-            //    }
-            //}
+             
 
             HotSpotWebServiceSoapClient serviceClient = GetHotSpotWebServiceSoapClient();
+
+
 
 
             serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
@@ -679,47 +702,7 @@ namespace SLHotSpot
                 MessageBox.Show("保存成功");
             }
         }
-
-        //private void btnLoadHotSpot_Click(object sender, RoutedEventArgs e)
-        //{
-        //    OpenFileDialog ofd = new OpenFileDialog();
-        //    ofd.Filter = "Text Files (.txt)| *.txt";
-        //    ofd.Multiselect = false;
-        //    bool? result = ofd.ShowDialog();
-
-
-        //    if (result == true)
-        //    {
-
-        //        List<UIElement> removedElements = new List<UIElement>();
-        //        foreach (UIElement element in casDrawPanel.Children)
-        //        {
-        //            if (!(element is Image))
-        //            {
-        //                removedElements.Add(element);
-        //            }
-        //        }
-        //        foreach (UIElement removedElement in removedElements)
-        //        {
-        //            casDrawPanel.Children.Remove(removedElement);
-        //        }
-
-        //        using (System.IO.StreamReader textStream = ofd.File.OpenText())
-        //        {
-        //            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(textStream.ReadToEnd());
-
-        //            ClearAll();
-
-        //            foreach (ROSHotSpot rosHotSpot in rosHotSpots)
-        //            {
-        //                AddToCanvas(rosHotSpot, setting.ControlMode);
-        //            }
-        //        }
-        //    }
-
-
-        //}
-
+ 
         public void cmAction_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             MenuItem menuItem = sender as MenuItem;
@@ -731,7 +714,9 @@ namespace SLHotSpot
             switch (actionType)
             {
                 case "Open":
-                    HtmlPage.Window.Eval("window.open ('http://localhost:12031/Shop_ShopDetail.aspx?CSN=D0017216','newwindow','resizable=1,width=860,height=645,scrollbars=1');");
+                    HostSpot hotspot = GetHotSpotByDataID(dataID);
+                    OnItemOpened(hotspot);
+                    //HtmlPage.Window.Eval("window.open ('http://localhost:12031/Shop_ShopDetail.aspx?CSN=D0017216','newwindow','resizable=1,width=860,height=645,scrollbars=1');");
                     break;
                 case "Edit":
                     EditHotSpot(dataID);
@@ -851,6 +836,10 @@ namespace SLHotSpot
             }
         }
 
- 
+
+        private void userControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            HtmlPage.RegisterScriptableObject("SLControl",this);
+        }
     }
 }
