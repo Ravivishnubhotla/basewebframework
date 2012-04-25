@@ -55,10 +55,10 @@
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="ClientBin\SLHotSpot.xap" />
     <Content Include="crossdomain.xml" />
+    <Content Include="datagrid.html" />
     <Content Include="HotSpotWebService.asmx" />
     <Content Include="Images\M001001_F1_0-3.png" />
     <Content Include="Scripts\EasyUI\easyloader.js" />
-    <Content Include="Scripts\EasyUI\jquery-1.7.2.min.js" />
     <Content Include="Scripts\EasyUI\jquery.easyui.min.js" />
     <Content Include="Scripts\EasyUI\locale\easyui-lang-af.js" />
     <Content Include="Scripts\EasyUI\locale\easyui-lang-bg.js" />
@@ -296,6 +296,7 @@
     <Content Include="Scripts\EasyUI\themes\icons\edit_remove.png" />
     <Content Include="Scripts\EasyUI\themes\icons\filesave.png" />
     <Content Include="Scripts\EasyUI\themes\icons\help.png" />
+    <Content Include="Scripts\EasyUI\themes\icons\map.png" />
     <Content Include="Scripts\EasyUI\themes\icons\mini_add.png" />
     <Content Include="Scripts\EasyUI\themes\icons\mini_edit.png" />
     <Content Include="Scripts\EasyUI\themes\icons\mini_refresh.png" />
@@ -309,6 +310,22 @@
     <Content Include="Scripts\EasyUI\themes\icons\sum.png" />
     <Content Include="Scripts\EasyUI\themes\icons\tip.png" />
     <Content Include="Scripts\EasyUI\themes\icons\undo.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\JQueryUI\css\smoothness\jquery-ui-1.8.19.custom.css" />
+    <Content Include="Scripts\JQuery\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\JQueryUI\js\jquery-ui-1.8.19.custom.min.js" />
     <Content Include="Silverlight.js" />
     <Content Include="SLHotSpotTestPage.aspx" />
     <Content Include="SLHotSpotTestPage.html" />
@@ -320,6 +337,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HotSpotWebService.asmx.cs">
@@ -334,11 +352,20 @@
     <Compile Include="TestPage.aspx.designer.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataFiles\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="datagrid_data2.json" />
+    <None Include="data\datagrid_data.json" />
     <None Include="Scripts\EasyUI\themes\default\images\Thumbs.db" />
     <None Include="Scripts\EasyUI\themes\gray\images\Thumbs.db" />
   </ItemGroup>
