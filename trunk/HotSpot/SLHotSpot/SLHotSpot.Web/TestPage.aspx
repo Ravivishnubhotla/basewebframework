@@ -7,11 +7,11 @@
     <title>热点展示页面</title>
     <link rel="stylesheet" type="text/css" href="Scripts/EasyUI/themes/gray/easyui.css" />
     <link rel="stylesheet" type="text/css" href="Scripts/EasyUI/themes/icon.css" />
-    <link type="text/css" href="Scripts/JQueryUI/css/smoothness/jquery-ui-1.8.19.custom.css"
-        rel="stylesheet" />
+    <%--    <link type="text/css" href="Scripts/JQueryUI/css/smoothness/jquery-ui-1.8.19.custom.css"
+        rel="stylesheet" />--%>
     <script type="text/javascript" src="Scripts/JQuery/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="Scripts/EasyUI/jquery.easyui.min.js"></script>
-    <script type="text/javascript" src="Scripts/JQueryUI/js/jquery-ui-1.8.19.custom.min.js"></script>
+    <%--    <script type="text/javascript" src="Scripts/JQueryUI/js/jquery-ui-1.8.19.custom.min.js"></script>--%>
     <script type="text/javascript" src="Silverlight.js"></script>
     <script type="text/javascript">
         function onSilverlightError(sender, args) {
@@ -54,28 +54,24 @@
 
         $(function () {
 
-            $("#slider").slider();
-
-//            var data = { total: 9, rows:  [
-//                { itemid: '01' },
-//                { itemid: '02' },
-//                { itemid: '03' },
-//                { itemid: '04' },
-//                { itemid: '05' },
-//                { itemid: '06' },
-//                { itemid: '07' },
-//                { itemid: '08' },
-//                { itemid: '09' }
-//            ] };
-
-//            try {
-//                $('#dg').datagrid('load', data);
-//            }
-//            catch (err) {
-//                alert(err.description);
-//            }
+            //            $("#slider").slider();
 
 
+            $('#tt').datagrid({
+                onSelect: function (rowIndex) {
+                    alert(rowIndex);
+                },
+                onUnselect: function (rowIndex) {
+                    alert(rowIndex);
+                },
+                onSelectAll: function (rows) {
+                    alert(rows);
+                },
+                onUnselectAll: function (rows) {
+                    alert(rows);
+                }
+
+            });
 
 
         });
@@ -95,7 +91,7 @@
                 <param name="minRuntimeVersion" value="5.0.61118.0" />
                 <param name="autoUpgrade" value="true" />
                 <param name="enableHtmlAccess" value="true" />
-                <param name="initParams" value="WebServiceUrl=http://localhost:64141/HotSpotWebService.asmx,RootUrl=http://localhost:64141/,HotSpotBgImage=http://localhost:64141/Images/M001001_F1_0-3.png,Mode=Change,DataID=M001001_F1_0" />
+                <param name="initParams" value="WebServiceUrl=http://localhost:64141/HotSpotWebService.asmx,RootUrl=http://localhost:64141/,HotSpotBgImage=http://localhost:64141/Images/M001001_F1_0-3.png,Mode=View,DataID=M001001_F1_0" />
                 <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=5.0.61118.0" style="text-decoration: none">
                     <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight"
                         style="border-style: none" />
@@ -106,25 +102,32 @@
         </div>
     </div>
     <div region="east" split="true" title="商铺信息" style="width: 200px;">
-        <div style="padding: 5px; margin: 0;">
-            图像缩放:</div>
-        <div style="padding: 5px; margin: 0;">
-            <div id="slider">
-            </div>
-        </div>
-        <table id="tt" title="Checkbox Select" class="easyui-datagrid" style="width: 190px;
-            height: 300px;" idfield="itemid" pagination="true"            url="http://www.jeasyui.com/tutorial/datagrid/data/datagrid_data.json"
-            iconcls="icon-save">
-            <thead>
-                <tr>
-                    <th field="ck" checkbox="true">
-                    </th>
-                    <th field="itemid" width="150">
-                        商铺位
-                    </th>
-                </tr>
-            </thead>
+        <form id="ff" action="Handler1.ashx" method="post">
+        <table>
+            <tr>
+                <td style="text-align: center;">
+                    <div class="easyui-slider" min="1" max="6" step="1" style="width: 170px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="tt" title="商铺列表" class="easyui-datagrid" style="width: 187px; height: 450px;"
+                        idfield="itemid" pagination="false" url="Handler1.ashx" iconcls="icon-save">
+                        <thead>
+                            <tr>
+                                <th field="ck" checkbox="true">
+                                </th>
+                                <th field="itemid" width="130">
+                                    商铺位
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </td>
+            </tr>
         </table>
+        </form>
     </div>
 </body>
 </html>
