@@ -32,7 +32,7 @@
             <ColumnDefinition Width="75*" />
         </Grid.ColumnDefinitions>
         <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
-        <ScrollViewer Name="ssvDraw" Grid.Row="0" Grid.Column="1"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Name="ssvDraw" Grid.Row="0" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
             <toolkit:BusyIndicator Name="biLoadingImage" IsBusy="False" DisplayAfter="0" BusyContent="Downloading image...">
                 <ContentControl >
                     <toolkit:LayoutTransformer x:Name="layoutTransform">
