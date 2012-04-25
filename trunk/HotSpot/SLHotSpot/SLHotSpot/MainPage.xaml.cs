@@ -62,7 +62,6 @@ namespace SLHotSpot
             setting = _hotSpotSetting;
 
             LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
- 
 
             switch (setting.ControlMode)
             {
@@ -74,8 +73,8 @@ namespace SLHotSpot
                     this.pnlView.Visibility = Visibility.Visible;
                     break;
                 case Mode.Change:
-                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(70, GridUnitType.Star);
-                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(30, GridUnitType.Star);  
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(85, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(15, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Visible;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     this.pnlView.Visibility = Visibility.Collapsed;
@@ -157,89 +156,89 @@ namespace SLHotSpot
             //((ColumnSeries)(chartForOP.Series[1])).ItemsSource = CPData.GetAllData();
 
 
-            CreateChart();
+            //CreateChart();
         }
 
-        private Visifire.Charts.Chart chart;
+        //private Visifire.Charts.Chart chart;
 
 
-        /// <summary>
-        /// Function to create a chart
-        /// </summary>
-        public void CreateChart()
-        {
-            // Create a new instance of Chart
-            chart = new Visifire.Charts.Chart();
+        ///// <summary>
+        ///// Function to create a chart
+        ///// </summary>
+        //public void CreateChart()
+        //{
+        //    // Create a new instance of Chart
+        //    chart = new Visifire.Charts.Chart();
 
-            // Set the chart width and height
-            chart.Width = 500;
-            chart.Height = 300;
-            chart.ToolBarEnabled = true;
+        //    // Set the chart width and height
+        //    chart.Width = 500;
+        //    chart.Height = 300;
+        //    chart.ToolBarEnabled = true;
 
-            // Set chart properties
-            chart.ScrollingEnabled = true;
-            chart.View3D = true;
+        //    // Set chart properties
+        //    chart.ScrollingEnabled = true;
+        //    chart.View3D = true;
 
-            // Create a new instance of Title
-            Visifire.Charts.Title title = new Visifire.Charts.Title();
+        //    // Create a new instance of Title
+        //    Visifire.Charts.Title title = new Visifire.Charts.Title();
 
-            // Set title property
-            title.Text = "品牌竞争力分析";
+        //    // Set title property
+        //    title.Text = "品牌竞争力分析";
 
-            // Add title to Titles collection
-            chart.Titles.Add(title);
+        //    // Add title to Titles collection
+        //    chart.Titles.Add(title);
 
-            // Create a new instance of DataSeries
-            Visifire.Charts.DataSeries dataSeries = new Visifire.Charts.DataSeries();
+        //    // Create a new instance of DataSeries
+        //    Visifire.Charts.DataSeries dataSeries = new Visifire.Charts.DataSeries();
 
-            dataSeries.Name = "原有竞争力";
-            dataSeries.ShowInLegend = false;
+        //    dataSeries.Name = "原有竞争力";
+        //    dataSeries.ShowInLegend = false;
 
-            // Set DataSeries property
-            dataSeries.RenderAs = Visifire.Charts.RenderAs.Column;
+        //    // Set DataSeries property
+        //    dataSeries.RenderAs = Visifire.Charts.RenderAs.Column;
 
-            // Create a new instance of DataSeries
-            Visifire.Charts.DataSeries dataSeries2 = new Visifire.Charts.DataSeries();
+        //    // Create a new instance of DataSeries
+        //    Visifire.Charts.DataSeries dataSeries2 = new Visifire.Charts.DataSeries();
 
-            dataSeries2.Name = "现有竞争力";
-            dataSeries2.ShowInLegend = false;
+        //    dataSeries2.Name = "现有竞争力";
+        //    dataSeries2.ShowInLegend = false;
 
-            // Set DataSeries property
-            dataSeries2.RenderAs = Visifire.Charts.RenderAs.Column;
-            ;
+        //    // Set DataSeries property
+        //    dataSeries2.RenderAs = Visifire.Charts.RenderAs.Column;
+        //    ;
 
-            ObservableCollection<CPData> cpDatas = CPData.GetAllData();
+        //    ObservableCollection<CPData> cpDatas = CPData.GetAllData();
 
-            for (int i = 0; i < cpDatas.Count; i++)
-            {
-                // Create a new instance of DataPoint
-                Visifire.Charts.DataPoint dataPoint = new Visifire.Charts.DataPoint();
+        //    for (int i = 0; i < cpDatas.Count; i++)
+        //    {
+        //        // Create a new instance of DataPoint
+        //        Visifire.Charts.DataPoint dataPoint = new Visifire.Charts.DataPoint();
 
-                // Set YValue for a DataPoint
-                dataPoint.YValue = cpDatas[i].OCP;
-                dataPoint.AxisXLabel = cpDatas[i].Name;
-                dataPoint.Color = cpDatas[i].BrandColor;
-                // Add dataPoint to DataPoints collection
-                dataSeries.DataPoints.Add(dataPoint);
+        //        // Set YValue for a DataPoint
+        //        dataPoint.YValue = cpDatas[i].OCP;
+        //        dataPoint.AxisXLabel = cpDatas[i].Name;
+        //        dataPoint.Color = cpDatas[i].BrandColor;
+        //        // Add dataPoint to DataPoints collection
+        //        dataSeries.DataPoints.Add(dataPoint);
 
 
-                // Create a new instance of DataPoint
-                Visifire.Charts.DataPoint dataPoint2 = new Visifire.Charts.DataPoint();
+        //        // Create a new instance of DataPoint
+        //        Visifire.Charts.DataPoint dataPoint2 = new Visifire.Charts.DataPoint();
 
-                // Set YValue for a DataPoint
-                dataPoint2.YValue = cpDatas[i].NCP;
-                dataPoint2.AxisXLabel = cpDatas[i].Name;
-                dataPoint2.Color = cpDatas[i].BrandColor;
-                // Add dataPoint to DataPoints collection
-                dataSeries2.DataPoints.Add(dataPoint2);
-            }
+        //        // Set YValue for a DataPoint
+        //        dataPoint2.YValue = cpDatas[i].NCP;
+        //        dataPoint2.AxisXLabel = cpDatas[i].Name;
+        //        dataPoint2.Color = cpDatas[i].BrandColor;
+        //        // Add dataPoint to DataPoints collection
+        //        dataSeries2.DataPoints.Add(dataPoint2);
+        //    }
 
-            // Add dataSeries to Series collection.
-            chart.Series.Add(dataSeries);
-            chart.Series.Add(dataSeries2);
-            // Add chart to LayoutRoot
-            pnlAnalysis.Children.Add(chart);
-        }
+        //    // Add dataSeries to Series collection.
+        //    chart.Series.Add(dataSeries);
+        //    chart.Series.Add(dataSeries2);
+        //    // Add chart to LayoutRoot
+        //    pnlAnalysis.Children.Add(chart);
+        //}
 
 
         void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
@@ -779,13 +778,13 @@ namespace SLHotSpot
 
             CPData.CaculateAllData();
 
-            ObservableCollection<CPData> cpDatas = CPData.CPDatas;
+            //ObservableCollection<CPData> cpDatas = CPData.CPDatas;
 
-            for (int i = 0; i < cpDatas.Count; i++)
-            {
-                // Update DataPoint YValue property
-                chart.Series[1].DataPoints[i].YValue = cpDatas[i].NCP; // Changing the dataPoint YValue at runtime
-            }
+            //for (int i = 0; i < cpDatas.Count; i++)
+            //{
+            //    // Update DataPoint YValue property
+            //    chart.Series[1].DataPoints[i].YValue = cpDatas[i].NCP; // Changing the dataPoint YValue at runtime
+            //}
         }
 
         private void AddToCanvas(ROSHotSpot rosHotSpot,Mode mode)

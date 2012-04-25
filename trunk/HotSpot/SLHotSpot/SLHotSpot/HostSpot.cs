@@ -394,6 +394,7 @@ namespace SLHotSpot
             textBlock.Inlines.Add(new Run() { Text = this.Name });
 
             textBlock.FontFamily = new FontFamily("Arial");
+            textBlock.Foreground = new SolidColorBrush(ColorFromString.ToColor("#AAFCFA"));
  
 
             Canvas.SetLeft(textBlock, this.GetCenterLeft() - textBlock.ActualWidth / 2);

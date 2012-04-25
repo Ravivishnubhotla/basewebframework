@@ -49,6 +49,7 @@ namespace SLHotSpot
             showTextBlock = new TextBlock();
             //textBlock.Foreground =  new SolidColorBrush(rosHotSpot.GetBrandInfo().FontColor);
             showTextBlock.FontFamily = new FontFamily("Arial");
+            showTextBlock.Foreground = new SolidColorBrush(ColorFromString.ToColor("#AAFCFA"));
             showTextBlock.Inlines.Add(rosHotSpot.TextInfo.Text);
             Canvas.SetLeft(showTextBlock, rosHotSpot.TextInfo.TextLeft);
             Canvas.SetTop(showTextBlock, rosHotSpot.TextInfo.TextTop);
