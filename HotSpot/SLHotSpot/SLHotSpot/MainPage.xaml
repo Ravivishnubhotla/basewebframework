@@ -6,21 +6,6 @@
     mc:Ignorable="d"
     d:DesignHeight="768" d:DesignWidth="1024">
     <UserControl.Resources>
-        <!-- Designer Item Template-->
-        <Style x:Key="DesignerItemStyle" TargetType="ContentControl">
-            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate  TargetType="ContentControl">
-                        <Grid>
-                            <ContentPresenter Content="{TemplateBinding Content}"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
