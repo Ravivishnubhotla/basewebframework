@@ -57,58 +57,59 @@ namespace SLHotSpot
 
         private Polygon ployon; 
 
-        public void AddToCanvas(ROSHotSpot rosHotSpot, Canvas canvas)
-        {
-            ployon = new Polygon();
+        //public void AddToCanvas(ROSHotSpot rosHotSpot, Canvas canvas)
+        //{
+        //    ployon = new Polygon();
 
-            foreach (Point hotSpotPoint in HotSpotPoints)
-            {
-                ployon.Points.Add(hotSpotPoint);    
-            }
+        //    foreach (Point hotSpotPoint in HotSpotPoints)
+        //    {
+        //        ployon.Points.Add(hotSpotPoint);    
+        //    }
 
-            ployon.Stroke = new SolidColorBrush(rosHotSpot.GetBrandInfo().BorderColor);
-            ployon.StrokeThickness = 1;
-            ployon.Fill = new SolidColorBrush(rosHotSpot.GetBrandInfo().FillColor);
+        //    ployon.Stroke = new SolidColorBrush(rosHotSpot.GetBrandInfo().BorderColor);
+        //    ployon.StrokeThickness = 1;
+        //    ployon.Fill = new SolidColorBrush(rosHotSpot.GetBrandInfo().FillColor);
 
-            ployon.MouseEnter += new MouseEventHandler(polygon_OnMouseEnter);
-            ployon.MouseLeave += new MouseEventHandler(polygon_OnMouseLeave);
+        //    ployon.MouseEnter += new MouseEventHandler(polygon_OnMouseEnter);
+        //    ployon.MouseLeave += new MouseEventHandler(polygon_OnMouseLeave);
 
-            TextBlock textBlock = new TextBlock();
-            //textBlock.Foreground =  new SolidColorBrush(rosHotSpot.GetBrandInfo().FontColor);
-            textBlock.FontFamily = new FontFamily("Arial");
-            textBlock.Inlines.Add(TextInfo.Text);
-            Canvas.SetLeft(textBlock, TextInfo.TextLeft);
-            Canvas.SetTop(textBlock, TextInfo.TextTop);
+        //    TextBlock textBlock = new TextBlock();
+        //    //textBlock.Foreground =  new SolidColorBrush(rosHotSpot.GetBrandInfo().FontColor);
+        //    textBlock.FontFamily = new FontFamily("Arial");
+        //    textBlock.Foreground = new SolidColorBrush(Colors.Cyan);
+        //    textBlock.Inlines.Add(TextInfo.Text);
+        //    Canvas.SetLeft(textBlock, TextInfo.TextLeft);
+        //    Canvas.SetTop(textBlock, TextInfo.TextTop);
 
-            TransformGroup transformGroup = new TransformGroup();
+        //    TransformGroup transformGroup = new TransformGroup();
 
-            ScaleTransform scaleTransform = new ScaleTransform();
+        //    ScaleTransform scaleTransform = new ScaleTransform();
 
-            scaleTransform.CenterX = TextInfo.TextScaleCenterX;
-            scaleTransform.CenterY = TextInfo.TextScaleCenterY;
-            scaleTransform.ScaleX = TextInfo.TextScaleX;
-            scaleTransform.ScaleY = TextInfo.TextScaleY;
+        //    scaleTransform.CenterX = TextInfo.TextScaleCenterX;
+        //    scaleTransform.CenterY = TextInfo.TextScaleCenterY;
+        //    scaleTransform.ScaleX = TextInfo.TextScaleX;
+        //    scaleTransform.ScaleY = TextInfo.TextScaleY;
 
-            transformGroup.Children.Add(scaleTransform);
+        //    transformGroup.Children.Add(scaleTransform);
 
-            if (TextInfo.TextIsVertical)
-            {
-                RotateTransform rotateTransform = new RotateTransform();
+        //    if (TextInfo.TextIsVertical)
+        //    {
+        //        RotateTransform rotateTransform = new RotateTransform();
 
-                rotateTransform.CenterX = TextInfo.TextVerticalCenterX;
-                rotateTransform.CenterY = TextInfo.TextVerticalCenterY;
-                rotateTransform.Angle = TextInfo.TextVerticalAngle;
-                transformGroup.Children.Add(rotateTransform);
-            }
+        //        rotateTransform.CenterX = TextInfo.TextVerticalCenterX;
+        //        rotateTransform.CenterY = TextInfo.TextVerticalCenterY;
+        //        rotateTransform.Angle = TextInfo.TextVerticalAngle;
+        //        transformGroup.Children.Add(rotateTransform);
+        //    }
 
-            textBlock.RenderTransform = transformGroup;
+        //    textBlock.RenderTransform = transformGroup;
 
-            textBlock.MouseEnter += new MouseEventHandler(textBlock_OnMouseEnter);
+        //    textBlock.MouseEnter += new MouseEventHandler(textBlock_OnMouseEnter);
             
-            canvas.Children.Add(ployon);
-            canvas.Children.Add(textBlock);
+        //    canvas.Children.Add(ployon);
+        //    canvas.Children.Add(textBlock);
  
-        }
+        //}
 
         #region OnMove特效
 

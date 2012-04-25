@@ -54,10 +54,8 @@
         <sdk:GridSplitter  Grid.Column="1"  Width="5"></sdk:GridSplitter>
         <StackPanel  Grid.Row="0" Grid.Column="2" Background="Gray" >
             <StackPanel Name="pnlAnalysis">
-                <Button Name="btnStartAnalysis" Visibility="Collapsed"  Content="执行竞争力分析" Margin="5" Click="btnStartAnalysis_Click" Width="100"  HorizontalAlignment="Left"/>
-
                 <sdk:DataGrid x:Name="dgBrandCP" Margin="2"
-            Height="260"   SelectionMode="Single" 
+            Height="360"   SelectionMode="Single" 
             AutoGenerateColumns="False"  
             GridLinesVisibility="All"
             RowBackground="White">
@@ -65,15 +63,13 @@
                         <sdk:DataGridTemplateColumn Header="名称" IsReadOnly="True" Width="100">
                             <sdk:DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <StackPanel  Width="260" Orientation="Horizontal">
+                                    <StackPanel  Width="100" Orientation="Horizontal">
                                         <TextBlock Text="{Binding Name}"/>
-                                        <TextBlock Text="-"/>
-                                        <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellEditingTemplate>
                         </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTemplateColumn Header="原有竞争力"  IsReadOnly="True" Width="80" >
+                        <sdk:DataGridTemplateColumn Header="原有竞争力"  IsReadOnly="True" Width="75" >
                             <sdk:DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -82,7 +78,7 @@
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellEditingTemplate>
                         </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTemplateColumn Header="现有竞争力"  IsReadOnly="True" Width="80" >
+                        <sdk:DataGridTemplateColumn Header="现有竞争力"  IsReadOnly="True" Width="75" >
                             <sdk:DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -93,14 +89,6 @@
                         </sdk:DataGridTemplateColumn>
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
-                <toolkit:Chart Name="chartForOP" Height="350" Visibility="Collapsed" Title="品牌竞争力分析">
-                    <toolkit:Chart.Series >
-                        <toolkit:ColumnSeries Title="原有竞争力分析"  DependentValueBinding="{Binding OCP}" IndependentValueBinding="{Binding Name}">
-                        </toolkit:ColumnSeries>
-                        <toolkit:ColumnSeries Title="现有竞争力分析" DependentValueBinding="{Binding NCP}" IndependentValueBinding="{Binding Name}">
-                        </toolkit:ColumnSeries>
-                    </toolkit:Chart.Series>
-                </toolkit:Chart>
             </StackPanel>
             <StackPanel  Name="pnlManage">
                 <toolkit:WrapPanel >
@@ -154,7 +142,6 @@
                                                 <Button Margin="1" Content="-" Tag="-"  CommandParameter="{Binding ID}"   Click="dgHotSpot_OnTextChangeClick"  />
                                             </StackPanel>
                                         </StackPanel>
-
                                     </StackPanel>
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellTemplate>
@@ -200,11 +187,9 @@
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
             </StackPanel>
-
             <Button Name="btnSelectImage" Content="加载图片" Margin="7" Click="btnSelectImage_Click"/>
             <TextBlock Name="txtzoom"  Visibility="Collapsed" Text="图片缩放" HorizontalAlignment="Left" Margin="7"/>
             <Slider Name="zoomSlider"  Visibility="Collapsed" Margin="7" Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
         </StackPanel>
-
     </Grid>
 </UserControl>
