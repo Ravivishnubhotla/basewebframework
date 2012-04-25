@@ -14,6 +14,7 @@ using System.ComponentModel;
 
 namespace SLHotSpot
 {
+    [ScriptableType]
     public class HostSpot : INotifyPropertyChanged
     {
         #region 常量
@@ -48,6 +49,7 @@ namespace SLHotSpot
 
         public Guid ID { get; set; }
 
+        [ScriptableMember]
         public string DataID { get; set; }
 
         public string Comment { get; set; }

@@ -51,8 +51,9 @@ namespace SLHotSpot
 
                 rosHotSpots.Add(rosHot);
             }
+
+            return "{\"total\":" + rosHotSpots.Count.ToString() + ",\"rows\":" + JsonConvert.SerializeObject(rosHotSpots) + "}";
  
-            return JsonConvert.SerializeObject(rosHotSpots);
         }
 
         private Polygon ployon; 

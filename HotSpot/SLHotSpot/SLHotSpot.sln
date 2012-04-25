@@ -14,6 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{62C665F5-5
 		Dlls\SLVisifire.Charts.dll = Dlls\SLVisifire.Charts.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls2", "Dlls2", "{86A9FC22-98B9-4A56-B2F0-453506E88D0A}"
+	ProjectSection(SolutionItems) = preProject
+		Dlls2\Newtonsoft.Json.dll = Dlls2\Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

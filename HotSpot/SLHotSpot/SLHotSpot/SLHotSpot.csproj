@@ -106,6 +106,7 @@
     <Compile Include="DiagramDesigner\RotateThumb.cs" />
     <Compile Include="DragMover.cs" />
     <Compile Include="HostSpot.cs" />
+    <Compile Include="HotSpotItemEventArgs.cs" />
     <Compile Include="HotSpotPolygon.cs" />
     <Compile Include="HotSpotText.cs" />
     <Compile Include="MainPage.xaml.cs">

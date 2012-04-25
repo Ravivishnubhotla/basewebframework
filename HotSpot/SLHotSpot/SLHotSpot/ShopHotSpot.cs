@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows;
+using System.Windows.Browser;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Ink;
@@ -11,10 +12,10 @@ using System.Windows.Shapes;
 
 namespace SLHotSpot
 {
+    [ScriptableType]
     public class ShopHotSpot : HostSpot
     {
-
-
+ 
         public ShopHotSpot(Guid id, string brand)
             : base(id)
         {
