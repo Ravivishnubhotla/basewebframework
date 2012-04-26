@@ -176,5 +176,6 @@
             <TextBlock Name="txtzoom"  Visibility="Collapsed" Text="图片缩放" HorizontalAlignment="Left" Margin="7"/>
             <Slider Name="zoomSlider"  Visibility="Collapsed" Margin="7" Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
         </StackPanel>
+ 
     </Grid>
 </UserControl>
