@@ -25,7 +25,13 @@ namespace SLHotSpot
             this.Exit += this.Application_Exit;
             this.UnhandledException += this.Application_UnhandledException;
 
+
+
             InitializeComponent();
+ 
+
+            if (!System.Windows.Controls.Theming.WhistlerBlueTheme.GetIsApplicationTheme(Application.Current))
+                System.Windows.Controls.Theming.WhistlerBlueTheme.SetIsApplicationTheme(Application.Current, true);
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
