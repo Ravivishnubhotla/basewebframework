@@ -46,6 +46,23 @@ namespace SLHotSpot.Web
             return "";
         }
 
+
+
+        public ShopMallLayoutData LoadShopMallLayoutData(string shopMallLayoutNo)
+        {
+            return null;
+        }
+
+        public List<BrandInfo> GetAllBrandInfo()
+        {
+            return null;
+        }
+
+        public List<RosShopInfo> CaculateNewCompleteNumber(List<RosShopInfo> rosShopInfos)
+        {
+            return null;
+        }
+
  
 
     }
