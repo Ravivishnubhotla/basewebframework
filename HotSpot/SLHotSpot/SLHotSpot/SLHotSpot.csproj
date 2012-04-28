@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="ShopHotSpot.cs" />
     <Compile Include="ShopInfo.cs" />
+    <Compile Include="ShopMallLayoutData.cs" />
     <Compile Include="SLHotSpotSetting.cs" />
   </ItemGroup>
   <ItemGroup>
