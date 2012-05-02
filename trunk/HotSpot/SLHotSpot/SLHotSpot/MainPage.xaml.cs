@@ -56,9 +56,13 @@ namespace SLHotSpot
  
             InitializeComponent();
 
+            //casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
+            //casDrawPanel.MouseMove += ssvDrawOnMouseMove;
+            //casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
             casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
             casDrawPanel.MouseMove += ssvDrawOnMouseMove;
             casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
+
 
             setting = _hotSpotSetting;
 
@@ -130,26 +134,14 @@ namespace SLHotSpot
             if (string.IsNullOrEmpty(hotSpotData))
                 return;
 
-            //List<UIElement> removedElements = new List<UIElement>();
-            //foreach (UIElement element in casDrawPanel.Children)
-            //{
-            //    if (!(element is Image))
-            //    {
-            //        removedElements.Add(element);
-            //    }
-            //}
-            //foreach (UIElement removedElement in removedElements)
-            //{
-            //    casDrawPanel.Children.Remove(removedElement);
-            //}
+ 
 
             ClearAll();
+
             JsonSerializer serializer = new JsonSerializer();
+
             var o = (JObject)serializer.Deserialize(new JsonTextReader(new StringReader(hotSpotData)));
-
-
-
-
+ 
 
             List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(o["rows"].ToString());
 
@@ -170,94 +162,13 @@ namespace SLHotSpot
             }
 
             dgBrandCP.ItemsSource = CPData.GetAllData();
-            //((ColumnSeries)(chartForOP.Series[0])).ItemsSource = CPData.GetAllData();
-            //((ColumnSeries)(chartForOP.Series[1])).ItemsSource = CPData.GetAllData();
-
-
-            //CreateChart();
+ 
         }
 
         //private Visifire.Charts.Chart chart;
 
 
-        ///// <summary>
-        ///// Function to create a chart
-        ///// </summary>
-        //public void CreateChart()
-        //{
-        //    // Create a new instance of Chart
-        //    chart = new Visifire.Charts.Chart();
-
-        //    // Set the chart width and height
-        //    chart.Width = 500;
-        //    chart.Height = 300;
-        //    chart.ToolBarEnabled = true;
-
-        //    // Set chart properties
-        //    chart.ScrollingEnabled = true;
-        //    chart.View3D = true;
-
-        //    // Create a new instance of Title
-        //    Visifire.Charts.Title title = new Visifire.Charts.Title();
-
-        //    // Set title property
-        //    title.Text = "品牌竞争力分析";
-
-        //    // Add title to Titles collection
-        //    chart.Titles.Add(title);
-
-        //    // Create a new instance of DataSeries
-        //    Visifire.Charts.DataSeries dataSeries = new Visifire.Charts.DataSeries();
-
-        //    dataSeries.Name = "原有竞争力";
-        //    dataSeries.ShowInLegend = false;
-
-        //    // Set DataSeries property
-        //    dataSeries.RenderAs = Visifire.Charts.RenderAs.Column;
-
-        //    // Create a new instance of DataSeries
-        //    Visifire.Charts.DataSeries dataSeries2 = new Visifire.Charts.DataSeries();
-
-        //    dataSeries2.Name = "现有竞争力";
-        //    dataSeries2.ShowInLegend = false;
-
-        //    // Set DataSeries property
-        //    dataSeries2.RenderAs = Visifire.Charts.RenderAs.Column;
-        //    ;
-
-        //    ObservableCollection<CPData> cpDatas = CPData.GetAllData();
-
-        //    for (int i = 0; i < cpDatas.Count; i++)
-        //    {
-        //        // Create a new instance of DataPoint
-        //        Visifire.Charts.DataPoint dataPoint = new Visifire.Charts.DataPoint();
-
-        //        // Set YValue for a DataPoint
-        //        dataPoint.YValue = cpDatas[i].OCP;
-        //        dataPoint.AxisXLabel = cpDatas[i].Name;
-        //        dataPoint.Color = cpDatas[i].BrandColor;
-        //        // Add dataPoint to DataPoints collection
-        //        dataSeries.DataPoints.Add(dataPoint);
-
-
-        //        // Create a new instance of DataPoint
-        //        Visifire.Charts.DataPoint dataPoint2 = new Visifire.Charts.DataPoint();
-
-        //        // Set YValue for a DataPoint
-        //        dataPoint2.YValue = cpDatas[i].NCP;
-        //        dataPoint2.AxisXLabel = cpDatas[i].Name;
-        //        dataPoint2.Color = cpDatas[i].BrandColor;
-        //        // Add dataPoint to DataPoints collection
-        //        dataSeries2.DataPoints.Add(dataPoint2);
-        //    }
-
-        //    // Add dataSeries to Series collection.
-        //    chart.Series.Add(dataSeries);
-        //    chart.Series.Add(dataSeries2);
-        //    // Add chart to LayoutRoot
-        //    pnlAnalysis.Children.Add(chart);
-        //}
-
+ 
 
         void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
@@ -271,15 +182,7 @@ namespace SLHotSpot
         {
             biLoadingImage.IsBusy = false;
 
-            //if(e.Error!=null)
-            //{
-            //    MessageBox.Show(e.Error.Message);
-            //    return;
-            //}
-
             LoadingImage(e.Result);
-
-
         }
 
         private void ssvDrawOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -309,8 +212,10 @@ namespace SLHotSpot
 
                     lastDragPoint = posNow;
 
+
                     ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
                     ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
+ 
                 }
             }
         }
@@ -381,8 +286,6 @@ namespace SLHotSpot
                 {
                     cwShopEditor cwShop = new cwShopEditor();
                     cwShop.ShowAdd(hostSpot, this);
-                    //winHotSpot winHotSpot = new winHotSpot();
-                    //winHotSpot.ShowAdd(hostSpot);
                     cwShop.Closed += new EventHandler(winHotSpot_Closed);
                 }
                 else
@@ -427,12 +330,8 @@ namespace SLHotSpot
             }
             else if (hotSpotEditor.DataMode == DataFormMode.Edit)
             {
-
-
-
-
                 ShopHotSpot shopHotSpot = hotSpotEditor.GetItem();
-                //shopHotSpot.UpdateText();
+ 
                 shopHotSpot.UpdateHotspot(casDrawPanel, this.setting.ControlMode, this);
                 dgHotSpot.ItemsSource = HostSpots;
             }
@@ -469,6 +368,7 @@ namespace SLHotSpot
         private void btnClearHotSpot_Click(object sender, RoutedEventArgs e)
         {
             List<UIElement> removedElements = new List<UIElement>();
+
             foreach (UIElement element in casDrawPanel.Children)
             {
                 if (element is Rectangle && ((Rectangle)element).Tag == null)
@@ -485,9 +385,10 @@ namespace SLHotSpot
         private void ClearAll()
         {
             List<UIElement> removedElements = new List<UIElement>();
+
             foreach (UIElement element in casDrawPanel.Children)
             {
-                if (!(element is Image))
+                if (!(element is Image) && !(element is Rectangle))
                 {
                     removedElements.Add(element);
                 }
@@ -562,6 +463,7 @@ namespace SLHotSpot
             ShopHotSpot shopHot = GetHotSpotBy(deleteId);
 
             List<UIElement> removedElements = new List<UIElement>();
+
             foreach (UIElement element in casDrawPanel.Children)
             {
                 if (element is Polygon && ((Polygon)element).Tag == shopHot)
@@ -659,13 +561,9 @@ namespace SLHotSpot
 
         private void btnSaveHotSpot_Click(object sender, RoutedEventArgs e)
         {
-             
-
+ 
             HotSpotWebServiceSoapClient serviceClient = GetHotSpotWebServiceSoapClient();
-
-
-
-
+ 
             serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
             serviceClient.SaveHotspotDataCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
 
@@ -673,11 +571,11 @@ namespace SLHotSpot
 
         private HotSpotWebServiceSoapClient GetHotSpotWebServiceSoapClient()
         {
-
-
             BasicHttpBinding basicBinding = new BasicHttpBinding();
+
             basicBinding.MaxBufferSize = 2147483647;
             basicBinding.MaxReceivedMessageSize = 2147483647;
+
             CustomBinding binding = new CustomBinding(basicBinding);
 
             BindingElement binaryElement = new BinaryMessageEncodingBindingElement();
@@ -685,9 +583,7 @@ namespace SLHotSpot
             EndpointAddress endPoint = new EndpointAddress(setting.WebServiceUrl);
 
             HotSpotWebServiceSoapClient serviceClient = new HotSpotWebServiceSoapClient(binding, endPoint);
-            //HotSpotWebServiceSoapClient serviceClient = new HotSpotWebServiceSoapClient();
-            //serviceClient =
-            //    (HotSpotWebServiceSoapClient) Activator.CreateInstance(typeof (HotSpotWebServiceSoapClient), binding, endPoint);
+ 
             return serviceClient;
         }
 
@@ -762,19 +658,13 @@ namespace SLHotSpot
             dgHotSpot.ItemsSource = HostSpots;
 
             CPData.CaculateAllData();
-
-            //ObservableCollection<CPData> cpDatas = CPData.CPDatas;
-
-            //for (int i = 0; i < cpDatas.Count; i++)
-            //{
-            //    // Update DataPoint YValue property
-            //    chart.Series[1].DataPoints[i].YValue = cpDatas[i].NCP; // Changing the dataPoint YValue at runtime
-            //}
+ 
         }
 
         private void AddToCanvas(ROSHotSpot rosHotSpot,Mode mode)
         {
             ShopHotSpot shopHot = new ShopHotSpot(rosHotSpot, casDrawPanel, mode,this);
+
             HostSpots.Add(shopHot);
         }
 
@@ -828,6 +718,7 @@ namespace SLHotSpot
         private void chkCheckAlldgHotSpotView_Click(object sender, RoutedEventArgs e)
         {
             var checkBox = sender as CheckBox;
+
             bool selected = checkBox.IsChecked.HasValue ? checkBox.IsChecked.Value : false;
 
             foreach (var hostSpot in HostSpots)

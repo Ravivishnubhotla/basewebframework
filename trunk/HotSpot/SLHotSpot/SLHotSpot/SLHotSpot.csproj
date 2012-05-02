@@ -159,6 +159,7 @@
     <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.SaveHotspotDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <Resource Include="Images\mapctrls.png" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
