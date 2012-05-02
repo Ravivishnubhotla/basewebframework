@@ -12,12 +12,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*" />
             <ColumnDefinition Width="50*" />
             <ColumnDefinition Width="75*" />
         </Grid.ColumnDefinitions>
-        <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
-        <ScrollViewer Name="ssvDraw"   Grid.Row="0" Grid.Column="1"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Name="ssvDraw"   Grid.Row="0" Grid.Column="0"  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
             <toolkit:BusyIndicator Name="biLoadingImage" IsBusy="False" DisplayAfter="0" BusyContent="Downloading image...">
                 <ContentControl >
                     <toolkit:LayoutTransformer x:Name="layoutTransform">
@@ -30,14 +28,15 @@
                             <Canvas Name="casDrawPanel">
                                 <Image Name="imgBg" Canvas.Top="0" Canvas.Left="0">
                                 </Image>
+                                 
                             </Canvas>
                         </toolkit:LayoutTransformer.Content>
                     </toolkit:LayoutTransformer>
                 </ContentControl>
             </toolkit:BusyIndicator>
         </ScrollViewer>
-        <sdk:GridSplitter  Grid.Column="1"  Width="5"></sdk:GridSplitter>
-        <StackPanel  Grid.Row="0" Grid.Column="2" Background="Gray" >
+        <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
+        <StackPanel  Grid.Row="0" Grid.Column="1" Background="Gray" >
             <StackPanel Name="pnlAnalysis">
                 <sdk:DataGrid x:Name="dgBrandCP" Margin="2"
             Height="360"   SelectionMode="Single" 
@@ -174,8 +173,27 @@
             </StackPanel>
             <Button Name="btnSelectImage" Content="加载图片" Margin="7" Click="btnSelectImage_Click"/>
             <TextBlock Name="txtzoom"  Visibility="Collapsed" Text="图片缩放" HorizontalAlignment="Left" Margin="7"/>
-            <Slider Name="zoomSlider"  Visibility="Collapsed" Margin="7" Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
+
+ 
         </StackPanel>
  
+        <Button Name="btnUp" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,10" Width="16" Height="16" Click="btnUp_Click"></Button>
+        <Button Name="btnLeft" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="34,26" Width="16" Height="16" Click="btnLeft_Click"></Button>
+        <Button Name="btnRight" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="66,26" Width="16" Height="16" Click="btnRight_Click"></Button>
+        <Button Name="btnDown" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,42" Width="16" Height="16" Click="btnDown_Click"></Button>
+        <Slider HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="52,56" Orientation="Vertical" Height="230" Name="zoomSlider"   Visibility="Collapsed"  Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
+
+
+        <!--<Image  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20,20"  Canvas.ZIndex="9999"  Height="442" Width="37" Source="Images/mapctrls.png">
+            <Image.Clip>
+                <RectangleGeometry Rect="0,0,37,310"></RectangleGeometry>
+            </Image.Clip>
+        </Image>-->
+ 
+        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20,20"  Canvas.ZIndex="9999"  Height="200" Width="30" Content="Button 2">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/mapctrls.png"/>
+            </Button.Background>
+        </Button>-->
     </Grid>
 </UserControl>
