@@ -71,16 +71,7 @@
         $(function () {
 
 
-
-
-
-            $("#slider").slider({
-                onChange: function (newValue) {
-                    slCtl.Content.SLControl.SetZoom(newValue);
-                }
-            });
-
-
+ 
             $('#tt').datagrid({
                 onSelect: function (rowIndex, rowData) {
                     slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, true);
@@ -132,16 +123,16 @@
     </div>
     <div region="east" split="true" title="设置" style="width: 200px;">
         <div class="easyui-layout" fit="true">
-            <div region="north" title="缩放" split="false" style="overflow: hidden; height: 60px;
-                padding: 10px">
-                <div id="slider" class="easyui-slider" min="1" max="6" step="1" fit="true">
-                </div>
+            <div region="north" title="设置" split="false" style="overflow: hidden; height: 60px;
+                padding: 10px"><label for="chkShowAllBrandInfo">显示所有的品牌：</label> 
+                 <input id="chkShowAllBrandInfo" type="checkbox" />
             </div>
             <div region="center" title="商铺" style="background: #fafafa; overflow: hidden" tools="#tol">
                 <table id="tt" title="商铺列表" class="easyui-datagrid" border="false" fit="true" fitcolumns="true"
                     idfield="itemid" pagination="false" url="Handler1.ashx?223232" iconcls="icon-save">
                     <thead>
                         <tr>
+                            
                             <th field="ck" checkbox="true">
                             </th>
                             <th field="ShopNO" width="130" formatter="showShop">

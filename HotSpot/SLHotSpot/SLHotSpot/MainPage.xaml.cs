@@ -64,29 +64,33 @@ namespace SLHotSpot
             casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
 
 
+         
+
+
             setting = _hotSpotSetting;
 
-            LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
+            //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
 
             switch (setting.ControlMode)
             {
                 case Mode.View:
-                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(100, GridUnitType.Star);
-                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(0, GridUnitType.Star);  
+                    LayoutRoot.ColumnDefinitions[0].Width = new GridLength(100, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(0, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Collapsed;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     this.pnlView.Visibility = Visibility.Visible;
                     break;
                 case Mode.Change:
-                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(85, GridUnitType.Star);
-                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(15, GridUnitType.Star);  
+                    LayoutRoot.ColumnDefinitions[0].Width = new GridLength(85, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(15, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Visible;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     this.pnlView.Visibility = Visibility.Collapsed;
                     break;
                 case Mode.Design:
-                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(75, GridUnitType.Star);
-                    LayoutRoot.ColumnDefinitions[2].Width = new GridLength(25, GridUnitType.Star);  
+                    //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(25, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[0].Width = new GridLength(75, GridUnitType.Star);
+                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(25, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Collapsed;
                     this.pnlManage.Visibility = Visibility.Visible;
                     this.pnlView.Visibility = Visibility.Collapsed;
@@ -162,7 +166,9 @@ namespace SLHotSpot
             }
 
             dgBrandCP.ItemsSource = CPData.GetAllData();
- 
+
+            //cwZoom coom = new cwZoom();
+            //coom.Show();
         }
 
         //private Visifire.Charts.Chart chart;
@@ -212,10 +218,24 @@ namespace SLHotSpot
 
                     lastDragPoint = posNow;
 
+                    
+
 
                     ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
                     ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
- 
+
+                    //Point pp = e.GetPosition(LayoutRoot);
+
+                    //fg.Text = string.Format("{0},{1}", pp.X, pp.Y) + "\n" + string.Format("{0},{1}", posNow.X, posNow.Y);
+
+                    //MessageBox.Show(string.Format("{0},{1}", pp.X, pp.Y));
+
+                    //MessageBox.Show(string.Format("{0},{1}", pp.X, pp.Y));
+
+                    //Canvas.SetLeft(xxx, posNow.X - pp.X + scaleTransform.ScaleX *20);
+                    //Canvas.SetTop(xxx, posNow.Y - pp.Y + scaleTransform.ScaleY * 20);
+                    //ssvDraw.ScrollToHorizontalOffset(scaleTransform.ScaleX * dX);
+                    //ssvDraw.ScrollToVerticalOffset(scaleTransform.ScaleY * dY);
                 }
             }
         }
@@ -731,6 +751,26 @@ namespace SLHotSpot
         private void userControl_Loaded(object sender, RoutedEventArgs e)
         {
             HtmlPage.RegisterScriptableObject("SLControl",this);
+        }
+
+        private void btnUp_Click(object sender, RoutedEventArgs e)
+        {
+            ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * 10);  
+        }
+
+        private void btnLeft_Click(object sender, RoutedEventArgs e)
+        {
+            ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * 10);   
+        }
+
+        private void btnRight_Click(object sender, RoutedEventArgs e)
+        {
+            ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset + scaleTransform.ScaleX * 10);      
+        }
+
+        private void btnDown_Click(object sender, RoutedEventArgs e)
+        {
+            ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset + scaleTransform.ScaleY * 10);          
         }
     }
 }
