@@ -132,7 +132,6 @@
                     idfield="itemid" pagination="false" url="Handler1.ashx?223232" iconcls="icon-save">
                     <thead>
                         <tr>
-                            
                             <th field="ck" checkbox="true">
                             </th>
                             <th field="ShopNO" width="130" formatter="showShop">
