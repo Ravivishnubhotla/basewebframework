@@ -9,13 +9,9 @@
             </basicHttpBinding>
         </bindings>
         <client>
-          <endpoint address="http://localhost:12031/HotSpotWebService.asmx"
-                          binding="basicHttpBinding" bindingConfiguration="HotSpotWebServiceSoap"
-                          contract="HotSpotService.HotSpotWebServiceSoap" name="HotSpotWebServiceSoap" />
-          
-          <!--<endpoint address="http://localhost:64141/HotSpotWebService.asmx"
+            <endpoint address="http://localhost:12686/HotSpotWebService.asmx"
                 binding="basicHttpBinding" bindingConfiguration="HotSpotWebServiceSoap"
-                contract="HotSpotService.HotSpotWebServiceSoap" name="HotSpotWebServiceSoap" />-->
+                contract="HotSpotService.HotSpotWebServiceSoap" name="HotSpotWebServiceSoap" />
         </client>
     </system.serviceModel>
 </configuration>

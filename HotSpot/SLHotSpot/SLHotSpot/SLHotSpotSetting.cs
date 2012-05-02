@@ -13,11 +13,25 @@ namespace SLHotSpot
 {
     public class SLHotSpotSetting
     {
-        private   string hotSpotBgImage = string.Empty;
+        private string hotSpotBgImage = string.Empty;
+        private string shopMallNo = string.Empty;
+        private string floorNo = string.Empty;
         private string dataID = string.Empty;
         private Mode controlMode = Mode.View;
         private string webServiceUrl = string.Empty;
         private string rootUrl = string.Empty;
+
+        public string ShopMallNo
+        {
+            get { return shopMallNo; }
+            set { shopMallNo = value; }
+        }
+
+        public string FloorNo
+        {
+            get { return floorNo; }
+            set { floorNo = value; }
+        }
 
         public string HotSpotBgImage
         {

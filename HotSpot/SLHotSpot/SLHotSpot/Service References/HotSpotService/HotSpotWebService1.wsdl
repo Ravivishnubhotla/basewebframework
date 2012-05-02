@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SaveHotspotData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hotSpotData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveHotspotDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadHotspotData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadHotspotDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadHotspotDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveShopMallFloorHotspotData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="hotSpotData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveShopMallFloorHotspotDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadShopMallFloorHotspotData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadShopMallFloorHotspotDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadShopMallFloorHotspotDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadShopMallLayoutData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadShopMallLayoutDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadShopMallLayoutDataResult" type="tns:ShopMallFloorHotspotData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ShopMallFloorHotspotData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShopMallNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopMallFloorNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopInfos" type="tns:ArrayOfRosShopInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brands" type="tns:ArrayOfBrandData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRosShopInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RosShopInfo" nillable="true" type="tns:RosShopInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RosShopInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShopNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShopBrandInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompleteNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HotSpotInfo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBrandData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BrandData" nillable="true" type="tns:BrandData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BrandData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FillColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FontColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BorderColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FillOverColor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SaveHotspotDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveHotspotData" />
+  </wsdl:message>
+  <wsdl:message name="SaveHotspotDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveHotspotDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadHotspotDataSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadHotspotData" />
+  </wsdl:message>
+  <wsdl:message name="LoadHotspotDataSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadHotspotDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveShopMallFloorHotspotDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveShopMallFloorHotspotData" />
+  </wsdl:message>
+  <wsdl:message name="SaveShopMallFloorHotspotDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveShopMallFloorHotspotDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadShopMallFloorHotspotDataSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadShopMallFloorHotspotData" />
+  </wsdl:message>
+  <wsdl:message name="LoadShopMallFloorHotspotDataSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadShopMallFloorHotspotDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadShopMallLayoutDataSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadShopMallLayoutData" />
+  </wsdl:message>
+  <wsdl:message name="LoadShopMallLayoutDataSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadShopMallLayoutDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HotSpotWebServiceSoap">
+    <wsdl:operation name="SaveHotspotData">
+      <wsdl:input message="tns:SaveHotspotDataSoapIn" />
+      <wsdl:output message="tns:SaveHotspotDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadHotspotData">
+      <wsdl:input message="tns:LoadHotspotDataSoapIn" />
+      <wsdl:output message="tns:LoadHotspotDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveShopMallFloorHotspotData">
+      <wsdl:input message="tns:SaveShopMallFloorHotspotDataSoapIn" />
+      <wsdl:output message="tns:SaveShopMallFloorHotspotDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallFloorHotspotData">
+      <wsdl:input message="tns:LoadShopMallFloorHotspotDataSoapIn" />
+      <wsdl:output message="tns:LoadShopMallFloorHotspotDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallLayoutData">
+      <wsdl:input message="tns:LoadShopMallLayoutDataSoapIn" />
+      <wsdl:output message="tns:LoadShopMallLayoutDataSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotSpotWebServiceSoap" type="tns:HotSpotWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveHotspotData">
+      <soap:operation soapAction="http://tempuri.org/SaveHotspotData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadHotspotData">
+      <soap:operation soapAction="http://tempuri.org/LoadHotspotData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveShopMallFloorHotspotData">
+      <soap:operation soapAction="http://tempuri.org/SaveShopMallFloorHotspotData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallFloorHotspotData">
+      <soap:operation soapAction="http://tempuri.org/LoadShopMallFloorHotspotData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallLayoutData">
+      <soap:operation soapAction="http://tempuri.org/LoadShopMallLayoutData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotSpotWebServiceSoap12" type="tns:HotSpotWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveHotspotData">
+      <soap12:operation soapAction="http://tempuri.org/SaveHotspotData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadHotspotData">
+      <soap12:operation soapAction="http://tempuri.org/LoadHotspotData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveShopMallFloorHotspotData">
+      <soap12:operation soapAction="http://tempuri.org/SaveShopMallFloorHotspotData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallFloorHotspotData">
+      <soap12:operation soapAction="http://tempuri.org/LoadShopMallFloorHotspotData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadShopMallLayoutData">
+      <soap12:operation soapAction="http://tempuri.org/LoadShopMallLayoutData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotSpotWebService">
+    <wsdl:port name="HotSpotWebServiceSoap" binding="tns:HotSpotWebServiceSoap">
+      <soap:address location="http://localhost:12686/HotSpotWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotSpotWebServiceSoap12" binding="tns:HotSpotWebServiceSoap12">
+      <soap12:address location="http://localhost:12686/HotSpotWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

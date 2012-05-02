@@ -20,11 +20,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:64141/HotSpotWebService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:12686/HotSpotWebService.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="HotSpotWebService.disco" MetadataType="Disco" ID="f67bf490-7488-41d0-8060-18978655c6d4" SourceId="1" SourceUrl="http://localhost:64141/HotSpotWebService.asmx?disco" />
-    <MetadataFile FileName="HotSpotWebService.wsdl" MetadataType="Wsdl" ID="b695e62a-d394-4311-a75c-5be50e92f806" SourceId="1" SourceUrl="http://localhost:64141/HotSpotWebService.asmx?wsdl" />
+    <MetadataFile FileName="HotSpotWebService1.wsdl" MetadataType="Wsdl" ID="563daeae-0ce6-45a0-902e-806229222fd4" SourceId="1" SourceUrl="http://localhost:12686/HotSpotWebService.asmx?wsdl" />
+    <MetadataFile FileName="HotSpotWebService1.disco" MetadataType="Disco" ID="a9d92b00-2371-499e-b700-c40770700b6d" SourceId="1" SourceUrl="http://localhost:12686/HotSpotWebService.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

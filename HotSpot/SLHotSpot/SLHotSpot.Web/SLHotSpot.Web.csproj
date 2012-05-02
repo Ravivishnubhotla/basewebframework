@@ -343,7 +343,7 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrandInfo.cs" />
+    <Compile Include="BrandData.cs" />
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
@@ -353,7 +353,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RosShopInfo.cs" />
-    <Compile Include="ShopMallLayoutData.cs" />
+    <Compile Include="ShopMallFloorHotspotData.cs" />
     <Compile Include="TestPage.aspx.cs">
       <DependentUpon>TestPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

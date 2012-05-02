@@ -66,7 +66,7 @@
 		  <param name="minRuntimeVersion" value="5.0.61118.0" />
 		  <param name="autoUpgrade" value="true" />
           <param name="enableHtmlAccess" value="true" />
-          <param name="initParams" value="WebServiceUrl=http://localhost:64141/HotSpotWebService.asmx,RootUrl=http://localhost:64141/,HotSpotBgImage=http://localhost:64141/Images/M001001_F1_0-3.png,Mode=Design,DataID=M001001_F1_0" />
+          <param name="initParams" value="ShopMallNo=M001001,FloorNo=F1_0,WebServiceUrl=http://localhost:12686/HotSpotWebService.asmx,RootUrl=http://localhost:12686/,HotSpotBgImage=http://localhost:12686/Images/M001001_F1_0-3.png,Mode=Design,DataID=M001001_F1_0" />
 		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=5.0.61118.0" style="text-decoration:none">
  			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none"/>
 		  </a>

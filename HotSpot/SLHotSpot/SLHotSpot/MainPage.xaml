@@ -171,8 +171,8 @@
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
             </StackPanel>
-            <Button Name="btnSelectImage" Content="加载图片" Margin="7" Click="btnSelectImage_Click"/>
-            <TextBlock Name="txtzoom"  Visibility="Collapsed" Text="图片缩放" HorizontalAlignment="Left" Margin="7"/>
+ 
+ 
 
  
         </StackPanel>

@@ -5,13 +5,15 @@ using System.Web;
 
 namespace SLHotSpot.Web
 {
-    public class ShopMallLayoutData
+    [Serializable]
+    public class ShopMallFloorHotspotData
     {
         public string ShopMallNo { get; set; }
         public string ShopMallFloorNo { get; set; }
         public List<RosShopInfo> ShopInfos { get; set; }
         public string ImageUrl { get; set; }
-        public string ImageWith { get; set; }
-        public string ImageHeight { get; set; }
+        public List<BrandData> Brands { get; set; }
+        //public string ImageWith { get; set; }
+        //public string ImageHeight { get; set; }
     }
 }
