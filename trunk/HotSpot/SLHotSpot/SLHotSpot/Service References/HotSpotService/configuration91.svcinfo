@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="iW42Tj2dMQRaJwmiCAkOdKxUue8=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="ALKDSI6y/GNNlk0hV/UoiMBgP+g=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="HotSpotWebServiceSoap">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="HotSpotWebServiceSoap" contract="HotSpotService.HotSpotWebServiceSoap" bindingType="basicHttpBinding" address="http://localhost:64141/HotSpotWebService.asmx" bindingConfiguration="HotSpotWebServiceSoap">
+    <endpoint name="HotSpotWebServiceSoap" contract="HotSpotService.HotSpotWebServiceSoap" bindingType="basicHttpBinding" address="http://localhost:12686/HotSpotWebService.asmx" bindingConfiguration="HotSpotWebServiceSoap">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:64141/HotSpotWebService.asmx</serializedValue>
+          <serializedValue>http://localhost:12686/HotSpotWebService.asmx</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

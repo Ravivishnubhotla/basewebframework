@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using SLHotSpot.HotSpotService;
 
 namespace SLHotSpot
 {
@@ -143,6 +144,20 @@ namespace SLHotSpot
         public BrandInfo GetBrandInfo()
         {
             return ShopInfo.GetByShopNo(ShopNO).GetBrandInfo();
+        }
+
+        public static List<ROSHotSpot> GetFromShopMallFloorHotspotData(ShopMallFloorHotspotData shopMallFloorData)
+        {
+            List<ROSHotSpot> spots = new List<ROSHotSpot>();
+            for (int i = 0; i < shopMallFloorData.ShopInfos.Count; i++)
+            {
+                if(!string.IsNullOrEmpty(shopMallFloorData.ShopInfos[i].HotSpotInfo))
+                {
+                    ROSHotSpot rosHot =
+                        JsonConvert.DeserializeObject<ROSHotSpot>(shopMallFloorData.ShopInfos[i].HotSpotInfo);
+                }
+            }
+            return spots;
         }
     }
 }

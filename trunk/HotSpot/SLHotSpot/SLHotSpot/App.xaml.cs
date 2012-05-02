@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Newtonsoft.Json;
+using SLHotSpot.HotSpotService;
 
 namespace SLHotSpot
 {
@@ -18,6 +20,8 @@ namespace SLHotSpot
     {
  
         public static SLHotSpotSetting setting = new SLHotSpotSetting();
+
+        public static ShopMallFloorHotspotData shopMallFloorData = null;
 
         public App()
         {
@@ -48,8 +52,48 @@ namespace SLHotSpot
 
             setting.RootUrl = GetSettingValue(dir, "RootUrl");
 
+            setting.FloorNo = GetSettingValue(dir, "FloorNo");
 
-            this.RootVisual = new MainPage(setting);
+            setting.ShopMallNo = GetSettingValue(dir, "ShopMallNo");
+
+            HotSpotWebServiceSoapClient serviceClient = App.GetHotSpotWebServiceSoapClient(setting);
+
+            serviceClient.LoadShopMallLayoutDataAsync(setting.ShopMallNo, setting.FloorNo);
+            serviceClient.LoadShopMallLayoutDataCompleted += new EventHandler<LoadShopMallLayoutDataCompletedEventArgs>(serviceClient_LoadShopMallLayoutDataCompleted);
+            //serviceClient(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
+            //serviceClient.SaveHotspotDataCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
+ 
+
+        }
+
+        void serviceClient_LoadShopMallLayoutDataCompleted(object sender, LoadShopMallLayoutDataCompletedEventArgs e)
+        {
+            ShopMallFloorHotspotData shopMallFloorData = e.Result as ShopMallFloorHotspotData;
+
+            if (shopMallFloorData == null)
+                return;
+ 
+
+            this.RootVisual = new MainPage(setting, shopMallFloorData);
+        }
+
+
+        public static HotSpotWebServiceSoapClient GetHotSpotWebServiceSoapClient(SLHotSpotSetting _setting)
+        {
+            BasicHttpBinding basicBinding = new BasicHttpBinding();
+
+            basicBinding.MaxBufferSize = 2147483647;
+            basicBinding.MaxReceivedMessageSize = 2147483647;
+
+            CustomBinding binding = new CustomBinding(basicBinding);
+
+            BindingElement binaryElement = new BinaryMessageEncodingBindingElement();
+
+            EndpointAddress endPoint = new EndpointAddress(_setting.WebServiceUrl);
+
+            HotSpotWebServiceSoapClient serviceClient = new HotSpotWebServiceSoapClient(binding, endPoint);
+
+            return serviceClient;
         }
 
  

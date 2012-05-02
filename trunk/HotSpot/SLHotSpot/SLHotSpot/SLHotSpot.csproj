@@ -125,7 +125,6 @@
     </Compile>
     <Compile Include="ShopHotSpot.cs" />
     <Compile Include="ShopInfo.cs" />
-    <Compile Include="ShopMallLayoutData.cs" />
     <Compile Include="SLHotSpotSetting.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,14 +151,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
-    <None Include="Service References\HotSpotService\HotSpotWebService.wsdl" />
+    <None Include="Service References\HotSpotService\HotSpotWebService1.wsdl" />
     <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadHotspotDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadShopMallLayoutDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.SaveHotspotDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <Resource Include="Images\mapctrls.png" />
+    <None Include="Service References\HotSpotService\HotSpotWebService1.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\HotSpotService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\HotSpotService\HotSpotWebService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\HotSpotService\configuration91.svcinfo" />

@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using SLHotSpot.HotSpotService;
 
 namespace SLHotSpot
 {
@@ -61,15 +62,15 @@ namespace SLHotSpot
             get { return cpDatas; }
         }
 
-        public static ObservableCollection<CPData> GetAllData()
+        public static ObservableCollection<CPData> GetAllData(ShopMallFloorHotspotData shopMallFloorData)
         {
             cpDatas.Clear();
 
-            foreach (BrandInfo brandInfo in BrandInfo.BrandInfos)
+            foreach (BrandData brandInfo in shopMallFloorData.Brands)
             {
                 CPData cpData = new CPData();
                 cpData.Name = brandInfo.Name;
-                cpData.BrandColor = brandInfo.BrandColor;
+                cpData.BrandColor = new SolidColorBrush(ColorFromString.ToColor(brandInfo.FillColor));
                 Random random = new Random(cpData.GetHashCode());
                 cpData.OCP = random.Next(20, 100);
                 cpData.NCP = cpData.OCP;

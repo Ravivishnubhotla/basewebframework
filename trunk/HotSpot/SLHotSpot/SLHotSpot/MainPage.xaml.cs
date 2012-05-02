@@ -38,6 +38,8 @@ namespace SLHotSpot
     {
         public SLHotSpotSetting setting;
 
+        private ShopMallFloorHotspotData shopMallFloorData;
+
         public ResizeRotateChrome resize = new ResizeRotateChrome();
 
         private string hotSpotData = "";
@@ -48,9 +50,11 @@ namespace SLHotSpot
 
         public ObservableCollection<ShopHotSpot> HostSpots = new ObservableCollection<ShopHotSpot>();
 
-        public MainPage(SLHotSpotSetting _hotSpotSetting)
+        public MainPage(SLHotSpotSetting _hotSpotSetting, ShopMallFloorHotspotData _shopMallFloorData)
         {
-            Resources.Add("brandInfos", CPData.GetAllData());
+            shopMallFloorData = _shopMallFloorData;
+
+            Resources.Add("brandInfos", CPData.GetAllData(shopMallFloorData));
 
             resize.Hide();
  
@@ -62,11 +66,7 @@ namespace SLHotSpot
             casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
             casDrawPanel.MouseMove += ssvDrawOnMouseMove;
             casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
-
-
-         
-
-
+ 
             setting = _hotSpotSetting;
 
             //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
@@ -97,11 +97,11 @@ namespace SLHotSpot
                     break;
             }
 
-            if (!String.IsNullOrEmpty(setting.HotSpotBgImage))
+            if (!String.IsNullOrEmpty(shopMallFloorData.ImageUrl))
             {
                 biLoadingImage.IsBusy = true;
-
-                Uri imageuri = new Uri(setting.HotSpotBgImage);
+                var a = setting.HotSpotBgImage;
+                Uri imageuri = new Uri(shopMallFloorData.ImageUrl);
                 WebClient webClient = new WebClient();
 
                 webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(webClient_OpenReadCompleted);
@@ -110,12 +110,7 @@ namespace SLHotSpot
                 webClient.OpenReadAsync(imageuri);
             }
 
-            if (!String.IsNullOrEmpty(setting.DataID))
-            {
-                HotSpotWebServiceSoapClient serviceClient = GetHotSpotWebServiceSoapClient();
-                serviceClient.LoadHotspotDataCompleted +=new EventHandler<LoadHotspotDataCompletedEventArgs>(serviceClient_LoadHotspotDataCompleted);
-                serviceClient.LoadHotspotDataAsync(setting.DataID);
-            }
+
 
 
         }
@@ -131,45 +126,45 @@ namespace SLHotSpot
         [ScriptableMember]
         public event EventHandler ItemOpenedHandle;
 
-        private void serviceClient_LoadHotspotDataCompleted(object sender, LoadHotspotDataCompletedEventArgs e)
-        {
-            hotSpotData = e.Result;
+        //private void serviceClient_LoadHotspotDataCompleted(object sender, LoadHotspotDataCompletedEventArgs e)
+        //{
+        //    hotSpotData = e.Result;
 
-            if (string.IsNullOrEmpty(hotSpotData))
-                return;
+        //    if (string.IsNullOrEmpty(hotSpotData))
+        //        return;
 
  
 
-            ClearAll();
+        //    ClearAll();
 
-            JsonSerializer serializer = new JsonSerializer();
+        //    JsonSerializer serializer = new JsonSerializer();
 
-            var o = (JObject)serializer.Deserialize(new JsonTextReader(new StringReader(hotSpotData)));
+        //    var o = (JObject)serializer.Deserialize(new JsonTextReader(new StringReader(hotSpotData)));
  
 
-            List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(o["rows"].ToString());
+        //    List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(o["rows"].ToString());
 
-            foreach (ROSHotSpot rosHotSpot in rosHotSpots)
-            {
-                if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
-                {
-                    continue;
-                }
-                AddToCanvas(rosHotSpot, setting.ControlMode);
-            }
+        //    foreach (ROSHotSpot rosHotSpot in rosHotSpots)
+        //    {
+        //        if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
+        //        {
+        //            continue;
+        //        }
+        //        AddToCanvas(rosHotSpot, setting.ControlMode);
+        //    }
  
-            dgHotSpot.ItemsSource = HostSpots;
+        //    dgHotSpot.ItemsSource = HostSpots;
 
-            if(this.setting.ControlMode == Mode.View)
-            {
-                dgHotSpotView.ItemsSource = HostSpots;
-            }
+        //    if(this.setting.ControlMode == Mode.View)
+        //    {
+        //        dgHotSpotView.ItemsSource = HostSpots;
+        //    }
 
-            dgBrandCP.ItemsSource = CPData.GetAllData();
+        //    dgBrandCP.ItemsSource = CPData.GetAllData(shopMallFloorData);
 
-            //cwZoom coom = new cwZoom();
-            //coom.Show();
-        }
+        //    //cwZoom coom = new cwZoom();
+        //    //coom.Show();
+        //}
 
         //private Visifire.Charts.Chart chart;
 
@@ -189,6 +184,35 @@ namespace SLHotSpot
             biLoadingImage.IsBusy = false;
 
             LoadingImage(e.Result);
+ 
+            ClearAll();
+
+            List<ROSHotSpot> rosHotSpots = ROSHotSpot.GetFromShopMallFloorHotspotData(shopMallFloorData);
+             
+            foreach (ROSHotSpot rosHotSpot in rosHotSpots)
+            {
+                if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
+                {
+                    continue;
+                }
+                AddToCanvas(rosHotSpot, setting.ControlMode);
+            }
+
+            dgHotSpot.ItemsSource = HostSpots;
+
+            if (this.setting.ControlMode == Mode.View)
+            {
+                dgHotSpotView.ItemsSource = HostSpots;
+            }
+
+            dgBrandCP.ItemsSource = CPData.GetAllData(shopMallFloorData);
+
+            //if (!String.IsNullOrEmpty(setting.DataID))
+            //{
+            //    HotSpotWebServiceSoapClient serviceClient = App.GetHotSpotWebServiceSoapClient(setting);
+            //    serviceClient.LoadHotspotDataCompleted += new EventHandler<LoadHotspotDataCompletedEventArgs>(serviceClient_LoadHotspotDataCompleted);
+            //    serviceClient.LoadHotspotDataAsync(setting.DataID);
+            //}
         }
 
         private void ssvDrawOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -281,9 +305,9 @@ namespace SLHotSpot
                 Canvas.SetZIndex(casDrawPanel, -9999);
             }
 
-            btnSelectImage.Visibility = Visibility.Collapsed;
+            //btnSelectImage.Visibility = Visibility.Collapsed;
             btnDrawArea.Visibility = Visibility.Visible;
-            txtzoom.Visibility = Visibility.Visible;
+            //txtzoom.Visibility = Visibility.Visible;
             zoomSlider.Visibility = Visibility.Visible;
             //btnClearHotSpot.Visibility = Visibility.Visible;
             dgHotSpot.Visibility = Visibility.Visible;
@@ -581,31 +605,15 @@ namespace SLHotSpot
 
         private void btnSaveHotSpot_Click(object sender, RoutedEventArgs e)
         {
- 
-            HotSpotWebServiceSoapClient serviceClient = GetHotSpotWebServiceSoapClient();
+
+            HotSpotWebServiceSoapClient serviceClient = App.GetHotSpotWebServiceSoapClient(setting);
  
             serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
             serviceClient.SaveHotspotDataCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
 
         }
 
-        private HotSpotWebServiceSoapClient GetHotSpotWebServiceSoapClient()
-        {
-            BasicHttpBinding basicBinding = new BasicHttpBinding();
-
-            basicBinding.MaxBufferSize = 2147483647;
-            basicBinding.MaxReceivedMessageSize = 2147483647;
-
-            CustomBinding binding = new CustomBinding(basicBinding);
-
-            BindingElement binaryElement = new BinaryMessageEncodingBindingElement();
-
-            EndpointAddress endPoint = new EndpointAddress(setting.WebServiceUrl);
-
-            HotSpotWebServiceSoapClient serviceClient = new HotSpotWebServiceSoapClient(binding, endPoint);
  
-            return serviceClient;
-        }
 
         private void serviceClient_SaveHotspotDataCompleted(object sender, AsyncCompletedEventArgs e)
         {
@@ -688,10 +696,10 @@ namespace SLHotSpot
             HostSpots.Add(shopHot);
         }
 
-        private void btnStartAnalysis_Click(object sender, RoutedEventArgs e)
-        { 
-            CPData.CaculateAllData();
-        }
+        //private void btnStartAnalysis_Click(object sender, RoutedEventArgs e)
+        //{ 
+        //    CPData.CaculateAllData();
+        //}
 
         private void chkShowAllShop_Click(object sender, RoutedEventArgs e)
         {

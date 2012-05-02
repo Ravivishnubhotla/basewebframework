@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="LoadHotspotDataResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>SLHotSpot.HotSpotService.LoadHotspotDataResponse</TypeInfo>
+   <TypeInfo>SLHotSpot.HotSpotService.LoadHotspotDataResponse, Service References.HotSpotService.Reference.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
