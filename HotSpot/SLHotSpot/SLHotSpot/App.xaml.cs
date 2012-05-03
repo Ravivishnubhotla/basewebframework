@@ -42,15 +42,15 @@ namespace SLHotSpot
         {
             Dictionary<string, string> dir = e.InitParams as Dictionary<string, string>;
 
-            setting.HotSpotBgImage = GetSettingValue(dir, "HotSpotBgImage");
+            //setting.HotSpotBgImage = GetSettingValue(dir, "HotSpotBgImage");
 
-            setting.DataID = GetSettingValue(dir, "DataID");
+            //setting.DataID = GetSettingValue(dir, "DataID");
 
             setting.ControlMode = (Mode)Enum.Parse(typeof(Mode), GetSettingValue(dir, "Mode"), true);
 
             setting.WebServiceUrl = GetSettingValue(dir, "WebServiceUrl");
 
-            setting.RootUrl = GetSettingValue(dir, "RootUrl");
+            //setting.RootUrl = GetSettingValue(dir, "RootUrl");
 
             setting.FloorNo = GetSettingValue(dir, "FloorNo");
 

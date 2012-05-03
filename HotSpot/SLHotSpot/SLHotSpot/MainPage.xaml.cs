@@ -61,9 +61,7 @@ namespace SLHotSpot
  
             InitializeComponent();
 
-            //casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
-            //casDrawPanel.MouseMove += ssvDrawOnMouseMove;
-            //casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
+  
             casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
             casDrawPanel.MouseMove += ssvDrawOnMouseMove;
             casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
@@ -101,7 +99,7 @@ namespace SLHotSpot
             if (!String.IsNullOrEmpty(shopMallFloorData.ImageUrl))
             {
                 biLoadingImage.IsBusy = true;
-                var a = setting.HotSpotBgImage;
+ 
                 Uri imageuri = new Uri(shopMallFloorData.ImageUrl);
                 WebClient webClient = new WebClient();
 
@@ -176,7 +174,7 @@ namespace SLHotSpot
         {
             this.Dispatcher.BeginInvoke(() =>
             {
-                this.biLoadingImage.BusyContent = string.Format("Downloading image {0} of 100.", e.ProgressPercentage);
+                this.biLoadingImage.BusyContent = string.Format("图片下载中 {0} 共 100.", e.ProgressPercentage);
             });
         }
 
@@ -608,15 +606,60 @@ namespace SLHotSpot
         {
 
             HotSpotWebServiceSoapClient serviceClient = App.GetHotSpotWebServiceSoapClient(setting);
- 
-            serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
-            serviceClient.SaveHotspotDataCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
+
+            ShopMallFloorHotspotData shopMallFloorHotspot = new ShopMallFloorHotspotData();
+
+            shopMallFloorHotspot.ShopMallNo = shopMallFloorData.ShopMallNo;
+            shopMallFloorHotspot.ShopMallFloorNo = shopMallFloorData.ShopMallFloorNo;
+
+            shopMallFloorHotspot.ShopInfos = new ObservableCollection<RosShopInfo>();
+
+            foreach (ShopHotSpot shopHotSpot in HostSpots)
+            {
+                RosShopInfo rosShop = new RosShopInfo();
+                rosShop.ShopNO = shopHotSpot.DataID;
+                rosShop.HotSpotInfo = new HotSpotService.ROSHotSpot();
+                rosShop.HotSpotInfo.HotSpotPoints = new ObservableCollection<HotSpotService.Point>();
+
+                HotSpotText hotSpotText = new HotSpotText(shopHotSpot.ShowTextBlock);
+
+
+                rosShop.HotSpotInfo.TextInfo = new HotSpotService.HotSpotText();
+                rosShop.HotSpotInfo.TextInfo.Text = hotSpotText.Text;
+                rosShop.HotSpotInfo.TextInfo.TextIsVertical = hotSpotText.TextIsVertical;
+                rosShop.HotSpotInfo.TextInfo.TextLeft = hotSpotText.TextLeft;
+                rosShop.HotSpotInfo.TextInfo.TextTop = hotSpotText.TextTop;
+                rosShop.HotSpotInfo.TextInfo.TextScaleCenterX = hotSpotText.TextScaleCenterX;
+                rosShop.HotSpotInfo.TextInfo.TextScaleCenterY = hotSpotText.TextScaleCenterY;
+                rosShop.HotSpotInfo.TextInfo.TextScaleX = hotSpotText.TextScaleX;
+                rosShop.HotSpotInfo.TextInfo.TextScaleY = hotSpotText.TextScaleY;
+                rosShop.HotSpotInfo.TextInfo.FontColor = hotSpotText.FontColor;
+                rosShop.HotSpotInfo.TextInfo.FontFamily = hotSpotText.FontFamily;
+                rosShop.HotSpotInfo.TextInfo.TextVerticalAngle = hotSpotText.TextVerticalAngle;
+                rosShop.HotSpotInfo.TextInfo.TextVerticalCenterX = hotSpotText.TextVerticalCenterX;
+                rosShop.HotSpotInfo.TextInfo.TextVerticalCenterY = hotSpotText.TextVerticalCenterY;
+
+                foreach (Point point in shopHotSpot.ShowPolygon.Points)
+                {
+                    HotSpotService.Point hotSpotServicePoint = new HotSpotService.Point();
+                    hotSpotServicePoint.X = point.X;
+                    hotSpotServicePoint.Y = point.Y;
+                    rosShop.HotSpotInfo.HotSpotPoints.Add(hotSpotServicePoint);
+                }
+                shopMallFloorHotspot.ShopInfos.Add(rosShop);
+            }
+
+
+            serviceClient.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot);
+            serviceClient.SaveShopMallFloorHotspotDataCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveShopMallFloorHotspotDataCompleted);
+            //serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
+            //serviceClient.SaveHotspotDataCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
 
         }
 
- 
 
-        private void serviceClient_SaveHotspotDataCompleted(object sender, AsyncCompletedEventArgs e)
+
+        private void serviceClient_SaveShopMallFloorHotspotDataCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if(e.Error!=null)
             {
@@ -780,6 +823,20 @@ namespace SLHotSpot
         private void btnDown_Click(object sender, RoutedEventArgs e)
         {
             ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset + scaleTransform.ScaleY * 10);          
+        }
+
+        private void btnLarge_Click(object sender, RoutedEventArgs e)
+        {
+            double newValue = Math.Min(zoomSlider.Value + 1, zoomSlider.Maximum);
+
+            zoomSlider.Value = newValue;
+        }
+
+        private void btnSmall_Click(object sender, RoutedEventArgs e)
+        {
+            double newValue = Math.Max(zoomSlider.Value - 1, zoomSlider.Minimum);
+
+            zoomSlider.Value = newValue;
         }
     }
 }

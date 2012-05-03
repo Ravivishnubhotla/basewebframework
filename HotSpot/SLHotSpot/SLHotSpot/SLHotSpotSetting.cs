@@ -13,13 +13,13 @@ namespace SLHotSpot
 {
     public class SLHotSpotSetting
     {
-        private string hotSpotBgImage = string.Empty;
+        //private string hotSpotBgImage = string.Empty;
         private string shopMallNo = string.Empty;
         private string floorNo = string.Empty;
-        private string dataID = string.Empty;
+        //private string dataID = string.Empty;
         private Mode controlMode = Mode.View;
         private string webServiceUrl = string.Empty;
-        private string rootUrl = string.Empty;
+        //private string rootUrl = string.Empty;
 
         public string ShopMallNo
         {
@@ -33,17 +33,17 @@ namespace SLHotSpot
             set { floorNo = value; }
         }
 
-        public string HotSpotBgImage
-        {
-            get { return hotSpotBgImage; }
-            set { hotSpotBgImage = value; }
-        }
+        //public string HotSpotBgImage
+        //{
+        //    get { return hotSpotBgImage; }
+        //    set { hotSpotBgImage = value; }
+        //}
 
-        public string DataID
-        {
-            get { return dataID; }
-            set { dataID = value; }
-        }
+        //public string DataID
+        //{
+        //    get { return dataID; }
+        //    set { dataID = value; }
+        //}
 
         public Mode ControlMode
         {
@@ -57,10 +57,10 @@ namespace SLHotSpot
             set { webServiceUrl = value; }
         }
 
-        public string RootUrl
-        {
-            get { return rootUrl; }
-            set { rootUrl = value; }
-        }
+        //public string RootUrl
+        //{
+        //    get { return rootUrl; }
+        //    set { rootUrl = value; }
+        //}
     }
 }

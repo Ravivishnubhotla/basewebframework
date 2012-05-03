@@ -649,163 +649,15 @@ namespace SLHotSpot.HotSpotService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="HotSpotService.HotSpotWebServiceSoap")]
     public interface HotSpotWebServiceSoap {
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/SaveHotspotData", ReplyAction="*")]
-        System.IAsyncResult BeginSaveHotspotData(SLHotSpot.HotSpotService.SaveHotspotDataRequest request, System.AsyncCallback callback, object asyncState);
-        
-        SLHotSpot.HotSpotService.SaveHotspotDataResponse EndSaveHotspotData(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/LoadHotspotData", ReplyAction="*")]
-        System.IAsyncResult BeginLoadHotspotData(SLHotSpot.HotSpotService.LoadHotspotDataRequest request, System.AsyncCallback callback, object asyncState);
-        
-        SLHotSpot.HotSpotService.LoadHotspotDataResponse EndLoadHotspotData(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/SaveShopMallFloorHotspotData", ReplyAction="*")]
         System.IAsyncResult BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState);
         
         SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse EndSaveShopMallFloorHotspotData(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/LoadShopMallFloorHotspotData", ReplyAction="*")]
-        System.IAsyncResult BeginLoadShopMallFloorHotspotData(SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState);
-        
-        SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse EndLoadShopMallFloorHotspotData(System.IAsyncResult result);
-        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/LoadShopMallLayoutData", ReplyAction="*")]
         System.IAsyncResult BeginLoadShopMallLayoutData(SLHotSpot.HotSpotService.LoadShopMallLayoutDataRequest request, System.AsyncCallback callback, object asyncState);
         
         SLHotSpot.HotSpotService.LoadShopMallLayoutDataResponse EndLoadShopMallLayoutData(System.IAsyncResult result);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class SaveHotspotDataRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="SaveHotspotData", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.SaveHotspotDataRequestBody Body;
-        
-        public SaveHotspotDataRequest() {
-        }
-        
-        public SaveHotspotDataRequest(SLHotSpot.HotSpotService.SaveHotspotDataRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class SaveHotspotDataRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string shopNo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string hotSpotData;
-        
-        public SaveHotspotDataRequestBody() {
-        }
-        
-        public SaveHotspotDataRequestBody(string shopNo, string hotSpotData) {
-            this.shopNo = shopNo;
-            this.hotSpotData = hotSpotData;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class SaveHotspotDataResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="SaveHotspotDataResponse", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.SaveHotspotDataResponseBody Body;
-        
-        public SaveHotspotDataResponse() {
-        }
-        
-        public SaveHotspotDataResponse(SLHotSpot.HotSpotService.SaveHotspotDataResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class SaveHotspotDataResponseBody {
-        
-        public SaveHotspotDataResponseBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadHotspotDataRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoadHotspotData", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.LoadHotspotDataRequestBody Body;
-        
-        public LoadHotspotDataRequest() {
-        }
-        
-        public LoadHotspotDataRequest(SLHotSpot.HotSpotService.LoadHotspotDataRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class LoadHotspotDataRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string shopNo;
-        
-        public LoadHotspotDataRequestBody() {
-        }
-        
-        public LoadHotspotDataRequestBody(string shopNo) {
-            this.shopNo = shopNo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadHotspotDataResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoadHotspotDataResponse", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.LoadHotspotDataResponseBody Body;
-        
-        public LoadHotspotDataResponse() {
-        }
-        
-        public LoadHotspotDataResponse(SLHotSpot.HotSpotService.LoadHotspotDataResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class LoadHotspotDataResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string LoadHotspotDataResult;
-        
-        public LoadHotspotDataResponseBody() {
-        }
-        
-        public LoadHotspotDataResponseBody(string LoadHotspotDataResult) {
-            this.LoadHotspotDataResult = LoadHotspotDataResult;
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -832,21 +684,13 @@ namespace SLHotSpot.HotSpotService {
     public partial class SaveShopMallFloorHotspotDataRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string shopMallNo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string floorNo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string hotSpotData;
+        public SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot;
         
         public SaveShopMallFloorHotspotDataRequestBody() {
         }
         
-        public SaveShopMallFloorHotspotDataRequestBody(string shopMallNo, string floorNo, string hotSpotData) {
-            this.shopMallNo = shopMallNo;
-            this.floorNo = floorNo;
-            this.hotSpotData = hotSpotData;
+        public SaveShopMallFloorHotspotDataRequestBody(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot) {
+            this.shopMallFloorHotspot = shopMallFloorHotspot;
         }
     }
     
@@ -874,78 +718,6 @@ namespace SLHotSpot.HotSpotService {
     public partial class SaveShopMallFloorHotspotDataResponseBody {
         
         public SaveShopMallFloorHotspotDataResponseBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadShopMallFloorHotspotDataRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoadShopMallFloorHotspotData", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequestBody Body;
-        
-        public LoadShopMallFloorHotspotDataRequest() {
-        }
-        
-        public LoadShopMallFloorHotspotDataRequest(SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class LoadShopMallFloorHotspotDataRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string shopMallNo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string floorNo;
-        
-        public LoadShopMallFloorHotspotDataRequestBody() {
-        }
-        
-        public LoadShopMallFloorHotspotDataRequestBody(string shopMallNo, string floorNo) {
-            this.shopMallNo = shopMallNo;
-            this.floorNo = floorNo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class LoadShopMallFloorHotspotDataResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoadShopMallFloorHotspotDataResponse", Namespace="http://tempuri.org/", Order=0)]
-        public SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponseBody Body;
-        
-        public LoadShopMallFloorHotspotDataResponse() {
-        }
-        
-        public LoadShopMallFloorHotspotDataResponse(SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class LoadShopMallFloorHotspotDataResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string LoadShopMallFloorHotspotDataResult;
-        
-        public LoadShopMallFloorHotspotDataResponseBody() {
-        }
-        
-        public LoadShopMallFloorHotspotDataResponseBody(string LoadShopMallFloorHotspotDataResult) {
-            this.LoadShopMallFloorHotspotDataResult = LoadShopMallFloorHotspotDataResult;
         }
     }
     
@@ -1027,44 +799,6 @@ namespace SLHotSpot.HotSpotService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LoadHotspotDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public LoadHotspotDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class LoadShopMallFloorHotspotDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public LoadShopMallFloorHotspotDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public string Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class LoadShopMallLayoutDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -1086,29 +820,11 @@ namespace SLHotSpot.HotSpotService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class HotSpotWebServiceSoapClient : System.ServiceModel.ClientBase<SLHotSpot.HotSpotService.HotSpotWebServiceSoap>, SLHotSpot.HotSpotService.HotSpotWebServiceSoap {
         
-        private BeginOperationDelegate onBeginSaveHotspotDataDelegate;
-        
-        private EndOperationDelegate onEndSaveHotspotDataDelegate;
-        
-        private System.Threading.SendOrPostCallback onSaveHotspotDataCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginLoadHotspotDataDelegate;
-        
-        private EndOperationDelegate onEndLoadHotspotDataDelegate;
-        
-        private System.Threading.SendOrPostCallback onLoadHotspotDataCompletedDelegate;
-        
         private BeginOperationDelegate onBeginSaveShopMallFloorHotspotDataDelegate;
         
         private EndOperationDelegate onEndSaveShopMallFloorHotspotDataDelegate;
         
         private System.Threading.SendOrPostCallback onSaveShopMallFloorHotspotDataCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginLoadShopMallFloorHotspotDataDelegate;
-        
-        private EndOperationDelegate onEndLoadShopMallFloorHotspotDataDelegate;
-        
-        private System.Threading.SendOrPostCallback onLoadShopMallFloorHotspotDataCompletedDelegate;
         
         private BeginOperationDelegate onBeginLoadShopMallLayoutDataDelegate;
         
@@ -1169,13 +885,7 @@ namespace SLHotSpot.HotSpotService {
             }
         }
         
-        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveHotspotDataCompleted;
-        
-        public event System.EventHandler<LoadHotspotDataCompletedEventArgs> LoadHotspotDataCompleted;
-        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> SaveShopMallFloorHotspotDataCompleted;
-        
-        public event System.EventHandler<LoadShopMallFloorHotspotDataCompletedEventArgs> LoadShopMallFloorHotspotDataCompleted;
         
         public event System.EventHandler<LoadShopMallLayoutDataCompletedEventArgs> LoadShopMallLayoutDataCompleted;
         
@@ -1184,138 +894,15 @@ namespace SLHotSpot.HotSpotService {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult SLHotSpot.HotSpotService.HotSpotWebServiceSoap.BeginSaveHotspotData(SLHotSpot.HotSpotService.SaveHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginSaveHotspotData(request, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginSaveHotspotData(string shopNo, string hotSpotData, System.AsyncCallback callback, object asyncState) {
-            SLHotSpot.HotSpotService.SaveHotspotDataRequest inValue = new SLHotSpot.HotSpotService.SaveHotspotDataRequest();
-            inValue.Body = new SLHotSpot.HotSpotService.SaveHotspotDataRequestBody();
-            inValue.Body.shopNo = shopNo;
-            inValue.Body.hotSpotData = hotSpotData;
-            return ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).BeginSaveHotspotData(inValue, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SLHotSpot.HotSpotService.SaveHotspotDataResponse SLHotSpot.HotSpotService.HotSpotWebServiceSoap.EndSaveHotspotData(System.IAsyncResult result) {
-            return base.Channel.EndSaveHotspotData(result);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private void EndSaveHotspotData(System.IAsyncResult result) {
-            SLHotSpot.HotSpotService.SaveHotspotDataResponse retVal = ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).EndSaveHotspotData(result);
-        }
-        
-        private System.IAsyncResult OnBeginSaveHotspotData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string shopNo = ((string)(inValues[0]));
-            string hotSpotData = ((string)(inValues[1]));
-            return this.BeginSaveHotspotData(shopNo, hotSpotData, callback, asyncState);
-        }
-        
-        private object[] OnEndSaveHotspotData(System.IAsyncResult result) {
-            this.EndSaveHotspotData(result);
-            return null;
-        }
-        
-        private void OnSaveHotspotDataCompleted(object state) {
-            if ((this.SaveHotspotDataCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.SaveHotspotDataCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void SaveHotspotDataAsync(string shopNo, string hotSpotData) {
-            this.SaveHotspotDataAsync(shopNo, hotSpotData, null);
-        }
-        
-        public void SaveHotspotDataAsync(string shopNo, string hotSpotData, object userState) {
-            if ((this.onBeginSaveHotspotDataDelegate == null)) {
-                this.onBeginSaveHotspotDataDelegate = new BeginOperationDelegate(this.OnBeginSaveHotspotData);
-            }
-            if ((this.onEndSaveHotspotDataDelegate == null)) {
-                this.onEndSaveHotspotDataDelegate = new EndOperationDelegate(this.OnEndSaveHotspotData);
-            }
-            if ((this.onSaveHotspotDataCompletedDelegate == null)) {
-                this.onSaveHotspotDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveHotspotDataCompleted);
-            }
-            base.InvokeAsync(this.onBeginSaveHotspotDataDelegate, new object[] {
-                        shopNo,
-                        hotSpotData}, this.onEndSaveHotspotDataDelegate, this.onSaveHotspotDataCompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult SLHotSpot.HotSpotService.HotSpotWebServiceSoap.BeginLoadHotspotData(SLHotSpot.HotSpotService.LoadHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginLoadHotspotData(request, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginLoadHotspotData(string shopNo, System.AsyncCallback callback, object asyncState) {
-            SLHotSpot.HotSpotService.LoadHotspotDataRequest inValue = new SLHotSpot.HotSpotService.LoadHotspotDataRequest();
-            inValue.Body = new SLHotSpot.HotSpotService.LoadHotspotDataRequestBody();
-            inValue.Body.shopNo = shopNo;
-            return ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).BeginLoadHotspotData(inValue, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SLHotSpot.HotSpotService.LoadHotspotDataResponse SLHotSpot.HotSpotService.HotSpotWebServiceSoap.EndLoadHotspotData(System.IAsyncResult result) {
-            return base.Channel.EndLoadHotspotData(result);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private string EndLoadHotspotData(System.IAsyncResult result) {
-            SLHotSpot.HotSpotService.LoadHotspotDataResponse retVal = ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).EndLoadHotspotData(result);
-            return retVal.Body.LoadHotspotDataResult;
-        }
-        
-        private System.IAsyncResult OnBeginLoadHotspotData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string shopNo = ((string)(inValues[0]));
-            return this.BeginLoadHotspotData(shopNo, callback, asyncState);
-        }
-        
-        private object[] OnEndLoadHotspotData(System.IAsyncResult result) {
-            string retVal = this.EndLoadHotspotData(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnLoadHotspotDataCompleted(object state) {
-            if ((this.LoadHotspotDataCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.LoadHotspotDataCompleted(this, new LoadHotspotDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void LoadHotspotDataAsync(string shopNo) {
-            this.LoadHotspotDataAsync(shopNo, null);
-        }
-        
-        public void LoadHotspotDataAsync(string shopNo, object userState) {
-            if ((this.onBeginLoadHotspotDataDelegate == null)) {
-                this.onBeginLoadHotspotDataDelegate = new BeginOperationDelegate(this.OnBeginLoadHotspotData);
-            }
-            if ((this.onEndLoadHotspotDataDelegate == null)) {
-                this.onEndLoadHotspotDataDelegate = new EndOperationDelegate(this.OnEndLoadHotspotData);
-            }
-            if ((this.onLoadHotspotDataCompletedDelegate == null)) {
-                this.onLoadHotspotDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLoadHotspotDataCompleted);
-            }
-            base.InvokeAsync(this.onBeginLoadHotspotDataDelegate, new object[] {
-                        shopNo}, this.onEndLoadHotspotDataDelegate, this.onLoadHotspotDataCompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         System.IAsyncResult SLHotSpot.HotSpotService.HotSpotWebServiceSoap.BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginSaveShopMallFloorHotspotData(request, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginSaveShopMallFloorHotspotData(string shopMallNo, string floorNo, string hotSpotData, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.AsyncCallback callback, object asyncState) {
             SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest inValue = new SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest();
             inValue.Body = new SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequestBody();
-            inValue.Body.shopMallNo = shopMallNo;
-            inValue.Body.floorNo = floorNo;
-            inValue.Body.hotSpotData = hotSpotData;
+            inValue.Body.shopMallFloorHotspot = shopMallFloorHotspot;
             return ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).BeginSaveShopMallFloorHotspotData(inValue, callback, asyncState);
         }
         
@@ -1330,10 +917,8 @@ namespace SLHotSpot.HotSpotService {
         }
         
         private System.IAsyncResult OnBeginSaveShopMallFloorHotspotData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string shopMallNo = ((string)(inValues[0]));
-            string floorNo = ((string)(inValues[1]));
-            string hotSpotData = ((string)(inValues[2]));
-            return this.BeginSaveShopMallFloorHotspotData(shopMallNo, floorNo, hotSpotData, callback, asyncState);
+            SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot = ((SLHotSpot.HotSpotService.ShopMallFloorHotspotData)(inValues[0]));
+            return this.BeginSaveShopMallFloorHotspotData(shopMallFloorHotspot, callback, asyncState);
         }
         
         private object[] OnEndSaveShopMallFloorHotspotData(System.IAsyncResult result) {
@@ -1348,11 +933,11 @@ namespace SLHotSpot.HotSpotService {
             }
         }
         
-        public void SaveShopMallFloorHotspotDataAsync(string shopMallNo, string floorNo, string hotSpotData) {
-            this.SaveShopMallFloorHotspotDataAsync(shopMallNo, floorNo, hotSpotData, null);
+        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot) {
+            this.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot, null);
         }
         
-        public void SaveShopMallFloorHotspotDataAsync(string shopMallNo, string floorNo, string hotSpotData, object userState) {
+        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, object userState) {
             if ((this.onBeginSaveShopMallFloorHotspotDataDelegate == null)) {
                 this.onBeginSaveShopMallFloorHotspotDataDelegate = new BeginOperationDelegate(this.OnBeginSaveShopMallFloorHotspotData);
             }
@@ -1363,72 +948,7 @@ namespace SLHotSpot.HotSpotService {
                 this.onSaveShopMallFloorHotspotDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveShopMallFloorHotspotDataCompleted);
             }
             base.InvokeAsync(this.onBeginSaveShopMallFloorHotspotDataDelegate, new object[] {
-                        shopMallNo,
-                        floorNo,
-                        hotSpotData}, this.onEndSaveShopMallFloorHotspotDataDelegate, this.onSaveShopMallFloorHotspotDataCompletedDelegate, userState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult SLHotSpot.HotSpotService.HotSpotWebServiceSoap.BeginLoadShopMallFloorHotspotData(SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginLoadShopMallFloorHotspotData(request, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginLoadShopMallFloorHotspotData(string shopMallNo, string floorNo, System.AsyncCallback callback, object asyncState) {
-            SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequest inValue = new SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequest();
-            inValue.Body = new SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequestBody();
-            inValue.Body.shopMallNo = shopMallNo;
-            inValue.Body.floorNo = floorNo;
-            return ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).BeginLoadShopMallFloorHotspotData(inValue, callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse SLHotSpot.HotSpotService.HotSpotWebServiceSoap.EndLoadShopMallFloorHotspotData(System.IAsyncResult result) {
-            return base.Channel.EndLoadShopMallFloorHotspotData(result);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private string EndLoadShopMallFloorHotspotData(System.IAsyncResult result) {
-            SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse retVal = ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).EndLoadShopMallFloorHotspotData(result);
-            return retVal.Body.LoadShopMallFloorHotspotDataResult;
-        }
-        
-        private System.IAsyncResult OnBeginLoadShopMallFloorHotspotData(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string shopMallNo = ((string)(inValues[0]));
-            string floorNo = ((string)(inValues[1]));
-            return this.BeginLoadShopMallFloorHotspotData(shopMallNo, floorNo, callback, asyncState);
-        }
-        
-        private object[] OnEndLoadShopMallFloorHotspotData(System.IAsyncResult result) {
-            string retVal = this.EndLoadShopMallFloorHotspotData(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnLoadShopMallFloorHotspotDataCompleted(object state) {
-            if ((this.LoadShopMallFloorHotspotDataCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.LoadShopMallFloorHotspotDataCompleted(this, new LoadShopMallFloorHotspotDataCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void LoadShopMallFloorHotspotDataAsync(string shopMallNo, string floorNo) {
-            this.LoadShopMallFloorHotspotDataAsync(shopMallNo, floorNo, null);
-        }
-        
-        public void LoadShopMallFloorHotspotDataAsync(string shopMallNo, string floorNo, object userState) {
-            if ((this.onBeginLoadShopMallFloorHotspotDataDelegate == null)) {
-                this.onBeginLoadShopMallFloorHotspotDataDelegate = new BeginOperationDelegate(this.OnBeginLoadShopMallFloorHotspotData);
-            }
-            if ((this.onEndLoadShopMallFloorHotspotDataDelegate == null)) {
-                this.onEndLoadShopMallFloorHotspotDataDelegate = new EndOperationDelegate(this.OnEndLoadShopMallFloorHotspotData);
-            }
-            if ((this.onLoadShopMallFloorHotspotDataCompletedDelegate == null)) {
-                this.onLoadShopMallFloorHotspotDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnLoadShopMallFloorHotspotDataCompleted);
-            }
-            base.InvokeAsync(this.onBeginLoadShopMallFloorHotspotDataDelegate, new object[] {
-                        shopMallNo,
-                        floorNo}, this.onEndLoadShopMallFloorHotspotDataDelegate, this.onLoadShopMallFloorHotspotDataCompletedDelegate, userState);
+                        shopMallFloorHotspot}, this.onEndSaveShopMallFloorHotspotDataDelegate, this.onSaveShopMallFloorHotspotDataCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1570,32 +1090,6 @@ namespace SLHotSpot.HotSpotService {
                     base(client) {
             }
             
-            public System.IAsyncResult BeginSaveHotspotData(SLHotSpot.HotSpotService.SaveHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("SaveHotspotData", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public SLHotSpot.HotSpotService.SaveHotspotDataResponse EndSaveHotspotData(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                SLHotSpot.HotSpotService.SaveHotspotDataResponse _result = ((SLHotSpot.HotSpotService.SaveHotspotDataResponse)(base.EndInvoke("SaveHotspotData", _args, result)));
-                return _result;
-            }
-            
-            public System.IAsyncResult BeginLoadHotspotData(SLHotSpot.HotSpotService.LoadHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("LoadHotspotData", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public SLHotSpot.HotSpotService.LoadHotspotDataResponse EndLoadHotspotData(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                SLHotSpot.HotSpotService.LoadHotspotDataResponse _result = ((SLHotSpot.HotSpotService.LoadHotspotDataResponse)(base.EndInvoke("LoadHotspotData", _args, result)));
-                return _result;
-            }
-            
             public System.IAsyncResult BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = request;
@@ -1606,19 +1100,6 @@ namespace SLHotSpot.HotSpotService {
             public SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse EndSaveShopMallFloorHotspotData(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse _result = ((SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse)(base.EndInvoke("SaveShopMallFloorHotspotData", _args, result)));
-                return _result;
-            }
-            
-            public System.IAsyncResult BeginLoadShopMallFloorHotspotData(SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataRequest request, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[1];
-                _args[0] = request;
-                System.IAsyncResult _result = base.BeginInvoke("LoadShopMallFloorHotspotData", _args, callback, asyncState);
-                return _result;
-            }
-            
-            public SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse EndLoadShopMallFloorHotspotData(System.IAsyncResult result) {
-                object[] _args = new object[0];
-                SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse _result = ((SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse)(base.EndInvoke("LoadShopMallFloorHotspotData", _args, result)));
                 return _result;
             }
             
