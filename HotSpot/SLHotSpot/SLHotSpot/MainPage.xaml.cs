@@ -22,6 +22,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SLHotSpot.DiagramDesigner;
 using SLHotSpot.HotSpotService;
+using Point = System.Windows.Point;
 
 namespace SLHotSpot
 {

@@ -8,14 +8,66 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using Newtonsoft.Json.Linq;
 
 namespace SLHotSpot
 {
     public class HotSpotText
     {
-        public HotSpotText()
-        {
-        }
+        //public HotSpotText(JObject obj)
+        //{
+        //    JToken jtoken = obj.First;
+
+        //    while (jtoken != null)//loop through columns
+        //    {
+        //        JProperty property = (JProperty)jtoken;
+
+        //        switch (property.Name)
+        //        {
+        //            case "Text":
+        //                this.Text = property.Value.ToObject<string>();
+        //                break;
+        //            case "TextLeft":
+        //                this.TextLeft = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextTop":
+        //                this.TextTop = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextIsVertical":
+        //                this.TextIsVertical = property.Value.ToObject<bool>();
+        //                break;
+        //            case "TextVerticalCenterX":
+        //                this.TextVerticalCenterX = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextVerticalCenterY":
+        //                this.TextVerticalCenterY = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextVerticalAngle":
+        //                this.TextVerticalAngle = property.Value.ToObject<double>();
+        //                break;
+        //            case "FontColor":
+        //                this.FontColor = property.Value.ToObject<string>();
+        //                break;
+        //            case "FontFamily":
+        //                this.FontFamily = property.Value.ToObject<string>();
+        //                break;
+        //            case "TextScaleCenterX":
+        //                this.TextScaleCenterX = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextScaleCenterY":
+        //                this.TextScaleCenterY = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextScaleX":
+        //                this.TextScaleX = property.Value.ToObject<double>();
+        //                break;
+        //            case "TextScaleY":
+        //                this.TextScaleY = property.Value.ToObject<double>();
+        //                break;
+        //        }
+
+        //        jtoken = jtoken.Next;
+        //    }
+        //}
 
         public HotSpotText(TextBlock showTextBlock)
         {
@@ -50,6 +102,37 @@ namespace SLHotSpot
                 }
 
             }
+        }
+
+        public HotSpotText(HotSpotService.HotSpotText showTextBlock)
+        {
+
+            this.Text = showTextBlock.Text;
+
+            this.TextLeft = showTextBlock.TextLeft;
+
+            this.TextTop = showTextBlock.TextTop;
+
+            this.TextIsVertical = showTextBlock.TextIsVertical;
+
+            this.TextVerticalCenterX = showTextBlock.TextScaleCenterX;
+
+            this.TextVerticalCenterY = showTextBlock.TextScaleCenterY;
+
+            this.TextVerticalAngle = showTextBlock.TextVerticalAngle;
+
+            this.FontColor = showTextBlock.FontColor;
+
+            this.FontFamily = showTextBlock.FontFamily;
+
+            this.TextScaleCenterX = showTextBlock.TextScaleCenterX;
+
+            this.TextScaleCenterY = showTextBlock.TextScaleCenterY;
+
+            this.TextScaleX = showTextBlock.TextScaleX;
+
+            this.TextScaleY = showTextBlock.TextScaleY;
+ 
         }
 
         public string Text { get; set; }

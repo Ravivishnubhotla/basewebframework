@@ -89,7 +89,45 @@
           <s:element minOccurs="0" maxOccurs="1" name="ShopName" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ShopBrandInfo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="CompleteNumber" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="HotSpotInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HotSpotInfo" type="tns:ROSHotSpot" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ROSHotSpot">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ShopNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HotSpotPoints" type="tns:ArrayOfPoint" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageWidth" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ImageHeight" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="TextInfo" type="tns:HotSpotText" />
+          <s:element minOccurs="0" maxOccurs="1" name="ToolTip" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Point" nillable="true" type="tns:Point" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Point">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HotSpotText">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextLeft" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextTop" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextIsVertical" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextVerticalCenterX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextVerticalCenterY" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextVerticalAngle" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="FontColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FontFamily" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextScaleCenterX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextScaleCenterY" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextScaleX" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TextScaleY" type="s:double" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfBrandData">
