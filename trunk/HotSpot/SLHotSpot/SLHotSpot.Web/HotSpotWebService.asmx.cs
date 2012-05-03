@@ -27,59 +27,48 @@ namespace SLHotSpot.Web
 
 
 
-        [WebMethod]
-        public void SaveHotspotData(string shopNo,string hotSpotData)
-        {
-            string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
+        //[WebMethod]
+        //public void SaveHotspotData(string shopNo,string hotSpotData)
+        //{
+        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
 
-            if(File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
+        //    if(File.Exists(fileName))
+        //    {
+        //        File.Delete(fileName);
+        //    }
  
-            File.WriteAllText(fileName, hotSpotData);
-        }
+        //    File.WriteAllText(fileName, hotSpotData);
+        //}
 
 
-        [WebMethod]
-        public string LoadHotspotData(string shopNo)
-        {
-            string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
+        //[WebMethod]
+        //public string LoadHotspotData(string shopNo)
+        //{
+        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
 
-            if (File.Exists(fileName))
-            {
-                return File.ReadAllText(fileName);
-            }
+        //    if (File.Exists(fileName))
+        //    {
+        //        return File.ReadAllText(fileName);
+        //    }
 
-            return "";
-        }
-
-        [WebMethod]
-        public void SaveShopMallFloorHotspotData(string shopMallNo, string floorNo, string hotSpotData)
-        {
-            string fileName = this.Server.MapPath("~/DataFiles/" + shopMallNo + "_" + floorNo + ".txt");
-
-            if (File.Exists(fileName))
-            {
-                File.Delete(fileName);
-            }
-
-            File.WriteAllText(fileName, hotSpotData);
-        }
+        //    return "";
+        //}
 
 
-        [WebMethod]
-        public string LoadShopMallFloorHotspotData(string shopMallNo, string floorNo)
-        {
-            string fileName = this.Server.MapPath("~/DataFiles/" + shopMallNo + "_" + floorNo + ".txt");
 
-            if (File.Exists(fileName))
-            {
-                return File.ReadAllText(fileName);
-            }
 
-            return "";
-        }
+        //[WebMethod]
+        //public string LoadShopMallFloorHotspotData(string shopMallNo, string floorNo)
+        //{
+        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopMallNo + "_" + floorNo + ".txt");
+
+        //    if (File.Exists(fileName))
+        //    {
+        //        return File.ReadAllText(fileName);
+        //    }
+
+        //    return "";
+        //}
 
         public string GetRootUrl()
         {
@@ -105,6 +94,21 @@ namespace SLHotSpot.Web
 
             return rootUrl;
         }
+
+        [WebMethod]
+        public void SaveShopMallFloorHotspotData(ShopMallFloorHotspotData shopMallFloorHotspot)
+        {
+            string fileName = this.Server.MapPath("~/DataFiles/" + shopMallFloorHotspot.ShopMallNo + "_" + shopMallFloorHotspot.ShopMallFloorNo + "1111.txt");
+
+            if (File.Exists(fileName))
+            {
+                File.Delete(fileName);
+            }
+
+            File.WriteAllText(fileName, JsonConvert.SerializeObject(shopMallFloorHotspot));
+        }
+
+
 
         [WebMethod]
         public ShopMallFloorHotspotData LoadShopMallLayoutData(string shopMallNo, string floorNo)

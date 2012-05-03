@@ -2,70 +2,10 @@
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="SaveHotspotData">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopNo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="hotSpotData" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SaveHotspotDataResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="LoadHotspotData">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopNo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadHotspotDataResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadHotspotDataResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="SaveShopMallFloorHotspotData">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="hotSpotData" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="SaveShopMallFloorHotspotDataResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="LoadShopMallFloorHotspotData">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadShopMallFloorHotspotDataResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadShopMallFloorHotspotDataResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadShopMallLayoutData">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="LoadShopMallLayoutDataResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="LoadShopMallLayoutDataResult" type="tns:ShopMallFloorHotspotData" />
+            <s:element minOccurs="0" maxOccurs="1" name="shopMallFloorHotspot" type="tns:ShopMallFloorHotspotData" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -144,31 +84,31 @@
           <s:element minOccurs="0" maxOccurs="1" name="FillOverColor" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="SaveShopMallFloorHotspotDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="LoadShopMallLayoutData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="shopMallNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="floorNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadShopMallLayoutDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadShopMallLayoutDataResult" type="tns:ShopMallFloorHotspotData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="SaveHotspotDataSoapIn">
-    <wsdl:part name="parameters" element="tns:SaveHotspotData" />
-  </wsdl:message>
-  <wsdl:message name="SaveHotspotDataSoapOut">
-    <wsdl:part name="parameters" element="tns:SaveHotspotDataResponse" />
-  </wsdl:message>
-  <wsdl:message name="LoadHotspotDataSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadHotspotData" />
-  </wsdl:message>
-  <wsdl:message name="LoadHotspotDataSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadHotspotDataResponse" />
-  </wsdl:message>
   <wsdl:message name="SaveShopMallFloorHotspotDataSoapIn">
     <wsdl:part name="parameters" element="tns:SaveShopMallFloorHotspotData" />
   </wsdl:message>
   <wsdl:message name="SaveShopMallFloorHotspotDataSoapOut">
     <wsdl:part name="parameters" element="tns:SaveShopMallFloorHotspotDataResponse" />
-  </wsdl:message>
-  <wsdl:message name="LoadShopMallFloorHotspotDataSoapIn">
-    <wsdl:part name="parameters" element="tns:LoadShopMallFloorHotspotData" />
-  </wsdl:message>
-  <wsdl:message name="LoadShopMallFloorHotspotDataSoapOut">
-    <wsdl:part name="parameters" element="tns:LoadShopMallFloorHotspotDataResponse" />
   </wsdl:message>
   <wsdl:message name="LoadShopMallLayoutDataSoapIn">
     <wsdl:part name="parameters" element="tns:LoadShopMallLayoutData" />
@@ -177,21 +117,9 @@
     <wsdl:part name="parameters" element="tns:LoadShopMallLayoutDataResponse" />
   </wsdl:message>
   <wsdl:portType name="HotSpotWebServiceSoap">
-    <wsdl:operation name="SaveHotspotData">
-      <wsdl:input message="tns:SaveHotspotDataSoapIn" />
-      <wsdl:output message="tns:SaveHotspotDataSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LoadHotspotData">
-      <wsdl:input message="tns:LoadHotspotDataSoapIn" />
-      <wsdl:output message="tns:LoadHotspotDataSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="SaveShopMallFloorHotspotData">
       <wsdl:input message="tns:SaveShopMallFloorHotspotDataSoapIn" />
       <wsdl:output message="tns:SaveShopMallFloorHotspotDataSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="LoadShopMallFloorHotspotData">
-      <wsdl:input message="tns:LoadShopMallFloorHotspotDataSoapIn" />
-      <wsdl:output message="tns:LoadShopMallFloorHotspotDataSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="LoadShopMallLayoutData">
       <wsdl:input message="tns:LoadShopMallLayoutDataSoapIn" />
@@ -200,35 +128,8 @@
   </wsdl:portType>
   <wsdl:binding name="HotSpotWebServiceSoap" type="tns:HotSpotWebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SaveHotspotData">
-      <soap:operation soapAction="http://tempuri.org/SaveHotspotData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadHotspotData">
-      <soap:operation soapAction="http://tempuri.org/LoadHotspotData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="SaveShopMallFloorHotspotData">
       <soap:operation soapAction="http://tempuri.org/SaveShopMallFloorHotspotData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadShopMallFloorHotspotData">
-      <soap:operation soapAction="http://tempuri.org/LoadShopMallFloorHotspotData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -248,35 +149,8 @@
   </wsdl:binding>
   <wsdl:binding name="HotSpotWebServiceSoap12" type="tns:HotSpotWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="SaveHotspotData">
-      <soap12:operation soapAction="http://tempuri.org/SaveHotspotData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadHotspotData">
-      <soap12:operation soapAction="http://tempuri.org/LoadHotspotData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="SaveShopMallFloorHotspotData">
       <soap12:operation soapAction="http://tempuri.org/SaveShopMallFloorHotspotData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LoadShopMallFloorHotspotData">
-      <soap12:operation soapAction="http://tempuri.org/LoadShopMallFloorHotspotData" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

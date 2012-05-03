@@ -152,16 +152,7 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Service References\HotSpotService\HotSpotWebService1.wsdl" />
-    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadHotspotDataResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadShopMallFloorHotspotDataResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.LoadShopMallLayoutDataResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.SaveHotspotDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\HotSpotService\SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataResponse.datasource">
@@ -169,6 +160,14 @@
     </None>
     <Resource Include="Images\mapctrls.png" />
     <None Include="Service References\HotSpotService\HotSpotWebService1.disco" />
+    <Resource Include="Images\mapctrls_line.png" />
+    <Resource Include="Images\mapctrls_top.png" />
+    <Resource Include="Images\mapctrls_bottom.png" />
+    <Resource Include="Images\mapctrls_large.png" />
+    <Resource Include="Images\mapctrls_left.png" />
+    <Resource Include="Images\mapctrls_right.png" />
+    <Resource Include="Images\mapctrls_small.png" />
+    <Resource Include="Images\mapctrls_zoomlevel.png" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>

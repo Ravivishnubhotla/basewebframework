@@ -6,6 +6,115 @@
     mc:Ignorable="d"
     d:DesignHeight="768" d:DesignWidth="1024" Loaded="userControl_Loaded">
     <UserControl.Resources>
+ 
+
+        <Style x:Key="ThumbStyle1" TargetType="Thumb">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Grid >
+                            <Image Source="Images/mapctrls_zoomlevel.png" ></Image>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SliderStyle1" TargetType="Slider">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Maximum" Value="10"/>
+            <Setter Property="Minimum" Value="0"/>
+            <Setter Property="Value" Value="0"/>
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                        <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                        <GradientStop Color="#FF718597" Offset="0.375"/>
+                        <GradientStop Color="#FF617584" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid x:Name="Root">
+                            <Grid.Resources>
+                                <ControlTemplate x:Key="RepeatButtonTemplate">
+                                    <Grid x:Name="Root" Background="Transparent" Opacity="0"/>
+                                </ControlTemplate>
+                            </Grid.Resources>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HorizontalTrackRectangleDisabledOverlay">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ThumbDisabledOverlay">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="VerticalTrackRectangleDisabledOverlay">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="HorizontalTemplate" Background="{TemplateBinding Background}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle x:Name="TrackRectangle" Grid.ColumnSpan="3" Grid.Column="0" Fill="#FFE6EFF7" Height="3" Margin="5,0,5,0" RadiusY="1" RadiusX="1" Stroke="#FFA3AEB9" StrokeThickness="{TemplateBinding BorderThickness}"/>
+                                <Rectangle x:Name="HorizontalTrackRectangleDisabledOverlay" Grid.ColumnSpan="3" Grid.Column="0" Fill="White" Height="3" Margin="5,0,5,0" Opacity=".55" RadiusY="1" RadiusX="1" Visibility="Collapsed"/>
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeDecreaseRepeatButton" Grid.Column="0" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}"/>
+                                <Thumb x:Name="HorizontalThumb" Grid.Column="1" Height="18" IsTabStop="True" Width="11"/>
+                                <Rectangle x:Name="ThumbDisabledOverlay" Grid.Column="1" Fill="White" Opacity=".55" RadiusY="2" RadiusX="2" Visibility="Collapsed" Width="11"/>
+                                <RepeatButton x:Name="HorizontalTrackLargeChangeIncreaseRepeatButton" Grid.Column="2" IsTabStop="False" Template="{StaticResource RepeatButtonTemplate}"/>
+                            </Grid>
+                            <Grid x:Name="VerticalTemplate" Background="{TemplateBinding Background}" Visibility="Collapsed">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle   Width="12"    Margin="0,5,0,5" RadiusY="1" Grid.Row="0" RadiusX="1" Grid.RowSpan="3" Stroke="#FFA3AEB9" StrokeThickness="{TemplateBinding BorderThickness}"  >
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="Images\mapctrls_line.png" ></ImageBrush>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+
+                                <Rectangle x:Name="VerticalTrackRectangleDisabledOverlay" Fill="White" Margin="0,5,0,5" Opacity=".55" RadiusY="1" Grid.Row="0" RadiusX="1" Grid.RowSpan="3" Visibility="Collapsed" Width="3"/>
+                                <RepeatButton x:Name="VerticalTrackLargeChangeDecreaseRepeatButton" IsTabStop="False" Grid.Row="2" Template="{StaticResource RepeatButtonTemplate}"/>
+                                <Thumb x:Name="VerticalThumb" Height="11" IsTabStop="True" Grid.Row="1" Width="18" Style="{StaticResource ThumbStyle1}"/>
+                                <RepeatButton x:Name="VerticalTrackLargeChangeIncreaseRepeatButton" IsTabStop="False" Grid.Row="0" Template="{StaticResource RepeatButtonTemplate}"/>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
@@ -28,7 +137,6 @@
                             <Canvas Name="casDrawPanel">
                                 <Image Name="imgBg" Canvas.Top="0" Canvas.Left="0">
                                 </Image>
-                                 
                             </Canvas>
                         </toolkit:LayoutTransformer.Content>
                     </toolkit:LayoutTransformer>
@@ -171,29 +279,29 @@
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
             </StackPanel>
- 
- 
-
- 
         </StackPanel>
+        <Button Name="btnUp"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,10" Width="24" Height="24" Click="btnUp_Click">
+            <Image Source="Images/mapctrls_top.png" Stretch="Fill"></Image>
+        </Button>
+        <Button Name="btnLeft"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="30,35,0,0" Width="24" Height="24" Click="btnLeft_Click">
+            <Image Source="Images/mapctrls_left.png" Stretch="Fill"></Image>
+        </Button>
+        <Button Name="btnRight"   HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="68,35,0,0" Width="24" Height="24" Click="btnRight_Click">
+            <Image Source="Images/mapctrls_right.png" Stretch="Fill"></Image>
+        </Button>
+        <Button Name="btnDown" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,60,0,0" Width="24" Height="24" Click="btnDown_Click">
+            <Image Source="Images/mapctrls_bottom.png" Stretch="Fill"></Image>
+        </Button>
+        <Button Name="btnLarge"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,86,0,0" Width="24" Height="24" Click="btnLarge_Click">
+            <Image Source="Images/mapctrls_large.png" Stretch="Fill"></Image>
+        </Button>
+        <Slider HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="53,112" 
+                Orientation="Vertical" Height="190" Name="zoomSlider"   Visibility="Collapsed"  Minimum="1" Maximum="6" 
+                Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" Style="{StaticResource SliderStyle1}">
+        </Slider>
+        <Button Name="btnSmall"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,309,0,0" Width="24" Height="24" Click="btnSmall_Click">
+            <Image Source="Images/mapctrls_small.png" Stretch="Fill"></Image>
+        </Button>
  
-        <Button Name="btnUp" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,10" Width="16" Height="16" Click="btnUp_Click"></Button>
-        <Button Name="btnLeft" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="34,26" Width="16" Height="16" Click="btnLeft_Click"></Button>
-        <Button Name="btnRight" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="66,26" Width="16" Height="16" Click="btnRight_Click"></Button>
-        <Button Name="btnDown" Content="" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,42" Width="16" Height="16" Click="btnDown_Click"></Button>
-        <Slider HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="52,56" Orientation="Vertical" Height="230" Name="zoomSlider"   Visibility="Collapsed"  Minimum="1" Maximum="6" Value="1" SmallChange="0.2" LargeChange="0.5" ValueChanged="zoomSlider_ValueChanged" />
-
-
-        <!--<Image  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20,20"  Canvas.ZIndex="9999"  Height="442" Width="37" Source="Images/mapctrls.png">
-            <Image.Clip>
-                <RectangleGeometry Rect="0,0,37,310"></RectangleGeometry>
-            </Image.Clip>
-        </Image>-->
- 
-        <!--<Button HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20,20"  Canvas.ZIndex="9999"  Height="200" Width="30" Content="Button 2">
-            <Button.Background>
-                <ImageBrush ImageSource="Images/mapctrls.png"/>
-            </Button.Background>
-        </Button>-->
     </Grid>
 </UserControl>
