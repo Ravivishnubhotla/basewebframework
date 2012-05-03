@@ -58,7 +58,6 @@
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="ClientBin\SLHotSpot.xap" />
     <Content Include="crossdomain.xml" />
-    <Content Include="datagrid.html" />
     <Content Include="HotSpotWebService.asmx" />
     <Content Include="Images\M001001_F1_0-3.png" />
     <Content Include="Scripts\EasyUI\easyloader.js" />
@@ -371,7 +370,6 @@
     <Folder Include="DataFiles\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="datagrid_data2.json" />
     <None Include="data\datagrid_data.json" />
     <Content Include="Handler1.ashx" />
     <None Include="Scripts\EasyUI\themes\default\images\Thumbs.db" />
