@@ -7,11 +7,10 @@
     <title>热点展示页面</title>
     <link rel="stylesheet" type="text/css" href="Scripts/EasyUI/themes/gray/easyui.css" />
     <link rel="stylesheet" type="text/css" href="Scripts/EasyUI/themes/icon.css" />
-    <%--    <link type="text/css" href="Scripts/JQueryUI/css/smoothness/jquery-ui-1.8.19.custom.css"
-        rel="stylesheet" />--%>
+ 
     <script type="text/javascript" src="Scripts/JQuery/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="Scripts/EasyUI/jquery.easyui.min.js"></script>
-    <%--    <script type="text/javascript" src="Scripts/JQueryUI/js/jquery-ui-1.8.19.custom.min.js"></script>--%>
+ 
     <script type="text/javascript" src="Silverlight.js"></script>
     <script type="text/javascript">
         function onSilverlightError(sender, args) {
@@ -71,7 +70,7 @@
         $(function () {
 
 
- 
+
             $('#tt').datagrid({
                 onSelect: function (rowIndex, rowData) {
                     slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, true);
@@ -92,6 +91,13 @@
 
             });
 
+            function loaddata() {
+                $('#tt').datagrid('load', {
+                    showAllBrandInf: $('#chkShowAllBrandInfo').val()
+                });
+            }
+
+            //loaddata();
 
         });
 
@@ -125,11 +131,11 @@
         <div class="easyui-layout" fit="true">
             <div region="north" title="设置" split="false" style="overflow: hidden; height: 60px;
                 padding: 10px"><label for="chkShowAllBrandInfo">显示所有的品牌：</label> 
-                 <input id="chkShowAllBrandInfo" type="checkbox" />
+                 <input id="chkShowAllBrandInfo" type="checkbox" onclick="loaddata();" />
             </div>
             <div region="center" title="商铺" style="background: #fafafa; overflow: hidden" tools="#tol">
                 <table id="tt" title="商铺列表" class="easyui-datagrid" border="false" fit="true" fitcolumns="true"
-                    idfield="itemid" pagination="false" url="Handler1.ashx?223232" iconcls="icon-save">
+                    idfield="itemid" pagination="false" url="Handler1.ashx" iconcls="icon-save">
                     <thead>
                         <tr>
                             <th field="ck" checkbox="true">
