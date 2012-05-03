@@ -118,7 +118,7 @@ namespace SLHotSpot.HotSpotService {
         
         private int CompleteNumberField;
         
-        private string HotSpotInfoField;
+        private SLHotSpot.HotSpotService.ROSHotSpot HotSpotInfoField;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
         public string ShopNO {
@@ -173,7 +173,7 @@ namespace SLHotSpot.HotSpotService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string HotSpotInfo {
+        public SLHotSpot.HotSpotService.ROSHotSpot HotSpotInfo {
             get {
                 return this.HotSpotInfoField;
             }
@@ -271,6 +271,366 @@ namespace SLHotSpot.HotSpotService {
                 if ((object.ReferenceEquals(this.FillOverColorField, value) != true)) {
                     this.FillOverColorField = value;
                     this.RaisePropertyChanged("FillOverColor");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ROSHotSpot", Namespace="http://tempuri.org/")]
+    public partial class ROSHotSpot : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string ShopNOField;
+        
+        private System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.Point> HotSpotPointsField;
+        
+        private double ImageWidthField;
+        
+        private double ImageHeightField;
+        
+        private SLHotSpot.HotSpotService.HotSpotText TextInfoField;
+        
+        private string ToolTipField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string ShopNO {
+            get {
+                return this.ShopNOField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShopNOField, value) != true)) {
+                    this.ShopNOField = value;
+                    this.RaisePropertyChanged("ShopNO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.Point> HotSpotPoints {
+            get {
+                return this.HotSpotPointsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotSpotPointsField, value) != true)) {
+                    this.HotSpotPointsField = value;
+                    this.RaisePropertyChanged("HotSpotPoints");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public double ImageWidth {
+            get {
+                return this.ImageWidthField;
+            }
+            set {
+                if ((this.ImageWidthField.Equals(value) != true)) {
+                    this.ImageWidthField = value;
+                    this.RaisePropertyChanged("ImageWidth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public double ImageHeight {
+            get {
+                return this.ImageHeightField;
+            }
+            set {
+                if ((this.ImageHeightField.Equals(value) != true)) {
+                    this.ImageHeightField = value;
+                    this.RaisePropertyChanged("ImageHeight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public SLHotSpot.HotSpotService.HotSpotText TextInfo {
+            get {
+                return this.TextInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextInfoField, value) != true)) {
+                    this.TextInfoField = value;
+                    this.RaisePropertyChanged("TextInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string ToolTip {
+            get {
+                return this.ToolTipField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToolTipField, value) != true)) {
+                    this.ToolTipField = value;
+                    this.RaisePropertyChanged("ToolTip");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HotSpotText", Namespace="http://tempuri.org/")]
+    public partial class HotSpotText : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string TextField;
+        
+        private double TextLeftField;
+        
+        private double TextTopField;
+        
+        private bool TextIsVerticalField;
+        
+        private double TextVerticalCenterXField;
+        
+        private double TextVerticalCenterYField;
+        
+        private double TextVerticalAngleField;
+        
+        private string FontColorField;
+        
+        private string FontFamilyField;
+        
+        private double TextScaleCenterXField;
+        
+        private double TextScaleCenterYField;
+        
+        private double TextScaleXField;
+        
+        private double TextScaleYField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Text {
+            get {
+                return this.TextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TextField, value) != true)) {
+                    this.TextField = value;
+                    this.RaisePropertyChanged("Text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public double TextLeft {
+            get {
+                return this.TextLeftField;
+            }
+            set {
+                if ((this.TextLeftField.Equals(value) != true)) {
+                    this.TextLeftField = value;
+                    this.RaisePropertyChanged("TextLeft");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public double TextTop {
+            get {
+                return this.TextTopField;
+            }
+            set {
+                if ((this.TextTopField.Equals(value) != true)) {
+                    this.TextTopField = value;
+                    this.RaisePropertyChanged("TextTop");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public bool TextIsVertical {
+            get {
+                return this.TextIsVerticalField;
+            }
+            set {
+                if ((this.TextIsVerticalField.Equals(value) != true)) {
+                    this.TextIsVerticalField = value;
+                    this.RaisePropertyChanged("TextIsVertical");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public double TextVerticalCenterX {
+            get {
+                return this.TextVerticalCenterXField;
+            }
+            set {
+                if ((this.TextVerticalCenterXField.Equals(value) != true)) {
+                    this.TextVerticalCenterXField = value;
+                    this.RaisePropertyChanged("TextVerticalCenterX");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public double TextVerticalCenterY {
+            get {
+                return this.TextVerticalCenterYField;
+            }
+            set {
+                if ((this.TextVerticalCenterYField.Equals(value) != true)) {
+                    this.TextVerticalCenterYField = value;
+                    this.RaisePropertyChanged("TextVerticalCenterY");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public double TextVerticalAngle {
+            get {
+                return this.TextVerticalAngleField;
+            }
+            set {
+                if ((this.TextVerticalAngleField.Equals(value) != true)) {
+                    this.TextVerticalAngleField = value;
+                    this.RaisePropertyChanged("TextVerticalAngle");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string FontColor {
+            get {
+                return this.FontColorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FontColorField, value) != true)) {
+                    this.FontColorField = value;
+                    this.RaisePropertyChanged("FontColor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string FontFamily {
+            get {
+                return this.FontFamilyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FontFamilyField, value) != true)) {
+                    this.FontFamilyField = value;
+                    this.RaisePropertyChanged("FontFamily");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=9)]
+        public double TextScaleCenterX {
+            get {
+                return this.TextScaleCenterXField;
+            }
+            set {
+                if ((this.TextScaleCenterXField.Equals(value) != true)) {
+                    this.TextScaleCenterXField = value;
+                    this.RaisePropertyChanged("TextScaleCenterX");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=10)]
+        public double TextScaleCenterY {
+            get {
+                return this.TextScaleCenterYField;
+            }
+            set {
+                if ((this.TextScaleCenterYField.Equals(value) != true)) {
+                    this.TextScaleCenterYField = value;
+                    this.RaisePropertyChanged("TextScaleCenterY");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=11)]
+        public double TextScaleX {
+            get {
+                return this.TextScaleXField;
+            }
+            set {
+                if ((this.TextScaleXField.Equals(value) != true)) {
+                    this.TextScaleXField = value;
+                    this.RaisePropertyChanged("TextScaleX");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=12)]
+        public double TextScaleY {
+            get {
+                return this.TextScaleYField;
+            }
+            set {
+                if ((this.TextScaleYField.Equals(value) != true)) {
+                    this.TextScaleYField = value;
+                    this.RaisePropertyChanged("TextScaleY");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Point", Namespace="http://tempuri.org/")]
+    public partial class Point : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private double XField;
+        
+        private double YField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public double X {
+            get {
+                return this.XField;
+            }
+            set {
+                if ((this.XField.Equals(value) != true)) {
+                    this.XField = value;
+                    this.RaisePropertyChanged("X");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public double Y {
+            get {
+                return this.YField;
+            }
+            set {
+                if ((this.YField.Equals(value) != true)) {
+                    this.YField = value;
+                    this.RaisePropertyChanged("Y");
                 }
             }
         }

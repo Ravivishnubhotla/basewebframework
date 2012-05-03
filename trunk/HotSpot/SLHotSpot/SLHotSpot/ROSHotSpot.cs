@@ -11,7 +11,9 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SLHotSpot.HotSpotService;
+using Point = System.Windows.Point;
 
 namespace SLHotSpot
 {
@@ -19,6 +21,80 @@ namespace SLHotSpot
     {
         public ROSHotSpot()
         {
+        }
+
+
+        public ROSHotSpot(HotSpotService.ROSHotSpot item)
+        {
+            //JToken jtoken = item.First;
+
+            //this.ShopNO = item["ShopNO"].ToObject<string>();
+
+            //while (jtoken != null)//loop through columns
+            //{
+            //    JProperty property = (JProperty)jtoken;
+
+            //    switch (property.Name)
+            //    {
+                    //case "ShopNO":
+                    this.ShopNO = item.ShopNO;
+                    //    break;
+                    //case "ImageWidth":
+                    this.ImageWidth = item.ImageWidth;
+                    //    break;
+                    //case "ImageHeight":
+                    this.ImageHeight = item.ImageHeight;
+                    //    break;
+                    //case "HotSpotPoints":
+                    //    JArray items = (JArray)item["HotSpotPoints"];
+                    this.HotSpotPoints = fromJArray(item.HotSpotPoints);
+                    //    break;
+                    //case "TextInfo":
+                        //JObject jObject = property.Value.ToObject<JObject>();
+                    this.TextInfo = new HotSpotText(item.TextInfo);
+                    //    break;
+                    //case "ToolTip":
+                    this.ToolTip = item.ToolTip;
+            //            break;
+            //    }
+
+            //    jtoken = jtoken.Next;
+            //}
+        }
+
+        private List<Point> fromJArray(ObservableCollection<HotSpotService.Point> items)
+        {
+            List<Point> points = new List<Point>();
+            for (int i = 0; i < items.Count; i++) //loop through rows
+            {
+                //JObject item = (JObject)items[i];
+                //JToken jtoken = item.First;
+
+                Point point = new Point();
+
+                point.X = items[i].X;
+
+                point.Y = items[i].Y;
+
+                //while (jtoken != null)//loop through columns
+                //{
+                //    JProperty property = (JProperty)jtoken;
+                //    switch (property.Name)
+                //    {
+                //        case "X":
+                //            point.X = property.Value.ToObject<double>();
+                //            break;
+                //        case "Y":
+                //            point.Y = property.Value.ToObject<double>();
+                //            break;
+                //    }
+
+                //    jtoken = jtoken.Next;
+                //}
+
+                points.Add(point);
+            }
+            return points;
         }
 
         public string ShopNO { get; set; }
@@ -151,10 +227,10 @@ namespace SLHotSpot
             List<ROSHotSpot> spots = new List<ROSHotSpot>();
             for (int i = 0; i < shopMallFloorData.ShopInfos.Count; i++)
             {
-                if(!string.IsNullOrEmpty(shopMallFloorData.ShopInfos[i].HotSpotInfo))
+                if (shopMallFloorData.ShopInfos[i].HotSpotInfo!=null)
                 {
-                    ROSHotSpot rosHot =
-                        JsonConvert.DeserializeObject<ROSHotSpot>(shopMallFloorData.ShopInfos[i].HotSpotInfo);
+                    ROSHotSpot rosHot = new ROSHotSpot(shopMallFloorData.ShopInfos[i].HotSpotInfo);
+                    spots.Add(rosHot);
                 }
             }
             return spots;
