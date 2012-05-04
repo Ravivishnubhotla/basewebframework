@@ -15,7 +15,15 @@ namespace SLHotSpot.Web
 
         public void ProcessRequest(HttpContext context)
         {
-            DataRecordArray<ROSHotSpot> datas = new DataRecordArray<ROSHotSpot>(HotSpotWebService.LoadHotspotData("M001001", "F1_0",true));
+            bool showallShop = false;
+
+            if (context.Request.Params["showAllBrandInf"] != null && context.Request.Params["showAllBrandInf"].ToLower()=="true")
+            {
+                showallShop = true;
+            }
+ 
+            DataRecordArray<RosShopInfo> datas = new DataRecordArray<RosShopInfo>(HotSpotWebService.LoadShopData("M001001", "F1_0", showallShop));
+            
             context.Response.ContentType = "text/plain";
             context.Response.Write(JsonConvert.SerializeObject(datas));
             context.Response.End();

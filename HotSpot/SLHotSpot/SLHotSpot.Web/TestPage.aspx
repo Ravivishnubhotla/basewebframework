@@ -57,13 +57,13 @@
 
 
         function showShop(value, rowData, rowIndex) {
-            return "<a href='#' title='提示信息'>" + value + "</a>";
+
+            return "<a href='#' title='" + rowData.ShopName + "'>" + rowData.ShopName + "</a>";
         }
 
 
         function itemOpened(sender, args) {
             window.open('http://localhost:12031/Shop_ShopDetail.aspx?CSN=' + sender, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
-
         }
 
 
@@ -73,34 +73,37 @@
 
             $('#tt').datagrid({
                 onSelect: function (rowIndex, rowData) {
-                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, true);
+                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.SeatNO, true);
                 },
                 onUnselect: function (rowIndex, rowData) {
-                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.ShopNO, false);
+                    slCtl.Content.SLControl.SetHotSpotSelected(rowData.SeatNO, false);
                 },
                 onSelectAll: function (rows) {
                     for (var i = 0; i < rows.length; i++) {
-                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].ShopNO, true);
+                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].SeatNO, true);
                     }
                 },
                 onUnselectAll: function (rows) {
                     for (var i = 0; i < rows.length; i++) {
-                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].ShopNO, false);
+                        slCtl.Content.SLControl.SetHotSpotSelected(rows[i].SeatNO, false);
                     }
                 }
 
             });
 
-            function loaddata() {
-                $('#tt').datagrid('load', {
-                    showAllBrandInf: $('#chkShowAllBrandInfo').val()
-                });
-            }
+
 
             //loaddata();
 
         });
+        
 
+        function loaddata() {
+//            alert($('#chkShowAllBrandInfo').attr("checked"));
+            $('#tt').datagrid('load', {
+                showAllBrandInf: ($('#chkShowAllBrandInfo').attr("checked")=='checked')
+            });
+        }
     </script>
 </head>
 <body class="easyui-layout">

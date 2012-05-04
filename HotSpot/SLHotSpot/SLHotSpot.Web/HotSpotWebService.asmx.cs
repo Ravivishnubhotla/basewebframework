@@ -223,12 +223,67 @@ namespace SLHotSpot.Web
 
         public const string cnnstring = "Data Source=(local);initial catalog=ThinkROS;user id=sa;password=admP@$$w0rd";
 
+        public static List<RosShopInfo> LoadShopData(string shopMallNo, string floorNo, bool allBrandInfo)
+        {
+            string sql = @"select a.*,h.HotspotInfo,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName 
+from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
+ inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName+'_0'";
+
+            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
+
+            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+
+            List<RosShopInfo> hots = new List<RosShopInfo>();
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
+            {
+                if (!allBrandInfo && ds.Tables[0].Rows[i]["Brand"].ToString() != "ThinkPad")
+                {
+                    continue;
+                }
+
+
+
+                RosShopInfo shopInfo = new RosShopInfo();
+
+
+
+                ROSHotSpot rosHotSpot = new ROSHotSpot();
+
+                rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
+
+                JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
+
+                rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
+
+                shopInfo.ShopName = ds.Tables[0].Rows[i]["ResellerName"].ToString();
+
+                shopInfo.ShopBrandInfo = ds.Tables[0].Rows[i]["Brand"].ToString();
+
+                shopInfo.CompleteNumber = 60;
+
+                shopInfo.HotSpotInfo = rosHotSpot;
+
+                shopInfo.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
+
+                hots.Add(shopInfo);
+
+                //JObject item = (JObject)items[i];
+
+                //ROSHotSpot rosHotSpot = new ROSHotSpot(item);
+
+                //hots.Add(rosHotSpot);
+            }
+
+            return hots;
+        }
+
         public static List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo, bool allBrandInfo)
         {
 
             string sql = @"select a.*,h.HotspotInfo,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName 
 from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
- inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName";
+ inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName+'_0'";
 
             sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
 
@@ -238,6 +293,16 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
 
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
             {
+                ROSHotSpot rosHotSpot = new ROSHotSpot();
+
+                rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
+
+                JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
+
+                rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
+
+                hots.Add(rosHotSpot);
+
                 //JObject item = (JObject)items[i];
 
                 //ROSHotSpot rosHotSpot = new ROSHotSpot(item);
