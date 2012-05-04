@@ -240,9 +240,6 @@ namespace SLHotSpot.Web
     }
 
 
-
-
-    [Serializable]
     public class RosShopInfo
     {
         public RosShopInfo()
