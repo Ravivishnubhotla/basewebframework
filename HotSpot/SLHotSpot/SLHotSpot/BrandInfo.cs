@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using SLHotSpot.HotSpotService;
 
 namespace SLHotSpot
 {
@@ -22,36 +23,37 @@ namespace SLHotSpot
 
         private static List<BrandInfo> brandInfos;
 
-        static BrandInfo()
-        {
-            brandInfos = new List<BrandInfo>();
-
-            brandInfos.Add(new BrandInfo() { Name = "Lenovo", FillColor = ColorFromString.ToColor("#F28E30"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "HP", FillColor = ColorFromString.ToColor("#0092D6"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "Dell", FillColor = ColorFromString.ToColor("#B7295B"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "Acer", FillColor = ColorFromString.ToColor("#87B81C"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "ThinkPad", FillColor = ColorFromString.ToColor("#1C2626"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "TOSHIBA", FillColor = ColorFromString.ToColor("#ED1C24"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "SUMSANG", FillColor = ColorFromString.ToColor("#002060"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "SONY", FillColor = ColorFromString.ToColor("#800080"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "Apple", FillColor = ColorFromString.ToColor("#C0C0C0"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "SUMSANG", FillColor = ColorFromString.ToColor("#002060"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "ASUS", FillColor = ColorFromString.ToColor("#006666"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-            brandInfos.Add(new BrandInfo() { Name = "Getway", FillColor = ColorFromString.ToColor("#6F6041"), BorderColor = Colors.Black, FontColor = Colors.White, FillOverColor = Colors.Orange });
-
-        }
-
-
+ 
         public static List<BrandInfo> BrandInfos
         {
             get { return brandInfos; }
         }
 
+        public static void SetBrandData(ShopMallFloorHotspotData shopMallFloorHotspotData)
+        {
+            brandInfos = new List<BrandInfo>();
+
+            foreach (BrandData brandData in shopMallFloorHotspotData.Brands)
+            {
+                brandInfos.Add(new BrandInfo() { Name = brandData.Name, 
+                    FillColor = ColorFromString.ToColor(brandData.FillColor), 
+                    BorderColor =ColorFromString.ToColor(brandData.BorderColor),
+                    FontColor = ColorFromString.ToColor(brandData.FontColor),
+                    FillOverColor = ColorFromString.ToColor(brandData.FillOverColor)
+                });
+            }
+
+        }
+
         public static BrandInfo GetBrandInfo(string name)
         {
+            if (brandInfos == null)
+            {
+                SetBrandData(MainPage.shopMallFloorData);
+            }
             foreach (BrandInfo brandInfo in BrandInfos)
             {
-                if (brandInfo.Name == name)
+                if (brandInfo.Name.ToLower() == name.ToLower())
                 {
                     return brandInfo;
                 }

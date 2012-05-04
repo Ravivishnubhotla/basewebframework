@@ -72,7 +72,6 @@ namespace SLHotSpot
 
             if (shopMallFloorData == null)
                 return;
- 
 
             this.RootVisual = new MainPage(setting, shopMallFloorData);
         }

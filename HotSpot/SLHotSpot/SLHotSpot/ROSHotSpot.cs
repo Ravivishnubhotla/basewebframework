@@ -37,7 +37,7 @@ namespace SLHotSpot
             //    switch (property.Name)
             //    {
                     //case "ShopNO":
-                    this.ShopNO = item.ShopNO;
+                    this.ShopNO = item.SeatNO;
                     //    break;
                     //case "ImageWidth":
                     this.ImageWidth = item.ImageWidth;
@@ -133,7 +133,81 @@ namespace SLHotSpot
  
         }
 
-        private Polygon ployon; 
+
+        public static ObservableCollection<HotSpotService.ROSHotSpot> HotSpotsToList(ObservableCollection<ShopHotSpot> hotSpots, double imageWidth, double imageHeight)
+        {
+            ObservableCollection<HotSpotService.ROSHotSpot> rosHotSpots = new ObservableCollection<HotSpotService.ROSHotSpot>();
+
+            foreach (ShopHotSpot shopHot in hotSpots)
+            {
+                //shopHot.UpdateInfo();
+
+                ROSHotSpot rosHot = new ROSHotSpot();
+
+                rosHot.ShopNO = shopHot.DataID.ToString();
+                rosHot.HotSpotPoints = new List<Point>(shopHot.ShowPolygon.Points);
+                rosHot.ImageWidth = imageWidth;
+                rosHot.ImageHeight = imageHeight;
+                rosHot.TextInfo = new HotSpotText(shopHot.ShowTextBlock);
+                rosHot.ToolTip = shopHot.GetToolTip();
+
+                rosHotSpots.Add(rosHot.ToWebROSHotSpot());
+            }
+
+            return rosHotSpots;
+
+        }
+
+        private HotSpotService.ROSHotSpot ToWebROSHotSpot()
+        {
+            HotSpotService.ROSHotSpot rosHot = new HotSpotService.ROSHotSpot();
+
+            rosHot.SeatNO = this.ShopNO;
+            rosHot.HotSpotPoints = new ObservableCollection<HotSpotService.Point>();
+
+            foreach (Point hotSpotPoint in HotSpotPoints)
+            {
+                HotSpotService.Point point = new HotSpotService.Point();
+                point.X = hotSpotPoint.X;
+                point.Y = hotSpotPoint.Y;
+                rosHot.HotSpotPoints.Add(point);
+            }
+
+            rosHot.ImageWidth = this.ImageWidth;
+            rosHot.ImageHeight = this.ImageHeight;
+            rosHot.TextInfo = new HotSpotService.HotSpotText();
+
+            rosHot.TextInfo.Text = this.TextInfo.Text;
+
+            rosHot.TextInfo.TextLeft = this.TextInfo.TextLeft;
+
+            rosHot.TextInfo.TextTop = this.TextInfo.TextTop;
+
+            rosHot.TextInfo.TextIsVertical = this.TextInfo.TextIsVertical;
+
+            rosHot.TextInfo.TextVerticalCenterX = this.TextInfo.TextScaleCenterX;
+
+            rosHot.TextInfo.TextVerticalCenterY = this.TextInfo.TextScaleCenterY;
+
+            rosHot.TextInfo.TextVerticalAngle = this.TextInfo.TextVerticalAngle;
+
+            rosHot.TextInfo.FontColor = this.TextInfo.FontColor;
+
+            rosHot.TextInfo.FontFamily = this.TextInfo.FontFamily;
+
+            rosHot.TextInfo.TextScaleCenterX = this.TextInfo.TextScaleCenterX;
+
+            rosHot.TextInfo.TextScaleCenterY = this.TextInfo.TextScaleCenterY;
+
+            rosHot.TextInfo.TextScaleX = this.TextInfo.TextScaleX;
+
+            rosHot.TextInfo.TextScaleY = this.TextInfo.TextScaleY;
+
+            return rosHot;
+
+        }
+
+        //private Polygon ployon; 
 
         //public void AddToCanvas(ROSHotSpot rosHotSpot, Canvas canvas)
         //{
@@ -189,33 +263,33 @@ namespace SLHotSpot
  
         //}
 
-        #region OnMove特效
+        //#region OnMove特效
 
-        private void polygon_OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender != null && sender is Polygon)
-            {
-                ((Polygon)sender).Fill = new SolidColorBrush(this.GetBrandInfo().FillOverColor);
-            }
-        }
+        //private void polygon_OnMouseEnter(object sender, MouseEventArgs e)
+        //{
+        //    if (sender != null && sender is Polygon)
+        //    {
+        //        ((Polygon)sender).Fill = new SolidColorBrush(this.GetBrandInfo().FillOverColor);
+        //    }
+        //}
 
-        private void polygon_OnMouseLeave(object sender, MouseEventArgs e)
-        {
-            if (sender != null && sender is Polygon)
-            {
-                ((Polygon)sender).Fill = new SolidColorBrush(this.GetBrandInfo().FillColor);
-            }
-        }
+        //private void polygon_OnMouseLeave(object sender, MouseEventArgs e)
+        //{
+        //    if (sender != null && sender is Polygon)
+        //    {
+        //        ((Polygon)sender).Fill = new SolidColorBrush(this.GetBrandInfo().FillColor);
+        //    }
+        //}
 
-        private void textBlock_OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            if (sender != null && sender is TextBlock)
-            {
-                ployon.Fill = new SolidColorBrush(this.GetBrandInfo().FillOverColor);
-            }
-        }
+        //private void textBlock_OnMouseEnter(object sender, MouseEventArgs e)
+        //{
+        //    if (sender != null && sender is TextBlock)
+        //    {
+        //        ployon.Fill = new SolidColorBrush(this.GetBrandInfo().FillOverColor);
+        //    }
+        //}
 
-        #endregion
+        //#endregion
 
         public BrandInfo GetBrandInfo()
         {

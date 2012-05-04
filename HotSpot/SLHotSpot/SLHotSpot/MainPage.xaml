@@ -6,8 +6,6 @@
     mc:Ignorable="d"
     d:DesignHeight="768" d:DesignWidth="1024" Loaded="userControl_Loaded">
     <UserControl.Resources>
- 
-
         <Style x:Key="ThumbStyle1" TargetType="Thumb">
             <Setter Property="Template">
                 <Setter.Value>
@@ -114,7 +112,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </UserControl.Resources>
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.RowDefinitions>
@@ -238,44 +235,6 @@
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellTemplate>
                         </sdk:DataGridTemplateColumn>
-                    </sdk:DataGrid.Columns>
-                </sdk:DataGrid>
-            </StackPanel>
-            <StackPanel  Name="pnlView">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="显示其他所有品牌店铺信息：" Padding="5" Foreground="White"></TextBlock>
-                    <CheckBox Name="chkShowAllShop" VerticalAlignment="Center" Padding="5" Click="chkShowAllShop_Click"></CheckBox>
-                </StackPanel>
-                <sdk:DataGrid x:Name="dgHotSpotView" Margin="2"
-            Height="500"   SelectionMode="Single" 
-            AutoGenerateColumns="False"  
-            GridLinesVisibility="All"
-            RowBackground="White">
-                    <sdk:DataGrid.Columns>
-                        <sdk:DataGridTemplateColumn>
-                            <sdk:DataGridTemplateColumn.HeaderStyle>
-                                <Style TargetType="sdk:DataGridColumnHeader">
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate>
-                                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <CheckBox x:Name="chkCheckAlldgHotSpot" Click="chkCheckAlldgHotSpotView_Click"/>
-                                                </StackPanel>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </sdk:DataGridTemplateColumn.HeaderStyle>
-                            <sdk:DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                        <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </sdk:DataGridTemplateColumn.CellTemplate>
-                        </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding DataID}" IsReadOnly="True" Width="80" />
-                        <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
             </StackPanel>
