@@ -45,12 +45,10 @@ namespace SLHotSpot
 
         static ShopInfo()
         {
-            for (int i = 0; i < BrandInfo.BrandInfos.Count; i++)
+            for (int i = 0; i < MainPage.shopMallFloorData.ShopInfos.Count; i++)
             {
-                for (int j = 0; j < 6; j++)
-                {
-                    allShopInfos.Add(new ShopInfo() { Brand = BrandInfo.BrandInfos[i].Name, ShopNO = "BA10" + (i + 1).ToString("D2") + (j + 1).ToString("D2"), ShowTooltip = "测试文字" });
-                }
+                SLHotSpot.HotSpotService.RosShopInfo shopInfo = MainPage.shopMallFloorData.ShopInfos[i];
+                allShopInfos.Add(new ShopInfo() { Brand = shopInfo.ShopBrandInfo, ShopNO = shopInfo.SeatNO, ShowTooltip = shopInfo.ShopName });
             }
         }
 

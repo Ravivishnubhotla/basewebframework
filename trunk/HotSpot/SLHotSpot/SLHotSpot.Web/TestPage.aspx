@@ -140,7 +140,7 @@
                         <tr>
                             <th field="ck" checkbox="true">
                             </th>
-                            <th field="ShopNO" width="130" formatter="showShop">
+                            <th field="SeatNO" width="130" formatter="showShop">
                                 商铺位
                             </th>
                         </tr>

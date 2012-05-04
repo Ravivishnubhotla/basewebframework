@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -21,54 +23,7 @@ namespace SLHotSpot.Web
     {
 
  
-
- //电脑城楼层 
-
-
-
-
-        //[WebMethod]
-        //public void SaveHotspotData(string shopNo,string hotSpotData)
-        //{
-        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
-
-        //    if(File.Exists(fileName))
-        //    {
-        //        File.Delete(fileName);
-        //    }
  
-        //    File.WriteAllText(fileName, hotSpotData);
-        //}
-
-
-        //[WebMethod]
-        //public string LoadHotspotData(string shopNo)
-        //{
-        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopNo + ".txt");
-
-        //    if (File.Exists(fileName))
-        //    {
-        //        return File.ReadAllText(fileName);
-        //    }
-
-        //    return "";
-        //}
-
-
-
-
-        //[WebMethod]
-        //public string LoadShopMallFloorHotspotData(string shopMallNo, string floorNo)
-        //{
-        //    string fileName = this.Server.MapPath("~/DataFiles/" + shopMallNo + "_" + floorNo + ".txt");
-
-        //    if (File.Exists(fileName))
-        //    {
-        //        return File.ReadAllText(fileName);
-        //    }
-
-        //    return "";
-        //}
 
         public string GetRootUrl()
         {
@@ -96,19 +51,120 @@ namespace SLHotSpot.Web
         }
 
         [WebMethod]
-        public void SaveShopMallFloorHotspotData(ShopMallFloorHotspotData shopMallFloorHotspot)
+        public void SaveShopMallFloorHotspotData(ShopMallFloorHotspotData shopMallFloorHotspot,List<ROSHotSpot> rosHotSpots)
         {
-            string fileName = this.Server.MapPath("~/DataFiles/" + shopMallFloorHotspot.ShopMallNo + "_" + shopMallFloorHotspot.ShopMallFloorNo + "1111.txt");
+            DataSet dsDataSet = GetHotSpotInfoByFloorNo(shopMallFloorHotspot.ShopMallNo,
+                                                           shopMallFloorHotspot.ShopMallFloorNo); 
 
-            if (File.Exists(fileName))
+            //List<string> delHotspots = new List<string>();
+
+            foreach (DataRow dr in dsDataSet.Tables[0].Rows)
             {
-                File.Delete(fileName);
+                string seatNo = dr["SeatNo"].ToString();
+
+                if(!rosHotSpots.Exists(p=>(p.SeatNO.ToLower()==seatNo.ToLower())))
+                {
+                   DelHotspots(shopMallFloorHotspot.ShopMallNo,
+                                shopMallFloorHotspot.ShopMallFloorNo, seatNo);
+                }
+            }
+            
+            
+            foreach (ROSHotSpot rosHotSpot in rosHotSpots)
+            {
+                DataSet dsHotspotdata = GetHotSpotInfoByNo(shopMallFloorHotspot.ShopMallNo,
+                                                           shopMallFloorHotspot.ShopMallFloorNo, rosHotSpot.SeatNO);
+
+                if(dsHotspotdata.Tables[0].Rows.Count>0)
+                {
+                    UpdateHotSpot(shopMallFloorHotspot.ShopMallNo,
+                                  shopMallFloorHotspot.ShopMallFloorNo, rosHotSpot.SeatNO, rosHotSpot);
+                }
+                else
+                {
+                    InsertHotSpot(shopMallFloorHotspot.ShopMallNo,
+                                 shopMallFloorHotspot.ShopMallFloorNo, rosHotSpot.SeatNO, rosHotSpot);                   
+                }
+
             }
 
-            File.WriteAllText(fileName, JsonConvert.SerializeObject(shopMallFloorHotspot));
+
+
         }
 
+        private void DelHotspots(string shopMallNo, string shopMallFloorNo, string seatNo)
+        {
+            string sql =
+                @"Delete from [dbo].HotSpot where [SeatNo] =@SeatNo and [ShopMallNo]=@ShopMallNo and [FloorNo]=@FloorNo";
 
+
+            SqlParameter[] parameters = {  
+			BuildStringSqlParameter("@SeatNo", SqlDbType.NVarChar,100,seatNo) 
+			,BuildStringSqlParameter("@ShopMallNo", SqlDbType.NVarChar,100,shopMallNo) 
+			,BuildStringSqlParameter("@FloorNo", SqlDbType.NVarChar,100,shopMallFloorNo) 
+		};
+            SqlHelper.ExecuteNonQuery(cnnstring, CommandType.Text, sql, parameters);
+        }
+
+        private void InsertHotSpot(string shopMallNo, string shopMallFloorNo, string shopNo, ROSHotSpot rosHotSpot)
+        {
+            string sql =
+                @"INSERT INTO [dbo].HotSpot
+		(
+			[SeatNo]
+			,[HotspotInfo]
+			,[ShopMallNo]
+			,[FloorNo]
+		) 
+		VALUES
+        (
+			@SeatNo
+			,@HotspotInfo
+			,@ShopMallNo
+			,@FloorNo
+		) ";
+
+		SqlParameter[] parameters = {  
+			BuildStringSqlParameter("@SeatNo", SqlDbType.NVarChar,100,shopNo) 
+			,BuildNoStringSqlParameter("@HotspotInfo",SqlDbType.NText ,JsonConvert.SerializeObject(rosHotSpot)) 
+			,BuildStringSqlParameter("@ShopMallNo", SqlDbType.NVarChar,100,shopMallNo) 
+			,BuildStringSqlParameter("@FloorNo", SqlDbType.NVarChar,100,shopMallFloorNo) 
+		};
+		    SqlHelper.ExecuteNonQuery(cnnstring, CommandType.Text, sql, parameters);
+        }
+
+        private void UpdateHotSpot(string shopMallNo, string shopMallFloorNo, string shopNo, ROSHotSpot rosHotSpot)
+        {
+            string sql =
+                @"Update [dbo].HotSpot set [HotspotInfo] = @HotspotInfo where [SeatNo] =@SeatNo and [ShopMallNo]=@ShopMallNo and [FloorNo]=@FloorNo";
+ 
+
+            SqlParameter[] parameters = {  
+			BuildStringSqlParameter("@SeatNo", SqlDbType.NVarChar,100,shopNo) 
+			,BuildNoStringSqlParameter("@HotspotInfo",SqlDbType.NText ,JsonConvert.SerializeObject(rosHotSpot)) 
+			,BuildStringSqlParameter("@ShopMallNo", SqlDbType.NVarChar,100,shopMallNo) 
+			,BuildStringSqlParameter("@FloorNo", SqlDbType.NVarChar,100,shopMallFloorNo) 
+		};
+            SqlHelper.ExecuteNonQuery(cnnstring, CommandType.Text, sql, parameters);
+        }
+
+        public DataSet GetHotSpotInfoByFloorNo(string shopMallNo, string floorNo)
+        {
+            string sql = @"SELECT [HotSpotId],[SeatNo],[HotspotInfo],[ShopMallNo],[FloorNo] FROM  [dbo].[HotSpot]";
+
+            sql += string.Format(" where [ShopMallNo] = '{0}' and [FloorNo] = '{1}'   ", shopMallNo, floorNo);
+
+            return SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+        }
+
+        public DataSet GetHotSpotInfoByNo(string shopMallNo, string floorNo, string seatNo)
+        {
+            string sql = @"SELECT [HotSpotId],[SeatNo],[HotspotInfo],[ShopMallNo],[FloorNo] FROM  [dbo].[HotSpot]";
+
+            sql += string.Format(" where [ShopMallNo] = '{0}' and [FloorNo] = '{1}' and [SeatNo] ='{2}'  ", shopMallNo, floorNo, seatNo);
+
+            return SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+        }
 
         [WebMethod]
         public ShopMallFloorHotspotData LoadShopMallLayoutData(string shopMallNo, string floorNo)
@@ -123,25 +179,23 @@ namespace SLHotSpot.Web
             
             shopMallFloorHotspotData.ShopInfos = new List<RosShopInfo>();
 
-            List<ROSHotSpot> hotspots = LoadHotspotData(shopMallNo, floorNo);
+            string sql = "select a.*,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo";
 
-            for (int i = 0; i < shopMallFloorHotspotData.Brands.Count; i++)
+            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0,2));
+
+            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count ; i++)
             {
-                for (int j = 0; j < 6; j++)
+                string shopNo = ds.Tables[0].Rows[i]["SeatNo"].ToString();
+     
+                if(!shopMallFloorHotspotData.ShopInfos.Exists(p=>(p.SeatNO==shopNo)))
                 {
                     RosShopInfo rosShopInfo = new RosShopInfo();
-                    rosShopInfo.ShopNO = "BA10" + (i + 1).ToString("D2") + (j + 1).ToString("D2");
+                    rosShopInfo.SeatNO = shopNo;
                     rosShopInfo.CompleteNumber = 60;
-                    rosShopInfo.ShopName = "北京市北京昌隆鑫丰商贸有限公司鼎好店";
-                    rosShopInfo.ShopBrandInfo = shopMallFloorHotspotData.Brands[i].Name;
-                    if (hotspots.Exists(p => (p.ShopNO == rosShopInfo.ShopNO)))
-                    {
-                        rosShopInfo.HotSpotInfo = hotspots.Find(p => (p.ShopNO == rosShopInfo.ShopNO));
-                    }
-                    else
-                    {
-                        rosShopInfo.HotSpotInfo = null;
-                    }
+                    rosShopInfo.ShopName = ds.Tables[0].Rows[i]["ResellerName"].ToString();
+                    rosShopInfo.ShopBrandInfo = ds.Tables[0].Rows[i]["Brand"].ToString(); ;
                     shopMallFloorHotspotData.ShopInfos.Add(rosShopInfo);
                 }
             }
@@ -149,37 +203,46 @@ namespace SLHotSpot.Web
             return shopMallFloorHotspotData;
         }
 
-
-        public List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo)
+        private static SqlParameter BuildStringSqlParameter(string parameterName, SqlDbType dbType, int size, string parameterValue)
         {
-            string jsonText = string.Empty;
+            SqlParameter sqlParameter = new SqlParameter(parameterName, dbType, size);
 
-            string fileName = this.Server.MapPath("~/DataFiles/" + string.Format("{0}_{1}.txt", shopMallNo, floorNo));
+            sqlParameter.Value = parameterValue;
 
-            if (File.Exists(fileName))
-            {
-                jsonText = File.ReadAllText(fileName);
-            }
-            else
-            {
-                return new List<ROSHotSpot>();
-            }
+            return sqlParameter;
+        }
 
-            JsonSerializer serializer = new JsonSerializer();
+        private static SqlParameter BuildNoStringSqlParameter(string parameterName, SqlDbType dbType, string parameterValue)
+        {
+            SqlParameter sqlParameter = new SqlParameter(parameterName, dbType);
 
-            var o = (JObject)serializer.Deserialize(new JsonTextReader(new StringReader(jsonText)));
+            sqlParameter.Value = parameterValue;
 
-            JArray items = (JArray)o["rows"];
+            return sqlParameter;
+        }
+
+        public const string cnnstring = "Data Source=(local);initial catalog=ThinkROS;user id=sa;password=admP@$$w0rd";
+
+        public static List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo, bool allBrandInfo)
+        {
+
+            string sql = @"select a.*,h.HotspotInfo,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName 
+from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
+ inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName";
+
+            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
+
+            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
 
             List<ROSHotSpot> hots = new List<ROSHotSpot>();
 
-            for (int i = 0; i < items.Count; i++) //loop through rows
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
             {
-                JObject item = (JObject)items[i];
+                //JObject item = (JObject)items[i];
 
-                ROSHotSpot rosHotSpot = new ROSHotSpot(item);
+                //ROSHotSpot rosHotSpot = new ROSHotSpot(item);
 
-                hots.Add(rosHotSpot);
+                //hots.Add(rosHotSpot);
             }
 
             return hots;

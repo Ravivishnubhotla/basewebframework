@@ -110,7 +110,7 @@ namespace SLHotSpot.HotSpotService {
     [System.Runtime.Serialization.DataContractAttribute(Name="RosShopInfo", Namespace="http://tempuri.org/")]
     public partial class RosShopInfo : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string ShopNOField;
+        private string SeatNOField;
         
         private string ShopNameField;
         
@@ -121,14 +121,14 @@ namespace SLHotSpot.HotSpotService {
         private SLHotSpot.HotSpotService.ROSHotSpot HotSpotInfoField;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string ShopNO {
+        public string SeatNO {
             get {
-                return this.ShopNOField;
+                return this.SeatNOField;
             }
             set {
-                if ((object.ReferenceEquals(this.ShopNOField, value) != true)) {
-                    this.ShopNOField = value;
-                    this.RaisePropertyChanged("ShopNO");
+                if ((object.ReferenceEquals(this.SeatNOField, value) != true)) {
+                    this.SeatNOField = value;
+                    this.RaisePropertyChanged("SeatNO");
                 }
             }
         }
@@ -290,7 +290,7 @@ namespace SLHotSpot.HotSpotService {
     [System.Runtime.Serialization.DataContractAttribute(Name="ROSHotSpot", Namespace="http://tempuri.org/")]
     public partial class ROSHotSpot : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private string ShopNOField;
+        private string SeatNOField;
         
         private System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.Point> HotSpotPointsField;
         
@@ -303,14 +303,14 @@ namespace SLHotSpot.HotSpotService {
         private string ToolTipField;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string ShopNO {
+        public string SeatNO {
             get {
-                return this.ShopNOField;
+                return this.SeatNOField;
             }
             set {
-                if ((object.ReferenceEquals(this.ShopNOField, value) != true)) {
-                    this.ShopNOField = value;
-                    this.RaisePropertyChanged("ShopNO");
+                if ((object.ReferenceEquals(this.SeatNOField, value) != true)) {
+                    this.SeatNOField = value;
+                    this.RaisePropertyChanged("SeatNO");
                 }
             }
         }
@@ -686,11 +686,15 @@ namespace SLHotSpot.HotSpotService {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot;
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots;
+        
         public SaveShopMallFloorHotspotDataRequestBody() {
         }
         
-        public SaveShopMallFloorHotspotDataRequestBody(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot) {
+        public SaveShopMallFloorHotspotDataRequestBody(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots) {
             this.shopMallFloorHotspot = shopMallFloorHotspot;
+            this.rosHotSpots = rosHotSpots;
         }
     }
     
@@ -899,10 +903,11 @@ namespace SLHotSpot.HotSpotService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        private System.IAsyncResult BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.AsyncCallback callback, object asyncState) {
+        private System.IAsyncResult BeginSaveShopMallFloorHotspotData(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots, System.AsyncCallback callback, object asyncState) {
             SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest inValue = new SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequest();
             inValue.Body = new SLHotSpot.HotSpotService.SaveShopMallFloorHotspotDataRequestBody();
             inValue.Body.shopMallFloorHotspot = shopMallFloorHotspot;
+            inValue.Body.rosHotSpots = rosHotSpots;
             return ((SLHotSpot.HotSpotService.HotSpotWebServiceSoap)(this)).BeginSaveShopMallFloorHotspotData(inValue, callback, asyncState);
         }
         
@@ -918,7 +923,8 @@ namespace SLHotSpot.HotSpotService {
         
         private System.IAsyncResult OnBeginSaveShopMallFloorHotspotData(object[] inValues, System.AsyncCallback callback, object asyncState) {
             SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot = ((SLHotSpot.HotSpotService.ShopMallFloorHotspotData)(inValues[0]));
-            return this.BeginSaveShopMallFloorHotspotData(shopMallFloorHotspot, callback, asyncState);
+            System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots = ((System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot>)(inValues[1]));
+            return this.BeginSaveShopMallFloorHotspotData(shopMallFloorHotspot, rosHotSpots, callback, asyncState);
         }
         
         private object[] OnEndSaveShopMallFloorHotspotData(System.IAsyncResult result) {
@@ -933,11 +939,11 @@ namespace SLHotSpot.HotSpotService {
             }
         }
         
-        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot) {
-            this.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot, null);
+        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots) {
+            this.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot, rosHotSpots, null);
         }
         
-        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, object userState) {
+        public void SaveShopMallFloorHotspotDataAsync(SLHotSpot.HotSpotService.ShopMallFloorHotspotData shopMallFloorHotspot, System.Collections.ObjectModel.ObservableCollection<SLHotSpot.HotSpotService.ROSHotSpot> rosHotSpots, object userState) {
             if ((this.onBeginSaveShopMallFloorHotspotDataDelegate == null)) {
                 this.onBeginSaveShopMallFloorHotspotDataDelegate = new BeginOperationDelegate(this.OnBeginSaveShopMallFloorHotspotData);
             }
@@ -948,7 +954,8 @@ namespace SLHotSpot.HotSpotService {
                 this.onSaveShopMallFloorHotspotDataCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnSaveShopMallFloorHotspotDataCompleted);
             }
             base.InvokeAsync(this.onBeginSaveShopMallFloorHotspotDataDelegate, new object[] {
-                        shopMallFloorHotspot}, this.onEndSaveShopMallFloorHotspotDataDelegate, this.onSaveShopMallFloorHotspotDataCompletedDelegate, userState);
+                        shopMallFloorHotspot,
+                        rosHotSpots}, this.onEndSaveShopMallFloorHotspotDataDelegate, this.onSaveShopMallFloorHotspotDataCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -17,7 +17,6 @@ namespace SLHotSpot.Web
     }
 
 
-    [Serializable]
     public class HotSpotText
     {
 
@@ -106,7 +105,7 @@ namespace SLHotSpot.Web
 
     }
 
-    [Serializable]
+
     public class ROSHotSpot
     {
 
@@ -115,75 +114,75 @@ namespace SLHotSpot.Web
         }
 
 
-        public ROSHotSpot(JObject item)
-            {
-                JToken jtoken = item.First;
+        //public ROSHotSpot(JObject item)
+        //    {
+        //        JToken jtoken = item.First;
 
-                while (jtoken != null)//loop through columns
-                {
-                    JProperty property = (JProperty)jtoken;
+        //        while (jtoken != null)//loop through columns
+        //        {
+        //            JProperty property = (JProperty)jtoken;
 
-                    switch (property.Name)
-                    {
-                        case "ShopNO":
-                            this.ShopNO = property.Value.ToObject<string>();
-                            break;
-                        case "ImageWidth":
-                            this.ImageWidth = property.Value.ToObject<double>();
-                            break;
-                        case "ImageHeight":
-                            this.ImageHeight = property.Value.ToObject<double>();
-                            break;
-                        case "HotSpotPoints":
-                            JArray items = (JArray)item["HotSpotPoints"];
-                            this.HotSpotPoints = fromJArray(items);
-                            break;
-                        case "TextInfo":
-                            JObject jObject = property.Value.ToObject<JObject>();
-                            this.TextInfo = new HotSpotText(jObject);
-                            break;
-                        case "ToolTip":
-                            this.ToolTip = property.Value.ToObject<string>();
-                            break;
-                    }
+        //            switch (property.Name)
+        //            {
+        //                case "SeatNO":
+        //                    this.SeatNO = property.Value.ToObject<string>();
+        //                    break;
+        //                case "ImageWidth":
+        //                    this.ImageWidth = property.Value.ToObject<double>();
+        //                    break;
+        //                case "ImageHeight":
+        //                    this.ImageHeight = property.Value.ToObject<double>();
+        //                    break;
+        //                case "HotSpotPoints":
+        //                    JArray items = (JArray)item["HotSpotPoints"];
+        //                    this.HotSpotPoints = fromJArray(items);
+        //                    break;
+        //                case "TextInfo":
+        //                    JObject jObject = property.Value.ToObject<JObject>();
+        //                    this.TextInfo = new HotSpotText(jObject);
+        //                    break;
+        //                case "ToolTip":
+        //                    this.ToolTip = property.Value.ToObject<string>();
+        //                    break;
+        //            }
 
-                    jtoken = jtoken.Next;
-                }
-            }
+        //            jtoken = jtoken.Next;
+        //        }
+        //    }
 
-        private List<Point> fromJArray(JArray items)
-        {
-            List<Point> points = new List<Point>();
-            for (int i = 0; i < items.Count; i++) //loop through rows
-            {
-                JObject item = (JObject)items[i];
-                JToken jtoken = item.First;
+        //private List<Point> fromJArray(JArray items)
+        //{
+        //    List<Point> points = new List<Point>();
+        //    for (int i = 0; i < items.Count; i++) //loop through rows
+        //    {
+        //        JObject item = (JObject)items[i];
+        //        JToken jtoken = item.First;
 
-                Point point = new Point();
+        //        Point point = new Point();
 
-                while (jtoken != null)//loop through columns
-                {
-                    JProperty property = (JProperty)jtoken;
-                    switch (property.Name)
-                    {
-                        case "X":
-                            point.X = property.Value.ToObject<double>();
-                            break;
-                        case "Y":
-                            point.Y = property.Value.ToObject<double>();
-                            break;
-                    }
+        //        while (jtoken != null)//loop through columns
+        //        {
+        //            JProperty property = (JProperty)jtoken;
+        //            switch (property.Name)
+        //            {
+        //                case "X":
+        //                    point.X = property.Value.ToObject<double>();
+        //                    break;
+        //                case "Y":
+        //                    point.Y = property.Value.ToObject<double>();
+        //                    break;
+        //            }
 
-                    jtoken = jtoken.Next;
-                }
+        //            jtoken = jtoken.Next;
+        //        }
 
-                points.Add(point);
-            }
-            return points;
-        }
+        //        points.Add(point);
+        //    }
+        //    return points;
+        //}
 
 
-        public string ShopNO { get; set; }
+        public string SeatNO { get; set; }
 
         public List<Point> HotSpotPoints { get; set; }
 
@@ -198,7 +197,7 @@ namespace SLHotSpot.Web
     }
 
 
-    [Serializable]
+
     public class BrandData
     {
         public BrandData()
@@ -227,9 +226,11 @@ namespace SLHotSpot.Web
             brandInfos.Add(new BrandData() { Name = "SUMSANG", FillColor = "#002060", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
             brandInfos.Add(new BrandData() { Name = "SONY", FillColor = "#800080", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
             brandInfos.Add(new BrandData() { Name = "Apple", FillColor = "#C0C0C0", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "SUMSANG", FillColor = "#002060", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
+            brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
             brandInfos.Add(new BrandData() { Name = "ASUS", FillColor = "#006666", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
             brandInfos.Add(new BrandData() { Name = "Getway", FillColor = "#6F6041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
+            brandInfos.Add(new BrandData() { Name = "Brands", FillColor = "#626041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
+            brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#686041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
             return brandInfos;
 
 
@@ -247,7 +248,7 @@ namespace SLHotSpot.Web
         public RosShopInfo()
         {
         }
-        public string ShopNO { get; set; }
+        public string SeatNO { get; set; }
 
         public string ShopName { get; set; }
 
@@ -260,7 +261,7 @@ namespace SLHotSpot.Web
 
 
 
-    [Serializable]
+ 
     public class ShopMallFloorHotspotData
     {
         public ShopMallFloorHotspotData()
