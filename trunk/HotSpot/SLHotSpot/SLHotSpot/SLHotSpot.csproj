@@ -97,7 +97,6 @@
     </Compile>
     <Compile Include="BrandInfo.cs" />
     <Compile Include="ColorFromString.cs" />
-    <Compile Include="CPData.cs" />
     <Compile Include="cwChangeShopBrand.xaml.cs">
       <DependentUpon>cwChangeShopBrand.xaml</DependentUpon>
     </Compile>

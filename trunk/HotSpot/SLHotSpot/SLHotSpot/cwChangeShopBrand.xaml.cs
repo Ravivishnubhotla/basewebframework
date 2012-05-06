@@ -43,20 +43,10 @@ namespace SLHotSpot
         public ShopHotSpot GetItem()
         {
 
-
-            //if (this.dataFormHotSpot.ItemsSource is ShopHotSpot)
-            //    shopHotSpot = (ShopHotSpot)this.dataFormHotSpot.ItemsSource;
-
-            //if (this.dataFormHotSpot.ItemsSource is List<ShopHotSpot>)
-            //    shopHotSpot = ((List<ShopHotSpot>)this.dataFormHotSpot.ItemsSource)[0];
-
-
             if (shopHotSpot != null)
             {
-                //if(DataMode == DataFormMode.AddNew)
-
                 shopHotSpot.Brand = ((BrandInfo)this.cmbBrandInfo.SelectedValue).Name;
-                shopHotSpot.UpdateText();
+                shopHotSpot.UpdateText(shopHotSpot.Brand);
 
                 return shopHotSpot;
             }

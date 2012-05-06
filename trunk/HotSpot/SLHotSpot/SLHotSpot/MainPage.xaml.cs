@@ -61,8 +61,6 @@ namespace SLHotSpot
 
             BrandInfo.SetBrandData(shopMallFloorData);
 
-            Resources.Add("brandInfos", CPData.GetAllData(shopMallFloorData));
-
             hostSpot = new ShopHotSpot(Guid.NewGuid(), "Thinkpad");
 
   
@@ -79,22 +77,14 @@ namespace SLHotSpot
             switch (setting.ControlMode)
             {
                 case Mode.View:
+                case Mode.Change:
                     LayoutRoot.ColumnDefinitions[0].Width = new GridLength(100, GridUnitType.Star);
                     LayoutRoot.ColumnDefinitions[1].Width = new GridLength(0, GridUnitType.Star);  
-                    this.pnlAnalysis.Visibility = Visibility.Collapsed;
-                    this.pnlManage.Visibility = Visibility.Collapsed;
-                    break;
-                case Mode.Change:
-                    LayoutRoot.ColumnDefinitions[0].Width = new GridLength(85, GridUnitType.Star);
-                    LayoutRoot.ColumnDefinitions[1].Width = new GridLength(15, GridUnitType.Star);  
-                    this.pnlAnalysis.Visibility = Visibility.Visible;
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     break;
                 case Mode.Design:
- 
                     LayoutRoot.ColumnDefinitions[0].Width = new GridLength(75, GridUnitType.Star);
                     LayoutRoot.ColumnDefinitions[1].Width = new GridLength(25, GridUnitType.Star);  
-                    this.pnlAnalysis.Visibility = Visibility.Collapsed;
                     this.pnlManage.Visibility = Visibility.Visible;
                     break;
             }
@@ -462,11 +452,7 @@ namespace SLHotSpot
             }
 
             HostSpots.Remove(shopHot);
-
-            //this.dgHotSpot.ItemsSource = HostSpots;
         }
-
-
 
         private ToggleButton tbtn;
 
@@ -494,9 +480,6 @@ namespace SLHotSpot
                             }
                         }
                     }
-
-
-
                 }
                 else
                 {
@@ -517,9 +500,6 @@ namespace SLHotSpot
                     }
                 }
             }
-
-
-
         }
 
         private void btnSaveHotSpot_Click(object sender, RoutedEventArgs e)
@@ -566,7 +546,6 @@ namespace SLHotSpot
                 case "Open":
                     HostSpot hotspot = GetHotSpotByDataID(dataID);
                     OnItemOpened(hotspot);
-                    //HtmlPage.Window.Eval("window.open ('http://localhost:12031/Shop_ShopDetail.aspx?CSN=D0017216','newwindow','resizable=1,width=860,height=645,scrollbars=1');");
                     break;
                 case "Edit":
                     EditHotSpot(dataID);
@@ -605,13 +584,9 @@ namespace SLHotSpot
 
             ShopHotSpot shopHotSpot = hotSpotEditor.GetItem();
 
-            //shopHotSpot.UpdateText();
-
             shopHotSpot.UpdateHotspot(casDrawPanel, setting.ControlMode, this);
 
             dgHotSpot.ItemsSource = HostSpots;
-
-            CPData.CaculateAllData();
  
         }
 
