@@ -349,6 +349,9 @@
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Handler2.ashx.cs">
+      <DependentUpon>Handler2.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HotSpotChange.aspx.cs">
       <DependentUpon>HotSpotChange.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -397,6 +400,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Handler1.ashx" />
+    <Content Include="Handler2.ashx" />
     <None Include="Scripts\EasyUI\themes\default\images\Thumbs.db" />
     <None Include="Scripts\EasyUI\themes\gray\images\Thumbs.db" />
   </ItemGroup>

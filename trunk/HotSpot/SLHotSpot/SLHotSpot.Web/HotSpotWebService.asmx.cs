@@ -166,6 +166,86 @@ namespace SLHotSpot.Web
             return SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
         }
 
+
+        public static List<BrandCompetitionScoreResult> GetBrandCompetitionScoreResult(string shopMallNo, string floorNo,string shopBrandInfoDatas)
+        {
+            List<RosShopInfo> shopDatas = HotSpotWebService.LoadShopData(shopMallNo, floorNo, true);
+
+            List<ShopBrandInfo> oldshopBrandInfos = new List<ShopBrandInfo>();
+
+            foreach (RosShopInfo shopInfo in shopDatas)
+            {
+                ShopBrandInfo shopBrandInfo = new ShopBrandInfo();
+                shopBrandInfo.SeatNo = shopInfo.SeatNO;
+                shopBrandInfo.BrandName = shopInfo.ShopBrandInfo;
+                oldshopBrandInfos.Add(shopBrandInfo);
+            }
+ 
+            List<BrandCompetitionScore> oldbrandCompetitionScores = CaculateBrandCompetitionScore(shopMallNo, floorNo, oldshopBrandInfos);
+
+            List<ShopBrandInfo> newshopBrandInfos = null;
+
+            List<BrandCompetitionScore> newbrandCompetitionScores = null;
+
+            if(!string.IsNullOrEmpty(shopBrandInfoDatas))
+            {
+                newshopBrandInfos = JsonConvert.DeserializeObject<List<ShopBrandInfo>>(shopBrandInfoDatas);
+
+                newbrandCompetitionScores  = CaculateBrandCompetitionScore(shopMallNo, floorNo, newshopBrandInfos);
+            }
+
+            List<BrandCompetitionScoreResult> brandCompetitionScoreResults = new List<BrandCompetitionScoreResult>();
+
+            foreach (BrandCompetitionScore brandCompetitionScoreResult in oldbrandCompetitionScores)
+            {
+                BrandCompetitionScoreResult brandCompetition = new BrandCompetitionScoreResult();
+
+                brandCompetition.BrandName = brandCompetitionScoreResult.BrandName;
+                brandCompetition.OldCompetitionScore = brandCompetitionScoreResult.CompetitionScore;
+
+                if(newbrandCompetitionScores!=null)
+                {
+                    BrandCompetitionScore newBrandCompetitionScore =
+                        newbrandCompetitionScores.Find(p => (p.BrandName == brandCompetition.BrandName));
+
+                    brandCompetition.NewCompetitionScore = newBrandCompetitionScore.CompetitionScore;
+                }
+                else
+                {
+                    brandCompetition.NewCompetitionScore = brandCompetitionScoreResult.CompetitionScore;
+                }
+
+                brandCompetitionScoreResults.Add(brandCompetition);
+            }
+
+            return brandCompetitionScoreResults;
+
+        }
+
+        public static List<BrandCompetitionScore> CaculateBrandCompetitionScore(string shopMallNo, string floorNo, List<ShopBrandInfo> shopBrandInfos)
+        {
+            string sql = "select a.*,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo";
+
+            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
+
+            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+
+            List<BrandData> allBrandData = BrandData.GetAllBrandInfos();
+
+            List<BrandCompetitionScore> brandCompetitions = new List<BrandCompetitionScore>();
+
+            double allCount = shopBrandInfos.Count;
+
+            foreach (BrandData brandData in allBrandData)
+            {
+                double brandCount = shopBrandInfos.Count(p => (p.BrandName.ToLower() == brandData.Name.ToLower()));
+ 
+                brandCompetitions.Add(new BrandCompetitionScore() { BrandName = brandData.Name, CompetitionScore = brandCount*100d /allCount  });
+            }
+
+            return brandCompetitions;
+        }
+
         [WebMethod]
         public ShopMallFloorHotspotData LoadShopMallLayoutData(string shopMallNo, string floorNo)
         {
@@ -251,46 +331,37 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
             return shopInfos;
         }
 
-        public static List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo, bool allBrandInfo)
-        {
+//        public static List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo, bool allBrandInfo)
+//        {
+//            string sql = @"select a.*,h.HotspotInfo,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName 
+//from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
+// inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName+'_0'";
 
-            string sql = @"select a.*,h.HotspotInfo,b.ShopMallAreaID,b.ShopMallAreaName,b.ShopMallBigAreaID,b.ShopMallBigAreaName,b.ShopMallCityCode,b.ShopMallCityName,b.ShopMallProvinceCode,b.ShopMallProvinceName,b.ShopMallTownCode,b.ShopMallTownName 
-from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
- inner join dbo.HotSpot h on h.SeatNo = a.SeatNo and h.ShopMallNo = a.ShopMallNo and h.FloorNo = a.FloorName+'_0'";
+//            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
 
-            sql += string.Format(" where a.ShopMallNo = '{0}' and FloorName = '{1}' order by a.SeatNo ", shopMallNo, floorNo.Substring(0, 2));
+//            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
 
-            DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
+//            List<ROSHotSpot> hots = new List<ROSHotSpot>();
 
-            List<ROSHotSpot> hots = new List<ROSHotSpot>();
+//            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
+//            {
+//                ROSHotSpot rosHotSpot = new ROSHotSpot();
 
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
-            {
-                ROSHotSpot rosHotSpot = new ROSHotSpot();
+//                rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
 
-                rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
+//                JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
 
-                JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
+//                rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
 
-                rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
+//                hots.Add(rosHotSpot);
+ 
+//            }
 
-                hots.Add(rosHotSpot);
-
-                //JObject item = (JObject)items[i];
-
-                //ROSHotSpot rosHotSpot = new ROSHotSpot(item);
-
-                //hots.Add(rosHotSpot);
-            }
-
-            return hots;
-        }
+//            return hots;
+//        }
  
 
-        public List<RosShopInfo> CaculateNewCompleteNumber(List<RosShopInfo> rosShopInfos)
-        {
-            return null;
-        }
+ 
 
  
 
