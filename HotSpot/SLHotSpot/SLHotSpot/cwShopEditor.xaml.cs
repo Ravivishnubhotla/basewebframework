@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows;
@@ -18,7 +19,6 @@ namespace SLHotSpot
     {
         public cwShopEditor()
         {
-            Resources.Add("shopNOs", shopNOs);
             //cmbShopNo.ItemsSource = shopNOs;
             InitializeComponent();
 
@@ -27,11 +27,34 @@ namespace SLHotSpot
             //cmbShopNo.ItemsSource = shopNOs;
         }
 
-        public List<ShopInfo> shopNOs
+        public ObservableCollection<ShopInfo> AllShopNOs
         {
             get
             {
-                return ShopInfo.AllShopInfo;
+                ObservableCollection<ShopInfo> shops = new ObservableCollection<ShopInfo>();
+
+                foreach (ShopInfo shopInfo in ShopInfo.AllShopInfo)
+                {
+                    shops.Add(shopInfo);
+                }
+
+                return shops;
+            }
+        }
+
+        public ObservableCollection<ShopInfo> NotAssignedShopNOs
+        {
+            get
+            {
+                ObservableCollection<ShopInfo> shops = new ObservableCollection<ShopInfo>();
+
+                foreach (ShopInfo shopInfo in ShopInfo.AllShopInfo)
+                {
+                    if (ParentWindow.GetHotSpotByDataID(shopInfo.SeatNO)==null)
+                        shops.Add(shopInfo);
+                }
+
+                return shops;
             }
         }
 
@@ -93,7 +116,9 @@ namespace SLHotSpot
 
         public void ShowAdd(ShopHotSpot hostSpot, MainPage parentWindow)
         {
+
             ParentWindow = parentWindow;
+            this.cmbShopNo.ItemsSource = NotAssignedShopNOs;
             DataMode = DataFormMode.AddNew;
             shopHotSpot = hostSpot;
             this.cmbShopNo.SelectedValue = shopHotSpot.DataID;
@@ -103,7 +128,9 @@ namespace SLHotSpot
 
         public void ShowEdit(ShopHotSpot hostSpot, MainPage parentWindow)
         {
+
             ParentWindow = parentWindow;
+            this.cmbShopNo.ItemsSource = AllShopNOs;
             DataMode = DataFormMode.Edit;
             shopHotSpot = hostSpot;
             this.cmbShopNo.SelectedValue = ShopInfo.GetBySeatNo(shopHotSpot.DataID);

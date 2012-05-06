@@ -58,6 +58,9 @@
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="ClientBin\SLHotSpot.xap" />
     <Content Include="crossdomain.xml" />
+    <Content Include="HotSpotChange.aspx" />
+    <Content Include="HotSpotDesign.aspx" />
+    <Content Include="HotSpotView.aspx" />
     <Content Include="HotSpotWebService.asmx" />
     <Content Include="Images\M001001_F1_0-3.png" />
     <Content Include="Scripts\EasyUI\easyloader.js" />
@@ -345,6 +348,27 @@
     <Compile Include="DataRecordArray.cs" />
     <Compile Include="Handler1.ashx.cs">
       <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="HotSpotChange.aspx.cs">
+      <DependentUpon>HotSpotChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HotSpotChange.aspx.designer.cs">
+      <DependentUpon>HotSpotChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HotSpotDesign.aspx.cs">
+      <DependentUpon>HotSpotDesign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HotSpotDesign.aspx.designer.cs">
+      <DependentUpon>HotSpotDesign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HotSpotView.aspx.cs">
+      <DependentUpon>HotSpotView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HotSpotView.aspx.designer.cs">
+      <DependentUpon>HotSpotView.aspx</DependentUpon>
     </Compile>
     <Compile Include="HotSpotWebService.asmx.cs">
       <DependentUpon>HotSpotWebService.asmx</DependentUpon>
