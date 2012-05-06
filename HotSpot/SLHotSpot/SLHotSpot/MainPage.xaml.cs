@@ -140,18 +140,15 @@ namespace SLHotSpot
             biLoadingImage.IsBusy = false;
 
             LoadingImage(e.Result);
- 
-            //dgBrandCP.ItemsSource = CPData.GetAllData(shopMallFloorData);
-
-            //if (!String.IsNullOrEmpty(setting.DataID))
-            //{
-            //    HotSpotWebServiceSoapClient serviceClient = App.GetHotSpotWebServiceSoapClient(setting);
-            //    serviceClient.LoadHotspotDataCompleted += new EventHandler<LoadHotspotDataCompletedEventArgs>(serviceClient_LoadHotspotDataCompleted);
-            //    serviceClient.LoadHotspotDataAsync(setting.DataID);
-            //}
         }
 
-        public void LoadData(List<HotSpotService.ROSHotSpot> hotSpots)
+        [ScriptableMember]
+        public void LoadData(string hotSpotsData)
+        {
+            LoadData(JsonConvert.DeserializeObject<List<HotSpotService.ROSHotSpot>>(hotSpotsData));
+        }
+
+        protected void LoadData(List<HotSpotService.ROSHotSpot> hotSpots)
         {
             ClearAll();
 
@@ -202,19 +199,6 @@ namespace SLHotSpot
 
                     ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
                     ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
-
-                    //Point pp = e.GetPosition(LayoutRoot);
-
-                    //fg.Text = string.Format("{0},{1}", pp.X, pp.Y) + "\n" + string.Format("{0},{1}", posNow.X, posNow.Y);
-
-                    //MessageBox.Show(string.Format("{0},{1}", pp.X, pp.Y));
-
-                    //MessageBox.Show(string.Format("{0},{1}", pp.X, pp.Y));
-
-                    //Canvas.SetLeft(xxx, posNow.X - pp.X + scaleTransform.ScaleX *20);
-                    //Canvas.SetTop(xxx, posNow.Y - pp.Y + scaleTransform.ScaleY * 20);
-                    //ssvDraw.ScrollToHorizontalOffset(scaleTransform.ScaleX * dX);
-                    //ssvDraw.ScrollToVerticalOffset(scaleTransform.ScaleY * dY);
                 }
             }
         }
@@ -246,14 +230,14 @@ namespace SLHotSpot
                 Canvas.SetZIndex(casDrawPanel, -9999);
             }
 
-            //btnSelectImage.Visibility = Visibility.Collapsed;
+
             btnDrawArea.Visibility = Visibility.Visible;
-            //txtzoom.Visibility = Visibility.Visible;
+
             zoomSlider.Visibility = Visibility.Visible;
-            //btnClearHotSpot.Visibility = Visibility.Visible;
+
             dgHotSpot.Visibility = Visibility.Visible;
             btnSaveHotSpot.Visibility = Visibility.Visible;
-            //btnLoadHotSpot.Visibility = Visibility.Visible;
+
         }
 
         private ShopHotSpot hostSpot;
@@ -594,8 +578,7 @@ namespace SLHotSpot
 
             serviceClient.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot, SLHotSpot.ROSHotSpot.HotSpotsToList(HostSpots, this.imgBg.Width, this.imgBg.Height));
             serviceClient.SaveShopMallFloorHotspotDataCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveShopMallFloorHotspotDataCompleted);
-            //serviceClient.SaveHotspotDataAsync(setting.DataID, ROSHotSpot.HotSpotsToJson(HostSpots, imgBg.Width, imgBg.Height));
-            //serviceClient.SaveHotspotDataCompleted +=new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveHotspotDataCompleted);
+
 
         }
 

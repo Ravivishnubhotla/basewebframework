@@ -91,18 +91,34 @@
 
             });
 
-
+            loaddata();
 
             //loaddata();
 
         });
-        
+
 
         function loaddata() {
-//            alert($('#chkShowAllBrandInfo').attr("checked"));
+
             $('#tt').datagrid('load', {
                 showAllBrandInf: ($('#chkShowAllBrandInfo').attr("checked")=='checked')
             });
+            $.ajax({
+                url: 'Handler1.ashx?data=true&showAllBrandInf=' + ($('#chkShowAllBrandInfo').attr("checked") == 'checked'),
+                success: function (data) {
+                    slCtl.Content.SLControl.LoadData(data);
+//                    alert(data.toString());
+//                    $('#tt').datagrid('load', data.toString());
+                    //alert(data);
+                }
+            });
+
+
+
+//            alert($('#chkShowAllBrandInfo').attr("checked"));
+//            $('#tt').datagrid('load', {
+//                showAllBrandInf: ($('#chkShowAllBrandInfo').attr("checked")=='checked')
+//            });
         }
     </script>
 </head>
@@ -136,9 +152,9 @@
                 padding: 10px"><label for="chkShowAllBrandInfo">显示所有的品牌：</label> 
                  <input id="chkShowAllBrandInfo" type="checkbox" onclick="loaddata();" />
             </div>
-            <div region="center" title="商铺" style="background: #fafafa; overflow: hidden" tools="#tol">
+            <div region="center" title="商铺" style="background: #fafafa; overflow: hidden" >
                 <table id="tt" title="商铺列表" class="easyui-datagrid" border="false" fit="true" fitcolumns="true"
-                    idfield="itemid" pagination="false" url="Handler1.ashx" iconcls="icon-save">
+                    idfield="itemid" url="Handler1.ashx" pagination="false" iconcls="icon-save">
                     <thead>
                         <tr>
                             <th field="ck" checkbox="true">
@@ -152,10 +168,6 @@
             </div>
         </div>
     </div>
-    <div id="tol">
-        显示店铺：
-        <a href="#" class="icon-edit"
-            onclick="javascript:alert('edit')"></a>
-    </div>
+ 
 </body>
 </html>

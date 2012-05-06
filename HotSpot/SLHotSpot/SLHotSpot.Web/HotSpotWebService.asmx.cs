@@ -241,20 +241,18 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
                 {
                     continue;
                 }
-
-
-
+ 
                 RosShopInfo shopInfo = new RosShopInfo();
+ 
+                //ROSHotSpot rosHotSpot = new ROSHotSpot();
 
+                //rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
 
+                //JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
 
-                ROSHotSpot rosHotSpot = new ROSHotSpot();
+                //rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
 
-                rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
-
-                JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
-
-                rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
+                //rosHotSpot.TextInfo = JsonConvert.DeserializeObject<HotSpotText>(jObject["TextInfo"].ToString());
 
                 shopInfo.ShopName = ds.Tables[0].Rows[i]["ResellerName"].ToString();
 
@@ -262,7 +260,7 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
 
                 shopInfo.CompleteNumber = 60;
 
-                shopInfo.HotSpotInfo = rosHotSpot;
+                shopInfo.HotSpotInfo = JsonConvert.DeserializeObject<ROSHotSpot>(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
 
                 shopInfo.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
 

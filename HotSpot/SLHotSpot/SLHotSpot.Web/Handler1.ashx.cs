@@ -21,11 +21,29 @@ namespace SLHotSpot.Web
             {
                 showallShop = true;
             }
- 
-            DataRecordArray<RosShopInfo> datas = new DataRecordArray<RosShopInfo>(HotSpotWebService.LoadShopData("M001001", "F1_0", showallShop));
+
+            string dataString = string.Empty;
+
+            List<RosShopInfo> shopDatas = new List<RosShopInfo>(HotSpotWebService.LoadShopData("M001001", "F1_0", showallShop));
+
+            if (context.Request.Params["data"] != null && context.Request.Params["data"].ToLower() == "true")
+            {
+                List<ROSHotSpot> dataarrays = new List<ROSHotSpot>();
+                foreach (RosShopInfo shopInfo in shopDatas)
+                {
+                    dataarrays.Add(shopInfo.HotSpotInfo);
+                }
+                dataString = JsonConvert.SerializeObject(dataarrays);
+            }
+            else
+            {
+                DataRecordArray<RosShopInfo> datas = new DataRecordArray<RosShopInfo>(shopDatas);
+                dataString = JsonConvert.SerializeObject(datas);
+            }
+
             
             context.Response.ContentType = "text/plain";
-            context.Response.Write(JsonConvert.SerializeObject(datas));
+            context.Response.Write(dataString);
             context.Response.End();
         }
 

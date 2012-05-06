@@ -40,14 +40,14 @@ namespace SLHotSpot
                     this.ShopNO = item.SeatNO;
                     //    break;
                     //case "ImageWidth":
-                    this.ImageWidth = item.ImageWidth;
+                    //this.ImageWidth = item.ImageWidth;
                     //    break;
                     //case "ImageHeight":
-                    this.ImageHeight = item.ImageHeight;
+                    //this.ImageHeight = item.ImageHeight;
                     //    break;
                     //case "HotSpotPoints":
                     //    JArray items = (JArray)item["HotSpotPoints"];
-                    this.HotSpotPoints = fromJArray(item.HotSpotPoints);
+                    this.HotSpotPoints = fromArray(item.HotSpotPoints);
                     //    break;
                     //case "TextInfo":
                         //JObject jObject = property.Value.ToObject<JObject>();
@@ -62,7 +62,95 @@ namespace SLHotSpot
             //}
         }
 
-        private List<Point> fromJArray(ObservableCollection<HotSpotService.Point> items)
+        public static List<ROSHotSpot> ReadfromString(string dataString)
+        {
+            JArray array = JArray.Parse(dataString);
+
+            List<ROSHotSpot> rosHotSpots = new List<ROSHotSpot>();
+
+            for (int i = 0; i < array.Count; i++) //loop through rows
+            {
+                rosHotSpots.Add(new ROSHotSpot(JObject.Parse(array[i].ToString())));
+
+            }
+            return rosHotSpots;
+        }
+
+
+        public ROSHotSpot(JObject item)
+        {
+            JToken jtoken = item.First;
+
+            this.ShopNO = item["SeatNO"].ToObject<string>();
+
+            while (jtoken != null)//loop through columns
+            {
+                JProperty property = (JProperty)jtoken;
+
+                switch (property.Name)
+                {
+                    case "SeatNO":
+                        this.ShopNO = item["SeatNO"].ToObject<string>();
+                        break;
+                    //case "ImageWidth":
+                    //    this.ImageWidth = item.ImageWidth;
+                    //    break;
+                    //case "ImageHeight":
+                    //    this.ImageHeight = item.ImageHeight;
+                        break;
+                    case "HotSpotPoints":
+                        JArray items = (JArray)item["HotSpotPoints"];
+                        this.HotSpotPoints = fromJArray(items);
+                        break;
+                    case "TextInfo":
+                        JObject jObject = property.Value.ToObject<JObject>();
+                        this.TextInfo = new HotSpotText(JObject.Parse(item["TextInfo"].ToString()));
+                        break;
+                    case "ToolTip":
+                        this.ToolTip = item["ToolTip"].ToObject<string>();
+                        break;
+                }
+
+                jtoken = jtoken.Next;
+            }
+        }
+
+        private List<Point> fromJArray(JArray items)
+        {
+            List<Point> points = new List<Point>();
+            for (int i = 0; i < items.Count; i++) //loop through rows
+            {
+                JObject item = (JObject)items[i];
+                JToken jtoken = item.First;
+
+                Point point = new Point();
+
+                //point.X = items[i].X;
+
+                //point.Y = items[i].Y;
+
+                while (jtoken != null)//loop through columns
+                {
+                    JProperty property = (JProperty)jtoken;
+                    switch (property.Name)
+                    {
+                        case "X":
+                            point.X = property.Value.ToObject<double>();
+                            break;
+                        case "Y":
+                            point.Y = property.Value.ToObject<double>();
+                            break;
+                    }
+
+                    jtoken = jtoken.Next;
+                }
+
+                points.Add(point);
+            }
+            return points;
+        }
+
+        private List<Point> fromArray(ObservableCollection<HotSpotService.Point> items)
         {
             List<Point> points = new List<Point>();
             for (int i = 0; i < items.Count; i++) //loop through rows
@@ -140,8 +228,6 @@ namespace SLHotSpot
 
             foreach (ShopHotSpot shopHot in hotSpots)
             {
-                //shopHot.UpdateInfo();
-
                 ROSHotSpot rosHot = new ROSHotSpot();
 
                 rosHot.ShopNO = shopHot.DataID.ToString();
@@ -173,8 +259,8 @@ namespace SLHotSpot
                 rosHot.HotSpotPoints.Add(point);
             }
 
-            rosHot.ImageWidth = this.ImageWidth;
-            rosHot.ImageHeight = this.ImageHeight;
+            //rosHot.ImageWidth = this.ImageWidth;
+            //rosHot.ImageHeight = this.ImageHeight;
             rosHot.TextInfo = new HotSpotService.HotSpotText();
 
             rosHot.TextInfo.Text = this.TextInfo.Text;
