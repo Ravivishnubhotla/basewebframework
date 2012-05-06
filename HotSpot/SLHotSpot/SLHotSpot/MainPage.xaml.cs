@@ -41,10 +41,6 @@ namespace SLHotSpot
 
         public static ShopMallFloorHotspotData shopMallFloorData;
 
-        public ResizeRotateChrome resize = new ResizeRotateChrome();
-
-        //private string hotSpotData = "";
-
         Point? lastDragPoint;
 
         public bool canDragPanel = true;
@@ -55,7 +51,7 @@ namespace SLHotSpot
         {
             shopMallFloorData = _shopMallFloorData;
 
-            resize.Hide();
+   
  
             InitializeComponent();
 
@@ -116,8 +112,6 @@ namespace SLHotSpot
             }
         }
 
-
-
         private void OnItemOpened(HostSpot hostSpot)
         {
             if(ItemOpenedHandle!=null)
@@ -128,6 +122,17 @@ namespace SLHotSpot
 
         [ScriptableMember]
         public event EventHandler ItemOpenedHandle;
+
+        private void OnItemChangedBrand(HostSpot hostSpot)
+        {
+            if (ItemChangedBrandHandle != null)
+            {
+                ItemChangedBrandHandle(hostSpot.DataID, EventArgs.Empty);
+            }
+        }
+
+        [ScriptableMember]
+        public event EventHandler ItemChangedBrandHandle;
 
         void webClient_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
@@ -568,6 +573,7 @@ namespace SLHotSpot
             winHotSpot.Closed += new EventHandler(ChangeHotSpot_Closed);
         }
 
+
         private void ChangeHotSpot_Closed(object sender, EventArgs e)
         {
             cwChangeShopBrand hotSpotEditor = sender as cwChangeShopBrand;
@@ -586,8 +592,27 @@ namespace SLHotSpot
 
             shopHotSpot.UpdateHotspot(casDrawPanel, setting.ControlMode, this);
 
+            OnItemChangedBrand(shopHotSpot);
+
             dgHotSpot.ItemsSource = HostSpots;
  
+        }
+
+        [ScriptableMember]
+        public string GetAllShopBrandInfo()
+        {
+            List<ShopBrandInfo> shopBrandInfos = new List<ShopBrandInfo>();
+
+            foreach (ShopHotSpot shopHotSpot in HostSpots)
+            {
+                ShopBrandInfo shopBrand = new ShopBrandInfo();
+                shopBrand.SeatNo = shopHotSpot.DataID;
+                shopBrand.BrandName = shopHotSpot.Brand;
+
+                shopBrandInfos.Add(shopBrand);
+            }
+
+            return JsonConvert.SerializeObject(shopBrandInfos);
         }
 
         private void AddToCanvas(ROSHotSpot rosHotSpot,Mode mode)

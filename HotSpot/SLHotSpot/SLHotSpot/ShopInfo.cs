@@ -12,6 +12,14 @@ using System.Windows.Shapes;
 
 namespace SLHotSpot
 {
+    public class ShopBrandInfo
+    {
+        public string SeatNo { get; set; }
+        public string BrandName { get; set; }
+    }
+
+
+
     public class ShopInfo : HotSpotService.RosShopInfo
     {
         //public string ShopNO { get; set; }

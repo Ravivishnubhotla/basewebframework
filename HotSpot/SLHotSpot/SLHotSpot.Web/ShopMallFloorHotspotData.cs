@@ -19,7 +19,6 @@ namespace SLHotSpot.Web
         public double Y { get; set; }
     }
 
-
     public class HotSpotText
     {
 
@@ -107,7 +106,6 @@ namespace SLHotSpot.Web
 
 
     }
-
 
     public class ROSHotSpot
     {
@@ -199,8 +197,6 @@ namespace SLHotSpot.Web
 
     }
 
-
-
     public class BrandData
     {
         public BrandData()
@@ -226,10 +222,9 @@ namespace SLHotSpot.Web
             brandInfos.Add(new BrandData() { Name = "Acer", FillColor = "#87B81C", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "ThinkPad", FillColor = "#1C2626", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "TOSHIBA", FillColor = "#ED1C24", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
-            brandInfos.Add(new BrandData() { Name = "SUMSANG", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "SONY", FillColor = "#800080", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "Apple", FillColor = "#C0C0C0", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
-            brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "ASUS", FillColor = "#006666", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "Getway", FillColor = "#6F6041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#00FF00", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
@@ -243,7 +238,6 @@ namespace SLHotSpot.Web
 
 
     }
-
 
     public class RosShopInfo : IComparable  
     {
@@ -309,5 +303,24 @@ namespace SLHotSpot.Web
         public List<BrandData> Brands { get; set; }
         //public string ImageWith { get; set; }
         //public string ImageHeight { get; set; }
+    }
+
+    public class BrandCompetitionScore
+    {
+        public string BrandName { get; set; }
+        public double CompetitionScore { get; set; }
+    }
+
+    public class BrandCompetitionScoreResult
+    {
+        public string BrandName { get; set; }
+        public double OldCompetitionScore { get; set; }
+        public double NewCompetitionScore { get; set; }
+    }
+
+    public class ShopBrandInfo
+    {
+        public string SeatNo { get; set; }
+        public string BrandName { get; set; }
     }
 }
