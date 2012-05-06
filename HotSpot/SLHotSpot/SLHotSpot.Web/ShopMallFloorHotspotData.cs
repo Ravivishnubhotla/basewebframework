@@ -217,20 +217,21 @@ namespace SLHotSpot.Web
 
             List<BrandData> brandInfos = new List<BrandData>();
 
-            brandInfos.Add(new BrandData() { Name = "Lenovo", FillColor = "#F28E30", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "HP", FillColor = "#0092D6", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Dell", FillColor = "#B7295B", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Acer", FillColor = "#87B81C", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "ThinkPad", FillColor = "#1C2626", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "TOSHIBA", FillColor = "#ED1C24", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "SUMSANG", FillColor = "#002060", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "SONY", FillColor = "#800080", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Apple", FillColor = "#C0C0C0", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "ASUS", FillColor = "#006666", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Getway", FillColor = "#6F6041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Brands", FillColor = "#626041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
-            brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#686041", BorderColor = Color.Black.ToString(), FontColor = Color.White.ToString(), FillOverColor = Color.Orange.ToString() });
+            brandInfos.Add(new BrandData() { Name = "Lenovo", FillColor = "#F28E30", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "HP", FillColor = "#0092D6", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Dell", FillColor = "#B7295B", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Acer", FillColor = "#87B81C", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "ThinkPad", FillColor = "#1C2626", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "TOSHIBA", FillColor = "#ED1C24", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "SUMSANG", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "SONY", FillColor = "#800080", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Apple", FillColor = "#C0C0C0", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "ASUS", FillColor = "#006666", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Getway", FillColor = "#6F6041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Brands", FillColor = "#626041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#686041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            
             return brandInfos;
 
 
@@ -248,6 +249,8 @@ namespace SLHotSpot.Web
         public string SeatNO { get; set; }
 
         public string ShopName { get; set; }
+
+        public string PlaceLevel { get; set; }
 
         public string ShopBrandInfo { get; set; }
 
