@@ -15,7 +15,7 @@
         <StackPanel VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="12" Foreground="Black" VerticalAlignment="Center" Text="选择席位号：" Width="100" ></TextBlock>
-                <ComboBox Name="cmbShopNo"   ItemsSource="{StaticResource shopNOs}"   Width="260" >
+                <ComboBox Name="cmbShopNo" Width="260" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="250" Orientation="Horizontal">

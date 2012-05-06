@@ -69,6 +69,8 @@ namespace SLHotSpot
             casDrawPanel.MouseLeftButtonUp += ssvDrawOnMouseLeftButtonUp;
             casDrawPanel.MouseMove += ssvDrawOnMouseMove;
             casDrawPanel.MouseLeftButtonDown += ssvDrawOnMouseLeftButtonDown;
+
+            imgBg.MouseEnter +=new MouseEventHandler(imgBg_MouseEnter);
  
             setting = _hotSpotSetting;
 
@@ -115,6 +117,16 @@ namespace SLHotSpot
 
 
         }
+
+        private void imgBg_MouseEnter(object sender, MouseEventArgs e)
+        {
+            foreach (ShopHotSpot shopHot in HostSpots)
+            {
+                shopHot.ResetColor();
+            }
+        }
+
+
 
         private void OnItemOpened(HostSpot hostSpot)
         {
@@ -193,10 +205,7 @@ namespace SLHotSpot
                     double dY = posNow.Y - lastDragPoint.Value.Y;
 
                     lastDragPoint = posNow;
-
-                    
-
-
+ 
                     ssvDraw.ScrollToHorizontalOffset(ssvDraw.HorizontalOffset - scaleTransform.ScaleX * dX);
                     ssvDraw.ScrollToVerticalOffset(ssvDraw.VerticalOffset - scaleTransform.ScaleY * dY);
                 }
@@ -333,23 +342,7 @@ namespace SLHotSpot
                 spot.IsSelected = selected;
             }
         }
-
-        private void btnClearHotSpot_Click(object sender, RoutedEventArgs e)
-        {
-            List<UIElement> removedElements = new List<UIElement>();
-
-            foreach (UIElement element in casDrawPanel.Children)
-            {
-                if (element is Rectangle && ((Rectangle)element).Tag == null)
-                {
-                    removedElements.Add(element);
-                }
-            }
-            foreach (UIElement removedElement in removedElements)
-            {
-                casDrawPanel.Children.Remove(removedElement);
-            }
-        }
+ 
 
         private void ClearAll()
         {
@@ -416,8 +409,27 @@ namespace SLHotSpot
             winHotSpot.Closed += new EventHandler(winHotSpot_Closed);
 
         }
+        private ShopHotSpot GetHotSpotBy(Guid id)
+        {
+            foreach (ShopHotSpot hotSpot in HostSpots)
+            {
+                if (hotSpot.ID == id)
+                    return hotSpot;
+            }
+            return null;
+        }
 
-        private ShopHotSpot GetHotSpotByDataID(string shopNO)
+        public ShopHotSpot GetHotSpotByIDAndDataID(Guid id, string dataID)
+        {
+            foreach (ShopHotSpot hotSpot in HostSpots)
+            {
+                if (hotSpot.DataID == dataID && hotSpot.ID != id)
+                    return hotSpot;
+            }
+            return null;
+        }
+
+        public ShopHotSpot GetHotSpotByDataID(string shopNO)
         {
             foreach (ShopHotSpot hotSpot in HostSpots)
             {
@@ -454,25 +466,7 @@ namespace SLHotSpot
             //this.dgHotSpot.ItemsSource = HostSpots;
         }
 
-        private ShopHotSpot GetHotSpotBy(Guid id)
-        {
-            foreach (ShopHotSpot hotSpot in HostSpots)
-            {
-                if (hotSpot.ID == id)
-                    return hotSpot;
-            }
-            return null;
-        }
 
-        public ShopHotSpot GetHotSpotByIDAndDataID(Guid id, string dataID)
-        {
-            foreach (ShopHotSpot hotSpot in HostSpots)
-            {
-                if (hotSpot.DataID == dataID && hotSpot.ID != id)
-                    return hotSpot;
-            }
-            return null;
-        }
 
         private ToggleButton tbtn;
 
@@ -538,44 +532,7 @@ namespace SLHotSpot
             shopMallFloorHotspot.ShopMallNo = shopMallFloorData.ShopMallNo;
             shopMallFloorHotspot.ShopMallFloorNo = shopMallFloorData.ShopMallFloorNo;
 
-            //shopMallFloorHotspot.ShopInfos = new ObservableCollection<RosShopInfo>();
-
-            //foreach (ShopHotSpot shopHotSpot in HostSpots)
-            //{
-            //    RosShopInfo rosShop = new RosShopInfo();
-            //    rosShop.SeatNO = shopHotSpot.DataID;
-            //    rosShop.HotSpotInfo = new HotSpotService.ROSHotSpot();
-            //    rosShop.HotSpotInfo.HotSpotPoints = new ObservableCollection<HotSpotService.Point>();
-
-            //    HotSpotText hotSpotText = new HotSpotText(shopHotSpot.ShowTextBlock);
-
-
-            //    rosShop.HotSpotInfo.TextInfo = new HotSpotService.HotSpotText();
-            //    rosShop.HotSpotInfo.TextInfo.Text = hotSpotText.Text;
-            //    rosShop.HotSpotInfo.TextInfo.TextIsVertical = hotSpotText.TextIsVertical;
-            //    rosShop.HotSpotInfo.TextInfo.TextLeft = hotSpotText.TextLeft;
-            //    rosShop.HotSpotInfo.TextInfo.TextTop = hotSpotText.TextTop;
-            //    rosShop.HotSpotInfo.TextInfo.TextScaleCenterX = hotSpotText.TextScaleCenterX;
-            //    rosShop.HotSpotInfo.TextInfo.TextScaleCenterY = hotSpotText.TextScaleCenterY;
-            //    rosShop.HotSpotInfo.TextInfo.TextScaleX = hotSpotText.TextScaleX;
-            //    rosShop.HotSpotInfo.TextInfo.TextScaleY = hotSpotText.TextScaleY;
-            //    rosShop.HotSpotInfo.TextInfo.FontColor = hotSpotText.FontColor;
-            //    rosShop.HotSpotInfo.TextInfo.FontFamily = hotSpotText.FontFamily;
-            //    rosShop.HotSpotInfo.TextInfo.TextVerticalAngle = hotSpotText.TextVerticalAngle;
-            //    rosShop.HotSpotInfo.TextInfo.TextVerticalCenterX = hotSpotText.TextVerticalCenterX;
-            //    rosShop.HotSpotInfo.TextInfo.TextVerticalCenterY = hotSpotText.TextVerticalCenterY;
-
-            //    foreach (Point point in shopHotSpot.ShowPolygon.Points)
-            //    {
-            //        HotSpotService.Point hotSpotServicePoint = new HotSpotService.Point();
-            //        hotSpotServicePoint.X = point.X;
-            //        hotSpotServicePoint.Y = point.Y;
-            //        rosShop.HotSpotInfo.HotSpotPoints.Add(hotSpotServicePoint);
-            //    }
-            //    shopMallFloorHotspot.ShopInfos.Add(rosShop);
-            //}
-
-
+ 
             serviceClient.SaveShopMallFloorHotspotDataAsync(shopMallFloorHotspot, SLHotSpot.ROSHotSpot.HotSpotsToList(HostSpots, this.imgBg.Width, this.imgBg.Height));
             serviceClient.SaveShopMallFloorHotspotDataCompleted += new EventHandler<System.ComponentModel.AsyncCompletedEventArgs>(serviceClient_SaveShopMallFloorHotspotDataCompleted);
 
@@ -665,33 +622,7 @@ namespace SLHotSpot
             HostSpots.Add(shopHot);
         }
 
-        //private void btnStartAnalysis_Click(object sender, RoutedEventArgs e)
-        //{ 
-        //    CPData.CaculateAllData();
-        //}
-
-        //private void chkShowAllShop_Click(object sender, RoutedEventArgs e)
-        //{
-        //    ClearAll();
-
-        //    List<ROSHotSpot> rosHotSpots = JsonConvert.DeserializeObject<List<ROSHotSpot>>(hotSpotData);
-
-        //    foreach (ROSHotSpot rosHotSpot in rosHotSpots)
-        //    {
-        //        if (!(this.chkShowAllShop.IsChecked.HasValue && this.chkShowAllShop.IsChecked.Value) && this.setting.ControlMode == Mode.View && rosHotSpot.GetBrandInfo().Name != "Lenovo" && rosHotSpot.GetBrandInfo().Name != "ThinkPad")
-        //        {
-        //            continue;
-        //        }
-        //        AddToCanvas(rosHotSpot, setting.ControlMode);
-        //    }
-
-        //    dgHotSpot.ItemsSource = HostSpots;
-
-        //    if (this.setting.ControlMode == Mode.View)
-        //    {
-        //        dgHotSpotView.ItemsSource = HostSpots;
-        //    }
-        //}
+ 
 
         private void dgHotSpot_OnTextChangeClick(object sender, RoutedEventArgs e)
         {
@@ -762,6 +693,11 @@ namespace SLHotSpot
             double newValue = Math.Max(zoomSlider.Value - 1, zoomSlider.Minimum);
 
             zoomSlider.Value = newValue;
+        }
+
+        private void dgHotSpot_CurrentCellChanged(object sender, EventArgs e)
+        {
+            dgHotSpot.CurrentColumn = dgHotSpot.Columns[1];
         }
     }
 }

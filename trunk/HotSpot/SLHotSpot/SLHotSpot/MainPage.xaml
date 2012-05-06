@@ -182,13 +182,11 @@
             <StackPanel  Name="pnlManage">
                 <toolkit:WrapPanel >
                     <ToggleButton Name="btnDrawArea" Content="开始绘制热点"  Margin="10" Visibility="Collapsed" Click="btnDrawArea_Click"/>
-                    <Button Name="btnClearHotSpot"  Visibility="Collapsed" Content="清除绘制点" Margin="10" Click="btnClearHotSpot_Click"/>
                     <Button Name="btnSaveHotSpot"  Visibility="Collapsed" Content="保存所有热点" Margin="10" Click="btnSaveHotSpot_Click"/>
-                    <Button Name="btnLoadHotSpot"  Visibility="Collapsed" Content="加载热点信息" Margin="10" />
                 </toolkit:WrapPanel>
                 <sdk:DataGrid x:Name="dgHotSpot" Margin="2"
             Height="500"   SelectionMode="Single" 
-            AutoGenerateColumns="False" Visibility="Collapsed"
+            AutoGenerateColumns="False" Visibility="Collapsed"  CurrentCellChanged="dgHotSpot_CurrentCellChanged"
             GridLinesVisibility="All"
             RowBackground="White">
                     <sdk:DataGrid.Columns>
@@ -214,9 +212,8 @@
                                 </DataTemplate>
                             </sdk:DataGridTemplateColumn.CellTemplate>
                         </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTextColumn Header="编号" Binding="{Binding ID}" 
-                    IsReadOnly="True" Visibility="Collapsed" Width="50" />
-                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding Name}" IsReadOnly="True" Width="80" />
+                        <sdk:DataGridTextColumn Header="编号" Binding="{Binding ID}" IsReadOnly="True"  MinWidth="0" MaxWidth="0" />
+                        <sdk:DataGridTextColumn Header="名称" Binding="{Binding DataID}" IsReadOnly="True" Width="80" />
                         <sdk:DataGridTextColumn Header="品牌" Binding="{Binding Brand}" IsReadOnly="True" Width="70" />
                         <sdk:DataGridTemplateColumn Header="操作" Width="112">
                             <sdk:DataGridTemplateColumn.CellTemplate>

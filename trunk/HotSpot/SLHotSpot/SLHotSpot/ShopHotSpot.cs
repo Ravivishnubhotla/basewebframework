@@ -32,6 +32,16 @@ namespace SLHotSpot
             this.Name = rosHotSpot.TextInfo.Text;
             this.IsRotate = rosHotSpot.TextInfo.TextIsVertical;
 
+            ShopInfo shopInfo = ShopInfo.GetBySeatNo(this.DataID);
+            if (shopInfo != null)
+            {
+                if(rosHotSpot.TextInfo!=null)
+                {
+                    rosHotSpot.TextInfo.Text = shopInfo.ShowText;
+                }
+                this.Comment = shopInfo.ShowTooltip;
+            }
+
             showPolygon = new Polygon();
 
             foreach (Point hotSpotPoint in rosHotSpot.HotSpotPoints)
@@ -57,7 +67,9 @@ namespace SLHotSpot
             //textBlock.Foreground =  new SolidColorBrush(rosHotSpot.GetBrandInfo().FontColor);
             showTextBlock.FontFamily = new FontFamily("Arial");
             showTextBlock.Foreground = new SolidColorBrush(ColorFromString.ToColor("#AAFCFA"));
+
             showTextBlock.Inlines.Add(rosHotSpot.TextInfo.Text);
+
             Canvas.SetLeft(showTextBlock, rosHotSpot.TextInfo.TextLeft);
             Canvas.SetTop(showTextBlock, rosHotSpot.TextInfo.TextTop);
 
@@ -94,6 +106,8 @@ namespace SLHotSpot
             AddContextMenu(showPolygon, mode, mainPage);
 
 
+
+
             ToolTipService.SetToolTip(showPolygon, this.Comment);
             ToolTipService.SetToolTip(ShowTextBlock, this.Comment);
 
@@ -101,6 +115,16 @@ namespace SLHotSpot
             canvas.Children.Add(showTextBlock);
 
 
+        }
+
+        public  void ResetColor()
+        {
+            if (!this.isSelected && this.ShowPolygon.Fill is SolidColorBrush &&
+                ((SolidColorBrush)this.ShowPolygon.Fill).Color != this.FillColor)
+            {
+                this.ShowPolygon.Fill = new SolidColorBrush(this.FillColor);
+            }
+ 
         }
 
         public string Brand
