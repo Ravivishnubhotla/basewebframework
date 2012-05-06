@@ -19,12 +19,7 @@ namespace SLHotSpot
     {
         public cwShopEditor()
         {
-            //cmbShopNo.ItemsSource = shopNOs;
             InitializeComponent();
-
-
-            //this.cmbShopNo.ItemsSource = ShopInfo.AllShopInfo;
-            //cmbShopNo.ItemsSource = shopNOs;
         }
 
         public ObservableCollection<ShopInfo> AllShopNOs
@@ -65,19 +60,8 @@ namespace SLHotSpot
 
         public ShopHotSpot GetItem()
         {
-
-
-            //if (this.dataFormHotSpot.ItemsSource is ShopHotSpot)
-            //    shopHotSpot = (ShopHotSpot)this.dataFormHotSpot.ItemsSource;
-
-            //if (this.dataFormHotSpot.ItemsSource is List<ShopHotSpot>)
-            //    shopHotSpot = ((List<ShopHotSpot>)this.dataFormHotSpot.ItemsSource)[0];
-
-
             if (shopHotSpot != null)
             {
-                //if(DataMode == DataFormMode.AddNew)
-
                 shopHotSpot.DataID = ((ShopInfo)this.cmbShopNo.SelectedValue).SeatNO.ToString();
                 shopHotSpot.IsRotate = this.chkTextIsVertical.IsChecked.HasValue && this.chkTextIsVertical.IsChecked.Value;
                 shopHotSpot.UpdateInfo();
@@ -93,7 +77,6 @@ namespace SLHotSpot
             if (this.cmbShopNo.SelectedValue == null)
             {
                 MessageBox.Show("请输入席位号！");
-                //this.DialogResult = false;
                 return;
             }
 
@@ -102,7 +85,6 @@ namespace SLHotSpot
             if (ParentWindow.GetHotSpotByIDAndDataID(shopHotSpot.ID, showN0) != null)
             {
                 MessageBox.Show(string.Format("席位号{0}已存在！", showN0));
-                //this.DialogResult = false;
                 return;
             }
 
