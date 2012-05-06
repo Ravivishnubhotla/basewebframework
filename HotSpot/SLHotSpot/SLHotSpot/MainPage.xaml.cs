@@ -72,7 +72,7 @@ namespace SLHotSpot
  
             setting = _hotSpotSetting;
 
-            //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(0, GridUnitType.Star);
+ 
 
             switch (setting.ControlMode)
             {
@@ -89,7 +89,7 @@ namespace SLHotSpot
                     this.pnlManage.Visibility = Visibility.Collapsed;
                     break;
                 case Mode.Design:
-                    //LayoutRoot.ColumnDefinitions[0].Width = new GridLength(25, GridUnitType.Star);
+ 
                     LayoutRoot.ColumnDefinitions[0].Width = new GridLength(75, GridUnitType.Star);
                     LayoutRoot.ColumnDefinitions[1].Width = new GridLength(25, GridUnitType.Star);  
                     this.pnlAnalysis.Visibility = Visibility.Collapsed;

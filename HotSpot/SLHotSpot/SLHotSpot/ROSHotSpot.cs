@@ -212,7 +212,7 @@ namespace SLHotSpot
                 rosHot.ImageWidth = imageWidth;
                 rosHot.ImageHeight = imageHeight;
                 rosHot.TextInfo = new HotSpotText(shopHot.ShowTextBlock);
-                rosHot.ToolTip = shopHot.GetToolTip();
+                rosHot.ToolTip = shopHot.Comment;
 
                 rosHotSpots.Add(rosHot);
             }
@@ -235,7 +235,7 @@ namespace SLHotSpot
                 rosHot.ImageWidth = imageWidth;
                 rosHot.ImageHeight = imageHeight;
                 rosHot.TextInfo = new HotSpotText(shopHot.ShowTextBlock);
-                rosHot.ToolTip = shopHot.GetToolTip();
+                rosHot.ToolTip = shopHot.Comment;
 
                 rosHotSpots.Add(rosHot.ToWebROSHotSpot());
             }
@@ -258,9 +258,7 @@ namespace SLHotSpot
                 point.Y = hotSpotPoint.Y;
                 rosHot.HotSpotPoints.Add(point);
             }
-
-            //rosHot.ImageWidth = this.ImageWidth;
-            //rosHot.ImageHeight = this.ImageHeight;
+ 
             rosHot.TextInfo = new HotSpotService.HotSpotText();
 
             rosHot.TextInfo.Text = this.TextInfo.Text;
@@ -379,7 +377,7 @@ namespace SLHotSpot
 
         public BrandInfo GetBrandInfo()
         {
-            return ShopInfo.GetByShopNo(ShopNO).GetBrandInfo();
+            return ShopInfo.GetBySeatNo(ShopNO).GetBrandInfo();
         }
 
         public static List<ROSHotSpot> GetFromShopMallFloorHotspotData(ShopMallFloorHotspotData shopMallFloorData)

@@ -191,11 +191,8 @@ namespace SLHotSpot.Web
      
                 if(!shopMallFloorHotspotData.ShopInfos.Exists(p=>(p.SeatNO==shopNo)))
                 {
-                    RosShopInfo rosShopInfo = new RosShopInfo();
-                    rosShopInfo.SeatNO = shopNo;
-                    rosShopInfo.CompleteNumber = 60;
-                    rosShopInfo.ShopName = ds.Tables[0].Rows[i]["ResellerName"].ToString();
-                    rosShopInfo.ShopBrandInfo = ds.Tables[0].Rows[i]["Brand"].ToString(); ;
+                    RosShopInfo rosShopInfo = new RosShopInfo(ds.Tables[0].Rows[i]);
+ ;
                     shopMallFloorHotspotData.ShopInfos.Add(rosShopInfo);
                 }
             }
@@ -233,7 +230,7 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
 
             DataSet ds = SqlHelper.ExecuteDataset(cnnstring, CommandType.Text, sql);
 
-            List<RosShopInfo> hots = new List<RosShopInfo>();
+            List<RosShopInfo> shopInfos = new List<RosShopInfo>();
 
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) //loop through rows
             {
@@ -241,39 +238,17 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
                 {
                     continue;
                 }
- 
-                RosShopInfo shopInfo = new RosShopInfo();
- 
-                //ROSHotSpot rosHotSpot = new ROSHotSpot();
 
-                //rosHotSpot.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
-
-                //JObject jObject = JObject.Parse(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
-
-                //rosHotSpot.HotSpotPoints = JsonConvert.DeserializeObject<List<Point>>(jObject["HotSpotPoints"].ToString());
-
-                //rosHotSpot.TextInfo = JsonConvert.DeserializeObject<HotSpotText>(jObject["TextInfo"].ToString());
-
-                shopInfo.ShopName = ds.Tables[0].Rows[i]["ResellerName"].ToString();
-
-                shopInfo.ShopBrandInfo = ds.Tables[0].Rows[i]["Brand"].ToString();
-
-                shopInfo.CompleteNumber = 60;
+                RosShopInfo shopInfo = new RosShopInfo(ds.Tables[0].Rows[i]);
 
                 shopInfo.HotSpotInfo = JsonConvert.DeserializeObject<ROSHotSpot>(ds.Tables[0].Rows[i]["HotspotInfo"].ToString());
-
-                shopInfo.SeatNO = ds.Tables[0].Rows[i]["SeatNo"].ToString();
-
-                hots.Add(shopInfo);
-
-                //JObject item = (JObject)items[i];
-
-                //ROSHotSpot rosHotSpot = new ROSHotSpot(item);
-
-                //hots.Add(rosHotSpot);
+ 
+                shopInfos.Add(shopInfo);
             }
 
-            return hots;
+            shopInfos.Sort();
+
+            return shopInfos;
         }
 
         public static List<ROSHotSpot> LoadHotspotData(string shopMallNo, string floorNo, bool allBrandInfo)

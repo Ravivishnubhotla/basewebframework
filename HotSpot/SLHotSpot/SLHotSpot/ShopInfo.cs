@@ -12,17 +12,42 @@ using System.Windows.Shapes;
 
 namespace SLHotSpot
 {
-    public class ShopInfo
+    public class ShopInfo : HotSpotService.RosShopInfo
     {
-        public string ShopNO { get; set; }
-        public string Brand { get; set; }
+        //public string ShopNO { get; set; }
+
+        //public string Brand { get; set; }
+
+        //public string BrandsName { get; set; }
+ 
+        //public string PlaceLevel { get; set; }
+
+        //public string ShopName { get; set; }
+ 
+        //public int CompleteNumber { get; set; }
+
+        //public string UserArea { get; set; }
+
+        //public string BrandArea { get; set; }
+
+ 
+
+
+
         public string ShowText
         {
-            get { return ShopNO + "\t" + Brand; }
+            get { return SeatNO + "\r\n" + this.ShopBrandInfo + "\r\n" + this.PlaceLevel.ToUpper(); }
         }
-        public string ShowTooltip { get; set; }
-
-
+        public string ShowTooltip
+        {
+            get {
+                return "店铺名称：" + ShopName + "\r\n" +
+                         "经销商名称：" + ShopName + "\r\n" +
+                         "经营品牌：" + BrandsName + "\r\n" +
+                         "面积：" + UserArea + "\r\n" +
+                         "位置：" + PlaceLevel ;
+            }
+        }
         public SolidColorBrush BrandColor
         {
             get
@@ -38,7 +63,7 @@ namespace SLHotSpot
 
         public BrandInfo GetBrandInfo()
         {
-            return BrandInfo.GetBrandInfo(Brand);
+            return BrandInfo.GetBrandInfo(this.ShopBrandInfo);
         }
 
         protected static List<ShopInfo> allShopInfos = new List<ShopInfo>();
@@ -48,8 +73,22 @@ namespace SLHotSpot
             for (int i = 0; i < MainPage.shopMallFloorData.ShopInfos.Count; i++)
             {
                 SLHotSpot.HotSpotService.RosShopInfo shopInfo = MainPage.shopMallFloorData.ShopInfos[i];
-                allShopInfos.Add(new ShopInfo() { Brand = shopInfo.ShopBrandInfo, ShopNO = shopInfo.SeatNO, ShowTooltip = shopInfo.ShopName });
+                allShopInfos.Add(new ShopInfo()
+                                     {
+                                         ShopBrandInfo = shopInfo.ShopBrandInfo,
+                                         SeatNO = shopInfo.SeatNO, 
+                                         ShopName = shopInfo.ShopName,
+                                         BrandArea = shopInfo.BrandArea,
+                                         UserArea = shopInfo.UserArea,
+                                         BrandsName = shopInfo.BrandsName,
+                                         PlaceLevel = shopInfo.PlaceLevel,
+                                         CompleteNumber = shopInfo.CompleteNumber
+                                     });
             }
+
+
+
+ 
         }
 
         public static List<ShopInfo> AllShopInfo
@@ -60,11 +99,11 @@ namespace SLHotSpot
             }
         }
 
-        public static ShopInfo GetByShopNo(string dataId)
+        public static ShopInfo GetBySeatNo(string dataId)
         {
             foreach (ShopInfo shopInfo in allShopInfos)
             {
-                if (shopInfo.ShopNO == dataId)
+                if (shopInfo.SeatNO == dataId)
                     return shopInfo;
             }
             return null;

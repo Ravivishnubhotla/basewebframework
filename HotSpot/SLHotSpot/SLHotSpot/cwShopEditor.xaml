@@ -19,9 +19,9 @@
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="250" Orientation="Horizontal">
-                                <TextBlock Text="{Binding ShopNO}"/>
+                                <TextBlock Text="{Binding SeatNO}"/>
                                 <TextBlock Text="-"/>
-                                <TextBlock Text="{Binding Brand}"/>
+                                <TextBlock Text="{Binding ShopBrandInfo}"/>
                                 <TextBlock Text="-"/>
                                 <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
                             </StackPanel>
