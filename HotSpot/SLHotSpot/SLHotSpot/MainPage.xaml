@@ -142,43 +142,6 @@
         </ScrollViewer>
         <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
         <StackPanel  Grid.Row="0" Grid.Column="1" Background="Gray" >
-            <StackPanel Name="pnlAnalysis">
-                <sdk:DataGrid x:Name="dgBrandCP" Margin="2"
-            Height="360"   SelectionMode="Single" 
-            AutoGenerateColumns="False"  
-            GridLinesVisibility="All"
-            RowBackground="White">
-                    <sdk:DataGrid.Columns>
-                        <sdk:DataGridTemplateColumn Header="名称" IsReadOnly="True" Width="100">
-                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <StackPanel  Width="100" Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Name}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
-                        </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTemplateColumn Header="原有竞争力"  IsReadOnly="True" Width="75" >
-                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding OCP}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
-                        </sdk:DataGridTemplateColumn>
-                        <sdk:DataGridTemplateColumn Header="现有竞争力"  IsReadOnly="True" Width="75" >
-                            <sdk:DataGridTemplateColumn.CellEditingTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <TextBlock Text="{Binding NCP}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </sdk:DataGridTemplateColumn.CellEditingTemplate>
-                        </sdk:DataGridTemplateColumn>
-                    </sdk:DataGrid.Columns>
-                </sdk:DataGrid>
-            </StackPanel>
             <StackPanel  Name="pnlManage">
                 <toolkit:WrapPanel >
                     <ToggleButton Name="btnDrawArea" Content="开始绘制热点"  Margin="10" Visibility="Collapsed" Click="btnDrawArea_Click"/>

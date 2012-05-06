@@ -38,6 +38,7 @@ namespace SLHotSpot
         {
             get { return SeatNO + "\r\n" + this.ShopBrandInfo + "\r\n" + this.PlaceLevel.ToUpper(); }
         }
+
         public string ShowTooltip
         {
             get {
@@ -107,6 +108,11 @@ namespace SLHotSpot
                     return shopInfo;
             }
             return null;
+        }
+
+        public string GetNewText(string brand)
+        {
+            return SeatNO + "\r\n" + brand + "\r\n" + this.PlaceLevel.ToUpper(); 
         }
     }
 }

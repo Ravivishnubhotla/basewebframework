@@ -173,20 +173,17 @@ namespace SLHotSpot
             }
         }
 
-        public void UpdateText()
+        public void UpdateText(string brand)
         {
             if (!string.IsNullOrEmpty(this.DataID))
             {
                 ShopInfo shopInfo = ShopInfo.GetBySeatNo(this.DataID);
 
-                this.Name = shopInfo.ShopBrandInfo;
+                this.Name= shopInfo.GetNewText(brand);
 
-                this.Comment = shopInfo.ShowTooltip; ;
-
+                this.Comment = shopInfo.ShowTooltip;
             }
         }
-
- 
 
 
     }
