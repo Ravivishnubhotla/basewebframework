@@ -48,6 +48,12 @@ namespace SLHotSpot
             showPolygon.MouseLeave += new MouseEventHandler(polygon_OnMouseLeave);
 
             showTextBlock = new TextBlock();
+
+            showTextBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            showTextBlock.VerticalAlignment = VerticalAlignment.Center;
+            showTextBlock.TextAlignment = TextAlignment.Left;
+            showTextBlock.TextWrapping = TextWrapping.Wrap;
+
             //textBlock.Foreground =  new SolidColorBrush(rosHotSpot.GetBrandInfo().FontColor);
             showTextBlock.FontFamily = new FontFamily("Arial");
             showTextBlock.Foreground = new SolidColorBrush(ColorFromString.ToColor("#AAFCFA"));
@@ -88,8 +94,8 @@ namespace SLHotSpot
             AddContextMenu(showPolygon, mode, mainPage);
 
 
-            ToolTipService.SetToolTip(showPolygon, this.GetToolTip());
-            ToolTipService.SetToolTip(ShowTextBlock, this.GetToolTip());
+            ToolTipService.SetToolTip(showPolygon, this.Comment);
+            ToolTipService.SetToolTip(ShowTextBlock, this.Comment);
 
             canvas.Children.Add(showPolygon);
             canvas.Children.Add(showTextBlock);
@@ -125,23 +131,20 @@ namespace SLHotSpot
 
         }
 
-
-
-
-        //
+  
 
 
         public void UpdateInfo()
         {
             if (!string.IsNullOrEmpty(this.DataID))
             {
-                ShopInfo shopInfo = ShopInfo.GetByShopNo(this.DataID);
+                ShopInfo shopInfo = ShopInfo.GetBySeatNo(this.DataID);
 
-                this.Name = shopInfo.ShopNO + "\r" + shopInfo.Brand;
+                this.Name = shopInfo.ShowText;
 
-                this.Comment = GetToolTip();
+                this.Comment = shopInfo.ShowTooltip;
 
-                this.Brand = shopInfo.Brand;
+                this.Brand = shopInfo.ShopBrandInfo;
 
             }
         }
@@ -150,19 +153,16 @@ namespace SLHotSpot
         {
             if (!string.IsNullOrEmpty(this.DataID))
             {
-                ShopInfo shopInfo = ShopInfo.GetByShopNo(this.DataID);
+                ShopInfo shopInfo = ShopInfo.GetBySeatNo(this.DataID);
 
-                this.Name = shopInfo.ShopNO + "\r" + this.Brand;
+                this.Name = shopInfo.ShopBrandInfo;
 
-                this.Comment = GetToolTip();
+                this.Comment = shopInfo.ShowTooltip; ;
 
             }
         }
 
-        public string GetToolTip()
-        {
-            return "店铺名称:" + this.DataID + "\r\n店面位置: A \r\n面积:50平方米";
-        }
+ 
 
 
     }

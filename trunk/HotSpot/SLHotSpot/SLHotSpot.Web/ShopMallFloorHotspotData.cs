@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace SLHotSpot.Web
@@ -229,8 +232,9 @@ namespace SLHotSpot.Web
             brandInfos.Add(new BrandData() { Name = "Samsung", FillColor = "#002060", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "ASUS", FillColor = "#006666", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             brandInfos.Add(new BrandData() { Name = "Getway", FillColor = "#6F6041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
-            brandInfos.Add(new BrandData() { Name = "Brands", FillColor = "#626041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
-            brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#686041", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "Others", FillColor = "#00FF00", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "品类店", FillColor = "#FFFF00", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
+            brandInfos.Add(new BrandData() { Name = "其他店", FillColor = "#FF00FF", BorderColor = "#000000", FontColor = "#8BFCFB", FillOverColor = "#FFA500" });
             
             return brandInfos;
 
@@ -241,32 +245,63 @@ namespace SLHotSpot.Web
     }
 
 
-    public class RosShopInfo
+    public class RosShopInfo : IComparable  
     {
         public RosShopInfo()
         {
         }
+
+
+        public RosShopInfo(DataRow dr)
+        {
+            this.SeatNO = dr["SeatNo"].ToString();
+
+            this.ShopBrandInfo = dr["Brand"].ToString();
+
+            this.PlaceLevel = dr["PlaceLev"].ToString();
+
+            this.ShopName = dr["ResellerName"].ToString();
+
+            this.BrandsName = dr["Brand"].ToString();
+
+            this.UserArea = dr["UseArea"].ToString();
+
+            this.BrandArea = dr["BrandArea"].ToString();
+
+            this.CompleteNumber = 60;
+        }
+
         public string SeatNO { get; set; }
-
-        public string ShopName { get; set; }
-
-        public string PlaceLevel { get; set; }
 
         public string ShopBrandInfo { get; set; }
 
+        public string PlaceLevel { get; set; }
+
+        public string ShopName { get; set; }
+
         public int CompleteNumber { get; set; }
 
+        public string UserArea { get; set; }
+
+        public string BrandArea { get; set; }
+
+        public string BrandsName { get; set; }
+        
         public ROSHotSpot HotSpotInfo { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            RosShopInfo shopInfo = (RosShopInfo)obj;
+            return String.Compare(this.SeatNO, shopInfo.SeatNO);
+        }
     }
-
-
-
  
     public class ShopMallFloorHotspotData
     {
         public ShopMallFloorHotspotData()
         {
         }
+
         public string ShopMallNo { get; set; }
         public string ShopMallFloorNo { get; set; }
         public List<RosShopInfo> ShopInfos { get; set; }

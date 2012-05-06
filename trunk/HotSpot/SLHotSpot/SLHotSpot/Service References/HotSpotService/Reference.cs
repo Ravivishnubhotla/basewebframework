@@ -112,11 +112,19 @@ namespace SLHotSpot.HotSpotService {
         
         private string SeatNOField;
         
-        private string ShopNameField;
-        
         private string ShopBrandInfoField;
         
+        private string PlaceLevelField;
+        
+        private string ShopNameField;
+        
         private int CompleteNumberField;
+        
+        private string UserAreaField;
+        
+        private string BrandAreaField;
+        
+        private string BrandsNameField;
         
         private SLHotSpot.HotSpotService.ROSHotSpot HotSpotInfoField;
         
@@ -134,19 +142,6 @@ namespace SLHotSpot.HotSpotService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string ShopName {
-            get {
-                return this.ShopNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ShopNameField, value) != true)) {
-                    this.ShopNameField = value;
-                    this.RaisePropertyChanged("ShopName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string ShopBrandInfo {
             get {
                 return this.ShopBrandInfoField;
@@ -159,7 +154,33 @@ namespace SLHotSpot.HotSpotService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string PlaceLevel {
+            get {
+                return this.PlaceLevelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlaceLevelField, value) != true)) {
+                    this.PlaceLevelField = value;
+                    this.RaisePropertyChanged("PlaceLevel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string ShopName {
+            get {
+                return this.ShopNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShopNameField, value) != true)) {
+                    this.ShopNameField = value;
+                    this.RaisePropertyChanged("ShopName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
         public int CompleteNumber {
             get {
                 return this.CompleteNumberField;
@@ -172,7 +193,46 @@ namespace SLHotSpot.HotSpotService {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string UserArea {
+            get {
+                return this.UserAreaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserAreaField, value) != true)) {
+                    this.UserAreaField = value;
+                    this.RaisePropertyChanged("UserArea");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public string BrandArea {
+            get {
+                return this.BrandAreaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BrandAreaField, value) != true)) {
+                    this.BrandAreaField = value;
+                    this.RaisePropertyChanged("BrandArea");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string BrandsName {
+            get {
+                return this.BrandsNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BrandsNameField, value) != true)) {
+                    this.BrandsNameField = value;
+                    this.RaisePropertyChanged("BrandsName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
         public SLHotSpot.HotSpotService.ROSHotSpot HotSpotInfo {
             get {
                 return this.HotSpotInfoField;

@@ -55,7 +55,7 @@ namespace SLHotSpot
             {
                 //if(DataMode == DataFormMode.AddNew)
 
-                shopHotSpot.DataID = ((ShopInfo)this.cmbShopNo.SelectedValue).ShopNO.ToString();
+                shopHotSpot.DataID = ((ShopInfo)this.cmbShopNo.SelectedValue).SeatNO.ToString();
                 shopHotSpot.IsRotate = this.chkTextIsVertical.IsChecked.HasValue && this.chkTextIsVertical.IsChecked.Value;
                 shopHotSpot.UpdateInfo();
 
@@ -74,7 +74,7 @@ namespace SLHotSpot
                 return;
             }
 
-            string showN0 = ((ShopInfo)this.cmbShopNo.SelectedValue).ShopNO;
+            string showN0 = ((ShopInfo)this.cmbShopNo.SelectedValue).SeatNO;
 
             if (ParentWindow.GetHotSpotByIDAndDataID(shopHotSpot.ID, showN0) != null)
             {
@@ -106,7 +106,7 @@ namespace SLHotSpot
             ParentWindow = parentWindow;
             DataMode = DataFormMode.Edit;
             shopHotSpot = hostSpot;
-            this.cmbShopNo.SelectedValue = ShopInfo.GetByShopNo(shopHotSpot.DataID);
+            this.cmbShopNo.SelectedValue = ShopInfo.GetBySeatNo(shopHotSpot.DataID);
             this.chkTextIsVertical.IsChecked = shopHotSpot.IsRotate;
             Show();
         }

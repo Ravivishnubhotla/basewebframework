@@ -390,7 +390,7 @@ namespace SLHotSpot
 
             textBlock.HorizontalAlignment = HorizontalAlignment.Center;
             textBlock.VerticalAlignment = VerticalAlignment.Center;
-            textBlock.TextAlignment = TextAlignment.Center;
+            textBlock.TextAlignment = TextAlignment.Left;
             textBlock.TextWrapping = TextWrapping.Wrap;
 
             textBlock.Inlines.Add(new Run() { Text = this.Name });
