@@ -14,60 +14,60 @@ namespace SLHotSpot
 {
     public class HotSpotText
     {
-        //public HotSpotText(JObject obj)
-        //{
-        //    JToken jtoken = obj.First;
+        public HotSpotText(JObject obj)
+        {
+            JToken jtoken = obj.First;
 
-        //    while (jtoken != null)//loop through columns
-        //    {
-        //        JProperty property = (JProperty)jtoken;
+            while (jtoken != null)//loop through columns
+            {
+                JProperty property = (JProperty)jtoken;
 
-        //        switch (property.Name)
-        //        {
-        //            case "Text":
-        //                this.Text = property.Value.ToObject<string>();
-        //                break;
-        //            case "TextLeft":
-        //                this.TextLeft = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextTop":
-        //                this.TextTop = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextIsVertical":
-        //                this.TextIsVertical = property.Value.ToObject<bool>();
-        //                break;
-        //            case "TextVerticalCenterX":
-        //                this.TextVerticalCenterX = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextVerticalCenterY":
-        //                this.TextVerticalCenterY = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextVerticalAngle":
-        //                this.TextVerticalAngle = property.Value.ToObject<double>();
-        //                break;
-        //            case "FontColor":
-        //                this.FontColor = property.Value.ToObject<string>();
-        //                break;
-        //            case "FontFamily":
-        //                this.FontFamily = property.Value.ToObject<string>();
-        //                break;
-        //            case "TextScaleCenterX":
-        //                this.TextScaleCenterX = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextScaleCenterY":
-        //                this.TextScaleCenterY = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextScaleX":
-        //                this.TextScaleX = property.Value.ToObject<double>();
-        //                break;
-        //            case "TextScaleY":
-        //                this.TextScaleY = property.Value.ToObject<double>();
-        //                break;
-        //        }
+                switch (property.Name)
+                {
+                    case "Text":
+                        this.Text = property.Value.ToObject<string>();
+                        break;
+                    case "TextLeft":
+                        this.TextLeft = property.Value.ToObject<double>();
+                        break;
+                    case "TextTop":
+                        this.TextTop = property.Value.ToObject<double>();
+                        break;
+                    case "TextIsVertical":
+                        this.TextIsVertical = property.Value.ToObject<bool>();
+                        break;
+                    case "TextVerticalCenterX":
+                        this.TextVerticalCenterX = property.Value.ToObject<double>();
+                        break;
+                    case "TextVerticalCenterY":
+                        this.TextVerticalCenterY = property.Value.ToObject<double>();
+                        break;
+                    case "TextVerticalAngle":
+                        this.TextVerticalAngle = property.Value.ToObject<double>();
+                        break;
+                    case "FontColor":
+                        this.FontColor = property.Value.ToObject<string>();
+                        break;
+                    case "FontFamily":
+                        this.FontFamily = property.Value.ToObject<string>();
+                        break;
+                    case "TextScaleCenterX":
+                        this.TextScaleCenterX = property.Value.ToObject<double>();
+                        break;
+                    case "TextScaleCenterY":
+                        this.TextScaleCenterY = property.Value.ToObject<double>();
+                        break;
+                    case "TextScaleX":
+                        this.TextScaleX = property.Value.ToObject<double>();
+                        break;
+                    case "TextScaleY":
+                        this.TextScaleY = property.Value.ToObject<double>();
+                        break;
+                }
 
-        //        jtoken = jtoken.Next;
-        //    }
-        //}
+                jtoken = jtoken.Next;
+            }
+        }
 
         public HotSpotText(TextBlock showTextBlock)
         {
