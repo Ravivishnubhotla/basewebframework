@@ -246,23 +246,56 @@ namespace SLHotSpot.Web
         }
 
 
-        public RosShopInfo(DataRow dr)
+        public RosShopInfo(DataRow dr, string shopType)
         {
             this.SeatNO = dr["SeatNo"].ToString();
-
-            this.ShopBrandInfo = dr["Brand"].ToString();
-
+            this.ShopName = dr["ResellerName"].ToString();
+            this.UserArea = dr["UseArea"].ToString();
+            this.BrandArea = dr["BrandArea"].ToString();
             this.PlaceLevel = dr["PlaceLev"].ToString();
 
-            this.ShopName = dr["ResellerName"].ToString();
+            DataTable dt = dr.Table;
 
-            this.BrandsName = dr["Brand"].ToString();
+            DataRow[] drs = dt.Select(string.Format(" SeatNo = '{0}' ", this.SeatNO));
 
-            this.UserArea = dr["UseArea"].ToString();
+            string brandName = "";
 
-            this.BrandArea = dr["BrandArea"].ToString();
+            foreach (DataRow sdr in drs)
+            {
+                brandName +=  sdr["Brand"].ToString() + ",";
+            }
 
-            this.CompleteNumber = 60;
+ 
+            switch (shopType)
+            {
+                case "品类":
+                    this.ShopBrandInfo = "品类店";
+                    this.BrandsName = brandName;
+                    break;
+                case "品牌":
+                    this.ShopBrandInfo = dr["Brand"].ToString();
+                    this.BrandsName = dr["Brand"].ToString();
+                    break;
+                case "其他":
+                    this.ShopBrandInfo = "其他店";
+                    this.BrandsName = brandName;
+                    break;
+            }
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+            this.CompleteNumber = 0;
         }
 
         public string SeatNO { get; set; }

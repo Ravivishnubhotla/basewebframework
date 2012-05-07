@@ -12,8 +12,7 @@ namespace SLHotSpot.Web
             rows = _rows;
             total = rows.Count;
         }
-
-
+ 
         public int total { get; set; }
         public List<T> rows { get; set; }
     }
