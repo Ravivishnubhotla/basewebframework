@@ -725,5 +725,40 @@ namespace SLHotSpot
         {
             dgHotSpot.CurrentColumn = dgHotSpot.Columns[1];
         }
+
+        private void btnShowHotspot_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (btnShowHotspot.IsChecked.HasValue && btnShowHotspot.IsChecked.Value)
+            {
+                foreach (UIElement element in casDrawPanel.Children)
+                {
+                    if (element is Polygon && ((Polygon)element).Tag is ShopHotSpot)
+                    {
+                        element.Visibility = Visibility.Collapsed;
+                    }
+                    if (element is TextBlock && ((TextBlock)element).Tag is ShopHotSpot)
+                    {
+                        element.Visibility = Visibility.Collapsed;
+                    }
+                }
+                btnShowHotspot.Content = "显示热点";
+            }
+            else
+            {
+                foreach (UIElement element in casDrawPanel.Children)
+                {
+                    if (element is Polygon && ((Polygon)element).Tag is ShopHotSpot)
+                    {
+                        element.Visibility = Visibility.Visible;
+                    }
+                    if (element is TextBlock && ((TextBlock)element).Tag is ShopHotSpot)
+                    {
+                        element.Visibility = Visibility.Visible;
+                    }
+                }
+                btnShowHotspot.Content = "隐藏热点";
+            }
+        }
     }
 }
