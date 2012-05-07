@@ -63,6 +63,7 @@
     <Content Include="HotSpotView.aspx" />
     <Content Include="HotSpotWebService.asmx" />
     <Content Include="Images\M001001_F1_0-3.png" />
+    <Content Include="Images\M097102_F1_0-3.png" />
     <Content Include="Scripts\EasyUI\easyloader.js" />
     <Content Include="Scripts\EasyUI\jquery.easyui.min.js" />
     <Content Include="Scripts\EasyUI\locale\easyui-lang-af.js" />
