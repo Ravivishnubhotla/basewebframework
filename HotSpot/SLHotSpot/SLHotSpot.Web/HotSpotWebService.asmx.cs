@@ -324,7 +324,7 @@ from ITMall a left join A_ShopMall b on a.ShopMallNo = b.ShopMallNo
 
                 string seatNO = ds.Tables[0].Rows[i]["SeatNO"].ToString();
 
-                if (!allBrandInfo && brand != "ThinkPad")
+                if (!allBrandInfo && (brand != "ThinkPad" || shopType != "品牌"))
                 {
                     continue;
                 }
