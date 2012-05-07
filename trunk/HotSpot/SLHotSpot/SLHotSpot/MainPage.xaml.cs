@@ -99,7 +99,7 @@ namespace SLHotSpot
                 webClient.OpenReadAsync(imageuri);
             }
 
-
+            
 
 
         }
@@ -172,6 +172,26 @@ namespace SLHotSpot
             }
 
             dgHotSpot.ItemsSource = HostSpots;
+
+            listNotDrawSeatNo.ItemsSource = NotAssignedShopNOs;
+
+        }
+
+
+        public ObservableCollection<ShopInfo> NotAssignedShopNOs
+        {
+            get
+            {
+                ObservableCollection<ShopInfo> shops = new ObservableCollection<ShopInfo>();
+
+                foreach (ShopInfo shopInfo in ShopInfo.AllShopInfo)
+                {
+                    if (this.GetHotSpotByDataID(shopInfo.SeatNO) == null)
+                        shops.Add(shopInfo);
+                }
+
+                return shops;
+            }
         }
 
         private void ssvDrawOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -297,6 +317,8 @@ namespace SLHotSpot
 
                 dgHotSpot.ItemsSource = HostSpots;
 
+                listNotDrawSeatNo.ItemsSource = NotAssignedShopNOs;
+
                 hostSpot = new ShopHotSpot(Guid.NewGuid(), "Lenovo");
 
                 btnDrawArea.Content = "开始绘制热点";
@@ -307,6 +329,8 @@ namespace SLHotSpot
  
                 shopHotSpot.UpdateHotspot(casDrawPanel, this.setting.ControlMode, this);
                 dgHotSpot.ItemsSource = HostSpots;
+
+                listNotDrawSeatNo.ItemsSource = NotAssignedShopNOs;
             }
         }
 
@@ -457,6 +481,8 @@ namespace SLHotSpot
             }
 
             HostSpots.Remove(shopHot);
+
+            listNotDrawSeatNo.ItemsSource = NotAssignedShopNOs;
         }
 
         private ToggleButton tbtn;

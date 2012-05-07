@@ -148,7 +148,7 @@
                     <Button Name="btnSaveHotSpot"  Visibility="Collapsed" Content="保存所有热点" Margin="10" Click="btnSaveHotSpot_Click"/>
                 </toolkit:WrapPanel>
                 <sdk:DataGrid x:Name="dgHotSpot" Margin="2"
-            Height="500"   SelectionMode="Single" 
+            Height="390"   SelectionMode="Single" 
             AutoGenerateColumns="False" Visibility="Collapsed"  CurrentCellChanged="dgHotSpot_CurrentCellChanged"
             GridLinesVisibility="All"
             RowBackground="White">
@@ -197,6 +197,20 @@
                         </sdk:DataGridTemplateColumn>
                     </sdk:DataGrid.Columns>
                 </sdk:DataGrid>
+                <TextBlock Text="未分匹配席位号："></TextBlock>
+                <ListBox x:Name="listNotDrawSeatNo" Margin="2"  Height="110" SelectionMode="Single">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="250" Orientation="Horizontal">
+                                <TextBlock Text="{Binding SeatNO}"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding ShopBrandInfo}"/>
+                                <TextBlock Text="-"/>
+                                <Rectangle Fill="{Binding BrandColor}" Width="18" Height="18"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
         </StackPanel>
         <Button Name="btnUp"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="50,10" Width="24" Height="24" Click="btnUp_Click">
