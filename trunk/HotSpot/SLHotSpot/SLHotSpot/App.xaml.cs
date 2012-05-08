@@ -132,7 +132,10 @@ namespace SLHotSpot
             try
             {
                 string errorMsg = e.ExceptionObject.Message + e.ExceptionObject.StackTrace;
+
                 errorMsg = errorMsg.Replace('"', '\'').Replace("\r\n", @"\n");
+                //MessageBox.Show(errorMsg);
+                MessageBox.Show(errorMsg);
 
                 System.Windows.Browser.HtmlPage.Window.Eval("throw new Error(\"Unhandled Error in Silverlight Application " + errorMsg + "\");");
             }

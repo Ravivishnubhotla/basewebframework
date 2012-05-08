@@ -51,8 +51,6 @@ namespace SLHotSpot
         {
             shopMallFloorData = _shopMallFloorData;
 
-   
- 
             InitializeComponent();
 
             BrandInfo.SetBrandData(shopMallFloorData);
@@ -67,8 +65,6 @@ namespace SLHotSpot
             imgBg.MouseEnter +=new MouseEventHandler(imgBg_MouseEnter);
  
             setting = _hotSpotSetting;
-
- 
 
             switch (setting.ControlMode)
             {
