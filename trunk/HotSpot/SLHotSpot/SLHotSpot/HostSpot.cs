@@ -177,6 +177,22 @@ namespace SLHotSpot
             }
         }
 
+
+        public void CancelDraw(Canvas casDrawPanel)
+        {
+            if (this.DrawingHotSpot)
+            {
+                foreach (Rectangle rectangle in this.HostSpotAreaPoints)
+                {
+                    if (casDrawPanel.Children.Contains(rectangle))
+                        casDrawPanel.Children.Remove(rectangle);
+                }
+                this.HostSpotAreaPoints.Clear();
+                this.DrawingHotSpot = false;
+                casDrawPanel.MouseLeftButtonDown -= casDrawPanel_OnMouseLeftButtonDown;
+            }
+        }
+
         public bool EndDraw(Canvas casDrawPanel)
         {
             if (this.DrawingHotSpot)

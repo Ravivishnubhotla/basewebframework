@@ -73,6 +73,9 @@ namespace SLHotSpot
             if (shopMallFloorData == null)
                 return;
 
+
+
+
             this.RootVisual = new MainPage(setting, shopMallFloorData);
         }
 
@@ -135,7 +138,15 @@ namespace SLHotSpot
 
                 errorMsg = errorMsg.Replace('"', '\'').Replace("\r\n", @"\n");
                 //MessageBox.Show(errorMsg);
-                MessageBox.Show(errorMsg);
+                //MessageBox.Show(errorMsg);
+
+                Exception ex = e.ExceptionObject.InnerException;
+
+                while (ex!=null)
+                {
+                    errorMsg += (ex.Message + ex.StackTrace).Replace('"', '\'').Replace("\r\n", @"\n");
+                    ex = e.ExceptionObject.InnerException;
+                }
 
                 System.Windows.Browser.HtmlPage.Window.Eval("throw new Error(\"Unhandled Error in Silverlight Application " + errorMsg + "\");");
             }
