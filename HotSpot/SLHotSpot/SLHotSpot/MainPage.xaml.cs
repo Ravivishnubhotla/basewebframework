@@ -84,6 +84,8 @@ namespace SLHotSpot
             if (!String.IsNullOrEmpty(shopMallFloorData.ImageUrl))
             {
                 biLoadingImage.IsBusy = true;
+
+                //MessageBox.Show(shopMallFloorData.ImageUrl);
  
                 Uri imageuri = new Uri(shopMallFloorData.ImageUrl);
 
@@ -141,6 +143,13 @@ namespace SLHotSpot
         private void webClient_OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
         {
             biLoadingImage.IsBusy = false;
+
+            //if (e.Error!=null)
+            //    MessageBox.Show(e.Error.ToString());
+            //else
+            //    MessageBox.Show("OpenReadCompleted");
+
+            //MessageBox.Show(e.Result.ToString());
 
             LoadingImage(e.Result);
         }
@@ -266,6 +275,7 @@ namespace SLHotSpot
         {
             if (btnDrawArea.IsChecked.HasValue && btnDrawArea.IsChecked.Value)
             {
+                btnCancelDraw.Visibility = Visibility.Visible;
                 btnDrawArea.Content = "绘制热点结束";
                 hostSpot.BeginDraw(casDrawPanel);
             }
@@ -284,6 +294,17 @@ namespace SLHotSpot
                     return;
                 }
             }
+        }
+
+        private void btnCancelDraw_Click(object sender, RoutedEventArgs e)
+        {
+            hostSpot.CancelDraw(this.casDrawPanel);
+
+            btnCancelDraw.Visibility = Visibility.Collapsed;
+
+            btnDrawArea.IsChecked = false;
+
+            btnDrawArea.Content = "开始绘制热点";
         }
 
         private void winHotSpot_Closed(object sender, EventArgs e)
@@ -316,6 +337,8 @@ namespace SLHotSpot
                 listNotDrawSeatNo.ItemsSource = NotAssignedShopNOs;
 
                 hostSpot = new ShopHotSpot(Guid.NewGuid(), "Lenovo");
+
+                btnCancelDraw.Visibility = Visibility.Collapsed;
 
                 btnDrawArea.Content = "开始绘制热点";
             }
@@ -756,5 +779,7 @@ namespace SLHotSpot
                 btnShowHotspot.Content = "隐藏热点";
             }
         }
+
+
     }
 }

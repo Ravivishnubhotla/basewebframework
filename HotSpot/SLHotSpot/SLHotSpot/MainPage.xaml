@@ -145,6 +145,7 @@
             <StackPanel  Name="pnlManage">
                 <toolkit:WrapPanel >
                     <ToggleButton Name="btnDrawArea" Content="开始绘制热点"  Margin="10" Visibility="Collapsed" Click="btnDrawArea_Click"/>
+                    <Button Name="btnCancelDraw"  Visibility="Collapsed" Content="取消热点绘制" Margin="10" Click="btnCancelDraw_Click"/>
                     <Button Name="btnSaveHotSpot"  Visibility="Collapsed" Content="保存所有热点" Margin="10" Click="btnSaveHotSpot_Click"/>
                     <ToggleButton Name="btnShowHotspot" Content="隐藏热点"  Margin="10" Click="btnShowHotspot_Click"/>
                 </toolkit:WrapPanel>
