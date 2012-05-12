@@ -65,7 +65,7 @@
         function pluginLoaded(sender, args) {
 
             slCtl = sender.getHost();
-
+         
             $.ajax({
                 url: 'Handler1.ashx?data=true&showAllBrandInf=true',
                 success: function (data) {

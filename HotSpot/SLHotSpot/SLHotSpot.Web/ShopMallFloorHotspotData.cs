@@ -258,13 +258,21 @@ namespace SLHotSpot.Web
 
             DataRow[] drs = dt.Select(string.Format(" SeatNo = '{0}' ", this.SeatNO));
 
+ 
+            string shopNo = "";
+
             string brandName = "";
 
             foreach (DataRow sdr in drs)
             {
                 brandName +=  sdr["Brand"].ToString() + ",";
+                if(string.IsNullOrEmpty(shopNo) && sdr["ShopNo"] != System.DBNull.Value)
+                {
+                    shopNo = sdr["ShopNo"].ToString();
+                }
             }
 
+            this.ShopNo = shopNo;
  
             switch (shopType)
             {
@@ -281,25 +289,14 @@ namespace SLHotSpot.Web
                     this.BrandsName = brandName;
                     break;
             }
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
+ 
             this.CompleteNumber = 0;
         }
 
         public string SeatNO { get; set; }
 
+        public string ShopNo { get; set; }
+        
         public string ShopBrandInfo { get; set; }
 
         public string PlaceLevel { get; set; }
