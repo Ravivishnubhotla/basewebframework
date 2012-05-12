@@ -67,7 +67,11 @@
 
 
         function itemOpened(sender, args) {
-            window.open('http://localhost:12031/Shop_ShopDetail.aspx?CSN=' + sender, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
+            if (args.ShopNo == null) {
+                alert("没有店铺编号，无法显示店铺信息！");
+                return;
+            }
+            window.open('Shop_ShopDetail.aspx?CSN=' + args.ShopNo, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
         }
 
         function itemChangedBrand(sender, args) {
