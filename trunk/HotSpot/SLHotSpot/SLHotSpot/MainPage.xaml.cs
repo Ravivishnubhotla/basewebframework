@@ -114,12 +114,21 @@ namespace SLHotSpot
         {
             if(ItemOpenedHandle!=null)
             {
-                ItemOpenedHandle(hostSpot.DataID, EventArgs.Empty);
+                ShopInfo shopInfo = ShopInfo.GetBySeatNo(hostSpot.DataID);
+
+                //string shopData = "";
+
+                //if (shopInfo!=null)
+                //{
+                //    shopData = JsonConvert.SerializeObject(shopInfo);
+                //}
+
+                ItemOpenedHandle(this, new HotSpotEventArgs(shopInfo));
             }
         }
 
         [ScriptableMember]
-        public event EventHandler ItemOpenedHandle;
+        public event EventHandler<HotSpotEventArgs> ItemOpenedHandle;
 
         private void OnItemChangedBrand(HostSpot hostSpot)
         {
@@ -742,7 +751,8 @@ namespace SLHotSpot
 
         private void dgHotSpot_CurrentCellChanged(object sender, EventArgs e)
         {
-            dgHotSpot.CurrentColumn = dgHotSpot.Columns[1];
+            if(HostSpots.Count>0)
+                dgHotSpot.CurrentColumn = dgHotSpot.Columns[1];
         }
 
         private void btnShowHotspot_Click(object sender, RoutedEventArgs e)

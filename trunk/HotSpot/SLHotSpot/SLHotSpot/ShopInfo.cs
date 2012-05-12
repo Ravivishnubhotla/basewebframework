@@ -85,7 +85,8 @@ namespace SLHotSpot
                 allShopInfos.Add(new ShopInfo()
                                      {
                                          ShopBrandInfo = shopInfo.ShopBrandInfo,
-                                         SeatNO = shopInfo.SeatNO, 
+                                         SeatNO = shopInfo.SeatNO,
+                                         ShopNo = shopInfo.ShopNo,
                                          ShopName = shopInfo.ShopName,
                                          BrandArea = shopInfo.BrandArea,
                                          UserArea = shopInfo.UserArea,

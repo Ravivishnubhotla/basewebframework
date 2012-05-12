@@ -253,7 +253,10 @@ namespace SLHotSpot.Web
 
             shopMallFloorHotspotData.ShopMallNo = shopMallNo;
             shopMallFloorHotspotData.ShopMallFloorNo = floorNo;
-            shopMallFloorHotspotData.ImageUrl = GetRootUrl() + "Images/" + string.Format("{0}_{1}-3.png", shopMallNo, floorNo);
+
+
+
+            shopMallFloorHotspotData.ImageUrl = GetRootUrl() + "DownloadHandler.ashx?url=" + HttpContext.Current.Server.UrlEncode(GetRootUrl() + "Images/" + string.Format("{0}_{1}-3.png", shopMallNo, floorNo));
 
             shopMallFloorHotspotData.Brands = BrandData.GetAllBrandInfos();
             

@@ -65,7 +65,16 @@
 
 
         function itemOpened(sender, args) {
-            window.open('http://localhost:12031/Shop_ShopDetail.aspx?CSN=' + sender, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
+
+//            var obj = jQuery.parseJSON(sender.toString());
+
+ 
+
+
+//            alert(sender);
+
+            window.open('http://localhost:12031/Shop_ShopDetail.aspx?CSN=' + args.ShopNo, 'newwindow', 'resizable=1,width=860,height=645,scrollbars=1');
+        
         }
 
 
