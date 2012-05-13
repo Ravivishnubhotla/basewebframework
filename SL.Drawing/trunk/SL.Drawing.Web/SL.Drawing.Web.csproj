@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientBin\SL.Drawing.xap" />
+    <Content Include="Images\M001001_F1_0-3.png" />
+    <Content Include="Images\M097102_F1_0-3.png" />
     <Content Include="Silverlight.js" />
     <Content Include="SL.DrawingTestPage.aspx" />
     <Content Include="SL.DrawingTestPage.html" />
@@ -66,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

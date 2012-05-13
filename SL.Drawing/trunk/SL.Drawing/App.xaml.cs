@@ -14,6 +14,7 @@ namespace SL.Drawing
 {
     public partial class App : Application
     {
+        public static DrawingSetting setting = new DrawingSetting();
 
         public App()
         {
@@ -26,7 +27,11 @@ namespace SL.Drawing
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            this.RootVisual = new NavigationControl();
+            Dictionary<string, string> dir = e.InitParams as Dictionary<string, string>;
+
+            setting.BgImageUrl = DrawingSetting.GetSettingValue(dir, "BgImageUrl");
+
+            this.RootVisual = new MainPage(setting);
         }
 
         private void Application_Exit(object sender, EventArgs e)
