@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL.Drawing", "SL.Drawing\SL.Drawing.csproj", "{C12B6F1C-F802-4D61-BA22-25311920E0D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL.Drawing.Web", "SL.Drawing.Web\SL.Drawing.Web.csproj", "{978F0753-237A-41A2-A6AB-C5D96BC0FFCA}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C12B6F1C-F802-4D61-BA22-25311920E0D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C12B6F1C-F802-4D61-BA22-25311920E0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C12B6F1C-F802-4D61-BA22-25311920E0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C12B6F1C-F802-4D61-BA22-25311920E0D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{978F0753-237A-41A2-A6AB-C5D96BC0FFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{978F0753-237A-41A2-A6AB-C5D96BC0FFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{978F0753-237A-41A2-A6AB-C5D96BC0FFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{978F0753-237A-41A2-A6AB-C5D96BC0FFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
