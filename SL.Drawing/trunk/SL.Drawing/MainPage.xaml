@@ -3,10 +3,105 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+             xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" mc:Ignorable="d"
+    d:DesignHeight="768" d:DesignWidth="1024" >
+
 
     <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*" />
+            <ColumnDefinition Width="75*" />
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Name="ssvDraw" Grid.Row="0" Grid.Column="1"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <toolkit:BusyIndicator Name="biLoadingImage" IsBusy="False" DisplayAfter="0" BusyContent="下载图片...">
+                <ContentControl >
+                    <toolkit:LayoutTransformer x:Name="layoutTransform">
+                        <toolkit:LayoutTransformer.LayoutTransform>
+                            <TransformGroup>
+                                <ScaleTransform x:Name="scaleTransform"/>
+                            </TransformGroup>
+                        </toolkit:LayoutTransformer.LayoutTransform>
+                        <toolkit:LayoutTransformer.Content>
+                            <Canvas Name="casDrawPanel">
+                                <Image Name="imgBg" Canvas.Top="0" Canvas.Left="0">
+                                </Image>
+                            </Canvas>
+                        </toolkit:LayoutTransformer.Content>
+                    </toolkit:LayoutTransformer>
+                </ContentControl>
+            </toolkit:BusyIndicator>
+        </ScrollViewer>
 
+
+        <sdk:GridSplitter  Grid.Column="0"  Width="5"></sdk:GridSplitter>
+        <StackPanel Background="Gainsboro">
+            <StackPanel HorizontalAlignment="Left" Margin="10" Orientation="Horizontal">
+                <ToggleButton Name="btnAddHotSpot" Margin="2" Content="添加不规则热点" Click="btnAddHotSpot_Click"></ToggleButton>
+                <ToggleButton Name="btnAddHotSpot1" Visibility="Collapsed" Margin="2" Content="添加矩形热点"></ToggleButton>
+                <ToggleButton Name="btnAddHotSpot2" Visibility="Collapsed" Margin="2" Content="添加圆形热点"></ToggleButton>
+                <ToggleButton Name="btnAddHotSpot3" Visibility="Collapsed" Margin="2" Content="添加图片热点"></ToggleButton>
+            </StackPanel>
+            <Border Name="pnlAddHotSpot" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" Margin="10">
+                <StackPanel  HorizontalAlignment="Left" Margin="10">
+                    <TextBlock  Text="添加不规则热点" HorizontalAlignment="Left" Margin="2"/>
+                    <StackPanel Name="pnlSetPoint" HorizontalAlignment="Left" Margin="10" Orientation="Horizontal">
+                        <ToggleButton Name="btnSetPoint" Margin="5" Content="开始取点" Click="btnSetPoint_Click"></ToggleButton>
+                        <Button Name="btnClearLastPoint" Margin="5" Content="清除最新取点" Click="btnClearLastPoint_Click"></Button>
+                        <Button Name="btnClearPoint" Margin="5" Content="清除所有取点" Click="btnClearPoint_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <sdk:DataGrid x:Name="dgDrawItems" Margin="10" Height="500"   
+                          SelectionMode="Single"  AutoGenerateColumns="False" Visibility="Collapsed"
+                          GridLinesVisibility="All" RowBackground="White">
+                <sdk:DataGrid.Columns>
+                    <sdk:DataGridTemplateColumn>
+                        <sdk:DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="sdk:DataGridColumnHeader">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <CheckBox x:Name="chkCheckAllDrawItems" Click="chkCheckAllDrawItems_Click"/>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </sdk:DataGridTemplateColumn.HeaderStyle>
+                        <sdk:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <CheckBox IsChecked="{Binding Path=IsSelected, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </sdk:DataGridTemplateColumn.CellTemplate>
+                    </sdk:DataGridTemplateColumn>
+                    <sdk:DataGridTextColumn Header="编号" Binding="{Binding ItemId}" IsReadOnly="True"  Width="50" />
+                    <sdk:DataGridTemplateColumn Header="操作" Width="112">
+                        <sdk:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <Button Margin="1"  Content="修改" CommandParameter="{Binding ItemId}"   />
+                                    <Button Margin="1" Content="删除"  CommandParameter="{Binding ItemId}"   />
+                                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                        <ToggleButton Margin="1" Content="文字调整"  CommandParameter="{Binding ItemId}"    />
+                                        <StackPanel Orientation="Horizontal" Visibility="Collapsed" HorizontalAlignment="Stretch">
+                                            <Button Margin="1"  Content="+" Tag="+" CommandParameter="{Binding ItemId}"    />
+                                            <Button Margin="1" Content="-" Tag="-"  CommandParameter="{Binding ItemId}"      />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </DataTemplate>
+                        </sdk:DataGridTemplateColumn.CellTemplate>
+                    </sdk:DataGridTemplateColumn>
+                </sdk:DataGrid.Columns>
+            </sdk:DataGrid>
+        </StackPanel>
     </Grid>
 </UserControl>

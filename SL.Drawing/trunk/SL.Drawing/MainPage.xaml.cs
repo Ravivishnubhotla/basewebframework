@@ -18,5 +18,35 @@ namespace SL.Drawing
         {
             InitializeComponent();
         }
+
+        private void btnAddHotSpot_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void btnSetPoint_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void btnClearLastPoint_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void btnClearPoint_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
+
+        private void chkCheckAllDrawItems_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+        }
     }
 }
