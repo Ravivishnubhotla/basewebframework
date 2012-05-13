@@ -84,15 +84,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ColorConvertor.cs" />
+    <Compile Include="DrawingSetting.cs" />
     <Compile Include="DrawItem.cs" />
     <Compile Include="DrawItemStyle.cs" />
     <Compile Include="DrawPoint.cs" />
     <Compile Include="DrawPolygonItem.cs" />
+    <Compile Include="DropDrager.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NavigationControl.xaml.cs">
-      <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NavigationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +119,7 @@
     <Resource Include="Images\mapctrls_top.png" />
     <Resource Include="Images\mapctrls_zoomlevel.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

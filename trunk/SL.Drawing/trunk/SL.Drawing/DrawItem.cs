@@ -31,11 +31,16 @@ namespace SL.Drawing
         public DrawItemStyle HoverStyle { get; set; }
         public DrawItemStyle SelectedStyle { get; set; }
 
+        protected Canvas DrawCanvas { get; set; } 
+
         #region 常量
 
         //文字多边形外围比例（默认采用黄金分割比）
-        private const double GoldenSectionRate = 0.6180339887d;
-
+        public const double GoldenSectionRate = 0.6180339887d;
+        public const int CanvasZindex = -9999;
+        public const int AssistlineZindex = 1000;
+        public const int ShowShapeZindex = 2000;
+        public const int ShowTextBlockZindex = 3000;
 
         #endregion
  
