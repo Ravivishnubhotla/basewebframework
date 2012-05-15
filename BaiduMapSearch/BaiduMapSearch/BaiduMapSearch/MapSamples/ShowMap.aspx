@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <title>百度地图的Hello, World</title>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+    <script type="text/javascript" src='<%= BaiduMapSearch.Global.BaiDuMapAPIUrl %>'></script>
     <style type="text/css">
         html
         {

@@ -1,11 +1,12 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BaiduMapShowPage.aspx.cs"
     Inherits="BaiduMapSearch.MapSamples.BaiduMapShowPage" %>
+ 
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
     <title></title>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2&services=true"></script>
+    <script type="text/javascript" src='<%= BaiduMapSearch.Global.BaiDuMapAPIUrl %>'></script>
     <style type="text/css">
         html
         {

@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+    <script type="text/javascript" src='<%= BaiduMapSearch.Global.BaiDuMapAPIUrl %>'></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div style="width:520px;height:340px;border:1px solid gray" id="container"></div>
@@ -12,7 +12,12 @@
  
 <script type="text/javascript">
     var map = new BMap.Map("container");                        // 创建Map实例
-    map.centerAndZoom("北京", 11);     // 初始化地图,设置中心点坐标和地图级别
+    map.centerAndZoom("北京", 14);     // 初始化地图,设置中心点坐标和地图级别
+    map.addControl(new BMap.MapTypeControl());          //添加地图类型控件
+    var opts = { type: BMAP_NAVIGATION_CONTROL_LARGE };
+    map.addControl(new BMap.NavigationControl(opts));
+    map.enableScrollWheelZoom();
+    map.enableKeyboard();
 
     var key = 1;    //开关
     var newpoint;   //一个经纬度

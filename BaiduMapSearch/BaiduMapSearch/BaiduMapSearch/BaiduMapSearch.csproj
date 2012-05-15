@@ -63,6 +63,7 @@
     <Content Include="App_Readme\Ext.NET.Utilities.README.txt" />
     <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\collapse-all.gif" />
     <Content Include="images\expand-all.gif" />
@@ -81,7 +82,9 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -96,6 +99,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MapSamples\AdvanceShowMap.aspx.cs">
       <DependentUpon>AdvanceShowMap.aspx</DependentUpon>
