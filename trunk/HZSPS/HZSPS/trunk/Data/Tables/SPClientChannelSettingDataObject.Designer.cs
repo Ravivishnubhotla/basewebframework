@@ -101,6 +101,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_SENDTEXT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_SENDTEXT);
 		public static readonly Property PROPERTY_GETWAY = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_GETWAY);
 		public static readonly Property PROPERTY_DEFAULTNOINTERCEPTCOUNT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT);
+		public static readonly Property PROPERTY_HASDAYTOTALLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_HASDAYTOTALLIMIT);
+		public static readonly Property PROPERTY_DAYTOTALLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DAYTOTALLIMIT);
       
 		#region 子类集合字段查询字段
 	
@@ -173,6 +175,10 @@ namespace LD.SPPipeManage.Data.Tables
                 case "Getway":
                     return typeof (string);
                 case "DefaultNoInterceptCount":
+                    return typeof (int);
+                case "HasDayTotalLimit":
+                    return typeof (bool);
+                case "DayTotalLimit":
                     return typeof (int);
           }
 			return typeof(string);

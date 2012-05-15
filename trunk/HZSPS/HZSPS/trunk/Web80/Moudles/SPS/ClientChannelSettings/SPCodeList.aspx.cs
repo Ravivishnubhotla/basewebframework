@@ -16,12 +16,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             if (Ext.IsAjaxRequest)
                 return;
 
- 
+
         }
 
         public int ChannleID
         {
- 
+
             get
             {
                 if (this.cmbChannelID.SelectedItem == null)
@@ -30,7 +30,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     return 0;
                 return Convert.ToInt32(this.cmbChannelID.SelectedItem.Value);
             }
-   
+
 
         }
 
@@ -59,6 +59,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             if (e.Sort != null)
                 sortFieldName = e.Sort;
 
+
+            else if (sortFieldName == "DayTotalLimitInfo")
+            {
+                sortFieldName = "HasDayTotalLimit";
+            }
+
             int startIndex = 0;
 
             if (e.Start > -1)
@@ -75,16 +81,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             else
                 pageIndex = startIndex / limit;
 
- 
 
-            string province = this.txtProvince.Text.Trim();
+
+            string province = this.txtMO.Text.Trim();
 
             string port = this.txtPort.Text.Trim();
 
 
-            List<SPClientChannelSettingWrapper> spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(sortFieldName, (e.Dir == SortDirection.DESC), ChannleID, province, port, pageIndex,
+            List<SPClientChannelSettingWrapper> spClientChannelSettingWrappers = SPClientChannelSettingWrapper.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, (e.Dir == SortDirection.DESC), ChannleID, province, port, pageIndex,
                                                                                 limit, out recordCount);
- 
+
 
             storeSPClientChannelSetting.DataSource = spClientChannelSettingWrappers;
             e.TotalCount = recordCount;

@@ -95,6 +95,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
+		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMIT = "DayTotalLimit";
 		
         #endregion
 
@@ -490,6 +492,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DefaultNoInterceptCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasDayTotalLimit
+		{
+			get
+			{
+				return entity.HasDayTotalLimit;
+			}
+			set
+			{
+				entity.HasDayTotalLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int? DayTotalLimit
+		{
+			get
+			{
+				return entity.DayTotalLimit;
+			}
+			set
+			{
+				entity.DayTotalLimit = value;
 			}
 		}
 		#endregion 

@@ -2,6 +2,17 @@
     Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingInfoEdit" %>
 <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
 </ext:ScriptManagerProxy>
+<script type="text/javascript">
+    function CheckDayTotalLimit(checkValue) {
+        var txtDayTotalLimit = <%= txtDayTotalLimit.ClientID %>;
+        if (!checkValue) {
+            txtDayTotalLimit.hide();
+        }
+        else {
+            txtDayTotalLimit.show();
+        }
+    }
+</script>
 <ext:Window ID="winSPClientChannelSettingInfoEdit" runat="server" Icon="ApplicationEdit"
     ConstrainHeader="true" Title="设置指令" Width="640" Height="399" AutoShow="false"
     Maximizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
@@ -35,19 +46,15 @@
                                 <ext:Label ID="lblChannelClientCode" runat="server" FieldLabel="指令" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextArea ID="txtAllowAndDisableArea" runat="server" FieldLabel="开通省份/屏蔽地市" AllowBlank="True" />
+                                <ext:Checkbox ID="chkHasDayTotalLimit" runat="server" FieldLabel="日总限量">
+                                    <Listeners>
+                                        <Check Handler="CheckDayTotalLimit(#{chkHasDayTotalLimit}.getValue());"></Check>
+                                    </Listeners>
+                                </ext:Checkbox>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
-                                <ext:TextArea ID="txtSendText" runat="server" FieldLabel="下发语" AllowBlank="True" />
+                                <ext:NumberField ID="txtDayTotalLimit" MinValue="0" DecimalPrecision="0" runat="server"
+                                    FieldLabel="日总限量" Hidden="True" AllowBlank="True" />
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

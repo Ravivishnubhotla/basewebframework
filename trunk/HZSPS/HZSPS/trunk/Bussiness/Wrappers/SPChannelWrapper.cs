@@ -151,6 +151,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+
+ 
+
+        public string UperName
+        {
+            get
+            {
+                if (this.UperID == null)
+                    return "";
+                return this.UperID.Name;
+            }
+        }
+
         public string CStatusString
         {
             get
@@ -168,6 +182,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
         }
+
+        public bool DataSendOnce
+        {
+            get
+            {
+                if (!(this.RecStatReport.HasValue && this.RecStatReport.Value))
+                    return true;
+                if (this.StatSendOnce.HasValue && this.StatSendOnce.Value)
+                    return true;
+                return false;
+            }
+        }
+
+
 
         public string InterfaceUrl
         {

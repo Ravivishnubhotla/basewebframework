@@ -29,6 +29,32 @@ namespace LD.SPPipeManage.Data.Tables
             return this.FindListByQueryBuilder(queryGenerator);
         }
 
+        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, SPChannelEntity channelEntity, string mo, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator = this.GetNewQueryBuilder();
+
+            if (channelEntity != null)
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELID.Eq(channelEntity));
+
+            queryGenerator.AddWhereClause(Or(PROPERTY_DISABLE.IsNull(), PROPERTY_DISABLE.Eq(false)));
+
+            if (!string.IsNullOrEmpty(mo))
+                queryGenerator.AddWhereClause(PROPERTY_COMMANDCODE.Like(mo, MatchMode.Anywhere));
+
+            if (!string.IsNullOrEmpty(port))
+                queryGenerator.AddWhereClause(PROPERTY_CHANNELCODE.Like(port, MatchMode.Anywhere));
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryGenerator);
+
+            queryGenerator.SetFirstResult((pageIndex - 1) * pageSize);
+
+            queryGenerator.SetMaxResults(pageSize);
+
+            List<SPClientChannelSettingEntity> results = FindListByPageByQueryBuilder(queryGenerator, out recordCount);
+
+            return results;
+        }
+
         public List<SPClientChannelSettingEntity> GetAllNeedRendSetting()
         {
             NHibernateDynamicQueryGenerator<SPClientChannelSettingEntity> queryGenerator = this.GetNewQueryBuilder();
@@ -68,4 +94,7 @@ namespace LD.SPPipeManage.Data.Tables
             return results;
         }
     }
+
+
+
 }

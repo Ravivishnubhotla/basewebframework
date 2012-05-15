@@ -152,6 +152,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+ 
+
         public string ChannelName
         {
             get
@@ -161,6 +163,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return this.ChannelID.Name;
                 }
                 return "";
+            }
+        }
+
+        public int ChannelID_ID
+        {
+            get
+            {
+                if (this.ChannelID != null)
+                {
+                    return this.ChannelID.Id;
+                }
+                return 0;
             }
         }
 
@@ -412,6 +426,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public const int AddRate = 30;
         public const int MaxInterceptRate = 75;
 
+
+        public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, isDesc, channleId, mo, port, pageIndex, pageSize, out   recordCount));
+        }
+
         public bool CaculteIsIntercept()
         {
             //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
@@ -435,30 +455,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return false;
             }
 
-            if(this.InterceptRate.HasValue)
+            if (this.InterceptRate.HasValue)
             {
                 interceptRate = this.InterceptRate.Value;
             }
 
-            //int addRate = 60;
+            bool isIntercept = CaculteRandom(interceptRate);
 
-            //int maxInterceptRate = 80;
+            //如果没有扣除，如果该通道日总量有限制，超过了日总量，必须改成扣除
+            if (!isIntercept && this.HasDayTotalLimit.HasValue && this.HasDayTotalLimit.Value)
+            {
+                if (this.DayTotalLimit.HasValue && this.DayTotalLimit.Value > 0)
+                {
+                    int todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
 
-            //if (interceptRate == 0)
-            //    return false;
+                    if(todayPaymentCount>=this.DayTotalLimit.Value)
+                        isIntercept = true;
+                }
+            }
 
-            //decimal rate =  CaculteActualInterceptRate(System.DateTime.Now.Date);
-
-            //if (rate < Convert.ToDecimal(interceptRate))
-            //{
-            //    return CaculteRandom(Math.Min(interceptRate + addRate, maxInterceptRate));
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
-            return CaculteRandom(interceptRate);
+            return isIntercept;
 
             //if(interceptRate==0)
             //    return false;
@@ -473,6 +489,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             //{
             //    return false;
             //}
+        }
+
+        private int CaculteDayPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)
+        {
+            return businessProxy.CaculteDayPhoneCount(dateTime, clientChannelID, mobileNumber);
+        }
+
+        private int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)
+        {
+            return businessProxy.CaculteMonthPhoneCount(dateTime, clientChannelID, mobileNumber);
+        }
+
+        private int CacultePaymentCount(DateTime dateTime, int clientChannelID)
+        {
+            return businessProxy.CacultePaymentCount(dateTime, clientChannelID);
         }
 
         private decimal CaculteActualInterceptRate(DateTime date)

@@ -80,10 +80,7 @@
         
  
 
-
- 
-
-        function prepareToolbar(grid, toolbar, rowIndex, record){
+         function prepareToolbar(grid, toolbar, rowIndex, record){
             if(record.get("SyncData")!=null && record.get("SyncData")){
                 toolbar.items.itemAt(0).items.itemAt(1).show();
             }
@@ -91,13 +88,28 @@
                 toolbar.items.itemAt(0).items.itemAt(1).hide();
             }
         }
+ 
+
+        var showCommands = function(grid, toolbar, rowIndex, record) {
+
+            if (record.data.SyncData != null && record.data.SyncData) {
+                toolbar.items.items[0].menu.items.items[2].show();
+ 
+            } else {
+                toolbar.items.items[0].menu.items.items[2].hide();
+ 
+
+            }
+
+ 
+        };
 
 
     
 
         function processcmd(cmd, id) {
 
-            if (cmd == "cmdParamsEdit") {
+            if (cmd == "cmdSetCode") {
                 Coolite.AjaxMethods.UCSPClientChannelSettingInfoEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
@@ -110,13 +122,40 @@
                                                                 }              
                 );
             }
+            
 
- 
- 
 
- 
- 
+            
+          if (cmd == "cmdTest") {
 
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle("  "+id.data.Name + "  " + " 发送模拟数据 ");
+                
+                win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+                win.autoLoad.params.ChannleID = id.data.ChannelID_ID;
+
+        
+                win.show();    
+            } 
+            
+            
+           if (cmd == "cmdTestClient") {
+
+                var win = <%= this.WindwinSendClientTestRequestFormow1.ClientID %>;
+                
+
+                win.setTitle("  "+id.data.Name + "  " + " 下家发送模拟数据 ");
+                
+                win.autoLoad.url = 'SPChannelClientSendClientTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannleClientID = id.data.Id;
+        
+                win.show();    
+            }  
 
  
 
@@ -145,16 +184,14 @@
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="MoCode" />
+                    <ext:RecordField Name="ChannelID_ID" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="AllowFilter" Type="Boolean" />
-                    <ext:RecordField Name="AllowAndDisableArea" />
-                    <ext:RecordField Name="SettlementPeriod" />
-                    <ext:RecordField Name="DayLimitAndMonthLimit" />
-                    <ext:RecordField Name="SendText" />
-                    <ext:RecordField Name="Getway" />
+                    <ext:RecordField Name="DayTotalLimitInfo" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -185,9 +222,9 @@
                                             <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                         </Listeners>
                                     </ext:ComboBox>
-                                    <ext:ToolbarTextItem Text="省份">
+                                    <ext:ToolbarTextItem Text="指令">
                                     </ext:ToolbarTextItem>
-                                    <ext:TextField ID="txtProvince" runat="server">
+                                    <ext:TextField ID="txtMO" runat="server">
                                     </ext:TextField>
                                     <ext:ToolbarTextItem Text="端口号">
                                     </ext:ToolbarTextItem>
@@ -209,38 +246,31 @@
                             <Columns>
                                 <ext:Column ColumnID="colClinetID" DataIndex="ChannelName" Header="通道" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
-                                    Sortable="false" Width="120">
-                                </ext:Column>
                                 <ext:Column ColumnID="colClientName" DataIndex="ClientName" Header="下家名" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="下家组"
                                     Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colAllowAndDisableArea" DataIndex="AllowAndDisableArea" Header="开通省份"
-                                    Sortable="false" Width="120">
-                                    <Renderer Fn="columnWrap" />
+                                <ext:Column ColumnID="colMoCode" DataIndex="MoCode" Header="指令" Sortable="false"
+                                    Width="120">
                                 </ext:Column>
-                                <ext:Column ColumnID="colSendText" DataIndex="SendText" Header="下发语" Sortable="false"
-                                    Wrap="true" Width="120">
-                                    <Renderer Fn="columnWrap" />
-                                </ext:Column>
-                                <ext:Column ColumnID="colGetway" DataIndex="Getway" Header="运营商" Sortable="false">
-                                </ext:Column>
-                                <ext:Column ColumnID="colDayLimitAndMonthLimit" DataIndex="DayLimitAndMonthLimit"
-                                    Header="日限月限" Sortable="false">
+                                <ext:Column ColumnID="colDayTotalLimitInfo" DataIndex="DayTotalLimitInfo" Header="日总限"
+                                    Sortable="True">
                                 </ext:Column>
                                 <ext:CommandColumn Header="设置管理" Width="50">
                                     <Commands>
                                         <ext:GridCommand Icon="Cog" Text="设置" ToolTip-Text="指令设置">
                                             <Menu>
                                                 <Items>
-                                                    <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetCode" Text="设置" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="通道测试" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTestClient" Text="下家测试" />
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Menu" />
                                         </ext:GridCommand>
                                     </Commands>
+                                    <PrepareToolbar Fn="showCommands" />
                                 </ext:CommandColumn>
                             </Columns>
                         </ColumnModel>
@@ -257,4 +287,34 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试"
+        Frame="true" Width="640" ConstrainHeader="true" Height="380" Maximizable="true"
+        Closable="true" Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

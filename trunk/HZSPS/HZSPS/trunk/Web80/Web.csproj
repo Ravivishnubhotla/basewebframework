@@ -330,6 +330,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelEditInfo.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\SPChannelClientSendClientTestRequestForm.aspx" />
@@ -399,6 +400,8 @@
     <Content Include="Moudles\SPS\Reports\SPClientClientCountReportService.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer.aspx" />
     <Content Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPSChannelReport.aspx" />
+    <Content Include="Moudles\SPS\Reports\SPSChannelReportService.aspx" />
     <Content Include="Moudles\SPS\Reports\UCMovePayment.ascx" />
     <Content Include="Moudles\SystemManage\LogViews\SiteTaskLogView.aspx" />
     <Content Include="Moudles\SystemManage\LogViews\SystemLogList.aspx" />
@@ -408,6 +411,7 @@
     <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx" />
     <Content Include="Services\SPDataService.asmx" />
+    <Content Include="SPSInterface\CP.htm" />
     <Content Include="SPSInterface\IVRChannel.aspx" />
     <Content Include="SPSInterface\IVRXLChannel.aspx" />
     <Content Include="SPSInterface\SCIVRChannel.aspx" />
@@ -544,6 +548,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
       <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEditInfo.ascx.cs">
+      <DependentUpon>UCSPChannelEditInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEditInfo.ascx.designer.cs">
+      <DependentUpon>UCSPChannelEditInfo.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.cs">
       <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
@@ -1246,6 +1257,20 @@
     <Compile Include="Moudles\SPS\Reports\SPClientGroupTotalReportContainer1.aspx.designer.cs">
       <DependentUpon>SPClientGroupTotalReportContainer1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPSChannelReport.aspx.cs">
+      <DependentUpon>SPSChannelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPSChannelReport.aspx.designer.cs">
+      <DependentUpon>SPSChannelReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPSChannelReportService.aspx.cs">
+      <DependentUpon>SPSChannelReportService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPSChannelReportService.aspx.designer.cs">
+      <DependentUpon>SPSChannelReportService.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Reports\UCMovePayment.ascx.cs">
       <DependentUpon>UCMovePayment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1467,6 +1492,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Codes\CodeInfoExport.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Moudles\SPS\Reports\SPSChannelReport.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

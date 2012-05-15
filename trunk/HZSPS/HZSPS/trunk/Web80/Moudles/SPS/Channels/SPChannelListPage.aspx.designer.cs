@@ -31,6 +31,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.Store storeSPChannel;
         
         /// <summary>
+        /// storeSPUper control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Store storeSPUper;
+        
+        /// <summary>
         /// UCSPChannelAdd1 control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Legendigital.Common.Web.Moudles.SPS.Channels.SPChannelQuickAdd SPChannelQuickAdd1;
+        
+        /// <summary>
+        /// UCSPChannelEditInfo1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEditInfo UCSPChannelEditInfo1;
         
         /// <summary>
         /// viewPortMain control.
