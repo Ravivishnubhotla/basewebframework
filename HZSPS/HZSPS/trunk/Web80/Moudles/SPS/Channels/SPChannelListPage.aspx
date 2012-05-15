@@ -3,10 +3,14 @@
 
 <%@ Register Src="UCSPChannelAdd.ascx" TagName="UCSPChannelAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSPChannelEditInfo.ascx" TagName="UCSPChannelEditInfo" TagPrefix="uc5" %>
 <%@ Register Src="UCChannelParamsManage.ascx" TagName="UCChannelParamsManage" TagPrefix="uc3" %>
 <%@ Register Src="SPChannelQuickAdd.ascx" TagName="SPChannelQuickAdd" TagPrefix="uc4" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSPUper}.reload();"></DocumentReady>
+        </Listeners>
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -78,6 +82,23 @@
         
 
         function processcmd(cmd, id) {
+
+
+        
+            if (cmd == "cmdEditInfo") {
+                Coolite.AjaxMethods.UCSPChannelEditInfo.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
 
             if (cmd == "cmdEdit") {
                 Coolite.AjaxMethods.UCSPChannelEdit.Show(id.id,
@@ -206,11 +227,22 @@
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
                     <ext:RecordField Name="InterfaceUrl" />
+                    <ext:RecordField Name="UperName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
         <AjaxEventConfig Timeout="120000">
         </AjaxEventConfig>
+    </ext:Store>
+    <ext:Store ID="storeSPUper" runat="server" AutoLoad="true" OnRefreshData="storeSPUper_Refresh">
+        <Reader>
+            <ext:JsonReader ReaderID="Id">
+                <Fields>
+                    <ext:RecordField Name="Id" Type="int" />
+                    <ext:RecordField Name="Name" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -218,6 +250,7 @@
     <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
     <uc3:UCChannelParamsManage ID="UCChannelParamsManage1" runat="server" />
     <uc4:SPChannelQuickAdd ID="SPChannelQuickAdd1" runat="server" />
+    <uc5:UCSPChannelEditInfo ID="UCSPChannelEditInfo1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -269,6 +302,8 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
+                                <ext:Column ColumnID="colUperName" DataIndex="UperName" Header="所属上家" Sortable="False">
+                                </ext:Column>
                                 <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Hidden="true" Sortable="true">
@@ -295,14 +330,8 @@
                                 </ext:Column>
                                 <ext:CommandColumn Header="通道管理" Width="172">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
-                                            <ToolTip Text="删除" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理"  Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
-                                            <ToolTip Text="参数管理" />
+                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdEditInfo" Text="分配上家">
+                                            <ToolTip Text="分配上家" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
                                             <ToolTip Text="测试" />
@@ -310,8 +339,19 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配">
                                             <ToolTip Text="指令分配" />
                                         </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" Hidden='<%# IsSPCommUser %>'
+                                            runat="server" AutoDataBind="True">
+                                            <ToolTip Text="编辑" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
+                                            <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden='<%# IsSPCommUser %>'
+                                            runat="server" AutoDataBind="True">
+                                            <ToolTip Text="参数管理" />
+                                        </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
-                                            Text="默认下发参数"  Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
+                                            Text="默认下发参数" Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
                                             <ToolTip Text="默认下发参数" />
                                         </ext:GridCommand>
                                     </Commands>

@@ -319,7 +319,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
  
-
         #region Static Common Data Operation
 		
 		internal static List<SPCodeInfoWrapper> ConvertToWrapperList(List<SPCodeInfoEntity> entitylist)

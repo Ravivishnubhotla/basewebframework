@@ -99,6 +99,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             storeSPChannel.DataBind();
 
         }
+
+        protected void storeSPUper_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            storeSPUper.DataSource = SPUperWrapper.FindAll();
+            storeSPUper.DataBind();
+        }
     }
 
 }

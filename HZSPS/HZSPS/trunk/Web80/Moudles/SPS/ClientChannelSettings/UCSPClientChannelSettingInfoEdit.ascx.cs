@@ -37,15 +37,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     this.lblName.Text = obj.Name;
 
                     this.lblChannelClientCode.Text = obj.ChannelClientCode;
- 
-                    this.txtAllowAndDisableArea.Text = obj.AllowAndDisableArea;
-                    this.txtGetway.Text = obj.Getway;
-                    this.txtDayLimit.Text = obj.DayLimit;
-                    this.txtMonthLimit.Text = obj.MonthLimit;
-                    this.txtSendText.Text = obj.SendText;
- 
 
-    
+                    chkHasDayTotalLimit.Checked = obj.HasDayTotalLimit.HasValue && obj.HasDayTotalLimit.Value;
+
+
+
+                    if (this.chkHasDayTotalLimit.Checked)
+                    {
+                        if (obj.DayTotalLimit.HasValue)
+                            this.txtDayTotalLimit.Text = obj.DayTotalLimit.Value.ToString();
+                        else
+                            this.txtDayTotalLimit.Text = "0";
+                    }
+                    else
+                    {
+                        this.txtDayTotalLimit.Text = "0";
+                    }
+
+
+                    this.txtDayTotalLimit.Hidden = !chkHasDayTotalLimit.Checked;
 
 
 
@@ -74,16 +84,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             try
             {
                 SPClientChannelSettingWrapper obj = SPClientChannelSettingWrapper.FindById(int.Parse(hidId.Text.Trim()));
- 
-                obj.AllowAndDisableArea = this.txtAllowAndDisableArea.Text.Trim();
-                obj.Getway = this.txtGetway.Text.Trim();
-                obj.DayLimit = this.txtDayLimit.Text.Trim();
-                obj.MonthLimit = this.txtMonthLimit.Text.Trim();
-                obj.SendText = this.txtSendText.Text.Trim();
-  
- 
 
- 
+
+                obj.HasDayTotalLimit = this.chkHasDayTotalLimit.Checked;
+                obj.DayTotalLimit = Convert.ToInt32(this.txtDayTotalLimit.Value);
 
 
                 SPClientChannelSettingWrapper.Update(obj);

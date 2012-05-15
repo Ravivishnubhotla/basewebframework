@@ -1756,5 +1756,74 @@ ORDER BY ClientGroupName";
             return Convert.ToInt32(obj);
         }
 
+
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE IsIntercept=1 AND MobileNumber = @MobileNumber AND  (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("MobileNumber", mobileNumber);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE IsIntercept=1 AND MobileNumber = @MobileNumber AND  (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", new DateTime(dateTime.Year, dateTime.Month, 1));
+
+            dbParameters.AddWithValue("enddate", new DateTime(dateTime.AddMonths(1).Year, dateTime.AddMonths(1).Month, 1));
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("MobileNumber", mobileNumber);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public DataTable GetALlChannelReport(DateTime startDate, DateTime endDate)
+        {
+            string sql = @"SELECT ChannelID ,ChannelClientID ,ReportDate,SUM(UpTotalCount) As AllUpTotalCount
+  FROM  [dbo].[SPDayReport] where ReportDate >= @startdate and ReportDate<@enddate
+    group by ChannelID,ChannelClientID,ReportDate
+    order by ChannelID,ChannelClientID,ReportDate
+
+";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
     }
 }

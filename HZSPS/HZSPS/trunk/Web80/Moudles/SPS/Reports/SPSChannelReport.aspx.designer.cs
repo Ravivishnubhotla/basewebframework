@@ -7,46 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.Upers {
+namespace Legendigital.Common.Web.Moudles.SPS.Reports {
     
     
-    public partial class SPUperListPage {
-        
-        /// <summary>
-        /// ScriptManagerProxy1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
-        
-        /// <summary>
-        /// storeSPUper control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPUper;
-        
-        /// <summary>
-        /// UCSPUperAdd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Upers.UCSPUperAdd UCSPUperAdd1;
-        
-        /// <summary>
-        /// UCSPUperEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Upers.UCSPUperEdit UCSPUperEdit1;
+    public partial class SPSChannelReport {
         
         /// <summary>
         /// viewPortMain control.
@@ -67,13 +31,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Upers {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPUper control.
+        /// ReportPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPUper;
+        protected global::Coolite.Ext.Web.Panel ReportPanel;
         
         /// <summary>
         /// tbTop control.
@@ -85,13 +49,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Upers {
         protected global::Coolite.Ext.Web.Toolbar tbTop;
         
         /// <summary>
-        /// btnAdd control.
+        /// dfReportStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportStartDate;
+        
+        /// <summary>
+        /// dfReportEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.DateFieldMenuItem dfReportEndDate;
         
         /// <summary>
         /// btnRefresh control.
@@ -101,23 +74,5 @@ namespace Legendigital.Common.Web.Moudles.SPS.Upers {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
-        
-        /// <summary>
-        /// PagingToolBar1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
     }
 }

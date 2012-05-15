@@ -70,7 +70,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
                 obj.DefaultInterceptRate = Convert.ToInt32(this.txtDefaultInterceptRate.Text);
                 obj.DefaultNoInterceptCount = Convert.ToInt32(this.txtDefaultNoInterceptCount.Text);
 
-                if (cmbSelectAssignedUser.SelectedItem != null)
+                if (cmbSelectAssignedUser.SelectedItem != null && !string.IsNullOrEmpty(cmbSelectAssignedUser.SelectedItem.Value))
                     obj.AssignedUserID = Convert.ToInt32(cmbSelectAssignedUser.SelectedItem.Value);
                 else
                     obj.AssignedUserID = null;

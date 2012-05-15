@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using Common.Logging;
 using LD.SPPipeManage.Bussiness.Wrappers;
@@ -27,15 +28,29 @@ namespace Legendigital.Common.Web.Jobs
         {
             logger.Info("日报表任务开始。。。");
 
+            if (!ReGenerateDayReport())
+            {
+                Thread.Sleep(30000);
+
+                ReGenerateDayReport();
+            }
+        }
+
+        private bool ReGenerateDayReport()
+        {
             try
             {
                 SPDayReportWrapper.ReGenerateDayReport(DateTime.Now.AddDays(-1));
 
                 logger.Info("日报表任务成功。。。");
+
+                return true;
             }
             catch (Exception ex)
             {
                 logger.Error("日报表任务失败:" + ex.Message);
+
+                return false;
             }
         }
     }

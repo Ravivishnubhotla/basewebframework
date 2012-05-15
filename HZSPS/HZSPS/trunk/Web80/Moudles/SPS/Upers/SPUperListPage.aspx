@@ -14,7 +14,7 @@
                 return '是';
             else
                 return '否';
-        }
+        };
 
         function RefreshSPUperList() {
             <%= this.storeSPUper.ClientID %>.reload();
@@ -154,9 +154,7 @@
                                         <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit">
                                             <ToolTip Text="编辑" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete">
-                                            <ToolTip Text="删除" />
-                                        </ext:GridCommand>
+ 
                                     </Commands>
                                 </ext:CommandColumn>
                             </Columns>

@@ -7,55 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.Upers {
+namespace Legendigital.Common.Web.Moudles.SPS.Channels {
     
     
-    public partial class SPUperListPage {
+    public partial class UCSPChannelEditInfo {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// winSPChannelEditInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ScriptManagerProxy ScriptManagerProxy1;
-        
-        /// <summary>
-        /// storeSPUper control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeSPUper;
-        
-        /// <summary>
-        /// UCSPUperAdd1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Upers.UCSPUperAdd UCSPUperAdd1;
-        
-        /// <summary>
-        /// UCSPUperEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Legendigital.Common.Web.Moudles.SPS.Upers.UCSPUperEdit UCSPUperEdit1;
-        
-        /// <summary>
-        /// viewPortMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.ViewPort viewPortMain;
+        protected global::Coolite.Ext.Web.Window winSPChannelEditInfo;
         
         /// <summary>
         /// fitLayoutMain control.
@@ -67,57 +31,57 @@ namespace Legendigital.Common.Web.Moudles.SPS.Upers {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// gridPanelSPUper control.
+        /// formPanelSPChannelEditInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel gridPanelSPUper;
+        protected global::Coolite.Ext.Web.FormPanel formPanelSPChannelEditInfo;
         
         /// <summary>
-        /// tbTop control.
+        /// FormLayoutSPChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar tbTop;
+        protected global::Coolite.Ext.Web.FormLayout FormLayoutSPChannel;
         
         /// <summary>
-        /// btnAdd control.
+        /// hidId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
+        protected global::Coolite.Ext.Web.Hidden hidId;
         
         /// <summary>
-        /// btnRefresh control.
+        /// cmbUpperID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
+        protected global::Coolite.Ext.Web.ComboBox cmbUpperID;
         
         /// <summary>
-        /// GridView1 control.
+        /// btnSaveSPChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
+        protected global::Coolite.Ext.Web.Button btnSaveSPChannel;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// btnCancelSPChannel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        protected global::Coolite.Ext.Web.Button btnCancelSPChannel;
     }
 }

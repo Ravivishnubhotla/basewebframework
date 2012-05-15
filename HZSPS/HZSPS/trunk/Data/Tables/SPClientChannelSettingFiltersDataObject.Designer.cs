@@ -53,6 +53,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_SENDTEXT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".SendText");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_GETWAY = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".Getway");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DEFAULTNOINTERCEPTCOUNT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DefaultNoInterceptCount");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_HASDAYTOTALLIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".HasDayTotalLimit");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DAYTOTALLIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DayTotalLimit");
 		#endregion
       
 		#region 子类集合字段查询字段

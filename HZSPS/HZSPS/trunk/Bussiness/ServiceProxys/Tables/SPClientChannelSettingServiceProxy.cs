@@ -25,10 +25,13 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         void ResetAllSycnCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         int GetSycnFailedCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount);
-
+        int CacultePaymentCount(DateTime dateTime, int clientChannelId);
+        int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
+        int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
  
         List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
         decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date);
+        List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -151,9 +154,38 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         
         }
 
+
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId)
+        {
+            return AdoNetDb.CacultePaymentCount(dateTime, clientChannelId);
+        }
+
+        public int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            return AdoNetDb.CaculteDayPhoneCount(dateTime, clientChannelId, mobileNumber);
+        }
+
+        public int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
+        {
+            return AdoNetDb.CaculteMonthPhoneCount(dateTime, clientChannelId, mobileNumber);
+        }
+
         public decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date)
         {
             return AdoNetDb.CaculteActualInterceptRate(entity.Id,date);
+        }
+
+        public List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount)
+        {
+            SPChannelEntity channelEntity = null;
+
+            if (channleId > 0)
+                channelEntity = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channleId);
+
+            return this.SelfDataObj.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, isDesc,
+                                                                                     channelEntity, mo, port,
+                                                                                     pageIndex, pageSize,
+                                                                                     out recordCount);
         }
     }
 }

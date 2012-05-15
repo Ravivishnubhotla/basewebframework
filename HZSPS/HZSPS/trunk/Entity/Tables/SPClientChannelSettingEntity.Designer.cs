@@ -42,6 +42,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
+		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMIT = "DayTotalLimit";
 		
         #endregion
 	
@@ -78,6 +80,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _sendText;
 		private string _getway;
 		private int _defaultNoInterceptCount;
+		private bool? _hasDayTotalLimit;
+		private int? _dayTotalLimit;
 		
 		#endregion
 
@@ -115,6 +119,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_sendText = null;
 			_getway = null;
 			_defaultNoInterceptCount = 0;
+			_hasDayTotalLimit = false;
+			_dayTotalLimit = 0;
 		}
 		#endregion
 
@@ -122,7 +128,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit)
 		{
 			_id = id;
 			_name = name;
@@ -152,6 +158,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_sendText = sendText;
 			_getway = getway;
 			_defaultNoInterceptCount = defaultNoInterceptCount;
+			_hasDayTotalLimit = hasDayTotalLimit;
+			_dayTotalLimit = dayTotalLimit;
 		}
 		#endregion     
 	
@@ -597,6 +605,34 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultNoInterceptCount != value); _defaultNoInterceptCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasDayTotalLimit
+		{
+			get { return _hasDayTotalLimit; }
+
+			set	
+			{
+				_isChanged |= (_hasDayTotalLimit != value); _hasDayTotalLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? DayTotalLimit
+		{
+			get { return _dayTotalLimit; }
+
+			set	
+			{
+				_isChanged |= (_dayTotalLimit != value); _dayTotalLimit = value;
 			}
 		}
 		/// <summary>

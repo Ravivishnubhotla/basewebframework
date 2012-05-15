@@ -47,6 +47,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate , int clientGroupId);
         DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate);
         List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId);
+        DataTable GetALlChannelReport(DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -429,6 +430,11 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             }
 
             return spDayReports;
+        }
+
+        public DataTable GetALlChannelReport(DateTime startDate, DateTime endDate)
+        {
+            return this.AdoNetDb.GetALlChannelReport(startDate, endDate);
         }
 
         private List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime reportDate, int clientGroupId)

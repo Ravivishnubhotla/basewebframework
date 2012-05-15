@@ -112,49 +112,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.Label lblChannelClientCode;
         
         /// <summary>
-        /// txtAllowAndDisableArea control.
+        /// chkHasDayTotalLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtAllowAndDisableArea;
+        protected global::Coolite.Ext.Web.Checkbox chkHasDayTotalLimit;
         
         /// <summary>
-        /// txtGetway control.
+        /// txtDayTotalLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtGetway;
-        
-        /// <summary>
-        /// txtDayLimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtDayLimit;
-        
-        /// <summary>
-        /// txtMonthLimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextField txtMonthLimit;
-        
-        /// <summary>
-        /// txtSendText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.TextArea txtSendText;
+        protected global::Coolite.Ext.Web.NumberField txtDayTotalLimit;
         
         /// <summary>
         /// btnSaveSPClientChannelSetting control.

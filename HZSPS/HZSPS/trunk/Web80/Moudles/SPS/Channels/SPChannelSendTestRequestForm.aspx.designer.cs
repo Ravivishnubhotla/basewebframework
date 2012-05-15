@@ -76,13 +76,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.Label lblSendUrl;
         
         /// <summary>
-        /// lblChannelCode control.
+        /// lblStatusSendUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Label lblChannelCode;
+        protected global::Coolite.Ext.Web.Label lblStatusSendUrl;
+        
+        /// <summary>
+        /// lblDataTestResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblDataTestResult;
+        
+        /// <summary>
+        /// lblDataStatusTestResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblDataStatusTestResult;
         
         /// <summary>
         /// lblChannelInfo control.
@@ -112,15 +130,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.Button btnSPClientSendRequest;
         
         /// <summary>
-        /// hidChannelID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Hidden hidChannelID;
-        
-        /// <summary>
         /// hidMobileName control.
         /// </summary>
         /// <remarks>
@@ -137,5 +146,32 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Hidden hidLinkIDeName;
+        
+        /// <summary>
+        /// hidStatusName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidStatusName;
+        
+        /// <summary>
+        /// hidDataParam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidDataParam;
+        
+        /// <summary>
+        /// hidDataStatusParam control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Hidden hidDataStatusParam;
     }
 }
