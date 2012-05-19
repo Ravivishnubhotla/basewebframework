@@ -1,0 +1,1640 @@
+﻿##|TYPE Template
+##|UNIQUEID 03fe1be6-f041-4e2e-81bd-642378804296
+##|TITLE SpringNHibernate表现层代码模版
+##|NAMESPACE 
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll  , System.Windows.Forms.dll, System.Drawing.dll %>
+<%#NAMESPACE System.Windows.Forms, System.Drawing ,Legendigital.Code.MyGenAddin,System.Collections.Generic,Legendigital.Code.MyGenAddin.NHibernateFramework %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+
+	//-----------------------------------------
+	// The User Interface Entry Point
+	//-----------------------------------------
+	public override void Setup()
+	{
+	
+		NHibernateFrameworkWebUIGenerateForm form = new NHibernateFrameworkWebUIGenerateForm(MyMeta, input); 
+
+		if (form.ShowDialog() != DialogResult.OK) 
+		{
+			ui.IsCanceled = true;
+		}
+	
+	}
+
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll, System.Windows.Forms.dll,System.Web.dll %><%#NAMESPACE System,System.IO,System.Web.UI.WebControls, System.Text, System.Text.RegularExpressions, System.Globalization, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 ,Dnp.Utils, Legendigital.Code.MyGenAddin , Legendigital.Code.MyGenAddin.NHibernateFramework %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	
+	private Utils utils = new Utils();
+
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+	
+	private UICodeGenerationConfig uiftg;
+	
+	private	string listPageUrl = "ListPage.aspx";
+	
+    private	string IDKeyName = "ID";
+	
+	//---------------------------------------------------
+	// Render() is where you want to write your logic    
+	//---------------------------------------------------
+	public override void Render()
+	{
+		
+		ITable selectTable = (ITable)input["selectTable"];
+		
+		string GenerateType = (string)input["GenerateType"];
+		
+		uiftg = (UICodeGenerationConfig)input["Uiconfig"];
+		
+		NHibernateFrameworkWebUIGenerateConfig config = (NHibernateFrameworkWebUIGenerateConfig)input["codeGenerationSetting"];
+		
+		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
+		
+		
+		switch (GenerateType)
+		{
+			case "GenerateAddPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateAddPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateEditPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateEditPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateEditPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateEditPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateViewPageHtmlAndPageCode":
+				if(config.GenerateKeyLableForm)
+					GenerateViewPageHtml(selectTable,tableUIGenerationParamsListArray,config);
+				else
+					GenerateViewPageHtml(selectTable,TableGenerationHelper.FilterAutoKeyField(tableUIGenerationParamsListArray),config);
+				GenerateViewPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateListPageHtmlAndPageCode":
+				GenerateGridView(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			case "GenerateSingleManageListPageHtmlAndPageCode":
+				GenerateSingleManageListPageHtmlAndPageCode(selectTable,tableUIGenerationParamsListArray,config);
+				break;
+			default:
+				break;
+		}
+		
+
+		
+%>
+<%  
+		}
+		
+		
+		private void GenerateAddPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%><<%= config.HeaderUcTagName %>:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= config.GenerateMoudleHeadText(table,"Manage") %>" />
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+            <tr>
+                <td id="main">
+                    <p>
+                        <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top">
+                                        <h2>
+                                            <asp:Localize ID="locTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %> Add</asp:Localize></h2>								
+                                    </td>
+                                    <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                        &nbsp;
+                                        <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                        <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+					<UCResultMessagePanelTag:UCResultMessagePanel ID="UCResultMessagePanel1" runat="server" />
+					<asp:Panel ID="pnlInput" runat="server">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="padding-bottom: 2px">
+                                    <asp:Button ID="btnSaveUp" runat="server" ToolTip="Save [Alt+S]"
+                                        Text="Save" AccessKey="S" onclick="btnSave_Click"  ValidationGroup="<%= config.GenerateMoudleValidateGroupName(table) %>" />
+                                    &nbsp;
+                                <asp:Button ID="btnReturnUp" runat="server" ToolTip="Return [Alt+X]"
+                                    Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  OnClientClick="return confirm('Are you sure to return list page?');" />&nbsp;
+                                    <asp:Label ID="lblMessageUp" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                                </td>
+                                <td align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tabFormPagination" class="tabDetailView" cellspacing="0" cellpadding="0"
+                        width="100%">
+                        <tbody>
+                        </tbody>
+                    </table>
+					<table class="<%= config.TableCss %>" border="0" cellspacing="1" cellpadding="0" width="100%" align="center">
+                            <tbody>
+                                <th class="dataLabel" colspan="5" align="left">
+                                    <h4>
+                                        <asp:Localize ID="locFormTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %></asp:Localize></h4>
+                                </th>
+				<tr><td width="2%"></td>  
+<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+%>                                                    <td  style="width:15%;"  class="<%= config.TableRowLableCss %>" align="left"><asp:Localize ID="loclbl<%=tableUIGenerationParamsListArray[i].FieldName %>" runat="server"><%=tableUIGenerationParamsListArray[i].FieldNameCn %>:</asp:Localize></td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>">
+<% GenerateInputControl(table,tableUIGenerationParamsListArray[i],config);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+    
+%>				    </td>
+<%  if(i==tableUIGenerationParamsListArray.Length-1) {
+		if(!((i+1)%2==0)){
+%>			                                        <td width="2%">
+                                    </td>	<td  style="width:15%;"   class="<%= config.TableRowLableCss %>" align="left">&nbsp;</td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>">&nbsp;</td>
+<%      }
+%>              </tr>
+<%  }
+    else
+	{   if((i+1)%2==0){
+%>	            </tr>
+				<tr><td width="2%"></td>
+<%	    }
+    }
+}
+pd.Close();
+%>			
+                            </tbody>
+                        </table>
+                    <p />
+                    <div style="padding-top: 2px">
+                        <asp:Button ID="btnSaveDown" runat="server" ToolTip="Save [Alt+S]"
+                            Text="Save" AccessKey="S"  onclick="btnSave_Click"  ValidationGroup="<%= validgroup %>" />
+                        &nbsp;
+                    <asp:Button ID="btnReturnDown" runat="server" ToolTip="Return [Alt+X]"
+                        Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  OnClientClick="return confirm('Are you sure to return list page?');" />&nbsp;
+                        <asp:Label ID="lblMessageDown" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                    </div>
+					</asp:Panel>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<%		
+		}
+		
+		
+		private void GenerateEditPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%><<%= config.HeaderUcTagName %>:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= config.GenerateMoudleHeadText(table,"Manage") %>" />
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+            <tr>
+                <td id="main">
+                    <p>
+                        <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top">
+                                        <h2>
+                                            <asp:Localize ID="locTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %> Edit</asp:Localize></h2>								
+                                    </td>
+                                    <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                        &nbsp;
+                                        <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                        <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+					<UCResultMessagePanelTag:UCResultMessagePanel ID="UCResultMessagePanel1" runat="server" />
+					<asp:Panel ID="pnlInput" runat="server">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="padding-bottom: 2px">
+                                    <asp:Button ID="btnSaveUp" runat="server" ToolTip="Save [Alt+S]"
+                                        Text="Save" AccessKey="S" onclick="btnSave_Click"  ValidationGroup="<%= config.GenerateMoudleValidateGroupName(table) %>" />
+                                    &nbsp;
+									<asp:Button ID="btnDeleteUp" runat="server" ToolTip="Delete [Alt+D]" Text="Delete"
+                                    AccessKey="D" OnClick="btnDelete_Click" CausesValidation="false"   OnClientClick="return confirm('Are you sure to delete this record?');" />&nbsp;
+                                <asp:Button ID="btnViewUp" runat="server" ToolTip="View [Alt+V]" Text="View" AccessKey="V"
+                                    OnClick="btnView_Click" CausesValidation="false"   OnClientClick="return confirm('Are you sure to go to view page?');"  />&nbsp;
+                                <asp:Button ID="btnReturnUp" runat="server" ToolTip="Return [Alt+X]"
+                                    Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  OnClientClick="return confirm('Are you sure to return list page?');" />&nbsp;
+                                    <asp:Label ID="lblMessageUp" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                                </td>
+                                <td align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tabFormPagination" class="tabDetailView" cellspacing="0" cellpadding="0"
+                        width="100%">
+                        <tbody>
+                        </tbody>
+                    </table>
+                        <table class="<%= config.TableCss %>" border="0" cellspacing="1" cellpadding="0" width="100%" align="center">
+                            <tbody>
+                                <th class="dataLabel" colspan="5" align="left">
+                                    <h4>
+                                        <asp:Localize ID="locFormTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %></asp:Localize></h4>
+                                </th>
+				<tr><td width="2%"></td>  
+<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+%>                                                    <td  style="width:15%;"  class="<%= config.TableRowLableCss %>" align="left"><asp:Localize ID="loclbl<%=tableUIGenerationParamsListArray[i].FieldName %>" runat="server"><%=tableUIGenerationParamsListArray[i].FieldNameCn %>:</asp:Localize></td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>">
+<% GenerateInputControl(table,tableUIGenerationParamsListArray[i],config);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+    
+%>				    </td>
+<%  if(i==tableUIGenerationParamsListArray.Length-1) {
+		if(!((i+1)%2==0)){
+%>			                                        <td width="2%">
+                                    </td>	<td  style="width:15%;"   class="<%= config.TableRowLableCss %>" align="left">&nbsp;</td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>">&nbsp;</td>
+<%      }
+%>              </tr>
+<%  }
+    else
+	{   if((i+1)%2==0){
+%>	            </tr>
+				<tr><td width="2%"></td>
+<%	    }
+    }
+}
+pd.Close();
+%>			
+                            </tbody>
+                        </table>
+                    <p />
+                    <div style="padding-top: 2px">
+                        <asp:Button ID="btnSaveDown" runat="server" ToolTip="Save [Alt+S]"
+                            Text="Save" AccessKey="S"  onclick="btnSave_Click"  ValidationGroup="<%= validgroup %>" />
+                        &nbsp;
+						                    <asp:Button ID="btnDeleteDown" runat="server" ToolTip="Delete [Alt+D]" Text="Delete" AccessKey="D"
+                        OnClick="btnDelete_Click" CausesValidation="false"   OnClientClick="return confirm('Are you sure to delete this record?');" />&nbsp;
+                    <asp:Button ID="btnViewDown" runat="server" ToolTip="View [Alt+V]" Text="View" AccessKey="V"
+                        OnClick="btnView_Click" CausesValidation="false"   OnClientClick="return confirm('Are you sure to go to view page?');"  />&nbsp;
+                    <asp:Button ID="btnReturnDown" runat="server" ToolTip="Return [Alt+X]"
+                        Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  OnClientClick="return confirm('Are you sure to return list page?');" />&nbsp;
+                        <asp:Label ID="lblMessageDown" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                    </div>
+					</asp:Panel>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<%		
+		}
+		
+		
+		
+		
+		private void GenerateViewPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config )
+	    {
+
+			string moudleCodeName = config.GenerateMoudleCodeName(table);
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%><<%= config.HeaderUcTagName %>:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= config.GenerateMoudleHeadText(table,"Manage") %>" />
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+            <tr>
+                <td id="main">
+                    <p>
+                        <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top">
+                                        <h2>
+                                            <asp:Localize ID="locTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %> View</asp:Localize></h2>								
+                                    </td>
+                                    <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                        &nbsp;
+                                        <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                        <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                <UCResultMessagePanelTag:UCResultMessagePanel ID="UCResultMessagePanel1" runat="server" />
+                <asp:Panel ID="pnlInput" runat="server">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="padding-bottom: 2px">
+									<asp:Button ID="btnDeleteUp" runat="server" ToolTip="Delete [Alt+D]" Text="Delete"
+                                    AccessKey="D" OnClick="btnDelete_Click" CausesValidation="false"   OnClientClick="return confirm('Are you sure to delete this record?');" />&nbsp;
+                                <asp:Button ID="btnEditUp" runat="server" ToolTip="Edit [Alt+E]" Text="Edit" AccessKey="E"
+                                    OnClick="btnEdit_Click" CausesValidation="false"  />&nbsp;
+                                <asp:Button ID="btnReturnUp" runat="server" ToolTip="Return [Alt+X]"
+                                    Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  />&nbsp;
+                                    <asp:Label ID="lblMessageUp" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                                </td>
+                                <td align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tabFormPagination" class="tabDetailView" cellspacing="0" cellpadding="0"
+                        width="100%">
+                        <tbody>
+                        </tbody>
+                    </table>
+                        <table class="<%= config.TableCss %>" border="0" cellspacing="1" cellpadding="0" width="100%" align="center">
+                            <tbody>
+                                <th class="dataLabel" colspan="5" align="left">
+                                    <h4>
+                                        <asp:Localize ID="locFormTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %></asp:Localize></h4>
+                                </th>
+				<tr><td width="2%"></td>  
+<%		
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+%>                                                    <td  style="width:15%;"  class="<%= config.TableRowLableCss %>" align="left"><asp:Localize ID="loclbl<%=tableUIGenerationParamsListArray[i].FieldName %>" runat="server"><%=tableUIGenerationParamsListArray[i].FieldNameCn %>:</asp:Localize>:</td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>"><asp:Label ID="lbl<%= tableUIGenerationParamsListArray[i].FieldName %>"  ToolTip="<%=tableUIGenerationParamsListArray[i].FieldNameCn %>"  runat="server" Text=""></asp:Label>
+<% if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+    
+%>				    </td>
+<%  if(i==tableUIGenerationParamsListArray.Length-1) {
+		if(!((i+1)%2==0)){
+%>			                                        <td width="2%">
+                                    </td>	<td  style="width:15%;"   class="<%= config.TableRowLableCss %>" align="left">&nbsp;</td>
+					<td  style="width:35%;"  class="<%= config.TableRowInputCss %>">&nbsp;</td>
+<%      }
+%>              </tr>
+<%  }
+    else
+	{   if((i+1)%2==0){
+%>	            </tr>
+				<tr><td width="2%"></td>
+<%	    }
+    }
+}
+pd.Close();
+%>			
+                            </tbody>
+                        </table>
+                    <p />
+                    <div style="padding-top: 2px">
+						                    <asp:Button ID="btnDeleteDown" runat="server" ToolTip="Delete [Alt+D]" Text="Delete" AccessKey="D"
+                        OnClick="btnDelete_Click" CausesValidation="false"    />&nbsp;
+                    <asp:Button ID="btnEditDown" runat="server" ToolTip="Edit [Alt+E]" Text="Edit" AccessKey="E"
+                        OnClick="btnEdit_Click" CausesValidation="false"    />&nbsp;
+                    <asp:Button ID="btnReturnDown" runat="server" ToolTip="Return [Alt+X]"
+                        Text="Return" AccessKey="X" OnClick="btnReturn_Click" CausesValidation="false"  />&nbsp;
+                        <asp:Label ID="lblMessageDown" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                    </div>
+					</asp:Panel>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<%		
+		}
+
+		
+		
+		private void GenerateInputControl(ITable table ,TableUIGenerationParams tableUIGenerationParamsListItem,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+			IColumn column = table.Columns[tableUIGenerationParamsListItem.DbColumnName];
+			string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+			string validgroup = config.GenerateMoudleValidateGroupName(table);
+			if(!tableUIGenerationParamsListItem.IsSelect)
+				return;
+			if(tableUIGenerationParamsListItem.IsAutoKey)
+				return;
+			string domainFieldName = TableColumnGenerationHelper.GeneratePorpertyTypeByTableColumn(column);
+			switch (tableUIGenerationParamsListItem.InputType)
+			{
+				case "HtmlInputText":
+%>					<input id="txt<%= tableUIGenerationParamsListItem.FieldName %>" title="Please input <%= tableUIGenerationParamsListItem.FieldNameCn %>" type="text"  <%= GetMaxLength(tableUIGenerationParamsListItem) %> runat="server"  ValidationGroup="<%= validgroup %>"/>		
+<%					break;
+				case "Label":
+%>					<asp:Label ID="lbl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server" ></asp:Label>		
+<%					break;
+				case "TextBox":
+%>					<asp:textbox id="txt<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="Please input <%= tableUIGenerationParamsListItem.FieldNameCn %>"  <%= GetMaxLength(tableUIGenerationParamsListItem) %>   runat="server"   ValidationGroup="<%= validgroup %>"><%if (column.LanguageType=="decimal"||column.LanguageType=="double"||column.LanguageType=="int"){%>0<%}%></asp:textbox>
+<%					if (column.LanguageType=="DateTime") {
+%>                  <<%= config.AjaxControlPrex %>:CalendarExtender ID="cetxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="txt<%= tableUIGenerationParamsListItem.FieldName %>">
+                    </<%= config.AjaxControlPrex %>:CalendarExtender>
+<%				    }else if (column.LanguageType=="decimal"||column.LanguageType=="double"||column.LanguageType=="int") {	
+%>					<<%= config.AjaxControlPrex %>:NumericUpDownExtender ID="nuetxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="txt<%= tableUIGenerationParamsListItem.FieldName %>" Width="100">
+                    </<%= config.AjaxControlPrex %>:NumericUpDownExtender>
+<%					}
+					if(tableUIGenerationParamsListItem.IsReqiured){
+%>				     <asp:RequiredFieldValidator ID="rfvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="[<%= tableUIGenerationParamsListItem.FieldNameCn %>] not allow empty！" SetFocusOnError="True"  ValidationGroup="<%= validgroup %>"></asp:RequiredFieldValidator>
+                        <<%= config.AjaxControlPrex %>:ValidatorCalloutExtender ID="vcerfvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="rfvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= config.AjaxControlPrex %>:ValidatorCalloutExtender>	
+<%                  }
+					if (column.LanguageType=="DateTime"){
+%>				     <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="[<%= tableUIGenerationParamsListItem.FieldName %>] must be datetime value！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Date"  ValidationGroup="<%= validgroup %>"></asp:CompareValidator>
+                        <<%= config.AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= config.AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="decimal"){ 
+%>					<asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="[<%= tableUIGenerationParamsListItem.FieldName %>] must be currency value！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Currency"  ValidationGroup="<%= validgroup %>"></asp:CompareValidator>
+                        <<%= config.AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= config.AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="double") {  
+%>                  <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="[<%= tableUIGenerationParamsListItem.FieldName %>】must be decimal value！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Double"  ValidationGroup="<%= validgroup %>"></asp:CompareValidator>
+                        <<%= config.AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= config.AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="int")  {
+%>                  <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="[<%= tableUIGenerationParamsListItem.FieldName %>] must be interge value！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Integer"  ValidationGroup="<%= validgroup %>"></asp:CompareValidator>
+                        <<%= config.AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= config.AjaxControlPrex %>:ValidatorCalloutExtender>
+<%					}
+					break;
+				case "TextBoxMultiLine":
+%>					<asp:textbox id="txt<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="Please input <%= tableUIGenerationParamsListItem.FieldNameCn %>"  <%= GetMaxLength(tableUIGenerationParamsListItem) %>  TextMode="MultiLine"  runat="server"  ValidationGroup="<%= validgroup %>" ></asp:textbox>		
+<%					break;
+				case "HtmlTextArea":
+%>					<textarea id="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" title="Please input <%= tableUIGenerationParamsListItem.FieldNameCn %>" cols="50" rows="4"  ValidationGroup="<%= validgroup %>"></textarea>	
+<%					break;
+				case "HtmlSelect":
+%>					<select id="sel<%= tableUIGenerationParamsListItem.FieldName %>"  title="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>"  runat="server"  ValidationGroup="<%= validgroup %>">
+<%                  foreach(ListItem item in getListItemCollectionFormString(tableUIGenerationParamsListItem.Items)){
+%>						<option <%if (item.Value.Trim()==tableUIGenerationParamsListItem.DefaultValue.Trim()) {%> selected="selected"<%}%> value="<%= item.Value %>"><%= item.Text %></option>
+<% 					}
+%>                  </select>
+<%					break;
+				case "DropDownList":
+%>					<asp:DropDownList ID="ddl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="Please input <%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validgroup %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:DropDownList>
+<%					break;
+				case "HtmlInputCheckBox":
+%>					<input id="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  title="<%= tableUIGenerationParamsListItem.FieldNameCn %>" type="checkbox"  ValidationGroup="<%= validgroup %>" />		
+<%					break;
+				case "CheckBox":
+%>					<asp:CheckBox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  ValidationGroup="<%= validgroup %>" />	
+<%					break;
+				case "CheckBoxList":
+%>					<asp:CheckBoxList ID="cbl<%= tableUIGenerationParamsListItem.FieldName %>"   ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validgroup %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:CheckBoxList>
+<%					break;
+				case "RadioButtonList":
+%>					<asp:RadioButtonList ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validgroup %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:RadioButtonList>
+<%					break;
+				case "ListBox":
+%>					<asp:ListBox ID="lbx<%= tableUIGenerationParamsListItem.FieldName %>"  ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validgroup %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>                 </asp:ListBox>
+<%					break;
+				default:
+					break;
+			}				
+		}
+		
+		
+		private void GenerateListItem(ListItemCollection lc,string defaultValue)
+		{
+			foreach(ListItem item in lc){
+%>						<asp:ListItem Value="<%= item.Value %>" <%if (item.Value.Trim()==defaultValue.Trim()) {%> Selected="True"<%}%>><%= item.Text %></asp:ListItem>
+<%			}
+		}
+		
+		
+		private string GetInputControlName(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlIDFormat.Replace("{$PName}",tableUIGenerationParamsListItem.FieldName);		
+		}
+		
+		private string GetInputControlValue(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlGetSetValuePrppertyName;
+		}
+		
+		
+		
+		private void GenerateGetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+%>				<%= moudleNameEn %> obj = new <%= moudleNameEn %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}
+		}
+		
+		private void GenerateSetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = obj.<%= tableUIGenerationParamsListArray[i].FieldName %><%if (!((column.LanguageType=="bool")&((tableUIGenerationParamsListArray[i].InputType=="CheckBox")|(tableUIGenerationParamsListArray[i].InputType=="HtmlInputCheckBox")))) {%>.ToString()<%}%>;          	
+<%				}
+		}
+		
+		private void GenerateSetValueToDisplayCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.lbl<%= tableUIGenerationParamsListArray[i].FieldName %>.Text = obj.<%= tableUIGenerationParamsListArray[i].FieldName %>.ToString();
+<%				}
+		}
+		
+		private string GetParseControlValue(string controlID,string controlValue,string languageType)
+		{
+			switch(languageType)
+			{
+				case "string":
+					return "this."+controlID+"."+controlValue+".Trim()";
+				case "DateTime":
+					return "UIHelper.SaftGetDateTime(this."+controlID+"."+controlValue+".Trim())"+";//DateTime.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "int":
+					return "int.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "double":
+					return "double.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "decimal":
+					return "decimal.Parse(this."+controlID+"."+controlValue+".Trim())";
+				default:
+					return "this."+controlID+"."+controlValue+"";
+			}
+		}
+		
+
+
+		
+		private void GenerateAddPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+%>  
+
+--------------------------------------------------Add Page Code----------------------------------------------------
+
+    public partial class <%=  config.GetOperatorUCControlClassName(table,"Add") %> : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+                return;
+        }
+		
+		protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //if it is not validated, return.
+            if (!this.Page.IsValid)
+                return;
+
+            <%= wrapperClassName %> obj = new <%= wrapperClassName %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+
+            //add record
+            try
+            {
+                <%= wrapperClassName %>.Save(obj);
+			
+				//Show successful information
+                List<OperationNavgateUrl> operationNavgateUrls = new List<OperationNavgateUrl>();
+                operationNavgateUrls.Add(new OperationNavgateUrl("Return to List Page", "<%=  config.GetOperatorPageUrl(table,"List") %>"));
+                operationNavgateUrls.Add(new OperationNavgateUrl("Continute to add a new record", "<%=  config.GetOperatorPageUrl(table,"Add") %>"));
+
+                UCResultMessagePanel1.ShowMessage("Successful operation！", operationNavgateUrls);
+                this.pnlInput.Visible = false;
+				
+			}
+            catch (Exception ex)
+            {
+                ShowMessage("operation failure:" + ex.Message, Color.Red);
+            }
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("<%=  config.GetOperatorPageUrl(table,"List") %>");
+        }
+		
+        public void ShowMessage(string message,Color fontColor)
+        {
+            this.lblMessageUp.ForeColor = fontColor;
+            this.lblMessageDown.ForeColor = fontColor;
+            this.lblMessageUp.Text = message;
+            this.lblMessageDown.Text = message;
+        }
+		
+    }
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}
+		
+		
+		private void GenerateEditPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+				string PkQueryString = config.GetPkQueryKey(table);
+%>  
+
+--------------------------------------------------Edit Page Code----------------------------------------------------
+
+    public partial class <%=  config.GetOperatorUCControlClassName(table,"Edit") %>  : BaseViewableForm<<%= wrapperClassName %>>
+    {
+	
+	
+        protected override <%= wrapperClassName %> FindDataByID(int id)
+        {
+            return <%= wrapperClassName %>.FindById(id);
+        }
+
+        protected override string IDQueryStringName()
+        {
+            return "<%= PkQueryString %>";
+        }
+
+        protected override void ShowReturnMessage(string title, Color fontColor)
+        {
+            List<OperationNavgateUrl> operationNavgateUrls = new List<OperationNavgateUrl>();
+            operationNavgateUrls.Add(new OperationNavgateUrl("Return to List Page", "<%=  config.GetOperatorPageUrl(table,"List") %>"));
+
+            UCResultMessagePanel1.ShowMessage(title, operationNavgateUrls, fontColor);
+
+            this.pnlInput.Visible = false;
+        }
+		
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!LoadData())
+                return;
+
+            if (this.Page.IsPostBack)
+                return;
+			
+			<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = <%= GetControlValueString(table,tableUIGenerationParamsListArray[i]) %>;          	
+<%				}%> 
+        }
+		
+		protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //if it is not validated, return.
+            if (!this.Page.IsValid || this.DataObject == null)
+                return;
+
+            <%= wrapperClassName %> obj = DataObject;
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+
+            //edit record
+            try
+            {
+                <%= wrapperClassName %>.Update(obj);
+
+                ShowReturnMessage("Successful operation！", Color.Black);
+			}
+            catch (Exception ex)
+            {
+                ShowMessage("operation failure:" + ex.Message, Color.Red);
+            }
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("<%=  config.GetOperatorPageUrl(table,"List") %>");
+        }
+		
+		 protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.DataObject == null)
+                return;
+				
+            try
+            {
+                <%= wrapperClassName %>.Delete(this.DataObject);
+ 
+                ShowReturnMessage("Successful operation！", Color.Black);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("operation failure:" + ex.Message, Color.Red);
+            }
+        }
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
+            if (this.DataObject == null)
+                return;
+
+            this.Response.Redirect("<%=  config.GetOperatorPageUrl(table,"View") + "?" + PkQueryString + "=" %>"+this.DataID.ToString());
+        }
+		
+        public void ShowMessage(string message, Color fontColor)
+        {
+            this.lblMessageUp.ForeColor = fontColor;
+            this.lblMessageDown.ForeColor = fontColor;
+            this.lblMessageUp.Text = message;
+            this.lblMessageDown.Text = message;
+        }
+		
+		
+    }
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}
+		
+		
+		
+		
+		private void GenerateViewPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray,NHibernateFrameworkWebUIGenerateConfig config)
+		{
+				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+				string moudleCodeName = config.GenerateMoudleCodeName(table);
+				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+				string PkQueryString = config.GetPkQueryKey(table);
+%>  
+
+--------------------------------------------------View Page Code----------------------------------------------------
+
+    public partial class <%=  config.GetOperatorUCControlClassName(table,"View") %>  : BaseViewableForm<<%= wrapperClassName %>>
+    {
+        protected override <%= wrapperClassName %> FindDataByID(int id)
+        {
+            return <%= wrapperClassName %>.FindById(id);
+        }
+
+        protected override string IDQueryStringName()
+        {
+            return "<%= PkQueryString %>";
+        }
+
+        protected override void ShowReturnMessage(string title, Color fontColor)
+        {
+            List<OperationNavgateUrl> operationNavgateUrls = new List<OperationNavgateUrl>();
+            operationNavgateUrls.Add(new OperationNavgateUrl("Return to List Page", "<%=  config.GetOperatorPageUrl(table,"List") %>"));
+
+            UCResultMessagePanel1.ShowMessage(title, operationNavgateUrls, fontColor);
+
+            this.pnlInput.Visible = false;
+        }
+		
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!LoadData())
+                return;
+
+            if (this.Page.IsPostBack)
+                return;
+			
+			<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	this.lbl<%= tableUIGenerationParamsListArray[i].FieldName %>.Text = this.DataObject.<%= tableUIGenerationParamsListArray[i].FieldName %>.ToString();         	
+<%				}%> 
+        }
+		
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("<%=  config.GetOperatorPageUrl(table,"List") %>");
+        }
+		
+		 protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.DataObject == null)
+                return;
+				
+            try
+            {
+                <%= wrapperClassName %>.Delete(this.DataObject);
+ 
+                ShowReturnMessage("Successful operation！", Color.Black);
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("operation failure:" + ex.Message, Color.Red);
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (this.DataObject == null)
+                return;
+
+            this.Response.Redirect("<%=  config.GetOperatorPageUrl(table,"Edit") + "?" + PkQueryString + "=" %>"+this.DataID.ToString());
+        }
+		
+        public void ShowMessage(string message, Color fontColor)
+        {
+            this.lblMessageUp.ForeColor = fontColor;
+            this.lblMessageDown.ForeColor = fontColor;
+            this.lblMessageUp.Text = message;
+            this.lblMessageDown.Text = message;
+        }	
+    }
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}		
+
+		
+		private void GenerateGridView( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config)
+	    {
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
+			string gridID = config.GetRadGridControlName(table);
+			string PkPropertyName = config.GetPkProprtyName(table);
+			string PkQueryString = config.GetPkQueryString(table);
+			string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+%>
+<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <AjaxSettings>
+        <telerik:AjaxSetting AjaxControlID="<%= gridID %>">
+            <UpdatedControls>
+                <telerik:AjaxUpdatedControl ControlID="<%= gridID %>" />
+				<telerik:AjaxUpdatedControl ControlID="lblMessage" />
+            </UpdatedControls>
+        </telerik:AjaxSetting>
+    </AjaxSettings>
+</telerik:RadAjaxManager>
+<telerik:RadCodeBlock ID="radCodeBlockList" runat="server">
+<script type="text/javascript">
+    function onToolBarClientButtonClicking(sender, args) {
+        var masterTable = $find("<%= NHibernateFrameworkWebUIGenerateConfig.AspBeginTaget %>= <%= gridID %>.ClientID <%= NHibernateFrameworkWebUIGenerateConfig.AspEndTaget %>").get_masterTableView();
+        var button = args.get_item();
+        if (button.get_commandName() == "tcmdDelete") {
+            if (masterTable.get_selectedItems().length <= 0) {
+                alert('Please selected at least one record to deleted!');
+                args.set_cancel(true);
+            }
+            else {
+                args.set_cancel(!confirm('Delete all selected records?'));
+            }
+        }
+    }
+    </script>
+</telerik:RadCodeBlock>
+<<%= config.HeaderUcTagName %>:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= moudleNameCn %> Manage" />
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tbody>
+        <tr>
+            <td id="main">
+                <p>
+                    <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td valign="top">
+                                    <h2><asp:Localize ID="locTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %> List</asp:Localize></h2>
+                                </td>
+                                <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                                    &nbsp;
+                                    <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                    <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+                <asp:Label ID="lblMessage" runat="server" Text="" EnableViewState="false"></asp:Label>
+                <telerik:RadGrid ID="<%= gridID %>" runat="server" AutoGenerateColumns="False" GridLines="None"
+                    AllowMultiRowSelection="True" AllowPaging="True" AllowSorting="True" AllowCustomPaging="True"  AllowFilteringByColumn="true" 
+                    OnSortCommand="<%= gridID %>_SortCommand" OnPageIndexChanged="<%= gridID %>_PageIndexChanged"
+                    OnPageSizeChanged="<%= gridID %>_PageSizeChanged" OnItemCommand="<%= gridID %>_ItemCommand">
+                    <ClientSettings>
+                        <Selecting AllowRowSelect="true" />
+                    </ClientSettings>
+                    <PagerStyle Mode="NextPrevAndNumeric" AlwaysVisible="true"></PagerStyle>
+                    <MasterTableView CellSpacing="-1" CommandItemDisplay="Top" DataKeyNames="<%= PkPropertyName %>">
+                        <CommandItemStyle Width="100%" />
+                        <CommandItemTemplate>
+                            <telerik:RadToolBar ID="RadToolBar1" runat="server" OnButtonClick="RadToolBar1_ButtonClick"
+                                OnClientButtonClicking="onToolBarClientButtonClicking">
+                                <Items>
+                                    <telerik:RadToolBarButton Text="Add new" CommandName="InitInsert" ImageUrl="~/Images/OfficeIco/New.ico"
+                                        NavigateUrl='<%= NHibernateFrameworkWebUIGenerateConfig.AspBeginTaget %># this.Page.ResolveUrl("<%=  config.GetOperatorPageUrl(table,"Add") %>") <%= NHibernateFrameworkWebUIGenerateConfig.AspEndTaget %>'>
+                                    </telerik:RadToolBarButton>
+                                    <telerik:RadToolBarButton Text="Delete" ToolTip="Delete selected records" CommandName="tcmdDelete"
+                                        ImageUrl="~/Images/OfficeIco/Delete.ico">
+                                    </telerik:RadToolBarButton>
+                                    <telerik:RadToolBarButton Text="Refresh" ToolTip="Refresh List" CommandName="tcmdRefresh"
+                                        ImageUrl="~/Images/OfficeIco/Refresh.ico">
+                                    </telerik:RadToolBarButton>
+                                </Items>
+                            </telerik:RadToolBar>
+                        </CommandItemTemplate>
+                        <RowIndicatorColumn>
+                            <HeaderStyle Width="20px"></HeaderStyle>
+                        </RowIndicatorColumn>
+                        <ExpandCollapseColumn>
+                            <HeaderStyle Width="20px"></HeaderStyle>
+                        </ExpandCollapseColumn>
+                        <Columns>
+                            <telerik:GridClientSelectColumn UniqueName="colSelect">
+                            </telerik:GridClientSelectColumn>
+							<%Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+System.Collections.Generic.List<string> la1 = new System.Collections.Generic.List<string>();
+System.Collections.Generic.List<string> la2 = new System.Collections.Generic.List<string>();
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+	continue;
+}
+	la1.Add("\"" + tableUIGenerationParamsListArray[i].FieldName + "\"");
+	la2.Add("\"" + "" + "\"");
+}
+string aa11 = string.Join(", ",la1.ToArray());
+string aa22 = string.Join(", ", la2.ToArray());
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+if(!tableUIGenerationParamsListArray[i].IsSelect ||  column.IsAutoKey)
+{
+
+	continue;
+}
+	BulidGridColumn(table ,tableUIGenerationParamsListArray[i] ,config);
+}
+%>  		                            <telerik:GridTemplateColumn HeaderText="Edit" UniqueName="colEdit"  AllowFiltering="false"
+                                ReadOnly="true">
+                                <ItemTemplate>
+                                    <asp:HyperLink  ID="lnkEdit" runat="server" NavigateUrl='<%= NHibernateFrameworkWebUIGenerateConfig.AspBeginTaget %># DataBinder.Eval(Container, "DataItem.<%= PkPropertyName %>", this.Page.ResolveUrl("<%=  config.GetOperatorPageUrl(table,"Edit") %>") + "?<%= PkQueryString %>") <%= NHibernateFrameworkWebUIGenerateConfig.AspEndTaget %>'
+                                        Text="Edit"></asp:HyperLink>
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+                            <telerik:GridTemplateColumn HeaderText="View" UniqueName="colView"  AllowFiltering="false"
+                                ReadOnly="true">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="lnkView" runat="server" NavigateUrl='<%= NHibernateFrameworkWebUIGenerateConfig.AspBeginTaget %># DataBinder.Eval(Container, "DataItem.<%= PkPropertyName %>", this.Page.ResolveUrl("<%=  config.GetOperatorPageUrl(table,"View") %>") + "?<%= PkQueryString %>") <%= NHibernateFrameworkWebUIGenerateConfig.AspEndTaget %>'
+                                        Text="View"></asp:HyperLink>
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+--------------------------------------------------List Page Code----------------------------------------------------
+
+    public partial class <%=  config.GetOperatorUCControlClassName(table,"List") %> : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+                return;
+            BindData();
+        }
+
+        protected void BindData()
+        {
+            int recordCount = 0;
+
+            if (this.<%= gridID %>.MasterTableView.SortExpressions.Count > 0 && this.<%= gridID %>.MasterTableView.SortExpressions[0].SortOrder != GridSortOrder.None)
+            {
+                this.<%= gridID %>.DataSource = <%= wrapperClassName %>.FindAllByOrderByAndFilter(GetAllFilter(),this.<%= gridID %>.MasterTableView.SortExpressions[0].FieldName, (this.<%= gridID %>.MasterTableView.SortExpressions[0].SortOrder == GridSortOrder.Descending), this.<%= gridID %>.MasterTableView.CurrentPageIndex + 1, this.<%= gridID %>.MasterTableView.PageSize, out recordCount);
+            }
+            else
+            {
+                this.<%= gridID %>.DataSource = <%= wrapperClassName %>.FindAllByOrderByAndFilter(GetAllFilter(),<%= wrapperClassName %>.PROPERTY_NAME_<%= PkPropertyName.ToUpper() %>, true, this.<%= gridID %>.MasterTableView.CurrentPageIndex + 1, this.<%= gridID %>.MasterTableView.PageSize, out recordCount);
+            }
+
+            this.<%= gridID %>.MasterTableView.VirtualItemCount = recordCount;
+
+            this.<%= gridID %>.DataBind();
+        }
+		
+        protected void <%= gridID %>_SortCommand(object source, Telerik.Web.UI.GridSortCommandEventArgs e)
+        {
+            BindData();
+        }
+
+        protected void <%= gridID %>_PageIndexChanged(object source, GridPageChangedEventArgs e)
+        {
+            <%= gridID %>.MasterTableView.CurrentPageIndex = e.NewPageIndex;
+            BindData();
+        }
+
+        protected void <%= gridID %>_PageSizeChanged(object source, GridPageSizeChangedEventArgs e)
+        {
+            <%= gridID %>.MasterTableView.PageSize = e.NewPageSize;
+            BindData();
+        }
+
+        private List<QueryFilter> GetAllFilter()
+        {
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+            foreach (GridColumn column in <%= gridID %>.MasterTableView.Columns)
+            {
+                
+                if (column.CurrentFilterFunction != GridKnownFunction.NoFilter && column.CurrentFilterFunction != GridKnownFunction.Custom)
+                {
+                    QueryFilter queryFilter = new QueryFilter(column.SortExpression, column.CurrentFilterValue, QueryFilter.ConvertGridFilterFunction(column.CurrentFilterFunction));
+                    queryFilters.Add(queryFilter);
+                }
+            }
+            return queryFilters;
+        }
+
+        protected void <%= gridID %>_ItemCommand(object source, GridCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "filter":
+                    break;
+                default:
+                    break;
+            }
+            BindData();   
+        }
+
+        public void ShowMessage(string message, Color fontColor)
+        {
+            this.lblMessage.ForeColor = fontColor;
+            this.lblMessage.Text = message;
+        }
+
+        protected void RadToolBar1_ButtonClick(object sender, RadToolBarEventArgs e)
+        {
+            if(!(e.Item is RadToolBarButton))
+                return;
+
+            RadToolBarButton item = (RadToolBarButton)(e.Item);
+
+            if (item.CommandName == "tcmdDelete")
+            {
+                List<object> ids = new List<object>();
+
+                foreach (string index in this.<%= gridID %>.SelectedIndexes)
+                {
+                    ids.Add(this.<%= gridID %>.MasterTableView.DataKeyValues[int.Parse(index)][<%= wrapperClassName %>.PROPERTY_NAME_<%= PkPropertyName.ToUpper() %>]);
+                }
+
+                try
+                {
+                    <%= wrapperClassName %>.PatchDeleteByIDs(ids.ToArray());
+                    ShowMessage("Delete records ok!",Color.Black);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage("Delete records failed:"+ex.Message, Color.Red);
+                }
+            }
+
+            BindData();
+
+        }
+    }
+
+
+
+
+
+
+
+
+			
+<%}	
+
+
+
+		private void GenerateSingleManageListPageHtmlAndPageCode( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config)
+	    {
+			string moudleNameEn = config.GenerateMoudleCodeName(table);
+			string moudleNameCn = config.GenerateMoudleDisplayName(table);
+			string gridID = config.GetRadGridControlName(table);
+			string PkPropertyName = config.GetPkProprtyName(table);
+			string PkQueryString = config.GetPkQueryString(table);
+			string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+%>
+<telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <AjaxSettings>
+        <telerik:AjaxSetting AjaxControlID="<%= gridID %>">
+            <UpdatedControls>
+                <telerik:AjaxUpdatedControl ControlID="<%= gridID %>" />
+				<telerik:AjaxUpdatedControl ControlID="lblMessage" />
+            </UpdatedControls>
+        </telerik:AjaxSetting>
+    </AjaxSettings>
+</telerik:RadAjaxManager>
+<telerik:RadCodeBlock ID="radCodeBlockList" runat="server">
+<script type="text/javascript">
+    function onToolBarClientButtonClicking(sender, args) {
+        var masterTable = $find("<%= NHibernateFrameworkWebUIGenerateConfig.AspBeginTaget %>= <%= gridID %>.ClientID <%= NHibernateFrameworkWebUIGenerateConfig.AspEndTaget %>").get_masterTableView();
+        var button = args.get_item();
+        if (button.get_commandName() == "tcmdDelete") {
+            if (masterTable.get_selectedItems().length <= 0) {
+                alert('Please selected at least one record to deleted!');
+                args.set_cancel(true);
+            }
+            else {
+                args.set_cancel(!confirm('Delete all selected records?'));
+            }
+        }
+    }
+    </script>
+</telerik:RadCodeBlock>
+<<%= config.HeaderUcTagName %>:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= moudleNameCn %> Manage" />
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tbody>
+        <tr>
+            <td id="main">
+                <p>
+                    <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td valign="top">
+                                    <h2><asp:Localize ID="locTitle" runat="server"><%= config.GenerateMoudleFormTitle(table) %> List</asp:Localize></h2>
+                                </td>
+                                <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                                    &nbsp;
+                                    <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                    <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+                <asp:Label ID="lblMessage" runat="server" Text="" EnableViewState="false"></asp:Label>
+                <telerik:RadGrid ID="<%= gridID %>" runat="server" AutoGenerateColumns="False" GridLines="None"
+                    AllowMultiRowSelection="True" AllowPaging="false" AllowSorting="True" AllowFilteringByColumn="true"   OnItemCommand="<%= gridID %>_ItemCommand" 
+                    OnSortCommand="<%= gridID %>_SortCommand" OnCancelCommand="<%= gridID %>_CancelCommand"
+                                OnUpdateCommand="<%= gridID %>_UpdateCommand" OnEditCommand="<%= gridID %>_EditCommand"
+                                OnInsertCommand="<%= gridID %>_InsertCommand">
+                    <ClientSettings>
+                        <Selecting AllowRowSelect="true" />
+                    </ClientSettings>
+                    <MasterTableView CellSpacing="-1" CommandItemDisplay="Top" DataKeyNames="<%= PkPropertyName %>">
+                        <CommandItemStyle Width="100%" />
+						<CommandItemTemplate>
+                                        <telerik:RadToolBar ID="radGridToolBar" runat="server" OnButtonClick="radGridToolBar_ButtonClick"
+                                            OnClientButtonClicking="onToolBarClientButtonClicking">
+                                            <Items>
+                                                <telerik:RadToolBarButton Text="Add new" CommandName="InitInsert" ImageUrl="~/Images/OfficeIco/New.ico">
+                                                </telerik:RadToolBarButton>
+                                                <telerik:RadToolBarButton Text="Delete" ToolTip="Delete selected records" CommandName="tcmdDelete"
+                                                    ImageUrl="~/Images/OfficeIco/Delete.ico">
+                                                </telerik:RadToolBarButton>
+                                                <telerik:RadToolBarButton Text="Refresh" ToolTip="Refresh List" CommandName="tcmdRefresh"
+                                                    ImageUrl="~/Images/OfficeIco/Refresh.ico">
+                                                </telerik:RadToolBarButton>
+                                            </Items>
+                                        </telerik:RadToolBar>
+                                    </CommandItemTemplate>
+                        <RowIndicatorColumn>
+                            <HeaderStyle Width="20px"></HeaderStyle>
+                        </RowIndicatorColumn>
+                        <ExpandCollapseColumn>
+                            <HeaderStyle Width="20px"></HeaderStyle>
+                        </ExpandCollapseColumn>
+                        <Columns>
+                            <telerik:GridClientSelectColumn UniqueName="colSelect">
+                            </telerik:GridClientSelectColumn>
+							<%Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+System.Collections.Generic.List<string> la1 = new System.Collections.Generic.List<string>();
+System.Collections.Generic.List<string> la2 = new System.Collections.Generic.List<string>();
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+	continue;
+}
+	la1.Add("\"" + tableUIGenerationParamsListArray[i].FieldName + "\"");
+	la2.Add("\"" + "" + "\"");
+}
+string aa11 = string.Join(", ",la1.ToArray());
+string aa22 = string.Join(", ", la2.ToArray());
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+if(!tableUIGenerationParamsListArray[i].IsSelect ||  column.IsAutoKey)
+{
+
+	continue;
+}
+	BulidGridColumn(table ,tableUIGenerationParamsListArray[i] ,config);
+}
+%>  		                            <telerik:GridEditCommandColumn UniqueName="EditCommandColumn" />
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+--------------------------------------------------List Page Code----------------------------------------------------
+
+    public partial class <%=  config.GetOperatorUCControlClassName(table,"List") %> : System.Web.UI.UserControl
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+                return;
+            BindData();
+        }
+
+        protected void BindData()
+        {
+
+            if (this.<%= gridID %>.MasterTableView.SortExpressions.Count > 0 && this.<%= gridID %>.MasterTableView.SortExpressions[0].SortOrder != GridSortOrder.None)
+            {
+                this.<%= gridID %>.DataSource = <%= wrapperClassName %>.FindAllByOrderByAndFilter(GetAllFilter(),this.<%= gridID %>.MasterTableView.SortExpressions[0].FieldName, (this.<%= gridID %>.MasterTableView.SortExpressions[0].SortOrder == GridSortOrder.Descending));
+            }
+            else
+            {
+                this.<%= gridID %>.DataSource = <%= wrapperClassName %>.FindAllByOrderByAndFilter(GetAllFilter(),<%= wrapperClassName %>.PROPERTY_NAME_<%= PkPropertyName.ToUpper() %>, true);
+            }
+
+            this.<%= gridID %>.DataBind();
+        }
+
+        protected void <%= gridID %>_CancelCommand(object source, Telerik.Web.UI.GridCommandEventArgs e)
+        {
+            e.Item.Edit = false;
+            BindData();
+        }
+
+        protected void <%= gridID %>_UpdateCommand(object source, Telerik.Web.UI.GridCommandEventArgs e)
+        {
+            GridEditableItem editedItem = e.Item as GridEditableItem;
+
+            Hashtable newValues = new Hashtable();
+            e.Item.OwnerTableView.ExtractValuesFromItem(newValues, editedItem);
+
+            <%= wrapperClassName %> obj = <%= wrapperClassName %>.FindById(this.<%= gridID %>.MasterTableView.DataKeyValues[e.Item.ItemIndex][this.<%= gridID %>.MasterTableView.DataKeyNames[0]]);
+	
+			<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = (<%= tableUIGenerationParamsListArray[i].LanguageType %>)newValues[<%= wrapperClassName %>.PROPERTY_NAME_<%= tableUIGenerationParamsListArray[i].FieldName.ToUpper() %>];         	
+<%				}%> 
+
+            try
+            {
+                <%= wrapperClassName %>.Update(obj);
+                e.Item.Edit = false;
+            }
+            catch (Exception ex)
+            {
+                this.lblMessage.Text = "Update failed!" + ex.Message;
+                e.Item.Edit = true;
+            }
+            BindData();
+        }
+
+        protected void <%= gridID %>_EditCommand(object source, Telerik.Web.UI.GridCommandEventArgs e)
+        {
+            e.Item.Edit = true;
+
+            BindData();
+        }
+
+        protected void <%= gridID %>_InsertCommand(object source, GridCommandEventArgs e)
+        {
+            GridEditFormInsertItem insertedItem = e.Item as GridEditFormInsertItem;
+
+            Hashtable newValues = new Hashtable();
+            e.Item.OwnerTableView.ExtractValuesFromItem(newValues, insertedItem);
+
+            <%= wrapperClassName %> obj = new <%= wrapperClassName %>();
+			
+			<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+				    if (column.IsAutoKey)
+						continue;
+%>              	obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = (<%= tableUIGenerationParamsListArray[i].LanguageType %>)newValues[<%= wrapperClassName %>.PROPERTY_NAME_<%= tableUIGenerationParamsListArray[i].FieldName.ToUpper() %>];         	
+<%				}%> 
+
+            try
+            {
+                <%= wrapperClassName %>.Save(obj);
+                e.Item.OwnerTableView.IsItemInserted = false;
+                this.lblMessage.Text = "Insert successfuled!";
+            }
+            catch (Exception ex)
+            {
+                this.lblMessage.Text = "Insert failed!" + ex.Message;
+                e.Canceled = true;
+            }
+
+            BindData();
+
+        }
+		
+		protected void <%= gridID %>_ItemCommand(object source, GridCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "filter":
+                    BindData();
+                    break;
+                case "Insert":
+                case "Update":
+                case "Cancel":
+                case "Edit":
+                    break;
+                default:
+                    BindData();
+                    break;
+            }
+
+        }
+		
+		protected void <%= gridID %>_SortCommand(object source, Telerik.Web.UI.GridSortCommandEventArgs e)
+        {
+            BindData();
+        }
+
+
+        private List<QueryFilter> GetAllFilter()
+        {
+            List<QueryFilter> queryFilters = new List<QueryFilter>();
+            foreach (GridColumn column in <%= gridID %>.MasterTableView.Columns)
+            {
+                
+                if (column.CurrentFilterFunction != GridKnownFunction.NoFilter && column.CurrentFilterFunction != GridKnownFunction.Custom)
+                {
+                    QueryFilter queryFilter = new QueryFilter(column.SortExpression, column.CurrentFilterValue, QueryFilter.ConvertGridFilterFunction(column.CurrentFilterFunction));
+                    queryFilters.Add(queryFilter);
+                }
+            }
+            return queryFilters;
+        }
+
+
+        public void ShowMessage(string message, Color fontColor)
+        {
+            this.lblMessage.ForeColor = fontColor;
+            this.lblMessage.Text = message;
+        }
+
+        protected void radGridToolBar_ButtonClick(object sender, RadToolBarEventArgs e)
+        {
+            if (!(e.Item is RadToolBarButton))
+                return;
+
+            RadToolBarButton item = (RadToolBarButton)(e.Item);
+
+            if (item.CommandName == "tcmdDelete")
+            {
+                List<object> ids = new List<object>();
+
+                foreach (string index in this.<%= gridID %>.SelectedIndexes)
+                {
+                    ids.Add(this.<%= gridID %>.MasterTableView.DataKeyValues[int.Parse(index)][<%= wrapperClassName %>.PROPERTY_NAME_<%= PkPropertyName.ToUpper() %>]);
+                }
+
+                try
+                {
+                    <%= wrapperClassName %>.PatchDeleteByIDs(ids.ToArray());
+                    ShowMessage("Delete records ok!", Color.Black);
+                }
+                catch (Exception ex)
+                {
+                    ShowMessage("Delete records failed:" + ex.Message, Color.Red);
+                }
+            }
+
+            BindData();
+
+            if (item.CommandName == "InitInsert")
+            {
+                this.<%= gridID %>.MasterTableView.InsertItem();
+            }
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+			
+<%}	
+
+
+private void BulidGridColumn(ITable table ,TableUIGenerationParams tableUIGenerationParam ,NHibernateFrameworkWebUIGenerateConfig config)
+{
+	if(tableUIGenerationParam.LanguageType=="string")
+{
+%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>"/>
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="DateTime")
+{
+%>					<telerik:GridDateTimeColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="bool")
+{
+%>					<telerik:GridCheckBoxColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+	if(tableUIGenerationParam.LanguageType=="float" || tableUIGenerationParam.LanguageType=="double" || tableUIGenerationParam.LanguageType=="int" || tableUIGenerationParam.LanguageType=="long" || tableUIGenerationParam.LanguageType=="decimal")
+{
+%>					<telerik:GridNumericColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%	return;
+}
+%>					<telerik:GridBoundColumn UniqueName="col<%= tableUIGenerationParam.FieldName %>" HeaderText="<%= tableUIGenerationParam.FieldNameCn %>" DataField="<%= tableUIGenerationParam.FieldName %>" AllowSorting="true" SortExpression="<%= tableUIGenerationParam.FieldName %>" AutoPostBackOnFilter="true" DataType="<%= ShowGridFieldType(tableUIGenerationParam) %>" />
+<%
+}
+
+		
+		private string ShowGridFieldType(TableUIGenerationParams tableUIGenerationParam)
+		{
+			if(tableUIGenerationParam.LanguageType=="string")
+				return "System.String";
+			if(tableUIGenerationParam.LanguageType=="DateTime")
+				return "System.DateTime";
+			if(tableUIGenerationParam.LanguageType=="bool")
+				return "System.Boolean";
+			if(tableUIGenerationParam.LanguageType=="int")
+				return "System.Int32";
+			if(tableUIGenerationParam.LanguageType=="long")
+				return "System.Int64";
+			if(tableUIGenerationParam.LanguageType=="float")
+				return "System.Single";
+			if(tableUIGenerationParam.LanguageType=="double")
+				return "System.Double";
+			if(tableUIGenerationParam.LanguageType=="decimal")
+				return "System.Decimal";	
+			return "System.String";
+		}		
+
+
+
+		private string GetMaxLength(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			if(tableUIGenerationParamsListItem.LanguageType=="string")
+			{
+				return "MaxLength='"+tableUIGenerationParamsListItem.Size.ToString()+"'";			
+			}
+			else
+			{
+				return "";
+			}
+		}
+		
+		private string GetControlValueString(ITable table,TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			IColumn column = table.Columns[tableUIGenerationParamsListItem.DbColumnName];
+			if(!column.IsNullable)
+			{
+				if(tableUIGenerationParamsListItem.LanguageType == "bool" && ((tableUIGenerationParamsListItem.InputType=="CheckBox")||(tableUIGenerationParamsListItem.InputType=="HtmlInputCheckBox")))
+					return "this.DataObject."+ tableUIGenerationParamsListItem.FieldName;
+				else
+					return "this.DataObject."+ tableUIGenerationParamsListItem.FieldName + ".ToString()";
+			}
+			else
+			{
+				if(tableUIGenerationParamsListItem.LanguageType == "bool" && ((tableUIGenerationParamsListItem.InputType=="CheckBox")||(tableUIGenerationParamsListItem.InputType=="HtmlInputCheckBox")))
+					return "ValueConvertUtil.ConvertNullableValue<bool>(this.DataObject."+ tableUIGenerationParamsListItem.FieldName + ")";
+				else
+					return "this.DataObject."+ tableUIGenerationParamsListItem.FieldName + ".ToString()";				
+			}
+		}
+		
+		private string ShowCharLength(int length)
+		{
+			if(length==0)
+			{
+				return "";
+			}
+			else
+			{
+				return length.ToString();			
+			}
+		}
+		
+		private ListItemCollection getListItemCollectionFormString(string itemstring)
+        {
+            ListItemCollection items = new ListItemCollection();
+            string[] splitValues = itemstring.Split(("|").ToCharArray());
+            foreach (string s in splitValues)
+            {
+                string[] nsplit = s.Split(("$").ToCharArray());
+                if (nsplit[0].Trim()=="")
+                    continue;
+                if (nsplit.Length == 1)
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[0]));
+                }
+                else
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[1]));
+                }
+            }
+            return items;
+        }
+		
+		private string ShowBool(bool boolean)
+		{
+			if(boolean)
+			{
+				return "是";
+			}
+			else
+			{
+				return "否";		
+			}
+		}
+	
+}
+%>
+##|BODY_END

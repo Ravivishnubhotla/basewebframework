@@ -1,0 +1,7 @@
+﻿You can change the way SubSonic creates the table by using a small set of attributes - specifically:
+
+Primary Keys: If you call a column “ID” or “Key” or “[ClassName]ID” – no matter it’s type – that will be your Primary Key. If you have other things in mind you can use a primary key attribute (“SubSonicPrimaryKey”) and we’ll use that column.
+String length: There are two ways to tell SubSonic how to handle this – both using attributes. The first is “SubSonicStringLength(int length)” and the second is “SubSonicLongString” which sets to nvarchar(MAX) or LONGTEXT – depending on your provider.
+Nullability: The default is not null, but you can change this by making your property a nullable type.
+Numeric Precision: The default is a Precision of 10 and a scale of 2 but you can change that with the “SubSonicNumericPrecision(int precision, int scale)” attribute.
+Ignoring a property: you can ignore generation of a property by using “SubSonicIgnore” attribute.

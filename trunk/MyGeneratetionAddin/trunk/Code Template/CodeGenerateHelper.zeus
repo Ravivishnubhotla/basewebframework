@@ -1,0 +1,93 @@
+﻿##|TYPE Template
+##|UNIQUEID 98451047-c7ef-497b-a490-f43e8c53ddf0
+##|TITLE 辅助代码生成工具
+##|NAMESPACE Tutorials.C#.Chapter 2
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll , System.Windows.Forms.dll, System.Drawing.dll %>
+<%#NAMESPACE System.Windows.Forms, System.Drawing ,Legendigital.Code.MyGenAddin %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+	
+	public override void Setup() 
+	{
+		BaseDatabaseSelectForm form = new BaseDatabaseSelectForm(MyMeta, input);
+		
+		form.Text = "辅助代码生成工具";
+
+		if (form.ShowDialog() != DialogResult.OK) 
+		{
+			ui.IsCanceled = true;
+		}
+	}
+
+
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll, System.Windows.Forms.dll,System.Web.dll,System.Data.dll,System.Xml.dll %><%#NAMESPACE System,System.Xml,System.IO,System.Collections.Generic, System.Text, System.Data,System.Text.RegularExpressions, System.Globalization, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 ,Dnp.Utils ,Legendigital.Code.MyGenAddin.NHibernateFramework,Legendigital.Code.MyGenAddin,System.Collections.Generic %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+
+	private Utils utils = new Utils();
+
+	public override void Render()
+	{
+		string databaseName = input["databaseName"].ToString();
+		
+		IDatabase database = MyMeta.Databases[databaseName];
+		
+		DataSet dsRoles = DataAccessHelper.GetDataSetBySql("Select * from SystemRole");
+		
+		GenerateRoleNameClass(dsRoles.Tables[0]);
+		
+	    DataSet dsPermisions = DataAccessHelper.GetDataSetBySql("Select * from SystemPrivilege order by PrivilegeCategory asc,PrivilegeOrder asc");
+		
+		GeneratePermissinNameClass(dsPermisions.Tables[0]);
+	}
+	
+	private void GenerateRoleNameClass(DataTable dt)
+	{
+%>    public static class RoleNameList
+    {
+<%		foreach(DataRow dr in dt.Rows){
+%>		/// <summary>
+        /// <%= dr["Role_Name"].ToString() %>
+        /// </summary>
+		public const string ROLE_NAME_<%= utils.SetPascalCase(dr["Role_Name"].ToString()).ToUpper() %>	= "<%= dr["Role_Name"].ToString() %>";
+<%     }
+
+%>   }
+<%
+    }
+	
+	
+		private void GeneratePermissinNameClass(DataTable dt)
+	{
+%>    public static class PermissinNameList
+    {
+<%		foreach(DataRow dr in dt.Rows){
+%>		/// <summary>
+        /// <%= dr["PrivilegeEnName"].ToString() %>
+        /// </summary>
+		public const string PERMISSION_NAME_<%= utils.SetPascalCase(dr["PrivilegeCategory"].ToString()).ToUpper() %>_<%= utils.SetPascalCase(dr["PrivilegeEnName"].ToString()).ToUpper() %>	= "<%= dr["PrivilegeEnName"].ToString() %>";
+<%     }
+
+%>   }
+<%
+    }
+
+}
+%>
+##|BODY_END

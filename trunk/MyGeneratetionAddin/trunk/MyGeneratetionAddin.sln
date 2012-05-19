@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Legendigital.Code.MyGenAddin", "Ext.Code.MyGenAddin\Legendigital.Code.MyGenAddin.csproj", "{D3D04082-B5E1-4254-9646-F08CD88F16C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThridDll", "ThridDll", "{41F09C41-791D-42CA-9CC1-F281CA51BCE9}"
+	ProjectSection(SolutionItems) = preProject
+		ThridDll\Dnp.Utils.dll = ThridDll\Dnp.Utils.dll
+		ThridDll\FirebirdSql.Data.FirebirdClient.dll = ThridDll\FirebirdSql.Data.FirebirdClient.dll
+		ThridDll\Interop.MSDASC.dll = ThridDll\Interop.MSDASC.dll
+		ThridDll\MyMeta.dll = ThridDll\MyMeta.dll
+		ThridDll\MySql.Data.dll = ThridDll\MySql.Data.dll
+		ThridDll\Npgsql.dll = ThridDll\Npgsql.dll
+		ThridDll\PluginInterfaces.dll = ThridDll\PluginInterfaces.dll
+		ThridDll\SubSonic.Core.dll = ThridDll\SubSonic.Core.dll
+		ThridDll\System.Data.SQLite.DLL = ThridDll\System.Data.SQLite.DLL
+		ThridDll\WeifenLuo.WinFormsUI.Docking.dll = ThridDll\WeifenLuo.WinFormsUI.Docking.dll
+		ThridDll\Zeus.dll = ThridDll\Zeus.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Template", "Code Template", "{20465DFB-F093-4D96-9545-A72A1F40268E}"
+	ProjectSection(SolutionItems) = preProject
+		Code Template\BaseWeb表现层代码模版.zeus = Code Template\BaseWeb表现层代码模版.zeus
+		Code Template\CodeGenerateHelper.zeus = Code Template\CodeGenerateHelper.zeus
+		Code Template\SpringNHibernate开发架构表代码模板.zeus = Code Template\SpringNHibernate开发架构表代码模板.zeus
+		Code Template\SpringNHibernate开发架构视图代码模板.zeus = Code Template\SpringNHibernate开发架构视图代码模板.zeus
+		Code Template\SpringNHibernate表现层代码模版.zeus = Code Template\SpringNHibernate表现层代码模版.zeus
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{9DCB96CB-F3B0-4E3F-ADD9-CA5244934C33}"
+	ProjectSection(SolutionItems) = preProject
+		Documents\NHibernate开发架构使用文档.docx = Documents\NHibernate开发架构使用文档.docx
+		Documents\NHibernate开发架构使用文档.pdf = Documents\NHibernate开发架构使用文档.pdf
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGeneratetionWin", "MyGeneratetionWin\MyGeneratetionWin.csproj", "{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D3D04082-B5E1-4254-9646-F08CD88F16C9}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Debug|x86.ActiveCfg = Debug|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Debug|x86.Build.0 = Debug|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Release|Any CPU.ActiveCfg = Release|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Release|Mixed Platforms.Build.0 = Release|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Release|x86.ActiveCfg = Release|x86
+		{4A2648BA-193D-4E8A-BB64-3797F6E4D72D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		BuildVersion_UseGlobalSettings = True
+		BuildVersion_BuildVersioningStyle = Increment.Increment.Increment.Increment
+		BuildVersion_UpdateFileVersion = True
+		BuildVersion_UpdateAssemblyVersion = True
+	EndGlobalSection
+EndGlobal
