@@ -1,0 +1,556 @@
+﻿##|TYPE Template
+##|UNIQUEID 03fe1be6-f041-4e2e-81bd-642378804296
+##|TITLE SpringNHibernate表现层代码模版
+##|NAMESPACE 
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll  , System.Windows.Forms.dll, System.Drawing.dll %>
+<%#NAMESPACE System.Windows.Forms, System.Drawing ,Legendigital.Code.MyGenAddin,System.Collections.Generic %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+
+	//-----------------------------------------
+	// The User Interface Entry Point
+	//-----------------------------------------
+	public override void Setup()
+	{
+	
+		MyUIGenerationForm form = new MyUIGenerationForm(MyMeta, input); 
+
+		if (form.ShowDialog() != DialogResult.OK) 
+		{
+			ui.IsCanceled = true;
+		}
+	
+	}
+
+}
+
+public class MyUIGenerationForm : UIGenerationForm
+{
+	    public MyUIGenerationForm(dbRoot myMeta, IZeusInput zeusInput) : base(myMeta, zeusInput)
+        {
+        }
+		
+		public override  SortedList<string, string> GetDropDownList()
+        {
+            SortedList<string, string> hb = new SortedList<string, string>();
+			hb.Add("GenerateAddPageHtmlAndPageCode", "生成添加界面HTML和后台代码");
+			hb.Add("GenerateEditPageHtmlAndPageCode", "生成编辑界面HTML和后台代码");
+            hb.Add("GenerateViewPageHtmlAndPageCode", "生成显示界面HTML和后台代码");
+			hb.Add("GenerateListPageHtmlAndPageCode", "生成列表界面HTML和后台代码");
+			return hb;
+        }
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll, System.Windows.Forms.dll,System.Web.dll %><%#NAMESPACE System,System.IO,System.Web.UI.WebControls, System.Text, System.Text.RegularExpressions, System.Globalization, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 ,Dnp.Utils, Legendigital.Code.MyGenAddin %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	
+	private Utils utils = new Utils();
+
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+	
+	private UICodeGenerationConfig uiftg;
+	
+	private string tableTitleCss = "dataLabel";
+		
+	private	string tableInputeCss = "tabEditViewDF";
+	
+	private	string listPageUrl = "ListPage.aspx";
+	
+    private	string IDKeyName = "ID";
+	
+	private string AjaxControlPrex = "AspAjax";
+	
+	private string validGroup = "vg";
+	
+	private const string AspBeginTaget = "<"+"%";
+	private const string AspEndTaget = "%"+">";
+	
+
+	//---------------------------------------------------
+	// Render() is where you want to write your logic    
+	//---------------------------------------------------
+	public override void Render()
+	{
+		
+		ITable selectTable = (ITable)input["selectTable"];
+		
+		string GenerateType = (string)input["GenerateType"];
+		
+		uiftg = (UICodeGenerationConfig)input["Uiconfig"];
+		
+
+		
+		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
+		
+		
+		switch (GenerateType)
+		{
+			case "GenerateAddPageHtmlAndPageCode":
+				GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray);
+				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray);
+				break;
+			default:
+				break;
+		}
+		
+
+		
+%>
+<%  
+		}
+		
+		
+		private void GenerateAddPageHtml( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray )
+	    {
+			string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+			string moudleNameCn = TableGenerationHelper.GetNameFromDescription(table.Description.Trim(),moudleNameEn );
+%>    <uc1:UCModuleHeader ID="UCModuleHeader1" runat="server" HeaderText="<%= moudleNameCn %> Add" />
+    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+        <tbody>
+            <tr>
+                <td id="main">
+                    <p>
+                        <table class="moduleTitle" border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td valign="top">
+                                        <h2>
+                                            <%= moudleNameCn %></h2>
+                                    </td>
+                                    <td style="padding-left: 5px; padding-top: 3px" valign="top" nowrap align="right">
+                        &nbsp;
+                                        <asp:ImageButton ID="ibtmHelp" AlternateText="Help" runat="server" ImageUrl="~/Images/help.gif" />
+                                        <asp:Label ID="lblHelp" runat="server" AssociatedControlID="ibtmHelp">Help</asp:Label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </p>
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="padding-bottom: 2px">
+                                    <asp:Button ID="btnSaveUp" runat="server" CssClass="button" ToolTip="Save [Alt+S]"
+                                        Text="Save" AccessKey="S" onclick="btnSave_Click"  ValidationGroup="<%= validGroup + moudleNameEn %>" />
+                                    &nbsp;
+                                    &nbsp;
+                                    <asp:Label ID="lblMessageUp" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                                </td>
+                                <td align="right">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="tabFormPagination" class="tabDetailView" cellspacing="0" cellpadding="0"
+                        width="100%">
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="LBL_ACCOUNT_INFORMATION">
+                        <table class="tabForm" border="0" cellspacing="1" cellpadding="0" width="100%" align="center">
+                            <tbody>
+                                <th class="dataLabel" colspan="5" align="left">
+                                    <h4>
+                                        <%= moudleNameCn %></h4>
+                                </th>
+				<tr><td width="2%"></td>  
+<%
+Dnp.Utils.ProgressDialog pd = new Dnp.Utils.ProgressDialog();
+pd.Show();
+
+pd.ProgressBar.Minimum = 1;
+pd.ProgressBar.Maximum = tableUIGenerationParamsListArray.Length;
+pd.ProgressBar.Value = 1;
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+%>                                                    <td  style="width:15%;"  class="<%= tableTitleCss %>" align="left"><%=tableUIGenerationParamsListArray[i].FieldNameCn %>:</td>
+					<td  style="width:35%;"  class="<%= tableInputeCss %>">
+<% GenerateInputControl(table,tableUIGenerationParamsListArray[i]);
+    if(pd.ProgressBar.Value < tableUIGenerationParamsListArray.Length)
+    {
+        pd.ProgressBar.Value += 1;
+    }
+    
+%>				    </td>
+<%  if(i==tableUIGenerationParamsListArray.Length-1) {
+		if(!((i+1)%2==0)){
+%>			                                        <td width="2%">
+                                    </td>	<td  style="width:15%;"   class="<%= tableTitleCss %>" align="left">&nbsp;</td>
+					<td  style="width:35%;"  class="<%= tableInputeCss %>">&nbsp;</td>
+<%      }
+%>              </tr>
+<%  }
+    else
+	{   if((i+1)%2==0){
+%>	            </tr>
+				<tr><td width="2%"></td>
+<%	    }
+    }
+}
+pd.Close();
+%>			
+                            </tbody>
+                        </table>
+                    </div>
+                    <p />
+                    <div style="padding-top: 2px">
+                        <asp:Button ID="btnSaveDown" runat="server" CssClass="button" ToolTip="Save [Alt+S]"
+                            Text="Save" AccessKey="S"  onclick="btnSave_Click"  ValidationGroup="<%= validGroup + moudleNameEn %>" />
+                        &nbsp;
+                        &nbsp;
+                        <asp:Label ID="lblMessageDown" runat="server" ForeColor="Red" EnableViewState="false"></asp:Label>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+<%		
+		}
+		
+		
+		
+		
+		private void GenerateInputControl(ITable table ,TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			IColumn column = table.Columns[tableUIGenerationParamsListItem.DbColumnName];
+			string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+			if(!tableUIGenerationParamsListItem.IsSelect)
+				return;
+			if(tableUIGenerationParamsListItem.IsAutoKey)
+				return;
+			string domainFieldName = TableColumnGenerationHelper.GeneratePorpertyTypeByTableColumn(column);
+			switch (tableUIGenerationParamsListItem.InputType)
+			{
+				case "HtmlInputText":
+%>					<input id="txt<%= tableUIGenerationParamsListItem.FieldName %>" title="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>" type="text"  <%= GetMaxLength(tableUIGenerationParamsListItem) %> runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>"/>		
+<%					break;
+				case "Label":
+%>					<asp:Label ID="lbl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server" ></asp:Label>		
+<%					break;
+				case "TextBox":
+%>					<asp:textbox id="txt<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>"  <%= GetMaxLength(tableUIGenerationParamsListItem) %>   runat="server"   ValidationGroup="<%= validGroup + moudleNameEn %>"><%if (column.LanguageType=="decimal"||column.LanguageType=="double"||column.LanguageType=="int"){%>0<%}%></asp:textbox>
+<%					if (column.LanguageType=="DateTime") {
+%>                  <<%= AjaxControlPrex %>:CalendarExtender ID="cetxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="txt<%= tableUIGenerationParamsListItem.FieldName %>">
+                    </<%= AjaxControlPrex %>:CalendarExtender>
+<%				    }else if (column.LanguageType=="decimal"||column.LanguageType=="double"||column.LanguageType=="int") {	
+%>					<<%= AjaxControlPrex %>:NumericUpDownExtender ID="nuetxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="txt<%= tableUIGenerationParamsListItem.FieldName %>" Width="100">
+                    </<%= AjaxControlPrex %>:NumericUpDownExtender>
+<%					}
+					if(tableUIGenerationParamsListItem.IsReqiured){
+%>				     <asp:RequiredFieldValidator ID="rfvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="【<%= tableUIGenerationParamsListItem.FieldNameCn %>】项不能为空！" SetFocusOnError="True"  ValidationGroup="<%= validGroup + moudleNameEn %>"></asp:RequiredFieldValidator>
+                        <<%= AjaxControlPrex %>:ValidatorCalloutExtender ID="vcerfvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="rfvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= AjaxControlPrex %>:ValidatorCalloutExtender>	
+<%                  }
+					if (column.LanguageType=="DateTime"){
+%>				     <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="【<%= tableUIGenerationParamsListItem.FieldName %>】项必须是日期类型！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Date"  ValidationGroup="<%= validGroup + moudleNameEn %>"></asp:CompareValidator>
+                        <<%= AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="decimal"){ 
+%>					<asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="【<%= tableUIGenerationParamsListItem.FieldName %>】项必须是货币类型！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Currency"  ValidationGroup="<%= validGroup + moudleNameEn %>"></asp:CompareValidator>
+                        <<%= AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="double") {  
+%>                  <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="【<%= tableUIGenerationParamsListItem.FieldName %>】项必须是双精度类型！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Double"  ValidationGroup="<%= validGroup + moudleNameEn %>"></asp:CompareValidator>
+                        <<%= AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= AjaxControlPrex %>:ValidatorCalloutExtender>
+<%                  }
+					else if (column.LanguageType=="int")  {
+%>                  <asp:CompareValidator ID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" ControlToValidate="txt<%= tableUIGenerationParamsListItem.FieldName %>" Display="None" ErrorMessage="【<%= tableUIGenerationParamsListItem.FieldName %>】项必须是整数类型！" Operator="DataTypeCheck" SetFocusOnError="True" Type="Integer"  ValidationGroup="<%= validGroup + moudleNameEn %>"></asp:CompareValidator>
+                        <<%= AjaxControlPrex %>:ValidatorCalloutExtender ID="vcecvtxt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" TargetControlID="cvtxt<%= tableUIGenerationParamsListItem.FieldName %>">
+                        </<%= AjaxControlPrex %>:ValidatorCalloutExtender>
+<%					}
+					break;
+				case "TextBoxMultiLine":
+%>					<asp:textbox id="txt<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>"  <%= GetMaxLength(tableUIGenerationParamsListItem) %>  TextMode="MultiLine"  runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>" ></asp:textbox>		
+<%					break;
+				case "HtmlTextArea":
+%>					<textarea id="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" title="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>" cols="50" rows="4"  ValidationGroup="<%= validGroup + moudleNameEn %>"></textarea>	
+<%					break;
+				case "HtmlSelect":
+%>					<select id="sel<%= tableUIGenerationParamsListItem.FieldName %>"  title="输入<%= tableUIGenerationParamsListItem.FieldNameCn %>"  runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>">
+<%                  foreach(ListItem item in getListItemCollectionFormString(tableUIGenerationParamsListItem.Items)){
+%>						<option <%if (item.Value.Trim()==tableUIGenerationParamsListItem.DefaultValue.Trim()) {%> selected="selected"<%}%> value="<%= item.Value %>"><%= item.Text %></option>
+<% 					}
+%>                  </select>
+<%					break;
+				case "DropDownList":
+%>					<asp:DropDownList ID="ddl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="请选择<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:DropDownList>
+<%					break;
+				case "HtmlInputCheckBox":
+%>					<input id="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  title="<%= tableUIGenerationParamsListItem.FieldNameCn %>" type="checkbox"  ValidationGroup="<%= validGroup + moudleNameEn %>" />		
+<%					break;
+				case "CheckBox":
+%>					<asp:CheckBox ID="chk<%= tableUIGenerationParamsListItem.FieldName %>" runat="server"  ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  ValidationGroup="<%= validGroup + moudleNameEn %>" />	
+<%					break;
+				case "CheckBoxList":
+%>					<asp:CheckBoxList ID="cbl<%= tableUIGenerationParamsListItem.FieldName %>"   ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:CheckBoxList>
+<%					break;
+				case "RadioButtonList":
+%>					<asp:RadioButtonList ID="rbl<%= tableUIGenerationParamsListItem.FieldName %>" ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>					</asp:RadioButtonList>
+<%					break;
+				case "ListBox":
+%>					<asp:ListBox ID="lbx<%= tableUIGenerationParamsListItem.FieldName %>"  ToolTip="<%= tableUIGenerationParamsListItem.FieldNameCn %>" runat="server"  ValidationGroup="<%= validGroup + moudleNameEn %>">
+<% GenerateListItem(getListItemCollectionFormString(tableUIGenerationParamsListItem.Items),tableUIGenerationParamsListItem.DefaultValue); 
+%>                 </asp:ListBox>
+<%					break;
+				default:
+					break;
+			}				
+		}
+		
+		
+		private void GenerateListItem(ListItemCollection lc,string defaultValue)
+		{
+			foreach(ListItem item in lc){
+%>						<asp:ListItem Value="<%= item.Value %>" <%if (item.Value.Trim()==defaultValue.Trim()) {%> Selected="True"<%}%>><%= item.Text %></asp:ListItem>
+<%			}
+		}
+		
+		
+		private string GetInputControlName(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlIDFormat.Replace("{$PName}",tableUIGenerationParamsListItem.FieldName);		
+		}
+		
+		private string GetInputControlValue(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			return this.uiftg.getInputUIControlByName(tableUIGenerationParamsListItem.InputType).ControlGetSetValuePrppertyName;
+		}
+		
+		
+		
+		private void GenerateGetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+%>				<%= moudleNameEn %> obj = new <%= moudleNameEn %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}
+		}
+		
+		private void GenerateSetValue(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.<%= GetInputControlName(tableUIGenerationParamsListArray[i]) %>.<%=GetInputControlValue(tableUIGenerationParamsListArray[i])%> = obj.<%= tableUIGenerationParamsListArray[i].FieldName %><%if (!((column.LanguageType=="bool")&((tableUIGenerationParamsListArray[i].InputType=="CheckBox")|(tableUIGenerationParamsListArray[i].InputType=="HtmlInputCheckBox")))) {%>.ToString()<%}%>;          	
+<%				}
+		}
+		
+		private void GenerateSetValueToDisplayCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+%>              	this.lbl<%= tableUIGenerationParamsListArray[i].FieldName %>.Text = obj.<%= tableUIGenerationParamsListArray[i].FieldName %>.ToString();
+<%				}
+		}
+		
+		private string GetParseControlValue(string controlID,string controlValue,string languageType)
+		{
+			switch(languageType)
+			{
+				case "string":
+					return "this."+controlID+"."+controlValue+".Trim()";
+				case "DateTime":
+					return "UIHelper.SaftGetDateTime(this."+controlID+"."+controlValue+".Trim())"+";//DateTime.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "int":
+					return "int.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "double":
+					return "double.Parse(this."+controlID+"."+controlValue+".Trim())";
+				case "decimal":
+					return "decimal.Parse(this."+controlID+"."+controlValue+".Trim())";
+				default:
+					return "this."+controlID+"."+controlValue+"";
+			}
+		}
+		
+
+
+		
+		private void GenerateAddPageCode(ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+		{
+				string moudleNameEn = utils.SetPascalCase(table.Name.Trim());
+				string moudleNameCn = TableGenerationHelper.GetNameFromDescription(table.Description.Trim(),moudleNameEn );
+%>  
+
+---------------------------------------------继承类版本的添加页面代码---------------------------------------
+
+    public partial class AddPage : <%= moudleNameEn %>AddUIPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+                return;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //验证不通过返回
+            if (!this.Page.IsValid)
+                return;
+
+            <%= moudleNameEn %> obj = new <%= moudleNameEn %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+            //添加数据
+            this.SaveCurrentData(obj);
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.ReturnListPage();
+        }
+    }
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--------------------------------------------------手写代码版本的添加页面代码----------------------------------------------------
+
+    public partial class AddPage : BaseSecurityPage
+    {
+        private <%= moudleNameEn %>Service <%= utils.SetCamelCase(moudleNameEn) %>ServiceInstance;
+
+        public <%= moudleNameEn %>Service <%= moudleNameEn %>ServiceInstance
+        {
+            set { <%= utils.SetCamelCase(moudleNameEn) %>ServiceInstance = value; }
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (this.Page.IsPostBack)
+                return;
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //验证不通过返回
+            if (!this.Page.IsValid)
+                return;
+
+            <%= moudleNameEn %> obj = new <%= moudleNameEn %>();
+<%				for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+					IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+					if (column.IsAutoKey)
+						continue;
+%>          obj.<%= tableUIGenerationParamsListArray[i].FieldName %> = <%= GetParseControlValue(GetInputControlName(tableUIGenerationParamsListArray[i]),GetInputControlValue(tableUIGenerationParamsListArray[i]),column.LanguageType) %>;        	
+<%				}%>
+
+
+            //添加数据
+            try
+            {
+                <%= utils.SetCamelCase(moudleNameEn) %>ServiceInstance.Create(obj);
+                WebMessageBox.ShowOperationOkMessage("操作成功", "用户添加<%= moudleNameCn %>成功", this.ResolveUrl("ListPage.aspx"));
+            }
+            catch(ThreadAbortException)
+            {
+            }
+            catch (Exception e1)
+            {
+                WebMessageBox.ShowOperationFailedMessageAndHistoryBack("操作失败", "添加数据失败，错误原因：" + e1.Message);
+            }
+        }
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.Response.Redirect("ListPage.aspx");
+        }
+    }
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+<%				
+		}
+		
+		
+
+
+
+		private string GetMaxLength(TableUIGenerationParams tableUIGenerationParamsListItem)
+		{
+			if(tableUIGenerationParamsListItem.LanguageType=="string")
+			{
+				return "MaxLength='"+tableUIGenerationParamsListItem.Size.ToString()+"'";			
+			}
+			else
+			{
+				return "";
+			}
+		}
+		
+		private string ShowCharLength(int length)
+		{
+			if(length==0)
+			{
+				return "";
+			}
+			else
+			{
+				return length.ToString();			
+			}
+		}
+		
+		private ListItemCollection getListItemCollectionFormString(string itemstring)
+        {
+            ListItemCollection items = new ListItemCollection();
+            string[] splitValues = itemstring.Split(("|").ToCharArray());
+            foreach (string s in splitValues)
+            {
+                string[] nsplit = s.Split(("$").ToCharArray());
+                if (nsplit[0].Trim()=="")
+                    continue;
+                if (nsplit.Length == 1)
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[0]));
+                }
+                else
+                {
+                    items.Add(new ListItem(nsplit[0], nsplit[1]));
+                }
+            }
+            return items;
+        }
+		
+		private string ShowBool(bool boolean)
+		{
+			if(boolean)
+			{
+				return "是";
+			}
+			else
+			{
+				return "否";		
+			}
+		}
+	
+}
+%>
+##|BODY_END

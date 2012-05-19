@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3D04082-B5E1-4254-9646-F08CD88F16C9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Legendigital.Code.MyGenAddin</RootNamespace>
+    <AssemblyName>Legendigital.Code.MyGenAddin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>http://localhost/Legendigital.Code.MyGenAddin/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\MyGeneration13\adodb.dll</HintPath>
+    </Reference>
+    <Reference Include="Dnp.Utils">
+      <HintPath>..\ThridDll\Dnp.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSDASC">
+      <HintPath>..\ThridDll\Interop.MSDASC.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MyMeta">
+      <HintPath>..\ThridDll\MyMeta.dll</HintPath>
+    </Reference>
+    <Reference Include="PluginInterfaces">
+      <HintPath>..\ThridDll\PluginInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Zeus">
+      <HintPath>..\ThridDll\Zeus.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleClassConfig.cs" />
+    <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseDatabaseGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseDatabaseSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseDatabaseSelectForm.Designer.cs">
+      <DependentUpon>BaseDatabaseSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseProceducesSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseSingleObjectSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseObjectSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseTablesSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseViewsSelectorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BussinessGenerateConfig.cs" />
+    <Compile Include="CodeEnvironmentHelper.cs" />
+    <Compile Include="CodeGenerateUIHelper.cs" />
+    <Compile Include="DataAccessHelper.cs" />
+    <Compile Include="DataObjectGenerateconfig.cs" />
+    <Compile Include="DefaultProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DefaultProperties.Designer.cs">
+      <DependentUpon>DefaultProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DefaultSettings.cs" />
+    <Compile Include="EntityGenerateConfig.cs" />
+    <Compile Include="FormUISetting.cs" />
+    <Compile Include="GenerateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateProject.Designer.cs">
+      <DependentUpon>GenerateProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputUIControl.cs" />
+    <Compile Include="NHibernateFramework\ADOFrameworkCodeGenerateConfig.cs" />
+    <Compile Include="NHibernateFramework\ADOFrameworkCodeGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NHibernateFramework\NHibernateFrameworkTableCodeGenerateConfig.cs" />
+    <Compile Include="NHibernateFramework\NHibernateFrameworkTableCodeGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NHibernateFramework\NHibernateFrameworkViewCodeGenerateConfig.cs" />
+    <Compile Include="NHibernateFramework\NHibernateFrameworkViewCodeGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NHibernateFramework\NHibernateFrameworkWebUIGenerateConfig.cs">
+    </Compile>
+    <Compile Include="NHibernateFramework\NHibernateFrameworkWebUIGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProceduceGenerationHelper.cs" />
+    <Compile Include="ProceduceParameterGenerationHelper.cs" />
+    <Compile Include="SerializableHelper.cs" />
+    <Compile Include="TableColumnGenerationHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableGenerationHelper.cs" />
+    <Compile Include="TableUIGenerationParams.cs" />
+    <Compile Include="TestConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestConnectionForm.Designer.cs">
+      <DependentUpon>TestConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UICodeGenerationConfig.cs" />
+    <Compile Include="UIFrameworks\WebUIGenerateConfig.cs" />
+    <Compile Include="UIFrameworks\WebUIGenerateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIGenerationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIGenerationForm.designer.cs">
+      <DependentUpon>UIGenerationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewGenerationHelper.cs" />
+    <Compile Include="WinResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Win\MultilineTextEditor.cs" />
+    <Compile Include="XmlConfigReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BaseDatabaseGenerateForm.resx">
+      <DependentUpon>BaseDatabaseGenerateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseDatabaseSelectForm.resx">
+      <DependentUpon>BaseDatabaseSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseObjectSelectorForm.resx">
+      <DependentUpon>BaseObjectSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseSingleObjectSelectorForm.resx">
+      <DependentUpon>BaseSingleObjectSelectorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DefaultProperties.resx">
+      <DependentUpon>DefaultProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerateProject.resx">
+      <DependentUpon>GenerateProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestConnectionForm.resx">
+      <DependentUpon>TestConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIGenerationForm.resx">
+      <DependentUpon>UIGenerationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WinResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_BuildVersioningStyle="Increment.Increment.Increment.Increment" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

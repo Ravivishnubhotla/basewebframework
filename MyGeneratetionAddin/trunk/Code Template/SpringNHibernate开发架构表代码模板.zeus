@@ -1,0 +1,1372 @@
+﻿##|TYPE Template
+##|UNIQUEID 2787bb9d-3b21-461c-b4d7-a4cb8a51db92
+##|TITLE SpringNhibernate表代码模版
+##|NAMESPACE 
+##|SOURCE_TYPE Source
+##|OUTPUT_LANGUAGE None
+##|GUI_ENGINE .Net Script
+##|GUI_LANGUAGE C#
+##|GUI_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll , System.Windows.Forms.dll, System.Drawing.dll %>
+<%#NAMESPACE System.Windows.Forms, System.Drawing ,Legendigital.Code.MyGenAddin.NHibernateFramework %>
+
+public class GeneratedGui : DotNetScriptGui
+{
+	public GeneratedGui(ZeusContext context) : base(context) {}
+
+	//-----------------------------------------
+	// The User Interface Entry Point
+	//-----------------------------------------
+	public override void Setup()
+	{
+	
+		NHibernateFrameworkTableCodeGenerateForm form = new NHibernateFrameworkTableCodeGenerateForm(MyMeta, input); 
+		
+		form.Text = "Nhibernate架构表代码模版";
+
+		if (form.ShowDialog() != DialogResult.OK) 
+		{
+			ui.IsCanceled = true;
+		}
+	
+	}
+	
+	
+}
+##|GUI_END
+##|BODY_MODE Markup
+##|BODY_ENGINE .Net Script
+##|BODY_LANGUAGE C#
+##|BODY_TAG_START <%
+##|BODY_TAG_END %>
+##|BODY_BEGIN
+<%#REFERENCE Legendigital.Code.MyGenAddin.dll, System.Windows.Forms.dll,System.Web.dll %><%#NAMESPACE System,System.IO,System.Collections.Generic, System.Text, System.Text.RegularExpressions, System.Globalization, System.Collections, Zeus, Zeus.UserInterface, Zeus.DotNetScript, Microsoft.Win32 ,Dnp.Utils ,Legendigital.Code.MyGenAddin.NHibernateFramework,Legendigital.Code.MyGenAddin,System.Collections.Generic %><%
+public class GeneratedTemplate : DotNetScriptTemplate
+{
+	public GeneratedTemplate(ZeusContext context) : base(context) {}
+	
+	private Utils utils = new Utils();
+	private static readonly string filterClassNameChar = "";
+
+	//---------------------------------------------------
+	// Render() is where you want to write your logic    
+	//---------------------------------------------------
+	public override void Render()
+	{		
+		NHibernateFrameworkTableCodeGenerateConfig config = (NHibernateFrameworkTableCodeGenerateConfig)input["codeGenerationSetting"];
+		
+		ITable[] selectTables = (ITable[])input["selectObjects"];
+		
+		IDatabase dataBase = (IDatabase)input["database"];
+		
+		Dnp.Utils.ProgressDialog pd = CodeGenerateUIHelper.GetNewProgressDialog(selectTables.Length);
+		
+		pd.Show();
+			
+		int itbNumber = 0;
+		
+		List<string> noGenerationTables = new List<string>();
+		
+		List<ITable> generationTablesArray = new List<ITable>();
+				
+		foreach( ITable table in selectTables )
+		{
+			pd.Text = "代码生成中，正在处理“" + table.Alias + "”表...";
+			
+			List<IColumn> tbPks = config.GetAllPkColumn(table);
+			
+			if(tbPks.Count<=0 && tbPks.Count>1)
+			{
+				noGenerationTables.Add(table.Name);
+				CodeGenerateUIHelper.ProgressDialogProcessStep(pd);				
+				continue;
+			}
+			
+			generationTablesArray.Add(table);
+			
+			if(config.IsEnbaleEntityCode)
+			{
+				if(config.IsCreateEntityClassFile)
+				{
+					CreateEntityClassFile(table,config);
+					CreateEntityDesignerClassFile(table,config);
+				}
+				if(config.IsCreateMappingFile)
+				{
+					CreateMappingFile(table,config);				
+				}
+				if(config.IsCreateCollection)
+				{
+					CreateCollectionFile(table,config);				
+				}	
+			}
+			
+			if(config.IsEnbaleDataCode)
+			{
+				if(config.IsCreateDataObjectClassFile)
+				{
+					CreateDataObjectClassFile(table,config);
+					CreateDataObjectDesignerClassFile(table,config);
+				}			
+			}
+			
+			if(config.IsEnbaleBussniessCode)
+			{
+				if(config.IsCreateServiceProxyClassFile)
+				{
+					CreateServiceProxyClassFile(table,config);
+					CreateServiceProxyDesignerClassFile(table,config);					
+				}
+
+				
+				if(config.IsGenerateBussinessEncapsulationClass)
+				{
+					CreateBussinessClassFile(table,config);	
+					CreateBussinessDesignerClassFile(table,config);			
+				}
+			}
+
+
+			
+			itbNumber++;
+			
+			CodeGenerateUIHelper.ProgressDialogProcessStep(pd);		
+
+		}
+		
+		if(config.IsEnbaleDataCode)
+		{
+			if(config.IsEnbaleGenerateBaseCode)
+			{
+				foreach( ITable table in config.GetAllBaseTable(dataBase) )
+				{
+					CreateBaseDataObjectClassFile(table,config);
+				}				
+			}
+			if(config.IsCreateDataObjectContainerIoCClass)
+			{
+				GenerateSpringIocDaoClassFile(generationTablesArray.ToArray(),config);
+				GenerateSpringIocDaoDesignerClassFile(generationTablesArray.ToArray(),config,dataBase);
+			}
+			
+			if(config.IsCreateDataObjectIocXmlFileName)
+			{
+				GenerateSpringIocDaoXmlFile(generationTablesArray.ToArray(),config,dataBase);
+			}		
+			
+		}
+		
+		
+		if(config.IsEnbaleBussniessCode && config.IsGenerateServiceProxyContainerClass)
+		{
+			if(config.IsEnbaleGenerateBaseCode)
+			{
+				foreach( ITable table in config.GetAllBaseTable(dataBase) )
+				{
+					//System.Windows.Forms.MessageBox.Show(table.Name);
+					CreateBaseServiceProxyClassFile(table,config);
+					CreateBaseBussinessClassFile(table,config);
+					CreateBaseBussinessDesignerClassFile(table,config);
+					//CreateBaseBussinessClassFile(table,config);
+				}				
+			}
+			CreateServiceProxyContainerClassFile(config);	
+			CreateServiceProxyContainerDesignerClassFile(generationTablesArray.ToArray(),config,dataBase);
+			GenerateSpringIocBussinessXmlFile(generationTablesArray.ToArray(),config,dataBase);
+		}
+		
+		pd.Close();
+		
+		
+		
+		
+%>		一共生成 <%= itbNumber.ToString() %> 个表的代码。
+<%			
+			if(noGenerationTables.Count>0)
+			{
+				output.writeln("		以下表未包含主键,或者包含多个主键，代码生成机无法生成：");
+				for(int i=0;i<noGenerationTables.Count;i++)
+				{
+					output.writeln("		"+(i+1).ToString()+". "+noGenerationTables[i]);
+				}
+			}
+			
+	}
+	
+	private void GenerateFileHead()
+	{
+%>// Generated by MyGeneration Version # (<%= input["__version"].ToString() %>)
+<%	
+	}
+	
+	
+
+	
+	//生成实体类
+	private void CreateEntityClassFile(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+		GenerateFileHead(); 
+%>using System;
+
+namespace <%= config.EntityNameSpace %>
+{
+	[Serializable]
+	<% if (config.EntityIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateEntityClassName(table) %>
+	{
+	
+	}
+}
+<%
+	output.saveEnc(config.GenerateEntityClassFilePath(table),"d","uft8");
+	output.clear();
+	}
+	
+	
+	//生成实体设计类
+	private void CreateEntityDesignerClassFile(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+		GenerateFileHead(); 
+%>using System;
+using System.Collections.Generic;
+
+namespace <%= config.EntityNameSpace %>
+{
+	/// <summary>
+	///	<%= config.GenerateClassDescription(table) %>
+	/// </summary>
+	<% if (config.EntityIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateEntityClassName(table) %> <%if (config.IsimplementICloneable) {%>: ICloneable<%}%>
+	{
+<% 		BuildPublicConst(table,config); 		
+%>	
+<% 		BuildPrivateMembers(table,config); 		
+%>
+<% 		BuildDefaultConstructor(table,config); 		
+%>
+<% 		BuildFullConstructor(table,config); 		
+%>	
+<% 		BuildPublicAccessors(table,config); 		
+%>
+<% 		BuildPublicFunctions(table,config); 
+%>
+<% 		if( config.IsCreateEqualsAndGetHashCodeFunction ) BuildEqualsHashCodeOverrides(table,config); 
+%>	
+<% 		if( config.IsimplementICloneable ) ImplementationICloneableFunction(table,config);
+%>	
+<% 		if( config.IsCreateSubClassListrefence ) CreateSubClassListrefence(table,config);
+%>	}
+}
+<%
+	output.saveEnc(config.GenerateEntityDesignerClassFilePath(table),"o","uft8");
+	output.clear();
+	}
+	
+	
+	
+	//生成实体自定义集合类
+	private void CreateCollectionFile(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+		GenerateFileHead(); 
+%>using System;
+using System.Collections.Generic;
+using <%= config.EntityNameSpace %>;
+
+namespace <%= config.EntityCollectionNameSpace %>
+{
+	[Serializable]
+	public class <%= config.GenerateCollectionClassName(table) %> : List<<%= config.GenerateEntityClassName(table) %>>
+	{
+	
+	}
+}
+<%  output.saveEnc(config.GenerateEntityCollectioClassFilePath(table),"d","uft8");
+	output.clear();
+	}	
+	
+	//生成实体映射文件
+	private void CreateMappingFile(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+%><?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-<% if (config.IsUseNHibernte2Config) {%>2.2<%}else{%>2.0<%}%>">
+
+<%= config.GenerateNhibernateMappingFileClassTag(table) %>
+
+<%= config.GenerateEntityNHibernatePrimaryKeysTag(table) %>
+
+<% BuildNHibernateProperties(table,config); 
+%>
+
+<% if(config.IsCreateSubClassListrefence) GenerateSubListMapping(table,config); 
+%>
+
+</class>
+</hibernate-mapping>
+<%  output.saveEnc(config.GenerateEntityMappingFilePath(table),"o","uft8");
+	output.clear();
+	}
+	
+	
+		 private void CreateDataObjectDesignerClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {		GenerateFileHead(); 
+%><% output.writeln(config.ImportNameSpace); 
+%>using <%= config.EntityNameSpace %>;
+using <%= config.RootDataObjectNameSpace %>;
+
+
+namespace <%= config.DataObjectNameSpace %>
+{
+    <% if (config.DataObjectIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateDataObjectClassName(table) %> : <%= config.RootDataObjectName %><<%= config.GenerateEntityClassName(table) %>>
+    {
+		<% BuildStaticProperty(table,config); %>
+		
+		public override string[] PkPropertyName
+        {
+            get { return new string[] { "<%= config.GenerateEntityPorpertyName(table.PrimaryKeys[0]) %>" }; }
+        }
+		
+		public override Type GetFieldTypeByFieldName(string fieldName)
+        {
+			switch (fieldName)
+            {
+<%			foreach( IColumn field in table.Columns )
+			{
+%>                case "<%= config.GenerateEntityPorpertyName(field) %>":
+                    return typeof (<%= field.LanguageType %>);
+                    break;
+<%			}
+%>          }
+			return typeof(string);
+        }
+    }
+}
+<%	    output.saveEnc(config.GenerateeDataObjectDesignerClassFilePath(table),"o","uft8");
+	    output.clear();
+		}
+		
+		
+		
+	    private void CreateDataObjectClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {		GenerateFileHead(); 
+%><% output.writeln(config.ImportNameSpace); 
+%>using <%= config.EntityNameSpace %>;
+using <%= config.RootDataObjectNameSpace %>;
+
+namespace <%= config.DataObjectNameSpace %>
+{
+    <% if (config.DataObjectIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateDataObjectClassName(table) %>
+    {
+    }
+}
+<%	    output.saveEnc(config.GenerateDataObjectClassFilePath(table),"d","uft8");
+			output.clear();
+		}
+		
+	
+	private void CreateBaseDataObjectClassFile(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+		GenerateFileHead(); 
+%><% output.writeln(config.ImportNameSpace); 
+%>using <%= config.BaseEntityObjectNameSpace %>;
+using <%= config.BaseDataObjectNameSpace %>;
+
+namespace <%= config.DataObjectNameSpace %>
+{
+    public class <%= config.GenerateBaseDataObjectClassName(table) %> : <%= config.GenerateDataObjectClassName(table) %>
+    {
+    }
+}
+<%
+	output.saveEnc(config.GenerateBaseDataObjectClassFilePath(table),"o","uft8");
+	output.clear();
+	}
+		
+
+		private void BuildStaticProperty(ITable table ,NHibernateFrameworkTableCodeGenerateConfig config)
+		{
+%>		#region Expression Query Property (标准查询字段)
+<%			foreach( IColumn field in table.Columns )
+			{
+%>		public static readonly Property PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %> = Property.ForName(<%=config.GenerateEntityClassName(table)%>.PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>);
+<%				if(config.IsCreateFKeyClassrefence && field.IsInForeignKey)
+				{
+					ITable pTable = field.ForeignKeys[0].PrimaryTable;
+					if(pTable.Name != table.Name){
+%>		#region <%= utils.SetCamelCase(field.Name) %>字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> InClude_<%= config.GenerateEntityPorpertyName(field) %>_Query(NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> queryGenerator)
+        {
+            return queryGenerator.AddAlians(<%= config.GenerateEntityClassName(table) %>.PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>, PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_ALIAS_NAME = "<%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityClassName(table) %>_Alias";
+<%					foreach( IColumn pfield in pTable.Columns ){ 
+%>		public static readonly Property PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_<%= config.GenerateEntityPorpertyName(pfield).ToUpper() %> = Property.ForName(PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_ALIAS_NAME + ".<%= config.GenerateEntityPorpertyName(pfield) %>");
+<%					}
+%>		#endregion
+<%					}
+				}
+			}
+%>      
+		#region 子类集合字段查询字段
+<%			if( config.IsCreateSubClassListrefence ){
+			foreach( IForeignKey fkcolumn in table.ForeignKeys )
+			{
+				if(fkcolumn.PrimaryTable.Name==table.Name){
+				string propertyName = TableColumnGenerationHelper.GenerateFkListPropertyName(fkcolumn,"{0}{1}{2}List");
+				ITable fTable = fkcolumn.ForeignTable;
+%>		public static readonly string PROPERTY_<%= propertyName.ToUpper() %>_ALIAS_NAME = "<%= propertyName %>_<%= config.GenerateEntityClassName(table) %>_Alias";	
+        public static NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> InClude_<%= propertyName %>_Query(NHibernateDynamicQueryGenerator<<%= config.GenerateEntityClassName(table) %>> queryGenerator)
+        {
+            return queryGenerator.AddAlians(<%= config.GenerateEntityClassName(table) %>.PROPERTY_NAME_<%= propertyName.ToUpper() %>, PROPERTY_<%= propertyName.ToUpper() %>_ALIAS_NAME);
+        }
+<%					foreach( IColumn ffield in fTable.Columns ){ 
+%>		public static readonly Property PROPERTY_<%= propertyName.ToUpper() %>_<%= config.GenerateEntityPorpertyName(ffield).ToUpper() %> = Property.ForName(PROPERTY_<%= propertyName.ToUpper() %>_ALIAS_NAME + ".<%= config.GenerateEntityPorpertyName(ffield) %>");
+<%					}
+%>
+<%				}
+			}
+			}
+%>	
+		#endregion
+
+		#endregion
+<%	
+
+
+		}
+	
+	
+	
+	
+	
+	
+		 private void CreateServiceProxyClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+			GenerateFileHead(); 
+			output.writeln(config.ImportServiceProxyNameSpace);
+%>using <%= config.RootServiceProxyClassNameSpace %>;
+using <%= config.DataObjectNameSpace %>;
+using <%= config.EntityNameSpace %>;
+
+
+namespace <%= config.ServiceProxyNameSpace %>
+{
+	public interface <%= config.GenerateServiceProxyInterfaceClassName(table) %> : IBaseSpringNHibernateEntityServiceProxy<<%= config.GenerateEntityClassName(table) %>>
+    {
+
+
+    }
+
+    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> : <%= config.GenerateServiceProxyInterfaceClassName(table) %>
+    {
+
+
+    }
+}
+<%	    output.saveEnc(config.GenerateServiceProxyClassFilePath(table),"d","uft8");
+			output.clear();
+		}
+		
+		
+		 private void CreateBaseServiceProxyClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+			GenerateFileHead(); 
+			output.writeln(config.ImportServiceProxyNameSpace);
+%>using <%= config.BaseServiceProxyNameSpace %>;
+using <%= config.BaseDataObjectNameSpace%>;
+using <%= config.BaseEntityObjectNameSpace %>;
+
+
+namespace <%= config.ServiceProxyNameSpace %>
+{
+	public interface <%= config.GenerateBaseServiceProxyInterfaceClassName(table) %> : IBaseSpringNHibernateEntityServiceProxy<<%= config.GenerateEntityClassName(table) %>>
+    {
+
+
+    }
+
+    internal class <%= config.GenerateBaseServiceProxyClassName(table) %> : <%= config.GenerateServiceProxyClassName(table) %>
+    {
+
+
+    }
+}
+<%	    output.saveEnc(config.GenerateBaseServiceProxyClassFilePath(table),"o","uft8");
+			output.clear();
+		}
+	
+
+		 private void CreateServiceProxyDesignerClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+			GenerateFileHead(); 
+			output.writeln(config.ImportServiceProxyNameSpace);
+%>using <%= config.RootServiceProxyClassNameSpace %>;
+using <%= config.DataObjectNameSpace %>;
+using <%= config.EntityNameSpace %>;
+using <%= config.DataObjectContainerIoCClassNameSpace %>;
+
+namespace <%= config.ServiceProxyNameSpace %>
+{
+    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> : <%= config.RootServiceProxyClassName %><<%= config.GenerateEntityClassName(table) %>>
+    {
+		public <%= config.DataObjectContainerIoCClassName %> DataObjectsContainerIocID { set; get; }
+	
+        public <%= config.GenerateDataObjectClassName(table) %> SelfDataObj
+        {
+            set
+            {
+                selfDataObject = value;
+            }
+			get
+            {
+                return (<%= config.GenerateDataObjectClassName(table) %>)selfDataObject;
+            }
+        }
+    }
+}
+<%	    output.saveEnc(config.GenerateServiceProxyDesignerClassFilePath(table),"o","uft8");
+			output.clear();
+		}
+	
+	
+		 private void CreateBussinessClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+%>
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
+using <%= config.EntityNameSpace %>;
+using <%= config.ServiceProxyNameSpace %>;
+
+
+namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
+{
+	[Serializable]
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>
+    {
+        #region Static Common Data Operation
+		
+		public static void Save(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
+        {
+            businessProxy.Save(obj.entity);
+        }
+
+        public static void Update(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
+        {
+            businessProxy.Update(obj.entity);
+        }
+
+        public static void SaveOrUpdate(<%= config.GenerateBussinessEncapsulationClassName(table) %> obj)
+        {
+            businessProxy.SaveOrUpdate(obj.entity);
+        }
+
+        public static void DeleteAll()
+        {
+            businessProxy.DeleteAll();
+        }
+
+        public static void DeleteByID(object id)
+        {
+            businessProxy.DeleteByID(id);
+        }
+
+        public static void PatchDeleteByIDs(object[] ids)
+        {
+
+            businessProxy.PatchDeleteByIDs(ids);
+        }
+
+        public static void Delete(<%= config.GenerateBussinessEncapsulationClassName(table) %> instance)
+        {
+            businessProxy.Delete(instance.entity);
+        }
+
+        public static void Refresh(<%= config.GenerateBussinessEncapsulationClassName(table) %> instance)
+        {
+            businessProxy.Refresh(instance.entity);
+        }
+
+        public static <%= config.GenerateBussinessEncapsulationClassName(table) %> FindById(object id)
+        {
+            return ConvertEntityToWrapper(businessProxy.FindById(id));
+        }
+
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAll()
+        {
+            return ConvertToWrapperList(businessProxy.FindAll());
+        }
+
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAll(int firstRow, int maxRows, out int recordCount)
+        {
+            List<<%= config.GenerateEntityClassName(table) %>> list = businessProxy.FindAll(firstRow, maxRows, out recordCount);
+            return ConvertToWrapperList(list);
+        }
+		
+		public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderBy(string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
+                                             out recordCount);
+        }
+
+
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
+        {
+            List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> results = null;
+
+            results = ConvertToWrapperList(
+                    businessProxy.FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc,
+                                                   (pageIndex - 1) * pageSize, pageSize, out recordCount));
+
+            return results;
+        }
+		
+
+        public static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc));
+        }
+			
+		#endregion
+
+    }
+}
+<%	    output.saveEnc(config.GenerateBussinessEncapsulationClassFilePath(table),"d","uft8");
+		 output.clear();
+		}
+		
+		private void CreateBussinessDesignerClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+		
+		List<IColumn> pks = config.GetAllPkColumn(table);
+		string pkProname = config.GenerateEntityPorpertyName(pks[0]);
+%>// Generated by MyGeneration Version # (<%= input["__version"].ToString() %>)
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Spring.Context.Support;
+using Common.Logging;
+using <%= config.EntityNameSpace %>;
+using <%= config.GenerateServiceProxyContainerClassNameSpace %>;
+using <%= config.ServiceProxyNameSpace %>;
+
+namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
+{
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>
+    {
+        #region Member
+
+		internal static readonly <%= config.GenerateServiceProxyInterfaceClassName(table) %> businessProxy = ((<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>)(ContextRegistry.GetContext().GetObject("<%= config.GenerateServiceProxyContainerClassName %>IocID", typeof(<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>)))).<%= config.GenerateServiceProxyClassName(table) %>Instance;
+		//internal static readonly <%= config.GenerateServiceProxyInterfaceClassName(table) %> businessProxy = ((ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID"))).<%= config.GenerateServiceProxyClassName(table) %>Instance;
+
+        internal <%= config.GenerateEntityClassName(table) %> entity;
+		
+		private static ILog logger = null;
+
+        public static ILog Logger
+        {
+            get
+            {
+                if (logger == null)
+                    logger = LogManager.GetLogger(typeof(<%= config.GenerateBussinessEncapsulationClassName(table) %>));
+                return logger;
+            }
+        }
+
+        #endregion
+
+        #region Construtor
+        public <%= config.GenerateBussinessEncapsulationClassName(table) %>() : this(new <%= config.GenerateEntityClassName(table) %>())
+        {
+            
+        }
+
+        internal <%= config.GenerateBussinessEncapsulationClassName(table) %>(<%= config.GenerateEntityClassName(table) %> entityObj)
+        {
+            entity = entityObj;
+        }
+		#endregion
+		
+		#region Equals 和 HashCode 方法覆盖
+		public override bool Equals(object obj)
+        {
+            if (obj == null && entity!=null)
+            {
+                if (entity.<%= pkProname %> == 0)
+                    return true;
+
+                return false;
+            }
+            return entity.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return entity.GetHashCode();
+        }
+		#endregion
+		
+<% 		BuildPublicConst(table,config); 		
+%>
+
+<% BuildBusinessPublicAccessors(table,config);
+
+%>
+
+<% 
+if( config.IsCreateSubClassListrefence )
+{
+	BuildBusinessSubListAccessors(table,config);
+}
+
+
+%>
+
+
+
+
+        #region Static Common Data Operation
+		
+		internal static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> ConvertToWrapperList(List<<%= config.GenerateEntityClassName(table) %>> entitylist)
+        {
+            List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> list = new List<<%= config.GenerateBussinessEncapsulationClassName(table) %>>();
+            foreach (<%= config.GenerateEntityClassName(table) %> lentity in entitylist)
+            {
+                list.Add(ConvertEntityToWrapper(lentity));
+            }
+            return list;
+        }
+
+		internal static List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> ConvertToWrapperList(IList<<%= config.GenerateEntityClassName(table) %>> entitylist)
+        {
+            List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> list = new List<<%= config.GenerateBussinessEncapsulationClassName(table) %>>();
+            foreach (<%= config.GenerateEntityClassName(table) %> lentity in entitylist)
+            {
+                list.Add(ConvertEntityToWrapper(lentity));
+            }
+            return list;
+        }
+		
+		internal static List<<%= config.GenerateEntityClassName(table) %>> ConvertToEntityList(List<<%= config.GenerateBussinessEncapsulationClassName(table) %>> wrapperlist)
+        {
+            List<<%= config.GenerateEntityClassName(table) %>> list = new List<<%= config.GenerateEntityClassName(table) %>>();
+            foreach (<%= config.GenerateBussinessEncapsulationClassName(table) %> wrapper in wrapperlist)
+            {
+                list.Add(wrapper.entity);
+            }
+            return list;
+        }
+
+        internal static <%= config.GenerateBussinessEncapsulationClassName(table) %> ConvertEntityToWrapper(<%= config.GenerateEntityClassName(table) %> entity)
+        {
+            if (entity == null)
+                return null;
+				
+            if (entity.<%= pkProname %> == 0)
+                return null;
+
+            return new <%= config.GenerateBussinessEncapsulationClassName(table) %>(entity);
+        }
+		
+		#endregion
+
+    }//End Class
+}// End Namespace
+
+<%	    output.saveEnc(config.GenerateBussinessEncapsulationDesignerClassFilePath(table),"o","uft8");
+		 output.clear();
+		}
+	
+
+		 private void CreateServiceProxyContainerClassFile( NHibernateFrameworkTableCodeGenerateConfig config )
+	    {
+%>using System;
+using System.Collections.Generic;
+using System.Text;
+using <%= config.ServiceProxyNameSpace %>;
+
+
+namespace <%= config.GenerateServiceProxyContainerClassNameSpace %>{
+    public partial class <%= config.GenerateServiceProxyContainerClassName %>
+    {
+	
+	}
+}
+<%	    output.saveEnc(config.GenerateServiceProxyClassFilePath(),"d","uft8");
+		 output.clear();
+		}
+
+
+
+		 private void CreateServiceProxyContainerDesignerClassFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
+	    {
+%>using System;
+using System.Collections.Generic;
+using System.Text;
+using <%= config.ServiceProxyNameSpace %>;
+
+
+
+namespace <%= config.GenerateServiceProxyContainerClassNameSpace %>{
+    public partial class <%= config.GenerateServiceProxyContainerClassName %>
+    {		
+<%     foreach(ITable table in tables){
+%>		public <%= config.GenerateServiceProxyInterfaceClassName(table) %> <%= config.GenerateServiceProxyClassName(table) %>Instance
+        {get; set;}
+<%     }
+%>
+
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%>      public <%= config.GenerateBaseServiceProxyInterfaceClassName(table) %> <%= config.GenerateBaseServiceProxyClassName(table) %>Instance { set; get; }
+<%		}
+	}
+%>
+
+	}
+}
+<%	    output.saveEnc(config.GenerateServiceProxyDesignerClassFilePath(),"o","uft8");
+		 output.clear();
+		}
+
+	private void BuildBusinessSubListAccessors(ITable table,NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>		#region Sub List Property
+<%			foreach( IForeignKey fkcolumn in table.ForeignKeys )
+			{
+				if(fkcolumn.PrimaryTable.Name==table.Name){
+				string propertyName = TableColumnGenerationHelper.GenerateFkListPropertyName(fkcolumn,"{0}{1}{2}List");
+				ITable fTable = fkcolumn.ForeignTable;
+%>		public static readonly string PROPERTY_NAME_<%= propertyName.ToUpper() %> = "<%= propertyName %>";
+		
+		public virtual IList<<%= config.GenerateEntityClassName(fkcolumn.ForeignColumns[0].Table)  %>> <%= propertyName  %>
+		{
+			get
+			{
+				return entity.<%= propertyName %>;
+			}
+			set
+			{
+				entity.<%= propertyName %> = value;
+			}
+		}
+<%				}
+			}
+%>		#endregion 
+<%	
+	}
+
+	private void BuildBusinessPublicAccessors(ITable table,NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>		#region Public Property
+<%			
+			foreach(IColumn column in table.Columns)
+			{
+			
+%>		/// <summary>
+		/// <%= column.Description %>
+		/// </summary>		
+		public <%=  ((column.IsInForeignKey && !column.IsInPrimaryKey) ? config.GenerateBussinessEncapsulationClassName(column.ForeignKeys[0].PrimaryTable) : config.GenerateEntityPorpertyType(column)) %> <%= config.GenerateEntityPorpertyName(column) %>
+		{
+			get
+			{
+<%   			if (!column.IsInForeignKey || column.IsInPrimaryKey) {
+%>				return entity.<%= config.GenerateEntityPorpertyName(column) %>;
+<%   			} else {
+%>				return <%= config.GenerateBussinessEncapsulationClassName(column.ForeignKeys[0].PrimaryTable) %>.ConvertEntityToWrapper(entity.<%= config.GenerateEntityPorpertyName(column) %>) ;
+<%   			} 
+%>			}
+			set
+			{
+<%   			if (!column.IsInForeignKey || column.IsInPrimaryKey) {
+%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = value;
+<%   			} else {
+%>				entity.<%= config.GenerateEntityPorpertyName(column) %> = ((value == null) ? null : value.entity);
+<%   			} 
+%>			}
+		}
+<%			}
+%>		#endregion 
+<%	}	
+	
+	
+		    //生成Spring的xml容器类文件
+	private void GenerateSpringIocDaoClassFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config )
+	{
+%>using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace <%= config.DataObjectContainerIoCClassNameSpace %>
+{
+    public partial class <%= config.DataObjectContainerIoCClassName %>
+    {
+    }
+}
+<%		string savefilepath = Path.Combine(config.DataObjectContainerIocClassFilePath,config.DataObjectContainerIoCClassName + ".cs");
+	    output.saveEnc(savefilepath,"o","uft8");
+		output.clear();
+	}
+	
+	
+	    //生成Spring的xml容器类文件
+	private void GenerateSpringIocDaoDesignerClassFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
+	{
+%>using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace <%= config.DataObjectContainerIoCClassNameSpace %>
+{
+    public partial class <%= config.DataObjectContainerIoCClassName %>
+    {
+        public <%= config.DataObjectContainerIoCClassName %>()
+        {
+        }
+
+<%foreach(ITable table in tables) {
+%>      public <%= config.GenerateDataObjectClassName(table) %> <%= config.GenerateDataObjectClassName(table) %>Instance { set; get; }
+<%}
+%>
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%>      public <%= config.GenerateBaseDataObjectClassName(table) %> <%= config.GenerateBaseDataObjectClassName(table) %>Instance { set; get; }
+<%		}
+	}
+%>
+	}
+}
+<%		string savefilepath = Path.Combine(config.DataObjectContainerIocClassFilePath,config.DataObjectContainerIoCClassName + ".Designer.cs");
+	    output.saveEnc(savefilepath,"o","uft8");
+		output.clear();
+	}
+	
+	
+		//生成Spring的xml容器配置文件
+	private void GenerateSpringIocDaoXmlFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config,IDatabase dataBase )
+	{
+%><?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:db="http://www.springframework.net/database">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架数据访问层容器配置文件
+  </description>
+  <!-- 数据访问类 -->
+<%foreach(ITable table in tables) {
+%> <object id="<%= config.GenerateDataObjectClassName(table) %>IocID" type="<%= config.DataObjectNameSpace %>.<%= config.GenerateDataObjectClassName(table) %>, <%= config.DataObjectAssembleName %>">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+<%}
+%>
+
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%> <object id="<%= config.GenerateBaseDataObjectClassName(table) %>IocID" type="<%= config.BaseDataObjectNameSpace %>.<%= config.GenerateBaseDataObjectClassName(table) %>, <%= config.BaseAssembleName %>">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+<%		}
+	}
+%>
+
+
+
+<object id="<%= config.DataObjectContainerIoCClassName %>IocID" type="<%= config.DataObjectContainerIoCClassNameSpace %>.<%= config.DataObjectContainerIoCClassName %>, <%= config.DataObjectAssembleName %>">
+<%foreach(ITable table in tables) {
+%>    <property name="<%= config.GenerateDataObjectClassName(table) %>Instance" ref="<%= config.GenerateDataObjectClassName(table) %>IocID"/>
+<%}%> 
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%>    <property name="<%= config.GenerateBaseDataObjectClassName(table) %>Instance" ref="<%= config.GenerateBaseDataObjectClassName(table) %>IocID"/>
+<%		}
+	}
+%>
+
+</object>
+</objects>
+<%		string savefilepath = Path.Combine(config.DataObjectIocXmlFilePath,config.DataObjectIocXmlFileName + ".xml");
+	    output.saveEnc(savefilepath,"o","uft8");
+		output.clear();
+	}
+	
+	
+		//生成Spring的xml容器配置文件
+	private void GenerateSpringIocBussinessXmlFile( ITable[] tables ,NHibernateFrameworkTableCodeGenerateConfig config ,IDatabase dataBase)
+	{
+%><?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net"
+         xmlns:tx="http://www.springframework.net/tx">
+  <!-- 供主程序配置文件引用 -->
+  <description>
+    Spring.Net框架服务层容器配置文件
+  </description>
+  <!-- 服务层类 -->
+<%foreach(ITable table in tables) {
+%>  <object id="<%= config.GenerateServiceProxyClassName(table) %>IocID" type="<%= config.ServiceProxyNameSpace %>.<%= config.GenerateServiceProxyClassName(table) %>, <%= config.BussinessAssembleName %>">
+    <property name="SelfDataObj" ref="<%= config.GenerateDataObjectClassName(table) %>IocID"/>
+	<property name="DataObjectsContainerIocID" ref="<%= config.DataObjectContainerIoCClassName %>IocID"/>
+  </object>
+<%}
+%>
+
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%>  <object id="<%= config.GenerateBaseServiceProxyClassName(table) %>IocID" type="<%= config.ServiceProxyNameSpace %>.<%= config.GenerateBaseServiceProxyClassName(table) %>, <%= config.BussinessAssembleName %>">
+    <property name="SelfDataObj" ref="<%= config.GenerateBaseDataObjectClassName(table) %>IocID"/>
+	<property name="DataObjectsContainerIocID" ref="<%= config.DataObjectContainerIoCClassName %>IocID"/>
+  </object>
+<%		}
+	}
+%>
+
+<object id="<%= config.GenerateServiceProxyContainerClassName %>IocID" type="<%= config.GenerateServiceProxyContainerClassNameSpace %>.<%= config.GenerateServiceProxyContainerClassName %>, <%= config.BussinessAssembleName %>">
+<%foreach(ITable table in tables) {
+%>    <property name="<%= config.GenerateServiceProxyClassName(table) %>Instance" ref="<%= config.GenerateServiceProxyClassName(table) %>IocID"/>
+<%}%>
+<%	if(config.IsEnbaleGenerateBaseCode) {
+		foreach(ITable table in config.GetAllBaseTable(dataBase)) {
+%>    <property name="<%= config.GenerateBaseServiceProxyClassName(table) %>Instance" ref="<%= config.GenerateBaseServiceProxyClassName(table) %>IocID"/>
+<%		}
+	}
+%>
+
+</object>
+
+<tx:attribute-driven />
+</objects>
+<%
+		string savefilepath = Path.Combine(config.SelectGenerateServiceProxyContainerClassXmlFilePath,config.GenerateServiceProxyContainerXMLFileName + ".xml");
+	    output.saveEnc(savefilepath,"o","uft8");
+		output.clear();
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	private void BuildNHibernateProperties(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		List<IColumn> npks = config.GetAllNotPkColumn(table);
+		
+		foreach( IColumn column in npks )
+		{
+				if( column.IsInForeignKey  && config.IsCreateFKeyClassrefence)
+				{
+					if(column.ForeignKeys.Count > 1)
+					{
+%>		<!-- more than one foreign column is mapped to <%= column.Alias %> - you're on your own. -->		
+<%  				}
+					else
+					{												
+%>		<many-to-one column="<%= column.Alias %>" name="<%= config.GenerateEntityPorpertyName(column) %>" class="<%= config.EntityNameSpace %>.<%= config.GenerateEntityClassName(column.ForeignKeys[0].PrimaryTable) %>,<%= config.EntityAssembleName %>" />		
+<%  				}
+				}
+				else
+				{
+%>		<property column="<%= column.Alias %>" type="<%= config.GenerateEntityNHibernateType(column) %>"<% if (config.IsReadOnlyClass) {%> access="field" name="<%= config.GenerateEntityMemberName(column) %>"<%}else{%> name="<%= config.GenerateEntityPorpertyName(column) %>" <%}%> <% if (!column.IsNullable) {%> not-null="true" <%}%><% if (column.CharacterOctetLength > 0 ) {%> length="<%= column.CharacterOctetLength.ToString() %>"<%}%> />	
+<%  			}
+
+		}
+	}	
+	
+	
+	
+	private void GenerateSubListMapping(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		List<IColumn> pks = config.GetAllPkColumn(table);
+	
+		foreach( IForeignKey fkcolumn in table.ForeignKeys )
+		{
+			if(fkcolumn.PrimaryTable.Name==table.Name){
+			string memberName = TableColumnGenerationHelper.GenerateFkListPrivateMembername(fkcolumn,"_{0}{1}{2}List");
+			string propertyName = TableColumnGenerationHelper.GenerateFkListPropertyName(fkcolumn,"{0}{1}{2}List");
+			Dnp.Utils.TableRelation tr = new Dnp.Utils.TableRelation(table, fkcolumn);
+%>    <bag name="<%= propertyName %>" inverse="false" lazy="true" cascade="none" generic="true">
+      <key column="<%= fkcolumn.ForeignColumns[0].Name %>" />
+      <one-to-many class="<%= config.EntityNameSpace %>.<%= config.GenerateEntityClassName(fkcolumn.ForeignColumns[0].Table) %>,<%= config.EntityAssembleName %>" />
+	  </bag>
+<%			}
+		}
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private void BuildPublicConst(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>        #region 公共常量
+
+		public static readonly string CLASS_FULL_NAME = "<%= config.EntityNameSpace %>.<%= config.GenerateEntityClassName(table) %>";
+<%		foreach( IColumn column in table.Columns )
+		{	
+%>		public static readonly string PROPERTY_NAME_<%= config.GenerateEntityPorpertyName(column).ToUpper() %> = "<%= config.GenerateEntityPorpertyName(column) %>";
+<%		}
+%>		
+        #endregion
+<%	}
+
+	private void CreateSubClassListrefence(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>        #region 子类列表引用
+<%		foreach( IForeignKey fkcolumn in table.ForeignKeys )
+		{
+			if(fkcolumn.PrimaryTable.Name==table.Name){
+			string memberName = TableColumnGenerationHelper.GenerateFkListPrivateMembername(fkcolumn,"_{0}{1}{2}List");
+			string propertyName = TableColumnGenerationHelper.GenerateFkListPropertyName(fkcolumn,"{0}{1}{2}List");
+%>		
+		public static readonly string PROPERTY_NAME_<%= propertyName.ToUpper() %> = "<%= propertyName %>";
+
+		private IList<<%= config.GenerateEntityClassName(fkcolumn.ForeignColumns[0].Table)  %>> <%= memberName %>;
+		
+		public virtual IList<<%= config.GenerateEntityClassName(fkcolumn.ForeignColumns[0].Table)  %>> <%= propertyName  %>
+		{
+			get
+			{
+				return <%= memberName %>;
+			}
+			set
+			{
+				_isChanged |= (<%= memberName %> != value); <%= memberName %> = value;
+			}
+		}
+<%		}}
+%>		
+        #endregion
+<%	}
+
+	private void BuildPrivateMembers(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		if( table.Columns.Count > 0 )
+		{
+%>        #region 私有成员变量
+
+		private bool <%= config.MemberPrefix %>isChanged;		
+		private bool <%= config.MemberPrefix %>isDeleted;
+		
+<%		
+		foreach( IColumn column in table.Columns )
+		{
+%>		private <%= config.GenerateEntityMemberType(column) %> <%= config.GenerateEntityMemberName(column) %>;
+<%		}	
+%>		
+		#endregion
+<%		}  
+   }
+   
+	private void BuildDefaultConstructor(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>		#region 构造函数
+		/// <summary>
+		/// 默认构造函数
+		/// </summary>
+		public <%= config.GenerateEntityClassName(table) %>()
+		{
+<%		foreach( IColumn column in table.Columns )
+		{
+%>			<%= config.GenerateEntityMemberName(column) %> = <%= config.GenerateEntityDefaultValue(column) %>;
+<%		}
+%>		}
+		#endregion
+<%	}
+   
+
+	private void BuildPublicAccessors(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		if( table.Columns.Count > 0 )
+		{
+%>	    #region 公共属性
+<%			
+			foreach( IColumn column in table.Columns )
+			{
+			%>
+		/// <summary>
+		/// <%= column.Description %>
+		/// </summary>		
+		public <%=(config.IsLazyLoad ? "virtual" : "")%> <%= config.GenerateEntityPorpertyType(column) %> <%= config.GenerateEntityPorpertyName(column) %>
+		{
+			get { return <%= config.GenerateEntityMemberName(column) %>; }
+<%				if( !config.IsReadOnlyClass )
+				{
+%>
+			set	
+			{
+<%             if ( column.CharacterOctetLength > 0 && !( config.IsCreateFKeyClassrefence && column.IsInForeignKey ))  {                                           %>
+				if( value != null && value.Length > <%= column.CharacterOctetLength.ToString() %>)
+					throw new ArgumentOutOfRangeException("Invalid value for <%= config.GenerateEntityPorpertyName(column) %>", value, value.ToString());
+<%				}
+%>				<%= config.MemberPrefix %>isChanged |= (<%= config.GenerateEntityMemberName(column) %> != value); <%= config.GenerateEntityMemberName(column) %> = value;
+			}
+<%				}
+%>		}
+<%				}
+%>		/// <summary>
+		/// 返回对象是否被改变。
+		/// </summary>
+		public virtual bool IsChanged
+		{
+			get { return <%= config.MemberPrefix %>isChanged; }
+		}
+		
+		/// <summary>
+		/// Returns whether or not the object has changed it's values.
+		/// </summary>
+		public virtual bool IsDeleted
+		{
+			get { return <%= config.MemberPrefix %>isDeleted; }
+		}
+		
+		#endregion 
+<%		}
+	}
+
+	private void BuildEqualsHashCodeOverrides(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		
+%>		#region Equals 和 HashCode 方法覆盖
+		/// <summary>
+		/// local implementation of Equals based on unique value members
+		/// </summary>
+		public override bool Equals( object obj )
+		{
+			if( this == obj ) return true;
+			
+			if( ( obj == null ) || ( obj.GetType() != this.GetType() ) ) return false;
+			
+			<%= config.GenerateEntityClassName(table) %> castObj = (<%= config.GenerateEntityClassName(table) %>)obj;
+			
+<%		List<IColumn> pks = config.GetAllPkColumn(table);
+		if( pks.Count == 0 )
+		{
+%>			return castObj.GetHashCode() == this.GetHashCode()<%
+		}
+		else
+		{
+%>			return ( castObj != null )<%
+			foreach(IColumn column in pks)
+			{
+				%> && ( this.<%= config.GenerateEntityMemberName(column) %> == castObj.<%= config.GenerateEntityPorpertyName(column) %> )<%			}
+		} %>;
+		}
+		
+		/// <summary>
+		/// local implementation of GetHashCode based on unique value members
+		/// </summary>
+		public override int GetHashCode()
+		{
+			<%		
+		    if( pks.Count == 0 )
+			{
+				%>return this.GetType().FullName.GetHashCode();
+				<%
+			}
+			else
+			{%>
+			int hash = 57; <%
+				foreach(IColumn column in pks)
+				{
+			%>
+			hash = 27 * hash * <%= config.GenerateEntityMemberName(column) %>.GetHashCode();
+<%				}
+				%>
+			return hash; <%
+			}%>
+		}
+		#endregion
+<%	}
+
+
+
+	private void ImplementationICloneableFunction(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+		
+%>		#region ICloneable methods
+		
+		public virtual object Clone()
+		{
+			return this.MemberwiseClone();
+		}
+		
+		#endregion
+<%	}
+	
+	
+	
+	private void BuildPublicFunctions(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>        #region 公共方法
+		
+		/// <summary>
+		/// mark the item as deleted
+		/// </summary>
+		public virtual void MarkAsDeleted()
+		{
+			<%= config.MemberPrefix %>isDeleted = true;
+			<%= config.MemberPrefix %>isChanged = true;
+		}
+		
+		#endregion
+<%	}
+
+
+	private void BuildFullConstructor(ITable table, NHibernateFrameworkTableCodeGenerateConfig config)
+	{
+%>		#region 全构造函数
+		/// <summary>
+		/// 全构造函数
+		/// </summary>
+		public <%= config.GenerateEntityClassName(table) %>(<%= config.GenerateNhibernateAllColumnParams(table) %>)
+		{
+<%		foreach( IColumn column in table.Columns )
+		{
+%>			<%= config.GenerateEntityMemberName(column) %> = <%= config.GenerateEntityParamsName(column) %>;
+<%		}
+%>		}
+		#endregion     
+<%	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
+%>
+##|BODY_END
