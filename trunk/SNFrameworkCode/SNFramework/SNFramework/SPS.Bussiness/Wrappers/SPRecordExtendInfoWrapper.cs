@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.DataAdapter;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -99,9 +100,9 @@ namespace SPS.Bussiness.Wrappers
 
         #endregion
 
-        internal HttpUtils.HttpRequestLog GetHttpRequestLog()
-        {
-            return null;
-        }
+	    public IDataAdapter GetHttpRequestLog()
+	    {
+	        throw new NotImplementedException();
+	    }
     }
 }

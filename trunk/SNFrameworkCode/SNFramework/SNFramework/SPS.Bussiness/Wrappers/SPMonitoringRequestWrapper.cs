@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Bussiness.DataAdapter;
 using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -100,7 +101,7 @@ namespace SPS.Bussiness.Wrappers
 
         #endregion
 
-	    public static void SaveRequest(HttpRequestLog httpRequestLog, SPChannelWrapper channelID)
+        public static void SaveRequest(IDataAdapter httpRequestLog, SPChannelWrapper channelID)
 	    {
             try
             {
@@ -113,7 +114,7 @@ namespace SPS.Bussiness.Wrappers
 
 
 
-                spFailedRequestWrapper.RecievedSendUrl = httpRequestLog.RequestUrl;
+                spFailedRequestWrapper.RecievedSendUrl = httpRequestLog.RequestSoucre;
 
                 spFailedRequestWrapper.RecievedDate = DateTime.Now;
 

@@ -32,12 +32,6 @@ namespace SPS.Data.Tables
         {
             string hql = string.Format("( ({0} + {1}) = ? )",SPChannelEntity.PROPERTY_NAME_CODE,SPChannelEntity.PROPERTY_NAME_DATAADAPTERURL);
 
-
-            //hql = " (Code + DataAdapterUrl) = 'sptestHttpGetPostAdapter.ashx' ";
-
-            //return Expression.Sql(hql);
-
-
             return Expression.Sql(hql, dataAdaptorUrl, NHibernate.NHibernateUtil.String);
         }
     }

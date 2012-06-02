@@ -67,7 +67,6 @@
     <Compile Include="DataAdapter\HttpGetPostAdapter.cs" />
     <Compile Include="DataAdapter\HttpXmlPostAdapter.cs" />
     <Compile Include="DataAdapter\IDataAdapter.cs" />
-    <Compile Include="HttpUtils\HttpRequestLog.cs" />
     <Compile Include="HttpUtils\RequestErrorType.cs" />
     <Compile Include="HttpUtils\RequestType.cs" />
     <Compile Include="HttpUtils\UrlSender.cs" />

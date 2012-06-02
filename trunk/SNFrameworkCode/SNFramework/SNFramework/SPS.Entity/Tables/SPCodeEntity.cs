@@ -15,7 +15,7 @@ namespace SPS.Entity.Tables
 	[Serializable]
 	public partial class SPCodeEntity
 	{
-	    public bool CheckIsRoot(List<SPCodeEntity> allList)
+	    public virtual bool CheckIsRoot(List<SPCodeEntity> allList)
 	    {
             if(this.MOType == DictionaryConst.Dictionary_CodeType_CodeEQ_Key)
                 return true;
