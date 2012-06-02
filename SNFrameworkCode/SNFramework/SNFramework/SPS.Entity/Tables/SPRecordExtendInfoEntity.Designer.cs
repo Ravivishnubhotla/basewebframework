@@ -256,7 +256,7 @@ namespace SPS.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 6000)
+				if( value != null && value.Length > 4000)
 					throw new ArgumentOutOfRangeException("Invalid value for RequestContent", value, value.ToString());
 				_isChanged |= (_requestContent != value); _requestContent = value;
 			}

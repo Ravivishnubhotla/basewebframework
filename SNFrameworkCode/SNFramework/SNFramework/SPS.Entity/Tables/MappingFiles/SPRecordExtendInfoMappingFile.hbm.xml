@@ -15,7 +15,7 @@
 		<property column="IP" type="string" name="Ip"   length="40" />	
 		<property column="sSycnDataUrl" type="string" name="SSycnDataUrl"   length="600" />	
 		<property column="sSycnDataFailedMessage" type="string" name="SSycnDataFailedMessage"   length="100" />	
-		<property column="RequestContent" type="string" name="RequestContent"   length="6000" />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="4000" />	
 		<property column="ExtendField1" type="string" name="ExtendField1"   length="100" />	
 		<property column="ExtendField2" type="string" name="ExtendField2"   length="100" />	
 		<property column="ExtendField3" type="string" name="ExtendField3"   length="100" />	

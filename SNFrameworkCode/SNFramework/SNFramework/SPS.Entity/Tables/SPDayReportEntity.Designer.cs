@@ -25,19 +25,12 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
-		public static readonly string PROPERTY_NAME_TOTALPHONECOUNT = "TotalPhoneCount";
 		public static readonly string PROPERTY_NAME_TOTALSUCCESSCOUNT = "TotalSuccessCount";
-		public static readonly string PROPERTY_NAME_TOTALPHONESUCCESSCOUNT = "TotalPhoneSuccessCount";
 		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
-		public static readonly string PROPERTY_NAME_INTERCEPTPHONECOUNT = "InterceptPhoneCount";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
-		public static readonly string PROPERTY_NAME_DOWNPHONETOTALCOUNT = "DownPhoneTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSYCNSUCCESS = "DownSycnSuccess";
-		public static readonly string PROPERTY_NAME_DOWNPHONESYCNSUCCESS = "DownPhoneSycnSuccess";
 		public static readonly string PROPERTY_NAME_DOWNSYCNFAILED = "DownSycnFailed";
-		public static readonly string PROPERTY_NAME_DOWNPHONESYCNFAILED = "DownPhoneSycnFailed";
 		public static readonly string PROPERTY_NAME_DOWNNOTSYCN = "DownNotSycn";
-		public static readonly string PROPERTY_NAME_DOWNPHONENOTSYCN = "DownPhoneNotSycn";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
@@ -139,6 +132,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_PHONELIMITTYPE = "CodeID_SPDayReportEntity_Alias.PhoneLimitType";
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPDayReportEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPDayReportEntity_Alias.LimitProvinceArea";
+		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPDayReportEntity_Alias.ParentID";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPDayReportEntity_Alias.LastModifyBy";
@@ -173,19 +167,12 @@ namespace SPS.Entity.Tables
 		private int _id;
 		private DateTime _reportDate;
 		private int _totalCount;
-		private int _totalPhoneCount;
 		private int _totalSuccessCount;
-		private int _totalPhoneSuccessCount;
 		private int _interceptCount;
-		private int _interceptPhoneCount;
 		private int _downTotalCount;
-		private int _downPhoneTotalCount;
 		private int _downSycnSuccess;
-		private int _downPhoneSycnSuccess;
 		private int _downSycnFailed;
-		private int _downPhoneSycnFailed;
 		private int _downNotSycn;
-		private int _downPhoneNotSycn;
 		private SPSClientEntity _clientID;
 		private SPChannelEntity _channelID;
 		private SPCodeEntity _codeID;
@@ -202,19 +189,12 @@ namespace SPS.Entity.Tables
 			_id = 0;
 			_reportDate = DateTime.MinValue;
 			_totalCount = 0;
-			_totalPhoneCount = 0;
 			_totalSuccessCount = 0;
-			_totalPhoneSuccessCount = 0;
 			_interceptCount = 0;
-			_interceptPhoneCount = 0;
 			_downTotalCount = 0;
-			_downPhoneTotalCount = 0;
 			_downSycnSuccess = 0;
-			_downPhoneSycnSuccess = 0;
 			_downSycnFailed = 0;
-			_downPhoneSycnFailed = 0;
 			_downNotSycn = 0;
-			_downPhoneNotSycn = 0;
 			_clientID = null;
 			_channelID = null;
 			_codeID = null;
@@ -226,24 +206,17 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPDayReportEntity( int id, DateTime reportDate, int totalCount, int totalPhoneCount, int totalSuccessCount, int totalPhoneSuccessCount, int interceptCount, int interceptPhoneCount, int downTotalCount, int downPhoneTotalCount, int downSycnSuccess, int downPhoneSycnSuccess, int downSycnFailed, int downPhoneSycnFailed, int downNotSycn, int downPhoneNotSycn, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
+		public SPDayReportEntity( int id, DateTime reportDate, int totalCount, int totalSuccessCount, int interceptCount, int downTotalCount, int downSycnSuccess, int downSycnFailed, int downNotSycn, SPSClientEntity clientID, SPChannelEntity channelID, SPCodeEntity codeID, SPUpperEntity uperID)
 		{
 			_id = id;
 			_reportDate = reportDate;
 			_totalCount = totalCount;
-			_totalPhoneCount = totalPhoneCount;
 			_totalSuccessCount = totalSuccessCount;
-			_totalPhoneSuccessCount = totalPhoneSuccessCount;
 			_interceptCount = interceptCount;
-			_interceptPhoneCount = interceptPhoneCount;
 			_downTotalCount = downTotalCount;
-			_downPhoneTotalCount = downPhoneTotalCount;
 			_downSycnSuccess = downSycnSuccess;
-			_downPhoneSycnSuccess = downPhoneSycnSuccess;
 			_downSycnFailed = downSycnFailed;
-			_downPhoneSycnFailed = downPhoneSycnFailed;
 			_downNotSycn = downNotSycn;
-			_downPhoneNotSycn = downPhoneNotSycn;
 			_clientID = clientID;
 			_channelID = channelID;
 			_codeID = codeID;
@@ -299,20 +272,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int TotalPhoneCount
-		{
-			get { return _totalPhoneCount; }
-
-			set	
-			{
-				_isChanged |= (_totalPhoneCount != value); _totalPhoneCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int TotalSuccessCount
 		{
 			get { return _totalSuccessCount; }
@@ -320,20 +279,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_totalSuccessCount != value); _totalSuccessCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int TotalPhoneSuccessCount
-		{
-			get { return _totalPhoneSuccessCount; }
-
-			set	
-			{
-				_isChanged |= (_totalPhoneSuccessCount != value); _totalPhoneSuccessCount = value;
 			}
 		}
 
@@ -355,20 +300,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int InterceptPhoneCount
-		{
-			get { return _interceptPhoneCount; }
-
-			set	
-			{
-				_isChanged |= (_interceptPhoneCount != value); _interceptPhoneCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int DownTotalCount
 		{
 			get { return _downTotalCount; }
@@ -376,20 +307,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_downTotalCount != value); _downTotalCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int DownPhoneTotalCount
-		{
-			get { return _downPhoneTotalCount; }
-
-			set	
-			{
-				_isChanged |= (_downPhoneTotalCount != value); _downPhoneTotalCount = value;
 			}
 		}
 
@@ -411,20 +328,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int DownPhoneSycnSuccess
-		{
-			get { return _downPhoneSycnSuccess; }
-
-			set	
-			{
-				_isChanged |= (_downPhoneSycnSuccess != value); _downPhoneSycnSuccess = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int DownSycnFailed
 		{
 			get { return _downSycnFailed; }
@@ -439,20 +342,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int DownPhoneSycnFailed
-		{
-			get { return _downPhoneSycnFailed; }
-
-			set	
-			{
-				_isChanged |= (_downPhoneSycnFailed != value); _downPhoneSycnFailed = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int DownNotSycn
 		{
 			get { return _downNotSycn; }
@@ -460,20 +349,6 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_downNotSycn != value); _downNotSycn = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int DownPhoneNotSycn
-		{
-			get { return _downPhoneNotSycn; }
-
-			set	
-			{
-				_isChanged |= (_downPhoneNotSycn != value); _downPhoneNotSycn = value;
 			}
 		}
 

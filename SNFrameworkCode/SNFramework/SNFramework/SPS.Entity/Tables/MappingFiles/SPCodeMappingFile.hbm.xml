@@ -36,6 +36,7 @@
 		<property column="PhoneLimitType" type="int" name="PhoneLimitType"   not-null="true"  />	
 		<property column="LimitProvince" type="Boolean" name="LimitProvince"   />	
 		<property column="LimitProvinceArea" type="string" name="LimitProvinceArea"   length="400" />	
+		<many-to-one column="ParentID" name="ParentID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

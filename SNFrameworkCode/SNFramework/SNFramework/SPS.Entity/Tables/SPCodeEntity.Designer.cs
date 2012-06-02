@@ -48,6 +48,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_PHONELIMITTYPE = "PhoneLimitType";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCE = "LimitProvince";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCEAREA = "LimitProvinceArea";
+		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -137,6 +138,7 @@ namespace SPS.Entity.Tables
 		private int _phoneLimitType;
 		private bool? _limitProvince;
 		private string _limitProvinceArea;
+		private SPCodeEntity _parentID;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -177,6 +179,7 @@ namespace SPS.Entity.Tables
 			_phoneLimitType = 1;
 			_limitProvince = false;
 			_limitProvinceArea = null;
+			_parentID = null;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -189,7 +192,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -217,6 +220,7 @@ namespace SPS.Entity.Tables
 			_phoneLimitType = phoneLimitType;
 			_limitProvince = limitProvince;
 			_limitProvinceArea = limitProvinceArea;
+			_parentID = parentID;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -618,6 +622,20 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for LimitProvinceArea", value, value.ToString());
 				_isChanged |= (_limitProvinceArea != value); _limitProvinceArea = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPCodeEntity ParentID
+		{
+			get { return _parentID; }
+
+			set	
+			{
+				_isChanged |= (_parentID != value); _parentID = value;
 			}
 		}
 

@@ -95,6 +95,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPCODEID_LIMITPROVINCE;
 		        case "SPCodeID_LimitProvinceArea":
 					return PROPERTY_SPCODEID_LIMITPROVINCEAREA;
+		        case "SPCodeID_ParentID":
+					return PROPERTY_SPCODEID_PARENTID;
 		        case "SPCodeID_CreateBy":
 					return PROPERTY_SPCODEID_CREATEBY;
 		        case "SPCodeID_CreateAt":
@@ -161,6 +163,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPCODEID_PHONELIMITTYPE = "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitType";
 		public const string PROPERTY_SPCODEID_LIMITPROVINCE = "SPCodeID_SPCodeInfoEntity_Alias.LimitProvince";
 		public const string PROPERTY_SPCODEID_LIMITPROVINCEAREA = "SPCodeID_SPCodeInfoEntity_Alias.LimitProvinceArea";
+		public const string PROPERTY_SPCODEID_PARENTID = "SPCodeID_SPCodeInfoEntity_Alias.ParentID";
 		public const string PROPERTY_SPCODEID_CREATEBY = "SPCodeID_SPCodeInfoEntity_Alias.CreateBy";
 		public const string PROPERTY_SPCODEID_CREATEAT = "SPCodeID_SPCodeInfoEntity_Alias.CreateAt";
 		public const string PROPERTY_SPCODEID_LASTMODIFYBY = "SPCodeID_SPCodeInfoEntity_Alias.LastModifyBy";
@@ -541,6 +544,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPCodeID == null)
                     return null;
                 return  SPCodeID.LimitProvinceArea;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_PARENTID)]
+        public SPCodeWrapper SPCodeID_ParentID
+        {
+            get
+            {
+                if (this. SPCodeID == null)
+                    return null;
+                return  SPCodeID.ParentID;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_CREATEBY)]

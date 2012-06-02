@@ -55,6 +55,7 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_SPCODEID_PHONELIMITTYPE = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".PhoneLimitType"));
 		public static readonly BoolProperty PROPERTY_SPCODEID_LIMITPROVINCE = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LimitProvince"));
 		public static readonly StringProperty PROPERTY_SPCODEID_LIMITPROVINCEAREA = new StringProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LimitProvinceArea"));
+		public static readonly EntityProperty<SPCodeEntity> PROPERTY_SPCODEID_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".ParentID"));
 		public static readonly IntProperty PROPERTY_SPCODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_SPCODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_SPCODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LastModifyBy"));

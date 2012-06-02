@@ -162,6 +162,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_PHONELIMITTYPE = "PhoneLimitType";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCE = "LimitProvince";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCEAREA = "LimitProvinceArea";
+		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -585,6 +586,20 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.LimitProvinceArea = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public SPCodeWrapper ParentID
+		{
+			get
+			{
+				return SPCodeWrapper.ConvertEntityToWrapper(entity.ParentID) ;
+			}
+			set
+			{
+				entity.ParentID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>

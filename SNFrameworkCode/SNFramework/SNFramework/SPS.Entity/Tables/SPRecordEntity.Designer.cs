@@ -140,6 +140,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_PHONELIMITTYPE = "CodeID_SPRecordEntity_Alias.PhoneLimitType";
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPRecordEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPRecordEntity_Alias.LimitProvinceArea";
+		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPRecordEntity_Alias.ParentID";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPRecordEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPRecordEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPRecordEntity_Alias.LastModifyBy";

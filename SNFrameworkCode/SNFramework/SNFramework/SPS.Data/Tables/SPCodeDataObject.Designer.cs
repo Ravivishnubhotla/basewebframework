@@ -92,6 +92,7 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_PHONELIMITTYPE = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PHONELIMITTYPE));		
 		public static readonly BoolProperty PROPERTY_LIMITPROVINCE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LIMITPROVINCE));		
 		public static readonly StringProperty PROPERTY_LIMITPROVINCEAREA = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LIMITPROVINCEAREA));		
+		public static readonly EntityProperty<SPCodeEntity> PROPERTY_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(SPCodeEntity.PROPERTY_NAME_PARENTID));
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -166,6 +167,8 @@ namespace SPS.Data.Tables
                     return typeof (bool);
                 case "LimitProvinceArea":
                     return typeof (string);
+                case "ParentID":
+                    return typeof (int);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":

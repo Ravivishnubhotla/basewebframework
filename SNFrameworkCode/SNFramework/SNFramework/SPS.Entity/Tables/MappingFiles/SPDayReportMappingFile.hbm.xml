@@ -13,19 +13,12 @@
 
 		<property column="ReportDate" type="DateTime" name="ReportDate"   not-null="true"  />	
 		<property column="TotalCount" type="int" name="TotalCount"   not-null="true"  />	
-		<property column="TotalPhoneCount" type="int" name="TotalPhoneCount"   not-null="true"  />	
 		<property column="TotalSuccessCount" type="int" name="TotalSuccessCount"   not-null="true"  />	
-		<property column="TotalPhoneSuccessCount" type="int" name="TotalPhoneSuccessCount"   not-null="true"  />	
 		<property column="InterceptCount" type="int" name="InterceptCount"   not-null="true"  />	
-		<property column="InterceptPhoneCount" type="int" name="InterceptPhoneCount"   not-null="true"  />	
 		<property column="DownTotalCount" type="int" name="DownTotalCount"   not-null="true"  />	
-		<property column="DownPhoneTotalCount" type="int" name="DownPhoneTotalCount"   not-null="true"  />	
 		<property column="DownSycnSuccess" type="int" name="DownSycnSuccess"   not-null="true"  />	
-		<property column="DownPhoneSycnSuccess" type="int" name="DownPhoneSycnSuccess"   not-null="true"  />	
 		<property column="DownSycnFailed" type="int" name="DownSycnFailed"   not-null="true"  />	
-		<property column="DownPhoneSycnFailed" type="int" name="DownPhoneSycnFailed"   not-null="true"  />	
 		<property column="DownNotSycn" type="int" name="DownNotSycn"   not-null="true"  />	
-		<property column="DownPhoneNotSycn" type="int" name="DownPhoneNotSycn"   not-null="true"  />	
 		<many-to-one column="ClientID" name="ClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
 		<many-to-one column="ChannelID" name="ChannelID" class="SPS.Entity.Tables.SPChannelEntity,SPS.Entity" />		
 		<many-to-one column="CodeID" name="CodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
