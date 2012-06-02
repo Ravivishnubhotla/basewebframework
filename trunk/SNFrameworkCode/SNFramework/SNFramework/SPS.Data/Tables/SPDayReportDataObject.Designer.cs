@@ -24,19 +24,12 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_ID));		
 		public static readonly DateTimeProperty PROPERTY_REPORTDATE = new DateTimeProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_REPORTDATE));		
 		public static readonly IntProperty PROPERTY_TOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALCOUNT));		
-		public static readonly IntProperty PROPERTY_TOTALPHONECOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALPHONECOUNT));		
 		public static readonly IntProperty PROPERTY_TOTALSUCCESSCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALSUCCESSCOUNT));		
-		public static readonly IntProperty PROPERTY_TOTALPHONESUCCESSCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_TOTALPHONESUCCESSCOUNT));		
 		public static readonly IntProperty PROPERTY_INTERCEPTCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTCOUNT));		
-		public static readonly IntProperty PROPERTY_INTERCEPTPHONECOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_INTERCEPTPHONECOUNT));		
 		public static readonly IntProperty PROPERTY_DOWNTOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNTOTALCOUNT));		
-		public static readonly IntProperty PROPERTY_DOWNPHONETOTALCOUNT = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNPHONETOTALCOUNT));		
 		public static readonly IntProperty PROPERTY_DOWNSYCNSUCCESS = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSYCNSUCCESS));		
-		public static readonly IntProperty PROPERTY_DOWNPHONESYCNSUCCESS = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNPHONESYCNSUCCESS));		
 		public static readonly IntProperty PROPERTY_DOWNSYCNFAILED = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNSYCNFAILED));		
-		public static readonly IntProperty PROPERTY_DOWNPHONESYCNFAILED = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNPHONESYCNFAILED));		
 		public static readonly IntProperty PROPERTY_DOWNNOTSYCN = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNNOTSYCN));		
-		public static readonly IntProperty PROPERTY_DOWNPHONENOTSYCN = new IntProperty(Property.ForName(SPDayReportEntity.PROPERTY_NAME_DOWNPHONENOTSYCN));		
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_CLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPDayReportEntity.PROPERTY_NAME_CLIENTID));
 		#region clientID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPDayReportEntity> InClude_ClientID_Query(NHibernateDynamicQueryGenerator<SPDayReportEntity> queryGenerator)
@@ -145,6 +138,7 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CODEID_PHONELIMITTYPE = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".PhoneLimitType"));
 		public static readonly BoolProperty PROPERTY_CODEID_LIMITPROVINCE = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LimitProvince"));
 		public static readonly StringProperty PROPERTY_CODEID_LIMITPROVINCEAREA = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LimitProvinceArea"));
+		public static readonly EntityProperty<SPCodeEntity> PROPERTY_CODEID_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ParentID"));
 		public static readonly IntProperty PROPERTY_CODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
@@ -191,31 +185,17 @@ namespace SPS.Data.Tables
                     return typeof (DateTime);
                 case "TotalCount":
                     return typeof (int);
-                case "TotalPhoneCount":
-                    return typeof (int);
                 case "TotalSuccessCount":
-                    return typeof (int);
-                case "TotalPhoneSuccessCount":
                     return typeof (int);
                 case "InterceptCount":
                     return typeof (int);
-                case "InterceptPhoneCount":
-                    return typeof (int);
                 case "DownTotalCount":
-                    return typeof (int);
-                case "DownPhoneTotalCount":
                     return typeof (int);
                 case "DownSycnSuccess":
                     return typeof (int);
-                case "DownPhoneSycnSuccess":
-                    return typeof (int);
                 case "DownSycnFailed":
                     return typeof (int);
-                case "DownPhoneSycnFailed":
-                    return typeof (int);
                 case "DownNotSycn":
-                    return typeof (int);
-                case "DownPhoneNotSycn":
                     return typeof (int);
                 case "ClientID":
                     return typeof (int);

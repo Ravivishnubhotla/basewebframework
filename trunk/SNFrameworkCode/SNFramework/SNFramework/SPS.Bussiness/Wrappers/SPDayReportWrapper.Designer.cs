@@ -213,6 +213,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_LIMITPROVINCE;
 		        case "CodeID_LimitProvinceArea":
 					return PROPERTY_CODEID_LIMITPROVINCEAREA;
+		        case "CodeID_ParentID":
+					return PROPERTY_CODEID_PARENTID;
 		        case "CodeID_CreateBy":
 					return PROPERTY_CODEID_CREATEBY;
 		        case "CodeID_CreateAt":
@@ -261,19 +263,12 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_TOTALCOUNT = "TotalCount";
-		public static readonly string PROPERTY_NAME_TOTALPHONECOUNT = "TotalPhoneCount";
 		public static readonly string PROPERTY_NAME_TOTALSUCCESSCOUNT = "TotalSuccessCount";
-		public static readonly string PROPERTY_NAME_TOTALPHONESUCCESSCOUNT = "TotalPhoneSuccessCount";
 		public static readonly string PROPERTY_NAME_INTERCEPTCOUNT = "InterceptCount";
-		public static readonly string PROPERTY_NAME_INTERCEPTPHONECOUNT = "InterceptPhoneCount";
 		public static readonly string PROPERTY_NAME_DOWNTOTALCOUNT = "DownTotalCount";
-		public static readonly string PROPERTY_NAME_DOWNPHONETOTALCOUNT = "DownPhoneTotalCount";
 		public static readonly string PROPERTY_NAME_DOWNSYCNSUCCESS = "DownSycnSuccess";
-		public static readonly string PROPERTY_NAME_DOWNPHONESYCNSUCCESS = "DownPhoneSycnSuccess";
 		public static readonly string PROPERTY_NAME_DOWNSYCNFAILED = "DownSycnFailed";
-		public static readonly string PROPERTY_NAME_DOWNPHONESYCNFAILED = "DownPhoneSycnFailed";
 		public static readonly string PROPERTY_NAME_DOWNNOTSYCN = "DownNotSycn";
-		public static readonly string PROPERTY_NAME_DOWNPHONENOTSYCN = "DownPhoneNotSycn";
 		public static readonly string PROPERTY_NAME_CLIENTID = "ClientID";
 		public static readonly string PROPERTY_NAME_CHANNELID = "ChannelID";
 		public static readonly string PROPERTY_NAME_CODEID = "CodeID";
@@ -375,6 +370,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_PHONELIMITTYPE = "CodeID_SPDayReportEntity_Alias.PhoneLimitType";
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPDayReportEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPDayReportEntity_Alias.LimitProvinceArea";
+		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPDayReportEntity_Alias.ParentID";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPDayReportEntity_Alias.LastModifyBy";
@@ -449,20 +445,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int TotalPhoneCount
-		{
-			get
-			{
-				return entity.TotalPhoneCount;
-			}
-			set
-			{
-				entity.TotalPhoneCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public int TotalSuccessCount
 		{
 			get
@@ -472,20 +454,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.TotalSuccessCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int TotalPhoneSuccessCount
-		{
-			get
-			{
-				return entity.TotalPhoneSuccessCount;
-			}
-			set
-			{
-				entity.TotalPhoneSuccessCount = value;
 			}
 		}
 		/// <summary>
@@ -505,20 +473,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int InterceptPhoneCount
-		{
-			get
-			{
-				return entity.InterceptPhoneCount;
-			}
-			set
-			{
-				entity.InterceptPhoneCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public int DownTotalCount
 		{
 			get
@@ -528,20 +482,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.DownTotalCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int DownPhoneTotalCount
-		{
-			get
-			{
-				return entity.DownPhoneTotalCount;
-			}
-			set
-			{
-				entity.DownPhoneTotalCount = value;
 			}
 		}
 		/// <summary>
@@ -561,20 +501,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int DownPhoneSycnSuccess
-		{
-			get
-			{
-				return entity.DownPhoneSycnSuccess;
-			}
-			set
-			{
-				entity.DownPhoneSycnSuccess = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public int DownSycnFailed
 		{
 			get
@@ -589,20 +515,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int DownPhoneSycnFailed
-		{
-			get
-			{
-				return entity.DownPhoneSycnFailed;
-			}
-			set
-			{
-				entity.DownPhoneSycnFailed = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public int DownNotSycn
 		{
 			get
@@ -612,20 +524,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.DownNotSycn = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int DownPhoneNotSycn
-		{
-			get
-			{
-				return entity.DownPhoneNotSycn;
-			}
-			set
-			{
-				entity.DownPhoneNotSycn = value;
 			}
 		}
 		/// <summary>
@@ -1543,6 +1441,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.LimitProvinceArea;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PARENTID)]
+        public SPCodeWrapper CodeID_ParentID
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.ParentID;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]
