@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemShortMessageLogEntity,Legendigital.Framework.Common" table="SystemShortMessageLog" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="RecID" type="int" name="RecID"   />	
+		<property column="MessageID" type="int" name="MessageID"   />	
+		<property column="Statue" type="string" name="Statue"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

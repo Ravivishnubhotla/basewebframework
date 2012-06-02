@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemDictionaryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemDictionaryEntity>, ISystemDictionaryServiceProxyDesigner
+    public interface ISystemDictionaryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemDictionaryEntity, int>, ISystemDictionaryServiceProxyDesigner
     {
         [OperationContract]
         IList<SystemDictionaryEntity> GetDictionaryByGroupCode(string groupCode);

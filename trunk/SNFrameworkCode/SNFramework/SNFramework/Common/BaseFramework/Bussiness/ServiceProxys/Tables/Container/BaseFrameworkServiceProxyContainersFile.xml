@@ -162,6 +162,10 @@
     <property name="SelfDataObj" ref="SystemShortMessageDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
   </object>
+  <object id="SystemShortMessageLogServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemShortMessageLogServiceProxy, Legendigital.Framework.Common">
+    <property name="SelfDataObj" ref="SystemShortMessageLogDataObjectIocID"/>
+	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
+  </object>
   <object id="SystemTaskServiceProxyIocID" type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.SystemTaskServiceProxy, Legendigital.Framework.Common">
     <property name="SelfDataObj" ref="SystemTaskDataObjectIocID"/>
 	<property name="DataObjectsContainerIocID" ref="BaseFrameworkDataObjectContainersIocID"/>
@@ -270,6 +274,7 @@
     <property name="SystemRoleMenuRelationServiceProxyInstance" ref="SystemRoleMenuRelationServiceProxyIocID"/>
     <property name="SystemSettingServiceProxyInstance" ref="SystemSettingServiceProxyIocID"/>
     <property name="SystemShortMessageServiceProxyInstance" ref="SystemShortMessageServiceProxyIocID"/>
+    <property name="SystemShortMessageLogServiceProxyInstance" ref="SystemShortMessageLogServiceProxyIocID"/>
     <property name="SystemTaskServiceProxyInstance" ref="SystemTaskServiceProxyIocID"/>
     <property name="SystemTemplateServiceProxyInstance" ref="SystemTemplateServiceProxyIocID"/>
     <property name="SystemTerminologyServiceProxyInstance" ref="SystemTerminologyServiceProxyIocID"/>

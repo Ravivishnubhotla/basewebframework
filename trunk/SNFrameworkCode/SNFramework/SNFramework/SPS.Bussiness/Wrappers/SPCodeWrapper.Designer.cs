@@ -151,13 +151,17 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SPCODELENGTH = "SPCodeLength";
 		public static readonly string PROPERTY_NAME_HASFILTERS = "HasFilters";
 		public static readonly string PROPERTY_NAME_HASPARAMSCONVERT = "HasParamsConvert";
-		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
-		public static readonly string PROPERTY_NAME_DISABLECITY = "DisableCity";
 		public static readonly string PROPERTY_NAME_ISDIABLE = "IsDiable";
-		public static readonly string PROPERTY_NAME_DAYLIMIT = "DayLimit";
-		public static readonly string PROPERTY_NAME_MONTHLIMIT = "MonthLimit";
 		public static readonly string PROPERTY_NAME_PRICE = "Price";
-		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
+		public static readonly string PROPERTY_NAME_OPERATIONTYPE = "OperationType";
+		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITCOUNT = "DayTotalLimitCount";
+		public static readonly string PROPERTY_NAME_HASPHONELIMIT = "HasPhoneLimit";
+		public static readonly string PROPERTY_NAME_PHONELIMITDAYCOUNT = "PhoneLimitDayCount";
+		public static readonly string PROPERTY_NAME_PHONELIMITMONTHCOUNT = "PhoneLimitMonthCount";
+		public static readonly string PROPERTY_NAME_PHONELIMITTYPE = "PhoneLimitType";
+		public static readonly string PROPERTY_NAME_LIMITPROVINCE = "LimitProvince";
+		public static readonly string PROPERTY_NAME_LIMITPROVINCEAREA = "LimitProvinceArea";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -432,34 +436,6 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string Province
-		{
-			get
-			{
-				return entity.Province;
-			}
-			set
-			{
-				entity.Province = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string DisableCity
-		{
-			get
-			{
-				return entity.DisableCity;
-			}
-			set
-			{
-				entity.DisableCity = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public bool IsDiable
 		{
 			get
@@ -469,34 +445,6 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.IsDiable = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string DayLimit
-		{
-			get
-			{
-				return entity.DayLimit;
-			}
-			set
-			{
-				entity.DayLimit = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string MonthLimit
-		{
-			get
-			{
-				return entity.MonthLimit;
-			}
-			set
-			{
-				entity.MonthLimit = value;
 			}
 		}
 		/// <summary>
@@ -516,15 +464,127 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string SendText
+		public string OperationType
 		{
 			get
 			{
-				return entity.SendText;
+				return entity.OperationType;
 			}
 			set
 			{
-				entity.SendText = value;
+				entity.OperationType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool HasDayTotalLimit
+		{
+			get
+			{
+				return entity.HasDayTotalLimit;
+			}
+			set
+			{
+				entity.HasDayTotalLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int DayTotalLimitCount
+		{
+			get
+			{
+				return entity.DayTotalLimitCount;
+			}
+			set
+			{
+				entity.DayTotalLimitCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool HasPhoneLimit
+		{
+			get
+			{
+				return entity.HasPhoneLimit;
+			}
+			set
+			{
+				entity.HasPhoneLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int PhoneLimitDayCount
+		{
+			get
+			{
+				return entity.PhoneLimitDayCount;
+			}
+			set
+			{
+				entity.PhoneLimitDayCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int PhoneLimitMonthCount
+		{
+			get
+			{
+				return entity.PhoneLimitMonthCount;
+			}
+			set
+			{
+				entity.PhoneLimitMonthCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public int PhoneLimitType
+		{
+			get
+			{
+				return entity.PhoneLimitType;
+			}
+			set
+			{
+				entity.PhoneLimitType = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? LimitProvince
+		{
+			get
+			{
+				return entity.LimitProvince;
+			}
+			set
+			{
+				entity.LimitProvince = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string LimitProvinceArea
+		{
+			get
+			{
+				return entity.LimitProvinceArea;
+			}
+			set
+			{
+				entity.LimitProvinceArea = value;
 			}
 		}
 		/// <summary>

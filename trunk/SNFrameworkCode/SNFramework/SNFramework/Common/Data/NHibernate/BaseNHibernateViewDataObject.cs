@@ -19,8 +19,8 @@ using Spring.Data.NHibernate.Generic.Support;
 
 namespace Legendigital.Framework.Common.Data.NHibernate
 {
-    public abstract class BaseNHibernateViewDataObject<DomainType> : HibernateDaoSupport,
-                                                                     IBaseNHibernateViewDataObject<DomainType> where DomainType : BaseViewEntity
+    public abstract class BaseNHibernateViewDataObject<DomainType, EntityKeyType> : HibernateDaoSupport,
+                                                                     IBaseNHibernateViewDataObject<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType>
     {
         #region 基本操作
 
@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual DomainType Load(object id)
+        public virtual DomainType Load(EntityKeyType id)
         {
             try
             {
@@ -58,13 +58,15 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
         }
 
+ 
+
 
         /// <summary>
         /// 加载对象
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="id"></param>
-        public virtual void Load(DomainType instance, object id)
+        public virtual void Load(DomainType instance, EntityKeyType id)
         {
             try
             {
@@ -713,7 +715,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public abstract string[] PkPropertyName { get; }
 
-        public virtual DomainType FullLoad(object id)
+        public virtual DomainType FullLoad(EntityKeyType id)
         {
             try
             {
@@ -900,6 +902,13 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             IClassMetadata classMetadata = GetClassMetadata();
 
             return (classMetadata.GetPropertyValue(domain, propertyName,EntityMode.Poco));
+        }
+
+        public virtual List<DomainType> QueryOver(System.Linq.Expressions.Expression<Func<DomainType>> query)
+        {
+            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+
+            return new List<DomainType>(session.QueryOver(query).List<DomainType>());
         }
 
 

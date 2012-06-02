@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using SPS.Bussiness.Wrappers;
 
 namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
@@ -51,23 +52,24 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
             {
                 SPCodeWrapper obj = new SPCodeWrapper();
 
-                obj.Name = this.txtName.Text.Trim();
+                obj.Name = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbMOType.SelectedItem.Value;
+                obj.Code = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbMOType.SelectedItem.Value;
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.Code = this.txtCode.Text.Trim();
                 obj.ChannelID = ChannelID;
                 obj.Mo = this.txtMO.Text.Trim();
                 obj.MOType = this.cmbMOType.SelectedItem.Value;
                 obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
                 obj.SPCode = this.txtSPCode.Text.Trim();
-                obj.Province = this.txtProvince.Text.Trim();
-                obj.DisableCity = this.txtDisableCity.Text.Trim();
+                //obj.Province = this.txtProvince.Text.Trim();
+                //obj.DisableCity = this.txtDisableCity.Text.Trim();
                 obj.IsDiable = false;
+
                 //obj.SPType = "1";
                 //obj.CodeLength = obj.Mo.Length;
-                obj.DayLimit =  this.txtDayLimit.Text.Trim()  ;
-                obj.MonthLimit = this.txtMonthLimit.Text.Trim();
+                //obj.DayLimit =  this.txtDayLimit.Text.Trim()  ;
+                //obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                 obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                obj.SendText = this.txtCodeSendText.Text.Trim();
+                //obj.SendText = this.txtCodeSendText.Text.Trim();
                 obj.HasFilters = this.chkHasFilters.Checked;
                 obj.HasParamsConvert = this.chkHasParamsConvert.Checked;
 

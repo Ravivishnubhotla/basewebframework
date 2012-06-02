@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemMoudleDataObject : BaseNHibernateDataObject<SystemMoudleEntity>
+    public partial class SystemMoudleDataObject : BaseNHibernateDataObject<SystemMoudleEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_MOUDLEID = new IntProperty(Property.ForName(SystemMoudleEntity.PROPERTY_NAME_MOUDLEID));		

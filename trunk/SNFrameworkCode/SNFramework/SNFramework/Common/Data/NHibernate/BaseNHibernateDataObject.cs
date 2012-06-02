@@ -17,7 +17,7 @@ using IDictionary=System.Collections.IDictionary;
 
 namespace Legendigital.Framework.Common.Data.NHibernate
 {
-    public abstract class BaseNHibernateDataObject<DomainType> : BaseNHibernateViewDataObject<DomainType>, IBaseNHibernateDataObject<DomainType> where DomainType : BaseTableEntity
+    public abstract class BaseNHibernateDataObject<DomainType, EntityKeyType> : BaseNHibernateViewDataObject<DomainType, EntityKeyType>, IBaseNHibernateDataObject<DomainType, EntityKeyType> where DomainType : BaseTableEntity<EntityKeyType>
     {
         #region 基本操作
 
@@ -95,7 +95,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         /// <param name="instance">更新的值</param>
         /// <param name="id">id</param>
         /// <param name="updatePropertyNames">需要更新的属性名</param>
-        public virtual void PartUpdate(DomainType instance, object id, string[] updatePropertyNames)
+        public virtual void PartUpdate(DomainType instance, EntityKeyType id, string[] updatePropertyNames)
         {
             try
             {
@@ -136,7 +136,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         ///// 通过ID删除数据
         ///// </summary>
         ///// <param name="id"></param>
-        public virtual void DeleteByID(object id)
+        public virtual void DeleteByID(EntityKeyType id)
         {
             DomainType obj = Load(id);
             if (obj != null)

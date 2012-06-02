@@ -11,7 +11,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPMonitoringRequestServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMonitoringRequestEntity> ,ISPMonitoringRequestServiceProxyDesigner
+    public interface ISPMonitoringRequestServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMonitoringRequestEntity, int>, ISPMonitoringRequestServiceProxyDesigner
     {
 
 

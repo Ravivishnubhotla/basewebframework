@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemResourcesServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemResourcesEntity>, ISystemResourcesServiceProxyDesigner
+    public interface ISystemResourcesServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemResourcesEntity, int>, ISystemResourcesServiceProxyDesigner
     {
 
 

@@ -17,8 +17,8 @@ namespace Legendigital.Framework.Common.Entity
 
         string LastModifyComment { get; set; }
 
-        string GetEntityName { get; set; }
+        string GetEntityName();
 
-        string GetEntityID { get; set; }
+        string GetEntityID();
     }
 }

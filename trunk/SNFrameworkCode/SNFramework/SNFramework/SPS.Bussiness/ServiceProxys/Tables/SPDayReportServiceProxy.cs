@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity> ,ISPDayReportServiceProxyDesigner
+    public interface ISPDayReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPDayReportEntity, int>, ISPDayReportServiceProxyDesigner
     {
 
 

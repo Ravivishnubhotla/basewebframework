@@ -9,13 +9,7 @@
  <object id="SPChannelDataObjectIocID" type="SPS.Data.Tables.SPChannelDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
- <object id="SPChannelFiltersDataObjectIocID" type="SPS.Data.Tables.SPChannelFiltersDataObject, SPS.Data">
-    <property name="HibernateTemplate" ref="HibernateTemplate"/>
-  </object>
  <object id="SPChannelParamsDataObjectIocID" type="SPS.Data.Tables.SPChannelParamsDataObject, SPS.Data">
-    <property name="HibernateTemplate" ref="HibernateTemplate"/>
-  </object>
- <object id="SPChannelParamsConvertDataObjectIocID" type="SPS.Data.Tables.SPChannelParamsConvertDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPChannelSycnParamsDataObjectIocID" type="SPS.Data.Tables.SPChannelSycnParamsDataObject, SPS.Data">
@@ -30,13 +24,13 @@
  <object id="SPCodeDataObjectIocID" type="SPS.Data.Tables.SPCodeDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
- <object id="SPCodeFilterDataObjectIocID" type="SPS.Data.Tables.SPCodeFilterDataObject, SPS.Data">
-    <property name="HibernateTemplate" ref="HibernateTemplate"/>
-  </object>
- <object id="SPCodeParamsConvertDataObjectIocID" type="SPS.Data.Tables.SPCodeParamsConvertDataObject, SPS.Data">
+ <object id="SPCodeInfoDataObjectIocID" type="SPS.Data.Tables.SPCodeInfoDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPDayReportDataObjectIocID" type="SPS.Data.Tables.SPDayReportDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPFilterRuleDataObjectIocID" type="SPS.Data.Tables.SPFilterRuleDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPMemoDataObjectIocID" type="SPS.Data.Tables.SPMemoDataObject, SPS.Data">
@@ -45,7 +39,7 @@
  <object id="SPMonitoringRequestDataObjectIocID" type="SPS.Data.Tables.SPMonitoringRequestDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
- <object id="SPPhoneAreaDataObjectIocID" type="SPS.Data.Tables.SPPhoneAreaDataObject, SPS.Data">
+ <object id="SPParamsConvertRuleDataObjectIocID" type="SPS.Data.Tables.SPParamsConvertRuleDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPRecordDataObjectIocID" type="SPS.Data.Tables.SPRecordDataObject, SPS.Data">
@@ -68,19 +62,17 @@
 
 <object id="DataObjectContainersIocID" type="SPS.Data.Tables.Container.DataObjectContainers, SPS.Data">
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
-    <property name="SPChannelFiltersDataObjectInstance" ref="SPChannelFiltersDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
-    <property name="SPChannelParamsConvertDataObjectInstance" ref="SPChannelParamsConvertDataObjectIocID"/>
     <property name="SPChannelSycnParamsDataObjectInstance" ref="SPChannelSycnParamsDataObjectIocID"/>
     <property name="SPClientCodeRelationDataObjectInstance" ref="SPClientCodeRelationDataObjectIocID"/>
     <property name="SPClientCodeSycnParamsDataObjectInstance" ref="SPClientCodeSycnParamsDataObjectIocID"/>
     <property name="SPCodeDataObjectInstance" ref="SPCodeDataObjectIocID"/>
-    <property name="SPCodeFilterDataObjectInstance" ref="SPCodeFilterDataObjectIocID"/>
-    <property name="SPCodeParamsConvertDataObjectInstance" ref="SPCodeParamsConvertDataObjectIocID"/>
+    <property name="SPCodeInfoDataObjectInstance" ref="SPCodeInfoDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
+    <property name="SPFilterRuleDataObjectInstance" ref="SPFilterRuleDataObjectIocID"/>
     <property name="SPMemoDataObjectInstance" ref="SPMemoDataObjectIocID"/>
     <property name="SPMonitoringRequestDataObjectInstance" ref="SPMonitoringRequestDataObjectIocID"/>
-    <property name="SPPhoneAreaDataObjectInstance" ref="SPPhoneAreaDataObjectIocID"/>
+    <property name="SPParamsConvertRuleDataObjectInstance" ref="SPParamsConvertRuleDataObjectIocID"/>
     <property name="SPRecordDataObjectInstance" ref="SPRecordDataObjectIocID"/>
     <property name="SPRecordExtendInfoDataObjectInstance" ref="SPRecordExtendInfoDataObjectIocID"/>
     <property name="SPSClientDataObjectInstance" ref="SPSClientDataObjectIocID"/>

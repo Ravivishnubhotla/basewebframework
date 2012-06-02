@@ -86,6 +86,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         {get; set;}
 		public ISystemShortMessageServiceProxy SystemShortMessageServiceProxyInstance
         {get; set;}
+		public ISystemShortMessageLogServiceProxy SystemShortMessageLogServiceProxyInstance
+        {get; set;}
 		public ISystemTaskServiceProxy SystemTaskServiceProxyInstance
         {get; set;}
 		public ISystemTemplateServiceProxy SystemTemplateServiceProxyInstance

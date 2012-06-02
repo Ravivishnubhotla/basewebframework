@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers 
 {
 	[Serializable]
-    public partial class SystemPhoneAreaWrapper  : BaseSpringNHibernateWrapper<SystemPhoneAreaEntity, ISystemPhoneAreaServiceProxy, SystemPhoneAreaWrapper>
+    public partial class SystemPhoneAreaWrapper   
     { 
         #region Static Common Data Operation
 		
@@ -35,12 +35,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -56,7 +56,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SystemPhoneAreaWrapper FindById(object id)
+        public static SystemPhoneAreaWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
@@ -103,6 +103,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public static SystemPhoneAreaWrapper GetPhoneAreaByMobilePrefix(string mobilePrefix)
         {
             return  new SystemPhoneAreaWrapper(businessProxy.GetPhoneAreaByMobilePrefix(mobilePrefix));
+        }
+
+        public static object GetAllPhoneInfos_Key()
+        {
+            return null;
         }
     }
 }

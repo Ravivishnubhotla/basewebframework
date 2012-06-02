@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemAttachmentContentEntity> FindAllByAttacmentID(SystemAttachmentEntity _attacmentID);
     }
 
-    public partial class SystemAttachmentContentServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemAttachmentContentEntity>
+    public partial class SystemAttachmentContentServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemAttachmentContentEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

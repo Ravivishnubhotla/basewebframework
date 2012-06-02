@@ -16,11 +16,11 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 {
 
 
-    public class BaseSpringNHibernateEntityServiceProxy<DomainType> : IBaseSpringNHibernateEntityServiceProxy<DomainType> where DomainType : BaseTableEntity
+    public class BaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType> : IBaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType> where DomainType : BaseTableEntity<EntityKeyType>
     {
-        protected IBaseNHibernateDataObject<DomainType> selfDataObject;
+        protected IBaseNHibernateDataObject<DomainType, EntityKeyType> selfDataObject;
 
-        public IBaseNHibernateDataObject<DomainType> SelfDataObject
+        public IBaseNHibernateDataObject<DomainType, EntityKeyType> SelfDataObject
         {
             set
             {
@@ -76,13 +76,13 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         }
 
         [Transaction(TransactionPropagation.Required, ReadOnly = false)]
-        public virtual void DeleteByID(object id)
+        public virtual void DeleteByID(EntityKeyType id)
         {
             selfDataObject.DeleteByID(id);
         }
 
         [Transaction(TransactionPropagation.Required, ReadOnly = false)]
-        public virtual void PatchDeleteByIDs(object[] ids)
+        public virtual void PatchDeleteByIDs(EntityKeyType[] ids)
         {
             foreach (var id in ids)
             {
@@ -102,12 +102,12 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             selfDataObject.Refresh(instance);
         }
 
-        public virtual DomainType FindById(object id)
+        public virtual DomainType FindById(EntityKeyType id)
         {
             return selfDataObject.Load(id);
         }
 
-        public virtual DomainType FullFindById(object id)
+        public virtual DomainType FullFindById(EntityKeyType id)
         {
             return selfDataObject.FullLoad(id);
         }

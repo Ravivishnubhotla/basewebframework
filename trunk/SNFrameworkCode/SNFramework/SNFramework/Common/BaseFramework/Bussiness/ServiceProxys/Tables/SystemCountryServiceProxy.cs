@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemCountryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemCountryEntity> ,ISystemCountryServiceProxyDesigner
+    public interface ISystemCountryServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemCountryEntity, int>, ISystemCountryServiceProxyDesigner
     {
         SystemCountryEntity FindByCode3(string code3);
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using NHibernate.Criterion;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Entity.Tables;
@@ -37,6 +38,21 @@ namespace SPS.Data.Tables
             dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_HASFILTERS.Eq(false));
 
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
+        }
+
+
+        public List<SPCodeEntity> GetAllRootCode()
+        {
+            NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            //≈≈≥˝ƒ¨»œ÷∏¡Ó
+            dynamicQueryGenerator.AddWhereClause(Not(SPCodeDataObject.PROPERTY_CODETYPE.Eq(DictionaryConst.Dictionary_CodeType_CodeDefault_Key)));
+
+            List<SPCodeEntity> allCodes = this.FindListByQueryBuilder(dynamicQueryGenerator);
+
+            var allrootCode = allCodes.FindAll(p => (p.CheckIsRoot(allCodes)));
+
+            return allrootCode;
         }
     }
 }

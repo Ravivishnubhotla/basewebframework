@@ -77,14 +77,6 @@
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
       <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPChannelFiltersServiceProxy.Designer.cs">
-      <DependentUpon>SPChannelFiltersServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceProxys\Tables\SPChannelParamsConvertServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPChannelParamsConvertServiceProxy.Designer.cs">
-      <DependentUpon>SPChannelParamsConvertServiceProxy.cs</DependentUpon>
-    </Compile>
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
       <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
@@ -105,13 +97,9 @@
     <Compile Include="ServiceProxys\Tables\SPClientCodeSycnParamsServiceProxy.Designer.cs">
       <DependentUpon>SPClientCodeSycnParamsServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPCodeFilterServiceProxy.Designer.cs">
-      <DependentUpon>SPCodeFilterServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ServiceProxys\Tables\SPCodeParamsConvertServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPCodeParamsConvertServiceProxy.Designer.cs">
-      <DependentUpon>SPCodeParamsConvertServiceProxy.cs</DependentUpon>
+    <Compile Include="ServiceProxys\Tables\SPCodeInfoServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCodeInfoServiceProxy.Designer.cs">
+      <DependentUpon>SPCodeInfoServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPCodeServiceProxy.Designer.cs">
@@ -121,6 +109,10 @@
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
       <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPFilterRuleServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPFilterRuleServiceProxy.Designer.cs">
+      <DependentUpon>SPFilterRuleServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPMemoServiceProxy.Designer.cs">
       <DependentUpon>SPMemoServiceProxy.cs</DependentUpon>
@@ -129,9 +121,9 @@
     <Compile Include="ServiceProxys\Tables\SPMonitoringRequestServiceProxy.Designer.cs">
       <DependentUpon>SPMonitoringRequestServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPPhoneAreaServiceProxy.Designer.cs">
-      <DependentUpon>SPPhoneAreaServiceProxy.cs</DependentUpon>
+    <Compile Include="ServiceProxys\Tables\SPParamsConvertRuleServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPParamsConvertRuleServiceProxy.Designer.cs">
+      <DependentUpon>SPParamsConvertRuleServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPRecordExtendInfoServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPRecordExtendInfoServiceProxy.Designer.cs">
@@ -148,14 +140,6 @@
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.Designer.cs">
       <DependentUpon>SPUpperServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wrappers\SPChannelFiltersWrapper.cs" />
-    <Compile Include="Wrappers\SPChannelFiltersWrapper.Designer.cs">
-      <DependentUpon>SPChannelFiltersWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wrappers\SPChannelParamsConvertWrapper.cs" />
-    <Compile Include="Wrappers\SPChannelParamsConvertWrapper.Designer.cs">
-      <DependentUpon>SPChannelParamsConvertWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
@@ -177,13 +161,9 @@
     <Compile Include="Wrappers\SPClientCodeSycnParamsWrapper.Designer.cs">
       <DependentUpon>SPClientCodeSycnParamsWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wrappers\SPCodeFilterWrapper.cs" />
-    <Compile Include="Wrappers\SPCodeFilterWrapper.Designer.cs">
-      <DependentUpon>SPCodeFilterWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Wrappers\SPCodeParamsConvertWrapper.cs" />
-    <Compile Include="Wrappers\SPCodeParamsConvertWrapper.Designer.cs">
-      <DependentUpon>SPCodeParamsConvertWrapper.cs</DependentUpon>
+    <Compile Include="Wrappers\SPCodeInfoWrapper.cs" />
+    <Compile Include="Wrappers\SPCodeInfoWrapper.Designer.cs">
+      <DependentUpon>SPCodeInfoWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPCodeWrapper.cs" />
     <Compile Include="Wrappers\SPCodeWrapper.Designer.cs">
@@ -193,6 +173,10 @@
     <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">
       <DependentUpon>SPDayReportWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wrappers\SPFilterRuleWrapper.cs" />
+    <Compile Include="Wrappers\SPFilterRuleWrapper.Designer.cs">
+      <DependentUpon>SPFilterRuleWrapper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wrappers\SPMemoWrapper.cs" />
     <Compile Include="Wrappers\SPMemoWrapper.Designer.cs">
       <DependentUpon>SPMemoWrapper.cs</DependentUpon>
@@ -201,9 +185,9 @@
     <Compile Include="Wrappers\SPMonitoringRequestWrapper.Designer.cs">
       <DependentUpon>SPMonitoringRequestWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wrappers\SPPhoneAreaWrapper.cs" />
-    <Compile Include="Wrappers\SPPhoneAreaWrapper.Designer.cs">
-      <DependentUpon>SPPhoneAreaWrapper.cs</DependentUpon>
+    <Compile Include="Wrappers\SPParamsConvertRuleWrapper.cs" />
+    <Compile Include="Wrappers\SPParamsConvertRuleWrapper.Designer.cs">
+      <DependentUpon>SPParamsConvertRuleWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPRecordExtendInfoWrapper.cs" />
     <Compile Include="Wrappers\SPRecordExtendInfoWrapper.Designer.cs">

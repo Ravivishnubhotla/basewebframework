@@ -175,7 +175,29 @@ namespace Legendigital.Common.WebApp.AppCode
             node.Icon = GetDefaultIcon(iscategoty);
         }
 
+        public static string GetSelectMutilItems(ComboBoxBaseMulti<ListItem> cmb,string splitChar)
+        {
+            List<string> selectItems = new List<string>();
+            foreach (var selectItem in cmb.SelectedItems)
+            {
+                if (selectItem.Value!=null)
+                    selectItems.Add(selectItem.Value.ToString());
+            }
+            return string.Join(splitChar, selectItems.ToArray());
+        }
 
+        public static void SetSelectMutilItems(ComboBoxBaseMulti<ListItem> cmb, string splitChar,string selectValue)
+        {
+            List<string> selectItems = new List<string>(selectValue.Split(splitChar.ToCharArray(), StringSplitOptions.None));
+
+            cmb.SelectedItems.Clear();
+
+            foreach (var selectItem in selectItems)
+            {
+                cmb.SelectedItems.Add(new SelectedListItem(selectItem));          
+            }
+           
+        }
 
         public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e,Ext.Net.PagingToolbar pagingToolbar)
         {

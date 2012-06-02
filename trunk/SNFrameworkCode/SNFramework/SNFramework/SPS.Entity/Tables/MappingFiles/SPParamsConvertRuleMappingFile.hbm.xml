@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPParamsConvertRuleEntity,SPS.Entity" table="SPParamsConvertRule" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<property column="ParentDataID" type="int" name="ParentDataID"   />	
+		<property column="ParentDataType" type="string" name="ParentDataType"   length="100" />	
+		<property column="ConvertCode" type="string" name="ConvertCode"   length="4000" />	
+		<property column="ConvertType" type="string" name="ConvertType"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

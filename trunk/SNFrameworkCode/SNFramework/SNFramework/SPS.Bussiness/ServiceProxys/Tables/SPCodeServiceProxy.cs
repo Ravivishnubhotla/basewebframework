@@ -13,7 +13,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPCodeServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPCodeEntity> ,ISPCodeServiceProxyDesigner
+    public interface ISPCodeServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPCodeEntity, int>, ISPCodeServiceProxyDesigner
     {
 	    void QuickAddCode(SPCodeEntity codeEntity, bool hasSubCode, string subCode);
     }
@@ -38,9 +38,9 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             code.SPCode = "";
             code.SPCodeLength = code.SPCode.Length;
             code.IsDiable = false;
-            code.DayLimit = "";
-            code.MonthLimit = "";
-            code.SendText = "";
+            //code.DayLimit = "";
+            //code.MonthLimit = "";
+            //code.SendText = "";
             code.Price = 0;
 
             return code;
@@ -74,15 +74,15 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                     subcode.MOType = codeEntity.MOType;
                     subcode.OrderIndex = codeEntity.OrderIndex + 1;
                     subcode.SPCode = codeEntity.SPCode;
-                    subcode.Province = codeEntity.Province;
-                    subcode.DisableCity = codeEntity.DisableCity;
+                    //subcode.Province = codeEntity.Province;
+                    //subcode.DisableCity = codeEntity.DisableCity;
                     subcode.IsDiable = false;
                     subcode.SPCodeType = "1";
                     subcode.MOLength = codeEntity.Mo.Length;
-                    subcode.DayLimit = codeEntity.DayLimit;
-                    subcode.MonthLimit = codeEntity.MonthLimit;
+                    //subcode.DayLimit = codeEntity.DayLimit;
+                    //subcode.MonthLimit = codeEntity.MonthLimit;
                     subcode.Price = codeEntity.Price;
-                    subcode.SendText = codeEntity.SendText;
+                    //subcode.SendText = codeEntity.SendText;
                     subcode.HasFilters = codeEntity.HasFilters;
                     subcode.HasParamsConvert = codeEntity.HasParamsConvert;
 

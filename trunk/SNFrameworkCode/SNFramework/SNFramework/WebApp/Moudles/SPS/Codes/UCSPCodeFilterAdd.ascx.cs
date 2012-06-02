@@ -37,17 +37,17 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
         {
             try
             {
-                SPCodeFilterWrapper obj = new SPCodeFilterWrapper();
+                //SPCodeFilterWrapper obj = new SPCodeFilterWrapper();
  
-                obj.ParamsName = this.txtParamsName.Text.Trim();
-                obj.FilterType = this.txtFilterType.Text.Trim();
-                obj.FilterValue = this.txtFilterValue.Text.Trim();
+                //obj.ParamsName = this.txtParamsName.Text.Trim();
+                //obj.FilterType = this.txtFilterType.Text.Trim();
+                //obj.FilterValue = this.txtFilterValue.Text.Trim();
 
 
 
 
 
-                SPCodeFilterWrapper.Save(obj);
+                //SPCodeFilterWrapper.Save(obj);
 
                 winSPCodeFilterAdd.Hide();
 

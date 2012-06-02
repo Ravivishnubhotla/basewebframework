@@ -3,7 +3,7 @@
 
 <class name="Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemShortMessageEntity,Legendigital.Framework.Common" table="SystemShortMessage" lazy="true"  >
 
-<id name="ShortMessageID" column="ShortMessage_ID" type="int" unsaved-value="0" >
+<id name="Id" column="ID" type="int" unsaved-value="0" >
    <generator class="native">
 
 </generator>
@@ -11,16 +11,15 @@
 </id>
 
 
-		<property column="ShortMessage_Title" type="string" name="ShortMessageTitle"   not-null="true"  length="400" />	
-		<property column="ShortMessage_Category" type="string" name="ShortMessageCategory"   length="400" />	
-		<property column="ShortMessage_Content" type="string" name="ShortMessageContent"   length="8000" />	
-		<property column="ShortMessage_SenderName" type="string" name="ShortMessageSenderName"   length="100" />	
-		<property column="ShortMessage_ToName" type="string" name="ShortMessageToName"   length="1000" />	
-		<property column="ShortMessage_Send_Date" type="DateTime" name="ShortMessageSendDate"   not-null="true"  />	
-		<property column="ShortMessage_Send_UserID" type="int" name="ShortMessageSendUserID"   />	
-		<property column="ShortMessage_Receiver_UserID" type="int" name="ShortMessageReceiverUserID"   not-null="true"  />	
-		<property column="ShortMessage_IsRead" type="Boolean" name="ShortMessageIsRead"   not-null="true"  />	
-		<property column="ShortMessage_Type" type="string" name="ShortMessageType"   length="20" />	
+		<property column="Title" type="string" name="Title"   not-null="true"  length="400" />	
+		<property column="MessageType" type="string" name="MessageType"   length="100" />	
+		<property column="Category" type="string" name="Category"   length="400" />	
+		<property column="MsgContent" type="string" name="MsgContent"   length="8000" />	
+		<property column="SendID" type="int" name="SendID"   />	
+		<property column="GroupID" type="int" name="GroupID"   />	
+		<property column="SendDate" type="DateTime" name="SendDate"   not-null="true"  />	
+		<property column="Status" type="string" name="Status"   length="100" />	
+		<property column="ReplyID" type="int" name="ReplyID"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

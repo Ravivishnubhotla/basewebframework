@@ -24,49 +24,49 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         [DirectMethod]
         public void Show(int id)
         {
-            try
-            {
-                SPChannelParamsConvertWrapper obj = SPChannelParamsConvertWrapper.FindById(id);
+            //try
+            //{
+            //    SPChannelParamsConvertWrapper obj = SPChannelParamsConvertWrapper.FindById(id);
 
-                if (obj != null)
-                {
-
-
-
-                    this.lblName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
-                    this.lblParamsValue.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsValue);
-                    this.lblParamsConvertTo.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertTo);
-                    this.lblParamsConvertType.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertType);
-                    this.lblParamsConvertCondition.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertCondition);
-                    this.lblChannelID.Text = obj.ChannelID.ToString();
-                    this.lblCreateBy.Text = obj.CreateBy.ToString();
-                    this.lblCreateAt.Text = obj.CreateAt.ToString();
-                    this.lblLastModifyBy.Text = obj.LastModifyBy.ToString();
-                    this.lblLastModifyAt.Text = obj.LastModifyAt.ToString();
+            //    if (obj != null)
+            //    {
 
 
 
+            //        this.lblName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
+            //        this.lblParamsValue.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsValue);
+            //        this.lblParamsConvertTo.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertTo);
+            //        this.lblParamsConvertType.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertType);
+            //        this.lblParamsConvertCondition.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsConvertCondition);
+            //        this.lblChannelID.Text = obj.ChannelID.ToString();
+            //        this.lblCreateBy.Text = obj.CreateBy.ToString();
+            //        this.lblCreateAt.Text = obj.CreateAt.ToString();
+            //        this.lblLastModifyBy.Text = obj.LastModifyBy.ToString();
+            //        this.lblLastModifyAt.Text = obj.LastModifyAt.ToString();
 
 
-                    //hidLogID.Text = id.ToString();
 
 
-                    winSPChannelParamsConvertView.Show();
 
-                }
-                else
-                {
-                    ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
-                return;
-            }
+            //        //hidLogID.Text = id.ToString();
+
+
+            //        winSPChannelParamsConvertView.Show();
+
+            //    }
+            //    else
+            //    {
+            //        ResourceManager.AjaxSuccess = false;
+            //        ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+            //        return;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ResourceManager.AjaxSuccess = false;
+            //    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+            //    return;
+            //}
         }
 
 

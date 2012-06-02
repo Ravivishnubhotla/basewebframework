@@ -25,7 +25,7 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserWrapper : BaseSpringNHibernateWrapper<SystemUserEntity, ISystemUserServiceProxy, SystemUserWrapper>
+    public partial class SystemUserWrapper
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
@@ -58,12 +58,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SystemUserWrapper FindById(object id)
+        public static SystemUserWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }

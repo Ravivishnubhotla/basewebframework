@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-	public interface ISystemMenuServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemMenuEntity>,ISystemMenuServiceProxyDesigner
+    public interface ISystemMenuServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemMenuEntity, int>, ISystemMenuServiceProxyDesigner
     {
         [OperationContract]
         List<SystemMenuEntity> GetUserAssignedMenuByLoginID(string loginID);

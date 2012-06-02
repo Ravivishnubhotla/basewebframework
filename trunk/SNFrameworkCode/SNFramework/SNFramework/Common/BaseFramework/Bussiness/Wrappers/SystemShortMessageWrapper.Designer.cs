@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemShortMessageWrapper   
+    public partial class SystemShortMessageWrapper   : BaseSpringNHibernateWrapper<SystemShortMessageEntity, ISystemShortMessageServiceProxy, SystemShortMessageWrapper,int>
     {
         #region Member
 
@@ -60,17 +60,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
       #region 公共常量
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemShortMessageEntity";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGEID = "ShortMessageID";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGETITLE = "ShortMessageTitle";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGECATEGORY = "ShortMessageCategory";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGECONTENT = "ShortMessageContent";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDERNAME = "ShortMessageSenderName";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGETONAME = "ShortMessageToName";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDDATE = "ShortMessageSendDate";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGESENDUSERID = "ShortMessageSendUserID";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID = "ShortMessageReceiverUserID";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGEISREAD = "ShortMessageIsRead";
-		public static readonly string PROPERTY_NAME_SHORTMESSAGETYPE = "ShortMessageType";
+		public static readonly string PROPERTY_NAME_ID = "Id";
+		public static readonly string PROPERTY_NAME_TITLE = "Title";
+		public static readonly string PROPERTY_NAME_MESSAGETYPE = "MessageType";
+		public static readonly string PROPERTY_NAME_CATEGORY = "Category";
+		public static readonly string PROPERTY_NAME_MSGCONTENT = "MsgContent";
+		public static readonly string PROPERTY_NAME_SENDID = "SendID";
+		public static readonly string PROPERTY_NAME_GROUPID = "GroupID";
+		public static readonly string PROPERTY_NAME_SENDDATE = "SendDate";
+		public static readonly string PROPERTY_NAME_STATUS = "Status";
+		public static readonly string PROPERTY_NAME_REPLYID = "ReplyID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -94,155 +93,141 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int ShortMessageID
+		public int Id
 		{
 			get
 			{
-				return entity.ShortMessageID;
+				return entity.Id;
 			}
 			set
 			{
-				entity.ShortMessageID = value;
+				entity.Id = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageTitle
+		public string Title
 		{
 			get
 			{
-				return entity.ShortMessageTitle;
+				return entity.Title;
 			}
 			set
 			{
-				entity.ShortMessageTitle = value;
+				entity.Title = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageCategory
+		public string MessageType
 		{
 			get
 			{
-				return entity.ShortMessageCategory;
+				return entity.MessageType;
 			}
 			set
 			{
-				entity.ShortMessageCategory = value;
+				entity.MessageType = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageContent
+		public string Category
 		{
 			get
 			{
-				return entity.ShortMessageContent;
+				return entity.Category;
 			}
 			set
 			{
-				entity.ShortMessageContent = value;
+				entity.Category = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageSenderName
+		public string MsgContent
 		{
 			get
 			{
-				return entity.ShortMessageSenderName;
+				return entity.MsgContent;
 			}
 			set
 			{
-				entity.ShortMessageSenderName = value;
+				entity.MsgContent = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public string ShortMessageToName
+		public int? SendID
 		{
 			get
 			{
-				return entity.ShortMessageToName;
+				return entity.SendID;
 			}
 			set
 			{
-				entity.ShortMessageToName = value;
+				entity.SendID = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public DateTime ShortMessageSendDate
+		public int? GroupID
 		{
 			get
 			{
-				return entity.ShortMessageSendDate;
+				return entity.GroupID;
 			}
 			set
 			{
-				entity.ShortMessageSendDate = value;
+				entity.GroupID = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int? ShortMessageSendUserID
+		public DateTime SendDate
 		{
 			get
 			{
-				return entity.ShortMessageSendUserID;
+				return entity.SendDate;
 			}
 			set
 			{
-				entity.ShortMessageSendUserID = value;
+				entity.SendDate = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public int ShortMessageReceiverUserID
+		public string Status
 		{
 			get
 			{
-				return entity.ShortMessageReceiverUserID;
+				return entity.Status;
 			}
 			set
 			{
-				entity.ShortMessageReceiverUserID = value;
+				entity.Status = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool ShortMessageIsRead
+		public int? ReplyID
 		{
 			get
 			{
-				return entity.ShortMessageIsRead;
+				return entity.ReplyID;
 			}
 			set
 			{
-				entity.ShortMessageIsRead = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public string ShortMessageType
-		{
-			get
-			{
-				return entity.ShortMessageType;
-			}
-			set
-			{
-				entity.ShortMessageType = value;
+				entity.ReplyID = value;
 			}
 		}
 		/// <summary>
@@ -376,7 +361,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             if (entity == null)
                 return null;
 				
-            if (entity.ShortMessageID == 0)
+            if (entity.Id == 0)
                 return null;
 
             return new SystemShortMessageWrapper(entity);

@@ -123,6 +123,9 @@
  <object id="SystemShortMessageDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemShortMessageDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SystemShortMessageLogDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemShortMessageLogDataObject, Legendigital.Framework.Common">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SystemTaskDataObjectIocID" type="Legendigital.Framework.Common.BaseFramework.Data.Tables.SystemTaskDataObject, Legendigital.Framework.Common">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -217,6 +220,7 @@
     <property name="SystemRoleMenuRelationDataObjectInstance" ref="SystemRoleMenuRelationDataObjectIocID"/>
     <property name="SystemSettingDataObjectInstance" ref="SystemSettingDataObjectIocID"/>
     <property name="SystemShortMessageDataObjectInstance" ref="SystemShortMessageDataObjectIocID"/>
+    <property name="SystemShortMessageLogDataObjectInstance" ref="SystemShortMessageLogDataObjectIocID"/>
     <property name="SystemTaskDataObjectInstance" ref="SystemTaskDataObjectIocID"/>
     <property name="SystemTemplateDataObjectInstance" ref="SystemTemplateDataObjectIocID"/>
     <property name="SystemTerminologyDataObjectInstance" ref="SystemTerminologyDataObjectIocID"/>

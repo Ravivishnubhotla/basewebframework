@@ -104,7 +104,7 @@ namespace SPSUtil.AppCode
             {
                 if (RequestType==0)
                 {
-                    queryString.Add(ParamsStatusName, ParamsRequestTypeReportValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+                    queryString.Add(ParamsStatusName, ParamsStatusValue);
                 }
                 else if (RequestType == 2)
                 {

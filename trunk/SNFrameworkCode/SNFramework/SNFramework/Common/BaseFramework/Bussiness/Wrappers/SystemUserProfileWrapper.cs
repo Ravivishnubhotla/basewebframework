@@ -14,8 +14,7 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserProfileWrapper :
-        BaseSpringNHibernateWrapper<SystemUserProfileEntity, ISystemUserProfileServiceProxy, SystemUserProfileWrapper>
+    public partial class SystemUserProfileWrapper 
     {
  
             #region Static Common Data Operation
@@ -40,12 +39,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 DeleteAll(businessProxy);
             }
 
-            public static void DeleteByID(object id)
+            public static void DeleteByID(int id)
             {
                 DeleteByID(id, businessProxy);
             }
 
-            public static void PatchDeleteByIDs(object[] ids)
+            public static void PatchDeleteByIDs(int[] ids)
             {
 
                 PatchDeleteByIDs(ids, businessProxy);
@@ -61,7 +60,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 Refresh(instance, businessProxy);
             }
 
-            public static SystemUserProfileWrapper FindById(object id)
+            public static SystemUserProfileWrapper FindById(int id)
             {
                 return ConvertEntityToWrapper(FindById(id, businessProxy));
             }
@@ -171,7 +170,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                                                          pageSize, out totalRecords);
                 foreach (SystemUserProfileEntity prof in profiles)
                 {
-                    SystemUserWrapper user = SystemUserWrapper.FindById(prof.UserID);
+                    SystemUserWrapper user = SystemUserWrapper.FindById(prof.UserID.UserID);
 
                     infos.Add(new ProfileInfo(user.UserLoginID, false, user.LastActivityDate,
                                               prof.LastUpdatedDate, 2000));

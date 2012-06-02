@@ -191,20 +191,28 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_HASFILTERS;
 		        case "CodeID_HasParamsConvert":
 					return PROPERTY_CODEID_HASPARAMSCONVERT;
-		        case "CodeID_Province":
-					return PROPERTY_CODEID_PROVINCE;
-		        case "CodeID_DisableCity":
-					return PROPERTY_CODEID_DISABLECITY;
 		        case "CodeID_IsDiable":
 					return PROPERTY_CODEID_ISDIABLE;
-		        case "CodeID_DayLimit":
-					return PROPERTY_CODEID_DAYLIMIT;
-		        case "CodeID_MonthLimit":
-					return PROPERTY_CODEID_MONTHLIMIT;
 		        case "CodeID_Price":
 					return PROPERTY_CODEID_PRICE;
-		        case "CodeID_SendText":
-					return PROPERTY_CODEID_SENDTEXT;
+		        case "CodeID_OperationType":
+					return PROPERTY_CODEID_OPERATIONTYPE;
+		        case "CodeID_HasDayTotalLimit":
+					return PROPERTY_CODEID_HASDAYTOTALLIMIT;
+		        case "CodeID_DayTotalLimitCount":
+					return PROPERTY_CODEID_DAYTOTALLIMITCOUNT;
+		        case "CodeID_HasPhoneLimit":
+					return PROPERTY_CODEID_HASPHONELIMIT;
+		        case "CodeID_PhoneLimitDayCount":
+					return PROPERTY_CODEID_PHONELIMITDAYCOUNT;
+		        case "CodeID_PhoneLimitMonthCount":
+					return PROPERTY_CODEID_PHONELIMITMONTHCOUNT;
+		        case "CodeID_PhoneLimitType":
+					return PROPERTY_CODEID_PHONELIMITTYPE;
+		        case "CodeID_LimitProvince":
+					return PROPERTY_CODEID_LIMITPROVINCE;
+		        case "CodeID_LimitProvinceArea":
+					return PROPERTY_CODEID_LIMITPROVINCEAREA;
 		        case "CodeID_CreateBy":
 					return PROPERTY_CODEID_CREATEBY;
 		        case "CodeID_CreateAt":
@@ -383,13 +391,17 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_SPCODELENGTH = "CodeID_SPRecordEntity_Alias.SPCodeLength";
 		public const string PROPERTY_CODEID_HASFILTERS = "CodeID_SPRecordEntity_Alias.HasFilters";
 		public const string PROPERTY_CODEID_HASPARAMSCONVERT = "CodeID_SPRecordEntity_Alias.HasParamsConvert";
-		public const string PROPERTY_CODEID_PROVINCE = "CodeID_SPRecordEntity_Alias.Province";
-		public const string PROPERTY_CODEID_DISABLECITY = "CodeID_SPRecordEntity_Alias.DisableCity";
 		public const string PROPERTY_CODEID_ISDIABLE = "CodeID_SPRecordEntity_Alias.IsDiable";
-		public const string PROPERTY_CODEID_DAYLIMIT = "CodeID_SPRecordEntity_Alias.DayLimit";
-		public const string PROPERTY_CODEID_MONTHLIMIT = "CodeID_SPRecordEntity_Alias.MonthLimit";
 		public const string PROPERTY_CODEID_PRICE = "CodeID_SPRecordEntity_Alias.Price";
-		public const string PROPERTY_CODEID_SENDTEXT = "CodeID_SPRecordEntity_Alias.SendText";
+		public const string PROPERTY_CODEID_OPERATIONTYPE = "CodeID_SPRecordEntity_Alias.OperationType";
+		public const string PROPERTY_CODEID_HASDAYTOTALLIMIT = "CodeID_SPRecordEntity_Alias.HasDayTotalLimit";
+		public const string PROPERTY_CODEID_DAYTOTALLIMITCOUNT = "CodeID_SPRecordEntity_Alias.DayTotalLimitCount";
+		public const string PROPERTY_CODEID_HASPHONELIMIT = "CodeID_SPRecordEntity_Alias.HasPhoneLimit";
+		public const string PROPERTY_CODEID_PHONELIMITDAYCOUNT = "CodeID_SPRecordEntity_Alias.PhoneLimitDayCount";
+		public const string PROPERTY_CODEID_PHONELIMITMONTHCOUNT = "CodeID_SPRecordEntity_Alias.PhoneLimitMonthCount";
+		public const string PROPERTY_CODEID_PHONELIMITTYPE = "CodeID_SPRecordEntity_Alias.PhoneLimitType";
+		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPRecordEntity_Alias.LimitProvince";
+		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPRecordEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPRecordEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPRecordEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPRecordEntity_Alias.LastModifyBy";
@@ -1477,26 +1489,6 @@ namespace SPS.Bussiness.Wrappers
                 return  CodeID.HasParamsConvert;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PROVINCE)]
-        public string CodeID_Province
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.Province;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DISABLECITY)]
-        public string CodeID_DisableCity
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.DisableCity;
-            }
-        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISDIABLE)]
         public bool? CodeID_IsDiable
         {
@@ -1505,26 +1497,6 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.IsDiable;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYLIMIT)]
-        public string CodeID_DayLimit
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.DayLimit;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_MONTHLIMIT)]
-        public string CodeID_MonthLimit
-        {
-            get
-            {
-                if (this. CodeID == null)
-                    return null;
-                return  CodeID.MonthLimit;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PRICE)]
@@ -1537,14 +1509,94 @@ namespace SPS.Bussiness.Wrappers
                 return  CodeID.Price;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_SENDTEXT)]
-        public string CodeID_SendText
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_OPERATIONTYPE)]
+        public string CodeID_OperationType
         {
             get
             {
                 if (this. CodeID == null)
                     return null;
-                return  CodeID.SendText;
+                return  CodeID.OperationType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASDAYTOTALLIMIT)]
+        public bool? CodeID_HasDayTotalLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasDayTotalLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYTOTALLIMITCOUNT)]
+        public int? CodeID_DayTotalLimitCount
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayTotalLimitCount;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_HASPHONELIMIT)]
+        public bool? CodeID_HasPhoneLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.HasPhoneLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PHONELIMITDAYCOUNT)]
+        public int? CodeID_PhoneLimitDayCount
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.PhoneLimitDayCount;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PHONELIMITMONTHCOUNT)]
+        public int? CodeID_PhoneLimitMonthCount
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.PhoneLimitMonthCount;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_PHONELIMITTYPE)]
+        public int? CodeID_PhoneLimitType
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.PhoneLimitType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_LIMITPROVINCE)]
+        public bool? CodeID_LimitProvince
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.LimitProvince;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_LIMITPROVINCEAREA)]
+        public string CodeID_LimitProvinceArea
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.LimitProvinceArea;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]

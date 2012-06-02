@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemTerminologyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemTerminologyEntity> ,ISystemTerminologyServiceProxyDesigner
+    public interface ISystemTerminologyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemTerminologyEntity, int>, ISystemTerminologyServiceProxyDesigner
     {
 	    string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode);
 	    List<SystemTerminologyEntity> FindAllByCode(string terminologyCode);

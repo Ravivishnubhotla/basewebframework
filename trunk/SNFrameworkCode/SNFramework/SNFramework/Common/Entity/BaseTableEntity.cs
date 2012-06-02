@@ -6,17 +6,11 @@ using System.Text;
 namespace Legendigital.Framework.Common.Entity
 {
     [Serializable]
-    public abstract class BaseTableEntity : BaseViewEntity
+    public abstract class BaseTableEntity<EntityKeyType> : BaseViewEntity<EntityKeyType>
     {
         protected bool _isChanged;
         protected bool _isDeleted;
-
-
  
-
-
-
-
         /// <summary>
         /// 返回对象是否被改变。
         /// </summary>

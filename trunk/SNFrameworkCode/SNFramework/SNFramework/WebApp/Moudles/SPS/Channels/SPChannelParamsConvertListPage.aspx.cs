@@ -27,51 +27,51 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         [DirectMethod]
         public void DeleteRecord(int id)
         {
-            try
-            {
-                SPChannelParamsConvertWrapper.DeleteByID(id);
+            //try
+            //{
+            //    SPChannelParamsConvertWrapper.DeleteByID(id);
 
-                ResourceManager.AjaxSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
-                return;
-            }
+            //    ResourceManager.AjaxSuccess = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    ResourceManager.AjaxSuccess = false;
+            //    ResourceManager.AjaxErrorMessage = string.Format(ex.Message);
+            //    return;
+            //}
         }
 
         protected void storeSPChannelParamsConvert_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            //string sortFieldName = "";
+            //if (e.Sort != null)
+            //    sortFieldName = e.Sort;
 
-            int startIndex = 0;
+            //int startIndex = 0;
 
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
+            //if (e.Start > -1)
+            //{
+            //    startIndex = e.Start;
+            //}
 
-            int limit = this.PagingToolBar1.PageSize;
+            //int limit = this.PagingToolBar1.PageSize;
 
-            int pageIndex = 1;
+            //int pageIndex = 1;
 
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
+            //if ((startIndex % limit) == 0)
+            //    pageIndex = startIndex / limit + 1;
+            //else
+            //    pageIndex = startIndex / limit;
 
 
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
+            //PageQueryParams pageQueryParams = new PageQueryParams();
+            //pageQueryParams.PageSize = limit;
+            //pageQueryParams.PageIndex = pageIndex;
 
-            storeSPChannelParamsConvert.DataSource = SPChannelParamsConvertWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
-            e.Total = pageQueryParams.RecordCount;
+            //storeSPChannelParamsConvert.DataSource = SPChannelParamsConvertWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
+            //e.Total = pageQueryParams.RecordCount;
 
-            storeSPChannelParamsConvert.DataBind();
+            //storeSPChannelParamsConvert.DataBind();
 
         }
 

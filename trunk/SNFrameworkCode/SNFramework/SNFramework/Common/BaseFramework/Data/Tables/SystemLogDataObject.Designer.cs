@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemLogDataObject : BaseNHibernateDataObject<SystemLogEntity>
+    public partial class SystemLogDataObject : BaseNHibernateDataObject<SystemLogEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_LOGID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGID));		

@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemUserGroupRoleRelationDataObject : BaseNHibernateDataObject<SystemUserGroupRoleRelationEntity>
+    public partial class SystemUserGroupRoleRelationDataObject : BaseNHibernateDataObject<SystemUserGroupRoleRelationEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_USERGROUPROLEID = new IntProperty(Property.ForName(SystemUserGroupRoleRelationEntity.PROPERTY_NAME_USERGROUPROLEID));		

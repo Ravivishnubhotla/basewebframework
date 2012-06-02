@@ -17,7 +17,7 @@ using Spring.Transaction.Interceptor;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPRecordServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRecordEntity> ,ISPRecordServiceProxyDesigner
+    public interface ISPRecordServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRecordEntity, int>, ISPRecordServiceProxyDesigner
     {
 	    void UpdateUrlSuccessSend(int recordId, string url);
 	    void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage);

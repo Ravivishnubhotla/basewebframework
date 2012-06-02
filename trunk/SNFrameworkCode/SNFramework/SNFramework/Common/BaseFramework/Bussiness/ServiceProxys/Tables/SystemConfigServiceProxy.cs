@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-    public interface ISystemConfigServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemConfigEntity>, ISystemConfigServiceProxyDesigner
+    public interface ISystemConfigServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemConfigEntity, int>, ISystemConfigServiceProxyDesigner
     {
 	    SystemConfigEntity GetConfigByKey(string key);
     }

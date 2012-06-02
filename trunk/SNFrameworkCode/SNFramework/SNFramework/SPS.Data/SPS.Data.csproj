@@ -62,14 +62,6 @@
     <Compile Include="Tables\SPChannelDataObject.Designer.cs">
       <DependentUpon>SPChannelDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPChannelFiltersDataObject.cs" />
-    <Compile Include="Tables\SPChannelFiltersDataObject.Designer.cs">
-      <DependentUpon>SPChannelFiltersDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\SPChannelParamsConvertDataObject.cs" />
-    <Compile Include="Tables\SPChannelParamsConvertDataObject.Designer.cs">
-      <DependentUpon>SPChannelParamsConvertDataObject.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\SPChannelParamsDataObject.cs" />
     <Compile Include="Tables\SPChannelParamsDataObject.Designer.cs">
       <DependentUpon>SPChannelParamsDataObject.cs</DependentUpon>
@@ -90,17 +82,17 @@
     <Compile Include="Tables\SPCodeDataObject.Designer.cs">
       <DependentUpon>SPCodeDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPCodeFilterDataObject.cs" />
-    <Compile Include="Tables\SPCodeFilterDataObject.Designer.cs">
-      <DependentUpon>SPCodeFilterDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\SPCodeParamsConvertDataObject.cs" />
-    <Compile Include="Tables\SPCodeParamsConvertDataObject.Designer.cs">
-      <DependentUpon>SPCodeParamsConvertDataObject.cs</DependentUpon>
+    <Compile Include="Tables\SPCodeInfoDataObject.cs" />
+    <Compile Include="Tables\SPCodeInfoDataObject.Designer.cs">
+      <DependentUpon>SPCodeInfoDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPFilterRuleDataObject.cs" />
+    <Compile Include="Tables\SPFilterRuleDataObject.Designer.cs">
+      <DependentUpon>SPFilterRuleDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPMemoDataObject.cs" />
     <Compile Include="Tables\SPMemoDataObject.Designer.cs">
@@ -110,9 +102,9 @@
     <Compile Include="Tables\SPMonitoringRequestDataObject.Designer.cs">
       <DependentUpon>SPMonitoringRequestDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPPhoneAreaDataObject.cs" />
-    <Compile Include="Tables\SPPhoneAreaDataObject.Designer.cs">
-      <DependentUpon>SPPhoneAreaDataObject.cs</DependentUpon>
+    <Compile Include="Tables\SPParamsConvertRuleDataObject.cs" />
+    <Compile Include="Tables\SPParamsConvertRuleDataObject.Designer.cs">
+      <DependentUpon>SPParamsConvertRuleDataObject.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPRecordDataObject.cs" />
     <Compile Include="Tables\SPRecordDataObject.Designer.cs">

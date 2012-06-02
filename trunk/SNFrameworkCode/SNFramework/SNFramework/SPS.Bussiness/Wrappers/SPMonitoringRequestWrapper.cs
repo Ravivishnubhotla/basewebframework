@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace SPS.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SPMonitoringRequestWrapper : BaseSpringNHibernateWrapper<SPMonitoringRequestEntity, ISPMonitoringRequestServiceProxy, SPMonitoringRequestWrapper>
+    public partial class SPMonitoringRequestWrapper : BaseSpringNHibernateWrapper<SPMonitoringRequestEntity, ISPMonitoringRequestServiceProxy, SPMonitoringRequestWrapper, int>  
     {
         #region Static Common Data Operation
 
@@ -36,12 +36,12 @@ namespace SPS.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -57,7 +57,7 @@ namespace SPS.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SPMonitoringRequestWrapper FindById(object id)
+        public static SPMonitoringRequestWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }

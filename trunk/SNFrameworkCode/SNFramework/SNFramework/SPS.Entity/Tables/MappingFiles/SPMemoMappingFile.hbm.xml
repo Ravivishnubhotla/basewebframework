@@ -3,7 +3,7 @@
 
 <class name="SPS.Entity.Tables.SPMemoEntity,SPS.Entity" table="SPMemo" lazy="true"  >
 
-<id name="Id" column="ID" type="Decimal" unsaved-value="0" >
+<id name="Id" column="ID" type="int" unsaved-value="0" >
    <generator class="native">
 
 </generator>

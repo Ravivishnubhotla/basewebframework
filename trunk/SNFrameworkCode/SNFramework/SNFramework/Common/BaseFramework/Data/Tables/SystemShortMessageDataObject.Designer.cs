@@ -11,20 +11,19 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemShortMessageDataObject : BaseNHibernateDataObject<SystemShortMessageEntity>
+    public partial class SystemShortMessageDataObject : BaseNHibernateDataObject<SystemShortMessageEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
-		public static readonly IntProperty PROPERTY_SHORTMESSAGEID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGEID));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGETITLE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGETITLE));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGECATEGORY = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGECATEGORY));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGECONTENT = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGECONTENT));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGESENDERNAME = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDERNAME));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGETONAME = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGETONAME));		
-		public static readonly DateTimeProperty PROPERTY_SHORTMESSAGESENDDATE = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDDATE));		
-		public static readonly IntProperty PROPERTY_SHORTMESSAGESENDUSERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGESENDUSERID));		
-		public static readonly IntProperty PROPERTY_SHORTMESSAGERECEIVERUSERID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGERECEIVERUSERID));		
-		public static readonly BoolProperty PROPERTY_SHORTMESSAGEISREAD = new BoolProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGEISREAD));		
-		public static readonly StringProperty PROPERTY_SHORTMESSAGETYPE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SHORTMESSAGETYPE));		
+		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_ID));		
+		public static readonly StringProperty PROPERTY_TITLE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_TITLE));		
+		public static readonly StringProperty PROPERTY_MESSAGETYPE = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_MESSAGETYPE));		
+		public static readonly StringProperty PROPERTY_CATEGORY = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_CATEGORY));		
+		public static readonly StringProperty PROPERTY_MSGCONTENT = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_MSGCONTENT));		
+		public static readonly IntProperty PROPERTY_SENDID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SENDID));		
+		public static readonly IntProperty PROPERTY_GROUPID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_GROUPID));		
+		public static readonly DateTimeProperty PROPERTY_SENDDATE = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_SENDDATE));		
+		public static readonly StringProperty PROPERTY_STATUS = new StringProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_STATUS));		
+		public static readonly IntProperty PROPERTY_REPLYID = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_REPLYID));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemShortMessageEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -40,35 +39,33 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		
 		public override string[] PkPropertyName
         {
-            get { return new string[] { "ShortMessageID" }; }
+            get { return new string[] { "Id" }; }
         }
 		
 		public override Type GetFieldTypeByFieldName(string fieldName)
         {
 			switch (fieldName)
             {
-                case "ShortMessageID":
+                case "Id":
                     return typeof (int);
-                case "ShortMessageTitle":
+                case "Title":
                     return typeof (string);
-                case "ShortMessageCategory":
+                case "MessageType":
                     return typeof (string);
-                case "ShortMessageContent":
+                case "Category":
                     return typeof (string);
-                case "ShortMessageSenderName":
+                case "MsgContent":
                     return typeof (string);
-                case "ShortMessageToName":
-                    return typeof (string);
-                case "ShortMessageSendDate":
+                case "SendID":
+                    return typeof (int);
+                case "GroupID":
+                    return typeof (int);
+                case "SendDate":
                     return typeof (DateTime);
-                case "ShortMessageSendUserID":
-                    return typeof (int);
-                case "ShortMessageReceiverUserID":
-                    return typeof (int);
-                case "ShortMessageIsRead":
-                    return typeof (bool);
-                case "ShortMessageType":
+                case "Status":
                     return typeof (string);
+                case "ReplyID":
+                    return typeof (int);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":

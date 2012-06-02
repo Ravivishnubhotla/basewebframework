@@ -48,7 +48,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -167,473 +167,1450 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapperExtension.cs" />
-    <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassAttribute.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassInfo.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodAttribute.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodInfo.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\ServiceProxyAroundAdvice.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Commons\ITreeItemWrapperExtension.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Commons\NameItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Commons\TreeItemWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorClassInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorLogAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordAuditorMethodInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\RecordVersionAttribute.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Aop\ServiceProxyAroundAdvice.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainer.Designer.cs">
+      <DependentUpon>BaseFrameworkServiceProxyContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAddressServiceProxy.Designer.cs">
       <DependentUpon>SystemAddressServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemApplicationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemApplicationServiceProxy.Designer.cs">
+      <DependentUpon>SystemApplicationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentContentServiceProxy.Designer.cs">
       <DependentUpon>SystemAttachmentContentServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemAttachmentServiceProxy.Designer.cs">
       <DependentUpon>SystemAttachmentServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCityServiceProxy.Designer.cs">
       <DependentUpon>SystemCityServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigGroupServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigGroupServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigGroupServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigGroupServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemConfigServiceProxy.Designer.cs">
       <DependentUpon>SystemConfigServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCountryServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCountryServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemCountryServiceProxy.Designer.cs">
       <DependentUpon>SystemCountryServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDataTypeServiceProxy.Designer.cs">
       <DependentUpon>SystemDataTypeServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentPostRoleRelationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentPostRoleRelationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentPostRoleRelationServiceProxy.Designer.cs">
       <DependentUpon>SystemDepartmentPostRoleRelationServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryGroupServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentServiceProxy.Designer.cs">
+      <DependentUpon>SystemDepartmentServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryGroupServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryGroupServiceProxy.Designer.cs">
       <DependentUpon>SystemDictionaryGroupServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailQueueServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryServiceProxy.Designer.cs">
+      <DependentUpon>SystemDictionaryServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailQueueServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailQueueServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailQueueServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailSettingsServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailSettingsServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailSettingsServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailSettingsServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmailTemplateServiceProxy.Designer.cs">
       <DependentUpon>SystemEmailTemplateServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemEmployeeServiceProxy.Designer.cs">
       <DependentUpon>SystemEmployeeServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemIPLocationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemIPLocationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemIPLocationServiceProxy.Designer.cs">
       <DependentUpon>SystemIPLocationServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemLogServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemLogServiceProxy.Designer.cs">
+      <DependentUpon>SystemLogServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMenuServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMenuServiceProxy.Designer.cs">
+      <DependentUpon>SystemMenuServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleFieldServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleFieldServiceProxy.Designer.cs">
+      <DependentUpon>SystemMoudleFieldServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleServiceProxy.Designer.cs">
+      <DependentUpon>SystemMoudleServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemNumberSeedServiceProxy.Designer.cs">
       <DependentUpon>SystemNumberSeedServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOperationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOperationServiceProxy.Designer.cs">
+      <DependentUpon>SystemOperationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOrganizationServiceProxy.Designer.cs">
       <DependentUpon>SystemOrganizationServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPhoneAreaServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPersonalizationSettingsServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPersonalizationSettingsServiceProxy.Designer.cs">
+      <DependentUpon>SystemPersonalizationSettingsServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPhoneAreaServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPhoneAreaServiceProxy.Designer.cs">
       <DependentUpon>SystemPhoneAreaServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPostServiceProxy.Designer.cs">
       <DependentUpon>SystemPostServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeInRolesServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeInRolesServiceProxy.Designer.cs">
+      <DependentUpon>SystemPrivilegeInRolesServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeParameterServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeParameterServiceProxy.Designer.cs">
+      <DependentUpon>SystemPrivilegeParameterServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeServiceProxy.Designer.cs">
+      <DependentUpon>SystemPrivilegeServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemProvinceServiceProxy.Designer.cs">
       <DependentUpon>SystemProvinceServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRichTextServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemResourcesServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemResourcesServiceProxy.Designer.cs">
+      <DependentUpon>SystemResourcesServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRichTextServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRichTextServiceProxy.Designer.cs">
       <DependentUpon>SystemRichTextServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleApplicationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleApplicationServiceProxy.Designer.cs">
+      <DependentUpon>SystemRoleApplicationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleMenuRelationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleMenuRelationServiceProxy.Designer.cs">
+      <DependentUpon>SystemRoleMenuRelationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleServiceProxy.Designer.cs">
+      <DependentUpon>SystemRoleServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemSettingServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemSettingServiceProxy.Designer.cs">
+      <DependentUpon>SystemSettingServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageLogServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageLogServiceProxy.Designer.cs">
+      <DependentUpon>SystemShortMessageLogServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageServiceProxy.Designer.cs">
+      <DependentUpon>SystemShortMessageServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTaskServiceProxy.Designer.cs">
       <DependentUpon>SystemTaskServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTemplateServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTemplateServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTemplateServiceProxy.Designer.cs">
       <DependentUpon>SystemTemplateServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTerminologyServiceProxy.Designer.cs">
       <DependentUpon>SystemTerminologyServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTimeZoneServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTimeZoneServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemTimeZoneServiceProxy.Designer.cs">
       <DependentUpon>SystemTimeZoneServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupRoleRelationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupRoleRelationServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserGroupRoleRelationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserGroupServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupUserRelationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupUserRelationServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserGroupUserRelationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfilePropertysServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfilePropertysServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserProfilePropertysServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfileServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfileServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserProfileServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserRoleRelationServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserRoleRelationServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserRoleRelationServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserServiceProxy.Designer.cs">
+      <DependentUpon>SystemUserServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemVersionServiceProxy.Designer.cs">
       <DependentUpon>SystemVersionServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewItemServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewItemServiceProxy.Designer.cs">
+      <DependentUpon>SystemViewItemServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewServiceProxy.Designer.cs">
+      <DependentUpon>SystemViewServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowServiceProxy.Designer.cs">
       <DependentUpon>SystemWorkFlowServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowStepServiceProxy.cs" />
+    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowStepServiceProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemWorkFlowStepServiceProxy.Designer.cs">
       <DependentUpon>SystemWorkFlowStepServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs" />
-    <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs" />
-    <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs" />
+    <Compile Include="BaseFramework\Bussiness\SystemConst\DictionaryConst.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\SystemConst\RoleCodeList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\SystemConst\SysDictionaryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\SystemConst\SystemConfigConst.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\PhoneAreaInfo.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAddressWrapper.Designer.cs">
       <DependentUpon>SystemAddressWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemApplicationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemApplicationWrapper.Designer.cs">
+      <DependentUpon>SystemApplicationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentContentWrapper.Designer.cs">
       <DependentUpon>SystemAttachmentContentWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemAttachmentWrapper.Designer.cs">
       <DependentUpon>SystemAttachmentWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCityWrapper.Designer.cs">
       <DependentUpon>SystemCityWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigGroupWrapper.Designer.cs">
       <DependentUpon>SystemConfigGroupWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemConfigWrapper.Designer.cs">
       <DependentUpon>SystemConfigWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCountryWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCountryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemCountryWrapper.Designer.cs">
       <DependentUpon>SystemCountryWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDataTypeWrapper.Designer.cs">
       <DependentUpon>SystemDataTypeWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentPostRoleRelationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentPostRoleRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentPostRoleRelationWrapper.Designer.cs">
       <DependentUpon>SystemDepartmentPostRoleRelationWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryGroupWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentWrapper.Designer.cs">
+      <DependentUpon>SystemDepartmentWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryGroupWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryGroupWrapper.Designer.cs">
       <DependentUpon>SystemDictionaryGroupWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailQueueWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryWrapper.Designer.cs">
+      <DependentUpon>SystemDictionaryWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailQueueWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailQueueWrapper.Designer.cs">
       <DependentUpon>SystemEmailQueueWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailSettingsWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailSettingsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailSettingsWrapper.Designer.cs">
       <DependentUpon>SystemEmailSettingsWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmailTemplateWrapper.Designer.cs">
       <DependentUpon>SystemEmailTemplateWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemEmployeeWrapper.Designer.cs">
       <DependentUpon>SystemEmployeeWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemIPLocationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemIPLocationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemIPLocationWrapper.Designer.cs">
       <DependentUpon>SystemIPLocationWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemLogWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemLogWrapper.Designer.cs">
+      <DependentUpon>SystemLogWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMenuWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMenuWrapper.Designer.cs">
+      <DependentUpon>SystemMenuWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleFieldWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleFieldWrapper.Designer.cs">
+      <DependentUpon>SystemMoudleFieldWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleWrapper.Designer.cs">
+      <DependentUpon>SystemMoudleWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemNumberSeedWrapper.Designer.cs">
       <DependentUpon>SystemNumberSeedWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOperationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOperationWrapper.Designer.cs">
+      <DependentUpon>SystemOperationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOrganizationWrapper.Designer.cs">
       <DependentUpon>SystemOrganizationWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPhoneAreaWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPersonalizationSettingsWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPersonalizationSettingsWrapper.Designer.cs">
+      <DependentUpon>SystemPersonalizationSettingsWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPhoneAreaWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPhoneAreaWrapper.Designer.cs">
       <DependentUpon>SystemPhoneAreaWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPostWrapper.Designer.cs">
       <DependentUpon>SystemPostWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeInRolesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeInRolesWrapper.Designer.cs">
+      <DependentUpon>SystemPrivilegeInRolesWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeParameterWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeParameterWrapper.Designer.cs">
+      <DependentUpon>SystemPrivilegeParameterWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeWrapper.Designer.cs">
+      <DependentUpon>SystemPrivilegeWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemProvinceWrapper.Designer.cs">
       <DependentUpon>SystemProvinceWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRichTextWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemResourcesWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemResourcesWrapper.Designer.cs">
+      <DependentUpon>SystemResourcesWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRichTextWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRichTextWrapper.Designer.cs">
       <DependentUpon>SystemRichTextWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleApplicationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleApplicationWrapper.Designer.cs">
+      <DependentUpon>SystemRoleApplicationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleMenuRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleMenuRelationWrapper.Designer.cs">
+      <DependentUpon>SystemRoleMenuRelationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleWrapper.Designer.cs">
+      <DependentUpon>SystemRoleWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemSettingWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemSettingWrapper.Designer.cs">
+      <DependentUpon>SystemSettingWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageLogWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageLogWrapper.Designer.cs">
+      <DependentUpon>SystemShortMessageLogWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageWrapper.Designer.cs">
+      <DependentUpon>SystemShortMessageWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTaskWrapper.Designer.cs">
       <DependentUpon>SystemTaskWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTemplateWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTemplateWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTemplateWrapper.Designer.cs">
       <DependentUpon>SystemTemplateWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTerminologyWrapper.Designer.cs">
       <DependentUpon>SystemTerminologyWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTimeZoneWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTimeZoneWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemTimeZoneWrapper.Designer.cs">
       <DependentUpon>SystemTimeZoneWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupRoleRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupRoleRelationWrapper.Designer.cs">
+      <DependentUpon>SystemUserGroupRoleRelationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupUserRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupUserRelationWrapper.Designer.cs">
+      <DependentUpon>SystemUserGroupUserRelationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupWrapper.Designer.cs">
+      <DependentUpon>SystemUserGroupWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfilePropertysWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfilePropertysWrapper.Designer.cs">
+      <DependentUpon>SystemUserProfilePropertysWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfileWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfileWrapper.Designer.cs">
+      <DependentUpon>SystemUserProfileWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserRoleRelationWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserRoleRelationWrapper.Designer.cs">
+      <DependentUpon>SystemUserRoleRelationWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserWrapper.Designer.cs">
+      <DependentUpon>SystemUserWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemVersionWrapper.Designer.cs">
       <DependentUpon>SystemVersionWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowStepWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewItemWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewItemWrapper.Designer.cs">
+      <DependentUpon>SystemViewItemWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewWrapper.Designer.cs">
+      <DependentUpon>SystemViewWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowStepWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowStepWrapper.Designer.cs">
       <DependentUpon>SystemWorkFlowStepWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.cs" />
+    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Bussiness\Wrappers\SystemWorkFlowWrapper.Designer.cs">
       <DependentUpon>SystemWorkFlowWrapper.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainers.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainers.Designer.cs">
+      <DependentUpon>BaseFrameworkDataObjectContainers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\QueryObjects.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.Designer.cs">
       <DependentUpon>SystemAddressDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemApplicationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemApplicationDataObject.Designer.cs">
+      <DependentUpon>SystemApplicationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemAttachmentContentDataObject.Designer.cs">
       <DependentUpon>SystemAttachmentContentDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemAttachmentDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemAttachmentDataObject.Designer.cs">
       <DependentUpon>SystemAttachmentDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemCityDataObject.Designer.cs">
       <DependentUpon>SystemCityDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemConfigDataObject.Designer.cs">
       <DependentUpon>SystemConfigDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemConfigGroupDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemConfigGroupDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemConfigGroupDataObject.Designer.cs">
       <DependentUpon>SystemConfigGroupDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemCountryDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemCountryDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemCountryDataObject.Designer.cs">
       <DependentUpon>SystemCountryDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemDataTypeDataObject.Designer.cs">
       <DependentUpon>SystemDataTypeDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentPostRoleRelationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentDataObject.Designer.cs">
+      <DependentUpon>SystemDepartmentDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentPostRoleRelationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemDepartmentPostRoleRelationDataObject.Designer.cs">
       <DependentUpon>SystemDepartmentPostRoleRelationDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryGroupDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryDataObject.Designer.cs">
+      <DependentUpon>SystemDictionaryDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryGroupDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemDictionaryGroupDataObject.Designer.cs">
       <DependentUpon>SystemDictionaryGroupDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemEmailQueueDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemEmailQueueDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemEmailQueueDataObject.Designer.cs">
       <DependentUpon>SystemEmailQueueDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemEmailSettingsDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemEmailSettingsDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemEmailSettingsDataObject.Designer.cs">
       <DependentUpon>SystemEmailSettingsDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemEmailTemplateDataObject.Designer.cs">
       <DependentUpon>SystemEmailTemplateDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemEmployeeDataObject.Designer.cs">
       <DependentUpon>SystemEmployeeDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemIPLocationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemIPLocationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemIPLocationDataObject.Designer.cs">
       <DependentUpon>SystemIPLocationDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemLogDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemLogDataObject.Designer.cs">
+      <DependentUpon>SystemLogDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMenuDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMenuDataObject.Designer.cs">
+      <DependentUpon>SystemMenuDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMoudleDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMoudleDataObject.Designer.cs">
+      <DependentUpon>SystemMoudleDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMoudleFieldDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemMoudleFieldDataObject.Designer.cs">
+      <DependentUpon>SystemMoudleFieldDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemNumberSeedDataObject.Designer.cs">
       <DependentUpon>SystemNumberSeedDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemOperationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemOperationDataObject.Designer.cs">
+      <DependentUpon>SystemOperationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemOrganizationDataObject.Designer.cs">
       <DependentUpon>SystemOrganizationDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPhoneAreaDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemPersonalizationSettingsDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPersonalizationSettingsDataObject.Designer.cs">
+      <DependentUpon>SystemPersonalizationSettingsDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPhoneAreaDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemPhoneAreaDataObject.Designer.cs">
       <DependentUpon>SystemPhoneAreaDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemPostDataObject.Designer.cs">
       <DependentUpon>SystemPostDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeDataObject.Designer.cs">
+      <DependentUpon>SystemPrivilegeDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeInRolesDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeInRolesDataObject.Designer.cs">
+      <DependentUpon>SystemPrivilegeInRolesDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeParameterDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeParameterDataObject.Designer.cs">
+      <DependentUpon>SystemPrivilegeParameterDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemProvinceDataObject.Designer.cs">
       <DependentUpon>SystemProvinceDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemRichTextDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemResourcesDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemResourcesDataObject.Designer.cs">
+      <DependentUpon>SystemResourcesDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRichTextDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemRichTextDataObject.Designer.cs">
       <DependentUpon>SystemRichTextDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleApplicationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleApplicationDataObject.Designer.cs">
+      <DependentUpon>SystemRoleApplicationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleDataObject.Designer.cs">
+      <DependentUpon>SystemRoleDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleMenuRelationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemRoleMenuRelationDataObject.Designer.cs">
+      <DependentUpon>SystemRoleMenuRelationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemSettingDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemSettingDataObject.Designer.cs">
+      <DependentUpon>SystemSettingDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageDataObject.Designer.cs">
+      <DependentUpon>SystemShortMessageDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageLogDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageLogDataObject.Designer.cs">
+      <DependentUpon>SystemShortMessageLogDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTaskDataObject.Designer.cs">
       <DependentUpon>SystemTaskDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemTemplateDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTemplateDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTemplateDataObject.Designer.cs">
       <DependentUpon>SystemTemplateDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTerminologyDataObject.Designer.cs">
       <DependentUpon>SystemTerminologyDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemTimeZoneDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemTimeZoneDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemTimeZoneDataObject.Designer.cs">
       <DependentUpon>SystemTimeZoneDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemUserDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserDataObject.Designer.cs">
+      <DependentUpon>SystemUserDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupDataObject.Designer.cs">
+      <DependentUpon>SystemUserGroupDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupRoleRelationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupRoleRelationDataObject.Designer.cs">
+      <DependentUpon>SystemUserGroupRoleRelationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupUserRelationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupUserRelationDataObject.Designer.cs">
+      <DependentUpon>SystemUserGroupUserRelationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserProfileDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserProfileDataObject.Designer.cs">
+      <DependentUpon>SystemUserProfileDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserProfilePropertysDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserProfilePropertysDataObject.Designer.cs">
+      <DependentUpon>SystemUserProfilePropertysDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserRoleRelationDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemUserRoleRelationDataObject.Designer.cs">
+      <DependentUpon>SystemUserRoleRelationDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemVersionDataObject.Designer.cs">
       <DependentUpon>SystemVersionDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemViewDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemViewDataObject.Designer.cs">
+      <DependentUpon>SystemViewDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemViewItemDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemViewItemDataObject.Designer.cs">
+      <DependentUpon>SystemViewItemDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowDataObject.Designer.cs">
       <DependentUpon>SystemWorkFlowDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowStepDataObject.cs" />
+    <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowStepDataObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemWorkFlowStepDataObject.Designer.cs">
       <DependentUpon>SystemWorkFlowStepDataObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Document\DatabaseSchemaBuilderFactory.cs" />
-    <Compile Include="BaseFramework\Document\DatabaseType.cs" />
-    <Compile Include="BaseFramework\Document\DataFileldType.cs" />
-    <Compile Include="BaseFramework\Document\IDatabaseSchemaBuilder.cs" />
-    <Compile Include="BaseFramework\Document\MSSQLDataBaseSchemaBulider.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemAddressEntity.cs" />
+    <Compile Include="BaseFramework\Document\DatabaseSchemaBuilderFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Document\DatabaseType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Document\DataFileldType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Document\IDatabaseSchemaBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Document\MSSQLDataBaseSchemaBulider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemAddressEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemAddressEntity.Designer.cs">
       <DependentUpon>SystemAddressEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemApplicationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemApplicationEntity.Designer.cs">
+      <DependentUpon>SystemApplicationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentContentEntity.Designer.cs">
       <DependentUpon>SystemAttachmentContentEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemAttachmentEntity.Designer.cs">
       <DependentUpon>SystemAttachmentEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemCityEntity.Designer.cs">
       <DependentUpon>SystemCityEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigEntity.Designer.cs">
       <DependentUpon>SystemConfigEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemConfigGroupEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemConfigGroupEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemConfigGroupEntity.Designer.cs">
       <DependentUpon>SystemConfigGroupEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemCountryEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemCountryEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemCountryEntity.Designer.cs">
       <DependentUpon>SystemCountryEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemDataTypeEntity.Designer.cs">
       <DependentUpon>SystemDataTypeEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentPostRoleRelationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentEntity.Designer.cs">
+      <DependentUpon>SystemDepartmentEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentPostRoleRelationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentPostRoleRelationEntity.Designer.cs">
       <DependentUpon>SystemDepartmentPostRoleRelationEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryGroupEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryEntity.Designer.cs">
+      <DependentUpon>SystemDictionaryEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryGroupEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryGroupEntity.Designer.cs">
       <DependentUpon>SystemDictionaryGroupEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemEmailQueueEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmailQueueEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailQueueEntity.Designer.cs">
       <DependentUpon>SystemEmailQueueEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemEmailSettingsEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmailSettingsEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailSettingsEntity.Designer.cs">
       <DependentUpon>SystemEmailSettingsEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemEmailTemplateEntity.Designer.cs">
       <DependentUpon>SystemEmailTemplateEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemEmployeeEntity.Designer.cs">
       <DependentUpon>SystemEmployeeEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemIPLocationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemIPLocationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemIPLocationEntity.Designer.cs">
       <DependentUpon>SystemIPLocationEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemLogEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemLogEntity.Designer.cs">
+      <DependentUpon>SystemLogEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMenuEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMenuEntity.Designer.cs">
+      <DependentUpon>SystemMenuEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleEntity.Designer.cs">
+      <DependentUpon>SystemMoudleEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleFieldEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleFieldEntity.Designer.cs">
+      <DependentUpon>SystemMoudleFieldEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemNumberSeedEntity.Designer.cs">
       <DependentUpon>SystemNumberSeedEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemOperationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemOperationEntity.Designer.cs">
+      <DependentUpon>SystemOperationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemOrganizationEntity.Designer.cs">
       <DependentUpon>SystemOrganizationEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPhoneAreaEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemPersonalizationSettingsEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPersonalizationSettingsEntity.Designer.cs">
+      <DependentUpon>SystemPersonalizationSettingsEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPhoneAreaEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemPhoneAreaEntity.Designer.cs">
       <DependentUpon>SystemPhoneAreaEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemPostEntity.Designer.cs">
       <DependentUpon>SystemPostEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeEntity.Designer.cs">
+      <DependentUpon>SystemPrivilegeEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeInRolesEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeInRolesEntity.Designer.cs">
+      <DependentUpon>SystemPrivilegeInRolesEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeParameterEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeParameterEntity.Designer.cs">
+      <DependentUpon>SystemPrivilegeParameterEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemProvinceEntity.Designer.cs">
       <DependentUpon>SystemProvinceEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemRichTextEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemResourcesEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemResourcesEntity.Designer.cs">
+      <DependentUpon>SystemResourcesEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRichTextEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemRichTextEntity.Designer.cs">
       <DependentUpon>SystemRichTextEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleApplicationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleApplicationEntity.Designer.cs">
+      <DependentUpon>SystemRoleApplicationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleEntity.Designer.cs">
+      <DependentUpon>SystemRoleEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleMenuRelationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemRoleMenuRelationEntity.Designer.cs">
+      <DependentUpon>SystemRoleMenuRelationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemSettingEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemSettingEntity.Designer.cs">
+      <DependentUpon>SystemSettingEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageEntity.Designer.cs">
+      <DependentUpon>SystemShortMessageEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageLogEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageLogEntity.Designer.cs">
+      <DependentUpon>SystemShortMessageLogEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTaskEntity.Designer.cs">
       <DependentUpon>SystemTaskEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemTemplateEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTemplateEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTemplateEntity.Designer.cs">
       <DependentUpon>SystemTemplateEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTerminologyEntity.Designer.cs">
       <DependentUpon>SystemTerminologyEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemTimeZoneEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemTimeZoneEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemTimeZoneEntity.Designer.cs">
       <DependentUpon>SystemTimeZoneEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserEntity.Designer.cs">
+      <DependentUpon>SystemUserEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupEntity.Designer.cs">
+      <DependentUpon>SystemUserGroupEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupRoleRelationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupRoleRelationEntity.Designer.cs">
+      <DependentUpon>SystemUserGroupRoleRelationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupUserRelationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupUserRelationEntity.Designer.cs">
+      <DependentUpon>SystemUserGroupUserRelationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfileEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfileEntity.Designer.cs">
+      <DependentUpon>SystemUserProfileEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfilePropertysEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfilePropertysEntity.Designer.cs">
+      <DependentUpon>SystemUserProfilePropertysEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserRoleRelationEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemUserRoleRelationEntity.Designer.cs">
+      <DependentUpon>SystemUserRoleRelationEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemVersionEntity.Designer.cs">
       <DependentUpon>SystemVersionEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemViewEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemViewEntity.Designer.cs">
+      <DependentUpon>SystemViewEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemViewItemEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemViewItemEntity.Designer.cs">
+      <DependentUpon>SystemViewItemEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowEntity.Designer.cs">
       <DependentUpon>SystemWorkFlowEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowStepEntity.cs" />
+    <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowStepEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BaseFramework\Entity\Tables\SystemWorkFlowStepEntity.Designer.cs">
       <DependentUpon>SystemWorkFlowStepEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\NavMenu.cs" />
-    <Compile Include="BaseFramework\Utility\NameListItem.cs" />
+    <Compile Include="BaseFramework\NavMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Providers\NHibernateMembershipProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Providers\NhibernatePersonalizationProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Providers\NHibernateProfileProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Providers\NHibernateProviderSR.Designer.cs">
+      <DependentUpon>NHibernateProviderSR.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="BaseFramework\Providers\NHibernateRolesProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Utility\NameListItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Utility\SchemaHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Web\BaseSecurityPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Web\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Web\BaseViewableForm.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BaseFramework\Web\MessageType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
@@ -650,6 +1627,7 @@
     <Compile Include="Data\NHibernate\DynamicQuery\TypedCriterionProperty.cs" />
     <Compile Include="Entity\BaseTableEntity.cs" />
     <Compile Include="Entity\BaseViewEntity.cs" />
+    <Compile Include="Entity\CompositeIdType.cs" />
     <Compile Include="Entity\IAuditableEntity.cs" />
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
@@ -676,476 +1654,6 @@
     <Compile Include="SevenZip\Compress\RangeCoder\RangeCoderBit.cs" />
     <Compile Include="SevenZip\Compress\RangeCoder\RangeCoderBitTree.cs" />
     <Compile Include="SevenZip\ICoder.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainer.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainer.Designer.cs">
-      <DependentUpon>BaseFrameworkServiceProxyContainer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemApplicationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemApplicationServiceProxy.Designer.cs">
-      <DependentUpon>SystemApplicationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDepartmentServiceProxy.Designer.cs">
-      <DependentUpon>SystemDepartmentServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemDictionaryServiceProxy.Designer.cs">
-      <DependentUpon>SystemDictionaryServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemLogServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemLogServiceProxy.Designer.cs">
-      <DependentUpon>SystemLogServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMenuServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMenuServiceProxy.Designer.cs">
-      <DependentUpon>SystemMenuServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleFieldServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleFieldServiceProxy.Designer.cs">
-      <DependentUpon>SystemMoudleFieldServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemMoudleServiceProxy.Designer.cs">
-      <DependentUpon>SystemMoudleServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOperationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemOperationServiceProxy.Designer.cs">
-      <DependentUpon>SystemOperationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPersonalizationSettingsServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPersonalizationSettingsServiceProxy.Designer.cs">
-      <DependentUpon>SystemPersonalizationSettingsServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeInRolesServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeInRolesServiceProxy.Designer.cs">
-      <DependentUpon>SystemPrivilegeInRolesServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeParameterServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeParameterServiceProxy.Designer.cs">
-      <DependentUpon>SystemPrivilegeParameterServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemPrivilegeServiceProxy.Designer.cs">
-      <DependentUpon>SystemPrivilegeServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemResourcesServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemResourcesServiceProxy.Designer.cs">
-      <DependentUpon>SystemResourcesServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleApplicationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleApplicationServiceProxy.Designer.cs">
-      <DependentUpon>SystemRoleApplicationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleMenuRelationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleMenuRelationServiceProxy.Designer.cs">
-      <DependentUpon>SystemRoleMenuRelationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemRoleServiceProxy.Designer.cs">
-      <DependentUpon>SystemRoleServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemSettingServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemSettingServiceProxy.Designer.cs">
-      <DependentUpon>SystemSettingServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemShortMessageServiceProxy.Designer.cs">
-      <DependentUpon>SystemShortMessageServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupRoleRelationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupRoleRelationServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserGroupRoleRelationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserGroupServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupUserRelationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserGroupUserRelationServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserGroupUserRelationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfilePropertysServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfilePropertysServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserProfilePropertysServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfileServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserProfileServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserProfileServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserRoleRelationServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserRoleRelationServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserRoleRelationServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemUserServiceProxy.Designer.cs">
-      <DependentUpon>SystemUserServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewItemServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewItemServiceProxy.Designer.cs">
-      <DependentUpon>SystemViewItemServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewServiceProxy.cs" />
-    <Compile Include="BaseFramework\Bussiness\ServiceProxys\Tables\SystemViewServiceProxy.Designer.cs">
-      <DependentUpon>SystemViewServiceProxy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\SystemConst\SysDictionaryWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemApplicationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemApplicationWrapper.Designer.cs">
-      <DependentUpon>SystemApplicationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDepartmentWrapper.Designer.cs">
-      <DependentUpon>SystemDepartmentWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemDictionaryWrapper.Designer.cs">
-      <DependentUpon>SystemDictionaryWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemLogWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemLogWrapper.Designer.cs">
-      <DependentUpon>SystemLogWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMenuWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMenuWrapper.Designer.cs">
-      <DependentUpon>SystemMenuWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleFieldWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleFieldWrapper.Designer.cs">
-      <DependentUpon>SystemMoudleFieldWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemMoudleWrapper.Designer.cs">
-      <DependentUpon>SystemMoudleWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOperationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemOperationWrapper.Designer.cs">
-      <DependentUpon>SystemOperationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPersonalizationSettingsWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPersonalizationSettingsWrapper.Designer.cs">
-      <DependentUpon>SystemPersonalizationSettingsWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeInRolesWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeInRolesWrapper.Designer.cs">
-      <DependentUpon>SystemPrivilegeInRolesWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeParameterWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeParameterWrapper.Designer.cs">
-      <DependentUpon>SystemPrivilegeParameterWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemPrivilegeWrapper.Designer.cs">
-      <DependentUpon>SystemPrivilegeWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemResourcesWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemResourcesWrapper.Designer.cs">
-      <DependentUpon>SystemResourcesWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleApplicationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleApplicationWrapper.Designer.cs">
-      <DependentUpon>SystemRoleApplicationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleMenuRelationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleMenuRelationWrapper.Designer.cs">
-      <DependentUpon>SystemRoleMenuRelationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemRoleWrapper.Designer.cs">
-      <DependentUpon>SystemRoleWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemSettingWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemSettingWrapper.Designer.cs">
-      <DependentUpon>SystemSettingWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemShortMessageWrapper.Designer.cs">
-      <DependentUpon>SystemShortMessageWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupRoleRelationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupRoleRelationWrapper.Designer.cs">
-      <DependentUpon>SystemUserGroupRoleRelationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupUserRelationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupUserRelationWrapper.Designer.cs">
-      <DependentUpon>SystemUserGroupUserRelationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserGroupWrapper.Designer.cs">
-      <DependentUpon>SystemUserGroupWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfilePropertysWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfilePropertysWrapper.Designer.cs">
-      <DependentUpon>SystemUserProfilePropertysWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfileWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserProfileWrapper.Designer.cs">
-      <DependentUpon>SystemUserProfileWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserRoleRelationWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserRoleRelationWrapper.Designer.cs">
-      <DependentUpon>SystemUserRoleRelationWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemUserWrapper.Designer.cs">
-      <DependentUpon>SystemUserWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewItemWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewItemWrapper.Designer.cs">
-      <DependentUpon>SystemViewItemWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewWrapper.cs" />
-    <Compile Include="BaseFramework\Bussiness\Wrappers\SystemViewWrapper.Designer.cs">
-      <DependentUpon>SystemViewWrapper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainers.cs" />
-    <Compile Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainers.Designer.cs">
-      <DependentUpon>BaseFrameworkDataObjectContainers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\QueryObjects.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemApplicationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemApplicationDataObject.Designer.cs">
-      <DependentUpon>SystemApplicationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemDepartmentDataObject.Designer.cs">
-      <DependentUpon>SystemDepartmentDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemDictionaryDataObject.Designer.cs">
-      <DependentUpon>SystemDictionaryDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemLogDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemLogDataObject.Designer.cs">
-      <DependentUpon>SystemLogDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemMenuDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemMenuDataObject.Designer.cs">
-      <DependentUpon>SystemMenuDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemMoudleDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemMoudleDataObject.Designer.cs">
-      <DependentUpon>SystemMoudleDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemMoudleFieldDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemMoudleFieldDataObject.Designer.cs">
-      <DependentUpon>SystemMoudleFieldDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemOperationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemOperationDataObject.Designer.cs">
-      <DependentUpon>SystemOperationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPersonalizationSettingsDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemPersonalizationSettingsDataObject.Designer.cs">
-      <DependentUpon>SystemPersonalizationSettingsDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeDataObject.Designer.cs">
-      <DependentUpon>SystemPrivilegeDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeInRolesDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeInRolesDataObject.Designer.cs">
-      <DependentUpon>SystemPrivilegeInRolesDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeParameterDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemPrivilegeParameterDataObject.Designer.cs">
-      <DependentUpon>SystemPrivilegeParameterDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemResourcesDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemResourcesDataObject.Designer.cs">
-      <DependentUpon>SystemResourcesDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleApplicationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleApplicationDataObject.Designer.cs">
-      <DependentUpon>SystemRoleApplicationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleDataObject.Designer.cs">
-      <DependentUpon>SystemRoleDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleMenuRelationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemRoleMenuRelationDataObject.Designer.cs">
-      <DependentUpon>SystemRoleMenuRelationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemSettingDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemSettingDataObject.Designer.cs">
-      <DependentUpon>SystemSettingDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemShortMessageDataObject.Designer.cs">
-      <DependentUpon>SystemShortMessageDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserDataObject.Designer.cs">
-      <DependentUpon>SystemUserDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupDataObject.Designer.cs">
-      <DependentUpon>SystemUserGroupDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupRoleRelationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupRoleRelationDataObject.Designer.cs">
-      <DependentUpon>SystemUserGroupRoleRelationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupUserRelationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserGroupUserRelationDataObject.Designer.cs">
-      <DependentUpon>SystemUserGroupUserRelationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserProfileDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserProfileDataObject.Designer.cs">
-      <DependentUpon>SystemUserProfileDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserProfilePropertysDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserProfilePropertysDataObject.Designer.cs">
-      <DependentUpon>SystemUserProfilePropertysDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemUserRoleRelationDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemUserRoleRelationDataObject.Designer.cs">
-      <DependentUpon>SystemUserRoleRelationDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemViewDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemViewDataObject.Designer.cs">
-      <DependentUpon>SystemViewDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Data\Tables\SystemViewItemDataObject.cs" />
-    <Compile Include="BaseFramework\Data\Tables\SystemViewItemDataObject.Designer.cs">
-      <DependentUpon>SystemViewItemDataObject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemApplicationEntity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemApplicationEntity.Designer.cs">
-      <DependentUpon>SystemApplicationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentEntity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDepartmentEntity.Designer.cs">
-      <DependentUpon>SystemDepartmentEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryEntity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemDictionaryEntity.Designer.cs">
-      <DependentUpon>SystemDictionaryEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemLogEntity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemLogEntity.Designer.cs">
-      <DependentUpon>SystemLogEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemMenuEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemMenuEntity.Designer.cs">
-      <DependentUpon>SystemMenuEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleEntity.Designer.cs">
-      <DependentUpon>SystemMoudleEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleFieldEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemMoudleFieldEntity.Designer.cs">
-      <DependentUpon>SystemMoudleFieldEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemOperationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemOperationEntity.Designer.cs">
-      <DependentUpon>SystemOperationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPersonalizationSettingsEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemPersonalizationSettingsEntity.Designer.cs">
-      <DependentUpon>SystemPersonalizationSettingsEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeEntity.Designer.cs">
-      <DependentUpon>SystemPrivilegeEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeInRolesEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeInRolesEntity.Designer.cs">
-      <DependentUpon>SystemPrivilegeInRolesEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeParameterEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemPrivilegeParameterEntity.Designer.cs">
-      <DependentUpon>SystemPrivilegeParameterEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemResourcesEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemResourcesEntity.Designer.cs">
-      <DependentUpon>SystemResourcesEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleApplicationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleApplicationEntity.Designer.cs">
-      <DependentUpon>SystemRoleApplicationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleEntity.Designer.cs">
-      <DependentUpon>SystemRoleEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleMenuRelationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemRoleMenuRelationEntity.Designer.cs">
-      <DependentUpon>SystemRoleMenuRelationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemSettingEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemSettingEntity.Designer.cs">
-      <DependentUpon>SystemSettingEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemShortMessageEntity.Designer.cs">
-      <DependentUpon>SystemShortMessageEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserEntity.Designer.cs">
-      <DependentUpon>SystemUserEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupEntity.Designer.cs">
-      <DependentUpon>SystemUserGroupEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupRoleRelationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupRoleRelationEntity.Designer.cs">
-      <DependentUpon>SystemUserGroupRoleRelationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupUserRelationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserGroupUserRelationEntity.Designer.cs">
-      <DependentUpon>SystemUserGroupUserRelationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfileEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfileEntity.Designer.cs">
-      <DependentUpon>SystemUserProfileEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfilePropertysEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserProfilePropertysEntity.Designer.cs">
-      <DependentUpon>SystemUserProfilePropertysEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserRoleRelationEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemUserRoleRelationEntity.Designer.cs">
-      <DependentUpon>SystemUserRoleRelationEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemViewEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemViewEntity.Designer.cs">
-      <DependentUpon>SystemViewEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Entity\Tables\SystemViewItemEntity.cs" />
-    <Compile Include="BaseFramework\Entity\Tables\SystemViewItemEntity.Designer.cs">
-      <DependentUpon>SystemViewItemEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Providers\NHibernateMembershipProvider.cs" />
-    <Compile Include="BaseFramework\Providers\NhibernatePersonalizationProvider.cs" />
-    <Compile Include="BaseFramework\Providers\NHibernateProfileProvider.cs" />
-    <Compile Include="BaseFramework\Providers\NHibernateProviderSR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NHibernateProviderSR.resx</DependentUpon>
-    </Compile>
-    <Compile Include="BaseFramework\Providers\NHibernateRolesProvider.cs" />
-    <Compile Include="BaseFramework\Utility\SchemaHelper.cs" />
-    <Compile Include="BaseFramework\Web\BaseSecurityPage.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Web\BaseUserControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Web\BaseViewableForm.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BaseFramework\Web\MessageType.cs" />
     <Compile Include="Bussiness\Interfaces\IBaseSpringNHibernateEntityServiceProxy.cs" />
     <Compile Include="Bussiness\Interfaces\IBaseSpringNHibernateEntityViewServiceProxy.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringAdoNetServiceProxy.cs" />
@@ -1207,61 +1715,73 @@
     <Compile Include="Win\Process\ProcessOperator.cs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainersFile.xml" />
+    <EmbeddedResource Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainersFile.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAddressMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemApplicationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentContentMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCityMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemConfigGroupMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemConfigMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCountryMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDataTypeMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDepartmentMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDepartmentPostRoleRelationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDictionaryGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDictionaryMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailQueueMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailSettingsMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailTemplateMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmployeeMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemIPLocationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemLogMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemMenuMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemMoudleFieldMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemMoudleMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemNumberSeedMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemOperationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemOrganizationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPersonalizationSettingsMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPhoneAreaMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPostMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPrivilegeInRolesMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPrivilegeMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPrivilegeParameterMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemProvinceMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemResourcesMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRichTextMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRoleApplicationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRoleMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRoleMenuRelationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemSettingMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemShortMessageMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTaskMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTemplateMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTerminologyMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTimeZoneMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserGroupMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserGroupRoleRelationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserGroupUserRelationMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserProfileMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserProfilePropertysMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserRoleRelationMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemVersionMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemViewItemMappingFile.hbm.xml" />
     <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemViewMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemWorkFlowMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemWorkFlowStepMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Providers\NHibernateProviderSR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NHibernateProviderSR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Win\Process\ProcessForm.resx">
       <DependentUpon>ProcessForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Providers\NHibernateProviderSR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>NHibernateProviderSR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemUserProfilePropertysMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Bussiness\ServiceProxys\Tables\Container\BaseFrameworkServiceProxyContainersFile.xml" />
-    <EmbeddedResource Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainersFile.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemConfigMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailQueueMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailSettingsMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmailTemplateMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemWorkFlowMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemWorkFlowStepMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BaseFramework\Data\Views\" />
@@ -1285,46 +1805,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTerminologyMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTaskMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDataTypeMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemVersionMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemConfigGroupMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDictionaryGroupMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCityMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemCountryMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemProvinceMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTemplateMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentContentMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAttachmentMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemDepartmentPostRoleRelationMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemEmployeeMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemNumberSeedMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemOrganizationMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPostMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemAddressMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemRichTextMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemTimeZoneMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemIPLocationMappingFile.hbm.xml" />
-    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemPhoneAreaMappingFile.hbm.xml" />
+    <EmbeddedResource Include="BaseFramework\Entity\Tables\MappingFiles\SystemShortMessageLogMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

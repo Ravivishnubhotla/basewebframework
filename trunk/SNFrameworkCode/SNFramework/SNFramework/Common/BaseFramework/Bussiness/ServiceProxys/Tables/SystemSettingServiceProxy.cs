@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemSettingEntity>, ISystemSettingServiceProxyDesigner
+    public interface ISystemSettingServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemSettingEntity, int>, ISystemSettingServiceProxyDesigner
     {
         [OperationContract]
         SystemSettingWrapper GetCurrentSystemSetting();

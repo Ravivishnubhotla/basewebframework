@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Text;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
+using Legendigital.Framework.Common.Entity;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Metadata;
 
 namespace Legendigital.Framework.Common.Data.Interfaces
 {
-    public interface IBaseNHibernateDataObject<DomainType> : IGenericDataObject<DomainType>, IBaseNHibernateViewDataObject<DomainType>
+    public interface IBaseNHibernateDataObject<DomainType, EntityKeyType> : IGenericDataObject<DomainType, EntityKeyType>, IBaseNHibernateViewDataObject<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType>
     {
         /// <summary>
         /// 添加更新拷贝

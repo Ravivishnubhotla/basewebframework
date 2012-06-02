@@ -11,7 +11,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPRecordExtendInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRecordExtendInfoEntity> ,ISPRecordExtendInfoServiceProxyDesigner
+    public interface ISPRecordExtendInfoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPRecordExtendInfoEntity, int>, ISPRecordExtendInfoServiceProxyDesigner
     {
 
 

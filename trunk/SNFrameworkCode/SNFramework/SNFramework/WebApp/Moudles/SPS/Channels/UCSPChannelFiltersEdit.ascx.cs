@@ -27,30 +27,30 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         {
             try
             {
-                SPChannelFiltersWrapper obj = SPChannelFiltersWrapper.FindById(id);
+                //SPChannelFiltersWrapper obj = SPChannelFiltersWrapper.FindById(id);
 
-                if (obj != null)
-                {
-                    this.txtChannelID.Text = obj.ChannelID.ToString();
-                    this.txtParamsName.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsName);
-                    this.txtFilterType.Text = ValueConvertUtil.ConvertStringValue(obj.FilterType);
-                    this.txtFilterValue.Text = ValueConvertUtil.ConvertStringValue(obj.FilterValue);
-
-
+                //if (obj != null)
+                //{
+                //    this.txtChannelID.Text = obj.ChannelID.ToString();
+                //    this.txtParamsName.Text = ValueConvertUtil.ConvertStringValue(obj.ParamsName);
+                //    this.txtFilterType.Text = ValueConvertUtil.ConvertStringValue(obj.FilterType);
+                //    this.txtFilterValue.Text = ValueConvertUtil.ConvertStringValue(obj.FilterValue);
 
 
-                    hidId.Text = id.ToString();
 
 
-                    winSPChannelFiltersEdit.Show();
+                //    hidId.Text = id.ToString();
 
-                }
-                else
-                {
-                    ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
-                    return;
-                }
+
+                //    winSPChannelFiltersEdit.Show();
+
+                //}
+                //else
+                //{
+                //    ResourceManager.AjaxSuccess = false;
+                //    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                //    return;
+                //}
             }
             catch (Exception ex)
             {
@@ -62,26 +62,26 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
         protected void btnSaveSPChannelFilters_Click(object sender, DirectEventArgs e)
         {
-            try
-            {
-                SPChannelFiltersWrapper obj = SPChannelFiltersWrapper.FindById(int.Parse(hidId.Text.Trim()));
+            //try
+            //{
+            //    SPChannelFiltersWrapper obj = SPChannelFiltersWrapper.FindById(int.Parse(hidId.Text.Trim()));
  
-                obj.ParamsName = this.txtParamsName.Text.Trim();
-                obj.FilterType = this.txtFilterType.Text.Trim();
-                obj.FilterValue = this.txtFilterValue.Text.Trim();
+            //    obj.ParamsName = this.txtParamsName.Text.Trim();
+            //    obj.FilterType = this.txtFilterType.Text.Trim();
+            //    obj.FilterValue = this.txtFilterValue.Text.Trim();
 
 
-                SPChannelFiltersWrapper.Update(obj);
+            //    SPChannelFiltersWrapper.Update(obj);
 
-                winSPChannelFiltersEdit.Hide();
-                ResourceManager.AjaxSuccess = true;
-            }
-            catch (Exception ex)
-            {
-                ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
-                return;
-            }
+            //    winSPChannelFiltersEdit.Hide();
+            //    ResourceManager.AjaxSuccess = true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    ResourceManager.AjaxSuccess = false;
+            //    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+            //    return;
+            //}
 
         }
     }

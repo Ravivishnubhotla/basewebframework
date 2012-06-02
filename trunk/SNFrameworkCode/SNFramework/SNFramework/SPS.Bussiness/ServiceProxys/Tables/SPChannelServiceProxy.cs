@@ -18,7 +18,7 @@ using Spring.Transaction.Interceptor;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-    public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity>, ISPChannelServiceProxyDesigner
+    public interface ISPChannelServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelEntity, int>, ISPChannelServiceProxyDesigner
     {
         void QuickAddSPChannel(SPChannelEntity channelEntity, string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10);
         void QuickAddIVRChannel(SPChannelEntity channelEntity, string pIvrLinkId, string pIvrFeetime, string pIvrMobile, string pIvrspCode, string pIvrStartTime, string pIvrEndTime, string pIvrProvince, string pIvrCity, string pIvrExtend1, string pIvrExtend2, string pIvrExtend3, string pIvrExtend4, string pIvrExtend5, string pIvrExtend6, string pIvrExtend7, string pIvrExtend8, string pIvrExtend9, string pIvrExtend10);

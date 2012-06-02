@@ -43,14 +43,6 @@
     <Compile Include="Tables\SPChannelEntity.Designer.cs">
       <DependentUpon>SPChannelEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPChannelFiltersEntity.cs" />
-    <Compile Include="Tables\SPChannelFiltersEntity.Designer.cs">
-      <DependentUpon>SPChannelFiltersEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\SPChannelParamsConvertEntity.cs" />
-    <Compile Include="Tables\SPChannelParamsConvertEntity.Designer.cs">
-      <DependentUpon>SPChannelParamsConvertEntity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\SPChannelParamsEntity.cs" />
     <Compile Include="Tables\SPChannelParamsEntity.Designer.cs">
       <DependentUpon>SPChannelParamsEntity.cs</DependentUpon>
@@ -71,17 +63,17 @@
     <Compile Include="Tables\SPCodeEntity.Designer.cs">
       <DependentUpon>SPCodeEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPCodeFilterEntity.cs" />
-    <Compile Include="Tables\SPCodeFilterEntity.Designer.cs">
-      <DependentUpon>SPCodeFilterEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Tables\SPCodeParamsConvertEntity.cs" />
-    <Compile Include="Tables\SPCodeParamsConvertEntity.Designer.cs">
-      <DependentUpon>SPCodeParamsConvertEntity.cs</DependentUpon>
+    <Compile Include="Tables\SPCodeInfoEntity.cs" />
+    <Compile Include="Tables\SPCodeInfoEntity.Designer.cs">
+      <DependentUpon>SPCodeInfoEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPDayReportEntity.cs" />
     <Compile Include="Tables\SPDayReportEntity.Designer.cs">
       <DependentUpon>SPDayReportEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPFilterRuleEntity.cs" />
+    <Compile Include="Tables\SPFilterRuleEntity.Designer.cs">
+      <DependentUpon>SPFilterRuleEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPMemoEntity.cs" />
     <Compile Include="Tables\SPMemoEntity.Designer.cs">
@@ -91,9 +83,9 @@
     <Compile Include="Tables\SPMonitoringRequestEntity.Designer.cs">
       <DependentUpon>SPMonitoringRequestEntity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tables\SPPhoneAreaEntity.cs" />
-    <Compile Include="Tables\SPPhoneAreaEntity.Designer.cs">
-      <DependentUpon>SPPhoneAreaEntity.cs</DependentUpon>
+    <Compile Include="Tables\SPParamsConvertRuleEntity.cs" />
+    <Compile Include="Tables\SPParamsConvertRuleEntity.Designer.cs">
+      <DependentUpon>SPParamsConvertRuleEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPRecordEntity.cs" />
     <Compile Include="Tables\SPRecordEntity.Designer.cs">
@@ -113,32 +105,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\MappingFiles\SPChannelFiltersMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPChannelSycnParamsMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientCodeRelationMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPClientCodeSycnParamsMappingFile.hbm.xml" />
-    <EmbeddedResource Include="Tables\MappingFiles\SPCodeFilterMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPCodeMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPDayReportMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPMemoMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPMonitoringRequestMappingFile.hbm.xml" />
-    <EmbeddedResource Include="Tables\MappingFiles\SPPhoneAreaMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPRecordExtendInfoMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPRecordMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPSClientMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPUpperMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\MappingFiles\SPChannelParamsConvertMappingFile.hbm.xml" />
-    <EmbeddedResource Include="Tables\MappingFiles\SPCodeParamsConvertMappingFile.hbm.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{320F2DF6-8BE6-470A-B320-CDC547F483F9}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPCodeInfoMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPFilterRuleMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPParamsConvertRuleMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
