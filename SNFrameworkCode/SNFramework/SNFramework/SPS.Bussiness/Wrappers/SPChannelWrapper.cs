@@ -14,6 +14,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
+using SPS.Bussiness.DataAdapter;
 using SPS.Bussiness.HttpUtils;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -142,27 +143,45 @@ namespace SPS.Bussiness.Wrappers
 	        throw new NotImplementedException();
 	    }
 
-	    public string GetFailedCode(HttpRequestLog httpRequestLog)
+        public string GetFailedCode(IDataAdapter httpRequestLog)
 	    {
 	        return this.DataFailedMessage;
 	    }
 
-	    public bool CheckRequestIsFilters(HttpRequestLog httpRequestLog)
+        public bool CheckRequestIsFilters(IDataAdapter httpRequestLog)
 	    {
 	        return false;
 	    }
 
-	    public void ParamsConvert(HttpRequestLog httpRequestLog)
+        public void ParamsConvert(IDataAdapter httpRequestLog)
 	    {
 	        return;
 	    }
 
-	    public void InitParams(HttpRequestLog httpRequestLog)
+        public void InitParams(IDataAdapter httpRequestLog)
 	    {
             return;
 	    }
 
-        public string InterfaceUrl
+	    public const string ChannelType_SPS = "SPSCS";
+        public const string ChannelType_IVRCS = "IVRCS";
+        public const string ChannelType_CustomCS = "CustomCS";
+
+
+        public string ChannelTypeString
+	    {
+            get
+            {
+                if (this.ChannelType == DictionaryConst.Dictionary_ChannelType_SPChannel_Key)
+                    return ChannelType_SPS;
+                else if (this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+                    return ChannelType_IVRCS;
+                else
+                    return ChannelType_CustomCS;
+            }
+	    }
+
+	    public string InterfaceUrl
         {
             get
             {
@@ -172,16 +191,16 @@ namespace SPS.Bussiness.Wrappers
                     return "";
 
                 if (context.Request.Url.Port == 80)
-                    return string.Format("{0}://{1}/SPSInterface/{2}{3}", context.Request.Url.Scheme,
-                                         context.Request.Url.Host, this.Code,this.DataAdapterUrl);
+                    return string.Format("{0}://{1}/{4}/{2}{4}{3}", context.Request.Url.Scheme,
+                                         context.Request.Url.Host, this.Code, this.DataAdapterUrl, this.ChannelTypeString);
 
-                return string.Format("{0}://{1}:{2}/SPSInterface/{3}{4}", context.Request.Url.Scheme,
+                return string.Format("{0}://{1}:{2}/{5}/{3}{5}{4}", context.Request.Url.Scheme,
                                      context.Request.Url.Host,
-                                     context.Request.Url.Port, this.Code, this.DataAdapterUrl);
+                                     context.Request.Url.Port, this.Code, this.DataAdapterUrl, this.ChannelTypeString);
             }
         }
 
-	    public bool ProcessRequest(HttpRequestLog httpRequestLog,bool statusOk, out RequestErrorType requestError, out string errorMessage)
+        public bool ProcessRequest(IDataAdapter httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
             requestError = RequestErrorType.NoError;
             errorMessage = "";
@@ -367,7 +386,7 @@ namespace SPS.Bussiness.Wrappers
 
 
 
-	    private int GetRecordCount(HttpRequestLog httpRequestLog)
+        private int GetRecordCount(IDataAdapter httpRequestLog)
 	    {
             if(this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
             {
@@ -400,7 +419,7 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	    }
 
-	    private DateTime GetRecordTime(HttpRequestLog httpRequestLog)
+        private DateTime GetRecordTime(IDataAdapter httpRequestLog)
 	    {
             //if (this.ChannelParams.HasKey(DictionaryConst.Dictionary_SPField_CreateDate_Key)&&this.ca)
 	        return DateTime.Now;
@@ -454,7 +473,7 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
-        public SPCodeWrapper GetMatchCodeFromRequest(HttpRequestLog httpRequestLog, string mo, string spcode, string province, string city)
+        public SPCodeWrapper GetMatchCodeFromRequest(IDataAdapter httpRequestLog, string mo, string spcode, string province, string city)
         {
             var findCode = (from cc in Codes
                             where (cc.CheckIsMatchCode(mo, spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
@@ -527,7 +546,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    private const int linkIDMaxLength = 20;
 
-	    private string GetLinkID(HttpRequestLog httpRequestLog)
+        private string GetLinkID(IDataAdapter httpRequestLog)
 	    {
 	        if(this.IsAutoLinkID)
 	        {
@@ -614,7 +633,7 @@ namespace SPS.Bussiness.Wrappers
 	    }
 
 	    //获取请求类型，当前状态报告还是数据报告
-	    public RequestType GetRequestType(HttpRequestLog httpRequestLog)
+        public RequestType GetRequestType(IDataAdapter httpRequestLog)
 	    {
             if(!(this.IsStateReport))
             {
@@ -655,7 +674,7 @@ namespace SPS.Bussiness.Wrappers
             return RequestType.UnKnow;
 	    }
 
-        public bool ProcessStatusReport(HttpRequestLog httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
+        public bool ProcessStatusReport(IDataAdapter httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
             requestError = RequestErrorType.NoError;
             errorMessage = "";
@@ -691,16 +710,16 @@ namespace SPS.Bussiness.Wrappers
 
 	    }
 
- 
 
-        public string GetOkCode(HttpRequestLog httpRequestLog)
+
+        public string GetOkCode(IDataAdapter httpRequestLog)
         {
             return this.DataOkMessage;
         }
 
 
 
-        public bool GetStatus(HttpRequestLog httpRequestLog)
+        public bool GetStatus(IDataAdapter httpRequestLog)
         {
             return (httpRequestLog.RequestParams[this.StateReportParamName.ToLower()].ToString().ToLower().Equals(this.StateReportParamValue.ToLower()));
         }

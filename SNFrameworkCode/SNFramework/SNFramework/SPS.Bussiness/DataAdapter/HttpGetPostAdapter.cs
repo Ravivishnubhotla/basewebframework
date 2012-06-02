@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using Legendigital.Framework.Common.Utility;
 using Newtonsoft.Json;
+using SPS.Bussiness.Wrappers;
 
 namespace SPS.Bussiness.DataAdapter
 {
@@ -27,6 +28,10 @@ namespace SPS.Bussiness.DataAdapter
             get { return requestSoucre; }
             set { requestSoucre = value; }
         }
+
+        public static HashSet<string> recordParamsNames = new HashSet<string>() { "url", "query_string" };
+
+        public static HashSet<string> filterParamsNames = new HashSet<string>() { ".basewebmanageframework", "currentloginid", "asp.net_sessionid" };
 
         private string requestSoucreParamsString;
 
@@ -69,7 +74,7 @@ namespace SPS.Bussiness.DataAdapter
 
             requestIP = GetIP(request);
 
-            requestFileName = Path.GetFileNameWithoutExtension(request.PhysicalPath);
+            requestFileName = Path.GetFileName(request.PhysicalPath);
 
             requestSoucre = request.Url.ToString();
 
@@ -126,8 +131,24 @@ namespace SPS.Bussiness.DataAdapter
 
             foreach (string key in request.Params.Keys)
             {
-                if (!string.IsNullOrEmpty(key))
+                if (string.IsNullOrEmpty(key))
+                    continue;
+
+                if (filterParamsNames.Contains(key.ToLower()))
+                    continue;
+
+                if ((recordParamsNames.Contains(key.ToLower())))
+                {
                     hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                    continue;
+                }
+
+                if (request.ServerVariables[key] == null)
+                {
+                    hb.Add(key.ToLower(), request.Params[key.ToLower()]);
+                    continue;
+                }
+
             }
 
             return hb;
@@ -145,7 +166,34 @@ namespace SPS.Bussiness.DataAdapter
 
         public string GetChannelCode()
         {
-            return this.requestFileName.Substring(0, this.requestFileName.Length - ("Recieved").Length);
+
+            string dataAdaptorUrl = Path.GetFileNameWithoutExtension(this.requestFileName);
+
+            string fileExt = Path.GetExtension(this.requestFileName);
+
+            string handlerName = "HttpGetPostAdapter";
+
+            if (dataAdaptorUrl.ToLower().EndsWith((SPChannelWrapper.ChannelType_SPS + handlerName).ToLower()))
+            {
+                dataAdaptorUrl = GetDataAdaptorUrl(dataAdaptorUrl, SPChannelWrapper.ChannelType_SPS, handlerName.Length);
+            }
+            else if (dataAdaptorUrl.ToLower().EndsWith((SPChannelWrapper.ChannelType_IVRCS + handlerName).ToLower()))
+            {
+                dataAdaptorUrl = GetDataAdaptorUrl(dataAdaptorUrl, SPChannelWrapper.ChannelType_IVRCS, handlerName.Length);
+            }
+            else if (dataAdaptorUrl.ToLower().EndsWith((SPChannelWrapper.ChannelType_CustomCS + handlerName).ToLower()))
+            {
+                dataAdaptorUrl = GetDataAdaptorUrl(dataAdaptorUrl, SPChannelWrapper.ChannelType_CustomCS, handlerName.Length);
+            }
+
+            return dataAdaptorUrl + handlerName + fileExt;
+        }
+
+        public static string GetDataAdaptorUrl(string dataAdaptorUrl, string prefix, int handlerlength)
+        {
+            dataAdaptorUrl = dataAdaptorUrl.Substring(0, dataAdaptorUrl.Length - prefix.Length - handlerlength);
+
+            return dataAdaptorUrl;
         }
     }
 }

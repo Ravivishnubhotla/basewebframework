@@ -479,6 +479,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\DataRecievedHandler.cs" />
+    <Compile Include="AppCode\IVRDataRecievedHandler.cs" />
     <Compile Include="AppCode\SPClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

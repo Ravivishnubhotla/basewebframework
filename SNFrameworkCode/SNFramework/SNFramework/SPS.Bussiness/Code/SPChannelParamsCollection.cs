@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
+using SPS.Bussiness.DataAdapter;
 using SPS.Bussiness.HttpUtils;
 using SPS.Bussiness.Wrappers;
 
@@ -40,7 +41,7 @@ namespace SPS.Bussiness.Code
             }
         }
 
-        public string GetRequsetValueByKey(HttpRequestLog requestLog,string key)
+        public string GetRequsetValueByKey(IDataAdapter requestLog, string key)
         {
             if (requestLog.RequestParams.ContainsKey(this[key]))
                 return requestLog.RequestParams[this[key]].ToString();
@@ -48,98 +49,98 @@ namespace SPS.Bussiness.Code
                 return "";
         }
 
-        public string LinkIDFromRequset(HttpRequestLog requestLog)
+        public string LinkIDFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_LinkID_Key);
         }
 
-        public string MoFromRequset(HttpRequestLog requestLog)
+        public string MoFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_MO_Key);
         }
 
-        public string SPCodeFromRequset(HttpRequestLog requestLog)
+        public string SPCodeFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_SpNumber_Key);
         }
 
-        public string MobileFromRequset(HttpRequestLog requestLog)
+        public string MobileFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_Mobile_Key);
         }
 
-        public string ProvinceFromRequset(HttpRequestLog requestLog)
+        public string ProvinceFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_Province_Key);
         }
-        public string CityFromRequset(HttpRequestLog requestLog)
+        public string CityFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_City_Key);
         }
 
-        public string CreateDateFromRequset(HttpRequestLog requestLog)
+        public string CreateDateFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_CreateDate_Key);
         }
 
-        public string FeeTimeFromRequset(HttpRequestLog requestLog)
+        public string FeeTimeFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_FeeTime_Key);
         }
 
-        public string StartTimeFromRequset(HttpRequestLog requestLog)
+        public string StartTimeFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_StartTime_Key);
         }
 
-        public string EndTimeFromRequset(HttpRequestLog requestLog)
+        public string EndTimeFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_EndTime_Key);
         }
 
 
-        public string StateFromRequset(HttpRequestLog requestLog)
+        public string StateFromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_State_Key);
         }
 
-        public string ExtendField1FromRequset(HttpRequestLog requestLog)
+        public string ExtendField1FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField1_Key);
         }
-        public string ExtendField2FromRequset(HttpRequestLog requestLog)
+        public string ExtendField2FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField2_Key);
         }
-        public string ExtendField3FromRequset(HttpRequestLog requestLog)
+        public string ExtendField3FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField3_Key);
         }
-        public string ExtendField4FromRequset(HttpRequestLog requestLog)
+        public string ExtendField4FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField4_Key);
         }
-        public string ExtendField5FromRequset(HttpRequestLog requestLog)
+        public string ExtendField5FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField5_Key);
         }
-        public string ExtendField6FromRequset(HttpRequestLog requestLog)
+        public string ExtendField6FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField6_Key);
         }
-        public string ExtendField7FromRequset(HttpRequestLog requestLog)
+        public string ExtendField7FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField7_Key);
         }
-        public string ExtendField8FromRequset(HttpRequestLog requestLog)
+        public string ExtendField8FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField8_Key);
         }
-        public string ExtendField9FromRequset(HttpRequestLog requestLog)
+        public string ExtendField9FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField9_Key);
         }
-        public string ExtendField10FromRequset(HttpRequestLog requestLog)
+        public string ExtendField10FromRequset(IDataAdapter requestLog)
         {
             return GetRequsetValueByKey(requestLog, DictionaryConst.Dictionary_SPField_ExtendField10_Key);
         }
