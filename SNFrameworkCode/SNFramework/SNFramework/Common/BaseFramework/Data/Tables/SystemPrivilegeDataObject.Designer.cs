@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemPrivilegeDataObject : BaseNHibernateDataObject<SystemPrivilegeEntity>
+    public partial class SystemPrivilegeDataObject : BaseNHibernateDataObject<SystemPrivilegeEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_PRIVILEGEID = new IntProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_PRIVILEGEID));		

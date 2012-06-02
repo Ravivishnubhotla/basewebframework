@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using SPS.Bussiness.Wrappers;
 
 namespace SPS.Bussiness.Code
@@ -17,7 +18,7 @@ namespace SPS.Bussiness.Code
             {
                 if (HttpContext.Current.Cache[PhoneInfos_Key] == null)
                 {
-                    HttpContext.Current.Cache[PhoneInfos_Key] = SPPhoneAreaWrapper.GetAllPhoneInfos_Key();
+                    HttpContext.Current.Cache[PhoneInfos_Key] = SystemPhoneAreaWrapper.GetAllPhoneInfos_Key();
                 }
                 return HttpContext.Current.Cache[PhoneInfos_Key] as Dictionary<string, PhoneAreaInfo>;
             }

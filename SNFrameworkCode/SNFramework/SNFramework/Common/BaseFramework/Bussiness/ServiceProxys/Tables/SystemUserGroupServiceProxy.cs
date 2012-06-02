@@ -15,7 +15,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemUserGroupServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserGroupEntity>, ISystemUserGroupServiceProxyDesigner
+    public interface ISystemUserGroupServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserGroupEntity, int>, ISystemUserGroupServiceProxyDesigner
     {
         [OperationContract]
         List<SystemRoleEntity> GetAssignedRoleByUserGroup(SystemUserGroupEntity systemUserGroupEntity);

@@ -84,16 +84,16 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
             string channelName = "所有";
 
-            if(ChannelID>0)
+            if (ChannelID.HasValue && ChannelID > 0)
             {
-                channelName = "【" + SPChannelWrapper.FindById(ChannelID).Name + "】";
+                channelName = "【" + SPChannelWrapper.FindById(ChannelID.Value).Name + "】";
             }
 
             string codeName = "";
 
-            if(CodeID>0)
+            if (CodeID.HasValue && CodeID > 0)
             {
-                codeName = "【" + SPCodeWrapper.FindById(CodeID).MoCode + "】指令";
+                codeName = "【" + SPCodeWrapper.FindById(CodeID.Value).MoCode + "】指令";
             }
 
             string reportName = string.Format("【{0}】-【{1}】 {2} 通道 {3} 结算报表", StartDate.Value.ToString("yyyy-MM-dd"),

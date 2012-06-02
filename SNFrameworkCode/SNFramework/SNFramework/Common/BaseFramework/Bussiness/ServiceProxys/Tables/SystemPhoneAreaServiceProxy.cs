@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemPhoneAreaServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity> ,ISystemPhoneAreaServiceProxyDesigner
+    public interface ISystemPhoneAreaServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity, int>, ISystemPhoneAreaServiceProxyDesigner
     {
 	    SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix);
     }

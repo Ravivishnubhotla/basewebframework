@@ -29,7 +29,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
         }
 
 
-        public int? ClientID
+        public int? SPClientID
         {
             get
             {
@@ -81,21 +81,21 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
 
         private void BindData()
         {
-            DataTable tb = SPDayReportWrapper.QueryClientInvoiceReport(StartDate, EndDate, ClientID, CodeID).Tables[0];
+            DataTable tb = SPDayReportWrapper.QueryClientInvoiceReport(StartDate, EndDate, SPClientID, CodeID).Tables[0];
 
 
             string clientName = "所有";
 
-            if (ClientID > 0)
+            if (SPClientID.HasValue && SPClientID > 0)
             {
-                clientName = "【" + SPSClientWrapper.FindById(ClientID).Name + "】";
+                clientName = "【" + SPSClientWrapper.FindById(SPClientID.Value).Name + "】";
             }
 
             string codeName = "";
 
-            if (CodeID > 0)
+            if (CodeID.HasValue && CodeID > 0)
             {
-                codeName = "【" + SPCodeWrapper.FindById(CodeID).MoCode + "】指令";
+                codeName = "【" + SPCodeWrapper.FindById(CodeID.Value).MoCode + "】指令";
             }
 
             string reportName = string.Format("【{0}】-【{1}】 {2} 客户 {3} 结算报表", StartDate.Value.ToString("yyyy-MM-dd"),

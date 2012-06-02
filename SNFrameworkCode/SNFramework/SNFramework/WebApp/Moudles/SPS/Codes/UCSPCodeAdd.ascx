@@ -14,34 +14,35 @@
         }
     }
 </script>
-<ext:store id="storeMOType" runat="server" autoload="True">
-        <Proxy>
-            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
-        </Proxy>
-        <Reader>
-            <ext:JsonReader Root="dictionarys" TotalProperty="total">
-                <Fields>
-                    <ext:RecordField Name="Key" />
-                    <ext:RecordField Name="Value" />
-                    <ext:RecordField Name="Code" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-        <BaseParams>
-            <ext:Parameter Name="GroupCode" Value="CodeType" Mode="Value" />
-        </BaseParams>
-    </ext:store>
-<ext:window id="winSPCodeAdd" runat="server" icon="ApplicationAdd" title="快速添加指令"
-    width="400" height="270" autoshow="false" maximizable="true" modal="true" hidden="true"
-    autoscroll="true" constrainheader="true" resizable="true" layout="Fit">
+<ext:Store ID="storeMOType" runat="server" AutoLoad="True">
+    <Proxy>
+        <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+    </Proxy>
+    <Reader>
+        <ext:JsonReader Root="dictionarys" TotalProperty="total">
+            <Fields>
+                <ext:RecordField Name="Key" />
+                <ext:RecordField Name="Value" />
+                <ext:RecordField Name="Code" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+    <BaseParams>
+        <ext:Parameter Name="GroupCode" Value="CodeType" Mode="Value" />
+    </BaseParams>
+</ext:Store>
+<ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
+    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSPCodeAdd" runat="server" Frame="true" Header="false"
             MonitorValid="true" BodyStyle="padding:5px;" LabelSeparator=":" LabelWidth="100"
             AutoScroll="true" Layout="Form">
             <Items>
-                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" Hidden="True"
+                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True" Hidden="True"
+                    AnchorHorizontal="95%" />
                 <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
                     SelectedIndex="1" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
                     ValueField="Key">
@@ -51,7 +52,8 @@
                 </ext:ComboBox>
                 <ext:TextField ID="txtMO" runat="server" FieldLabel="指令" AllowBlank="True" AnchorHorizontal="95%" />
                 <ext:TextField ID="txtSPCode" runat="server" FieldLabel="通道号" AllowBlank="True" AnchorHorizontal="95%" />
-                                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="价格" Text="1" DecimalPrecision="0" AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:NumberField ID="numOrderIndex" runat="server" FieldLabel="价格" Text="1" DecimalPrecision="0"
+                    AllowBlank="false" AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkHasSubCode" runat="server" FieldLabel="是否包含子指令" Checked="false"
                     Hidden="true">
                     <Listeners>
@@ -64,16 +66,36 @@
                     AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtDisableCity" runat="server" FieldLabel="屏蔽地市" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:TextField ID="txtGetway" runat="server" FieldLabel="运营商" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:ComboBox ID="cmbOperateType" Editable="false" runat="server" FieldLabel="运营商"
+                    LabelWidth="40" Width="120" TriggerAction="All">
+                    <Items>
+                        <ext:ListItem Value="移动" Text="移动"></ext:ListItem>
+                        <ext:ListItem Value="联通" Text="联通"></ext:ListItem>
+                        <ext:ListItem Value="电信" Text="电信"></ext:ListItem>
+                    </Items>
+                    <Triggers>
+                        <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                    </Triggers>
+                    <Listeners>
+                        <Select Handler="this.triggers[0].show();" />
+                        <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                        <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                    </Listeners>
+                </ext:ComboBox>
                 <ext:TextField ID="txtDayLimit" runat="server" FieldLabel="日限制" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtMonthLimit" runat="server" FieldLabel="月限制" AllowBlank="True"
                     AnchorHorizontal="95%" />
                 <ext:TextArea ID="txtCodeSendText" runat="server" FieldLabel="下发语" AllowBlank="True"
                     AnchorHorizontal="95%" />
-                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="价格" Text="1" AllowBlank="false" AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤" Checked="false"  AnchorHorizontal="95%"/>
-                <ext:Checkbox ID="chkHasParamsConvert" runat="server" FieldLabel="是否转换" Checked="false"  AnchorHorizontal="95%"/>
+                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="价格" Text="1" AllowBlank="false"
+                    AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤" Checked="false"
+                    AnchorHorizontal="95%" />
+                <ext:Checkbox ID="chkHasParamsConvert" runat="server" FieldLabel="是否转换" Checked="false"
+                    AnchorHorizontal="95%" />
+                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="备注信息" AllowBlank="True"
+                    AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>
     </Content>
@@ -93,4 +115,4 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-</ext:window>
+</ext:Window>

@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemRoleMenuRelationDataObject : BaseNHibernateDataObject<SystemRoleMenuRelationEntity>
+    public partial class SystemRoleMenuRelationDataObject : BaseNHibernateDataObject<SystemRoleMenuRelationEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_MENUROLEID = new IntProperty(Property.ForName(SystemRoleMenuRelationEntity.PROPERTY_NAME_MENUROLEID));		

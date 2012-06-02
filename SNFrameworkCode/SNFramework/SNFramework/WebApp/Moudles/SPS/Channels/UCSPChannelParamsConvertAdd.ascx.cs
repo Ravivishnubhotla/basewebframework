@@ -37,34 +37,34 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
         protected void btnSaveSPChannelParamsConvert_Click(object sender, DirectEventArgs e)
         {
-            try
-            {
-                SPChannelParamsConvertWrapper obj = new SPChannelParamsConvertWrapper();
-                obj.Name = this.txtName.Text.Trim();
-                obj.ParamsValue = this.txtParamsValue.Text.Trim();
-                obj.ParamsConvertTo = this.txtParamsConvertTo.Text.Trim();
-                obj.ParamsConvertType = this.txtParamsConvertType.Text.Trim();
-                obj.ParamsConvertCondition = this.txtParamsConvertCondition.Text.Trim();
+            //try
+            //{
+            //    SPChannelParamsConvertWrapper obj = new SPChannelParamsConvertWrapper();
+            //    obj.Name = this.txtName.Text.Trim();
+            //    obj.ParamsValue = this.txtParamsValue.Text.Trim();
+            //    obj.ParamsConvertTo = this.txtParamsConvertTo.Text.Trim();
+            //    obj.ParamsConvertType = this.txtParamsConvertType.Text.Trim();
+            //    obj.ParamsConvertCondition = this.txtParamsConvertCondition.Text.Trim();
  
-                obj.CreateBy = Convert.ToInt32(this.txtCreateBy.Text.Trim());
-                obj.CreateAt = UIHelper.SaftGetDateTime(this.txtCreateAt.Text.Trim());
-                obj.LastModifyBy = Convert.ToInt32(this.txtLastModifyBy.Text.Trim());
-                obj.LastModifyAt = UIHelper.SaftGetDateTime(this.txtLastModifyAt.Text.Trim());
+            //    obj.CreateBy = Convert.ToInt32(this.txtCreateBy.Text.Trim());
+            //    obj.CreateAt = UIHelper.SaftGetDateTime(this.txtCreateAt.Text.Trim());
+            //    obj.LastModifyBy = Convert.ToInt32(this.txtLastModifyBy.Text.Trim());
+            //    obj.LastModifyAt = UIHelper.SaftGetDateTime(this.txtLastModifyAt.Text.Trim());
 
 
 
 
 
-                SPChannelParamsConvertWrapper.Save(obj);
+            //    SPChannelParamsConvertWrapper.Save(obj);
 
-                winSPChannelParamsConvertAdd.Hide();
+            //    winSPChannelParamsConvertAdd.Hide();
 
-            }
-            catch (Exception ex)
-            {
-                ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ResourceManager.AjaxSuccess = false;
+            //    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+            //}
         }
     }
 

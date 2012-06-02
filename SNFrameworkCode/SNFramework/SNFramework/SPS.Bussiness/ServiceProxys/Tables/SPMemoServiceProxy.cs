@@ -11,7 +11,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPMemoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMemoEntity> ,ISPMemoServiceProxyDesigner
+    public interface ISPMemoServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPMemoEntity, int>, ISPMemoServiceProxyDesigner
     {
 
 
@@ -19,7 +19,6 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     internal partial class SPMemoServiceProxy : ISPMemoServiceProxy
     {
-
-
+ 
     }
 }

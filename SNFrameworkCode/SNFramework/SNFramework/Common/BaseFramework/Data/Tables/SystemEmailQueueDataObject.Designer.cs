@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemEmailQueueDataObject : BaseNHibernateDataObject<SystemEmailQueueEntity>
+    public partial class SystemEmailQueueDataObject : BaseNHibernateDataObject<SystemEmailQueueEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_QUEUEID = new IntProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_QUEUEID));		

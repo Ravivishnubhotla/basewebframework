@@ -9,64 +9,64 @@ using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 {
-    public abstract class TreeItemWrapper<DomainType, ServiceProxyType, WrapperType> : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
-        where DomainType : BaseTableEntity
-        where ServiceProxyType : IBaseSpringNHibernateEntityServiceProxy<DomainType>
-        where WrapperType : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
-    {
-        public TreeItemWrapper(DomainType entityObj) : base(entityObj)
-        {
-        }
+    //public abstract class TreeItemWrapper<DomainType, ServiceProxyType, WrapperType, EntityKeyType> : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
+    //    where DomainType : BaseTableEntity<EntityKeyType>
+    //    where ServiceProxyType : IBaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType>
+    //    where WrapperType : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType, EntityKeyType>
+    //{
+    //    protected TreeItemWrapper(DomainType entityObj) : base(entityObj)
+    //    {
+    //    }
 
-        public abstract List<WrapperType> FindAllItems();
+    //    public abstract List<WrapperType> FindAllItems();
 
-        protected abstract bool CheckIsRoot(WrapperType obj);
+    //    protected abstract bool CheckIsRoot(WrapperType obj);
 
-        protected abstract TypedTreeNodeItem<WrapperType> GetTreeNodeItemByDataItem(WrapperType item, TypedTreeNodeItem<WrapperType> pnode);
-
-
+    //    protected abstract TypedTreeNodeItem<WrapperType> GetTreeNodeItemByDataItem(WrapperType item, TypedTreeNodeItem<WrapperType> pnode);
 
 
 
 
-        public List<TypedTreeNodeItem<WrapperType>> GetAllTreeItems()
-        {
-            List<TypedTreeNodeItem<WrapperType>> nodes = new List<TypedTreeNodeItem<WrapperType>>();
 
-            List<WrapperType> allItems = FindAllItems();
 
-            if (allItems == null || allItems.Count <= 0)
-                return nodes;
+    //    public List<TypedTreeNodeItem<WrapperType>> GetAllTreeItems()
+    //    {
+    //        List<TypedTreeNodeItem<WrapperType>> nodes = new List<TypedTreeNodeItem<WrapperType>>();
 
-            List<WrapperType> topItems = allItems.FindAll(p => (CheckIsRoot(p)));
+    //        List<WrapperType> allItems = FindAllItems();
 
-            foreach (WrapperType topItem in topItems)
-            {
-                TypedTreeNodeItem<WrapperType> topnode = GetTreeNodeItemByDataItem(topItem, null);
+    //        if (allItems == null || allItems.Count <= 0)
+    //            return nodes;
 
-                AddSubItems(topnode, topItem, allItems);
+    //        List<WrapperType> topItems = allItems.FindAll(p => (CheckIsRoot(p)));
 
-                nodes.Add(topnode);
-            }
+    //        foreach (WrapperType topItem in topItems)
+    //        {
+    //            TypedTreeNodeItem<WrapperType> topnode = GetTreeNodeItemByDataItem(topItem, null);
 
-            return nodes;
-        }
+    //            AddSubItems(topnode, topItem, allItems);
 
-        public void AddSubItems(TypedTreeNodeItem<WrapperType> mnode, WrapperType mainItem, List<WrapperType> items)
-        {
-            List<WrapperType> subItems = items.FindAll(p => CheckGetSubItems(p, mainItem));
+    //            nodes.Add(topnode);
+    //        }
 
-            foreach (WrapperType subItem in subItems)
-            {
-                TypedTreeNodeItem<WrapperType> subnode = GetTreeNodeItemByDataItem(subItem, mnode);
+    //        return nodes;
+    //    }
 
-                AddSubItems(subnode, subItem, items);
+    //    public void AddSubItems(TypedTreeNodeItem<WrapperType> mnode, WrapperType mainItem, List<WrapperType> items)
+    //    {
+    //        List<WrapperType> subItems = items.FindAll(p => CheckGetSubItems(p, mainItem));
 
-                mnode.SubNodes.Add(subnode);
-            }
+    //        foreach (WrapperType subItem in subItems)
+    //        {
+    //            TypedTreeNodeItem<WrapperType> subnode = GetTreeNodeItemByDataItem(subItem, mnode);
 
-        }
+    //            AddSubItems(subnode, subItem, items);
 
-        protected abstract bool CheckGetSubItems(WrapperType subitem, WrapperType mainItem);
-    }
+    //            mnode.SubNodes.Add(subnode);
+    //        }
+
+    //    }
+
+    //    protected abstract bool CheckGetSubItems(WrapperType subitem, WrapperType mainItem);
+    //}
 }

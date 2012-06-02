@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemEmailQueueWrapper : BaseSpringNHibernateWrapper<SystemEmailQueueEntity, ISystemEmailQueueServiceProxy, SystemEmailQueueWrapper>
+    public partial class SystemEmailQueueWrapper  
     {
         #region Static Common Data Operation
 
@@ -36,12 +36,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -57,7 +57,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SystemEmailQueueWrapper FindById(object id)
+        public static SystemEmailQueueWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }

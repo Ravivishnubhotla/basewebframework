@@ -425,7 +425,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             {
                 throw new ArgumentNullException("providerUserKey");
             }
-            SystemUserWrapper user = SystemUserWrapper.FindById(providerUserKey);
+            SystemUserWrapper user = SystemUserWrapper.FindById(Convert.ToInt32(providerUserKey));
 
             if (user == null)
             {

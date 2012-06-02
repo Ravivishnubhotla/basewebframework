@@ -35,17 +35,17 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         {
             try
             {
-                SPChannelFiltersWrapper obj = new SPChannelFiltersWrapper();
+                //SPChannelFiltersWrapper obj = new SPChannelFiltersWrapper();
  
-                obj.ParamsName = this.txtParamsName.Text.Trim();
-                obj.FilterType = this.txtFilterType.Text.Trim();
-                obj.FilterValue = this.txtFilterValue.Text.Trim();
+                //obj.ParamsName = this.txtParamsName.Text.Trim();
+                //obj.FilterType = this.txtFilterType.Text.Trim();
+                //obj.FilterValue = this.txtFilterValue.Text.Trim();
 
 
 
 
 
-                SPChannelFiltersWrapper.Save(obj);
+                //SPChannelFiltersWrapper.Save(obj);
 
                 winSPChannelFiltersAdd.Hide();
 

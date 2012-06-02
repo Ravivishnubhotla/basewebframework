@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.Utility;
 using SPS.Bussiness.Wrappers;
 
@@ -38,15 +39,17 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                         this.cmbMOType.Value = ValueConvertUtil.ConvertStringValue(obj.MOType);
                         this.numOrderIndex.Text = obj.OrderIndex.ToString();
                         this.txtSPCode.Text = ValueConvertUtil.ConvertStringValue(obj.SPCode);
-                        this.txtProvince.Text = ValueConvertUtil.ConvertStringValue(obj.Province);
-                        this.txtDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
+                        //if (!string.IsNullOrEmpty(obj.Province))
+                        //    WebUIHelper.SetSelectMutilItems(mcmbProvince, "|", obj.Province); 
+                        //this.txtProvince.Text = obj.Province.ToString();
+                        //this.txtDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
                         this.chkIsDiable.Checked = obj.IsDiable;
  
  
-                        this.txtDayLimit.Text = obj.DayLimit.ToString();
-                        this.txtMonthLimit.Text = obj.MonthLimit.ToString();
+                        //this.txtDayLimit.Text = obj.DayLimit.ToString();
+                        //this.txtMonthLimit.Text = obj.MonthLimit.ToString();
                         this.txtPrice.Text = obj.Price.ToString();
-                        this.txtCodeSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
+                        //this.txtCodeSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
                         this.chkHasFilters.Checked = obj.HasFilters;
                         this.chkHasParamsConvert.Checked = obj.HasParamsConvert;
 
@@ -86,15 +89,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     obj.MOType = this.cmbMOType.SelectedItem.Value;
                     obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
                     obj.SPCode = this.txtSPCode.Text.Trim();
-                    obj.Province = this.txtProvince.Text.Trim();
-                    obj.DisableCity = this.txtDisableCity.Text.Trim();
+                    //obj.Province = this.txtProvince.Text.Trim();
+                    //obj.DisableCity = this.txtDisableCity.Text.Trim();
                     obj.IsDiable = this.chkIsDiable.Checked;
 
                     //obj.CodeLength = obj.Mo.Length;
-                    obj.DayLimit =  this.txtDayLimit.Text.Trim();
-                    obj.MonthLimit = this.txtMonthLimit.Text.Trim();
+                    //obj.DayLimit =  this.txtDayLimit.Text.Trim();
+                    //obj.MonthLimit = this.txtMonthLimit.Text.Trim();
                     obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                    obj.SendText = this.txtCodeSendText.Text.Trim();
+                    //obj.SendText = this.txtCodeSendText.Text.Trim();
                     obj.HasFilters = this.chkHasFilters.Checked;
                     obj.HasParamsConvert = this.chkHasParamsConvert.Checked;
 
@@ -106,7 +109,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                 catch (Exception ex)
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                    ResourceManager.AjaxErrorMessage = "错误信息:" + ex.Message;
                     return;
                 }
 

@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemCityWrapper : BaseSpringNHibernateWrapper<SystemCityEntity, ISystemCityServiceProxy, SystemCityWrapper>
+    public partial class SystemCityWrapper  
     {
         #region Static Common Data Operation
 
@@ -35,12 +35,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -56,7 +56,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SystemCityWrapper FindById(object id)
+        public static SystemCityWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }

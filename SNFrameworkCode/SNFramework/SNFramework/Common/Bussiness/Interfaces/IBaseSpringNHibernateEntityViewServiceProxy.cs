@@ -11,16 +11,16 @@ using Legendigital.Framework.Common.Entity;
 namespace Legendigital.Framework.Common.Bussiness.Interfaces
 {
     [ServiceContract]
-    public interface IBaseSpringNHibernateEntityViewServiceProxy<DomainType> where DomainType : BaseViewEntity
+    public interface IBaseSpringNHibernateEntityViewServiceProxy<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType>
     {
         [OperationContract]
         DomainType GetNewDomainInstance();
         [OperationContract]
         void Refresh(DomainType instance);
         [OperationContract]
-        DomainType FindById(object id);
+        DomainType FindById(EntityKeyType id);
         [OperationContract]
-        DomainType FullFindById(object id);      
+        DomainType FullFindById(EntityKeyType id);      
         [OperationContract(Name = "FindAll_Default")]
         List<DomainType> FindAll();
         [OperationContract(Name = "FindAll_Page")]

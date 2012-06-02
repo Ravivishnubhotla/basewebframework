@@ -10,10 +10,9 @@
             <Items>
                 <ext:Hidden ID="hidId" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextArea ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"
-                    AnchorHorizontal="95%" />
+                <ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True" Hidden="True" AnchorHorizontal="95%" />
+                <ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True" Hidden="True" AnchorHorizontal="95%" />
+
                 <ext:Checkbox ID="chkIsDiable" runat="server" FieldLabel="是否禁用" Checked="false" AnchorHorizontal="95%" />
                 <ext:ComboBox ID="cmbMOType" Editable="false" runat="server" FieldLabel="指令类型" AllowBlank="false"
                     SelectedIndex="1" AnchorHorizontal="95%" StoreID="storeMOType" DisplayField="Value"
@@ -42,6 +41,8 @@
                 <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤" Checked="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkHasParamsConvert" runat="server" FieldLabel="是否转换" Checked="false"
+                    AnchorHorizontal="95%" />
+                                    <ext:TextArea ID="txtDescription" runat="server" FieldLabel="备注信息" AllowBlank="True"
                     AnchorHorizontal="95%" />
             </Items>
         </ext:FormPanel>

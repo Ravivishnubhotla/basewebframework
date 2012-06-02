@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemProvinceEntity> FindAllByCountryID(SystemCountryEntity _countryID);
     }
 
-    public partial class SystemProvinceServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemProvinceEntity>
+    public partial class SystemProvinceServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemProvinceEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

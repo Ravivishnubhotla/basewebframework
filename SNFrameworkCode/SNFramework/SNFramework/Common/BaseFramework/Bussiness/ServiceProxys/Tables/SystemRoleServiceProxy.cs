@@ -16,7 +16,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemRoleServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemRoleEntity>, ISystemRoleServiceProxyDesigner
+    public interface ISystemRoleServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemRoleEntity, int>, ISystemRoleServiceProxyDesigner
     {
         [OperationContract]
         bool DeleteRole(string roleName, bool onPopulatedRole);

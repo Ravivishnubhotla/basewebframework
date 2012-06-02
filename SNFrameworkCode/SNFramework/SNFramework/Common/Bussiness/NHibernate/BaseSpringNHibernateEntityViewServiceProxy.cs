@@ -15,15 +15,15 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
     /// NHibernate架构可查询服务层对象基类
     /// </summary>
     /// <typeparam name="DomainType"></typeparam>
-    public class BaseSpringNHibernateEntityViewServiceProxy<DomainType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType> where DomainType : BaseViewEntity
+    public class BaseSpringNHibernateEntityViewServiceProxy<DomainType, EntityKeyType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType>
     {
 
-        protected IBaseNHibernateViewDataObject<DomainType> selfDataObject;
+        protected IBaseNHibernateViewDataObject<DomainType, EntityKeyType> selfDataObject;
 
         /// <summary>
         /// 可查询数据对象
         /// </summary>
-        public IBaseNHibernateViewDataObject<DomainType> SelfDataObject
+        public IBaseNHibernateViewDataObject<DomainType, EntityKeyType> SelfDataObject
         {
             set
             {
@@ -72,12 +72,12 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual DomainType FindById(object id)
+        public virtual DomainType FindById(EntityKeyType id)
         {
             return selfDataObject.Load(id);
         }
 
-        public virtual DomainType FullFindById(object id)
+        public virtual DomainType FullFindById(EntityKeyType id)
         {
             return selfDataObject.FullLoad(id);
         }

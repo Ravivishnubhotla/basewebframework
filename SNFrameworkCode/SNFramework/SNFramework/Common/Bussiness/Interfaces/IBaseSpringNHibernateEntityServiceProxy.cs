@@ -9,7 +9,7 @@ using Legendigital.Framework.Common.Entity;
 namespace Legendigital.Framework.Common.Bussiness.Interfaces
 {
     [ServiceContract]
-    public interface IBaseSpringNHibernateEntityServiceProxy<DomainType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType> where DomainType : BaseTableEntity
+    public interface IBaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType> : IBaseSpringNHibernateEntityViewServiceProxy<DomainType, EntityKeyType> where DomainType : BaseTableEntity<EntityKeyType>
     {
         [OperationContract]
         void Save(DomainType obj);
@@ -24,10 +24,10 @@ namespace Legendigital.Framework.Common.Bussiness.Interfaces
         void DeleteAll();
 
         [OperationContract]
-        void DeleteByID(object id);
+        void DeleteByID(EntityKeyType id);
 
         [OperationContract]
-        void PatchDeleteByIDs(object[] ids);
+        void PatchDeleteByIDs(EntityKeyType[] ids);
 
         [OperationContract]
         void Delete(DomainType instance);

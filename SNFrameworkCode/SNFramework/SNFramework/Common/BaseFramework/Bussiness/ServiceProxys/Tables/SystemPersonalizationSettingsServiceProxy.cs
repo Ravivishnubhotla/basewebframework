@@ -14,7 +14,7 @@ using Spring.Transaction.Interceptor;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemPersonalizationSettingsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPersonalizationSettingsEntity>, ISystemPersonalizationSettingsServiceProxyDesigner
+    public interface ISystemPersonalizationSettingsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemPersonalizationSettingsEntity, int>, ISystemPersonalizationSettingsServiceProxyDesigner
     {
         [OperationContract]
         void LoadPersonalizationBlobs(string path, string userName, ref byte[] userDataBlob);

@@ -29,7 +29,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
         {
             try
             {
-                SPChannelFiltersWrapper.DeleteByID(id);
+                //SPChannelFiltersWrapper.DeleteByID(id);
 
                 ResourceManager.AjaxSuccess = true;
             }
@@ -43,35 +43,35 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
 
         protected void storeSPChannelFilters_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            //string sortFieldName = "";
+            //if (e.Sort != null)
+            //    sortFieldName = e.Sort;
 
-            int startIndex = 0;
+            //int startIndex = 0;
 
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
+            //if (e.Start > -1)
+            //{
+            //    startIndex = e.Start;
+            //}
 
-            int limit = this.PagingToolBar1.PageSize;
+            //int limit = this.PagingToolBar1.PageSize;
 
-            int pageIndex = 1;
+            //int pageIndex = 1;
 
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
+            //if ((startIndex % limit) == 0)
+            //    pageIndex = startIndex / limit + 1;
+            //else
+            //    pageIndex = startIndex / limit;
 
 
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
+            //PageQueryParams pageQueryParams = new PageQueryParams();
+            //pageQueryParams.PageSize = limit;
+            //pageQueryParams.PageIndex = pageIndex;
 
-            storeSPChannelFilters.DataSource = SPChannelFiltersWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
-            e.Total = pageQueryParams.RecordCount;
+            //storeSPChannelFilters.DataSource = SPChannelFiltersWrapper.FindAllByOrderByAndFilterAndChannelID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), ChannelID, pageQueryParams);
+            //e.Total = pageQueryParams.RecordCount;
 
-            storeSPChannelFilters.DataBind();
+            //storeSPChannelFilters.DataBind();
 
         }
 

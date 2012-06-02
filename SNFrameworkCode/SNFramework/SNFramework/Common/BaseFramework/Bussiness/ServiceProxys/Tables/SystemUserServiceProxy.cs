@@ -19,7 +19,7 @@ using Legendigital.Framework.Common.BaseFramework.Providers;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemUserServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserEntity>, ISystemUserServiceProxyDesigner
+    public interface ISystemUserServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserEntity, int>, ISystemUserServiceProxyDesigner
     {
         [OperationContract]
         List<SystemRoleWrapper> GetUserAssignedRoleByUserLoginId(string loginId);

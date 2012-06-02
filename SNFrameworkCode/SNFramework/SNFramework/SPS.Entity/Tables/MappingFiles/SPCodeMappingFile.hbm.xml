@@ -25,13 +25,17 @@
 		<property column="SPCodeLength" type="int" name="SPCodeLength"   />	
 		<property column="HasFilters" type="Boolean" name="HasFilters"   not-null="true"  />	
 		<property column="HasParamsConvert" type="Boolean" name="HasParamsConvert"   not-null="true"  />	
-		<property column="Province" type="string" name="Province"   length="100" />	
-		<property column="DisableCity" type="string" name="DisableCity"   length="100" />	
 		<property column="IsDiable" type="Boolean" name="IsDiable"   not-null="true"  />	
-		<property column="DayLimit" type="string" name="DayLimit"   length="40" />	
-		<property column="MonthLimit" type="string" name="MonthLimit"   length="40" />	
 		<property column="Price" type="Decimal" name="Price"   />	
-		<property column="SendText" type="string" name="SendText"   length="4000" />	
+		<property column="OperationType" type="string" name="OperationType"   length="100" />	
+		<property column="HasDayTotalLimit" type="Boolean" name="HasDayTotalLimit"   not-null="true"  />	
+		<property column="DayTotalLimitCount" type="int" name="DayTotalLimitCount"   not-null="true"  />	
+		<property column="HasPhoneLimit" type="Boolean" name="HasPhoneLimit"   not-null="true"  />	
+		<property column="PhoneLimitDayCount" type="int" name="PhoneLimitDayCount"   not-null="true"  />	
+		<property column="PhoneLimitMonthCount" type="int" name="PhoneLimitMonthCount"   not-null="true"  />	
+		<property column="PhoneLimitType" type="int" name="PhoneLimitType"   not-null="true"  />	
+		<property column="LimitProvince" type="Boolean" name="LimitProvince"   />	
+		<property column="LimitProvinceArea" type="string" name="LimitProvinceArea"   length="400" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

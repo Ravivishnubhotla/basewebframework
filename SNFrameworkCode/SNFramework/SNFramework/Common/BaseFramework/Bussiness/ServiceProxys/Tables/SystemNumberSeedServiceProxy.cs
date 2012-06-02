@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemNumberSeedServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemNumberSeedEntity> ,ISystemNumberSeedServiceProxyDesigner
+    public interface ISystemNumberSeedServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemNumberSeedEntity, int>, ISystemNumberSeedServiceProxyDesigner
     {
 
 

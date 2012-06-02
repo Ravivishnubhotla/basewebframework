@@ -10,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System Permission
 	/// </summary>
 	[DataContract]
-	public partial class SystemPrivilegeEntity  : BaseTableEntity,ICloneable
+	public partial class SystemPrivilegeEntity  : BaseTableEntity<int>  ,ICloneable
 	{
       #region 公共常量
 
@@ -387,7 +387,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		}
 		#endregion
 		
-		public override object GetDataEntityKey()
+		public override int GetDataEntityKey()
 	    {
 	        return this._privilegeID;
 	    }

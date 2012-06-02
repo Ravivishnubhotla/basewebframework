@@ -13,7 +13,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPSClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSClientEntity> ,ISPSClientServiceProxyDesigner
+    public interface ISPSClientServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPSClientEntity, int>, ISPSClientServiceProxyDesigner
     {
 	    void QuickAdd(SPSClientEntity clientEntity, string loginId, string password);
 

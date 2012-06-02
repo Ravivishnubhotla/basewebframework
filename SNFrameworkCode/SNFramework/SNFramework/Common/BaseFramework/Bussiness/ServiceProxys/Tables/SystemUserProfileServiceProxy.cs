@@ -17,8 +17,8 @@ using Spring.Transaction.Interceptor;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-    [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemUserProfileServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserProfileEntity>, ISystemUserProfileServiceProxyDesigner
+    [ServiceContract(SessionMode = SessionMode.Required,Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
+    public interface ISystemUserProfileServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserProfileEntity, int>, ISystemUserProfileServiceProxyDesigner
     {
         [OperationContract]
         void DeleteProfiles(string[] usernames);

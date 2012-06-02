@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemWorkFlowStepDataObject : BaseNHibernateDataObject<SystemWorkFlowStepEntity>
+    public partial class SystemWorkFlowStepDataObject : BaseNHibernateDataObject<SystemWorkFlowStepEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_WORKFLOWSTEPID = new IntProperty(Property.ForName(SystemWorkFlowStepEntity.PROPERTY_NAME_WORKFLOWSTEPID));		

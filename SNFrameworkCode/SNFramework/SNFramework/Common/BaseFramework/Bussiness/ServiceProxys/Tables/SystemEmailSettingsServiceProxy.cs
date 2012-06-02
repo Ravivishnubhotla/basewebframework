@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemEmailSettingsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemEmailSettingsEntity> ,ISystemEmailSettingsServiceProxyDesigner
+    public interface ISystemEmailSettingsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemEmailSettingsEntity, int>, ISystemEmailSettingsServiceProxyDesigner
     {
 	    SystemEmailSettingsEntity GetDefaultSetting();
 	    SystemEmailSettingsEntity GetSettingByName(string mailSettingName);

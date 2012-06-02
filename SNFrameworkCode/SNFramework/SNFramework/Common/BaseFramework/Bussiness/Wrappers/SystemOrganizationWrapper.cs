@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Web.UI;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers 
 {
 	[Serializable]
-    public partial class SystemOrganizationWrapper : BaseSpringNHibernateWrapper<SystemOrganizationEntity, ISystemOrganizationServiceProxy, SystemOrganizationWrapper>, ITreeItemWrapper
+    public partial class SystemOrganizationWrapper :  ITreeItemWrapper
     { 
         #region Static Common Data Operation
 		
@@ -42,12 +42,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(int id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(int[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -63,7 +63,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Refresh(instance, businessProxy);
         }
 
-        public static SystemOrganizationWrapper FindById(object id)
+        public static SystemOrganizationWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }

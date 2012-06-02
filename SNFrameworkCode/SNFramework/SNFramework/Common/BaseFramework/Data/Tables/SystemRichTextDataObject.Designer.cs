@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemRichTextDataObject : BaseNHibernateDataObject<SystemRichTextEntity>
+    public partial class SystemRichTextDataObject : BaseNHibernateDataObject<SystemRichTextEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemRichTextEntity.PROPERTY_NAME_ID));		

@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemMoudleFieldEntity> FindAllBySystemMoudleID(SystemMoudleEntity _systemMoudleID);
     }
 
-    public partial class SystemMoudleFieldServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemMoudleFieldEntity>
+    public partial class SystemMoudleFieldServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemMoudleFieldEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

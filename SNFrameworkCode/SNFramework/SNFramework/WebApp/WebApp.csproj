@@ -31,7 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -220,6 +220,7 @@
     <Content Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx" />
     <Content Include="Moudles\SPS\ClientView\SPClientCodeList.aspx" />
     <Content Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeListPage.aspx" />
@@ -839,6 +840,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.designer.cs">
       <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx.cs">
+      <DependentUpon>SPChannelCodeTreeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelCodeTreeListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.cs">
       <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>

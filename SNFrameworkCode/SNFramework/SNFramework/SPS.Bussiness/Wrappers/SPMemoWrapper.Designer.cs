@@ -88,7 +88,7 @@ namespace SPS.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public decimal Id
+		public int Id
 		{
 			get
 			{

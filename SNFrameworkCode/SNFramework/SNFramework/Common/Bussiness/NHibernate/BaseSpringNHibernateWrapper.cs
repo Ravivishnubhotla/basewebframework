@@ -5,8 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Web;
 using Common.Logging;
-using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
-using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+//using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
+//using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Entity;
@@ -15,10 +15,10 @@ using Spring.Context.Support;
 
 namespace Legendigital.Framework.Common.Bussiness.NHibernate
 {
-    public abstract class BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
-        where DomainType : BaseTableEntity
-        where ServiceProxyType : IBaseSpringNHibernateEntityServiceProxy<DomainType>
-        where WrapperType : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType>
+    public abstract class BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType, EntityKeyType>
+        where DomainType : BaseTableEntity<EntityKeyType>
+        where ServiceProxyType : IBaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType>
+        where WrapperType : BaseSpringNHibernateWrapper<DomainType, ServiceProxyType, WrapperType, EntityKeyType>
     {
         #region Member
 
@@ -80,8 +80,6 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             serviceProxy.Save(obj.entity);
         }
 
-
-
         protected static void Update(WrapperType obj, ServiceProxyType serviceProxy)
         {
             serviceProxy.Update(obj.entity);
@@ -97,12 +95,12 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             serviceProxy.DeleteAll();
         }
 
-        protected static void DeleteByID(object id, ServiceProxyType serviceProxy)
+        protected static void DeleteByID(EntityKeyType id, ServiceProxyType serviceProxy)
         {
             serviceProxy.DeleteByID(id);
         }
 
-        protected static void PatchDeleteByIDs(object[] ids, ServiceProxyType serviceProxy)
+        protected static void PatchDeleteByIDs(EntityKeyType[] ids, ServiceProxyType serviceProxy)
         {
             serviceProxy.PatchDeleteByIDs(ids);
         }
@@ -117,7 +115,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             serviceProxy.Refresh(instance.entity);
         }
 
-        protected static DomainType FindById(object id, ServiceProxyType serviceProxy)
+        protected static DomainType FindById(EntityKeyType id, ServiceProxyType serviceProxy)
         {
             return serviceProxy.FindById(id);
         }

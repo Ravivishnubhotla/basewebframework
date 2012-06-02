@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemOperationEntity> FindAllByResourceID(SystemResourcesEntity _resourceID);
     }
 
-    public partial class SystemOperationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemOperationEntity>
+    public partial class SystemOperationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemOperationEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

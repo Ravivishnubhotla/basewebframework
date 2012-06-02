@@ -43,15 +43,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     this.lblMOType.Text = ValueConvertUtil.ConvertStringValue(obj.MOType);
                     this.lblOrderIndex.Text = obj.OrderIndex.ToString();
                     this.lblSPCode.Text = ValueConvertUtil.ConvertStringValue(obj.SPCode);
-                    this.lblProvince.Text = ValueConvertUtil.ConvertStringValue(obj.Province);
-                    this.lblDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
+                    //this.lblProvince.Text = ValueConvertUtil.ConvertStringValue(obj.Province);
+                    //this.lblDisableCity.Text = ValueConvertUtil.ConvertStringValue(obj.DisableCity);
                     //this.lblIsDiable.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.IsDiable);
                     //this.lblSPType.Text = ValueConvertUtil.ConvertStringValue(obj.SPType);
                     //this.lblCodeLength.Text = obj.CodeLength.ToString();
-                    this.lblDayLimit.Text = obj.DayLimit.ToString();
-                    this.lblMonthLimit.Text = obj.MonthLimit.ToString();
+                    //this.lblDayLimit.Text = obj.DayLimit.ToString();
+                    //this.lblMonthLimit.Text = obj.MonthLimit.ToString();
                     this.lblPrice.Text = obj.Price.ToString();
-                    this.lblSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
+                    //this.lblSendText.Text = ValueConvertUtil.ConvertStringValue(obj.SendText);
                     //this.lblHasFilters.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.HasFilters);
 
 

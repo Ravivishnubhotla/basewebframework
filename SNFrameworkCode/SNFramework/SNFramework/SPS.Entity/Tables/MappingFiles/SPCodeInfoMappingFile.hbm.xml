@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPCodeInfoEntity,SPS.Entity" table="SPCodeInfo" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="SPCodeID" name="SPCodeID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
+		<property column="Province" type="string" name="Province"   length="400" />	
+		<property column="DisableCity" type="string" name="DisableCity"   length="400" />	
+		<property column="DayLimit" type="string" name="DayLimit"   length="400" />	
+		<property column="MonthLimit" type="string" name="MonthLimit"   length="400" />	
+		<property column="SendText" type="string" name="SendText"   length="8000" />	
+
+
+
+
+</class>
+</hibernate-mapping>

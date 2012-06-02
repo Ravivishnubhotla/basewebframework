@@ -10,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System Application
 	/// </summary>
 	[DataContract]
-	public partial class SystemApplicationEntity  : BaseTableEntity,ICloneable
+	public partial class SystemApplicationEntity  : BaseTableEntity<int>  ,ICloneable
 	{
       #region 公共常量
 
@@ -309,7 +309,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		}
 		#endregion
 		
-		public override object GetDataEntityKey()
+		public override int GetDataEntityKey()
 	    {
 	        return this._systemApplicationID;
 	    }

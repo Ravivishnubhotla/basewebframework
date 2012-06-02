@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemEmailSettingsWrapper   
+    public partial class SystemEmailSettingsWrapper   : BaseSpringNHibernateWrapper<SystemEmailSettingsEntity, ISystemEmailSettingsServiceProxy, SystemEmailSettingsWrapper,int>
     {
         #region Member
 

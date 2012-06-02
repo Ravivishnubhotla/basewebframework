@@ -11,7 +11,7 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPChannelParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelParamsEntity> ,ISPChannelParamsServiceProxyDesigner
+    public interface ISPChannelParamsServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPChannelParamsEntity, int>, ISPChannelParamsServiceProxyDesigner
     {
 
 

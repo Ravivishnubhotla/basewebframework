@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPFilterRuleEntity,SPS.Entity" table="SPFilterRule" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="ParentDataID" type="int" name="ParentDataID"   />	
+		<property column="ParentDataType" type="string" name="ParentDataType"   length="100" />	
+		<property column="RuleCode" type="string" name="RuleCode"   length="4000" />	
+		<property column="FilterType" type="string" name="FilterType"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

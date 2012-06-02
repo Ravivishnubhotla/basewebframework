@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemWorkFlowStepServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemWorkFlowStepEntity> ,ISystemWorkFlowStepServiceProxyDesigner
+    public interface ISystemWorkFlowStepServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemWorkFlowStepEntity, int>, ISystemWorkFlowStepServiceProxyDesigner
     {
 
 

@@ -14,7 +14,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
     [ServiceContract(Namespace = "http://Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables")]
-    public interface ISystemUserRoleRelationServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserRoleRelationEntity>, ISystemUserRoleRelationServiceProxyDesigner
+    public interface ISystemUserRoleRelationServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemUserRoleRelationEntity, int>, ISystemUserRoleRelationServiceProxyDesigner
     {
         [OperationContract]
         List<SystemUserEntity> GetUserByRole(SystemRoleEntity systemRoleEntity);

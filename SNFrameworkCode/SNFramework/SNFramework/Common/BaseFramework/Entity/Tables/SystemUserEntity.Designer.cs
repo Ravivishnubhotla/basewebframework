@@ -10,7 +10,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 	///	System User
 	/// </summary>
 	[DataContract]
-	public partial class SystemUserEntity  : BaseTableEntity,ICloneable
+	public partial class SystemUserEntity  : BaseTableEntity<int>  ,ICloneable
 	{
       #region 公共常量
 
@@ -675,7 +675,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		}
 		#endregion
 		
-		public override object GetDataEntityKey()
+		public override int GetDataEntityKey()
 	    {
 	        return this._userID;
 	    }

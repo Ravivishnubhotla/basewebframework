@@ -12,7 +12,7 @@ using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables
 {
-	public interface ISystemEmailTemplateServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemEmailTemplateEntity> ,ISystemEmailTemplateServiceProxyDesigner
+    public interface ISystemEmailTemplateServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemEmailTemplateEntity, int>, ISystemEmailTemplateServiceProxyDesigner
     {
 	    SystemEmailTemplateEntity GetTemplateByName(string name);
     }

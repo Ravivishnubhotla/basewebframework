@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate;
 
 namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
-    public partial class SystemPersonalizationSettingsDataObject : BaseNHibernateDataObject<SystemPersonalizationSettingsEntity>
+    public partial class SystemPersonalizationSettingsDataObject : BaseNHibernateDataObject<SystemPersonalizationSettingsEntity,int>
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_PERSONALIZATIONID = new IntProperty(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_PERSONALIZATIONID));		

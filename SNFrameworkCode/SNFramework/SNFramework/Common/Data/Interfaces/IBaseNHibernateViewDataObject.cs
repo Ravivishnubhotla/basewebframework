@@ -5,12 +5,13 @@ using System.Text;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Data.NHibernate.Extend;
+using Legendigital.Framework.Common.Entity;
 using NHibernate;
 using NHibernate.Criterion;
 
 namespace Legendigital.Framework.Common.Data.Interfaces
 {
-    public interface IBaseNHibernateViewDataObject<DomainType> : IGenericViewDataObject<DomainType>
+    public interface IBaseNHibernateViewDataObject<DomainType, EntityKeyType> : IGenericViewDataObject<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType> 
     {
         /// <summary>
         /// 将IList装换为类型化的List

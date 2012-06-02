@@ -20,7 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {
     }
 
-    public partial class SystemPhoneAreaServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity>
+    public partial class SystemPhoneAreaServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

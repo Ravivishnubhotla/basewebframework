@@ -10,11 +10,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables.Container{
     {		
 		public ISPChannelServiceProxy SPChannelServiceProxyInstance
         {get; set;}
-		public ISPChannelFiltersServiceProxy SPChannelFiltersServiceProxyInstance
-        {get; set;}
 		public ISPChannelParamsServiceProxy SPChannelParamsServiceProxyInstance
-        {get; set;}
-		public ISPChannelParamsConvertServiceProxy SPChannelParamsConvertServiceProxyInstance
         {get; set;}
 		public ISPChannelSycnParamsServiceProxy SPChannelSycnParamsServiceProxyInstance
         {get; set;}
@@ -24,17 +20,17 @@ namespace SPS.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPCodeServiceProxy SPCodeServiceProxyInstance
         {get; set;}
-		public ISPCodeFilterServiceProxy SPCodeFilterServiceProxyInstance
-        {get; set;}
-		public ISPCodeParamsConvertServiceProxy SPCodeParamsConvertServiceProxyInstance
+		public ISPCodeInfoServiceProxy SPCodeInfoServiceProxyInstance
         {get; set;}
 		public ISPDayReportServiceProxy SPDayReportServiceProxyInstance
+        {get; set;}
+		public ISPFilterRuleServiceProxy SPFilterRuleServiceProxyInstance
         {get; set;}
 		public ISPMemoServiceProxy SPMemoServiceProxyInstance
         {get; set;}
 		public ISPMonitoringRequestServiceProxy SPMonitoringRequestServiceProxyInstance
         {get; set;}
-		public ISPPhoneAreaServiceProxy SPPhoneAreaServiceProxyInstance
+		public ISPParamsConvertRuleServiceProxy SPParamsConvertRuleServiceProxyInstance
         {get; set;}
 		public ISPRecordServiceProxy SPRecordServiceProxyInstance
         {get; set;}

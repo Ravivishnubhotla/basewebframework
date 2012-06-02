@@ -6,9 +6,9 @@ using System.Text;
 namespace Legendigital.Framework.Common.Entity
 {
     [Serializable]
-    public abstract class BaseViewEntity
+    public abstract class BaseViewEntity<EntityKeyType>
     {
-        public abstract object GetDataEntityKey();
+        public abstract EntityKeyType GetDataEntityKey();
 
         public virtual bool DataKeyIsEmpty
         {
@@ -16,15 +16,19 @@ namespace Legendigital.Framework.Common.Entity
             {
                 if(GetDataEntityKey() is int)
                 {
-                    return((int)GetDataEntityKey() == 0);
+                    return(Convert.ToInt32(GetDataEntityKey()) == 0);
                 }
                 if (GetDataEntityKey() is string)
                 {
-                    return (string.IsNullOrEmpty((string)GetDataEntityKey()));
+                    string key = GetDataEntityKey() as string;
+
+                    return (string.IsNullOrEmpty(key));
                 }
                 if (GetDataEntityKey() is Guid)
                 {
-                    return ((Guid)GetDataEntityKey()==null || (Guid)GetDataEntityKey()==Guid.Empty);
+                    Guid guidkey = (Guid)Convert.ChangeType(GetDataEntityKey(), typeof(Guid));
+
+                    return (guidkey == null || guidkey == Guid.Empty);
                 }
                 return false;
             }
@@ -34,13 +38,38 @@ namespace Legendigital.Framework.Common.Entity
         /// <summary>
         /// local implementation of Equals based on unique value members
         /// </summary>
-        public virtual bool  CheckEquals(BaseViewEntity obj)
+        public virtual bool CheckEquals(BaseViewEntity<EntityKeyType> obj)
         {
             if (this == obj) return true;
 
             if ((obj == null) || (obj.GetType() != this.GetType())) return false;
 
-            return (obj != null) && (this.GetDataEntityKey() == obj.GetDataEntityKey());
+            return (obj != null) && CheckKeyEqual(this.GetDataEntityKey(),obj.GetDataEntityKey());
+        } 
+
+        public virtual bool CheckKeyEqual(EntityKeyType key1,EntityKeyType key2)
+        {
+            if (key1 is int)
+            {
+                return (Convert.ToInt32(key1) == Convert.ToInt32(key2));
+            }
+            if (GetDataEntityKey() is string)
+            {
+                string skey1 = key1 as string;
+
+                string skey2 = key2 as string;
+
+                return (skey1 == skey2);
+            }
+            if (GetDataEntityKey() is Guid)
+            {
+                Guid guidkey1 = (Guid)Convert.ChangeType(key1, typeof(Guid));
+
+                Guid guidkey2 = (Guid)Convert.ChangeType(key2, typeof(Guid));
+
+                return (guidkey1 == guidkey2);
+            }
+            return false;
         }
 
         /// <summary>
