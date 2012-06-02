@@ -242,6 +242,8 @@ namespace Legendigital.Code.MyGenAddin
             this.tbcMain = new System.Windows.Forms.TabControl();
             this.tabPageData = new System.Windows.Forms.TabPage();
             this.groupBoxCodeGeneration = new System.Windows.Forms.GroupBox();
+            this.lblCheckObjectNamePrefix = new System.Windows.Forms.Label();
+            this.txtCheckObjectNamePrefix = new System.Windows.Forms.TextBox();
             this.lblFilterDbObjectName = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.chkSelectAll = new System.Windows.Forms.CheckBox();
@@ -262,8 +264,6 @@ namespace Legendigital.Code.MyGenAddin
             this.lblConfigDescription = new System.Windows.Forms.Label();
             this.saveFileDialogConfig = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogConfig = new System.Windows.Forms.OpenFileDialog();
-            this.txtCheckObjectNamePrefix = new System.Windows.Forms.TextBox();
-            this.lblCheckObjectNamePrefix = new System.Windows.Forms.Label();
             this.tbcMain.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBoxCodeGeneration.SuspendLayout();
@@ -281,7 +281,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tbcMain.Location = new System.Drawing.Point(0, 0);
             this.tbcMain.Name = "tbcMain";
             this.tbcMain.SelectedIndex = 0;
-            this.tbcMain.Size = new System.Drawing.Size(604, 477);
+            this.tbcMain.Size = new System.Drawing.Size(604, 440);
             this.tbcMain.TabIndex = 4;
             this.tbcMain.TabStop = false;
             // 
@@ -291,7 +291,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tabPageData.Location = new System.Drawing.Point(4, 22);
             this.tabPageData.Name = "tabPageData";
             this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageData.Size = new System.Drawing.Size(596, 451);
+            this.tabPageData.Size = new System.Drawing.Size(596, 414);
             this.tabPageData.TabIndex = 0;
             this.tabPageData.Text = "批量代码生成";
             this.tabPageData.UseVisualStyleBackColor = true;
@@ -312,26 +312,44 @@ namespace Legendigital.Code.MyGenAddin
             this.groupBoxCodeGeneration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxCodeGeneration.Location = new System.Drawing.Point(3, 3);
             this.groupBoxCodeGeneration.Name = "groupBoxCodeGeneration";
-            this.groupBoxCodeGeneration.Size = new System.Drawing.Size(590, 445);
+            this.groupBoxCodeGeneration.Size = new System.Drawing.Size(590, 408);
             this.groupBoxCodeGeneration.TabIndex = 6;
             this.groupBoxCodeGeneration.TabStop = false;
             this.groupBoxCodeGeneration.Text = "代码生成";
             // 
+            // lblCheckObjectNamePrefix
+            // 
+            this.lblCheckObjectNamePrefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblCheckObjectNamePrefix.AutoSize = true;
+            this.lblCheckObjectNamePrefix.Location = new System.Drawing.Point(159, 384);
+            this.lblCheckObjectNamePrefix.Name = "lblCheckObjectNamePrefix";
+            this.lblCheckObjectNamePrefix.Size = new System.Drawing.Size(113, 12);
+            this.lblCheckObjectNamePrefix.TabIndex = 13;
+            this.lblCheckObjectNamePrefix.Text = "选中过滤对象前缀：";
+            // 
+            // txtCheckObjectNamePrefix
+            // 
+            this.txtCheckObjectNamePrefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtCheckObjectNamePrefix.Location = new System.Drawing.Point(283, 380);
+            this.txtCheckObjectNamePrefix.Name = "txtCheckObjectNamePrefix";
+            this.txtCheckObjectNamePrefix.Size = new System.Drawing.Size(112, 21);
+            this.txtCheckObjectNamePrefix.TabIndex = 12;
+            // 
             // lblFilterDbObjectName
             // 
             this.lblFilterDbObjectName.AutoSize = true;
-            this.lblFilterDbObjectName.Location = new System.Drawing.Point(103, 74);
+            this.lblFilterDbObjectName.Location = new System.Drawing.Point(103, 68);
             this.lblFilterDbObjectName.Name = "lblFilterDbObjectName";
-            this.lblFilterDbObjectName.Size = new System.Drawing.Size(147, 13);
+            this.lblFilterDbObjectName.Size = new System.Drawing.Size(149, 12);
             this.lblFilterDbObjectName.TabIndex = 11;
             this.lblFilterDbObjectName.Text = "过滤指定前缀的{$DbObj}：";
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(512, 33);
+            this.btnRefresh.Location = new System.Drawing.Point(512, 30);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(61, 25);
+            this.btnRefresh.Size = new System.Drawing.Size(61, 23);
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -341,9 +359,9 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.chkSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.Location = new System.Drawing.Point(18, 416);
+            this.chkSelectAll.Location = new System.Drawing.Point(18, 381);
             this.chkSelectAll.Name = "chkSelectAll";
-            this.chkSelectAll.Size = new System.Drawing.Size(130, 17);
+            this.chkSelectAll.Size = new System.Drawing.Size(132, 16);
             this.chkSelectAll.TabIndex = 9;
             this.chkSelectAll.Text = "选中所有的{$DbObj}";
             this.chkSelectAll.UseVisualStyleBackColor = true;
@@ -356,27 +374,27 @@ namespace Legendigital.Code.MyGenAddin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBoxSelectDbObject.CheckOnClick = true;
             this.checkedListBoxSelectDbObject.FormattingEnabled = true;
-            this.checkedListBoxSelectDbObject.Location = new System.Drawing.Point(17, 109);
+            this.checkedListBoxSelectDbObject.Location = new System.Drawing.Point(17, 101);
             this.checkedListBoxSelectDbObject.Name = "checkedListBoxSelectDbObject";
-            this.checkedListBoxSelectDbObject.Size = new System.Drawing.Size(556, 289);
+            this.checkedListBoxSelectDbObject.Size = new System.Drawing.Size(556, 244);
             this.checkedListBoxSelectDbObject.TabIndex = 8;
             // 
             // txtFilterDbObjectName
             // 
             this.txtFilterDbObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFilterDbObjectName.Location = new System.Drawing.Point(256, 71);
+            this.txtFilterDbObjectName.Location = new System.Drawing.Point(256, 66);
             this.txtFilterDbObjectName.Name = "txtFilterDbObjectName";
-            this.txtFilterDbObjectName.Size = new System.Drawing.Size(317, 20);
+            this.txtFilterDbObjectName.Size = new System.Drawing.Size(317, 21);
             this.txtFilterDbObjectName.TabIndex = 7;
             this.txtFilterDbObjectName.Text = "sys|aspnet_";
             // 
             // btnGenarateCode
             // 
             this.btnGenarateCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenarateCode.Location = new System.Drawing.Point(479, 411);
+            this.btnGenarateCode.Location = new System.Drawing.Point(479, 376);
             this.btnGenarateCode.Name = "btnGenarateCode";
-            this.btnGenarateCode.Size = new System.Drawing.Size(94, 25);
+            this.btnGenarateCode.Size = new System.Drawing.Size(94, 23);
             this.btnGenarateCode.TabIndex = 6;
             this.btnGenarateCode.Text = "代码生成";
             this.btnGenarateCode.UseVisualStyleBackColor = true;
@@ -385,9 +403,9 @@ namespace Legendigital.Code.MyGenAddin
             // lblSelectDataBase
             // 
             this.lblSelectDataBase.AutoSize = true;
-            this.lblSelectDataBase.Location = new System.Drawing.Point(15, 36);
+            this.lblSelectDataBase.Location = new System.Drawing.Point(15, 33);
             this.lblSelectDataBase.Name = "lblSelectDataBase";
-            this.lblSelectDataBase.Size = new System.Drawing.Size(79, 13);
+            this.lblSelectDataBase.Size = new System.Drawing.Size(77, 12);
             this.lblSelectDataBase.TabIndex = 0;
             this.lblSelectDataBase.Text = "选择数据库：";
             // 
@@ -397,18 +415,18 @@ namespace Legendigital.Code.MyGenAddin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSelectDataBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectDataBase.FormattingEnabled = true;
-            this.cmbSelectDataBase.Location = new System.Drawing.Point(98, 33);
+            this.cmbSelectDataBase.Location = new System.Drawing.Point(98, 30);
             this.cmbSelectDataBase.Name = "cmbSelectDataBase";
-            this.cmbSelectDataBase.Size = new System.Drawing.Size(399, 21);
+            this.cmbSelectDataBase.Size = new System.Drawing.Size(399, 20);
             this.cmbSelectDataBase.TabIndex = 1;
             this.cmbSelectDataBase.SelectedIndexChanged += new System.EventHandler(this.cmbSelectDataBase_SelectedIndexChanged);
             // 
             // lblSelectDbObject
             // 
             this.lblSelectDbObject.AutoSize = true;
-            this.lblSelectDbObject.Location = new System.Drawing.Point(15, 74);
+            this.lblSelectDbObject.Location = new System.Drawing.Point(15, 68);
             this.lblSelectDbObject.Name = "lblSelectDbObject";
-            this.lblSelectDbObject.Size = new System.Drawing.Size(87, 13);
+            this.lblSelectDbObject.Size = new System.Drawing.Size(89, 12);
             this.lblSelectDbObject.TabIndex = 2;
             this.lblSelectDbObject.Text = "选择{$DbObj}：";
             // 
@@ -419,7 +437,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tabPageConfig.Location = new System.Drawing.Point(4, 22);
             this.tabPageConfig.Name = "tabPageConfig";
             this.tabPageConfig.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageConfig.Size = new System.Drawing.Size(596, 451);
+            this.tabPageConfig.Size = new System.Drawing.Size(596, 414);
             this.tabPageConfig.TabIndex = 1;
             this.tabPageConfig.Text = "配置管理";
             this.tabPageConfig.UseVisualStyleBackColor = true;
@@ -434,9 +452,9 @@ namespace Legendigital.Code.MyGenAddin
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 445);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 411);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // toolStripTop
@@ -449,7 +467,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonConfigMygeneration});
             this.toolStripTop.Location = new System.Drawing.Point(0, 0);
             this.toolStripTop.Name = "toolStripTop";
-            this.toolStripTop.Size = new System.Drawing.Size(590, 27);
+            this.toolStripTop.Size = new System.Drawing.Size(590, 25);
             this.toolStripTop.TabIndex = 4;
             this.toolStripTop.Text = "toolStrip1";
             this.toolStripTop.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripTop_ItemClicked);
@@ -459,7 +477,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveCodeGenerateConifg.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
             this.toolStripButtonSaveCodeGenerateConifg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveCodeGenerateConifg.Name = "toolStripButtonSaveCodeGenerateConifg";
-            this.toolStripButtonSaveCodeGenerateConifg.Size = new System.Drawing.Size(111, 24);
+            this.toolStripButtonSaveCodeGenerateConifg.Size = new System.Drawing.Size(112, 24);
             this.toolStripButtonSaveCodeGenerateConifg.Text = "保存为默认配置";
             // 
             // toolStripButtonSaveAs
@@ -467,7 +485,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveAs.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
             this.toolStripButtonSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveAs.Name = "toolStripButtonSaveAs";
-            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(87, 24);
+            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(88, 24);
             this.toolStripButtonSaveAs.Text = "配置另存为";
             // 
             // toolStripButtonLoadConfig
@@ -475,7 +493,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonLoadConfig.Image = global::Legendigital.Code.MyGenAddin.WinResource.open;
             this.toolStripButtonLoadConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadConfig.Name = "toolStripButtonLoadConfig";
-            this.toolStripButtonLoadConfig.Size = new System.Drawing.Size(75, 24);
+            this.toolStripButtonLoadConfig.Size = new System.Drawing.Size(76, 24);
             this.toolStripButtonLoadConfig.Text = "加载配置";
             // 
             // toolStripButtonConfigMygeneration
@@ -483,23 +501,23 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonConfigMygeneration.Image = global::Legendigital.Code.MyGenAddin.WinResource.setting;
             this.toolStripButtonConfigMygeneration.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonConfigMygeneration.Name = "toolStripButtonConfigMygeneration";
-            this.toolStripButtonConfigMygeneration.Size = new System.Drawing.Size(126, 24);
+            this.toolStripButtonConfigMygeneration.Size = new System.Drawing.Size(134, 24);
             this.toolStripButtonConfigMygeneration.Text = "配置MyGeneration";
             // 
             // propertyGridSetting
             // 
             this.propertyGridSetting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridSetting.Location = new System.Drawing.Point(3, 30);
+            this.propertyGridSetting.Location = new System.Drawing.Point(3, 28);
             this.propertyGridSetting.Name = "propertyGridSetting";
-            this.propertyGridSetting.Size = new System.Drawing.Size(584, 412);
+            this.propertyGridSetting.Size = new System.Drawing.Size(584, 380);
             this.propertyGridSetting.TabIndex = 1;
             // 
             // lblConfigDescription
             // 
             this.lblConfigDescription.AutoSize = true;
-            this.lblConfigDescription.Location = new System.Drawing.Point(8, 367);
+            this.lblConfigDescription.Location = new System.Drawing.Point(8, 339);
             this.lblConfigDescription.Name = "lblConfigDescription";
-            this.lblConfigDescription.Size = new System.Drawing.Size(0, 13);
+            this.lblConfigDescription.Size = new System.Drawing.Size(0, 12);
             this.lblConfigDescription.TabIndex = 3;
             // 
             // saveFileDialogConfig
@@ -512,27 +530,11 @@ namespace Legendigital.Code.MyGenAddin
             this.openFileDialogConfig.DefaultExt = "dat";
             this.openFileDialogConfig.Filter = "代码生成配置文件 (*.dat)|*.dat";
             // 
-            // txtCheckObjectNamePrefix
-            // 
-            this.txtCheckObjectNamePrefix.Location = new System.Drawing.Point(283, 414);
-            this.txtCheckObjectNamePrefix.Name = "txtCheckObjectNamePrefix";
-            this.txtCheckObjectNamePrefix.Size = new System.Drawing.Size(112, 20);
-            this.txtCheckObjectNamePrefix.TabIndex = 12;
-            // 
-            // lblCheckObjectNamePrefix
-            // 
-            this.lblCheckObjectNamePrefix.AutoSize = true;
-            this.lblCheckObjectNamePrefix.Location = new System.Drawing.Point(159, 417);
-            this.lblCheckObjectNamePrefix.Name = "lblCheckObjectNamePrefix";
-            this.lblCheckObjectNamePrefix.Size = new System.Drawing.Size(115, 13);
-            this.lblCheckObjectNamePrefix.TabIndex = 13;
-            this.lblCheckObjectNamePrefix.Text = "选中过滤对象前缀：";
-            // 
             // BaseObjectSelectorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 477);
+            this.ClientSize = new System.Drawing.Size(604, 440);
             this.Controls.Add(this.tbcMain);
             this.Name = "BaseObjectSelectorForm";
             this.ShowInTaskbar = false;

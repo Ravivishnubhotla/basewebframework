@@ -5,14 +5,13 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using Legendigital.Code.MyGenAddin.NHibernateFramework;
-using Legendigital.Code.MyGenAddin.UIFrameworks;
 using MyGenerationInputForm;
 using MyMeta;
 using Zeus;
 
 namespace Legendigital.Code.MyGenAddin
 {
-    public abstract class BaseSingleObjectSelectorForm<T> : Form
+    public abstract class BaseSingleObjectSelectorForm<T> : Form where T : NHibernateFrameworkWebUIGenerateConfig
     {
         private Button btnSaveSetting;
         private ToolStripComboBox cbxtoolStripSelectDataBase;
@@ -68,11 +67,11 @@ namespace Legendigital.Code.MyGenAddin
         public abstract string ConfigKey { get; }
 
 
-        public WebUIGenerateConfig webuiconfig
+        public NHibernateFrameworkWebUIGenerateConfig webuiconfig
         {
             get
             {
-                return (WebUIGenerateConfig)Convert.ChangeType(config, typeof(WebUIGenerateConfig));
+                return (NHibernateFrameworkWebUIGenerateConfig)config;
             }
         }
 
@@ -420,6 +419,7 @@ namespace Legendigital.Code.MyGenAddin
             dataGridViewField.Size = new Size(1036, 494);
             dataGridViewField.TabIndex = 4;
             dataGridViewField.CellValueChanged += new DataGridViewCellEventHandler(dataGridViewField_CellValueChanged);
+            dataGridViewField.DataError +=new DataGridViewDataErrorEventHandler(dataGridViewField_DataError);
             // 
             // colIsSelect
             // 
@@ -774,6 +774,12 @@ namespace Legendigital.Code.MyGenAddin
             ResumeLayout(false);
         }
 
+        private void dataGridViewField_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+ 
+        }
+
+
         private void BaseSingleObjectSelectorForm_Load(object sender, EventArgs e)
         {
             BindDataBase(myMeta.DefaultDatabase, cbxtoolStripSelectDataBase.ComboBox, cbxtoolStripSelectObejct.ComboBox);
@@ -850,9 +856,9 @@ namespace Legendigital.Code.MyGenAddin
                 tableUIGenerationParams.Size = column.CharacterMaxLength;
                 tableUIGenerationParams.IsAutoKey = column.IsAutoKey;
 
-                if (config is WebUIGenerateConfig)
+                if (config is NHibernateFrameworkWebUIGenerateConfig)
                 {
-                    WebUIGenerateConfig nconfig = config as WebUIGenerateConfig;
+                    NHibernateFrameworkWebUIGenerateConfig nconfig = config as NHibernateFrameworkWebUIGenerateConfig;
                     nconfig.SetColumnParams(column, tableUIGenerationParams);
                 }
 

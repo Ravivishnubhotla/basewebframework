@@ -564,8 +564,6 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
 
         #endregion
 
-
-
         #region Method
 
         public string GenerateEntityClassName(IView table)

@@ -258,6 +258,18 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
         }
 
 
+        public InputUIControl getInputUIControlByName(string name)
+        {
+            foreach (InputUIControl iuc in this.GetUIFieldType())
+            {
+                if (iuc.Name.Trim().ToUpper() == name.Trim().ToUpper())
+                {
+                    return iuc;
+                }
+            }
+            return null;
+        }
+
         public List<InputUIControl> GetUIFieldType()
         {
             List<InputUIControl> ius = new List<InputUIControl>();
@@ -290,9 +302,9 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
                     AddInputUI(ius, "RadEditor", true, true, false, "string", "radedit{$PName}", "Content");
                     break;
                 case UIType.Extjs:
-                    AddInputUI(ius, "TextField ", true, true, false, "string", "txt{$PName}", "Text");
-                    AddInputUI(ius, "TextArea ", true, true, false, "string", "txt{$PName}", "Text");
-                    AddInputUI(ius, "NumberField ", true, true, false, "int", "num{$PName}", "Value");
+                    AddInputUI(ius, "TextField", true, true, false, "string", "txt{$PName}", "Text");
+                    AddInputUI(ius, "TextArea", true, true, false, "string", "txt{$PName}", "Text");
+                    AddInputUI(ius, "NumberField", true, true, false, "int", "num{$PName}", "Value");
                     AddInputUI(ius, "NumberDecimalField", true, true, false, "decimal", "num{$PName}", "Value");
                     AddInputUI(ius, "DateField", true, true, false, "DateTime", "date{$PName}", "Value");
                     AddInputUI(ius, "Checkbox", true, true, false, "bool", "chk{$PName}", "Checked");
@@ -374,7 +386,51 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
                     }
                     break;
                 case UIType.Extjs:
-
+                    //                    AddInputUI(ius, "TextField ", true, true, false, "string", "txt{$PName}", "Text");
+                    //AddInputUI(ius, "TextArea ", true, true, false, "string", "txt{$PName}", "Text");
+                    //AddInputUI(ius, "NumberField ", true, true, false, "int", "num{$PName}", "Value");
+                    //AddInputUI(ius, "NumberDecimalField", true, true, false, "decimal", "num{$PName}", "Value");
+                    //AddInputUI(ius, "DateField", true, true, false, "DateTime", "date{$PName}", "Value");
+                    //AddInputUI(ius, "Checkbox", true, true, false, "bool", "chk{$PName}", "Checked");
+                    if (column.LanguageType == "string")
+                    {
+                        if (column.CharacterMaxLength < 2000)
+                            tableUIGenerationParams.InputType = "TextField";
+                        else
+                            tableUIGenerationParams.InputType = "TextArea";
+                    }
+                    else if (column.LanguageType == "bool")
+                    {
+                        tableUIGenerationParams.InputType = "Checkbox";
+                    }
+                    else if (column.LanguageType == "DateTime")
+                    {
+                        tableUIGenerationParams.InputType = "DateField";
+                    }
+                    else if (column.LanguageType == "int")
+                    {
+                        tableUIGenerationParams.InputType = "NumberField";
+                    }
+                    else if (column.LanguageType == "long")
+                    {
+                        tableUIGenerationParams.InputType = "NumberField";
+                    }
+                    else if (column.LanguageType == "float")
+                    {
+                        tableUIGenerationParams.InputType = "NumberDecimalField";
+                    }
+                    else if (column.LanguageType == "double")
+                    {
+                        tableUIGenerationParams.InputType = "NumberDecimalField";
+                    }
+                    else if (column.LanguageType == "decimal")
+                    {
+                        tableUIGenerationParams.InputType = "NumberDecimalField";
+                    }
+                    else
+                    {
+                        tableUIGenerationParams.InputType = "TextField";
+                    }
                     break;
             }
 
