@@ -176,10 +176,6 @@
       <DependentUpon>TestConnectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UICodeGenerationConfig.cs" />
-    <Compile Include="UIFrameworks\WebUIGenerateConfig.cs" />
-    <Compile Include="UIFrameworks\WebUIGenerateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="UIGenerationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,7 +254,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_BuildVersioningStyle="Increment.Increment.Increment.Increment" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="Increment.Increment.Increment.Increment" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

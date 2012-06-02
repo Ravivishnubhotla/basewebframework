@@ -584,8 +584,17 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
         private bool _IsEnbaleBussniessCode;
         private bool _IsEnbaleEntityCode;
         private bool _IsEnbaleDataCode;
+        private bool _IsIsSupportAdo;
         private bool _IsEnbaleGenerateBaseCode;
         private string _DefaultDatabaseName;
+
+
+        [Category("[总体代码设置]"), ReadOnly(false), Description("是否支持Ado.Net数据访问"), Browsable(true)]
+        public bool IsIsSupportAdo
+        {
+            get { return _IsIsSupportAdo; }
+            set { _IsIsSupportAdo = value; }
+        }
 
         [Category("[总体代码设置]"), ReadOnly(false), Description("是否生成基础框架继承类代码"), Browsable(true)]
         public bool IsEnbaleGenerateBaseCode
@@ -835,8 +844,6 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
             return Path.Combine(this.SelectGenerateServiceProxyContainerClassFilePath, this.GenerateServiceProxyContainerClassName + ".Designer.cs");
         }   
 
-
-
         public string GenerateClassDescription(ITable table)
         {
             return table.Description;
@@ -937,6 +944,19 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
             }
 
             return pks;
+        }
+
+        public string GetPKType(ITable table)
+        {
+            List<IColumn> columns = GetAllPkColumn(table);
+
+            if (columns == null)
+                return "";
+
+            if(columns.Count<=0)
+                return "";
+
+            return columns[0].LanguageType;
         }
 
         public List<IColumn> GetAllNotPkColumn(ITable table)
