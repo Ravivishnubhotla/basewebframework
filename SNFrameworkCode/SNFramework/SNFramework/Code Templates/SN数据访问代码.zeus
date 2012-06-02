@@ -672,6 +672,7 @@ namespace <%= config.ServiceProxyNameSpace %>
 	
 		 private void CreateBussinessClassFile( ITable table ,NHibernateFrameworkTableCodeGenerateConfig config )
 	    {
+					string pkType = config.GetPKType(table);
 %>
 using System;
 using System.Collections.Generic;
@@ -685,7 +686,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %> 
 {
 	[Serializable]
-    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>  : BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>>
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>  : BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>,<%= pkType %>>
     { 
         #region Static Common Data Operation
 		
@@ -709,12 +710,12 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
             DeleteAll(businessProxy);
         }
 
-        public static void DeleteByID(object id)
+        public static void DeleteByID(<%= pkType %> id)
         {
             DeleteByID(id, businessProxy);
         }
 
-        public static void PatchDeleteByIDs(object[] ids)
+        public static void PatchDeleteByIDs(<%= pkType %>[] ids)
         {
 
             PatchDeleteByIDs(ids, businessProxy);
@@ -730,7 +731,7 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
             Refresh(instance, businessProxy);
         }
 
-        public static <%= config.GenerateBussinessEncapsulationClassName(table) %> FindById(object id)
+        public static <%= config.GenerateBussinessEncapsulationClassName(table) %> FindById(<%= pkType %> id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
