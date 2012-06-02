@@ -181,6 +181,15 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
+        public string ChannelTypeName
+	    {
+            get
+            {
+                return DictionaryConst.ParseChannelTypeDictionaryKey(this.ChannelType);
+            }
+	    }
+        
+
 	    public string InterfaceUrl
         {
             get
@@ -546,7 +555,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    private const int linkIDMaxLength = 20;
 
-        private string GetLinkID(IDataAdapter httpRequestLog)
+        public string GetLinkID(IDataAdapter httpRequestLog)
 	    {
 	        if(this.IsAutoLinkID)
 	        {
@@ -567,7 +576,7 @@ namespace SPS.Bussiness.Wrappers
                         totalIDString += httpRequestLog.RequestParams[field.ToLower()];
                     }
 
-                    return totalIDString.GetHashCode().ToString("D" + (linkIDMaxLength-1).ToString()).Replace("-","1");
+                    return totalIDString;//.GetHashCode().ToString("D" + (linkIDMaxLength-1).ToString()).Replace("-","1");
                 }
 	        }
 	        else
@@ -782,5 +791,27 @@ namespace SPS.Bussiness.Wrappers
                 return sb.ToString();
             }
         }
+
+	    public int GetFeetime(IDataAdapter httpRequestLog)
+	    {
+            if (this.IVRFeeTimeType == null || this.IVRFeeTimeType =="0")
+	            return Convert.ToInt32(this.ChannelParams.FeeTimeFromRequset(httpRequestLog));
+
+            DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+            DateTime startTime = DateTime.MinValue;
+            DateTime.TryParseExact(this.ChannelParams.StartTimeFromRequset(httpRequestLog), this.IVRTimeFormat, dtfi, DateTimeStyles.None, out startTime);
+
+            if(startTime==DateTime.MinValue)
+                throw new ArgumentNullException("startTime");
+
+            DateTime endTime = DateTime.MinValue;
+            DateTime.TryParseExact(this.ChannelParams.EndTimeFromRequset(httpRequestLog), this.IVRTimeFormat, dtfi, DateTimeStyles.None, out startTime);
+
+            if (endTime == DateTime.MinValue)
+                throw new ArgumentNullException("endTime");
+
+            return Convert.ToInt32(Math.Ceiling(Convert.ToDouble((endTime - startTime).TotalSeconds) / 60));
+
+	    }
     }
 }

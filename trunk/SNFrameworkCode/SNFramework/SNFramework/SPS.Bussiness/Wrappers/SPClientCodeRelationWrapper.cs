@@ -208,7 +208,7 @@ namespace SPS.Bussiness.Wrappers
                         BulidParams(queryString, channelSycnParam.Name, record.Province);
                         break;
                     case DictionaryConst.Dictionary_SPField_FeeTime_Key:
-                        BulidParams(queryString, channelSycnParam.Name, spRecordExtendInfo.FeeTime);
+                        BulidParams(queryString, channelSycnParam.Name, "1");
                         break;
                     case DictionaryConst.Dictionary_SPField_StartTime_Key:
                         BulidParams(queryString, channelSycnParam.Name, spRecordExtendInfo.StartTime);

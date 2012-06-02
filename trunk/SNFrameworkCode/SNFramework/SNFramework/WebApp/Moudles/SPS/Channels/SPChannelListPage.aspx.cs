@@ -45,6 +45,9 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
             if (e.Sort != null)
                 sortFieldName = e.Sort;
 
+            if (sortFieldName == "ChannelTypeName")
+                sortFieldName = "ChannelType";
+
             int startIndex = 0;
 
             if (e.Start > -1)
