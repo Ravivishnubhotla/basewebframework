@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.HttpUtils;
 using SPS.Data.AdoNet;
@@ -137,6 +138,16 @@ namespace SPS.Bussiness.Wrappers
                 return "";
             }
 	    }
+
+        public string FeeTime
+        {
+            get
+            {
+                if (ExtendInfo != null)
+                    return ExtendInfo.FeeTime;
+                return "";
+            }
+        }
 
         public string SycnReturnMessage
         {
@@ -287,8 +298,16 @@ namespace SPS.Bussiness.Wrappers
 
 	    public void ReAutoMatch()
 	    {
-            SPCodeWrapper matchCode = this.ChannelID.GetMatchCodeFromRequest(this.ExtendInfo.GetHttpRequestLog(), this.Mo, this.SpNumber, this.Province,
-	                                               this.City);
+            SPCodeWrapper matchCode = null;
+
+            if (this.ChannelID.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+            {
+                matchCode = this.ChannelID.GetMatchCodeFromIVRRequest(this.ExtendInfo.GetHttpRequestLog(), this.SpNumber, this.Province, this.City);
+            }
+            else
+            {
+                matchCode = this.ChannelID.GetMatchCodeFromRequest(this.ExtendInfo.GetHttpRequestLog(), this.Mo, this.SpNumber, this.Province, this.City);
+            }
 
             if (matchCode == null)
             {

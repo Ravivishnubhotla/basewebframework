@@ -256,7 +256,17 @@ namespace SPS.Bussiness.Wrappers
                     mobileOperator = "";
             }
 
-	        SPCodeWrapper matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);
+            SPCodeWrapper matchCode = null;
+
+            if(this.ChannelType==DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+            {
+                matchCode = this.GetMatchCodeFromIVRRequest(httpRequestLog, spcode, province, city);
+            }
+            else
+            {
+                matchCode = this.GetMatchCodeFromRequest(httpRequestLog, mo, spcode, province, city);        
+            }
+
 
             if (matchCode == null)
             {
@@ -381,6 +391,21 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
 
+	    public SPCodeWrapper GetMatchCodeFromIVRRequest(IDataAdapter httpRequestLog, string spcode, string province, string city)
+	    {
+            var findCode = (from cc in Codes
+                            where (cc.SPCode.Equals(spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
+                            orderby cc.Priority ascending, cc.Mo.Length descending
+                            select cc).FirstOrDefault();
+
+            if (findCode != null)
+                return findCode;
+
+            var defaultCode = Codes.Find(p => p.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key);
+
+            return defaultCode;
+	    }
+
 	    public SPClientCodeRelationWrapper GetDefaultClientCodeRelation()
 	    {
 	        var defaultCode = Codes.Find(p => p.MOType == DictionaryConst.Dictionary_CodeType_CodeDefault_Key);
@@ -397,18 +422,18 @@ namespace SPS.Bussiness.Wrappers
 
         private int GetRecordCount(IDataAdapter httpRequestLog)
 	    {
-            if(this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
-            {
-                if (this.ChannelParams.FeeTimeFromRequset(httpRequestLog) != null)
-                {
-                    return Convert.ToInt32(this.ChannelParams.FeeTimeFromRequset(httpRequestLog));
-                }
+            //if(this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+            //{
+            //    if (this.ChannelParams.FeeTimeFromRequset(httpRequestLog) != null)
+            //    {
+            //        return Convert.ToInt32(this.ChannelParams.FeeTimeFromRequset(httpRequestLog));
+            //    }
 
-                DateTime startTime = ParseTime(this.ChannelParams.StartTimeFromRequset(httpRequestLog));
-                DateTime endTime = ParseTime(this.ChannelParams.EndTimeFromRequset(httpRequestLog));
+            //    DateTime startTime = ParseTime(this.ChannelParams.StartTimeFromRequset(httpRequestLog));
+            //    DateTime endTime = ParseTime(this.ChannelParams.EndTimeFromRequset(httpRequestLog));
 
-                return Convert.ToInt32((endTime - startTime).TotalMinutes);
-            }
+            //    return Convert.ToInt32((endTime - startTime).TotalMinutes);
+            //}
 	        return 1;
 	    }
 
