@@ -44,7 +44,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 txt.ID = "txt" + spChannelParamsWrapper.Name;
                 txt.FieldLabel = spChannelParamsWrapper.Name;
 
-                if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_LinkID_Key)
+                if (!this.ChannelID.IsAutoLinkID && spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_LinkID_Key)
                 {
                     txt.Value = "test" + StringUtil.GetRandNumber(10);
 
@@ -68,6 +68,38 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Channels
                 if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_SpNumber_Key)
                 {
                     txt.Value = this.SPCode;
+                }
+
+                if(this.ChannelID.ChannelType==DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+                {
+                    if ((this.ChannelID.IVRFeeTimeType == "0") && spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_FeeTime_Key)
+                    {
+                        txt.Value = "2";
+                    }
+
+                    Random random = new Random(Guid.NewGuid().GetHashCode());
+
+                    DateTime teststartdt =
+                        System.DateTime.Now.AddDays(-1 * random.Next(1, 3)).AddHours(random.Next(-12, 12)).AddMinutes(
+                            random.Next(-30, 30)).AddSeconds(random.Next(-30, 30));
+
+                    DateTime testenddt = teststartdt.AddSeconds(50);
+
+                    if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_StartTime_Key)
+                    {
+                        if (this.ChannelID.IVRFeeTimeType == "1")
+                            txt.Value = teststartdt.ToString(this.ChannelID.IVRTimeFormat);
+                        else
+                            txt.Value = teststartdt.ToString("yyyy-MM-dd hh:mm:ss");
+                    }
+
+                    if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_EndTime_Key)
+                    {
+                        if (this.ChannelID.IVRFeeTimeType == "1")
+                            txt.Value = testenddt.ToString(this.ChannelID.IVRTimeFormat);
+                        else
+                            txt.Value = testenddt.ToString("yyyy-MM-dd hh:mm:ss");
+                    }
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_State_Key)

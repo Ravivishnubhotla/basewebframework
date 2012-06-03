@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Web.UI;
@@ -22,6 +23,8 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
                 return;
 
             GridPanel1.Reload();
+
+
 
             ReportViewHelper.FixReportDefinition(this.Server.MapPath("RecordExportTemplateForChannel.rdl"));
             rptvExport.LocalReport.ReportPath = this.Server.MapPath("RecordExportTemplateForChannel.rdl");

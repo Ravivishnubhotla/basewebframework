@@ -49,9 +49,30 @@ namespace Legendigital.Common.WebApp.AppCode
             {
                 IDataAdapter request = new HttpGetPostAdapter(httpRequestLog);
 
-                request.RequestParams[channel.ChannelParams[DictionaryConst.Dictionary_SPField_LinkID_Key]] = linkid + "-" + i.ToString();
+                string linkidKey = channel.ChannelParams[DictionaryConst.Dictionary_SPField_LinkID_Key];
 
-                requestOK = channel.ProcessRequest(httpRequestLog, statusOk, out requestError, out errorMessage);
+                if (request.RequestParams.ContainsKey(linkidKey))
+                {
+                    request.RequestParams[linkidKey] = linkid + "-" + i.ToString();
+                }
+                else
+                {
+                    request.RequestParams.Add(linkidKey, linkid + "-" + i.ToString());
+                }
+
+                string feeTimeKey = channel.ChannelParams[DictionaryConst.Dictionary_SPField_FeeTime_Key];
+
+                if (request.RequestParams.ContainsKey(feeTimeKey))
+                {
+                    request.RequestParams[feeTimeKey] = feetime.ToString();
+                }
+                else
+                {
+                    request.RequestParams.Add(feeTimeKey, feetime.ToString());
+                }
+
+
+                requestOK = channel.ProcessRequest(request, statusOk, out requestError, out errorMessage);
             }
 
             return requestError;

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ReportDetailPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Reports.ReportDetailPage" %>
+<%@ Import Namespace="Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:Store ID="storeData" runat="server" AutoLoad="true" RemoteSort="true" OnRefreshData="storeData_Refresh">
@@ -18,6 +19,7 @@
                     <ext:RecordField Name="Mobile" />
                     <ext:RecordField Name="Mo" />
                     <ext:RecordField Name="SpNumber" />
+                    <ext:RecordField Name="FeeTime" />
                     <ext:RecordField Name="Province" />
                     <ext:RecordField Name="City" />
                     <ext:RecordField Name="OperatorType" />
@@ -34,9 +36,26 @@
                 </Fields>
             </ext:JsonReader>
         </Reader>
+        <Listeners>
+           <Load Handler="showColumns();"></Load> 
+        </Listeners>
     </ext:Store>
     <script type="text/javascript">
 
+        function showColumns() {
+            var gridPanel1 = <%= this.GridPanel1.ClientID %>;
+
+            var channelType = '<%= this.ChannelID.ChannelType %>';
+            
+            if(channelType == '<%= DictionaryConst.Dictionary_ChannelType_IVRChannel_Key %>') {
+                gridPanel1.getColumnModel().setHidden(4, true);
+            } else {
+                gridPanel1.getColumnModel().setHidden(5, true);
+            }
+
+
+
+        }
 
         var FormatBool = function (value) {
             if (value)
@@ -88,7 +107,10 @@
                         <ext:Column ColumnID="colMobile" DataIndex="Mobile" Header="手机号码" Sortable="true"
                             Width="90">
                         </ext:Column>
-                        <ext:Column ColumnID="colMo" DataIndex="Mo" Header="上行指令" Sortable="true" Width="90">
+                        <ext:Column ColumnID="colMo"  DataIndex="Mo" Header="上行指令" Sortable="true" Width="90">
+                        </ext:Column>
+                        <ext:Column ColumnID="colFeeTime"  DataIndex="FeeTime" Header="时长" Sortable="true"
+                            Width="90">
                         </ext:Column>
                         <ext:Column ColumnID="colSpNumber" DataIndex="SpNumber" Header="通道号码" Sortable="true"
                             Width="95">
