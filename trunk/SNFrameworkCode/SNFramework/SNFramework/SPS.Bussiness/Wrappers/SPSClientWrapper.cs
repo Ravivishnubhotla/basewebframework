@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Runtime.Serialization;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Newtonsoft.Json;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -12,6 +14,8 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 namespace SPS.Bussiness.Wrappers
 {
 	[Serializable]
+    [DataContract]
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class SPSClientWrapper : BaseSpringNHibernateWrapper<SPSClientEntity, ISPSClientServiceProxy, SPSClientWrapper, int>  
     {
         #region Static Common Data Operation
