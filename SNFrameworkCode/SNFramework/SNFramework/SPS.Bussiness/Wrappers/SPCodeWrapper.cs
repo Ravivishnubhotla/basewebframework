@@ -192,7 +192,6 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	    }
 
-
 	    public SPClientCodeRelationWrapper GetRelateClientCodeRelation()
 	    {
 	        List<SPClientCodeRelationWrapper> findClientInCodes = SPClientCodeRelationWrapper.FindAllByCodeID(this);
@@ -215,7 +214,6 @@ namespace SPS.Bussiness.Wrappers
             return null;
         }
 
-
         public string  CodeAssignedClientName 
         {
             get
@@ -237,26 +235,28 @@ namespace SPS.Bussiness.Wrappers
         {
             get
             {
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key || this.MOType == DictionaryConst.Dictionary_CodeType_CodeContain_Key || this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
-                {
-                    List<SPCodeWrapper> codes = FindAllByChannelID(this.ChannelID);
+                List<SPCodeWrapper> codes = FindAllByChannelID(this.ChannelID);
 
-                    SPCodeWrapper parentCode = (from rap in codes  where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
-                                                                                     !this.Mo.Equals(rap.Mo) && this.Mo.Contains(rap.Mo))
-                                                orderby rap.Mo.Length
-                                                                                select rap).FirstOrDefault();
-
-                    if (parentCode == null)
-                        return this;
-
-                    return parentCode;
-                }
-                else
-                {
-                    return this;
-                }
+                return GetParentCode(codes);
             }
         }
+
+        //public List<SPCodeWrapper> GetAllSubCode()
+        //{
+        //    List<SPCodeWrapper> allSubCodes = new List<SPCodeWrapper>();
+
+        //    List<SPCodeWrapper> spCodes = FindAllByChannelID(this.ChannelID);
+
+        //    foreach (SPCodeWrapper spCodeWrapper in spCodes)
+        //    {
+        //        if(spCodeWrapper.Id==this.Id)
+        //        {
+        //            allSubCodes.Add(spCodeWrapper);
+        //        }
+        //    }
+
+        //    return allSubCodes;
+        //}
 
 	    public string AssignedClientName
 	    {
@@ -322,5 +322,94 @@ namespace SPS.Bussiness.Wrappers
 
 
         }
+
+        public SPCodeWrapper GetParentCode(List<SPCodeWrapper> codes)
+	    {
+            SPCodeWrapper parentCode;
+
+            if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key)
+            {
+                parentCode = (from rap in codes
+                              where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                                                                 !this.Mo.Equals(rap.Mo) && this.Mo.StartsWith(rap.Mo))
+                              orderby rap.Mo.Length
+                              select rap).FirstOrDefault();
+
+                if (parentCode == null)
+                    return this;
+
+                return parentCode;
+            }
+            else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
+            {
+                parentCode = (from rap in codes
+                              where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                                !this.Mo.Equals(rap.Mo) && this.Mo.EndsWith(rap.Mo))
+                              orderby rap.Mo.Length
+                              select rap).FirstOrDefault();
+
+                if (parentCode == null)
+                    return this;
+
+                return parentCode;
+            }
+            else
+            {
+                return this;
+            }
+	    }
+
+	    public List<SPCodeWrapper> GetAllSubCode(List<SPCodeWrapper> allcodes)
+	    {
+	        List<SPCodeWrapper> subCodes;
+
+            if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key)
+            {
+                SPCodeWrapper fcode = (from rap in allcodes
+                                 where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                        !this.Mo.Equals(rap.Mo) && rap.Mo.StartsWith(this.Mo))
+                                 orderby rap.Mo.Length
+                                 select rap).FirstOrDefault();
+
+                if (fcode==null)
+                {
+                    return new List<SPCodeWrapper>();
+                }
+
+                subCodes = (from rap in allcodes
+                            where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                   !this.Mo.Equals(rap.Mo) && rap.Mo.StartsWith(this.Mo) && rap.Mo.Length == fcode.Mo.Length)
+                            orderby rap.Mo.Length
+                            select rap).ToList();
+
+                return subCodes;
+            }
+            else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
+            {
+                SPCodeWrapper fcode = (from rap in allcodes
+                                       where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                              !this.Mo.Equals(rap.Mo) && rap.Mo.EndsWith(this.Mo))
+                                       orderby rap.Mo.Length
+                                       select rap).FirstOrDefault();
+
+                if (fcode == null)
+                {
+                    return new List<SPCodeWrapper>();
+                }
+
+
+                subCodes = (from rap in allcodes
+                              where (rap.ChannelID.Id == this.ChannelID.Id && rap.SPCode == this.SPCode &&
+                                                !this.Mo.Equals(rap.Mo) && rap.Mo.EndsWith(this.Mo) && rap.Mo.Length == fcode.Mo.Length)
+                              orderby rap.Mo.Length
+                            select rap).ToList();
+
+                return subCodes;
+            }
+            else
+            {
+                return new List<SPCodeWrapper>();
+            }
+	    }
     }
 }

@@ -224,6 +224,7 @@
     <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx" />
     <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx" />
@@ -234,6 +235,10 @@
     <Content Include="Moudles\SPS\Codes\UCSPCodeFilterView.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
+    <Content Include="Moudles\SPS\Images\application_delete.png" />
+    <Content Include="Moudles\SPS\Images\application_edit.png" />
+    <Content Include="Moudles\SPS\Images\application_view_detail.png" />
+    <Content Include="Moudles\SPS\Images\telephone_go.png" />
     <Content Include="Moudles\SPS\Reports\Blank.htm" />
     <Content Include="Moudles\SPS\Reports\ReportChannelInvoice.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportChannelInvoiceService.aspx" />
@@ -481,6 +486,7 @@
   <ItemGroup>
     <Compile Include="AppCode\DataRecievedHandler.cs" />
     <Compile Include="AppCode\IVRDataRecievedHandler.cs" />
+    <Compile Include="AppCode\JSonResult.cs" />
     <Compile Include="AppCode\SPClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -745,6 +751,9 @@
     <Compile Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx.designer.cs">
       <DependentUpon>SPClientCodeRelationListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
+      <DependentUpon>SPClientHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx.cs">
       <DependentUpon>SPSClientCodeSycnTestForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -870,6 +879,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.designer.cs">
       <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx.cs">
+      <DependentUpon>SPCodeTreeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeTreeListPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx.cs">
       <DependentUpon>SPSChannelCodeHandler.ashx</DependentUpon>
@@ -1656,6 +1672,9 @@
   <ItemGroup>
     <Content Include="Moudles\SPS\Reports\ChannelReport.rdl" />
     <Content Include="Moudles\SPS\Reports\ClientReport.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -187,7 +187,7 @@
 
             //hidSelectAppID.setValue(app.id.toString());
 
-            LoadMenus(app.id,tree)
+            LoadMenus(app.id, tree);
 
         }
 

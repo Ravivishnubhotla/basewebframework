@@ -7,11 +7,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using System.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Newtonsoft.Json;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
 using SPS.Bussiness.DataAdapter;
@@ -25,6 +27,8 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 namespace SPS.Bussiness.Wrappers
 {
 	[Serializable]
+    [DataContract]
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class SPChannelWrapper : BaseSpringNHibernateWrapper<SPChannelEntity, ISPChannelServiceProxy, SPChannelWrapper, int>  
     {
         #region Static Common Data Operation
