@@ -45,12 +45,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
         }
 
 
-        protected void storeSPChannel_Refresh(object sender, StoreRefreshDataEventArgs e)
-        {
-            this.storeSPChannel.DataSource = SPChannelWrapper.FindAll();
+        //protected void storeSPChannel_Refresh(object sender, StoreRefreshDataEventArgs e)
+        //{
+        //    this.storeSPChannel.DataSource = SPChannelWrapper.FindAll();
 
-            this.storeSPChannel.DataBind();
-        }
+        //    this.storeSPChannel.DataBind();
+        //}
 
 
         protected void storeData_Refresh(object sender, StoreRefreshDataEventArgs e)
@@ -172,12 +172,12 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Reports
             return reportSearchCondition;
         }
 
-        protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
-        {
-            this.storeSPClient.DataSource = SPSClientWrapper.FindAll();
+        //protected void storeSPClient_Refresh(object sender, StoreRefreshDataEventArgs e)
+        //{
+        //    this.storeSPClient.DataSource = SPSClientWrapper.FindAll();
 
-            this.storeSPClient.DataBind();
-        }
+        //    this.storeSPClient.DataBind();
+        //}
 
         protected void storeSPCode_Refresh(object sender, StoreRefreshDataEventArgs e)
         {

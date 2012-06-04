@@ -7,9 +7,12 @@
             <DocumentReady Handler="#{storeSPChannel}.reload();#{storeSPClient}.reload();"></DocumentReady>
         </Listeners>
     </ext:ResourceManagerProxy>
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" OnRefreshData="storeSPChannel_Refresh">
+    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../Channels/SPChannelHandler.ashx" />
+        </Proxy>
         <Reader>
-            <ext:JsonReader IDProperty="Id">
+            <ext:JsonReader Root="Datas" IDProperty="Id" TotalProperty="Total">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
@@ -20,9 +23,12 @@
             <EventMask ShowMask="true" />
         </DirectEventConfig>
     </ext:Store>
-    <ext:Store ID="storeSPClient" runat="server" AutoLoad="true" OnRefreshData="storeSPClient_Refresh">
+    <ext:Store ID="storeSPClient" runat="server" AutoLoad="true">
+        <Proxy>
+            <ext:HttpProxy Method="POST" Url="../Clients/SPClientHandler.ashx" />
+        </Proxy>
         <Reader>
-            <ext:JsonReader IDProperty="Id">
+            <ext:JsonReader Root="Datas" IDProperty="Id" TotalProperty="Total">
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
