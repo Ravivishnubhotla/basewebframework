@@ -1,0 +1,26 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">   
+$(document).ready(function(){
+$("p").append(
+  "<b>Single:</b> "   + $("#single").val() +
+  " <b>Multiple:</b> " + $("#multiple").val().join(", ")
+); 
+}); 
+</script>
+</head>
+
+<body>
+<p></p><br/>
+<select id="single">
+  <option>Single</option>
+  <option>Single2</option>
+</select>
+<select id="multiple" multiple="multiple">
+  <option selected="selected">Multiple</option>
+  <option>Multiple2</option>
+  <option selected="selected">Multiple3</option>
+</select> 
+</body>
+</html>
