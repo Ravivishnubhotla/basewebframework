@@ -46,13 +46,51 @@ namespace SPS.Data.Tables
             NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             //≈≈≥˝ƒ¨»œ÷∏¡Ó
-            dynamicQueryGenerator.AddWhereClause(Not(SPCodeDataObject.PROPERTY_CODETYPE.Eq(DictionaryConst.Dictionary_CodeType_CodeDefault_Key)));
+            dynamicQueryGenerator.AddWhereClause(Not(SPCodeDataObject.PROPERTY_MOTYPE.Eq(DictionaryConst.Dictionary_CodeType_CodeDefault_Key)));
 
             List<SPCodeEntity> allCodes = this.FindListByQueryBuilder(dynamicQueryGenerator);
 
             var allrootCode = allCodes.FindAll(p => (p.CheckIsRoot(allCodes)));
 
             return allrootCode;
+        }
+
+        public List<SPCodeEntity> FindAllByChannelIDAndClientIDAndMoAndSpNumber(SPChannelEntity channel, SPSClientEntity client , string mo, string spcode)
+        {
+            NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            if(channel!=null)
+            {
+                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_CHANNELID.Eq(channel));
+            }
+
+            if (client != null)
+            {
+                dynamicQueryGenerator.AddWhereClause(SPClientCodeRelationDataObject.Query_ClientAssignedCode(client,PROPERTY_ID.CriterionProperty));
+            }
+
+            if (!string.IsNullOrEmpty(mo))
+            {
+                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MO.Like(mo));
+            }
+
+            if (!string.IsNullOrEmpty(spcode))
+            {
+                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODE.Like(spcode));
+            }
+
+            dynamicQueryGenerator.AddWhereClause(
+                Not(SPCodeDataObject.PROPERTY_MOTYPE.Eq(DictionaryConst.Dictionary_CodeType_CodeDefault_Key)));
+
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_MOTYPE.Asc());
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_MO.Asc());
+
+            dynamicQueryGenerator.AddOrderBy(PROPERTY_SPCODE.Asc());
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+
         }
     }
 }

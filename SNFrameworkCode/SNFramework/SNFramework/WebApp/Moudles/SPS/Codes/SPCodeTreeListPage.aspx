@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="LoadTree();"></DocumentReady>
+            <DocumentReady Handler="LoadTree('');"></DocumentReady>
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Store ID="storeSPChannel" runat="server" AutoLoad="True">
@@ -40,9 +40,8 @@
         </DirectEventConfig>
     </ext:Store>
     <script type="text/javascript">
-        function LoadTree() {
-            Ext.net.DirectMethods.GetTreeNodes(
-                                                '',
+        function LoadTree(searchfilters) {
+            Ext.net.DirectMethods.GetTreeNodes(searchfilters,
                                                 {
                                                     failure: function (msg) {
                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
@@ -74,23 +73,20 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Items>
-                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="120"
+                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="90"
                         Frame="True">
                         <Items>
                             <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="False" Title="查询条件" AutoHeight="True"
                                 Collapsed="False" LabelWidth="75" Layout="Form">
                                 <Items>
-                                    <ext:Panel ID="Panel2" runat="server" AnchorHorizontal="100%" Layout="HBoxLayout">
-                                        <LayoutConfig>
-                                            <ext:HBoxLayoutConfig Padding="10" />
-                                        </LayoutConfig>
+                                    <ext:FormPanel ID="Panel2" runat="server" AnchorHorizontal="100%" Layout="HBoxLayout">
                                         <Defaults>
                                             <ext:Parameter Name="margins" Value="0 5 0 0" Mode="Value" />
                                         </Defaults>
                                         <Items>
-                                            <ext:ComboBox ID="cmbChannel" FieldLabel="选择通道" LabelWidth="60" Width="180" runat="server"
+                                            <ext:ComboBox ID="cmbChannel" FieldLabel="选择通道" LabelWidth="55" Width="180" runat="server"
                                                 StoreID="storeSPChannel" ListWidth="200" Editable="True" MinChars="1" DisplayField="Name" ValueField="Id"
-                                                EmptyText="选择通道">
+                                                EmptyText="选择通道" DataIndex="ChannelID">
                                                 <Triggers>
                                                     <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                                 </Triggers>
@@ -100,9 +96,9 @@
                                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                                 </Listeners>
                                             </ext:ComboBox>
-                                            <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="60" Width="180" 
+                                            <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="55" Width="180" 
                                                 StoreID="storeSPClient"  ListWidth="200" Editable="True" MinChars="1"  DisplayField="Name" ValueField="Id"
-                                                EmptyText="选择客户">
+                                                EmptyText="选择客户"  DataIndex="ClientID">
                                                 <Triggers>
                                                     <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                                 </Triggers>
@@ -112,11 +108,15 @@
                                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                                 </Listeners>
                                             </ext:ComboBox>
-                                            <ext:TextField ID="txtMo" runat="server" FieldLabel="指令" LabelWidth="60" Width="180" />
-                                            <ext:TextField ID="txtSpNumber" runat="server" FieldLabel="端口号" LabelWidth="60" Width="180" />
-                                            <ext:Button ID="Button5" runat="server" Text="搜索" OnClientClick="replace(#{pnlAlignStretchMax});" />
+                                            <ext:TextField ID="txtMo" runat="server" FieldLabel="指令" LabelWidth="50" Width="120"   DataIndex="Mo" />
+                                            <ext:TextField ID="txtSpNumber" runat="server" FieldLabel="端口号" LabelWidth="50" Width="120"   DataIndex="SpNumber" />
+                                            <ext:Button ID="Button5" runat="server" Text="搜索" >
+                                                <Listeners>
+                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
+                                                </Listeners>
+                                            </ext:Button>
                                         </Items>
-                                    </ext:Panel>
+                                    </ext:FormPanel>
                                 </Items>
                             </ext:FieldSet>
                         </Items>
@@ -125,11 +125,11 @@
                         EnableDD="true">
                         <Columns>
                             <ext:TreeGridColumn Header="指令代码" Width="230" DataIndex="MoCode" />
-                            <ext:TreeGridColumn Header="所属通道" Width="230" DataIndex="ChannelName" />
+                            <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" />
                             <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
-                            <ext:TreeGridColumn Header="禁用" Width="150" DataIndex="Disable" />
-                            <ext:TreeGridColumn Header="管理" Width="150" Align="Center">
+                            <ext:TreeGridColumn Header="禁用" Width="50" DataIndex="Disable" />
+                            <ext:TreeGridColumn Header="管理" Width="100" Align="Center">
                                 <XTemplate ID="XTemplate1" runat="server">
                                     <Html>
                                         <a href="#" title="编辑" onclick="alert('Node id - {id}')"><img src="../Images/application_edit.png"></img></a>
