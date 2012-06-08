@@ -411,5 +411,10 @@ namespace SPS.Bussiness.Wrappers
                 return new List<SPCodeWrapper>();
             }
 	    }
+
+        public static List<SPCodeWrapper> FindAllByChannelIDAndClientIDAndMoAndSpNumber(int? channelID, int? clientID, string mo, string spcode)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByChannelIDAndClientIDAndMoAndSpNumber(channelID, clientID, mo, spcode));
+        }
     }
 }

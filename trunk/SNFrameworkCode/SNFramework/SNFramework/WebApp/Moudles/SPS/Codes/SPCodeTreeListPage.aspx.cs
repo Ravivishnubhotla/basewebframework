@@ -8,6 +8,7 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.Wrappers;
 using TreeNode = Ext.Net.TreeNode;
 using TreeNodeCollection = Ext.Net.TreeNodeCollection;
@@ -18,12 +19,33 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (X.IsAjaxRequest)
+                return;
 
+            if(ChannelID!=null)
+            {
+                this.cmbChannel.Hidden = true;
+                this.cmbClient.Hidden = true;
+            }
+
+        }
+
+        public SPChannelWrapper ChannelID
+        {
+            get
+            {
+                if (this.Request.QueryString["ChannelID"] != null)
+                {
+                    return
+                        SPChannelWrapper.FindById(int.Parse(this.Request.QueryString["ChannelID"]));
+                }
+                return null;
+            }
         }
 
 
         [DirectMethod]
-        public static string GetTreeNodes(string channelID)
+        public string GetTreeNodes(string searchfilters)
         {
             TreeNodeCollection nodes = new TreeNodeCollection();
 
@@ -35,8 +57,49 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
 
             //if (menus == null || menus.Count == 0)
             //    return nodes;
+            List<SPCodeWrapper> allcodes = null;
 
-            List<SPCodeWrapper> allcodes = SPCodeWrapper.FindAll();
+            Dictionary<string, string> search = null; 
+
+
+            if (!string.IsNullOrEmpty(searchfilters))
+            {
+                search = JSON.Deserialize<Dictionary<string, string>>(searchfilters);
+            }
+
+            int? channelID = null;
+            int? clientID = null;
+            string mo = string.Empty;
+            string spnumber = string.Empty;
+
+            if (search != null)
+            {
+                if (!string.IsNullOrEmpty(search["ChannelID"]))
+                {
+                    channelID = Convert.ToInt32(search["ChannelID"]);
+                }
+                if (!string.IsNullOrEmpty(search["ClientID"]))
+                {
+                    clientID = Convert.ToInt32(search["ClientID"]);
+                }
+                if (!string.IsNullOrEmpty(search["Mo"]))
+                {
+                    mo = search["Mo"];
+                }
+                if (!string.IsNullOrEmpty(search["SpNumber"]))
+                {
+                    spnumber = search["SpNumber"];
+                }
+            }
+
+            if(ChannelID!=null)
+            {
+                allcodes = SPCodeWrapper.FindAllByChannelIDAndClientIDAndMoAndSpNumber(ChannelID.Id, null, mo, spnumber);
+            }
+            else
+            {
+                allcodes = SPCodeWrapper.FindAllByChannelIDAndClientIDAndMoAndSpNumber(channelID, clientID, mo, spnumber);
+            }
 
             for (int i = 0; i < allcodes.Count; i++)
             {

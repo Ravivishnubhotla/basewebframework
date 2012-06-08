@@ -374,10 +374,10 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="700"
-        Icon="Script" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="800"
+        Icon="Script" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
-        <AutoLoad Url="../Codes/SPChannelCodeListPage.aspx" Mode="IFrame" NoCache="true"
+        <AutoLoad Url="../Codes/SPCodeTreeListPage.aspx" Mode="IFrame" NoCache="true"
             TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">

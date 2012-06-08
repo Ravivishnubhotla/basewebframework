@@ -7,6 +7,7 @@ using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.ConstClass;
+using SPS.Bussiness.Wrappers;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
 
@@ -16,6 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     public interface ISPCodeServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPCodeEntity, int>, ISPCodeServiceProxyDesigner
     {
 	    void QuickAddCode(SPCodeEntity codeEntity, bool hasSubCode, string subCode);
+        List<SPCodeEntity> FindAllByChannelIDAndClientIDAndMoAndSpNumber(int? channelId, int? clientId, string mo, string spcode);
     }
 
     internal partial class SPCodeServiceProxy : ISPCodeServiceProxy
@@ -90,6 +92,20 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                 }
             }
  
+        }
+
+        public List<SPCodeEntity> FindAllByChannelIDAndClientIDAndMoAndSpNumber(int? channelId, int? clientId, string mo, string spcode)
+        {
+            SPChannelEntity channel = null;
+            if (channelId.HasValue)
+                channel = this.DataObjectsContainerIocID.SPChannelDataObjectInstance.Load(channelId.Value);
+            SPSClientEntity client = null;
+            if (clientId.HasValue)
+                client = this.DataObjectsContainerIocID.SPSClientDataObjectInstance.Load(clientId.Value);
+
+            return
+                this.DataObjectsContainerIocID.SPCodeDataObjectInstance.FindAllByChannelIDAndClientIDAndMoAndSpNumber(
+                    channel, client, mo, spcode);
         }
     }
 }
