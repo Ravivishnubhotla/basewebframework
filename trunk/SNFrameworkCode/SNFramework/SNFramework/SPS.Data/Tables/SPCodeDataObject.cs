@@ -71,12 +71,12 @@ namespace SPS.Data.Tables
 
             if (!string.IsNullOrEmpty(mo))
             {
-                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MO.Like(mo));
+                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MO.Like(mo,MatchMode.Anywhere));
             }
 
             if (!string.IsNullOrEmpty(spcode))
             {
-                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODE.Like(spcode));
+                dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODE.Like(spcode, MatchMode.Anywhere));
             }
 
             dynamicQueryGenerator.AddWhereClause(

@@ -71,41 +71,14 @@
         }
         
 
-
-                function showAddForm() {
-                Ext.net.DirectMethods.UCSPCodeAdd.Show( 
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing...'
-                                                                               }
-                                                                });    
-        
-        }
-        
  
+         var RefreshData = function(btn) {
+             var pnl = <%= this.Panel2.ClientID %>;
+             LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
+        };
 
-        function processcmd(cmd, id) {
-
-            if (cmd == "cmdEdit") {
-                Ext.net.DirectMethods.UCSPCodeEdit.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '处理中...'
-                                                                               }
-                                                                }              
-                );
-            }
-			
-			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSPCodeView.Show(id.id,
+            function showEditCode(id) {
+                Ext.net.DirectMethods.UCSPCodeEdit.Show(id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
@@ -118,44 +91,45 @@
                 );
             }
             
-            			            if (cmd == "cmdChannelTest") {
+            function showViewCode(id) {
+                            Ext.net.DirectMethods.UCSPCodeView.Show(id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }              
+                );
+            }
+            
+            function showSendTest(id,cname,cid) {
+//                alert(id);
+//                alert(cname);
+//                alert(cid);
+//                return;
                 var win = <%= this.winSendTestRequestForm.ClientID %>;
                 
 
-                win.setTitle(' 通道 [<%= this.ChannelID.Name %>]  发送模拟数据 ');
+                win.setTitle(' 通道 ' + cname + '  发送模拟数据 ');
                 
                 win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
                 
-                win.autoLoad.params.ChannelID = <%= this.ChannelID.Id.ToString() %>;
+                win.autoLoad.params.ChannelID = cid;
         
-            	win.autoLoad.params.CodeID = id.data.Id;		                
+            	win.autoLoad.params.CodeID = id;		                
             			                
                 win.show(); 
             }
 
-            if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除该条数据？ ',
-                    function(e) {
-                        if (e == 'yes')
-                            Ext.net.DirectMethods.DeleteRecord(
-                                                                id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
-                                                                    },
-                                                                    success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '删除记录成功！',RefreshData);            
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '处理中 ......'
-                                                                               }
-                                                                }
-                                                            );
-                    }
-                    );
-            }
-        }
+
+
+
+
+ 
+ 
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -228,13 +202,13 @@
                             <ext:TreeGridColumn Header="管理" Width="100" Align="Center">
                                 <XTemplate ID="XTemplate1" runat="server">
                                     <Html>
-                                        <a href="#" title="编辑" onclick="alert('Node id - {id}')"><img src="../Images/application_edit.png"></img></a>
+                                        <a href="#" title="编辑" onclick="showEditCode('{CodeID}');"><img src="../Images/application_edit.png"></img></a>
                                         &nbsp;
-                                        <a href="#" title="删除" onclick="alert('Node id - {id}')"><img src="../Images/application_delete.png"></img></a>
+                                        <a href="#" title="删除" onclick="alert('Node id - {CodeID}')"><img src="../Images/application_delete.png"></img></a>
                                         &nbsp;
-                                        <a href="#" title="查看" onclick="alert('Node id - {id}')"><img src="../Images/application_view_detail.png"></img></a>
+                                        <a href="#" title="查看" onclick="showViewCode('{CodeID}');"><img src="../Images/application_view_detail.png"></img></a>
                                         &nbsp;
-                                        <a href="#" title="测试" onclick="alert('Node id - {id}')"><img src="../Images/telephone_go.png"></img></a>
+                                        <a href="#" title="测试" onclick="showSendTest('{CodeID}','{ChannelName}','{ChannelID}');"><img src="../Images/telephone_go.png"></img></a>
                                     </Html>
                                 </XTemplate>
                             </ext:TreeGridColumn>

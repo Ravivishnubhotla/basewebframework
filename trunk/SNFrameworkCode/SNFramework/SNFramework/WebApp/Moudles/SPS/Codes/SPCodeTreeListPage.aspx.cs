@@ -111,6 +111,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                     mainNode.Icon = Icon.Script;
                     mainNode.CustomAttributes.Add(new ConfigItem("MoCode", allcodes[i].MoCode, ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("ChannelName", allcodes[i].ChannelID_Name, ParameterMode.Value));
+                    mainNode.CustomAttributes.Add(new ConfigItem("ChannelID", allcodes[i].ChannelID.Id.ToString(), ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("AssignedClientName", allcodes[i].AssignedClientName, ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("CodeID", allcodes[i].Id.ToString(), ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("Disable", allcodes[i].IsDiable.ToString(), ParameterMode.Value));
@@ -137,6 +138,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes
                 subNode.Icon = Icon.Script;
                 subNode.CustomAttributes.Add(new ConfigItem("MoCode", subCode.MoCode, ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("ChannelName", subCode.ChannelID_Name, ParameterMode.Value));
+                mainNode.CustomAttributes.Add(new ConfigItem("ChannelID", subCode.ChannelID.Id.ToString(), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("AssignedClientName", subCode.AssignedClientName, ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("CodeID", subCode.Id.ToString(), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("Disable", subCode.IsDiable.ToString(), ParameterMode.Value));
