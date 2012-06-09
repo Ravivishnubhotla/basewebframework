@@ -40,6 +40,33 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         protected global::Ext.Net.Store storeSPClient;
         
         /// <summary>
+        /// UCSPCodeAdd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeAdd UCSPCodeAdd1;
+        
+        /// <summary>
+        /// UCSPCodeEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeEdit UCSPCodeEdit1;
+        
+        /// <summary>
+        /// UCSPCodeView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeView UCSPCodeView1;
+        
+        /// <summary>
         /// Viewport1 control.
         /// </summary>
         /// <remarks>
@@ -137,5 +164,14 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TreeGrid TreeGrid1;
+        
+        /// <summary>
+        /// winSendTestRequestForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winSendTestRequestForm;
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
@@ -23,29 +24,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
 
         protected void storeSystemLog_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
-            int startIndex = 0;
-
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
             List<QueryFilter> filters = new List<QueryFilter>();
 
@@ -61,7 +42,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.LogManage
             if (dfEnd.SelectedValue != null)
                 filters.Add(new QueryFilter(SystemLogWrapper.PROPERTY_NAME_LOGDATE, Convert.ToDateTime(dfEnd.SelectedDate).AddDays(1).ToString("yyyy-MM-dd"), FilterFunction.LessThanOrEqualTo));
 
-            storeSystemLog.DataSource = SystemLogWrapper.FindAllByOrderByAndFilter(filters, sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            storeSystemLog.DataSource = SystemLogWrapper.FindAllByOrderByAndFilter(filters, recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemLog.DataBind();

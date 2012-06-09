@@ -25,25 +25,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
         protected void storeSystemPost_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
 
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
-            int startIndex = 0;
-
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
 
             int selectOrgID = 0;
@@ -73,11 +57,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.OrginationDepartmentMa
                 return;
             }
 
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
-
-            storeSystemPost.DataSource = SystemPostWrapper.FindAllByOrderByAndFilterAndOrganizationID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), organization, pageQueryParams);
+            storeSystemPost.DataSource = SystemPostWrapper.FindAllByOrderByAndFilterAndOrganizationID(recordSortor.OrderByColumnName, recordSortor.IsDesc, organization, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemPost.DataBind();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -115,45 +116,19 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.DictionaryManage
 
         protected void storeSystemDictionary_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e,this.PagingToolBar1);
 
-
-
- 
-
-
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
-
-            int startIndex = 0;
-
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
             List<SystemDictionaryWrapper> datas = null;
 
             if(DictionaryGroup!=null)
             {
-                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), DictionaryGroup, pageQueryParams);
+                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilterAndSystemDictionaryGroupID(recordSortor.OrderByColumnName, recordSortor.IsDesc, DictionaryGroup, pageQueryParams);
             }
             else
             {
-                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilter(new List<QueryFilter>(), sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+                datas = SystemDictionaryWrapper.FindAllByOrderByAndFilter(new List<QueryFilter>(), recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             }
 
             storeSystemDictionary.DataSource = datas;
