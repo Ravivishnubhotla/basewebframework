@@ -49,27 +49,9 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
 
         protected void storeSystemPrivilege_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
-
-            int startIndex = 0;
-
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
             int selectResourceID = 0;
 
@@ -97,12 +79,8 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.PermissionManage
 
                 return;
             }
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
-
-            storeSystemPrivilege.DataSource = SystemPrivilegeWrapper.FindAllByOrderByAndFilterAndResourcesID(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), resourcesWrapper, pageQueryParams);
+ 
+            storeSystemPrivilege.DataSource = SystemPrivilegeWrapper.FindAllByOrderByAndFilterAndResourcesID(recordSortor.OrderByColumnName, recordSortor.IsDesc, resourcesWrapper, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemPrivilege.DataBind();

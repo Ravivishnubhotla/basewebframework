@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Web;
@@ -67,32 +68,11 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
 
         protected void storeSystemConfigGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
-            int startIndex = 0;
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
-
-            storeSystemConfigGroup.DataSource = SystemConfigGroupWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            storeSystemConfigGroup.DataSource = SystemConfigGroupWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSystemConfigGroup.DataBind();
@@ -101,37 +81,12 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ConfigManage
 
         protected void storeSystemConfig_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            int recordCount = 0;
-            string sortFieldName = "";
-            if (e.Sort != null)
-                sortFieldName = e.Sort;
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
-            int startIndex = 0;
+            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
-            if (e.Start > -1)
-            {
-                startIndex = e.Start;
-            }
-
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
-
- 
-
-
-            storeSystemConfig.DataSource = SystemConfigWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
-            e.Total = recordCount;
+            storeSystemConfig.DataSource = SystemConfigWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
+            e.Total = pageQueryParams.RecordCount;
 
             storeSystemConfig.DataBind();
 

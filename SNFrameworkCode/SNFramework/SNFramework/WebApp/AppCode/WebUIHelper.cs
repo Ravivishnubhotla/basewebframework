@@ -199,10 +199,8 @@ namespace Legendigital.Common.WebApp.AppCode
            
         }
 
-        public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e,Ext.Net.PagingToolbar pagingToolbar)
+        public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e, int pageSize)
         {
-
-
             int startIndex = 0;
 
             if (e.Start > -1)
@@ -210,7 +208,7 @@ namespace Legendigital.Common.WebApp.AppCode
                 startIndex = e.Start;
             }
 
-            int limit = pagingToolbar.PageSize;
+            int limit = pageSize;
 
             int pageIndex = 1;
 
@@ -224,6 +222,11 @@ namespace Legendigital.Common.WebApp.AppCode
             pageQueryParams.PageIndex = pageIndex;
 
             return pageQueryParams;
+        }
+
+        public static PageQueryParams GetPageQueryParamFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e,Ext.Net.PagingToolbar pagingToolbar)
+        {
+            return GetPageQueryParamFromStoreRefreshDataEventArgs(e, pagingToolbar.PageSize);
         }
 
         public static RecordSortor GetRecordSortorFromStoreRefreshDataEventArgs(StoreRefreshDataEventArgs e)

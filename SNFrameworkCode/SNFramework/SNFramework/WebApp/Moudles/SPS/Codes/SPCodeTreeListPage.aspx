@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SPCodeTreeListPage.aspx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.SPCodeTreeListPage" %>
 
+<%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
+<%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
@@ -66,9 +69,99 @@
                                                 }
                                              );    
         }
+        
+
+
+                function showAddForm() {
+                Ext.net.DirectMethods.UCSPCodeAdd.Show( 
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: 'Processing...'
+                                                                               }
+                                                                });    
+        
+        }
+        
+ 
+
+        function processcmd(cmd, id) {
+
+            if (cmd == "cmdEdit") {
+                Ext.net.DirectMethods.UCSPCodeEdit.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }              
+                );
+            }
+			
+			            if (cmd == "cmdView") {
+                Ext.net.DirectMethods.UCSPCodeView.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }              
+                );
+            }
+            
+            			            if (cmd == "cmdChannelTest") {
+                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                
+
+                win.setTitle(' 通道 [<%= this.ChannelID.Name %>]  发送模拟数据 ');
+                
+                win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
+                
+                win.autoLoad.params.ChannelID = <%= this.ChannelID.Id.ToString() %>;
+        
+            	win.autoLoad.params.CodeID = id.data.Id;		                
+            			                
+                win.show(); 
+            }
+
+            if (cmd == "cmdDelete") {
+                Ext.MessageBox.confirm('警告','确认要删除该条数据？ ',
+                    function(e) {
+                        if (e == 'yes')
+                            Ext.net.DirectMethods.DeleteRecord(
+                                                                id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '删除记录成功！',RefreshData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中 ......'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
+    <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
+    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
@@ -85,8 +178,8 @@
                                         </Defaults>
                                         <Items>
                                             <ext:ComboBox ID="cmbChannel" FieldLabel="选择通道" LabelWidth="55" Width="180" runat="server"
-                                                StoreID="storeSPChannel" ListWidth="200" Editable="True" MinChars="1" DisplayField="Name" ValueField="Id"
-                                                EmptyText="选择通道" DataIndex="ChannelID">
+                                                StoreID="storeSPChannel" ListWidth="200" Editable="True" MinChars="1" DisplayField="Name"
+                                                ValueField="Id" EmptyText="选择通道" DataIndex="ChannelID">
                                                 <Triggers>
                                                     <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                                 </Triggers>
@@ -96,9 +189,9 @@
                                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                                 </Listeners>
                                             </ext:ComboBox>
-                                            <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="55" Width="180" 
-                                                StoreID="storeSPClient"  ListWidth="200" Editable="True" MinChars="1"  DisplayField="Name" ValueField="Id"
-                                                EmptyText="选择客户"  DataIndex="ClientID">
+                                            <ext:ComboBox ID="cmbClient" runat="server" FieldLabel="选择客户" LabelWidth="55" Width="180"
+                                                StoreID="storeSPClient" ListWidth="200" Editable="True" MinChars="1" DisplayField="Name"
+                                                ValueField="Id" EmptyText="选择客户" DataIndex="ClientID">
                                                 <Triggers>
                                                     <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
                                                 </Triggers>
@@ -108,11 +201,14 @@
                                                     <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                                 </Listeners>
                                             </ext:ComboBox>
-                                            <ext:TextField ID="txtMo" runat="server" FieldLabel="指令" LabelWidth="50" Width="120"   DataIndex="Mo" />
-                                            <ext:TextField ID="txtSpNumber" runat="server" FieldLabel="端口号" LabelWidth="50" Width="120"   DataIndex="SpNumber" />
-                                            <ext:Button ID="Button5" runat="server" Text="搜索" >
+                                            <ext:TextField ID="txtMo" runat="server" FieldLabel="指令" LabelWidth="50" Width="120"
+                                                DataIndex="Mo" />
+                                            <ext:TextField ID="txtSpNumber" runat="server" FieldLabel="端口号" LabelWidth="50" Width="120"
+                                                DataIndex="SpNumber" />
+                                            <ext:Button ID="Button5" runat="server" Text="搜索">
                                                 <Listeners>
-                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
+                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));">
+                                                    </Click>
                                                 </Listeners>
                                             </ext:Button>
                                         </Items>
@@ -150,4 +246,20 @@
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
+        <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="../Channels/SPChannelSendTestRequestForm.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>
