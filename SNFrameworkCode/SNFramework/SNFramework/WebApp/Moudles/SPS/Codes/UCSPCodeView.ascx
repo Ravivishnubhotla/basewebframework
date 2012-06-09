@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeView.ascx.cs" Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeView" %>
 
-<ext:Window ID="winSPCodeView" runat="server" Icon="ApplicationViewDetail" Title="ShowSPCode"
+<ext:Window ID="winSPCodeView" runat="server" Icon="ApplicationViewDetail" Title="代码详细信息"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>

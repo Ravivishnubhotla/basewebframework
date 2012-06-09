@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeEdit.ascx.cs"
     Inherits="Legendigital.Common.WebApp.Moudles.SPS.Codes.UCSPCodeEdit" %>
-<ext:Window ID="winSPCodeEdit" runat="server" Icon="ApplicationEdit" Title="Edit SPCode"
+<ext:Window ID="winSPCodeEdit" runat="server" Icon="ApplicationEdit" Title="编辑代码设置"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="fit">
     <Content>
