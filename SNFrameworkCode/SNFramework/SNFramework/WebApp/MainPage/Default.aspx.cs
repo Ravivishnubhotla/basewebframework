@@ -7,6 +7,7 @@ using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Environments;
 
 
 namespace Legendigital.Common.WebApp.MainPage
@@ -28,6 +29,9 @@ namespace Legendigital.Common.WebApp.MainPage
 
             locSystemName.Text = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
             locCopyRight.Text = settingWrapper.LocaLocalizationLisence;
+
+
+
 
             InitLeftMenu();
         }

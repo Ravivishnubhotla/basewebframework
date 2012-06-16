@@ -8,6 +8,8 @@ namespace Legendigital.Framework.Common.Images
 {
     public class DocumentProcessing
     {
+        
+
         public static int GetDocumentPageCount(byte[] fileContent,string fileName)
         {
 

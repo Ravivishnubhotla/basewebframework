@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Legendigital.Framework.Common.Environments;
 
 namespace Legendigital.Common.WebApp.Moudles.SystemManage.ServerInfo
 {
@@ -11,7 +12,13 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.ServerInfo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ServerEnvironmentInfo serverEnvironment = new ServerEnvironmentInfo(this.Context);
+            this.lblServerName.Text = serverEnvironment.ServerName;
+            this.lblServerIP.Text = serverEnvironment.ServerIP;
+            this.lblServerDomain.Text = serverEnvironment.ServerDomain;
+            this.lblServerPort.Text = serverEnvironment.ServerPort;
+            this.lblServerIIS.Text = serverEnvironment.ServerIIS;
+            this.lblServerOS.Text = serverEnvironment.ServerOS;
         }
     }
 }

@@ -12,7 +12,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
 {
     public class BaseSecurityPage : System.Web.UI.Page
     {
-        protected DateTime startDateTime;
+
+
 
         public const string  Session_Key_LoginUser = "CurrentLoginUser";
 
@@ -101,16 +102,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Web
             base.InitializeCulture();
         }
 
-        //protected override void OnPreInit(System.EventArgs e)
-        //{
-        //    this.Page.Theme = "Default";
-        //    base.OnPreInit(e);
-        //}
-
-
-
  
-
 
     }
 }

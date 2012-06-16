@@ -8,7 +8,7 @@
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
     <script type="text/javascript">
-        var loadPage = function(mtab, node) {
+        var loadPage = function (mtab, node) {
             if (node.attributes.isCategory != "False" && node.attributes.isCategory != null)
                 return;
             var tab = mtab.getComponent(node.id);
@@ -149,6 +149,68 @@
                         <Items>
                             <ext:TabPanel ID="MainTabs" runat="server" Border="false" EnableTabScroll="true">
                                 <Items>
+                                    <ext:Panel ID="pnlWorkSpace" runat="server" Title="工作面板" Layout="Fit" Frame="True"
+                                        Closable="False">
+                                        <Items>
+                                            <ext:Panel ID="Panel1" runat="server" Header="False" Layout="Fit" Frame="True">
+                                                <TopBar>
+                                                    <ext:Toolbar ID="Toolbar2" runat="server">
+                                                        <Items>
+                                                            <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
+                                                            <ext:Button ID="Button4" runat="server" Text="添加模块" Icon="BulletPlus" />
+                                                            <ext:Button ID="Button1" runat="server" Text="保存" Icon="Disk" />
+                                                        </Items>
+                                                    </ext:Toolbar>
+                                                </TopBar>
+                                                <Items>
+                                                    <ext:Portal ID="Portal1" runat="server" Border="false" Layout="Column" Closable="True">
+                                                        <Items>
+                                                            <ext:PortalColumn ID="PortalColumn3" runat="server" Cls="x-column-padding1" ColumnWidth=".66"
+                                                                Layout="Anchor">
+                                                                <Items>
+                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="代办事宜">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet5" runat="server" Title="最新公告">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="我的任务">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                </Items>
+                                                            </ext:PortalColumn>
+                                                            <ext:PortalColumn ID="PortalColumn1" runat="server" Cls="x-column-padding" ColumnWidth=".33"
+                                                                Layout="Anchor">
+                                                                <Items>
+                                                                    <ext:Portlet ID="plServerInfo" runat="server" Title="我的消息" Icon="Server" Closable="True">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="我的日程" Icon="Server" Closable="True">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                </Items>
+                                                            </ext:PortalColumn>
+                                                        </Items>
+                                                    </ext:Portal>
+                                                </Items>
+                                            </ext:Panel>
+                                        </Items>
+                                    </ext:Panel>
                                 </Items>
                                 <Plugins>
                                     <ext:TabScrollerMenu ID="TabScrollerMenu1" runat="server" PageSize="5" />
