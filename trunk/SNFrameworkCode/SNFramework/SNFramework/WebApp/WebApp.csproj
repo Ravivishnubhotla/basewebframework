@@ -406,6 +406,7 @@
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.xml" />
     <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ServerInfo\HTMLPage1.htm" />
     <Content Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
@@ -1638,6 +1639,7 @@
     <Folder Include="Moudles\SystemManage\EmailLogs\" />
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
+    <Folder Include="Moudles\SystemManage\TaskManage\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPS\" />
   </ItemGroup>

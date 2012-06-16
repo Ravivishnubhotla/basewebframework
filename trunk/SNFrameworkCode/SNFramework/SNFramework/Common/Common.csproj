@@ -1629,6 +1629,7 @@
     <Compile Include="Entity\BaseViewEntity.cs" />
     <Compile Include="Entity\CompositeIdType.cs" />
     <Compile Include="Entity\IAuditableEntity.cs" />
+    <Compile Include="Environments\ServerEnvironmentInfo.cs" />
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
     <Compile Include="Images\PdfProcessing.cs" />
