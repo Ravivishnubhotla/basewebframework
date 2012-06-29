@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
@@ -18,8 +19,10 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 
     public class BaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType> : IBaseSpringNHibernateEntityServiceProxy<DomainType, EntityKeyType> where DomainType : BaseTableEntity<EntityKeyType>
     {
+        [DataMember]
         protected IBaseNHibernateDataObject<DomainType, EntityKeyType> selfDataObject;
 
+        [DataMember]
         public IBaseNHibernateDataObject<DomainType, EntityKeyType> SelfDataObject
         {
             set
@@ -28,8 +31,10 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             }
         }
 
+        [DataMember]
         private ILog logger = null;
 
+        [DataMember]
         public ILog Logger
         {
             get

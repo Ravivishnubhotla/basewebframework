@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -60,7 +61,7 @@ namespace SPSUtil.AppCode
                     HttpGetSenderTaskItem httpGetReportSenderTaskItem = new HttpGetSenderTaskItem(reportUrl, OkMessage);
                     httpGetSenderTaskItem.TimeOut = TimeOut;
                     httpGetSenderTaskItem.TaskIndex = i;
-                    this.SendReportItems.Add(httpGetSenderTaskItem);
+                    this.SendReportItems.Add(httpGetReportSenderTaskItem);
                 }
 
 
@@ -89,6 +90,52 @@ namespace SPSUtil.AppCode
                 httpGetSenderTaskItem.TimeOut = TimeOut;
                 httpGetSenderTaskItem.TaskIndex = i;
                 this.SendDataItems.Add(httpGetSenderTaskItem);
+            }
+        }
+
+        public HttpGetSenderTask(ChannelSendSettings sendSetting, string okMessage, int timeOut, int sendInterval, int retryTimes,DataTable table)
+        {
+            SendSetting = sendSetting;
+            OkMessage = okMessage;
+            TimeOut = timeOut;
+            SendInterval = sendInterval;
+            RetryTimes = retryTimes;
+
+            this.SendDataItems = new List<HttpGetSenderTaskItem>();
+            this.SendReportItems = new List<HttpGetSenderTaskItem>();
+
+            for (int i = 0; i < table.Rows.Count; i++)
+            {
+                string sendUrl = sendSetting.DataUrl;
+
+                foreach (KeyValuePair<string, string> templateSendUrlParamItem in sendSetting.GetDataParamNames())
+                {
+                    sendUrl = sendUrl.Replace(templateSendUrlParamItem.Key, table.Rows[i][templateSendUrlParamItem.Value].ToString());
+                }
+ 
+                HttpGetSenderTaskItem httpGetSenderTaskItem = new HttpGetSenderTaskItem(sendUrl, OkMessage);
+                httpGetSenderTaskItem.TimeOut = TimeOut;
+                httpGetSenderTaskItem.TaskIndex = i;
+                this.SendDataItems.Add(httpGetSenderTaskItem);
+
+                if(this.SendSetting.SendTwice())
+                {
+                    string reportUrl = sendSetting.ReportUrl;
+
+                    foreach (KeyValuePair<string, string> templateReportUrlParamItem in sendSetting.GetReportParamNames())
+                    {
+                        sendUrl = sendUrl.Replace(templateReportUrlParamItem.Key, table.Rows[i][templateReportUrlParamItem.Value].ToString());
+                    }
+
+                    HttpGetSenderTaskItem httpGetReportSenderTaskItem = new HttpGetSenderTaskItem(reportUrl, OkMessage);
+                    httpGetSenderTaskItem.TimeOut = TimeOut;
+                    httpGetSenderTaskItem.TaskIndex = i;
+                    this.SendReportItems.Add(httpGetReportSenderTaskItem);
+                }
+
+
+
+
             }
         }
     }

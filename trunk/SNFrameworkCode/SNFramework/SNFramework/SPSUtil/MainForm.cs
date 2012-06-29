@@ -60,6 +60,27 @@ namespace SPSUtil
 
  
                     break;
+
+                case "tsbSendTestdata":
+
+                    DockContent tsbfrmTestSender = FindFormType(typeof(frmTestSender));
+
+                    if (tsbfrmTestSender == null)
+                    {
+                        frmTestSender httpRequestTest = new frmTestSender();
+
+                        httpRequestTest.Show(this.dpnlMain);
+                    }
+                    else
+                    {
+                        tsbfrmTestSender.Activate();
+                    }
+
+
+ 
+                    break;
+
+                    
                     
             }
         }

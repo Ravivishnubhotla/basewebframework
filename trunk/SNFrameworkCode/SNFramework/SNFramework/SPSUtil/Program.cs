@@ -10,7 +10,7 @@ namespace SPSUtil
     static class Program
     {
 
-        public static SimpleRepository DbRepository = null; 
+        //public static SimpleRepository DbRepository = null; 
 
         /// <summary>
         /// The main entry point for the application.
@@ -29,7 +29,7 @@ namespace SPSUtil
                 AppDomain.CurrentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-                DbRepository = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
+                //DbRepository = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

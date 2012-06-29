@@ -1633,6 +1633,9 @@
     <Compile Include="Images\DocumentProcessing.cs" />
     <Compile Include="Images\ImageProcessing.cs" />
     <Compile Include="Images\PdfProcessing.cs" />
+    <Compile Include="Reports\ReportPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Resources\FileResourceManager.cs" />
     <Compile Include="Resources\XmlResourceManager.cs" />
     <Compile Include="Resources\XmlResourceProvider.cs" />
@@ -1678,6 +1681,8 @@
     <Compile Include="Images\Imaging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SevenZip\SevenZipHelper.cs" />
+    <Compile Include="Test\AbstractCalculatorService.cs" />
+    <Compile Include="Test\ICalculator.cs" />
     <Compile Include="Utility\CompressionUtil.cs" />
     <Compile Include="Utility\ConfigurationUtil.cs" />
     <Compile Include="Utility\CryptographyUtil.cs" />

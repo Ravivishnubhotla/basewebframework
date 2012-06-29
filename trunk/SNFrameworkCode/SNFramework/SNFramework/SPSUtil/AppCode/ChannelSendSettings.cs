@@ -88,8 +88,52 @@ namespace SPSUtil.AppCode
                 return reportUrl;
             }
         }
- 
- 
+
+        public SortedDictionary<string,string> GetDataParamNames()
+        {
+            SortedDictionary<string, string> paramNames = new SortedDictionary<string, string>();
+
+            paramNames.Add(ParamsLinkidName, ParamsLinkidValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+            paramNames.Add(ParamsMoName, ParamsMoValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+            paramNames.Add(ParamsSPCodeName, ParamsSPCodeValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+            paramNames.Add(ParamsMobileName, ParamsMobileValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+
+            if (IsStatusReport)
+            {
+                if (RequestType == 0)
+                {
+                    paramNames.Add(ParamsStatusName, ParamsStatusValue);
+                }
+                else if (RequestType == 2)
+                {
+                    paramNames.Add(ParamsRequestTypeName, ParamsRequestTypeDataValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+                }
+            }
+
+            return paramNames;
+        }
+
+        public SortedDictionary<string, string> GetReportParamNames()
+        {
+            SortedDictionary<string, string> paramNames = new SortedDictionary<string, string>();
+
+            if (!IsStatusReport)
+                return paramNames;
+
+            paramNames.Add(ParamsLinkidName, ParamsLinkidValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+
+            if (RequestType == 1)
+            {
+                paramNames.Add(ParamsStatusName, ParamsRequestTypeReportValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+            }
+            else if (RequestType == 2)
+            {
+                paramNames.Add(ParamsStatusName, ParamsRequestTypeReportValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+                paramNames.Add(ParamsRequestTypeName, ParamsRequestTypeReportValue.Replace("{$", ParamsPrefix).Replace("}", ParamsSubfix));
+            }
+
+            return paramNames;
+        }
 
         private string BuildDataUrl()
         {
