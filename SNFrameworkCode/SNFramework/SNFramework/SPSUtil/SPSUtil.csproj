@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SPSUtil</RootNamespace>
     <AssemblyName>SPSUtil</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -46,6 +46,7 @@
     <Reference Include="System.Data.SQLite">
       <HintPath>..\ThirdsDll\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -80,6 +81,12 @@
     </Compile>
     <Compile Include="Moudles\frmDataSendTask.Designer.cs">
       <DependentUpon>frmDataSendTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\frmTestSender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\frmTestSender.Designer.cs">
+      <DependentUpon>frmTestSender.cs</DependentUpon>
     </Compile>
     <Compile Include="Moudles\frmTestSendTask.cs">
       <SubType>Form</SubType>
@@ -124,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\frmDataSendTask.resx">
       <DependentUpon>frmDataSendTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\frmTestSender.resx">
+      <DependentUpon>frmTestSender.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\frmTestSendTask.resx">
       <DependentUpon>frmTestSendTask.cs</DependentUpon>

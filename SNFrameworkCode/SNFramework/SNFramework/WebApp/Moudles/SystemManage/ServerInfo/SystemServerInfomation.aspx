@@ -70,7 +70,6 @@
                             <ext:Container ID="Container8" runat="server" LabelWidth="130" Layout="Form">
                                 <Items>
                                     <ext:DisplayField ID="DisplayField14" runat="server" FieldLabel="CPU 总数" AnchorHorizontal="95%" />
-
                                 </Items>
                             </ext:Container>
                         </Items>
@@ -115,8 +114,4 @@
             </ext:TabPanel>
         </Items>
     </ext:Viewport>
-    
-
 </asp:Content>
-
-

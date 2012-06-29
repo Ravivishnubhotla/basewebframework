@@ -26,8 +26,8 @@ namespace SPSUtil.Moudles
 
         private void RefreshList()
         {
-            this.bsList.DataSource = Program.DbRepository.All<SPSRequestTest>().ToList();
-            this.dgvList.DataSource = this.bsList;
+            //this.bsList.DataSource = Program.DbRepository.All<SPSRequestTest>().ToList();
+            //this.dgvList.DataSource = this.bsList;
         }
 
         //private void tsTop_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -97,7 +97,7 @@ namespace SPSUtil.Moudles
                     newSPSRequestTest.RequestType = SPSRequestType.HttpGet;
                     newSPSRequestTest.Name = "新建请求测试";
                     newSPSRequestTest.Description = "新建请求测试";
-                    Program.DbRepository.Add(newSPSRequestTest);
+                    //Program.DbRepository.Add(newSPSRequestTest);
 
                     bsList.Add(newSPSRequestTest);
                     
@@ -106,10 +106,10 @@ namespace SPSUtil.Moudles
 
                     SPSRequestTest delSPSRequestTest = bvList.BindingSource.Current as SPSRequestTest;
 
-                    if (delSPSRequestTest != null && delSPSRequestTest.Id>0)
-                    {
-                        Program.DbRepository.Delete<SPSRequestTest>(delSPSRequestTest.Id);
-                    }
+                    //if (delSPSRequestTest != null && delSPSRequestTest.Id>0)
+                    //{
+                    //    Program.DbRepository.Delete<SPSRequestTest>(delSPSRequestTest.Id);
+                    //}
 
                     bvList.BindingSource.RemoveCurrent();
 

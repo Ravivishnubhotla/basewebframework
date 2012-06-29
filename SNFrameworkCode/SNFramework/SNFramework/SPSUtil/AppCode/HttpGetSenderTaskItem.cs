@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Xml;
 
 namespace SPSUtil.AppCode
 {
@@ -39,6 +40,12 @@ namespace SPSUtil.AppCode
         {
             SendUrl = sendUrl;
 
+            OkMessage = okMessage;
+        }
+
+        public HttpGetSenderTaskItem(System.Data.DataRow dataRow, string okMessage)
+        {
+            SendUrl = "";
             OkMessage = okMessage;
         }
 
@@ -130,6 +137,107 @@ namespace SPSUtil.AppCode
                 errorMessage = e.Message;
                 responseText = e.Message;
                 return false;
+            }
+        }
+
+        public static string SendRequest(string requesturl,string xmlPost, int timeOut)
+        {
+            try
+            {
+
+                XmlDocument xmldoc = new XmlDocument();
+
+                xmldoc.LoadXml(xmlPost);
+
+                string encodingName = "UTF-8";
+
+                if (xmldoc.FirstChild.NodeType == XmlNodeType.XmlDeclaration)
+                {
+                    // Get the encoding declaration.
+                    XmlDeclaration decl = (XmlDeclaration)xmldoc.FirstChild;
+ 
+
+                    // Set the encoding declaration.
+                    encodingName = decl.Encoding;
+ 
+                }
+
+                string responseText = "";
+
+                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);
+
+                webRequest.ContentType = "text/xml";
+                webRequest.Method = "POST";
+
+                webRequest.Timeout = timeOut;
+
+                Encoding encoding = Encoding.GetEncoding(encodingName);
+
+                byte[] bytes = encoding.GetBytes(xmlPost);
+                webRequest.ContentLength = bytes.Length;
+                Stream postData = webRequest.GetRequestStream();
+                postData.Write(bytes, 0, bytes.Length);
+                postData.Close();
+
+                HttpWebResponse webResponse = null;
+
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+
+                if (webResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+
+                    responseText = sr.ReadToEnd();
+
+                    return responseText;
+                }
+                else
+                {
+                    return "web error Status:" + webResponse.StatusCode.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return "web error Status:" + ex.Message;
+            }
+        }
+
+        public static string SendRequest(string requesturl, int timeOut)
+        {
+            try
+            {
+
+                string responseText = "";
+
+                HttpWebRequest webRequest = (HttpWebRequest)HttpWebRequest.Create(requesturl);
+
+ 
+
+                webRequest.Timeout = timeOut;
+ 
+
+                HttpWebResponse webResponse = null;
+
+                webResponse = (HttpWebResponse)webRequest.GetResponse();
+
+
+                if (webResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(), Encoding.Default);
+
+                    responseText = sr.ReadToEnd();
+
+                    return responseText;
+                }
+                else
+                {
+                    return "web error Status:" + webResponse.StatusCode.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return "web error Status:" + ex.Message;
             }
         }
     }
