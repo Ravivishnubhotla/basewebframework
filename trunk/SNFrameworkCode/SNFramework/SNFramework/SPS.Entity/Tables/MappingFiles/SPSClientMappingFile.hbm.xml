@@ -16,12 +16,8 @@
 		<property column="UserID" type="int" name="UserID"   not-null="true"  />	
 		<property column="IsDefaultClient" type="Boolean" name="IsDefaultClient"   />	
 		<property column="SyncData" type="Boolean" name="SyncData"   not-null="true"  />	
-		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
-		<property column="SyncType" type="string" name="SyncType"   length="100" />	
 		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	
-		<property column="SycnDataUrl" type="string" name="SycnDataUrl"   length="400" />	
-		<property column="SycnOkMessage" type="string" name="SycnOkMessage"   length="100" />	
-		<property column="SycnFailedMessage" type="string" name="SycnFailedMessage"   length="100" />	
+		<many-to-one column="SyncDataSetting" name="SyncDataSetting" class="SPS.Entity.Tables.SPSDataSycnSettingEntity,SPS.Entity" />		
 		<property column="Alias" type="string" name="Alias"   length="400" />	
 		<property column="InterceptRate" type="Decimal" name="InterceptRate"   not-null="true"  />	
 		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   not-null="true"  />	

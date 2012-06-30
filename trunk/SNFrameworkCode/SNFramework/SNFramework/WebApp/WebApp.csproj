@@ -1625,7 +1625,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Browsers\" />
-    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
@@ -1640,6 +1639,7 @@
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="Moudles\SystemManage\TaskManage\" />
+    <Folder Include="Old_App_Code\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPS\" />
   </ItemGroup>
@@ -1677,6 +1677,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\web.pubxml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

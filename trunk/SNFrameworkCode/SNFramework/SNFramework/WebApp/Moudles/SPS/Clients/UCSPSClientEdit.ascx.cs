@@ -44,10 +44,26 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                         this.txtOkMessage.Show();
                         this.txtRecieveDataUrl.Show();
                         this.txtSycnRetryTimes.Show();
-                        this.txtFailedMessage.Text = obj.SycnFailedMessage;
-                        this.txtOkMessage.Text = obj.SycnOkMessage;
-                        this.txtRecieveDataUrl.Text = obj.SycnDataUrl;
-                        this.txtSycnRetryTimes.Text = obj.SycnRetryTimes.ToString();
+
+                        if (obj.SyncDataSetting!=null)
+                        {
+                            this.txtFailedMessage.Text = obj.SyncDataSetting.SycnMOFailedMessage;
+                            this.txtOkMessage.Text = obj.SyncDataSetting.SycnMOOkMessage;
+                            this.txtRecieveDataUrl.Text = obj.SyncDataSetting.SycnMOUrl;
+                            if(obj.SyncDataSetting.SycnRetryTimes.HasValue)
+                                this.txtSycnRetryTimes.Text = obj.SyncDataSetting.SycnRetryTimes.Value.ToString();
+                            else
+                                this.txtSycnRetryTimes.Text = "3"; 
+                        }
+                        else
+                        {
+                            this.txtFailedMessage.Text = "";
+                            this.txtOkMessage.Text = "";
+                            this.txtRecieveDataUrl.Text = "";
+                            this.txtSycnRetryTimes.Text = "3";      
+                        }
+
+
                     }
                     else
                     {
@@ -98,19 +114,30 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
 
+                if (obj.SyncDataSetting == null)
+                {
+                    obj.SyncDataSetting = new SPSDataSycnSettingWrapper();
+
+                    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
+                }
+
+
+
                 if (obj.SyncData)
                 {
-                    obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
-                    obj.SycnOkMessage = txtOkMessage.Text.Trim();
-                    obj.SycnFailedMessage = txtFailedMessage.Text.Trim();
-                    obj.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
+                    obj.SyncDataSetting.SycnMO = true;
+                    obj.SyncDataSetting.SycnMOUrl = txtRecieveDataUrl.Text.Trim();
+                    obj.SyncDataSetting.SycnMOOkMessage = txtOkMessage.Text.Trim();
+                    obj.SyncDataSetting.SycnMOFailedMessage = txtFailedMessage.Text.Trim();
+                    obj.SyncDataSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
                 }
                 else
                 {
-                    obj.SycnDataUrl = "";
-                    obj.SycnOkMessage = "";
-                    obj.SycnFailedMessage = "";
-                    obj.SycnRetryTimes = 3;
+                    obj.SyncDataSetting.SycnMO = false;
+                    obj.SyncDataSetting.SycnMOUrl = "";
+                    obj.SyncDataSetting.SycnMOOkMessage = "";
+                    obj.SyncDataSetting.SycnMOFailedMessage = "";
+                    obj.SyncDataSetting.SycnRetryTimes = 3;
                 }
 
 

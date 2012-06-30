@@ -18,10 +18,7 @@
 		<property column="UseClientDefaultSycnSetting" type="Boolean" name="UseClientDefaultSycnSetting"   not-null="true"  />	
 		<property column="SyncData" type="Boolean" name="SyncData"   not-null="true"  />	
 		<property column="SycnRetryTimes" type="string" name="SycnRetryTimes"   not-null="true"  length="20" />	
-		<property column="SyncType" type="string" name="SyncType"   not-null="true"  length="100" />	
-		<property column="SycnDataUrl" type="string" name="SycnDataUrl"   not-null="true"  length="400" />	
-		<property column="SycnOkMessage" type="string" name="SycnOkMessage"   not-null="true"  length="100" />	
-		<property column="SycnFailedMessage" type="string" name="SycnFailedMessage"   not-null="true"  length="100" />	
+		<many-to-one column="SyncDataSetting" name="SyncDataSetting" class="SPS.Entity.Tables.SPSDataSycnSettingEntity,SPS.Entity" />		
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	
 		<property column="IsEnable" type="Boolean" name="IsEnable"   not-null="true"  />	

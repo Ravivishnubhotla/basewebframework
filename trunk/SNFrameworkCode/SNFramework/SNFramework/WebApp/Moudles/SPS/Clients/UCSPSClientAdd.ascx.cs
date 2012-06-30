@@ -75,17 +75,32 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
                 if (obj.SyncData)
                 {
-                    obj.SycnDataUrl = txtRecieveDataUrl.Text.Trim();
-                    obj.SycnOkMessage = txtOkMessage.Text.Trim();
-                    obj.SycnFailedMessage = txtFailedMessage.Text.Trim();
-                    obj.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
+                    SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
+                    spsDataSycnSetting.SycnMO = true;
+                    spsDataSycnSetting.SycnMOUrl = txtRecieveDataUrl.Text.Trim();
+                    spsDataSycnSetting.SycnMOOkMessage = txtOkMessage.Text.Trim();
+                    spsDataSycnSetting.SycnMOFailedMessage = txtFailedMessage.Text.Trim();
+                    spsDataSycnSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
+
+                    SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
+
+                    obj.SyncDataSetting = spsDataSycnSetting;
                 }
                 else
                 {
-                    obj.SycnDataUrl = "";
-                    obj.SycnOkMessage = "";
-                    obj.SycnFailedMessage = "";
-                    obj.SycnRetryTimes = 3;
+                    SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
+
+                    spsDataSycnSetting.SycnMO = false;
+                    spsDataSycnSetting.SycnMOUrl = "";
+                    spsDataSycnSetting.SycnMOOkMessage = "";
+                    spsDataSycnSetting.SycnMOFailedMessage = "";
+                    spsDataSycnSetting.SycnRetryTimes = 3;
+
+                    SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
+
+                    obj.SyncDataSetting = spsDataSycnSetting;
+
+
                 }
 
 

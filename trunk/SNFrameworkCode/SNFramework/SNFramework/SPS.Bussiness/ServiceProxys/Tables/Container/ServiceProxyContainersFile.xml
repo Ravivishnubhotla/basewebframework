@@ -81,6 +81,11 @@
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
+  <object id="SPSDataSycnSettingServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPSDataSycnSettingServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPSDataSycnSettingDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPUpperServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPUpperServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPUpperDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -106,6 +111,7 @@
     <property name="SPRecordServiceProxyInstance" ref="SPRecordServiceProxyIocID"/>
     <property name="SPRecordExtendInfoServiceProxyInstance" ref="SPRecordExtendInfoServiceProxyIocID"/>
     <property name="SPSClientServiceProxyInstance" ref="SPSClientServiceProxyIocID"/>
+    <property name="SPSDataSycnSettingServiceProxyInstance" ref="SPSDataSycnSettingServiceProxyIocID"/>
     <property name="SPUpperServiceProxyInstance" ref="SPUpperServiceProxyIocID"/>
 
 

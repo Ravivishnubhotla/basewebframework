@@ -173,15 +173,18 @@ namespace SPS.Bussiness.Wrappers
             return null;
         }
 
-        private UrlSendTask GenerateSendUrl()
+        private UrlSendTask GenerateSendMOUrl()
         {
             if (this.ClientCodeRelationID == null)
                 return null;
 
+            if (!this.ClientCodeRelationID.SyncData || this.ClientCodeRelationID.SyncDataSetting == null)
+                return null;
+
             UrlSendTask urlSendTask = new UrlSendTask();
             urlSendTask.RecordID = this.Id;
-            urlSendTask.OkMessage = this.ClientCodeRelationID.SycnOkMessage;
-            urlSendTask.SendUrl = this.ClientCodeRelationID.GenerateSendUrl(this);
+            urlSendTask.OkMessage = this.ClientCodeRelationID.SyncDataSetting.SycnMOOkMessage;
+            urlSendTask.SendUrl = this.ClientCodeRelationID.GenerateSendMOUrl(this);
 
             return urlSendTask;
         }
@@ -190,7 +193,7 @@ namespace SPS.Bussiness.Wrappers
 	    {
             if (this.IsStatOK && this.IsSycnToClient && this.ClientCodeRelationID != null)
             {
-                UrlSendTask sendTask = this.GenerateSendUrl();
+                UrlSendTask sendTask = this.GenerateSendMOUrl();
 
                 if (sendTask != null)
                 {

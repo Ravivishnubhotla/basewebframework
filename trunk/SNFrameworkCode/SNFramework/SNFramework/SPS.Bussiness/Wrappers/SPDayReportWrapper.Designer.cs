@@ -56,18 +56,10 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CLIENTID_ISDEFAULTCLIENT;
 		        case "ClientID_SyncData":
 					return PROPERTY_CLIENTID_SYNCDATA;
-		        case "ClientID_SycnRetryTimes":
-					return PROPERTY_CLIENTID_SYCNRETRYTIMES;
-		        case "ClientID_SyncType":
-					return PROPERTY_CLIENTID_SYNCTYPE;
 		        case "ClientID_SycnNotInterceptCount":
 					return PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT;
-		        case "ClientID_SycnDataUrl":
-					return PROPERTY_CLIENTID_SYCNDATAURL;
-		        case "ClientID_SycnOkMessage":
-					return PROPERTY_CLIENTID_SYCNOKMESSAGE;
-		        case "ClientID_SycnFailedMessage":
-					return PROPERTY_CLIENTID_SYCNFAILEDMESSAGE;
+		        case "ClientID_SyncDataSetting":
+					return PROPERTY_CLIENTID_SYNCDATASETTING;
 		        case "ClientID_Alias":
 					return PROPERTY_CLIENTID_ALIAS;
 		        case "ClientID_InterceptRate":
@@ -286,12 +278,8 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPDayReportEntity_Alias.UserID";
 		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPDayReportEntity_Alias.IsDefaultClient";
 		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPDayReportEntity_Alias.SyncData";
-		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPDayReportEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPDayReportEntity_Alias.SyncType";
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPDayReportEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPDayReportEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPDayReportEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPDayReportEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPDayReportEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPDayReportEntity_Alias.Alias";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPDayReportEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPDayReportEntity_Alias.DefaultPrice";
@@ -663,26 +651,6 @@ namespace SPS.Bussiness.Wrappers
                 return  ClientID.SyncData;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNRETRYTIMES)]
-        public int? ClientID_SycnRetryTimes
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnRetryTimes;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYNCTYPE)]
-        public string ClientID_SyncType
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SyncType;
-            }
-        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT)]
         public int? ClientID_SycnNotInterceptCount
         {
@@ -693,34 +661,14 @@ namespace SPS.Bussiness.Wrappers
                 return  ClientID.SycnNotInterceptCount;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNDATAURL)]
-        public string ClientID_SycnDataUrl
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYNCDATASETTING)]
+        public SPSDataSycnSettingWrapper ClientID_SyncDataSetting
         {
             get
             {
                 if (this. ClientID == null)
                     return null;
-                return  ClientID.SycnDataUrl;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNOKMESSAGE)]
-        public string ClientID_SycnOkMessage
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnOkMessage;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNFAILEDMESSAGE)]
-        public string ClientID_SycnFailedMessage
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnFailedMessage;
+                return  ClientID.SyncDataSetting;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_ALIAS)]

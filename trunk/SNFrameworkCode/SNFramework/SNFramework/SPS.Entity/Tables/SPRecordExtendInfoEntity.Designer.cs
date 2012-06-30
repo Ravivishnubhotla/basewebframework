@@ -42,6 +42,9 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_FEETIME = "FeeTime";
 		public static readonly string PROPERTY_NAME_STARTTIME = "StartTime";
 		public static readonly string PROPERTY_NAME_ENDTIME = "EndTime";
+		public static readonly string PROPERTY_NAME_ISSYCNMO = "IsSycnMO";
+		public static readonly string PROPERTY_NAME_ISSYCNMR = "IsSycnMR";
+		public static readonly string PROPERTY_NAME_ISSYCNSTATE = "IsSycnState";
 		
         #endregion
 	
@@ -103,6 +106,9 @@ namespace SPS.Entity.Tables
 		private string _feeTime;
 		private string _startTime;
 		private string _endTime;
+		private bool _isSycnMO;
+		private bool _isSycnMR;
+		private bool _isSycnState;
 		
 		#endregion
 
@@ -132,6 +138,9 @@ namespace SPS.Entity.Tables
 			_feeTime = null;
 			_startTime = null;
 			_endTime = null;
+			_isSycnMO = false;
+			_isSycnMR = false;
+			_isSycnState = false;
 		}
 		#endregion
 
@@ -139,7 +148,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string sSycnDataFailedMessage, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime)
+		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string sSycnDataFailedMessage, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime, bool isSycnMO, bool isSycnMR, bool isSycnState)
 		{
 			_id = id;
 			_recordID = recordID;
@@ -161,6 +170,9 @@ namespace SPS.Entity.Tables
 			_feeTime = feeTime;
 			_startTime = startTime;
 			_endTime = endTime;
+			_isSycnMO = isSycnMO;
+			_isSycnMR = isSycnMR;
+			_isSycnState = isSycnState;
 		}
 		#endregion     
 	
@@ -497,6 +509,48 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 40)
 					throw new ArgumentOutOfRangeException("Invalid value for EndTime", value, value.ToString());
 				_isChanged |= (_endTime != value); _endTime = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool IsSycnMO
+		{
+			get { return _isSycnMO; }
+
+			set	
+			{
+				_isChanged |= (_isSycnMO != value); _isSycnMO = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool IsSycnMR
+		{
+			get { return _isSycnMR; }
+
+			set	
+			{
+				_isChanged |= (_isSycnMR != value); _isSycnMR = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool IsSycnState
+		{
+			get { return _isSycnState; }
+
+			set	
+			{
+				_isChanged |= (_isSycnState != value); _isSycnState = value;
 			}
 		}
 	

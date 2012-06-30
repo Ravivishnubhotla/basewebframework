@@ -137,6 +137,10 @@
     <Compile Include="ServiceProxys\Tables\SPSClientServiceProxy.Designer.cs">
       <DependentUpon>SPSClientServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPSDataSycnSettingServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPSDataSycnSettingServiceProxy.Designer.cs">
+      <DependentUpon>SPSDataSycnSettingServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.Designer.cs">
       <DependentUpon>SPUpperServiceProxy.cs</DependentUpon>
@@ -200,6 +204,10 @@
     <Compile Include="Wrappers\SPSClientWrapper.cs" />
     <Compile Include="Wrappers\SPSClientWrapper.Designer.cs">
       <DependentUpon>SPSClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPSDataSycnSettingWrapper.cs" />
+    <Compile Include="Wrappers\SPSDataSycnSettingWrapper.Designer.cs">
+      <DependentUpon>SPSDataSycnSettingWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPUpperWrapper.cs" />
     <Compile Include="Wrappers\SPUpperWrapper.Designer.cs">

@@ -59,10 +59,21 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.chkSyncData.Checked = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
   
                     this.txtSycnRetryTimes.Text = ValueConvertUtil.ConvertStringValue(obj.SycnRetryTimes);
- 
-                    this.txtSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SycnDataUrl);
-                    this.txtSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnOkMessage);
-                    this.txtSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnFailedMessage);
+
+                    if(obj.SyncDataSetting!=null)
+                    {
+                        this.txtSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOUrl);
+                        this.txtSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOOkMessage);
+                        this.txtSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOFailedMessage);
+                    }
+                    else
+                    {
+                        this.txtSycnDataUrl.Text = "";
+                        this.txtSycnOkMessage.Text = "";
+                        this.txtSycnFailedMessage.Text = "";
+                    }
+
+
  
  
 
@@ -106,10 +117,17 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
                 }
 
+                if (obj.SyncDataSetting == null)
+                {
+                    obj.SyncDataSetting = new SPSDataSycnSettingWrapper();
 
-                obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
-                obj.SycnOkMessage = this.txtSycnOkMessage.Text.Trim();
-                obj.SycnFailedMessage = this.txtSycnFailedMessage.Text.Trim();
+                    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
+                }
+
+ 
+                obj.SyncDataSetting.SycnMOUrl = this.txtSycnDataUrl.Text.Trim();
+                obj.SyncDataSetting.SycnMOOkMessage = this.txtSycnOkMessage.Text.Trim();
+                obj.SyncDataSetting.SycnMOFailedMessage = this.txtSycnFailedMessage.Text.Trim();
  
  
 

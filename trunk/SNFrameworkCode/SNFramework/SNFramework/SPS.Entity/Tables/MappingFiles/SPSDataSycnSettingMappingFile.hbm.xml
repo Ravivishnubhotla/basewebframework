@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPSDataSycnSettingEntity,SPS.Entity" table="SPSDataSycnSetting" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
+		<property column="SyncType" type="string" name="SyncType"   length="100" />	
+		<property column="SycnMO" type="Boolean" name="SycnMO"   />	
+		<property column="SycnMOUrl" type="string" name="SycnMOUrl"   length="400" />	
+		<property column="SycnMOOkMessage" type="string" name="SycnMOOkMessage"   length="100" />	
+		<property column="SycnMOFailedMessage" type="string" name="SycnMOFailedMessage"   length="100" />	
+		<property column="SycnMR" type="Boolean" name="SycnMR"   />	
+		<property column="SycnMRUrl" type="string" name="SycnMRUrl"   length="400" />	
+		<property column="SycnMROkMessage" type="string" name="SycnMROkMessage"   length="100" />	
+		<property column="SycnMRFailedMessage" type="string" name="SycnMRFailedMessage"   length="100" />	
+		<property column="SycnSate" type="Boolean" name="SycnSate"   />	
+		<property column="SycnSateUrl" type="string" name="SycnSateUrl"   length="400" />	
+		<property column="SycnSateOkMessage" type="string" name="SycnSateOkMessage"   length="100" />	
+		<property column="SycnSateFailedMessage" type="string" name="SycnSateFailedMessage"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

@@ -69,6 +69,9 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_FEETIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_FEETIME));		
 		public static readonly StringProperty PROPERTY_STARTTIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_STARTTIME));		
 		public static readonly StringProperty PROPERTY_ENDTIME = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ENDTIME));		
+		public static readonly BoolProperty PROPERTY_ISSYCNMO = new BoolProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ISSYCNMO));		
+		public static readonly BoolProperty PROPERTY_ISSYCNMR = new BoolProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ISSYCNMR));		
+		public static readonly BoolProperty PROPERTY_ISSYCNSTATE = new BoolProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ISSYCNSTATE));		
       
 		#region 子类集合字段查询字段
 	
@@ -126,6 +129,12 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "EndTime":
                     return typeof (string);
+                case "IsSycnMO":
+                    return typeof (bool);
+                case "IsSycnMR":
+                    return typeof (bool);
+                case "IsSycnState":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

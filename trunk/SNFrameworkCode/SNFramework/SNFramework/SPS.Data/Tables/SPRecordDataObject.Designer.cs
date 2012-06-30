@@ -95,12 +95,8 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_USERID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_ISDEFAULTCLIENT = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".IsDefaultClient"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData"));
-		public static readonly IntProperty PROPERTY_CLIENTID_SYCNRETRYTIMES = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnRetryTimes"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType"));
 		public static readonly IntProperty PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnNotInterceptCount"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnDataUrl"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnOkMessage"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnFailedMessage"));
+		public static readonly EntityProperty<SPSDataSycnSettingEntity> PROPERTY_CLIENTID_SYNCDATASETTING = new EntityProperty<SPSDataSycnSettingEntity>(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncDataSetting"));
 		public static readonly StringProperty PROPERTY_CLIENTID_ALIAS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
@@ -166,10 +162,7 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".UseClientDefaultSycnSetting"));
 		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SyncData"));
 		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnRetryTimes"));
-		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SyncType"));
-		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnDataUrl"));
-		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnOkMessage"));
-		public static readonly StringProperty PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SycnFailedMessage"));
+		public static readonly EntityProperty<SPSDataSycnSettingEntity> PROPERTY_CLIENTCODERELATIONID_SYNCDATASETTING = new EntityProperty<SPSDataSycnSettingEntity>(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".SyncDataSetting"));
 		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_STARTDATE = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".StartDate"));
 		public static readonly DateTimeProperty PROPERTY_CLIENTCODERELATIONID_ENDDATE = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".EndDate"));
 		public static readonly BoolProperty PROPERTY_CLIENTCODERELATIONID_ISENABLE = new BoolProperty(Property.ForName(PROPERTY_CLIENTCODERELATIONID_ALIAS_NAME + ".IsEnable"));

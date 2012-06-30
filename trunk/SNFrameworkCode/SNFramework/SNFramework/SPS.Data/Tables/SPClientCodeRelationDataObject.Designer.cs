@@ -75,12 +75,8 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_USERID = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".UserID"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_ISDEFAULTCLIENT = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".IsDefaultClient"));
 		public static readonly BoolProperty PROPERTY_CLIENTID_SYNCDATA = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncData"));
-		public static readonly IntProperty PROPERTY_CLIENTID_SYCNRETRYTIMES = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnRetryTimes"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncType"));
 		public static readonly IntProperty PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnNotInterceptCount"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNDATAURL = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnDataUrl"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnOkMessage"));
-		public static readonly StringProperty PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnFailedMessage"));
+		public static readonly EntityProperty<SPSDataSycnSettingEntity> PROPERTY_CLIENTID_SYNCDATASETTING = new EntityProperty<SPSDataSycnSettingEntity>(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncDataSetting"));
 		public static readonly StringProperty PROPERTY_CLIENTID_ALIAS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
@@ -96,10 +92,29 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_USECLIENTDEFAULTSYCNSETTING = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING));		
 		public static readonly BoolProperty PROPERTY_SYNCDATA = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATA));		
 		public static readonly StringProperty PROPERTY_SYCNRETRYTIMES = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNRETRYTIMES));		
-		public static readonly StringProperty PROPERTY_SYNCTYPE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCTYPE));		
-		public static readonly StringProperty PROPERTY_SYCNDATAURL = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNDATAURL));		
-		public static readonly StringProperty PROPERTY_SYCNOKMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNOKMESSAGE));		
-		public static readonly StringProperty PROPERTY_SYCNFAILEDMESSAGE = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYCNFAILEDMESSAGE));		
+		public static readonly EntityProperty<SPSDataSycnSettingEntity> PROPERTY_SYNCDATASETTING = new EntityProperty<SPSDataSycnSettingEntity>(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATASETTING));
+		#region syncDataSetting字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> InClude_SyncDataSetting_Query(NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATASETTING, PROPERTY_SYNCDATASETTING_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SYNCDATASETTING_ALIAS_NAME = "SyncDataSetting_SPClientCodeRelationEntity_Alias";
+		public static readonly IntProperty PROPERTY_SYNCDATASETTING_ID = new IntProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".Id"));
+		public static readonly IntProperty PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES = new IntProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnRetryTimes"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYNCTYPE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SyncType"));
+		public static readonly BoolProperty PROPERTY_SYNCDATASETTING_SYCNMO = new BoolProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMO"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMOURL = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMOUrl"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMOOkMessage"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMOFailedMessage"));
+		public static readonly BoolProperty PROPERTY_SYNCDATASETTING_SYCNMR = new BoolProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMR"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMRURL = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMRUrl"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMROkMessage"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnMRFailedMessage"));
+		public static readonly BoolProperty PROPERTY_SYNCDATASETTING_SYCNSATE = new BoolProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnSate"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNSATEURL = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnSateUrl"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnSateOkMessage"));
+		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnSateFailedMessage"));
+		#endregion
 		public static readonly DateTimeProperty PROPERTY_STARTDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_STARTDATE));		
 		public static readonly DateTimeProperty PROPERTY_ENDDATE = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ENDDATE));		
 		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_ISENABLE));		
@@ -143,14 +158,8 @@ namespace SPS.Data.Tables
                     return typeof (bool);
                 case "SycnRetryTimes":
                     return typeof (string);
-                case "SyncType":
-                    return typeof (string);
-                case "SycnDataUrl":
-                    return typeof (string);
-                case "SycnOkMessage":
-                    return typeof (string);
-                case "SycnFailedMessage":
-                    return typeof (string);
+                case "SyncDataSetting":
+                    return typeof (int);
                 case "StartDate":
                     return typeof (DateTime);
                 case "EndDate":
@@ -184,6 +193,9 @@ namespace SPS.Data.Tables
                     break;
 	            case "ClientID_SPClientCodeRelationEntity_Alias":
                     queryGenerator.AddAlians(SPClientCodeRelationEntity.PROPERTY_NAME_CLIENTID, PROPERTY_CLIENTID_ALIAS_NAME);
+                    break;
+	            case "SyncDataSetting_SPClientCodeRelationEntity_Alias":
+                    queryGenerator.AddAlians(SPClientCodeRelationEntity.PROPERTY_NAME_SYNCDATASETTING, PROPERTY_SYNCDATASETTING_ALIAS_NAME);
                     break;
                 default:
                     break;
@@ -229,6 +241,27 @@ namespace SPS.Data.Tables
             NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
             dynamicQueryGenerator.AddWhereClause(PROPERTY_CLIENTID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
+		
+		public List<SPClientCodeRelationEntity> GetList_By_SyncDataSetting_SPSDataSycnSettingEntity(SPSDataSycnSettingEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYNCDATASETTING.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPClientCodeRelationEntity> GetPageList_By_SyncDataSetting_SPSDataSycnSettingEntity(string orderByColumnName, bool isDesc, SPSDataSycnSettingEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SYNCDATASETTING.Eq(fkentity));
 
             AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
 

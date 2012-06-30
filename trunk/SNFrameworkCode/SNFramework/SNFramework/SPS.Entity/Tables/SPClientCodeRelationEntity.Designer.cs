@@ -30,10 +30,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING = "UseClientDefaultSycnSetting";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
-		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
-		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
-		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
-		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCDATASETTING = "SyncDataSetting";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
@@ -91,12 +88,8 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPClientCodeRelationEntity_Alias.UserID";
 		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPClientCodeRelationEntity_Alias.IsDefaultClient";
 		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPClientCodeRelationEntity_Alias.SyncData";
-		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPClientCodeRelationEntity_Alias.SyncType";
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPClientCodeRelationEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPClientCodeRelationEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPClientCodeRelationEntity_Alias.Alias";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
@@ -106,6 +99,24 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CLIENTID_LASTMODIFYAT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYCOMMENT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region syncDataSetting字段外键查询字段
+        public const string PROPERTY_SYNCDATASETTING_ALIAS_NAME = "SyncDataSetting_SPClientCodeRelationEntity_Alias";
+		public const string PROPERTY_SYNCDATASETTING_ID = "SyncDataSetting_SPClientCodeRelationEntity_Alias.Id";
+		public const string PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_SYNCDATASETTING_SYNCTYPE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SyncType";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMO = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMO";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMR = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMR";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMROkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSate";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateFailedMessage";
 		#endregion
       	
 	
@@ -128,10 +139,7 @@ namespace SPS.Entity.Tables
 		private bool _useClientDefaultSycnSetting;
 		private bool _syncData;
 		private string _sycnRetryTimes;
-		private string _syncType;
-		private string _sycnDataUrl;
-		private string _sycnOkMessage;
-		private string _sycnFailedMessage;
+		private SPSDataSycnSettingEntity _syncDataSetting;
 		private DateTime? _startDate;
 		private DateTime? _endDate;
 		private bool _isEnable;
@@ -159,10 +167,7 @@ namespace SPS.Entity.Tables
 			_useClientDefaultSycnSetting = false;
 			_syncData = false;
 			_sycnRetryTimes = String.Empty;
-			_syncType = String.Empty;
-			_sycnDataUrl = String.Empty;
-			_sycnOkMessage = String.Empty;
-			_sycnFailedMessage = String.Empty;
+			_syncDataSetting = null;
 			_startDate = null;
 			_endDate = null;
 			_isEnable = false;
@@ -180,7 +185,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal price, decimal interceptRate, bool useClientDefaultSycnSetting, bool syncData, string sycnRetryTimes, string syncType, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, DateTime? startDate, DateTime? endDate, bool isEnable, int sycnNotInterceptCount, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal price, decimal interceptRate, bool useClientDefaultSycnSetting, bool syncData, string sycnRetryTimes, SPSDataSycnSettingEntity syncDataSetting, DateTime? startDate, DateTime? endDate, bool isEnable, int sycnNotInterceptCount, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -190,10 +195,7 @@ namespace SPS.Entity.Tables
 			_useClientDefaultSycnSetting = useClientDefaultSycnSetting;
 			_syncData = syncData;
 			_sycnRetryTimes = sycnRetryTimes;
-			_syncType = syncType;
-			_sycnDataUrl = sycnDataUrl;
-			_sycnOkMessage = sycnOkMessage;
-			_sycnFailedMessage = sycnFailedMessage;
+			_syncDataSetting = syncDataSetting;
 			_startDate = startDate;
 			_endDate = endDate;
 			_isEnable = isEnable;
@@ -328,67 +330,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string SyncType
+		public virtual SPSDataSycnSettingEntity SyncDataSetting
 		{
-			get { return _syncType; }
+			get { return _syncDataSetting; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
-				_isChanged |= (_syncType != value); _syncType = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SycnDataUrl
-		{
-			get { return _sycnDataUrl; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnDataUrl", value, value.ToString());
-				_isChanged |= (_sycnDataUrl != value); _sycnDataUrl = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SycnOkMessage
-		{
-			get { return _sycnOkMessage; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnOkMessage", value, value.ToString());
-				_isChanged |= (_sycnOkMessage != value); _sycnOkMessage = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SycnFailedMessage
-		{
-			get { return _sycnFailedMessage; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnFailedMessage", value, value.ToString());
-				_isChanged |= (_sycnFailedMessage != value); _sycnFailedMessage = value;
+				_isChanged |= (_syncDataSetting != value); _syncDataSetting = value;
 			}
 		}
 

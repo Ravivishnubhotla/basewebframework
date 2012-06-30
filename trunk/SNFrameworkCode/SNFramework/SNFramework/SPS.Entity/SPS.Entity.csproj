@@ -99,6 +99,10 @@
     <Compile Include="Tables\SPSClientEntity.Designer.cs">
       <DependentUpon>SPSClientEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPSDataSycnSettingEntity.cs" />
+    <Compile Include="Tables\SPSDataSycnSettingEntity.Designer.cs">
+      <DependentUpon>SPSDataSycnSettingEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPUpperEntity.cs" />
     <Compile Include="Tables\SPUpperEntity.Designer.cs">
       <DependentUpon>SPUpperEntity.cs</DependentUpon>
@@ -129,6 +133,9 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPCodeInfoMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPFilterRuleMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPParamsConvertRuleMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPSDataSycnSettingMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

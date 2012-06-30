@@ -120,18 +120,10 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CLIENTID_ISDEFAULTCLIENT;
 		        case "ClientID_SyncData":
 					return PROPERTY_CLIENTID_SYNCDATA;
-		        case "ClientID_SycnRetryTimes":
-					return PROPERTY_CLIENTID_SYCNRETRYTIMES;
-		        case "ClientID_SyncType":
-					return PROPERTY_CLIENTID_SYNCTYPE;
 		        case "ClientID_SycnNotInterceptCount":
 					return PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT;
-		        case "ClientID_SycnDataUrl":
-					return PROPERTY_CLIENTID_SYCNDATAURL;
-		        case "ClientID_SycnOkMessage":
-					return PROPERTY_CLIENTID_SYCNOKMESSAGE;
-		        case "ClientID_SycnFailedMessage":
-					return PROPERTY_CLIENTID_SYCNFAILEDMESSAGE;
+		        case "ClientID_SyncDataSetting":
+					return PROPERTY_CLIENTID_SYNCDATASETTING;
 		        case "ClientID_Alias":
 					return PROPERTY_CLIENTID_ALIAS;
 		        case "ClientID_InterceptRate":
@@ -150,6 +142,36 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CLIENTID_LASTMODIFYAT;
 		        case "ClientID_LastModifyComment":
 					return PROPERTY_CLIENTID_LASTMODIFYCOMMENT;
+		        case "SyncDataSetting_Id":
+					return PROPERTY_SYNCDATASETTING_ID;
+		        case "SyncDataSetting_SycnRetryTimes":
+					return PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES;
+		        case "SyncDataSetting_SyncType":
+					return PROPERTY_SYNCDATASETTING_SYNCTYPE;
+		        case "SyncDataSetting_SycnMO":
+					return PROPERTY_SYNCDATASETTING_SYCNMO;
+		        case "SyncDataSetting_SycnMOUrl":
+					return PROPERTY_SYNCDATASETTING_SYCNMOURL;
+		        case "SyncDataSetting_SycnMOOkMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE;
+		        case "SyncDataSetting_SycnMOFailedMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE;
+		        case "SyncDataSetting_SycnMR":
+					return PROPERTY_SYNCDATASETTING_SYCNMR;
+		        case "SyncDataSetting_SycnMRUrl":
+					return PROPERTY_SYNCDATASETTING_SYCNMRURL;
+		        case "SyncDataSetting_SycnMROkMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE;
+		        case "SyncDataSetting_SycnMRFailedMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE;
+		        case "SyncDataSetting_SycnSate":
+					return PROPERTY_SYNCDATASETTING_SYCNSATE;
+		        case "SyncDataSetting_SycnSateUrl":
+					return PROPERTY_SYNCDATASETTING_SYCNSATEURL;
+		        case "SyncDataSetting_SycnSateOkMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE;
+		        case "SyncDataSetting_SycnSateFailedMessage":
+					return PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE;
               default:
                     return columnName;
             }
@@ -175,10 +197,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_USECLIENTDEFAULTSYCNSETTING = "UseClientDefaultSycnSetting";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
-		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
-		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
-		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
-		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCDATASETTING = "SyncDataSetting";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
@@ -236,12 +255,8 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPClientCodeRelationEntity_Alias.UserID";
 		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPClientCodeRelationEntity_Alias.IsDefaultClient";
 		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPClientCodeRelationEntity_Alias.SyncData";
-		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPClientCodeRelationEntity_Alias.SyncType";
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPClientCodeRelationEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPClientCodeRelationEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPClientCodeRelationEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPClientCodeRelationEntity_Alias.Alias";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
@@ -251,6 +266,24 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_CLIENTID_LASTMODIFYAT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYCOMMENT = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyComment";
+		#endregion
+		#region syncDataSetting字段外键查询字段
+        public const string PROPERTY_SYNCDATASETTING_ALIAS_NAME = "SyncDataSetting_SPClientCodeRelationEntity_Alias";
+		public const string PROPERTY_SYNCDATASETTING_ID = "SyncDataSetting_SPClientCodeRelationEntity_Alias.Id";
+		public const string PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_SYNCDATASETTING_SYNCTYPE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SyncType";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMO = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMO";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMR = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMR";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMROkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSate";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEURL = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE = "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateFailedMessage";
 		#endregion
       	
 	
@@ -387,60 +420,15 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public string SyncType
+		public SPSDataSycnSettingWrapper SyncDataSetting
 		{
 			get
 			{
-				return entity.SyncType;
+				return SPSDataSycnSettingWrapper.ConvertEntityToWrapper(entity.SyncDataSetting) ;
 			}
 			set
 			{
-				entity.SyncType = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public string SycnDataUrl
-		{
-			get
-			{
-				return entity.SycnDataUrl;
-			}
-			set
-			{
-				entity.SycnDataUrl = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public string SycnOkMessage
-		{
-			get
-			{
-				return entity.SycnOkMessage;
-			}
-			set
-			{
-				entity.SycnOkMessage = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public string SycnFailedMessage
-		{
-			get
-			{
-				return entity.SycnFailedMessage;
-			}
-			set
-			{
-				entity.SycnFailedMessage = value;
+				entity.SyncDataSetting = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -982,26 +970,6 @@ namespace SPS.Bussiness.Wrappers
                 return  ClientID.SyncData;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNRETRYTIMES)]
-        public int? ClientID_SycnRetryTimes
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnRetryTimes;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYNCTYPE)]
-        public string ClientID_SyncType
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SyncType;
-            }
-        }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT)]
         public int? ClientID_SycnNotInterceptCount
         {
@@ -1012,34 +980,14 @@ namespace SPS.Bussiness.Wrappers
                 return  ClientID.SycnNotInterceptCount;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNDATAURL)]
-        public string ClientID_SycnDataUrl
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYNCDATASETTING)]
+        public SPSDataSycnSettingWrapper ClientID_SyncDataSetting
         {
             get
             {
                 if (this. ClientID == null)
                     return null;
-                return  ClientID.SycnDataUrl;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNOKMESSAGE)]
-        public string ClientID_SycnOkMessage
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnOkMessage;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_SYCNFAILEDMESSAGE)]
-        public string ClientID_SycnFailedMessage
-        {
-            get
-            {
-                if (this. ClientID == null)
-                    return null;
-                return  ClientID.SycnFailedMessage;
+                return  ClientID.SyncDataSetting;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_ALIAS)]
@@ -1133,6 +1081,158 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		#endregion
+		#region syncDataSetting字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_ID)]
+        public int? SyncDataSetting_Id
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES)]
+        public int? SyncDataSetting_SycnRetryTimes
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnRetryTimes;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYNCTYPE)]
+        public string SyncDataSetting_SyncType
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SyncType;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMO)]
+        public bool? SyncDataSetting_SycnMO
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMO;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOURL)]
+        public string SyncDataSetting_SycnMOUrl
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMOUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE)]
+        public string SyncDataSetting_SycnMOOkMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMOOkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE)]
+        public string SyncDataSetting_SycnMOFailedMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMOFailedMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMR)]
+        public bool? SyncDataSetting_SycnMR
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMR;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMRURL)]
+        public string SyncDataSetting_SycnMRUrl
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMRUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE)]
+        public string SyncDataSetting_SycnMROkMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMROkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE)]
+        public string SyncDataSetting_SycnMRFailedMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnMRFailedMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATE)]
+        public bool? SyncDataSetting_SycnSate
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnSate;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEURL)]
+        public string SyncDataSetting_SycnSateUrl
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnSateUrl;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE)]
+        public string SyncDataSetting_SycnSateOkMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnSateOkMessage;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE)]
+        public string SyncDataSetting_SycnSateFailedMessage
+        {
+            get
+            {
+                if (this. SyncDataSetting == null)
+                    return null;
+                return  SyncDataSetting.SycnSateFailedMessage;
+            }
+        }
+		#endregion
       	
    
 		#endregion
@@ -1159,6 +1259,17 @@ namespace SPS.Bussiness.Wrappers
         public static List<SPClientCodeRelationWrapper> FindAllByClientID(SPSClientWrapper clientID)
         {
             return ConvertToWrapperList(businessProxy.FindAllByClientID(clientID.Entity));
+        }
+		
+		
+        public static List<SPClientCodeRelationWrapper> FindAllByOrderByAndFilterAndSyncDataSetting(string orderByColumnName, bool isDesc,   SPSDataSycnSettingWrapper syncDataSetting,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSyncDataSetting(orderByColumnName, isDesc,   syncDataSetting.Entity, pageQueryParams));
+        }
+
+        public static List<SPClientCodeRelationWrapper> FindAllBySyncDataSetting(SPSDataSycnSettingWrapper syncDataSetting)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllBySyncDataSetting(syncDataSetting.Entity));
         }
 		
 

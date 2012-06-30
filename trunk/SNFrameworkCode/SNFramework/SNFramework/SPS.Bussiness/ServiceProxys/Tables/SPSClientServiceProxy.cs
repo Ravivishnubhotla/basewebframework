@@ -36,8 +36,6 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             spClientEntity.DefaultShowRecordDays = 100;
             spClientEntity.InterceptRate = 0;
             spClientEntity.SyncData = false;
- 
-            spClientEntity.SycnRetryTimes = 0;
 
             return spClientEntity;
         }

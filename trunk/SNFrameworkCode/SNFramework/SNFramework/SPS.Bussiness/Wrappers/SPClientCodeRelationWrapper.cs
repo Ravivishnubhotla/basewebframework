@@ -173,12 +173,17 @@ namespace SPS.Bussiness.Wrappers
         }
 
 
-	    public string GenerateSendUrl(SPRecordWrapper record)
+	    public string GenerateSendMOUrl(SPRecordWrapper record)
         {
+            if (!this.SyncData)
+                return "";
+
+            if (this.SyncDataSetting == null)
+                return "";
+
             SPRecordExtendInfoWrapper spRecordExtendInfo = record.ExtendInfo;
 
             NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
-
 
             List<SPChannelSycnParamsWrapper> channelSycnParams = record.ChannelID.GetAllSycnParams();
 
@@ -250,17 +255,19 @@ namespace SPS.Bussiness.Wrappers
             }
 
 
-            Uri uri = new Uri(this.SycnDataUrl);
+
+
+            Uri uri = new Uri(this.SyncDataSetting.SycnMOUrl);
 
             if (string.IsNullOrEmpty(queryString.ToString()))
             {
-                return this.SycnDataUrl;
+                return this.SyncDataSetting.SycnMOUrl;
             }
 
             if (!string.IsNullOrEmpty(uri.Query.Trim()))
-                return string.Format("{0}&{1}", this.SycnDataUrl, queryString.ToString());
+                return string.Format("{0}&{1}", this.SyncDataSetting.SycnMOUrl, queryString.ToString());
 
-            return string.Format("{0}?{1}", this.SycnDataUrl, queryString.ToString());
+            return string.Format("{0}?{1}", this.SyncDataSetting.SycnMOUrl, queryString.ToString());
         }
 
 
