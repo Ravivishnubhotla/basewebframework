@@ -26,6 +26,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     public interface ISPSClientServiceProxyDesigner
     {
+		List<SPSClientEntity> FindAllByOrderByAndFilterAndSyncDataSetting(string orderByColumnName, bool isDesc,   SPSDataSycnSettingEntity _syncDataSetting, PageQueryParams pageQueryParams);
+		List<SPSClientEntity> FindAllBySyncDataSetting(SPSDataSycnSettingEntity _syncDataSetting);
     }
 
     internal partial class SPSClientServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPSClientEntity,int>
@@ -42,6 +44,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 return (SPSClientDataObject)selfDataObject;
             }
+        }
+	
+		public List<SPSClientEntity> FindAllByOrderByAndFilterAndSyncDataSetting(string orderByColumnName, bool isDesc,  SPSDataSycnSettingEntity _syncDataSetting, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_SyncDataSetting_SPSDataSycnSettingEntity(orderByColumnName, isDesc,_syncDataSetting, pageQueryParams);
+        }
+		
+		public List<SPSClientEntity> FindAllBySyncDataSetting(SPSDataSycnSettingEntity _syncDataSetting)
+        {
+			return this.SelfDataObj.GetList_By_SyncDataSetting_SPSDataSycnSettingEntity(_syncDataSetting);
         }
 
 

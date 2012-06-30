@@ -118,6 +118,10 @@
     <Compile Include="Tables\SPSClientDataObject.Designer.cs">
       <DependentUpon>SPSClientDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPSDataSycnSettingDataObject.cs" />
+    <Compile Include="Tables\SPSDataSycnSettingDataObject.Designer.cs">
+      <DependentUpon>SPSDataSycnSettingDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPUpperDataObject.cs" />
     <Compile Include="Tables\SPUpperDataObject.Designer.cs">
       <DependentUpon>SPUpperDataObject.cs</DependentUpon>

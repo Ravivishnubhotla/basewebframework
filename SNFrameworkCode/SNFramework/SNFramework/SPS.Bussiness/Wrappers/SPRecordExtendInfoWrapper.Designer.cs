@@ -123,6 +123,9 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_FEETIME = "FeeTime";
 		public static readonly string PROPERTY_NAME_STARTTIME = "StartTime";
 		public static readonly string PROPERTY_NAME_ENDTIME = "EndTime";
+		public static readonly string PROPERTY_NAME_ISSYCNMO = "IsSycnMO";
+		public static readonly string PROPERTY_NAME_ISSYCNMR = "IsSycnMR";
+		public static readonly string PROPERTY_NAME_ISSYCNSTATE = "IsSycnState";
 		
         #endregion
 	
@@ -460,6 +463,51 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.EndTime = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool IsSycnMO
+		{
+			get
+			{
+				return entity.IsSycnMO;
+			}
+			set
+			{
+				entity.IsSycnMO = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool IsSycnMR
+		{
+			get
+			{
+				return entity.IsSycnMR;
+			}
+			set
+			{
+				entity.IsSycnMR = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool IsSycnState
+		{
+			get
+			{
+				return entity.IsSycnState;
+			}
+			set
+			{
+				entity.IsSycnState = value;
 			}
 		}
 		#endregion 

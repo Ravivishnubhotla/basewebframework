@@ -74,11 +74,17 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 this.txtInterceptRate.Text = client.InterceptRate.ToString();
                 this.txtSycnNotInterceptCount.Text = client.SycnNotInterceptCount.ToString();
                 this.chkSyncData.Checked = client.SyncData;
- 
-                this.txtSycnDataUrl.Text = client.SycnDataUrl;
-                this.txtSycnOkMessage.Text = client.SycnOkMessage;
-                this.txtSycnFailedMessage.Text = client.SycnFailedMessage;
-                this.txtSycnRetryTimes.Text = client.SycnRetryTimes.ToString();
+
+
+                if (client.SyncDataSetting!=null)
+                {
+                    this.txtSycnDataUrl.Text = client.SyncDataSetting.SycnMOUrl;
+                    this.txtSycnOkMessage.Text = client.SyncDataSetting.SycnMOOkMessage;
+                    this.txtSycnFailedMessage.Text = client.SyncDataSetting.SycnMOFailedMessage;
+                    this.txtSycnRetryTimes.Text = client.SyncDataSetting.SycnRetryTimes.ToString();
+                }
+
+
                 
 
   
@@ -89,7 +95,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
             }
         }
 
@@ -121,10 +127,22 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.ClientID = SPSClientID;
                 obj.CodeID = codeWrapper;
                 obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
-                obj.SyncType = "1";
-                obj.SycnDataUrl = this.txtSycnDataUrl.Text.Trim();
-                obj.SycnOkMessage = this.txtSycnOkMessage.Text.Trim();
-                obj.SycnFailedMessage = this.txtSycnFailedMessage.Text.Trim();
+
+                if(obj.SyncData)
+                {
+                    SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
+
+                    spsDataSycnSetting.SycnMO = true;
+                    spsDataSycnSetting.SyncType = "1";
+                    spsDataSycnSetting.SycnMOUrl = this.txtSycnDataUrl.Text.Trim();
+                    spsDataSycnSetting.SycnMOOkMessage = this.txtSycnOkMessage.Text.Trim();
+                    spsDataSycnSetting.SycnMOFailedMessage = this.txtSycnFailedMessage.Text.Trim();
+
+                    SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
+
+                    obj.SyncDataSetting = spsDataSycnSetting;
+                }
+
                 obj.StartDate = System.DateTime.Now;
                 obj.EndDate = null;
                 obj.IsEnable = true;

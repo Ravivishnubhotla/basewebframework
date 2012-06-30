@@ -40,10 +40,23 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     this.lblInterceptRate.Text = obj.InterceptRate.ToString();
  
                     this.lblSycnRetryTimes.Text = ValueConvertUtil.ConvertStringValue(obj.SycnRetryTimes);
-                    this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
-                    this.lblSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SycnDataUrl);
-                    this.lblSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnOkMessage);
-                    this.lblSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SycnFailedMessage);
+
+                    if (obj.SyncDataSetting != null)
+                    {
+                        this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SyncType);
+                        this.lblSycnDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOUrl);
+                        this.lblSycnOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOOkMessage);
+                        this.lblSycnFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SycnMOFailedMessage);
+                    }
+                    else
+                    {
+                        this.lblSyncType.Text = "";
+                        this.lblSycnDataUrl.Text = "";
+                        this.lblSycnOkMessage.Text = "";
+                        this.lblSycnFailedMessage.Text = "";
+                    }
+
+
                     this.lblStartDate.Text = obj.StartDate.ToString();
                     this.lblEndDate.Text = obj.EndDate.ToString();
  

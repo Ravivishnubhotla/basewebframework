@@ -47,12 +47,8 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPDayReportEntity_Alias.UserID";
 		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPDayReportEntity_Alias.IsDefaultClient";
 		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPDayReportEntity_Alias.SyncData";
-		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPDayReportEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPDayReportEntity_Alias.SyncType";
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPDayReportEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPDayReportEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPDayReportEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPDayReportEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPDayReportEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPDayReportEntity_Alias.Alias";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPDayReportEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPDayReportEntity_Alias.DefaultPrice";

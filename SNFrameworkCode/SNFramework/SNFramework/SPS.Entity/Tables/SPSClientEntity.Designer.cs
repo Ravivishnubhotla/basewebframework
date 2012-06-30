@@ -28,12 +28,8 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_USERID = "UserID";
 		public static readonly string PROPERTY_NAME_ISDEFAULTCLIENT = "IsDefaultClient";
 		public static readonly string PROPERTY_NAME_SYNCDATA = "SyncData";
-		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
-		public static readonly string PROPERTY_NAME_SYNCTYPE = "SyncType";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
-		public static readonly string PROPERTY_NAME_SYCNDATAURL = "SycnDataUrl";
-		public static readonly string PROPERTY_NAME_SYCNOKMESSAGE = "SycnOkMessage";
-		public static readonly string PROPERTY_NAME_SYCNFAILEDMESSAGE = "SycnFailedMessage";
+		public static readonly string PROPERTY_NAME_SYNCDATASETTING = "SyncDataSetting";
 		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
@@ -47,6 +43,24 @@ namespace SPS.Entity.Tables
         #endregion
 	
  
+		#region syncDataSetting字段外键查询字段
+        public const string PROPERTY_SYNCDATASETTING_ALIAS_NAME = "SyncDataSetting_SPSClientEntity_Alias";
+		public const string PROPERTY_SYNCDATASETTING_ID = "SyncDataSetting_SPSClientEntity_Alias.Id";
+		public const string PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES = "SyncDataSetting_SPSClientEntity_Alias.SycnRetryTimes";
+		public const string PROPERTY_SYNCDATASETTING_SYNCTYPE = "SyncDataSetting_SPSClientEntity_Alias.SyncType";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMO = "SyncDataSetting_SPSClientEntity_Alias.SycnMO";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOURL = "SyncDataSetting_SPSClientEntity_Alias.SycnMOUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnMOOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnMOFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMR = "SyncDataSetting_SPSClientEntity_Alias.SycnMR";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRURL = "SyncDataSetting_SPSClientEntity_Alias.SycnMRUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnMROkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnMRFailedMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATE = "SyncDataSetting_SPSClientEntity_Alias.SycnSate";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEURL = "SyncDataSetting_SPSClientEntity_Alias.SycnSateUrl";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnSateOkMessage";
+		public const string PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE = "SyncDataSetting_SPSClientEntity_Alias.SycnSateFailedMessage";
+		#endregion
       	
 	
 	
@@ -66,12 +80,8 @@ namespace SPS.Entity.Tables
 		private int _userID;
 		private bool? _isDefaultClient;
 		private bool _syncData;
-		private int? _sycnRetryTimes;
-		private string _syncType;
 		private int? _sycnNotInterceptCount;
-		private string _sycnDataUrl;
-		private string _sycnOkMessage;
-		private string _sycnFailedMessage;
+		private SPSDataSycnSettingEntity _syncDataSetting;
 		private string _alias;
 		private decimal _interceptRate;
 		private decimal _defaultPrice;
@@ -96,12 +106,8 @@ namespace SPS.Entity.Tables
 			_userID = 0;
 			_isDefaultClient = null;
 			_syncData = false;
-			_sycnRetryTimes = null;
-			_syncType = null;
 			_sycnNotInterceptCount = null;
-			_sycnDataUrl = null;
-			_sycnOkMessage = null;
-			_sycnFailedMessage = null;
+			_syncDataSetting = null;
 			_alias = null;
 			_interceptRate = 0;
 			_defaultPrice = 0;
@@ -118,7 +124,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int userID, bool? isDefaultClient, bool syncData, int? sycnRetryTimes, string syncType, int? sycnNotInterceptCount, string sycnDataUrl, string sycnOkMessage, string sycnFailedMessage, string alias, decimal interceptRate, decimal defaultPrice, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPSClientEntity( int id, string name, string description, int userID, bool? isDefaultClient, bool syncData, int? sycnNotInterceptCount, SPSDataSycnSettingEntity syncDataSetting, string alias, decimal interceptRate, decimal defaultPrice, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -126,12 +132,8 @@ namespace SPS.Entity.Tables
 			_userID = userID;
 			_isDefaultClient = isDefaultClient;
 			_syncData = syncData;
-			_sycnRetryTimes = sycnRetryTimes;
-			_syncType = syncType;
 			_sycnNotInterceptCount = sycnNotInterceptCount;
-			_sycnDataUrl = sycnDataUrl;
-			_sycnOkMessage = sycnOkMessage;
-			_sycnFailedMessage = sycnFailedMessage;
+			_syncDataSetting = syncDataSetting;
 			_alias = alias;
 			_interceptRate = interceptRate;
 			_defaultPrice = defaultPrice;
@@ -240,37 +242,6 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? SycnRetryTimes
-		{
-			get { return _sycnRetryTimes; }
-
-			set	
-			{
-				_isChanged |= (_sycnRetryTimes != value); _sycnRetryTimes = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SyncType
-		{
-			get { return _syncType; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SyncType", value, value.ToString());
-				_isChanged |= (_syncType != value); _syncType = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual int? SycnNotInterceptCount
 		{
 			get { return _sycnNotInterceptCount; }
@@ -285,50 +256,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string SycnDataUrl
+		public virtual SPSDataSycnSettingEntity SyncDataSetting
 		{
-			get { return _sycnDataUrl; }
+			get { return _syncDataSetting; }
 
 			set	
 			{
-
-				if( value != null && value.Length > 400)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnDataUrl", value, value.ToString());
-				_isChanged |= (_sycnDataUrl != value); _sycnDataUrl = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SycnOkMessage
-		{
-			get { return _sycnOkMessage; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnOkMessage", value, value.ToString());
-				_isChanged |= (_sycnOkMessage != value); _sycnOkMessage = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string SycnFailedMessage
-		{
-			get { return _sycnFailedMessage; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 100)
-					throw new ArgumentOutOfRangeException("Invalid value for SycnFailedMessage", value, value.ToString());
-				_isChanged |= (_sycnFailedMessage != value); _sycnFailedMessage = value;
+				_isChanged |= (_syncDataSetting != value); _syncDataSetting = value;
 			}
 		}
 

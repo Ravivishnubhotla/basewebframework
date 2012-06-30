@@ -30,6 +30,9 @@
 		<property column="FeeTime" type="string" name="FeeTime"   length="6" />	
 		<property column="StartTime" type="string" name="StartTime"   length="40" />	
 		<property column="EndTime" type="string" name="EndTime"   length="40" />	
+		<property column="IsSycnMO" type="Boolean" name="IsSycnMO"   not-null="true"  />	
+		<property column="IsSycnMR" type="Boolean" name="IsSycnMR"   not-null="true"  />	
+		<property column="IsSycnState" type="Boolean" name="IsSycnState"   not-null="true"  />	
 
 
 

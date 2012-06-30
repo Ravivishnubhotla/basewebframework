@@ -96,12 +96,8 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_USERID = "ClientID_SPRecordEntity_Alias.UserID";
 		public const string PROPERTY_CLIENTID_ISDEFAULTCLIENT = "ClientID_SPRecordEntity_Alias.IsDefaultClient";
 		public const string PROPERTY_CLIENTID_SYNCDATA = "ClientID_SPRecordEntity_Alias.SyncData";
-		public const string PROPERTY_CLIENTID_SYCNRETRYTIMES = "ClientID_SPRecordEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTID_SYNCTYPE = "ClientID_SPRecordEntity_Alias.SyncType";
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPRecordEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_CLIENTID_SYCNDATAURL = "ClientID_SPRecordEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTID_SYCNOKMESSAGE = "ClientID_SPRecordEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTID_SYCNFAILEDMESSAGE = "ClientID_SPRecordEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPRecordEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPRecordEntity_Alias.Alias";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPRecordEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPRecordEntity_Alias.DefaultPrice";
@@ -157,10 +153,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTCODERELATIONID_USECLIENTDEFAULTSYCNSETTING = "ClientCodeRelationID_SPRecordEntity_Alias.UseClientDefaultSycnSetting";
 		public const string PROPERTY_CLIENTCODERELATIONID_SYNCDATA = "ClientCodeRelationID_SPRecordEntity_Alias.SyncData";
 		public const string PROPERTY_CLIENTCODERELATIONID_SYCNRETRYTIMES = "ClientCodeRelationID_SPRecordEntity_Alias.SycnRetryTimes";
-		public const string PROPERTY_CLIENTCODERELATIONID_SYNCTYPE = "ClientCodeRelationID_SPRecordEntity_Alias.SyncType";
-		public const string PROPERTY_CLIENTCODERELATIONID_SYCNDATAURL = "ClientCodeRelationID_SPRecordEntity_Alias.SycnDataUrl";
-		public const string PROPERTY_CLIENTCODERELATIONID_SYCNOKMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnOkMessage";
-		public const string PROPERTY_CLIENTCODERELATIONID_SYCNFAILEDMESSAGE = "ClientCodeRelationID_SPRecordEntity_Alias.SycnFailedMessage";
+		public const string PROPERTY_CLIENTCODERELATIONID_SYNCDATASETTING = "ClientCodeRelationID_SPRecordEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTCODERELATIONID_STARTDATE = "ClientCodeRelationID_SPRecordEntity_Alias.StartDate";
 		public const string PROPERTY_CLIENTCODERELATIONID_ENDDATE = "ClientCodeRelationID_SPRecordEntity_Alias.EndDate";
 		public const string PROPERTY_CLIENTCODERELATIONID_ISENABLE = "ClientCodeRelationID_SPRecordEntity_Alias.IsEnable";

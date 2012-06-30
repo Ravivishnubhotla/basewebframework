@@ -38,6 +38,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables.Container{
         {get; set;}
 		public ISPSClientServiceProxy SPSClientServiceProxyInstance
         {get; set;}
+		public ISPSDataSycnSettingServiceProxy SPSDataSycnSettingServiceProxyInstance
+        {get; set;}
 		public ISPUpperServiceProxy SPUpperServiceProxyInstance
         {get; set;}
 

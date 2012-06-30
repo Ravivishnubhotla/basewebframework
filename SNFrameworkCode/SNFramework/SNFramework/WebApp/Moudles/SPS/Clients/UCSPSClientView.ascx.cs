@@ -40,7 +40,10 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                     ////this.lblSyncData.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
                     //this.lblOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
                     //this.lblFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
-                    this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncType);
+                    if (obj.SyncDataSetting != null)
+                        this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SyncType);
+                    else
+                        this.lblSyncType.Text = "";
                     this.lblAlias.Text = ValueConvertUtil.ConvertStringValue(obj.Alias);
                     this.lblInterceptRate.Text = obj.InterceptRate.ToString();
                     this.lblDefaultPrice.Text = obj.DefaultPrice.ToString();

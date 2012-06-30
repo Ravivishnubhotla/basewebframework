@@ -27,11 +27,18 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             {
                 this.lblChannelName.Text = clientCodeRelation.CodeID_ChannelID.Name;
 
-                this.txtClientSycnUrl.Text = clientCodeRelation.SycnDataUrl;
+
 
                 this.lblCode.Text = clientCodeRelation.CodeID.MoCode;
 
-                this.lblOkMessage.Text = clientCodeRelation.SycnOkMessage;
+                if (clientCodeRelation.SyncData && clientCodeRelation.SyncDataSetting!=null)
+                {
+                    this.txtClientSycnUrl.Text = clientCodeRelation.SyncDataSetting.SycnMOUrl;
+
+                    this.lblOkMessage.Text = clientCodeRelation.SyncDataSetting.SycnMOOkMessage;
+                }
+
+
 
                 this.lblClientName.Text = clientCodeRelation.ClientID_Name;
 

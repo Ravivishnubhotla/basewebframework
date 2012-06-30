@@ -30,6 +30,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPClientCodeRelationEntity> FindAllByCodeID(SPCodeEntity _codeID);
 		List<SPClientCodeRelationEntity> FindAllByOrderByAndFilterAndClientID(string orderByColumnName, bool isDesc,   SPSClientEntity _clientID, PageQueryParams pageQueryParams);
 		List<SPClientCodeRelationEntity> FindAllByClientID(SPSClientEntity _clientID);
+		List<SPClientCodeRelationEntity> FindAllByOrderByAndFilterAndSyncDataSetting(string orderByColumnName, bool isDesc,   SPSDataSycnSettingEntity _syncDataSetting, PageQueryParams pageQueryParams);
+		List<SPClientCodeRelationEntity> FindAllBySyncDataSetting(SPSDataSycnSettingEntity _syncDataSetting);
     }
 
     internal partial class SPClientCodeRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientCodeRelationEntity,int>
@@ -66,6 +68,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		public List<SPClientCodeRelationEntity> FindAllByClientID(SPSClientEntity _clientID)
         {
 			return this.SelfDataObj.GetList_By_ClientID_SPSClientEntity(_clientID);
+        }
+	
+		public List<SPClientCodeRelationEntity> FindAllByOrderByAndFilterAndSyncDataSetting(string orderByColumnName, bool isDesc,  SPSDataSycnSettingEntity _syncDataSetting, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_SyncDataSetting_SPSDataSycnSettingEntity(orderByColumnName, isDesc,_syncDataSetting, pageQueryParams);
+        }
+		
+		public List<SPClientCodeRelationEntity> FindAllBySyncDataSetting(SPSDataSycnSettingEntity _syncDataSetting)
+        {
+			return this.SelfDataObj.GetList_By_SyncDataSetting_SPSDataSycnSettingEntity(_syncDataSetting);
         }
 
 
