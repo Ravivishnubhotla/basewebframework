@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
+using System.Xml;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Bussiness.HttpUtils;
@@ -15,8 +16,8 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-	[Serializable]
-    public partial class SPRecordWrapper : BaseSpringNHibernateWrapper<SPRecordEntity, ISPRecordServiceProxy, SPRecordWrapper, int>  
+    [Serializable]
+    public partial class SPRecordWrapper : BaseSpringNHibernateWrapper<SPRecordEntity, ISPRecordServiceProxy, SPRecordWrapper, int>
     {
         #region Static Common Data Operation
 
@@ -104,40 +105,40 @@ namespace SPS.Bussiness.Wrappers
 
         #endregion
 
-	    public static void UpdateUrlSuccessSend(int recordId, string url)
-	    {
+        public static void UpdateUrlSuccessSend(int recordId, string url)
+        {
             businessProxy.UpdateUrlSuccessSend(recordId, url);
-	    }
+        }
 
-	    public static void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage)
-	    {
+        public static void UpdateUrlFailedSend(int recordId, string sendUrl, string errorMessage)
+        {
             businessProxy.UpdateUrlFailedSend(recordId, sendUrl, errorMessage);
-	    }
+        }
 
-	    private bool accessExtendInfo = false;
-	    private SPRecordExtendInfoWrapper extendInfo;
-	    public SPRecordExtendInfoWrapper ExtendInfo
-	    {
-	        get
-	        {
-	            if(!accessExtendInfo)
-	            {
-	                extendInfo = GetExtendInfo();
-	                accessExtendInfo = true;
-	            }
-	            return extendInfo;
-	        }
-	    }
+        private bool accessExtendInfo = false;
+        private SPRecordExtendInfoWrapper extendInfo;
+        public SPRecordExtendInfoWrapper ExtendInfo
+        {
+            get
+            {
+                if (!accessExtendInfo)
+                {
+                    extendInfo = GetExtendInfo();
+                    accessExtendInfo = true;
+                }
+                return extendInfo;
+            }
+        }
 
-	    public string SycnDataUrl
-	    {
+        public string SycnDataUrl
+        {
             get
             {
                 if (ExtendInfo != null)
                     return ExtendInfo.SSycnDataUrl;
                 return "";
             }
-	    }
+        }
 
         public string FeeTime
         {
@@ -159,18 +160,74 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
- 
 
-	    private SPRecordExtendInfoWrapper GetExtendInfo()
+
+        private SPRecordExtendInfoWrapper GetExtendInfo()
         {
             List<SPRecordExtendInfoWrapper> spRecordExtends = SPRecordExtendInfoWrapper.FindAllByRecordID(this);
 
-            if (spRecordExtends != null && spRecordExtends.Count>0)
+            if (spRecordExtends != null && spRecordExtends.Count > 0)
             {
                 return spRecordExtends[0];
             }
 
             return null;
+        }
+
+
+
+        public void SycnToClient()
+        {
+            if (this.ClientCodeRelationID == null)
+                return;
+
+            if (this.ClientCodeRelationID.SyncDataSetting == null)
+                return;
+
+            if (this.ClientCodeRelationID.SyncDataSetting.SyncType == "xmlpost")
+            {
+                if (!this.IsStatOK && this.IsSycnToClient)
+                {
+                    XmlSendTask sendTask = this.GenerateSendMOXml();
+
+                    if (sendTask != null)
+                    {
+                        sendTask.RecordID = this.Id;
+                        ThreadPool.QueueUserWorkItem(XmlSender.SendRequest, sendTask);
+                    }
+                }
+                else if (this.IsStatOK && this.IsSycnToClient)
+                {
+                    XmlSendTask sendTask = this.GenerateSendMRXml();
+
+                    if (sendTask != null)
+                    {
+                        sendTask.RecordID = this.Id;
+                        ThreadPool.QueueUserWorkItem(XmlSender.SendRequest, sendTask);
+                    }
+                }
+
+                return;
+            }
+            else if (this.ClientCodeRelationID.SyncDataSetting.SyncType == "httpget")
+            {
+                if (this.IsStatOK && this.IsSycnToClient && this.ClientCodeRelationID != null)
+                {
+                    UrlSendTask sendTask = this.GenerateSendMOUrl();
+
+                    if (sendTask != null)
+                    {
+                        sendTask.RecordID = this.Id;
+                        ThreadPool.QueueUserWorkItem(UrlSender.SendRequest, sendTask);
+                    }
+                }
+            }
+
+
+
+
+
+
         }
 
         private UrlSendTask GenerateSendMOUrl()
@@ -189,29 +246,75 @@ namespace SPS.Bussiness.Wrappers
             return urlSendTask;
         }
 
-	    public void SycnToClient()
-	    {
-            if (this.IsStatOK && this.IsSycnToClient && this.ClientCodeRelationID != null)
-            {
-                UrlSendTask sendTask = this.GenerateSendMOUrl();
+        private XmlSendTask GenerateSendMRXml()
+        {
+            if (this.ClientCodeRelationID == null)
+                return null;
 
-                if (sendTask != null)
-                {
-                    sendTask.RecordID = this.Id;
-                    ThreadPool.QueueUserWorkItem(UrlSender.SendRequest, sendTask);
-                }
-            }
-	    }
+            if (!this.ClientCodeRelationID.SyncData || this.ClientCodeRelationID.SyncDataSetting == null )
+                return null;
+
+            if (!(this.ClientCodeRelationID.SyncDataSetting.SycnMR.HasValue && this.ClientCodeRelationID.SyncDataSetting.SycnMR.Value))
+                return null;
+
+            XmlSendTask urlSendTask = new XmlSendTask();
+            urlSendTask.RecordID = this.Id;
+            urlSendTask.OkMessage = this.ClientCodeRelationID.SyncDataSetting.SycnMROkMessage;
+            urlSendTask.SendUrl = this.ClientCodeRelationID.SyncDataSetting.SycnMRUrl;
+            urlSendTask.XmlContent = this.GenerateSendMRXmlContent();
+
+            return urlSendTask; 
+
+        }
+
+        private string GenerateSendMRXmlContent()
+        {
+            XmlDocument xml = new XmlDocument();
+
+            XmlDeclaration declaration = xml.CreateXmlDeclaration("1.0", "GBK", null);
+            xml.AppendChild(declaration);
+
+            XmlNode xmlElement = xml.CreateNode(XmlNodeType.Element, "message", "");
+
+            //xmlElement.AppendChild(xmlElement.cre)
+
+            return xml.ToString();
+
+        }
+        private string GenerateSendMOXmlContent()
+        {
+            throw new NotImplementedException();
+        }
+
+        private XmlSendTask GenerateSendMOXml()
+        {
+            if (this.ClientCodeRelationID == null)
+                return null;
+
+            if (!this.ClientCodeRelationID.SyncData || this.ClientCodeRelationID.SyncDataSetting == null)
+                return null;
+
+            if (!(this.ClientCodeRelationID.SyncDataSetting.SycnMO.HasValue && this.ClientCodeRelationID.SyncDataSetting.SycnMO.Value))
+                return null;
+
+            XmlSendTask urlSendTask = new XmlSendTask();
+            urlSendTask.RecordID = this.Id;
+            urlSendTask.OkMessage = this.ClientCodeRelationID.SyncDataSetting.SycnMOOkMessage;
+            urlSendTask.SendUrl = this.ClientCodeRelationID.SyncDataSetting.SycnMOUrl;
+            urlSendTask.XmlContent = this.GenerateSendMOXmlContent();
+
+            return urlSendTask; 
+        }
 
         public static bool InsertPayment(SPRecordWrapper record, SPRecordExtendInfoWrapper spRecordExtendInfo, out RequestErrorType requestError, out string errorMessage)
         {
             return businessProxy.InsertPayment(record.Entity, spRecordExtendInfo.Entity, out requestError, out errorMessage);
         }
 
-	    public static SPRecordWrapper FindByChannelIDAndLinkID(string linkid, SPChannelWrapper spChannelWrapper)
-	    {
-	        return  ConvertEntityToWrapper(businessProxy.FindByLinkIDAndChannelID(spChannelWrapper.Entity, linkid));
-	    }
+        public static SPRecordWrapper FindByChannelIDAndLinkID(string linkid, SPChannelWrapper spChannelWrapper)
+        {
+            return ConvertEntityToWrapper(businessProxy.FindByLinkIDAndChannelID(spChannelWrapper.Entity, linkid));
+        }
 
 
         public static List<SPRecordWrapper> QueryRecordByPage(SPChannelWrapper channel, SPCodeWrapper code, SPSClientWrapper client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
@@ -272,16 +375,16 @@ namespace SPS.Bussiness.Wrappers
         public static string DayReportType_DownSycnFailed
         {
             get { return DayReportType.DownSycnFailed.ToString(); }
-        } 
+        }
         public static string DayReportType_DownSycnSuccess
         {
             get { return DayReportType.DownSycnSuccess.ToString(); }
         }
 
-	    public static decimal CaculteActualInterceptRate(SPClientCodeRelationWrapper clientCodeRelation, DateTime date)
-	    {
-	        return businessProxy.CaculteActualInterceptRate(clientCodeRelation.Entity, date);
-	    }
+        public static decimal CaculteActualInterceptRate(SPClientCodeRelationWrapper clientCodeRelation, DateTime date)
+        {
+            return businessProxy.CaculteActualInterceptRate(clientCodeRelation.Entity, date);
+        }
 
         public static void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate)
         {
@@ -299,8 +402,8 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
-	    public void ReAutoMatch()
-	    {
+        public void ReAutoMatch()
+        {
             SPCodeWrapper matchCode = null;
 
             if (this.ChannelID.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
@@ -328,12 +431,12 @@ namespace SPS.Bussiness.Wrappers
                 matchCode = clientCodeRelation.CodeID;
             }
 
-	        this.CodeID = matchCode;
-	        this.ClientID = clientCodeRelation.ClientID;
-	        this.ClientCodeRelationID = clientCodeRelation;
+            this.CodeID = matchCode;
+            this.ClientID = clientCodeRelation.ClientID;
+            this.ClientCodeRelationID = clientCodeRelation;
 
             Update(this);
 
-	    }
+        }
     }
 }

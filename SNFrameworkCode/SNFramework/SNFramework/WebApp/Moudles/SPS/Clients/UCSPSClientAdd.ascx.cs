@@ -24,6 +24,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             this.txtDefaultPrice.Text = "1";
             this.txtInterceptRate.Text = SystemConfigConst.CFG_DEFAULT_VALUE_SPSCLIENTINTERCEPTRATE;
             this.txtUserPasword.Text = SystemConfigConst.Config_SysDefaultUserpass;
+            this.txtSycnRetryTimes.Text = SystemConfigConst.Config_SpsClientSendtryTimes.ToString();
 
 
         }
@@ -38,7 +39,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息:" + ex.Message;
             }
         }
 
@@ -73,39 +74,64 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
 
+
+
                 if (obj.SyncData)
                 {
                     SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
-                    spsDataSycnSetting.SycnMO = true;
-                    spsDataSycnSetting.SycnMOUrl = txtRecieveDataUrl.Text.Trim();
-                    spsDataSycnSetting.SycnMOOkMessage = txtOkMessage.Text.Trim();
-                    spsDataSycnSetting.SycnMOFailedMessage = txtFailedMessage.Text.Trim();
+
                     spsDataSycnSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
 
+                    spsDataSycnSetting.SycnMO = fsSyncMO.Collapsed;
+
+                    if (spsDataSycnSetting.SycnMO.HasValue && spsDataSycnSetting.SycnMO.Value)
+                    {
+                        spsDataSycnSetting.SycnMOUrl = txtSycnMOUrl.Text.Trim();
+                        spsDataSycnSetting.SycnMOOkMessage = txtSycnMOOkMessage.Text.Trim();
+                        spsDataSycnSetting.SycnMOFailedMessage = txtSycnMOFailedMessage.Text.Trim();
+                    }
+                    else
+                    {
+                        spsDataSycnSetting.SycnMOUrl = "";
+                        spsDataSycnSetting.SycnMOOkMessage = "";
+                        spsDataSycnSetting.SycnMOFailedMessage = "";                 
+                    }
+
+                    spsDataSycnSetting.SycnMR = fsSyncMR.Collapsed;
+
+                    if (spsDataSycnSetting.SycnMR.HasValue && spsDataSycnSetting.SycnMR.Value)
+                    {
+                        spsDataSycnSetting.SycnMRUrl = txtSycnMRUrl.Text.Trim();
+                        spsDataSycnSetting.SycnMROkMessage = txtSycnMROkMessage.Text.Trim();
+                        spsDataSycnSetting.SycnMRFailedMessage = txtSycnMRFailedMessage.Text.Trim();
+                    }
+                    else
+                    {
+                        spsDataSycnSetting.SycnMRUrl = "";
+                        spsDataSycnSetting.SycnMROkMessage = "";
+                        spsDataSycnSetting.SycnMRFailedMessage = "";
+                    }
+
+                    spsDataSycnSetting.SycnSate = fsSyncState.Collapsed;
+
+                    if (spsDataSycnSetting.SycnSate.HasValue && spsDataSycnSetting.SycnSate.Value)
+                    {
+                        spsDataSycnSetting.SycnSateUrl = txtSycnStateUrl.Text.Trim();
+                        spsDataSycnSetting.SycnSateOkMessage = txtSycnStateOkMessage.Text.Trim();
+                        spsDataSycnSetting.SycnSateFailedMessage = txtSycnStateFailedMessage.Text.Trim();
+                    }
+                    else
+                    {
+                        spsDataSycnSetting.SycnSateUrl = "";
+                        spsDataSycnSetting.SycnSateOkMessage = "";
+                        spsDataSycnSetting.SycnSateFailedMessage = "";
+                    }
+
                     SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
 
                     obj.SyncDataSetting = spsDataSycnSetting;
-                }
-                else
-                {
-                    SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
-
-                    spsDataSycnSetting.SycnMO = false;
-                    spsDataSycnSetting.SycnMOUrl = "";
-                    spsDataSycnSetting.SycnMOOkMessage = "";
-                    spsDataSycnSetting.SycnMOFailedMessage = "";
-                    spsDataSycnSetting.SycnRetryTimes = 3;
-
-                    SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
-
-                    obj.SyncDataSetting = spsDataSycnSetting;
-
 
                 }
-
-
-
-
 
                 SPSClientWrapper.QuickAdd(obj, loginID, password);
 
@@ -115,7 +141,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息:" + ex.Message;
             }
         }
     }

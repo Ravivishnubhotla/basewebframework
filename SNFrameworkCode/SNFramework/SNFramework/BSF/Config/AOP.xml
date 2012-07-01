@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <description>Aop settings.</description>
+
+
+
+
+
+
+  <!--<object id="AuditableAroundAdvisor" type="Spring.Aop.Support.AttributeMatchMethodPointcutAdvisor, Spring.Aop">
+    <property name="Advice">
+      <object type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop.ServiceProxyAroundAdvice, Legendigital.Framework.Common"/>
+    </property>
+    <property name="attribute" value="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop.RecordAuditorMethodAttribute, Legendigital.Framework.Common" />
+  </object>
+
+  --><!-- The AutoProxy based on attributes to apply the advisors defined in the CacheAspect --><!--
+  <object type="Spring.Aop.Framework.AutoProxy.AttributeAutoProxyCreator, Spring.Aop">
+    --><!-- AttributeTypes selects the classes that have the RepositoryAttribute at the class level--><!--
+    <property name="AttributeTypes" value="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop.RecordAuditorClass, Legendigital.Framework.Common"/>
+    --><!-- Interceptor names can be either of the type IAdvice, IAdvisor, or IAdvisors --><!--
+    --><!-- The CacheAspect is of the type IAdvisors --><!--
+    <property name="InterceptorNames">
+      <list>
+        <value>AuditableAroundAdvisor</value>
+      </list>
+    </property>
+  </object>-->
+
+
+
+  <!--<object type="Spring.Aop.Framework.AutoProxy.ObjectNameAutoProxyCreator, Spring.Aop">
+    <property name="ObjectNames">
+      <list>
+        <value>*ServiceProxyIocID</value>
+      </list>
+    </property>
+    <property name="InterceptorNames">
+      <list>
+        <value>AuditableAroundAdvisor</value>
+      </list>
+    </property>
+  </object
+    <object id="AuditableAroundAdvisor" type="Spring.Aop.Support.NameMatchMethodPointcutAdvisor, Spring.Aop">
+    <property name="Advice">
+      <object type="Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop.ServiceProxyAroundAdvice, Legendigital.Framework.Common"/>
+    </property>
+    <property name="MappedNames">
+      <list>
+        <value>Save</value>
+        <value>Update</value>
+        <value>SaveOrUpdate</value>
+        <value>DeleteByID</value>
+        <value>Delete</value>
+      </list>
+    </property>
+  </object>
+  
+  -->
+</objects>
+
