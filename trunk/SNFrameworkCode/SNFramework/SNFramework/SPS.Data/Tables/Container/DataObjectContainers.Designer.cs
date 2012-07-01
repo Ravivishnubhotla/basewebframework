@@ -25,6 +25,7 @@ namespace SPS.Data.Tables.Container
       public SPRecordDataObject SPRecordDataObjectInstance { set; get; }
       public SPRecordExtendInfoDataObject SPRecordExtendInfoDataObjectInstance { set; get; }
       public SPSClientDataObject SPSClientDataObjectInstance { set; get; }
+      public SPSDataSycnSettingDataObject SPSDataSycnSettingDataObjectInstance { set; get; }
       public SPUpperDataObject SPUpperDataObjectInstance { set; get; }
 
 

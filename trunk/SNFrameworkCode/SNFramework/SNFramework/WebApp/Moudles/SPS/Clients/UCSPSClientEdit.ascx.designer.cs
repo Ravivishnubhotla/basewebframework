@@ -103,6 +103,15 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.Checkbox chkSyncData;
         
         /// <summary>
+        /// Checkbox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Checkbox Checkbox1;
+        
+        /// <summary>
         /// txtSycnRetryTimes control.
         /// </summary>
         /// <remarks>
@@ -112,31 +121,112 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
         protected global::Ext.Net.TextField txtSycnRetryTimes;
         
         /// <summary>
-        /// txtRecieveDataUrl control.
+        /// fsSyncMO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtRecieveDataUrl;
+        protected global::Ext.Net.FieldSet fsSyncMO;
         
         /// <summary>
-        /// txtOkMessage control.
+        /// txtSycnMOUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtOkMessage;
+        protected global::Ext.Net.TextField txtSycnMOUrl;
         
         /// <summary>
-        /// txtFailedMessage control.
+        /// txtSycnMOOkMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtFailedMessage;
+        protected global::Ext.Net.TextField txtSycnMOOkMessage;
+        
+        /// <summary>
+        /// txtSycnMOFailedMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnMOFailedMessage;
+        
+        /// <summary>
+        /// fsSyncMR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet fsSyncMR;
+        
+        /// <summary>
+        /// txtSycnMRUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnMRUrl;
+        
+        /// <summary>
+        /// txtSycnMROkMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnMROkMessage;
+        
+        /// <summary>
+        /// txtSycnMRFailedMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnMRFailedMessage;
+        
+        /// <summary>
+        /// fsSyncState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.FieldSet fsSyncState;
+        
+        /// <summary>
+        /// txtSycnStateUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnStateUrl;
+        
+        /// <summary>
+        /// txtSycnStateOkMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnStateOkMessage;
+        
+        /// <summary>
+        /// txtSycnStateFailedMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TextField txtSycnStateFailedMessage;
         
         /// <summary>
         /// btnSaveSPSClient control.

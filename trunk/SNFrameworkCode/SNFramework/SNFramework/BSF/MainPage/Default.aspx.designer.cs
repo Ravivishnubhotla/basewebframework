@@ -7,243 +7,306 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.WebApp.Moudles.SPS.Clients {
+namespace SNFramework.BSF.MainPage {
     
     
-    public partial class UCSPSClientAdd {
+    public partial class Default {
         
         /// <summary>
-        /// winSPSClientAdd control.
+        /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSPSClientAdd;
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
-        /// formPanelSPSClientAdd control.
+        /// ViewPort1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel formPanelSPSClientAdd;
+        protected global::Ext.Net.Viewport ViewPort1;
         
         /// <summary>
-        /// txtName control.
+        /// BorderLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtName;
+        protected global::Ext.Net.BorderLayout BorderLayout1;
         
         /// <summary>
-        /// txtDescription control.
+        /// regionHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtDescription;
+        protected global::Ext.Net.Panel regionHeader;
         
         /// <summary>
-        /// txtInterceptRate control.
+        /// locSystemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField txtInterceptRate;
+        protected global::System.Web.UI.WebControls.Localize locSystemName;
         
         /// <summary>
-        /// txtNotInterceptCount control.
+        /// Toolbar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField txtNotInterceptCount;
+        protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
-        /// numShowDayRecord control.
+        /// lblWelcome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numShowDayRecord;
+        protected global::Ext.Net.ToolbarTextItem lblWelcome;
         
         /// <summary>
-        /// txtDefaultPrice control.
+        /// lblUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField txtDefaultPrice;
+        protected global::Ext.Net.ToolbarTextItem lblUser;
         
         /// <summary>
-        /// txtUserID control.
+        /// lblToday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtUserID;
+        protected global::Ext.Net.ToolbarTextItem lblToday;
         
         /// <summary>
-        /// txtUserPasword control.
+        /// ToolbarTextItem1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtUserPasword;
+        protected global::Ext.Net.ToolbarTextItem ToolbarTextItem1;
         
         /// <summary>
-        /// chkSyncData control.
+        /// cbTheme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkSyncData;
+        protected global::Ext.Net.ComboBox cbTheme;
         
         /// <summary>
-        /// txtSycnRetryTimes control.
+        /// btnExit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnRetryTimes;
+        protected global::Ext.Net.Button btnExit;
         
         /// <summary>
-        /// fsSyncMO control.
+        /// regionFooter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsSyncMO;
+        protected global::Ext.Net.Panel regionFooter;
         
         /// <summary>
-        /// txtSycnMOUrl control.
+        /// locCopyRight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMOUrl;
+        protected global::System.Web.UI.WebControls.Localize locCopyRight;
         
         /// <summary>
-        /// txtSycnMOOkMessage control.
+        /// LeftPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMOOkMessage;
+        protected global::Ext.Net.Panel LeftPanel;
         
         /// <summary>
-        /// txtSycnMOFailedMessage control.
+        /// Panel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMOFailedMessage;
+        protected global::Ext.Net.Panel Panel2;
         
         /// <summary>
-        /// fsSyncMR control.
+        /// MainTabs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsSyncMR;
+        protected global::Ext.Net.TabPanel MainTabs;
         
         /// <summary>
-        /// txtSycnMRUrl control.
+        /// pnlWorkSpace control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMRUrl;
+        protected global::Ext.Net.Panel pnlWorkSpace;
         
         /// <summary>
-        /// txtSycnMROkMessage control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMROkMessage;
+        protected global::Ext.Net.Panel Panel1;
         
         /// <summary>
-        /// txtSycnMRFailedMessage control.
+        /// Toolbar2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnMRFailedMessage;
+        protected global::Ext.Net.Toolbar Toolbar2;
         
         /// <summary>
-        /// fsSyncState control.
+        /// ToolbarFill1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FieldSet fsSyncState;
+        protected global::Ext.Net.ToolbarFill ToolbarFill1;
         
         /// <summary>
-        /// txtSycnStateUrl control.
+        /// Button4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnStateUrl;
+        protected global::Ext.Net.Button Button4;
         
         /// <summary>
-        /// txtSycnStateOkMessage control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnStateOkMessage;
+        protected global::Ext.Net.Button Button1;
         
         /// <summary>
-        /// txtSycnStateFailedMessage control.
+        /// Portal1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSycnStateFailedMessage;
+        protected global::Ext.Net.Portal Portal1;
         
         /// <summary>
-        /// btnSavelSPSClient control.
+        /// PortalColumn3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnSavelSPSClient;
+        protected global::Ext.Net.PortalColumn PortalColumn3;
         
         /// <summary>
-        /// btnCancelSPSClient control.
+        /// Portlet4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnCancelSPSClient;
+        protected global::Ext.Net.Portlet Portlet4;
+        
+        /// <summary>
+        /// Portlet5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet5;
+        
+        /// <summary>
+        /// Portlet1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet1;
+        
+        /// <summary>
+        /// PortalColumn1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.PortalColumn PortalColumn1;
+        
+        /// <summary>
+        /// plServerInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet plServerInfo;
+        
+        /// <summary>
+        /// Portlet2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet2;
+        
+        /// <summary>
+        /// TabScrollerMenu1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.TabScrollerMenu TabScrollerMenu1;
+        
+        /// <summary>
+        /// UCChangePassword1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SNFramework.BSF.MainPage.UCChangePassword UCChangePassword1;
     }
 }

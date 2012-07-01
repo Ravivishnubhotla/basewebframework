@@ -1639,7 +1639,6 @@
     <Folder Include="Moudles\SystemManage\ResourcesManage\" />
     <Folder Include="Moudles\SystemManage\ShortMessage\" />
     <Folder Include="Moudles\SystemManage\TaskManage\" />
-    <Folder Include="Old_App_Code\" />
     <Folder Include="SPSInterface\" />
     <Folder Include="SPS\" />
   </ItemGroup>

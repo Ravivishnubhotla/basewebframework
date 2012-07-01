@@ -28,14 +28,48 @@
                         </Check>
                     </Listeners>
                 </ext:Checkbox>
-                                                        <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
-                    AnchorHorizontal="95%" Hidden="true" />	      
-                <ext:TextField ID="txtRecieveDataUrl" runat="server" FieldLabel="同步地址" Hidden="true"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" Hidden="true"
-                    AllowBlank="True" AnchorHorizontal="95%" />
-                <ext:TextField ID="txtFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
-                    Hidden="true" AllowBlank="True" AnchorHorizontal="95%" />
+                <ext:Checkbox ID="Checkbox1" runat="server" FieldLabel="是否同步数据" Checked="false"
+                    AnchorHorizontal="95%">
+                    <Listeners>
+                        <Check Handler="ShowSycn(#{chkSyncData},#{txtSycnRetryTimes},#{fsSyncMO},#{fsSyncMR},#{fsSyncState});">
+                        </Check>
+                    </Listeners>
+                </ext:Checkbox>
+                <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
+                    AnchorHorizontal="95%" Hidden="true" />
+                <ext:FieldSet ID="fsSyncMO" runat="server" CheckboxToggle="true" Title="同步MO" AutoHeight="true"
+                    Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    <Items>
+                        <ext:TextField ID="txtSycnMOUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
+                            AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnMOOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                            AllowBlank="True" AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnMOFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
+                            AllowBlank="True" AnchorHorizontal="95%" />
+                    </Items>
+                </ext:FieldSet>
+                <ext:FieldSet ID="fsSyncMR" runat="server" CheckboxToggle="true" Title="同步MR" AutoHeight="true"
+                    Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    <Items>
+                        <ext:TextField ID="txtSycnMRUrl" runat="server" FieldLabel="同步地址"  AllowBlank="True"
+                            AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnMROkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                            AllowBlank="True" AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnMRFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
+                             AllowBlank="True" AnchorHorizontal="95%" />
+                    </Items>
+                </ext:FieldSet>
+                <ext:FieldSet ID="fsSyncState" runat="server" CheckboxToggle="true" Title="同步状态"
+                    AutoHeight="true" Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    <Items>
+                        <ext:TextField ID="txtSycnStateUrl" runat="server" FieldLabel="同步地址"  AllowBlank="True"
+                            AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnStateOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                            AllowBlank="True" AnchorHorizontal="95%" />
+                        <ext:TextField ID="txtSycnStateFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
+                             AllowBlank="True" AnchorHorizontal="95%" />
+                    </Items>
+                </ext:FieldSet>
             </Items>
         </ext:FormPanel>
     </Content>

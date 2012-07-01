@@ -51,6 +51,9 @@
  <object id="SPSClientDataObjectIocID" type="SPS.Data.Tables.SPSClientDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+ <object id="SPSDataSycnSettingDataObjectIocID" type="SPS.Data.Tables.SPSDataSycnSettingDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPUpperDataObjectIocID" type="SPS.Data.Tables.SPUpperDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -76,6 +79,7 @@
     <property name="SPRecordDataObjectInstance" ref="SPRecordDataObjectIocID"/>
     <property name="SPRecordExtendInfoDataObjectInstance" ref="SPRecordExtendInfoDataObjectIocID"/>
     <property name="SPSClientDataObjectInstance" ref="SPSClientDataObjectIocID"/>
+    <property name="SPSDataSycnSettingDataObjectInstance" ref="SPSDataSycnSettingDataObjectIocID"/>
     <property name="SPUpperDataObjectInstance" ref="SPUpperDataObjectIocID"/>
  
 

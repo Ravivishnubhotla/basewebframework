@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgBtnExitText" value="Log off" />
+  <add name="msgButtonChangePasswordText" value="Password" />
+  <add name="msgCbThemeEmptyText" value="Select a Themes" />
+  <add name="msgChangeThemes" value="changeTheme(#{cbTheme},#{MainTabs},'Changing Theme....');" />
+  <add name="msgDateInfo" value="Current Date : {0:D}" />
+  <add name="msgEventMaskLogOff" value="Log off..." />
+  <add name="msglblSuperAdmin" value="&lt;b&gt;Super Admin&lt;/b&gt;" />
+  <add name="msglblWelcome" value="Welcome" />
+  <add name="msgLeftPanelTitle" value="Menus" />
+  <add name="msgLoadingText" value="Loading..." />
+  <add name="msgLogoffError" value="ShowError('System Error',result.errorMessage);" />
+  <add name="msgLogoffWarningMessage" value="Are you sure log off ?" />
+  <add name="msgLogoffWarningTitle" value="Warning" />
+  <add name="msgPanel2Title" value="Main Area" />
+  <add name="msgToolbarTextItemThemsText" value="Themes:" />
+</resources>
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+

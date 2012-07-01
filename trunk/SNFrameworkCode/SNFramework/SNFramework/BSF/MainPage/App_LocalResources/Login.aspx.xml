@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgBtnLoginText" value="Login" />
+  <add name="msgBtnResetText" value="Reset" />
+  <add name="msgCheckUserInfo" value="Checking user,Please waiting......" />
+  <add name="msgLoginError" value="ShowError('Login Error',result.errorMessage);" />
+  <add name="msgLoginFailedUserLockError" value="Login failed! The user is locked, please contact administrator." />
+  <add name="msgLoginFailedUserPasswordError" value="Login failed , User name or password error!" />
+  <add name="msgPnlLoginTitle" value="Base Framework System" />
+  <add name="msgtxtPassWordBlankText" value="Please enter password!" />
+  <add name="msgtxtPassWordFieldLabel" value="Password" />
+  <add name="msgtxtUserNameBlankText" value="Please enter login id!" />
+  <add name="msgtxtUserNameFieldLabel" value="Login ID" />
+</resources>
