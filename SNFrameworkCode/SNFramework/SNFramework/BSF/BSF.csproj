@@ -131,8 +131,8 @@
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.zh-CHS.xml" />
     <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
-    <Content Include="MainPage\UCChangeMySetting.ascx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
+    <Content Include="Moudles\DataImports\DataImportPage.aspx" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -168,13 +168,6 @@
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MainPage\UCChangeMySetting.ascx.cs">
-      <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MainPage\UCChangeMySetting.ascx.designer.cs">
-      <DependentUpon>UCChangeMySetting.ascx</DependentUpon>
-    </Compile>
     <Compile Include="MainPage\UCChangePassword.ascx.cs">
       <DependentUpon>UCChangePassword.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,6 +182,13 @@
     <Compile Include="Masters\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\DataImports\DataImportPage.aspx.cs">
+      <DependentUpon>DataImportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\DataImports\DataImportPage.aspx.designer.cs">
+      <DependentUpon>DataImportPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +199,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
+    <Folder Include="Moudles\Installs\" />
+    <Folder Include="Moudles\SystemManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />
