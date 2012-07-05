@@ -1611,6 +1611,7 @@
     <Compile Include="BaseFramework\Web\MessageType.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BaseFramework\Web\PageSecurityMode.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
@@ -1688,6 +1689,7 @@
     <Compile Include="Utility\CryptographyUtil.cs" />
     <Compile Include="Utility\CsvFileReader.cs" />
     <Compile Include="Utility\EncodeUtil.cs" />
+    <Compile Include="Utility\ExcelFileReader.cs" />
     <Compile Include="Utility\HttpUtil.cs" />
     <Compile Include="Utility\RandomUtil.cs" />
     <Compile Include="Utility\ReflectionUtil.cs" />

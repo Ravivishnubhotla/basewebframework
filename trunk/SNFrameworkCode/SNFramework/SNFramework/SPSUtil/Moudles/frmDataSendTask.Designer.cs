@@ -32,16 +32,20 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSaveSendText = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txturl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tsTop = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnLoadExcel = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.ssBottom = new System.Windows.Forms.StatusStrip();
+            this.opfLoadExcel = new System.Windows.Forms.OpenFileDialog();
+            this.sfdSendText = new System.Windows.Forms.SaveFileDialog();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -83,20 +87,32 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(880, 321);
             this.dataGridView1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSaveSendText);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txturl);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(880, 60);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSaveSendText
+            // 
+            this.btnSaveSendText.Location = new System.Drawing.Point(573, 33);
+            this.btnSaveSendText.Name = "btnSaveSendText";
+            this.btnSaveSendText.Size = new System.Drawing.Size(104, 21);
+            this.btnSaveSendText.TabIndex = 4;
+            this.btnSaveSendText.Text = "生成发送链接包";
+            this.btnSaveSendText.UseVisualStyleBackColor = true;
+            this.btnSaveSendText.Click += new System.EventHandler(this.btnSaveSendText_Click);
             // 
             // button2
             // 
@@ -116,12 +132,12 @@
             this.button1.Text = "生成测试链接";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txturl
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(777, 21);
-            this.textBox1.TabIndex = 1;
+            this.txturl.Location = new System.Drawing.Point(91, 9);
+            this.txturl.Name = "txturl";
+            this.txturl.Size = new System.Drawing.Size(777, 21);
+            this.txturl.TabIndex = 1;
             // 
             // label1
             // 
@@ -135,7 +151,7 @@
             // tsTop
             // 
             this.tsTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.btnLoadExcel,
             this.toolStripButton2,
             this.toolStripButton3});
             this.tsTop.Location = new System.Drawing.Point(0, 0);
@@ -144,13 +160,14 @@
             this.tsTop.TabIndex = 10;
             this.tsTop.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // btnLoadExcel
             // 
-            this.toolStripButton1.Image = global::SPSUtil.Properties.Resources.page_excel;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(81, 22);
-            this.toolStripButton1.Text = "加载Excel";
+            this.btnLoadExcel.Image = global::SPSUtil.Properties.Resources.page_excel;
+            this.btnLoadExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLoadExcel.Name = "btnLoadExcel";
+            this.btnLoadExcel.Size = new System.Drawing.Size(81, 22);
+            this.btnLoadExcel.Text = "加载Excel";
+            this.btnLoadExcel.Click += new System.EventHandler(this.btnLoadExcel_Click);
             // 
             // toolStripButton2
             // 
@@ -176,6 +193,10 @@
             this.ssBottom.TabIndex = 9;
             this.ssBottom.Text = "statusStrip1";
             // 
+            // opfLoadExcel
+            // 
+            this.opfLoadExcel.Filter = "Excel 97-2003 File|*.xls";
+            // 
             // frmDataSendTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -189,6 +210,7 @@
             this.pnlMain.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -207,13 +229,16 @@
         private System.Windows.Forms.StatusStrip ssBottom;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnLoadExcel;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txturl;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog opfLoadExcel;
+        private System.Windows.Forms.Button btnSaveSendText;
+        private System.Windows.Forms.SaveFileDialog sfdSendText;
     }
 }
