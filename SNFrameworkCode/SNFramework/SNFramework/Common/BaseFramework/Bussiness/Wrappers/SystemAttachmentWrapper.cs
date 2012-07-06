@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemAttachmentWrapper  
+    public partial class SystemAttachmentWrapper 
     {
         #region Static Common Data Operation
 

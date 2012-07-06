@@ -142,6 +142,7 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -1644,6 +1645,7 @@
     <Compile Include="Resources\XmlResourceReader.cs" />
     <Compile Include="Resources\XmlResourceSet.cs" />
     <Compile Include="Resources\XmlResourceWriter.cs" />
+    <Compile Include="Securitys\LDAP\ADUser.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
     <Compile Include="SevenZip\Common\CRC.cs" />
     <Compile Include="SevenZip\Common\InBuffer.cs" />

@@ -36,6 +36,12 @@
 		<property column="IsNeedChgPwd" type="Boolean" name="IsNeedChgPwd"   not-null="true"  />	
 		<property column="PasswordSalt" type="string" name="PasswordSalt"   length="256" />	
 		<property column="LoweredEmail" type="string" name="LoweredEmail"   length="256" />	
+		<property column="ValidateType" type="string" name="ValidateType"   length="100" />	
+		<property column="ADDomain" type="string" name="ADDomain"   length="1000" />	
+		<property column="BindUKey" type="Boolean" name="BindUKey"   />	
+		<property column="USBKeySerial" type="string" name="USBKeySerial"   length="100" />	
+		<property column="USBKeyCode" type="string" name="USBKeyCode"   length="1000" />	
+		<property column="SSOKey" type="string" name="SSOKey"   length="100" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

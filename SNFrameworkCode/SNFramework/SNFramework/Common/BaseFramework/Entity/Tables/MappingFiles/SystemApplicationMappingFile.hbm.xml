@@ -16,6 +16,7 @@
 		<property column="SystemApplication_Description" type="string" name="SystemApplicationDescription"   length="4000" />	
 		<property column="SystemApplication_Url" type="string" name="SystemApplicationUrl"   length="400" />	
 		<property column="SystemApplication_IsSystemApplication" type="Boolean" name="SystemApplicationIsSystemApplication"   />	
+		<property column="Status" type="string" name="Status"   length="20" />	
 		<property column="OrderIndex" type="int" name="OrderIndex"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
