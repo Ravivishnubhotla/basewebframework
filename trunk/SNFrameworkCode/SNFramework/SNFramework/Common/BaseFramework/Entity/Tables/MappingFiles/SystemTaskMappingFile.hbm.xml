@@ -16,13 +16,13 @@
 		<property column="AssignedUserID" type="int" name="AssignedUserID"   />	
 		<property column="Status" type="string" name="Status"   length="20" />	
 		<property column="DateDue" type="DateTime" name="DateDue"   />	
-		<property column="IsDateDue" type="Boolean" name="IsDateDue"   />	
 		<property column="DateStart" type="DateTime" name="DateStart"   />	
-		<property column="IsDateStart" type="Boolean" name="IsDateStart"   />	
+		<property column="FinishedDate" type="DateTime" name="FinishedDate"   />	
+		<property column="IsAlertInHome" type="Boolean" name="IsAlertInHome"   />	
+		<property column="IsRead" type="Boolean" name="IsRead"   />	
 		<property column="Priority" type="string" name="Priority"   length="20" />	
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
-		<property column="IsFinished" type="Boolean" name="IsFinished"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

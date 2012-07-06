@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.Interfaces;
