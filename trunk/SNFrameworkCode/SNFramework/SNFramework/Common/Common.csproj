@@ -1612,7 +1612,6 @@
     <Compile Include="BaseFramework\Web\MessageType.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BaseFramework\Web\PageSecurityMode.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
@@ -1646,6 +1645,10 @@
     <Compile Include="Resources\XmlResourceSet.cs" />
     <Compile Include="Resources\XmlResourceWriter.cs" />
     <Compile Include="Securitys\LDAP\ADUser.cs" />
+    <Compile Include="Securitys\SSO\BaseSSOSecurityPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Securitys\SSO\SSOProvider.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
     <Compile Include="SevenZip\Common\CRC.cs" />
     <Compile Include="SevenZip\Common\InBuffer.cs" />
