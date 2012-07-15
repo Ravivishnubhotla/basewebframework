@@ -35,6 +35,44 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSF", "BSF\BSF.csproj", "{E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSWeb", "SPSWeb\SPSWeb.csproj", "{4214970B-6082-4874-B6F4-186E619EC001}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{C7ED35BE-FFFD-46F0-9A76-225AFD1BC408}"
+	ProjectSection(SolutionItems) = preProject
+		ThirdsDll\AjaxControlToolkit.dll = ThirdsDll\AjaxControlToolkit.dll
+		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
+		ThirdsDll\AspNetPager.dll = ThirdsDll\AspNetPager.dll
+		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
+		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
+		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
+		ThirdsDll\Ext.Net.Utilities.dll = ThirdsDll\Ext.Net.Utilities.dll
+		ThirdsDll\Ext.Net.UX.dll = ThirdsDll\Ext.Net.UX.dll
+		ThirdsDll\ICSharpCode.SharpZipLib.dll = ThirdsDll\ICSharpCode.SharpZipLib.dll
+		ThirdsDll\Iesi.Collections.dll = ThirdsDll\Iesi.Collections.dll
+		ThirdsDll\Ionic.Zip.dll = ThirdsDll\Ionic.Zip.dll
+		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
+		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
+		ThirdsDll\Microsoft.ReportViewer.WebForms.dll = ThirdsDll\Microsoft.ReportViewer.WebForms.dll
+		ThirdsDll\MySql.Data.dll = ThirdsDll\MySql.Data.dll
+		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
+		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
+		ThirdsDll\NPOI.dll = ThirdsDll\NPOI.dll
+		ThirdsDll\NVelocity.dll = ThirdsDll\NVelocity.dll
+		ThirdsDll\Quartz.dll = ThirdsDll\Quartz.dll
+		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
+		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
+		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
+		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
+		ThirdsDll\Spring.Data.NHibernate32.dll = ThirdsDll\Spring.Data.NHibernate32.dll
+		ThirdsDll\Spring.Scheduling.Quartz.dll = ThirdsDll\Spring.Scheduling.Quartz.dll
+		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
+		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
+		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
+		ThirdsDll\Spring.Web.Extensions.dll = ThirdsDll\Spring.Web.Extensions.dll
+		ThirdsDll\Spring.Web.Mvc.dll = ThirdsDll\Spring.Web.Mvc.dll
+		ThirdsDll\SubSonic.Core.dll = ThirdsDll\SubSonic.Core.dll
+		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
+		ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll = ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
