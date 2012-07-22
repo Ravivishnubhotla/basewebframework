@@ -68,6 +68,18 @@
             else
                 return '否';
         };
+        
+                        function formatFloat(src, pos) {
+            return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
+        }
+
+ 
+        
+
+        var decimalFormat1 = function(value) {
+            return formatFloat(value, 2).toString(); 
+        };
+
 
 
         function RefreshSPClientChannelSettingList() {
@@ -192,6 +204,9 @@
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="AllowFilter" Type="Boolean" />
                     <ext:RecordField Name="DayTotalLimitInfo" />
+                    <ext:RecordField Name="DefaultPrice" />
+                     <ext:RecordField Name="DefaultClientPrice" />                   
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -211,7 +226,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name" ValueField="Id"
+                                        TypeAhead="true" Mode="Local" Editable="True" DisplayField="Name" ValueField="Id"
                                         EmptyText="全部">
                                         <Triggers>
                                             <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
@@ -251,8 +266,10 @@
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Header="下家组"
                                     Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colMoCode" DataIndex="MoCode" Header="指令" Sortable="false"
+                                <ext:Column ColumnID="colMoCode" DataIndex="ChannelClientCode" Header="指令" Sortable="True"
                                     Width="120">
+                                </ext:Column>
+                                <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultClientPrice" Header="价格" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDayTotalLimitInfo" DataIndex="DayTotalLimitInfo" Header="日总限"
                                     Sortable="True">

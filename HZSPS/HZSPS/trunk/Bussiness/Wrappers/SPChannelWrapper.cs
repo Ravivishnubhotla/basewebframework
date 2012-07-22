@@ -512,7 +512,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
             paymentInfo.Ip = httpGetPostRequest.RequestIp;
-            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
 
@@ -522,6 +521,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 paymentInfo.City = phoneAreaInfo.City;
                 paymentInfo.MobileOperators = phoneAreaInfo.MobileOperators;
             }
+
+            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept(paymentInfo);
 
 
 
@@ -671,7 +672,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         private bool CheckClientChannelSettingHasFilters(List<SPClientChannelSettingWrapper> allEnableClientChannelSettings)
         {
             SPClientChannelSettingWrapper clientChannelSettingWrapper =
-                allEnableClientChannelSettings.Find(p => (p.CommandType == "1" &&p.AllowFilter.HasValue && p.AllowFilter.Value));
+                allEnableClientChannelSettings.Find(p => ((p.CommandType == "1" || p.CommandType == "3") && p.AllowFilter.HasValue && p.AllowFilter.Value));
 
             return (clientChannelSettingWrapper != null);
         }
@@ -679,26 +680,26 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         private List<SPClientChannelSettingWrapper> FindMatchedClientChannelSettingHasFilters(List<SPClientChannelSettingWrapper> allEnableClientChannelSettings,string ywid,string cpid)
         {
             List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters =
-                allEnableClientChannelSettings.FindAll(p => (p.CommandType == "1" && p.AllowFilter.HasValue && p.AllowFilter.Value) && p.IsMacthByYWID(ywid) && p.IsMacthSPCode(cpid));
+                allEnableClientChannelSettings.FindAll(p => ((p.CommandType == "1" || p.CommandType == "3") && p.AllowFilter.HasValue && p.AllowFilter.Value) && p.IsMacthByYWID(ywid) && p.IsMacthSPCode(cpid));
 
             return findMatchedClientChannelSettingHasFilters;
         }
 
         private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,
-                                                                                      Hashtable fieldMappings, PhoneAreaInfo phoneAreaInfo)
+                                                                                      Hashtable fieldMappings, 
+                                                                                      PhoneAreaInfo phoneAreaInfo)
         {
+            //获取所有的指令
             List<SPClientChannelSettingWrapper> allEnableClientChannelSettings = GetAllClientChannelSetting();
-
-            SPClientChannelSettingWrapper defaultClientChannelSetting =
-                FindDefaultClientChannelSetting(allEnableClientChannelSettings);
-
-
+            //或者默认指令
+            SPClientChannelSettingWrapper defaultClientChannelSetting = FindDefaultClientChannelSetting(allEnableClientChannelSettings);
+            //如果有分省份指令
             if(CheckClientChannelSettingHasFilters(allEnableClientChannelSettings))
             {
+                //获取SPcode和mo
                 string cpid = GetMappedParamValueFromRequest(requestValues, "cpid", fieldMappings);
                 string ywid = GetMappedParamValueFromRequest(requestValues, "ywid", fieldMappings);
-
-        
+                //string mobile = GetMappedParamValueFromRequest(requestValues, "mobile", fieldMappings);
 
                 List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters = FindMatchedClientChannelSettingHasFilters(allEnableClientChannelSettings, ywid, cpid);
 
@@ -707,7 +708,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     SPClientChannelSettingWrapper macthedYWIDAndProvinceClientChannelSettingWrapper = null;
 
                     if(phoneAreaInfo!=null)
-                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo)));
+                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo) && p.IsEnable));
 
                     if (macthedYWIDAndProvinceClientChannelSettingWrapper != null)
                         return macthedYWIDAndProvinceClientChannelSettingWrapper;
@@ -723,27 +724,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
 
-
-
-
-            
-
             SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in allEnableClientChannelSettings
                                                                        where (cc.IsMacth(requestValues, fieldMappings))
                                                                        orderby cc.OrderIndex descending
                                                                        select cc).FirstOrDefault();
+
             if (macthClientChannelSetting == null)
                 return defaultClientChannelSetting;
-
 
             int orderIndex = macthClientChannelSetting.OrderIndex.HasValue?macthClientChannelSetting.OrderIndex.Value:0;
 
             List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in allEnableClientChannelSettings
-                                                                                 where
-                                                                                     (cc.IsMacth(requestValues,
-                                                                                                 fieldMappings) &&
-                                                                                      cc.OrderIndex == orderIndex)
+                                                                                 where (cc.IsMacth(requestValues, fieldMappings) && cc.OrderIndex == orderIndex)
                                                                                  select cc).ToList();
+
             if (allmacthClientChannelSettings.Count <= 0)
             {
                 return defaultClientChannelSetting;
@@ -757,27 +751,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings,"cpid")));
             }
         }
-
-        //private SPClientChannelSettingWrapper GetMacthRuleChannelSetting(SPClientChannelSettingWrapper channelSetting,
-        //                                                                 Hashtable requestValues,
-        //                                                                 Hashtable fieldMappings)
-        //{
-        //    string columnName = "ywid";
-
-        //    if (!string.IsNullOrEmpty(channelSetting.CommandColumn))
-        //    {
-        //        columnName = channelSetting.CommandColumn;
-        //    }
-
-        //    string ywid = GetMappedParamValueFromRequest(requestValues, columnName, fieldMappings);
-
-        //    if (channelSetting.MatchByYWID(ywid))
-        //    {
-        //        return channelSetting;
-        //    }
-
-        //    return null;
-        //}
 
         public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName,
                                                             Hashtable fieldMappings)
@@ -837,57 +810,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             return record;
         }
-
-        //public void SaveStatReport(Hashtable hashtable, string recievdData, string query, string stat)
-        //{
-        //    Hashtable fieldMappings = GetFieldMappings();
-
-        //    string linkid = GetMappedParamValueFromRequest(hashtable, "linkid", fieldMappings);
-
-        //    var statReport = new SPStatReportWrapper();
-        //    statReport.ChannelID = Id;
-        //    statReport.LinkID = linkid;
-        //    statReport.CreateDate = DateTime.Now;
-        //    statReport.QueryString = query;
-        //    statReport.RequestContent = recievdData;
-        //    statReport.IsPayOk = false;
-
-        //    statReport.Stat = stat;
-
-        //    SPStatReportWrapper.Save(statReport);
-        //}
-
-        //public void SaveStatReport(IHttpRequest httpRequest, string stat)
-        //{
-        //    Hashtable fieldMappings = GetFieldMappings();
-
-        //    //string linkid = "";
-
-        //    //if (!string.IsNullOrEmpty(this.ReportIDParams))
-        //    //{
-        //    //    if (httpGetPostRequest.RequestParams.ContainsKey(this.ReportIDParams.ToLower()))
-        //    //        linkid = httpGetPostRequest.RequestParams[this.ReportIDParams.ToLower()].ToString();
-        //    //}
-        //    //else
-        //    //{
-        //    //    linkid = GetMappedParamValueFromRequest(httpGetPostRequest.RequestParams, "linkid", fieldMappings);
-        //    //}
-
-        //    string linkid = GetMappedParamValueFromRequest(httpRequest.RequestParams, "linkid", fieldMappings);
-
-        //    var statReport = new SPStatReportWrapper();
-        //    statReport.ChannelID = Id;
-        //    statReport.LinkID = linkid;
-        //    statReport.CreateDate = DateTime.Now;
-        //    statReport.QueryString = httpRequest.RequestQueryString;
-        //    statReport.RequestContent = httpRequest.RequestData;
-        //    statReport.Stat = stat;
-
-        //    SPStatReportWrapper.Save(statReport);
-        //}
-
-  
-
+ 
         public List<SPChannelDefaultClientSycnParamsWrapper> GetAllEnableDefaultSendParams()
         {
             return
@@ -951,12 +874,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return false;
             }
 
-            //if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
-            //{
-            //    error.ErrorType = RequestErrorType.RepeatLinkID;
-            //    error.ErrorMessage = " 通道 ‘" + Name + "’ 请求失败：重复的LinkID .";
-            //    return false;
-            //}
+ 
 
             Hashtable exparams = GetEXParamsValue(httpGetPostReques.RequestParams);
 
@@ -983,18 +901,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     Logger.Error("号段读取错误：" + ex.Message);
                 }
             }
-            //else
-            //{
-            //    if (string.IsNullOrEmpty(mobile))
-            //    {
-            //        Logger.Error("空号错误");
-            //    }
-            //    else
-            //    {
-            //        Logger.Error("号码错误：" + mobile);
-            //    }
-            //}
-
+ 
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostReques.RequestParams,
                                                                                                    fieldMappings, phoneAreaInfo);
@@ -1192,11 +1099,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             paymentInfo.ClientGroupID = statepaymentInfo.ClientGroupID;
             paymentInfo.MobileOperators = statepaymentInfo.MobileOperators;
             paymentInfo.Ip = statepaymentInfo.Ip;
-            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept();
             paymentInfo.CreateDate = DateTime.Now;
             paymentInfo.RequestContent = httpGetPostRequest.RequestData;
 
             paymentInfo.SetPaymentProviceAndCity();
+
+            paymentInfo.IsIntercept = channelSetting.CaculteIsIntercept(paymentInfo);
 
             paymentInfo.IsSycnData = false;
 

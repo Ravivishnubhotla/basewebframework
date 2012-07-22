@@ -35,6 +35,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     else
                         this.cmbUpperID.ClearValue();
 
+                    if(obj.Rate.HasValue)
+                    {
+                        numRate.Text = obj.Rate.Value.ToString();
+                    }
+                    else
+                    {
+                        numRate.Text = "15";
+                    }
+
+                    if (obj.Price.HasValue)
+                    {
+                        this.txtPrice.Text = obj.Price.ToString();
+                    }
+                    else
+                    {
+                        this.txtPrice.Text = "1.00";
+                    }
+
+
                     winSPChannelEditInfo.Show();
 
                 }
@@ -64,6 +83,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                         SPUperWrapper.FindById(Convert.ToInt32(this.cmbUpperID.SelectedItem.Value.ToString()));
                 else
                     obj.UperID = null;
+
+                obj.Rate = Convert.ToInt32(numRate.Value);
+
+                obj.Price = Convert.ToDecimal(txtPrice.Value);
 
                 SPChannelWrapper.Update(obj);
 

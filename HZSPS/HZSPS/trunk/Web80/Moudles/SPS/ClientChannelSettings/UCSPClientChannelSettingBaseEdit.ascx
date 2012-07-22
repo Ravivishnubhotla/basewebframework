@@ -110,7 +110,7 @@
                                                 <ext:ListItem Value="2" Text="异步同步"></ext:ListItem>
                                             </Items>
                                         </ext:ComboBox>
-                                    </ext:Anchor>
+                                    </ext:Anchor> 
                                 </ext:FormLayout>
                             </Body>
                             <Listeners>

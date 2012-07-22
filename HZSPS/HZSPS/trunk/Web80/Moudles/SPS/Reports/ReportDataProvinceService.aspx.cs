@@ -121,8 +121,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (this.IsPostBack)
                 return;
+            ReportViewer1.LocalReport.EnableHyperlinks = true;
             FixReportDefinition(this.Server.MapPath("ReportDataProvince.rdl"));
             ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("ReportDataProvince.rdl");
+ 
             BindData();
         }
 

@@ -60,6 +60,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             if (e.Sort != null)
                 sortFieldName = e.Sort;
 
+            if (sortFieldName == "ChannelClientRuleMatch")
+                sortFieldName = "CommandCode";
+            else if (sortFieldName == "ChannelClientCode")
+                sortFieldName = "CommandCode";
+ 
+
+
             int startIndex = 0;
 
             if (e.Start > -1)

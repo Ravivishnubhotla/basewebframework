@@ -32,6 +32,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndProvinceAndPort(string sortFieldName, bool isDesc, int channleId, string province, string port, int pageIndex, int pageSize, out int recordCount);
         decimal CaculteActualInterceptRate(SPClientChannelSettingEntity entity, DateTime date);
         List<SPClientChannelSettingEntity> FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(string sortFieldName, bool isDesc, int channleId, string mo, string port, int pageIndex, int pageSize, out int recordCount);
+        int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province);
+        int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -186,6 +188,16 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                                                                                      channelEntity, mo, port,
                                                                                      pageIndex, pageSize,
                                                                                      out recordCount);
+        }
+
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province)
+        {
+            return AdoNetDb.CacultePaymentCount(dateTime, clientChannelId, province);
+        }
+
+        public int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces)
+        {
+            return AdoNetDb.CacultePaymentCountNotInProvince(dateTime, clientChannelId, notInprovinces);
         }
     }
 }

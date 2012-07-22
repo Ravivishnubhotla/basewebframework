@@ -14,15 +14,20 @@
         var decimalFormat = function(value) {
             return formatFloat(value, 2).toString() + "%";
         };
+        
+
+        var decimalFormat1 = function(value) {
+            return formatFloat(value, 2).toString(); 
+        };
 
         var showPerent = function(value) {
             return value.toString() + "%";
         };
-        
+
 
         var filterfn = function(rec, id) {
             return (rec.data.TotalCount > 0);
-        }
+        };
 
 
         function AllValidate(frm1,frm2,frm3)
@@ -235,8 +240,8 @@
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
-                      <ext:RecordField Name="AssignedUser" />                  
-                    
+                    <ext:RecordField Name="AssignedUser" />
+                    <ext:RecordField Name="Price" Type="Float" />
                     <ext:RecordField Name="IsSycnData" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
@@ -333,8 +338,8 @@
                                 <ext:Column ColumnID="colClientGroupName" DataIndex="ClientGroupName" Width="55"
                                     Header="下家组" Sortable="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colAssignedUser" DataIndex="AssignedUser" Width="50"
-                                    Header="分配" Sortable="true">
+                                <ext:Column ColumnID="colAssignedUser" DataIndex="AssignedUser" Width="50" Header="分配"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelID" DataIndex="ClientName" Header="下家" Sortable="true">
                                 </ext:Column>
@@ -391,6 +396,9 @@
                                 <ext:Column ColumnID="colInterceptRate" DataIndex="SetInterceptRate" Header="扣率"
                                     Sortable="true" Width="30">
                                     <Renderer Fn="showPerent" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true" Width="30">
+                                    <Renderer Fn="decimalFormat1" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClient" DataIndex="cmdEditChannelClient" Header="设置"
                                     Sortable="true" Width="30">

@@ -46,7 +46,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
               	    this.txtFuzzyCommand.Text = obj.FuzzyCommand.ToString();
                     this.txtPort.Text = obj.Port.ToString();          	
               	    this.txtChannelType.Text = obj.ChannelType.ToString();
-                    this.txtPrice.Text = obj.Price.ToString();
                     this.txtRate.Text = obj.Rate.ToString();
                     this.txtOkMessage.Text = obj.OkMessage;
                     this.txtFailedMessage.Text = obj.FailedMessage;
@@ -144,7 +143,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.FuzzyCommand = this.txtFuzzyCommand.Text.Trim();
                 obj.Port = this.txtPort.Value.ToString();
                 obj.ChannelType = this.txtChannelType.Text.Trim();
-                obj.Price = Convert.ToDecimal(this.txtPrice.Value);
+
                 obj.Rate = Convert.ToInt32(this.txtRate.Value);
                 obj.Status = 0;
                 obj.OkMessage = txtOkMessage.Text.Trim();

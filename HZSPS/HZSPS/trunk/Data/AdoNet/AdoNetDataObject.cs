@@ -1825,5 +1825,51 @@ and ChannleClientID =@ChannleClientID";
 
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
+
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID and Province=@Province";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("Province", province);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID ";
+
+            string[] notinprovincesString = notInprovinces.ToArray();
+
+            for (int i = 0; i < notinprovincesString.Length; i++)
+            {
+                notinprovincesString[i] = "'" + notinprovincesString[i] + "'";
+            }
+
+
+            sql += " and Province not in (" + string.Join(",", notinprovincesString) + ") ";
+ 
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+            
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
     }
 }

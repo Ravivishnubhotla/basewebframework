@@ -91,42 +91,32 @@
         }
 
 
-        var showCommands=function(grid, toolbar, rowIndex, record)
-        {
-      
-            if(record.data.SyncData!=null && record.data.SyncData)
-            {
+        var showCommands = function(grid, toolbar, rowIndex, record) {
+
+            if (record.data.SyncData != null && record.data.SyncData) {
                 toolbar.items.items[0].menu.items.items[1].show();
                 //toolbar.items.items[0].menu.items.items[2].show();
                 toolbar.items.items[0].menu.items.items[8].show();
-            }
-            
-            else{
+            } else {
                 toolbar.items.items[0].menu.items.items[1].hide();
                 //toolbar.items.items[0].menu.items.items[2].hide();
                 toolbar.items.items[0].menu.items.items[8].hide();
-        
+
             }
 
-            if(record.data.CommandType=="1" && record.data.AllowFilter!=null && record.data.AllowFilter)
-            {
-                 toolbar.items.items[0].menu.items.items[7].show();        
-            }
-            else
-            {
-                 toolbar.items.items[0].menu.items.items[7].hide();      
+            if ((record.data.CommandType == "1" || record.data.CommandType == "3") && record.data.AllowFilter != null && record.data.AllowFilter) {
+                toolbar.items.items[0].menu.items.items[7].show();
+            } else {
+                toolbar.items.items[0].menu.items.items[7].hide();
             }
 
-            if(record.data.CommandType=="3")
-            {
-                 toolbar.items.items[0].menu.items.items[3].show();        
+            if (record.data.CommandType == "3") {
+                toolbar.items.items[0].menu.items.items[3].show();
+            } else {
+                toolbar.items.items[0].menu.items.items[3].hide();
             }
-            else
-            {
-                 toolbar.items.items[0].menu.items.items[3].hide();      
-            }
-               
-        }
+
+        };
 
         function processcmd(cmd, id) {
 
@@ -365,15 +355,15 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colOrderIndex" DataIndex="OrderIndex" Header="序号" Width="30">
                                 </ext:Column>
-                                <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="false"
+                                <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="true"
                                     Width="30">
                                     <Renderer Fn="change" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
-                                    Sortable="false" Width="120">
+                                    Sortable="true" Width="120">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClientCode" DataIndex="ChannelClientCode" Header="指令"
-                                    Sortable="false" Width="120">
+                                    Sortable="true" Width="120">
                                 </ext:Column>
                                 <ext:CommandColumn Header="设置管理" Width="50">
                                     <Commands>

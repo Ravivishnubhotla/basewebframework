@@ -6,6 +6,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title></title>
+    <script type="text/javascript">
+        function showProvince(province) {
+            alert(province);
+        }
+
+        
+
+    </script>
 </head>
 <body>
 <div style="Width:auto;"> 
@@ -13,7 +21,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <rsweb:ReportViewer ID="ReportViewer1" runat="server"  
-       Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="True" onreportrefresh="ReportViewer1_ReportRefresh">
+       Width="100%" Height="100%" AsyncRendering="False"   SizeToReportContent="True" onreportrefresh="ReportViewer1_ReportRefresh">
     </rsweb:ReportViewer>
     </form>
 </div>
