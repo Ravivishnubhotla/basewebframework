@@ -138,12 +138,136 @@ namespace LD.SPPipeManage.Data.AdoNet
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters);
         }
 
+        public int GetAllRecordCount(DateTime startDate, DateTime endDate, int? channleID, int? clientGroupID, int? channelclientID, string ywid, string cpid, bool hassubcode, string province, string dataType)
+        {
+            string sql =
+                "Select Count(*) from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate ";
+
+            sql += BuildFilterSqlByDataType(dataType);
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            if (channleID.HasValue)
+            {
+                sql += " and  ChannleID = @ChannleID ";
+                dbParameters.AddWithValue("ChannleID", channleID);
+            }
+
+            if (clientGroupID.HasValue)
+            {
+                sql += " and  ClientGroupID = @ClientGroupID ";
+                dbParameters.AddWithValue("ClientGroupID", clientGroupID);
+            }
+
+            if (channelclientID.HasValue)
+            {
+                sql += " and  ChannleClientID = @ChannleClientID ";
+                dbParameters.AddWithValue("ChannleClientID", channelclientID);
+            }
+
+ 
+
+            if (!string.IsNullOrEmpty(ywid))
+            {
+                if(hassubcode)
+                    sql += " and  ywid like '" + ywid + "%' ";
+                else
+                {
+                    sql += " and  ywid = @ywid ";
+                    dbParameters.AddWithValue("ywid", ywid);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(cpid))
+            {
+                sql += " and  cpid = @cpid ";
+                dbParameters.AddWithValue("cpid", cpid);
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                sql += " and  province = @province ";
+                dbParameters.AddWithValue("province", cpid);
+            }
+
+            
+ 
+
+            return this.ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int GetPhoneCount(DateTime startDate, DateTime endDate, int? channleID, int? clientGroupID, int? channelclientID, string ywid, string cpid, bool hassubcode, string province, string dataType)
+        {
+
+            string sql =
+                "Select Count(*) from ( Select distinct MobileNumber from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate ";
+
+            sql += BuildFilterSqlByDataType(dataType);
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("endDate", endDate.Date.AddDays(1));
+
+            if(channleID.HasValue)
+            {
+                sql += " and  ChannleID = @ChannleID ";
+                dbParameters.AddWithValue("ChannleID", channleID);
+            }
+
+            if (clientGroupID.HasValue)
+            {
+                sql += " and  ClientGroupID = @ClientGroupID ";
+                dbParameters.AddWithValue("ClientGroupID", clientGroupID);
+            }
+
+            if (channelclientID.HasValue)
+            {
+                sql += " and  ChannleClientID = @ChannleClientID ";
+                dbParameters.AddWithValue("ChannleClientID", channelclientID);
+            }
+
+            if (!string.IsNullOrEmpty(ywid))
+            {
+                if (hassubcode)
+                    sql += " and  ywid like '" + ywid + "%' ";
+                else
+                {
+                    sql += " and  ywid = @ywid ";
+                    dbParameters.AddWithValue("ywid", ywid);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(cpid))
+            {
+                sql += " and  cpid = @cpid ";
+                dbParameters.AddWithValue("cpid", cpid);
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                sql += " and  province = @province ";
+                dbParameters.AddWithValue("province", cpid);
+            }
+
+            sql += " )   as PC ";
+
+            return this.ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
         public int FindAllPaymentCountByDateAndType(DateTime startDate, DateTime endDate, int channleClientID, string dataType)
         {
 
             string sql = "Select Count(*) from SPPaymentInfo with(nolock) where CreateDate >= @startDate and  CreateDate <  @endDate and  ChannleClientID = @ChannleClientID ";
 
             sql += BuildFilterSqlByDataType(dataType);
+
+
 
 
             //switch (dataType)
@@ -1865,5 +1989,84 @@ and ChannleClientID =@ChannleClientID";
 
             return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
         }
+
+
+
+        public int CaculteDataCount(DateTime startTime,DateTime endTime, List<int> clientChannelIds,bool isIntercept)
+        {
+            string sql = @" SELECT count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE  (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if(isIntercept)
+                sql += " And IsIntercept=0 ";
+
+            if(clientChannelIds.Count>0)
+            {
+                sql += " and ChannleClientID in ( ";
+
+                for (int i = 0; i < clientChannelIds.Count; i++)
+                {
+                    if(i == 0)
+                    {
+                        sql += clientChannelIds[i].ToString();
+                    }
+                    else
+                    {
+                       sql += " , " + clientChannelIds[i].ToString();                     
+                    }
+                }
+
+                sql += " ) ";
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", startTime.Date);
+
+            dbParameters.AddWithValue("enddate", endTime.Date.AddDays(1));
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CacultePhoneCount(DateTime startTime,DateTime endTime, List<int> clientChannelIds,bool isIntercept)
+        {
+            string sql = @" SELECT MobileNumber FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE  (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if(isIntercept)
+                sql += " And IsIntercept=0 ";
+
+            if(clientChannelIds.Count>0)
+            {
+                sql += " and ChannleClientID in ( ";
+
+                for (int i = 0; i < clientChannelIds.Count; i++)
+                {
+                    if(i == 0)
+                    {
+                        sql += clientChannelIds[i].ToString();
+                    }
+                    else
+                    {
+                       sql += " , " + clientChannelIds[i].ToString();                     
+                    }
+                }
+
+                sql += " ) ";
+            }
+
+            sql += " group by MobileNumber ";
+
+            sql = " select Count(*) from (" + sql + ") as t ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", startTime.Date);
+
+            dbParameters.AddWithValue("enddate", endTime.Date.AddDays(1));
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+
+ 
     }
 }

@@ -108,13 +108,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 if (spChannelParamsWrapper.ParamsMappingName == "cpid")
                 {
-                    if (!string.IsNullOrEmpty(ClientChannelID.ChannelCode))
+                    if (ClientChannelID!=null  && !string.IsNullOrEmpty(ClientChannelID.ChannelCode))
                         txt.Value = ClientChannelID.ChannelCode;
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName == "ywid")
                 {
-                    if (!string.IsNullOrEmpty(ClientChannelID.CommandCode))
+                    if (ClientChannelID != null && !string.IsNullOrEmpty(ClientChannelID.CommandCode))
                         txt.Value = ClientChannelID.CommandCode;
                 }
 

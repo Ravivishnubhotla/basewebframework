@@ -47,6 +47,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_REPORTIDPARAMS = "ReportIDParams";
 		public static readonly string PROPERTY_NAME_CHANNEDATA = "ChanneData";
+		public static readonly string PROPERTY_NAME_HASCONVERTRULE = "HasConvertRule";
 		
         #endregion
 	
@@ -88,6 +89,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isDisable;
 		private string _reportIDParams;
 		private string _channeData;
+		private bool? _hasConvertRule;
 		
 		#endregion
 
@@ -130,6 +132,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isDisable = null;
 			_reportIDParams = null;
 			_channeData = null;
+			_hasConvertRule = null;
 		}
 		#endregion
 
@@ -137,7 +140,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues, bool? hasFilters, string channelInfo, bool? statSendOnce, bool? isMonitoringRequest, bool? isDisable, string reportIDParams, string channeData)
+		public SPChannelEntity( int id, string name, string description, string area, string operatorp, string channelCode, string fuzzyCommand, string accurateCommand, string port, string channelType, decimal? price, int? rate, int? status, DateTime? createTime, int? createBy, string okMessage, string failedMessage, SPUperEntity uperID, string channelCodeParamsName, bool? isAllowNullLinkID, bool? recStatReport, string statParamsName, string statParamsValues, bool? hasRequestTypeParams, string requestTypeParamName, string requestTypeValues, bool? hasFilters, string channelInfo, bool? statSendOnce, bool? isMonitoringRequest, bool? isDisable, string reportIDParams, string channeData, bool? hasConvertRule)
 		{
 			_id = id;
 			_name = name;
@@ -172,6 +175,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isDisable = isDisable;
 			_reportIDParams = reportIDParams;
 			_channeData = channeData;
+			_hasConvertRule = hasConvertRule;
 		}
 		#endregion     
 	
@@ -693,6 +697,20 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for ChanneData", value, value.ToString());
 				_isChanged |= (_channeData != value); _channeData = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasConvertRule
+		{
+			get { return _hasConvertRule; }
+
+			set	
+			{
+				_isChanged |= (_hasConvertRule != value); _hasConvertRule = value;
 			}
 		}
 		/// <summary>

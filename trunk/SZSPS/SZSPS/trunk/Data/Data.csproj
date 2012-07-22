@@ -296,6 +296,10 @@
     <Compile Include="Tables\SPClientPriceDataObject.Designer.cs">
       <DependentUpon>SPClientPriceDataObject.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPCustomPhoneAreaDataObject.cs" />
+    <Compile Include="Tables\SPCustomPhoneAreaDataObject.Designer.cs">
+      <DependentUpon>SPCustomPhoneAreaDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPDayReportDataObject.cs" />
     <Compile Include="Tables\SPDayReportDataObject.Designer.cs">
       <DependentUpon>SPDayReportDataObject.cs</DependentUpon>

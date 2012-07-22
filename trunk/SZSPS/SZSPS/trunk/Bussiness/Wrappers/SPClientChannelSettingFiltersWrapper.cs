@@ -97,5 +97,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			
 		#endregion
 
+	    public bool HasPhone(string mobile)
+	    {
+	        return SPCustomPhoneAreaWrapper.FindPhoneInCustomPhoneArea(this.FilterValue, mobile);
+	    }
     }
 }

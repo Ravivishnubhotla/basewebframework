@@ -104,7 +104,7 @@
 
             }
 
-            if (record.data.CommandType == "1" && record.data.AllowFilter != null && record.data.AllowFilter) {
+            if ((record.data.CommandType == "1"||record.data.CommandType == "3") && record.data.AllowFilter != null && record.data.AllowFilter) {
                 toolbar.items.items[0].menu.items.items[7].show();
             } else {
                 toolbar.items.items[0].menu.items.items[7].hide();

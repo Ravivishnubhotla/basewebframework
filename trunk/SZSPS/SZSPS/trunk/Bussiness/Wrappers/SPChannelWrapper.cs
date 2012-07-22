@@ -393,57 +393,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             Hashtable exparams = GetEXParamsValue(httpGetPostRequest.RequestParams);
 
-            PhoneAreaInfo phoneAreaInfo = null;
-
-#if DEBUG 
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-            {
-                try
-                {
- 
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
- 
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex.Message);
-                }
-            }
-#else
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-            {
-                try
-                {
-                    try
-                    {
-                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
-                }
-            }
-            //else
-            //{
-            //    if (string.IsNullOrEmpty(mobile))
-            //    {
-            //        Logger.Error("ø’∫≈¥ÌŒÛ");
-            //    }
-            //    else
-            //    {
-            //        Logger.Error("∫≈¬Î¥ÌŒÛ£∫" + mobile);               
-            //    }
-            //}
-#endif
-
-
-
+            PhoneAreaInfo phoneAreaInfo = GetPhoneAreaInfo(mobile);
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostRequest.RequestParams,
                                                                                                    fieldMappings,phoneAreaInfo);
@@ -592,6 +542,52 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        private static PhoneAreaInfo GetPhoneAreaInfo(string mobile)
+        {
+            PhoneAreaInfo phoneAreaInfo = null;
+#if DEBUG 
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+ 
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+ 
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+#else
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    try
+                    {
+                        //phoneAreaInfo = MongoDbData.GetPhoneAreaInfo(mobile);
+
+                        //if (phoneAreaInfo != null)
+                        //    return phoneAreaInfo;
+ 
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
+                }
+            }
+#endif
+            return phoneAreaInfo;
+        }
+
 
         public List<SPChannelParamsWrapper> GetAllShowParams()
         {
@@ -681,7 +677,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 string cpid = GetMappedParamValueFromRequest(requestValues, "cpid", fieldMappings);
                 string ywid = GetMappedParamValueFromRequest(requestValues, "ywid", fieldMappings);
-
+                string mobile = GetMappedParamValueFromRequest(requestValues, "mobile", fieldMappings);
         
 
                 List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters = FindMatchedClientChannelSettingHasFilters(allEnableClientChannelSettings, ywid, cpid);
@@ -691,7 +687,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     SPClientChannelSettingWrapper macthedYWIDAndProvinceClientChannelSettingWrapper = null;
 
                     if(phoneAreaInfo!=null)
-                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo)));
+                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo,mobile)));
 
                     if (macthedYWIDAndProvinceClientChannelSettingWrapper != null)
                         return macthedYWIDAndProvinceClientChannelSettingWrapper;
@@ -935,50 +931,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return false;
             }
 
-            //if (LinkIDQueryCache.CheckLinkIDIsExisted(linkid, this.Id))
-            //{
-            //    error.ErrorType = RequestErrorType.RepeatLinkID;
-            //    error.ErrorMessage = " Õ®µ¿ °Æ" + Name + "°Ø «Î«Û ß∞‹£∫÷ÿ∏¥µƒLinkID .";
-            //    return false;
-            //}
-
             Hashtable exparams = GetEXParamsValue(httpGetPostReques.RequestParams);
 
-            PhoneAreaInfo phoneAreaInfo = null;
-
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-            {
-                try
-                {
-                    
-                    try
-                    {
-                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫"+ex.Message);
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
-                }
-            }
-            //else
-            //{
-            //    if (string.IsNullOrEmpty(mobile))
-            //    {
-            //        Logger.Error("ø’∫≈¥ÌŒÛ");
-            //    }
-            //    else
-            //    {
-            //        Logger.Error("∫≈¬Î¥ÌŒÛ£∫" + mobile);
-            //    }
-            //}
-
+            PhoneAreaInfo phoneAreaInfo = GetPhoneAreaInfo(mobile);
 
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostReques.RequestParams,
                                                                                                    fieldMappings, phoneAreaInfo);
@@ -1050,8 +1005,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             try
             {
                 PaymentInfoInsertErrorType errorType = PaymentInfoInsertErrorType.NoError;
-
- 
 
                 bool result = paymentInfo.InsertPayment(  out errorType);
 

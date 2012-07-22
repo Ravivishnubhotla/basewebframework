@@ -42,11 +42,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
-		public static readonly string PROPERTY_NAME_HASDAYMONTHLIMIT = "HasDayMonthLimit";
-		public static readonly string PROPERTY_NAME_DAYLIMITCOUNT = "DayLimitCount";
-		public static readonly string PROPERTY_NAME_MONTHLIMITCOUNT = "MonthLimitCount";
 		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMIT = "DayTotalLimit";
+		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		
         #endregion
 	
@@ -83,11 +81,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _sendText;
 		private string _getway;
 		private int _defaultNoInterceptCount;
-		private bool? _hasDayMonthLimit;
-		private int? _dayLimitCount;
-		private int? _monthLimitCount;
 		private bool? _hasDayTotalLimit;
 		private int? _dayTotalLimit;
+		private decimal? _defaultPrice;
 		
 		#endregion
 
@@ -125,11 +121,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_sendText = null;
 			_getway = null;
 			_defaultNoInterceptCount = 0;
-			_hasDayMonthLimit = null;
-			_dayLimitCount = null;
-			_monthLimitCount = null;
-			_hasDayTotalLimit = null;
-			_dayTotalLimit = null;
+			_hasDayTotalLimit = false;
+			_dayTotalLimit = 0;
+			_defaultPrice = null;
 		}
 		#endregion
 
@@ -137,7 +131,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayMonthLimit, int? dayLimitCount, int? monthLimitCount, bool? hasDayTotalLimit, int? dayTotalLimit)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit, decimal? defaultPrice)
 		{
 			_id = id;
 			_name = name;
@@ -167,11 +161,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_sendText = sendText;
 			_getway = getway;
 			_defaultNoInterceptCount = defaultNoInterceptCount;
-			_hasDayMonthLimit = hasDayMonthLimit;
-			_dayLimitCount = dayLimitCount;
-			_monthLimitCount = monthLimitCount;
 			_hasDayTotalLimit = hasDayTotalLimit;
 			_dayTotalLimit = dayTotalLimit;
+			_defaultPrice = defaultPrice;
 		}
 		#endregion     
 	
@@ -624,48 +616,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool? HasDayMonthLimit
-		{
-			get { return _hasDayMonthLimit; }
-
-			set	
-			{
-				_isChanged |= (_hasDayMonthLimit != value); _hasDayMonthLimit = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? DayLimitCount
-		{
-			get { return _dayLimitCount; }
-
-			set	
-			{
-				_isChanged |= (_dayLimitCount != value); _dayLimitCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? MonthLimitCount
-		{
-			get { return _monthLimitCount; }
-
-			set	
-			{
-				_isChanged |= (_monthLimitCount != value); _monthLimitCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual bool? HasDayTotalLimit
 		{
 			get { return _hasDayTotalLimit; }
@@ -687,6 +637,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_dayTotalLimit != value); _dayTotalLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual decimal? DefaultPrice
+		{
+			get { return _defaultPrice; }
+
+			set	
+			{
+				_isChanged |= (_defaultPrice != value); _defaultPrice = value;
 			}
 		}
 		/// <summary>

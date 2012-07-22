@@ -31,6 +31,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         int CacultePaymentCount(DateTime dateTime, int clientChannelId);
         int CaculteDayPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
         int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber);
+        int QueryDataCount(List<int> clientChannelIds, DateTime startDate, DateTime endDate, bool afterIntercept);
+        int QueryPhoneCount(List<int> clientChannelIds, DateTime startDate, DateTime endDate, bool afterIntercept);
     }
 
     internal partial class SPClientChannelSettingServiceProxy : ISPClientChannelSettingServiceProxy
@@ -166,6 +168,16 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public int CaculteMonthPhoneCount(DateTime dateTime, int clientChannelId, string mobileNumber)
         {
             return AdoNetDb.CaculteMonthPhoneCount(dateTime, clientChannelId, mobileNumber);
+        }
+
+        public int QueryDataCount(List<int> clientChannelIds, DateTime startDate, DateTime endDate, bool afterIntercept)
+        {
+            return AdoNetDb.CaculteDataCount(startDate, endDate, clientChannelIds, afterIntercept);
+        }
+
+        public int QueryPhoneCount(List<int> clientChannelIds, DateTime startDate, DateTime endDate, bool afterIntercept)
+        {
+            return AdoNetDb.CacultePhoneCount(startDate, endDate, clientChannelIds, afterIntercept);
         }
     }
 }

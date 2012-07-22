@@ -219,6 +219,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB">
+      <HintPath>..\ThirdsDll\MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.GridFS">
+      <HintPath>..\ThirdsDll\MongoDB.GridFS.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
@@ -322,6 +328,10 @@
     <Compile Include="ServiceProxys\Tables\SPClientServiceProxy.Designer.cs">
       <DependentUpon>SPClientServiceProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPCustomPhoneAreaServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPCustomPhoneAreaServiceProxy.Designer.cs">
+      <DependentUpon>SPCustomPhoneAreaServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPDayReportServiceProxy.Designer.cs">
       <DependentUpon>SPDayReportServiceProxy.cs</DependentUpon>
@@ -381,6 +391,8 @@
     <Compile Include="UrlSender\UrlSender.cs" />
     <Compile Include="UrlSender\UrlSendTask.cs" />
     <Compile Include="Wrappers\LinkIDQueryCache.cs" />
+    <Compile Include="Wrappers\MongoDbData.cs" />
+    <Compile Include="Wrappers\MongoHelper.cs" />
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="Wrappers\PhoneCache.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
@@ -422,6 +434,10 @@
     <Compile Include="Wrappers\SPClientWrapper.cs" />
     <Compile Include="Wrappers\SPClientWrapper.Designer.cs">
       <DependentUpon>SPClientWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPCustomPhoneAreaWrapper.cs" />
+    <Compile Include="Wrappers\SPCustomPhoneAreaWrapper.Designer.cs">
+      <DependentUpon>SPCustomPhoneAreaWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPDayReportWrapper.cs" />
     <Compile Include="Wrappers\SPDayReportWrapper.Designer.cs">
