@@ -49,6 +49,7 @@
                                     <ext:ToolbarTextItem Text="日期从">
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
+                                        <DateField MinDate="2012-4-9"></DateField>
                                     </ext:DateFieldMenuItem>
                                     <ext:ToolbarTextItem Text="到">
                                     </ext:ToolbarTextItem>

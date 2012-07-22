@@ -27,8 +27,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return null;
             if(phoneNumber.Length<7)
                 return null;
-            //if (!PhoneInfos.ContainsKey(phoneNumber.Substring(0, 7)))
-            //    return null;
+            if (!PhoneInfos.ContainsKey(phoneNumber.Substring(0, 7)))
+                return null;
             return PhoneInfos[phoneNumber.Substring(0, 7)];
         }
     }

@@ -49,6 +49,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         protected global::Legendigital.Common.Web.Moudles.SPS.ClientGroups.UCSPClientGroupEdit UCSPClientGroupEdit1;
         
         /// <summary>
+        /// UCSPClientGroupQuery1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.ClientGroups.UCSPClientGroupQuery UCSPClientGroupQuery1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

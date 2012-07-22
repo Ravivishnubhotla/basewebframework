@@ -221,6 +221,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertEntityToWrapper(businessProxy.GetIDByUserID(userId));
 	    }
 
- 
+
+        public List<SPClientChannelSettingWrapper> GetAllChannelClientSetting()
+	    {
+            List<SPClientWrapper> clients = SPClientWrapper.FindAllBySPClientGroupID(this);
+
+            List<SPClientChannelSettingWrapper> codes = new List<SPClientChannelSettingWrapper>();
+
+            foreach (SPClientWrapper client in clients)
+            {
+                codes.Add(client.DefaultClientChannelSetting);
+            }
+
+            return codes;
+	    }
+
+	    public int QueryDataCount(DateTime startDate, DateTime endDate, int? channelClientId, bool afterIntercept,string province,string mo,string spcode,bool hassubcode)
+	    {
+            return businessProxy.QueryDataCount(startDate, endDate, channelClientId, afterIntercept, this.Id, province, mo,spcode,hassubcode);
+
+	    }
+
+        public int QueryPhoneCount(DateTime startDate, DateTime endDate, int? channelClientId, bool afterIntercept, string province, string mo, string spcode, bool hassubcode)
+        {
+            return businessProxy.QueryPhoneCount(startDate, endDate, channelClientId, afterIntercept, this.Id, province, mo, spcode, hassubcode);
+
+        }
     }
 }

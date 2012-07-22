@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="LD.SPPipeManage.Entity.Tables.SPCustomPhoneAreaEntity,LD.SPPipeManage.Entity" table="SPCustomPhoneArea" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="AreaName" type="string" name="AreaName"   length="100" />	
+		<property column="Phone" type="string" name="Phone"   length="22" />	
+
+
+
+
+</class>
+</hibernate-mapping>

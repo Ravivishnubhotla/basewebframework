@@ -3,6 +3,8 @@
 
 <%@ Register Src="UCSPClientGroupAdd.ascx" TagName="UCSPClientGroupAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPClientGroupEdit.ascx" TagName="UCSPClientGroupEdit" TagPrefix="uc2" %>
+<%@ Register Src="UCSPClientGroupQuery.ascx" TagName="UCSPClientGroupQuery"
+    TagPrefix="uc6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -157,7 +159,19 @@
                 win.show();    
             }             
             
-            
+            if (cmd == "cmdQueryData") {
+                Coolite.AjaxMethods.UCSPClientGroupQuery.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientGroupData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
             
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认要删除所选SPClientGroup ? ',
@@ -214,6 +228,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPClientGroupAdd ID="UCSPClientGroupAdd1" runat="server" />
     <uc2:UCSPClientGroupEdit ID="UCSPClientGroupEdit1" runat="server" />
+    <uc6:UCSPClientGroupQuery ID="UCSPClientGroupQuery1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -264,7 +279,7 @@
                                 </ext:Column>
                                 <ext:CommandColumn Header="下家组管理" Width="160">
                                     <Commands>
-                                        <ext:SplitCommand Icon="cog" CommandName="Split" Text="用户管理">
+                                        <ext:SplitCommand Icon="cog" ToolTip-Text="用户管理" Text="用户管理">
                                             <Menu>
                                                 <Items>
                                                     <ext:MenuCommand CommandName="cmdLock" Icon="Lock" Text="锁定用户" />
@@ -277,15 +292,16 @@
                                             </Menu>
                                             <ToolTip Text="用户管理" />
                                         </ext:SplitCommand>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理">
-                                            <ToolTip Text="下家管理" />
-                                        </ext:GridCommand>
- 
-                                        <ext:GridCommand Icon="Report" CommandName="cmdClientGroupPriceReport1">
-                                            <ToolTip Text="结算报表" />
+                                        <ext:GridCommand Icon="UserSuit" Text="下家管理" ToolTip-Text="下家管理">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
+                                                    <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理" />
+                                                    <ext:MenuCommand Icon="Report" CommandName="cmdClientGroupPriceReport1" Text="结算报表" />
+                                                    <ext:MenuCommand Icon="Find" CommandName="cmdQueryData" Text="查询" />
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Menu" />
                                         </ext:GridCommand>
                                     </Commands>
                                     <PrepareToolbar Fn="showCommands" />

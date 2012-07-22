@@ -37,6 +37,7 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <PackageAsSingleFile>true</PackageAsSingleFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'X86Release|AnyCPU'">
     <OutputPath>bin\</OutputPath>
@@ -219,9 +220,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Coolite.Ext.UX">
-      <HintPath>..\Dlls\Coolite.Ext.UX.dll</HintPath>
-    </Reference>
     <Reference Include="Coolite.Ext.Web, Version=0.8.2.983, Culture=neutral, PublicKeyToken=f58c952e9aa5b80a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Coolite.Ext.Web.dll</HintPath>
@@ -229,6 +227,9 @@
     <Reference Include="Coolite.Utilities, Version=1.0.0.981, Culture=neutral, PublicKeyToken=f06596a209371c29, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dlls\Coolite.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="CSScriptLibrary.v3.5">
+      <HintPath>..\ThirdsDll\CSScriptLibrary.v3.5.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -334,6 +335,7 @@
     <Content Include="Moudles\SPS\ClientChannelSettings\SPCodeList.aspx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelQuery.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingBaseEdit.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingChangeClientAndUser.ascx" />
     <Content Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingFiltersAdd.ascx" />
@@ -345,6 +347,7 @@
     <Content Include="Moudles\SPS\ClientGroups\UCChangePassword.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupAdd.ascx" />
     <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx" />
+    <Content Include="Moudles\SPS\ClientGroups\UCSPClientGroupQuery.ascx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupInterfaceSettingPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage.aspx" />
     <Content Include="Moudles\SPS\ClientsView\ClientGroupToDayReportPage1.aspx" />
@@ -643,6 +646,13 @@
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelParamsEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientChannelParamsEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelQuery.ascx.cs">
+      <DependentUpon>UCSPClientChannelQuery.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelQuery.ascx.designer.cs">
+      <DependentUpon>UCSPClientChannelQuery.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientChannelSettings\UCSPClientChannelSettingAdd.ascx.cs">
       <DependentUpon>UCSPClientChannelSettingAdd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -736,6 +746,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupEdit.ascx.designer.cs">
       <DependentUpon>UCSPClientGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupQuery.ascx.cs">
+      <DependentUpon>UCSPClientGroupQuery.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientGroups\UCSPClientGroupQuery.ascx.designer.cs">
+      <DependentUpon>UCSPClientGroupQuery.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientsView\ClientChannleView.aspx.cs">
       <DependentUpon>ClientChannleView.aspx</DependentUpon>
@@ -1301,6 +1318,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\SPSSendUrlEntity.cs" />
+    <Compile Include="SPSInterface\Class1.cs" />
+    <Compile Include="SPSInterface\GetPhone.ashx.cs">
+      <DependentUpon>GetPhone.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SPSInterface\gunsHandler.ashx.cs">
+      <DependentUpon>gunsHandler.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\bg.gif" />
@@ -1430,6 +1454,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Moudles\SPS\Reports\SPSALLClientGroupAmount1.rdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SPSInterface\gunsHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\p1.pubxml" />
+    <Content Include="SPSInterface\GetPhone.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

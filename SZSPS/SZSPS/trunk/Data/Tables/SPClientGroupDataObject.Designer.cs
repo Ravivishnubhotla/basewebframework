@@ -21,6 +21,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DEFAULTSYCNMRURL = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DEFAULTSYCNMRURL);
 		public static readonly Property PROPERTY_DEFAULTINTERCEPTRATE = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DEFAULTINTERCEPTRATE);
 		public static readonly Property PROPERTY_DEFAULTNOINTERCEPTCOUNT = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT);
+		public static readonly Property PROPERTY_ASSIGNEDUSERID = Property.ForName(SPClientGroupEntity.PROPERTY_NAME_ASSIGNEDUSERID);
       
 		#region 子类集合字段查询字段
 	
@@ -53,6 +54,8 @@ namespace LD.SPPipeManage.Data.Tables
                 case "DefaultInterceptRate":
                     return typeof (int);
                 case "DefaultNoInterceptCount":
+                    return typeof (int);
+                case "AssignedUserID":
                     return typeof (int);
           }
 			return typeof(string);

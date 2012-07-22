@@ -95,11 +95,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SENDTEXT = "SendText";
 		public static readonly string PROPERTY_NAME_GETWAY = "Getway";
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
-		public static readonly string PROPERTY_NAME_HASDAYMONTHLIMIT = "HasDayMonthLimit";
-		public static readonly string PROPERTY_NAME_DAYLIMITCOUNT = "DayLimitCount";
-		public static readonly string PROPERTY_NAME_MONTHLIMITCOUNT = "MonthLimitCount";
 		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMIT = "DayTotalLimit";
+		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		
         #endregion
 
@@ -500,48 +498,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? HasDayMonthLimit
-		{
-			get
-			{
-				return entity.HasDayMonthLimit;
-			}
-			set
-			{
-				entity.HasDayMonthLimit = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? DayLimitCount
-		{
-			get
-			{
-				return entity.DayLimitCount;
-			}
-			set
-			{
-				entity.DayLimitCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
-		public int? MonthLimitCount
-		{
-			get
-			{
-				return entity.MonthLimitCount;
-			}
-			set
-			{
-				entity.MonthLimitCount = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public bool? HasDayTotalLimit
 		{
 			get
@@ -565,6 +521,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DayTotalLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public decimal? DefaultPrice
+		{
+			get
+			{
+				return entity.DefaultPrice;
+			}
+			set
+			{
+				entity.DefaultPrice = value;
 			}
 		}
 		#endregion 

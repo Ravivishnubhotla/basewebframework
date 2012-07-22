@@ -37,7 +37,7 @@
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="100" />	
 		<property column="MobileOperators" type="string" name="MobileOperators"   length="100" />	
 		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
-		<property column="RequestContent" type="string" name="RequestContent"   length="2000" />	
+		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="City" type="string" name="City"   length="20" />	
 		<property column="Province" type="string" name="Province"   length="20" />	
 		<property column="IsTestData" type="Boolean" name="IsTestData"   />	

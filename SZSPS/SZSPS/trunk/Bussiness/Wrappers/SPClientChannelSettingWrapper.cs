@@ -462,6 +462,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 interceptRate = this.InterceptRate.Value;
             }
 
+
+
             bool isIntercept = CaculteRandom(interceptRate);
 
             //如果没有扣除，如果该通道日总量有限制，超过了日总量，必须改成扣除
@@ -906,7 +908,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-        public bool InArea(PhoneAreaInfo phoneAreaInfo)
+        public bool InArea(PhoneAreaInfo phoneAreaInfo, string mobile)
         {
             if (Filters == null || Filters.Count <= 0)
                 return false;
@@ -914,7 +916,79 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             List<SPClientChannelSettingFiltersWrapper> filters =
                 SPClientChannelSettingFiltersWrapper.FindAllByClientChannelSettingID(this);
 
+            SPClientChannelSettingFiltersWrapper customerPhoneArea =
+                filters.Find(p => (p.ParamsName.Trim().ToLower() == "province" &&  p.FilterValue.StartsWith("自定义")));
+
+            if (customerPhoneArea!=null)
+            {
+                if(customerPhoneArea.HasPhone(mobile))
+                {
+                    return true;
+                }
+            }
+
+            SPClientChannelSettingFiltersWrapper otherPhoneArea = filters.Find(p => (p.ParamsName.Trim().ToLower() == "province" && p.FilterValue.Equals("其他")));
+
+            if (otherPhoneArea!=null)
+            {
+                return true;
+            }
+
             return filters.Exists(p => p.ParamsName.Trim().ToLower() == "province" && p.FilterValue == phoneAreaInfo.Province);
+        }
+
+        public int QueryDataCount(DateTime startDate, DateTime endDate, bool includeSub, bool afterIntercept)
+        {
+            if (this.CommandType == "3" && includeSub)
+            {
+                List<SPClientChannelSettingWrapper> clientChannelSettings = this.ChannelID.GetAllClientChannelSetting();
+
+                List<SPClientChannelSettingWrapper> subCodes = clientChannelSettings.FindAll(p => (
+                                    (p.CommandType == "3") 
+                                 && (p.ChannelCode == this.ChannelCode)
+                                 && (p.CommandCode.StartsWith(this.CommandCode))
+                                ));
+
+                List<int> ids = new List<int>();
+
+                foreach (SPClientChannelSettingWrapper spClientChannelSettingWrapper in subCodes)
+                {
+                    ids.Add(spClientChannelSettingWrapper.Id);
+                }
+
+                return businessProxy.QueryDataCount(ids, startDate, endDate, afterIntercept);
+            }
+            else
+            {
+                return businessProxy.QueryDataCount(new List<int>() { this.Id }, startDate, endDate, afterIntercept);
+            }
+        }
+
+        public int QueryPhoneCount(DateTime startDate, DateTime endDate, bool includeSub, bool afterIntercept)
+        {
+            if (this.CommandType == "3")
+            {
+                List<SPClientChannelSettingWrapper> clientChannelSettings = this.ChannelID.GetAllClientChannelSetting();
+
+                List<SPClientChannelSettingWrapper> subCodes = clientChannelSettings.FindAll(p => (
+                                    (p.CommandType == "3")
+                                 && (p.ChannelCode == this.ChannelCode)
+                                 && (p.CommandCode.StartsWith(this.CommandCode))
+                                ));
+
+                List<int> ids = new List<int>();
+
+                foreach (SPClientChannelSettingWrapper spClientChannelSettingWrapper in subCodes)
+                {
+                    ids.Add(spClientChannelSettingWrapper.Id);
+                }
+
+                return businessProxy.QueryPhoneCount(ids, startDate, endDate, afterIntercept);
+            }
+            else
+            {
+                return businessProxy.QueryPhoneCount(new List<int>() { this.Id }, startDate, endDate, afterIntercept);
+            }
         }
     }
 }

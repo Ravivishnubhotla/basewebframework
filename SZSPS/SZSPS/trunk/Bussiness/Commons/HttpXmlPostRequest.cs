@@ -123,7 +123,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
             foreach (XmlNode subnode in node.ChildNodes)
             {
-                hb.Add(subnode.Name, subnode.InnerText);
+                hb.Add(subnode.Name.ToLower(), subnode.InnerText);
             }
 
 

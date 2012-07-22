@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
+using System.Web.Caching;
+using CSScriptLibrary;
 using Common.Logging;
 using LD.SPPipeManage.Bussiness.Commons;
 using LD.SPPipeManage.Bussiness.Wrappers;
@@ -48,6 +51,9 @@ namespace Legendigital.Common.Web.AppClass
 
                     return;
                 }
+
+
+
 
                 saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
 
@@ -107,6 +113,20 @@ namespace Legendigital.Common.Web.AppClass
                         }
                     }
                 }
+
+                if (channel.HasConvertRule.HasValue && channel.HasConvertRule.Value)
+                {
+                    try
+                    {
+                        PreProcessRequest(httpRequest.RequestParams, context, channel.FuzzyCommand);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogWarnInfo(httpRequest, "数据转换错误：" + ex.Message, channel.Id, 0);
+                    }
+                }
+
+
 
 
 
@@ -258,6 +278,40 @@ namespace Legendigital.Common.Web.AppClass
                 SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
         }
 
+        private static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
+        {
+            string codeText = File.ReadAllText(fileName);
+
+            Assembly assembly = CSScript.LoadCode(codeText);
+
+            return new AsmHelper(assembly).GetStaticMethod();
+        }
+
+
+        public const string spsRules = "sps_rules_";
+
+        private static void PreProcessRequest(Hashtable requestParams, HttpContext context, string recName)
+        {
+            if (context.Cache[spsRules + recName] == null)
+            {
+                string fileName = context.Server.MapPath("~/ConvertRules/" + recName + ".txt");
+
+                if (!File.Exists(fileName))
+                    return;
+
+                context.Cache.Insert(spsRules + recName, GetMethodDelegateFromRecName(fileName, context), new CacheDependency(fileName));
+            }
+            else
+            {
+                if (context.Cache[spsRules + recName] is MethodDelegate)
+                {
+                    MethodDelegate processMethod = context.Cache[spsRules + recName] as MethodDelegate;
+
+                    if (processMethod != null)
+                        processMethod(requestParams);
+                }
+            }
+        }
 
         public bool IsReusable
         {
