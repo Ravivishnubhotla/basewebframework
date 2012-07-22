@@ -58,8 +58,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             string sortFieldName = "";
             if (e.Sort != null)
                 sortFieldName = e.Sort;
-
-
+            
+            if (sortFieldName == "ChannelClientCode")
+            {
+                sortFieldName = "CommandCode";
+            }
+            else if (sortFieldName == "DefaultClientPrice")
+            {
+                sortFieldName = "DefaultPrice";
+            }
             else if (sortFieldName == "DayTotalLimitInfo")
             {
                 sortFieldName = "HasDayTotalLimit";

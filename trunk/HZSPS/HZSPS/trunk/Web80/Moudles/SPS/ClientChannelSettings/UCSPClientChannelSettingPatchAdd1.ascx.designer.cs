@@ -112,6 +112,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.TextArea txtSubCode;
         
         /// <summary>
+        /// numDefaultPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.NumberField numDefaultPrice;
+        
+        /// <summary>
         /// txtAllowAndDisableArea control.
         /// </summary>
         /// <remarks>

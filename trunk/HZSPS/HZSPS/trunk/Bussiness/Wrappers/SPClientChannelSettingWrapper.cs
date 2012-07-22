@@ -14,6 +14,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Newtonsoft.Json;
 using Spring.Transaction.Interceptor;
 
 
@@ -86,6 +87,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageIndex, pageSize,
                                              out recordCount);
         }
+ 
 
 
         public static List<SPClientChannelSettingWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByColumnName, bool isDesc, int pageIndex, int pageSize, out int recordCount)
@@ -206,6 +208,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public List<PhoneLimitAreaAssigned> LimitAreaAssigneds
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(this.DayTotalLimitInProvinceAssignedCount))
+                    return new List<PhoneLimitAreaAssigned>();
+
+                List<PhoneLimitAreaAssigned> limitAreaAssigneds;
+
+                try
+                {
+                    limitAreaAssigneds =JsonConvert.DeserializeObject<List<PhoneLimitAreaAssigned>>(this.DayTotalLimitInProvinceAssignedCount);
+                }
+                catch 
+                {
+                    return new List<PhoneLimitAreaAssigned>();
+                }
+
+                return limitAreaAssigneds;
+            }
+            set
+            {
+                this.DayTotalLimitInProvinceAssignedCount = JsonConvert.SerializeObject(value);
+            }
+        }
+
 
         public string ChannelClientCode
         {
@@ -229,7 +257,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 string provinceLimit = "";
 
-                if (this.CommandType == "1" && this.AllowFilter.HasValue && this.AllowFilter.Value && this.Filters != null && this.Filters.Count > 0)
+                if ((this.CommandType == "1" || this.CommandType == "3") && this.AllowFilter.HasValue && this.AllowFilter.Value && this.Filters != null && this.Filters.Count > 0)
                 {
                     provinceLimit = " (";
 
@@ -270,6 +298,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return "自定义" + this.CommandCode + " (模糊) 到 " + spcode + provinceLimit;
  
                 return columnName + " " + this.CommandTypeName + " " + this.CommandCode;
+            }
+        }
+
+
+        
+        public decimal? DefaultClientPrice
+        {
+            get
+            {
+                if (ParentClientChannelSetting.Id == this.Id)
+                    return this.DefaultPrice;
+                return ParentClientChannelSetting.DefaultPrice;
             }
         }
 
@@ -432,7 +472,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return SPClientChannelSettingWrapper.ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndChannelIDAndCodeAndPort(sortFieldName, isDesc, channleId, mo, port, pageIndex, pageSize, out   recordCount));
         }
 
-        public bool CaculteIsIntercept()
+        public bool CaculteIsIntercept(SPPaymentInfoWrapper paymentInfo)
         {
             //if(this.InterceptRate.HasValue && this.InterceptRate.Value==0)
             //    return false;
@@ -467,10 +507,74 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             {
                 if (this.DayTotalLimit.HasValue && this.DayTotalLimit.Value > 0)
                 {
-                    int todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
+                    int todayPaymentCount = 0;
 
-                    if(todayPaymentCount>=this.DayTotalLimit.Value)
-                        isIntercept = true;
+                    if(this.DayTotalLimitInProvince.HasValue && this.DayTotalLimitInProvince.Value)
+                    {
+                        if (this.LimitAreaAssigneds != null && LimitAreaAssigneds.Count > 0)
+                        {
+                            PhoneLimitAreaAssigned provincePhoneLimitAreaAssigneds = LimitAreaAssigneds.Find(p => (p.AreaName == paymentInfo.Province));
+
+                            if (provincePhoneLimitAreaAssigneds!=null)
+                            {
+                                todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id, paymentInfo.Province);
+                            }
+                            else
+                            {
+                                List<string> notInprovinces = new List<string>();
+
+                                List<PhoneLimitAreaAssigned> allprovincePhoneLimitAreaAssigneds = LimitAreaAssigneds.FindAll(p => (p.AreaName != "其他"));
+
+                                foreach (var allprovincePhoneLimitAreaAssigned in allprovincePhoneLimitAreaAssigneds)
+                                {
+                                    notInprovinces.Add(allprovincePhoneLimitAreaAssigned.AreaName);
+                                }
+
+                                todayPaymentCount = CacultePaymentCountNotInProvince(System.DateTime.Now.Date, this.Id, notInprovinces);
+
+                            }
+
+
+
+                        }
+                        else
+                        {
+                            todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id, paymentInfo.Province);                      
+                        }
+                    }
+                    else
+                    {
+                        todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
+                    }
+
+                    if (this.DayTotalLimitInProvince.HasValue && this.DayTotalLimitInProvince.Value && this.LimitAreaAssigneds != null && LimitAreaAssigneds.Count > 0)
+                    {
+                        var provinceAreaLimit = LimitAreaAssigneds.Find(p => (p.AreaName == paymentInfo.Province));
+
+                        if(provinceAreaLimit!=null)
+                        {
+                            if (todayPaymentCount >= provinceAreaLimit.LimitCount)
+                                isIntercept = true;    
+                        }
+                        else
+                        {
+                            var otherAreaLimit = LimitAreaAssigneds.Find(p => (p.AreaName == "其他"));
+
+                            if (otherAreaLimit != null)
+                            {
+                                if (todayPaymentCount >= otherAreaLimit.LimitCount)
+                                    isIntercept = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (todayPaymentCount >= this.DayTotalLimit.Value)
+                            isIntercept = true;               
+                    }
+
+
+
                 }
             }
 
@@ -489,6 +593,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             //{
             //    return false;
             //}
+        }
+
+        private int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces)
+        {
+            return businessProxy.CacultePaymentCountNotInProvince(dateTime, clientChannelId, notInprovinces);
+        }
+
+        private int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province)
+        {
+            return businessProxy.CacultePaymentCount(dateTime, clientChannelId, province);
         }
 
         private int CaculteDayPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)

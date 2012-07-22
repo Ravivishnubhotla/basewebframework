@@ -112,6 +112,105 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients {
         protected global::Coolite.Ext.Web.ComboBox cmbClientGroupID;
         
         /// <summary>
+        /// formPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormPanel formPanel1;
+        
+        /// <summary>
+        /// FormLayout1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
+        
+        /// <summary>
+        /// rgdDefaultChannelIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Radio rgdDefaultChannelIntercept;
+        
+        /// <summary>
+        /// lblDefaultChannelIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblDefaultChannelIntercept;
+        
+        /// <summary>
+        /// MultiField1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MultiField MultiField1;
+        
+        /// <summary>
+        /// rgdDefaultClientIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Radio rgdDefaultClientIntercept;
+        
+        /// <summary>
+        /// lblDefaultClientIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblDefaultClientIntercept;
+        
+        /// <summary>
+        /// MultiField2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MultiField MultiField2;
+        
+        /// <summary>
+        /// rgdCustomIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Radio rgdCustomIntercept;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label Label2;
+        
+        /// <summary>
+        /// numCustomerIntercept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.NumberField numCustomerIntercept;
+        
+        /// <summary>
         /// numPrice control.
         /// </summary>
         /// <remarks>

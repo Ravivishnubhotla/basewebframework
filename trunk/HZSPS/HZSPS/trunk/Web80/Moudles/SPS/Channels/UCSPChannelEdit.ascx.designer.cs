@@ -130,15 +130,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.TextField txtChannelType;
         
         /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.NumberField txtPrice;
-        
-        /// <summary>
         /// txtRate control.
         /// </summary>
         /// <remarks>

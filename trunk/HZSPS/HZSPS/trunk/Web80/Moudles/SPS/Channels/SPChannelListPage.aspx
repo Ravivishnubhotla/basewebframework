@@ -220,8 +220,8 @@
                     <ext:RecordField Name="AccurateCommand" />
                     <ext:RecordField Name="Port" />
                     <ext:RecordField Name="ChannelType" />
-                    <ext:RecordField Name="Price" Type="int" />
-                    <ext:RecordField Name="Rate" Type="int" />
+                    <ext:RecordField Name="Price" Type="Float" />
+                    <ext:RecordField Name="Rate" Type="Int" />
                     <ext:RecordField Name="Status" Type="int" />
                     <ext:RecordField Name="CStatusString" />
                     <ext:RecordField Name="CreateTime" Type="Date" />
@@ -302,36 +302,51 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colUperName" DataIndex="UperName" Header="所属上家" Sortable="False">
+                                <ext:Column ColumnID="colUperName" DataIndex="UperName" Header="所属上家" Width="90"
+                                    Sortable="False">
                                 </ext:Column>
-                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Hidden="true" Sortable="true">
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Width="80" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true"
                                     Hidden="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
+                                <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Width="80"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Hidden="true" Sortable="true"
                                     Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Hidden="true"
-                                    Sortable="true">
+                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="默认扣率" Sortable="true" Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Hidden="true" Sortable="true"
-                                    Width="50">
-                                </ext:Column>
-                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Hidden="true" Sortable="true"
-                                    Width="50">
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="通道价格" Sortable="true" Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colStatus" DataIndex="CStatusString" Header="状态" Sortable="true"
                                     Width="30">
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="172">
+                                <ext:CommandColumn Header="通道管理" Width="80">
                                     <Commands>
-                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdEditInfo" Text="分配上家">
-                                            <ToolTip Text="分配上家" />
+                                        <ext:GridCommand Icon="ApplicationForm" Text="选择操作" ToolTip-Text="选择操作">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEditInfo" Text="分配上家" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" Hidden='<%# IsSPCommUser %>'
+                                                        AutoDataBind="True" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试" />
+                                                    <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配" />
+                                                    <ext:MenuCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden='<%# IsSPCommUser %>'
+                                                        AutoDataBind="True" />
+                                                    <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
+                                                        Text="默认下发参数" Hidden='<%# IsSPCommUser %>' AutoDataBind="True" />
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Menu" />
+                                        </ext:GridCommand>
+                                    </Commands>
+                                </ext:CommandColumn>
+                                <ext:CommandColumn Header="通道管理" Width="172" Hidden="True">
+                                    <Commands>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEditInfo" Text="分配上家">
+                                            <ToolTip Text="测试" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
                                             <ToolTip Text="测试" />

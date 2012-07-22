@@ -49,6 +49,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         [Transaction(ReadOnly = false)]
         public void QuickAdd(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID)
         {
+            spChannelWrapper.Rate = 11;
+            spChannelWrapper.Price = Convert.ToDecimal("1.00");
             this.SelfDataObj.Save(spChannelWrapper);
 
             SPClientEntity spClientEntity = new SPClientEntity();
@@ -57,6 +59,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             spClientEntity.UserID = userID;
             spClientEntity.IsDefaultClient = true;
             spClientEntity.Alias = "";
+ 
 
             this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(spClientEntity);
 

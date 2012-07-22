@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelEditInfo.ascx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEditInfo" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPChannelEditInfo.ascx.cs"
+    Inherits="Legendigital.Common.Web.Moudles.SPS.Channels.UCSPChannelEditInfo" %>
 <ext:Window ID="winSPChannelEditInfo" runat="server" Icon="ApplicationEdit" Title="通道上家分配"
     ConstrainHeader="true" Width="500" Height="220" AutoShow="false" Maximizable="true"
     Modal="true" ShowOnLoad="false">
@@ -14,8 +15,8 @@
                                 </ext:Hidden>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:ComboBox ID="cmbUpperID" runat="server" AllowBlank="true" FieldLabel="上家"
-                                    StoreID="storeSPUper" TypeAhead="true" Mode="Local"  Editable="True" ForceSelection="True" DisplayField="Name"
+                                <ext:ComboBox ID="cmbUpperID" runat="server" AllowBlank="true" FieldLabel="上家" StoreID="storeSPUper"
+                                    TypeAhead="true" Mode="Local" Editable="True" ForceSelection="True" DisplayField="Name"
                                     ValueField="Id" EmptyText="全部">
                                     <Triggers>
                                         <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
@@ -26,7 +27,15 @@
                                         <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
                                     </Listeners>
                                 </ext:ComboBox>
-             </ext:Anchor>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="numRate" FieldLabel="默认扣率" runat="server" AllowDecimals="true"
+                                    DecimalPrecision="0">
+                                </ext:NumberField>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" DecimalPrecision="2" AllowBlank="True" />
+                            </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>
                 </Body>

@@ -6,9 +6,7 @@
 <%@ Register Src="UCClientParamsSetting.ascx" TagName="UCClientParamsSetting" TagPrefix="uc3" %>
 <%@ Register Src="UCSPSendClientParamsClone.ascx" TagName="UCSPSendClientParamsClone"
     TagPrefix="uc5" %>
- 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- 
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
@@ -91,7 +89,16 @@
         }
 
 
+                function formatFloat(src, pos) {
+            return Math.round(src * Math.pow(10, pos)) / Math.pow(10, pos);
+        }
 
+ 
+        
+
+        var decimalFormat1 = function(value) {
+            return formatFloat(value, 2).toString(); 
+        };
 
 
         function processcmd(cmd, id) {
@@ -274,6 +281,7 @@
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Alias" />
+                    <ext:RecordField Name="InterceptRate" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="UserID" Type="int" />
@@ -346,6 +354,9 @@
                                 </ext:Column>
                                 <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Width="35" Sortable="true">
                                 </ext:Column>
+                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率" Width="35"
+                                    Sortable="true">
+                                </ext:Column>
                                 <ext:Column ColumnID="colRecieveDataUrl" DataIndex="RecieveDataUrl" Header="接收数据接口"
                                     Hidden="true" Sortable="true">
                                 </ext:Column>
@@ -411,9 +422,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-
-
-        <ext:Window ID="winShowLoginLog" runat="server" Title="Window" Frame="true" Width="720"
+    <ext:Window ID="winShowLoginLog" runat="server" Title="Window" Frame="true" Width="720"
         ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
         <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
@@ -431,8 +440,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-
-        <ext:Window ID="winChangePwd" runat="server" Title="Window" Frame="true" Width="390"
+    <ext:Window ID="winChangePwd" runat="server" Title="Window" Frame="true" Width="390"
         ConstrainHeader="true" Height="170" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" ShowOnLoad="false">
         <AutoLoad Url="../LogViews/SystemLogList.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
@@ -446,6 +454,4 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-
-
 </asp:Content>

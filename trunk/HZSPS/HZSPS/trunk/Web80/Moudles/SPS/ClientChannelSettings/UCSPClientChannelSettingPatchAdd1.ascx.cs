@@ -163,10 +163,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     codeUserIds.Add(codeUserID);
                 }
 
- 
 
 
-                SPClientWrapper.QuickAdd(this.txtLoginID.Text.Trim(), this.txtCode.Text.Trim(), channelWrapper, mainloginuserID, codeUserIds, txtChannelCode.Text.Trim(), Convert.ToInt32(this.numOrderIndex.Value), this.chkHasSubCode.Checked, codeType,this.txtAllowAndDisableArea.Text.Trim(),this.txtGetway.Text.Trim(),this.txtDayLimit.Text.Trim(),this.txtMonthLimit.Text.Trim(),this.txtSendText.Text.Trim());
+
+                SPClientWrapper.QuickAdd(this.txtLoginID.Text.Trim(), this.txtCode.Text.Trim(), channelWrapper, mainloginuserID, codeUserIds, txtChannelCode.Text.Trim(), Convert.ToInt32(this.numOrderIndex.Value), this.chkHasSubCode.Checked, codeType, this.txtAllowAndDisableArea.Text.Trim(), this.txtGetway.Text.Trim(), this.txtDayLimit.Text.Trim(), this.txtMonthLimit.Text.Trim(), this.txtSendText.Text.Trim(), Convert.ToDecimal(numDefaultPrice.Value));
 
                 channelWrapper.RefreshChannelInfo();
 

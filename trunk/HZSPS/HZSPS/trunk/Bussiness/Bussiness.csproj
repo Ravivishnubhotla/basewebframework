@@ -219,6 +219,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL" />
     <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
@@ -387,6 +388,7 @@
     <Compile Include="Wrappers\LinkIDQueryCache.cs" />
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="Wrappers\PhoneCache.cs" />
+    <Compile Include="Wrappers\PhoneLimitAreaAssigned.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelDefaultClientSycnParamsWrapper.cs</DependentUpon>

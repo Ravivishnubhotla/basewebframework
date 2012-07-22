@@ -65,6 +65,9 @@
                                     Hidden="true" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
+                                <ext:NumberField ID="numDefaultPrice" runat="server" FieldLabel="默认价格" DecimalPrecision="2" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
                                 <ext:TextArea ID="txtAllowAndDisableArea" runat="server" FieldLabel="开通省份/屏蔽地市" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

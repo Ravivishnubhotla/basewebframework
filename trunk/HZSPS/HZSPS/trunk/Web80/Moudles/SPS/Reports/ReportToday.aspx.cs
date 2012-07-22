@@ -83,6 +83,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             dt.Columns.Add(new DataColumn("SetInterceptRate"));
             dt.Columns.Add(new DataColumn("ChannelClientCode"));
             dt.Columns.Add(new DataColumn("IsSycnData",typeof(bool)));
+            dt.Columns.Add(new DataColumn("Price" ,typeof(decimal)));
 
             
 
@@ -100,6 +101,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["ChannelClientCode"] = "";
                     item["IsSycnData"] = false;
                     item["AssignedUser"] = "";
+                    item["Price"] = 0.00;
+                    
                 }
                 else
                 {
@@ -112,6 +115,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                         item["AssignedUser"] = client.SPClientGroupID.AssigedUserLoginID;
                     else
                         item["AssignedUser"] = "";
+                    item["Price"] = client.Price;
                 }
             }
 

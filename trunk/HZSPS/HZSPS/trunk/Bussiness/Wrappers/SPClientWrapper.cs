@@ -172,6 +172,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    }
 
 
+
+        public int InterceptRate
+        {
+            get
+            {
+                if (DefaultClientChannelSetting == null)
+                    return 0;
+                if (DefaultClientChannelSetting.InterceptRate == null)
+                    return 0;
+                return DefaultClientChannelSetting.InterceptRate.Value;
+            }
+        }
+
         public string ChannelClientCode
         {
             get
@@ -340,10 +353,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return null;
         }
 
-        public static void QuickAdd(string loginID, string code, SPChannelWrapper channelWrapper, int mainloginuserID, List<CodeUserID> codeUserIds,string channelCode)
-        {
-            businessProxy.QuickAdd(loginID, code, channelWrapper.entity, mainloginuserID, codeUserIds, channelCode);
-        }
+ 
 
 	    public static List<SPClientWrapper> GetAllDefaultClient()
 	    {
@@ -361,9 +371,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         //    businessProxy.QuickAdd(loginId, code, channelWrapper.entity, mainloginuserId, codeUserIds, channelCode, orderIndex, hasSubCode, codeType);
         //}
 
-        public static void QuickAdd(string loginId, string code, SPChannelWrapper channelWrapper, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText)
+        public static void QuickAdd(string loginId, string code, SPChannelWrapper channelWrapper, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText, decimal defaultprice)
         {
-            businessProxy.QuickAdd(loginId, code, channelWrapper.entity, mainloginuserId, codeUserIds, channelCode, orderIndex, hasSubCode, codeType, allowAndDisableArea,   getway,   dayLimit,   monthLimit,   sendText);
+            businessProxy.QuickAdd(loginId, code, channelWrapper.entity, mainloginuserId, codeUserIds, channelCode, orderIndex, hasSubCode, codeType, allowAndDisableArea, getway, dayLimit, monthLimit, sendText, defaultprice);
 
         }
 
@@ -440,7 +450,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         }
 
 
-	    public void UpdateSyncDataSetting()
+	    public void UpdateSyncDataSetting(int interceptRate)
 	    {
             SPClientChannelSettingWrapper channelSetting = this.DefaultClientChannelSetting;
 
@@ -465,7 +475,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 if (this.SPClientGroupID != null)
                 {
-                    channelSetting.InterceptRate = this.SPClientGroupID.DefaultInterceptRate;
+                    channelSetting.InterceptRate = interceptRate;
                     channelSetting.DefaultNoInterceptCount = this.SPClientGroupID.DefaultNoInterceptCount;
                 }
  

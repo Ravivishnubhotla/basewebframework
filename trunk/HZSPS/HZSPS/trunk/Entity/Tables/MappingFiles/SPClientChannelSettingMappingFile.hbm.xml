@@ -40,6 +40,9 @@
 		<property column="DefaultNoInterceptCount" type="int" name="DefaultNoInterceptCount"   not-null="true"  />	
 		<property column="HasDayTotalLimit" type="Boolean" name="HasDayTotalLimit"   />	
 		<property column="DayTotalLimit" type="int" name="DayTotalLimit"   />	
+		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   />	
+		<property column="DayTotalLimitInProvince" type="Boolean" name="DayTotalLimitInProvince"   />	
+		<property column="DayTotalLimitInProvinceAssignedCount" type="string" name="DayTotalLimitInProvinceAssignedCount"   length="8000" />	
 
 
 

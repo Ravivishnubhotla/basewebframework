@@ -44,6 +44,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
 		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMIT = "DayTotalLimit";
+		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCE = "DayTotalLimitInProvince";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "DayTotalLimitInProvinceAssignedCount";
 		
         #endregion
 	
@@ -82,6 +85,9 @@ namespace LD.SPPipeManage.Entity.Tables
 		private int _defaultNoInterceptCount;
 		private bool? _hasDayTotalLimit;
 		private int? _dayTotalLimit;
+		private decimal? _defaultPrice;
+		private bool? _dayTotalLimitInProvince;
+		private string _dayTotalLimitInProvinceAssignedCount;
 		
 		#endregion
 
@@ -121,6 +127,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultNoInterceptCount = 0;
 			_hasDayTotalLimit = false;
 			_dayTotalLimit = 0;
+			_defaultPrice = null;
+			_dayTotalLimitInProvince = null;
+			_dayTotalLimitInProvinceAssignedCount = null;
 		}
 		#endregion
 
@@ -128,7 +137,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit, decimal? defaultPrice, bool? dayTotalLimitInProvince, string dayTotalLimitInProvinceAssignedCount)
 		{
 			_id = id;
 			_name = name;
@@ -160,6 +169,9 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultNoInterceptCount = defaultNoInterceptCount;
 			_hasDayTotalLimit = hasDayTotalLimit;
 			_dayTotalLimit = dayTotalLimit;
+			_defaultPrice = defaultPrice;
+			_dayTotalLimitInProvince = dayTotalLimitInProvince;
+			_dayTotalLimitInProvinceAssignedCount = dayTotalLimitInProvinceAssignedCount;
 		}
 		#endregion     
 	
@@ -633,6 +645,51 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_dayTotalLimit != value); _dayTotalLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual decimal? DefaultPrice
+		{
+			get { return _defaultPrice; }
+
+			set	
+			{
+				_isChanged |= (_defaultPrice != value); _defaultPrice = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? DayTotalLimitInProvince
+		{
+			get { return _dayTotalLimitInProvince; }
+
+			set	
+			{
+				_isChanged |= (_dayTotalLimitInProvince != value); _dayTotalLimitInProvince = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DayTotalLimitInProvinceAssignedCount
+		{
+			get { return _dayTotalLimitInProvinceAssignedCount; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 8000)
+					throw new ArgumentOutOfRangeException("Invalid value for DayTotalLimitInProvinceAssignedCount", value, value.ToString());
+				_isChanged |= (_dayTotalLimitInProvinceAssignedCount != value); _dayTotalLimitInProvinceAssignedCount = value;
 			}
 		}
 		/// <summary>

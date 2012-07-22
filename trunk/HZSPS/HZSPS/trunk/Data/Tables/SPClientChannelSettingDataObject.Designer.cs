@@ -103,6 +103,9 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_DEFAULTNOINTERCEPTCOUNT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT);
 		public static readonly Property PROPERTY_HASDAYTOTALLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_HASDAYTOTALLIMIT);
 		public static readonly Property PROPERTY_DAYTOTALLIMIT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DAYTOTALLIMIT);
+		public static readonly Property PROPERTY_DEFAULTPRICE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DEFAULTPRICE);
+		public static readonly Property PROPERTY_DAYTOTALLIMITINPROVINCE = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DAYTOTALLIMITINPROVINCE);
+		public static readonly Property PROPERTY_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = Property.ForName(SPClientChannelSettingEntity.PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT);
       
 		#region 子类集合字段查询字段
 	
@@ -180,6 +183,12 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (bool);
                 case "DayTotalLimit":
                     return typeof (int);
+                case "DefaultPrice":
+                    return typeof (decimal);
+                case "DayTotalLimitInProvince":
+                    return typeof (bool);
+                case "DayTotalLimitInProvinceAssignedCount":
+                    return typeof (string);
           }
 			return typeof(string);
         }

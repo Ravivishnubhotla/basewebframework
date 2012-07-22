@@ -19,10 +19,10 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 	    List<SPClientEntity> FindByChannelID(int cid);
 	    SPClientEntity GetClientByUserID(int userId);
         void CloneChannelParams(int channelId, SPClientEntity entity);
-        void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds,string channelCode);
+ 
         List<SPClientEntity> GetAllDefaultClient();
         List<SPClientEntity> FindAllNotInClientGroup(int clientGroupId);
-        void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText);
+        void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText, decimal defaultprice);
  
     }
 
@@ -82,73 +82,19 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 this.DataObjectsContainerIocID.SPSendClientParamsDataObjectInstance.Save(spSendClientParamsEntity);
             }
         }
-        [Transaction(ReadOnly = false)]
-        public void QuickAdd(string loginID, string code, SPChannelEntity channelEntity, int mainloginuserID, List<CodeUserID> codeUserIds, string channelCode)
+
+        private void SetClientPrice(int clientid, decimal price)
         {
-            SPClientEntity mainclientEntity = new SPClientEntity();
-            mainclientEntity.Name = channelEntity.Name + loginID;
-            mainclientEntity.Description = channelEntity.Name + loginID;
-            mainclientEntity.UserID = mainloginuserID;
-            mainclientEntity.IsDefaultClient = false;
-            mainclientEntity.Alias = "";
-
-            this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(mainclientEntity);
-
-            SPClientChannelSettingEntity mainChannelClient = new SPClientChannelSettingEntity();
-
-            mainChannelClient.Name = channelEntity.Name + loginID;
-            mainChannelClient.Description = channelEntity.Name + loginID;
-            mainChannelClient.ChannelID = channelEntity;
-            mainChannelClient.ClinetID = mainclientEntity;
-            mainChannelClient.InterceptRate = 0;
-            mainChannelClient.OrderIndex = 1;
-            mainChannelClient.UpRate = 0;
-            mainChannelClient.DownRate = 0;
-            mainChannelClient.CommandColumn = "ywid";
-            mainChannelClient.CommandType = "3";
-            mainChannelClient.CommandCode = code;
-            mainChannelClient.SyncData = false;
-            mainChannelClient.ChannelCode = channelCode;
-            mainChannelClient.Disable = false;
-
-            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
-
-            foreach (CodeUserID codeUserId in codeUserIds)
-            {
-                SPClientEntity subClientEntity = new SPClientEntity();
-                subClientEntity.Name = channelEntity.Name + loginID + codeUserId.Code;
-                subClientEntity.Description = channelEntity.Name + loginID + codeUserId.Code;
-                subClientEntity.UserID = codeUserId.UserID;
-                subClientEntity.IsDefaultClient = false;
-                subClientEntity.Alias = "";
-
-
-
-                this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
-
-
-                SPClientChannelSettingEntity subChannelClient = new SPClientChannelSettingEntity();
-
-                subChannelClient.Name = channelEntity.Name + loginID + codeUserId.Code;
-                subChannelClient.Description = channelEntity.Name + loginID + codeUserId.Code;
-                subChannelClient.ChannelID = channelEntity;
-                subChannelClient.ClinetID = subClientEntity;
-                subChannelClient.InterceptRate = 0;
-                subChannelClient.OrderIndex = 2;
-                subChannelClient.UpRate = 0;
-                subChannelClient.DownRate = 0;
-                subChannelClient.CommandColumn = "ywid";
-                subChannelClient.CommandType = "3";
-                subChannelClient.CommandCode = code + codeUserId.Code;
-                subChannelClient.SyncData = false;
-                subChannelClient.ChannelCode = channelCode;
-                subChannelClient.Disable = false;
-
-                this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(subChannelClient);           
-            }
-
-
+            SPClientPriceEntity spClientPrice = new SPClientPriceEntity();
+            spClientPrice.SPClientID = clientid;
+            spClientPrice.Price = price;
+            spClientPrice.SPClientGroupID = 0;
+            this.DataObjectsContainerIocID.SPClientPriceDataObjectInstance.Save(spClientPrice);
         }
+
+
+
+ 
 
         public List<SPClientEntity> GetAllDefaultClient()
         {
@@ -162,7 +108,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
  
 
-        public void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText)
+        public void QuickAdd(string loginId, string code, SPChannelEntity channelEntity, int mainloginuserId, List<CodeUserID> codeUserIds, string channelCode, int orderIndex, bool hasSubCode, string codeType, string allowAndDisableArea, string getway, string dayLimit, string monthLimit, string sendText, decimal defaultprice)
         {
             SPClientEntity mainclientEntity = new SPClientEntity();
             mainclientEntity.Name = channelEntity.Name + loginId;
@@ -172,6 +118,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainclientEntity.Alias = "";
 
             this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(mainclientEntity);
+
+            SetClientPrice(mainclientEntity.Id,defaultprice);
 
             SPClientChannelSettingEntity mainChannelClient = new SPClientChannelSettingEntity();
 
@@ -184,6 +132,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainChannelClient.UpRate = 0;
             mainChannelClient.DownRate = 0;
             mainChannelClient.CommandColumn = "ywid";
+            mainChannelClient.DefaultPrice = defaultprice;
             if (codeType == "1")
             {
                 mainChannelClient.CommandType = "1";
@@ -224,6 +173,8 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
                 this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(subClientEntity);
 
+                SetClientPrice(subClientEntity.Id, defaultprice);
+
 
                 SPClientChannelSettingEntity subChannelClient = new SPClientChannelSettingEntity();
 
@@ -246,7 +197,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
                 subChannelClient.DayLimit = dayLimit;
                 subChannelClient.MonthLimit = monthLimit;
                 subChannelClient.SendText = sendText;
-
+                subChannelClient.DefaultPrice = defaultprice;
                 this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(subChannelClient);
             }
         }

@@ -70,9 +70,6 @@
                                     AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" Hidden="true" AllowBlank="True" />
-                            </ext:Anchor>
-                            <ext:Anchor Horizontal="95%">
                                 <ext:NumberField ID="txtRate" runat="server" FieldLabel="分成比例" Hidden="true" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

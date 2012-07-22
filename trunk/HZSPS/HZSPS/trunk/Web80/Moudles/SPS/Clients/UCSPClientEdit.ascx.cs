@@ -60,11 +60,34 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     if (obj.SPClientGroupID != null)
                         this.hidClientGroupID.Text = obj.SPClientGroupID.Id.ToString();
 
-                    numPrice.Text = obj.Price.ToString("N2");
+                    int channelRate = 0;
+
+                    if (obj.DefaultClientChannelSetting != null && obj.DefaultClientChannelSetting.ChannelID != null && obj.DefaultClientChannelSetting.ChannelID.Rate.HasValue)
+                    {
+                        channelRate = obj.DefaultClientChannelSetting.ChannelID.Rate.Value;
+                    }
+
+                    if (obj.DefaultClientChannelSetting != null && obj.DefaultClientChannelSetting.ChannelID != null)
+                        lblDefaultChannelIntercept.Text = string.Format("上家“" + obj.DefaultClientChannelSetting.ChannelID.Name + "”默认扣率({0})", channelRate);
+                    else
+                        lblDefaultChannelIntercept.Text = "";
+
+
+                    //if (obj.DefaultClientChannelSetting != null && obj.DefaultClientChannelSetting.ChannelID != null && obj.DefaultClientChannelSetting.ChannelID.Price.HasValue)
+                    //    numPrice.Text = obj.DefaultClientChannelSetting.ChannelID.Price.Value.ToString("N2"); 
+                    //else
+                    //    numPrice.Text = obj.Price.ToString("N2");
+
+
+                    if (obj.DefaultClientChannelSetting != null && obj.DefaultClientChannelSetting.DefaultClientPrice.HasValue && obj.DefaultClientChannelSetting.DefaultClientPrice.Value>0)
+                        numPrice.Text = obj.DefaultClientChannelSetting.DefaultClientPrice.Value.ToString("N2");
+                    else
+                        numPrice.Text = obj.Price.ToString("N2");
+
+   
 
 
                     hidId.Text = id.ToString();
-
 
                     winSPClientEdit.Show();
 
@@ -124,9 +147,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
 
                 if (newClientGroupID != 0 && oldClientGroupID != newClientGroupID)
                 {
-                    obj.UpdateSyncDataSetting();
+                    int interceptRate = 15;
+
+                    if(rgdCustomIntercept.Checked)
+                    {
+                        interceptRate = Convert.ToInt32(numCustomerIntercept.Value);
+                    }
+                    if (rgdDefaultChannelIntercept.Checked)
+                    {
+                        if (obj.DefaultClientChannelSetting.ChannelID.Rate.HasValue)
+                            interceptRate = obj.DefaultClientChannelSetting.ChannelID.Rate.Value;
+                        else
+                            interceptRate = 15;
+                    }
+                    if (rgdDefaultClientIntercept.Checked)
+                    {
+                        interceptRate = obj.SPClientGroupID.DefaultInterceptRate;
+                    }
+
+                    obj.UpdateSyncDataSetting(interceptRate);
                 }
 
+                //更新为通道价格
+                //if (obj.DefaultClientChannelSetting != null && obj.DefaultClientChannelSetting.ChannelID != null && obj.DefaultClientChannelSetting.ChannelID.Price.HasValue)
+                //    obj.SetClientPrice(obj.DefaultClientChannelSetting.ChannelID.Price.Value);
+                //else
                 obj.SetClientPrice(Convert.ToDecimal(numPrice.Value));
 
                 winSPClientEdit.Hide();
