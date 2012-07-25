@@ -40,7 +40,7 @@ namespace Legendigital.Common.WebApp.Moudles.SystemManage.UserManage
         {
             string loginID = this.txtUserLoginID.Text.Trim();
 
-            if (SystemUserWrapper.GetUserByLoginID(loginID) != null)
+            if (SystemUserWrapper.FindByLoginID(loginID) != null)
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "Error Message : User LoginID is exist!";

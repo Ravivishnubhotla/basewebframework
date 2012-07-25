@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Dictionary Patch Add" />
+  <add name="msgFiledCategory" value="Category" />
+  <add name="msgFiledIsHasValue" value="Has Value" />
+  <add name="msgFiledDictionaryItem" value="Dictionary Item" />
+  <add name="msgFiledDictionaryNotes" value="If has value,please use | to split." />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'System Dictionary Patch Added Success.',callback);function callback(id) {#{formPanelSystemDictionaryPatchAdd}.getForm().reset();#{storeSystemDictionary}.reload(); };" />
+</resources>

@@ -3,10 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Security;
+using System.Xml;
 using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
@@ -188,7 +190,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// </summary>
         /// <param name="loginID"></param>
         /// <returns></returns>
-        public static SystemUserWrapper GetUserByLoginID(string loginID)
+        public static SystemUserWrapper FindByLoginID(string loginID)
         {
             return businessProxy.GetUserByLoginId(loginID);
         }
@@ -220,6 +222,29 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             businessProxy.DeleteUser(loginID, deleteAllRelatedData);
         }
+
+        /// <summary>
+        /// 生成SSO单点登陆Key
+        /// </summary>
+        /// <param name="loginID">用户ID</param>
+        /// <returns></returns>
+        public static string GenerateSSOKey(string loginID)
+        {
+            string ssoKey = Guid.NewGuid().ToString();
+
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(loginID);
+
+            if (user!=null)
+            {
+                user.SSOKey = ssoKey;
+                SystemUserWrapper.Update(user);
+                return ssoKey;
+            }
+
+            return "";
+        }
+
+ 
 
         public static List<SystemUserWrapper> FindAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
@@ -426,7 +451,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             {
                 Membership.CreateUser(loginID, defaultPassword, loginID + defaultEmail);
 
-                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(loginID);
+                SystemUserWrapper user = SystemUserWrapper.FindByLoginID(loginID);
 
                 user.UserName = loginID;
 
@@ -455,7 +480,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             Membership.CreateUser(DEV_USER_ID, defaultPassword, DEV_USER_ID + "@163.ocm");
 
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(DEV_USER_ID);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(DEV_USER_ID);
 
             user.UserName = DEV_USER_ID;
 
@@ -466,7 +491,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             Membership.CreateUser(SYS_USER_ID, defaultPassword, DEV_USER_ID + "@163.ocm");
 
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(SYS_USER_ID);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(SYS_USER_ID);
 
             user.UserName = SYS_USER_ID;
 
@@ -477,7 +502,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         {
             Membership.CreateUser(SYSOPTOR_USER_ID, StringUtil.GetRandNumber(6), DEV_USER_ID + "@163.ocm");
 
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(SYSOPTOR_USER_ID);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(SYSOPTOR_USER_ID);
 
             user.UserName = SYSOPTOR_USER_ID;
 

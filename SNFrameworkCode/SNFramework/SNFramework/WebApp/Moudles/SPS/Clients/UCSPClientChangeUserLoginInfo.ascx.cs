@@ -72,7 +72,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
                 if (clientUser.UserLoginID!=this.txtUserID.Text.Trim())
                 {
-                    if (SystemUserWrapper.GetUserByLoginID(this.txtUserID.Text.Trim()) != null)
+                    if (SystemUserWrapper.FindByLoginID(this.txtUserID.Text.Trim()) != null)
                     {
                         ResourceManager.AjaxSuccess = false;
                         ResourceManager.AjaxErrorMessage = "错误信息:用户已存在。";

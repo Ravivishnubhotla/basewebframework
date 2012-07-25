@@ -58,23 +58,18 @@
                                                 </Listeners>
                                             </ext:ComboBox>
                                             <ext:FormPanel ID="frmExcel" runat="server" HideLabel="True" Frame="True" Header="False"
-                                                Hidden="True" Layout="form" AnchorHorizontal="100%" AnchorVertical="-53">
+                                                Hidden="True" Layout="form" AnchorHorizontal="100%">
                                                 <Items>
-                                                    <ext:FieldSet ID="FieldSet1"  LabelAlign="Top" runat="server" CheckboxToggle="false" Title="Excel 连接设置"
-                                                        Collapsed="false" Layout="Form">
+                                                    <ext:FileUploadField ID="BasicField" FieldLabel="Excel 文件路径" Width="400" runat="server"
+                                                        ButtonText="浏览" Icon="Attach" />
+                                                    <ext:ComboBox ID="ComboBox1" FieldLabel="Excel 文件版本" Editable="False" runat="server"
+                                                        AnchorHorizontal="100%">
                                                         <Items>
-                                                            <ext:FileUploadField ID="BasicField" FieldLabel="Excel 文件路径" runat="server"
-                                                                ButtonText="浏览" Icon="Attach" AnchorHorizontal="98%" />
-                                                            <ext:ComboBox ID="ComboBox1" FieldLabel="Excel 文件版本" Editable="False" runat="server"
-                                                                AnchorHorizontal="100%">
-                                                                <Items>
-                                                                    <ext:ListItem Text="Excel 97-2003" Value="1" />
-                                                                    <ext:ListItem Text="Excel 2007" Value="3" />
-                                                                </Items>
-                                                            </ext:ComboBox>
-                                                            <ext:Checkbox ID="Checkbox4" HideLabel="True" BoxLabel="首行包含列名" runat="server" />
+                                                            <ext:ListItem Text="Excel 97-2003" Value="1" />
+                                                            <ext:ListItem Text="Excel 2007" Value="3" />
                                                         </Items>
-                                                    </ext:FieldSet>
+                                                    </ext:ComboBox>
+                                                    <ext:Checkbox ID="Checkbox4" HideLabel="True" BoxLabel="首行包含列名" runat="server" />
                                                 </Items>
                                             </ext:FormPanel>
                                             <ext:FormPanel ID="frmAccess" runat="server" HideLabel="True" Frame="True" Header="False"

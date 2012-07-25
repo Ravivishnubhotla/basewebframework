@@ -110,7 +110,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
         {
             bool flag = false;
 
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user == null)
             {
                 return flag;
@@ -150,7 +150,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                 status = MembershipCreateStatus.DuplicateEmail;
                 return null;
             }
-            if (SystemUserWrapper.GetUserByLoginID(username) != null)
+            if (SystemUserWrapper.FindByLoginID(username) != null)
             {
                 status = MembershipCreateStatus.DuplicateUserName;
                 return null;
@@ -201,7 +201,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             bool flag = false;
             if (ValidateUser(username, password))
             {
-                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+                SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
                 if (user == null)
                 {
                     return flag;
@@ -240,7 +240,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                                                                                      NHibernateProviderSR.
                                                                                          Pwd_CannotRetrieveHashed);
             }
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 if (RequiresQuestionAndAnswer && !CheckPassword(answer, user.PasswordAnswer, user.PasswordSalt))
@@ -276,7 +276,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                                                                                          NHibernateProviderSR.
                                                                                              Pwd_ChangeCancelledDueToNewPassword);
                 }
-                SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+                SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
                 if (user == null)
                 {
                     return flag;
@@ -333,7 +333,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                                                                                      NHibernateProviderSR.
                                                                                          Pwd_ResetCancelledDueToNewPassword));
             }
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 if (user.IsLockedOut)
@@ -373,7 +373,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
         {
             try
             {
-                SystemUserWrapper.SaveOrUpdate(SystemUserWrapper.GetUserByLoginID(user.UserName).FromMembershipUser(user));
+                SystemUserWrapper.SaveOrUpdate(SystemUserWrapper.FindByLoginID(user.UserName).FromMembershipUser(user));
             }
             catch (Exception exception)
             {
@@ -387,7 +387,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
         public override bool ValidateUser(string username, string password)
         {
             bool flag = false;
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 if (CheckPassword(password, user.UserPassword, user.PasswordSalt))
@@ -449,7 +449,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                 throw new ArgumentNullException("username");
             }
 
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
 
             if (user == null)
             {
@@ -717,7 +717,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
 
         private void UpdateLastActivityDate(string username)
         {
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 try
@@ -737,7 +737,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
 
         private void UpdateLastLoginDate(string username)
         {
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 try
@@ -757,7 +757,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
 
         private void UpdateFailureCount(string username, FailureType failureType)
         {
-            SystemUserWrapper user = SystemUserWrapper.GetUserByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
             if (user != null)
             {
                 DateTime now = DateTime.Now;

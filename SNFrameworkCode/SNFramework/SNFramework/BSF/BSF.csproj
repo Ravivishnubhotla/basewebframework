@@ -133,6 +133,71 @@
     <Content Include="MainPage\Login.aspx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
     <Content Include="Moudles\DataImports\DataImportPage.aspx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\SystemConfigListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.en-US.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\App_LocalResources\UCSystemConfigGroupEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx" />
+    <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryGroupListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\SystemDictionaryListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.en-US.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryEdit.ascx.zh-CHS.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryGroupEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\App_LocalResources\UCSystemDictionaryPatchEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryGroupListPage.aspx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupView.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx" />
+    <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx" />
+    <Content Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx" />
+    <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
+    <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx" />
+    <Content Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -153,6 +218,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="images\CheckCode.ashx.cs">
+      <DependentUpon>CheckCode.ashx</DependentUpon>
     </Compile>
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -189,6 +257,131 @@
     <Compile Include="Moudles\DataImports\DataImportPage.aspx.designer.cs">
       <DependentUpon>DataImportPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.cs">
+      <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\SystemConfigListPage.aspx.designer.cs">
+      <DependentUpon>SystemConfigListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx.cs">
+      <DependentUpon>UCSystemConfigAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx.cs">
+      <DependentUpon>UCSystemConfigEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx.cs">
+      <DependentUpon>UCSystemConfigGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx.cs">
+      <DependentUpon>UCSystemConfigGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemConfigGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx.cs">
+      <DependentUpon>CountryProvinceCityDataService.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataService\DictionaryDataService.ashx.cs">
+      <DependentUpon>DictionaryDataService.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryGroupListPage.aspx.cs">
+      <DependentUpon>SystemDictionaryGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryGroupListPage.aspx.designer.cs">
+      <DependentUpon>SystemDictionaryGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\SystemDictionaryListPage.aspx.designer.cs">
+      <DependentUpon>SystemDictionaryListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupView.ascx.cs">
+      <DependentUpon>UCSystemDictionaryGroupView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupView.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryGroupView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx.cs">
+      <DependentUpon>UCSystemDictionaryPatchAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryPatchAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx.cs">
+      <DependentUpon>UCSystemDictionaryPatchEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemDictionaryPatchEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.cs">
+      <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.designer.cs">
+      <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx.cs">
+      <DependentUpon>SystemSettingEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx.designer.cs">
+      <DependentUpon>SystemSettingEditor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx.cs">
+      <DependentUpon>SystemTerminologyListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx.designer.cs">
+      <DependentUpon>SystemTerminologyListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,10 +393,18 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Moudles\Installs\" />
-    <Folder Include="Moudles\SystemManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\CheckCode.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SystemManage\DataService\DictionaryDataService.ashx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

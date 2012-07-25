@@ -51,7 +51,7 @@ namespace Legendigital.Common.WebApp.Moudles.SPS.Clients
 
                 string password = txtUserPasword.Text.Trim();
 
-                if(SystemUserWrapper.GetUserByLoginID(loginID)!=null)
+                if(SystemUserWrapper.FindByLoginID(loginID)!=null)
                 {
                     ResourceManager.AjaxSuccess = false;
                     ResourceManager.AjaxErrorMessage = "错误信息:用户已存在。";

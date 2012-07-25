@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 using System.Xml;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Utility;
 
 namespace Legendigital.Framework.Common.Securitys.SSO
@@ -38,51 +40,49 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         None = 2
     }
 
+    public enum SSOUserType
+    {
+        NormalUser,
+        SystemUser,
+        SuperUser
+    }
+
+    public enum LoginError
+    {
+        NoPermissionForPage = 0,
+        HasLoginInOtherPlace =1,
+        TokenExpired =2,
+        TokenWrong =3
+    }
+
     public class SSOProvider
     {
-        public const string NODE_NAME_SSFToken = "SSFToken";
-        public const string ELEMENT_NAME_LoginUserID = "LoginUserID";
-        public const string ELEMENT_NAME_Password = "Password";
-        public const string ELEMENT_NAME_LoginDate = "LoginDate";
-        public const string ELEMENT_NAME_IPAddress = "IPAddress";
-        public const string ELEMENT_NAME_SSOKey = "SSOKey";
         public const string QUERY_STRING_NAME_SSFToken = "_SSFToken";
         public const string Session_Key_LoginUser = "CurrentLoginUser";
+        /// <summary>
+        /// Token的有效期，单位小时
+        /// </summary>
+        public static int SSFTokenValidationPeriod = 24;
+
+
+        /// <summary>
+        /// 密码加密密钥
+        /// </summary>
+        internal static string m_PasswordEncyptKey = "eKqebkPS";
+
+
+        /// <summary>
+        /// AES 256bit加密，密钥需要32位
+        /// </summary>
+        private static string m_EncyptKey = "PCpJwIBGsHrbTCwqWgGGrYdBpiFVqjcA";
+        /// <summary>
+        /// AES 256bit加密，密钥需要32位
+        /// </summary>
+        private static string m_SSFTokenKey = "PCpJwIBGsHrbTCwqWgGGrYdBpiFVqjcA";
  
-        public static string GetSSFToken(string loginUserID, string password, DateTime loginDate, string ipAddress, string ssoKey, string SSFTokenKey)
+        public static string GetSSFToken(SSOTokenInfo ssoTokenInfo, string ssfTokenKey)
         {
-            XmlDocument doc = new XmlDocument();
-            XmlNode docNode = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            doc.AppendChild(docNode);
-
-            XmlNode SSFTokenNode = doc.CreateElement(NODE_NAME_SSFToken);
-            doc.AppendChild(SSFTokenNode);
-
-            XmlAttribute UsernameAttribute = doc.CreateAttribute(ELEMENT_NAME_LoginUserID);
-            UsernameAttribute.Value = loginUserID;
-            SSFTokenNode.Attributes.Append(UsernameAttribute);
-
-            XmlAttribute PasswordAttribute = doc.CreateAttribute(ELEMENT_NAME_Password);
-            PasswordAttribute.Value = password;
-            SSFTokenNode.Attributes.Append(PasswordAttribute);
-
-            XmlAttribute DateAttribute = doc.CreateAttribute(ELEMENT_NAME_LoginDate);
-            DateAttribute.Value = loginDate.ToString("yyyy-MM-dd HH:mm:ss");
-            SSFTokenNode.Attributes.Append(DateAttribute);
-
-            XmlAttribute ipAddressAttribute = doc.CreateAttribute(ELEMENT_NAME_IPAddress);
-            ipAddressAttribute.Value = ipAddress;
-            SSFTokenNode.Attributes.Append(ipAddressAttribute);
-
-            XmlAttribute SSOKeyAttribute = doc.CreateAttribute(ELEMENT_NAME_SSOKey);
-            SSOKeyAttribute.Value = ssoKey;
-            SSFTokenNode.Attributes.Append(SSOKeyAttribute);
-
-            StringWriter sw = new StringWriter();
-            doc.Save(sw);
-
-            return CryptographyUtil.EncryptDES(sw.ToString(), SSFTokenKey);
-
+            return CryptographyUtil.EncryptDES(CompressionUtil.Compress(SerializeUtil.ToJson(ssoTokenInfo),CompressionType.SevenZip), ssfTokenKey);
         }
  
         /// <summary>
@@ -90,25 +90,19 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         /// </summary>
         /// <param name="SSFToken"></param>
         /// <returns></returns>
-        internal static Hashtable GetUserNameAndPasswordFromSSFToken(string SSFToken,string SSFTokenKey)
+        internal static SSOTokenInfo GetInfoFromSSFToken(string ssfToken, string ssfTokenKey)
         {
-            Hashtable SSFTokenUserNameAndPassword = new Hashtable();
-            try
-            {
-                XmlDocument xdc = new XmlDocument();
-                xdc.LoadXml(CryptographyUtil.DecryptDES(SSFToken, SSFTokenKey));
-                SSFTokenUserNameAndPassword.Add(ELEMENT_NAME_LoginUserID, xdc.DocumentElement.GetAttribute(ELEMENT_NAME_LoginUserID).ToString());
-                SSFTokenUserNameAndPassword.Add(ELEMENT_NAME_Password, xdc.DocumentElement.GetAttribute(ELEMENT_NAME_Password).ToString());
-                SSFTokenUserNameAndPassword.Add(ELEMENT_NAME_LoginDate, xdc.DocumentElement.GetAttribute(ELEMENT_NAME_LoginDate).ToString());
-                SSFTokenUserNameAndPassword.Add(ELEMENT_NAME_IPAddress, xdc.DocumentElement.GetAttribute(ELEMENT_NAME_IPAddress).ToString());
-                SSFTokenUserNameAndPassword.Add(ELEMENT_NAME_SSOKey, xdc.DocumentElement.GetAttribute(ELEMENT_NAME_SSOKey).ToString());
-                return SSFTokenUserNameAndPassword;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return SerializeUtil.JsonDeserialize<SSOTokenInfo>(CryptographyUtil.DecryptDES(CompressionUtil.DeCompress(ssfToken, CompressionType.SevenZip), ssfTokenKey));
+        }
 
+        public static object GetSessionValue(string sessionName)
+        {
+            return HttpContext.Current.Session[sessionName];
+        }
+
+        public static void SetSessionValue(string sessionKeyLoginUser, SSOTokenInfo tokenInfo)
+        {
+            HttpContext.Current.Session[sessionKeyLoginUser] = tokenInfo;
         }
  
  
@@ -118,9 +112,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         /// <returns></returns>
         public static string GenerateSSOKey(string userLoginID)
         {
-            string SSOKey = Guid.NewGuid().ToString();
-            //UserInfo.UpdateSSOKey(userLoginID, SSOKey);
-            return SSOKey;
+            return SystemUserWrapper.GenerateSSOKey(userLoginID);
         }
 
 

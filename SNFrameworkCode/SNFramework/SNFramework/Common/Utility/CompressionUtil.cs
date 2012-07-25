@@ -98,7 +98,7 @@ namespace Legendigital.Framework.Common.Utility
             ; 
         }
 
-        public string DeCompress(string stringToDecompress, CompressionType compressionProvider)
+        public static string DeCompress(string stringToDecompress, CompressionType compressionProvider)
         {
             string outString = string.Empty;
 
