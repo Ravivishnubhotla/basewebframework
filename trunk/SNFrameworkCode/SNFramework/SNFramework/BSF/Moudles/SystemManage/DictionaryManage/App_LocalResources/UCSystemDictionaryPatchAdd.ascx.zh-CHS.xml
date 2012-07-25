@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="批量添加字典" />
+  <add name="msgFiledCategory" value="类别" />
+  <add name="msgFiledIsHasValue" value="字典键值对" />
+  <add name="msgFiledDictionaryItem" value="字典项" />
+  <add name="msgFiledDictionaryNotes" value="如果有值,请使用 | 分隔." />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '批量添加字典项成功！.',callback);function callback(id) {#{formPanelSystemDictionaryPatchAdd}.getForm().reset();#{storeSystemDictionary}.reload(); };" />
+</resources>
+

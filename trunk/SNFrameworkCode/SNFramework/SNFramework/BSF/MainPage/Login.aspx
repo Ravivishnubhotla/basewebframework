@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Masters/AdminMaster.Master"  AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SNFramework.BSF.MainPage.Login" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="Login.aspx.cs" Inherits="SNFramework.BSF.MainPage.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript">
@@ -25,19 +26,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
-    <ext:Window ID="extwinLogin" runat="server" Width="360" ButtonAlign="Right" Height="255"
+    <ext:Window ID="extwinLogin" runat="server" Width="500" ButtonAlign="Center" Height="320"
         Title="<%$ Resources:msgPnlLoginTitle %>" Draggable="false" Closable="false"
         Maximizable="false" Modal="true" Icon="UserKey" Resizable="false">
         <Content>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
-                <North>
-                    <ext:Panel ID="Panel1" runat="server" Header="false" BaseCls="x-plain-body" Height="110px">
+                <Items>
+                    <ext:Panel ID="Panel1" Region="North" runat="server" Header="false" BaseCls="x-plain-body"
+                        Height="110px">
                         <Content>
                         </Content>
                     </ext:Panel>
-                </North>
-                <Center>
-                    <ext:FormPanel ID="pnlLogin" runat="server" Frame="true" BodyStyle="padding:10px;"
+                    <ext:FormPanel ID="pnlLogin" Region="Center" runat="server" Frame="true" BodyStyle="padding:10px;"
                         Layout="Form" LabelWidth="60">
                         <Defaults>
                             <ext:Parameter Name="MsgTarget" Value="side" />
@@ -45,15 +45,24 @@
                         <Items>
                             <ext:TextField ID="txtUserName" runat="server" FieldLabel="<%$ Resources:msgtxtUserNameFieldLabel %>"
                                 AllowBlank="false" Icon="User" BlankText="<%$ Resources:msgtxtUserNameBlankText %>"
-                                Text="DeveloperAdministrator" AnchorHorizontal="92%">
+                                Text="DeveloperAdministrator" AnchorHorizontal="98%">
                             </ext:TextField>
                             <ext:TextField ID="txtPassWord" InputType="Password" runat="server" FieldLabel="<%$ Resources:msgtxtPassWordFieldLabel %>"
                                 Icon="Lock" AllowBlank="false" BlankText="<%$ Resources:msgtxtPassWordBlankText %>"
-                                Text="111111" AnchorHorizontal="92%">
+                                Text="111111" AnchorHorizontal="98%">
                             </ext:TextField>
+                            <ext:CompositeField ID="mfCheckCode" runat="server" FieldLabel="验证码" AnchorHorizontal="98%">
+                                <Items>
+                                    <ext:TextField ID="txtCheckCode" HideLabel="True" runat="server" Flex="1" />
+                                    <ext:Image ID="Image1" runat="server" HideLabel="True" ImageUrl="~/images/CheckCode.ashx">
+                                    </ext:Image>
+                                </Items>
+                            </ext:CompositeField>
+                            <ext:Label ID="lblMessage" runat="server"  FieldLabel="错误信息" Hidden="True">
+                            </ext:Label>
                         </Items>
                     </ext:FormPanel>
-                </Center>
+                </Items>
             </ext:BorderLayout>
         </Content>
         <Buttons>
@@ -73,5 +82,14 @@
                 </Listeners>
             </ext:Button>
         </Buttons>
+        <BottomBar>
+            <ext:Toolbar ID="Toolbar1" runat="server">
+                <Items>
+                    <ext:ToolbarFill />
+                    <ext:ToolbarTextItem ID="lblSupportMessage" runat="server" Text="推荐使用谷歌浏览器(Google Chrome)浏览本系统">
+                    </ext:ToolbarTextItem>
+                </Items>
+            </ext:Toolbar>
+        </BottomBar>
     </ext:Window>
 </asp:Content>

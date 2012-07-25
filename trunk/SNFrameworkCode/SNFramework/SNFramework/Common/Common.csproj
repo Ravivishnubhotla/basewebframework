@@ -1649,6 +1649,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Securitys\SSO\SSOProvider.cs" />
+    <Compile Include="Securitys\SSO\SSOTokenInfo.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
     <Compile Include="SevenZip\Common\CRC.cs" />
     <Compile Include="SevenZip\Common\InBuffer.cs" />

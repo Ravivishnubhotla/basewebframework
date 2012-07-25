@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Dictionary Add" />
+  <add name="msgFiledCategory" value="Category" />
+  <add name="msgFiledKey" value="Key" />
+  <add name="msgFiledValue" value="Value" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledOrder" value="View Order" />
+  <add name="msgFiledIsEnable" value="Is Enable" />
+  <add name="msgFiledIsSystem" value="Is System" /> 
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Success AddedSystem Dictionary。',callback);function callback(id) {#{formPanelSystemDictionaryAdd}.getForm().reset();#{storeSystemDictionary}.reload(); };" />
+</resources>

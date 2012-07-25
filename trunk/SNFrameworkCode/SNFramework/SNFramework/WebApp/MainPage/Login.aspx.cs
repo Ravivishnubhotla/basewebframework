@@ -37,7 +37,7 @@ namespace Legendigital.Common.WebApp.MainPage
             string loginID = this.txtUserName.Text.Trim();
             string password = this.txtPassWord.Text.Trim();
 
-            SystemUserWrapper userWrapper = SystemUserWrapper.GetUserByLoginID(loginID);
+            SystemUserWrapper userWrapper = SystemUserWrapper.FindByLoginID(loginID);
 
             if (userWrapper == null)
             {

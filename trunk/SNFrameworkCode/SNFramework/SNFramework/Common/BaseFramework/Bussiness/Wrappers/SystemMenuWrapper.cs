@@ -123,7 +123,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         /// <returns></returns>
         public static List<SystemMenuWrapper> GetUserAssignedMenuByUserLoginID(string loginID)
         {
-            List<SystemApplicationWrapper> applications = SystemApplicationWrapper.GetUserAvaiableApplications(SystemUserWrapper.GetUserByLoginID(loginID));
+            List<SystemApplicationWrapper> applications = SystemApplicationWrapper.GetUserAvaiableApplications(SystemUserWrapper.FindByLoginID(loginID));
 
             List<SystemMenuWrapper> assignedMenus = new List<SystemMenuWrapper>();
 

@@ -94,15 +94,6 @@ namespace SNFramework.BSF.Moudles.DataImports {
         protected global::Ext.Net.FormPanel frmExcel;
         
         /// <summary>
-        /// FieldSet1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
-        
-        /// <summary>
         /// BasicField control.
         /// </summary>
         /// <remarks>

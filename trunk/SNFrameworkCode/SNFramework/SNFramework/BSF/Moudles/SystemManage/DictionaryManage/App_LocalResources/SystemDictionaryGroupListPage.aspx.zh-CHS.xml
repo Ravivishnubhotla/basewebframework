@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="字典组管理" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgcolCode" value="编码" />
+  <add name="msgcolDescription" value="描述" />
+  <add name="msgcolIsEnable" value="可用" />
+  <add name="msgcolIsSystem" value="系统" />
+  <add name="msgManageSub" value="管理子项" />
+  <add name="msgManageDictionaryGroupSubItem" value="编辑字典项 {0} 子项" />
+</resources>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="字典子项批量编辑" />
+  <add name="msgFiledCategory" value="分组" />
+  <add name="msgGridTitle" value="字典子项批量编辑t" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolCode" value="编码" />
+  <add name="msgcolCategoryID" value="Category" />
+  <add name="msgcolKey" value="键" />
+  <add name="msgcolValue" value="值" />
+  <add name="msgcolDesciption" value="描述" />
+  <add name="msgcolOrder" value="次序" />
+  <add name="msgcolIsEnable" value="可用" />
+</resources>

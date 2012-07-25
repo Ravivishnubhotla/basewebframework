@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="System Config Add " />
+  <add name="msgFiledKeyTitle" value="Key" />
+  <add name="msgFiledGroup" value="Group" />
+  <add name="msgFiledDataType" value="Data Type" />
+  <add name="msgFiledSelectGroup" value="Select a config group..." />
+  <add name="msgFiledDescriptionTitle" value="Description" />
+  <add name="msgFiledValueTitle" value="Value" />
+  <add name="msgFiledSortIndexTitle" value="Sort Index" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Success Add System Config',callback);function callback(id) {#{formPanelSystemConfigAdd}.getForm().reset();#{storeSystemConfig}.reload(); };" />
+</resources>

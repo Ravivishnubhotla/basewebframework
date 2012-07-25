@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System Dictionary Management" />
+  <add name="msgcolID" value="Primary Key" />
+  <add name="msgcolCategoryID" value="Category" />
+  <add name="msgcolKey" value="Key" />
+  <add name="msgcolCode" value="Code" />
+
+  
+  <add name="msgcolValue" value="Value" />
+  <add name="msgcolDesciption" value="Description" />
+  <add name="msgcolOrder" value="View Order" />
+  <add name="msgcolIsEnable" value="Is Enable" />
+</resources>

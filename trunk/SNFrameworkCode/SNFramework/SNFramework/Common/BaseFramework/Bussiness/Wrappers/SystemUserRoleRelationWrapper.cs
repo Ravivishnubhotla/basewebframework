@@ -102,7 +102,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static List<SystemUserWrapper> GetUserByUserLoginId(string userLoginId)
         {
-            SystemUserWrapper systemUser = SystemUserWrapper.GetUserByLoginID(userLoginId);
+            SystemUserWrapper systemUser = SystemUserWrapper.FindByLoginID(userLoginId);
 
             SystemRoleWrapper systemRoleWrapper = SystemUserWrapper.GetUserMaxRoleTypeRole(systemUser);
 
