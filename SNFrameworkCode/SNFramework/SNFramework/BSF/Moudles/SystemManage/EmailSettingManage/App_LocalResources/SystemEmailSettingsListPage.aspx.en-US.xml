@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System Email Settings Management" />
+  <add name="msgcolID" value="Primary Key" />
+  <add name="msgcolName" value="Name" />
+  <add name="msgcolCode" value="Code" />
+  <add name="msgcolHost" value="Host" />
+  <add name="msgcolPort" value="Port" />
+  <add name="msgcolSSL" value="SSL" />
+  <add name="msgcolFromEmail" value="From Email" />
+  <add name="msgcolFromName" value="From Name" />
+  <add name="msgcolLoginEmail" value="Email Account" />
+  <add name="msgcolIsEnable" value="Enable" />
+  <add name="msgcolIsDefault" value="Default" />
+</resources>

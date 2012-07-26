@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Email Template Edit" />
+  <add name="msgFiledEmailTemplateID" value="Primary Key" />
+  <add name="msgFiledName" value="Name" />
+  <add name="msgFiledCode" value="Code" />
+  <add name="msgFiledDescription" value="Description" />
+  <add name="msgFiledTemplateType" value="Template Type" />
+  <add name="msgFiledTitleTemplate" value="Title Template" />
+  <add name="msgFiledBodyTemplate" value="Body Template" />
+  <add name="msgFiledIsHtmlEmail" value="Html Template" />
+  <add name="msgFiledIsEnable" value="Is Enable" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSystemEmailTemplateEdit}.getForm().reset();#{storeSystemEmailTemplate}.reload(); };" />
+</resources>
+

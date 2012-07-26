@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="邮件配置管理" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolName" value="名称" />
+  <add name="msgcolCode" value="编码" />
+  <add name="msgcolHost" value="服务器" />
+  <add name="msgcolPort" value="端口" />
+  <add name="msgcolSSL" value="SSL" />
+  <add name="msgcolFromEmail" value="发送帐号" />
+  <add name="msgcolFromName" value="发送名" />
+  <add name="msgcolLoginEmail" value="邮件帐号" />
+  <add name="msgcolIsEnable" value="可用" />
+  <add name="msgcolIsDefault" value="默认配置" />
+</resources>
