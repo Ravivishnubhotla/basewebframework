@@ -192,6 +192,41 @@
     <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryGroupView.ascx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchAdd.ascx" />
     <Content Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\SystemEmailSettingsListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\SystemEmailTemplateListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\SystemEmailTemplateListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\SystemEmailTemplateListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\UCSystemEmailTemplateEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\SystemEmailTemplateListPage.aspx" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateAdd.ascx" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateView.ascx" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogViewList.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx" />
+    <Content Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx" />
+    <Content Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx" />
     <Content Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
@@ -361,6 +396,83 @@
     <Compile Include="Moudles\SystemManage\DictionaryManage\UCSystemDictionaryPatchEdit.ascx.designer.cs">
       <DependentUpon>UCSystemDictionaryPatchEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx.cs">
+      <DependentUpon>SystemEmailSettingsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx.designer.cs">
+      <DependentUpon>SystemEmailSettingsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\SystemEmailTemplateListPage.aspx.cs">
+      <DependentUpon>SystemEmailTemplateListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\SystemEmailTemplateListPage.aspx.designer.cs">
+      <DependentUpon>SystemEmailTemplateListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateAdd.ascx.cs">
+      <DependentUpon>UCSystemEmailTemplateAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailTemplateAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateEdit.ascx.cs">
+      <DependentUpon>UCSystemEmailTemplateEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailTemplateEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateView.ascx.cs">
+      <DependentUpon>UCSystemEmailTemplateView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateView.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailTemplateView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.designer.cs">
+      <DependentUpon>SystemLogListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx.cs">
+      <DependentUpon>SystemLogViewList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx.designer.cs">
+      <DependentUpon>SystemLogViewList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
+      <DependentUpon>UCSystemLogView.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.cs">
       <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -393,6 +505,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Moudles\Installs\" />
+    <Folder Include="Moudles\SystemManage\UserGroupManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />
