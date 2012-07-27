@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="Select System Resources" />
+  <add name="msgFormAvailablePermissions" value="Available Permissions" />
+  <add name="msgFormAssignedPermissions" value="Assigned Permissions" />
+  <add name="msgcolID" value="ID" />
+  <add name="msgcolName" value="Name" />
+  <add name="msgPanelTitle" value="Assigned Permission" />
+  <add name="msgSetStatus" value="#{StatusBar1}.setStatus({text: 'Current Node:' + node.text + '', clear: false});SelectResources(node,#{hidSelectResourceID},#{pnlEast});" />
+  <add name="msgAssignedPermissionSuccessful" value="Save successful System Permission!" />
+  <add name="msgManagePermission" value="Manage Permission" />
+</resources>

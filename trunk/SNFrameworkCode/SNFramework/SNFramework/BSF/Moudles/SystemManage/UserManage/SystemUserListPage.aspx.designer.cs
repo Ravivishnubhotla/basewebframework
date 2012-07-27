@@ -7,144 +7,153 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNFramework.BSF.Moudles.DataImports {
+namespace SNFramework.BSF.Moudles.SystemManage.UserManage {
     
     
-    public partial class DataImportPage {
+    public partial class SystemUserListPage {
         
         /// <summary>
-        /// ResourceManager1 control.
+        /// ResourceManagerProxy1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ResourceManager1;
+        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
         
         /// <summary>
-        /// Viewport1 control.
+        /// storeSystemUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport Viewport1;
+        protected global::Ext.Net.Store storeSystemUser;
         
         /// <summary>
-        /// WizardPanel control.
+        /// UCSystemUserAdd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel WizardPanel;
+        protected global::SNFramework.BSF.Moudles.SystemManage.UserManage.UCSystemUserAdd UCSystemUserAdd1;
         
         /// <summary>
-        /// Panel1 control.
+        /// UCSystemUserEdit1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
+        protected global::SNFramework.BSF.Moudles.SystemManage.UserManage.UCSystemUserEdit UCSystemUserEdit1;
         
         /// <summary>
-        /// BorderLayout1 control.
+        /// UCSystemUserChangePwd1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.BorderLayout BorderLayout1;
+        protected global::SNFramework.BSF.Moudles.SystemManage.UserManage.UCSystemUserChangePwd UCSystemUserChangePwd1;
         
         /// <summary>
-        /// Panel4 control.
+        /// viewPortMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel4;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// Tab1 control.
+        /// gridPanelSystemUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel Tab1;
+        protected global::Ext.Net.GridPanel gridPanelSystemUser;
         
         /// <summary>
-        /// frmExcel control.
+        /// tbTop control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel frmExcel;
+        protected global::Ext.Net.Toolbar tbTop;
         
         /// <summary>
-        /// BasicField control.
+        /// txtSearchName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FileUploadField BasicField;
+        protected global::Ext.Net.TextField txtSearchName;
         
         /// <summary>
-        /// ComboBox1 control.
+        /// btnFind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ComboBox ComboBox1;
+        protected global::Ext.Net.Button btnFind;
         
         /// <summary>
-        /// Checkbox4 control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox4;
+        protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
-        /// Panel2 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel2;
+        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
-        /// Panel3 control.
+        /// PagingToolBar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel3;
+        protected global::Ext.Net.PagingToolbar PagingToolBar1;
         
         /// <summary>
-        /// btnPrev control.
+        /// winAssignedRole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnPrev;
+        protected global::Ext.Net.Window winAssignedRole;
         
         /// <summary>
-        /// btnNext control.
+        /// winAssignedGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnNext;
+        protected global::Ext.Net.Window winAssignedGroup;
+        
+        /// <summary>
+        /// winShowLoginLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winShowLoginLog;
     }
 }
