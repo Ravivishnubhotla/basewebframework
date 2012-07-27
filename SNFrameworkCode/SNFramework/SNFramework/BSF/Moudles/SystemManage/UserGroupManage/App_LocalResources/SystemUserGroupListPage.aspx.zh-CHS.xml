@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="用户组管理" />
+  <add name="msgcolGroupID" value="主键" />
+  <add name="msgcolGroupNameCn" value="名称" />
+  <add name="msgcolGroupNameEn" value="编码" />
+  <add name="msgcolGroupDescription" value="描述" />
+  <add name="msgwinAssignedUserRoleTitle" value="用户组'{0}'分配角色" />
+  <add name="msgCmdAssignedRoleText" value="分配角色" />
+</resources>

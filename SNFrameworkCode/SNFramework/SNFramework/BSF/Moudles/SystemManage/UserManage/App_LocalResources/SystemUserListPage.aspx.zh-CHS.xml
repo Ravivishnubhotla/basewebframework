@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="用户管理" />
+  <add name="msgLocked" value="锁定" />
+  <add name="msgNormal" value="正常" />
+  <add name="msgcolID" value="主键" />
+  <add name="msgcolUserLoginID" value="登录ID" />
+  <add name="msgcolUserName" value="用户名称" />
+  <add name="msgcolUserEmail" value="Email" />
+  <add name="msgcolUserStatus" value="状态" />
+  <add name="msgcolUserCreateDate" value="创建时间" />
+  <add name="msgcolIsApproved" value="审批通过" />
+  <add name="msgcolIsLockedOut" value="锁定" />
+  <add name="msgChangePassword" value="更改密码" />
+  <add name="msgAssignedRole" value="分配角色" />
+  <add name="msgAssignedGroup" value="分配用户组" />
+  <add name="msgViewLoginLog" value="查看登陆日志" />
+  <add name="msgUserAssignedRole" value="用户 '{0}' 分配角色" />
+  <add name="msgUserAssignedGroup" value="用户 '{0}' 分配用户组" />
+  <add name="msgUserViewLoginLog" value="查看 '{0}' 登陆日志" />
+  <add name="msgLock" value="锁定" />
+  <add name="msgunLock" value="解锁" />
+  <add name="msgLableSearchName" value="用户名" />
+  <add name="msgEmptyTextSearchName" value="[输入用户名]" />
+</resources>
+

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="修改密码" />
+  <add name="msgFieldNewPassword" value="新密码" />
+  <add name="msgFieldRePassword" value="确认密码" />
+  <add name="msgFieldNewPasswordBlankText" value="请输入新密码!" />
+  <add name="msgFieldRePasswordBlankText" value="请输入确认密码!" />
+  <add name="msgFieldRePasswordInvalidText" value="确认密码必须和新密码一致" />
+  <add name="msgbtnChangePassword" value="修改密码" />
+  <add name="msgChangePasswordScript" value="Ext.MessageBox.alert('操作成功', '成功修改密码.',callback);function callback(id) { #{winChangePassword}.hide();#{formPanelChangePassword}.getForm().reset(); };" />
+</resources>
+

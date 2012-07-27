@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System User Role Assign" />
+  <add name="msgAvailableRoles" value="Available Roles" />
+  <add name="msgAssignedRoles" value="Assigned Roles" />
+  <add name="msgcolRoleID" value="ID" />
+  <add name="msgcolRoleName" value="Name" />
+  <add name="msgAssigedSystemRoleSuccessful" value="Assiged System Role successful!" />
+</resources>
+

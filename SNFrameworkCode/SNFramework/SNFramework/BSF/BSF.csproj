@@ -227,12 +227,78 @@
     <Content Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx" />
     <Content Include="Moudles\SystemManage\LogManage\SystemLogViewList.aspx" />
     <Content Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedApplication.aspx.zh-CHS.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleAssignedPrivilege.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\SystemRoleListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\App_LocalResources\UCSystemRoleEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx" />
+    <Content Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx" />
+    <Content Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx" />
     <Content Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\App_LocalResources\SystemSettingEditor.aspx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\SettingManage\SystemSettingEditor.aspx" />
     <Content Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupAssignedRole.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\SystemUserGroupListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\App_LocalResources\UCSystemUserGroupEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx" />
+    <Content Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedGroup.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserAssignedRole.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\SystemUserListPage.aspx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserAdd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserChangePwd.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx" />
+    <Content Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -473,6 +539,39 @@
     <Compile Include="Moudles\SystemManage\LogManage\UCSystemLogView.ascx.designer.cs">
       <DependentUpon>UCSystemLogView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.cs">
+      <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedApplication.aspx.designer.cs">
+      <DependentUpon>SystemRoleAssignedApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx.cs">
+      <DependentUpon>SystemRoleAssignedPrivilege.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleAssignedPrivilege.aspx.designer.cs">
+      <DependentUpon>SystemRoleAssignedPrivilege.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\SystemRoleListPage.aspx.designer.cs">
+      <DependentUpon>SystemRoleListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\ServerInfo\SystemServerInfomation.aspx.cs">
       <DependentUpon>SystemServerInfomation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -494,6 +593,76 @@
     <Compile Include="Moudles\SystemManage\TerminologyManage\SystemTerminologyListPage.aspx.designer.cs">
       <DependentUpon>SystemTerminologyListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.cs">
+      <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupAssignedRole.aspx.designer.cs">
+      <DependentUpon>SystemUserGroupAssignedRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\SystemUserGroupListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserGroupListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.cs">
+      <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.designer.cs">
+      <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx.cs">
+      <DependentUpon>SystemUserAssignedRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx.designer.cs">
+      <DependentUpon>SystemUserAssignedRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx.designer.cs">
+      <DependentUpon>SystemUserListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserAdd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.cs">
+      <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx.designer.cs">
+      <DependentUpon>UCSystemUserChangePwd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx.cs">
+      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx.designer.cs">
+      <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -505,7 +674,6 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Moudles\Installs\" />
-    <Folder Include="Moudles\SystemManage\UserGroupManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />

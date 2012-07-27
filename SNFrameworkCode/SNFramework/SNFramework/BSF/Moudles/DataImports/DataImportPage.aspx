@@ -44,24 +44,13 @@
                                 </North>
                                 <Center>
                                     <ext:FormPanel ID="Tab1" LabelWidth="55" runat="server" Frame="True" Header="False"
-                                        Layout="form">
+                                        Layout="fit">
                                         <Items>
-                                            <ext:ComboBox ID="cmbDataSourceTye" FieldLabel="数据源" Editable="False" runat="server"
-                                                AnchorHorizontal="100%">
-                                                <Items>
-                                                    <ext:ListItem Text="Microsoft Excel" Value="1" />
-                                                    <ext:ListItem Text="平面文件源" Value="3" />
-                                                    <ext:ListItem Text="Microsoft Access" Value="2" />
-                                                </Items>
-                                                <Listeners>
-                                                    <Select Handler="showPanel(#{cmbDataSourceTye}.getValue());"></Select>
-                                                </Listeners>
-                                            </ext:ComboBox>
                                             <ext:FormPanel ID="frmExcel" runat="server" HideLabel="True" Frame="True" Header="False"
-                                                Hidden="True" Layout="form" AnchorHorizontal="100%">
+                                                Hidden="False"  >
                                                 <Items>
-                                                    <ext:FileUploadField ID="BasicField" FieldLabel="Excel 文件路径" Width="400" runat="server"
-                                                        ButtonText="浏览" Icon="Attach" />
+                                                    <ext:FileUploadField ID="BasicField" FieldLabel="Excel 文件路径" runat="server" ButtonText="浏览"
+                                                        Icon="Attach" AnchorHorizontal="100%" />
                                                     <ext:ComboBox ID="ComboBox1" FieldLabel="Excel 文件版本" Editable="False" runat="server"
                                                         AnchorHorizontal="100%">
                                                         <Items>
@@ -70,18 +59,6 @@
                                                         </Items>
                                                     </ext:ComboBox>
                                                     <ext:Checkbox ID="Checkbox4" HideLabel="True" BoxLabel="首行包含列名" runat="server" />
-                                                </Items>
-                                            </ext:FormPanel>
-                                            <ext:FormPanel ID="frmAccess" runat="server" HideLabel="True" Frame="True" Header="False"
-                                                Layout="form" AnchorHorizontal="100%" Hidden="True" AnchorVertical="-53">
-                                                <Items>
-                                                    <ext:Label ID="Label2" runat="server" Text="Microsoft Access" AnchorHorizontal="98%" />
-                                                </Items>
-                                            </ext:FormPanel>
-                                            <ext:FormPanel ID="frmFlatFile" runat="server" HideLabel="True" Frame="True" Header="False"
-                                                Layout="form" AnchorHorizontal="100%" Hidden="True" AnchorVertical="-53">
-                                                <Items>
-                                                    <ext:Label ID="Label3" runat="server" Text="平面文件源" AnchorHorizontal="98%" />
                                                 </Items>
                                             </ext:FormPanel>
                                         </Items>

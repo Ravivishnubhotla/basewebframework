@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="System User Group Management" />
+  <add name="msgcolGroupID" value="Primary Key" />
+  <add name="msgcolGroupNameCn" value="Name" />
+  <add name="msgcolGroupNameEn" value="Code" />
+  <add name="msgcolGroupDescription" value="Description" />
+  <add name="msgwinAssignedUserRoleTitle" value="User Group '{0}' Assign Role " />
+  <add name="msgCmdAssignedRoleText" value="Assigned Role" />
+</resources>

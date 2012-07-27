@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System User Add" />
+  <add name="msgFieldUserLoginID" value="Login ID" />
+  <add name="msgFieldUserName" value="Name" />
+  <add name="msgFieldUserEmail" value="Email" />
+  <add name="msgFieldUserPassword" value="Password" />
+  <add name="msgFieldComments" value="Comments" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Success AddedSystem User',callback);function callback(id) {#{formPanelSystemUserAdd}.getForm().reset();#{storeSystemUser}.reload(); };" />
+</resources>
+
+

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgGridTitle" value="角色管理" />
+  <add name="msgAssignApplicationTitle" value="角色 \'{0}\' 分配应用菜单" />
+  <add name="msgAssignMenuTitle" value="角色 \'{0}\' 分配菜单 " />
+  <add name="msgAssignPermissionTitle" value="角色 \'{0}\' 分配权限" />
+  <add name="msgAssignApplicationBtnText" value="分配应用菜单" />
+  <add name="msgAssignMenuBtnText" value="分配菜单" />
+  <add name="msgAssignPermissionBtnText" value="分配权限" />
+  <add name="msgcolRoleID" value="主键" />
+  <add name="msgcolRoleName" value="名称" />
+  <add name="msgcolRoleCode" value="编码" />
+  <add name="msgcolRoleDescription" value="描述" />
+  <add name="msgcolIsSystemRole" value="系统角色" />
+</resources>
+
