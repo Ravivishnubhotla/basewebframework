@@ -562,12 +562,14 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.cs">
       <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleAdd.ascx.designer.cs">
       <DependentUpon>UCSystemRoleAdd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SystemManage\RoleManage\UCSystemRoleEdit.ascx.designer.cs">
       <DependentUpon>UCSystemRoleEdit.ascx</DependentUpon>
