@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgDepartmentPostManage" value=" 部门岗位管理" />
+  <add name="msgAddSubOrg" value="添加子组织" />
+  <add name="msgEditOrg" value="编辑组织" />
+  <add name="msgDeleteOrg" value="删除组织" />
+  <add name="msgPanelOrgManage" value="组织机构管理" />
+  <add name="msgAddRootOrg" value="添加根组织" />
+  <add name="msgRootNodeText" value="根组织" />
+  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: '当前组织：  ' + node.text + ' ', clear: false});SelectOrg(node,#{hidSelectOrgID},#{pnlEast});" />
+  <add name="msgPanelDepartmentPostManage" value="部门岗位管理" />
+  <add name="msgPanelDepartmentManage" value="部门管理" />
+  <add name="msgGridPanelColID" value="主键" />
+  <add name="msgGridPanelColName" value="名称" />
+  <add name="msgGridPanelColCode" value="编码" />
+  <add name="msgPanelPostManage" value="职位管理" />
+  <add name="msgGridPanelPostManage" value="职位管理" />
+</resources>

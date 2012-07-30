@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="添加职位" />
+  <add name="msgFiledName" value="名称" />
+  <add name="msgFiledCode" value="编码" />
+  <add name="msgFiledDescription" value="描述" />
+  <add name="msgFiledOrganizationID" value="所属组织" />
+  <add name="msgFiledCreateBy" value="创建人" />
+  <add name="msgFiledCreateAt" value="创建时间" />
+  <add name="msgFiledLastModifyBy" value="最新修改人" />
+  <add name="msgFiledLastModifyAt" value="最新修改时间" />
+  <add name="msgFiledLastModifyComment" value="最新修改记录" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加职位成功！',callback);function callback(id) {#{formPanelSystemPostAdd}.getForm().reset();#{storeSystemPost}.reload();  };" />
+</resources>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgDepartmentPostManage" value=" Department Post Manage" />
+  <add name="msgAddSubOrg" value="Add sub Org" />
+  <add name="msgEditOrg" value="Edit Org" />
+  <add name="msgDeleteOrg" value="Delete Org" />
+  <add name="msgPanelOrgManage" value="Org Manage" />
+  <add name="msgAddRootOrg" value="Add Root Org" />
+  <add name="msgRootNodeText" value="Root Org" />
+  <add name="msgOrgStatusBar" value="#{StatusBar1}.setStatus({text: 'Current Node:  ' + node.text + ' ', clear: false});SelectOrg(node,#{hidSelectOrgID},#{pnlEast});" />
+  <add name="msgPanelDepartmentPostManage" value="Department Post Manage" />
+  <add name="msgPanelDepartmentManage" value="Department Manage" />
+  <add name="msgGridPanelColID" value="ID" />
+  <add name="msgGridPanelColName" value="Name" />
+  <add name="msgGridPanelColCode" value="Code" />
+  <add name="msgPanelPostManage" value="Post Manage" />
+  <add name="msgGridPanelPostManage" value="Post Manage" />
+</resources>

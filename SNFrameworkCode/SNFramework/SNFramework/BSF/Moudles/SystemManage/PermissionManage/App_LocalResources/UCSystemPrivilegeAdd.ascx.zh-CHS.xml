@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="系统权限添加" />
+  <add name="msgFieldResourcesName" value="所属资源" />
+  <add name="msgFieldOperation" value="操作" />
+  <add name="msgFieldName" value="名称" />
+  <add name="msgFieldCode" value="编码" />
+  <add name="msgFieldDescription" value="描述" />
+  <add name="msgFieldOrder" value="序号" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加权限成功！',callback);function callback(id) {#{formPanelSystemPrivilegeAdd}.getForm().reset();#{storeSystemPrivilege}.reload(); };" />
+</resources>
+
+

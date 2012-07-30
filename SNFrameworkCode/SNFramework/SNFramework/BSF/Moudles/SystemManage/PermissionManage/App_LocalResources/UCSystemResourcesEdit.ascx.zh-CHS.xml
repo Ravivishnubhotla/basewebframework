@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="系统资源编辑" />
+  <add name="msgFieldParentResourcesName" value="父资源" />
+  <add name="msgFieldName" value="名称" />
+  <add name="msgFieldCode" value="编码" />
+  <add name="msgFieldDescription" value="描述" />
+  <add name="msgFieldIsRelateUser" value="相关用户" />
+  <add name="msgUpdateScript" value="Ext.MessageBox.alert('操作成功l', '更新资源成功！',callback);function callback(id) {#{formPanelSystemResourcesEdit}.getForm().reset();RefreshTreeList1(); };" />
+</resources>
+

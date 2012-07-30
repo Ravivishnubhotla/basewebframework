@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Operation Add" />
+  <add name="msgFieldResourceName" value="Resource" />
+  <add name="msgFieldName" value="Name" />
+  <add name="msgFieldCode" value="Code" />
+  <add name="msgFieldDescription" value="Description" />
+  <add name="msgFieldIsSystem" value="System Operation" />
+  <add name="msgFieldIsCanSingleOperation" value="Single Operation" />
+  <add name="msgFieldIsCanMutilOperation" value="Mutil Operation" />
+  <add name="msgFieldIsEnable" value="Enable" />
+  <add name="msgFieldIsInListPage" value="In List" />
+  <add name="msgFieldInSinglePage" value="In Single" />
+  <add name="msgFieldOperationOrder" value="Order" />
+  <add name="msgFieldIsCommonOperation" value="Common Operation" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSystemOperationAdd}.getForm().reset();RefreshOperationDataList(); };" />
+</resources>
