@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgFormTitle" value="Edit System department" />
+  <add name="msglblParentMenuName" value="Parent Department" />
+  <add name="msgtxtDepartmentNameCn" value="Name" />
+  <add name="msgtxtDepartmentNameEn" value="Code" />
+  <add name="msgtxtDepartmentDecription" value="Description" />
+  <add name="msgEditScript" value="Ext.MessageBox.alert('Operation successful', 'Edit System Deparentment Success',callback);function callback(id) {#{formPanelSystemDepartmentEdit}.getForm().reset();RefreshTreeList1(); };" />
+</resources>
