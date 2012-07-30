@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <add name="msgPermsissionManage" value=" 操作权限管理" />
+  <add name="msgPatchAddRsOK" value="快速生成成功！" />
+  <add name="msgAddSubRS" value="添加子资源" />
+  <add name="msgEditRS" value="编辑资源" />
+  <add name="msgDeleteRS" value="删除资源" />
+  <add name="msgPanelRSManage" value="资源管理" />
+  <add name="msgAddRootResource" value="添加根资源" />
+  <add name="msgRootNodeText" value="根资源" />
+  <add name="msgResourceStatusBar" value="#{StatusBar1}.setStatus({text: '当前选中节点： ' + node.text + ' ', clear: false});SelectResources(node,#{hidSelectResourceID},#{pnlEast});" />
+  <add name="msgPanelOperationPermissionManage" value="操作权限管理" />
+  <add name="msgPanelOperationManage" value="操作管理" />
+  <add name="msgGridPanelOperationManage" value="操作管理" />
+  <add name="msgGridPanelColID" value="主键" />
+  <add name="msgGridPanelColName" value="名称" />
+  <add name="msgGridPanelColCode" value="编码" />
+  <add name="msgGridPanelColIsSystem" value="系统" />
+  <add name="msgGridPanelColIsSingleOp" value="单操作" />
+  <add name="msgGridPanelColIsMutilOp" value="多操作" />
+  <add name="msgGridPanelColIsISEnable" value="启用" />
+  <add name="msgGridPanelColIsISList" value="列表" />
+  <add name="msgGridPanelColIsISSingle" value="详细" />
+  <add name="msgPanelPermissionManage" value="权限管理" />
+  <add name="msgGridPanelPermissionManage" value="权限管理" />
+  <add name="msgQuickGenerate" value="快速生成" />
+  <add name="msgGridPanelPermissionColID" value="主键" />
+  <add name="msgGridPanelPermissionColName" value="名称" />
+  <add name="msgGridPanelPermissionColCode" value="编码" />
+  <add name="msgGridPanelPermissionColOperation" value="操作" />
+  <add name="msgGridPanelPermissionColOrder" value="序号" />
+</resources>

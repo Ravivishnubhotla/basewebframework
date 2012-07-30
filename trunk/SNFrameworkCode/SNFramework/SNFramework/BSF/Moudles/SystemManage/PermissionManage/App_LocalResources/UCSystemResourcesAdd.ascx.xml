@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Resource Add" />
+  <add name="msgFieldParentResourcesName" value="Parent Resource" />
+  <add name="msgFieldName" value="Name" />
+  <add name="msgFieldCode" value="Code" />
+  <add name="msgFieldDescription" value="Description" />
+  <add name="msgFieldIsRelateUser" value="Relate User" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('Operation successful', 'Add a Resourcse success!' ,callback);function callback(id) {#{formPanelSystemResourcesAdd}.getForm().reset();RefreshTreeList1(); };" />
+</resources>
+

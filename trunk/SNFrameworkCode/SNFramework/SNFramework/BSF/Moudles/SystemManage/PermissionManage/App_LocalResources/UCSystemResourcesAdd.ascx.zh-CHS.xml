@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="添加系统资源" />
+  <add name="msgFieldParentResourcesName" value="父资源" />
+  <add name="msgFieldName" value="名称" />
+  <add name="msgFieldCode" value="编码" />
+  <add name="msgFieldDescription" value="描述" />
+  <add name="msgFieldIsRelateUser" value="相关用户" />
+  <add name="msgAddScript" value="Ext.MessageBox.alert('操作成功', '添加资源成功！' ,callback);function callback(id) {#{formPanelSystemResourcesAdd}.getForm().reset();RefreshTreeList1(); };" />
+</resources>
