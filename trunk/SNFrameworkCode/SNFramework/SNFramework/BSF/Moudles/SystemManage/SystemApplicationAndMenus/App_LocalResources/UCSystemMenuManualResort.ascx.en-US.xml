@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System menu sort" />
+  <add name="msgGridmTitle" value="Sub menu" />
+</resources>
+
