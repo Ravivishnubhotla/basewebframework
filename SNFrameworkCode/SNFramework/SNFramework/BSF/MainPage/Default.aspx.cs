@@ -27,7 +27,7 @@ namespace SNFramework.BSF.MainPage
 
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
-            locSystemName.Text = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
+            locSystemName.Text = settingWrapper.LocaLocalizationName + "&nbsp;" + settingWrapper.SystemVersion;
             locCopyRight.Text = settingWrapper.LocaLocalizationLisence;
 
 

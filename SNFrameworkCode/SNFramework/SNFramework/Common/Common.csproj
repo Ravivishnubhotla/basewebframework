@@ -1648,6 +1648,7 @@
     <Compile Include="Securitys\SSO\BaseSSOSecurityPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Securitys\SSO\SSOConfig.cs" />
     <Compile Include="Securitys\SSO\SSOProvider.cs" />
     <Compile Include="Securitys\SSO\SSOTokenInfo.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
@@ -1712,6 +1713,7 @@
     <Compile Include="Web\ControlHelper\UIHelper.cs" />
     <Compile Include="Web\Designer\GridViewExtenderDesigner.cs" />
     <Compile Include="Web\Designer\GridViewIDConverter.cs" />
+    <Compile Include="Web\Handler\CheckCodeHandler.cs" />
     <Compile Include="Web\Handler\DocumentViewHandler.cs" />
     <Compile Include="Web\UI\GridViewAddRowExtender.cs" />
     <Compile Include="Web\UI\GridViewSortExtender.cs" />

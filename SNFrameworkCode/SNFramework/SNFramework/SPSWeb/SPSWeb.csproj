@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -14,6 +15,15 @@
     <AssemblyName>SPSWeb</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\ThirdsDll\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
@@ -49,6 +62,35 @@
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=1.0.3.3, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop, Version=1.3.2.20943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core, Version=1.3.2.20943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data, Version=1.3.2.20943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate32, Version=1.3.2.35943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate32.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Scheduling.Quartz, Version=1.3.2.35943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Scheduling.Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -72,6 +114,32 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="MainPage\Login.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\Test.aspx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersView.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelQuickAddChannel.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
+    <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
+    <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -83,6 +151,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppCode\DataRecievedHandler.cs" />
     <Compile Include="AppCode\IVRDataRecievedHandler.cs" />
     <Compile Include="AppCode\JSonResult.cs" />
@@ -98,6 +169,199 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\DailyReportGenerateJob.cs" />
+    <Compile Include="MainPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masters\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelEdit.aspx.cs">
+      <DependentUpon>SPChannelEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelEdit.aspx.designer.cs">
+      <DependentUpon>SPChannelEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx.cs">
+      <DependentUpon>SPChannelFiltersListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelFiltersListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
+      <DependentUpon>SPChannelHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.cs">
+      <DependentUpon>SPChannelListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx.cs">
+      <DependentUpon>SPChannelParamsConvertListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsConvertListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelParamsConvertListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx.cs">
+      <DependentUpon>SPChannelParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx.cs">
+      <DependentUpon>SPChannelQuickAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx.designer.cs">
+      <DependentUpon>SPChannelQuickAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.cs">
+      <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.designer.cs">
+      <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.cs">
+      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx.cs">
+      <DependentUpon>UCSPChannelFiltersAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelFiltersAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersEdit.ascx.cs">
+      <DependentUpon>UCSPChannelFiltersEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelFiltersEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersView.ascx.cs">
+      <DependentUpon>UCSPChannelFiltersView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelFiltersView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx.cs">
+      <DependentUpon>UCSPChannelParamsConvertView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsConvertView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsConvertView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx.cs">
+      <DependentUpon>UCSPChannelParamsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelParamsView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelParamsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelQuickAddChannel.ascx.cs">
+      <DependentUpon>UCSPChannelQuickAddChannel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelQuickAddChannel.ascx.designer.cs">
+      <DependentUpon>UCSPChannelQuickAddChannel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx.cs">
+      <DependentUpon>UCSPChannelSycnParamsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelSycnParamsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.cs">
+      <DependentUpon>UCSPChannelView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.designer.cs">
+      <DependentUpon>UCSPChannelView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.cs">
+      <DependentUpon>SPSClientListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.designer.cs">
+      <DependentUpon>SPSClientListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -110,13 +374,20 @@
       <Name>SPS.Bussiness</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="MainPage\" />
-    <Folder Include="Masters\" />
-    <Folder Include="Moudles\SPS\" />
+    <Content Include="Masters\AdminMaster.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Channels\SPChannelHandler.ashx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

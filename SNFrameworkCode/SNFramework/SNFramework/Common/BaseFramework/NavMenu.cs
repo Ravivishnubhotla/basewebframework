@@ -15,7 +15,21 @@ namespace Legendigital.Framework.Common.BaseFramework
         private string icon;
         private bool isCategory;
         private string tooltip;
+        private bool isSystem;
+        private string systemUrl;
         private NavMenu parentMenu;
+
+        public bool IsSystem
+        {
+            get { return isSystem; }
+            set { isSystem = value; }
+        }
+
+        public string SystemUrl
+        {
+            get { return systemUrl; }
+            set { systemUrl = value; }
+        }
 
         private List<NavMenu> subMenus = new List<NavMenu>();
 

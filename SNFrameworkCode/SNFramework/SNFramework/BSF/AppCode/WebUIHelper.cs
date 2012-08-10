@@ -6,6 +6,7 @@ using System.Web.UI;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Securitys.SSO;
 using Legendigital.Framework.Common.Web.UI;
 
 namespace Legendigital.Common.WebApp.AppCode
@@ -41,24 +42,22 @@ namespace Legendigital.Common.WebApp.AppCode
             return nodes;
         }
 
-
         private static void GenerateSubTreeNode<T>(TreeNode mainNode, TypedTreeNodeItem<T> item, Icon treeIcon)
         {
             foreach (TypedTreeNodeItem<T> sitem in item.SubNodes)
             {
                 TreeNode subNode = new TreeNode();
+
                 subNode.Text = sitem.Name;
                 subNode.NodeID = sitem.Id;
-
                 subNode.Icon = treeIcon;
 
                 mainNode.CustomAttributes.Add(new ConfigItem("ID", item.Id, ParameterMode.Value));
+
                 GenerateSubTreeNode(subNode, sitem, treeIcon);
                 mainNode.Nodes.Add(subNode);
             }
         }
-
-
 
         public static TreeNode CreateMainItem(NavMenu menu, Panel leftPanel)
         {
@@ -86,15 +85,56 @@ namespace Legendigital.Common.WebApp.AppCode
             {
                 var subNode = new TreeNode(submenu.Id);
                 subNode.Text = submenu.Name;
+                
                 SetIcon(submenu.Icon, submenu.IsCategory, subNode);
-                subNode.Href = page.ResolveUrl(submenu.NavUrl);
+                
+                if (submenu.IsSystem)
+                    subNode.Href = page.ResolveUrl(submenu.NavUrl);
+                else
+                {
+                    string url = CombineWebUrl(submenu.SystemUrl, submenu.NavUrl);
+
+                    if (url.Contains("?"))
+                    {
+                        url = url + "&" + SSOProvider.QUERY_STRING_NAME_SSFToken +
+                              page.Request.QueryString[SSOProvider.QUERY_STRING_NAME_SSFToken];
+                    }
+                    else
+                    {
+                        url = url + "?" + SSOProvider.QUERY_STRING_NAME_SSFToken +
+                        page.Request.QueryString[SSOProvider.QUERY_STRING_NAME_SSFToken];                  
+                    }
+
+
+                    subNode.Href = url;
+                }
+                
                 subNode.CustomAttributes.Add(new ConfigItem("isCategory", submenu.IsCategory.ToString(),
                                                             ParameterMode.Value));
-
 
                 mainNode.Nodes.Add(subNode);
                 CreateSubItem(submenu, subNode, page);
             }
+        }
+
+        private static string CombineWebUrl(string hostUrl,string rootUrl)
+        {
+            if(!hostUrl.EndsWith("/"))
+            {
+                hostUrl = hostUrl + "/";
+            }
+
+            if (rootUrl.StartsWith("~/"))
+            {
+                rootUrl = rootUrl.Replace("~/", "/");
+            }       
+
+            if (!rootUrl.StartsWith("/"))
+            {
+                rootUrl = "/" + rootUrl;
+            }
+
+            return hostUrl + rootUrl.Substring(1, rootUrl.Length - 1);
         }
 
         public static Icon GetDefaultIcon(bool iscategoty)
