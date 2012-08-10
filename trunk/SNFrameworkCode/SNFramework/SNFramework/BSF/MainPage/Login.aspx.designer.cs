@@ -94,13 +94,13 @@ namespace SNFramework.BSF.MainPage {
         protected global::Ext.Net.TextField txtCheckCode;
         
         /// <summary>
-        /// Image1 control.
+        /// imgCheckCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Image Image1;
+        protected global::Ext.Net.Image imgCheckCode;
         
         /// <summary>
         /// lblMessage control.

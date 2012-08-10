@@ -354,6 +354,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                     subMenu.IsCategory = itemMenu.MenuIsCategory;
                     subMenu.Icon = itemMenu.MenuIconUrl;
                     subMenu.Tooltip = itemMenu.MenuDescription;
+                    subMenu.IsSystem = itemMenu.ApplicationID.SystemApplicationIsSystemApplication.HasValue && itemMenu.ApplicationID.SystemApplicationIsSystemApplication.Value;
+                    if (!subMenu.IsSystem)
+                    {
+                        subMenu.SystemUrl = itemMenu.ApplicationID.SystemApplicationUrl;
+                    }
+                    else
+                    {
+                        subMenu.SystemUrl = "";
+                    }
                     groupMenu.AddSubMenu(subMenu);
                     AddSubMenus(listmenu, itemMenu, subMenu);
                 }

@@ -13,24 +13,6 @@ namespace Legendigital.Framework.Common.Securitys.SSO
 {
     public class BaseSSOSecurityPage : System.Web.UI.Page
     {
-        //public SystemUserWrapper CurrentLoginUser 
-        //{
-        //    get
-        //    {
-        //        if (Context.User == null)
-        //        {
-        //            Session[SSOProvider.Session_Key_LoginUser] = null;
-        //            return null;
-        //        }
-        //        if (Session[SSOProvider.Session_Key_LoginUser] == null)
-        //        {
-        //            Session[SSOProvider.Session_Key_LoginUser] =
-        //                SystemUserWrapper.GetInitalUserByLoginID(Context.User.Identity.Name);
-        //        }
-        //        return (SystemUserWrapper)Session[SSOProvider.Session_Key_LoginUser];
-        //    }
-        //    set { Session[SSOProvider.Session_Key_LoginUser] = value; }
-        //}
 
         public BaseSSOSecurityPage CurrentSecurityPage
         {
@@ -133,26 +115,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             {
                 SSOProvider.SetSessionValue(SSOProvider.Session_Key_LoginUser, tokenInfo);
             }
-
-            /////判断是否有权限访问该页
-            //if (!userInfo.AccessList.ContainsValue(CurrentUrl))
-            //{
-            //    JumpToLoginPage(1);
-            //    return;
-            //}
-
  
-            //SetValueForProperties(CurrentUserInfo, CurrentUrl);
-            //////更新Token的信息
-            //SSFSession.UpdateLoginInfoToSession(Session, String_Token, CurrentUserInfo);
-            ////处理页面按钮权限问题
-            //HidePageControl(CurrentUserInfo.AccessList, CurrentUrl);
-            ////记录子系统使用日志
-            //Log.LogSubSystemUseInsert(m_LoginUserInfo);
-  
-
- 
-
         }
 
 

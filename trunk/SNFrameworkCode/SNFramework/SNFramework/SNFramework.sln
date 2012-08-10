@@ -1,8 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Templates", "{6510D54F-B017-443F-A2AF-B7A9A0173BD4}"
 	ProjectSection(SolutionItems) = preProject
 		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
@@ -15,25 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Temp
 		Code Templates\基础框架字典配置生成工具.zeus = Code Templates\基础框架字典配置生成工具.zeus
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Entity", "SPS.Entity\SPS.Entity.csproj", "{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Data", "SPS.Data\SPS.Data.csproj", "{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Bussiness", "SPS.Bussiness\SPS.Bussiness.csproj", "{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseScript", "DataBaseScript", "{3F5DCF76-D508-406F-9A54-B6FB4D030300}"
 	ProjectSection(SolutionItems) = preProject
 		DataBaseScript\CreateDB.sql = DataBaseScript\CreateDB.sql
 		DataBaseScript\InitDb.sql = DataBaseScript\InitDb.sql
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSUtil", "SPSUtil\SPSUtil.csproj", "{A1C47555-F1A0-4893-B751-875E1EB91826}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSF", "BSF\BSF.csproj", "{EE885813-ECF3-403D-A4B5-C7CD00EA5B60}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSWeb", "SPSWeb\SPSWeb.csproj", "{4214970B-6082-4874-B6F4-186E619EC001}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{C7ED35BE-FFFD-46F0-9A76-225AFD1BC408}"
 	ProjectSection(SolutionItems) = preProject
@@ -72,6 +56,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
 		ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll = ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Entity", "SPS.Entity\SPS.Entity.csproj", "{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Data", "SPS.Data\SPS.Data.csproj", "{7A3FDE30-0B9E-4137-83FB-99D2EB5FA99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Bussiness", "SPS.Bussiness\SPS.Bussiness.csproj", "{93D0D7DA-932C-47FF-BC31-BDF5C9A30C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSUtil", "SPSUtil\SPSUtil.csproj", "{A1C47555-F1A0-4893-B751-875E1EB91826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{320F2DF6-8BE6-470A-B320-CDC547F483F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSF", "BSF\BSF.csproj", "{EE885813-ECF3-403D-A4B5-C7CD00EA5B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSWeb", "SPSWeb\SPSWeb.csproj", "{4214970B-6082-4874-B6F4-186E619EC001}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

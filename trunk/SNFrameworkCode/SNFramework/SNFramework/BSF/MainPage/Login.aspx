@@ -2,7 +2,18 @@
     CodeBehind="Login.aspx.cs" Inherits="SNFramework.BSF.MainPage.Login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+
+    
+
     <script type="text/javascript">
+
+
+        /// <reference name="Ext.Net.Build.Ext.Net.extjs.adapter.ext.ext-base.js" assembly="Ext.Net" />
+        /// <reference name="Ext.Net.Build.Ext.Net.extjs.adapter.ext.ext-base-debug.js" assembly="Ext.Net" />
+        /// <reference name="Ext.Net.Build.Ext.Net.extjs.ext-all-debug.js" assembly="Ext.Net" />
+        /// <reference name="Ext.Net.Build.Ext.Net.extjs.ext-all.js" assembly="Ext.Net" />
+
         if (parent.location.href != self.location.href)
             parent.location.href = '<%= this.ResolveUrl("~/MainPage/Default.aspx") %>';
 
@@ -15,6 +26,16 @@
                 icon: Ext.MessageBox.ERROR
             });
         }
+
+        function show(img) {
+            var imgurl = '<%= this.ResolveUrl("~/images/CheckCode.ashx") %>' + '?' + Math.random();
+            //alert(imgurl);
+            img.setImageUrl(imgurl);
+        }
+        
+  
+
+
     </script>
     <style type="text/css">
         .x-plain-body
@@ -25,6 +46,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="show(#{imgCheckCode});"></DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Window ID="extwinLogin" runat="server" Width="500" ButtonAlign="Center" Height="320"
         Title="<%$ Resources:msgPnlLoginTitle %>" Draggable="false" Closable="false"
@@ -54,11 +78,13 @@
                             <ext:CompositeField ID="mfCheckCode" runat="server" FieldLabel="验证码" AnchorHorizontal="98%">
                                 <Items>
                                     <ext:TextField ID="txtCheckCode" HideLabel="True" runat="server" Flex="1" />
-                                    <ext:Image ID="Image1" runat="server" HideLabel="True" ImageUrl="~/images/CheckCode.ashx">
+                                    <ext:Image ID="imgCheckCode" runat="server" >
+
                                     </ext:Image>
                                 </Items>
                             </ext:CompositeField>
                             <ext:Label ID="lblMessage" runat="server"  FieldLabel="错误信息" Hidden="True">
+ 
                             </ext:Label>
                         </Items>
                     </ext:FormPanel>

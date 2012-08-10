@@ -21,6 +21,8 @@ namespace SNFramework.BSF.MainPage
             if (X.IsAjaxRequest)
                 return;
 
+            //imgCheckCode.ImageUrl = "~/images/CheckCode.ashx";
+
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
             extwinLogin.Title = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
