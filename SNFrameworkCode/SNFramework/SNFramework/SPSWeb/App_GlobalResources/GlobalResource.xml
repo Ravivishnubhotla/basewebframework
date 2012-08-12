@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgAdd" value="Add" />
+  <add name="msgEdit" value="Edit" />
+  <add name="msgSave" value="Save" />
+  <add name="msgClose" value="Close" />
+  <add name="msgRefresh" value="Refresh" />
+  <add name="msgDelete" value="Delete" />
+  <add name="msgCancel" value="Cancel" />
+  <add name="msgSearch" value="Search" />
+  <add name="msgManage" value="Manage" />
+  <add name="msgAction" value="Action" />
+  <add name="msgDataAction" value="Data Action" />
+  <add name="msgPageInfo" value="Show record {0} - {1} total {2}" />
+  <add name="msgNoRecordInfo" value="No matched record" /> 
+  <add name="msgErrorMsg" value="Error Message :" />
+  <add name="msgServerErrorMsg" value="Error Message : {0}" />
+  <add name="msgTrue" value="Yes" />
+  <add name="msgFalse" value="No" />
+  <add name="msgOpFailed" value="Operation failed" />
+  <add name="msgOpSuccessful" value="Operation Successful" />
+  <add name="msgProcessing" value="Processing..." />
+  <add name="msgLoading" value="Loading..." />
+  <add name="msgWarning" value="warning" />
+  <add name="msgDeleteWarning" value="Are you sure to delete this record?" />
+  <add name="msgDeleteSuccessful" value="Delete record successful!" />
+  <add name="msgSavingWaiting" value="saving,Please waiting...." />
+  <add name="msgShowError" value="Ext.Msg.alert('Operation Failed', result.errorMessage);" />
+  <add name="msgPatchAdd" value="Patch Add" />
+  <add name="msgPatchEdit" value="Patch Edit" />
+  <add name="msgDoubleSelectAddTitle" value="Add" />
+  <add name="msgDoubleSelectAddContent" value="Add Selected Rows" />
+  <add name="msgDoubleSelectAddAllTitle" value="Add all" />
+  <add name="msgDoubleSelectAddAllContent" value="Add All Rows" />
+  <add name="msgDoubleSelectRemoveTitle" value="Remove" />
+  <add name="msgDoubleSelectRemoveContent" value="Remove Selected Rows" />
+  <add name="msgDoubleSelectRemoveAllTitle" value="Remove all" />
+  <add name="msgDoubleSelectRemoveAllContent" value="Remove All Rows" />
+  <add name="msgExpandAll" value="Expand all" />
+  <add name="msgCollapseAll" value="Collapse all" />
+  <add name="msgManualSort" value="Sort" />
+  <add name="msgAutoSort" value="Auto Sort" />
+  <add name="msgTitleEditLangItem" value="Edit Terminology {0} Items" />
+  <add name="msgDataNotExisted" value="Error Message：Data does not exist!" />
+</resources>

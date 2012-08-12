@@ -21,11 +21,11 @@ namespace SNFramework.BSF.MainPage
             if (X.IsAjaxRequest)
                 return;
 
-            //imgCheckCode.ImageUrl = "~/images/CheckCode.ashx";
-
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
-            extwinLogin.Title = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;
+            extwinLogin.Title = settingWrapper.LocaLocalizationName + "&nbsp;" + settingWrapper.SystemVersion;
+
+            imgCheckCode.ImageUrl = this.ResolveUrl("~/Images/CheckCode.jpg?"+StringUtil.GetRandNumber(10));
 
             if (!Request.Browser.Cookies)
             {
@@ -127,7 +127,7 @@ namespace SNFramework.BSF.MainPage
 
             SystemLogWrapper.LogUserLoginSuccessed(userWrapper, ipaddress, loginDate);
  
-            string token = SSOProvider.GetSSFToken(ssoTokenInfo, ssoKey);
+            string token = SSOProvider.GetSSFToken(ssoTokenInfo);
 
             Response.Redirect(FormsAuthentication.DefaultUrl + "?" + SSOProvider.QUERY_STRING_NAME_SSFToken + "=" + HttpUtility.UrlEncode(token));
         }

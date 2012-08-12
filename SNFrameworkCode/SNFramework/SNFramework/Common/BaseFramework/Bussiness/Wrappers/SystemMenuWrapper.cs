@@ -140,6 +140,31 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return assignedMenus;
         }
 
+	    /// <summary>
+	    /// 获取用户分配的所有菜单，如果是developmentAdmin直接获取所有的菜单（指定到某一个特定的应用下面，测试模式使用）。
+	    /// </summary>
+	    /// <param name="loginID">用户登陆ID</param>
+	    /// <param name="applicationCode">限定应用</param>
+	    /// <returns></returns>
+	    public static List<SystemMenuWrapper> GetUserAssignedMenuByUserLoginID(string loginID,string applicationCode)
+        {
+            List<SystemApplicationWrapper> applications = new List<SystemApplicationWrapper>() { SystemApplicationWrapper.FindByCode(applicationCode) };
+
+            List<SystemMenuWrapper> assignedMenus = new List<SystemMenuWrapper>();
+
+            List<SystemMenuEntity> menus = businessProxy.GetUserAssignedMenuByLoginID(loginID);
+
+            foreach (SystemMenuEntity systemMenuWrapper in menus)
+            {
+                if (applications.Exists(p => (p.SystemApplicationID == systemMenuWrapper.ApplicationID.SystemApplicationID)))
+                {
+                    assignedMenus.Add(ConvertEntityToWrapper(systemMenuWrapper));
+                }
+            }
+
+            return assignedMenus;
+        }
+
         /// <summary>
         /// 获取角色分配的所有菜单
         /// </summary>
@@ -165,6 +190,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         public static List<NavMenu> GetUserAssignedNavMenuByUserLoginID(string loginID)
         {
             List<SystemMenuWrapper> listmenu = GetUserAssignedMenuByUserLoginID(loginID);
+
+            return GetNavMenusFromSystemMenus(listmenu);
+        }
+
+        /// 获取用户分配的所有菜单，如果是developmentAdmin直接获取所有的菜单。
+        /// </summary>
+        /// <param name="loginID">用户登陆ID</param>
+        /// <returns></returns>
+        public static List<NavMenu> GetUserAssignedNavMenuByUserLoginID(string loginID,string applicationCode)
+        {
+            List<SystemMenuWrapper> listmenu = GetUserAssignedMenuByUserLoginID(loginID, applicationCode);
 
             return GetNavMenusFromSystemMenus(listmenu);
         }

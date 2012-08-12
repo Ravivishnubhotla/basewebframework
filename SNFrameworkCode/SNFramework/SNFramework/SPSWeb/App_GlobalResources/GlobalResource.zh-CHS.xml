@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgAdd" value="添加" />
+  <add name="msgEdit" value="编辑" />
+  <add name="msgSave" value="保存" />
+  <add name="msgClose" value="关闭" />
+  <add name="msgRefresh" value="刷新" />
+  <add name="msgDelete" value="删除" />
+  <add name="msgCancel" value="取消" />
+  <add name="msgSearch" value="搜索" />
+  <add name="msgManage" value="管理" />
+  <add name="msgAction" value="操作" />
+  <add name="msgDataAction" value="数据操作" />
+  <add name="msgPageInfo" value="显示记录 {0} - {1} 共 {2}" />
+  <add name="msgNoRecordInfo" value="没有匹配的记录" />
+  <add name="msgErrorMsg" value="错误信息:" />
+  <add name="msgServerErrorMsg" value="错误信息 : {0}" />
+  <add name="msgTrue" value="是" />
+  <add name="msgFalse" value="否" />
+  <add name="msgOpFailed" value="操作失败" />
+  <add name="msgOpSuccessful" value="操作成功" />
+  <add name="msgProcessing" value="处理中..." />
+  <add name="msgLoading" value="加载中..." />
+  <add name="msgWarning" value="警告" />
+  <add name="msgDeleteWarning" value="确认要删除该条数据？" />
+  <add name="msgDeleteSuccessful" value="删除数据成功！" />
+  <add name="msgSavingWaiting" value="数据保存中,请稍候...." />
+  <add name="msgShowError" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
+  <add name="msgPatchAdd" value="批量添加" />
+  <add name="msgPatchEdit" value="批量编辑" />
+  <add name="msgDoubleSelectAddTitle" value="添加" />
+  <add name="msgDoubleSelectAddContent" value="添加选中的项" />
+  <add name="msgDoubleSelectAddAllTitle" value="添加所有" />
+  <add name="msgDoubleSelectAddAllContent" value="添加所有项" />
+  <add name="msgDoubleSelectRemoveTitle" value="移除" />
+  <add name="msgDoubleSelectRemoveContent" value="移除选中的项" />
+  <add name="msgDoubleSelectRemoveAllTitle" value="移除所有" />
+  <add name="msgDoubleSelectRemoveAllContent" value="移除所有项" />
+  <add name="msgExpandAll" value="展开全部" />
+  <add name="msgCollapseAll" value="收起全部" />
+  <add name="msgManualSort" value="手动排序" />
+  <add name="msgAutoSort" value="自动排序" />
+  <add name="msgTitleEditLangItem" value="编辑术语 {0} 多语言内容" />
+  <add name="msgDataNotExisted" value="错误信息：数据不存在！" />
+</resources>

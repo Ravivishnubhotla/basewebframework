@@ -28,7 +28,7 @@
         }
 
         function show(img) {
-            var imgurl = '<%= this.ResolveUrl("~/images/CheckCode.ashx") %>' + '?' + Math.random();
+            var imgurl = '<%= this.ResolveUrl("~/images/CheckCode.jpg") %>' + '?' + Math.random();
             //alert(imgurl);
             img.setImageUrl(imgurl);
         }
@@ -47,7 +47,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="show(#{imgCheckCode});"></DocumentReady>
+<%--            <DocumentReady Handler="show(#{imgCheckCode});"></DocumentReady>--%>
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Window ID="extwinLogin" runat="server" Width="500" ButtonAlign="Center" Height="320"
@@ -104,7 +104,7 @@
             <ext:Button ID="btnReset" runat="server" Text="<%$ Resources:msgBtnResetText %>"
                 Type="Reset" Icon="ArrowRefreshSmall">
                 <Listeners>
-                    <Click Handler="#{pnlLogin}.getForm().reset();" />
+                    <Click Handler="show(#{imgCheckCode});#{pnlLogin}.getForm().reset();" />
                 </Listeners>
             </ext:Button>
         </Buttons>

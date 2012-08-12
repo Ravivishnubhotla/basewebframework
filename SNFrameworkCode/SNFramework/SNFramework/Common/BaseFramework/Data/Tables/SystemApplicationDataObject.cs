@@ -33,5 +33,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
             return this.FindListByQueryBuilder(queryGenerator);
         }
+
+
+ 
     }
 }

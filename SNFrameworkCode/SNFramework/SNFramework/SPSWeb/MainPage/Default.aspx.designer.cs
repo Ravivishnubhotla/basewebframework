@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SNFramework.BSF.MainPage {
+namespace SPSWeb.MainPage {
     
     
     public partial class Default {
@@ -316,6 +316,6 @@ namespace SNFramework.BSF.MainPage {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SNFramework.BSF.MainPage.UCChangePassword UCChangePassword1;
+        protected global::SPSWeb.MainPage.UCChangePassword UCChangePassword1;
     }
 }
