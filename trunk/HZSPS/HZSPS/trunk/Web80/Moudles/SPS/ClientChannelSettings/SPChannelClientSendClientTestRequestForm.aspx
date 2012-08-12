@@ -14,6 +14,10 @@
 		surl = surl + "&" + params;    
    	    else
 		surl = surl + "?" + params;   
+            
+         lbl.setText(surl);
+         
+
             Coolite.AjaxMethods.SubmitUrl(surl,
                                                                 {
                                                                     failure: function (msg) {

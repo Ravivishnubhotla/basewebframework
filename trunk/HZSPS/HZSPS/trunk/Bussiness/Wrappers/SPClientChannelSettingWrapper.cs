@@ -307,8 +307,31 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             get
             {
+                if (this.CommandType == "1" && this.AllowFilter.HasValue && this.AllowFilter.Value)
+                {
+                    List<SPClientChannelSettingWrapper> clientChannelSettings = FindAllByChannelID(this.ChannelID);
+
+                    SPClientChannelSettingWrapper pClientChannelSetting = (from rap in clientChannelSettings
+                                                                           where
+                                                                               ((rap.CommandType == "1" && rap.AllowFilter.HasValue && rap.AllowFilter.Value)
+                                                                               && rap.CommandCode == this.CommandCode && rap.ChannelCode == this.ChannelCode
+                                                                               )
+                                                                           orderby rap.DefaultPrice descending
+                                                                           select rap).FirstOrDefault();
+
+                    if (pClientChannelSetting != null)
+                    {
+                        return pClientChannelSetting.DefaultPrice;
+                    }
+
+                }
+
+
                 if (ParentClientChannelSetting.Id == this.Id)
                     return this.DefaultPrice;
+
+
+
                 return ParentClientChannelSetting.DefaultPrice;
             }
         }
