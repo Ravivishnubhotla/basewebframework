@@ -160,7 +160,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                     sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
                     break;
                 case "SycnFailed":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1";
                     break;
             }
 
@@ -205,7 +205,7 @@ namespace LD.SPPipeManage.Data.AdoNet
                     sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
                     break;
                 case "SycnFailed":
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1";
                     break;
             }
 
@@ -500,64 +500,7 @@ namespace LD.SPPipeManage.Data.AdoNet
             }
 
             return reportDt;
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //int j = 0;
-
-            //for (DateTime i = startDateTime; i < enddateTime.AddDays(1); i = i.AddDays(1))
-            //{
-            //    string sql = "";
-
-            //    if (channelId != 0)
-            //    {
-            //        sql = "SELECT  ClientID,ChannelID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID and ChannelID=@ChannelID group by  ClientID,ChannelID";
-            //    }
-            //    else
-            //    {
-            //        sql = "SELECT  ClientID,Sum(UpTotalCount) as TotalCount,Sum(InterceptSuccess) as InterceptCount,Sum(DownSuccess) as DownTotal FROM [dbo].[view_ReportDayTotal] where Year = @year and  Month =  @month and  Day=@day and ClientID = @ClientID group by  ClientID";
-            //    }
-
-            //    DbParameters dbParameters = this.CreateNewDbParameters();
-
-            //    dbParameters.AddWithValue("year", i.Year);
-
-            //    dbParameters.AddWithValue("month", i.Month);
-
-            //    dbParameters.AddWithValue("day", i.Day);
-
-            //    dbParameters.AddWithValue("ClientID", clientId);
-
-            //    if (channelId != 0)
-            //    {
-            //        dbParameters.AddWithValue("ChannelID", channelId);
-            //    }
-
-            //    DataTable dt = this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
-
-            //    j++;
-
-            //    if(dt==null|| dt.Rows.Count==0)
-            //    {
-            //        reportDt.Rows.Add(j,i, 0, 0);
-            //    }
-            //    else
-            //    {
-            //        reportDt.Rows.Add(j, i, dt.Rows[0]["DownTotal"], 0);      
-            //    }
-            //}
-
-            return reportDt;
+ 
         }
 
         public ReportResult GetDayReportResult(int clientID, int channelID, DataTable dsDayTotalCount, DataTable dsDayDownCount, DataTable dsDayInterceptCount, DataTable dsDayDownSycnCount)
@@ -1638,7 +1581,7 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
                     sql += " AND IsIntercept = 0 AND IsSycnData = 0 ";
                     break;
                 case AdoNetDataObject.DataType_SycnFailed:
-                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1 AND SycnRetryTimes >0  ";
+                    sql += " AND IsIntercept = 0 AND SucesssToSend = 0 AND IsSycnData=1  ";
                     break;
             }
 
