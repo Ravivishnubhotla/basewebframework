@@ -149,5 +149,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 	        }
 	    }
 
+	    public static SystemApplicationWrapper FindByCode(string applicationCode)
+	    {
+            return new SystemApplicationWrapper(businessProxy.FindByCode(applicationCode));
+	    }
     }
 }

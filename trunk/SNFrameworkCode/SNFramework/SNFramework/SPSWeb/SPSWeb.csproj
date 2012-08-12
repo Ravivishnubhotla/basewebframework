@@ -108,13 +108,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_GlobalResources\GlobalResource.en-US.xml" />
+    <Content Include="App_GlobalResources\GlobalResource.xml" />
+    <Content Include="App_GlobalResources\GlobalResource.zh-CHS.xml" />
     <Content Include="Config\AOP.xml" />
     <Content Include="Config\DataConfig.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="MainPage\App_LocalResources\Default.aspx.en-US.xml" />
+    <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
+    <Content Include="MainPage\App_LocalResources\Default.aspx.zh-CHS.xml" />
+    <Content Include="MainPage\App_LocalResources\Login.aspx.en-US.xml" />
+    <Content Include="MainPage\App_LocalResources\Login.aspx.xml" />
+    <Content Include="MainPage\App_LocalResources\Login.aspx.zh-CHS.xml" />
+    <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.en-US.xml" />
+    <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.xml" />
+    <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.zh-CHS.xml" />
+    <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
+    <Content Include="MainPage\UCChangePassword.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
@@ -170,12 +184,26 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Jobs\DailyReportGenerateJob.cs" />
+    <Compile Include="MainPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainPage\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage\UCChangePassword.ascx.designer.cs">
+      <DependentUpon>UCChangePassword.ascx</DependentUpon>
     </Compile>
     <Compile Include="Masters\AdminMaster.Master.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>

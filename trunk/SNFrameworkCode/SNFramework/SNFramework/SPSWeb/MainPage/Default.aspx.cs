@@ -7,16 +7,21 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
-using SNFramework.BSF.AppCode;
+using Legendigital.Framework.Common.Securitys.SSO;
+using SPSWeb.AppCode;
+ 
 
-
-namespace SNFramework.BSF.MainPage
+namespace SPSWeb.MainPage
 {
     public partial class Default : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
+            {
+                SSOProvider.RedirectToBSFDefaultUrl();
+            }
+
             if (X.IsAjaxRequest)
                 return;
 
@@ -50,7 +55,7 @@ namespace SNFramework.BSF.MainPage
 
         private void InitLeftMenu()
         {
-            List<NavMenu> navMenus = SystemMenuWrapper.GetUserAssignedNavMenuByUserLoginID(this.CurrentTokenInfo.LoginUserID);
+            List<NavMenu> navMenus = SystemMenuWrapper.GetUserAssignedNavMenuByUserLoginID(CurrentTokenInfo.LoginUserID,SSOConfig.CurrentApplicationCode);
 
             foreach (NavMenu m in navMenus)
             {

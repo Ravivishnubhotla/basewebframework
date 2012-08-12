@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Legendigital.Framework.Common.Securitys.SSO;
 
 namespace SPSWeb.MainPage
 {
@@ -11,7 +12,10 @@ namespace SPSWeb.MainPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Response.Redirect("http://localhost:55346/MainPage/Login.aspx");
+            if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
+            {
+                SSOProvider.RedirectToBSFLoginUrl();
+            }
         }
     }
 }

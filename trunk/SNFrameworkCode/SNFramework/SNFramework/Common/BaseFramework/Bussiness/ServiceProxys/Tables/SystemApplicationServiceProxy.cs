@@ -21,6 +21,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemApplicationWrapper CreateOrLoadApplication(string configValue);
         [OperationContract]
         List<SystemApplicationEntity> GetUserAvaiableApplications(SystemUserWrapper user);
+
+        SystemApplicationEntity FindByCode(string applicationCode);
     }
 
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
@@ -53,6 +55,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
             //获取角色分配的的应用程序.
             return this.DataObjectsContainerIocID.SystemRoleApplicationDataObjectInstance.GetUserAssignedApplications(userAssignedRole);
+        }
+
+        public SystemApplicationEntity FindByCode(string applicationCode)
+        {
+
+            List<SystemApplicationEntity> listApplication = SelfDataObj.FindedApplicationsByCode(applicationCode);
+
+            if (listApplication.Count > 0)
+                return  listApplication[0];
+
+            return null;
         }
     }
 }

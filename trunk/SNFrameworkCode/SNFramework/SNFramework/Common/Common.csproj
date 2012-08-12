@@ -1648,6 +1648,9 @@
     <Compile Include="Securitys\SSO\BaseSSOSecurityPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Securitys\SSO\BaseSSOSecurityUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Securitys\SSO\SSOConfig.cs" />
     <Compile Include="Securitys\SSO\SSOProvider.cs" />
     <Compile Include="Securitys\SSO\SSOTokenInfo.cs" />
@@ -1698,11 +1701,13 @@
     <Compile Include="Utility\EncodeUtil.cs" />
     <Compile Include="Utility\ExcelFileReader.cs" />
     <Compile Include="Utility\HttpUtil.cs" />
+    <Compile Include="Utility\IOUtil.cs" />
     <Compile Include="Utility\RandomUtil.cs" />
     <Compile Include="Utility\ReflectionUtil.cs" />
     <Compile Include="Utility\SerializeUtil.cs" />
     <Compile Include="Utility\ServerInfoUtil.cs" />
     <Compile Include="Utility\StringUtil.cs" />
+    <Compile Include="Utility\UrlUtil.cs" />
     <Compile Include="Utility\VauleConvertUtil.cs" />
     <Compile Include="Utility\WebControlHelper.cs" />
     <Compile Include="Utility\WinControlHelper.cs" />

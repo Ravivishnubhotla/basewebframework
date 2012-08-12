@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Masters/AdminMaster.Master"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SNFramework.BSF.MainPage.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SPSWeb.MainPage.Default" %>
 
 <%@ Register Src="UCChangePassword.ascx" TagName="UCChangePassword" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

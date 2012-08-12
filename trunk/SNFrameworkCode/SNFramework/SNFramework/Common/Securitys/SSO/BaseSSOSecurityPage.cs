@@ -26,7 +26,32 @@ namespace Legendigital.Framework.Common.Securitys.SSO
 
         protected SecurityMode pageSecurityMode = SecurityMode.Authentication;
 
-        public SSOTokenInfo currentTokenInfo = null;
+        protected SSOTokenInfo currentTokenInfo = null;
+
+        public SSOTokenInfo CurrentTokenInfo
+        {
+            get
+            {
+                string string_Token = this.SSOToken;
+
+                if (string.IsNullOrEmpty(string_Token))
+                    return null;
+
+                return SSOProvider.GetInfoFromSSFToken(string_Token);
+            }
+        }
+        public SystemUserWrapper CurrentLoginUser
+        {
+            get
+            {
+                return SystemUserWrapper.FindByLoginID(CurrentTokenInfo.LoginUserID);
+            }
+        }
+
+
+        
+
+
 
         //页面初始化
         protected override void OnInit(EventArgs e)
@@ -63,37 +88,30 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             }
         }
 
+        public string SSOToken
+        {
+            get
+            {
+                return SSOProvider.GetSSOKeyFromPage(this);
+            }
+        }
 
-
- 
 
         /// <summary>
         /// 验证用户身份
         /// </summary>
         private void Authentication()
         {
-            string ssf_Token_QueryString = Request.QueryString[SSOProvider.QUERY_STRING_NAME_SSFToken];
+            string string_Token = this.SSOToken;
 
-            object ssf_Token_Session = SSOProvider.GetSessionValue(SSOProvider.Session_Key_LoginUser);
 
-            if (ssf_Token_Session == null && string.IsNullOrEmpty(ssf_Token_QueryString))
+            if (string.IsNullOrEmpty(string_Token))
             {
                 RedirectToLogon(LoginError.TokenWrong);
                 return;
             }
- 
-            string string_Token = "";///看优先选用哪一个token
 
-            if (string.IsNullOrEmpty(ssf_Token_QueryString))
-            {
-                string_Token = ssf_Token_Session.ToString();
-            }
-            else
-            {
-                string_Token = ssf_Token_QueryString;
-            }
-
-            SSOTokenInfo tokenInfo = SSOProvider.GetInfoFromSSFToken(string_Token, string_Token);
+            SSOTokenInfo tokenInfo = SSOProvider.GetInfoFromSSFToken(string_Token);
 
             //判断Token是否在有效期内
             if (!(tokenInfo.LoginDate.AddHours(SSOProvider.SSFTokenValidationPeriod) > DateTime.Now))
@@ -111,7 +129,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
                 return;
             }
 
-            if(ssf_Token_Session==null)
+            if (SSOProvider.GetSessionValue(SSOProvider.Session_Key_LoginUser) == null)
             {
                 SSOProvider.SetSessionValue(SSOProvider.Session_Key_LoginUser, tokenInfo);
             }
@@ -196,5 +214,9 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         //    }
         //    base.OnLoad(e);
         //}
+        public void ClearLoginInfo()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

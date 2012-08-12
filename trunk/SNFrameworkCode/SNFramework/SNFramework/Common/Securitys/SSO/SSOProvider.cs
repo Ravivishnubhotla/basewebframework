@@ -5,6 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
+using System.Web.UI;
 using System.Xml;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Utility;
@@ -50,9 +52,9 @@ namespace Legendigital.Framework.Common.Securitys.SSO
     public enum LoginError
     {
         NoPermissionForPage = 0,
-        HasLoginInOtherPlace =1,
-        TokenExpired =2,
-        TokenWrong =3
+        HasLoginInOtherPlace = 1,
+        TokenExpired = 2,
+        TokenWrong = 3
     }
 
     public class SSOProvider
@@ -79,20 +81,20 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         /// AES 256bit加密，密钥需要32位
         /// </summary>
         private static string m_SSFTokenKey = "PCpJwIBGsHrbTCwqWgGGrYdBpiFVqjcA";
- 
-        public static string GetSSFToken(SSOTokenInfo ssoTokenInfo, string ssfTokenKey)
+
+        public static string GetSSFToken(SSOTokenInfo ssoTokenInfo)
         {
-            return CryptographyUtil.EncryptDES(CompressionUtil.Compress(SerializeUtil.ToJson(ssoTokenInfo),CompressionType.SevenZip), ssfTokenKey);
+            return CryptographyUtil.EncryptDES(CompressionUtil.Compress(SerializeUtil.ToJson(ssoTokenInfo), CompressionType.SevenZip), m_SSFTokenKey);
         }
- 
+
         /// <summary>
         /// 返回从Token中出来的用户名和密码
         /// </summary>
         /// <param name="SSFToken"></param>
         /// <returns></returns>
-        internal static SSOTokenInfo GetInfoFromSSFToken(string ssfToken, string ssfTokenKey)
+        internal static SSOTokenInfo GetInfoFromSSFToken(string ssfToken)
         {
-            return SerializeUtil.JsonDeserialize<SSOTokenInfo>(CryptographyUtil.DecryptDES(CompressionUtil.DeCompress(ssfToken, CompressionType.SevenZip), ssfTokenKey));
+            return SerializeUtil.JsonDeserialize<SSOTokenInfo>(CryptographyUtil.DecryptDES(CompressionUtil.DeCompress(ssfToken, CompressionType.SevenZip), m_SSFTokenKey));
         }
 
         public static object GetSessionValue(string sessionName)
@@ -104,8 +106,8 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         {
             HttpContext.Current.Session[sessionKeyLoginUser] = tokenInfo;
         }
- 
- 
+
+
         /// <summary>
         /// 生成登录的SSOKey，只在登录时调用一次
         /// </summary>
@@ -115,9 +117,54 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             return SystemUserWrapper.GenerateSSOKey(userLoginID);
         }
 
+        public static string GetSSOKeyFromPage(Page page)
+        {
+            string ssf_Token_QueryString = page.Request.QueryString[QUERY_STRING_NAME_SSFToken];
 
- 
- 
- 
+            object ssf_Token_Session =GetSessionValue(Session_Key_LoginUser);
+
+            string string_Token = "";///看优先选用哪一个token
+
+            if (string.IsNullOrEmpty(ssf_Token_QueryString))
+            {
+                string_Token = ssf_Token_Session.ToString();
+            }
+            else
+            {
+                string_Token = ssf_Token_QueryString;
+            }
+
+            return string_Token;
+        }
+
+
+        public static void RedirectToBSFDefaultUrl(Page page, string ssoKey)
+        {
+            string redirectDefaultUrl = UrlUtil.CombineWebUrl(SSOConfig.BSFWebRoot,
+                                                              AddSSFTokenToUrl(
+                                                                  page.ResolveUrl(FormsAuthentication.DefaultUrl), ssoKey));
+            page.Response.Redirect(redirectDefaultUrl);
+        }
+
+        public static void RedirectToBSFLoginUrl(Page page, string ssoKey)
+        {
+            string redirectDefaultUrl = UrlUtil.CombineWebUrl(SSOConfig.BSFWebRoot,
+                                                  AddSSFTokenToUrl(
+                                                      page.ResolveUrl(FormsAuthentication.LoginUrl), ssoKey));
+            page.Response.Redirect(redirectDefaultUrl);
+        }
+
+        public static string AddSSFTokenToUrl(string url, string ssoKey)
+        {
+            if (url.Contains("?"))
+            {
+                url = url + "&" + SSOProvider.QUERY_STRING_NAME_SSFToken + "=" + HttpUtility.UrlEncode(ssoKey);
+            }
+            else
+            {
+                url = url + "?" + SSOProvider.QUERY_STRING_NAME_SSFToken + "=" + HttpUtility.UrlEncode(ssoKey);
+            }
+            return url;
+        }
     }
 }
