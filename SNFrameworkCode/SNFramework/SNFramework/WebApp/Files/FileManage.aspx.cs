@@ -94,20 +94,13 @@ namespace Legendigital.Common.WebApp.Files
         {
             string[] files = System.IO.Directory.GetFiles(cPath.Value.ToString());
 
-            List<object> data = new List<object>(files.Length);
-
+            List<FileInf> data = new List<FileInf>(files.Length);
 
             foreach (string fileName in files)
             {
-                System.IO.FileInfo file = new System.IO.FileInfo(fileName);
-                data.Add(new
-                {
-                    name = file.Name,
-                    size = file.Length,
-                    lastmod = file.LastAccessTime
-                });
+                data.Add(new FileInf(fileName));
             }
- 
+
             storeFiles.DataSource = data;
             storeFiles.DataBind();
         }
