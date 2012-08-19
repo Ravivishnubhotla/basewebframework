@@ -11,11 +11,12 @@
     </ext:ResourceManagerProxy>
     <ext:Store ID="storeFiles" runat="server" OnRefreshData="storeFiles_Refresh">
         <Reader>
-            <ext:JsonReader IDProperty="name">
+            <ext:JsonReader IDProperty="Name">
                 <Fields>
-                    <ext:RecordField Name="name" />
-                    <ext:RecordField Name="size" Type="Int" />
-                    <ext:RecordField Name="lastmod" Type="Date" />
+                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="FileSize" Type="Int" />
+                    <ext:RecordField Name="Type" />
+                    <ext:RecordField Name="LastModifyTime" Type="Date" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -61,7 +62,7 @@
     </script>
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
         <Items>
-            <ext:TreePanel ID="treeDirectorys" runat="server" Title="Directory"  Icon="Folder" 
+            <ext:TreePanel ID="treeDirectorys" runat="server" Title="Directory" Icon="Folder"
                 Region="West" Layout="Fit" Width="225" MinWidth="225" MaxWidth="400" Split="true"
                 Collapsible="true" RootVisible="false" AutoScroll="true">
                 <TopBar>
@@ -82,7 +83,7 @@
                                     <Click Handler="LoadDirectorys('/');" />
                                 </Listeners>
                             </ext:Button>
-                        </Items> 
+                        </Items>
                     </ext:Toolbar>
                 </TopBar>
                 <Root>
@@ -113,16 +114,7 @@
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
-                        <Items>
-                            <ext:ListView ID="ListView1" runat="server" MultiSelect="true" ReserveScrollOffset="true"
-                                EmptyText="No Images to Display" StoreID="storeFiles">
-                                <Columns>
-                                    <ext:ListViewColumn Header="File" Width="0.35" DataIndex="name" />
-                                    <ext:ListViewColumn Header="Last Modified" Width="0.3" DataIndex="lastmod" Template='{lastmod:date("m-d h:i a")}' />
-                                    <ext:ListViewColumn Header="Size" Width="0.2" DataIndex="size" Align="Right" Template="{size:fileSize}" />
-                                </Columns>
-                            </ext:ListView>
-                        </Items>
+   
                     </ext:Panel>
                 </Items>
             </ext:TabPanel>
@@ -132,26 +124,7 @@
                     <ext:TabPanel ID="TabPanel2" runat="server" Border="false">
                         <Items>
                             <ext:Panel ID="Panel8" runat="server" Title="Property" Layout="Fit">
-                                <Items>
-                                    <ext:PropertyGrid ID="PropertyGrid1" runat="server" Width="300" AutoHeight="true">
-                                        <Source>
-                                            <ext:PropertyGridParameter Name="(name)" Value="Properties Grid" />
-                                            <ext:PropertyGridParameter Name="grouping" Value="false" Mode="Raw" />
-                                            <ext:PropertyGridParameter Name="autoFitColumns" Value="true" Mode="Raw" />
-                                            <ext:PropertyGridParameter Name="productionQuality" Value="false" Mode="Raw" />
-                                            <ext:PropertyGridParameter Name="created" Value="10/15/2006">
-                                            </ext:PropertyGridParameter>
-                                            <ext:PropertyGridParameter Name="tested" Value="false" Mode="Raw">
-                                            </ext:PropertyGridParameter>
-                                            <ext:PropertyGridParameter Name="version" Value="0.01" />
-                                            <ext:PropertyGridParameter Name="borderWidth" Value="5" Mode="Raw">
-                                            </ext:PropertyGridParameter>
-                                        </Source>
-                                        <View>
-                                            <ext:GridView ID="GridView1" ForceFit="true" ScrollOffset="2" runat="server" />
-                                        </View>
-                                    </ext:PropertyGrid>
-                                </Items>
+ 
                             </ext:Panel>
                         </Items>
                     </ext:TabPanel>

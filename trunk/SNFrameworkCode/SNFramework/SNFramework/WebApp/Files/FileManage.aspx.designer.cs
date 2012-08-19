@@ -130,15 +130,6 @@ namespace Legendigital.Common.WebApp.Files {
         protected global::Ext.Net.Button Button5;
         
         /// <summary>
-        /// ListView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ListView ListView1;
-        
-        /// <summary>
         /// Panel7 control.
         /// </summary>
         /// <remarks>
@@ -164,24 +155,6 @@ namespace Legendigital.Common.WebApp.Files {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Panel Panel8;
-        
-        /// <summary>
-        /// PropertyGrid1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.PropertyGrid PropertyGrid1;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
         
         /// <summary>
         /// cPath control.
