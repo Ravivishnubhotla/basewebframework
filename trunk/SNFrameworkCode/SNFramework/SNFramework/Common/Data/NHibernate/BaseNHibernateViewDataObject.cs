@@ -35,7 +35,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             {
                 //DomainType obj = this.HibernateTemplate.Load<DomainType>(id);
 
-                var obj = HibernateTemplate.SessionFactory.GetCurrentSession().Load<DomainType>(id);
+                var obj = GetCurrentSession().Load<DomainType>(id);
 
                 if (obj.Equals(null))
                 {
@@ -58,7 +58,10 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
         }
 
- 
+        protected ISession GetCurrentSession()
+        {
+            return HibernateTemplate.SessionFactory.GetCurrentSession();
+        }
 
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             try
             {
                 //this.HibernateTemplate.Load(instance, id);
-                HibernateTemplate.SessionFactory.GetCurrentSession().Load(instance, id);
+                GetCurrentSession().Load(instance, id);
             }
             catch (Exception ex)
             {
@@ -89,8 +92,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Refresh(instance);
-                //this.HibernateTemplate.Refresh(instance);
+                GetCurrentSession().Refresh(instance);
             }
             catch (Exception ex)
             {
@@ -184,7 +186,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             {
                 int recordCount = 0;
 
-                ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+                ISession session = GetCurrentSession();
 
                 //如果有filter打开
                 if (!string.IsNullOrEmpty(filterName))
@@ -227,6 +229,8 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
                 //投影查询获取记录总数
                 criteriaCount.SetProjection(Projections.RowCount());
+                //recordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
+                //去掉.SetMaxResults(1)，可能在其他数据库中会出现问题
                 recordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
 
                 //设置分页查询
@@ -294,7 +298,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
             try
             {
-                ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+                ISession session = GetCurrentSession();
 
 
                 IQuery query = session.CreateQuery(queryString);
@@ -348,7 +352,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
             IList list = null;
 
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -404,7 +408,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual object FindScalarWithCustomQuery(string queryString,
                                                         NhibernateParameterCollection nhibernateQueryParams)
         {
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -434,7 +438,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (instance == null) throw new ArgumentNullException("instance");
 
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             foreach (object val in ReflectionUtil.GetPropertiesDictionary(instance).Values)
             {
@@ -461,7 +465,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                                                                                 " doest not exist for type "
                                                                                 + instance.GetType() + ".");
 
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             object val = properties[propertyName];
 
@@ -483,7 +487,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (detachedCriteria == null) throw new ArgumentNullException("detachedCriteria");
 
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -503,7 +507,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             if (detachedCriteria == null) throw new ArgumentNullException("detachedCriteria");
 
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -541,7 +545,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public virtual IList ProjectionQuery(IProjection[] projections, ICriterion[] criterias, Order[] orders)
         {
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             try
             {
@@ -582,7 +586,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public virtual object ProjectionSingleLineQuery(IProjection[] projections, ICriterion[] criterias,
                                                         Order[] orders)
         {
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
             try
             {
                 ICriteria criteria = session.CreateCriteria(typeof (DomainType));
@@ -649,17 +653,17 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public List<DomainType> FindListByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindList(HibernateTemplate.SessionFactory.GetCurrentSession());
+            return queryBuilder.FindList(GetCurrentSession());
         }
 
         public List<DomainType> FindListByPageByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder,PageQueryParams pageQueryParams)
         {
-            return queryBuilder.FindListByPage(HibernateTemplate.SessionFactory.GetCurrentSession(), pageQueryParams);
+            return queryBuilder.FindListByPage(GetCurrentSession(), pageQueryParams);
         }
 
         public DomainType FindSingleEntityByQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindSingleEntity(HibernateTemplate.SessionFactory.GetCurrentSession());
+            return queryBuilder.FindSingleEntity(GetCurrentSession());
         }
 
         public List<DomainType> FindAllByOrderBy(string orderByColumn, bool isDesc, PageQueryParams pageQueryParams)
@@ -719,7 +723,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                var obj = HibernateTemplate.SessionFactory.GetCurrentSession().Load<DomainType>(id);
+                var obj = GetCurrentSession().Load<DomainType>(id);
 
                 if (!NHibernateUtil.IsInitialized(obj))
                 {
@@ -790,7 +794,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public int CountQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.GetCount(HibernateTemplate.SessionFactory.GetCurrentSession());
+            return queryBuilder.GetCount(GetCurrentSession());
         }
 
 
@@ -799,12 +803,12 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public List<DomainType> FindDistinctList(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
-            return queryBuilder.FindList(HibernateTemplate.SessionFactory.GetCurrentSession(), true);
+            return queryBuilder.FindList(GetCurrentSession(), true);
         }
 
         public List<DomainType> FindDistinctListByPage(NHibernateDynamicQueryGenerator<DomainType> queryBuilder,PageQueryParams pageQueryParams)
         {
-            return queryBuilder.FindDistinctListByPage(HibernateTemplate.SessionFactory.GetCurrentSession(), pageQueryParams);
+            return queryBuilder.FindDistinctListByPage(GetCurrentSession(), pageQueryParams);
         }
 
         public abstract Type GetFieldTypeByFieldName(string fieldName);
@@ -860,13 +864,13 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         public List<CType> FindListByProjection<CType>(NHibernateDynamicQueryGenerator<DomainType> queryBuilder,
                                                        IProjection projection)
         {
-            return queryBuilder.FindListByProjection<CType>(HibernateTemplate.SessionFactory.GetCurrentSession(), projection);
+            return queryBuilder.FindListByProjection<CType>(GetCurrentSession(), projection);
         }
 
         public CType FindSingleByProjection<CType>(NHibernateDynamicQueryGenerator<DomainType> queryBuilder,
                                                    IProjection projection)
         {
-            return queryBuilder.FindSingleByProjection<CType>(HibernateTemplate.SessionFactory.GetCurrentSession(), projection);
+            return queryBuilder.FindSingleByProjection<CType>(GetCurrentSession(), projection);
         }
 
         public IProjection GetDistinctProperty(PropertyProjection projection)
@@ -906,7 +910,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public virtual List<DomainType> QueryOver(System.Linq.Expressions.Expression<Func<DomainType>> query)
         {
-            ISession session = HibernateTemplate.SessionFactory.GetCurrentSession();
+            ISession session = GetCurrentSession();
 
             return new List<DomainType>(session.QueryOver(query).List<DomainType>());
         }

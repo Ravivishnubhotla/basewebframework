@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Save(instance);
+                GetCurrentSession().Save(instance);
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Update(instance);
+                GetCurrentSession().Update(instance);
             }
             catch (Exception ex)
             {
@@ -63,7 +63,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().SaveOrUpdate(instance);
+                GetCurrentSession().SaveOrUpdate(instance);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Merge(instance);
+                GetCurrentSession().Merge(instance);
             }
             catch (Exception ex)
             {
@@ -123,7 +123,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Delete(instance);
+                GetCurrentSession().Delete(instance);
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Delete(String.Format("from {0}", typeof (DomainType).Name));
+                GetCurrentSession().Delete(String.Format("from {0}", typeof (DomainType).Name));
             }
             catch (Exception ex)
             {
@@ -166,7 +166,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Evict(instance);
+                GetCurrentSession().Evict(instance);
             }
             catch (Exception ex)
             {
@@ -184,7 +184,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
         {
             try
             {
-                HibernateTemplate.SessionFactory.GetCurrentSession().Lock(instance, lockMode);
+                GetCurrentSession().Lock(instance, lockMode);
             }
             catch (Exception ex)
             {

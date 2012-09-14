@@ -84,7 +84,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
 
         public static string GetSSFToken(SSOTokenInfo ssoTokenInfo)
         {
-            return CryptographyUtil.EncryptDES(CompressionUtil.Compress(SerializeUtil.ToJson(ssoTokenInfo), CompressionType.SevenZip), m_SSFTokenKey);
+            return CryptographyUtil.EncryptDES(SerializeUtil.ToJson(ssoTokenInfo), m_SSFTokenKey);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         /// <returns></returns>
         internal static SSOTokenInfo GetInfoFromSSFToken(string ssfToken)
         {
-            return SerializeUtil.JsonDeserialize<SSOTokenInfo>(CryptographyUtil.DecryptDES(CompressionUtil.DeCompress(ssfToken, CompressionType.SevenZip), m_SSFTokenKey));
+            return SerializeUtil.JsonDeserialize<SSOTokenInfo>(CryptographyUtil.DecryptDES(ssfToken, m_SSFTokenKey));
         }
 
         public static object GetSessionValue(string sessionName)
@@ -119,6 +119,9 @@ namespace Legendigital.Framework.Common.Securitys.SSO
 
         public static string GetSSOKeyFromPage(Page page)
         {
+            if (HttpContext.Current.User == null)
+                return "";
+
             string ssf_Token_QueryString = page.Request.QueryString[QUERY_STRING_NAME_SSFToken];
 
             object ssf_Token_Session =GetSessionValue(Session_Key_LoginUser);
@@ -138,19 +141,19 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         }
 
 
-        public static void RedirectToBSFDefaultUrl(Page page, string ssoKey)
+        public static void RedirectToBSFDefaultUrl(Page page)
         {
             string redirectDefaultUrl = UrlUtil.CombineWebUrl(SSOConfig.BSFWebRoot,
                                                               AddSSFTokenToUrl(
-                                                                  page.ResolveUrl(FormsAuthentication.DefaultUrl), ssoKey));
+                                                                  page.ResolveUrl(FormsAuthentication.DefaultUrl), GetSSOKeyFromPage(page)));
             page.Response.Redirect(redirectDefaultUrl);
         }
 
-        public static void RedirectToBSFLoginUrl(Page page, string ssoKey)
+        public static void RedirectToBSFLoginUrl(Page page)
         {
             string redirectDefaultUrl = UrlUtil.CombineWebUrl(SSOConfig.BSFWebRoot,
                                                   AddSSFTokenToUrl(
-                                                      page.ResolveUrl(FormsAuthentication.LoginUrl), ssoKey));
+                                                      page.ResolveUrl(FormsAuthentication.LoginUrl), GetSSOKeyFromPage(page)));
             page.Response.Redirect(redirectDefaultUrl);
         }
 
