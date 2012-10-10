@@ -216,7 +216,8 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         //}
         public void ClearLoginInfo()
         {
-            throw new NotImplementedException();
+            Session[SSOProvider.Session_Key_LoginUser] = null;
+            FormsAuthentication.SignOut();
         }
     }
 }

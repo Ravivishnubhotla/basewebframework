@@ -117,6 +117,14 @@
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="images\bg.gif" />
+    <Content Include="images\collapse-all.gif" />
+    <Content Include="images\expand-all.gif" />
+    <Content Include="images\layout-browser-hd-bg.gif" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\logo.JPG" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\user.png" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.en-US.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.xml" />
     <Content Include="MainPage\App_LocalResources\Default.aspx.zh-CHS.xml" />
@@ -137,8 +145,6 @@
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx" />
-    <Content Include="Moudles\SPS\Channels\Test.aspx" />
-    <Content Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelFiltersView.ascx" />
@@ -193,7 +199,6 @@
     </Compile>
     <Compile Include="MainPage\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -270,20 +275,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.designer.cs">
       <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Channels\Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Channels\Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.cs">
-      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Channels\UCSPChannelEdit.ascx.designer.cs">
-      <DependentUpon>UCSPChannelEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx.cs">
       <DependentUpon>UCSPChannelFiltersAdd.ascx</DependentUpon>
