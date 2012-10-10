@@ -63,6 +63,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_APPLICATIONID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_APPLICATIONID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -88,7 +100,81 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "RoleID_SystemRoleApplicationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleID":
+							return typeof (int);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleName":
+							return typeof (string);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleCode":
+							return typeof (string);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleDescription":
+							return typeof (string);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleIsSystemRole":
+							return typeof (bool);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.RoleType":
+							return typeof (string);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemRoleApplicationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ApplicationID_SystemRoleApplicationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationID":
+							return typeof (int);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationName":
+							return typeof (string);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationCode":
+							return typeof (string);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationDescription":
+							return typeof (string);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationUrl":
+							return typeof (string);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.SystemApplicationIsSystemApplication":
+							return typeof (bool);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.Status":
+							return typeof (string);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ApplicationID_SystemRoleApplicationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemRoleApplicationEntity> queryGenerator)
         {
             switch (parent_alias)

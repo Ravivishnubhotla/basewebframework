@@ -30,6 +30,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_FULLNAMECN = new StringProperty(Property.ForName(SystemCountryEntity.PROPERTY_NAME_FULLNAMECN));		
 		public static readonly StringProperty PROPERTY_FULLNAMEEN = new StringProperty(Property.ForName(SystemCountryEntity.PROPERTY_NAME_FULLNAMEEN));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -65,7 +77,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemCountryEntity> queryGenerator)
         {
             switch (parent_alias)

@@ -15,7 +15,7 @@ namespace SPSWeb
         {
             if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
             {
-                SSOProvider.RedirectToBSFDefaultUrl();
+                SSOProvider.RedirectToBSFDefaultUrl(this);
             }
             FormsAuthentication.RedirectToLoginPage();
         }

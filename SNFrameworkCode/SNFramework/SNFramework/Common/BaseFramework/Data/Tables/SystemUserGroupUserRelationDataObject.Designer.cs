@@ -85,6 +85,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -110,7 +122,125 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "UserID_SystemUserGroupUserRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserID":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserLoginID":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserName":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserEmail":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserPassword":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserStatus":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserCreateDate":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.UserType":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.MobilePIN":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordFormat":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordQuestion":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordAnswer":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.Comments":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.IsApproved":
+							return typeof (bool);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.IsLockedOut":
+							return typeof (bool);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastActivityDate":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastLoginDate":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastLockedOutDate":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastPasswordChangeDate":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptCnt":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAttemptWndStart":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptCnt":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.FailedPwdAnsAttemptWndStart":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.IsNeedChgPwd":
+							return typeof (bool);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.PasswordSalt":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LoweredEmail":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.ValidateType":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.ADDomain":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.BindUKey":
+							return typeof (bool);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.USBKeySerial":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.USBKeyCode":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.SSOKey":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "UserGroupID_SystemUserGroupUserRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupID":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameCn":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupNameEn":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.GroupDescription":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UserGroupID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemUserGroupUserRelationEntity> queryGenerator)
         {
             switch (parent_alias)

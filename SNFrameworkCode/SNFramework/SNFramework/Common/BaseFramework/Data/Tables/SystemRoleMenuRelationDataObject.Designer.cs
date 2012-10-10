@@ -69,6 +69,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_ROLEID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_ROLEID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -94,7 +106,93 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "MenuID_SystemRoleMenuRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuID":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuName":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuCode":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuDescription":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrl":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuUrlTarget":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIconUrl":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsCategory":
+							return typeof (bool);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.ParentMenuID":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuOrder":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuType":
+							return typeof (string);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsSystemMenu":
+							return typeof (bool);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.MenuIsEnable":
+							return typeof (bool);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.ApplicationID":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "MenuID_SystemRoleMenuRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "RoleID_SystemRoleMenuRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleID":
+							return typeof (int);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleName":
+							return typeof (string);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleCode":
+							return typeof (string);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleDescription":
+							return typeof (string);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleIsSystemRole":
+							return typeof (bool);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.RoleType":
+							return typeof (string);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemRoleMenuRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemRoleMenuRelationEntity> queryGenerator)
         {
             switch (parent_alias)

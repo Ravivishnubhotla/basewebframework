@@ -59,6 +59,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemPostEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemPostEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -98,7 +110,68 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "OrganizationID_SystemPostEntity_Alias":
+					switch (fieldName)
+					{
+                		case "OrganizationID_SystemPostEntity_Alias.Id":
+							return typeof (int);
+                		case "OrganizationID_SystemPostEntity_Alias.Name":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.ShortName":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.Code":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.Description":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.LogoUrl":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.Type":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.MasterName":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.IsMainOrganization":
+							return typeof (bool);
+                		case "OrganizationID_SystemPostEntity_Alias.ParentID":
+							return typeof (int);
+                		case "OrganizationID_SystemPostEntity_Alias.AddressID":
+							return typeof (int);
+                		case "OrganizationID_SystemPostEntity_Alias.TelPhone":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.FaxNumber":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.WebSite":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.Email":
+							return typeof (string);
+                		case "OrganizationID_SystemPostEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "OrganizationID_SystemPostEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "OrganizationID_SystemPostEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "OrganizationID_SystemPostEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "OrganizationID_SystemPostEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPostEntity> queryGenerator)
         {
             switch (parent_alias)

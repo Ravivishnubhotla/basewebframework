@@ -97,6 +97,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -138,7 +150,133 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ApplicationID_SystemPersonalizationSettingsEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationID":
+							return typeof (int);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationName":
+							return typeof (string);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationCode":
+							return typeof (string);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationDescription":
+							return typeof (string);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationUrl":
+							return typeof (string);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.SystemApplicationIsSystemApplication":
+							return typeof (bool);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.Status":
+							return typeof (string);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ApplicationID_SystemPersonalizationSettingsEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "UserId_SystemPersonalizationSettingsEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserID":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserLoginID":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserName":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserEmail":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserPassword":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserStatus":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserCreateDate":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.UserType":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.MobilePIN":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordFormat":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordQuestion":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordAnswer":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.Comments":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.IsApproved":
+							return typeof (bool);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.IsLockedOut":
+							return typeof (bool);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastActivityDate":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastLoginDate":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastLockedOutDate":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastPasswordChangeDate":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAttemptCnt":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAttemptWndStart":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAnsAttemptCnt":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.FailedPwdAnsAttemptWndStart":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.IsNeedChgPwd":
+							return typeof (bool);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.PasswordSalt":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LoweredEmail":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.ValidateType":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.ADDomain":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.BindUKey":
+							return typeof (bool);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.USBKeySerial":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.USBKeyCode":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.SSOKey":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPersonalizationSettingsEntity> queryGenerator)
         {
             switch (parent_alias)

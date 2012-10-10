@@ -54,6 +54,10 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_IP = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_IP));		
 		public static readonly StringProperty PROPERTY_SSYCNDATAURL = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNDATAURL));		
 		public static readonly StringProperty PROPERTY_SSYCNDATAFAILEDMESSAGE = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE));		
+		public static readonly StringProperty PROPERTY_SSYCNMRDATAURL = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNMRDATAURL));		
+		public static readonly StringProperty PROPERTY_SSYCNMRFAILEDMESSAGE = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNMRFAILEDMESSAGE));		
+		public static readonly StringProperty PROPERTY_SSYCNSTATUSDATAURL = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNSTATUSDATAURL));		
+		public static readonly StringProperty PROPERTY_SSYCNSTATUSFAILEDMESSAGE = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_SSYCNSTATUSFAILEDMESSAGE));		
 		public static readonly StringProperty PROPERTY_REQUESTCONTENT = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_REQUESTCONTENT));		
 		public static readonly StringProperty PROPERTY_EXTENDFIELD1 = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_EXTENDFIELD1));		
 		public static readonly StringProperty PROPERTY_EXTENDFIELD2 = new StringProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_EXTENDFIELD2));		
@@ -73,6 +77,18 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISSYCNMR = new BoolProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ISSYCNMR));		
 		public static readonly BoolProperty PROPERTY_ISSYCNSTATE = new BoolProperty(Property.ForName(SPRecordExtendInfoEntity.PROPERTY_NAME_ISSYCNSTATE));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -98,6 +114,14 @@ namespace SPS.Data.Tables
                 case "SSycnDataUrl":
                     return typeof (string);
                 case "SSycnDataFailedMessage":
+                    return typeof (string);
+                case "SSycnMRDataUrl":
+                    return typeof (string);
+                case "SSycnMRFailedMessage":
+                    return typeof (string);
+                case "SSycnStatusDataUrl":
+                    return typeof (string);
+                case "SSycnStatusFailedMessage":
                     return typeof (string);
                 case "RequestContent":
                     return typeof (string);
@@ -138,7 +162,70 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "RecordID_SPRecordExtendInfoEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Id":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.LinkID":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Mo":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Mobile":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.SpNumber":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Province":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.City":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.OperatorType":
+							return typeof (string);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.CreateDate":
+							return typeof (DateTime);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.IsReport":
+							return typeof (bool);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.IsIntercept":
+							return typeof (bool);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnToClient":
+							return typeof (bool);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.IsSycnSuccessed":
+							return typeof (bool);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.IsStatOK":
+							return typeof (bool);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.SycnRetryTimes":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.ChannelID":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.ClientID":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.CodeID":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.ClientCodeRelationID":
+							return typeof (int);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Price":
+							return typeof (decimal);
+                		case "RecordID_SPRecordExtendInfoEntity_Alias.Count":
+							return typeof (int);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPRecordExtendInfoEntity> queryGenerator)
         {
             switch (parent_alias)

@@ -26,6 +26,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_MESSAGEID = new IntProperty(Property.ForName(SystemShortMessageLogEntity.PROPERTY_NAME_MESSAGEID));		
 		public static readonly StringProperty PROPERTY_STATUE = new StringProperty(Property.ForName(SystemShortMessageLogEntity.PROPERTY_NAME_STATUE));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -53,7 +65,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemShortMessageLogEntity> queryGenerator)
         {
             switch (parent_alias)

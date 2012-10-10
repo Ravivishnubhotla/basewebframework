@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPRecordExtendInfoWrapper   
+    public partial class SPRecordExtendInfoWrapper    : BaseSpringNHibernateWrapper<SPRecordExtendInfoEntity, ISPRecordExtendInfoServiceProxy, SPRecordExtendInfoWrapper,int>
     {
         #region Member
 
@@ -108,6 +108,10 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		public static readonly string PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE = "SSycnDataFailedMessage";
+		public static readonly string PROPERTY_NAME_SSYCNMRDATAURL = "SSycnMRDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNMRFAILEDMESSAGE = "SSycnMRFailedMessage";
+		public static readonly string PROPERTY_NAME_SSYCNSTATUSDATAURL = "SSycnStatusDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNSTATUSFAILEDMESSAGE = "SSycnStatusFailedMessage";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
@@ -238,6 +242,66 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.SSycnDataFailedMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SSycnMRDataUrl
+		{
+			get
+			{
+				return entity.SSycnMRDataUrl;
+			}
+			set
+			{
+				entity.SSycnMRDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SSycnMRFailedMessage
+		{
+			get
+			{
+				return entity.SSycnMRFailedMessage;
+			}
+			set
+			{
+				entity.SSycnMRFailedMessage = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SSycnStatusDataUrl
+		{
+			get
+			{
+				return entity.SSycnStatusDataUrl;
+			}
+			set
+			{
+				entity.SSycnStatusDataUrl = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string SSycnStatusFailedMessage
+		{
+			get
+			{
+				return entity.SSycnStatusFailedMessage;
+			}
+			set
+			{
+				entity.SSycnStatusFailedMessage = value;
 			}
 		}
 		/// <summary>

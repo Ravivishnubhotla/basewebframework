@@ -68,6 +68,18 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_MONTHLIMIT = new StringProperty(Property.ForName(SPCodeInfoEntity.PROPERTY_NAME_MONTHLIMIT));		
 		public static readonly StringProperty PROPERTY_SENDTEXT = new StringProperty(Property.ForName(SPCodeInfoEntity.PROPERTY_NAME_SENDTEXT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -101,7 +113,92 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "SPCodeID_SPCodeInfoEntity_Alias":
+					switch (fieldName)
+					{
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Id":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Name":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Description":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Code":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.CodeType":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.ChannelID":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Mo":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.MOType":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.MOLength":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.SPCode":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.SPCodeType":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.SPCodeLength":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.HasParamsConvert":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.IsDiable":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.Price":
+							return typeof (decimal);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.OperationType":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.HasDayTotalLimit":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitCount":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.HasPhoneLimit":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitDayCount":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitMonthCount":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitType":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.LimitProvince":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.LimitProvinceArea":
+							return typeof (string);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.ParentID":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPCodeInfoEntity> queryGenerator)
         {
             switch (parent_alias)

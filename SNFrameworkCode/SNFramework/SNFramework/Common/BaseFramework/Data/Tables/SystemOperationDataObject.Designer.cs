@@ -62,6 +62,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemOperationEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -117,7 +129,58 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ResourceID_SystemOperationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesID":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesNameCn":
+							return typeof (string);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesNameEn":
+							return typeof (string);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesDescription":
+							return typeof (string);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesType":
+							return typeof (string);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesLimitExpression":
+							return typeof (string);
+                		case "ResourceID_SystemOperationEntity_Alias.ResourcesIsRelateUser":
+							return typeof (bool);
+                		case "ResourceID_SystemOperationEntity_Alias.MoudleID":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.ParentResourcesID":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ResourceID_SystemOperationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ResourceID_SystemOperationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ResourceID_SystemOperationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemOperationEntity> queryGenerator)
         {
             switch (parent_alias)

@@ -25,6 +25,7 @@ namespace Legendigital.Common.WebApp.MainPage
             this.lblUser.Text = string.Format("<b>{0}</b>", this.Context.User.Identity.Name.ToString());
             this.lblToday.Text = string.Format(GetLocalResourceObject("msgDateInfo").ToString(), System.DateTime.Now);
 
+   
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
             locSystemName.Text = settingWrapper.LocaLocalizationName + " " + settingWrapper.SystemVersion;

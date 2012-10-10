@@ -177,6 +177,18 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_PRICE = new DecimalProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_PRICE));		
 		public static readonly IntProperty PROPERTY_COUNT = new IntProperty(Property.ForName(SPRecordEntity.PROPERTY_NAME_COUNT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -238,7 +250,255 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ChannelID_SPRecordEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ChannelID_SPRecordEntity_Alias.Id":
+							return typeof (int);
+                		case "ChannelID_SPRecordEntity_Alias.Name":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.Code":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.DataOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.DataFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.Description":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.DataAdapterType":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.DataAdapterUrl":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.ChannelType":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.IVRFeeTimeType":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.IVRTimeFormat":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.IsStateReport":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.StateReportType":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.ReportOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.ReportFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.StateReportParamName":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.StateReportParamValue":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.RequestTypeParamName":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.RequestTypeParamStateReportValue":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.RequestTypeParamDataReportValue":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.IsMonitorRequest":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.IsLogRequest":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.IsParamsConvert":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.IsAutoLinkID":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.AutoLinkIDFields":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.LogRequestType":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.Price":
+							return typeof (decimal);
+                		case "ChannelID_SPRecordEntity_Alias.DefaultRate":
+							return typeof (decimal);
+                		case "ChannelID_SPRecordEntity_Alias.ChannelDetailInfo":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.UpperID":
+							return typeof (int);
+                		case "ChannelID_SPRecordEntity_Alias.ChannelStatus":
+							return typeof (string);
+                		case "ChannelID_SPRecordEntity_Alias.IsDisable":
+							return typeof (bool);
+                		case "ChannelID_SPRecordEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ChannelID_SPRecordEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPRecordEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ChannelID_SPRecordEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPRecordEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ClientID_SPRecordEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ClientID_SPRecordEntity_Alias.Id":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.Name":
+							return typeof (string);
+                		case "ClientID_SPRecordEntity_Alias.Description":
+							return typeof (string);
+                		case "ClientID_SPRecordEntity_Alias.UserID":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.IsDefaultClient":
+							return typeof (bool);
+                		case "ClientID_SPRecordEntity_Alias.SyncData":
+							return typeof (bool);
+                		case "ClientID_SPRecordEntity_Alias.SycnNotInterceptCount":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.SyncDataSetting":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.Alias":
+							return typeof (string);
+                		case "ClientID_SPRecordEntity_Alias.InterceptRate":
+							return typeof (decimal);
+                		case "ClientID_SPRecordEntity_Alias.DefaultPrice":
+							return typeof (decimal);
+                		case "ClientID_SPRecordEntity_Alias.DefaultShowRecordDays":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ClientID_SPRecordEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ClientID_SPRecordEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ClientID_SPRecordEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "CodeID_SPRecordEntity_Alias":
+					switch (fieldName)
+					{
+                		case "CodeID_SPRecordEntity_Alias.Id":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.Name":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.Description":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.Code":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.CodeType":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.ChannelID":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.Mo":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.MOType":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.MOLength":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.SPCode":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.SPCodeType":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.SPCodeLength":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.HasParamsConvert":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.IsDiable":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.Price":
+							return typeof (decimal);
+                		case "CodeID_SPRecordEntity_Alias.OperationType":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.HasDayTotalLimit":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.DayTotalLimitCount":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.HasPhoneLimit":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.PhoneLimitDayCount":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.PhoneLimitMonthCount":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.PhoneLimitType":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.LimitProvince":
+							return typeof (bool);
+                		case "CodeID_SPRecordEntity_Alias.LimitProvinceArea":
+							return typeof (string);
+                		case "CodeID_SPRecordEntity_Alias.ParentID":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "CodeID_SPRecordEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "CodeID_SPRecordEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "CodeID_SPRecordEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ClientCodeRelationID_SPRecordEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.Id":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.CodeID":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.ClientID":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.Price":
+							return typeof (decimal);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.InterceptRate":
+							return typeof (decimal);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.UseClientDefaultSycnSetting":
+							return typeof (bool);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.SyncData":
+							return typeof (bool);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.SycnRetryTimes":
+							return typeof (string);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.SyncDataSetting":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.StartDate":
+							return typeof (DateTime);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.EndDate":
+							return typeof (DateTime);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.IsEnable":
+							return typeof (bool);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.SycnNotInterceptCount":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.DefaultShowRecordDays":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPRecordEntity> queryGenerator)
         {
             switch (parent_alias)

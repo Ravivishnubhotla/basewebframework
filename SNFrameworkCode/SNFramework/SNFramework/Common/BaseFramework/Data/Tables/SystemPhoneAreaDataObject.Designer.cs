@@ -30,6 +30,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_AREACODE = new StringProperty(Property.ForName(SystemPhoneAreaEntity.PROPERTY_NAME_AREACODE));		
 		public static readonly StringProperty PROPERTY_ZIPCODE = new StringProperty(Property.ForName(SystemPhoneAreaEntity.PROPERTY_NAME_ZIPCODE));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -65,7 +77,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPhoneAreaEntity> queryGenerator)
         {
             switch (parent_alias)

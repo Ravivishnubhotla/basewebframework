@@ -27,6 +27,10 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_IP = "Ip";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		public static readonly string PROPERTY_NAME_SSYCNDATAFAILEDMESSAGE = "SSycnDataFailedMessage";
+		public static readonly string PROPERTY_NAME_SSYCNMRDATAURL = "SSycnMRDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNMRFAILEDMESSAGE = "SSycnMRFailedMessage";
+		public static readonly string PROPERTY_NAME_SSYCNSTATUSDATAURL = "SSycnStatusDataUrl";
+		public static readonly string PROPERTY_NAME_SSYCNSTATUSFAILEDMESSAGE = "SSycnStatusFailedMessage";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD1 = "ExtendField1";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD2 = "ExtendField2";
@@ -91,6 +95,10 @@ namespace SPS.Entity.Tables
 		private string _ip;
 		private string _sSycnDataUrl;
 		private string _sSycnDataFailedMessage;
+		private string _sSycnMRDataUrl;
+		private string _sSycnMRFailedMessage;
+		private string _sSycnStatusDataUrl;
+		private string _sSycnStatusFailedMessage;
 		private string _requestContent;
 		private string _extendField1;
 		private string _extendField2;
@@ -123,6 +131,10 @@ namespace SPS.Entity.Tables
 			_ip = null;
 			_sSycnDataUrl = null;
 			_sSycnDataFailedMessage = null;
+			_sSycnMRDataUrl = null;
+			_sSycnMRFailedMessage = null;
+			_sSycnStatusDataUrl = null;
+			_sSycnStatusFailedMessage = null;
 			_requestContent = null;
 			_extendField1 = null;
 			_extendField2 = null;
@@ -148,13 +160,17 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string sSycnDataFailedMessage, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime, bool isSycnMO, bool isSycnMR, bool isSycnState)
+		public SPRecordExtendInfoEntity( int id, SPRecordEntity recordID, string ip, string sSycnDataUrl, string sSycnDataFailedMessage, string sSycnMRDataUrl, string sSycnMRFailedMessage, string sSycnStatusDataUrl, string sSycnStatusFailedMessage, string requestContent, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField8, string extendField7, string extendField9, string extendField10, string state, string feeTime, string startTime, string endTime, bool isSycnMO, bool isSycnMR, bool isSycnState)
 		{
 			_id = id;
 			_recordID = recordID;
 			_ip = ip;
 			_sSycnDataUrl = sSycnDataUrl;
 			_sSycnDataFailedMessage = sSycnDataFailedMessage;
+			_sSycnMRDataUrl = sSycnMRDataUrl;
+			_sSycnMRFailedMessage = sSycnMRFailedMessage;
+			_sSycnStatusDataUrl = sSycnStatusDataUrl;
+			_sSycnStatusFailedMessage = sSycnStatusFailedMessage;
 			_requestContent = requestContent;
 			_extendField1 = extendField1;
 			_extendField2 = extendField2;
@@ -254,6 +270,74 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for SSycnDataFailedMessage", value, value.ToString());
 				_isChanged |= (_sSycnDataFailedMessage != value); _sSycnDataFailedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SSycnMRDataUrl
+		{
+			get { return _sSycnMRDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnMRDataUrl", value, value.ToString());
+				_isChanged |= (_sSycnMRDataUrl != value); _sSycnMRDataUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SSycnMRFailedMessage
+		{
+			get { return _sSycnMRFailedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnMRFailedMessage", value, value.ToString());
+				_isChanged |= (_sSycnMRFailedMessage != value); _sSycnMRFailedMessage = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SSycnStatusDataUrl
+		{
+			get { return _sSycnStatusDataUrl; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 600)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnStatusDataUrl", value, value.ToString());
+				_isChanged |= (_sSycnStatusDataUrl != value); _sSycnStatusDataUrl = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string SSycnStatusFailedMessage
+		{
+			get { return _sSycnStatusFailedMessage; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for SSycnStatusFailedMessage", value, value.ToString());
+				_isChanged |= (_sSycnStatusFailedMessage != value); _sSycnStatusFailedMessage = value;
 			}
 		}
 

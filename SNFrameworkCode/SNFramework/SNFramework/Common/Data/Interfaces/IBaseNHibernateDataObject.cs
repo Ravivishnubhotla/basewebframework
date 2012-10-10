@@ -19,6 +19,10 @@ namespace Legendigital.Framework.Common.Data.Interfaces
         /// <param name="instance"></param>
         void SaveOrUpdateCopy(DomainType instance);
 
+
+
+        void Merge(DomainType instance);
+        
         /// <summary>
         /// 从session中移除对象
         /// </summary>
@@ -27,8 +31,5 @@ namespace Legendigital.Framework.Common.Data.Interfaces
 
         void Lock(DomainType instance, LockMode lockMode);
 
-
-
-
-    }
+ }
 }

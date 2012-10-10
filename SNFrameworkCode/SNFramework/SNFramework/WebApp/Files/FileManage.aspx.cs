@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -92,6 +93,9 @@ namespace Legendigital.Common.WebApp.Files
 
         protected void storeFiles_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
+            if(cPath.Value=="")
+                cPath.Value = this.Server.MapPath("~/Files/");
+
             string[] files = System.IO.Directory.GetFiles(cPath.Value.ToString());
 
             List<FileInf> data = new List<FileInf>(files.Length);
@@ -104,5 +108,9 @@ namespace Legendigital.Common.WebApp.Files
             storeFiles.DataSource = data;
             storeFiles.DataBind();
         }
+
+
+
+ 
     }
 }

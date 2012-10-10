@@ -41,6 +41,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#endregion
 		public static readonly BoolProperty PROPERTY_CAPITAL = new BoolProperty(Property.ForName(SystemCityEntity.PROPERTY_NAME_CAPITAL));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -72,7 +84,40 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ProvinceID_SystemCityEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ProvinceID_SystemCityEntity_Alias.Id":
+							return typeof (int);
+                		case "ProvinceID_SystemCityEntity_Alias.Name":
+							return typeof (string);
+                		case "ProvinceID_SystemCityEntity_Alias.AbbrName":
+							return typeof (string);
+                		case "ProvinceID_SystemCityEntity_Alias.SingleAbbrName":
+							return typeof (string);
+                		case "ProvinceID_SystemCityEntity_Alias.Code":
+							return typeof (string);
+                		case "ProvinceID_SystemCityEntity_Alias.CountryID":
+							return typeof (int);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemCityEntity> queryGenerator)
         {
             switch (parent_alias)

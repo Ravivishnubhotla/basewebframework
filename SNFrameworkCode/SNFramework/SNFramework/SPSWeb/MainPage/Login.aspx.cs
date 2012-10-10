@@ -14,7 +14,7 @@ namespace SPSWeb.MainPage
         {
             if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
             {
-                SSOProvider.RedirectToBSFLoginUrl();
+                SSOProvider.RedirectToBSFLoginUrl(this);
             }
         }
     }

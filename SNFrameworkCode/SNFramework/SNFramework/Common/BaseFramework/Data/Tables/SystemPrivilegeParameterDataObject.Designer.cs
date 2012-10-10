@@ -70,6 +70,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemPrivilegeParameterEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemPrivilegeParameterEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -107,7 +119,83 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "RoleID_SystemPrivilegeParameterEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleID":
+							return typeof (int);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleName":
+							return typeof (string);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleCode":
+							return typeof (string);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleDescription":
+							return typeof (string);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleIsSystemRole":
+							return typeof (bool);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.RoleType":
+							return typeof (string);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemPrivilegeParameterEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "PrivilegeID_SystemPrivilegeParameterEntity_Alias":
+					switch (fieldName)
+					{
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeID":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.OperationID":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.ResourcesID":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeCnName":
+							return typeof (string);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeEnName":
+							return typeof (string);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.DefaultValue":
+							return typeof (string);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.Description":
+							return typeof (string);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeOrder":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.PrivilegeType":
+							return typeof (string);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "PrivilegeID_SystemPrivilegeParameterEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPrivilegeParameterEntity> queryGenerator)
         {
             switch (parent_alias)

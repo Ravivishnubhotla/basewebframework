@@ -49,6 +49,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#endregion
 		public static readonly ByteArrayProperty PROPERTY_FILECONTENT = new ByteArrayProperty(Property.ForName(SystemAttachmentContentEntity.PROPERTY_NAME_FILECONTENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -74,7 +86,62 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "AttacmentID_SystemAttachmentContentEntity_Alias":
+					switch (fieldName)
+					{
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Id":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Name":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Type":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Description":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.FileName":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Md5":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Size":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.FileExt":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.Pages":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.FilePath":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.ParentType":
+							return typeof (string);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.ParentID":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "AttacmentID_SystemAttachmentContentEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemAttachmentContentEntity> queryGenerator)
         {
             switch (parent_alias)

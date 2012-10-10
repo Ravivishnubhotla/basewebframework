@@ -57,6 +57,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemResourcesEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -106,7 +118,54 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "MoudleID_SystemResourcesEntity_Alias":
+					switch (fieldName)
+					{
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleID":
+							return typeof (int);
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleNameCn":
+							return typeof (string);
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleNameEn":
+							return typeof (string);
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleNameDb":
+							return typeof (string);
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleDescription":
+							return typeof (string);
+                		case "MoudleID_SystemResourcesEntity_Alias.ApplicationID":
+							return typeof (int);
+                		case "MoudleID_SystemResourcesEntity_Alias.MoudleIsSystemMoudle":
+							return typeof (bool);
+                		case "MoudleID_SystemResourcesEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "MoudleID_SystemResourcesEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "MoudleID_SystemResourcesEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "MoudleID_SystemResourcesEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "MoudleID_SystemResourcesEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "MoudleID_SystemResourcesEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemResourcesEntity> queryGenerator)
         {
             switch (parent_alias)

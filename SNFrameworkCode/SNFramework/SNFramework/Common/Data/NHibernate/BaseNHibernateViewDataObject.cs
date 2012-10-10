@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Web;
 using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.Data.Interfaces;
@@ -11,6 +12,7 @@ using Legendigital.Framework.Common.Entity;
 using Legendigital.Framework.Common.Utility;
 using NHibernate;
 using NHibernate.Collection;
+using NHibernate.Context;
 using NHibernate.Criterion;
 using NHibernate.Exceptions;
 using NHibernate.Metadata;
@@ -22,6 +24,18 @@ namespace Legendigital.Framework.Common.Data.NHibernate
     public abstract class BaseNHibernateViewDataObject<DomainType, EntityKeyType> : HibernateDaoSupport,
                                                                      IBaseNHibernateViewDataObject<DomainType, EntityKeyType> where DomainType : BaseViewEntity<EntityKeyType>
     {
+        protected ISession GetCurrentSession()
+        {
+            if (HttpContext.Current == null)
+            {
+                if (!CurrentSessionContext.HasBind(SessionFactory))
+                {
+                    CurrentSessionContext.Bind(SessionFactory.OpenSession());
+                }
+            }
+            return HibernateTemplate.SessionFactory.GetCurrentSession();
+        }
+
         #region 基本操作
 
         /// <summary>
@@ -58,10 +72,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
         }
 
-        protected ISession GetCurrentSession()
-        {
-            return HibernateTemplate.SessionFactory.GetCurrentSession();
-        }
+ 
 
 
         /// <summary>
@@ -93,6 +104,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             try
             {
                 GetCurrentSession().Refresh(instance);
+                //this.HibernateTemplate.Refresh(instance);
             }
             catch (Exception ex)
             {
@@ -229,9 +241,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
                 //投影查询获取记录总数
                 criteriaCount.SetProjection(Projections.RowCount());
-                //recordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
-                //去掉.SetMaxResults(1)，可能在其他数据库中会出现问题
-                recordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
+                recordCount = criteriaCount.UniqueResult<int>();
 
                 //设置分页查询
                 if (pageQueryParams != null)
@@ -422,7 +432,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                     }
                 }
 
-                return query.SetMaxResults(1).UniqueResult();
+                return query.UniqueResult();
             }
             catch (Exception ex)
             {
@@ -517,7 +527,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                 ICriteria criteriaCount = detachedCriteriaCount.GetExecutableCriteria(session);
                 //投影查询获取记录总数
                 criteriaCount.SetProjection(Projections.RowCount());
-                pageQueryParams.RecordCount = criteriaCount.SetMaxResults(1).UniqueResult<int>();
+                pageQueryParams.RecordCount = criteriaCount.UniqueResult<int>();
 
                 //设置分页查询
                 criteria.SetFirstResult(pageQueryParams.FristRecord);
@@ -691,26 +701,9 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             var queryBuilder = new NHibernateDynamicQueryGenerator<DomainType>();
 
             //构造Filter查询条件
-            foreach (QueryFilter queryFilter in filters)
-            {
-                ICriterion whereClause =
-                    queryFilter.GenerateNhibernateCriterion(GetFieldTypeByFieldName(queryFilter.FilterFieldName));
-                if (whereClause != null)
-                    queryBuilder.AddWhereClause(whereClause);
-            }
+            AddQueryFiltersToQueryGenerator(filters, queryBuilder);
 
-            //没有排序字段用主键来排序
-            if (orderByColumn == string.Empty)
-            {
-                queryBuilder.AddOrderBy(Property.ForName(PkPropertyName[0]).Desc());
-            }
-            else
-            {
-                if (isDesc)
-                    queryBuilder.AddOrderBy(Property.ForName(orderByColumn).Desc());
-                else
-                    queryBuilder.AddOrderBy(Property.ForName(orderByColumn).Asc());
-            }
+            AddDefaultOrderByToQueryGenerator(orderByColumn, isDesc, queryBuilder);
 
             List<DomainType> results = FindListByQueryBuilder(queryBuilder);
 
@@ -791,15 +784,10 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             return orCriterion;
         }
 
-
         public int CountQueryBuilder(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
             return queryBuilder.GetCount(GetCurrentSession());
         }
-
-
- 
-
 
         public List<DomainType> FindDistinctList(NHibernateDynamicQueryGenerator<DomainType> queryBuilder)
         {
@@ -813,6 +801,8 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         public abstract Type GetFieldTypeByFieldName(string fieldName);
 
+        public abstract Type GetFieldTypeByFieldName(string fieldName, string tableAliasName);
+
         protected void AddQueryFiltersToQueryGenerator(List<QueryFilter> filters,
                                                        NHibernateDynamicQueryGenerator<DomainType> queryGenerator)
         {
@@ -823,6 +813,20 @@ namespace Legendigital.Framework.Common.Data.NHibernate
                 {
                     ICriterion whereClause =
                         queryFilter.GenerateNhibernateCriterion(GetFieldTypeByFieldName(queryFilter.FilterFieldName));
+                    if (whereClause != null)
+                        queryGenerator.AddWhereClause(whereClause);
+                }
+                else
+                {
+                    string tableAliasName = queryFilter.FilterFieldName.Split('.')[0];
+
+                    if (!queryGenerator.HasIncludeTable(tableAliasName))
+                    {
+                        InClude_Parent_Table(tableAliasName, queryGenerator);
+                    }
+
+                    ICriterion whereClause = queryFilter.GenerateNhibernateCriterion(GetFieldTypeByFieldName(queryFilter.FilterFieldName, tableAliasName));
+                    
                     if (whereClause != null)
                         queryGenerator.AddWhereClause(whereClause);
                 }
