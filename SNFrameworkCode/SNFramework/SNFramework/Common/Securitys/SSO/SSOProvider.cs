@@ -122,6 +122,9 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             if (HttpContext.Current.User == null)
                 return "";
 
+            if (HttpContext.Current.Session["SSOKey"] != null)
+                return (string)HttpContext.Current.Session["SSOKey"];
+
             string ssf_Token_QueryString = page.Request.QueryString[QUERY_STRING_NAME_SSFToken];
 
             object ssf_Token_Session =GetSessionValue(Session_Key_LoginUser);
@@ -136,6 +139,8 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             {
                 string_Token = ssf_Token_QueryString;
             }
+
+            HttpContext.Current.Session["SSOKey"] = string_Token;
 
             return string_Token;
         }

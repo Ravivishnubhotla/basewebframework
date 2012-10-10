@@ -31,15 +31,6 @@ namespace SPSWeb.Moudles.SPS.Channels {
         protected global::Ext.Net.Store storeSPChannel;
         
         /// <summary>
-        /// UCSPChannelEdit1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SPSWeb.Moudles.SPS.Channels.UCSPChannelEdit UCSPChannelEdit1;
-        
-        /// <summary>
         /// UCSPChannelView1 control.
         /// </summary>
         /// <remarks>
