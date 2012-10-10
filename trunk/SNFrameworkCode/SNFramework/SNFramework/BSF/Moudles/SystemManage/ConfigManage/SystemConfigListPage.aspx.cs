@@ -87,6 +87,7 @@ namespace SNFramework.BSF.Moudles.SystemManage.ConfigManage
             storeSystemConfig.DataSource = SystemConfigWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
+ 
             storeSystemConfig.DataBind();
 
         }

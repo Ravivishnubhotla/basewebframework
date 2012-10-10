@@ -54,6 +54,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemDictionaryEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -101,7 +113,50 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias":
+					switch (fieldName)
+					{
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Id":
+							return typeof (int);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Name":
+							return typeof (string);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Code":
+							return typeof (string);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.Description":
+							return typeof (string);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsEnable":
+							return typeof (bool);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.IsSystem":
+							return typeof (bool);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "SystemDictionaryGroupID_SystemDictionaryEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemDictionaryEntity> queryGenerator)
         {
             switch (parent_alias)

@@ -59,6 +59,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemMoudleFieldEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemMoudleFieldEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -112,7 +124,54 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "SystemMoudleID_SystemMoudleFieldEntity_Alias":
+					switch (fieldName)
+					{
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleID":
+							return typeof (int);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameCn":
+							return typeof (string);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameEn":
+							return typeof (string);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleNameDb":
+							return typeof (string);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleDescription":
+							return typeof (string);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.ApplicationID":
+							return typeof (int);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.MoudleIsSystemMoudle":
+							return typeof (bool);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "SystemMoudleID_SystemMoudleFieldEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemMoudleFieldEntity> queryGenerator)
         {
             switch (parent_alias)

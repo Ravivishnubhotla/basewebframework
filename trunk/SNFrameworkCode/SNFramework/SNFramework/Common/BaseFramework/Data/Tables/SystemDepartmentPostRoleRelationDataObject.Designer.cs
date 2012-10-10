@@ -81,6 +81,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		#endregion
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SystemDepartmentPostRoleRelationEntity.PROPERTY_NAME_DESCRIPTION));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -110,7 +122,104 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentID":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.ParentDepartmentID":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameCn":
+							return typeof (string);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentNameEn":
+							return typeof (string);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentDecription":
+							return typeof (string);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.DepartmentSortIndex":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "DepartmentID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "PostID_SystemDepartmentPostRoleRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Id":
+							return typeof (int);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Name":
+							return typeof (string);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Code":
+							return typeof (string);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.Description":
+							return typeof (string);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.OrganizationID":
+							return typeof (int);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "PostID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleID":
+							return typeof (int);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleName":
+							return typeof (string);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleCode":
+							return typeof (string);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleDescription":
+							return typeof (string);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleIsSystemRole":
+							return typeof (bool);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.RoleType":
+							return typeof (string);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemDepartmentPostRoleRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemDepartmentPostRoleRelationEntity> queryGenerator)
         {
             switch (parent_alias)

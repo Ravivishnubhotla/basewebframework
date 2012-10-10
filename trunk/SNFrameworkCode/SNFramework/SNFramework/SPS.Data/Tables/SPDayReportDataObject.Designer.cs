@@ -159,6 +159,18 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_UPERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_UPERID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -204,7 +216,235 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ClientID_SPDayReportEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ClientID_SPDayReportEntity_Alias.Id":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.Name":
+							return typeof (string);
+                		case "ClientID_SPDayReportEntity_Alias.Description":
+							return typeof (string);
+                		case "ClientID_SPDayReportEntity_Alias.UserID":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.IsDefaultClient":
+							return typeof (bool);
+                		case "ClientID_SPDayReportEntity_Alias.SyncData":
+							return typeof (bool);
+                		case "ClientID_SPDayReportEntity_Alias.SycnNotInterceptCount":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.SyncDataSetting":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.Alias":
+							return typeof (string);
+                		case "ClientID_SPDayReportEntity_Alias.InterceptRate":
+							return typeof (decimal);
+                		case "ClientID_SPDayReportEntity_Alias.DefaultPrice":
+							return typeof (decimal);
+                		case "ClientID_SPDayReportEntity_Alias.DefaultShowRecordDays":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ClientID_SPDayReportEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ClientID_SPDayReportEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ChannelID_SPDayReportEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ChannelID_SPDayReportEntity_Alias.Id":
+							return typeof (int);
+                		case "ChannelID_SPDayReportEntity_Alias.Name":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.Code":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.DataOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.DataFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.Description":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.DataAdapterType":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.DataAdapterUrl":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.ChannelType":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.IVRFeeTimeType":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.IVRTimeFormat":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.IsStateReport":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.StateReportType":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.ReportOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.ReportFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.StateReportParamName":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.StateReportParamValue":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.RequestTypeParamName":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.RequestTypeParamStateReportValue":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.RequestTypeParamDataReportValue":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.IsMonitorRequest":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.IsLogRequest":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.IsParamsConvert":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.IsAutoLinkID":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.AutoLinkIDFields":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.LogRequestType":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.Price":
+							return typeof (decimal);
+                		case "ChannelID_SPDayReportEntity_Alias.DefaultRate":
+							return typeof (decimal);
+                		case "ChannelID_SPDayReportEntity_Alias.ChannelDetailInfo":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.UpperID":
+							return typeof (int);
+                		case "ChannelID_SPDayReportEntity_Alias.ChannelStatus":
+							return typeof (string);
+                		case "ChannelID_SPDayReportEntity_Alias.IsDisable":
+							return typeof (bool);
+                		case "ChannelID_SPDayReportEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ChannelID_SPDayReportEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPDayReportEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ChannelID_SPDayReportEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPDayReportEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "CodeID_SPDayReportEntity_Alias":
+					switch (fieldName)
+					{
+                		case "CodeID_SPDayReportEntity_Alias.Id":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.Name":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.Description":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.Code":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.CodeType":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.ChannelID":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.Mo":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.MOType":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.MOLength":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.SPCode":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.SPCodeType":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.SPCodeLength":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.HasParamsConvert":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.IsDiable":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.Price":
+							return typeof (decimal);
+                		case "CodeID_SPDayReportEntity_Alias.OperationType":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.HasDayTotalLimit":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.DayTotalLimitCount":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.HasPhoneLimit":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.PhoneLimitDayCount":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.PhoneLimitMonthCount":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.PhoneLimitType":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.LimitProvince":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.LimitProvinceArea":
+							return typeof (string);
+                		case "CodeID_SPDayReportEntity_Alias.ParentID":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "CodeID_SPDayReportEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "CodeID_SPDayReportEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "UperID_SPDayReportEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UperID_SPDayReportEntity_Alias.Id":
+							return typeof (int);
+                		case "UperID_SPDayReportEntity_Alias.Name":
+							return typeof (string);
+                		case "UperID_SPDayReportEntity_Alias.Code":
+							return typeof (string);
+                		case "UperID_SPDayReportEntity_Alias.Description":
+							return typeof (string);
+                		case "UperID_SPDayReportEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UperID_SPDayReportEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UperID_SPDayReportEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UperID_SPDayReportEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UperID_SPDayReportEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPDayReportEntity> queryGenerator)
         {
             switch (parent_alias)

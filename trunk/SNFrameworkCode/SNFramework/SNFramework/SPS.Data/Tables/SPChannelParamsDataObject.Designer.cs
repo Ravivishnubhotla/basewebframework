@@ -83,6 +83,18 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPChannelParamsEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -134,7 +146,104 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "ChannelID_SPChannelParamsEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ChannelID_SPChannelParamsEntity_Alias.Id":
+							return typeof (int);
+                		case "ChannelID_SPChannelParamsEntity_Alias.Name":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.Code":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.DataOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.DataFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.Description":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.DataAdapterType":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.DataAdapterUrl":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.ChannelType":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IVRFeeTimeType":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IVRTimeFormat":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsStateReport":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.StateReportType":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.ReportOkMessage":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.ReportFailedMessage":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.StateReportParamName":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.StateReportParamValue":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.RequestTypeParamName":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.RequestTypeParamStateReportValue":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.RequestTypeParamDataReportValue":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsMonitorRequest":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsLogRequest":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsParamsConvert":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsAutoLinkID":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.AutoLinkIDFields":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.LogRequestType":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.Price":
+							return typeof (decimal);
+                		case "ChannelID_SPChannelParamsEntity_Alias.DefaultRate":
+							return typeof (decimal);
+                		case "ChannelID_SPChannelParamsEntity_Alias.ChannelDetailInfo":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.UpperID":
+							return typeof (int);
+                		case "ChannelID_SPChannelParamsEntity_Alias.ChannelStatus":
+							return typeof (string);
+                		case "ChannelID_SPChannelParamsEntity_Alias.IsDisable":
+							return typeof (bool);
+                		case "ChannelID_SPChannelParamsEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ChannelID_SPChannelParamsEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPChannelParamsEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ChannelID_SPChannelParamsEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ChannelID_SPChannelParamsEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPChannelParamsEntity> queryGenerator)
         {
             switch (parent_alias)

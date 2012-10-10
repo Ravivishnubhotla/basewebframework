@@ -501,6 +501,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Files\FileInf.cs" />
     <Compile Include="Files\FileManage.aspx.cs">
       <DependentUpon>FileManage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1633,6 +1634,7 @@
     <Folder Include="Files\Images\" />
     <Folder Include="Files\Others\" />
     <Folder Include="Files\Videos\" />
+    <Folder Include="images\FileExts\" />
     <Folder Include="IVRS\" />
     <Folder Include="Logs\" />
     <Folder Include="Moudles\SPS\DataServices\" />

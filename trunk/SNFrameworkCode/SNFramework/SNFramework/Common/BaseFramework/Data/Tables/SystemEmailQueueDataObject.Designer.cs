@@ -43,6 +43,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_SENDDATE = new DateTimeProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_SENDDATE));		
 		public static readonly IntProperty PROPERTY_ORDERINDEX = new IntProperty(Property.ForName(SystemEmailQueueEntity.PROPERTY_NAME_ORDERINDEX));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -104,7 +116,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemEmailQueueEntity> queryGenerator)
         {
             switch (parent_alias)

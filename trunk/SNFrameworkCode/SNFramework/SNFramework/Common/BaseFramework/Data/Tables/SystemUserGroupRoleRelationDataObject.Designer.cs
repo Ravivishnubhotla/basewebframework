@@ -59,6 +59,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_USERGROUPID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERGROUPID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -84,7 +96,73 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "RoleID_SystemUserGroupRoleRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleID":
+							return typeof (int);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleName":
+							return typeof (string);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleCode":
+							return typeof (string);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleDescription":
+							return typeof (string);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleIsSystemRole":
+							return typeof (bool);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.RoleType":
+							return typeof (string);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "RoleID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupID":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameCn":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupNameEn":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.GroupDescription":
+							return typeof (string);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UserGroupID_SystemUserGroupRoleRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemUserGroupRoleRelationEntity> queryGenerator)
         {
             switch (parent_alias)

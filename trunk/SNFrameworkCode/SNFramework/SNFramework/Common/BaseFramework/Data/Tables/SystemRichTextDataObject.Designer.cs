@@ -29,6 +29,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_PARENTTYPE = new StringProperty(Property.ForName(SystemRichTextEntity.PROPERTY_NAME_PARENTTYPE));		
 		public static readonly IntProperty PROPERTY_PARENTID = new IntProperty(Property.ForName(SystemRichTextEntity.PROPERTY_NAME_PARENTID));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -62,7 +74,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemRichTextEntity> queryGenerator)
         {
             switch (parent_alias)

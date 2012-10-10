@@ -158,6 +158,23 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             }
         }
 
+        ///// <summary>
+        ///// 合并summary>
+        ///// <param name="instance">持久化类</param>
+        public virtual void Merge(DomainType instance)
+        {
+            try
+            {
+                GetCurrentSession().Merge(instance);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Update Object Failed:", ex);
+                throw new DataException("Could not perform Update for " + typeof(DomainType).Name, ex);
+            }
+        }
+
+
         /// <summary>
         /// 从session中移除对象
         /// </summary>

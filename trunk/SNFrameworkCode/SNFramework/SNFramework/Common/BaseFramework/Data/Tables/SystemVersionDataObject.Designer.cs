@@ -33,6 +33,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_CHANGEUSERNAME = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERNAME));		
 		public static readonly StringProperty PROPERTY_COMMENT = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_COMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -74,7 +86,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemVersionEntity> queryGenerator)
         {
             switch (parent_alias)

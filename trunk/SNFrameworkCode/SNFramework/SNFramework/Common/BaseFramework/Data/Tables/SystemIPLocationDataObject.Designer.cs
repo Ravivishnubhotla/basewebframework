@@ -29,6 +29,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_COUNTRY = new StringProperty(Property.ForName(SystemIPLocationEntity.PROPERTY_NAME_COUNTRY));		
 		public static readonly StringProperty PROPERTY_LOCAL = new StringProperty(Property.ForName(SystemIPLocationEntity.PROPERTY_NAME_LOCAL));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -62,7 +74,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemIPLocationEntity> queryGenerator)
         {
             switch (parent_alias)

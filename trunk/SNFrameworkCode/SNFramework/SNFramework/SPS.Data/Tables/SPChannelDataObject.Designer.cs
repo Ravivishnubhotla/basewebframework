@@ -76,6 +76,18 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPChannelEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -171,7 +183,46 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "UpperID_SPChannelEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UpperID_SPChannelEntity_Alias.Id":
+							return typeof (int);
+                		case "UpperID_SPChannelEntity_Alias.Name":
+							return typeof (string);
+                		case "UpperID_SPChannelEntity_Alias.Code":
+							return typeof (string);
+                		case "UpperID_SPChannelEntity_Alias.Description":
+							return typeof (string);
+                		case "UpperID_SPChannelEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UpperID_SPChannelEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UpperID_SPChannelEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UpperID_SPChannelEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UpperID_SPChannelEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPChannelEntity> queryGenerator)
         {
             switch (parent_alias)

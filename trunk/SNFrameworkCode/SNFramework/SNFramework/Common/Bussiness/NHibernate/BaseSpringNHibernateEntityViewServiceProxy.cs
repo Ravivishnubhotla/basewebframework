@@ -27,6 +27,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         {
             set
             {
+             
                 selfDataObject = value;
             }
         }

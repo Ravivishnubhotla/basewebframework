@@ -126,6 +126,18 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SPClientCodeRelationEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -183,7 +195,166 @@ namespace SPS.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "CodeID_SPClientCodeRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Id":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Name":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Description":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Code":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.CodeType":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.ChannelID":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Mo":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.MOType":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.MOLength":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.SPCode":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.SPCodeType":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.SPCodeLength":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.HasFilters":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.HasParamsConvert":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.IsDiable":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.Price":
+							return typeof (decimal);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.OperationType":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.HasDayTotalLimit":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.DayTotalLimitCount":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.HasPhoneLimit":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.PhoneLimitDayCount":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.PhoneLimitMonthCount":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.PhoneLimitType":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.LimitProvince":
+							return typeof (bool);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.LimitProvinceArea":
+							return typeof (string);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.ParentID":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "CodeID_SPClientCodeRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ClientID_SPClientCodeRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ClientID_SPClientCodeRelationEntity_Alias.Id":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.Name":
+							return typeof (string);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.Description":
+							return typeof (string);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.UserID":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.IsDefaultClient":
+							return typeof (bool);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.SyncData":
+							return typeof (bool);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.SyncDataSetting":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.Alias":
+							return typeof (string);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate":
+							return typeof (decimal);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice":
+							return typeof (decimal);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.DefaultShowRecordDays":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "SyncDataSetting_SPClientCodeRelationEntity_Alias":
+					switch (fieldName)
+					{
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.Id":
+							return typeof (int);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnRetryTimes":
+							return typeof (int);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SyncType":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMO":
+							return typeof (bool);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOUrl":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOOkMessage":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMOFailedMessage":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMR":
+							return typeof (bool);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRUrl":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMROkMessage":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnMRFailedMessage":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSate":
+							return typeof (bool);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateUrl":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateOkMessage":
+							return typeof (string);
+                		case "SyncDataSetting_SPClientCodeRelationEntity_Alias.SycnSateFailedMessage":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SPClientCodeRelationEntity> queryGenerator)
         {
             switch (parent_alias)

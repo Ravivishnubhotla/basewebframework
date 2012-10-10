@@ -38,6 +38,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DecimalProperty PROPERTY_LATITUDE = new DecimalProperty(Property.ForName(SystemAddressEntity.PROPERTY_NAME_LATITUDE));		
 		public static readonly IntProperty PROPERTY_TIMEZONEID = new IntProperty(Property.ForName(SystemAddressEntity.PROPERTY_NAME_TIMEZONEID));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -89,7 +101,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemAddressEntity> queryGenerator)
         {
             switch (parent_alias)

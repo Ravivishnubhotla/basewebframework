@@ -19,7 +19,7 @@ namespace SPSWeb.MainPage
         {
             if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
             {
-                SSOProvider.RedirectToBSFDefaultUrl();
+                SSOProvider.RedirectToBSFDefaultUrl(this);
             }
 
             if (X.IsAjaxRequest)

@@ -43,6 +43,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly StringProperty PROPERTY_COUNTRYID_FULLNAMEEN = new StringProperty(Property.ForName(PROPERTY_COUNTRYID_ALIAS_NAME + ".FullNameEn"));
 		#endregion
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -74,7 +86,44 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "CountryID_SystemProvinceEntity_Alias":
+					switch (fieldName)
+					{
+                		case "CountryID_SystemProvinceEntity_Alias.Id":
+							return typeof (int);
+                		case "CountryID_SystemProvinceEntity_Alias.CodeNumber":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.Code2":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.Code3":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.AbbrNameCN":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.AbbrNameEN":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.FullNameCn":
+							return typeof (string);
+                		case "CountryID_SystemProvinceEntity_Alias.FullNameEn":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemProvinceEntity> queryGenerator)
         {
             switch (parent_alias)

@@ -83,6 +83,18 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemPrivilegeEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
       
+
+
+
+
+
+
+
+
+
+
+
+
 		#region 子类集合字段查询字段
 	
 		#endregion
@@ -130,7 +142,99 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
           }
 			return typeof(string);
         }
+
+		#region 获取外键字段类型
 		
+		public override Type GetFieldTypeByFieldName(string fieldName, string parent_alias)
+        {
+            switch (parent_alias)
+            {
+	            case "OperationID_SystemPrivilegeEntity_Alias":
+					switch (fieldName)
+					{
+                		case "OperationID_SystemPrivilegeEntity_Alias.OperationID":
+							return typeof (int);
+                		case "OperationID_SystemPrivilegeEntity_Alias.OperationNameCn":
+							return typeof (string);
+                		case "OperationID_SystemPrivilegeEntity_Alias.OperationNameEn":
+							return typeof (string);
+                		case "OperationID_SystemPrivilegeEntity_Alias.OperationDescription":
+							return typeof (string);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsSystemOperation":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsCanSingleOperation":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsCanMutilOperation":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsEnable":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsInListPage":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsInSinglePage":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.OperationOrder":
+							return typeof (int);
+                		case "OperationID_SystemPrivilegeEntity_Alias.IsCommonOperation":
+							return typeof (bool);
+                		case "OperationID_SystemPrivilegeEntity_Alias.ResourceID":
+							return typeof (int);
+                		case "OperationID_SystemPrivilegeEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "OperationID_SystemPrivilegeEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "OperationID_SystemPrivilegeEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "OperationID_SystemPrivilegeEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "OperationID_SystemPrivilegeEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+	            case "ResourcesID_SystemPrivilegeEntity_Alias":
+					switch (fieldName)
+					{
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesID":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameCn":
+							return typeof (string);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesNameEn":
+							return typeof (string);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesDescription":
+							return typeof (string);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesType":
+							return typeof (string);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesLimitExpression":
+							return typeof (string);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ResourcesIsRelateUser":
+							return typeof (bool);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.MoudleID":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.ParentResourcesID":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.OrderIndex":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "ResourcesID_SystemPrivilegeEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
+ 
+                default:
+                    break;
+            }
+
+            return typeof(string);
+        }
+		
+		#endregion
+
         public override void InClude_Parent_Table(string parent_alias, NHibernateDynamicQueryGenerator<SystemPrivilegeEntity> queryGenerator)
         {
             switch (parent_alias)
