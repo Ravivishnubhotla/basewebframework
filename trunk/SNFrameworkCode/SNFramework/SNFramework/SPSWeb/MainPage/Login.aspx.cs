@@ -10,6 +10,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.BaseFramework.Web;
 using Legendigital.Framework.Common.Securitys.SSO;
 using Legendigital.Framework.Common.Utility;
+using SPSWeb.images;
 
 namespace SPSWeb.MainPage
 {
@@ -85,7 +86,7 @@ namespace SPSWeb.MainPage
             }
 
 
-            if (!Membership.ValidateUser(loginID, password))
+            if (SystemUserWrapper.FindByLoginID(loginID)==null)
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = GetLocalResourceObject("msgLoginFailedUserPasswordError").ToString();
@@ -128,7 +129,7 @@ namespace SPSWeb.MainPage
 
             string token = SSOProvider.GetSSFToken(ssoTokenInfo);
 
-            Response.Redirect(FormsAuthentication.DefaultUrl + "?" + SSOProvider.QUERY_STRING_NAME_SSFToken + "=" + HttpUtility.UrlEncode(token));
+            Response.Redirect("~/MainPage/Default.aspx" + "?" + SSOProvider.QUERY_STRING_NAME_SSFToken + "=" + HttpUtility.UrlEncode(token));
         }
 
         //protected string UserCurrentLoginId

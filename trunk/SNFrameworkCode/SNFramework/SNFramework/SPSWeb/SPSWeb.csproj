@@ -115,6 +115,7 @@
     <Content Include="Config\DataConfig.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="images\bg.gif" />
@@ -189,6 +190,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="images\CheckCode.ashx.cs">
+      <DependentUpon>CheckCode.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Jobs\DailyReportGenerateJob.cs" />
     <Compile Include="MainPage\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -199,6 +203,7 @@
     </Compile>
     <Compile Include="MainPage\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -393,7 +398,9 @@
       <Name>SPS.Bussiness</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="images\CheckCode.ashx" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />
   </ItemGroup>
