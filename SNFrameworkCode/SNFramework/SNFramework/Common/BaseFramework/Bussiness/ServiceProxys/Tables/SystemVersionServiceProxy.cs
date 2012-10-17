@@ -14,13 +14,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 {
     public interface ISystemVersionServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SystemVersionEntity, int>, ISystemVersionServiceProxyDesigner
     {
-
-
+        SystemVersionEntity GetMaxDataVersionByDataTypeAndDataID(string dataType, int dataId);
     }
 
     public partial class SystemVersionServiceProxy : ISystemVersionServiceProxy
     {
-
-
+        public SystemVersionEntity GetMaxDataVersionByDataTypeAndDataID(string dataType, int dataId)
+        {
+            return this.DataObjectsContainerIocID.SystemVersionDataObjectInstance.GetMaxDataVersionByDataTypeAndDataID(dataType, dataId);
+        }
     }
 }

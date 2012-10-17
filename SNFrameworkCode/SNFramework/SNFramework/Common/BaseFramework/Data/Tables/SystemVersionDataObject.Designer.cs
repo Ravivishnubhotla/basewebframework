@@ -22,8 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_ID));		
-		public static readonly StringProperty PROPERTY_OLDVERSION = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_OLDVERSION));		
-		public static readonly StringProperty PROPERTY_NEWVERSION = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_NEWVERSION));		
+		public static readonly StringProperty PROPERTY_VAULEFIELD = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_VAULEFIELD));		
 		public static readonly StringProperty PROPERTY_OLDCHANGEFILELD = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_OLDCHANGEFILELD));		
 		public static readonly StringProperty PROPERTY_NEWCHANGEFILELD = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_NEWCHANGEFILELD));		
 		public static readonly StringProperty PROPERTY_PARENTDATATYPE = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_PARENTDATATYPE));		
@@ -31,6 +30,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_CHANGEDATE = new DateTimeProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEDATE));		
 		public static readonly IntProperty PROPERTY_CHANGEUSERID = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERID));		
 		public static readonly IntProperty PROPERTY_CHANGEUSERNAME = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERNAME));		
+		public static readonly IntProperty PROPERTY_VERSIONNUMBER = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_VERSIONNUMBER));		
 		public static readonly StringProperty PROPERTY_COMMENT = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_COMMENT));		
       
 
@@ -63,9 +63,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             {
                 case "Id":
                     return typeof (int);
-                case "OldVersion":
-                    return typeof (string);
-                case "NewVersion":
+                case "VauleField":
                     return typeof (string);
                 case "OldChangeFileld":
                     return typeof (string);
@@ -80,6 +78,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "ChangeUserID":
                     return typeof (int);
                 case "ChangeUserName":
+                    return typeof (int);
+                case "VersionNumber":
                     return typeof (int);
                 case "Comment":
                     return typeof (string);
