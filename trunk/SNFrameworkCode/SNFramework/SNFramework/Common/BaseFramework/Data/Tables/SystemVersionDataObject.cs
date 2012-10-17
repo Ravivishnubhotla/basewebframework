@@ -12,5 +12,17 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 {
     public partial class SystemVersionDataObject
     {
+        public SystemVersionEntity GetMaxDataVersionByDataTypeAndDataID(string dataType, int dataId)
+        {
+            NHibernateDynamicQueryGenerator<SystemVersionEntity> query = this.GetNewQueryBuilder();
+
+            query.AddWhereClause(PROPERTY_PARENTDATATYPE.Eq(dataType));
+
+            query.AddWhereClause(PROPERTY_PARENTDATAID.Eq(dataId));
+
+            query.AddOrderBy(PROPERTY_VERSIONNUMBER.Desc());
+            ;
+            return this.FindSingleEntityByQueryBuilder(query);
+        }
     }
 }

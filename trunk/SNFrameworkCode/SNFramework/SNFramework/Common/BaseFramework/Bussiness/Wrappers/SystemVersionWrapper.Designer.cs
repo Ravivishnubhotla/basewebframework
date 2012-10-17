@@ -62,8 +62,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemVersionEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
-		public static readonly string PROPERTY_NAME_OLDVERSION = "OldVersion";
-		public static readonly string PROPERTY_NAME_NEWVERSION = "NewVersion";
+		public static readonly string PROPERTY_NAME_VAULEFIELD = "VauleField";
 		public static readonly string PROPERTY_NAME_OLDCHANGEFILELD = "OldChangeFileld";
 		public static readonly string PROPERTY_NAME_NEWCHANGEFILELD = "NewChangeFileld";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
@@ -71,6 +70,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CHANGEDATE = "ChangeDate";
 		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
 		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
+		public static readonly string PROPERTY_NAME_VERSIONNUMBER = "VersionNumber";
 		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
@@ -106,30 +106,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public string OldVersion
+		public string VauleField
 		{
 			get
 			{
-				return entity.OldVersion;
+				return entity.VauleField;
 			}
 			set
 			{
-				entity.OldVersion = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public string NewVersion
-		{
-			get
-			{
-				return entity.NewVersion;
-			}
-			set
-			{
-				entity.NewVersion = value;
+				entity.VauleField = value;
 			}
 		}
 		/// <summary>
@@ -235,6 +220,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.ChangeUserName = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? VersionNumber
+		{
+			get
+			{
+				return entity.VersionNumber;
+			}
+			set
+			{
+				entity.VersionNumber = value;
 			}
 		}
 		/// <summary>

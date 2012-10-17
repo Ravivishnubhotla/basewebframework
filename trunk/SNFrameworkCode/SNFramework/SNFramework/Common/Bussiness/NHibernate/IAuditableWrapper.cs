@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Legendigital.Framework.Common.Bussiness.NHibernate
 {
-    public interface IAuditableWrapper
+    public interface IAuditableWrapper 
     {
         int? CreateBy { get; set; }
 

@@ -553,5 +553,29 @@ namespace Legendigital.Framework.Common.Utility
                 info.SetValue(instance, bool.Parse(value), null);
             }
         }
+
+        public static Dictionary<string, string> GetDictionaryValues<T>(T obj)
+        {
+            Type type = typeof(T);
+
+            List<PropertyInfo> propertyInfos = new List<PropertyInfo>(type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+
+            Dictionary<string, string> nameValueCollection = new Dictionary<string, string>();
+
+            foreach (PropertyInfo dataProperty in propertyInfos)
+            {
+                object objValue = dataProperty.GetValue(obj, null);
+                if (objValue != null)
+                {
+                    nameValueCollection.Add(dataProperty.Name, objValue.ToString());
+                }
+                else
+                {
+                    nameValueCollection.Add(dataProperty.Name, "");
+                }
+            }
+
+            return nameValueCollection;
+        }
     }
 }

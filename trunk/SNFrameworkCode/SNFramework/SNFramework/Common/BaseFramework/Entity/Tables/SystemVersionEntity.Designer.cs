@@ -23,8 +23,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 
 		public static readonly string CLASS_FULL_NAME = "Legendigital.Framework.Common.BaseFramework.Entity.Tables.SystemVersionEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
-		public static readonly string PROPERTY_NAME_OLDVERSION = "OldVersion";
-		public static readonly string PROPERTY_NAME_NEWVERSION = "NewVersion";
+		public static readonly string PROPERTY_NAME_VAULEFIELD = "VauleField";
 		public static readonly string PROPERTY_NAME_OLDCHANGEFILELD = "OldChangeFileld";
 		public static readonly string PROPERTY_NAME_NEWCHANGEFILELD = "NewChangeFileld";
 		public static readonly string PROPERTY_NAME_PARENTDATATYPE = "ParentDataType";
@@ -32,6 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_CHANGEDATE = "ChangeDate";
 		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
 		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
+		public static readonly string PROPERTY_NAME_VERSIONNUMBER = "VersionNumber";
 		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
@@ -51,8 +51,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
  
 		
 		private int _id;
-		private string _oldVersion;
-		private string _newVersion;
+		private string _vauleField;
 		private string _oldChangeFileld;
 		private string _newChangeFileld;
 		private string _parentDataType;
@@ -60,6 +59,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private DateTime? _changeDate;
 		private int? _changeUserID;
 		private int? _changeUserName;
+		private int? _versionNumber;
 		private string _comment;
 		
 		#endregion
@@ -71,8 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public SystemVersionEntity()
 		{
 			_id = 0;
-			_oldVersion = null;
-			_newVersion = null;
+			_vauleField = null;
 			_oldChangeFileld = null;
 			_newChangeFileld = null;
 			_parentDataType = null;
@@ -80,6 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_changeDate = null;
 			_changeUserID = null;
 			_changeUserName = null;
+			_versionNumber = null;
 			_comment = null;
 		}
 		#endregion
@@ -88,11 +88,10 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemVersionEntity( int id, string oldVersion, string newVersion, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID, DateTime? changeDate, int? changeUserID, int? changeUserName, string comment)
+		public SystemVersionEntity( int id, string vauleField, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID, DateTime? changeDate, int? changeUserID, int? changeUserName, int? versionNumber, string comment)
 		{
 			_id = id;
-			_oldVersion = oldVersion;
-			_newVersion = newVersion;
+			_vauleField = vauleField;
 			_oldChangeFileld = oldChangeFileld;
 			_newChangeFileld = newChangeFileld;
 			_parentDataType = parentDataType;
@@ -100,6 +99,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_changeDate = changeDate;
 			_changeUserID = changeUserID;
 			_changeUserName = changeUserName;
+			_versionNumber = versionNumber;
 			_comment = comment;
 		}
 		#endregion     
@@ -124,33 +124,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual string OldVersion
+		public virtual string VauleField
 		{
-			get { return _oldVersion; }
+			get { return _vauleField; }
 
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
-					throw new ArgumentOutOfRangeException("Invalid value for OldVersion", value, value.ToString());
-				_isChanged |= (_oldVersion != value); _oldVersion = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual string NewVersion
-		{
-			get { return _newVersion; }
-
-			set	
-			{
-
-				if( value != null && value.Length > 4000)
-					throw new ArgumentOutOfRangeException("Invalid value for NewVersion", value, value.ToString());
-				_isChanged |= (_newVersion != value); _newVersion = value;
+				if( value != null && value.Length > 2147483646)
+					throw new ArgumentOutOfRangeException("Invalid value for VauleField", value, value.ToString());
+				_isChanged |= (_vauleField != value); _vauleField = value;
 			}
 		}
 
@@ -165,7 +148,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for OldChangeFileld", value, value.ToString());
 				_isChanged |= (_oldChangeFileld != value); _oldChangeFileld = value;
 			}
@@ -182,7 +165,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 
-				if( value != null && value.Length > 4000)
+				if( value != null && value.Length > 2147483646)
 					throw new ArgumentOutOfRangeException("Invalid value for NewChangeFileld", value, value.ToString());
 				_isChanged |= (_newChangeFileld != value); _newChangeFileld = value;
 			}
@@ -258,6 +241,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_changeUserName != value); _changeUserName = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? VersionNumber
+		{
+			get { return _versionNumber; }
+
+			set	
+			{
+				_isChanged |= (_versionNumber != value); _versionNumber = value;
 			}
 		}
 

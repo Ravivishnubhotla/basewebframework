@@ -144,7 +144,10 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
 
         #endregion
 
- 
+        public EntityKeyType GetDataEntityKey()
+        {
+            return entity.GetDataEntityKey();
+        }
 
 
         protected static T GetEntityProperty<T>(DomainType obj,string propertyName ,ServiceProxyType serviceProxy)
