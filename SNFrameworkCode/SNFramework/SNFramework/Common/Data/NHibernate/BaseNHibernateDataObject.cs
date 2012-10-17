@@ -19,6 +19,7 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 {
     public abstract class BaseNHibernateDataObject<DomainType, EntityKeyType> : BaseNHibernateViewDataObject<DomainType, EntityKeyType>, IBaseNHibernateDataObject<DomainType, EntityKeyType> where DomainType : BaseTableEntity<EntityKeyType>
     {
+ 
         #region 基本操作
 
         /// <summary>

@@ -6,6 +6,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Utility;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
@@ -111,6 +112,101 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             public const string Info = "Info";
             public const string Error = "Error";
             public const string Warning = "Warning";
+        }
+
+        public static void LogDataCreate(IAuditableWrapper auditableData)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.CreateAt,System.DateTime.Now);
+
+            SystemUserWrapper opUser = null;
+
+            if(auditableData.CreateBy.HasValue)
+            {
+                opUser = SystemUserWrapper.FindById(auditableData.CreateBy.Value);
+            }
+
+            log.LogDescrption = auditableData.LastModifyComment;
+ 
+            log.LogLevel = SysteLogLevel.Info;
+            log.LogRelateDateTime = auditableData.CreateAt;
+            log.LogRelateUserID = auditableData.CreateBy;
+
+            if (opUser!=null)
+                log.LogRelateUserName = opUser.UserLoginID;
+            else
+                log.LogRelateUserName = "";
+
+
+
+            log.ParentDataType = auditableData.GetType().Name.ToString();
+            log.ParentDataID = auditableData.CreateBy;
+            log.LogSource = "Operation";
+            log.LogType = SysteLogType.OperationLog;
+ 
+            Save(log);
+        }
+
+        public static void LogDataUpdate(IAuditableWrapper auditableData)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+
+            SystemUserWrapper opUser = null;
+
+            if (auditableData.LastModifyBy.HasValue)
+            {
+                opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+            }
+
+            log.LogDescrption = auditableData.LastModifyComment;
+
+            log.LogLevel = SysteLogLevel.Info;
+            log.LogRelateDateTime = auditableData.LastModifyAt;
+            log.LogRelateUserID = auditableData.LastModifyBy;
+
+            if (opUser != null)
+                log.LogRelateUserName = opUser.UserLoginID;
+            else
+                log.LogRelateUserName = "";
+
+            log.ParentDataType = auditableData.GetType().ToString();
+            log.ParentDataID = auditableData.LastModifyBy;
+            log.LogSource = "Operation";
+            log.LogType = SysteLogType.OperationLog;
+
+            Save(log);
+        }
+
+        public static void LogDataDelete(IAuditableWrapper auditableData)
+        {
+            SystemLogWrapper log = new SystemLogWrapper();
+            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+
+            SystemUserWrapper opUser = null;
+
+            if (auditableData.LastModifyBy.HasValue)
+            {
+                opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+            }
+
+            log.LogDescrption = auditableData.LastModifyComment;
+
+            log.LogLevel = SysteLogLevel.Info;
+            log.LogRelateDateTime = auditableData.LastModifyAt;
+            log.LogRelateUserID = auditableData.LastModifyBy;
+
+            if (opUser != null)
+                log.LogRelateUserName = opUser.UserLoginID;
+            else
+                log.LogRelateUserName = "";
+
+            log.ParentDataType = auditableData.GetType().ToString();
+            log.ParentDataID = auditableData.LastModifyBy;
+            log.LogSource = "Operation";
+            log.LogType = SysteLogType.OperationLog;
+
+            Save(log);
         }
 
 	    public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)

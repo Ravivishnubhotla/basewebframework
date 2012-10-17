@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Legendigital.Framework.Common.Entity
+namespace Legendigital.Framework.Common.Bussiness.NHibernate
 {
-    public interface IAuditableEntity
+    public interface IAuditableWrapper
     {
         int? CreateBy { get; set; }
 
