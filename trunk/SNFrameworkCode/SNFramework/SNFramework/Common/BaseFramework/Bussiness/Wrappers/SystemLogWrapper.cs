@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Common.Logging;
+using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.Entity;
 using Legendigital.Framework.Common.Utility;
 
 
@@ -101,6 +104,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         #endregion
 
+        public static ILog logger = LogManager.GetLogger(typeof(SystemLogWrapper));
+
 	    public class SysteLogType
 	    {
             public const string LoginLog = "系统安全日志";
@@ -114,7 +119,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             public const string Warning = "Warning";
         }
 
-        public static void LogDataCreate(IAuditableWrapper auditableData)
+        public static void LogDataCreate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
         {
             SystemLogWrapper log = new SystemLogWrapper();
             log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.CreateAt,System.DateTime.Now);
@@ -147,7 +152,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Save(log);
         }
 
-        public static void LogDataUpdate(IAuditableWrapper auditableData)
+        public static void LogDataUpdate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
         {
             SystemLogWrapper log = new SystemLogWrapper();
             log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
@@ -178,35 +183,52 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Save(log);
         }
 
-        public static void LogDataDelete(IAuditableWrapper auditableData)
+        public static void LogDataOther<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
         {
-            SystemLogWrapper log = new SystemLogWrapper();
-            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
-
-            SystemUserWrapper opUser = null;
-
-            if (auditableData.LastModifyBy.HasValue)
+            try
             {
-                opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+                SystemVersionWrapper systemVersion = null;
+
+                if (systemVersion == null)
+                {
+                    systemVersion = SystemVersionWrapper.SaveNewVersion(auditableData);
+                }
+
+                SystemLogWrapper log = new SystemLogWrapper();
+                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+
+                SystemUserWrapper opUser = null;
+
+                if (auditableData.LastModifyBy.HasValue)
+                {
+                    opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+                }
+
+                log.LogDescrption = auditableData.LastModifyComment;
+
+                log.LogLevel = SysteLogLevel.Info;
+                log.LogRelateDateTime = auditableData.LastModifyAt;
+                log.LogRelateUserID = auditableData.LastModifyBy;
+
+                if (opUser != null)
+                    log.LogRelateUserName = opUser.UserLoginID;
+                else
+                    log.LogRelateUserName = "";
+
+                log.ParentDataType = auditableData.GetType().ToString();
+                log.ParentDataID = auditableData.LastModifyBy;
+                log.LogSource = "Operation";
+                log.LogType = SysteLogType.OperationLog;
             }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+            }
+        }
 
-            log.LogDescrption = auditableData.LastModifyComment;
-
-            log.LogLevel = SysteLogLevel.Info;
-            log.LogRelateDateTime = auditableData.LastModifyAt;
-            log.LogRelateUserID = auditableData.LastModifyBy;
-
-            if (opUser != null)
-                log.LogRelateUserName = opUser.UserLoginID;
-            else
-                log.LogRelateUserName = "";
-
-            log.ParentDataType = auditableData.GetType().ToString();
-            log.ParentDataID = auditableData.LastModifyBy;
-            log.LogSource = "Operation";
-            log.LogType = SysteLogType.OperationLog;
-
-            Save(log);
+        public static void LogDataDelete<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        {
+            LogDataOther(auditableData);
         }
 
 	    public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)
@@ -224,7 +246,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             log.LogType = SysteLogType.LoginLog;
             Save(log);
         }
-
 
         public static void LogUserLoginOutSuccessed(SystemUserWrapper user, string ip, DateTime logindate)
         {
@@ -258,7 +279,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             Save(log);
         }
 
-
         public static void LogUserLoginFailed(string userLoginID, string ip, string reason, DateTime logindate)
         {
             SystemLogWrapper log = new SystemLogWrapper();
@@ -274,7 +294,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             log.LogType = SysteLogType.LoginLog;
             Save(log);
         }
-
 
         public static void LogUserOperationAction(SystemUserWrapper user, string operatioMessage, string ip, DateTime opdate, string dataType, int dataid)
         {
@@ -293,7 +312,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             
             Save(log);
         }
-
 
         public static void LogUserOperationAction(string operatioMessage, string ip, DateTime opdate, string dataType, int dataid)
         {
