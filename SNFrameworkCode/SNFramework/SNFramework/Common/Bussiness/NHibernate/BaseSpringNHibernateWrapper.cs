@@ -11,6 +11,7 @@ using Legendigital.Framework.Common.Bussiness.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Entity;
 using Legendigital.Framework.Common.Utility;
+using Newtonsoft.Json;
 using Spring.Context.Support;
 
 namespace Legendigital.Framework.Common.Bussiness.NHibernate
@@ -23,6 +24,24 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
         #region Member
 
         protected internal DomainType entity;
+
+        public string GetEntityPropertyDictionaryValues()
+        {
+            return JsonConvert.SerializeObject(ReflectionUtil.GetEntityDictionaryValues<DomainType, EntityKeyType>(entity));
+        }
+
+        public EntityKeyType GetDataKey()
+        {
+            return this.entity.GetDataEntityKey();
+        }
+
+        public bool DataKeyIsEmpty
+        {
+            get
+            {
+                return this.entity.DataKeyIsEmpty;
+            }
+        }
 
         private static ILog _logger = null;
 
