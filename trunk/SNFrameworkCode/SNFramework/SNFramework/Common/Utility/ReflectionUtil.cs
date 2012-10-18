@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Legendigital.Framework.Common.Entity;
 
 namespace Legendigital.Framework.Common.Utility
 {
@@ -568,6 +569,39 @@ namespace Legendigital.Framework.Common.Utility
                 if (objValue != null)
                 {
                     nameValueCollection.Add(dataProperty.Name, objValue.ToString());
+                }
+                else
+                {
+                    nameValueCollection.Add(dataProperty.Name, "");
+                }
+            }
+
+            return nameValueCollection;
+        }
+
+
+        public static Dictionary<string, string> GetEntityDictionaryValues<T, TK>(T obj) where T : BaseTableEntity<TK>
+        {
+            Type type = typeof(T);
+
+            List<PropertyInfo> propertyInfos = new List<PropertyInfo>(type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly));
+
+            Dictionary<string, string> nameValueCollection = new Dictionary<string, string>();
+
+            foreach (PropertyInfo dataProperty in propertyInfos)
+            {
+                object objValue = dataProperty.GetValue(obj, null);
+                if (objValue != null)
+                {
+                    //判断是否是外键字段
+                    if (objValue is BaseTableEntity<TK>)
+                    {
+                        nameValueCollection.Add(dataProperty.Name, ((BaseTableEntity<TK>)objValue).GetDataEntityKey().ToString());
+                    }
+                    else
+                    {
+                        nameValueCollection.Add(dataProperty.Name, objValue.ToString());
+                    }
                 }
                 else
                 {

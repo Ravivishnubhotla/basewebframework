@@ -113,7 +113,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             dataVersion.VersionNumber = 1;
             dataVersion.ChangeUserID = objAuditable.CreateBy;
             dataVersion.ChangeDate = objAuditable.CreateAt;
-            dataVersion.VauleField = JsonConvert.SerializeObject(ReflectionUtil.GetDictionaryValues(objAuditable.entity));
+            dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
             dataVersion.NewChangeFileld = "";
             dataVersion.OldChangeFileld = "";
 
@@ -140,7 +140,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 dataVersion.VersionNumber = systemDataVersion.VersionNumber + 1;
                 dataVersion.ChangeUserID = objAuditable.CreateBy;
                 dataVersion.ChangeDate = objAuditable.CreateAt;
-                dataVersion.VauleField = JsonConvert.SerializeObject(ReflectionUtil.GetDictionaryValues(objAuditable.entity));
+                dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
                 dataVersion.GetChangeField(systemDataVersion);
 
                 Save(dataVersion);
