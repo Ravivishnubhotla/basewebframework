@@ -11,15 +11,15 @@
 </id>
 
 
-		<property column="OldVersion" type="string" name="OldVersion"   length="4000" />	
-		<property column="NewVersion" type="string" name="NewVersion"   length="4000" />	
-		<property column="OldChangeFileld" type="string" name="OldChangeFileld"   length="4000" />	
-		<property column="NewChangeFileld" type="string" name="NewChangeFileld"   length="4000" />	
+		<property column="VauleField" type="string" name="VauleField"   length="2147483646" />	
+		<property column="OldChangeFileld" type="string" name="OldChangeFileld"   length="2147483646" />	
+		<property column="NewChangeFileld" type="string" name="NewChangeFileld"   length="2147483646" />	
 		<property column="Parent_DataType" type="string" name="ParentDataType"   length="100" />	
 		<property column="Parent_DataID" type="int" name="ParentDataID"   />	
 		<property column="ChangeDate" type="DateTime" name="ChangeDate"   />	
 		<property column="ChangeUserID" type="int" name="ChangeUserID"   />	
 		<property column="ChangeUserName" type="int" name="ChangeUserName"   />	
+		<property column="VersionNumber" type="int" name="VersionNumber"   />	
 		<property column="Comment" type="string" name="Comment"   length="400" />	
 
 
