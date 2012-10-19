@@ -938,6 +938,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Moudles\Installs\" />
+    <Folder Include="Moudles\SystemManage\DataVersionManage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />
