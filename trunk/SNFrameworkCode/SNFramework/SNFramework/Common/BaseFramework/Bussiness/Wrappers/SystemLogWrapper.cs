@@ -15,7 +15,7 @@ using Legendigital.Framework.Common.Utility;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemLogWrapper 
+    public partial class SystemLogWrapper : BaseSpringNHibernateWrapper<SystemLogEntity, ISystemLogServiceProxy, SystemLogWrapper, int>
     {
         #region Static Common Data Operation
 
@@ -119,117 +119,117 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             public const string Warning = "Warning";
         }
 
-        public static void LogDataCreate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        {
-            SystemLogWrapper log = new SystemLogWrapper();
-            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.CreateAt,System.DateTime.Now);
+        //public static void LogDataCreate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        //{
+        //    SystemLogWrapper log = new SystemLogWrapper();
+        //    log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.CreateAt,System.DateTime.Now);
 
-            SystemUserWrapper opUser = null;
+        //    SystemUserWrapper opUser = null;
 
-            if(auditableData.CreateBy.HasValue)
-            {
-                opUser = SystemUserWrapper.FindById(auditableData.CreateBy.Value);
-            }
+        //    if(auditableData.CreateBy.HasValue)
+        //    {
+        //        opUser = SystemUserWrapper.FindById(auditableData.CreateBy.Value);
+        //    }
 
-            log.LogDescrption = auditableData.LastModifyComment;
+        //    log.LogDescrption = auditableData.LastModifyComment;
  
-            log.LogLevel = SysteLogLevel.Info;
-            log.LogRelateDateTime = auditableData.CreateAt;
-            log.LogRelateUserID = auditableData.CreateBy;
+        //    log.LogLevel = SysteLogLevel.Info;
+        //    log.LogRelateDateTime = auditableData.CreateAt;
+        //    log.LogRelateUserID = auditableData.CreateBy;
 
-            if (opUser!=null)
-                log.LogRelateUserName = opUser.UserLoginID;
-            else
-                log.LogRelateUserName = "";
+        //    if (opUser!=null)
+        //        log.LogRelateUserName = opUser.UserLoginID;
+        //    else
+        //        log.LogRelateUserName = "";
 
 
 
-            log.ParentDataType = auditableData.GetType().Name.ToString();
-            log.ParentDataID = auditableData.CreateBy;
-            log.LogSource = "Operation";
-            log.LogType = SysteLogType.OperationLog;
+        //    log.ParentDataType = auditableData.GetType().Name.ToString();
+        //    log.ParentDataID = auditableData.CreateBy;
+        //    log.LogSource = "Operation";
+        //    log.LogType = SysteLogType.OperationLog;
  
-            Save(log);
-        }
+        //    Save(log);
+        //}
 
-        public static void LogDataUpdate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        {
-            SystemLogWrapper log = new SystemLogWrapper();
-            log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+        //public static void LogDataUpdate<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        //{
+        //    SystemLogWrapper log = new SystemLogWrapper();
+        //    log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
 
-            SystemUserWrapper opUser = null;
+        //    SystemUserWrapper opUser = null;
 
-            if (auditableData.LastModifyBy.HasValue)
-            {
-                opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
-            }
+        //    if (auditableData.LastModifyBy.HasValue)
+        //    {
+        //        opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+        //    }
 
-            log.LogDescrption = auditableData.LastModifyComment;
+        //    log.LogDescrption = auditableData.LastModifyComment;
 
-            log.LogLevel = SysteLogLevel.Info;
-            log.LogRelateDateTime = auditableData.LastModifyAt;
-            log.LogRelateUserID = auditableData.LastModifyBy;
+        //    log.LogLevel = SysteLogLevel.Info;
+        //    log.LogRelateDateTime = auditableData.LastModifyAt;
+        //    log.LogRelateUserID = auditableData.LastModifyBy;
 
-            if (opUser != null)
-                log.LogRelateUserName = opUser.UserLoginID;
-            else
-                log.LogRelateUserName = "";
+        //    if (opUser != null)
+        //        log.LogRelateUserName = opUser.UserLoginID;
+        //    else
+        //        log.LogRelateUserName = "";
 
-            log.ParentDataType = auditableData.GetType().ToString();
-            log.ParentDataID = auditableData.LastModifyBy;
-            log.LogSource = "Operation";
-            log.LogType = SysteLogType.OperationLog;
+        //    log.ParentDataType = auditableData.GetType().ToString();
+        //    log.ParentDataID = auditableData.LastModifyBy;
+        //    log.LogSource = "Operation";
+        //    log.LogType = SysteLogType.OperationLog;
 
-            Save(log);
-        }
+        //    Save(log);
+        //}
 
-        public static void LogDataOther<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        {
-            try
-            {
-                SystemVersionWrapper systemVersion = null;
+        //public static void LogDataOther<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        //{
+        //    try
+        //    {
+        //        SystemVersionWrapper systemVersion = null;
 
-                if (systemVersion == null)
-                {
-                    systemVersion = SystemVersionWrapper.SaveNewVersion(auditableData);
-                }
+        //        if (systemVersion == null)
+        //        {
+        //            systemVersion = SystemVersionWrapper.SaveNewVersion(auditableData);
+        //        }
 
-                SystemLogWrapper log = new SystemLogWrapper();
-                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+        //        SystemLogWrapper log = new SystemLogWrapper();
+        //        log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
 
-                SystemUserWrapper opUser = null;
+        //        SystemUserWrapper opUser = null;
 
-                if (auditableData.LastModifyBy.HasValue)
-                {
-                    opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
-                }
+        //        if (auditableData.LastModifyBy.HasValue)
+        //        {
+        //            opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+        //        }
 
-                log.LogDescrption = auditableData.LastModifyComment;
+        //        log.LogDescrption = auditableData.LastModifyComment;
 
-                log.LogLevel = SysteLogLevel.Info;
-                log.LogRelateDateTime = auditableData.LastModifyAt;
-                log.LogRelateUserID = auditableData.LastModifyBy;
+        //        log.LogLevel = SysteLogLevel.Info;
+        //        log.LogRelateDateTime = auditableData.LastModifyAt;
+        //        log.LogRelateUserID = auditableData.LastModifyBy;
 
-                if (opUser != null)
-                    log.LogRelateUserName = opUser.UserLoginID;
-                else
-                    log.LogRelateUserName = "";
+        //        if (opUser != null)
+        //            log.LogRelateUserName = opUser.UserLoginID;
+        //        else
+        //            log.LogRelateUserName = "";
 
-                log.ParentDataType = auditableData.GetType().ToString();
-                log.ParentDataID = auditableData.LastModifyBy;
-                log.LogSource = "Operation";
-                log.LogType = SysteLogType.OperationLog;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Message);
-            }
-        }
+        //        log.ParentDataType = auditableData.GetType().ToString();
+        //        log.ParentDataID = auditableData.LastModifyBy;
+        //        log.LogSource = "Operation";
+        //        log.LogType = SysteLogType.OperationLog;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error(ex.Message);
+        //    }
+        //}
 
-        public static void LogDataDelete<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        {
-            LogDataOther(auditableData);
-        }
+        //public static void LogDataDelete<T>(T auditableData) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        //{
+        //    LogDataOther(auditableData);
+        //}
 
 	    public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)
         {

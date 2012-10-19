@@ -14,7 +14,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
     [DataObject()]
-    public partial class SystemPrivilegeWrapper 
+    public partial class SystemPrivilegeWrapper : BaseSpringNHibernateWrapper<SystemPrivilegeEntity, ISystemPrivilegeServiceProxy, SystemPrivilegeWrapper, int>
     {
         #region Static Common Data Operation
 

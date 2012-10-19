@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Spring.Context.Support;
 using Common.Logging;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
@@ -13,7 +14,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemOrganizationWrapper    : BaseSpringNHibernateWrapper<SystemOrganizationEntity, ISystemOrganizationServiceProxy, SystemOrganizationWrapper,int>
+    public partial class SystemOrganizationWrapper   
     {
         #region Member
 

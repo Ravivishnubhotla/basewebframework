@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemConfigGroupWrapper 
+    public partial class SystemConfigGroupWrapper : BaseSpringNHibernateWrapper<SystemConfigGroupEntity, ISystemConfigGroupServiceProxy, SystemConfigGroupWrapper, int>
     {
         #region Static Common Data Operation
 

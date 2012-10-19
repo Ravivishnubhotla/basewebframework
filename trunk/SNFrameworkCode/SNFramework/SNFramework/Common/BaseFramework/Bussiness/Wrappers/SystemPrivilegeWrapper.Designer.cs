@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemPrivilegeWrapper    : BaseSpringNHibernateWrapper<SystemPrivilegeEntity, ISystemPrivilegeServiceProxy, SystemPrivilegeWrapper,int>
+    public partial class SystemPrivilegeWrapper    //: BaseSpringNHibernateWrapper<SystemPrivilegeEntity, ISystemPrivilegeServiceProxy, SystemPrivilegeWrapper,int>
     {
         #region Member
 

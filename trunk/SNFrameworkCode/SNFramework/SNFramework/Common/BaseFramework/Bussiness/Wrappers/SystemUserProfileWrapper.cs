@@ -14,7 +14,7 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserProfileWrapper 
+    public partial class SystemUserProfileWrapper : BaseSpringNHibernateWrapper<SystemUserProfileEntity, ISystemUserProfileServiceProxy, SystemUserProfileWrapper, int>
     {
  
             #region Static Common Data Operation

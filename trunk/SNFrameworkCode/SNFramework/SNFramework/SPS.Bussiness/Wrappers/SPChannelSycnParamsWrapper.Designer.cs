@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPChannelSycnParamsWrapper    : BaseSpringNHibernateWrapper<SPChannelSycnParamsEntity, ISPChannelSycnParamsServiceProxy, SPChannelSycnParamsWrapper,int>
+    public partial class SPChannelSycnParamsWrapper    //: BaseSpringNHibernateWrapper<SPChannelSycnParamsEntity, ISPChannelSycnParamsServiceProxy, SPChannelSycnParamsWrapper,int>
     {
         #region Member
 

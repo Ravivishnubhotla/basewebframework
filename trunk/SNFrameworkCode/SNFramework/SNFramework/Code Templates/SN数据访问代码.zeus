@@ -1,6 +1,6 @@
 ﻿##|TYPE Template
 ##|UNIQUEID 2787bb9d-3b21-461c-b4d7-a4cb8a51db92
-##|TITLE SN数据访问代码1.1
+##|TITLE SN数据访问代码1.0
 ##|NAMESPACE 
 ##|SOURCE_TYPE Source
 ##|OUTPUT_LANGUAGE None
@@ -735,7 +735,7 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 	[Serializable]
 	[DataContract]
 	//[JsonObject(MemberSerialization.OptIn)]
-    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %> 
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>  : BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>,<%= pkType %>>
     { 
         #region Static Common Data Operation
 		
@@ -853,7 +853,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 {
-    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>    : BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>,<%= pkType %>>
+    public partial class <%= config.GenerateBussinessEncapsulationClassName(table) %>    //: BaseSpringNHibernateWrapper<<%= config.GenerateEntityClassName(table) %>, <%= config.GenerateServiceProxyInterfaceClassName(table) %>, <%= config.GenerateBussinessEncapsulationClassName(table) %>,<%= pkType %>>
     {
         #region Member
 

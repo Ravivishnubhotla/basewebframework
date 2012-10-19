@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Web.UI;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers 
 {
 	[Serializable]
-    public partial class SystemOrganizationWrapper :  ITreeItemWrapper
+    public partial class SystemOrganizationWrapper : TreeItemWrapper<SystemOrganizationEntity, ISystemOrganizationServiceProxy, SystemOrganizationWrapper, int>
     { 
         #region Static Common Data Operation
 		
@@ -107,7 +107,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
-        public List<ITreeItemWrapper> FindAllItems()
+        public override List<ITreeItemWrapper> FindAllItems()
 	    {
             List<ITreeItemWrapper> treeItems = new List<ITreeItemWrapper>();
 
@@ -121,16 +121,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return treeItems;
 	    }
 
-	    public ITreeItemWrapper ParentDataItemID
+        public override ITreeItemWrapper ParentDataItemID
 	    {
             get { return this.ParentID; }
 	    }
 
-	    public object DataKeyId
-	    {
-            get { return this.Id; }
-	    }
 
+        public override string NodeName
+        {
+            get { return this.Name; }
+        }
+
+        public override string NodeCode
+        {
+            get { return this.Code; }
+        }
+
+ 
  
     }
 }

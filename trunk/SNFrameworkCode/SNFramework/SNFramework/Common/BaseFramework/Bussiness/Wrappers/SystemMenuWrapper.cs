@@ -14,7 +14,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemMenuWrapper 
+    public partial class SystemMenuWrapper : BaseSpringNHibernateWrapper<SystemMenuEntity, ISystemMenuServiceProxy, SystemMenuWrapper, int>
     {
         public string LocaLocalizationName
         {

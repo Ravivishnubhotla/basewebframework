@@ -29,9 +29,9 @@ namespace SNFramework.BSF.Moudles.SystemManage.RoleManage
         [DirectMethod]
         public string GetTreeNodes()
         {
-            List<TypedTreeNodeItem<ITreeItemWrapper>> nodes = new SystemResourcesWrapper().GetAllTreeItems();
+            List<TypedTreeNodeItem<SystemResourcesWrapper>> nodes = new SystemResourcesWrapper().GetAllTreeItems();
 
-            return WebUIHelper.BuildTree<ITreeItemWrapper>(nodes, "All Resources", Icon.Bricks).ToJson();
+            return WebUIHelper.BuildTree<SystemResourcesWrapper>(nodes, "All Resources", Icon.Bricks).ToJson();
         }
 
         protected void Page_Load(object sender, EventArgs e)

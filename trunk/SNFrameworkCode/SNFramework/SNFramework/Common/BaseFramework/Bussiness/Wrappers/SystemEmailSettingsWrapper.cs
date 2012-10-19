@@ -15,7 +15,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
     public enum MailType { SendAsync, SendSync, SendAsyncSysDb, SendSqlMail }
 
     [Serializable]
-    public partial class SystemEmailSettingsWrapper  
+    public partial class SystemEmailSettingsWrapper : BaseSpringNHibernateWrapper<SystemEmailSettingsEntity, ISystemEmailSettingsServiceProxy, SystemEmailSettingsWrapper, int>
     {
 
 

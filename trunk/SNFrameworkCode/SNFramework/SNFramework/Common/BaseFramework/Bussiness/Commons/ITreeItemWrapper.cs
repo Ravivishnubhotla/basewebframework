@@ -14,9 +14,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
         object DataKeyId { get;  }
 
-        string Name { get; }
+        string NodeName { get; }
 
-        string Code { get; }     
+        string NodeCode { get; }     
 
     }
 }

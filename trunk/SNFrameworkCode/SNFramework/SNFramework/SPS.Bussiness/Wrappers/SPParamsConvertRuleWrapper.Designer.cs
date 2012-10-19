@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPParamsConvertRuleWrapper    : BaseSpringNHibernateWrapper<SPParamsConvertRuleEntity, ISPParamsConvertRuleServiceProxy, SPParamsConvertRuleWrapper,int>
+    public partial class SPParamsConvertRuleWrapper    //: BaseSpringNHibernateWrapper<SPParamsConvertRuleEntity, ISPParamsConvertRuleServiceProxy, SPParamsConvertRuleWrapper,int>
     {
         #region Member
 
