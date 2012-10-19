@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
-    public partial class SystemAddressWrapper    : BaseSpringNHibernateWrapper<SystemAddressEntity, ISystemAddressServiceProxy, SystemAddressWrapper,int>
+    public partial class SystemAddressWrapper    //
     {
         #region Member
 

@@ -68,9 +68,9 @@ namespace SNFramework.BSF.Moudles.SystemManage.OrginationDepartmentManage
         [DirectMethod]
         public string GetTreeNodes()
         {
-            List<TypedTreeNodeItem<ITreeItemWrapper>> nodes = (new SystemOrganizationWrapper()).GetAllTreeItems();
+            List<TypedTreeNodeItem<SystemOrganizationWrapper>> nodes = (new SystemOrganizationWrapper()).GetAllTreeItems();
 
-            return WebUIHelper.BuildTree<ITreeItemWrapper>(nodes, "All Organizations", Icon.Bricks).ToJson();
+            return WebUIHelper.BuildTree<SystemOrganizationWrapper>(nodes, "All Organizations", Icon.Bricks).ToJson();
         }
 
 

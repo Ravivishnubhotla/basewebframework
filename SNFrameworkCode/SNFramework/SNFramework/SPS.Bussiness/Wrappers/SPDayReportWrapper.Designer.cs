@@ -13,7 +13,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPDayReportWrapper    : BaseSpringNHibernateWrapper<SPDayReportEntity, ISPDayReportServiceProxy, SPDayReportWrapper,int>
+    public partial class SPDayReportWrapper    //: BaseSpringNHibernateWrapper<SPDayReportEntity, ISPDayReportServiceProxy, SPDayReportWrapper,int>
     {
         #region Member
 

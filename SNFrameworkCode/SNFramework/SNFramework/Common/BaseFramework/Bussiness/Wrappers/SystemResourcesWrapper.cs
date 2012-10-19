@@ -16,7 +16,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
  
 
     [Serializable]
-    public partial class SystemResourcesWrapper : ITreeItemWrapper
+    public partial class SystemResourcesWrapper : TreeItemWrapper<SystemResourcesEntity, ISystemResourcesServiceProxy, SystemResourcesWrapper, int>, ITreeItemWrapper
 	{
         #region Static Common Data Operation
 
@@ -107,7 +107,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 
 
-        public List<ITreeItemWrapper> FindAllItems()
+        public override List<ITreeItemWrapper> FindAllItems()
         {
             List<ITreeItemWrapper> treeItems = new List<ITreeItemWrapper>();
 
@@ -121,34 +121,22 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return treeItems;
         }
 
-        public ITreeItemWrapper ParentDataItemID
+        public override ITreeItemWrapper ParentDataItemID
         {
             get { return this.ParentResourcesID; }
         }
 
- 
-
-        public string Name
+        public override string NodeName
         {
             get { return this.ResourcesNameCn; }
         }
 
-        public string Code
+        public override string NodeCode
         {
             get { return this.ResourcesNameEn; }
         }
 
-        public object DataKeyId
-        {
-            get { return this.ResourcesID; }
-        }
-
  
-
- 
-
- 
-
 	}
 
  

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
@@ -12,7 +13,7 @@ using Legendigital.Framework.Common.Web.UI;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemDepartmentWrapper  
+    public partial class SystemDepartmentWrapper : BaseSpringNHibernateWrapper<SystemDepartmentEntity, ISystemDepartmentServiceProxy, SystemDepartmentWrapper, int>
     {
         #region Static Common Data Operation
 

@@ -11,7 +11,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemEmailTemplateWrapper 
+    public partial class SystemEmailTemplateWrapper : BaseSpringNHibernateWrapper<SystemEmailTemplateEntity, ISystemEmailTemplateServiceProxy, SystemEmailTemplateWrapper, int>
     {
         #region Static Common Data Operation
 

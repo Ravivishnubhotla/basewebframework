@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemVersionWrapper 
+    public partial class SystemVersionWrapper : BaseSpringNHibernateWrapper<SystemVersionEntity, ISystemVersionServiceProxy, SystemVersionWrapper, int>
     {
         #region Static Common Data Operation
 		
@@ -104,50 +104,50 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
-        public static SystemVersionWrapper SaveNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int> , IAuditableWrapper
-        {
-            SystemVersionWrapper dataVersion = new SystemVersionWrapper();
+        //public static SystemVersionWrapper SaveNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int> , IAuditableWrapper
+        //{
+        //    SystemVersionWrapper dataVersion = new SystemVersionWrapper();
 
-            dataVersion.ParentDataType = objAuditable.GetType().FullName;
-            dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
-            dataVersion.VersionNumber = 1;
-            dataVersion.ChangeUserID = objAuditable.CreateBy;
-            dataVersion.ChangeDate = objAuditable.CreateAt;
-            dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
-            dataVersion.NewChangeFileld = "";
-            dataVersion.OldChangeFileld = "";
+        //    dataVersion.ParentDataType = objAuditable.GetType().FullName;
+        //    dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
+        //    dataVersion.VersionNumber = 1;
+        //    dataVersion.ChangeUserID = objAuditable.CreateBy;
+        //    dataVersion.ChangeDate = objAuditable.CreateAt;
+        //    dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
+        //    dataVersion.NewChangeFileld = "";
+        //    dataVersion.OldChangeFileld = "";
 
-            Save(dataVersion);
+        //    Save(dataVersion);
 
-            return dataVersion;
-        }
+        //    return dataVersion;
+        //}
 
-        public static SystemVersionWrapper UpdateNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        {
-            SystemVersionWrapper dataVersion = new SystemVersionWrapper();
+        //public static SystemVersionWrapper UpdateNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
+        //{
+        //    SystemVersionWrapper dataVersion = new SystemVersionWrapper();
 
-            dataVersion.ParentDataType = objAuditable.GetType().FullName;
-            dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
+        //    dataVersion.ParentDataType = objAuditable.GetType().FullName;
+        //    dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
 
-            SystemVersionWrapper systemDataVersion = GetCurrentVersionByDataTypeAndDataID(dataVersion.ParentDataType, dataVersion.ParentDataID.Value);
+        //    SystemVersionWrapper systemDataVersion = GetCurrentVersionByDataTypeAndDataID(dataVersion.ParentDataType, dataVersion.ParentDataID.Value);
 
-            if (systemDataVersion == null)
-            {
-                return SaveNewVersion(objAuditable);
-            }
-            else
-            {
-                dataVersion.VersionNumber = systemDataVersion.VersionNumber + 1;
-                dataVersion.ChangeUserID = objAuditable.CreateBy;
-                dataVersion.ChangeDate = objAuditable.CreateAt;
-                dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
-                dataVersion.GetChangeField(systemDataVersion);
+        //    if (systemDataVersion == null)
+        //    {
+        //        return SaveNewVersion(objAuditable);
+        //    }
+        //    else
+        //    {
+        //        dataVersion.VersionNumber = systemDataVersion.VersionNumber + 1;
+        //        dataVersion.ChangeUserID = objAuditable.CreateBy;
+        //        dataVersion.ChangeDate = objAuditable.CreateAt;
+        //        dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
+        //        dataVersion.GetChangeField(systemDataVersion);
 
-                Save(dataVersion);
+        //        Save(dataVersion);
 
-                return dataVersion;
-            }
-        }
+        //        return dataVersion;
+        //    }
+        //}
 
         public void GetChangeField(SystemVersionWrapper currentDataVersion)
         {
@@ -171,8 +171,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                     }
                 }
 
-                this.NewChangeFileld = JsonConvert.SerializeObject(oldChangedValues);
-                this.OldChangeFileld = JsonConvert.SerializeObject(newChangedValues);
+                this.NewChangeFileld = JsonConvert.SerializeObject(newChangedValues);
+                this.OldChangeFileld = JsonConvert.SerializeObject(oldChangedValues);
             }
         }
 

@@ -27,7 +27,7 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserWrapper
+    public partial class SystemUserWrapper : BaseSpringNHibernateWrapper<SystemUserEntity, ISystemUserServiceProxy, SystemUserWrapper, int>
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
