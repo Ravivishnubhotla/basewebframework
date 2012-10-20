@@ -14,14 +14,29 @@ namespace SNFramework.BSF.Files
         public string FileType { get; set; }
         public DateTime LastModifyTime { get; set; }
 
-        public FileInf(string filePath)
+        public FileInf(string filePath,string imageFileExtPath)
         {
             FileInfo fileInfo = new FileInfo(filePath);
             this.Name = fileInfo.Name;
             this.FileSize = fileInfo.Length;
             this.FileExt = fileInfo.Extension;
-            this.FileType = fileInfo.Extension.Substring(1, this.FileExt.Length - 1);
+            this.FileType = GetFileType(fileInfo.Extension,imageFileExtPath);
             this.LastModifyTime = fileInfo.LastWriteTime;
+        }
+
+        private string GetFileType(string fileExt,string imageFileExtPath)
+        {
+            if (string.IsNullOrEmpty(fileExt))
+                return "file.png";
+
+            this.FileType = fileExt.Substring(1, this.FileExt.Length - 1).ToLower();
+
+            string[] filefinds = Directory.GetFiles(imageFileExtPath, this.FileType + ".*");
+
+            if (filefinds.Length > 0)
+                return Path.GetFileName(filefinds[0]);
+
+            return "file.png";
         }
 
         public string FileTypeName

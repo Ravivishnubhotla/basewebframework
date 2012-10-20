@@ -42,4 +42,5 @@
   <add name="msgAutoSort" value="自动排序" />
   <add name="msgTitleEditLangItem" value="编辑术语 {0} 多语言内容" />
   <add name="msgDataNotExisted" value="错误信息：数据不存在！" />
+  <add name="msgUpload" value="上传" />
 </resources>
