@@ -7,11 +7,12 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
+using SNFramework.BSF.AppCode;
 
 namespace SNFramework.BSF.Moudles.SystemManage.PermissionManage
 {
-    public partial class SystemPrivilegeListPage : BaseSecurityPage
+    public partial class SystemPrivilegeListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

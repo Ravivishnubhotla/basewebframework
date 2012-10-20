@@ -109,7 +109,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
         protected bool CheckGetSubItems(WrapperType subitem, WrapperType mainItem)
         {
-            return subitem.ParentDataItemID.DataKeyId == mainItem.DataKeyId;
+            if (subitem.ParentDataItemID==null)
+            {
+                return (mainItem == null || mainItem.DataKeyId.ToString() == "0");
+            }
+            return subitem.ParentDataItemID.DataKeyId.ToString() == mainItem.DataKeyId.ToString();
         }
 
 

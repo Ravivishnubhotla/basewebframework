@@ -7,14 +7,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 using Legendigital.Framework.Common.Securitys.SSO;
 using Legendigital.Framework.Common.Utility;
+using SNFramework.BSF.AppCode;
 using SNFramework.BSF.images;
 
 namespace SNFramework.BSF.MainPage
 {
-    public partial class Login : BaseSecurityPage
+    public partial class Login : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

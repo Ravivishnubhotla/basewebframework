@@ -122,6 +122,12 @@ namespace Legendigital.Framework.Common.Securitys.SSO
             if (HttpContext.Current.User == null)
                 return "";
 
+            if (HttpContext.Current.User.Identity == null)
+                return "";
+
+            if (string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
+                return "";
+
             if (HttpContext.Current.Session["SSOKey"] != null)
                 return (string)HttpContext.Current.Session["SSOKey"];
 

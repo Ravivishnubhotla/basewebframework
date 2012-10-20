@@ -84,9 +84,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             }
             base.Initialize(name, config);
             application =
-                SystemApplicationWrapper.CreateOrLoadApplication(
-                    ConfigurationUtil.GetConfigValue(config["applicationName"],
-                                                     HostingEnvironment.ApplicationVirtualPath));
+                SystemApplicationWrapper.CreateOrLoadApplication(SystemApplicationWrapper.BaseSystemApplicationName);
         }
 
         public override string ApplicationName

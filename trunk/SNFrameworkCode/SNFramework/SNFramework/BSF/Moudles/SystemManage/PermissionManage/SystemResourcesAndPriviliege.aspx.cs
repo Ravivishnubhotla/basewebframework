@@ -9,11 +9,12 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Web.UI;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
+using SNFramework.BSF.AppCode;
 
 namespace SNFramework.BSF.Moudles.SystemManage.PermissionManage
 {
-    public partial class SystemResourcesAndPriviliege : BaseSecurityPage
+    public partial class SystemResourcesAndPriviliege : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

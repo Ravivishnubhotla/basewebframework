@@ -7,13 +7,14 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using SNFramework.BSF.AppCode;
 
 
 namespace SNFramework.BSF.Moudles.SystemManage.EmailTemplates
 {
-    public partial class SystemEmailTemplateListPage : BaseSecurityPage
+    public partial class SystemEmailTemplateListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

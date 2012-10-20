@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Providers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 
 namespace SNFramework.BSF.MainPage
 {

@@ -8,5 +8,6 @@ namespace SNFramework.BSF.AppCode
 {
     public class BasePage : BaseSSOSecurityPage
     {
+ 
     }
 }

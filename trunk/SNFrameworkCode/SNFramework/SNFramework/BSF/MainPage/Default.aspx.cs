@@ -8,7 +8,7 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 using Legendigital.Framework.Common.Securitys.SSO;
 using SNFramework.BSF.AppCode;
 

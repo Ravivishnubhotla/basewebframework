@@ -29,6 +29,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
         private bool requiresUniqueEmail;
 
 
+
+
+
         /// <summary>
         /// ”¶”√√˚≥∆
         /// </summary>
@@ -581,9 +584,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             }
             base.Initialize(name, config);
             application =
-                SystemApplicationWrapper.CreateOrLoadApplication(
-                    ConfigurationUtil.GetConfigValue(config["applicationName"],
-                                                     HostingEnvironment.ApplicationVirtualPath));
+                SystemApplicationWrapper.CreateOrLoadApplication(SystemApplicationWrapper.BaseSystemApplicationName);
             requiresQuestionAndAnswer =
                 Convert.ToBoolean(ConfigurationUtil.GetConfigValue(config["requiresQuestionAndAnswer"], "False"));
             requiresUniqueEmail =

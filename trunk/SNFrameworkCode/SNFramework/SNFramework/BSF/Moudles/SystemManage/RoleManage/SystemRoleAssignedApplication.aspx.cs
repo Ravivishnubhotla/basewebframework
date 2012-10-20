@@ -8,13 +8,14 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
+using SNFramework.BSF.AppCode;
 using TreeNode = Ext.Net.TreeNode;
 using TreeNodeCollection = Ext.Net.TreeNodeCollection;
 
 namespace SNFramework.BSF.Moudles.SystemManage.RoleManage
 {
-    public partial class SystemRoleAssignedApplication : BaseSecurityPage
+    public partial class SystemRoleAssignedApplication : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
