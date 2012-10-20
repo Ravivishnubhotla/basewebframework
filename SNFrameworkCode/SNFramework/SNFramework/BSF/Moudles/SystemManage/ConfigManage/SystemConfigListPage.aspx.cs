@@ -7,12 +7,13 @@ using System.Web.UI.WebControls;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Ext.Net;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using SNFramework.BSF.AppCode;
 
 namespace SNFramework.BSF.Moudles.SystemManage.ConfigManage
 {
-    public partial class SystemConfigListPage : BaseSecurityPage
+    public partial class SystemConfigListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,6 +65,8 @@ namespace SNFramework.BSF.Moudles.SystemManage.ConfigManage
                 return;
             }
         }
+
+
 
         protected void storeSystemConfigGroup_Refresh(object sender, StoreRefreshDataEventArgs e)
         {

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System;using SNFramework.BSF.AppCode;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
-using Legendigital.Framework.Common.BaseFramework.Web;
+using SNFramework.BSF.AppCode;
 using Legendigital.Framework.Common.Utility;
 using Legendigital.Framework.Common.Web.ControlHelper;
 

@@ -121,10 +121,68 @@
     <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\FileManage.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\collapse-all.gif" />
     <Content Include="images\expand-all.gif" />
+    <Content Include="images\FileExts\asax.gif" />
+    <Content Include="images\FileExts\ascx.gif" />
+    <Content Include="images\FileExts\ashx.gif" />
+    <Content Include="images\FileExts\asmx.gif" />
+    <Content Include="images\FileExts\aspx.gif" />
+    <Content Include="images\FileExts\avi.gif" />
+    <Content Include="images\FileExts\bat.gif" />
+    <Content Include="images\FileExts\bmp.gif" />
+    <Content Include="images\FileExts\cab.gif" />
+    <Content Include="images\FileExts\chm.gif" />
+    <Content Include="images\FileExts\cmd.gif" />
+    <Content Include="images\FileExts\config.gif" />
+    <Content Include="images\FileExts\cs.gif" />
+    <Content Include="images\FileExts\css.gif" />
+    <Content Include="images\FileExts\db.gif" />
+    <Content Include="images\FileExts\dir.gif" />
+    <Content Include="images\FileExts\dll.gif" />
+    <Content Include="images\FileExts\doc.gif" />
+    <Content Include="images\FileExts\exe.gif" />
+    <Content Include="images\FileExts\fla.gif" />
+    <Content Include="images\FileExts\folder.gif" />
+    <Content Include="images\FileExts\gif.gif" />
+    <Content Include="images\FileExts\htm.gif" />
+    <Content Include="images\FileExts\html.gif" />
+    <Content Include="images\FileExts\ini.gif" />
+    <Content Include="images\FileExts\iso.gif" />
+    <Content Include="images\FileExts\jpg.gif" />
+    <Content Include="images\FileExts\js.gif" />
+    <Content Include="images\FileExts\log.gif" />
+    <Content Include="images\FileExts\master.gif" />
+    <Content Include="images\FileExts\mdb.gif" />
+    <Content Include="images\FileExts\mp3.gif" />
+    <Content Include="images\FileExts\msi.gif" />
+    <Content Include="images\FileExts\pdb.gif" />
+    <Content Include="images\FileExts\pdf.gif" />
+    <Content Include="images\FileExts\png.gif" />
+    <Content Include="images\FileExts\ppt.gif" />
+    <Content Include="images\FileExts\rar.gif" />
+    <Content Include="images\FileExts\rm.gif" />
+    <Content Include="images\FileExts\rmvb.gif" />
+    <Content Include="images\FileExts\rtf.gif" />
+    <Content Include="images\FileExts\sln.gif" />
+    <Content Include="images\FileExts\swf.gif" />
+    <Content Include="images\FileExts\ttf.gif" />
+    <Content Include="images\FileExts\txt.gif" />
+    <Content Include="images\FileExts\unknow.gif" />
+    <Content Include="images\FileExts\vsd.gif" />
+    <Content Include="images\FileExts\wma.gif" />
+    <Content Include="images\FileExts\wmv.gif" />
+    <Content Include="images\FileExts\xaml.gif" />
+    <Content Include="images\FileExts\xap.gif" />
+    <Content Include="images\FileExts\xls.gif" />
+    <Content Include="images\FileExts\xlst.gif" />
+    <Content Include="images\FileExts\xml.gif" />
+    <Content Include="images\FileExts\xsd.gif" />
+    <Content Include="images\FileExts\xsx.gif" />
+    <Content Include="images\FileExts\zip.gif" />
     <Content Include="images\layout-browser-hd-bg.gif" />
     <Content Include="images\lock.png" />
     <Content Include="images\logo.JPG" />
@@ -417,6 +475,9 @@
     <Compile Include="AppCode\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AppCode\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppCode\WebUIHelper.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -424,6 +485,14 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileInf.cs" />
+    <Compile Include="Files\FileManage.aspx.cs">
+      <DependentUpon>FileManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\FileManage.aspx.designer.cs">
+      <DependentUpon>FileManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -936,7 +1005,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Files\" />
+    <Folder Include="Files\Documents\" />
+    <Folder Include="Files\Images\" />
+    <Folder Include="Files\Others\" />
+    <Folder Include="Files\Videos\" />
     <Folder Include="Moudles\Installs\" />
     <Folder Include="Moudles\SystemManage\DataVersionManage\" />
   </ItemGroup>

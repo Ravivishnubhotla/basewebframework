@@ -182,17 +182,17 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         //    return SystemUserWrapper.UserHasPermission(this.CurrentLoginUser, permissionCode);
         //}
 
-        //public bool CurrentLoginUserIsDevelopeAdmin()
-        //{
-        //    if (CurrentLoginUser == null)
-        //        return false;
-        //    if (CurrentLoginUser.UserLoginID == SystemUserWrapper.DEV_USER_ID)
-        //    {
-        //        return true;
-        //    }
+        public bool CurrentLoginUserIsDevelopeAdmin()
+        {
+            if (CurrentLoginUser == null)
+                return false;
+            if (CurrentLoginUser.UserLoginID == SystemUserWrapper.DEV_USER_ID)
+            {
+                return true;
+            }
 
-        //    return false;
-        //}
+            return false;
+        }
 
 
 

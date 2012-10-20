@@ -94,10 +94,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
 	    #endregion
 
+        public const string BaseSystemApplicationName = "Base System Module";
  
-
-
-
 	    /// <summary>
         /// 通过配置文件加载系统应用（如果不存在，则创建。MemberShip使用）
         /// </summary>
