@@ -122,6 +122,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Files\FileManage.aspx" />
+    <Content Include="Files\UCFileUpload.ascx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\collapse-all.gif" />
@@ -493,6 +494,13 @@
     </Compile>
     <Compile Include="Files\FileManage.aspx.designer.cs">
       <DependentUpon>FileManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\UCFileUpload.ascx.cs">
+      <DependentUpon>UCFileUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\UCFileUpload.ascx.designer.cs">
+      <DependentUpon>UCFileUpload.ascx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -1,4 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="FileManage.aspx.cs" Inherits="SNFramework.BSF.Files.FileManage" %>
+
+<%@ Register src="UCFileUpload.ascx" tagname="UCFileUpload" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:Store ID="storeFiles" runat="server" OnRefreshData="storeFiles_Refresh">
         <Reader>
@@ -24,9 +27,10 @@
 
             LoadFiles();
         }
-        
+
+ 
         var showFileExtImage = function (value) {
-            var imgsrc = String.format("<img src='/images/FileExts/{0}.gif'>", value);
+            var imgsrc = String.format("<img src='/images/FileExts/{0}'>", value);
             //alert(imgsrc);
             return imgsrc;
         };
@@ -34,6 +38,56 @@
         function LoadFiles() {
             var storeFiles = <%=storeFiles.ClientID  %>;
             storeFiles.reload();
+        }
+        
+        function showUploadForm() {
+            
+            var hidcPath = <%=cPath.ClientID  %>;
+
+            Ext.net.DirectMethods.UCFileUpload.Show( hidcPath.getValue(),
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
+                                                                });    
+        
+       }
+
+        function DeleteSelectedFile() {
+            var grid = <%= this.GridPanel1.ClientID %>;
+            var selectFiles = Ext.encode(grid.getRowsValues({selectedOnly : true}));
+            
+            Ext.net.DirectMethods.DeleteSelectedFiles(
+                selectFiles,
+                {
+                    failure: function (msg) {
+                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                    },
+                    success: function (result) {
+                        LoadFiles();
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
+                        target: 'customtarget',
+                        customTarget: '<%= GridPanel1.ClientID %>.el'
+                    }
+                }
+            );    
+            
+        }
+
+        function SelectFNode() {
+            var tree = <%=trpDirs.ClientID  %>;
+            var fnode = tree.getRootNode().childNodes[0];
+            tree.getSelectionModel().select(fnode);
+            var ssMessage = <%= ssMessage.ClientID %>;
+            ssMessage.setText('当前目录： <b>' + fnode.text + '<b/>');
+            LoadSubDir(fnode.attributes.Path);
         }
 
         function LoadDirectorys(rootPath) {
@@ -48,6 +102,7 @@
                         var nodes = eval(result);
                         if (nodes.length > 0) {
                             tree.initChildren(nodes);
+                            SelectFNode();
                         }
                         else {
                             tree.getRootNode().removeChildren();
@@ -62,13 +117,14 @@
                     }
                 }
             );    
-            }
+       }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc1:UCFileUpload ID="UCFileUpload1" runat="server" />
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="LoadDirectorys('/');LoadFiles();"></DocumentReady>
+            <DocumentReady Handler="LoadDirectorys('/');"></DocumentReady>
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Viewport ID="Viewport1" runat="server" Layout="border">
@@ -123,9 +179,15 @@
                                     <ext:Button ID="btnFolderAdd" runat="server" Icon="FolderAdd" Text="新文件夹">
                                     </ext:Button>
                                     <ext:Button ID="btnPageAdd" runat="server" Icon="PageAdd" Text="新文件">
+                                        <Listeners>
+                                            <Click Handler="showUploadForm();"></Click>
+                                        </Listeners>
                                     </ext:Button>
                                     <ext:ToolbarSeparator />
                                     <ext:Button ID="btnDelete" runat="server" Icon="Delete" Text="删除">
+                                        <Listeners>
+                                            <Click Handler="DeleteSelectedFile();"></Click>
+                                        </Listeners>
                                     </ext:Button>
                                     <ext:Button ID="Button1" runat="server" Icon="Cut" Text="剪切">
                                     </ext:Button>
@@ -146,6 +208,9 @@
                         </TopBar>
                         <ColumnModel ID="ColumnModel1" runat="server">
                             <Columns>
+                                                               <ext:Column ColumnID="colFileType" Header="" Width="30" DataIndex="FileType">
+                                    <Renderer Fn="showFileExtImage"></Renderer>
+                                </ext:Column>
                                 <ext:Column ColumnID="colFileType" Header="" Width="30" DataIndex="FileType">
                                     <Renderer Fn="showFileExtImage"></Renderer>
                                 </ext:Column>

@@ -32,6 +32,36 @@ namespace SNFramework.BSF.Files
             return "";
         }
 
+
+        [DirectMethod]
+        public string DeleteSelectedFiles(string selectedFiles)
+        {
+            Dictionary<string, string>[] selectedFilesData = JSON.Deserialize<Dictionary<string, string>[]>(selectedFiles);
+
+            string currentPath = cPath.Value.ToString();
+
+            if (currentPath == "")
+                currentPath = this.Server.MapPath("~/Files/");
+
+            foreach (Dictionary<string, string> row in selectedFilesData)
+            {
+                string filename = row["Name"];
+
+                try
+                {
+                    File.Delete(Path.Combine(currentPath,filename));
+                }
+                catch (Exception ex)
+                {
+                    ResourceManager.AjaxSuccess = false;
+                    ResourceManager.AjaxErrorMessage = ex.Message;
+                    return "";
+                }
+            }
+
+            return "";
+        }
+ 
         private TreeNodeCollection BuildDirectorysTree(string rootNavPath)
         {
             TreeNodeCollection nodes = new TreeNodeCollection();
@@ -96,7 +126,7 @@ namespace SNFramework.BSF.Files
 
             foreach (string fileName in files)
             {
-                data.Add(new FileInf(fileName));
+                data.Add(new FileInf(fileName, this.Server.MapPath("~/images/FileExts")));
             }
 
             storeFiles.DataSource = data;
