@@ -25,7 +25,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPFilterRuleServiceProxy : ISPFilterRuleServiceProxy
+    internal partial class SPFilterRuleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPFilterRuleEntity,int>, ISPFilterRuleServiceProxy
     {
 
 

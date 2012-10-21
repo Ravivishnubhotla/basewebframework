@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPUpperServiceProxy : ISPUpperServiceProxy
+    internal partial class SPUpperServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPUpperEntity,int>, ISPUpperServiceProxy
     {
 
 

@@ -47,6 +47,7 @@
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
 		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
 		<property column="LastModifyComment" type="string" name="LastModifyComment"   length="600" />	
+		<property column="LastLoginIP" type="string" name="LastLoginIP"   length="100" />	
 
 
 

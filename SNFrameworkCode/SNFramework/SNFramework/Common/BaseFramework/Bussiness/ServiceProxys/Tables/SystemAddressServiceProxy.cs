@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemAddressServiceProxy : ISystemAddressServiceProxy
+    public partial class SystemAddressServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemAddressEntity,int>, ISystemAddressServiceProxy
     {
 
 

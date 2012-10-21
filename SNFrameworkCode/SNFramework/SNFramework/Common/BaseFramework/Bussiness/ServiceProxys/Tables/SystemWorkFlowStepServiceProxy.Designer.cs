@@ -27,7 +27,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {
     }
 
-    public partial class SystemWorkFlowStepServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemWorkFlowStepEntity,int>
+    public partial class SystemWorkFlowStepServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemWorkFlowStepEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

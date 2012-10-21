@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemShortMessageLogServiceProxy : ISystemShortMessageLogServiceProxy
+    public partial class SystemShortMessageLogServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemShortMessageLogEntity,int>, ISystemShortMessageLogServiceProxy
     {
 
 

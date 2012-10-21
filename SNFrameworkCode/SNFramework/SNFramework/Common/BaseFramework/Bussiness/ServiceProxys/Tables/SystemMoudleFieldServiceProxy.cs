@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemMoudleFieldServiceProxy : ISystemMoudleFieldServiceProxy
+    public partial class SystemMoudleFieldServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemMoudleFieldEntity,int>, ISystemMoudleFieldServiceProxy
     {
 
 

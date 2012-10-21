@@ -25,7 +25,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void PatchAdd(string groupCode, bool hasValue, string categoryItems);
     }
 
-    public partial class SystemDictionaryServiceProxy : ISystemDictionaryServiceProxy
+    public partial class SystemDictionaryServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemDictionaryEntity,int>,ISystemDictionaryServiceProxy
     {
         public IList<SystemDictionaryEntity> GetDictionaryByGroupCode(string groupCode)
         {

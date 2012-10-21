@@ -37,7 +37,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemMenuEntity> GetMenuByApplication(SystemApplicationWrapper app);
     }
 
-    public partial class SystemMenuServiceProxy : ISystemMenuServiceProxy
+    public partial class SystemMenuServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemMenuEntity,int>,ISystemMenuServiceProxy
     {
         public List<SystemMenuEntity> GetUserAssignedMenuByLoginID(string loginID)
         {

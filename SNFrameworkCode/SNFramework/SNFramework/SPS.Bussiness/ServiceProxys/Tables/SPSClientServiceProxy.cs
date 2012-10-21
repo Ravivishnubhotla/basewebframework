@@ -20,7 +20,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         SPSClientEntity GetClientByUserID(int userId);
     }
 
-    internal partial class SPSClientServiceProxy : ISPSClientServiceProxy
+    internal partial class SPSClientServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPSClientEntity,int>, ISPSClientServiceProxy
     {
 
         public static SPSClientEntity NewDefaultSPClient(int defaultSPClientuserID)

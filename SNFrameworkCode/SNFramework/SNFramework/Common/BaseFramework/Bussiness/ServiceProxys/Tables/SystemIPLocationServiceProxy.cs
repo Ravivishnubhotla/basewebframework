@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemIPLocationServiceProxy : ISystemIPLocationServiceProxy
+    public partial class SystemIPLocationServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemIPLocationEntity,int>, ISystemIPLocationServiceProxy
     {
 
 

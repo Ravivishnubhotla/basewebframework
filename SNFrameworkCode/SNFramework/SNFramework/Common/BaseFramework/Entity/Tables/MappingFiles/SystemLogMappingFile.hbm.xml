@@ -23,6 +23,7 @@
 		<property column="Log_RelateUserID" type="int" name="LogRelateUserID"   />	
 		<property column="Log_RelateUserName" type="string" name="LogRelateUserName"   length="60" />	
 		<property column="Log_RelateDateTime" type="DateTime" name="LogRelateDateTime"   />	
+		<property column="DataNumber" type="string" name="DataNumber"   length="100" />	
 
 
 

@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void QuickPatchAddOperation(SystemResourcesEntity entity);
     }
 
-    public partial class SystemOperationServiceProxy : ISystemOperationServiceProxy
+    public partial class SystemOperationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemOperationEntity,int>, ISystemOperationServiceProxy
     {
         private List<SystemOperationEntity> GetAllCommonOperation(SystemResourcesEntity entity)
         {

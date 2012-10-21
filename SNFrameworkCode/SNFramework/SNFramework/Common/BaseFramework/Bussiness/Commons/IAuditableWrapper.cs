@@ -7,15 +7,15 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 {
     public interface IAuditableWrapper
     {
-        int? CreateBy { get; set; }
+        int? GetDataCreateBy();
 
-        DateTime? CreateAt { get; set; }
+        DateTime? GetDataCreateAt();
 
-        int? LastModifyBy { get; set; }
+        int? GetDataLastModifyBy();
 
-        DateTime? LastModifyAt { get; set; }
+        DateTime? GetDataLastModifyAt();
 
-        string LastModifyComment { get; set; }
+        string GetDataLastModifyComment();
 
         string GetEntityTypeName();
 

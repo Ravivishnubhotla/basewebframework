@@ -34,6 +34,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_LOGRELATEUSERID = new IntProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEUSERID));		
 		public static readonly StringProperty PROPERTY_LOGRELATEUSERNAME = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEUSERNAME));		
 		public static readonly DateTimeProperty PROPERTY_LOGRELATEDATETIME = new DateTimeProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_LOGRELATEDATETIME));		
+		public static readonly StringProperty PROPERTY_DATANUMBER = new StringProperty(Property.ForName(SystemLogEntity.PROPERTY_NAME_DATANUMBER));		
       
 
 
@@ -89,6 +90,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (string);
                 case "LogRelateDateTime":
                     return typeof (DateTime);
+                case "DataNumber":
+                    return typeof (string);
           }
 			return typeof(string);
         }

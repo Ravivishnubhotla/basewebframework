@@ -34,7 +34,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
 
 
-    public partial class SystemUserProfileServiceProxy : ISystemUserProfileServiceProxy
+    public partial class SystemUserProfileServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserProfileEntity,int>, ISystemUserProfileServiceProxy
     {
         [Transaction(ReadOnly = false)]
         public void DeleteProfiles(string[] usernames)

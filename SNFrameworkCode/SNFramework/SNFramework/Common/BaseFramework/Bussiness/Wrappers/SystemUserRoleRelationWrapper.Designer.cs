@@ -118,6 +118,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 					return PROPERTY_USERID_LASTMODIFYAT;
 		        case "UserID_LastModifyComment":
 					return PROPERTY_USERID_LASTMODIFYCOMMENT;
+		        case "UserID_LastLoginIP":
+					return PROPERTY_USERID_LASTLOGINIP;
 		        case "RoleID_RoleID":
 					return PROPERTY_ROLEID_ROLEID;
 		        case "RoleID_RoleName":
@@ -203,6 +205,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyComment";
+		public const string PROPERTY_USERID_LASTLOGINIP = "UserID_SystemUserRoleRelationEntity_Alias.LastLoginIP";
 		#endregion
 		#region roleID字段外键查询字段
         public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserRoleRelationEntity_Alias";
@@ -649,6 +652,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 if (this. UserID == null)
                     return null;
                 return  UserID.LastModifyComment;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTLOGINIP)]
+        public string UserID_LastLoginIP
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastLoginIP;
             }
         }
 		#endregion

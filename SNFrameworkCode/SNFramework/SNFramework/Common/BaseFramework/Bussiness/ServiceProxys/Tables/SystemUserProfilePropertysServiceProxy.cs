@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemUserProfilePropertysServiceProxy : ISystemUserProfilePropertysServiceProxy
+    public partial class SystemUserProfilePropertysServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemUserProfilePropertysEntity,int>, ISystemUserProfilePropertysServiceProxy
     {
 
 

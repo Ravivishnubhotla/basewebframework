@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemRoleMenuRelationServiceProxy : ISystemRoleMenuRelationServiceProxy
+    public partial class SystemRoleMenuRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemRoleMenuRelationEntity,int>, ISystemRoleMenuRelationServiceProxy
     {
 
 

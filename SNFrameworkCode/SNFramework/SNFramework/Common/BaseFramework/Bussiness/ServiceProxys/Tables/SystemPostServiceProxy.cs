@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemPostServiceProxy : ISystemPostServiceProxy
+    public partial class SystemPostServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPostEntity,int>, ISystemPostServiceProxy
     {
 
 

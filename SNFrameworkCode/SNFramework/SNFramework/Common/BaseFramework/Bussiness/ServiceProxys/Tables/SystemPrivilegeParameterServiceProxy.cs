@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemPrivilegeParameterServiceProxy : ISystemPrivilegeParameterServiceProxy
+    public partial class SystemPrivilegeParameterServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPrivilegeParameterEntity,int>, ISystemPrivilegeParameterServiceProxy
     {
 
 

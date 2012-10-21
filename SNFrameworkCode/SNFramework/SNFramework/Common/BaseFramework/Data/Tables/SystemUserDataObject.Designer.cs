@@ -58,6 +58,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYBY));		
 		public static readonly DateTimeProperty PROPERTY_LASTMODIFYAT = new DateTimeProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYAT));		
 		public static readonly StringProperty PROPERTY_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTMODIFYCOMMENT));		
+		public static readonly StringProperty PROPERTY_LASTLOGINIP = new StringProperty(Property.ForName(SystemUserEntity.PROPERTY_NAME_LASTLOGINIP));		
       
 
 
@@ -160,6 +161,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 case "LastModifyAt":
                     return typeof (DateTime);
                 case "LastModifyComment":
+                    return typeof (string);
+                case "LastLoginIP":
                     return typeof (string);
           }
 			return typeof(string);

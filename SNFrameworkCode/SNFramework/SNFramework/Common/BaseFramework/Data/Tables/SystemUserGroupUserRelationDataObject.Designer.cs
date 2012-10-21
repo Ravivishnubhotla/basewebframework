@@ -66,6 +66,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_USERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyBy"));
 		public static readonly DateTimeProperty PROPERTY_USERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyAt"));
 		public static readonly StringProperty PROPERTY_USERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyComment"));
+		public static readonly StringProperty PROPERTY_USERID_LASTLOGINIP = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastLoginIP"));
 		#endregion
 		public static readonly EntityProperty<SystemUserGroupEntity> PROPERTY_USERGROUPID = new EntityProperty<SystemUserGroupEntity>(Property.ForName(SystemUserGroupUserRelationEntity.PROPERTY_NAME_USERGROUPID));
 		#region userGroupID字段外键查询字段
@@ -205,6 +206,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt":
 							return typeof (DateTime);
                 		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment":
+							return typeof (string);
+                		case "UserID_SystemUserGroupUserRelationEntity_Alias.LastLoginIP":
 							return typeof (string);
           			}
                     break;

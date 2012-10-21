@@ -74,6 +74,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERID = "LogRelateUserID";
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERNAME = "LogRelateUserName";
 		public static readonly string PROPERTY_NAME_LOGRELATEDATETIME = "LogRelateDateTime";
+		public static readonly string PROPERTY_NAME_DATANUMBER = "DataNumber";
 		
         #endregion
 	
@@ -282,6 +283,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.LogRelateDateTime = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string DataNumber
+		{
+			get
+			{
+				return entity.DataNumber;
+			}
+			set
+			{
+				entity.DataNumber = value;
 			}
 		}
 		#endregion 

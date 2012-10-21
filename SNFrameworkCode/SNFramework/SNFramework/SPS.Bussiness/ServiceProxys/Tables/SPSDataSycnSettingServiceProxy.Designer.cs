@@ -29,7 +29,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     {
     }
 
-    internal partial class SPSDataSycnSettingServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPSDataSycnSettingEntity,int>
+    internal partial class SPSDataSycnSettingServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPSDataSycnSettingEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

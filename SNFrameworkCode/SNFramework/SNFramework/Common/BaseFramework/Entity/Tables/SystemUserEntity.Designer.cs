@@ -59,6 +59,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
+		public static readonly string PROPERTY_NAME_LASTLOGINIP = "LastLoginIP";
 		
         #endregion
 	
@@ -113,6 +114,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _lastModifyBy;
 		private DateTime? _lastModifyAt;
 		private string _lastModifyComment;
+		private string _lastLoginIP;
 		
 		#endregion
 
@@ -159,6 +161,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_lastModifyBy = null;
 			_lastModifyAt = null;
 			_lastModifyComment = null;
+			_lastLoginIP = null;
 		}
 		#endregion
 
@@ -166,7 +169,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail, string validateType, string aDDomain, bool? bindUKey, string uSBKeySerial, string uSBKeyCode, string sSOKey, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SystemUserEntity( int userID, string userLoginID, string userName, string userEmail, string userPassword, string userStatus, DateTime userCreateDate, string userType, string mobilePIN, int passwordFormat, string passwordQuestion, string passwordAnswer, string comments, bool isApproved, bool isLockedOut, DateTime lastActivityDate, DateTime lastLoginDate, DateTime lastLockedOutDate, DateTime lastPasswordChangeDate, int failedPwdAttemptCnt, DateTime failedPwdAttemptWndStart, int failedPwdAnsAttemptCnt, DateTime failedPwdAnsAttemptWndStart, bool isNeedChgPwd, string passwordSalt, string loweredEmail, string validateType, string aDDomain, bool? bindUKey, string uSBKeySerial, string uSBKeyCode, string sSOKey, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment, string lastLoginIP)
 		{
 			_userID = userID;
 			_userLoginID = userLoginID;
@@ -205,6 +208,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_lastModifyBy = lastModifyBy;
 			_lastModifyAt = lastModifyAt;
 			_lastModifyComment = lastModifyComment;
+			_lastLoginIP = lastLoginIP;
 		}
 		#endregion     
 	
@@ -779,6 +783,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 				if( value != null && value.Length > 600)
 					throw new ArgumentOutOfRangeException("Invalid value for LastModifyComment", value, value.ToString());
 				_isChanged |= (_lastModifyComment != value); _lastModifyComment = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string LastLoginIP
+		{
+			get { return _lastLoginIP; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for LastLoginIP", value, value.ToString());
+				_isChanged |= (_lastLoginIP != value); _lastLoginIP = value;
 			}
 		}
 	

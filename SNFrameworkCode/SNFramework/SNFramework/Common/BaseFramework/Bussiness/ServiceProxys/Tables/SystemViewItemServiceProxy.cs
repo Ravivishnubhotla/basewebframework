@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemViewItemServiceProxy : ISystemViewItemServiceProxy
+    public partial class SystemViewItemServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemViewItemEntity,int>, ISystemViewItemServiceProxy
     {
 
 

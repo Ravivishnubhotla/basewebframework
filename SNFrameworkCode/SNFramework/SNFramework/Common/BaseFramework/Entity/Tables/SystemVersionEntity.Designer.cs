@@ -32,6 +32,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
 		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
 		public static readonly string PROPERTY_NAME_VERSIONNUMBER = "VersionNumber";
+		public static readonly string PROPERTY_NAME_DATANUMBER = "DataNumber";
 		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
@@ -60,6 +61,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _changeUserID;
 		private int? _changeUserName;
 		private int? _versionNumber;
+		private string _dataNumber;
 		private string _comment;
 		
 		#endregion
@@ -80,6 +82,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_changeUserID = null;
 			_changeUserName = null;
 			_versionNumber = null;
+			_dataNumber = null;
 			_comment = null;
 		}
 		#endregion
@@ -88,7 +91,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemVersionEntity( int id, string vauleField, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID, DateTime? changeDate, int? changeUserID, int? changeUserName, int? versionNumber, string comment)
+		public SystemVersionEntity( int id, string vauleField, string oldChangeFileld, string newChangeFileld, string parentDataType, int? parentDataID, DateTime? changeDate, int? changeUserID, int? changeUserName, int? versionNumber, string dataNumber, string comment)
 		{
 			_id = id;
 			_vauleField = vauleField;
@@ -100,6 +103,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_changeUserID = changeUserID;
 			_changeUserName = changeUserName;
 			_versionNumber = versionNumber;
+			_dataNumber = dataNumber;
 			_comment = comment;
 		}
 		#endregion     
@@ -255,6 +259,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_versionNumber != value); _versionNumber = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DataNumber
+		{
+			get { return _dataNumber; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for DataNumber", value, value.ToString());
+				_isChanged |= (_dataNumber != value); _dataNumber = value;
 			}
 		}
 

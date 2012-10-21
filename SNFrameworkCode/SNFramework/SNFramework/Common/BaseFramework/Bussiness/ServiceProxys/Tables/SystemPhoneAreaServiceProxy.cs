@@ -20,7 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	    SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix);
     }
 
-    public partial class SystemPhoneAreaServiceProxy : ISystemPhoneAreaServiceProxy
+    public partial class SystemPhoneAreaServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPhoneAreaEntity,int>, ISystemPhoneAreaServiceProxy
     {
         public SystemPhoneAreaEntity GetPhoneAreaByMobilePrefix(string mobilePrefix)
         {

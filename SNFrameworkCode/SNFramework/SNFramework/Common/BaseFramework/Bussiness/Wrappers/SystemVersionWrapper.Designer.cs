@@ -71,6 +71,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_CHANGEUSERID = "ChangeUserID";
 		public static readonly string PROPERTY_NAME_CHANGEUSERNAME = "ChangeUserName";
 		public static readonly string PROPERTY_NAME_VERSIONNUMBER = "VersionNumber";
+		public static readonly string PROPERTY_NAME_DATANUMBER = "DataNumber";
 		public static readonly string PROPERTY_NAME_COMMENT = "Comment";
 		
         #endregion
@@ -235,6 +236,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.VersionNumber = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string DataNumber
+		{
+			get
+			{
+				return entity.DataNumber;
+			}
+			set
+			{
+				entity.DataNumber = value;
 			}
 		}
 		/// <summary>

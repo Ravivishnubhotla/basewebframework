@@ -20,6 +20,7 @@
 		<property column="ChangeUserID" type="int" name="ChangeUserID"   />	
 		<property column="ChangeUserName" type="int" name="ChangeUserName"   />	
 		<property column="VersionNumber" type="int" name="VersionNumber"   />	
+		<property column="DataNumber" type="string" name="DataNumber"   length="100" />	
 		<property column="Comment" type="string" name="Comment"   length="400" />	
 
 

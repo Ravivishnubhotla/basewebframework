@@ -25,7 +25,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPCodeInfoServiceProxy : ISPCodeInfoServiceProxy
+    internal partial class SPCodeInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPCodeInfoEntity,int>, ISPCodeInfoServiceProxy
     {
 
 

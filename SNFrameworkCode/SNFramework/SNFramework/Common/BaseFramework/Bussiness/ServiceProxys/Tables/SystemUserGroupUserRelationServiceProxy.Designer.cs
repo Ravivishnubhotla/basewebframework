@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemUserGroupUserRelationEntity> FindAllByUserGroupID(SystemUserGroupEntity _userGroupID);
     }
 
-    public partial class SystemUserGroupUserRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserGroupUserRelationEntity,int>
+    public partial class SystemUserGroupUserRelationServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemUserGroupUserRelationEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

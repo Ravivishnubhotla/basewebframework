@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	    SystemEmailSettingsEntity GetSettingByName(string mailSettingName);
     }
 
-    public partial class SystemEmailSettingsServiceProxy : ISystemEmailSettingsServiceProxy
+    public partial class SystemEmailSettingsServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemEmailSettingsEntity,int>, ISystemEmailSettingsServiceProxy
     {
         public SystemEmailSettingsEntity GetDefaultSetting()
         {

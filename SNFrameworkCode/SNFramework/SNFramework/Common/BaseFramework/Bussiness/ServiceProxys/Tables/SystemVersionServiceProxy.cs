@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemVersionEntity GetMaxDataVersionByDataTypeAndDataID(string dataType, int dataId);
     }
 
-    public partial class SystemVersionServiceProxy : ISystemVersionServiceProxy
+    public partial class SystemVersionServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemVersionEntity,int>, ISystemVersionServiceProxy
     {
         public SystemVersionEntity GetMaxDataVersionByDataTypeAndDataID(string dataType, int dataId)
         {

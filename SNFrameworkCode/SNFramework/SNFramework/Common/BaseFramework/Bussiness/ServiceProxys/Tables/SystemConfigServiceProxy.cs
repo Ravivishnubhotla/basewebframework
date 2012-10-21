@@ -16,7 +16,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	    SystemConfigEntity GetConfigByKey(string key);
     }
 
-    public partial class SystemConfigServiceProxy : ISystemConfigServiceProxy
+    public partial class SystemConfigServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemConfigEntity,int>, ISystemConfigServiceProxy
     {
         public SystemConfigEntity GetConfigByKey(string key)
         {

@@ -21,7 +21,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemDepartmentServiceProxy : ISystemDepartmentServiceProxy
+    public partial class SystemDepartmentServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemDepartmentEntity,int>, ISystemDepartmentServiceProxy
     {
         public IList<SystemDepartmentEntity> FindAllByOrder()
         {

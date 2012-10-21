@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemViewItemEntity> FindAllBySystemViewID(SystemViewEntity _systemViewID);
     }
 
-    public partial class SystemViewItemServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemViewItemEntity,int>
+    public partial class SystemViewItemServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemViewItemEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

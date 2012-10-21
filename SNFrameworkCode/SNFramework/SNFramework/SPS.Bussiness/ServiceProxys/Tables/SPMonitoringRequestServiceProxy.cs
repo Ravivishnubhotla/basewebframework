@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPMonitoringRequestServiceProxy : ISPMonitoringRequestServiceProxy
+    internal partial class SPMonitoringRequestServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPMonitoringRequestEntity,int>, ISPMonitoringRequestServiceProxy
     {
 
 

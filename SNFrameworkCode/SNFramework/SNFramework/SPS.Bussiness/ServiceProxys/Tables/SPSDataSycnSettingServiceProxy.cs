@@ -25,7 +25,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPSDataSycnSettingServiceProxy : ISPSDataSycnSettingServiceProxy
+    internal partial class SPSDataSycnSettingServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPSDataSycnSettingEntity,int>, ISPSDataSycnSettingServiceProxy
     {
 
 

@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.Security;
 using System.Xml;
 using Common.Logging;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Aop;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables.Container;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
@@ -27,7 +28,7 @@ using Spring.Context.Support;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
     [Serializable]
-    public partial class SystemUserWrapper : BaseSpringNHibernateWrapper<SystemUserEntity, ISystemUserServiceProxy, SystemUserWrapper, int>
+    public partial class SystemUserWrapper : BaseAuditableWrapper<SystemUserEntity, ISystemUserServiceProxy, SystemUserWrapper, int>
     {
         public static string DEV_USER_ID = "DeveloperAdministrator";
         public static string SYS_USER_ID = "SystemAdministrator";
@@ -568,6 +569,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
 
             return SystemUserWrapper.GetSysOperatorUserID();
+        }
+
+        public override int? GetDataCreateBy()
+        {
+            return this.CreateBy;
+        }
+
+        public override DateTime? GetDataCreateAt()
+        {
+            return this.CreateAt;
+        }
+
+        public override int? GetDataLastModifyBy()
+        {
+            return this.LastModifyBy;
+        }
+
+        public override DateTime? GetDataLastModifyAt()
+        {
+            return this.LastModifyAt;
+        }
+
+        public override string GetDataLastModifyComment()
+        {
+            return this.LastModifyComment;
+        }
+
+        public override string GetEntityTypeName()
+        {
+            return "”√ªß";
+        }
+
+        public override string GetEntityName()
+        {
+            return this.UserLoginID;
+        }
+
+        public override string GetEntityID()
+        {
+            return this.UserID.ToString();
+        }
+
+        public override string GetEntityNo()
+        {
+            return this.UserLoginID;
         }
     }
 }

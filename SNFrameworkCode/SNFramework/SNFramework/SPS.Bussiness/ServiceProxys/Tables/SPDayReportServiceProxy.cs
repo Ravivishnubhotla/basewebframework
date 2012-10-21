@@ -34,7 +34,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    DataSet QueryClientProvinceReport(DateTime? startDate, DateTime? endDate, int? clientId, int? codeId);
     }
 
-    internal partial class SPDayReportServiceProxy : ISPDayReportServiceProxy
+    internal partial class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity,int>, ISPDayReportServiceProxy
     {
         public List<SPDayReportEntity> CaculateReport(DateTime reportDate)
         {

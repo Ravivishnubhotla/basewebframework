@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemTimeZoneServiceProxy : ISystemTimeZoneServiceProxy
+    public partial class SystemTimeZoneServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemTimeZoneEntity,int>, ISystemTimeZoneServiceProxy
     {
 
 

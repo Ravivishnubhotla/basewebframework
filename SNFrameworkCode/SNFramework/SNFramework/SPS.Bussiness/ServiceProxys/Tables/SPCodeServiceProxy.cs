@@ -20,7 +20,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         List<SPCodeEntity> FindAllByChannelIDAndClientIDAndMoAndSpNumber(int? channelId, int? clientId, string mo, string spcode);
     }
 
-    internal partial class SPCodeServiceProxy : ISPCodeServiceProxy
+    internal partial class SPCodeServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPCodeEntity,int>, ISPCodeServiceProxy
     {
 
         public static SPCodeEntity NewDefaultCode(SPChannelEntity channelEntity)
