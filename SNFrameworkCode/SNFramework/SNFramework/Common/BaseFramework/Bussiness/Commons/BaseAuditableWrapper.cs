@@ -29,12 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
         public static ILog logger = LogManager.GetLogger(typeof(SystemLogWrapper));
 
-        public static string GetDataTypeName(string typeFullName)
-        {
-            if (typeFullName == typeof(SystemUserWrapper).FullName)
-                return "User";
-            return "";
-        }
+
 
         public static SystemVersionWrapper SaveNewVersion(WrapperType objAuditable)
         {

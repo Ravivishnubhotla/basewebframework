@@ -1617,6 +1617,7 @@
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateViewWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\IAuditableWrapper.cs" />
+    <Compile Include="Bussiness\NHibernate\PropertyChangeInfo.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />
