@@ -86,7 +86,15 @@ namespace Legendigital.Common.WebApp.MainPage
 
             UserCurrentLoginId = userWrapper.UserLoginID;
 
-            SystemLogWrapper.LogUserLoginSuccessed(userWrapper, HttpUtil.GetIP(this.Request), System.DateTime.Now);
+            userWrapper.LastLoginDate = System.DateTime.Now;
+            userWrapper.LastLoginIP = HttpUtil.GetIP(this.Request);
+            userWrapper.LastModifyAt = System.DateTime.Now;
+            userWrapper.LastModifyBy = userWrapper.UserID;
+            userWrapper.LastModifyComment = "用户登陆更新信息";
+
+            SystemUserWrapper.Update(userWrapper);
+
+            SystemLogWrapper.LogUserLoginSuccessed(userWrapper);
 
             Response.Redirect(FormsAuthentication.DefaultUrl);
         }
